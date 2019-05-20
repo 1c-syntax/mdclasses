@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Studio 2019 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:tns="http://v8.1c.ru/8.1/data/core" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://v8.1c.ru/8.1/data/core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lang" type="xs:string" />
+        <xs:element minOccurs="0" name="content" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Type" type="xs:string" />
+  <xs:element name="NumberQualifiers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Digits" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="FractionDigits" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="AllowedSign" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StringQualifiers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Length" type="xs:unsignedShort" />
+        <xs:element minOccurs="0" name="AllowedLength" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateQualifiers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DateFractions" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TypeSet" type="xs:string" />
+  <xs:element name="Value" type="xs:string" />
+</xs:schema>
