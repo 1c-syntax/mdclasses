@@ -38,9 +38,9 @@ public class ConfigurationVersionTest {
         ConfigurationVersion versionA = new ConfigurationVersion(8, 3, 10);
         ConfigurationVersion versionB = new ConfigurationVersion(8, 3, 11);
 
-        assertThat(versionA.compareTo(versionB)).isEqualTo(1);
-        assertThat(versionB.compareTo(versionA)).isEqualTo(-1);
-        assertThat(versionA.compareTo(new ConfigurationVersion(8,3,10))).isEqualTo(0);
+        assertThat(ConfigurationVersion.compareTo(versionA, versionB)).isEqualTo(1);
+        assertThat(ConfigurationVersion.compareTo(versionB, versionA)).isEqualTo(-1);
+        assertThat(ConfigurationVersion.compareTo(versionA, new ConfigurationVersion(8,3,10))).isEqualTo(0);
 
     }
 

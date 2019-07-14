@@ -35,33 +35,29 @@ public class ConfigurationVersion {
         this.patch = patch;
     }
 
-    public ConfigurationVersion(){
-
-    }
-
-    public int compareTo(ConfigurationVersion versionB){
+    public static int compareTo(ConfigurationVersion versionA, ConfigurationVersion versionB){
 
         // TODO: переделать в цикл
-        if (major == versionB.major) {
-            if (minor == versionB.minor) {
-                if (patch == versionB.patch){
+        if (versionA.major == versionB.major) {
+            if (versionA.minor == versionB.minor) {
+                if (versionA.patch == versionB.patch){
                     return 0;
                 }
-                else if (patch >= versionB.patch){
+                else if (versionA.patch >= versionB.patch){
                     return -1;
                 }
                 else {
                     return 1;
                 }
             }
-            else if (minor >= versionB.minor) {
+            else if (versionA.minor >= versionB.minor) {
                 return -1;
             }
             else {
                 return 1;
             }
         }
-        else if (major >= versionB.major){
+        else if (versionA.major >= versionB.major){
             return -1;
         }
         else {
