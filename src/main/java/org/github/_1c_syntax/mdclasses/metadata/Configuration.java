@@ -1,13 +1,13 @@
 package org.github._1c_syntax.mdclasses.metadata;
 
 import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationVersion;
+import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 
 public class Configuration {
 
     private ConfigurationSource configurationSource;
-    private ConfigurationVersion compatibilityMode;
+    private CompatibilityMode compatibilityMode;
     private ScriptVariant scriptVariant;
 
     public Configuration(ConfigurationSource configurationSource){
@@ -18,11 +18,11 @@ public class Configuration {
         return configurationSource;
     }
 
-    public void setCompatibilityMode(ConfigurationVersion value){
+    public void setCompatibilityMode(CompatibilityMode value){
         compatibilityMode = value;
     }
 
-    public ConfigurationVersion getCompatibilityMode(){
+    public CompatibilityMode getCompatibilityMode(){
         return compatibilityMode;
     }
 

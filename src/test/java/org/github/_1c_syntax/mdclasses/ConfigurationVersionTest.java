@@ -1,6 +1,6 @@
 package org.github._1c_syntax.mdclasses;
 
-import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationVersion;
+import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,19 +13,19 @@ public class ConfigurationVersionTest {
         String version8_3_10 = "Version_8_3_10";
         String versionDontUse = "DontUse";
 
-        ConfigurationVersion version;
+        CompatibilityMode version;
 
-        version = new ConfigurationVersion(8, 3, 99);
+        version = new CompatibilityMode(8, 3, 99);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
         assertThat(version.getPatch()).isEqualTo(99);
 
-        version = new ConfigurationVersion(versionDontUse);
+        version = new CompatibilityMode(versionDontUse);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
         assertThat(version.getPatch()).isEqualTo(99);
 
-        version = new ConfigurationVersion(version8_3_10);
+        version = new CompatibilityMode(version8_3_10);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
         assertThat(version.getPatch()).isEqualTo(10);
@@ -35,12 +35,12 @@ public class ConfigurationVersionTest {
     @Test
     public void test_compareTo() {
 
-        ConfigurationVersion versionA = new ConfigurationVersion(8, 3, 10);
-        ConfigurationVersion versionB = new ConfigurationVersion(8, 3, 11);
+        CompatibilityMode versionA = new CompatibilityMode(8, 3, 10);
+        CompatibilityMode versionB = new CompatibilityMode(8, 3, 11);
 
-        assertThat(ConfigurationVersion.compareTo(versionA, versionB)).isEqualTo(1);
-        assertThat(ConfigurationVersion.compareTo(versionB, versionA)).isEqualTo(-1);
-        assertThat(ConfigurationVersion.compareTo(versionA, new ConfigurationVersion(8,3,10))).isEqualTo(0);
+        assertThat(CompatibilityMode.compareTo(versionA, versionB)).isEqualTo(1);
+        assertThat(CompatibilityMode.compareTo(versionB, versionA)).isEqualTo(-1);
+        assertThat(CompatibilityMode.compareTo(versionA, new CompatibilityMode(8,3,10))).isEqualTo(0);
 
     }
 

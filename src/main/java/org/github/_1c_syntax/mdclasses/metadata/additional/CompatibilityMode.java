@@ -1,8 +1,6 @@
 package org.github._1c_syntax.mdclasses.metadata.additional;
 
-import org.github._1c_syntax.mdclasses.metadata.Configuration;
-
-public class ConfigurationVersion {
+public class CompatibilityMode {
 
     private int major = 8;
     private int minor = 0;
@@ -10,7 +8,7 @@ public class ConfigurationVersion {
 
     private final String DONT_USE = "DontUse";
 
-    public ConfigurationVersion (String value){
+    public CompatibilityMode(String value){
 
         if (value.toUpperCase().equals((DONT_USE.toUpperCase()))){
             major = 8;
@@ -29,13 +27,13 @@ public class ConfigurationVersion {
 
     }
 
-    public ConfigurationVersion(int major, int minor, int patch){
+    public CompatibilityMode(int major, int minor, int patch){
         this.major = major;
         this.minor = minor;
         this.patch = patch;
     }
 
-    public static int compareTo(ConfigurationVersion versionA, ConfigurationVersion versionB){
+    public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB){
 
         // TODO: переделать в цикл
         if (versionA.major == versionB.major) {

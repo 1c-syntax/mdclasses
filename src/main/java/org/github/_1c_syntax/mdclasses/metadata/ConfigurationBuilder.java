@@ -3,7 +3,7 @@ package org.github._1c_syntax.mdclasses.metadata;
 import org.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
 import org.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
 import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationVersion;
+import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 
 import javax.xml.bind.JAXBContext;
@@ -16,15 +16,11 @@ import java.nio.file.Path;
 public class ConfigurationBuilder {
 
     private ConfigurationSource configurationSource;
-    private Path pathToXML;
+    private Path pathToRoot;
 
-    public ConfigurationBuilder(){
-        this.configurationSource = ConfigurationSource.Original;
-    }
-
-    public ConfigurationBuilder(ConfigurationSource configurationSource, Path pathToXML){
+    public ConfigurationBuilder(ConfigurationSource configurationSource, Path pathToRoot){
         this.configurationSource = configurationSource;
-        this.pathToXML = pathToXML;
+        this.pathToRoot = pathToRoot;
     }
 
 
@@ -35,7 +31,7 @@ public class ConfigurationBuilder {
         if (configurationSource == ConfigurationSource.Original){
 
             MetaDataObject MDObject = null;
-            File XML = pathToXML.toFile();
+            File XML = pathToRoot.toFile();
             try {
                 JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
                 Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
@@ -47,8 +43,8 @@ public class ConfigurationBuilder {
             org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML = MDObject.getConfiguration();
 
             // режим совместимости
-            ConfigurationVersion configurationVersion =
-                    new ConfigurationVersion(
+            CompatibilityMode configurationVersion =
+                    new CompatibilityMode(
                             configurationXML.getProperties().getConfigurationExtensionCompatibilityMode().name());
             configurationMetadata.setCompatibilityMode(configurationVersion);
 

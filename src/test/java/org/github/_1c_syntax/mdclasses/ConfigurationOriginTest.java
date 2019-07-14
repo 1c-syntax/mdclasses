@@ -3,7 +3,7 @@ package org.github._1c_syntax.mdclasses;
 import org.github._1c_syntax.mdclasses.metadata.Configuration;
 import org.github._1c_syntax.mdclasses.metadata.ConfigurationBuilder;
 import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationVersion;
+import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ public class ConfigurationOriginTest {
 
         assertThat(configuration.getScriptVariant() == ScriptVariant.Russian).isTrue();
         assertThat(configuration.getConfigurationSource() == ConfigurationSource.Original).isTrue();
-        assertThat(ConfigurationVersion.compareTo(configuration.getCompatibilityMode(), new ConfigurationVersion(8, 3, 10)));
+        assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(8, 3, 10)));
 
     }
 
