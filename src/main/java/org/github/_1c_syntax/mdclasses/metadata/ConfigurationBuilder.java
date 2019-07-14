@@ -18,6 +18,8 @@ public class ConfigurationBuilder {
     private ConfigurationSource configurationSource;
     private Path pathToRoot;
 
+    private Configuration configurationMetadata;
+
     public ConfigurationBuilder(ConfigurationSource configurationSource, Path pathToRoot){
         this.configurationSource = configurationSource;
         this.pathToRoot = pathToRoot;
@@ -26,7 +28,7 @@ public class ConfigurationBuilder {
 
     public Configuration build(){
 
-        Configuration configurationMetadata = new Configuration(configurationSource);
+        configurationMetadata = new Configuration(configurationSource);
 
         if (configurationSource == ConfigurationSource.Original){
 
@@ -38,24 +40,16 @@ public class ConfigurationBuilder {
                 MDObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(XML)).getValue();
             } catch (JAXBException e) {
                 e.printStackTrace();
+                return null; // TODO: пока так, переделать
             }
 
             org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML = MDObject.getConfiguration();
 
             // режим совместимости
-            CompatibilityMode configurationVersion =
-                    new CompatibilityMode(
-                            configurationXML.getProperties().getConfigurationExtensionCompatibilityMode().name());
-            configurationMetadata.setCompatibilityMode(configurationVersion);
+            setCompatibilityMode(configurationXML);
 
             // режим встроенного языка
-            String scriptVariantString = configurationXML.getProperties().getScriptVariant().name();
-            if (scriptVariantString.equals("ENGLISH")){
-                configurationMetadata.setScriptVariant(ScriptVariant.English);
-            }
-            else {
-                configurationMetadata.setScriptVariant(ScriptVariant.Russian);
-            }
+            setScriptVariant(configurationXML);
 
         }
         else {
@@ -65,5 +59,21 @@ public class ConfigurationBuilder {
         }
 
         return configurationMetadata;
+    }
+
+    private void setCompatibilityMode(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML){
+
+        CompatibilityMode configurationVersion =
+                new CompatibilityMode(
+                        configurationXML.getProperties().getConfigurationExtensionCompatibilityMode().name());
+        configurationMetadata.setCompatibilityMode(configurationVersion);
+
+    }
+
+    private void setScriptVariant(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML){
+
+        String scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
+        configurationMetadata.setScriptVariant(ScriptVariant.valueOf(scriptVariantString));
+
     }
 }
