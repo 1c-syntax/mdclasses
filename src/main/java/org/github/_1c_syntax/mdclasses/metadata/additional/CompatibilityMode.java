@@ -1,19 +1,24 @@
 package org.github._1c_syntax.mdclasses.metadata.additional;
 
+import lombok.Data;
+import lombok.Getter;
+
+@Data
 public class CompatibilityMode {
 
-    private int major = 8;
+    @Getter
+    private final int major = 8;
+    @Getter
     private int minor = 0;
-    private int patch = 0;
+    @Getter
+    private int version = 0;
 
     private final String DONT_USE = "DontUse";
 
     public CompatibilityMode(String value){
 
         if (value.toUpperCase().equals((DONT_USE.toUpperCase()))){
-            major = 8;
-            minor = 3;
-            patch = 99;
+            setVersionComponents(3, 99);
             return;
         }
 
@@ -21,16 +26,17 @@ public class CompatibilityMode {
         String newValue = value.toUpperCase().replace("VERSION_", "");
 
         String[] array = newValue.split("_");
-        major = Integer.parseInt(array[0]);
-        minor = Integer.parseInt(array[1]);
-        patch = Integer.parseInt(array[2]);
+        setVersionComponents(Integer.parseInt(array[1]), Integer.parseInt(array[2]));
 
     }
 
-    public CompatibilityMode(int major, int minor, int patch){
-        this.major = major;
+    public CompatibilityMode(int minor, int version){
+        setVersionComponents(minor, version);
+    }
+
+    private void setVersionComponents(int minor, int version){
         this.minor = minor;
-        this.patch = patch;
+        this.version = version;
     }
 
     public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB){
@@ -38,10 +44,10 @@ public class CompatibilityMode {
         // TODO: переделать в цикл
         if (versionA.major == versionB.major) {
             if (versionA.minor == versionB.minor) {
-                if (versionA.patch == versionB.patch){
+                if (versionA.version == versionB.version){
                     return 0;
                 }
-                else if (versionA.patch >= versionB.patch){
+                else if (versionA.version >= versionB.version){
                     return -1;
                 }
                 else {
@@ -63,18 +69,5 @@ public class CompatibilityMode {
         }
 
     }
-
-    public int getMajor(){
-        return major;
-    }
-
-    public int getMinor(){
-        return minor;
-    }
-    public int getPatch(){
-        return patch;
-    }
-
-
 
 }

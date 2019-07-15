@@ -22,7 +22,7 @@ public class ConfigurationOriginTest {
 
         assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
         assertThat(configuration.getConfigurationSource() == ConfigurationSource.Designer).isTrue();
-        assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(8, 3, 10)));
+        assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)));
 
     }
 

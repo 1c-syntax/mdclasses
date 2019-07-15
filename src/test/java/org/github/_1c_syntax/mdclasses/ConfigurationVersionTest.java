@@ -15,32 +15,32 @@ public class ConfigurationVersionTest {
 
         CompatibilityMode version;
 
-        version = new CompatibilityMode(8, 3, 99);
+        version = new CompatibilityMode(3, 99);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
-        assertThat(version.getPatch()).isEqualTo(99);
+        assertThat(version.getVersion()).isEqualTo(99);
 
         version = new CompatibilityMode(versionDontUse);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
-        assertThat(version.getPatch()).isEqualTo(99);
+        assertThat(version.getVersion()).isEqualTo(99);
 
         version = new CompatibilityMode(version8_3_10);
         assertThat(version.getMajor()).isEqualTo(8);
         assertThat(version.getMinor()).isEqualTo(3);
-        assertThat(version.getPatch()).isEqualTo(10);
+        assertThat(version.getVersion()).isEqualTo(10);
 
     }
 
     @Test
     public void test_compareTo() {
 
-        CompatibilityMode versionA = new CompatibilityMode(8, 3, 10);
-        CompatibilityMode versionB = new CompatibilityMode(8, 3, 11);
+        CompatibilityMode versionA = new CompatibilityMode(3, 10);
+        CompatibilityMode versionB = new CompatibilityMode(3, 11);
 
         assertThat(CompatibilityMode.compareTo(versionA, versionB)).isEqualTo(1);
         assertThat(CompatibilityMode.compareTo(versionB, versionA)).isEqualTo(-1);
-        assertThat(CompatibilityMode.compareTo(versionA, new CompatibilityMode(8,3,10))).isEqualTo(0);
+        assertThat(CompatibilityMode.compareTo(versionA, new CompatibilityMode(3,10))).isEqualTo(0);
 
     }
 
