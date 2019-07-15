@@ -63,10 +63,10 @@ public class ConfigurationBuilder {
 
     private void setCompatibilityMode(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML){
 
-        CompatibilityMode configurationVersion =
+        CompatibilityMode compatibilityMode =
                 new CompatibilityMode(
                         configurationXML.getProperties().getConfigurationExtensionCompatibilityMode().name());
-        configurationMetadata.setCompatibilityMode(configurationVersion);
+        configurationMetadata.setCompatibilityMode(compatibilityMode);
 
     }
 
