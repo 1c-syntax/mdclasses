@@ -4,7 +4,11 @@ jdk:
   - openjdk8
 
 addons:
-  sonarcloud: true
+  sonarcloud:
+    organization: "1c-syntax"
+
+script:
+  - ./gradlew sonarqube
 
 git:
   depth: false
