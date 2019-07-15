@@ -7,7 +7,7 @@ addons:
   sonarcloud:
     organization: "1c-syntax"
 
-script:
+after_script:
   - ./gradlew sonarqube
 
 git:

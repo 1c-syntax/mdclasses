@@ -17,11 +17,11 @@ public class ConfigurationOriginTest {
     public void testBuilder() {
 
         File ConfigurationXML = new File("src/test/resources/metadata/original", "Configuration.xml");
-        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.Original, ConfigurationXML.toPath());
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.Designer, ConfigurationXML.toPath());
         Configuration configuration = configurationBuilder.build();
 
         assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
-        assertThat(configuration.getConfigurationSource() == ConfigurationSource.Original).isTrue();
+        assertThat(configuration.getConfigurationSource() == ConfigurationSource.Designer).isTrue();
         assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(8, 3, 10)));
 
     }

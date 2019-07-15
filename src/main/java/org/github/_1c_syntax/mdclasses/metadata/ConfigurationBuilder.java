@@ -30,7 +30,7 @@ public class ConfigurationBuilder {
 
         configurationMetadata = new Configuration(configurationSource);
 
-        if (configurationSource == ConfigurationSource.Original){
+        if (configurationSource == ConfigurationSource.Designer){
 
             MetaDataObject MDObject = null;
             File XML = pathToRoot.toFile();
@@ -54,7 +54,7 @@ public class ConfigurationBuilder {
         }
         else {
 
-            new Exception("Формат конфигурации не поддерживается");
+            // в разработке EDT
 
         }
 
