@@ -7,6 +7,7 @@ plugins {
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("de.qaware.gradle.plugin.xsd2java") version "1.0.0"
     id("io.franzbecker.gradle-lombok") version "3.1.0"
+    id("org.sonarqube") version "2.7.1"
 }
 
 group = "org.github._1c_syntax"
@@ -41,6 +42,17 @@ java {
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("-Xlint:unchecked")
+}
+
+sonarqube {
+    properties {
+        property("sonar.sourceEncoding", "UTF-8")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.organization", "1c-syntax")
+        property("sonar.projectKey", "1c-syntax_mdclasses")
+        property("sonar.projectName", "MDClasses")
+        property("sonar.exclusions", "**/gen/**/*.*")
+    }
 }
 
 lombok {
