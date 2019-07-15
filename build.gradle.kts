@@ -6,6 +6,8 @@ plugins {
     jacoco
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("de.qaware.gradle.plugin.xsd2java") version "1.0.0"
+    id("io.franzbecker.gradle-lombok") version "3.1.0"
+    id("org.sonarqube") version "2.7.1"
 }
 
 group = "org.github._1c_syntax"
@@ -24,6 +26,8 @@ dependencies {
     testCompile("org.assertj", "assertj-core", "3.12.2")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
 
+    compileOnly("org.projectlombok", "lombok", lombok.version)
+
 }
 
 configure<JavaPluginConvention> {
@@ -40,15 +44,31 @@ tasks.withType<JavaCompile> {
     options.compilerArgs.add("-Xlint:unchecked")
 }
 
-xsd2java {
-    schemas {
-        create("OriginalConfiguration") {
-            schemaDirPath = file("src/main/resources/xsd/original").toPath()
-            packageName = "org.github._1c_syntax.mdclasses.jabx.original"
-        }
+sonarqube {
+    properties {
+        property("sonar.sourceEncoding", "UTF-8")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.organization", "1c-syntax")
+        property("sonar.projectKey", "1c-syntax_mdclasses")
+        property("sonar.projectName", "MDClasses")
+        property("sonar.exclusions", "**/gen/**/*.*")
     }
-
-    extension = true
-    arguments = listOf("-verbose")
-    outputDir = file("${project.buildDir}/generated-sources/xsd2java")
 }
+
+lombok {
+    version = "1.18.8"
+    sha256 = "0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc"
+}
+
+//xsd2java {
+//    schemas {
+//        create("OriginalConfiguration") {
+//            schemaDirPath = file("src/main/resources/xsd/original").toPath()
+//            packageName = "org.github._1c_syntax.mdclasses.jabx.original"
+//        }
+//    }
+//
+//    extension = true
+//    arguments = listOf("-verbose")
+//    outputDir = file("${project.buildDir}/generated-sources/xsd2java")
+//}
