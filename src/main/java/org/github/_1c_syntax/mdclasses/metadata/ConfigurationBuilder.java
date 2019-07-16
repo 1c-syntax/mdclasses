@@ -5,6 +5,8 @@ import org.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
 import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -14,6 +16,8 @@ import java.io.File;
 import java.nio.file.Path;
 
 public class ConfigurationBuilder {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationBuilder.class.getSimpleName());
 
     private ConfigurationSource configurationSource;
     private Path pathToRoot;
@@ -39,7 +43,7 @@ public class ConfigurationBuilder {
                 Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
                 mdObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(xml)).getValue();
             } catch (JAXBException e) {
-                e.printStackTrace();
+                LOGGER.error(e.getMessage(), e);
                 return null; // TODO: пока так, переделать
             }
 
