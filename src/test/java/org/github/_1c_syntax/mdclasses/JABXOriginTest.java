@@ -2,7 +2,7 @@ package org.github._1c_syntax.mdclasses;
 
 import org.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
 import org.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -12,12 +12,12 @@ import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JABXOriginTest {
+class JABXOriginTest {
 
-    String basePath = "src/test/resources/metadata/original";
+    private String basePath = "src/test/resources/metadata/original";
 
     @Test
-    public void testLoadConfiguration() {
+    void testLoadConfiguration() {
 
         MetaDataObject MDObject = null;
         File XML = new File(basePath, "Configuration.xml");

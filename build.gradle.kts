@@ -19,10 +19,12 @@ repositories {
 }
 
 dependencies {
-    testCompile("junit", "junit", "4.12")
 
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.5.0-M1")
-    testRuntime("org.junit.jupiter", "junit-jupiter-engine", "5.5.0-M1")
+    compile("org.slf4j", "slf4j-api", "1.8.0-beta4")
+    compile("org.slf4j", "slf4j-simple", "1.8.0-beta4")
+
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.5.0")
+    testRuntime("org.junit.jupiter", "junit-jupiter-engine", "5.5.0")
     testCompile("org.assertj", "assertj-core", "3.12.2")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
 
@@ -37,6 +39,16 @@ configure<JavaPluginConvention> {
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+    reports {
+        html.isEnabled = true
+    }
 }
 
 tasks.withType<JavaCompile> {

@@ -1,14 +1,14 @@
 package org.github._1c_syntax.mdclasses;
 
 import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ConfigurationVersionTest {
+class ConfigurationVersionTest {
 
     @Test
-    public void testClass() {
+    void testClass() {
 
         String version8_3_10 = "Version_8_3_10";
         String versionDontUse = "DontUse";
@@ -33,7 +33,7 @@ public class ConfigurationVersionTest {
     }
 
     @Test
-    public void test_compareTo() {
+    void test_compareTo() {
 
         CompatibilityMode versionA = new CompatibilityMode(3, 10);
         CompatibilityMode versionB = new CompatibilityMode(3, 11);
