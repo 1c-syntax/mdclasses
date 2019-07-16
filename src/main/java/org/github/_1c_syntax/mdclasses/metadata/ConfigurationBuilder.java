@@ -30,20 +30,20 @@ public class ConfigurationBuilder {
 
         configurationMetadata = new Configuration(configurationSource);
 
-        if (configurationSource == ConfigurationSource.Designer){
+        if (configurationSource == ConfigurationSource.DESIGNER){
 
-            MetaDataObject MDObject = null;
-            File XML = pathToRoot.toFile();
+            MetaDataObject mdObject;
+            File xml = pathToRoot.toFile();
             try {
                 JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
                 Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
-                MDObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(XML)).getValue();
+                mdObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(xml)).getValue();
             } catch (JAXBException e) {
                 e.printStackTrace();
                 return null; // TODO: пока так, переделать
             }
 
-            org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML = MDObject.getConfiguration();
+            org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML = mdObject.getConfiguration();
 
             // режим совместимости
             setCompatibilityMode(configurationXML);
@@ -51,8 +51,7 @@ public class ConfigurationBuilder {
             // режим встроенного языка
             setScriptVariant(configurationXML);
 
-        }
-        else {
+        } else {
 
             // в разработке EDT
 

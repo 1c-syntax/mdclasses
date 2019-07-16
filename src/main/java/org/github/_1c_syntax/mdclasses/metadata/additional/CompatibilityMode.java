@@ -1,9 +1,7 @@
 package org.github._1c_syntax.mdclasses.metadata.additional;
 
-import lombok.Data;
 import lombok.Getter;
 
-@Data
 public class CompatibilityMode {
 
     @Getter
@@ -13,11 +11,11 @@ public class CompatibilityMode {
     @Getter
     private int version = 0;
 
-    private final String DONT_USE = "DontUse";
+    private static final String DONT_USE = "DontUse";
 
     public CompatibilityMode(String value){
 
-        if (value.toUpperCase().equals((DONT_USE.toUpperCase()))){
+        if (value.equalsIgnoreCase(DONT_USE)){
             setVersionComponents(3, 99);
             return;
         }
@@ -46,25 +44,19 @@ public class CompatibilityMode {
             if (versionA.minor == versionB.minor) {
                 if (versionA.version == versionB.version){
                     return 0;
-                }
-                else if (versionA.version >= versionB.version){
+                } else if (versionA.version >= versionB.version){
                     return -1;
-                }
-                else {
+                } else {
                     return 1;
                 }
-            }
-            else if (versionA.minor >= versionB.minor) {
+            } else if (versionA.minor >= versionB.minor) {
                 return -1;
-            }
-            else {
+            } else {
                 return 1;
             }
-        }
-        else if (versionA.major >= versionB.major){
+        } else if (versionA.major >= versionB.major){
             return -1;
-        }
-        else {
+        } else {
             return  1;
         }
 
