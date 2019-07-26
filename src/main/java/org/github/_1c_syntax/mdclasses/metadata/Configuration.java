@@ -22,4 +22,8 @@ public class Configuration {
     @Getter
     @Setter // TODO: а надо ли?
     private Map<URI, ModuleType> modulesByType = new HashMap<>();
+
+    public ModuleType getModuleTypeByURI(URI uri) {
+        return modulesByType.get(uri);
+    }
 }
