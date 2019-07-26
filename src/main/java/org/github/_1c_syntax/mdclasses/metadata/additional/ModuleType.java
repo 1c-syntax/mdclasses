@@ -5,6 +5,7 @@ public enum ModuleType {
     CommandModule,
     ObjectModule,
     ManagerModule,
+    FormModule,
     RecordSetModule,
     ValueManagerModule,
     ApplicationModule,

@@ -16,14 +16,14 @@ class ConfigurationOriginTest {
     @Test
     void testBuilder() {
 
-        File ConfigurationXML = new File("src/test/resources/metadata/original", "Configuration.xml");
-        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.DESIGNER, ConfigurationXML.toPath());
+        File srcPath = new File("src/test/resources/metadata/original");
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.DESIGNER, srcPath.toPath());
         Configuration configuration = configurationBuilder.build();
 
         assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
         assertThat(configuration.getConfigurationSource() == ConfigurationSource.DESIGNER).isTrue();
         assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
-
+        assertThat(configuration.getModulesByType()).hasSize(13);
     }
 
 }

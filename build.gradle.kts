@@ -23,6 +23,9 @@ dependencies {
     compile("org.slf4j", "slf4j-api", "1.8.0-beta4")
     compile("org.slf4j", "slf4j-simple", "1.8.0-beta4")
 
+    compile("commons-io", "commons-io", "2.6")
+    compile("org.apache.commons", "commons-lang3", "3.9")
+
     testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.5.0")
     testRuntime("org.junit.jupiter", "junit-jupiter-engine", "5.5.0")
     testCompile("org.assertj", "assertj-core", "3.12.2")
