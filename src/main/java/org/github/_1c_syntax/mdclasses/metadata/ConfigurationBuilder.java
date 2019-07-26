@@ -96,8 +96,9 @@ public class ConfigurationBuilder {
                     String[] elementsPath =
                             file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
                     String fileName = elementsPath[elementsPath.length - 1];
+                    String secondFileName = elementsPath[elementsPath.length - 2];
                     fileName = fileName.replace("." + EXPANSION_BSL, "");
-                    ModuleType moduleType = changeModuleTypeByFileName(fileName);
+                    ModuleType moduleType = changeModuleTypeByFileName(fileName, secondFileName);
                     modulesByType.put(file.toURI(), moduleType);
                 });
 
@@ -122,7 +123,7 @@ public class ConfigurationBuilder {
 
     }
 
-    private ModuleType changeModuleTypeByFileName(String fileName) {
+    private ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
         ModuleType moduleType = null;
 
         if (fileName.equalsIgnoreCase("CommandModule")) {
@@ -146,7 +147,12 @@ public class ConfigurationBuilder {
         } else if (fileName.equalsIgnoreCase("ValueManagerModule")) {
             moduleType = ModuleType.ValueManagerModule;
         } else if (fileName.equalsIgnoreCase("Module")) {
-            moduleType = ModuleType.FormModule;
+            if (secondFileName.equalsIgnoreCase("Form")) {
+                moduleType = ModuleType.FormModule;
+            }
+            else {
+                moduleType = ModuleType.CommonModule;
+            }
         } else {
             System.err.println("Module type not find: " + fileName);
         }
