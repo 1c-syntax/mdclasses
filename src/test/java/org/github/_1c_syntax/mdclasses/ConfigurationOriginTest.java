@@ -28,10 +28,10 @@ class ConfigurationOriginTest {
         assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
         File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
-        assertThat(configuration.getModuleTypeByURI(file.toURI())).isEqualTo(ModuleType.ManagerModule);
+        assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.ManagerModule);
 
         file = new File("src/test/resources/metadata/original/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl");
-        assertThat(configuration.getModuleTypeByURI(file.toURI())).isEqualTo(ModuleType.CommonModule);
+        assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
 
     }
 

@@ -1,6 +1,7 @@
 package org.github._1c_syntax.mdclasses.metadata;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
 import org.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
 import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
@@ -17,6 +18,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.net.URI;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +28,7 @@ public class ConfigurationBuilder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationBuilder.class.getSimpleName());
 
-    public static final String EXPANSION_BSL = "bsl";
+    public static final String EXTENSION_BSL = "bsl";
     public static final String FILE_SEPARATOR = Pattern.quote(System.getProperty("file.separator"));
 
     private ConfigurationSource configurationSource;
@@ -39,8 +41,7 @@ public class ConfigurationBuilder {
         this.configurationSource = configurationSource;
         this.pathToRoot = pathToRoot;
 
-        // пока так
-        pathToConfig = new File(pathToRoot.toAbsolutePath().toString(), "Configuration.xml").toPath();
+        pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.xml");
     }
 
 
@@ -90,17 +91,15 @@ public class ConfigurationBuilder {
 
         Map<URI, ModuleType> modulesByType = new HashMap<>();
         String rootPathString = pathToRoot.toString() + System.getProperty("file.separator");
-        Collection<File> files = FileUtils.listFiles(pathToRoot.toFile(), new String[]{EXPANSION_BSL}, true);
-        files.parallelStream().forEach(
-                file -> {
-                    String[] elementsPath =
-                            file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
-                    String fileName = elementsPath[elementsPath.length - 1];
-                    String secondFileName = elementsPath[elementsPath.length - 2];
-                    fileName = fileName.replace("." + EXPANSION_BSL, "");
-                    ModuleType moduleType = changeModuleTypeByFileName(fileName, secondFileName);
-                    modulesByType.put(file.toURI(), moduleType);
-                });
+        Collection<File> files = FileUtils.listFiles(pathToRoot.toFile(), new String[]{EXTENSION_BSL}, true);
+        files.parallelStream().forEach(file -> {
+            String[] elementsPath =
+                    file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+            String secondFileName = elementsPath[elementsPath.length - 2];
+            String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
+            ModuleType moduleType = changeModuleTypeByFileName(fileName, secondFileName);
+            modulesByType.put(file.toURI(), moduleType);
+        });
 
         configurationMetadata.setModulesByType(modulesByType);
 
@@ -149,12 +148,11 @@ public class ConfigurationBuilder {
         } else if (fileName.equalsIgnoreCase("Module")) {
             if (secondFileName.equalsIgnoreCase("Form")) {
                 moduleType = ModuleType.FormModule;
-            }
-            else {
+            } else {
                 moduleType = ModuleType.CommonModule;
             }
         } else {
-            System.err.println("Module type not find: " + fileName);
+            LOGGER.error("Module type not find: " + fileName);
         }
 
         return moduleType;
