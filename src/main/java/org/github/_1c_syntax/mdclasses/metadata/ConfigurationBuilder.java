@@ -41,9 +41,14 @@ public class ConfigurationBuilder {
         this.configurationSource = configurationSource;
         this.pathToRoot = pathToRoot;
 
-        pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.xml");
+        if(configurationSource == ConfigurationSource.DESIGNER) {
+            pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.xml");
+        } else if(configurationSource == ConfigurationSource.EDT) {
+            pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.mdo");
+        } else {
+            // TODO Новый формат надо будет поддержать
+        }
     }
-
 
     public Configuration build() {
 
@@ -68,10 +73,12 @@ public class ConfigurationBuilder {
 
             processConfigurationFilesDesinger();
 
+        }
+        else if (configurationSource == ConfigurationSource.EDT) {
+            // TODO Реализовать разбор формата EDT
         } else {
 
-            // в разработке EDT
-
+            // TODO Новый формат надо будет поддержать
         }
 
         return configurationMetadata;
@@ -84,7 +91,6 @@ public class ConfigurationBuilder {
 
         // режим встроенного языка
         setScriptVariant(configurationXML);
-
     }
 
     private void processConfigurationFilesDesinger() {
