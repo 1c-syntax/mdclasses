@@ -108,16 +108,28 @@ public class ConfigurationBuilder {
 
     private void setCompatibilityMode(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML) {
 
-        CompatibilityMode compatibilityMode =
-                new CompatibilityMode(
-                        configurationXML.getProperties().getConfigurationExtensionCompatibilityMode().name());
+        CompatibilityMode compatibilityMode = new CompatibilityMode("Version_8_3_12");
+        try {
+            compatibilityMode =
+              new CompatibilityMode(
+                configurationXML.getProperties().getCompatibilityMode().name());
+        }
+        catch (NullPointerException e) {
+            LOGGER.error("Не удалось получить значение CompatibilityMode. Причина " + e.getStackTrace().toString());
+        }
         configurationMetadata.setCompatibilityMode(compatibilityMode);
 
     }
 
     private void setScriptVariant(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML) {
 
-        String scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
+        String scriptVariantString = "RUSSIAN";
+        try {
+            scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
+        }
+        catch (NullPointerException e) {
+            LOGGER.error("Не удалось получить значение ScriptVariant. Причина " + e.getStackTrace().toString());
+        }
         configurationMetadata.setScriptVariant(ScriptVariant.valueOf(scriptVariantString));
 
     }
