@@ -20,6 +20,10 @@ repositories {
 
 dependencies {
 
+    compile("javax.xml.bind:jaxb-api:2.3.0")
+    compile("javax.activation:activation:1.1")
+    compile("org.glassfish.jaxb:jaxb-runtime:2.3.0")
+
     compile("org.slf4j", "slf4j-api", "1.8.0-beta4")
     compile("org.slf4j", "slf4j-simple", "1.8.0-beta4")
 
