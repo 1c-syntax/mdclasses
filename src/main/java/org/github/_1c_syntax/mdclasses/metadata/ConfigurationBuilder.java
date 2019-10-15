@@ -41,9 +41,14 @@ public class ConfigurationBuilder {
         this.configurationSource = configurationSource;
         this.pathToRoot = pathToRoot;
 
-        pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.xml");
+        if(configurationSource == ConfigurationSource.DESIGNER) {
+            pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "Configuration.xml");
+        } else if(configurationSource == ConfigurationSource.EDT) {
+            pathToConfig = Paths.get(pathToRoot.toAbsolutePath().toString(), "src", "Configuration", "Configuration.mdo");
+        } else {
+            // TODO Новый формат надо будет поддержать
+        }
     }
-
 
     public Configuration build() {
 
@@ -68,10 +73,27 @@ public class ConfigurationBuilder {
 
             processConfigurationFilesDesinger();
 
+        }
+        else if (configurationSource == ConfigurationSource.EDT) {
+            // TODO Реализовать разбор формата EDT
+
+            org.github._1c_syntax.mdclasses.jabx.edt.Configuration configurationXML;
+            File xml = pathToConfig.toFile();
+            try {
+                JAXBContext context = JAXBContext.newInstance(org.github._1c_syntax.mdclasses.jabx.edt.ObjectFactory.class);
+                Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+                configurationXML = (org.github._1c_syntax.mdclasses.jabx.edt.Configuration) ((JAXBElement) jaxbUnmarshaller.unmarshal(xml)).getValue();
+            } catch (JAXBException e) {
+                LOGGER.error(e.getMessage(), e);
+                return null; // TODO: пока так, переделать
+            }
+
+            fillPropertiesEDT(configurationXML);
+            processConfigurationFilesDesinger();
+
         } else {
 
-            // в разработке EDT
-
+            // TODO Новый формат надо будет поддержать
         }
 
         return configurationMetadata;
@@ -84,7 +106,19 @@ public class ConfigurationBuilder {
 
         // режим встроенного языка
         setScriptVariant(configurationXML);
+    }
 
+    private void fillPropertiesEDT(org.github._1c_syntax.mdclasses.jabx.edt.Configuration configurationXML) {
+
+        // режим совместимости
+        CompatibilityMode compatibilityMode =
+                new CompatibilityMode(
+                        configurationXML.getConfigurationExtensionCompatibilityMode());
+        configurationMetadata.setCompatibilityMode(compatibilityMode);
+
+        // режим встроенного языка
+        String scriptVariantString = configurationXML.getScriptVariant().toUpperCase();
+        configurationMetadata.setScriptVariant(ScriptVariant.valueOf(scriptVariantString));
     }
 
     private void processConfigurationFilesDesinger() {
@@ -104,7 +138,6 @@ public class ConfigurationBuilder {
         configurationMetadata.setModulesByType(modulesByType);
 
     }
-
 
     private void setCompatibilityMode(org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML) {
 
