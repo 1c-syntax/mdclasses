@@ -49,6 +49,10 @@ public class ConfigurationBuilder {
 
         configurationMetadata = new Configuration(configurationSource);
 
+        if (!pathToConfig.toFile().exists()) {
+            return configurationMetadata;
+        }
+
         if (configurationSource == ConfigurationSource.DESIGNER) {
 
             MetaDataObject mdObject;
@@ -59,7 +63,7 @@ public class ConfigurationBuilder {
                 mdObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(xml)).getValue();
             } catch (JAXBException e) {
                 LOGGER.error(e.getMessage(), e);
-                return null; // TODO: пока так, переделать
+                return configurationMetadata;
             }
 
             org.github._1c_syntax.mdclasses.jabx.original.Configuration configurationXML = mdObject.getConfiguration();
@@ -94,7 +98,7 @@ public class ConfigurationBuilder {
         Collection<File> files = FileUtils.listFiles(pathToRoot.toFile(), new String[]{EXTENSION_BSL}, true);
         files.parallelStream().forEach(file -> {
             String[] elementsPath =
-                    file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+              file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
             String secondFileName = elementsPath[elementsPath.length - 2];
             String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
             ModuleType moduleType = changeModuleTypeByFileName(fileName, secondFileName);
