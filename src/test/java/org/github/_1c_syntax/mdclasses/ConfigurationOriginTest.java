@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,6 +35,15 @@ class ConfigurationOriginTest {
         file = new File("src/test/resources/metadata/original/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl");
         assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
 
+    }
+
+    @Test
+    void testErrorBuild() {
+        Path srcPath = Paths.get("src/test/resources/metadata");
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.DESIGNER, srcPath);
+        Configuration configuration = configurationBuilder.build();
+
+        assertThat(configuration).isNotNull();
     }
 
 }
