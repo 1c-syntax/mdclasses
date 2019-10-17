@@ -1,5 +1,6 @@
 package com.github._1c_syntax.mdclasses.metadata.utils;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
