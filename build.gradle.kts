@@ -83,7 +83,7 @@ lombok {
 //    schemas {
 //        create("OriginalConfiguration") {
 //            schemaDirPath = file("src/main/resources/xsd/original").toPath()
-//            packageName = "org.github._1c_syntax.mdclasses.jabx.original"
+//            packageName = "com.github._1c_syntax.mdclasses.jabx.original"
 //        }
 //    }
 //
