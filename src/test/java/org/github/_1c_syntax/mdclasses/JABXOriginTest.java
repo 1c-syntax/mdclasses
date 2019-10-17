@@ -14,25 +14,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class JABXOriginTest {
 
-    private String basePath = "src/test/resources/metadata/original";
+  private String basePath = "src/test/resources/metadata/original";
 
-    @Test
-    void testLoadConfiguration() {
+  @Test
+  void testLoadConfiguration() {
 
-        MetaDataObject MDObject = null;
-        File XML = new File(basePath, "Configuration.xml");
-        try {
-            JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
-            Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
-            MDObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(XML)).getValue();
-            System.out.println(MDObject);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        assertThat(MDObject).isNotNull();
-        assertThat(MDObject.getConfiguration()).isNotNull();
-
+    MetaDataObject MDObject = null;
+    File XML = new File(basePath, "Configuration.xml");
+    try {
+      JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+      Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+      MDObject = (MetaDataObject) ((JAXBElement) jaxbUnmarshaller.unmarshal(XML)).getValue();
+      System.out.println(MDObject);
+    } catch (JAXBException e) {
+      e.printStackTrace();
     }
+
+    assertThat(MDObject).isNotNull();
+    assertThat(MDObject.getConfiguration()).isNotNull();
+
+  }
 
 }
