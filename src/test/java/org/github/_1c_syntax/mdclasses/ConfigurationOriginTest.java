@@ -6,6 +6,7 @@ import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import org.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,11 +22,13 @@ class ConfigurationOriginTest {
     void testBuilder() {
 
         File srcPath = new File("src/test/resources/metadata/original");
-        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.DESIGNER, srcPath.toPath());
-        Configuration configuration = configurationBuilder.build();
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
+        AbstractConfiguration configuration = configurationBuilder.build();
 
+        assertThat(configuration).isNotNull();
+
+        assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
         assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
-        assertThat(configuration.getConfigurationSource() == ConfigurationSource.DESIGNER).isTrue();
         assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
         assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
@@ -39,9 +42,10 @@ class ConfigurationOriginTest {
 
     @Test
     void testErrorBuild() {
+
         Path srcPath = Paths.get("src/test/resources/metadata");
-        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(ConfigurationSource.DESIGNER, srcPath);
-        Configuration configuration = configurationBuilder.build();
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath);
+        AbstractConfiguration configuration = configurationBuilder.build();
 
         assertThat(configuration).isNotNull();
     }

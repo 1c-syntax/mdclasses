@@ -42,7 +42,8 @@ public class EDTConfiguration extends AbstractConfiguration{
     }
 
     if (configurationXML != null) {
-
+      initializeProperties(configurationXML);
+      initializeModuleType();
     }
 
   }
