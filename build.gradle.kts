@@ -10,7 +10,7 @@ plugins {
     id("org.sonarqube") version "2.7.1"
 }
 
-group = "org.github._1c_syntax"
+group = "com.github.1c-syntax"
 version = gitVersionCalculator.calculateVersion("v")
 
 repositories {
