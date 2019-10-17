@@ -1,13 +1,10 @@
 package org.github._1c_syntax.mdclasses.metadata.configurations;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.github._1c_syntax.mdclasses.jabx.original.Configuration;
 import org.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
 import org.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
 import org.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import org.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import org.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import org.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import org.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.slf4j.Logger;
@@ -19,7 +16,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.nio.file.Path;
-import java.util.Collection;
 
 public class DesignConfiguration extends AbstractConfiguration {
 
@@ -51,6 +47,7 @@ public class DesignConfiguration extends AbstractConfiguration {
     }
 
   }
+
   private void initializeProperties(Configuration configurationXML) {
 
     // Режим совместимости
@@ -59,8 +56,7 @@ public class DesignConfiguration extends AbstractConfiguration {
       compatibilityMode =
           new CompatibilityMode(
               configurationXML.getProperties().getCompatibilityMode().name());
-    }
-    catch (NullPointerException e) {
+    } catch (NullPointerException e) {
       LOGGER.error("Не удалось получить значение CompatibilityMode. Причина " + e.getStackTrace().toString());
     }
 
@@ -68,8 +64,7 @@ public class DesignConfiguration extends AbstractConfiguration {
     String scriptVariantString = "RUSSIAN";
     try {
       scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
-    }
-    catch (NullPointerException e) {
+    } catch (NullPointerException e) {
       LOGGER.error("Не удалось получить значение ScriptVariant. Причина " + e.getStackTrace().toString());
     }
     scriptVariant = ScriptVariant.valueOf(scriptVariantString);
@@ -77,19 +72,7 @@ public class DesignConfiguration extends AbstractConfiguration {
   }
 
   private void initializeModuleType() {
-
-    // TODO: Перенести в одно место
-    String rootPathString = rootPath.toString() + System.getProperty("file.separator");
-    Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{Common.EXTENSION_BSL}, true);
-    files.parallelStream().forEach(file -> {
-      String[] elementsPath =
-          file.toPath().toString().replace(rootPathString, "").split(Common.FILE_SEPARATOR);
-      String secondFileName = elementsPath[elementsPath.length - 2];
-      String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
-      ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
-      modulesByType.put(file.toURI(), moduleType);
-    });
-
+    setModulesByType(Common.getModuleTypesByPath(rootPath));
   }
 
 }

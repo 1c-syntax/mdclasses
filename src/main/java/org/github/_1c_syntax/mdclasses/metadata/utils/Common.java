@@ -1,9 +1,17 @@
 package org.github._1c_syntax.mdclasses.metadata.utils;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Common {
@@ -48,6 +56,24 @@ public class Common {
     }
 
     return moduleType;
+
+  }
+
+  public static Map<URI, ModuleType> getModuleTypesByPath(Path rootPath) {
+
+    Map<URI, ModuleType> modulesByType = new HashMap<>();
+    String rootPathString = rootPath.toString() + System.getProperty("file.separator");
+    Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
+    files.parallelStream().forEach(file -> {
+      String[] elementsPath =
+          file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+      String secondFileName = elementsPath[elementsPath.length - 2];
+      String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
+      ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
+      modulesByType.put(file.toURI(), moduleType);
+    });
+
+    return modulesByType;
 
   }
 

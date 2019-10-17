@@ -14,62 +14,59 @@ import java.nio.file.Paths;
 
 public class ConfigurationBuilder {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationBuilder.class.getSimpleName());
+  private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationBuilder.class.getSimpleName());
 
-    private ConfigurationSource configurationSource;
-    private AbstractConfiguration configuration = new EmptyConfiguration();
+  private ConfigurationSource configurationSource;
+  private AbstractConfiguration configuration = new EmptyConfiguration();
 
-    private final Path pathToRoot;
-    private Path pathToConfig;
+  private final Path pathToRoot;
+  private Path pathToConfig;
 
-    public ConfigurationBuilder(Path pathToRoot) {
+  public ConfigurationBuilder(Path pathToRoot) {
 
-        this.pathToRoot = pathToRoot;
+    this.pathToRoot = pathToRoot;
 
-        configurationSource = ConfigurationSource.EMPTY;
+    configurationSource = ConfigurationSource.EMPTY;
 
-        String rootPathString = pathToRoot.toAbsolutePath().toString();
+    String rootPathString = pathToRoot.toAbsolutePath().toString();
 
-        File rootConfiguration = new File(rootPathString, "Configuration.xml");
-        if (rootConfiguration.exists()) {
-            configurationSource = ConfigurationSource.DESIGNER;
-        }
-        else {
-            rootConfiguration = Paths.get(rootPathString, "src", "Configuration", "Configuration.mdo").toFile();
-            if (rootConfiguration.exists()) {
-                configurationSource = ConfigurationSource.EDT;
-            }
-        }
-        if (configurationSource != ConfigurationSource.EMPTY) {
-            pathToConfig = rootConfiguration.toPath();
-        }
+    File rootConfiguration = new File(rootPathString, "Configuration.xml");
+    if (rootConfiguration.exists()) {
+      configurationSource = ConfigurationSource.DESIGNER;
+    } else {
+      rootConfiguration = Paths.get(rootPathString, "src", "Configuration", "Configuration.mdo").toFile();
+      if (rootConfiguration.exists()) {
+        configurationSource = ConfigurationSource.EDT;
+      }
+    }
+    if (configurationSource != ConfigurationSource.EMPTY) {
+      pathToConfig = rootConfiguration.toPath();
+    }
+  }
+
+  public AbstractConfiguration build() {
+
+    if (configurationSource == ConfigurationSource.EMPTY) {
+      return configuration;
     }
 
-    public AbstractConfiguration build() {
-
-        if (configurationSource == ConfigurationSource.EMPTY) {
-            return configuration;
-        }
-
-        if (pathToConfig != null && !pathToConfig.toFile().exists()) {
-            return configuration;
-        }
-
-        if (configurationSource == ConfigurationSource.DESIGNER) {
-            configuration = new DesignConfiguration(configurationSource, pathToRoot);
-        }
-        else if (configurationSource == ConfigurationSource.EDT) {
-            configuration = new EDTConfiguration(configurationSource, pathToRoot);
-        }
-        else {
-            LOGGER.error("Тип конфигурации не поддерживается", configurationSource);
-            return configuration;
-        }
-
-        configuration.initialize(pathToConfig.toFile());
-
-        return configuration;
-
+    if (pathToConfig != null && !pathToConfig.toFile().exists()) {
+      return configuration;
     }
+
+    if (configurationSource == ConfigurationSource.DESIGNER) {
+      configuration = new DesignConfiguration(configurationSource, pathToRoot);
+    } else if (configurationSource == ConfigurationSource.EDT) {
+      configuration = new EDTConfiguration(configurationSource, pathToRoot);
+    } else {
+      LOGGER.error("Тип конфигурации не поддерживается", configurationSource);
+      return configuration;
+    }
+
+    configuration.initialize(pathToConfig.toFile());
+
+    return configuration;
+
+  }
 
 }
