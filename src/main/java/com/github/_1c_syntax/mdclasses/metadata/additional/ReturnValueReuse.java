@@ -4,7 +4,7 @@ public enum ReturnValueReuse {
 
     DURING_REQUEST("На время вызова"),
     DURING_SESSION("На время сессии"),
-    NONE("Нет");
+    DONT_USE("Не используется");
 
     ReturnValueReuse(String ru) {
     }

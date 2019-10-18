@@ -13,14 +13,14 @@
         <xs:complexContent>
             <xs:extension base="MDObjectBase">
                 <xs:sequence>
-                    <xs:element name="server" form="unqualified" type="xs:boolean" minOccurs="0"/>
-                    <xs:element name="global" form="unqualified" type="xs:boolean" minOccurs="0"/>
-                    <xs:element name="clientManagedApplication" form="unqualified" type="xs:boolean" minOccurs="0"/>
-                    <xs:element name="externalConnection" form="unqualified" type="xs:boolean" minOccurs="0"/>
-                    <xs:element name="clientOrdinaryApplication" form="unqualified" type="xs:boolean" minOccurs="0"/>
-                    <xs:element name="serverCall" form="unqualified" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="server" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
+                    <xs:element name="global" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
+                    <xs:element name="clientManagedApplication" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
+                    <xs:element name="externalConnection" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
+                    <xs:element name="clientOrdinaryApplication" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
+                    <xs:element name="serverCall" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
                     <xs:element name="returnValuesReuse" form="unqualified" type="returnValueReuse" minOccurs="0"/>
-                    <xs:element name="privileged" form="unqualified" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="privileged" form="unqualified" type="xs:boolean" minOccurs="0" default="false"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
