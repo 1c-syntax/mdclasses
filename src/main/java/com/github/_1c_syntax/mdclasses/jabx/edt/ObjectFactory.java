@@ -15,18 +15,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.github._1c_syntax.mdclasses.jabx.edt package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.github._1c_syntax.mdclasses.jabx.edt package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -36,14 +35,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.github._1c_syntax.mdclasses.jabx.edt
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link Configuration }
-     * 
      */
     public Configuration createConfiguration() {
         return new Configuration();
@@ -51,7 +48,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CommonModule }
-     * 
      */
     public CommonModule createCommonModule() {
         return new CommonModule();
@@ -59,7 +55,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SynonymType }
-     * 
      */
     public SynonymType createSynonymType() {
         return new SynonymType();
@@ -67,7 +62,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MDObjectBase }
-     * 
      */
     public MDObjectBase createMDObjectBase() {
         return new MDObjectBase();
@@ -75,7 +69,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Language }
-     * 
      */
     public Language createLanguage() {
         return new Language();
@@ -83,7 +76,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ContainedObject }
-     * 
      */
     public ContainedObject createContainedObject() {
         return new ContainedObject();
@@ -91,7 +83,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CommonModule }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://g5.1c.ru/v8/dt/metadata/mdclass", name = "CommonModule")
     public JAXBElement<CommonModule> createCommonModule(CommonModule value) {
@@ -100,7 +91,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Configuration }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://g5.1c.ru/v8/dt/metadata/mdclass", name = "Configuration")
     public JAXBElement<Configuration> createConfiguration(Configuration value) {

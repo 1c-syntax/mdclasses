@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for commonModule complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="commonModule">
  *   &lt;complexContent>
@@ -38,23 +38,20 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "commonModule", propOrder = {
-    "server",
-    "global",
-    "clientManagedApplication",
-    "externalConnection",
-    "clientOrdinaryApplication",
-    "serverCall",
-    "returnValuesReuse",
-    "privileged"
+        "server",
+        "global",
+        "clientManagedApplication",
+        "externalConnection",
+        "clientOrdinaryApplication",
+        "serverCall",
+        "returnValuesReuse",
+        "privileged"
 })
 public class CommonModule
-    extends MDObjectBase
-{
+        extends MDObjectBase {
 
     @XmlElement(defaultValue = "false")
     protected Boolean server;
@@ -75,11 +72,9 @@ public class CommonModule
 
     /**
      * Gets the value of the server property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isServer() {
         return server;
@@ -87,11 +82,9 @@ public class CommonModule
 
     /**
      * Sets the value of the server property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setServer(Boolean value) {
         this.server = value;
@@ -99,11 +92,9 @@ public class CommonModule
 
     /**
      * Gets the value of the global property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isGlobal() {
         return global;
@@ -111,11 +102,9 @@ public class CommonModule
 
     /**
      * Sets the value of the global property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setGlobal(Boolean value) {
         this.global = value;
@@ -123,11 +112,9 @@ public class CommonModule
 
     /**
      * Gets the value of the clientManagedApplication property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isClientManagedApplication() {
         return clientManagedApplication;
@@ -135,11 +122,9 @@ public class CommonModule
 
     /**
      * Sets the value of the clientManagedApplication property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setClientManagedApplication(Boolean value) {
         this.clientManagedApplication = value;
@@ -147,11 +132,9 @@ public class CommonModule
 
     /**
      * Gets the value of the externalConnection property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isExternalConnection() {
         return externalConnection;
@@ -159,11 +142,9 @@ public class CommonModule
 
     /**
      * Sets the value of the externalConnection property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setExternalConnection(Boolean value) {
         this.externalConnection = value;
@@ -171,11 +152,9 @@ public class CommonModule
 
     /**
      * Gets the value of the clientOrdinaryApplication property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isClientOrdinaryApplication() {
         return clientOrdinaryApplication;
@@ -183,11 +162,9 @@ public class CommonModule
 
     /**
      * Sets the value of the clientOrdinaryApplication property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setClientOrdinaryApplication(Boolean value) {
         this.clientOrdinaryApplication = value;
@@ -195,11 +172,9 @@ public class CommonModule
 
     /**
      * Gets the value of the serverCall property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isServerCall() {
         return serverCall;
@@ -207,11 +182,9 @@ public class CommonModule
 
     /**
      * Sets the value of the serverCall property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setServerCall(Boolean value) {
         this.serverCall = value;
@@ -219,11 +192,9 @@ public class CommonModule
 
     /**
      * Gets the value of the returnValuesReuse property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ReturnValueReuse }
-     *     
+     *
+     * @return possible object is
+     * {@link ReturnValueReuse }
      */
     public ReturnValueReuse getReturnValuesReuse() {
         return returnValuesReuse;
@@ -231,11 +202,9 @@ public class CommonModule
 
     /**
      * Sets the value of the returnValuesReuse property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ReturnValueReuse }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ReturnValueReuse }
      */
     public void setReturnValuesReuse(ReturnValueReuse value) {
         this.returnValuesReuse = value;
@@ -243,11 +212,9 @@ public class CommonModule
 
     /**
      * Gets the value of the privileged property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isPrivileged() {
         return privileged;
@@ -255,11 +222,9 @@ public class CommonModule
 
     /**
      * Sets the value of the privileged property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setPrivileged(Boolean value) {
         this.privileged = value;

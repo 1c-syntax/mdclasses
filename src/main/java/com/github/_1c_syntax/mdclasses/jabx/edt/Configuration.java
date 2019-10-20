@@ -8,19 +8,19 @@
 
 package com.github._1c_syntax.mdclasses.jabx.edt;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * <p>Java class for configuration complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="configuration">
  *   &lt;complexContent>
@@ -82,66 +82,63 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "configuration", propOrder = {
-    "configurationExtensionCompatibilityMode",
-    "defaultRunMode",
-    "usePurposes",
-    "scriptVariant",
-    "defaultLanguage",
-    "dataLockControlMode",
-    "objectAutonumerationMode",
-    "modalityUseMode",
-    "synchronousPlatformExtensionAndAddInCallUseMode",
-    "compatibilityMode",
-    "subsystems",
-    "styleItems",
-    "commonPictures",
-    "sessionParameters",
-    "roles",
-    "commonTemplates",
-    "filterCriteria",
-    "commonModules",
-    "commonAttributes",
-    "exchangePlans",
-    "xdtoPackages",
-    "webServices",
-    "httpServices",
-    "eventSubscriptions",
-    "scheduledJobs",
-    "settingsStorages",
-    "functionalOptions",
-    "definedTypes",
-    "commonCommands",
-    "commandGroups",
-    "constants",
-    "commonForms",
-    "catalogs",
-    "documents",
-    "documentNumerators",
-    "sequences",
-    "documentJournals",
-    "enums",
-    "reports",
-    "dataProcessors",
-    "accumulationRegisters",
-    "chartsOfCharacteristicTypes",
-    "chartsOfAccounts",
-    "accountingRegisters",
-    "chartsOfCalculationTypes",
-    "calculationRegisters",
-    "businessProcesses",
-    "tasks",
-    "informationRegisters",
-    "containedObjects",
-    "languages"
+        "configurationExtensionCompatibilityMode",
+        "defaultRunMode",
+        "usePurposes",
+        "scriptVariant",
+        "defaultLanguage",
+        "dataLockControlMode",
+        "objectAutonumerationMode",
+        "modalityUseMode",
+        "synchronousPlatformExtensionAndAddInCallUseMode",
+        "compatibilityMode",
+        "subsystems",
+        "styleItems",
+        "commonPictures",
+        "sessionParameters",
+        "roles",
+        "commonTemplates",
+        "filterCriteria",
+        "commonModules",
+        "commonAttributes",
+        "exchangePlans",
+        "xdtoPackages",
+        "webServices",
+        "httpServices",
+        "eventSubscriptions",
+        "scheduledJobs",
+        "settingsStorages",
+        "functionalOptions",
+        "definedTypes",
+        "commonCommands",
+        "commandGroups",
+        "constants",
+        "commonForms",
+        "catalogs",
+        "documents",
+        "documentNumerators",
+        "sequences",
+        "documentJournals",
+        "enums",
+        "reports",
+        "dataProcessors",
+        "accumulationRegisters",
+        "chartsOfCharacteristicTypes",
+        "chartsOfAccounts",
+        "accountingRegisters",
+        "chartsOfCalculationTypes",
+        "calculationRegisters",
+        "businessProcesses",
+        "tasks",
+        "informationRegisters",
+        "containedObjects",
+        "languages"
 })
 public class Configuration
-    extends MDObjectBase
-{
+        extends MDObjectBase {
 
     protected String configurationExtensionCompatibilityMode;
     protected String defaultRunMode;
@@ -199,11 +196,9 @@ public class Configuration
 
     /**
      * Gets the value of the configurationExtensionCompatibilityMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getConfigurationExtensionCompatibilityMode() {
         return configurationExtensionCompatibilityMode;
@@ -211,11 +206,9 @@ public class Configuration
 
     /**
      * Sets the value of the configurationExtensionCompatibilityMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setConfigurationExtensionCompatibilityMode(String value) {
         this.configurationExtensionCompatibilityMode = value;
@@ -223,11 +216,9 @@ public class Configuration
 
     /**
      * Gets the value of the defaultRunMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDefaultRunMode() {
         return defaultRunMode;
@@ -235,11 +226,9 @@ public class Configuration
 
     /**
      * Sets the value of the defaultRunMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDefaultRunMode(String value) {
         this.defaultRunMode = value;
@@ -247,11 +236,9 @@ public class Configuration
 
     /**
      * Gets the value of the usePurposes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getUsePurposes() {
         return usePurposes;
@@ -259,11 +246,9 @@ public class Configuration
 
     /**
      * Sets the value of the usePurposes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setUsePurposes(String value) {
         this.usePurposes = value;
@@ -271,11 +256,9 @@ public class Configuration
 
     /**
      * Gets the value of the scriptVariant property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getScriptVariant() {
         return scriptVariant;
@@ -283,11 +266,9 @@ public class Configuration
 
     /**
      * Sets the value of the scriptVariant property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setScriptVariant(String value) {
         this.scriptVariant = value;
@@ -295,11 +276,9 @@ public class Configuration
 
     /**
      * Gets the value of the defaultLanguage property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDefaultLanguage() {
         return defaultLanguage;
@@ -307,11 +286,9 @@ public class Configuration
 
     /**
      * Sets the value of the defaultLanguage property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDefaultLanguage(String value) {
         this.defaultLanguage = value;
@@ -319,11 +296,9 @@ public class Configuration
 
     /**
      * Gets the value of the dataLockControlMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDataLockControlMode() {
         return dataLockControlMode;
@@ -331,11 +306,9 @@ public class Configuration
 
     /**
      * Sets the value of the dataLockControlMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDataLockControlMode(String value) {
         this.dataLockControlMode = value;
@@ -343,11 +316,9 @@ public class Configuration
 
     /**
      * Gets the value of the objectAutonumerationMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getObjectAutonumerationMode() {
         return objectAutonumerationMode;
@@ -355,11 +326,9 @@ public class Configuration
 
     /**
      * Sets the value of the objectAutonumerationMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setObjectAutonumerationMode(String value) {
         this.objectAutonumerationMode = value;
@@ -367,11 +336,9 @@ public class Configuration
 
     /**
      * Gets the value of the modalityUseMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getModalityUseMode() {
         return modalityUseMode;
@@ -379,11 +346,9 @@ public class Configuration
 
     /**
      * Sets the value of the modalityUseMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setModalityUseMode(String value) {
         this.modalityUseMode = value;
@@ -391,11 +356,9 @@ public class Configuration
 
     /**
      * Gets the value of the synchronousPlatformExtensionAndAddInCallUseMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getSynchronousPlatformExtensionAndAddInCallUseMode() {
         return synchronousPlatformExtensionAndAddInCallUseMode;
@@ -403,11 +366,9 @@ public class Configuration
 
     /**
      * Sets the value of the synchronousPlatformExtensionAndAddInCallUseMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setSynchronousPlatformExtensionAndAddInCallUseMode(String value) {
         this.synchronousPlatformExtensionAndAddInCallUseMode = value;
@@ -415,11 +376,9 @@ public class Configuration
 
     /**
      * Gets the value of the compatibilityMode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getCompatibilityMode() {
         return compatibilityMode;
@@ -427,11 +386,9 @@ public class Configuration
 
     /**
      * Sets the value of the compatibilityMode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCompatibilityMode(String value) {
         this.compatibilityMode = value;
@@ -439,25 +396,23 @@ public class Configuration
 
     /**
      * Gets the value of the subsystems property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the subsystems property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSubsystems().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getSubsystems() {
         if (subsystems == null) {
@@ -468,25 +423,23 @@ public class Configuration
 
     /**
      * Gets the value of the styleItems property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the styleItems property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getStyleItems().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getStyleItems() {
         if (styleItems == null) {
@@ -497,25 +450,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonPictures property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonPictures property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonPictures().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonPictures() {
         if (commonPictures == null) {
@@ -526,25 +477,23 @@ public class Configuration
 
     /**
      * Gets the value of the sessionParameters property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the sessionParameters property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSessionParameters().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getSessionParameters() {
         if (sessionParameters == null) {
@@ -555,25 +504,23 @@ public class Configuration
 
     /**
      * Gets the value of the roles property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the roles property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getRoles().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getRoles() {
         if (roles == null) {
@@ -584,25 +531,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonTemplates property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonTemplates property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonTemplates().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonTemplates() {
         if (commonTemplates == null) {
@@ -613,25 +558,23 @@ public class Configuration
 
     /**
      * Gets the value of the filterCriteria property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the filterCriteria property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getFilterCriteria().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getFilterCriteria() {
         if (filterCriteria == null) {
@@ -642,25 +585,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonModules property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonModules property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonModules().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonModules() {
         if (commonModules == null) {
@@ -671,25 +612,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonAttributes property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonAttributes property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonAttributes().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonAttributes() {
         if (commonAttributes == null) {
@@ -700,25 +639,23 @@ public class Configuration
 
     /**
      * Gets the value of the exchangePlans property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the exchangePlans property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getExchangePlans().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getExchangePlans() {
         if (exchangePlans == null) {
@@ -729,25 +666,23 @@ public class Configuration
 
     /**
      * Gets the value of the xdtoPackages property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the xdtoPackages property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getXDTOPackages().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getXDTOPackages() {
         if (xdtoPackages == null) {
@@ -758,25 +693,23 @@ public class Configuration
 
     /**
      * Gets the value of the webServices property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the webServices property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getWebServices().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getWebServices() {
         if (webServices == null) {
@@ -787,25 +720,23 @@ public class Configuration
 
     /**
      * Gets the value of the httpServices property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the httpServices property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getHttpServices().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getHttpServices() {
         if (httpServices == null) {
@@ -816,25 +747,23 @@ public class Configuration
 
     /**
      * Gets the value of the eventSubscriptions property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the eventSubscriptions property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEventSubscriptions().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getEventSubscriptions() {
         if (eventSubscriptions == null) {
@@ -845,25 +774,23 @@ public class Configuration
 
     /**
      * Gets the value of the scheduledJobs property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the scheduledJobs property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getScheduledJobs().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getScheduledJobs() {
         if (scheduledJobs == null) {
@@ -874,25 +801,23 @@ public class Configuration
 
     /**
      * Gets the value of the settingsStorages property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the settingsStorages property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSettingsStorages().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getSettingsStorages() {
         if (settingsStorages == null) {
@@ -903,25 +828,23 @@ public class Configuration
 
     /**
      * Gets the value of the functionalOptions property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the functionalOptions property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getFunctionalOptions().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getFunctionalOptions() {
         if (functionalOptions == null) {
@@ -932,25 +855,23 @@ public class Configuration
 
     /**
      * Gets the value of the definedTypes property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the definedTypes property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDefinedTypes().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDefinedTypes() {
         if (definedTypes == null) {
@@ -961,25 +882,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonCommands property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonCommands property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonCommands().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonCommands() {
         if (commonCommands == null) {
@@ -990,25 +909,23 @@ public class Configuration
 
     /**
      * Gets the value of the commandGroups property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commandGroups property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommandGroups().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommandGroups() {
         if (commandGroups == null) {
@@ -1019,25 +936,23 @@ public class Configuration
 
     /**
      * Gets the value of the constants property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the constants property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getConstants().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getConstants() {
         if (constants == null) {
@@ -1048,25 +963,23 @@ public class Configuration
 
     /**
      * Gets the value of the commonForms property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the commonForms property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCommonForms().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCommonForms() {
         if (commonForms == null) {
@@ -1077,25 +990,23 @@ public class Configuration
 
     /**
      * Gets the value of the catalogs property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the catalogs property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCatalogs().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCatalogs() {
         if (catalogs == null) {
@@ -1106,25 +1017,23 @@ public class Configuration
 
     /**
      * Gets the value of the documents property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the documents property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDocuments().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDocuments() {
         if (documents == null) {
@@ -1135,25 +1044,23 @@ public class Configuration
 
     /**
      * Gets the value of the documentNumerators property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the documentNumerators property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDocumentNumerators().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDocumentNumerators() {
         if (documentNumerators == null) {
@@ -1164,25 +1071,23 @@ public class Configuration
 
     /**
      * Gets the value of the sequences property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the sequences property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSequences().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getSequences() {
         if (sequences == null) {
@@ -1193,25 +1098,23 @@ public class Configuration
 
     /**
      * Gets the value of the documentJournals property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the documentJournals property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDocumentJournals().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDocumentJournals() {
         if (documentJournals == null) {
@@ -1222,25 +1125,23 @@ public class Configuration
 
     /**
      * Gets the value of the enums property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the enums property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEnums().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getEnums() {
         if (enums == null) {
@@ -1251,25 +1152,23 @@ public class Configuration
 
     /**
      * Gets the value of the reports property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the reports property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getReports().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getReports() {
         if (reports == null) {
@@ -1280,25 +1179,23 @@ public class Configuration
 
     /**
      * Gets the value of the dataProcessors property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the dataProcessors property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDataProcessors().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDataProcessors() {
         if (dataProcessors == null) {
@@ -1309,25 +1206,23 @@ public class Configuration
 
     /**
      * Gets the value of the accumulationRegisters property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the accumulationRegisters property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getAccumulationRegisters().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getAccumulationRegisters() {
         if (accumulationRegisters == null) {
@@ -1338,25 +1233,23 @@ public class Configuration
 
     /**
      * Gets the value of the chartsOfCharacteristicTypes property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the chartsOfCharacteristicTypes property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getChartsOfCharacteristicTypes().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getChartsOfCharacteristicTypes() {
         if (chartsOfCharacteristicTypes == null) {
@@ -1367,25 +1260,23 @@ public class Configuration
 
     /**
      * Gets the value of the chartsOfAccounts property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the chartsOfAccounts property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getChartsOfAccounts().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getChartsOfAccounts() {
         if (chartsOfAccounts == null) {
@@ -1396,25 +1287,23 @@ public class Configuration
 
     /**
      * Gets the value of the accountingRegisters property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the accountingRegisters property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getAccountingRegisters().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getAccountingRegisters() {
         if (accountingRegisters == null) {
@@ -1425,25 +1314,23 @@ public class Configuration
 
     /**
      * Gets the value of the chartsOfCalculationTypes property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the chartsOfCalculationTypes property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getChartsOfCalculationTypes().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getChartsOfCalculationTypes() {
         if (chartsOfCalculationTypes == null) {
@@ -1454,25 +1341,23 @@ public class Configuration
 
     /**
      * Gets the value of the calculationRegisters property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the calculationRegisters property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCalculationRegisters().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getCalculationRegisters() {
         if (calculationRegisters == null) {
@@ -1483,25 +1368,23 @@ public class Configuration
 
     /**
      * Gets the value of the businessProcesses property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the businessProcesses property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getBusinessProcesses().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getBusinessProcesses() {
         if (businessProcesses == null) {
@@ -1512,25 +1395,23 @@ public class Configuration
 
     /**
      * Gets the value of the tasks property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the tasks property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getTasks().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getTasks() {
         if (tasks == null) {
@@ -1541,25 +1422,23 @@ public class Configuration
 
     /**
      * Gets the value of the informationRegisters property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the informationRegisters property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getInformationRegisters().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getInformationRegisters() {
         if (informationRegisters == null) {
@@ -1570,25 +1449,23 @@ public class Configuration
 
     /**
      * Gets the value of the containedObjects property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the containedObjects property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getContainedObjects().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ContainedObject }
-     * 
-     * 
      */
     public List<ContainedObject> getContainedObjects() {
         if (containedObjects == null) {
@@ -1599,25 +1476,23 @@ public class Configuration
 
     /**
      * Gets the value of the languages property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the languages property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getLanguages().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Language }
-     * 
-     * 
      */
     public List<Language> getLanguages() {
         if (languages == null) {

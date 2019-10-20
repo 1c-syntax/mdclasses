@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ContainedObject complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ContainedObject">
  *   &lt;complexContent>
@@ -29,8 +29,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContainedObject")
@@ -43,11 +41,9 @@ public class ContainedObject {
 
     /**
      * Gets the value of the classId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getClassId() {
         return classId;
@@ -55,11 +51,9 @@ public class ContainedObject {
 
     /**
      * Sets the value of the classId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setClassId(String value) {
         this.classId = value;
@@ -67,11 +61,9 @@ public class ContainedObject {
 
     /**
      * Gets the value of the objectId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getObjectId() {
         return objectId;
@@ -79,11 +71,9 @@ public class ContainedObject {
 
     /**
      * Sets the value of the objectId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setObjectId(String value) {
         this.objectId = value;

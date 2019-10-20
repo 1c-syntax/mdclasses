@@ -75,24 +75,22 @@ public class Configuration extends AbstractMDOSimple {
                 com.github._1c_syntax.mdclasses.jabx.original.Configuration mdoConfiguration = mdoObject.getConfiguration();
                 uuid = mdoConfiguration.getUuid();
 
-                if (mdoConfiguration != null) {
-                    com.github._1c_syntax.mdclasses.jabx.original.ConfigurationProperties configurationProperties = mdoConfiguration.getProperties();
-                    if (configurationProperties != null) {
-                        // режим совместимости
-                        if (configurationProperties.getCompatibilityMode() != null) {
-                            compatibilityMode = new CompatibilityMode(configurationProperties.getCompatibilityMode().name());
-                        }
-
-                        // режим встроенного языка
-                        if (configurationProperties.getScriptVariant() != null) {
-                            String scriptVariantString = configurationProperties.getScriptVariant().name().toUpperCase();
-                            scriptVariant = ScriptVariant.valueOf(scriptVariantString);
-                        }
-
-                        name = configurationProperties.getName();
-                        comment = configurationProperties.getComment();
-
+                com.github._1c_syntax.mdclasses.jabx.original.ConfigurationProperties configurationProperties = mdoConfiguration.getProperties();
+                if (configurationProperties != null) {
+                    // режим совместимости
+                    if (configurationProperties.getCompatibilityMode() != null) {
+                        compatibilityMode = new CompatibilityMode(configurationProperties.getCompatibilityMode().name());
                     }
+
+                    // режим встроенного языка
+                    if (configurationProperties.getScriptVariant() != null) {
+                        String scriptVariantString = configurationProperties.getScriptVariant().name().toUpperCase();
+                        scriptVariant = ScriptVariant.valueOf(scriptVariantString);
+                    }
+
+                    name = configurationProperties.getName();
+                    comment = configurationProperties.getComment();
+
                 }
             }
         }
