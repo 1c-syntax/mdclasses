@@ -18,27 +18,13 @@ import java.nio.file.Path;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public abstract class AbstractMDOSimple extends AbstractMDO {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractMDOSimple.class.getSimpleName());
-
-    protected ConfigurationSource configurationSource;
-    protected Path mdoPath;
+//    protected ConfigurationSource configurationSource;
+//    protected Path mdoPath;
 
     public AbstractMDOSimple(MDOType mdoType) {
         super(mdoType);
     }
 
-    public static <T, O> T unmarshalMDO(File xml, Class<T> typeMDO, Class<O> objectFactoryClass) {
-        T mdoObj;
-        try {
-            JAXBContext context = JAXBContext.newInstance(objectFactoryClass);
-            Unmarshaller jaxbUnpacked = context.createUnmarshaller();
-            mdoObj = typeMDO.cast(((JAXBElement) jaxbUnpacked.unmarshal(xml)).getValue());
-        } catch (JAXBException e) {
-            mdoObj = null;
-            LOGGER.error(e.getMessage(), e);
-        }
-        return mdoObj;
-    }
 
-    public abstract void initialize();
+//    public abstract void initialize();
 }

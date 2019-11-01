@@ -12,6 +12,7 @@ public abstract class AbstractMDO {
     protected final MDOType mdoType;
     protected String uuid;
     protected String name;
-    protected Map<Language, String> synonym; // TODO Набо будет реализовать
     protected String comment;
+
+    protected Map<Language, String> synonym; // TODO Набо будет реализовать
 }
