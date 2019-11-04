@@ -13,7 +13,6 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Paths;
 
 public class MDO {
     private static final Logger LOGGER = LoggerFactory.getLogger(MDO.class.getSimpleName());
@@ -50,10 +49,8 @@ public class MDO {
 
     public static Class getMDOClassByType(MDOType type) {
         Class mdoClass = null;
-        String tName = type.name();
-        tName = tName.substring(0, 1).toUpperCase() + tName.substring(1).toLowerCase();
         try {
-            mdoClass = Class.forName("com.github._1c_syntax.mdclasses.mdo.classes." + tName);
+            mdoClass = Class.forName("com.github._1c_syntax.mdclasses.mdo.classes." + type.getMdoClassName());
         } catch (ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
         }
