@@ -3,12 +3,7 @@ package com.github._1c_syntax.mdclasses.mdo.builder;
 import com.github._1c_syntax.mdclasses.jabx.edt.MDObjectBase;
 import com.github._1c_syntax.mdclasses.jabx.edt.ObjectFactory;
 import com.github._1c_syntax.mdclasses.mdo.classes.Configuration;
-import com.github._1c_syntax.mdclasses.mdo.core.AbstractMDO;
-import com.github._1c_syntax.mdclasses.mdo.core.AbstractMDOComplex;
-import com.github._1c_syntax.mdclasses.mdo.core.AbstractMDOSimple;
-import com.github._1c_syntax.mdclasses.mdo.core.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.mdo.core.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.core.ScriptVariant;
+import com.github._1c_syntax.mdclasses.mdo.core.*;
 import com.github._1c_syntax.mdclasses.mdo.utils.MDO;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -17,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class EDTBuilder implements MDOBuilder {
 
@@ -67,19 +65,50 @@ public class EDTBuilder implements MDOBuilder {
             return;
         }
 
+        // инициализация полей базового класса
         initializeAbstractMDO(mdoObject, edtObject);
-        if (mdoObject instanceof AbstractMDOSimple) {
-            initializeAbstractMDOSimple(mdoObject, edtObject);
-        }
-        if (mdoObject instanceof AbstractMDOComplex) {
-            initializeAbstractMDOComplex(mdoObject, edtObject);
-        }
+//        if (mdoObject instanceof AbstractMDOSimple) {
+//            initializeAbstractMDOSimple(mdoObject, edtObject);
+//        }
+//        if (mdoObject instanceof AbstractMDOComplex) {
+//            initializeAbstractMDOComplex(mdoObject, edtObject);
+//        }
+//
+        // инициализация однаковых полей - поле-в-поле
+        initializeBaseFields(mdoObject, edtObject);
 
+        // пока времянка
         if (mdoObject instanceof Configuration) {
             initializeConfiguration((Configuration) mdoObject, edtObject);
         }
 
     }
+
+    private void initializeBaseFields(AbstractMDO mdoObject, MDObjectBase edtObject) {
+        Field[] fields = mdoObject.getClass().getDeclaredFields();
+        Map<String, Field> sourceFields = Arrays.stream(edtObject.getClass().getDeclaredFields()).collect(Collectors.toMap(Field::getName, field -> field));
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Field sourceField = sourceFields.get(field.getName());
+            if (sourceField == null) {
+                LOGGER.info(field.getName());
+            } else {
+                sourceField.setAccessible(true);
+                if (field.getType().isPrimitive()) {
+                    try {
+                        field.set(mdoObject, ObjectUtils.defaultIfNull(sourceField.get(edtObject), field.get(mdoObject)));
+                    } catch (IllegalAccessException e) {
+                        LOGGER.error(e.getMessage(), e);
+                    }
+                } else {
+                    LOGGER.info(field.getType().toString());
+                }
+            }
+
+        }
+    }
+
 
     private void initializeAbstractMDO(AbstractMDO mdoObject, MDObjectBase edtObject) {
         mdoObject.setUuid(ObjectUtils.defaultIfNull(edtObject.getUuid(), ""));
@@ -93,7 +122,15 @@ public class EDTBuilder implements MDOBuilder {
 
             for (int i = 0; i < fields.length; i++) {
                 Field field = fields[i];
-                field.set(mdoObject, edtObject.getClass().getField(field.getName()));
+                field.setAccessible(true);
+                Field fld = edtObject.getClass().getDeclaredField(field.getName());
+                fld.setAccessible(true);
+                if (field.getType().isPrimitive()) {
+                    field.set(mdoObject, ObjectUtils.defaultIfNull(fld.get(edtObject), field.get(mdoObject)));
+                } else {
+                    LOGGER.info(field.getType().toString());
+                }
+
             }
         } catch (IllegalAccessException | NoSuchFieldException e) {
             LOGGER.error(e.getMessage(), e);
@@ -109,11 +146,11 @@ public class EDTBuilder implements MDOBuilder {
             Class edtObjectClass = edtObject.getClass();
             mdoObject.setCompatibilityMode(new CompatibilityMode(
                     edtObjectClass.getMethod("getConfigurationExtensionCompatibilityMode")
-                    .invoke(edtObject).toString()));
+                            .invoke(edtObject).toString()));
 
             mdoObject.setScriptVariant(ScriptVariant.valueOf(
                     edtObjectClass.getMethod("getScriptVariant")
-                    .invoke(edtObject).toString().toUpperCase()));
+                            .invoke(edtObject).toString().toUpperCase()));
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             LOGGER.error(e.getMessage(), e);
         }
