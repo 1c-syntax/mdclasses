@@ -70,12 +70,6 @@ tasks.withType<JavaCompile> {
     options.compilerArgs.add("-Xlint:unchecked")
 }
 
-tasks.withType<Jar> {
-    configurations["compile"].forEach {
-        from(zipTree(it.absoluteFile))
-    }
-}
-
 sonarqube {
     properties {
         property("sonar.sourceEncoding", "UTF-8")
