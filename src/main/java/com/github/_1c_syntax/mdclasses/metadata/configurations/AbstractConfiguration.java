@@ -30,7 +30,7 @@ public abstract class AbstractConfiguration {
   public abstract void initialize(File xml);
 
   public ModuleType getModuleType(URI uri) {
-    return modulesByType.get(uri);
+    return modulesByType.getOrDefault(uri, ModuleType.Unknown);
   }
 
 }

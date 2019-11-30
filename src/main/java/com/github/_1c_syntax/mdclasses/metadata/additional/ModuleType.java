@@ -13,6 +13,7 @@ public enum ModuleType {
     ManagedApplicationModule,
     SessionModule,
     ExternalConnectionModule,
-    OrdinaryApplicationModule
+    OrdinaryApplicationModule,
+    Unknown
 
 }
