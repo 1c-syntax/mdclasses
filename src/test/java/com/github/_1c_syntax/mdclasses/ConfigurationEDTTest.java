@@ -9,6 +9,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -43,6 +44,9 @@ public class ConfigurationEDTTest {
     AbstractConfiguration configuration = configurationBuilder.build();
 
     assertThat(configuration).isNotNull();
+
+    File file = new File("src/test/resources/metadata/Module.os");
+    assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.Unknown);
   }
 
 }
