@@ -57,7 +57,7 @@ public class DesignConfiguration extends AbstractConfiguration {
           new CompatibilityMode(
               configurationXML.getProperties().getCompatibilityMode().name());
     } catch (NullPointerException e) {
-      LOGGER.error("Не удалось получить значение CompatibilityMode. Причина " + e.getStackTrace().toString());
+      LOGGER.error("Не удалось получить значение CompatibilityMode.", e);
     }
 
     // Язык скрипта
@@ -65,7 +65,7 @@ public class DesignConfiguration extends AbstractConfiguration {
     try {
       scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
     } catch (NullPointerException e) {
-      LOGGER.error("Не удалось получить значение ScriptVariant. Причина " + e.getStackTrace().toString());
+      LOGGER.error("Не удалось получить значение ScriptVariant.", e);
     }
     scriptVariant = ScriptVariant.valueOf(scriptVariantString);
 

@@ -46,6 +46,20 @@ public enum CompatibilityMode {
 
     @XmlEnumValue("DontUse")
     DONT_USE("DontUse"),
+    @XmlEnumValue("Version8_3_17")
+    VERSION_8_3_17("Version8_3_17"),
+    @XmlEnumValue("Version8_3_16")
+    VERSION_8_3_16("Version8_3_16"),
+    @XmlEnumValue("Version8_3_15")
+    VERSION_8_3_15("Version8_3_15"),
+    @XmlEnumValue("Version8_3_14")
+    VERSION_8_3_14("Version8_3_14"),
+    @XmlEnumValue("Version8_3_13")
+    VERSION_8_3_13("Version8_3_13"),
+    @XmlEnumValue("Version8_3_12")
+    VERSION_8_3_12("Version8_3_12"),
+    @XmlEnumValue("Version8_3_11")
+    VERSION_8_3_11("Version8_3_11"),
     @XmlEnumValue("Version8_3_10")
     VERSION_8_3_10("Version8_3_10"),
     @XmlEnumValue("Version8_3_9")

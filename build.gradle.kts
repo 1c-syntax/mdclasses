@@ -20,7 +20,7 @@ repositories {
 dependencies {
 
     // для корректной работы jabx
-    compile("javax.xml.bind:jaxb-api:2.3.0")
+    compile("javax.xml.bind:jaxb-api:2.3.1")
     compile("javax.activation:activation:1.1")
     compile("org.glassfish.jaxb:jaxb-runtime:2.3.0")
     // логирование

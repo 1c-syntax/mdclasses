@@ -27,7 +27,7 @@ class ConfigurationOriginTest {
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
-    assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
+    assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 13))).isEqualTo(0);
     assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
