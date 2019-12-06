@@ -6,6 +6,7 @@ import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,9 +51,12 @@ public class EDTConfiguration extends AbstractConfiguration {
     compatibilityMode = new CompatibilityMode(configurationXML.getConfigurationExtensionCompatibilityMode());
 
     // режим встроенного языка
-    String scriptVariantString = configurationXML.getScriptVariant().toUpperCase();
-    scriptVariant = ScriptVariant.valueOf(scriptVariantString);
-
+    String scriptVariantString = ObjectUtils.defaultIfNull(configurationXML.getScriptVariant(), "");
+    if(scriptVariantString.isEmpty()) {
+      scriptVariant = ScriptVariant.ENGLISH;
+    } else {
+      scriptVariant = ScriptVariant.valueOf(scriptVariantString.toUpperCase());
+    }
   }
 
   private void initializeModuleType() {
