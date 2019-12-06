@@ -49,4 +49,21 @@ public class ConfigurationEDTTest {
     assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.Unknown);
   }
 
+  @Test
+  void testBuilderEn() {
+
+    File srcPath = new File("src/test/resources/metadata/edt_en");
+    ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
+    AbstractConfiguration configuration = configurationBuilder.build();
+
+    assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
+    assertThat(configuration.getScriptVariant() == ScriptVariant.ENGLISH).isTrue();
+    assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 14))).isEqualTo(0);
+    assertThat(configuration.getModulesByType().size() > 0).isTrue();
+
+    File file = new File("src/test/resources/metadata/edt_en/src/CommonModules/CommonModule/Module.bsl");
+    assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
+
+  }
+
 }
