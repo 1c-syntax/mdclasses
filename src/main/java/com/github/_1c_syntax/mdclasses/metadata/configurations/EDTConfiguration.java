@@ -1,20 +1,18 @@
 package com.github._1c_syntax.mdclasses.metadata.configurations;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.jabx.edt.Configuration;
-import com.github._1c_syntax.mdclasses.jabx.edt.ObjectFactory;
-import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 
 public class EDTConfiguration extends AbstractConfiguration {
@@ -28,13 +26,15 @@ public class EDTConfiguration extends AbstractConfiguration {
   @Override
   public void initialize(File xml) {
 
-    Configuration configurationXML;
+    Configuration configurationXML = null;
+
+    XmlMapper xmlMapper = new XmlMapper();
+    xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+
+
     try {
-      JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
-      Unmarshaller jaxbUnpacked = context.createUnmarshaller();
-      configurationXML = (Configuration) ((JAXBElement) jaxbUnpacked.unmarshal(xml)).getValue();
-    } catch (JAXBException e) {
-      configurationXML = null;
+      configurationXML = xmlMapper.readValue(xml, Configuration.class);
+    } catch (IOException e) {
       LOGGER.error(e.getMessage(), e);
     }
 
@@ -52,7 +52,7 @@ public class EDTConfiguration extends AbstractConfiguration {
 
     // режим встроенного языка
     String scriptVariantString = ObjectUtils.defaultIfNull(configurationXML.getScriptVariant(), "");
-    if(scriptVariantString.isEmpty()) {
+    if (scriptVariantString.isEmpty()) {
       scriptVariant = ScriptVariant.ENGLISH;
     } else {
       scriptVariant = ScriptVariant.valueOf(scriptVariantString.toUpperCase());
