@@ -2,12 +2,14 @@
 
 package com.github._1c_syntax.mdclasses.jabx.edt;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CommonModule
   extends MDObjectBase {
 
@@ -23,7 +25,7 @@ public class CommonModule
   protected Boolean clientOrdinaryApplication;
   @JsonProperty(defaultValue = "false")
   protected Boolean serverCall;
-  @JsonProperty("string")
+  @JsonProperty()
   protected ReturnValueReuse returnValuesReuse;
   @JsonProperty(defaultValue = "false")
   protected Boolean privileged;
