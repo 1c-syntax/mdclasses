@@ -1,20 +1,18 @@
 package com.github._1c_syntax.mdclasses.metadata.commonmodules;
 
-import com.github._1c_syntax.mdclasses.jabx.original.CommonModule;
-import com.github._1c_syntax.mdclasses.jabx.original.CommonModuleProperties;
-import com.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
-import com.github._1c_syntax.mdclasses.jabx.original.ObjectFactory;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.github._1c_syntax.mdclasses.jackson.designer.CommonModule;
+import com.github._1c_syntax.mdclasses.jackson.designer.CommonModuleProperties;
+import com.github._1c_syntax.mdclasses.jackson.designer.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 
 public class DesignCommonModule extends AbstractCommonModule {
@@ -27,20 +25,20 @@ public class DesignCommonModule extends AbstractCommonModule {
     @Override
     public void initialize(File xml) {
         MetaDataObject mdObject;
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+
         try {
-            JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
-            Unmarshaller jaxbUnpacked = context.createUnmarshaller();
-            mdObject = (MetaDataObject) ((JAXBElement) jaxbUnpacked.unmarshal(xml)).getValue();
-        } catch (JAXBException e) {
+            mdObject = xmlMapper.readValue(xml, MetaDataObject.class);
+        } catch (IOException e) {
             mdObject = null;
             LOGGER.error(e.getMessage(), e);
         }
 
         if (mdObject != null) {
             CommonModule commonModuleXML = mdObject.getCommonModule();
-            if(commonModuleXML != null) {
-                initializeProperties(commonModuleXML);
-            }
+            initializeProperties(commonModuleXML);
+
         }
     }
 
@@ -52,12 +50,12 @@ public class DesignCommonModule extends AbstractCommonModule {
             return;
         }
 
-        server = ObjectUtils.defaultIfNull(properties.isServer(), false);
-        global = ObjectUtils.defaultIfNull(properties.isGlobal(), false);
-        clientManagedApplication = ObjectUtils.defaultIfNull(properties.isClientManagedApplication(), false);
-        externalConnection = ObjectUtils.defaultIfNull(properties.isExternalConnection(), false);
-        clientOrdinaryApplication = ObjectUtils.defaultIfNull(properties.isClientOrdinaryApplication(), false);
-        serverCall = ObjectUtils.defaultIfNull(properties.isServerCall(), false);
+        server = ObjectUtils.defaultIfNull(properties.getServer(), false);
+        global = ObjectUtils.defaultIfNull(properties.getGlobal(), false);
+        clientManagedApplication = ObjectUtils.defaultIfNull(properties.getClientManagedApplication(), false);
+        externalConnection = ObjectUtils.defaultIfNull(properties.getExternalConnection(), false);
+        clientOrdinaryApplication = ObjectUtils.defaultIfNull(properties.getClientOrdinaryApplication(), false);
+        serverCall = ObjectUtils.defaultIfNull(properties.getServerCall(), false);
 
         returnValuesReuse = ReturnValueReuse.DONT_USE;
         if (properties.getReturnValuesReuse() != null) {
@@ -67,8 +65,8 @@ public class DesignCommonModule extends AbstractCommonModule {
             }
         }
 
-        privileged = ObjectUtils.defaultIfNull(properties.isPrivileged(), false);
-        name = ObjectUtils.defaultIfNull(properties.getName(), "");
+        privileged = ObjectUtils.defaultIfNull(properties.getPrivileged(), false);
+        JsonPropertyObjectUtils.defaultIfNull(properties.getName(), "");
         uuid = ObjectUtils.defaultIfNull(commonModuleXML.getUuid(), "");
         comment = ObjectUtils.defaultIfNull(properties.getComment(), "");
     }

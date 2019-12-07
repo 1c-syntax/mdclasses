@@ -1,10 +1,9 @@
 package com.github._1c_syntax.mdclasses.metadata.configurations;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github._1c_syntax.mdclasses.jacson.designer.Configuration;
-import com.github._1c_syntax.mdclasses.jacson.designer.MetaDataObject;
+import com.github._1c_syntax.mdclasses.jackson.designer.Configuration;
+import com.github._1c_syntax.mdclasses.jackson.designer.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
@@ -16,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-//import com.github._1c_syntax.mdclasses.jacson.designer.Configuration;
 
 public class DesignConfiguration extends AbstractConfiguration {
 
@@ -29,17 +27,14 @@ public class DesignConfiguration extends AbstractConfiguration {
     @Override
     public void initialize(File xml) {
 
-        MetaDataObject mdObject;
+        MetaDataObject mdObject = null;
         XmlMapper xmlMapper = new XmlMapper();
-        mdObject = null;
+        xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+
         try {
-            mdObject = xmlMapper.readValue(xml, com.github._1c_syntax.mdclasses.jacson.designer.MetaDataObject.class);
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
+            mdObject = xmlMapper.readValue(xml, MetaDataObject.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
         }
 
         if (mdObject != null) {
@@ -57,7 +52,7 @@ public class DesignConfiguration extends AbstractConfiguration {
         // Режим совместимости
         compatibilityMode = new CompatibilityMode("Version_8_3_12");
         try {
-            compatibilityMode = new CompatibilityMode(configurationXML.getProperties().getCompatibilityMode());
+            compatibilityMode = new CompatibilityMode(configurationXML.getProperties().getCompatibilityMode().value());
         } catch (NullPointerException e) {
             LOGGER.error("Не удалось получить значение CompatibilityMode.", e);
         }
@@ -65,7 +60,7 @@ public class DesignConfiguration extends AbstractConfiguration {
         // Язык скрипта
         String scriptVariantString = "RUSSIAN";
         try {
-            scriptVariantString = configurationXML.getProperties().getScriptVariant().toUpperCase();
+            scriptVariantString = configurationXML.getProperties().getScriptVariant().toString().toUpperCase();
         } catch (NullPointerException e) {
             LOGGER.error("Не удалось получить значение ScriptVariant.", e);
         }
