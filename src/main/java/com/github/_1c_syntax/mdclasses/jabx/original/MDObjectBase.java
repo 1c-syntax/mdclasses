@@ -12,7 +12,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MDObjectBase {
 
-//  fixme
+  //  fixme
 //  @JsonProperty("InternalInfo")
 //  protected InternalInfo internalInfo;
   @JsonProperty("uuid")

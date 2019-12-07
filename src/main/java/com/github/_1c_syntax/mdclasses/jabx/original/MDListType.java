@@ -2,16 +2,16 @@
 
 package com.github._1c_syntax.mdclasses.jabx.original;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 
 @Getter
 public class MDListType {
 
-  @XmlElement(name = "Item")
+  @JsonProperty("Item")
   protected List<Object> item;
 
 }
