@@ -12,8 +12,8 @@ public class ConfigurationProperties {
 
   @JsonProperty("Name")
   protected String name;
-  //  @JsonProperty("Synonym")
-//  protected LocalStringType synonym;
+  @JsonProperty("Synonym")
+  protected LocalStringType synonym;
   @JsonProperty("Comment")
   protected String comment;
   @JsonProperty("ObjectBelonging")
@@ -105,20 +105,20 @@ public class ConfigurationProperties {
   protected String defaultStyle;
   @JsonProperty("DefaultLanguage")
   protected String defaultLanguage;
-  //  @JsonProperty("BriefInformation")
-//  protected LocalStringType briefInformation;
-//  @JsonProperty("DetailedInformation")
-//  protected LocalStringType detailedInformation;
+  @JsonProperty("BriefInformation")
+  protected LocalStringType briefInformation;
+  @JsonProperty("DetailedInformation")
+  protected LocalStringType detailedInformation;
   @JsonProperty("Logo")
   protected String logo;
   @JsonProperty("Splash")
   protected String splash;
-  //  @JsonProperty("Copyright")
-//  protected LocalStringType copyright;
-//  @JsonProperty("VendorInformationAddress")
-//  protected LocalStringType vendorInformationAddress;
-//  @JsonProperty("ConfigurationInformationAddress")
-//  protected LocalStringType configurationInformationAddress;
+  @JsonProperty("Copyright")
+  protected LocalStringType copyright;
+  @JsonProperty("VendorInformationAddress")
+  protected LocalStringType vendorInformationAddress;
+  @JsonProperty("ConfigurationInformationAddress")
+  protected LocalStringType configurationInformationAddress;
   @JsonProperty("DataLockControlMode")
   protected DefaultDataLockControlMode dataLockControlMode;
   @JsonProperty("ObjectAutonumerationMode")

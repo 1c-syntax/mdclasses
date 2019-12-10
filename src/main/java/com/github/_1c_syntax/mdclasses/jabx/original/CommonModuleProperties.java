@@ -12,8 +12,8 @@ public class CommonModuleProperties {
 
   @JsonProperty("Name")
   protected String name;
-  //  @JsonProperty("Synonym")
-//  protected LocalStringType synonym;
+  @JsonProperty("Synonym")
+  protected LocalStringType synonym;
   @JsonProperty("Comment")
   protected String comment;
   @JsonProperty("ObjectBelonging")

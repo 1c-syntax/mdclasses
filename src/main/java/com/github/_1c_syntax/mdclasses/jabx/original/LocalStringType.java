@@ -12,7 +12,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LocalStringType {
 
-  @JsonProperty("item")
+  @JsonProperty("v8:item")
   protected List<LocalStringItemType> item;
 
 

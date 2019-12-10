@@ -10,8 +10,8 @@ import lombok.Getter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LocalStringItemType {
 
-  @JsonProperty("lang")
+  @JsonProperty("v8:lang")
   protected String lang;
-  @JsonProperty("content")
+  @JsonProperty("v8:content")
   protected String content;
 }
