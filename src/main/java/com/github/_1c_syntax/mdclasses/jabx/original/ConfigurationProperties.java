@@ -5,16 +5,14 @@ package com.github._1c_syntax.mdclasses.jabx.original;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ConfigurationProperties {
 
   @JsonProperty("Name")
   protected String name;
-//  @JsonProperty("Synonym")
+  //  @JsonProperty("Synonym")
 //  protected LocalStringType synonym;
   @JsonProperty("Comment")
   protected String comment;
@@ -107,7 +105,7 @@ public class ConfigurationProperties {
   protected String defaultStyle;
   @JsonProperty("DefaultLanguage")
   protected String defaultLanguage;
-//  @JsonProperty("BriefInformation")
+  //  @JsonProperty("BriefInformation")
 //  protected LocalStringType briefInformation;
 //  @JsonProperty("DetailedInformation")
 //  protected LocalStringType detailedInformation;
@@ -115,7 +113,7 @@ public class ConfigurationProperties {
   protected String logo;
   @JsonProperty("Splash")
   protected String splash;
-//  @JsonProperty("Copyright")
+  //  @JsonProperty("Copyright")
 //  protected LocalStringType copyright;
 //  @JsonProperty("VendorInformationAddress")
 //  protected LocalStringType vendorInformationAddress;

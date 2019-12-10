@@ -5,16 +5,14 @@ package com.github._1c_syntax.mdclasses.jabx.original;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.Setter;
 
 
 @Getter
-@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataObject
   extends EntityWithVersion {
 
-//  @JsonProperty("AccountingRegister")
+  //  @JsonProperty("AccountingRegister")
 //  protected AccountingRegister accountingRegister;
 //  @JsonProperty("AccumulationRegister")
 //  protected AccumulationRegister accumulationRegister;
@@ -40,7 +38,7 @@ public class MetaDataObject
 //  protected CommonForm commonForm;
   @JsonProperty("CommonModule")
   protected CommonModule commonModule;
-//  @JsonProperty("CommonPicture")
+  //  @JsonProperty("CommonPicture")
 //  protected CommonPicture commonPicture;
 //  @JsonProperty("CommonTemplate")
 //  protected CommonTemplate commonTemplate;
