@@ -4,6 +4,7 @@ package com.github._1c_syntax.mdclasses.jabx.edt;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import lombok.Getter;
 
 import java.util.List;
@@ -65,8 +66,7 @@ public class Configuration
   protected List<String> tasks;
   protected List<String> informationRegisters;
   protected List<ContainedObject> containedObjects;
-// fixme
-  //  @JsonProperty(required = true)
-//  protected List<Language> languages;
+  @JacksonXmlElementWrapper(useWrapping = false)
+  protected List<Language> languages;
 
 }
