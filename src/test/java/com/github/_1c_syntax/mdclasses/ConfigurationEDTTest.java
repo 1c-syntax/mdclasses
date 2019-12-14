@@ -1,15 +1,14 @@
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.ConfigurationBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 

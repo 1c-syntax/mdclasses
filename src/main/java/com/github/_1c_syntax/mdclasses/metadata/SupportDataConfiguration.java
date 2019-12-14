@@ -28,7 +28,7 @@ public class SupportDataConfiguration {
 
   public SupportDataConfiguration(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
-    LOGGER.info("Чтения файла ParentConfigurations.bin");
+    LOGGER.debug("Чтения файла ParentConfigurations.bin");
     load();
   }
 
@@ -37,7 +37,7 @@ public class SupportDataConfiguration {
     String data = readBinFile(pathToBinFile);
     String[] dataStrings = data.split(",");
     int countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
-    LOGGER.info("Найдено конфигураций: " + countConfiguration);
+    LOGGER.debug("Найдено конфигураций: " + countConfiguration);
 
     int startPoint = 3;
     for (int numberConfiguration = 1; numberConfiguration <= countConfiguration; numberConfiguration++) {
@@ -46,7 +46,7 @@ public class SupportDataConfiguration {
       String configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
       int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
-      LOGGER.info(String.format(
+      LOGGER.debug(String.format(
           "Конфигурация: %s Версия: %s Поставщик: %s Количество обектов: %s",
           configurationName,
           configurationVersion,
