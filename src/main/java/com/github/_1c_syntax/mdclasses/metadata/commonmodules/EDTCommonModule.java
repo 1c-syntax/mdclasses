@@ -5,7 +5,6 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdosource.edt.CommonModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
-import com.github._1c_syntax.mdclasses.metadata.configurations.EDTConfiguration;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import java.nio.file.Path;
 
 public class EDTCommonModule extends AbstractCommonModule {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(EDTConfiguration.class.getSimpleName());
+  private static final Logger LOGGER = LoggerFactory.getLogger(EDTCommonModule.class.getSimpleName());
 
   public EDTCommonModule(Path path) {
     super(path, ConfigurationSource.EDT);

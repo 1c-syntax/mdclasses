@@ -1,13 +1,9 @@
 package com.github._1c_syntax.mdclasses.mdosource.edt;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import lombok.Getter;
-
-import java.util.List;
 
 
 @Getter

@@ -27,7 +27,7 @@ public abstract class AbstractConfiguration {
     this.rootPath = rootPath;
   }
 
-  public abstract void initialize(File xml);
+  public abstract void initialize(File xml, String className);
 
   public ModuleType getModuleType(URI uri) {
     return modulesByType.getOrDefault(uri, ModuleType.Unknown);

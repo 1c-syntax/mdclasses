@@ -1,9 +1,9 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.mdclasses.mdosource.common.Configuration;
+import com.github._1c_syntax.mdclasses.mdosource.common.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
-import com.github._1c_syntax.mdclasses.metadata.configurations.DesignConfiguration;
-import com.github._1c_syntax.mdclasses.metadata.configurations.EDTConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.configurations.EmptyConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,16 +54,12 @@ public class ConfigurationBuilder {
       return configuration;
     }
 
-    if (configurationSource == ConfigurationSource.DESIGNER) {
-      configuration = new DesignConfiguration(configurationSource, pathToRoot);
-    } else if (configurationSource == ConfigurationSource.EDT) {
-      configuration = new EDTConfiguration(configurationSource, pathToRoot);
+    configuration = new EmptyConfiguration(configurationSource, pathToRoot);
+    if (configurationSource == ConfigurationSource.EDT) {
+      configuration.initialize(pathToConfig.toFile(), Configuration.class.getName());
     } else {
-      LOGGER.error("Тип конфигурации не поддерживается", configurationSource);
-      return configuration;
+      configuration.initialize(pathToConfig.toFile(), MetaDataObject.class.getName());
     }
-
-    configuration.initialize(pathToConfig.toFile());
 
     return configuration;
 
