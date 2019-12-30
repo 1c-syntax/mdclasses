@@ -57,6 +57,7 @@ public class EDTConfiguration extends AbstractConfiguration {
     } else {
       scriptVariant = ScriptVariant.valueOf(scriptVariantString.toUpperCase());
     }
+
   }
 
   private void initializeModuleType() {

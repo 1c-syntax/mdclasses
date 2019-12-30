@@ -1,7 +1,4 @@
-
-
 package com.github._1c_syntax.mdclasses.mdosource.original;
-
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,10 +16,6 @@ public enum ClientRunMode {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static ClientRunMode fromValue(String v) {
         for (ClientRunMode c : ClientRunMode.values()) {
             if (c.value.equals(v)) {
@@ -30,6 +23,10 @@ public enum ClientRunMode {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

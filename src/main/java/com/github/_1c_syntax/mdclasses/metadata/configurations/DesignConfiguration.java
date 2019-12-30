@@ -62,7 +62,7 @@ public class DesignConfiguration extends AbstractConfiguration {
     // Язык скрипта
     String scriptVariantString = "RUSSIAN";
     try {
-      scriptVariantString = configurationXML.getProperties().getScriptVariant().name().toUpperCase();
+      scriptVariantString = configurationXML.getProperties().getScriptVariant().toUpperCase();
     } catch (NullPointerException e) {
       LOGGER.error("Не удалось получить значение ScriptVariant.", e);
     }

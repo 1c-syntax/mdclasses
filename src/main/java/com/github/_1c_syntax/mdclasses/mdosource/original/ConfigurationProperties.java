@@ -32,7 +32,7 @@ public class ConfigurationProperties {
 //    @JsonProperty("UsePurposes")
 //  protected FixedArray usePurposes;
   @JsonProperty("ScriptVariant")
-  protected ScriptVariant scriptVariant;
+  protected String scriptVariant;
   @JsonProperty("DefaultRoles")
   protected List<String> defaultRoles;
   @JsonProperty("Vendor")
