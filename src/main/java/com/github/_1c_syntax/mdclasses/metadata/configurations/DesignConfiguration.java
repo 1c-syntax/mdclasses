@@ -48,8 +48,8 @@ public class DesignConfiguration extends AbstractConfiguration {
   }
 
   private void initializeProperties(Configuration configurationXML) {
-      compatibilityMode = configurationXML.getProperties().getCompatibilityMode();
-      scriptVariant = configurationXML.getProperties().getScriptVariant();
+      compatibilityMode = configurationXML.getCompatibilityMode();
+      scriptVariant = configurationXML.getScriptVariant();
   }
 
   private void initializeModuleType() {
