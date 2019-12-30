@@ -48,26 +48,8 @@ public class DesignConfiguration extends AbstractConfiguration {
   }
 
   private void initializeProperties(Configuration configurationXML) {
-
-    // Режим совместимости
-    compatibilityMode = new CompatibilityMode("Version_8_3_12");
-    try {
-      compatibilityMode =
-        new CompatibilityMode(
-          configurationXML.getProperties().getCompatibilityMode().name());
-    } catch (NullPointerException e) {
-      LOGGER.error("Не удалось получить значение CompatibilityMode.", e);
-    }
-
-    // Язык скрипта
-    String scriptVariantString = "RUSSIAN";
-    try {
-      scriptVariantString = configurationXML.getProperties().getScriptVariant().toUpperCase();
-    } catch (NullPointerException e) {
-      LOGGER.error("Не удалось получить значение ScriptVariant.", e);
-    }
-    scriptVariant = ScriptVariant.valueOf(scriptVariantString);
-
+      compatibilityMode = configurationXML.getProperties().getCompatibilityMode();
+      scriptVariant = configurationXML.getProperties().getScriptVariant();
   }
 
   private void initializeModuleType() {

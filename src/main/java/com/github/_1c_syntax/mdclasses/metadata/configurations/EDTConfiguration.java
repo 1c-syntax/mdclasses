@@ -46,18 +46,8 @@ public class EDTConfiguration extends AbstractConfiguration {
   }
 
   private void initializeProperties(Configuration configurationXML) {
-
-    // режим совместимости
-    compatibilityMode = new CompatibilityMode(configurationXML.getConfigurationExtensionCompatibilityMode());
-
-    // режим встроенного языка
-    String scriptVariantString = ObjectUtils.defaultIfNull(configurationXML.getScriptVariant(), "");
-    if (scriptVariantString.isEmpty()) {
-      scriptVariant = ScriptVariant.ENGLISH;
-    } else {
-      scriptVariant = ScriptVariant.valueOf(scriptVariantString.toUpperCase());
-    }
-
+    compatibilityMode = configurationXML.getCompatibilityMode();
+    scriptVariant = configurationXML.getScriptVariant();
   }
 
   private void initializeModuleType() {

@@ -3,6 +3,8 @@ package com.github._1c_syntax.mdclasses.mdosource.edt;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import lombok.Getter;
 
 import java.util.List;
@@ -13,16 +15,16 @@ import java.util.List;
 public class Configuration
         extends MDObjectBase {
 
-    protected String configurationExtensionCompatibilityMode;
+    protected CompatibilityMode configurationExtensionCompatibilityMode;
     protected String defaultRunMode;
     protected String usePurposes;
-    protected String scriptVariant;
+    protected ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
     protected String defaultLanguage;
     protected String dataLockControlMode;
     protected String objectAutonumerationMode;
     protected String modalityUseMode;
     protected String synchronousPlatformExtensionAndAddInCallUseMode;
-    protected String compatibilityMode;
+    protected CompatibilityMode compatibilityMode;
     protected List<String> subsystems;
     protected List<String> styleItems;
     protected List<String> commonPictures;

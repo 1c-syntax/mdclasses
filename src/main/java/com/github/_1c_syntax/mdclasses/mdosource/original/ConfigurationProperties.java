@@ -4,6 +4,8 @@ package com.github._1c_syntax.mdclasses.mdosource.original;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import lombok.Getter;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class ConfigurationProperties {
 //    @JsonProperty("UsePurposes")
 //  protected FixedArray usePurposes;
   @JsonProperty("ScriptVariant")
-  protected String scriptVariant;
+  protected ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   @JsonProperty("DefaultRoles")
   protected List<String> defaultRoles;
   @JsonProperty("Vendor")
