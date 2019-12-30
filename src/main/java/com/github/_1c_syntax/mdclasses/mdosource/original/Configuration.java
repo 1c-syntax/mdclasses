@@ -34,17 +34,6 @@ public class Configuration
 
   @JsonProperty("Properties")
   private void unpackProperties(Map<String, Object> properties) {
-//    properties.forEach((key, value) -> {
-//      if(key.equals("ScriptVariant")) {
-//        this.scriptVariant = ScriptVariant.fromValue(value);
-//      } else if(key.equals("CompatibilityMode")) {
-//        this.compatibilityMode = new CompatibilityMode(value);
-//      } else if(key.equals("ConfigurationExtensionCompatibilityMode")) {
-//        this.configurationExtensionCompatibilityMode = new CompatibilityMode(value);
-//      }
-//
-//    });
-
     this.scriptVariant = ScriptVariant.fromValue((String) properties.get("ScriptVariant"));
     this.compatibilityMode = new CompatibilityMode((String) properties.get("CompatibilityMode"));
     this.configurationExtensionCompatibilityMode = new CompatibilityMode((String) properties.get("ConfigurationExtensionCompatibilityMode"));
