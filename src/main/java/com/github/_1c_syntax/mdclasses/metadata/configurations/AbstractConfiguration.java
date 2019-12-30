@@ -1,10 +1,10 @@
 package com.github._1c_syntax.mdclasses.metadata.configurations;
 
-import lombok.Data;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import lombok.Data;
 
 import java.io.File;
 import java.net.URI;

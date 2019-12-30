@@ -2,8 +2,8 @@ package com.github._1c_syntax.mdclasses.metadata.configurations;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github._1c_syntax.mdclasses.jabx.original.Configuration;
-import com.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
+import com.github._1c_syntax.mdclasses.mdosource.original.Configuration;
+import com.github._1c_syntax.mdclasses.mdosource.original.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;

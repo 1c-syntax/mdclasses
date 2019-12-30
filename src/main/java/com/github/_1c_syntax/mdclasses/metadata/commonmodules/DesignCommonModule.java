@@ -2,9 +2,9 @@ package com.github._1c_syntax.mdclasses.metadata.commonmodules;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github._1c_syntax.mdclasses.jabx.original.CommonModule;
-import com.github._1c_syntax.mdclasses.jabx.original.CommonModuleProperties;
-import com.github._1c_syntax.mdclasses.jabx.original.MetaDataObject;
+import com.github._1c_syntax.mdclasses.mdosource.original.CommonModule;
+import com.github._1c_syntax.mdclasses.mdosource.original.CommonModuleProperties;
+import com.github._1c_syntax.mdclasses.mdosource.original.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import org.apache.commons.lang3.ObjectUtils;

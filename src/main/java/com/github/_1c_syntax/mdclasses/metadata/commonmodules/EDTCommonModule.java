@@ -2,7 +2,7 @@ package com.github._1c_syntax.mdclasses.metadata.commonmodules;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github._1c_syntax.mdclasses.jabx.edt.CommonModule;
+import com.github._1c_syntax.mdclasses.mdosource.edt.CommonModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.configurations.EDTConfiguration;

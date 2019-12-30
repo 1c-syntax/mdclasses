@@ -2,20 +2,15 @@ package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.commonmodules.AbstractCommonModule;
 import com.github._1c_syntax.mdclasses.metadata.commonmodules.DesignCommonModule;
 import com.github._1c_syntax.mdclasses.metadata.commonmodules.EDTCommonModule;
 import com.github._1c_syntax.mdclasses.metadata.commonmodules.EmptyCommonModule;
-import com.github._1c_syntax.mdclasses.metadata.configurations.DesignConfiguration;
-import com.github._1c_syntax.mdclasses.metadata.configurations.EDTConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
