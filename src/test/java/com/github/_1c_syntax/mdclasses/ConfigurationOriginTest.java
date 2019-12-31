@@ -1,11 +1,11 @@
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.ConfigurationBuilder;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.configurations.Configuration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,7 +21,7 @@ class ConfigurationOriginTest {
 
     File srcPath = new File("src/test/resources/metadata/original");
     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = configurationBuilder.build();
 
     assertThat(configuration).isNotNull();
 
@@ -43,7 +43,7 @@ class ConfigurationOriginTest {
 
     Path srcPath = Paths.get("src/test/resources/metadata");
     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath);
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = configurationBuilder.build();
 
     assertThat(configuration).isNotNull();
   }

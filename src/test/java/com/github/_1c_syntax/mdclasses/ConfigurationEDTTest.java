@@ -5,7 +5,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
-import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
+import com.github._1c_syntax.mdclasses.metadata.configurations.Configuration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -20,7 +20,7 @@ public class ConfigurationEDTTest {
 
     File srcPath = new File("src/test/resources/metadata/edt");
     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = configurationBuilder.build();
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
@@ -40,7 +40,7 @@ public class ConfigurationEDTTest {
 
     Path srcPath = Paths.get("src/test/resources/metadata");
     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath);
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = configurationBuilder.build();
 
     assertThat(configuration).isNotNull();
 
@@ -53,7 +53,7 @@ public class ConfigurationEDTTest {
 
     File srcPath = new File("src/test/resources/metadata/edt_en");
     ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = configurationBuilder.build();
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.ENGLISH).isTrue();
