@@ -1,17 +1,14 @@
-
-
-package com.github._1c_syntax.mdclasses.mdosource.common;
+package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataObject {
 
-  //  @JsonProperty("AccountingRegister")
+    //  @JsonProperty("AccountingRegister")
 //  protected AccountingRegister accountingRegister;
 //  @JsonProperty("AccumulationRegister")
 //  protected AccumulationRegister accumulationRegister;
@@ -37,12 +34,12 @@ public class MetaDataObject {
 //  protected CommonForm commonForm;
 //  @JsonProperty("CommonModule")
 //  protected CommonModule commonModule;
-  //  @JsonProperty("CommonPicture")
+    //  @JsonProperty("CommonPicture")
 //  protected CommonPicture commonPicture;
 //  @JsonProperty("CommonTemplate")
 //  protected CommonTemplate commonTemplate;
-  @JsonProperty("Configuration")
-  protected Configuration configuration;
+    @JsonProperty("Configuration")
+    protected MDOConfiguration configuration;
 //  @JsonProperty("Constant")
 //  protected Constant constant;
 //  @JsonProperty("Cube")

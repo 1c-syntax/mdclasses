@@ -1,7 +1,8 @@
-package com.github._1c_syntax.mdclasses.mdosource.common;
+package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import lombok.Getter;
@@ -11,7 +12,8 @@ import java.util.Map;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Configuration
+@JsonRootName(value = "Configuration")
+public class MDOConfiguration
         extends MDObjectBase {
 
     protected ScriptVariant scriptVariant = ScriptVariant.ENGLISH;

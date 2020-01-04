@@ -42,8 +42,8 @@ public class MetaDataObject
 //  protected CommonPicture commonPicture;
 //  @JsonProperty("CommonTemplate")
 //  protected CommonTemplate commonTemplate;
-  @JsonProperty("Configuration")
-  protected Configuration configuration;
+//  @JsonProperty("Configuration")
+//  protected Configuration configuration;
 //  @JsonProperty("Constant")
 //  protected Constant constant;
 //  @JsonProperty("Cube")
