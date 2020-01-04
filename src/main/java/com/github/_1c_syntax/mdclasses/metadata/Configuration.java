@@ -10,11 +10,13 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import lombok.Data;
+import org.apache.commons.beanutils.BeanUtilsBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,17 +51,12 @@ public class Configuration {
 
     private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
         this.configurationSource = configurationSource;
-        this.compatibilityMode = configurationXml.getCompatibilityMode();
-        this.scriptVariant = configurationXml.getScriptVariant();
-        this.configurationExtensionCompatibilityMode = configurationXml.getConfigurationExtensionCompatibilityMode();
-        this.defaultRunMode = configurationXml.getDefaultRunMode();
-        this.defaultLanguage = configurationXml.getDefaultLanguage();
-        this.dataLockControlMode = configurationXml.getDataLockControlMode();
-        this.objectAutonumerationMode = configurationXml.getObjectAutonumerationMode();
-        this.modalityUseMode = configurationXml.getModalityUseMode();
-        this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
-        this.name = configurationXml.getName();
-        this.uuid = configurationXml.getUuid();
+        try {
+            new BeanUtilsBean().copyProperties(this, configurationXml);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+
         setModulesByType(Common.getModuleTypesByPath(rootPath));
     }
 

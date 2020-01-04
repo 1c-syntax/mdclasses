@@ -27,6 +27,7 @@ dependencies {
     // прочее
     compile("commons-io", "commons-io", "2.6")
     compile("org.apache.commons", "commons-lang3", "3.9")
+    compile("commons-beanutils", "commons-beanutils", "1.9.4")
     // генерики
     compileOnly("org.projectlombok", "lombok", lombok.version)
     // тестирование
