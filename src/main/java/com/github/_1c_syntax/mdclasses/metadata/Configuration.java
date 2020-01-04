@@ -97,7 +97,8 @@ public class Configuration {
         public Configuration build() {
 
             if (configurationSource == ConfigurationSource.EMPTY
-                    || (pathToConfig != null && !pathToConfig.toFile().exists())) {
+                    || pathToConfig == null
+                    || !pathToConfig.toFile().exists()) {
                 return Configuration.this;
             }
 
