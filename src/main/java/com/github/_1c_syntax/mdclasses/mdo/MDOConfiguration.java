@@ -28,16 +28,18 @@ public class MDOConfiguration
     protected String synchronousPlatformExtensionAndAddInCallUseMode;
 
     @JsonProperty("Properties")
-    private void unpackProperties(Map<String, Object> properties) {
-        this.scriptVariant = ScriptVariant.fromValue((String) properties.get("ScriptVariant"));
-        this.compatibilityMode = new CompatibilityMode((String) properties.get("CompatibilityMode"));
-        this.configurationExtensionCompatibilityMode = new CompatibilityMode((String) properties.get("ConfigurationExtensionCompatibilityMode"));
-        this.defaultRunMode = (String) properties.get("DefaultRunMode");
-        this.defaultLanguage = (String) properties.get("DefaultLanguage");
-        this.dataLockControlMode = (String) properties.get("DataLockControlMode");
-        this.objectAutonumerationMode = (String) properties.get("ObjectAutonumerationMode");
-        this.modalityUseMode = (String) properties.get("ModalityUseMode");
-        this.synchronousPlatformExtensionAndAddInCallUseMode = (String) properties.get("SynchronousPlatformExtensionAndAddInCallUseMode");
+    protected void unpackProperties(Map<String, Object> properties) {
+        this.scriptVariant = ScriptVariant.fromValue((String) properties.getOrDefault("ScriptVariant", ScriptVariant.ENGLISH.value()));
+        this.compatibilityMode = new CompatibilityMode((String) properties.getOrDefault("CompatibilityMode", ""));
+        this.configurationExtensionCompatibilityMode = new CompatibilityMode((String) properties.getOrDefault("ConfigurationExtensionCompatibilityMode", ""));
+        this.defaultRunMode = (String) properties.getOrDefault("DefaultRunMode", "");
+        this.defaultLanguage = (String) properties.getOrDefault("DefaultLanguage", "");
+        this.dataLockControlMode = (String) properties.getOrDefault("DataLockControlMode", "");
+        this.objectAutonumerationMode = (String) properties.getOrDefault("ObjectAutonumerationMode", "");
+        this.modalityUseMode = (String) properties.getOrDefault("ModalityUseMode", "");
+        this.synchronousPlatformExtensionAndAddInCallUseMode = (String) properties.getOrDefault("SynchronousPlatformExtensionAndAddInCallUseMode", "");
+        this.name = (String) properties.getOrDefault("Name", "");
+        this.comment = (String) properties.getOrDefault("Comment", "");
     }
 
 }

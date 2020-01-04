@@ -10,16 +10,18 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MDObjectBase {
 
+    @JsonProperty("name")
     protected String name;
-    protected String comment;
+    @JsonProperty("comment")
+    protected String comment = "";
 
     @JsonProperty("uuid")
     protected String uuid;
 
     @JsonProperty("Properties")
-    private void unpackProperties(Map<String, Object> properties) {
-        this.name = (String) properties.get("name");
-        this.comment = (String) properties.get("comment");
+    protected void unpackProperties(Map<String, Object> properties) {
+        this.name = (String) properties.getOrDefault("Name", "");
+        this.comment = (String) properties.getOrDefault("Comment", "");
     }
 
 }

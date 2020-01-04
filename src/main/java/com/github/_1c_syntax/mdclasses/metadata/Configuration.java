@@ -3,9 +3,11 @@ package com.github._1c_syntax.mdclasses.metadata;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
@@ -44,13 +46,19 @@ public class Configuration {
     protected String synchronousPlatformExtensionAndAddInCallUseMode;
 
     protected Map<URI, ModuleType> modulesByType = new HashMap<>();
+    protected HashMap<MDOType, HashMap<String, MDObjectBase>> children;
+    private Path rootPath;
 
     private Configuration() {
         this.configurationSource = ConfigurationSource.EMPTY;
+        this.children = new HashMap<>();
     }
 
     private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
         this.configurationSource = configurationSource;
+        this.children = new HashMap<>();
+        this.rootPath = rootPath;
+
         try {
             new BeanUtilsBean().copyProperties(this, configurationXml);
         } catch (IllegalAccessException | InvocationTargetException e) {
@@ -62,6 +70,61 @@ public class Configuration {
 
     public static ConfigurationBuilder newBuilder(Path pathToRoot) {
         return new Configuration().new ConfigurationBuilder(pathToRoot);
+    }
+
+    private File getMDOPath(MDOType type, String name) {
+        if (configurationSource == ConfigurationSource.EDT) {
+            return Paths.get(rootPath.toAbsolutePath().toString(),
+                    "src", type.getMdoClassName() + "s", name, name + ".mdo").toFile();
+        } else {
+            return Paths.get(rootPath.toAbsolutePath().toString(),
+                    type.getMdoClassName() + "s", name + ".xml").toFile();
+        }
+    }
+
+    public MDObjectBase getChild(MDOType type, String name) {
+        HashMap<String, MDObjectBase> childrenByType = children.get(type);
+        if (childrenByType != null) {
+            MDObjectBase children = childrenByType.get(name);
+            if(children != null) {
+                return children;
+            }
+        }
+
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        MDObjectBase child = null;
+        if (configurationSource == ConfigurationSource.EDT) {
+            try {
+                child = (MDObjectBase) xmlMapper.readValue(getMDOPath(type, name),
+                        Class.forName(MDObjectBase.class.getPackageName() + "." + type.getMdoClassName()));
+            } catch (IOException | ClassNotFoundException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        } else if (configurationSource == ConfigurationSource.DESIGNER) {
+            try {
+                MetaDataObject metaDataObject = xmlMapper.readValue(getMDOPath(type, name), MetaDataObject.class);
+                child = metaDataObject.getPropertyByName(type.getMdoClassName());
+            } catch (IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        } else {
+            return null;
+        }
+
+        if (child != null) {
+            addChild(type, name, child);
+        }
+        return child;
+    }
+
+    private void addChild(MDOType type, String name, MDObjectBase child) {
+        HashMap<String, MDObjectBase> childrenByType = children.get(type);
+        if (childrenByType == null) {
+            childrenByType = new HashMap<>();
+        }
+        childrenByType.put(name, child);
+        children.put(type, childrenByType);
     }
 
     public ModuleType getModuleType(URI uri) {
@@ -124,5 +187,6 @@ public class Configuration {
 
             return new Configuration(configurationXML, configurationSource, pathToRoot);
         }
+
     }
 }

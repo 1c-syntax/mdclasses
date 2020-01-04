@@ -14,12 +14,7 @@ public enum ScriptVariant {
     }
 
     public static ScriptVariant fromValue(String v) {
-        for (ScriptVariant c : ScriptVariant.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+        return valueOf(v.toUpperCase());
     }
 
     public String value() {

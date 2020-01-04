@@ -32,8 +32,8 @@ public class MetaDataObject {
 //  protected CommonCommand commonCommand;
 //  @JsonProperty("CommonForm")
 //  protected CommonForm commonForm;
-//  @JsonProperty("CommonModule")
-//  protected CommonModule commonModule;
+    @JsonProperty("CommonModule")
+    protected CommonModule commonModule;
     //  @JsonProperty("CommonPicture")
 //  protected CommonPicture commonPicture;
 //  @JsonProperty("CommonTemplate")
@@ -117,4 +117,17 @@ public class MetaDataObject {
 //  @JsonProperty("XDTOPackage")
 //  protected XDTOPackage xdtoPackage;
 
+    public MDObjectBase getPropertyByName(String propertyName) {
+
+        try {
+            return (MDObjectBase) getClass()
+                    .getDeclaredField(
+                            propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
+                    .get(this);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

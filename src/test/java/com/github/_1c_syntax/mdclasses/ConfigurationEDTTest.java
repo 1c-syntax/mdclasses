@@ -1,8 +1,10 @@
 package com.github._1c_syntax.mdclasses;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,11 @@ public class ConfigurationEDTTest {
 
         file = new File("src/test/resources/metadata/edt/src/CommonModules/ПростойОбщийМодуль/Module.bsl");
         assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
+
+        CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
+        assertThat(commonModule).isNotNull();
+        assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
+
 
     }
 
