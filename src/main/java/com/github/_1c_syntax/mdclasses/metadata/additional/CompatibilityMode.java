@@ -13,6 +13,10 @@ public class CompatibilityMode {
 
   private static final String DONT_USE = "DontUse";
 
+  public CompatibilityMode() {
+    setVersionComponents(3, 99);
+  }
+
   public CompatibilityMode(String value) {
 
     if (value.equalsIgnoreCase(DONT_USE)) {

@@ -11,20 +11,19 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
-import lombok.Data;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.beanutils.BeanUtilsBean;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-@Data
+@Value
 @Slf4j
 public class Configuration {
 
@@ -43,13 +42,29 @@ public class Configuration {
     protected String modalityUseMode;
     protected String synchronousPlatformExtensionAndAddInCallUseMode;
 
-    protected Map<URI, ModuleType> modulesByType = new HashMap<>();
-    protected HashMap<MDOType, HashMap<String, MDObjectBase>> children;
+    protected Map<URI, ModuleType> modulesByType;
+    protected Map<MDOType, HashMap<String, MDObjectBase>> children;
     private Path rootPath;
 
     private Configuration() {
         this.configurationSource = ConfigurationSource.EMPTY;
         this.children = new HashMap<>();
+        this.modulesByType = new HashMap<>();
+
+        this.rootPath = null;
+        this.name = "";
+        this.uuid = "";
+
+        this.compatibilityMode = new CompatibilityMode();
+        this.configurationExtensionCompatibilityMode = new CompatibilityMode();
+        this.scriptVariant = ScriptVariant.ENGLISH;
+
+        this.defaultRunMode = "";
+        this.defaultLanguage = "";
+        this.dataLockControlMode = "";
+        this.objectAutonumerationMode = "";
+        this.modalityUseMode = "";
+        this.synchronousPlatformExtensionAndAddInCallUseMode = "";
     }
 
     private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
@@ -57,13 +72,21 @@ public class Configuration {
         this.children = new HashMap<>();
         this.rootPath = rootPath;
 
-        try {
-            new BeanUtilsBean().copyProperties(this, configurationXml);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            LOGGER.error(e.getMessage(), e);
-        }
+        this.name = configurationXml.getName();
+        this.uuid = configurationXml.getUuid();
 
-        setModulesByType(Common.getModuleTypesByPath(rootPath));
+        this.compatibilityMode = configurationXml.getCompatibilityMode();
+        this.configurationExtensionCompatibilityMode = configurationXml.getConfigurationExtensionCompatibilityMode();
+        this.scriptVariant = configurationXml.getScriptVariant();
+
+        this.defaultRunMode = configurationXml.getDefaultRunMode();
+        this.defaultLanguage = configurationXml.getDefaultLanguage();
+        this.dataLockControlMode = configurationXml.getDataLockControlMode();
+        this.objectAutonumerationMode = configurationXml.getObjectAutonumerationMode();
+        this.modalityUseMode = configurationXml.getModalityUseMode();
+        this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
+
+        this.modulesByType = Common.getModuleTypesByPath(rootPath);
     }
 
     public static ConfigurationBuilder newBuilder(Path pathToRoot) {
@@ -84,7 +107,7 @@ public class Configuration {
         HashMap<String, MDObjectBase> childrenByType = children.get(type);
         if (childrenByType != null) {
             MDObjectBase child = childrenByType.get(name);
-            if(child != null) {
+            if (child != null) {
                 return child;
             }
         }
@@ -183,7 +206,7 @@ public class Configuration {
                 }
             }
 
-            return new Configuration(configurationXML, configurationSource, pathToRoot);
+            return new Configuration(Objects.requireNonNull(configurationXML), configurationSource, pathToRoot);
         }
 
     }
