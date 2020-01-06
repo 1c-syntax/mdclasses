@@ -1,13 +1,11 @@
 package com.github._1c_syntax.mdclasses.metadata.utils;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collection;
@@ -15,11 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class Common {
 
     public static final String EXTENSION_BSL = "bsl";
     public static final String FILE_SEPARATOR = Pattern.quote(System.getProperty("file.separator"));
-    private static final Logger LOGGER = LoggerFactory.getLogger(Common.class.getSimpleName());
+
+    private Common() {
+        // only statics
+    }
 
     public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
 

@@ -12,9 +12,8 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtilsBean;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +25,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@Slf4j
 public class Configuration {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class.getSimpleName());
 
     protected String name;
     protected String uuid;
@@ -85,9 +83,9 @@ public class Configuration {
     public MDObjectBase getChild(MDOType type, String name) {
         HashMap<String, MDObjectBase> childrenByType = children.get(type);
         if (childrenByType != null) {
-            MDObjectBase children = childrenByType.get(name);
-            if(children != null) {
-                return children;
+            MDObjectBase child = childrenByType.get(name);
+            if(child != null) {
+                return child;
             }
         }
 

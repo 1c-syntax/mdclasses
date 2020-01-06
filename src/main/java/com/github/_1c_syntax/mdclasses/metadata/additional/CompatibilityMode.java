@@ -5,7 +5,7 @@ import lombok.Getter;
 public class CompatibilityMode {
 
   @Getter
-  private final int major = 8;
+  private int major = 8;
   @Getter
   private int minor = 0;
   @Getter
@@ -23,7 +23,7 @@ public class CompatibilityMode {
     // парсим версию, например Version_8_3_10
     String newValue = value.toUpperCase().replace("VERSION_", "");
 
-    String[] array = newValue.split("(_|\\.)");
+    String[] array = newValue.split("([_.])");
     setVersionComponents(Integer.parseInt(array[1]), Integer.parseInt(array[2]));
 
   }

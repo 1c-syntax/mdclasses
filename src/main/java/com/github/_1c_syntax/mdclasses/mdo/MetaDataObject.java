@@ -3,8 +3,10 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
+@Slf4j
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataObject {
 
@@ -125,7 +127,7 @@ public class MetaDataObject {
                             propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
                     .get(this);
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't find property for name", e);
         }
 
         return null;
