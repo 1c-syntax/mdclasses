@@ -2,36 +2,54 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Map;
 
-@Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class CommonModule
-        extends MDObjectBase {
+import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrEmptyString;
+import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrFalse;
 
-    protected Boolean server = false;
-    protected Boolean global = false;
-    protected Boolean clientManagedApplication = false;
-    protected Boolean externalConnection = false;
-    protected Boolean clientOrdinaryApplication = false;
-    protected Boolean serverCall = false;
-    protected ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
-    protected Boolean privileged = false;
+@Value
+@EqualsAndHashCode(callSuper = true)
+@JsonDeserialize(builder = CommonModule.CommonModuleBuilderImpl.class)
+@SuperBuilder
+public class CommonModule extends MDObjectBase {
+
+  protected boolean server;
+  protected boolean global;
+  protected boolean clientManagedApplication;
+  protected boolean externalConnection;
+  protected boolean clientOrdinaryApplication;
+  protected boolean serverCall;
+  @Builder.Default
+  protected ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
+  protected boolean privileged;
+
+  @JsonPOJOBuilder(withPrefix = "")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  static final class CommonModuleBuilderImpl extends CommonModule.CommonModuleBuilder<CommonModule, CommonModule.CommonModuleBuilderImpl> {
 
     @JsonProperty("Properties")
-    protected void unpackProperties(Map<String, Object> properties) {
-        this.server = Boolean.valueOf((String) properties.getOrDefault("Server", false));
-        this.global = Boolean.valueOf((String) properties.getOrDefault("Global", false));
-        this.clientManagedApplication = Boolean.valueOf((String) properties.getOrDefault("ClientManagedApplication", false));
-        this.externalConnection = Boolean.valueOf((String) properties.getOrDefault("ExternalConnection", false));
-        this.clientOrdinaryApplication = Boolean.valueOf((String) properties.getOrDefault("ClientOrdinaryApplication", false));
-        this.serverCall = Boolean.valueOf((String) properties.getOrDefault("ServerCall", false));
-        this.returnValuesReuse = ReturnValueReuse.fromValue((String) properties.getOrDefault("ReturnValuesReuse", false));
-        this.privileged = Boolean.valueOf((String) properties.getOrDefault("Privileged", false));
-        this.name = (String) properties.getOrDefault("Name", "");
-        this.comment = (String) properties.getOrDefault("Comment", "");
+    @Override
+    public CommonModule.CommonModuleBuilderImpl properties(Map<String, Object> properties) {
+      super.properties(properties);
+
+      server(getOrFalse(properties, "Server"));
+      global(getOrFalse(properties, "Global"));
+      clientManagedApplication(getOrFalse(properties, "ClientManagedApplication"));
+      externalConnection(getOrFalse(properties, "ExternalConnection"));
+      clientOrdinaryApplication(getOrFalse(properties, "ClientOrdinaryApplication"));
+      serverCall(getOrFalse(properties, "ServerCall"));
+      returnValuesReuse(ReturnValueReuse.fromValue(getOrEmptyString(properties, "ReturnValuesReuse")));
+      privileged(getOrFalse(properties, "Privileged"));
+
+      return this.self();
     }
+  }
 }

@@ -1,8 +1,8 @@
 package com.github._1c_syntax.mdclasses;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
+import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -19,8 +19,7 @@ class MDOSourceOriginTest {
         String basePath = "src/test/resources/metadata/original";
         File XML = new File(basePath, "Configuration.xml");
 
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
 
         try {
             MDObject = xmlMapper.readValue(XML, MetaDataObject.class);
