@@ -14,7 +14,7 @@ public class CompatibilityMode {
   private static final String DONT_USE = "DontUse";
 
   public CompatibilityMode() {
-    setVersionComponents(3, 99);
+    this(DONT_USE);
   }
 
   public CompatibilityMode(String value) {
