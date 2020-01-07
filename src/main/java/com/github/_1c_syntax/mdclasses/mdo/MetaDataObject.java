@@ -2,15 +2,17 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
-@Getter
+@Value
+@RequiredArgsConstructor
 @Slf4j
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataObject {
 
-    //  @JsonProperty("AccountingRegister")
+  //  @JsonProperty("AccountingRegister")
 //  protected AccountingRegister accountingRegister;
 //  @JsonProperty("AccumulationRegister")
 //  protected AccumulationRegister accumulationRegister;
@@ -34,14 +36,14 @@ public class MetaDataObject {
 //  protected CommonCommand commonCommand;
 //  @JsonProperty("CommonForm")
 //  protected CommonForm commonForm;
-    @JsonProperty("CommonModule")
-    protected CommonModule commonModule;
-    //  @JsonProperty("CommonPicture")
+  @JsonProperty("CommonModule")
+  protected CommonModule commonModule;
+  //  @JsonProperty("CommonPicture")
 //  protected CommonPicture commonPicture;
 //  @JsonProperty("CommonTemplate")
 //  protected CommonTemplate commonTemplate;
-    @JsonProperty("Configuration")
-    protected MDOConfiguration configuration;
+  @JsonProperty("Configuration")
+  protected MDOConfiguration configuration;
 //  @JsonProperty("Constant")
 //  protected Constant constant;
 //  @JsonProperty("Cube")
@@ -119,17 +121,17 @@ public class MetaDataObject {
 //  @JsonProperty("XDTOPackage")
 //  protected XDTOPackage xdtoPackage;
 
-    public MDObjectBase getPropertyByName(String propertyName) {
+  public MDObjectBase getPropertyByName(String propertyName) {
 
-        try {
-            return (MDObjectBase) getClass()
-                    .getDeclaredField(
-                            propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
-                    .get(this);
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            LOGGER.error("Can't find property for name", e);
-        }
-
-        return null;
+    try {
+      return (MDObjectBase) getClass()
+        .getDeclaredField(
+          propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
+        .get(this);
+    } catch (IllegalAccessException | NoSuchFieldException e) {
+      LOGGER.error("Can't find property for name", e);
     }
+
+    return null;
+  }
 }

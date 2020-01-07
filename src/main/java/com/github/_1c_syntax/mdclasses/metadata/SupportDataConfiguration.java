@@ -4,7 +4,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -86,7 +85,7 @@ public class SupportDataConfiguration {
   private String readBinFile(Path path) {
     String result = "";
     try {
-      result = new String(Files.readAllBytes(Paths.get(path.toUri())), StandardCharsets.UTF_8);
+      result = Files.readString(Paths.get(path.toUri()));
     } catch (IOException e) {
       LOGGER.error("Don't read bin file", e);
     }

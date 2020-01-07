@@ -26,7 +26,7 @@ class ConfigurationOriginTest {
         assertThat(configuration).isNotNull();
 
         assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
-        assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
+        assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
         assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 13))).isEqualTo(0);
         assertThat(configuration.getModulesByType().size() > 0).isTrue();
 

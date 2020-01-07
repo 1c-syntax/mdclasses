@@ -1,6 +1,5 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
@@ -11,6 +10,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
+import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
@@ -112,8 +112,8 @@ public class Configuration {
             }
         }
 
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
+
         MDObjectBase child = null;
         if (configurationSource == ConfigurationSource.EDT) {
             try {
@@ -186,8 +186,8 @@ public class Configuration {
                 return Configuration.this;
             }
 
-            XmlMapper xmlMapper = new XmlMapper();
-            xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+            XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
+
             MDOConfiguration configurationXML = null;
 
             if (configurationSource == ConfigurationSource.DESIGNER) {
