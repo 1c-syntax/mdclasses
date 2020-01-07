@@ -12,24 +12,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MDOSourceOriginTest {
 
-    @Test
-    void testLoadConfiguration() {
+  @Test
+  void testLoadConfiguration() {
 
-        MetaDataObject MDObject = null;
-        String basePath = "src/test/resources/metadata/original";
-        File XML = new File(basePath, "Configuration.xml");
+    MetaDataObject MDObject = null;
+    String basePath = "src/test/resources/metadata/original";
+    File XML = new File(basePath, "Configuration.xml");
 
-        XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
+    XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
 
-        try {
-            MDObject = xmlMapper.readValue(XML, MetaDataObject.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        assertThat(MDObject).isNotNull();
-        assertThat(MDObject.getConfiguration()).isNotNull();
-
+    try {
+      MDObject = xmlMapper.readValue(XML, MetaDataObject.class);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+
+    assertThat(MDObject).isNotNull();
+    assertThat(MDObject.getConfiguration()).isNotNull();
+
+  }
 
 }

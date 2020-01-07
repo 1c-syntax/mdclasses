@@ -16,67 +16,67 @@ import java.util.regex.Pattern;
 @Slf4j
 public class Common {
 
-    public static final String EXTENSION_BSL = "bsl";
-    public static final String FILE_SEPARATOR = Pattern.quote(System.getProperty("file.separator"));
+  public static final String EXTENSION_BSL = "bsl";
+  public static final String FILE_SEPARATOR = Pattern.quote(System.getProperty("file.separator"));
 
-    private Common() {
-        // only statics
+  private Common() {
+    // only statics
+  }
+
+  public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
+
+    ModuleType moduleType = null;
+
+    if (fileName.equalsIgnoreCase("CommandModule")) {
+      moduleType = ModuleType.CommandModule;
+    } else if (fileName.equalsIgnoreCase("ObjectModule")) {
+      moduleType = ModuleType.ObjectModule;
+    } else if (fileName.equalsIgnoreCase("ManagerModule")) {
+      moduleType = ModuleType.ManagerModule;
+    } else if (fileName.equalsIgnoreCase("ManagedApplicationModule")) {
+      moduleType = ModuleType.ManagedApplicationModule;
+    } else if (fileName.equalsIgnoreCase("OrdinaryApplicationModule")) {
+      moduleType = ModuleType.OrdinaryApplicationModule;
+    } else if (fileName.equalsIgnoreCase("SessionModule")) {
+      moduleType = ModuleType.SessionModule;
+    } else if (fileName.equalsIgnoreCase("RecordSetModule")) {
+      moduleType = ModuleType.RecordSetModule;
+    } else if (fileName.equalsIgnoreCase("ExternalConnectionModule")) {
+      moduleType = ModuleType.ExternalConnectionModule;
+    } else if (fileName.equalsIgnoreCase("ApplicationModule")) {
+      moduleType = ModuleType.ApplicationModule;
+    } else if (fileName.equalsIgnoreCase("ValueManagerModule")) {
+      moduleType = ModuleType.ValueManagerModule;
+    } else if (fileName.equalsIgnoreCase("Module")) {
+      if (secondFileName.equalsIgnoreCase("Form")) {
+        moduleType = ModuleType.FormModule;
+      } else {
+        moduleType = ModuleType.CommonModule;
+      }
+    } else {
+      LOGGER.error("Module type not find: " + fileName);
     }
 
-    public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
+    return moduleType;
 
-        ModuleType moduleType = null;
+  }
 
-        if (fileName.equalsIgnoreCase("CommandModule")) {
-            moduleType = ModuleType.CommandModule;
-        } else if (fileName.equalsIgnoreCase("ObjectModule")) {
-            moduleType = ModuleType.ObjectModule;
-        } else if (fileName.equalsIgnoreCase("ManagerModule")) {
-            moduleType = ModuleType.ManagerModule;
-        } else if (fileName.equalsIgnoreCase("ManagedApplicationModule")) {
-            moduleType = ModuleType.ManagedApplicationModule;
-        } else if (fileName.equalsIgnoreCase("OrdinaryApplicationModule")) {
-            moduleType = ModuleType.OrdinaryApplicationModule;
-        } else if (fileName.equalsIgnoreCase("SessionModule")) {
-            moduleType = ModuleType.SessionModule;
-        } else if (fileName.equalsIgnoreCase("RecordSetModule")) {
-            moduleType = ModuleType.RecordSetModule;
-        } else if (fileName.equalsIgnoreCase("ExternalConnectionModule")) {
-            moduleType = ModuleType.ExternalConnectionModule;
-        } else if (fileName.equalsIgnoreCase("ApplicationModule")) {
-            moduleType = ModuleType.ApplicationModule;
-        } else if (fileName.equalsIgnoreCase("ValueManagerModule")) {
-            moduleType = ModuleType.ValueManagerModule;
-        } else if (fileName.equalsIgnoreCase("Module")) {
-            if (secondFileName.equalsIgnoreCase("Form")) {
-                moduleType = ModuleType.FormModule;
-            } else {
-                moduleType = ModuleType.CommonModule;
-            }
-        } else {
-            LOGGER.error("Module type not find: " + fileName);
-        }
+  public static Map<URI, ModuleType> getModuleTypesByPath(Path rootPath) {
 
-        return moduleType;
+    Map<URI, ModuleType> modulesByType = new HashMap<>();
+    String rootPathString = rootPath.toString() + System.getProperty("file.separator");
+    Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
+    files.parallelStream().forEach(file -> {
+      String[] elementsPath =
+        file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+      String secondFileName = elementsPath[elementsPath.length - 2];
+      String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
+      ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
+      modulesByType.put(file.toURI(), moduleType);
+    });
 
-    }
+    return modulesByType;
 
-    public static Map<URI, ModuleType> getModuleTypesByPath(Path rootPath) {
-
-        Map<URI, ModuleType> modulesByType = new HashMap<>();
-        String rootPathString = rootPath.toString() + System.getProperty("file.separator");
-        Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
-        files.parallelStream().forEach(file -> {
-            String[] elementsPath =
-                    file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
-            String secondFileName = elementsPath[elementsPath.length - 2];
-            String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
-            ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
-            modulesByType.put(file.toURI(), moduleType);
-        });
-
-        return modulesByType;
-
-    }
+  }
 
 }

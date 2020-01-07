@@ -13,9 +13,6 @@ import java.util.Map;
 @Slf4j
 public class SupportDataConfiguration {
 
-  private HashMap<String, SupportVariant> supportMap = new HashMap<>();
-  private Path pathToBinFile;
-
   private static final int POINT_COUNT_CONFIGURATION = 2;
   private static final int SHIFT_CONFIGURATION_VERSION = 3;
   private static final int SHIFT_CONFIGURATION_PRODUCER = 4;
@@ -23,6 +20,8 @@ public class SupportDataConfiguration {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
+  private HashMap<String, SupportVariant> supportMap = new HashMap<>();
+  private Path pathToBinFile;
 
   public SupportDataConfiguration(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
@@ -45,11 +44,11 @@ public class SupportDataConfiguration {
       int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
       LOGGER.debug(String.format(
-          "Конфигурация: %s Версия: %s Поставщик: %s Количество обектов: %s",
-          configurationName,
-          configurationVersion,
-          configurationProducer,
-          countObjectsConfiguration));
+        "Конфигурация: %s Версия: %s Поставщик: %s Количество обектов: %s",
+        configurationName,
+        configurationVersion,
+        configurationProducer,
+        countObjectsConfiguration));
 
       int startObjectPoint = startPoint + SHIFT_OBJECT_COUNT;
       for (int numberObject = 0; numberObject < countObjectsConfiguration - 1; numberObject++) {

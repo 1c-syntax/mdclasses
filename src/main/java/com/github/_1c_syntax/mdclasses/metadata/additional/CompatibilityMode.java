@@ -4,14 +4,13 @@ import lombok.Getter;
 
 public class CompatibilityMode {
 
+  private static final String DONT_USE = "DontUse";
   @Getter
   private int major = 8;
   @Getter
   private int minor = 0;
   @Getter
   private int version = 0;
-
-  private static final String DONT_USE = "DontUse";
 
   public CompatibilityMode() {
     this(DONT_USE);
@@ -34,11 +33,6 @@ public class CompatibilityMode {
 
   public CompatibilityMode(int minor, int version) {
     setVersionComponents(minor, version);
-  }
-
-  private void setVersionComponents(int minor, int version) {
-    this.minor = minor;
-    this.version = version;
   }
 
   public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB) {
@@ -64,6 +58,11 @@ public class CompatibilityMode {
       return 1;
     }
 
+  }
+
+  private void setVersionComponents(int minor, int version) {
+    this.minor = minor;
+    this.version = version;
   }
 
 }
