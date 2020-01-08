@@ -1,10 +1,9 @@
 package com.github._1c_syntax.mdclasses.metadata.utils;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URI;
@@ -14,12 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class Common {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(Common.class.getSimpleName());
 
   public static final String EXTENSION_BSL = "bsl";
   public static final String FILE_SEPARATOR = Pattern.quote(System.getProperty("file.separator"));
+
+  private Common() {
+    // only statics
+  }
 
   public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
 
@@ -66,7 +68,7 @@ public class Common {
     Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
     files.parallelStream().forEach(file -> {
       String[] elementsPath =
-          file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+        file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
       String secondFileName = elementsPath[elementsPath.length - 2];
       String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
       ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);

@@ -1,11 +1,12 @@
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.metadata.ConfigurationBuilder;
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
-import com.github._1c_syntax.mdclasses.metadata.configurations.AbstractConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -19,8 +20,7 @@ public class ConfigurationEDTTest {
   void testBuilder() {
 
     File srcPath = new File("src/test/resources/metadata/edt");
-    ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
@@ -33,14 +33,18 @@ public class ConfigurationEDTTest {
     file = new File("src/test/resources/metadata/edt/src/CommonModules/ПростойОбщийМодуль/Module.bsl");
     assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
 
+    CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
+    assertThat(commonModule).isNotNull();
+    assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
+
+
   }
 
   @Test
   void testErrorBuild() {
 
     Path srcPath = Paths.get("src/test/resources/metadata");
-    ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath);
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = Configuration.newBuilder(srcPath).build();
 
     assertThat(configuration).isNotNull();
 
@@ -52,8 +56,7 @@ public class ConfigurationEDTTest {
   void testBuilderEn() {
 
     File srcPath = new File("src/test/resources/metadata/edt_en");
-    ConfigurationBuilder configurationBuilder = new ConfigurationBuilder(srcPath.toPath());
-    AbstractConfiguration configuration = configurationBuilder.build();
+    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.ENGLISH).isTrue();

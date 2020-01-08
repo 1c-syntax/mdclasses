@@ -1,16 +1,16 @@
-
-
-package com.github._1c_syntax.mdclasses.jabx.original;
+package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 
-
-@Getter
+@Value
+@RequiredArgsConstructor
+@Slf4j
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MetaDataObject
-  extends EntityWithVersion {
+public class MetaDataObject {
 
   //  @JsonProperty("AccountingRegister")
 //  protected AccountingRegister accountingRegister;
@@ -43,7 +43,7 @@ public class MetaDataObject
 //  @JsonProperty("CommonTemplate")
 //  protected CommonTemplate commonTemplate;
   @JsonProperty("Configuration")
-  protected Configuration configuration;
+  protected MDOConfiguration configuration;
 //  @JsonProperty("Constant")
 //  protected Constant constant;
 //  @JsonProperty("Cube")
@@ -121,4 +121,17 @@ public class MetaDataObject
 //  @JsonProperty("XDTOPackage")
 //  protected XDTOPackage xdtoPackage;
 
+  public MDObjectBase getPropertyByName(String propertyName) {
+
+    try {
+      return (MDObjectBase) getClass()
+        .getDeclaredField(
+          propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
+        .get(this);
+    } catch (IllegalAccessException | NoSuchFieldException e) {
+      LOGGER.error("Can't find property for name", e);
+    }
+
+    return null;
+  }
 }
