@@ -11,17 +11,25 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
+import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 @Value
 @Slf4j
@@ -48,8 +56,8 @@ public class Configuration {
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
-    this.children = new HashMap<>();
-    this.modulesByType = new HashMap<>();
+    this.children = Collections.emptyMap();
+    this.modulesByType = Collections.emptyMap();
 
     this.rootPath = null;
     this.name = "";
@@ -100,17 +108,17 @@ public class Configuration {
   private File getMDOPath(MDOType type, String name) {
     if (configurationSource == ConfigurationSource.EDT) {
       return Paths.get(rootPath.toAbsolutePath().toString(),
-        "src", type.getMdoClassName() + "s", name, name + ".mdo").toFile();
+        "src", type.getGroupName(), name, name + ".mdo").toFile();
     } else {
       return Paths.get(rootPath.toAbsolutePath().toString(),
-        type.getMdoClassName() + "s", name + ".xml").toFile();
+        type.getGroupName(), name + ".xml").toFile();
     }
   }
 
-  public MDObjectBase getChild(MDOType type, String name) {
+  public MDObjectBase getChild(MDOType type, String childName) {
     HashMap<String, MDObjectBase> childrenByType = children.get(type);
     if (childrenByType != null) {
-      MDObjectBase child = childrenByType.get(name);
+      MDObjectBase child = childrenByType.get(childName);
       if (child != null) {
         return child;
       }
@@ -121,15 +129,15 @@ public class Configuration {
     MDObjectBase child = null;
     if (configurationSource == ConfigurationSource.EDT) {
       try {
-        child = (MDObjectBase) xmlMapper.readValue(getMDOPath(type, name),
-          Class.forName(MDObjectBase.class.getPackageName() + "." + type.getMdoClassName()));
+        child = (MDObjectBase) xmlMapper.readValue(getMDOPath(type, childName),
+          Class.forName(MDObjectBase.class.getPackageName() + "." + type.getShortClassName()));
       } catch (IOException | ClassNotFoundException e) {
         LOGGER.error(e.getMessage(), e);
       }
     } else if (configurationSource == ConfigurationSource.DESIGNER) {
       try {
-        MetaDataObject metaDataObject = xmlMapper.readValue(getMDOPath(type, name), MetaDataObject.class);
-        child = metaDataObject.getPropertyByName(type.getMdoClassName());
+        MetaDataObject metaDataObject = xmlMapper.readValue(getMDOPath(type, childName), MetaDataObject.class);
+        child = metaDataObject.getPropertyByName(type.getShortClassName());
       } catch (IOException e) {
         LOGGER.error(e.getMessage(), e);
       }
@@ -138,9 +146,41 @@ public class Configuration {
     }
 
     if (child != null) {
-      addChild(type, name, child);
+      addChild(type, childName, child);
     }
     return child;
+  }
+
+  @SneakyThrows
+  public List<MDObjectBase> getChildren(MDOType type) {
+    if (configurationSource == ConfigurationSource.EMPTY) {
+      return Collections.emptyList();
+    }
+
+    List<String> childrenNames = new ArrayList<>();
+    Path rootChildrenPath;
+    int maxDepth = 1;
+    AtomicReference<String> extension = new AtomicReference<>(".xml");
+    if (configurationSource == ConfigurationSource.EDT) {
+      rootChildrenPath = Paths.get(rootPath.toAbsolutePath().toString(), "src", type.getGroupName());
+      maxDepth = 2;
+      extension.set(".mdo");
+    } else {
+      rootChildrenPath = Paths.get(rootPath.toAbsolutePath().toString(), type.getGroupName());
+    }
+
+    try (Stream<Path> files = Files.walk(rootChildrenPath, maxDepth)) {
+      files.map(Path::toString)
+        .filter(f -> f.endsWith(extension.get()))
+        .forEach(f ->
+          childrenNames.add(FilenameUtils.getBaseName(f))
+        );
+    }
+
+    List<MDObjectBase> childrenByType = new ArrayList<>();
+    childrenNames.forEach(childName -> childrenByType.add(getChild(type, childName)));
+
+    return childrenByType;
   }
 
   private void addChild(MDOType type, String name, MDObjectBase child) {
@@ -193,7 +233,6 @@ public class Configuration {
       }
 
       XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
-
       MDOConfiguration configurationXML = null;
 
       if (configurationSource == ConfigurationSource.DESIGNER) {
@@ -205,8 +244,7 @@ public class Configuration {
         }
       } else {
         try {
-          configurationXML = xmlMapper.readValue(pathToConfig.toFile(),
-            MDOConfiguration.class);
+          configurationXML = xmlMapper.readValue(pathToConfig.toFile(), MDOConfiguration.class);
         } catch (IOException e) {
           LOGGER.error(e.getMessage(), e);
         }
