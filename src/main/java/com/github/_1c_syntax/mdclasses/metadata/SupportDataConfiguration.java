@@ -20,8 +20,9 @@ public class SupportDataConfiguration {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
-  private HashMap<String, SupportVariant> supportMap = new HashMap<>();
   private Path pathToBinFile;
+
+  private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
   public SupportDataConfiguration(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
@@ -41,10 +42,14 @@ public class SupportDataConfiguration {
       String configurationVersion = dataStrings[startPoint + SHIFT_CONFIGURATION_VERSION];
       String configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
       String configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
+
+      SupportConfiguration supportConfiguration
+        = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
+
       int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
       LOGGER.debug(String.format(
-        "Конфигурация: %s Версия: %s Поставщик: %s Количество обектов: %s",
+        "Конфигурация: %s Версия: %s Поставщик: %s Количество объектов: %s",
         configurationName,
         configurationVersion,
         configurationProducer,
@@ -57,13 +62,20 @@ public class SupportDataConfiguration {
         int support = Integer.parseInt(dataStrings[currentObjectPoint + 1]);
         String guidObject = dataStrings[currentObjectPoint + 2];
         SupportVariant supportVariant = getSupportVariantByInt(support);
-        supportMap.put(guidObject, supportVariant);
+
+        Map<SupportConfiguration, SupportVariant> map = supportMap.get(guidObject);
+        if (map == null) {
+          map = new HashMap<>();
+          supportMap.put(guidObject, map);
+        }
+        map.put(supportConfiguration, supportVariant);
+
       }
       startPoint = startObjectPoint + 2 + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
     }
   }
 
-  public Map<String, SupportVariant> getSupportMap() {
+  public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
   }
 
