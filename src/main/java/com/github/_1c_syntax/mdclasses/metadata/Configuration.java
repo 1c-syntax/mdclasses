@@ -93,6 +93,10 @@ public class Configuration {
     return new Configuration().new ConfigurationBuilder(pathToRoot);
   }
 
+  public static ConfigurationBuilder newBuilder() {
+    return new Configuration().new ConfigurationBuilder(null);
+  }
+
   private File getMDOPath(MDOType type, String name) {
     if (configurationSource == ConfigurationSource.EDT) {
       return Paths.get(rootPath.toAbsolutePath().toString(),
@@ -162,19 +166,21 @@ public class Configuration {
       this.pathToRoot = pathToRoot;
       this.configurationSource = ConfigurationSource.EMPTY;
 
-      String rootPathString = pathToRoot.toAbsolutePath().toString();
+      if(pathToRoot != null) {
+        String rootPathString = pathToRoot.toAbsolutePath().toString();
 
-      File rootConfiguration = new File(rootPathString, "Configuration.xml");
-      if (rootConfiguration.exists()) {
-        configurationSource = ConfigurationSource.DESIGNER;
-      } else {
-        rootConfiguration = Paths.get(rootPathString, "src", "Configuration", "Configuration.mdo").toFile();
+        File rootConfiguration = new File(rootPathString, "Configuration.xml");
         if (rootConfiguration.exists()) {
-          configurationSource = ConfigurationSource.EDT;
+          configurationSource = ConfigurationSource.DESIGNER;
+        } else {
+          rootConfiguration = Paths.get(rootPathString, "src", "Configuration", "Configuration.mdo").toFile();
+          if (rootConfiguration.exists()) {
+            configurationSource = ConfigurationSource.EDT;
+          }
         }
-      }
-      if (configurationSource != ConfigurationSource.EMPTY) {
-        this.pathToConfig = rootConfiguration.toPath();
+        if (configurationSource != ConfigurationSource.EMPTY) {
+          this.pathToConfig = rootConfiguration.toPath();
+        }
       }
     }
 
