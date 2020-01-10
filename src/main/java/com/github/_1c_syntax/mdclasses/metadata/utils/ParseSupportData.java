@@ -1,5 +1,6 @@
-package com.github._1c_syntax.mdclasses.metadata;
+package com.github._1c_syntax.mdclasses.metadata.utils;
 
+import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class SupportDataConfiguration {
+public class ParseSupportData {
 
   private static final int POINT_COUNT_CONFIGURATION = 2;
   private static final int SHIFT_CONFIGURATION_VERSION = 3;
@@ -20,16 +21,17 @@ public class SupportDataConfiguration {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
-  private HashMap<String, SupportVariant> supportMap = new HashMap<>();
-  private Path pathToBinFile;
 
-  public SupportDataConfiguration(Path pathToBinFile) {
+  private Path pathToBinFile;
+  private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
+
+  public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
     LOGGER.debug("Чтения файла ParentConfigurations.bin");
-    load();
+    read();
   }
 
-  private void load() {
+  private void read() {
 
     String data = readBinFile(pathToBinFile);
     String[] dataStrings = data.split(",");
@@ -43,27 +45,37 @@ public class SupportDataConfiguration {
       String configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
       int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
+      SupportConfiguration supportConfiguration
+        = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
+
       LOGGER.debug(String.format(
-        "Конфигурация: %s Версия: %s Поставщик: %s Количество обектов: %s",
+        "Конфигурация: %s Версия: %s Поставщик: %s Количество объектов: %s",
         configurationName,
         configurationVersion,
         configurationProducer,
         countObjectsConfiguration));
 
       int startObjectPoint = startPoint + SHIFT_OBJECT_COUNT;
-      for (int numberObject = 0; numberObject < countObjectsConfiguration - 1; numberObject++) {
+      for (int numberObject = 0; numberObject < countObjectsConfiguration; numberObject++) {
         int currentObjectPoint = startObjectPoint + numberObject * COUNT_ELEMENT_OBJECT;
         // 0 - не редактируется, 1 - с сохранением поддержки, 2 - снято
-        int support = Integer.parseInt(dataStrings[currentObjectPoint + 1]);
+        int support = Integer.parseInt(dataStrings[currentObjectPoint]);
         String guidObject = dataStrings[currentObjectPoint + 2];
         SupportVariant supportVariant = getSupportVariantByInt(support);
-        supportMap.put(guidObject, supportVariant);
+
+        Map<SupportConfiguration, SupportVariant> map = supportMap.get(guidObject);
+        if (map == null) {
+          map = new HashMap<>();
+          supportMap.put(guidObject, map);
+        }
+        map.put(supportConfiguration, supportVariant);
       }
+
       startPoint = startObjectPoint + 2 + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
     }
   }
 
-  public Map<String, SupportVariant> getSupportMap() {
+  public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
   }
 
@@ -72,9 +84,9 @@ public class SupportDataConfiguration {
     if (support == 0) {
       supportVariant = SupportVariant.NOT_EDITABLE;
     } else if (support == 1) {
-      supportVariant = SupportVariant.SAVED;
+      supportVariant = SupportVariant.EDITABLE_SUPPORT_ENABLED;
     } else if (support == 2) {
-      supportVariant = SupportVariant.OFF;
+      supportVariant = SupportVariant.NOT_SUPPORTED;
     } else {
       supportVariant = SupportVariant.NONE;
     }
