@@ -4,11 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
-import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.*;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
 import lombok.SneakyThrows;
@@ -51,6 +47,7 @@ public class Configuration {
   protected String synchronousPlatformExtensionAndAddInCallUseMode;
 
   protected Map<URI, ModuleType> modulesByType;
+  protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   protected Map<MDOType, HashMap<String, MDObjectBase>> children;
   private Path rootPath;
 
@@ -58,6 +55,7 @@ public class Configuration {
     this.configurationSource = ConfigurationSource.EMPTY;
     this.children = Collections.emptyMap();
     this.modulesByType = Collections.emptyMap();
+    this.modulesBySupport = Collections.emptyMap();
 
     this.rootPath = null;
     this.name = "";
@@ -95,6 +93,7 @@ public class Configuration {
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
     this.modulesByType = Common.getModuleTypesByPath(rootPath);
+    this.modulesBySupport = Common.getModuleSupports(this, this.modulesByType);
   }
 
   public static ConfigurationBuilder newBuilder(Path pathToRoot) {
@@ -194,6 +193,10 @@ public class Configuration {
 
   public ModuleType getModuleType(URI uri) {
     return modulesByType.getOrDefault(uri, ModuleType.Unknown);
+  }
+
+  public Map<SupportConfiguration, SupportVariant> getModuleSupport(URI uri) {
+    return modulesBySupport.getOrDefault(uri, new HashMap<>());
   }
 
   public class ConfigurationBuilder {
