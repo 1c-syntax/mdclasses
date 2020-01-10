@@ -1,7 +1,7 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
-import com.github._1c_syntax.mdclasses.metadata.SupportDataConfiguration;
+import com.github._1c_syntax.mdclasses.metadata.utils.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +10,14 @@ import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SupportDataConfigurationTest {
+public class ParseSupportDataTest {
 
   private final File parentConfigurationsBin = new File("src/test/resources", "ParentConfigurations.bin");
 
   @Test
   public void testRead() {
-    SupportDataConfiguration supportDataConfiguration = new SupportDataConfiguration(parentConfigurationsBin.toPath());
-    assertThat(supportDataConfiguration.getSupportMap().size()).isNotZero();
+    ParseSupportData parseSupportData = new ParseSupportData(parentConfigurationsBin.toPath());
+    assertThat(parseSupportData.getSupportMap().size()).isNotZero();
   }
 
   @Test
@@ -33,10 +33,10 @@ public class SupportDataConfigurationTest {
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_EDITABLE)).isTrue();
 
     path = Paths.get(PATH_TO_SUPPORT, "src/Configuration/SessionModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.SAVED)).isTrue();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.EDITABLE_SUPPORT_ENABLED)).isTrue();
 
     path = Paths.get(PATH_TO_SUPPORT, "src/Documents/ПервыйДокумент/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.OFF)).isTrue();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_SUPPORTED)).isTrue();
 
   }
 
@@ -54,10 +54,10 @@ public class SupportDataConfigurationTest {
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_EDITABLE)).isTrue();
 
     path = Paths.get(PATH_TO_SUPPORT, "Ext/SessionModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.SAVED)).isTrue();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.EDITABLE_SUPPORT_ENABLED)).isTrue();
 
     path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.OFF)).isTrue();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_SUPPORTED)).isTrue();
 
   }
 

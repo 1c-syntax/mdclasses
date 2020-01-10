@@ -1,5 +1,6 @@
-package com.github._1c_syntax.mdclasses.metadata;
+package com.github._1c_syntax.mdclasses.metadata.utils;
 
+import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class SupportDataConfiguration {
+public class ParseSupportData {
 
   private static final int POINT_COUNT_CONFIGURATION = 2;
   private static final int SHIFT_CONFIGURATION_VERSION = 3;
@@ -24,13 +25,13 @@ public class SupportDataConfiguration {
   private Path pathToBinFile;
   private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
-  public SupportDataConfiguration(Path pathToBinFile) {
+  public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
     LOGGER.debug("Чтения файла ParentConfigurations.bin");
-    load();
+    read();
   }
 
-  private void load() {
+  private void read() {
 
     String data = readBinFile(pathToBinFile);
     String[] dataStrings = data.split(",");
@@ -83,9 +84,9 @@ public class SupportDataConfiguration {
     if (support == 0) {
       supportVariant = SupportVariant.NOT_EDITABLE;
     } else if (support == 1) {
-      supportVariant = SupportVariant.SAVED;
+      supportVariant = SupportVariant.EDITABLE_SUPPORT_ENABLED;
     } else if (support == 2) {
-      supportVariant = SupportVariant.OFF;
+      supportVariant = SupportVariant.NOT_SUPPORTED;
     } else {
       supportVariant = SupportVariant.NONE;
     }

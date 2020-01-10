@@ -2,7 +2,6 @@ package com.github._1c_syntax.mdclasses.metadata.utils;
 
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
-import com.github._1c_syntax.mdclasses.metadata.SupportDataConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
@@ -110,8 +109,8 @@ public class Common {
     }
 
     if (fileParentConfiguration.exists()) {
-      SupportDataConfiguration supportDataConfiguration = new SupportDataConfiguration(fileParentConfiguration.toPath());
-      final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = supportDataConfiguration.getSupportMap();
+      ParseSupportData supportData = new ParseSupportData(fileParentConfiguration.toPath());
+      final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = supportData.getSupportMap();
 
       String rootPathString = rootPath.toString() + System.getProperty("file.separator");
       Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
