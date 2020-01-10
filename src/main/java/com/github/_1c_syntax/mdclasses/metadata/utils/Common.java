@@ -228,7 +228,7 @@ public class Common {
     try {
       content = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
     } catch (IOException e) {
-      LOGGER.error("Don't read bin file", e);
+      LOGGER.error("Don't read file", e.getMessage());
     }
     return content;
   }
