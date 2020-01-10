@@ -124,6 +124,7 @@ public class Common {
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
         ModuleType moduleType = modulesByType.get(uri);
         String objectGuid = "";
+        // TODO: доработать поиски гуидов форм
         if (isEDT) {
           objectGuid = getObjectGuidEDT(rootPath, elementsPath, moduleType);
         } else {
