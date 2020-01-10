@@ -15,7 +15,6 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -99,7 +98,7 @@ public class Common {
 
     File fileParentConfiguration;
     if (isEDT) {
-      rootPath = Paths.get(configuration.getRootPath().toString(), "src");
+      rootPath = Path.of(configuration.getRootPath().toString(), "src");
       fileParentConfiguration = new File(rootPath.toString(), "Configuration/ParentConfigurations.bin");
     } else {
       rootPath = configuration.getRootPath();
@@ -211,7 +210,7 @@ public class Common {
     } else {
       path = path + lastElement + "." + extension;
     }
-    return Paths.get(rootPath.toString(), path).toAbsolutePath();
+    return Path.of(rootPath.toString(), path).toAbsolutePath();
   }
 
   public static String findGuidIntoFileXML(File file) {
