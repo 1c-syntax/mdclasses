@@ -20,8 +20,8 @@ public class SupportDataConfiguration {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
-  private Path pathToBinFile;
 
+  private Path pathToBinFile;
   private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
   public SupportDataConfiguration(Path pathToBinFile) {
@@ -42,11 +42,10 @@ public class SupportDataConfiguration {
       String configurationVersion = dataStrings[startPoint + SHIFT_CONFIGURATION_VERSION];
       String configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
       String configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
+      int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
       SupportConfiguration supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
-
-      int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
       LOGGER.debug(String.format(
         "Конфигурация: %s Версия: %s Поставщик: %s Количество объектов: %s",
@@ -56,10 +55,10 @@ public class SupportDataConfiguration {
         countObjectsConfiguration));
 
       int startObjectPoint = startPoint + SHIFT_OBJECT_COUNT;
-      for (int numberObject = 0; numberObject < countObjectsConfiguration - 1; numberObject++) {
+      for (int numberObject = 0; numberObject < countObjectsConfiguration; numberObject++) {
         int currentObjectPoint = startObjectPoint + numberObject * COUNT_ELEMENT_OBJECT;
         // 0 - не редактируется, 1 - с сохранением поддержки, 2 - снято
-        int support = Integer.parseInt(dataStrings[currentObjectPoint + 1]);
+        int support = Integer.parseInt(dataStrings[currentObjectPoint]);
         String guidObject = dataStrings[currentObjectPoint + 2];
         SupportVariant supportVariant = getSupportVariantByInt(support);
 
@@ -69,8 +68,8 @@ public class SupportDataConfiguration {
           supportMap.put(guidObject, map);
         }
         map.put(supportConfiguration, supportVariant);
-
       }
+
       startPoint = startObjectPoint + 2 + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
     }
   }
