@@ -18,7 +18,7 @@ public class CompatibilityMode {
 
   public CompatibilityMode(String value) {
 
-    if (value.equalsIgnoreCase(DONT_USE)) {
+    if (value.equalsIgnoreCase(DONT_USE) || value.isEmpty()) {
       setVersionComponents(3, 99);
       return;
     }
