@@ -39,8 +39,7 @@ public class Common {
 
   public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
 
-    ModuleType moduleType = null;
-
+    ModuleType moduleType;
     if (fileName.equalsIgnoreCase("CommandModule")) {
       moduleType = ModuleType.CommandModule;
     } else if (fileName.equalsIgnoreCase("ObjectModule")) {
@@ -68,11 +67,10 @@ public class Common {
         moduleType = ModuleType.CommonModule;
       }
     } else {
+      moduleType = null;
       LOGGER.error("Module type not find: " + fileName);
     }
-
     return moduleType;
-
   }
 
   public static Map<URI, ModuleType> getModuleTypesByPath(Path rootPath) {
@@ -96,7 +94,7 @@ public class Common {
   public static Map<URI, Map<SupportConfiguration, SupportVariant>> getModuleSupports(Configuration configuration, Map<URI, ModuleType> modulesByType) {
 
     final Path rootPath;
-    boolean isEDT = configuration.getConfigurationSource().equals(ConfigurationSource.EDT);
+    boolean isEDT = configuration.getConfigurationSource() == ConfigurationSource.EDT;
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport = new HashMap<>();
 
     File fileParentConfiguration;
@@ -148,13 +146,8 @@ public class Common {
   }
 
   private static String getObjectGuidEDT(Path rootPath, String[] elementsPath, ModuleType moduleType) {
-    String guid = "";
     Path path = null;
-    if (moduleType == ModuleType.ApplicationModule
-      || moduleType == ModuleType.ExternalConnectionModule
-      || moduleType == ModuleType.ManagedApplicationModule
-      || moduleType == ModuleType.OrdinaryApplicationModule
-      || moduleType == ModuleType.SessionModule) {
+    if (isModuleConfiguration(moduleType)) {
 
       path = new File(rootPath.toString(), "Configuration/Configuration.mdo").toPath();
 
@@ -172,11 +165,7 @@ public class Common {
   private static String getObjectGuidOriginal(Path rootPath, String[] elementsPath, ModuleType moduleType) {
     String guid = "";
     Path path;
-    if (moduleType == ModuleType.ApplicationModule
-      || moduleType == ModuleType.ExternalConnectionModule
-      || moduleType == ModuleType.ManagedApplicationModule
-      || moduleType == ModuleType.OrdinaryApplicationModule
-      || moduleType == ModuleType.SessionModule) {
+    if (isModuleConfiguration(moduleType)) {
       path = new File(rootPath.toString(), "Configuration.xml").toPath();
     } else {
       String currentElement = elementsPath[elementsPath.length - 2];
@@ -213,7 +202,7 @@ public class Common {
       if (position == elementsPath.length - startPosition + 1) {
         break;
       }
-      path += el + System.getProperty("file.separator");
+      path = path + (el + System.getProperty("file.separator"));
       lastElement = el;
       position++;
     }
@@ -243,6 +232,14 @@ public class Common {
       LOGGER.error("Don't read bin file", e);
     }
     return content;
+  }
+
+  public static boolean isModuleConfiguration(ModuleType moduleType) {
+    return moduleType == ModuleType.ApplicationModule
+      || moduleType == ModuleType.ExternalConnectionModule
+      || moduleType == ModuleType.ManagedApplicationModule
+      || moduleType == ModuleType.OrdinaryApplicationModule
+      || moduleType == ModuleType.SessionModule;
   }
 
 }
