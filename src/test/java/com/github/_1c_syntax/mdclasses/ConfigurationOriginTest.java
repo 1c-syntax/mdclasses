@@ -40,6 +40,7 @@ class ConfigurationOriginTest {
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
 
+    assertThat(configuration.getChildren(MDOType.COMMON_MODULE)).hasSize(3);
   }
 
   @Test
