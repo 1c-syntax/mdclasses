@@ -36,7 +36,7 @@ public class Common {
     // only statics
   }
 
-  public static ModuleType changeModuleTypeByFileName(String[] partsFileName) {
+  public static ModuleType getModuleTypeByFileName(String[] partsFileName) {
 
     String fileName = partsFileName[0];
 
@@ -96,7 +96,7 @@ public class Common {
         thirdPath
       };
 
-      ModuleType moduleType = Common.changeModuleTypeByFileName(partsFileName);
+      ModuleType moduleType = getModuleTypeByFileName(partsFileName);
       modulesByType.put(file.toURI(), moduleType);
     });
 
@@ -134,6 +134,7 @@ public class Common {
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
         ModuleType moduleType = modulesByType.get(uri);
         String objectGuid = "";
+        
         // TODO: доработать поиски гуидов форм
         if (isEDT) {
           objectGuid = getObjectGuidEDT(rootPath, elementsPath, moduleType);
