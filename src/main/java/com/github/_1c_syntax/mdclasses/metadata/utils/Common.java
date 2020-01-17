@@ -36,7 +36,9 @@ public class Common {
     // only statics
   }
 
-  public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
+  public static ModuleType changeModuleTypeByFileName(String[] partsFileName) {
+
+    String fileName = partsFileName[0];
 
     ModuleType moduleType;
     if (fileName.equalsIgnoreCase("CommandModule")) {
@@ -60,7 +62,8 @@ public class Common {
     } else if (fileName.equalsIgnoreCase("ValueManagerModule")) {
       moduleType = ModuleType.ValueManagerModule;
     } else if (fileName.equalsIgnoreCase("Module")) {
-      if (secondFileName.equalsIgnoreCase("Form")) {
+      if (partsFileName[1].equalsIgnoreCase("Form")
+        || partsFileName[2].equalsIgnoreCase("Forms")) {
         moduleType = ModuleType.FormModule;
       } else {
         moduleType = ModuleType.CommonModule;
@@ -80,9 +83,19 @@ public class Common {
     files.parallelStream().forEach(file -> {
       String[] elementsPath =
         file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
-      String secondFileName = elementsPath[elementsPath.length - 2];
-      String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
-      ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
+
+      String thirdPath = "";
+      if (elementsPath.length > 2) {
+        thirdPath = elementsPath[elementsPath.length - 3];
+      }
+
+      String[] partsFileName = new String[]{
+        FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]),
+        elementsPath[elementsPath.length - 2],
+        thirdPath
+      };
+
+      ModuleType moduleType = Common.changeModuleTypeByFileName(partsFileName);
       modulesByType.put(file.toURI(), moduleType);
     });
 
