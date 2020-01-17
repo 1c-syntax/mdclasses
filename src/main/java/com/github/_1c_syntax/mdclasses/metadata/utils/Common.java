@@ -84,6 +84,7 @@ public class Common {
       String[] elementsPath =
         file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
+      // TODO: отрефакторить
       String thirdPath = "";
       if (elementsPath.length > 2) {
         thirdPath = elementsPath[elementsPath.length - 3];
