@@ -80,7 +80,9 @@ public class Common {
     Map<URI, ModuleType> modulesByType = new HashMap<>();
     String rootPathString = rootPath.toString() + System.getProperty("file.separator");
     Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
-    files.parallelStream().forEach(file -> {
+
+    // TODO: переделать стримы
+    files.forEach(file -> {
       String[] elementsPath =
         file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
@@ -126,7 +128,9 @@ public class Common {
       String rootPathString = rootPath.toString() + System.getProperty("file.separator");
       Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
 
-      files.parallelStream().forEach(file -> {
+      // TODO: переделать стримы
+      files.forEach(file -> {
+
         URI uri = file.toPath().toAbsolutePath().toUri();
         String[] elementsPath =
           file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
@@ -134,7 +138,7 @@ public class Common {
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
         ModuleType moduleType = modulesByType.get(uri);
         String objectGuid = "";
-        
+
         // TODO: доработать поиски гуидов форм
         if (isEDT) {
           objectGuid = getObjectGuidEDT(rootPath, elementsPath, moduleType);
@@ -166,7 +170,10 @@ public class Common {
       path = new File(rootPath.toString(), "Configuration/Configuration.mdo").toPath();
 
     } else {
-      String second = elementsPath[elementsPath.length - 3];
+      String second = "";
+      if (elementsPath.length >= 3) {
+        second = elementsPath[elementsPath.length - 3];
+      }
       if (second.equalsIgnoreCase("Commands") || (second.equalsIgnoreCase("Forms"))) {
         path = getSimplePath(rootPath, elementsPath, 4, EXTENSION_MDO);
       } else {
@@ -184,7 +191,10 @@ public class Common {
     } else {
       String currentElement = elementsPath[elementsPath.length - 2];
       if (currentElement.equalsIgnoreCase("Ext")) {
-        String second = elementsPath[elementsPath.length - 4];
+        String second = "";
+        if (elementsPath.length >= 4) {
+          second = elementsPath[elementsPath.length - 4];
+        }
         if (second.equalsIgnoreCase("Commands")) {
           path = getSimplePath(rootPath, elementsPath, 5, EXTENSION_XML);
         } else {
