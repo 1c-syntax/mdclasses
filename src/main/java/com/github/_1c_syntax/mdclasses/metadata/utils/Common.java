@@ -36,7 +36,9 @@ public class Common {
     // only statics
   }
 
-  public static ModuleType changeModuleTypeByFileName(String fileName, String secondFileName) {
+  public static ModuleType getModuleTypeByFileName(String[] partsFileName) {
+
+    String fileName = partsFileName[0];
 
     ModuleType moduleType;
     if (fileName.equalsIgnoreCase("CommandModule")) {
@@ -60,7 +62,8 @@ public class Common {
     } else if (fileName.equalsIgnoreCase("ValueManagerModule")) {
       moduleType = ModuleType.ValueManagerModule;
     } else if (fileName.equalsIgnoreCase("Module")) {
-      if (secondFileName.equalsIgnoreCase("Form")) {
+      if (partsFileName[1].equalsIgnoreCase("Form")
+        || partsFileName[2].equalsIgnoreCase("Forms")) {
         moduleType = ModuleType.FormModule;
       } else {
         moduleType = ModuleType.CommonModule;
@@ -77,12 +80,23 @@ public class Common {
     Map<URI, ModuleType> modulesByType = new HashMap<>();
     String rootPathString = rootPath.toString() + System.getProperty("file.separator");
     Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
-    files.parallelStream().forEach(file -> {
-      String[] elementsPath =
-        file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
-      String secondFileName = elementsPath[elementsPath.length - 2];
-      String fileName = FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]);
-      ModuleType moduleType = Common.changeModuleTypeByFileName(fileName, secondFileName);
+
+    files.stream().forEach(file -> {
+      String[] elementsPath = getPartsByPath(file.toPath().toAbsolutePath());
+
+      // TODO: отрефакторить
+      String thirdPath = "";
+      if (elementsPath.length > 2) {
+        thirdPath = elementsPath[elementsPath.length - 3];
+      }
+
+      String[] partsFileName = new String[]{
+        FilenameUtils.getBaseName(elementsPath[elementsPath.length - 1]),
+        elementsPath[elementsPath.length - 2],
+        thirdPath
+      };
+
+      ModuleType moduleType = getModuleTypeByFileName(partsFileName);
       modulesByType.put(file.toURI(), moduleType);
     });
 
@@ -112,14 +126,17 @@ public class Common {
       String rootPathString = rootPath.toString() + System.getProperty("file.separator");
       Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
 
-      files.parallelStream().forEach(file -> {
-        URI uri = file.toPath().toAbsolutePath().toUri();
-        String[] elementsPath =
-          file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+      files.stream().forEach(file -> {
+
+        // FIXME: неправильное поведение, считается от каталога внутри scr
+        var path = file.toPath();
+        URI uri = path.toAbsolutePath().toUri();
+        String[] elementsPath = file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
         ModuleType moduleType = modulesByType.get(uri);
         String objectGuid = "";
+
         // TODO: доработать поиски гуидов форм
         if (isEDT) {
           objectGuid = getObjectGuidEDT(rootPath, elementsPath, moduleType);
@@ -151,7 +168,10 @@ public class Common {
       path = new File(rootPath.toString(), "Configuration/Configuration.mdo").toPath();
 
     } else {
-      String second = elementsPath[elementsPath.length - 3];
+      String second = "";
+      if (elementsPath.length >= 3) {
+        second = elementsPath[elementsPath.length - 3];
+      }
       if (second.equalsIgnoreCase("Commands") || (second.equalsIgnoreCase("Forms"))) {
         path = getSimplePath(rootPath, elementsPath, 4, EXTENSION_MDO);
       } else {
@@ -169,7 +189,10 @@ public class Common {
     } else {
       String currentElement = elementsPath[elementsPath.length - 2];
       if (currentElement.equalsIgnoreCase("Ext")) {
-        String second = elementsPath[elementsPath.length - 4];
+        String second = "";
+        if (elementsPath.length >= 4) {
+          second = elementsPath[elementsPath.length - 4];
+        }
         if (second.equalsIgnoreCase("Commands")) {
           path = getSimplePath(rootPath, elementsPath, 5, EXTENSION_XML);
         } else {
@@ -239,6 +262,16 @@ public class Common {
       || moduleType == ModuleType.ManagedApplicationModule
       || moduleType == ModuleType.OrdinaryApplicationModule
       || moduleType == ModuleType.SessionModule;
+  }
+
+  private static String[] getPartsByPath(Path path) {
+    var count = path.getNameCount();
+    String[] array = new String[count];
+    for (int position = 0; position < path.getNameCount(); position++) {
+      //array[count - 1 - position] = path.getName(position).toString();
+      array[position] = path.getName(position).toString();
+    }
+    return array;
   }
 
 }
