@@ -81,10 +81,8 @@ public class Common {
     String rootPathString = rootPath.toString() + System.getProperty("file.separator");
     Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
 
-    // TODO: переделать стримы
-    files.forEach(file -> {
-      String[] elementsPath =
-        file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+    files.stream().forEach(file -> {
+      String[] elementsPath = getPartsByPath(file.toPath().toAbsolutePath());
 
       // TODO: отрефакторить
       String thirdPath = "";
@@ -128,12 +126,12 @@ public class Common {
       String rootPathString = rootPath.toString() + System.getProperty("file.separator");
       Collection<File> files = FileUtils.listFiles(rootPath.toFile(), new String[]{EXTENSION_BSL}, true);
 
-      // TODO: переделать стримы
-      files.forEach(file -> {
+      files.stream().forEach(file -> {
 
-        URI uri = file.toPath().toAbsolutePath().toUri();
-        String[] elementsPath =
-          file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
+        // FIXME: неправильное поведение, считается от каталога внутри scr
+        var path = file.toPath();
+        URI uri = path.toAbsolutePath().toUri();
+        String[] elementsPath = file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
         ModuleType moduleType = modulesByType.get(uri);
@@ -264,6 +262,16 @@ public class Common {
       || moduleType == ModuleType.ManagedApplicationModule
       || moduleType == ModuleType.OrdinaryApplicationModule
       || moduleType == ModuleType.SessionModule;
+  }
+
+  private static String[] getPartsByPath(Path path) {
+    var count = path.getNameCount();
+    String[] array = new String[count];
+    for (int position = 0; position < path.getNameCount(); position++) {
+      //array[count - 1 - position] = path.getName(position).toString();
+      array[position] = path.getName(position).toString();
+    }
+    return array;
   }
 
 }
