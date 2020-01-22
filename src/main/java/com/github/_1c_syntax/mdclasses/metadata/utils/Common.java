@@ -97,7 +97,7 @@ public class Common {
       };
 
       ModuleType moduleType = getModuleTypeByFileName(partsFileName);
-      modulesByType.put(file.toURI(), moduleType);
+      modulesByType.put(getAbsoluteUri(file), moduleType);
     });
 
     return modulesByType;
@@ -129,8 +129,7 @@ public class Common {
       files.stream().forEach(file -> {
 
         // FIXME: неправильное поведение, считается от каталога внутри scr
-        var path = file.toPath();
-        URI uri = path.toAbsolutePath().toUri();
+        URI uri = getAbsoluteUri(file);
         String[] elementsPath = file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
@@ -272,6 +271,14 @@ public class Common {
       array[position] = path.getName(position).toString();
     }
     return array;
+  }
+
+  public static Path getAbsolutePath(File file) {
+    return file.toPath().toAbsolutePath();
+  }
+
+  public static URI getAbsoluteUri(File file) {
+    return getAbsolutePath(file).toUri();
   }
 
 }
