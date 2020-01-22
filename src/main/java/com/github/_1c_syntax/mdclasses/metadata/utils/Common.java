@@ -97,7 +97,7 @@ public class Common {
       };
 
       ModuleType moduleType = getModuleTypeByFileName(partsFileName);
-      modulesByType.put(file.toURI(), moduleType);
+      modulesByType.put(file.toPath().toAbsolutePath().toUri(), moduleType);
     });
 
     return modulesByType;
