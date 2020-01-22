@@ -4,6 +4,7 @@ import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class ConfigurationEMPTYTest {
         assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
 
         File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ManagerModule.bsl");
-        assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.Unknown);
+        assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.Unknown);
 
         Configuration configuration2 = Configuration.newBuilder().build();
 

@@ -7,6 +7,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -31,10 +32,10 @@ class ConfigurationOriginTest {
     assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
-    assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.ManagerModule);
+    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.ManagerModule);
 
     file = new File("src/test/resources/metadata/original/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl");
-    assertThat(configuration.getModuleType(file.toURI())).isEqualTo(ModuleType.CommonModule);
+    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
 
     CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
     assertThat(commonModule).isNotNull();
