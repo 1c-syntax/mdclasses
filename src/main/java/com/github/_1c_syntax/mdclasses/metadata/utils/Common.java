@@ -63,7 +63,8 @@ public class Common {
       moduleType = ModuleType.ValueManagerModule;
     } else if (fileName.equalsIgnoreCase("Module")) {
       if (partsFileName[1].equalsIgnoreCase("Form")
-        || partsFileName[2].equalsIgnoreCase("Forms")) {
+        || partsFileName[2].equalsIgnoreCase("Forms")
+        || partsFileName[2].equalsIgnoreCase("CommonForms")) {
         moduleType = ModuleType.FormModule;
       } else {
         moduleType = ModuleType.CommonModule;
