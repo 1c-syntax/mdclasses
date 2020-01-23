@@ -34,7 +34,11 @@ public class ConfigurationEDTTest {
     file = new File("src/test/resources/metadata/edt/src/CommonModules/ПростойОбщийМодуль/Module.bsl");
     assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
 
+
     file = new File("src/test/resources/metadata/edt/src/Catalogs/Справочник1/Forms/ФормаЭлемента/Module.bsl");
+    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.FormModule);
+
+    file = new File("src/test/resources/metadata/edt/src/CommonForms/Форма/Module.bsl");
     assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.FormModule);
 
     CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
