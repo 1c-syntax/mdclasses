@@ -13,56 +13,56 @@ import lombok.extern.slf4j.Slf4j;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaDataObject {
 
-  //  @JsonProperty("AccountingRegister")
-//  protected AccountingRegister accountingRegister;
-//  @JsonProperty("AccumulationRegister")
-//  protected AccumulationRegister accumulationRegister;
-//  @JsonProperty("BusinessProcess")
-//  protected BusinessProcess businessProcess;
-//  @JsonProperty("CalculationRegister")
-//  protected CalculationRegister calculationRegister;
-//  @JsonProperty("Catalog")
-//  protected Catalog catalog;
-//  @JsonProperty("ChartOfAccounts")
-//  protected ChartOfAccounts chartOfAccounts;
-//  @JsonProperty("ChartOfCalculationTypes")
-//  protected ChartOfCalculationTypes chartOfCalculationTypes;
-//  @JsonProperty("ChartOfCharacteristicTypes")
-//  protected ChartOfCharacteristicTypes chartOfCharacteristicTypes;
-//  @JsonProperty("CommandGroup")
-//  protected CommandGroup commandGroup;
-//  @JsonProperty("CommonAttribute")
-//  protected CommonAttribute commonAttribute;
-//  @JsonProperty("CommonCommand")
-//  protected CommonCommand commonCommand;
-//  @JsonProperty("CommonForm")
-//  protected CommonForm commonForm;
+  @JsonProperty("AccountingRegister")
+  protected AccountingRegister accountingRegister;
+  @JsonProperty("AccumulationRegister")
+  protected AccumulationRegister accumulationRegister;
+  @JsonProperty("BusinessProcess")
+  protected BusinessProcess businessProcess;
+  @JsonProperty("CalculationRegister")
+  protected CalculationRegister calculationRegister;
+  @JsonProperty("Catalog")
+  protected Catalog catalog;
+  @JsonProperty("ChartOfAccounts")
+  protected ChartOfAccounts chartOfAccounts;
+  @JsonProperty("ChartOfCalculationTypes")
+  protected ChartOfCalculationTypes chartOfCalculationTypes;
+  @JsonProperty("ChartOfCharacteristicTypes")
+  protected ChartOfCharacteristicTypes chartOfCharacteristicTypes;
+  @JsonProperty("CommandGroup")
+  protected CommandGroup commandGroup;
+  @JsonProperty("CommonAttribute")
+  protected CommonAttribute commonAttribute;
+  @JsonProperty("CommonCommand")
+  protected CommonCommand commonCommand;
+  @JsonProperty("CommonForm")
+  protected CommonForm commonForm;
   @JsonProperty("CommonModule")
   protected CommonModule commonModule;
-  //  @JsonProperty("CommonPicture")
-//  protected CommonPicture commonPicture;
-//  @JsonProperty("CommonTemplate")
-//  protected CommonTemplate commonTemplate;
+  @JsonProperty("CommonPicture")
+  protected CommonPicture commonPicture;
+  @JsonProperty("CommonTemplate")
+  protected CommonTemplate commonTemplate;
   @JsonProperty("Configuration")
   protected MDOConfiguration configuration;
-  //  @JsonProperty("Constant")
-//  protected Constant constant;
-//  @JsonProperty("Cube")
+  @JsonProperty("Constant")
+  protected Constant constant;
+  //  @JsonProperty("Cube")
 //  protected Cube cube;
-//  @JsonProperty("DataProcessor")
-//  protected DataProcessor dataProcessor;
-//  @JsonProperty("DefinedType")
-//  protected DefinedType definedType;
-//  @JsonProperty("DimensionTable")
+  @JsonProperty("DataProcessor")
+  protected DataProcessor dataProcessor;
+  @JsonProperty("DefinedType")
+  protected DefinedType definedType;
+  //  @JsonProperty("DimensionTable")
 //  protected DimensionTable dimensionTable;
-//  @JsonProperty("Document")
-//  protected Document document;
-//  @JsonProperty("DocumentJournal")
-//  protected DocumentJournal documentJournal;
-//  @JsonProperty("DocumentNumerator")
-//  protected DocumentNumerator documentNumerator;
-//  @JsonProperty("Enum")
-//  protected Enum _enum;
+  @JsonProperty("Document")
+  protected Document document;
+  @JsonProperty("DocumentJournal")
+  protected DocumentJournal documentJournal;
+  @JsonProperty("DocumentNumerator")
+  protected DocumentNumerator documentNumerator;
+  @JsonProperty("Enum")
+  protected MDOEnum _enum;
 //  @JsonProperty("EventSubscription")
 //  protected EventSubscription eventSubscription;
 //  @JsonProperty("ExchangePlan")
@@ -126,6 +126,8 @@ public class MetaDataObject {
 
     if (type == MDOType.CONFIGURATION) {
       return getConfiguration();
+    } else if (type == MDOType.ENUM) {
+      return get_enum();
     } else {
       String propertyName = type.getShortClassName();
       try {
