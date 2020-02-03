@@ -19,7 +19,6 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @Value
 @Slf4j
@@ -96,13 +95,15 @@ public class Configuration {
 
   public static Configuration create(Path rootPath) {
     ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
-    if (configurationSource == ConfigurationSource.EMPTY) {
-      return create();
+    if (configurationSource != ConfigurationSource.EMPTY) {
+      MDOConfiguration configurationXML = (MDOConfiguration) MDOUtils.getMDObject(configurationSource,
+        rootPath, MDOType.CONFIGURATION, "Configuration");
+      if (configurationXML != null) {
+        return new Configuration(configurationXML, configurationSource, rootPath);
+      }
     }
 
-    MDOConfiguration configurationXML = (MDOConfiguration) MDOUtils.getMDObject(configurationSource,
-      rootPath, MDOType.CONFIGURATION, "Configuration");
-    return new Configuration(Objects.requireNonNull(configurationXML), configurationSource, rootPath);
+    return create();
   }
 
   public MDObjectBase getChild(MDOType type, String childName) {

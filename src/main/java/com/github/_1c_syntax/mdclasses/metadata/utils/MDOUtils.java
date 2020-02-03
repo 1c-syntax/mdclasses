@@ -17,7 +17,13 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -248,7 +254,6 @@ public class MDOUtils {
                                          Path rootPath,
                                          MDOType type,
                                          String name) {
-    XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
     Path mdoPath = getMDOPath(configurationSource, rootPath, type, name);
     if (mdoPath == null || !mdoPath.toFile().exists()) {
       return null;
