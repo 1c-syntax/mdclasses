@@ -22,13 +22,13 @@ class ConfigurationOriginTest {
   void testBuilder() {
 
     File srcPath = new File("src/test/resources/metadata/original");
-    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    Configuration configuration = Configuration.create(srcPath.toPath());
 
     assertThat(configuration).isNotNull();
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
-    assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 13))).isEqualTo(0);
+    assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
     assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
@@ -44,14 +44,14 @@ class ConfigurationOriginTest {
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
 
-    assertThat(configuration.getChildren(MDOType.COMMON_MODULE)).hasSize(3);
+    assertThat(configuration.getChildren(MDOType.COMMON_MODULE)).hasSize(8);
   }
 
   @Test
   void testErrorBuild() {
 
     Path srcPath = Paths.get("src/test/resources/metadata");
-    Configuration configuration = Configuration.newBuilder(srcPath).build();
+    Configuration configuration = Configuration.create(srcPath);
 
     assertThat(configuration).isNotNull();
   }

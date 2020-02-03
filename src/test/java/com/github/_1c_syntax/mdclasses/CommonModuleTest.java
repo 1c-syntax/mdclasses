@@ -16,7 +16,7 @@ public class CommonModuleTest {
   void testBuilderEDT() {
 
     File srcPath = new File("src/test/resources/metadata/edt");
-    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    Configuration configuration = Configuration.create(srcPath.toPath());
 
     CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
       "ПростойОбщийМодуль");
@@ -61,7 +61,7 @@ public class CommonModuleTest {
   @Test
   void testBuilderOrigin() {
     File srcPath = new File("src/test/resources/metadata/original");
-    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    Configuration configuration = Configuration.create(srcPath.toPath());
 
     CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
       "ПростойОбщийМодуль");

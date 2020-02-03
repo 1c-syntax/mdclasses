@@ -2,6 +2,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,7 @@ public class MetaDataObject {
 //  protected CommonTemplate commonTemplate;
   @JsonProperty("Configuration")
   protected MDOConfiguration configuration;
-//  @JsonProperty("Constant")
+  //  @JsonProperty("Constant")
 //  protected Constant constant;
 //  @JsonProperty("Cube")
 //  protected Cube cube;
@@ -121,17 +122,22 @@ public class MetaDataObject {
 //  @JsonProperty("XDTOPackage")
 //  protected XDTOPackage xdtoPackage;
 
-  public MDObjectBase getPropertyByName(String propertyName) {
+  public MDObjectBase getPropertyByType(MDOType type) {
 
-    try {
-      return (MDObjectBase) getClass()
-        .getDeclaredField(
-          propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
-        .get(this);
-    } catch (IllegalAccessException | NoSuchFieldException e) {
-      LOGGER.error("Can't find property for name", e);
+    if (type == MDOType.CONFIGURATION) {
+      return getConfiguration();
+    } else {
+      String propertyName = type.getShortClassName();
+      try {
+        return (MDObjectBase) getClass()
+          .getDeclaredField(
+            propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
+          .get(this);
+      } catch (IllegalAccessException | NoSuchFieldException e) {
+        LOGGER.error("Can't find property for name", e);
+      }
+
+      return null;
     }
-
-    return null;
   }
 }
