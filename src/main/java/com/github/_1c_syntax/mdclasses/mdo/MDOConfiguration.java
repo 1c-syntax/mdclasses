@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -27,32 +28,45 @@ public class MDOConfiguration extends MDObjectBase {
   protected ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   protected CompatibilityMode compatibilityMode;
   protected CompatibilityMode configurationExtensionCompatibilityMode;
+  @Builder.Default
+  protected UseMode modalityUseMode = UseMode.USE;
+  @Builder.Default
+  protected UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
+  @Builder.Default
+  protected UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
 
   protected String defaultRunMode;
   protected String defaultLanguage;
   protected String dataLockControlMode;
   protected String objectAutonumerationMode;
-  protected String modalityUseMode;
-  protected String synchronousPlatformExtensionAndAddInCallUseMode;
 
   @JsonPOJOBuilder(withPrefix = "")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class MDOConfigurationBuilderImpl extends MDOConfiguration.MDOConfigurationBuilder<MDOConfiguration, MDOConfiguration.MDOConfigurationBuilderImpl> {
+  static final class MDOConfigurationBuilderImpl extends
+    MDOConfiguration.MDOConfigurationBuilder<MDOConfiguration, MDOConfiguration.MDOConfigurationBuilderImpl> {
 
     @JsonProperty("Properties")
     @Override
     public MDOConfigurationBuilderImpl properties(Map<String, Object> properties) {
       super.properties(properties);
 
-      scriptVariant(ScriptVariant.fromValue((String) properties.getOrDefault("ScriptVariant", ScriptVariant.ENGLISH.value())));
+      scriptVariant(ScriptVariant.fromValue((String) properties.getOrDefault("ScriptVariant",
+        ScriptVariant.ENGLISH.value())));
       compatibilityMode(new CompatibilityMode(getOrEmptyString(properties, "CompatibilityMode")));
-      configurationExtensionCompatibilityMode(new CompatibilityMode(getOrEmptyString(properties, "ConfigurationExtensionCompatibilityMode")));
+      configurationExtensionCompatibilityMode(new CompatibilityMode(getOrEmptyString(properties,
+        "ConfigurationExtensionCompatibilityMode")));
       defaultRunMode(getOrEmptyString(properties, "DefaultRunMode"));
       defaultLanguage(getOrEmptyString(properties, "DefaultLanguage"));
       dataLockControlMode(getOrEmptyString(properties, "DataLockControlMode"));
       objectAutonumerationMode(getOrEmptyString(properties, "ObjectAutonumerationMode"));
-      modalityUseMode(getOrEmptyString(properties, "ModalityUseMode"));
-      synchronousPlatformExtensionAndAddInCallUseMode(getOrEmptyString(properties, "SynchronousPlatformExtensionAndAddInCallUseMode"));
+      modalityUseMode(UseMode.fromValue((String) properties.getOrDefault("ModalityUseMode",
+        UseMode.USE.value())));
+      synchronousExtensionAndAddInCallUseMode(UseMode.fromValue(
+        (String) properties.getOrDefault("SynchronousExtensionAndAddInCallUseMode",
+          UseMode.USE.value())));
+      synchronousPlatformExtensionAndAddInCallUseMode(UseMode.fromValue(
+        (String) properties.getOrDefault("SynchronousPlatformExtensionAndAddInCallUseMode",
+          UseMode.USE.value())));
 
       return this.self();
     }

@@ -7,6 +7,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,9 @@ class ConfigurationOriginTest {
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
+    assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
+    assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
+    assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
     assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
