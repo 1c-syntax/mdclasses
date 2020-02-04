@@ -48,22 +48,22 @@ public class ParseSupportData {
 
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());
-    Scanner scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8);
+    var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8);
       dataStrings = scanner.findAll(patternSplit)
         .map(matchResult -> matchResult.group(1))
         .toArray(String[]::new);
 
-    int countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
+    var countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
 
-    int startPoint = 3;
-    for (int numberConfiguration = 1; numberConfiguration <= countConfiguration; numberConfiguration++) {
-      String configurationVersion = dataStrings[startPoint + SHIFT_CONFIGURATION_VERSION];
-      String configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
-      String configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
-      int countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
+    var startPoint = 3;
+    for (var numberConfiguration = 1; numberConfiguration <= countConfiguration; numberConfiguration++) {
+      var configurationVersion = dataStrings[startPoint + SHIFT_CONFIGURATION_VERSION];
+      var configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
+      var configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
+      var countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
 
-      SupportConfiguration supportConfiguration
+      var supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
 
       LOGGER.info(String.format(
@@ -73,13 +73,13 @@ public class ParseSupportData {
         configurationProducer,
         countObjectsConfiguration));
 
-      int startObjectPoint = startPoint + SHIFT_OBJECT_COUNT;
-      for (int numberObject = 0; numberObject < countObjectsConfiguration; numberObject++) {
-        int currentObjectPoint = startObjectPoint + numberObject * COUNT_ELEMENT_OBJECT;
+      var startObjectPoint = startPoint + SHIFT_OBJECT_COUNT;
+      for (var numberObject = 0; numberObject < countObjectsConfiguration; numberObject++) {
+        var currentObjectPoint = startObjectPoint + numberObject * COUNT_ELEMENT_OBJECT;
         // 0 - не редактируется, 1 - с сохранением поддержки, 2 - снято
-        int support = Integer.parseInt(dataStrings[currentObjectPoint]);
-        String guidObject = dataStrings[currentObjectPoint + 2];
-        SupportVariant supportVariant = getSupportVariantByInt(support);
+        var support = Integer.parseInt(dataStrings[currentObjectPoint]);
+        var guidObject = dataStrings[currentObjectPoint + 2];
+        var supportVariant = getSupportVariantByInt(support);
 
         Map<SupportConfiguration, SupportVariant> map = supportMap.get(guidObject);
         if (map == null) {
@@ -109,17 +109,6 @@ public class ParseSupportData {
       supportVariant = SupportVariant.NONE;
     }
     return supportVariant;
-  }
-
-  private String readBinFile(Path path) {
-    String result = "";
-    try {
-      result = Files.readString(Paths.get(path.toUri()));
-    } catch (IOException e) {
-      LOGGER.error("Don't read bin file", e);
-    }
-    return result;
-
   }
 
 }
