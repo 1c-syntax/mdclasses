@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,10 +47,11 @@ public class ParseSupportData {
   private void read() throws FileNotFoundException {
 
     String[] dataStrings;
-    final Scanner scanner = new Scanner(new FileInputStream(pathToBinFile.toFile()), "UTF-8");
-    dataStrings = scanner.findAll(patternSplit)
-      .map(matchResult -> matchResult.group(1))
-      .toArray(String[]::new);
+    var fileInputStream = new FileInputStream(pathToBinFile.toFile());
+    Scanner scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8);
+      dataStrings = scanner.findAll(patternSplit)
+        .map(matchResult -> matchResult.group(1))
+        .toArray(String[]::new);
 
     int countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
