@@ -4,15 +4,23 @@ import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 @Slf4j
 public class ParseSupportData {
+
+  // взято из https://stackoverflow.com/questions/18144431/regex-to-split-a-csv
+  private final String regex = "(?:,|\\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\\n]*|(?:\\n|$))";
+  private final Pattern patternSplit = Pattern.compile(regex);
 
   private static final int POINT_COUNT_CONFIGURATION = 2;
   private static final int SHIFT_CONFIGURATION_VERSION = 3;
@@ -27,14 +35,22 @@ public class ParseSupportData {
 
   public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
-    LOGGER.debug("Чтения файла ParentConfigurations.bin");
-    read();
+    LOGGER.info("Чтения файла поставки ParentConfigurations.bin");
+    try {
+      read();
+    } catch (FileNotFoundException e) {
+      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", e);
+    }
   }
 
-  private void read() {
+  private void read() throws FileNotFoundException {
 
-    String data = readBinFile(pathToBinFile);
-    String[] dataStrings = data.split(",");
+    String[] dataStrings;
+    final Scanner scanner = new Scanner(new FileInputStream(pathToBinFile.toFile()), "UTF-8");
+    dataStrings = scanner.findAll(patternSplit)
+      .map(matchResult -> matchResult.group(1))
+      .toArray(String[]::new);
+
     int countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
 
@@ -48,7 +64,7 @@ public class ParseSupportData {
       SupportConfiguration supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
 
-      LOGGER.debug(String.format(
+      LOGGER.info(String.format(
         "Конфигурация: %s Версия: %s Поставщик: %s Количество объектов: %s",
         configurationName,
         configurationVersion,
