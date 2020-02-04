@@ -49,11 +49,11 @@ public enum MDOType {
   private boolean mayHaveForm;
   private boolean mayHaveCommand;
 
-  MDOType(String shortName, String groupName, boolean myHaveForm, boolean myHaveCommand) {
+  MDOType(String shortName, String groupName, boolean mayHaveForm, boolean mayHaveCommand) {
     this.shortClassName = shortName;
     this.groupName = groupName;
-    this.mayHaveForm = myHaveForm;
-    this.mayHaveCommand = myHaveCommand;
+    this.mayHaveForm = mayHaveForm;
+    this.mayHaveCommand = mayHaveCommand;
   }
 
   public String getShortClassName() {
