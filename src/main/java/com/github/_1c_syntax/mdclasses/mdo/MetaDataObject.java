@@ -63,64 +63,64 @@ public class MetaDataObject {
   protected DocumentNumerator documentNumerator;
   @JsonProperty("Enum")
   protected MDOEnum _enum;
-//  @JsonProperty("EventSubscription")
-//  protected EventSubscription eventSubscription;
-//  @JsonProperty("ExchangePlan")
-//  protected ExchangePlan exchangePlan;
+  @JsonProperty("EventSubscription")
+  protected EventSubscription eventSubscription;
+  @JsonProperty("ExchangePlan")
+  protected ExchangePlan exchangePlan;
 //  @JsonProperty("ExternalDataProcessor")
 //  protected ExternalDataProcessor externalDataProcessor;
 //  @JsonProperty("ExternalDataSource")
 //  protected ExternalDataSource externalDataSource;
 //  @JsonProperty("ExternalReport")
 //  protected ExternalReport externalReport;
-//  @JsonProperty("FilterCriterion")
-//  protected FilterCriterion filterCriterion;
-//  @JsonProperty("Form")
-//  protected Form form;
-//  @JsonProperty("FunctionalOption")
-//  protected FunctionalOption functionalOption;
-//  @JsonProperty("FunctionalOptionsParameter")
-//  protected FunctionalOptionsParameter functionalOptionsParameter;
-//  @JsonProperty("HTTPService")
-//  protected HTTPService httpService;
-//  @JsonProperty("InformationRegister")
-//  protected InformationRegister informationRegister;
+  @JsonProperty("FilterCriterion")
+  protected FilterCriterion filterCriterion;
+  @JsonProperty("Form")
+  protected Form form;
+  @JsonProperty("FunctionalOption")
+  protected FunctionalOption functionalOption;
+  @JsonProperty("FunctionalOptionsParameter")
+  protected FunctionalOptionsParameter functionalOptionsParameter;
+  @JsonProperty("HTTPService")
+  protected HTTPService httpService;
+  @JsonProperty("InformationRegister")
+  protected InformationRegister informationRegister;
 //  @JsonProperty("Interface")
-//  protected Interface _interface;
+//  protected MDOInterface _interface;
 //  @JsonProperty("Language")
 //  protected Language language;
 //  @JsonProperty("Recalculation")
 //  protected Recalculation recalculation;
-//  @JsonProperty("Report")
-//  protected Report report;
-//  @JsonProperty("Role")
-//  protected Role role;
-//  @JsonProperty("ScheduledJob")
-//  protected ScheduledJob scheduledJob;
-//  @JsonProperty("Sequence")
-//  protected Sequence sequence;
-//  @JsonProperty("SessionParameter")
-//  protected SessionParameter sessionParameter;
-//  @JsonProperty("SettingsStorage")
-//  protected SettingsStorage settingsStorage;
-//  @JsonProperty("Style")
-//  protected Style style;
-//  @JsonProperty("StyleItem")
-//  protected StyleItem styleItem;
-//  @JsonProperty("Subsystem")
-//  protected Subsystem subsystem;
+  @JsonProperty("Report")
+  protected Report report;
+  @JsonProperty("Role")
+  protected Role role;
+  @JsonProperty("ScheduledJob")
+  protected ScheduledJob scheduledJob;
+  @JsonProperty("Sequence")
+  protected Sequence sequence;
+  @JsonProperty("SessionParameter")
+  protected SessionParameter sessionParameter;
+  @JsonProperty("SettingsStorage")
+  protected SettingsStorage settingsStorage;
+  @JsonProperty("Style")
+  protected Style style;
+  @JsonProperty("StyleItem")
+  protected StyleItem styleItem;
+  @JsonProperty("Subsystem")
+  protected Subsystem subsystem;
 //  @JsonProperty("Table")
 //  protected Table table;
-//  @JsonProperty("Task")
-//  protected Task task;
-//  @JsonProperty("Template")
-//  protected Template template;
-//  @JsonProperty("WSReference")
-//  protected WSReference wsReference;
-//  @JsonProperty("WebService")
-//  protected WebService webService;
-//  @JsonProperty("XDTOPackage")
-//  protected XDTOPackage xdtoPackage;
+  @JsonProperty("Task")
+  protected Task task;
+  @JsonProperty("Template")
+  protected Template template;
+  @JsonProperty("WSReference")
+  protected WSReference wsReference;
+  @JsonProperty("WebService")
+  protected WebService webService;
+  @JsonProperty("XDTOPackage")
+  protected XDTOPackage xdtoPackage;
 
   public MDObjectBase getPropertyByType(MDOType type) {
 
