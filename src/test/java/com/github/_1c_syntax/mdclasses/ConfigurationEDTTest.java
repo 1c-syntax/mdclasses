@@ -21,15 +21,15 @@ public class ConfigurationEDTTest {
   void testBuilder() {
 
     File srcPath = new File("src/test/resources/metadata/edt");
-    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    Configuration configuration = Configuration.create(srcPath.toPath());
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.RUSSIAN).isTrue();
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
     assertThat(configuration.getModulesByType().size() > 0).isTrue();
 
-    File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ManagerModule.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.ManagerModule);
+    File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ValueManagerModule.bsl");
+    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.ValueManagerModule);
 
     file = new File("src/test/resources/metadata/edt/src/CommonModules/ПростойОбщийМодуль/Module.bsl");
     assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
@@ -53,7 +53,7 @@ public class ConfigurationEDTTest {
   void testErrorBuild() {
 
     Path srcPath = Paths.get("src/test/resources/metadata");
-    Configuration configuration = Configuration.newBuilder(srcPath).build();
+    Configuration configuration = Configuration.create(srcPath);
 
     assertThat(configuration).isNotNull();
 
@@ -65,7 +65,7 @@ public class ConfigurationEDTTest {
   void testBuilderEn() {
 
     File srcPath = new File("src/test/resources/metadata/edt_en");
-    Configuration configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    Configuration configuration = Configuration.create(srcPath.toPath());
 
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(configuration.getScriptVariant() == ScriptVariant.ENGLISH).isTrue();
@@ -76,5 +76,4 @@ public class ConfigurationEDTTest {
     assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
 
   }
-
 }

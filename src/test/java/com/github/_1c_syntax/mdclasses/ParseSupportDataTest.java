@@ -25,7 +25,7 @@ public class ParseSupportDataTest {
 
     final var PATH_TO_SUPPORT = "src/test/resources/support/edt";
     var srcPath = new File(PATH_TO_SUPPORT);
-    var configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    var configuration = Configuration.create(srcPath.toPath());
 
     assertThat(configuration.getModulesBySupport().size()).isNotZero();
 
@@ -45,7 +45,7 @@ public class ParseSupportDataTest {
 
     final var PATH_TO_SUPPORT = "src/test/resources/support/original";
     var srcPath = new File(PATH_TO_SUPPORT);
-    var configuration = Configuration.newBuilder(srcPath.toPath()).build();
+    var configuration = Configuration.create(srcPath.toPath());
 
     // пока просто проверим что там чтото есть
     assertThat(configuration.getModulesBySupport().size()).isNotZero();

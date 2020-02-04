@@ -44,5 +44,4 @@ public class MDObjectBase {
   static final class MDObjectBaseBuilderImpl
     extends MDObjectBase.MDObjectBaseBuilder<MDObjectBase, MDObjectBase.MDObjectBaseBuilderImpl> {
   }
-
 }
