@@ -36,7 +36,7 @@ public class ParseSupportData {
 
   public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
-    LOGGER.info("Чтения файла поставки ParentConfigurations.bin");
+    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
     try {
       read();
     } catch (FileNotFoundException e) {
