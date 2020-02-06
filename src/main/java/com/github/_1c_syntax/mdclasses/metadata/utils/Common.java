@@ -5,6 +5,7 @@ import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
+import com.github._1c_syntax.utils.Absolute;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -98,7 +99,7 @@ public class Common {
       };
 
       ModuleType moduleType = getModuleTypeByFileName(partsFileName);
-      modulesByType.put(getAbsoluteUri(file), moduleType);
+      modulesByType.put(Absolute.uri(file), moduleType);
     });
 
     return modulesByType;
@@ -130,7 +131,7 @@ public class Common {
       files.stream().forEach(file -> {
 
         // FIXME: неправильное поведение, считается от каталога внутри scr
-        URI uri = getAbsoluteUri(file);
+        URI uri = Absolute.uri(file);
         String[] elementsPath = file.toPath().toString().replace(rootPathString, "").split(FILE_SEPARATOR);
 
         Map<SupportConfiguration, SupportVariant> moduleSupport = null;
@@ -272,14 +273,6 @@ public class Common {
       array[position] = path.getName(position).toString();
     }
     return array;
-  }
-
-  public static Path getAbsolutePath(File file) {
-    return file.toPath().toAbsolutePath();
-  }
-
-  public static URI getAbsoluteUri(File file) {
-    return getAbsolutePath(file).toUri();
   }
 
 }
