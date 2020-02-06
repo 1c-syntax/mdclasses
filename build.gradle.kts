@@ -29,7 +29,7 @@ dependencies {
     // прочее
     implementation("commons-io", "commons-io", "2.6")
     implementation("org.apache.commons", "commons-lang3", "3.9")
-    implementation("com.github.1c-syntax", "utils", "947feabd6c5d774fc547ad0c2e386803de844d83")
+    implementation("com.github.1c-syntax", "utils", "0.2.0")
     // генерики
     compileOnly("org.projectlombok", "lombok", lombok.version)
     // тестирование
