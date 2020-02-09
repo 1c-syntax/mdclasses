@@ -67,7 +67,7 @@ public class MetaDataObject {
   protected EventSubscription eventSubscription;
   @JsonProperty("ExchangePlan")
   protected ExchangePlan exchangePlan;
-//  @JsonProperty("ExternalDataProcessor")
+  //  @JsonProperty("ExternalDataProcessor")
 //  protected ExternalDataProcessor externalDataProcessor;
 //  @JsonProperty("ExternalDataSource")
 //  protected ExternalDataSource externalDataSource;
@@ -85,11 +85,11 @@ public class MetaDataObject {
   protected HTTPService httpService;
   @JsonProperty("InformationRegister")
   protected InformationRegister informationRegister;
-//  @JsonProperty("Interface")
-//  protected MDOInterface _interface;
-//  @JsonProperty("Language")
-//  protected Language language;
-//  @JsonProperty("Recalculation")
+  @JsonProperty("Interface")
+  protected MDOInterface _interface;
+  @JsonProperty("Language")
+  protected Language language;
+  //  @JsonProperty("Recalculation")
 //  protected Recalculation recalculation;
   @JsonProperty("Report")
   protected Report report;
@@ -109,7 +109,7 @@ public class MetaDataObject {
   protected StyleItem styleItem;
   @JsonProperty("Subsystem")
   protected Subsystem subsystem;
-//  @JsonProperty("Table")
+  //  @JsonProperty("Table")
 //  protected Table table;
   @JsonProperty("Task")
   protected Task task;
@@ -128,6 +128,16 @@ public class MetaDataObject {
       return getConfiguration();
     } else if (type == MDOType.ENUM) {
       return get_enum();
+    } else if (type == MDOType.INTERFACE) {
+      return get_interface();
+    } else if (type == MDOType.HTTP_SERVICE) {
+      return getHttpService();
+    } else if (type == MDOType.WEB_SERVICE) {
+      return getWebService();
+    } else if (type == MDOType.WS_REFERENCE) {
+      return getWsReference();
+    } else if (type == MDOType.XDTO_PACKAGE) {
+      return getXdtoPackage();
     } else {
       String propertyName = type.getShortClassName();
       try {

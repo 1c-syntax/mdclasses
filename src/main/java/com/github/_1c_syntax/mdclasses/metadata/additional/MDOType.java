@@ -31,6 +31,8 @@ public enum MDOType {
   FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters", false, false),
   HTTP_SERVICE("HTTPService", "HTTPServices", false, false),
   INFORMATION_REGISTER("InformationRegister", "InformationRegisters", true, true),
+  INTERFACE("Interface", "Interfaces", true, true),
+  LANGUAGES("Language", "Languages", false, false),
   REPORT("Report", "Reports", true, true),
   ROLE("Role", "Roles", false, false),
   SCHEDULED_JOB("ScheduledJob", "ScheduledJobs", false, false),
