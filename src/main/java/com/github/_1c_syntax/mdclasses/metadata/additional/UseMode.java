@@ -12,14 +12,14 @@ public enum UseMode {
 
   private final String value;
 
-  UseMode(String v) {
-    this.value = v;
+  UseMode(String value) {
+    this.value = value;
   }
 
   public static UseMode fromValue(String v) {
-    for (UseMode c : UseMode.values()) {
-      if (c.value.equals(v)) {
-        return c;
+    for (UseMode useMode : UseMode.values()) {
+      if (useMode.value.equals(v)) {
+        return useMode;
       }
     }
     throw new IllegalArgumentException(v);
