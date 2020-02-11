@@ -16,13 +16,13 @@ public enum UseMode {
     this.value = value;
   }
 
-  public static UseMode fromValue(String v) {
+  public static UseMode fromValue(String value) {
     for (UseMode useMode : UseMode.values()) {
-      if (useMode.value.equals(v)) {
+      if (useMode.value.equals(value)) {
         return useMode;
       }
     }
-    throw new IllegalArgumentException(v);
+    throw new IllegalArgumentException(value);
   }
 
   public String value() {
