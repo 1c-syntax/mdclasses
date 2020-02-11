@@ -8,6 +8,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.utils.MDOUtils;
 import lombok.SneakyThrows;
@@ -36,8 +37,9 @@ public class Configuration {
   protected String defaultLanguage;
   protected String dataLockControlMode;
   protected String objectAutonumerationMode;
-  protected String modalityUseMode;
-  protected String synchronousPlatformExtensionAndAddInCallUseMode;
+  protected UseMode modalityUseMode;
+  protected UseMode synchronousExtensionAndAddInCallUseMode;
+  protected UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   protected Map<URI, ModuleType> modulesByType;
   protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
@@ -62,8 +64,9 @@ public class Configuration {
     this.defaultLanguage = "";
     this.dataLockControlMode = "";
     this.objectAutonumerationMode = "";
-    this.modalityUseMode = "";
-    this.synchronousPlatformExtensionAndAddInCallUseMode = "";
+    this.modalityUseMode = UseMode.USE;
+    this.synchronousExtensionAndAddInCallUseMode = UseMode.USE;
+    this.synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
   }
 
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
@@ -83,6 +86,7 @@ public class Configuration {
     this.dataLockControlMode = configurationXml.getDataLockControlMode();
     this.objectAutonumerationMode = configurationXml.getObjectAutonumerationMode();
     this.modalityUseMode = configurationXml.getModalityUseMode();
+    this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
     this.modulesByType = MDOUtils.getModuleTypesByPath(configurationSource, rootPath);
