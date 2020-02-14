@@ -60,7 +60,9 @@ public enum MDOType {
   }
 
   public String getShortClassName() {
-    if (this.equals(CONFIGURATION) || this.equals(ENUM)) {
+    if (this == CONFIGURATION
+        || this == ENUM
+        || this == INTERFACE) {
       return "MDO" + shortClassName;
     }
     return shortClassName;

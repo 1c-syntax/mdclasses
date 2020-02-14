@@ -124,32 +124,33 @@ public class MetaDataObject {
 
   public MDObjectBase getPropertyByType(MDOType type) {
 
-    if (type == MDOType.CONFIGURATION) {
-      return getConfiguration();
-    } else if (type == MDOType.ENUM) {
-      return get_enum();
-    } else if (type == MDOType.INTERFACE) {
-      return get_interface();
-    } else if (type == MDOType.HTTP_SERVICE) {
-      return getHttpService();
-    } else if (type == MDOType.WEB_SERVICE) {
-      return getWebService();
-    } else if (type == MDOType.WS_REFERENCE) {
-      return getWsReference();
-    } else if (type == MDOType.XDTO_PACKAGE) {
-      return getXdtoPackage();
-    } else {
-      String propertyName = type.getShortClassName();
-      try {
-        return (MDObjectBase) getClass()
-          .getDeclaredField(
-            propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
-          .get(this);
-      } catch (IllegalAccessException | NoSuchFieldException e) {
-        LOGGER.error("Can't find property for name", e);
-      }
+    switch (type) {
+      case CONFIGURATION:
+        return getConfiguration();
+      case ENUM:
+        return get_enum();
+      case INTERFACE:
+        return get_interface();
+      case HTTP_SERVICE:
+        return getHttpService();
+      case WEB_SERVICE:
+        return getWebService();
+      case WS_REFERENCE:
+        return getWsReference();
+      case XDTO_PACKAGE:
+        return getXdtoPackage();
+      default:
+        String propertyName = type.getShortClassName();
+        try {
+          return (MDObjectBase) getClass()
+            .getDeclaredField(
+              propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
+            .get(this);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+          LOGGER.error("Can't find property for name", e);
+        }
 
-      return null;
+        return null;
     }
   }
 }
