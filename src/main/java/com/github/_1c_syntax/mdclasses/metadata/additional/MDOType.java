@@ -28,8 +28,11 @@ public enum MDOType {
   EXCHANGE_PLAN("ExchangePlan", "ExchangePlans", true, true),
   FILTER_CRITERION("FilterCriterion", "FilterCriteria", true, true),
   FUNCTIONAL_OPTION("FunctionalOption", "FunctionalOptions", false, false),
+  FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters", false, false),
   HTTP_SERVICE("HTTPService", "HTTPServices", false, false),
   INFORMATION_REGISTER("InformationRegister", "InformationRegisters", true, true),
+  INTERFACE("Interface", "Interfaces", true, true),
+  LANGUAGES("Language", "Languages", false, false),
   REPORT("Report", "Reports", true, true),
   ROLE("Role", "Roles", false, false),
   SCHEDULED_JOB("ScheduledJob", "ScheduledJobs", false, false),
@@ -57,7 +60,9 @@ public enum MDOType {
   }
 
   public String getShortClassName() {
-    if (this.equals(CONFIGURATION)) {
+    if (this == CONFIGURATION
+        || this == ENUM
+        || this == INTERFACE) {
       return "MDO" + shortClassName;
     }
     return shortClassName;

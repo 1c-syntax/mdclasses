@@ -327,8 +327,13 @@ public class MDOUtils {
               }
             });
 
-            modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, mdoType, mdoName));
-            modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, mdoType, mdoName));
+            if (mdoType.isMayHaveForm()) {
+              modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, mdoType, mdoName));
+            }
+
+            if (mdoType.isMayHaveCommand()) {
+              modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, mdoType, mdoName));
+            }
           }
         });
     }
@@ -344,21 +349,19 @@ public class MDOUtils {
                                                                 String subdir,
                                                                 ModuleType moduleType) {
     Map<URI, ModuleType> modulesByType = new HashMap<>();
-    if (mdoType.isMayHaveForm()) {
-      var rootPath = Paths.get(folder.toString(), name, subdir);
 
-      if (rootPath.toFile().exists()) {
-        try (Stream<Path> files = Files.walk(rootPath, 1)) {
-          files
-            .filter((Path f) -> Files.isDirectory(f))
-            .forEach(mdoPath -> {
-              var formName = FilenameUtils.getBaseName(mdoPath.toString());
-              var modulePath = getModulePath(configurationSource, rootPath, formName, moduleType);
-              if (modulePath != null && modulePath.toFile().exists()) {
-                modulesByType.put(modulePath.toUri(), moduleType);
-              }
-            });
-        }
+    var rootPath = Paths.get(folder.toString(), name, subdir);
+    if (rootPath.toFile().exists()) {
+      try (Stream<Path> files = Files.walk(rootPath, 1)) {
+        files
+          .filter((Path f) -> Files.isDirectory(f))
+          .forEach(mdoPath -> {
+            var formName = FilenameUtils.getBaseName(mdoPath.toString());
+            var modulePath = getModulePath(configurationSource, rootPath, formName, moduleType);
+            if (modulePath != null && modulePath.toFile().exists()) {
+              modulesByType.put(modulePath.toUri(), moduleType);
+            }
+          });
       }
     }
 
