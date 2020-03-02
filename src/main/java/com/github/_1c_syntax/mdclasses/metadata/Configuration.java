@@ -71,7 +71,7 @@ public class Configuration {
 
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
     this.configurationSource = configurationSource;
-    this.children = new HashMap<>();
+    this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
     this.rootPath = rootPath;
 
     this.name = configurationXml.getName();
@@ -90,7 +90,7 @@ public class Configuration {
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
     this.modulesByType = MDOUtils.getModuleTypesByPath(configurationSource, rootPath);
-    this.modulesBySupport = Common.getModuleSupports(this, this.modulesByType);
+    this.modulesBySupport = Common.getModuleSupports(this);
   }
 
   public static Configuration create() {
