@@ -3,6 +3,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.utils.MDOUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -537,6 +538,21 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof MDOInterface).isTrue();
     assertThat(mdo.getName()).isEqualTo("Интерфейс1");
     assertThat(mdo.getUuid()).isEqualTo("874d641c-12f7-4db7-bde2-dd72c3d5b522");
+  }
+
+  @Test
+  void childrenTest() {
+    var allChildren = MDOUtils.getAllChildren(ConfigurationSource.EDT,
+      Paths.get(FilenameUtils.getPath(SRC_EDT)), false);
+    assertThat(allChildren).isNotNull();
+    assertThat(allChildren).hasSize(44);
+    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNull();
+
+    allChildren = MDOUtils.getAllChildren(ConfigurationSource.DESIGNER,
+      Paths.get(SRC_DESIGNER), true);
+    assertThat(allChildren).isNotNull();
+    assertThat(allChildren).hasSize(45);
+    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNotNull();
   }
 
   private Path getMDOPathEDT(String path) {

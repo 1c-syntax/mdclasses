@@ -24,8 +24,8 @@ public class ParseSupportDataTest {
   void testConfigurationSupportEDT() {
 
     final var PATH_TO_SUPPORT = "src/test/resources/support/edt";
-    var srcPath = new File(PATH_TO_SUPPORT);
-    var configuration = Configuration.create(srcPath.toPath());
+    var srcPath = Paths.get(PATH_TO_SUPPORT).toAbsolutePath();
+    var configuration = Configuration.create(srcPath);
 
     assertThat(configuration.getModulesBySupport().size()).isNotZero();
 

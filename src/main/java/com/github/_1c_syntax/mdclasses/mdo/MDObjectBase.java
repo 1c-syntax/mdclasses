@@ -4,16 +4,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
+import java.net.URI;
 import java.util.Map;
 
 import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrEmptyString;
 
-@Value
+@Data
 @NonFinal
 @JsonDeserialize(builder = MDObjectBase.MDObjectBaseBuilderImpl.class)
 @SuperBuilder
@@ -23,6 +25,8 @@ public class MDObjectBase {
   protected String name;
   @Builder.Default
   protected String comment = "";
+  protected URI mdoURI;
+  protected Map<URI, ModuleType> modulesByType;
 
   public abstract static class MDObjectBaseBuilder
     <C extends MDObjectBase, B extends MDObjectBase.MDObjectBaseBuilder<C, B>> {
@@ -35,6 +39,18 @@ public class MDObjectBase {
       comment(getOrEmptyString(properties, "Comment"));
 
       return this.self();
+    }
+  }
+
+  public void setMdoURI(URI uri) {
+    if (this.mdoURI == null) {
+      this.mdoURI = uri;
+    }
+  }
+
+  public void setModulesByType(Map<URI, ModuleType> modulesByType) {
+    if (this.modulesByType == null) {
+      this.modulesByType = modulesByType;
     }
   }
 
