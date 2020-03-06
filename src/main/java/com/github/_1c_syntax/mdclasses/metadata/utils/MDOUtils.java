@@ -352,10 +352,6 @@ public class MDOUtils {
         }
       });
 
-      if (mdoType.isMayHaveForm()) {
-        modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, mdoName));
-      }
-
       if (mdoType.isMayHaveCommand()) {
         modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, mdoName));
       }
@@ -385,8 +381,15 @@ public class MDOUtils {
       }
 
       getMDOFilesInFolder(configurationSource, folder)
-        .forEach(mdoPath -> modulesByType.putAll(
-          getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType)));
+        .forEach(mdoPath -> {
+            modulesByType.putAll(
+              getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
+            modulesByType.putAll(
+              getFormsMDOModuleTypes(configurationSource,
+                folder,
+                FilenameUtils.getBaseName(mdoPath.toString())));
+          }
+        );
     }
 
     return modulesByType;
