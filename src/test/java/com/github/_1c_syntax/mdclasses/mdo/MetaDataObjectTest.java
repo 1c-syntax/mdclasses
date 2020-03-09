@@ -47,6 +47,9 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof Catalog).isTrue();
     assertThat(mdo.getName()).isEqualTo("Справочник1");
     assertThat(mdo.getUuid()).isEqualTo("eeef463d-d5e7-42f2-ae53-10279661f59d");
+    assertThat(mdo.getForms()).isNotEmpty();
+    assertThat(mdo.getForms()).hasSize(3);
+    assertThat(mdo.getForms().stream().anyMatch(form -> form.getName().equals("ФормаЭлемента"))).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.CHART_OF_ACCOUNTS, getMDOPathEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1.mdo"));
     assertThat(mdo).isNotNull();
@@ -143,6 +146,11 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof Document).isTrue();
     assertThat(mdo.getName()).isEqualTo("Документ1");
     assertThat(mdo.getUuid()).isEqualTo("ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd");
+    assertThat(mdo.getForms()).isNotNull();
+    var forms = mdo.getForms();
+    assertThat(forms).hasSize(3);
+    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаДокумента"))).isTrue();
+    assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.ENUM, getMDOPathEDT("Enums/Перечисление1/Перечисление1.mdo"));
     assertThat(mdo).isNotNull();
@@ -303,6 +311,9 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof Catalog).isTrue();
     assertThat(mdo.getName()).isEqualTo("Справочник1");
     assertThat(mdo.getUuid()).isEqualTo("eeef463d-d5e7-42f2-ae53-10279661f59d");
+    assertThat(mdo.getForms()).isNotEmpty();
+    assertThat(mdo.getForms()).hasSize(3);
+    assertThat(mdo.getForms().stream().anyMatch(form -> form.getName().equals("ФормаЭлемента"))).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.CHART_OF_ACCOUNTS, getMDOPathDesigner("ChartsOfAccounts/ПланСчетов1.xml"));
     assertThat(mdo).isNotNull();
@@ -399,6 +410,15 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof Document).isTrue();
     assertThat(mdo.getName()).isEqualTo("Документ1");
     assertThat(mdo.getUuid()).isEqualTo("ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd");
+
+    mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.DOCUMENT, getMDOPathDesigner("Documents/ПоступлениеТоваровУслуг.xml"));
+    assertThat(mdo).isNotNull();
+    assertThat(mdo instanceof Document).isTrue();
+    assertThat(mdo.getForms()).isNotNull();
+    var forms = mdo.getForms();
+    assertThat(forms).hasSize(6);
+    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваровИзЗаказа"))).isTrue();
+    assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.ENUM, getMDOPathDesigner("Enums/Перечисление1.xml"));
     assertThat(mdo).isNotNull();

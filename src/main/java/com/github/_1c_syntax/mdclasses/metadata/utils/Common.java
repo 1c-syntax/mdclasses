@@ -51,6 +51,14 @@ public class Common {
             if (!mdoModuleSupport.isEmpty()) {
               modulesBySupport.putAll(mdoModuleSupport);
             }
+            if (mdObject.getForms() != null) {
+              mdObject.getForms().forEach(form -> {
+                var formSupport = getMDObjectSupport(supportMap, form);
+                if (!formSupport.isEmpty()) {
+                  modulesBySupport.putAll(formSupport);
+                }
+              });
+            }
           })
         );
     }

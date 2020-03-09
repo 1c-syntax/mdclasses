@@ -66,6 +66,7 @@ class MDOUtilsTest {
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Commands", "ДокументыПоступления", "Ext", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
     correct.put(Paths.get(srcPath, "CommonCommands", "ОбщаяКоманда1", "Ext", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
     correct.put(Paths.get(srcPath, "Catalogs", "Справочник1", "Commands", "Команда1", "Ext", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
+    correct.put(Paths.get(srcPath, "Catalogs", "Справочник1", "Forms", "ФормаВыбора", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Ext", "ManagerModule.bsl").toUri(), ModuleType.ManagerModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаСпискаДокументов", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаСписка", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);

@@ -1,8 +1,8 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
-import com.github._1c_syntax.mdclasses.metadata.utils.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
+import com.github._1c_syntax.mdclasses.metadata.utils.ParseSupportData;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -38,6 +38,9 @@ public class ParseSupportDataTest {
     path = Paths.get(PATH_TO_SUPPORT, "src/Documents/ПервыйДокумент/ObjectModule.bsl").toAbsolutePath();
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_SUPPORTED)).isTrue();
 
+    path = Paths.get(PATH_TO_SUPPORT, "src/Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Module.bsl").toAbsolutePath();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_EDITABLE)).isTrue();
+
   }
 
   @Test
@@ -58,7 +61,8 @@ public class ParseSupportDataTest {
 
     path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl").toAbsolutePath();
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_SUPPORTED)).isTrue();
-
+    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl").toAbsolutePath();
+    assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_EDITABLE)).isTrue();
   }
 
 }

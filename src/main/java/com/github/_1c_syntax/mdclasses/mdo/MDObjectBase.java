@@ -11,6 +11,8 @@ import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrEmptyString;
@@ -28,6 +30,8 @@ public class MDObjectBase {
   protected URI mdoURI;
   protected Map<URI, ModuleType> modulesByType;
 
+  protected List<Form> forms;
+
   public abstract static class MDObjectBaseBuilder
     <C extends MDObjectBase, B extends MDObjectBase.MDObjectBaseBuilder<C, B>> {
 
@@ -40,6 +44,23 @@ public class MDObjectBase {
 
       return this.self();
     }
+
+    @JsonProperty("forms")
+    protected MDObjectBaseBuilder<C, B> forms(Map<String, Object> properties) {
+
+      if (forms == null) {
+        forms = new ArrayList<>();
+      }
+      forms.add(
+        Form.builder()
+          .comment(getOrEmptyString(properties, "comment"))
+          .uuid(getOrEmptyString(properties, "uuid"))
+          .name(getOrEmptyString(properties, "name"))
+          .build());
+
+      return this.self();
+    }
+
   }
 
   public void setMdoURI(URI uri) {
@@ -51,6 +72,13 @@ public class MDObjectBase {
   public void setModulesByType(Map<URI, ModuleType> modulesByType) {
     if (this.modulesByType == null) {
       this.modulesByType = modulesByType;
+      // todo реализовать заполнение для форм
+    }
+  }
+
+  public void setForms(List<Form> forms) {
+    if (this.forms == null) {
+      this.forms = forms;
     }
   }
 

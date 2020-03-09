@@ -33,7 +33,7 @@ class ConfigurationOriginTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
-    assertThat(configuration.getModulesByType().size() > 0).isTrue();
+    assertThat(configuration.getModulesByType()).hasSize(22);
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
     assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.ManagerModule);
