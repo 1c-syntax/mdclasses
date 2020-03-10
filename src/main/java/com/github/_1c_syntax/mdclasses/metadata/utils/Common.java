@@ -4,6 +4,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,12 +65,30 @@ public class Common {
     return modulesBySupport;
   }
 
+  public static Map<URI, ModuleType> getModuleTypesByPath(Configuration configuration) {
+    Map<URI, ModuleType> modulesByType = new HashMap<>();
+
+    configuration.getChildren()
+      .forEach((mdoType, stringMDObjectBaseMap) ->
+        stringMDObjectBaseMap.forEach((name, mdObject) -> {
+            if (mdObject.getModulesByType() != null) {
+              mdObject.getModulesByType().forEach(modulesByType::put);
+            }
+            if (mdObject.getForms() != null) {
+              mdObject.getForms().forEach(form -> {
+                if (form.getModulesByType() != null) {
+                  form.getModulesByType().forEach(modulesByType::put);
+                }
+              });
+            }
+          }
+        ));
+    return modulesByType;
+  }
+
   private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(Map<String, Map<SupportConfiguration, SupportVariant>> supportMap, MDObjectBase mdObject) {
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport = new HashMap<>();
     Set<URI> uris = new HashSet<>();
-    if (mdObject.getMdoURI() != null) {
-      uris.add(mdObject.getMdoURI());
-    }
     if (mdObject.getModulesByType() != null) {
       mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
     }

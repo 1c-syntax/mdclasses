@@ -89,7 +89,7 @@ public class Configuration {
     this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
-    this.modulesByType = MDOUtils.getModuleTypesByPath(configurationSource, rootPath);
+    this.modulesByType = Common.getModuleTypesByPath(this);
     this.modulesBySupport = Common.getModuleSupports(this);
   }
 
