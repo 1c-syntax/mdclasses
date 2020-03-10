@@ -4,6 +4,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
@@ -11,11 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.File;
 import java.net.URI;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 @Slf4j
 public class Common {
@@ -44,24 +42,27 @@ public class Common {
       ParseSupportData supportData = new ParseSupportData(fileParentConfiguration.toPath());
       final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = supportData.getSupportMap();
 
-      configuration.getChildren()
-        .forEach((mdoType, stringMDObjectBaseMap) ->
-          stringMDObjectBaseMap.forEach((name, mdObject) -> {
-            var mdoModuleSupport = getMDObjectSupport(supportMap, mdObject);
-            if (!mdoModuleSupport.isEmpty()) {
-              modulesBySupport.putAll(mdoModuleSupport);
-            }
-            if (mdObject.getForms() != null) {
-              mdObject.getForms().forEach(form -> {
-                var formSupport = getMDObjectSupport(supportMap, form);
-                if (!formSupport.isEmpty()) {
-                  modulesBySupport.putAll(formSupport);
-                }
-              });
-            }
-          })
-        );
+      Map<String, MDObjectBase> uuids = new HashMap<>();
+
+      configuration.getChildren().forEach((MDOType mdoType, Map<String, MDObjectBase> stringMDObjectBaseMap) ->
+        stringMDObjectBaseMap.forEach((name, mdObject) -> {
+          uuids.put(mdObject.getUuid(), mdObject);
+          if (mdObject.getForms() != null) {
+            mdObject.getForms().forEach(form -> uuids.put(form.getUuid(), form));
+          }
+        })
+      );
+
+      supportMap.forEach((uuid, supportConfiguration) -> {
+        var mdo = uuids.get(uuid);
+        if (mdo != null && mdo.getModulesByType() != null) {
+          mdo.getModulesByType().forEach((uri, moduleType) ->
+            modulesBySupport.put(uri, supportConfiguration)
+          );
+        }
+      });
     }
+
     return modulesBySupport;
   }
 
@@ -86,23 +87,6 @@ public class Common {
     return modulesByType;
   }
 
-  private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(Map<String, Map<SupportConfiguration, SupportVariant>> supportMap, MDObjectBase mdObject) {
-    Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport = new HashMap<>();
-    Set<URI> uris = new HashSet<>();
-    if (mdObject.getModulesByType() != null) {
-      mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
-    }
-
-    Map<SupportConfiguration, SupportVariant> moduleSupport = Collections.emptyMap();
-    if (mdObject.getUuid() == null) {
-      LOGGER.info("Не удалось найти идентфикатор по объекту " + mdObject);
-    } else {
-      moduleSupport = supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
-    }
-    for (URI uri : uris) {
-      modulesBySupport.put(uri, moduleSupport);
-    }
-    return modulesBySupport;
   }
 
 }
