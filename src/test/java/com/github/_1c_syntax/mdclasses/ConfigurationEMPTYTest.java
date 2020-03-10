@@ -1,5 +1,6 @@
 package com.github._1c_syntax.mdclasses;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
@@ -27,6 +28,8 @@ public class ConfigurationEMPTYTest {
 
     assertThat(configuration2).isNotNull();
     assertThat(configuration2.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
-    assertThat(configuration2.getChild(MDOType.COMMON_MODULE, "НесуществущийМодуль")).isNull();
+    assertThat(configuration2.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("НесуществущийМодуль"))
+      .findFirst().isPresent()).isFalse();
   }
 }

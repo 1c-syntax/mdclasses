@@ -18,8 +18,10 @@ public class CommonModuleTest {
     File srcPath = new File("src/test/resources/metadata/edt");
     Configuration configuration = Configuration.create(srcPath.toPath());
 
-    CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ПростойОбщийМодуль");
+    CommonModule commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ПростойОбщийМодуль"))
+      .findFirst().get();
+
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
     assertThat(commonModule.getComment()).isEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
@@ -31,8 +33,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
 
-    commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ОбщийМодульПовтИспСеанс");
+    commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщийМодульПовтИспСеанс"))
+      .findFirst().get();
     assertThat(commonModule.getName()).isEqualTo("ОбщийМодульПовтИспСеанс");
     assertThat(commonModule.getComment()).isEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);
@@ -44,8 +47,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
 
-    commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ГлобальныйОбщийМодуль");
+    commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ГлобальныйОбщийМодуль"))
+      .findFirst().get();
     assertThat(commonModule.getName()).isEqualTo("ГлобальныйОбщийМодуль");
     assertThat(commonModule.getComment()).isEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
@@ -63,8 +67,9 @@ public class CommonModuleTest {
     File srcPath = new File("src/test/resources/metadata/original");
     Configuration configuration = Configuration.create(srcPath.toPath());
 
-    CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ПростойОбщийМодуль");
+    CommonModule commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ПростойОбщийМодуль"))
+      .findFirst().get();
 
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
     assertThat(commonModule.getComment()).isNullOrEmpty();
@@ -77,8 +82,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
 
-    commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ГлобальныйКлиент");
+    commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ГлобальныйКлиент"))
+      .findFirst().get();
     assertThat(commonModule.getName()).isEqualTo("ГлобальныйКлиент");
     assertThat(commonModule.getComment()).isEqualTo("Комментарий");
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
@@ -90,8 +96,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServer()).isFalse();
     assertThat(commonModule.isServerCall()).isFalse();
 
-    commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE,
-      "ОбщегоНазначенияПовторногоИспользования");
+    commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщегоНазначенияПовторногоИспользования"))
+      .findFirst().get();
     assertThat(commonModule.getName()).isEqualTo("ОбщегоНазначенияПовторногоИспользования");
     assertThat(commonModule.getComment()).isNullOrEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);

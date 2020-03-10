@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
@@ -23,13 +25,19 @@ import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrE
 @SuperBuilder
 public class MDObjectBase {
 
-  protected String uuid;
-  protected String name;
+  protected final String uuid;
+  protected final String name;
   @Builder.Default
   protected String comment = "";
-  protected URI mdoURI;
-  protected Map<URI, ModuleType> modulesByType;
 
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  protected URI mdoURI;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  protected Map<URI, ModuleType> modulesByType;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
   protected List<Form> forms;
 
   public abstract static class MDObjectBaseBuilder

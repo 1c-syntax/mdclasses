@@ -4,7 +4,6 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
@@ -44,14 +43,12 @@ public class Common {
 
       Map<String, MDObjectBase> uuids = new HashMap<>();
 
-      configuration.getChildren().forEach((MDOType mdoType, Map<String, MDObjectBase> stringMDObjectBaseMap) ->
-        stringMDObjectBaseMap.forEach((name, mdObject) -> {
-          uuids.put(mdObject.getUuid(), mdObject);
-          if (mdObject.getForms() != null) {
-            mdObject.getForms().forEach(form -> uuids.put(form.getUuid(), form));
-          }
-        })
-      );
+      configuration.getChildren().forEach(mdObject -> {
+        uuids.put(mdObject.getUuid(), mdObject);
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> uuids.put(form.getUuid(), form));
+        }
+      });
 
       supportMap.forEach((uuid, supportConfiguration) -> {
         var mdo = uuids.get(uuid);
@@ -69,21 +66,19 @@ public class Common {
   public static Map<URI, ModuleType> getModuleTypesByPath(Configuration configuration) {
     Map<URI, ModuleType> modulesByType = new HashMap<>();
 
-    configuration.getChildren()
-      .forEach((mdoType, stringMDObjectBaseMap) ->
-        stringMDObjectBaseMap.forEach((name, mdObject) -> {
-            if (mdObject.getModulesByType() != null) {
-              mdObject.getModulesByType().forEach(modulesByType::put);
+    configuration.getChildren().forEach(mdObject -> {
+        if (mdObject.getModulesByType() != null) {
+          mdObject.getModulesByType().forEach(modulesByType::put);
+        }
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> {
+            if (form.getModulesByType() != null) {
+              form.getModulesByType().forEach(modulesByType::put);
             }
-            if (mdObject.getForms() != null) {
-              mdObject.getForms().forEach(form -> {
-                if (form.getModulesByType() != null) {
-                  form.getModulesByType().forEach(modulesByType::put);
-                }
-              });
-            }
-          }
-        ));
+          });
+        }
+      }
+    );
     return modulesByType;
   }
 

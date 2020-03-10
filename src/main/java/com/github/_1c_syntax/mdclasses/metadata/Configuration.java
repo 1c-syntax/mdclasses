@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Value
 @Slf4j
@@ -43,12 +44,12 @@ public class Configuration {
 
   protected Map<URI, ModuleType> modulesByType;
   protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
-  protected Map<MDOType, Map<String, MDObjectBase>> children;
+  protected Set<MDObjectBase> children;
   private Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
-    this.children = Collections.emptyMap();
+    this.children = Collections.emptySet();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
 
@@ -71,7 +72,7 @@ public class Configuration {
 
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
     this.configurationSource = configurationSource;
-    this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
+    this.children = MDOUtils.getSetAllChildren(configurationSource, rootPath, true);
     this.rootPath = rootPath;
 
     this.name = configurationXml.getName();
@@ -108,30 +109,6 @@ public class Configuration {
     }
 
     return create();
-  }
-
-  public MDObjectBase getChild(MDOType type, String childName) {
-    MDObjectBase child = null;
-    Map<String, MDObjectBase> childrenByType = children.get(type);
-    if (childrenByType == null) {
-      childrenByType = getChildren(type);
-    }
-    if (!childrenByType.isEmpty()) {
-      child = childrenByType.get(childName);
-    }
-    return child;
-  }
-
-  @SneakyThrows
-  public Map<String, MDObjectBase> getChildren(MDOType type) {
-    Map<String, MDObjectBase> childrenByType = children.get(type);
-    if (childrenByType == null) {
-      childrenByType = MDOUtils.getChildren(configurationSource, rootPath, type);
-    }
-    if (!childrenByType.isEmpty()) {
-      children.put(type, childrenByType);
-    }
-    return childrenByType;
   }
 
   public ModuleType getModuleType(URI uri) {

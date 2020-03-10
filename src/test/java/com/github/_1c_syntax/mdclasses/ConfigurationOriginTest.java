@@ -44,11 +44,14 @@ class ConfigurationOriginTest {
     file = new File("src/test/resources/metadata/original/CommonForms/Форма/Ext/Form/Module.bsl");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.FormModule);
 
-    CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
+    CommonModule commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("ПростойОбщийМодуль"))
+      .findFirst().get();
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
 
-    assertThat(configuration.getChildren(MDOType.COMMON_MODULE)).hasSize(8);
+    assertThat(configuration.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule)).hasSize(8);
   }
 
   @Test
