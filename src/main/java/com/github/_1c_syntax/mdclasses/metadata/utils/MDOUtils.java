@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -478,12 +479,12 @@ public class MDOUtils {
       return allChildren;
     }
 
-    for (MDOType type : MDOType.values()) {
-      if (!includeConfiguration && type == MDOType.CONFIGURATION) {
-        continue;
-      }
-      allChildren.put(type, getChildren(configurationSource, rootPath, type));
-    }
+    Arrays.stream(MDOType.values()).filter(mdoType -> mdoType != MDOType.CONFIGURATION || includeConfiguration)
+      .parallel()
+      .forEach(mdoType ->
+        allChildren.put(mdoType, getChildren(configurationSource, rootPath, mdoType))
+      );
+
     return allChildren;
   }
 
