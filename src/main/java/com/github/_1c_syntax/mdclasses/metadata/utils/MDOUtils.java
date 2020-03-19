@@ -302,7 +302,7 @@ public class MDOUtils {
     MDObjectBase mdo = null;
     var mdoFile = mdoPath.toFile();
     if (mdoFile.exists()) {
-      var xmlMapper = ObjectMapperFactory.createXmlMapper();
+      var xmlMapper = ObjectMapperFactory.getXmlMapper();
       if (configurationSource == ConfigurationSource.EDT) {
         try {
           mdo = (MDObjectBase) xmlMapper
@@ -522,7 +522,7 @@ public class MDOUtils {
       getMDOFilesInFolder(configurationSource, formFolder)
         .forEach(mdoFile -> {
           Form mdoForm = null;
-          var xmlMapper = ObjectMapperFactory.createXmlMapper();
+          var xmlMapper = ObjectMapperFactory.getXmlMapper();
           try {
             MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
             mdoForm = metaDataObject.getForm();
