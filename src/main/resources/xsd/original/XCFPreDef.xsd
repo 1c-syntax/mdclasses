@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:ns1="http://v8.1c.ru/8.1/data/core" xmlns:ns2="http://v8.1c.ru/8.1/data/enterprise"
+           xmlns:ns3="http://v8.1c.ru/8.3/xcf/readable" xmlns:tns="http://v8.1c.ru/8.3/xcf/predef"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://v8.1c.ru/8.3/xcf/predef"
+           attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xs:import namespace="http://v8.1c.ru/8.1/data/core" schemaLocation="DataCore.xsd"/>
+    <xs:import namespace="http://v8.1c.ru/8.1/data/enterprise" schemaLocation="DataEnterprise.xsd"/>
+    <xs:import namespace="http://v8.1c.ru/8.3/xcf/readable" schemaLocation="XCFReadable.xsd"/>
+    <xs:element name="PredefinedData"/>
+    <xs:complexType name="AccountingFlags">
+        <xs:sequence>
+            <xs:element name="Flag" type="ns3:FlagType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculationTypeList">
+        <xs:sequence>
+            <xs:element name="CalculationType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculationTypePredefinedItem">
+        <xs:complexContent>
+            <xs:extension base="tns:PredefinedItemBase">
+                <xs:sequence>
+                    <xs:element name="ActionPeriodIsBase" type="xs:boolean"/>
+                    <xs:element name="Displaced" type="tns:CalculationTypeList" minOccurs="0"/>
+                    <xs:element name="Base" type="tns:CalculationTypeList" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="Leading" type="tns:CalculationTypeList" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CalculationTypePredefinedItems">
+        <xs:complexContent>
+            <xs:extension base="ns3:EntityWithVersion">
+                <xs:sequence>
+                    <xs:element name="Item" type="tns:CalculationTypePredefinedItem"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CatalogPredefinedItem">
+        <xs:complexContent>
+            <xs:extension base="tns:PredefinedItemBase">
+                <xs:sequence>
+                    <xs:element name="IsFolder" type="xs:boolean"/>
+                    <xs:element name="ChildItems" type="tns:CatalogPredefinedItems" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CatalogPredefinedItems">
+        <xs:complexContent>
+            <xs:extension base="ns3:EntityWithVersion">
+                <xs:sequence>
+                    <xs:element name="Item" type="tns:CatalogPredefinedItem" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ChartOfAccountsPredefinedItem">
+        <xs:complexContent>
+            <xs:extension base="tns:PredefinedItemBase">
+                <xs:sequence>
+                    <xs:element name="AccountType" type="ns2:AccountType"/>
+                    <xs:element name="OffBalance" type="xs:boolean"/>
+                    <xs:element name="Order" type="xs:string"/>
+                    <xs:element name="AccountingFlags" type="tns:AccountingFlags" minOccurs="0"/>
+                    <xs:element name="ExtDimensionTypes" type="tns:ExtDimensionTypes" minOccurs="0"/>
+                    <xs:element name="ChildItems" type="tns:ChartOfAccountsPredefinedItems" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ChartOfAccountsPredefinedItems">
+        <xs:complexContent>
+            <xs:extension base="ns3:EntityWithVersion">
+                <xs:sequence>
+                    <xs:element name="Item" type="tns:ChartOfAccountsPredefinedItem" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ExtDimensionType">
+        <xs:sequence>
+            <xs:element name="Turnover" type="xs:boolean"/>
+            <xs:element name="AccountingFlags" type="tns:AccountingFlags" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ExtDimensionTypes">
+        <xs:sequence>
+            <xs:element name="ExtDimensionType" type="tns:ExtDimensionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PlanOfCharacteristicKindPredefinedItem">
+        <xs:complexContent>
+            <xs:extension base="tns:PredefinedItemBase">
+                <xs:sequence>
+                    <xs:element name="Type" type="ns1:TypeDescription"/>
+                    <xs:element name="IsFolder" type="xs:boolean"/>
+                    <xs:element name="ChildItems" type="tns:PlanOfCharacteristicKindPredefinedItems" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PlanOfCharacteristicKindPredefinedItems">
+        <xs:complexContent>
+            <xs:extension base="ns3:EntityWithVersion">
+                <xs:sequence>
+                    <xs:element name="Item" type="tns:PlanOfCharacteristicKindPredefinedItem"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PredefinedItemBase">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Code" type="xs:string"/>
+            <xs:element name="Description" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="ns1:UUID"/>
+    </xs:complexType>
+</xs:schema>

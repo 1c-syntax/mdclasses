@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Studio 2019 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:tns="http://v8.1c.ru/8.2/managed-application/core" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://v8.1c.ru/8.2/managed-application/core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="file:///F:/DATA/Develop/Project/Sonar/metadata/src/Documents/%D0%9F%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D0%BE%D0%B2%D0%A3%D1%81%D0%BB%D1%83%D0%B32.xsd" namespace="http://v8.1c.ru/8.1/data/core" />
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" nillable="true">
+          <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0">
+              <xs:element minOccurs="0" maxOccurs="unbounded" xmlns:q1="http://v8.1c.ru/8.1/data/core" ref="q1:Value" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
