@@ -19,7 +19,7 @@ class MDOSourceOriginTest {
     String basePath = "src/test/resources/metadata/original";
     File XML = new File(basePath, "Configuration.xml");
 
-    XmlMapper xmlMapper = ObjectMapperFactory.createXmlMapper();
+    XmlMapper xmlMapper = ObjectMapperFactory.getXmlMapper();
 
     try {
       MDObject = xmlMapper.readValue(XML, MetaDataObject.class);
