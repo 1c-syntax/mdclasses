@@ -8,7 +8,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
-import com.github._1c_syntax.mdclasses.metadata.utils.Common;
+import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -33,16 +33,16 @@ public class ConfigurationEDTTest {
     assertThat(configuration.getModulesByType()).hasSize(34);
 
     File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ValueManagerModule.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.ValueManagerModule);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.ValueManagerModule);
 
     file = new File("src/test/resources/metadata/edt/src/CommonModules/ПростойОбщийМодуль/Module.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.CommonModule);
 
     file = new File("src/test/resources/metadata/edt/src/Catalogs/Справочник1/Forms/ФормаЭлемента/Module.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.FormModule);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.FormModule);
 
     file = new File("src/test/resources/metadata/edt/src/CommonForms/Форма/Module.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.FormModule);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.FormModule);
 
     CommonModule commonModule = (CommonModule) configuration.getChild(MDOType.COMMON_MODULE, "ПростойОбщийМодуль");
     assertThat(commonModule).isNotNull();
@@ -61,7 +61,7 @@ public class ConfigurationEDTTest {
     assertThat(configuration).isNotNull();
 
     File file = new File("src/test/resources/metadata/Module.os");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.Unknown);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.Unknown);
   }
 
   @Test
@@ -79,7 +79,7 @@ public class ConfigurationEDTTest {
     assertThat(configuration.getModulesByType()).hasSize(2);
 
     File file = new File("src/test/resources/metadata/edt_en/src/CommonModules/CommonModule/Module.bsl");
-    assertThat(configuration.getModuleType(Common.getAbsoluteUri(file))).isEqualTo(ModuleType.CommonModule);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.CommonModule);
 
   }
 }

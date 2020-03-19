@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.net.URI;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -85,14 +84,6 @@ public class Common {
       modulesBySupport.put(uri, moduleSupport);
     }
     return modulesBySupport;
-  }
-
-  public static Path getAbsolutePath(File file) {
-    return file.toPath().toAbsolutePath();
-  }
-
-  public static URI getAbsoluteUri(File file) {
-    return getAbsolutePath(file).toUri();
   }
 
 }
