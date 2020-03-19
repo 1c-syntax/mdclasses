@@ -8,7 +8,13 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class ObjectMapperFactory {
 
-  public static XmlMapper createXmlMapper() {
+  private static final XmlMapper xmlMapper = createXmlMapper();
+
+  public static XmlMapper getXmlMapper() {
+    return xmlMapper;
+  }
+
+  private static XmlMapper createXmlMapper() {
     XmlMapper xmlMapper = new XmlMapper();
 
     xmlMapper.registerModule(new ParameterNamesModule());
