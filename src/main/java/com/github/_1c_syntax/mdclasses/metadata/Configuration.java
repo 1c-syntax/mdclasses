@@ -44,7 +44,7 @@ public class Configuration {
   protected Map<URI, ModuleType> modulesByType;
   protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   protected Set<MDObjectBase> children;
-  private Path rootPath;
+  protected Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;

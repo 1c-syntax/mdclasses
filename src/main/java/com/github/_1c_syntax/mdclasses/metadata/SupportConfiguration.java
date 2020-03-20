@@ -6,7 +6,7 @@ import lombok.Value;
 @Value
 @AllArgsConstructor
 public class SupportConfiguration {
-  private String name;
-  private String provider;
-  private String version;
+  protected String name;
+  protected String provider;
+  protected String version;
 }

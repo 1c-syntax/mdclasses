@@ -47,9 +47,7 @@ public class Common {
       configuration.getChildren().forEach(mdObject -> {
         modulesBySupport.putAll(getMDObjectSupport(supportMap, mdObject));
         if (mdObject.getForms() != null) {
-          mdObject.getForms().forEach(form -> {
-            modulesBySupport.putAll(getMDObjectSupport(supportMap, form));
-          });
+          mdObject.getForms().forEach(form -> modulesBySupport.putAll(getMDObjectSupport(supportMap, form)));
         }
       });
     }
@@ -57,19 +55,21 @@ public class Common {
     return modulesBySupport;
   }
 
-  private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(Map<String, Map<SupportConfiguration, SupportVariant>> supportMap, MDObjectBase mdObject) {
+  private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(
+    Map<String, Map<SupportConfiguration, SupportVariant>> supportMap,
+    MDObjectBase mdObject) {
+
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport = new HashMap<>();
-    Set<URI> uris = new HashSet<>();
-    if (mdObject.getModulesByType() != null) {
-      mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
+    if (mdObject.getUuid() == null || mdObject.getModulesByType() == null) {
+      return modulesBySupport;
     }
 
-    Map<SupportConfiguration, SupportVariant> moduleSupport = Collections.emptyMap();
-    if (mdObject.getUuid() == null) {
-      LOGGER.info("Не удалось найти идентфикатор по объекту " + mdObject);
-    } else {
-      moduleSupport = supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
-    }
+    Set<URI> uris = new HashSet<>();
+    mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
+
+    Map<SupportConfiguration, SupportVariant> moduleSupport =
+      supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
+
     for (URI uri : uris) {
       modulesBySupport.put(uri, moduleSupport);
     }
