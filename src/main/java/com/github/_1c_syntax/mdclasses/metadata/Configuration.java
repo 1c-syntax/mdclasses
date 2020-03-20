@@ -11,7 +11,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.utils.MDOUtils;
-import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
@@ -72,7 +71,7 @@ public class Configuration {
 
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
     this.configurationSource = configurationSource;
-    this.children = MDOUtils.getSetAllChildren(configurationSource, rootPath, true);
+    this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
     this.rootPath = rootPath;
 
     this.name = configurationXml.getName();

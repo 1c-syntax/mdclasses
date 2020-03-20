@@ -565,14 +565,12 @@ class MetaDataObjectTest {
     var allChildren = MDOUtils.getAllChildren(ConfigurationSource.EDT,
       Paths.get(FilenameUtils.getPath(SRC_EDT)), false);
     assertThat(allChildren).isNotNull();
-    assertThat(allChildren).hasSize(44);
-    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNull();
+    assertThat(allChildren).hasSize(48);
 
     allChildren = MDOUtils.getAllChildren(ConfigurationSource.DESIGNER,
       Paths.get(SRC_DESIGNER), true);
     assertThat(allChildren).isNotNull();
-    assertThat(allChildren).hasSize(45);
-    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNotNull();
+    assertThat(allChildren).hasSize(54);
   }
 
   private Path getMDOPathEDT(String path) {

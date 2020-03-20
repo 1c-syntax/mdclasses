@@ -443,34 +443,9 @@ public class MDOUtils {
    * Children
    */
 
-  public static Map<String, MDObjectBase> getChildren(ConfigurationSource configurationSource,
-                                                      Path rootPath,
-                                                      MDOType type) {
-
-    Map<String, MDObjectBase> children = new HashMap<>();
-    if (configurationSource == ConfigurationSource.EMPTY) {
-      return children;
-    }
-
-    Path folder = getMDOTypeFolder(configurationSource, rootPath, type);
-    if (folder == null || !folder.toFile().exists()) {
-      return children;
-    }
-
-    getChildrenNamesInFolder(configurationSource, folder)
-      .forEach(childName -> {
-        MDObjectBase child = getMDObject(configurationSource, rootPath, type, childName);
-        if (child != null) {
-          children.put(childName, child);
-        }
-      });
-
-    return children;
-  }
-
-  public static Set<MDObjectBase> getSetChildren(ConfigurationSource configurationSource,
-                                                      Path rootPath,
-                                                      MDOType type) {
+  public static Set<MDObjectBase> getChildren(ConfigurationSource configurationSource,
+                                              Path rootPath,
+                                              MDOType type) {
 
     Set<MDObjectBase> children = new HashSet<>();
     if (configurationSource == ConfigurationSource.EMPTY) {
@@ -493,29 +468,9 @@ public class MDOUtils {
     return children;
   }
 
-
-  public static Map<MDOType, Map<String, MDObjectBase>> getAllChildren(ConfigurationSource configurationSource,
-                                                                       Path rootPath,
-                                                                       boolean includeConfiguration) {
-
-
-    Map<MDOType, Map<String, MDObjectBase>> allChildren = new HashMap<>();
-    if (configurationSource == ConfigurationSource.EMPTY) {
-      return allChildren;
-    }
-
-    for (MDOType type : MDOType.values()) {
-      if (!includeConfiguration && type == MDOType.CONFIGURATION) {
-        continue;
-      }
-      allChildren.put(type, getChildren(configurationSource, rootPath, type));
-    }
-    return allChildren;
-  }
-
-  public static Set<MDObjectBase> getSetAllChildren(ConfigurationSource configurationSource,
-                                                                       Path rootPath,
-                                                                       boolean includeConfiguration) {
+  public static Set<MDObjectBase> getAllChildren(ConfigurationSource configurationSource,
+                                                 Path rootPath,
+                                                 boolean includeConfiguration) {
 
 
     Set<MDObjectBase> allChildren = new HashSet<>();
@@ -527,7 +482,7 @@ public class MDOUtils {
       if (!includeConfiguration && type == MDOType.CONFIGURATION) {
         continue;
       }
-      allChildren.addAll(getSetChildren(configurationSource, rootPath, type));
+      allChildren.addAll(getChildren(configurationSource, rootPath, type));
     }
     return allChildren;
   }

@@ -82,6 +82,4 @@ public class Common {
     return modulesByType;
   }
 
-  }
-
 }
