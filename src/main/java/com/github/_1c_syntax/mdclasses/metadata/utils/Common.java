@@ -49,6 +49,9 @@ public class Common {
         if (mdObject.getForms() != null) {
           mdObject.getForms().forEach(form -> modulesBySupport.putAll(getMDObjectSupport(supportMap, form)));
         }
+        if (mdObject.getCommands() != null) {
+          mdObject.getCommands().forEach(command -> modulesBySupport.putAll(getMDObjectSupport(supportMap, command)));
+        }
       });
     }
 
@@ -86,6 +89,13 @@ public class Common {
           mdObject.getForms().forEach(form -> {
             if (form.getModulesByType() != null) {
               form.getModulesByType().forEach(modulesByType::put);
+            }
+          });
+        }
+        if (mdObject.getCommands() != null) {
+          mdObject.getCommands().forEach(command -> {
+            if (command.getModulesByType() != null) {
+              command.getModulesByType().forEach(modulesByType::put);
             }
           });
         }

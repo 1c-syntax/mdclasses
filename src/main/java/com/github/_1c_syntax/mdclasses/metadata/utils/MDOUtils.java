@@ -330,6 +330,7 @@ public class MDOUtils {
         mdoFolder,
         type));
       updateMDOForms(configurationSource, mdo, type, mdoFolder);
+      updateMDOCommands(configurationSource, mdo, type, mdoFolder);
     }
 
     return mdo;
@@ -383,12 +384,10 @@ public class MDOUtils {
       getMDOFilesInFolder(configurationSource, folder)
         .parallelStream()
         .forEach(mdoPath -> {
-            modulesByType.putAll(
-              getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
-            modulesByType.putAll(
-              getFormsMDOModuleTypes(configurationSource,
-                folder,
-                FilenameUtils.getBaseName(mdoPath.toString())));
+            var baseName = FilenameUtils.getBaseName(mdoPath.toString());
+            modulesByType.putAll(getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
+            modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, baseName));
+            modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, baseName));
           }
         );
     }
@@ -409,7 +408,7 @@ public class MDOUtils {
     if (rootPath.toFile().exists()) {
       try (Stream<Path> files = Files.walk(rootPath, 1)) {
         files
-          .filter((Path f) -> Files.isDirectory(f))
+          .filter(MDOUtils::isDirectory)
           .forEach(mdoPath -> {
             var name = FilenameUtils.getBaseName(mdoPath.toString());
             var modulePath = getModulePath(configurationSource, rootPath, name, moduleType);
@@ -421,6 +420,10 @@ public class MDOUtils {
     }
 
     return modulesByType;
+  }
+
+  private static boolean isDirectory(Path path) {
+    return Files.isDirectory(path);
   }
 
   private static Map<URI, ModuleType> getFormsMDOModuleTypes(ConfigurationSource configurationSource,
@@ -548,6 +551,28 @@ public class MDOUtils {
         }
 
         form.setModulesByType(modulesByType);
+      });
+    }
+  }
+
+  private void updateMDOCommands(ConfigurationSource configurationSource, MDObjectBase mdo, MDOType type, Path folder) {
+    if (!type.isMayHaveCommand() || folder == null) {
+      return;
+    }
+    var commandFolder = Paths.get(folder.toString(), mdo.getName(), "Commands");
+    if (!commandFolder.toFile().exists()) {
+      return;
+    }
+
+    if (mdo.getCommands() != null) {
+      mdo.getCommands().forEach(command -> {
+        Map<URI, ModuleType> modulesByType = new HashMap<>();
+        var modulePath = getModulePath(configurationSource, commandFolder, command.getName(), ModuleType.CommandModule);
+        if (modulePath != null && modulePath.toFile().exists()) {
+          modulesByType.put(modulePath.toUri(), ModuleType.CommandModule);
+        }
+
+        command.setModulesByType(modulesByType);
       });
     }
   }
