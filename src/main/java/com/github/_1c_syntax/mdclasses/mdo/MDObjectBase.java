@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
@@ -21,15 +23,17 @@ import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrE
 @NonFinal
 @JsonDeserialize(builder = MDObjectBase.MDObjectBaseBuilderImpl.class)
 @SuperBuilder
+@EqualsAndHashCode(exclude = {"mdoURI", "modulesByType", "forms"})
+@ToString(exclude = {"mdoURI", "modulesByType", "forms"})
 public class MDObjectBase {
 
-  protected String uuid;
-  protected String name;
+  protected final String uuid;
+  protected final String name;
   @Builder.Default
   protected String comment = "";
+
   protected URI mdoURI;
   protected Map<URI, ModuleType> modulesByType;
-
   protected List<Form> forms;
 
   public abstract static class MDObjectBaseBuilder

@@ -4,6 +4,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,47 +44,54 @@ public class Common {
       ParseSupportData supportData = new ParseSupportData(fileParentConfiguration.toPath());
       final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = supportData.getSupportMap();
 
-      configuration.getChildren()
-        .forEach((mdoType, stringMDObjectBaseMap) ->
-          stringMDObjectBaseMap.forEach((name, mdObject) -> {
-            var mdoModuleSupport = getMDObjectSupport(supportMap, mdObject);
-            if (!mdoModuleSupport.isEmpty()) {
-              modulesBySupport.putAll(mdoModuleSupport);
-            }
-            if (mdObject.getForms() != null) {
-              mdObject.getForms().forEach(form -> {
-                var formSupport = getMDObjectSupport(supportMap, form);
-                if (!formSupport.isEmpty()) {
-                  modulesBySupport.putAll(formSupport);
-                }
-              });
-            }
-          })
-        );
+      configuration.getChildren().forEach(mdObject -> {
+        modulesBySupport.putAll(getMDObjectSupport(supportMap, mdObject));
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> modulesBySupport.putAll(getMDObjectSupport(supportMap, form)));
+        }
+      });
     }
+
     return modulesBySupport;
   }
 
-  private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(Map<String, Map<SupportConfiguration, SupportVariant>> supportMap, MDObjectBase mdObject) {
+  private static Map<URI, Map<SupportConfiguration, SupportVariant>> getMDObjectSupport(
+    Map<String, Map<SupportConfiguration, SupportVariant>> supportMap,
+    MDObjectBase mdObject) {
+
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport = new HashMap<>();
-    Set<URI> uris = new HashSet<>();
-    if (mdObject.getMdoURI() != null) {
-      uris.add(mdObject.getMdoURI());
-    }
-    if (mdObject.getModulesByType() != null) {
-      mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
+    if (mdObject.getUuid() == null || mdObject.getModulesByType() == null) {
+      return modulesBySupport;
     }
 
-    Map<SupportConfiguration, SupportVariant> moduleSupport = Collections.emptyMap();
-    if (mdObject.getUuid() == null) {
-      LOGGER.info("Не удалось найти идентфикатор по объекту " + mdObject);
-    } else {
-      moduleSupport = supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
-    }
+    Set<URI> uris = new HashSet<>(mdObject.getModulesByType().keySet());
+
+    Map<SupportConfiguration, SupportVariant> moduleSupport =
+      supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
+
     for (URI uri : uris) {
       modulesBySupport.put(uri, moduleSupport);
     }
     return modulesBySupport;
+  }
+
+  public static Map<URI, ModuleType> getModuleTypesByPath(Configuration configuration) {
+    Map<URI, ModuleType> modulesByType = new HashMap<>();
+
+    configuration.getChildren().forEach(mdObject -> {
+        if (mdObject.getModulesByType() != null) {
+          mdObject.getModulesByType().forEach(modulesByType::put);
+        }
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> {
+            if (form.getModulesByType() != null) {
+              form.getModulesByType().forEach(modulesByType::put);
+            }
+          });
+        }
+      }
+    );
+    return modulesByType;
   }
 
 }

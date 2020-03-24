@@ -1,8 +1,8 @@
 package com.github._1c_syntax.mdclasses;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
@@ -27,6 +27,8 @@ public class ConfigurationEMPTYTest {
 
     assertThat(configuration2).isNotNull();
     assertThat(configuration2.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
-    assertThat(configuration2.getChild(MDOType.COMMON_MODULE, "НесуществущийМодуль")).isNull();
+    assertThat(configuration2.getChildren().stream().filter(mdObject ->
+      mdObject instanceof CommonModule && mdObject.getName().equals("НесуществущийМодуль"))
+      .findFirst().isPresent()).isFalse();
   }
 }
