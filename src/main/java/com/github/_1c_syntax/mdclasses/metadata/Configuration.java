@@ -25,26 +25,26 @@ import java.util.Set;
 @Slf4j
 public class Configuration {
 
-  protected String name;
-  protected String uuid;
+  String name;
+  String uuid;
 
-  protected ConfigurationSource configurationSource;
-  protected CompatibilityMode compatibilityMode;
-  protected CompatibilityMode configurationExtensionCompatibilityMode;
-  protected ScriptVariant scriptVariant;
+  ConfigurationSource configurationSource;
+  CompatibilityMode compatibilityMode;
+  CompatibilityMode configurationExtensionCompatibilityMode;
+  ScriptVariant scriptVariant;
 
-  protected String defaultRunMode;
-  protected String defaultLanguage;
-  protected String dataLockControlMode;
-  protected String objectAutonumerationMode;
-  protected UseMode modalityUseMode;
-  protected UseMode synchronousExtensionAndAddInCallUseMode;
-  protected UseMode synchronousPlatformExtensionAndAddInCallUseMode;
+  String defaultRunMode;
+  String defaultLanguage;
+  String dataLockControlMode;
+  String objectAutonumerationMode;
+  UseMode modalityUseMode;
+  UseMode synchronousExtensionAndAddInCallUseMode;
+  UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
-  protected Map<URI, ModuleType> modulesByType;
-  protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
-  protected Set<MDObjectBase> children;
-  protected Path rootPath;
+  Map<URI, ModuleType> modulesByType;
+  Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
+  Set<MDObjectBase> children;
+  Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
