@@ -30,8 +30,8 @@ import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrE
 @NonFinal
 @JsonDeserialize(builder = MDObjectBase.MDObjectBaseBuilderImpl.class)
 @SuperBuilder
-@EqualsAndHashCode(exclude = {"mdoURI", "modulesByType", "forms"})
-@ToString(exclude = {"mdoURI", "modulesByType", "forms"})
+@EqualsAndHashCode(exclude = {"mdoURI", "modulesByType", "forms", "commands"})
+@ToString(exclude = {"mdoURI", "modulesByType", "forms", "commands"})
 public class MDObjectBase {
 
   protected final String uuid;
@@ -42,8 +42,6 @@ public class MDObjectBase {
   protected URI mdoURI;
   protected Map<URI, ModuleType> modulesByType;
   protected List<Form> forms;
-  @EqualsAndHashCode.Exclude
-  @ToString.Exclude
   protected List<Command> commands;
 
   public abstract static class MDObjectBaseBuilder
