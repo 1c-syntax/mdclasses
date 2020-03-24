@@ -1,6 +1,5 @@
 package com.github._1c_syntax.mdclasses.metadata.utils;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
@@ -18,7 +17,13 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -561,12 +566,9 @@ public class MDOUtils {
         maxDepth = 2;
       }
 
-      try(Stream<Path> files = Files.walk(folder, maxDepth)) {
+      try (Stream<Path> files = Files.walk(folder, maxDepth)) {
         childrenNames = files
-          // так немного быстрее --->
-          .collect(Collectors.toList())
-          .parallelStream()
-          // <---
+          .parallel()
           .filter(f -> f.toString().endsWith(extension.get()))
           .filter(f -> !FilenameUtils.getBaseName(f.toString()).equals("ConfigDumpInfo"))
           .collect(Collectors.toList());
