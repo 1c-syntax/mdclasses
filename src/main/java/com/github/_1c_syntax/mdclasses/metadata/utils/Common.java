@@ -64,8 +64,7 @@ public class Common {
       return modulesBySupport;
     }
 
-    Set<URI> uris = new HashSet<>();
-    mdObject.getModulesByType().forEach((uri, moduleType) -> uris.add(uri));
+    Set<URI> uris = new HashSet<>(mdObject.getModulesByType().keySet());
 
     Map<SupportConfiguration, SupportVariant> moduleSupport =
       supportMap.getOrDefault(mdObject.getUuid(), Collections.emptyMap());
