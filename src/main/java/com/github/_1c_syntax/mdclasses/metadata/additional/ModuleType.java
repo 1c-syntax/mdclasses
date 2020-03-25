@@ -25,6 +25,6 @@ public enum ModuleType {
   }
 
   public String getFileName() {
-    return fileName;
+    return this.fileName;
   }
 }

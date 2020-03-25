@@ -9,8 +9,8 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
-import com.github._1c_syntax.mdclasses.metadata.utils.Common;
-import com.github._1c_syntax.mdclasses.metadata.utils.MDOUtils;
+import com.github._1c_syntax.mdclasses.utils.Common;
+import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 

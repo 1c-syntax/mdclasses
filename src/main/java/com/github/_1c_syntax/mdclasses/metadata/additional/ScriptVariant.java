@@ -10,16 +10,15 @@ public enum ScriptVariant {
 
   private final String value;
 
-  ScriptVariant(String v) {
-    value = v;
+  ScriptVariant(String value) {
+    this.value = value;
   }
 
-  public static ScriptVariant fromValue(String v) {
-    return valueOf(v.toUpperCase());
+  public static ScriptVariant fromValue(String value) {
+    return valueOf(value.toUpperCase());
   }
 
   public String value() {
     return value;
   }
-
 }

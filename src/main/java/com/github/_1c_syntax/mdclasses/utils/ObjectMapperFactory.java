@@ -1,4 +1,4 @@
-package com.github._1c_syntax.mdclasses.metadata.utils;
+package com.github._1c_syntax.mdclasses.utils;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.Getter;

@@ -13,17 +13,17 @@ public enum ReturnValueReuse {
 
   private final String value;
 
-  ReturnValueReuse(String v) {
-    this.value = v;
+  ReturnValueReuse(String value) {
+    this.value = value;
   }
 
-  public static ReturnValueReuse fromValue(String v) {
-    for (ReturnValueReuse c : ReturnValueReuse.values()) {
-      if (c.value.equals(v)) {
-        return c;
+  public static ReturnValueReuse fromValue(String value) {
+    for (ReturnValueReuse returnValueReuse : ReturnValueReuse.values()) {
+      if (returnValueReuse.value.equals(value)) {
+        return returnValueReuse;
       }
     }
-    throw new IllegalArgumentException(v);
+    throw new IllegalArgumentException(value);
   }
 
   public String value() {

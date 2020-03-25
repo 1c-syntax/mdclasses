@@ -1,4 +1,4 @@
-package com.github._1c_syntax.mdclasses.metadata.utils;
+package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
@@ -93,21 +93,21 @@ class MDOUtilsTest {
   void getPathsTest() {
     Path rootPath = Paths.get("src/test/resources/metadata").toAbsolutePath();
 
-    assertThat(MDOUtils.getMDOTypeFolder(rootPath, MDOType.SUBSYSTEM)).isNull();
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.EDT, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
+    assertThat(MDOPathUtils.getMDOTypeFolder(rootPath, MDOType.SUBSYSTEM)).isNull();
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.EDT, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
       Paths.get(rootPath.toString(), "src", "Subsystems", "Подсистема", "Подсистема.mdo"));
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
       Paths.get(rootPath.toString(), "Subsystems", "Подсистема.xml"));
-    assertThat(MDOUtils.getMDOTypeFolder(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM)).isEqualTo(
+    assertThat(MDOPathUtils.getMDOTypeFolder(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM)).isEqualTo(
       Paths.get(rootPath.toString(), "Subsystems"));
 
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3"))
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3"))
       .isNotNull();
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3")
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3")
       .toFile().exists()).isFalse();
 
     rootPath = Paths.get("src/test/resources/metadata", "edt", "Catalog");
-    var mdoCatalog = MDOUtils.getMDOPath(ConfigurationSource.EDT, rootPath, "Справочник1");
+    var mdoCatalog = MDOPathUtils.getMDOPath(ConfigurationSource.EDT, rootPath, "Справочник1");
     assertThat(mdoCatalog).isNotNull();
   }
 

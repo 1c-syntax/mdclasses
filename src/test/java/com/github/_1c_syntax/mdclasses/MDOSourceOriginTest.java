@@ -2,7 +2,7 @@ package com.github._1c_syntax.mdclasses;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
-import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
+import com.github._1c_syntax.mdclasses.utils.ObjectMapperFactory;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

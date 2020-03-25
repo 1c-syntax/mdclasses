@@ -2,7 +2,7 @@ package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
-import com.github._1c_syntax.mdclasses.metadata.utils.ParseSupportData;
+import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

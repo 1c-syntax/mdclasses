@@ -1,7 +1,6 @@
-package com.github._1c_syntax.mdclasses.metadata.utils;
+package com.github._1c_syntax.mdclasses.metadata.additional;
 
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
-import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
@@ -17,8 +16,8 @@ import java.util.regex.Pattern;
 public class ParseSupportData {
 
   // взято из https://stackoverflow.com/questions/18144431/regex-to-split-a-csv
-  private final String regex = "(?:,|\\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\\n]*|(?:\\n|$))";
-  private final Pattern patternSplit = Pattern.compile(regex);
+  private static final String REGEX = "(?:,|\\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\\n]*|(?:\\n|$))";
+  private static final Pattern patternSplit = Pattern.compile(REGEX);
 
   private static final int POINT_COUNT_CONFIGURATION = 2;
   private static final int SHIFT_CONFIGURATION_VERSION = 3;
@@ -33,7 +32,7 @@ public class ParseSupportData {
 
   public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
-    LOGGER.info("Чтения файла поставки ParentConfigurations.bin");
+    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
     try {
       read();
     } catch (FileNotFoundException e) {
@@ -45,10 +44,11 @@ public class ParseSupportData {
 
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());
-    var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8);
-    dataStrings = scanner.findAll(patternSplit)
-      .map(matchResult -> matchResult.group(1))
-      .toArray(String[]::new);
+    try (var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8)) {
+      dataStrings = scanner.findAll(patternSplit)
+        .map(matchResult -> matchResult.group(1))
+        .toArray(String[]::new);
+    }
 
     var countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
@@ -63,7 +63,7 @@ public class ParseSupportData {
       var supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
 
-      LOGGER.info(String.format(
+      LOGGER.debug(String.format(
         "Конфигурация: %s Версия: %s Поставщик: %s Количество объектов: %s",
         configurationName,
         configurationVersion,
@@ -90,18 +90,16 @@ public class ParseSupportData {
     return this.supportMap;
   }
 
-  private SupportVariant getSupportVariantByInt(int support) {
-    SupportVariant supportVariant;
-    if (support == 0) {
-      supportVariant = SupportVariant.NOT_EDITABLE;
-    } else if (support == 1) {
-      supportVariant = SupportVariant.EDITABLE_SUPPORT_ENABLED;
-    } else if (support == 2) {
-      supportVariant = SupportVariant.NOT_SUPPORTED;
-    } else {
-      supportVariant = SupportVariant.NONE;
+  private static SupportVariant getSupportVariantByInt(int support) {
+    switch (support) {
+      case 0:
+        return SupportVariant.NOT_EDITABLE;
+      case 1:
+        return SupportVariant.EDITABLE_SUPPORT_ENABLED;
+      case 2:
+        return SupportVariant.NOT_SUPPORTED;
+      default:
+        return SupportVariant.NONE;
     }
-    return supportVariant;
   }
-
 }
