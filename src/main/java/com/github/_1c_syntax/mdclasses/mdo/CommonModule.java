@@ -53,8 +53,8 @@ public class CommonModule extends MDObjectBase {
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
   boolean privileged;
 
-  public MDOType getType() {
-    return MDOType.COMMON_MODULE;
+  static {
+    type = MDOType.COMMON_MODULE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

@@ -62,8 +62,8 @@ public class MDOConfiguration extends MDObjectBase {
   protected String dataLockControlMode;
   protected String objectAutonumerationMode;
 
-  public MDOType getType() {
-    return MDOType.CONFIGURATION;
+  static {
+    type = MDOType.CONFIGURATION;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

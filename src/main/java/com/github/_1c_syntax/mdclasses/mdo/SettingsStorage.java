@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class SettingsStorage extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.SETTINGS_STORAGE;
+  static {
+    type = MDOType.SETTINGS_STORAGE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

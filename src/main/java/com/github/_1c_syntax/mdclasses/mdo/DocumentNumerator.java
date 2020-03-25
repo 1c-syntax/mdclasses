@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class DocumentNumerator extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.DOCUMENT_NUMERATOR;
+  static {
+    type = MDOType.DOCUMENT_NUMERATOR;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

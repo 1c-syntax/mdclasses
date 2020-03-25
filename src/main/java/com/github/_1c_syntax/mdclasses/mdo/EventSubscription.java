@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class EventSubscription extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.EVENT_SUBSCRIPTION;
+  static {
+    type = MDOType.EVENT_SUBSCRIPTION;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

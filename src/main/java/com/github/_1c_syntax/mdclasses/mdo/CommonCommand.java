@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CommonCommand extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.COMMON_COMMAND;
+  static {
+    type = MDOType.COMMON_COMMAND;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

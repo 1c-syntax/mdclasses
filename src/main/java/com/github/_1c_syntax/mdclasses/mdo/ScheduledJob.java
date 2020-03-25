@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ScheduledJob extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.SCHEDULED_JOB;
+  static {
+    type = MDOType.SCHEDULED_JOB;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

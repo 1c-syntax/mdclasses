@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class SessionParameter extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.SESSION_PARAMETER;
+  static {
+    type = MDOType.SESSION_PARAMETER;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

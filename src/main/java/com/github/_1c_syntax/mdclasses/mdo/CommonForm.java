@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CommonForm extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.COMMON_FORM;
+  static {
+    type = MDOType.COMMON_FORM;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

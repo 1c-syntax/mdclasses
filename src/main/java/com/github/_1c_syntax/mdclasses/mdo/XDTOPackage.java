@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class XDTOPackage extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.XDTO_PACKAGE;
+  static {
+    type = MDOType.XDTO_PACKAGE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

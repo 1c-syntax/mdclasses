@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Document extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.DOCUMENT;
+  static {
+    type = MDOType.DOCUMENT;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

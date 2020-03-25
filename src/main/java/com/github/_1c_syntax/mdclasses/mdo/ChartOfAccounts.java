@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ChartOfAccounts extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.CHART_OF_ACCOUNTS;
+  static {
+    type = MDOType.CHART_OF_ACCOUNTS;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

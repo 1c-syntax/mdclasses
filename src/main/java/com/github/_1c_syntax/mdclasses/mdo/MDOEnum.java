@@ -37,8 +37,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class MDOEnum extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.ENUM;
+  static {
+    type = MDOType.ENUM;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

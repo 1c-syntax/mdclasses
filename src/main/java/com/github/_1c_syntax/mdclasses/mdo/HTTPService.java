@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class HTTPService extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.HTTP_SERVICE;
+  static {
+    type = MDOType.HTTP_SERVICE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

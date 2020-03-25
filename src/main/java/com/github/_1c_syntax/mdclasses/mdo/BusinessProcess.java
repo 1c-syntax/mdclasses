@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class BusinessProcess extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.BUSINESS_PROCESS;
+  static {
+    type = MDOType.BUSINESS_PROCESS;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

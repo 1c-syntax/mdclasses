@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Constant extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.CONSTANT;
+  static {
+    type = MDOType.CONSTANT;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

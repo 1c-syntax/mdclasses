@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ExchangePlan extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.EXCHANGE_PLAN;
+  static {
+    type = MDOType.EXCHANGE_PLAN;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

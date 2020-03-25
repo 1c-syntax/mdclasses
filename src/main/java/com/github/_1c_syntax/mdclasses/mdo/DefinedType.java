@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class DefinedType extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.DEFINED_TYPE;
+  static {
+    type = MDOType.DEFINED_TYPE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class WebService extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.WEB_SERVICE;
+  static {
+    type = MDOType.WEB_SERVICE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

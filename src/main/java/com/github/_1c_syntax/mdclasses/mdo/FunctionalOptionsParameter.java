@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class FunctionalOptionsParameter extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.FUNCTIONAL_OPTIONS_PARAMETER;
+  static {
+    type = MDOType.FUNCTIONAL_OPTIONS_PARAMETER;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

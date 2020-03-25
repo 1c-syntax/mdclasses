@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CalculationRegister extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.CALCULATION_REGISTER;
+  static {
+    type = MDOType.CALCULATION_REGISTER;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

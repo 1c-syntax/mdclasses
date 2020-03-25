@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class WSReference extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.WS_REFERENCE;
+  static {
+    type = MDOType.WS_REFERENCE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

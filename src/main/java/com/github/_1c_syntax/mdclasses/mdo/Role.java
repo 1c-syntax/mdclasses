@@ -35,8 +35,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Role extends MDObjectBase {
 
-  public MDOType getType() {
-    return MDOType.ROLE;
+  static {
+    type = MDOType.ROLE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")
