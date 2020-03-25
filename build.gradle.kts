@@ -20,8 +20,8 @@ repositories {
 val junitVersion = "5.5.2"
 dependencies {
 
-    implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.9.4")
-    implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.9.4")
+    implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.10.3")
+    implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.10.3")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")

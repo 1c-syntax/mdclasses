@@ -9,12 +9,12 @@ import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
-@JsonDeserialize(builder = WebService.WebServiceBuilderImpl.class)
+@JsonDeserialize(builder = Command.CommandBuilderImpl.class)
 @SuperBuilder
-public class WebService extends MDObjectBase {
+public class Command extends MDObjectBase {
 
   @JsonPOJOBuilder(withPrefix = "")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class WebServiceBuilderImpl extends WebService.WebServiceBuilder<WebService, WebService.WebServiceBuilderImpl> {
+  static final class CommandBuilderImpl extends Command.CommandBuilder<Command, Command.CommandBuilderImpl> {
   }
 }

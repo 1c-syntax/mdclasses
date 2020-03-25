@@ -11,7 +11,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.github._1c_syntax.mdclasses.metadata.utils.Common;
 import com.github._1c_syntax.mdclasses.metadata.utils.MDOUtils;
-import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,35 +19,36 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Value
 @Slf4j
 public class Configuration {
 
-  protected String name;
-  protected String uuid;
+  String name;
+  String uuid;
 
-  protected ConfigurationSource configurationSource;
-  protected CompatibilityMode compatibilityMode;
-  protected CompatibilityMode configurationExtensionCompatibilityMode;
-  protected ScriptVariant scriptVariant;
+  ConfigurationSource configurationSource;
+  CompatibilityMode compatibilityMode;
+  CompatibilityMode configurationExtensionCompatibilityMode;
+  ScriptVariant scriptVariant;
 
-  protected String defaultRunMode;
-  protected String defaultLanguage;
-  protected String dataLockControlMode;
-  protected String objectAutonumerationMode;
-  protected UseMode modalityUseMode;
-  protected UseMode synchronousExtensionAndAddInCallUseMode;
-  protected UseMode synchronousPlatformExtensionAndAddInCallUseMode;
+  String defaultRunMode;
+  String defaultLanguage;
+  String dataLockControlMode;
+  String objectAutonumerationMode;
+  UseMode modalityUseMode;
+  UseMode synchronousExtensionAndAddInCallUseMode;
+  UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
-  protected Map<URI, ModuleType> modulesByType;
-  protected Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
-  protected Map<MDOType, Map<String, MDObjectBase>> children;
-  private Path rootPath;
+  Map<URI, ModuleType> modulesByType;
+  Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
+  Set<MDObjectBase> children;
+  Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
-    this.children = Collections.emptyMap();
+    this.children = Collections.emptySet();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
 
@@ -89,7 +89,7 @@ public class Configuration {
     this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
-    this.modulesByType = MDOUtils.getModuleTypesByPath(configurationSource, rootPath);
+    this.modulesByType = Common.getModuleTypesByPath(this);
     this.modulesBySupport = Common.getModuleSupports(this);
   }
 
@@ -108,30 +108,6 @@ public class Configuration {
     }
 
     return create();
-  }
-
-  public MDObjectBase getChild(MDOType type, String childName) {
-    MDObjectBase child = null;
-    Map<String, MDObjectBase> childrenByType = children.get(type);
-    if (childrenByType == null) {
-      childrenByType = getChildren(type);
-    }
-    if (!childrenByType.isEmpty()) {
-      child = childrenByType.get(childName);
-    }
-    return child;
-  }
-
-  @SneakyThrows
-  public Map<String, MDObjectBase> getChildren(MDOType type) {
-    Map<String, MDObjectBase> childrenByType = children.get(type);
-    if (childrenByType == null) {
-      childrenByType = MDOUtils.getChildren(configurationSource, rootPath, type);
-    }
-    if (!childrenByType.isEmpty()) {
-      children.put(type, childrenByType);
-    }
-    return childrenByType;
   }
 
   public ModuleType getModuleType(URI uri) {

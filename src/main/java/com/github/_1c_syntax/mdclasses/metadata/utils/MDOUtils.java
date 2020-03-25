@@ -302,18 +302,18 @@ public class MDOUtils {
     MDObjectBase mdo = null;
     var mdoFile = mdoPath.toFile();
     if (mdoFile.exists()) {
-      var xmlMapper = ObjectMapperFactory.createXmlMapper();
+      var xmlMapper = ObjectMapperFactory.getXmlMapper();
       if (configurationSource == ConfigurationSource.EDT) {
         try {
           mdo = (MDObjectBase) xmlMapper
-            .readValue(mdoPath.toFile(),
+            .readValue(mdoFile,
               Class.forName(MDObjectBase.class.getPackageName() + "." + type.getShortClassName()));
         } catch (IOException | ClassNotFoundException e) {
           LOGGER.error(e.getMessage(), e);
         }
       } else if (configurationSource == ConfigurationSource.DESIGNER) {
         try {
-          MetaDataObject metaDataObject = xmlMapper.readValue(mdoPath.toFile(), MetaDataObject.class);
+          MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile, MetaDataObject.class);
           mdo = metaDataObject.getPropertyByType(type);
         } catch (IOException e) {
           LOGGER.error(e.getMessage(), e);
@@ -330,6 +330,7 @@ public class MDOUtils {
         mdoFolder,
         type));
       updateMDOForms(configurationSource, mdo, type, mdoFolder);
+      updateMDOCommands(configurationSource, mdo, type, mdoFolder);
     }
 
     return mdo;
@@ -381,13 +382,12 @@ public class MDOUtils {
       }
 
       getMDOFilesInFolder(configurationSource, folder)
+        .parallelStream()
         .forEach(mdoPath -> {
-            modulesByType.putAll(
-              getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
-            modulesByType.putAll(
-              getFormsMDOModuleTypes(configurationSource,
-                folder,
-                FilenameUtils.getBaseName(mdoPath.toString())));
+            var baseName = FilenameUtils.getBaseName(mdoPath.toString());
+            modulesByType.putAll(getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
+            modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, baseName));
+            modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, baseName));
           }
         );
     }
@@ -408,7 +408,7 @@ public class MDOUtils {
     if (rootPath.toFile().exists()) {
       try (Stream<Path> files = Files.walk(rootPath, 1)) {
         files
-          .filter((Path f) -> Files.isDirectory(f))
+          .filter(MDOUtils::isDirectory)
           .forEach(mdoPath -> {
             var name = FilenameUtils.getBaseName(mdoPath.toString());
             var modulePath = getModulePath(configurationSource, rootPath, name, moduleType);
@@ -420,6 +420,10 @@ public class MDOUtils {
     }
 
     return modulesByType;
+  }
+
+  private static boolean isDirectory(Path path) {
+    return Files.isDirectory(path);
   }
 
   private static Map<URI, ModuleType> getFormsMDOModuleTypes(ConfigurationSource configurationSource,
@@ -443,11 +447,11 @@ public class MDOUtils {
    * Children
    */
 
-  public static Map<String, MDObjectBase> getChildren(ConfigurationSource configurationSource,
-                                                      Path rootPath,
-                                                      MDOType type) {
+  public static Set<MDObjectBase> getChildren(ConfigurationSource configurationSource,
+                                              Path rootPath,
+                                              MDOType type) {
 
-    Map<String, MDObjectBase> children = new HashMap<>();
+    Set<MDObjectBase> children = new HashSet<>();
     if (configurationSource == ConfigurationSource.EMPTY) {
       return children;
     }
@@ -458,22 +462,23 @@ public class MDOUtils {
     }
 
     getChildrenNamesInFolder(configurationSource, folder)
+      .parallelStream()
       .forEach(childName -> {
         MDObjectBase child = getMDObject(configurationSource, rootPath, type, childName);
         if (child != null) {
-          children.put(childName, child);
+          children.add(child);
         }
       });
 
     return children;
   }
 
-  public static Map<MDOType, Map<String, MDObjectBase>> getAllChildren(ConfigurationSource configurationSource,
-                                                                       Path rootPath,
-                                                                       boolean includeConfiguration) {
+  public static Set<MDObjectBase> getAllChildren(ConfigurationSource configurationSource,
+                                                 Path rootPath,
+                                                 boolean includeConfiguration) {
 
 
-    Map<MDOType, Map<String, MDObjectBase>> allChildren = new HashMap<>();
+    Set<MDObjectBase> allChildren = new HashSet<>();
     if (configurationSource == ConfigurationSource.EMPTY) {
       return allChildren;
     }
@@ -482,7 +487,7 @@ public class MDOUtils {
       if (!includeConfiguration && type == MDOType.CONFIGURATION) {
         continue;
       }
-      allChildren.put(type, getChildren(configurationSource, rootPath, type));
+      allChildren.addAll(getChildren(configurationSource, rootPath, type));
     }
     return allChildren;
   }
@@ -522,7 +527,7 @@ public class MDOUtils {
       getMDOFilesInFolder(configurationSource, formFolder)
         .forEach(mdoFile -> {
           Form mdoForm = null;
-          var xmlMapper = ObjectMapperFactory.createXmlMapper();
+          var xmlMapper = ObjectMapperFactory.getXmlMapper();
           try {
             MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
             mdoForm = metaDataObject.getForm();
@@ -550,6 +555,28 @@ public class MDOUtils {
     }
   }
 
+  private void updateMDOCommands(ConfigurationSource configurationSource, MDObjectBase mdo, MDOType type, Path folder) {
+    if (!type.isMayHaveCommand() || folder == null) {
+      return;
+    }
+    var commandFolder = Paths.get(folder.toString(), mdo.getName(), "Commands");
+    if (!commandFolder.toFile().exists()) {
+      return;
+    }
+
+    if (mdo.getCommands() != null) {
+      mdo.getCommands().forEach(command -> {
+        Map<URI, ModuleType> modulesByType = new HashMap<>();
+        var modulePath = getModulePath(configurationSource, commandFolder, command.getName(), ModuleType.CommandModule);
+        if (modulePath != null && modulePath.toFile().exists()) {
+          modulesByType.put(modulePath.toUri(), ModuleType.CommandModule);
+        }
+
+        command.setModulesByType(modulesByType);
+      });
+    }
+  }
+
   /**
    * Other
    */
@@ -563,8 +590,10 @@ public class MDOUtils {
       if (configurationSource == ConfigurationSource.EDT) {
         maxDepth = 2;
       }
+
       try (Stream<Path> files = Files.walk(folder, maxDepth)) {
         childrenNames = files
+          .parallel()
           .filter(f -> f.toString().endsWith(extension.get()))
           .filter(f -> !FilenameUtils.getBaseName(f.toString()).equals("ConfigDumpInfo"))
           .collect(Collectors.toList());

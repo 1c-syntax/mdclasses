@@ -23,6 +23,7 @@ class MDOUtilsTest {
   private static Map<URI, ModuleType> correctFilesAndTypesEDT(String srcPath) {
     Map<URI, ModuleType> correct = new HashMap<>();
     correct.put(Paths.get(srcPath, "src", "Documents", "Документ1", "Commands", "Команда", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
+    correct.put(Paths.get(srcPath, "src", "Documents", "Документ1", "Commands", "Команда2", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
     correct.put(Paths.get(srcPath, "src", "CommonCommands", "ОбщаяКоманда1", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
     correct.put(Paths.get(srcPath, "src", "Catalogs", "Справочник1", "Commands", "Команда1", "CommandModule.bsl").toUri(), ModuleType.CommandModule);
     correct.put(Paths.get(srcPath, "src", "Configuration", "ExternalConnectionModule.bsl").toUri(), ModuleType.ExternalConnectionModule);

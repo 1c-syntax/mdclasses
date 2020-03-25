@@ -6,11 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -49,9 +46,9 @@ public class ParseSupportData {
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());
     var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8);
-      dataStrings = scanner.findAll(patternSplit)
-        .map(matchResult -> matchResult.group(1))
-        .toArray(String[]::new);
+    dataStrings = scanner.findAll(patternSplit)
+      .map(matchResult -> matchResult.group(1))
+      .toArray(String[]::new);
 
     var countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
@@ -81,11 +78,7 @@ public class ParseSupportData {
         var guidObject = dataStrings[currentObjectPoint + 2];
         var supportVariant = getSupportVariantByInt(support);
 
-        Map<SupportConfiguration, SupportVariant> map = supportMap.get(guidObject);
-        if (map == null) {
-          map = new HashMap<>();
-          supportMap.put(guidObject, map);
-        }
+        Map<SupportConfiguration, SupportVariant> map = supportMap.computeIfAbsent(guidObject, k -> new HashMap<>());
         map.put(supportConfiguration, supportVariant);
       }
 

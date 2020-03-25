@@ -50,6 +50,9 @@ class MetaDataObjectTest {
     assertThat(mdo.getForms()).isNotEmpty();
     assertThat(mdo.getForms()).hasSize(3);
     assertThat(mdo.getForms().stream().anyMatch(form -> form.getName().equals("ФормаЭлемента"))).isTrue();
+    assertThat(mdo.getCommands()).isNotEmpty();
+    assertThat(mdo.getCommands()).hasSize(1);
+    assertThat(mdo.getCommands().stream().anyMatch(command -> command.getName().equals("Команда1"))).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.CHART_OF_ACCOUNTS, getMDOPathEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1.mdo"));
     assertThat(mdo).isNotNull();
@@ -147,10 +150,15 @@ class MetaDataObjectTest {
     assertThat(mdo.getName()).isEqualTo("Документ1");
     assertThat(mdo.getUuid()).isEqualTo("ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd");
     assertThat(mdo.getForms()).isNotNull();
+    assertThat(mdo.getCommands()).isNotNull();
     var forms = mdo.getForms();
     assertThat(forms).hasSize(3);
     assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаДокумента"))).isTrue();
     assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
+    var commands = mdo.getCommands();
+    assertThat(commands).hasSize(2);
+    assertThat(commands.stream().anyMatch(command -> command.getName().equals("Команда2"))).isTrue();
+    assertThat(commands.stream().anyMatch(command -> !command.getModulesByType().isEmpty())).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.ENUM, getMDOPathEDT("Enums/Перечисление1/Перечисление1.mdo"));
     assertThat(mdo).isNotNull();
@@ -314,6 +322,9 @@ class MetaDataObjectTest {
     assertThat(mdo.getForms()).isNotEmpty();
     assertThat(mdo.getForms()).hasSize(3);
     assertThat(mdo.getForms().stream().anyMatch(form -> form.getName().equals("ФормаЭлемента"))).isTrue();
+    assertThat(mdo.getCommands()).isNotEmpty();
+    assertThat(mdo.getCommands()).hasSize(1);
+    assertThat(mdo.getCommands().stream().anyMatch(command -> command.getName().equals("Команда1"))).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.CHART_OF_ACCOUNTS, getMDOPathDesigner("ChartsOfAccounts/ПланСчетов1.xml"));
     assertThat(mdo).isNotNull();
@@ -419,6 +430,11 @@ class MetaDataObjectTest {
     assertThat(forms).hasSize(6);
     assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваровИзЗаказа"))).isTrue();
     assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
+    assertThat(mdo.getCommands()).isNotNull();
+    var commands = mdo.getCommands();
+    assertThat(commands).hasSize(2);
+    assertThat(commands.stream().anyMatch(command -> command.getName().equals("ДокументыПоступления"))).isTrue();
+    assertThat(commands.stream().anyMatch(command -> !command.getModulesByType().isEmpty())).isTrue();
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.ENUM, getMDOPathDesigner("Enums/Перечисление1.xml"));
     assertThat(mdo).isNotNull();
@@ -565,14 +581,12 @@ class MetaDataObjectTest {
     var allChildren = MDOUtils.getAllChildren(ConfigurationSource.EDT,
       Paths.get(FilenameUtils.getPath(SRC_EDT)), false);
     assertThat(allChildren).isNotNull();
-    assertThat(allChildren).hasSize(44);
-    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNull();
+    assertThat(allChildren).hasSize(48);
 
     allChildren = MDOUtils.getAllChildren(ConfigurationSource.DESIGNER,
       Paths.get(SRC_DESIGNER), true);
     assertThat(allChildren).isNotNull();
-    assertThat(allChildren).hasSize(45);
-    assertThat(allChildren.get(MDOType.CONFIGURATION)).isNotNull();
+    assertThat(allChildren).hasSize(54);
   }
 
   private Path getMDOPathEDT(String path) {
