@@ -55,6 +55,10 @@ public class MDObjectBase {
       ) throws IOException {
 
         Map<String, List<MDObjectBase>> childObjects = new HashMap<>();
+        if (parser.getCurrentToken() != JsonToken.START_OBJECT) {
+          return childObjects;
+        }
+
         var commandKey = "Command";
         int level = 1; // текущий уровень ChildObjects
         while (parser.nextToken() != null) {
