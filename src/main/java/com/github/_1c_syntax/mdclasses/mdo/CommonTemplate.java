@@ -26,17 +26,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = CommonTemplate.CommonTemplateBuilderImpl.class)
 @SuperBuilder
 public class CommonTemplate extends MDObjectBase {
 
-  static {
-    type = MDOType.COMMON_TEMPLATE;
+  @Override
+  public MDOType getType() {
+    return MDOType.COMMON_TEMPLATE;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

@@ -24,9 +24,11 @@ package com.github._1c_syntax.mdclasses.utils;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
+import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import io.vavr.control.Either;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -132,6 +134,7 @@ public class MDOUtils {
         mdoPath,
         mdoFolder,
         type));
+      mdo.computeMdoRef();
       updateMDOForms(configurationSource, mdo, mdoFolder);
       updateMDOCommands(configurationSource, mdo, mdoFolder);
     }
@@ -282,13 +285,64 @@ public class MDOUtils {
       return allChildren;
     }
 
+    // сбор информации первого уровня
     for (MDOType type : MDOType.values(true)) {
-      if (!includeConfiguration && type == MDOType.CONFIGURATION) {
+      if (!includeConfiguration && type == MDOType.CONFIGURATION
+        || type == MDOType.SUBSYSTEM) {
         continue;
       }
       allChildren.addAll(getChildren(configurationSource, rootPath, type));
     }
+
+    Map<String, MDObjectBase> childrenByMdoRef = new HashMap<>();
+    allChildren.forEach(mdo -> childrenByMdoRef.put(mdo.getMdoRef(), mdo));
+
+    // догрузка подсистем
+    var subsystems = getChildren(configurationSource, rootPath, MDOType.SUBSYSTEM);
+    if (!subsystems.isEmpty()) {
+      allChildren.addAll(subsystems);
+
+      subsystems.forEach(subsystem -> computeChildren(configurationSource, (Subsystem) subsystem, childrenByMdoRef));
+    }
+
     return allChildren;
+  }
+
+  private void computeChildren(ConfigurationSource configurationSource, Subsystem subsystem, Map<String, MDObjectBase> childrenByMdoRef) {
+    var children = subsystem.getChildren();
+    if (children == null) {
+      return;
+    }
+
+    Set<Either<String, MDObjectBase>> newChildren = new HashSet<>();
+    var folder = Paths.get(
+      MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, Paths.get(subsystem.getMdoURI())).toString(),
+      subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
+
+    children.forEach(child -> {
+      if (child.isLeft()) {
+        var partNames = child.getLeft().split("\\.");
+        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getClassName())) {
+          var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
+          Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
+          childSubsystem.setParent(subsystem);
+          childSubsystem.computeMdoRef();
+          newChildren.add(Either.right(childSubsystem));
+          computeChildren(configurationSource, childSubsystem, childrenByMdoRef);
+        } else {
+          var mdo = childrenByMdoRef.get(child.getLeft());
+          if (mdo != null) {
+            newChildren.add(Either.right(mdo));
+            mdo.addIncludedSubsystems(subsystem);
+          } else {
+            LOGGER.error("Unknown MDO {}", child.getLeft());
+          }
+        }
+      } else {
+        newChildren.add(Either.right(child.get()));
+      }
+    });
+    subsystem.setChildren(newChildren);
   }
 
   @SneakyThrows

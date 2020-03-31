@@ -26,17 +26,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = ScheduledJob.ScheduledJobBuilderImpl.class)
 @SuperBuilder
 public class ScheduledJob extends MDObjectBase {
 
-  static {
-    type = MDOType.SCHEDULED_JOB;
+  @Override
+  public MDOType getType() {
+    return MDOType.SCHEDULED_JOB;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

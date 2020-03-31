@@ -22,8 +22,8 @@ repositories {
 val junitVersion = "5.5.2"
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.eclipse.lsp4j/org.eclipse.lsp4j
-    implementation("org.eclipse.lsp4j", "org.eclipse.lsp4j", "0.8.1")
+    // https://mvnrepository.com/artifact/io.vavr/vavr
+    implementation("io.vavr", "vavr", "0.10.2")
 
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.10.3")
     implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.10.3")

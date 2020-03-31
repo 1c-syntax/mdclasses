@@ -27,18 +27,21 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = MDOEnum.MDOEnumBuilderImpl.class)
 @JsonRootName(value = "Enum")
 @SuperBuilder
 public class MDOEnum extends MDObjectBase {
 
-  static {
-    type = MDOType.ENUM;
+  @Override
+  public MDOType getType() {
+    return MDOType.ENUM;
   }
 
   @JsonPOJOBuilder(withPrefix = "")

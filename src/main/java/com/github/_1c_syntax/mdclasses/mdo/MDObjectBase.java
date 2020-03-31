@@ -49,8 +49,8 @@ import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrEmptyStrin
 @NonFinal
 @JsonDeserialize(builder = MDObjectBase.MDObjectBaseBuilderImpl.class)
 @SuperBuilder
-@EqualsAndHashCode(exclude = {"mdoURI", "modulesByType", "forms", "commands"})
-@ToString(exclude = {"mdoURI", "modulesByType", "forms", "commands"})
+@EqualsAndHashCode(of = {"mdoRef"})
+@ToString(of = {"mdoRef"})
 public class MDObjectBase {
 
   protected final String uuid;
@@ -59,11 +59,40 @@ public class MDObjectBase {
   protected String comment = "";
 
   protected URI mdoURI;
+  protected String mdoRef;
   protected Map<URI, ModuleType> modulesByType;
   protected List<Form> forms;
   protected List<Command> commands;
+  protected List<Subsystem> includedSubsystems;
 
-  protected static MDOType type = null;
+  public MDOType getType() {
+    return null;
+  }
+
+  public void setForms(List<Form> forms) {
+    if (this.forms == null) {
+      this.forms = new ArrayList<>();
+    }
+    this.forms.addAll(forms);
+  }
+
+  public void setCommands(List<Command> commands) {
+    if (this.commands == null) {
+      this.commands = new ArrayList<>();
+    }
+    this.commands.addAll(commands);
+  }
+
+  public void addIncludedSubsystems(Subsystem subsystem) {
+    if (this.includedSubsystems == null) {
+      this.includedSubsystems = new ArrayList<>();
+    }
+    this.includedSubsystems.add(subsystem);
+  }
+
+  public void computeMdoRef() {
+    this.mdoRef = getType().getClassName() + "." + getName();
+  }
 
   public abstract static class MDObjectBaseBuilder
     <C extends MDObjectBase, B extends MDObjectBase.MDObjectBaseBuilder<C, B>> {
@@ -124,40 +153,6 @@ public class MDObjectBase {
       }
       commands.add(command);
     }
-  }
-
-  public static MDOType getType() {
-    return type;
-  }
-
-  public String mdoRef() {
-    return (getType().getClassName() + "." + name).intern();
-  }
-
-  public void setMdoURI(URI uri) {
-    if (this.mdoURI == null) {
-      this.mdoURI = uri;
-    }
-  }
-
-  public void setModulesByType(Map<URI, ModuleType> modulesByType) {
-    if (this.modulesByType == null) {
-      this.modulesByType = modulesByType;
-    }
-  }
-
-  public void setForms(List<Form> forms) {
-    if (this.forms == null) {
-      this.forms = new ArrayList<>();
-    }
-    this.forms.addAll(forms);
-  }
-
-  public void setCommands(List<Command> commands) {
-    if (this.commands == null) {
-      this.commands = new ArrayList<>();
-    }
-    this.commands.addAll(commands);
   }
 
   // Mark builder implementation as Jackson JSON builder with methods w/o `with-` in their names.

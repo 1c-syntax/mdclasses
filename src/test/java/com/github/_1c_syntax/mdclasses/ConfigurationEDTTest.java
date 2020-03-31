@@ -22,9 +22,11 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -76,6 +78,24 @@ public class ConfigurationEDTTest {
     assertThat(configuration.getChildren().stream().filter(mdObject ->
       mdObject instanceof CommonModule)).hasSize(6);
 
+    Subsystem subsystem = (Subsystem) configuration.getChildrenByMdoRef().get("Subsystem.ПерваяПодсистема");
+    assertThat(subsystem).isNotNull();
+    assertThat(subsystem.getChildren()).isNotNull();
+    assertThat(subsystem.getChildren()).hasSize(2);
+    // дочерние все подсистемы
+    assertThat(subsystem.getChildren().stream().allMatch(child -> child.get().getType() == MDOType.SUBSYSTEM)).isTrue();
+
+    // проверим что у всех дочерних объектов дочерних подсистем подсситема в списке includedSubsystem
+    subsystem.getChildren().forEach(child -> {
+      Subsystem childSubsystem = (Subsystem) child.get();
+      assertThat(childSubsystem.getChildren()).isNotNull();
+      assertThat(childSubsystem.getChildren()).hasSize(2);
+      childSubsystem.getChildren().forEach(childMDO -> {
+        var mdo = childMDO.get();
+        assertThat(mdo.getIncludedSubsystems()).isNotNull();
+        assertThat(mdo.getIncludedSubsystems()).contains(childSubsystem);
+      });
+    });
   }
 
   @Test

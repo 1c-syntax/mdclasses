@@ -26,11 +26,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import io.vavr.control.Either;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
-import org.eclipse.lsp4j.jsonrpc.messages.Either;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,16 +43,32 @@ import java.util.Set;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = Subsystem.SubsystemBuilderImpl.class)
 @SuperBuilder
 public class Subsystem extends MDObjectBase {
 
-  static {
-    type = MDOType.SUBSYSTEM;
+  @NonFinal
+  @Setter
+  Set<Either<String, MDObjectBase>> children;
+
+  @NonFinal
+  @Setter
+  Subsystem parent;
+
+  @Override
+  public MDOType getType() {
+    return MDOType.SUBSYSTEM;
   }
 
-  @Getter
-  Set<Either<String, MDObjectBase>> children;
+  @Override
+  public void computeMdoRef() {
+    super.computeMdoRef();
+    if(parent != null) {
+      this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
+    }
+
+  }
 
   public abstract static class SubsystemBuilder<C extends Subsystem, B extends Subsystem.SubsystemBuilder<C, B>> extends MDObjectBaseBuilder<C, B> {
 
@@ -58,7 +76,7 @@ public class Subsystem extends MDObjectBase {
       if (children == null) {
         children = new HashSet<>();
       }
-      children.add(Either.forLeft(value.intern()));
+      children.add(Either.left(value.intern()));
     }
 
     @JsonProperty("subsystems")
@@ -110,12 +128,13 @@ public class Subsystem extends MDObjectBase {
       if (value != null) {
         if (value instanceof List) {
           List<?> values = new ArrayList<>((Collection<?>) value);
-          values.forEach(subsystemName -> childrenValue.add(Either.forLeft(subsystemName.toString())));
+          values.forEach(subsystemName -> childrenValue.add(Either.left(subsystemName.toString())));
         } else {
-          childrenValue.add(Either.forLeft(value.toString()));
+          childrenValue.add(Either.left(value.toString()));
         }
       }
       children(childrenValue);
     }
   }
+
 }

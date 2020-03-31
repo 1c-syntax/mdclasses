@@ -26,17 +26,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = DocumentNumerator.DocumentNumeratorBuilderImpl.class)
 @SuperBuilder
 public class DocumentNumerator extends MDObjectBase {
 
-  static {
-    type = MDOType.DOCUMENT_NUMERATOR;
+  @Override
+  public MDOType getType() {
+    return MDOType.DOCUMENT_NUMERATOR;
   }
 
   @JsonPOJOBuilder(withPrefix = "")
