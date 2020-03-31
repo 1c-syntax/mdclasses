@@ -97,10 +97,6 @@ public class MDObjectBase {
   public abstract static class MDObjectBaseBuilder
     <C extends MDObjectBase, B extends MDObjectBase.MDObjectBaseBuilder<C, B>> {
 
-        if (parser.getCurrentToken() != JsonToken.START_OBJECT) {
-          return childObjects;
-        }
-
     // Re-define generated method's to implement basic read of `properties` collection.
     // It's defined here (but not in Impl class) to make it callable from other SuperBuilders
     @JsonProperty("Properties")
