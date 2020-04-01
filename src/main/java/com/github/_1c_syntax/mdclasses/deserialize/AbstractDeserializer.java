@@ -15,6 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс реализация кастомной десериализации XML файлов конфигурации.
+ * В дочерних классах необходимо реализовать только метод чтение свойства readToken
+ */
 abstract class AbstractDeserializer extends JsonDeserializer<Object> {
 
   protected final String rootKey;
