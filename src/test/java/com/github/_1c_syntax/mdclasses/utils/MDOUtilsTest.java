@@ -1,3 +1,24 @@
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright © 2019 - 2020
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
 package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
@@ -40,7 +61,7 @@ class MDOUtilsTest {
     correct.put(Paths.get(srcPath, "src", "HTTPServices", "HTTPСервис1", "Module.bsl").toUri(), ModuleType.HTTPServiceModule);
     correct.put(Paths.get(srcPath, "src", "Documents", "Документ1", "Forms", "ФормаДокумента", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "src", "CommonModules", "ПростойОбщийМодуль", "Module.bsl").toUri(), ModuleType.CommonModule);
-    correct.put(Paths.get(srcPath, "src", "CommonModules", "ОбщийМодульПовтИспСеанс", "Module.bsl").toUri(), ModuleType.CommonModule);
+    correct.put(Paths.get(srcPath, "src", "CommonModules", "ОбщийМодульПовт�?спСеанс", "Module.bsl").toUri(), ModuleType.CommonModule);
     correct.put(Paths.get(srcPath, "src", "CommonModules", "ГлобальныйОбщийМодуль", "Module.bsl").toUri(), ModuleType.CommonModule);
     correct.put(Paths.get(srcPath, "src", "CommonForms", "Форма", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "src", "Catalogs", "Справочник1", "Forms", "ФормаЭлемента", "Module.bsl").toUri(), ModuleType.FormModule);
@@ -71,13 +92,13 @@ class MDOUtilsTest {
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Ext", "ManagerModule.bsl").toUri(), ModuleType.ManagerModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаСпискаДокументов", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаСписка", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
-    correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаПодбораТоваровИзЗаказа", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаПодбораТоваров�?зЗаказа", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаДокумента", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаВыбораРаспоряжения", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "Documents", "ПоступлениеТоваровУслуг", "Forms", "ФормаВыбора", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
     correct.put(Paths.get(srcPath, "CommonModules", "ПростойОбщийМодуль", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
-    correct.put(Paths.get(srcPath, "CommonModules", "ОбщийМодульПовтИспСеанс", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
-    correct.put(Paths.get(srcPath, "CommonModules", "ОбщегоНазначенияПовторногоИспользования", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
+    correct.put(Paths.get(srcPath, "CommonModules", "ОбщийМодульПовт�?спСеанс", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
+    correct.put(Paths.get(srcPath, "CommonModules", "ОбщегоНазначенияПовторного�?спользования", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
     correct.put(Paths.get(srcPath, "CommonModules", "ГлобальныйОбщийМодуль", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
     correct.put(Paths.get(srcPath, "CommonModules", "ГлобальныйКлиент", "Ext", "Module.bsl").toUri(), ModuleType.CommonModule);
     correct.put(Paths.get(srcPath, "CommonForms", "Форма", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);

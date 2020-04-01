@@ -1,3 +1,24 @@
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright © 2019 - 2020
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -428,7 +449,7 @@ class MetaDataObjectTest {
     assertThat(mdo.getForms()).isNotNull();
     var forms = mdo.getForms();
     assertThat(forms).hasSize(6);
-    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваровИзЗаказа"))).isTrue();
+    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваров�?зЗаказа"))).isTrue();
     assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
     assertThat(mdo.getCommands()).isNotNull();
     var commands = mdo.getCommands();
@@ -569,10 +590,10 @@ class MetaDataObjectTest {
     assertThat(mdo.getName()).isEqualTo("Русский");
     assertThat(mdo.getUuid()).isEqualTo("1b5f5cd6-14b2-422e-ab6c-1103fd375982");
 
-    mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.INTERFACE, getMDOPathDesigner("Interfaces/Интерфейс1.xml"));
+    mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.INTERFACE, getMDOPathDesigner("Interfaces/�?нтерфейс1.xml"));
     assertThat(mdo).isNotNull();
     assertThat(mdo instanceof MDOInterface).isTrue();
-    assertThat(mdo.getName()).isEqualTo("Интерфейс1");
+    assertThat(mdo.getName()).isEqualTo("�?нтерфейс1");
     assertThat(mdo.getUuid()).isEqualTo("874d641c-12f7-4db7-bde2-dd72c3d5b522");
   }
 

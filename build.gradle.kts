@@ -98,6 +98,7 @@ license {
     strictCheck = true
     mapping("java", "SLASHSTAR_STYLE")
     exclude("**/*.html")
+    exclude("**/*.xsd")
     exclude("**/*.properties")
     exclude("**/*.xml")
     exclude("**/*.json")
