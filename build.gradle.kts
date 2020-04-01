@@ -1,9 +1,11 @@
 import java.net.URI
+import java.util.*
 
 plugins {
     java
     maven
     jacoco
+    id("com.github.hierynomus.license") version "0.15.0"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("io.franzbecker.gradle-lombok") version "3.1.0"
     id("org.sonarqube") version "2.7.1"
@@ -86,4 +88,18 @@ sonarqube {
 lombok {
     version = "1.18.8"
     sha256 = "0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc"
+}
+
+license {
+    header = rootProject.file("license/HEADER.txt")
+    ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
+    ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
+    ext["project"] = "MDClasses"
+    strictCheck = true
+    mapping("java", "SLASHSTAR_STYLE")
+    exclude("**/*.html")
+    exclude("**/*.properties")
+    exclude("**/*.xml")
+    exclude("**/*.json")
+    exclude("**/*.bsl")
 }
