@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
+import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -136,6 +137,7 @@ public class MDOUtils {
         type));
       mdo.computeMdoRef();
       updateMDOForms(configurationSource, mdo, mdoFolder);
+      updateMDOTemplates(configurationSource, mdo, mdoFolder);
       updateMDOCommands(configurationSource, mdo, mdoFolder);
     }
 
@@ -366,18 +368,12 @@ public class MDOUtils {
   }
 
   private void updateMDOForms(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
-    if (folder == null) {
-      return;
-    }
-    var formFolder = Paths.get(folder.toString(), mdo.getName(), MDOType.FORM.getGroupName());
-    if (!formFolder.toFile().exists()) {
-      return;
-    }
+    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.FORM);
 
     // для EDT пока ничего не делаем, MDO для формы нету
-    if (configurationSource != ConfigurationSource.EDT) {
+    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
       List<Form> mdoForms = new ArrayList<>();
-      getMDOFilesInFolder(configurationSource, formFolder)
+      getMDOFilesInFolder(configurationSource, childrenFolder)
         .forEach(mdoFile -> {
           Form mdoForm = null;
           var xmlMapper = ObjectMapperFactory.getXmlMapper();
@@ -397,35 +393,53 @@ public class MDOUtils {
 
     if (mdo.getForms() != null) {
       mdo.getForms().forEach(form -> {
-        Map<URI, ModuleType> modulesByType = new HashMap<>();
-        var modulePath = MDOPathUtils.getModulePath(configurationSource, formFolder, form.getName(), ModuleType.FormModule);
-        if (modulePath != null && modulePath.toFile().exists()) {
-          modulesByType.put(modulePath.toUri(), ModuleType.FormModule);
-        }
+        setModulesByType(configurationSource, childrenFolder, form, ModuleType.FormModule);
+        form.setParent(mdo);
+        form.computeMdoRef();
+      });
+    }
+  }
 
-        form.setModulesByType(modulesByType);
+  private void updateMDOTemplates(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
+    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.TEMPLATE);
+
+    // для EDT пока ничего не делаем, MDO для макета нету
+    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
+      List<Template> mdoTemplates = new ArrayList<>();
+      getMDOFilesInFolder(configurationSource, childrenFolder)
+        .forEach(mdoFile -> {
+          Template mdoTemplate = null;
+          var xmlMapper = ObjectMapperFactory.getXmlMapper();
+          try {
+            MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
+            mdoTemplate = metaDataObject.getTemplate();
+          } catch (IOException e) {
+            LOGGER.error(e.getMessage(), e);
+          }
+          if (mdoTemplate != null) {
+            mdoTemplates.add(mdoTemplate);
+          }
+        });
+
+      mdo.setTemplates(mdoTemplates);
+    }
+
+    if (mdo.getTemplates() != null) {
+      mdo.getTemplates().forEach(template -> {
+        template.setParent(mdo);
+        template.computeMdoRef();
       });
     }
   }
 
   private void updateMDOCommands(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
-    if (folder == null) {
-      return;
-    }
-    var commandFolder = Paths.get(folder.toString(), mdo.getName(), MDOType.COMMAND.getGroupName());
-    if (!commandFolder.toFile().exists()) {
-      return;
-    }
+    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.COMMAND);
 
     if (mdo.getCommands() != null) {
       mdo.getCommands().forEach(command -> {
-        Map<URI, ModuleType> modulesByType = new HashMap<>();
-        var modulePath = MDOPathUtils.getModulePath(configurationSource, commandFolder, command.getName(), ModuleType.CommandModule);
-        if (modulePath != null && modulePath.toFile().exists()) {
-          modulesByType.put(modulePath.toUri(), ModuleType.CommandModule);
-        }
-
-        command.setModulesByType(modulesByType);
+        setModulesByType(configurationSource, childrenFolder, command, ModuleType.CommandModule);
+        command.setParent(mdo);
+        command.computeMdoRef();
       });
     }
   }
@@ -453,6 +467,31 @@ public class MDOUtils {
     }
 
     return childrenNames;
+  }
+
+  private static void setModulesByType(ConfigurationSource configurationSource,
+                                       Path folder,
+                                       MDObjectBase mdo,
+                                       ModuleType moduleType) {
+    if (folder != null) {
+      Map<URI, ModuleType> modulesByType = new HashMap<>();
+      var modulePath = MDOPathUtils.getModulePath(configurationSource, folder, mdo.getName(), moduleType);
+      if (modulePath != null && modulePath.toFile().exists()) {
+        modulesByType.put(modulePath.toUri(), moduleType);
+      }
+
+      mdo.setModulesByType(modulesByType);
+    }
+  }
+
+  private static Path getChildrenFolder(MDObjectBase mdo, Path folder, MDOType type) {
+    if (folder != null) {
+      var formFolder = Paths.get(folder.toString(), mdo.getName(), type.getGroupName());
+      if (formFolder.toFile().exists()) {
+        return formFolder;
+      }
+    }
+    return null;
   }
 
 }

@@ -62,6 +62,7 @@ public class MDObjectBase {
   protected String mdoRef;
   protected Map<URI, ModuleType> modulesByType;
   protected List<Form> forms;
+  protected List<Template> templates;
   protected List<Command> commands;
   protected List<Subsystem> includedSubsystems;
 
@@ -74,6 +75,13 @@ public class MDObjectBase {
       this.forms = new ArrayList<>();
     }
     this.forms.addAll(forms);
+  }
+
+  public void setTemplates(List<Template> templates) {
+    if (this.templates == null) {
+      this.templates = new ArrayList<>();
+    }
+    this.templates.addAll(templates);
   }
 
   public void setCommands(List<Command> commands) {
@@ -131,6 +139,17 @@ public class MDObjectBase {
           forms = new ArrayList<>();
         }
         forms.add(ObjectMapperFactory.getXmlMapper().convertValue(properties, Form.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("templates")
+    protected MDObjectBaseBuilder<C, B> templates(Map<String, Object> properties) {
+      if (properties != null) {
+        if (templates == null) {
+          templates = new ArrayList<>();
+        }
+        templates.add(ObjectMapperFactory.getXmlMapper().convertValue(properties, Template.class));
       }
       return this.self();
     }
