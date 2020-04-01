@@ -54,9 +54,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServerCall()).isFalse();
 
     commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
-      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщийМодульПовт�?спСеанс"))
+      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщийМодульПовтИспСеанс"))
       .findFirst().get();
-    assertThat(commonModule.getName()).isEqualTo("ОбщийМодульПовт�?спСеанс");
+    assertThat(commonModule.getName()).isEqualTo("ОбщийМодульПовтИспСеанс");
     assertThat(commonModule.getComment()).isEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);
     assertThat(commonModule.isClientManagedApplication()).isFalse();
@@ -117,9 +117,9 @@ public class CommonModuleTest {
     assertThat(commonModule.isServerCall()).isFalse();
 
     commonModule = (CommonModule) configuration.getChildren().stream().filter(mdObject ->
-      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщегоНазначенияПовторного�?спользования"))
+      mdObject instanceof CommonModule && mdObject.getName().equals("ОбщегоНазначенияПовторногоИспользования"))
       .findFirst().get();
-    assertThat(commonModule.getName()).isEqualTo("ОбщегоНазначенияПовторного�?спользования");
+    assertThat(commonModule.getName()).isEqualTo("ОбщегоНазначенияПовторногоИспользования");
     assertThat(commonModule.getComment()).isNullOrEmpty();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);
     assertThat(commonModule.isClientManagedApplication()).isTrue();

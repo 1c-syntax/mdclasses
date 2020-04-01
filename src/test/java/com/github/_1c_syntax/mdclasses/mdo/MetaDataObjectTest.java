@@ -449,7 +449,7 @@ class MetaDataObjectTest {
     assertThat(mdo.getForms()).isNotNull();
     var forms = mdo.getForms();
     assertThat(forms).hasSize(6);
-    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваров�?зЗаказа"))).isTrue();
+    assertThat(forms.stream().anyMatch(form -> form.getName().equals("ФормаПодбораТоваровИзЗаказа"))).isTrue();
     assertThat(forms.stream().anyMatch(form -> !form.getModulesByType().isEmpty())).isTrue();
     assertThat(mdo.getCommands()).isNotNull();
     var commands = mdo.getCommands();
@@ -590,10 +590,10 @@ class MetaDataObjectTest {
     assertThat(mdo.getName()).isEqualTo("Русский");
     assertThat(mdo.getUuid()).isEqualTo("1b5f5cd6-14b2-422e-ab6c-1103fd375982");
 
-    mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.INTERFACE, getMDOPathDesigner("Interfaces/�?нтерфейс1.xml"));
+    mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.INTERFACE, getMDOPathDesigner("Interfaces/Интерфейс1.xml"));
     assertThat(mdo).isNotNull();
     assertThat(mdo instanceof MDOInterface).isTrue();
-    assertThat(mdo.getName()).isEqualTo("�?нтерфейс1");
+    assertThat(mdo.getName()).isEqualTo("Интерфейс1");
     assertThat(mdo.getUuid()).isEqualTo("874d641c-12f7-4db7-bde2-dd72c3d5b522");
   }
 
