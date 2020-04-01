@@ -1,4 +1,4 @@
-package com.github._1c_syntax.mdclasses.metadata.utils;
+package com.github._1c_syntax.mdclasses.utils;
 
 import lombok.experimental.UtilityClass;
 

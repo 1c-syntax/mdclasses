@@ -8,8 +8,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import com.github._1c_syntax.mdclasses.metadata.utils.ObjectMapperFactory;
+import com.github._1c_syntax.mdclasses.utils.ObjectMapperFactory;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.github._1c_syntax.mdclasses.metadata.utils.MapExtension.getOrEmptyString;
+import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrEmptyString;
 
 @Data
 @NonFinal
@@ -142,6 +143,10 @@ public class MDObjectBase {
       return this.self();
     }
 
+  }
+
+  public MDOType getType() {
+    return MDOType.CONFIGURATION;
   }
 
   public void setMdoURI(URI uri) {
