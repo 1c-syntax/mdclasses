@@ -97,11 +97,14 @@ license {
     ext["project"] = "MDClasses"
     strictCheck = true
     mapping("java", "SLASHSTAR_STYLE")
-    exclude("**/test/*")
-    exclude("**/*.bin")
-    exclude("**/*.html")
-    exclude("**/*.properties")
-    exclude("**/*.xml")
-    exclude("**/*.json")
-    exclude("**/*.bsl")
+    excludes(listOf(
+            "**/edt*/**",
+            "**/origin*/**",
+            "**/*.bin",
+            "**/*.html",
+            "**/*.properties",
+            "**/*.xml",
+            "**/*.json",
+            "**/*.os",
+            "**/*.bsl"))
 }
