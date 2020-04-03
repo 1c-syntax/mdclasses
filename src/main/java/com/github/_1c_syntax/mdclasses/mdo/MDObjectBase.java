@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.deserialize.ChildObjectsDeserializer;
 import com.github._1c_syntax.mdclasses.deserialize.PropertiesDeserializer;
+import com.github._1c_syntax.mdclasses.deserialize.TabularSectionEDTDeserializer;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.utils.ObjectMapperFactory;
@@ -199,9 +200,24 @@ public class MDObjectBase {
     }
 
     @JsonProperty("tabularSections")
+    @JsonDeserialize(using = TabularSectionEDTDeserializer.class)
     protected MDObjectBaseBuilder<C, B> tabularSections(Map<String, Object> properties) {
       if (properties != null) {
         addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, TabularSection.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("tabularAttributes")
+    protected MDObjectBaseBuilder<C, B> tabularAttributes(Object value) {
+      if (value != null) {
+        if (value instanceof List) {
+          List<?> values = new ArrayList<>((Collection<?>) value);
+          values.forEach(attribute ->
+            addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(attribute, Attribute.class)));
+        } else {
+          addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(value, Attribute.class));
+        }
       }
       return this.self();
     }
