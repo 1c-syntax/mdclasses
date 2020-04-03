@@ -65,6 +65,7 @@ public class MDObjectBase {
   protected List<Template> templates;
   protected List<Command> commands;
   protected List<Subsystem> includedSubsystems;
+  protected List<MDOAttribute> attributes;
 
   public MDOType getType() {
     return null;
@@ -162,11 +163,50 @@ public class MDObjectBase {
       return this.self();
     }
 
+    @JsonProperty("attributes")
+    protected MDObjectBaseBuilder<C, B> attributes(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Attribute.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("dimensions")
+    protected MDObjectBaseBuilder<C, B> dimensions(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Dimension.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("resources")
+    protected MDObjectBaseBuilder<C, B> resources(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Resource.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("tabularSections")
+    protected MDObjectBaseBuilder<C, B> tabularSections(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, TabularSection.class));
+      }
+      return this.self();
+    }
+
     private void addCommand(Command command) {
       if (commands == null) {
         commands = new ArrayList<>();
       }
       commands.add(command);
+    }
+
+    private void addAttribute(MDOAttribute attribute) {
+      if (attributes == null) {
+        attributes = new ArrayList<>();
+      }
+      attributes.add(attribute);
     }
   }
 

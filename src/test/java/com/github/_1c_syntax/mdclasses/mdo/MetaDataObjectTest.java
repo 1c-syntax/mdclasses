@@ -44,12 +44,16 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof AccountingRegister).isTrue();
     assertThat(mdo.getName()).isEqualTo("РегистрБухгалтерии1");
     assertThat(mdo.getUuid()).isEqualTo("e5930f2f-15d9-48a1-ac69-379ad990b02a");
+    assertThat(mdo.getAttributes()).hasSize(2);
+    checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.ACCUMULATION_REGISTER, getMDOPathEDT("AccumulationRegisters/РегистрНакопления1/РегистрНакопления1.mdo"));
     assertThat(mdo).isNotNull();
     assertThat(mdo instanceof AccumulationRegister).isTrue();
     assertThat(mdo.getName()).isEqualTo("РегистрНакопления1");
     assertThat(mdo.getUuid()).isEqualTo("8ea07f36-d671-4649-bc7a-94daa939e77f");
+    assertThat(mdo.getAttributes()).hasSize(2);
+    checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.BUSINESS_PROCESS, getMDOPathEDT("BusinessProcesses/БизнесПроцесс1/БизнесПроцесс1.mdo"));
     assertThat(mdo).isNotNull();
@@ -74,6 +78,7 @@ class MetaDataObjectTest {
     assertThat(mdo.getCommands()).isNotEmpty();
     assertThat(mdo.getCommands()).hasSize(1);
     assertThat(mdo.getCommands().stream().anyMatch(command -> command.getName().equals("Команда1"))).isTrue();
+    assertThat(mdo.getAttributes()).hasSize(4);
     checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.CHART_OF_ACCOUNTS, getMDOPathEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1.mdo"));
@@ -648,6 +653,11 @@ class MetaDataObjectTest {
     if (mdo.getTemplates() != null) {
       assertThat(mdo.getTemplates().stream().allMatch(template -> template.getParent().equals(mdo))).isTrue();
       assertThat(mdo.getTemplates().stream().allMatch(template -> template.getMdoRef().startsWith(mdo.getMdoRef()))).isTrue();
+    }
+
+    if (mdo.getAttributes() != null) {
+      assertThat(mdo.getAttributes().stream().allMatch(attribute -> attribute.getParent().equals(mdo))).isTrue();
+      assertThat(mdo.getAttributes().stream().allMatch(attribute -> attribute.getMdoRef().startsWith(mdo.getMdoRef()))).isTrue();
     }
   }
 

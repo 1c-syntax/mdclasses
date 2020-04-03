@@ -139,6 +139,7 @@ public class MDOUtils {
       updateMDOForms(configurationSource, mdo, mdoFolder);
       updateMDOTemplates(configurationSource, mdo, mdoFolder);
       updateMDOCommands(configurationSource, mdo, mdoFolder);
+      updateMDOAttributes(mdo);
     }
 
     return mdo;
@@ -405,6 +406,18 @@ public class MDOUtils {
         setModulesByType(configurationSource, childrenFolder, command, ModuleType.CommandModule);
         command.setParent(mdo);
         command.computeMdoRef();
+      });
+    }
+  }
+
+  private void updateMDOAttributes(MDObjectBase mdo) {
+
+    if (mdo.getAttributes() != null) {
+      mdo.getAttributes().forEach(attribute -> {
+        attribute.setParent(mdo);
+        attribute.computeMdoRef();
+        // у табличных частей есть дочерние элементы
+        updateMDOAttributes(attribute);
       });
     }
   }
