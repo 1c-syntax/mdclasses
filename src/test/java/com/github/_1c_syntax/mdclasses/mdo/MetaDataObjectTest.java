@@ -331,12 +331,16 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof AccountingRegister).isTrue();
     assertThat(mdo.getName()).isEqualTo("РегистрБухгалтерии1");
     assertThat(mdo.getUuid()).isEqualTo("e5930f2f-15d9-48a1-ac69-379ad990b02a");
+    assertThat(mdo.getAttributes()).hasSize(2);
+    checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.ACCUMULATION_REGISTER, getMDOPathDesigner("AccumulationRegisters/РегистрНакопления1.xml"));
     assertThat(mdo).isNotNull();
     assertThat(mdo instanceof AccumulationRegister).isTrue();
     assertThat(mdo.getName()).isEqualTo("РегистрНакопления1");
     assertThat(mdo.getUuid()).isEqualTo("8ea07f36-d671-4649-bc7a-94daa939e77f");
+    assertThat(mdo.getAttributes()).hasSize(2);
+    checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.BUSINESS_PROCESS, getMDOPathDesigner("BusinessProcesses/БизнесПроцесс1.xml"));
     assertThat(mdo).isNotNull();
@@ -349,6 +353,8 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof CalculationRegister).isTrue();
     assertThat(mdo.getName()).isEqualTo("РегистрРасчета1");
     assertThat(mdo.getUuid()).isEqualTo("90587c7d-b950-4476-ac14-426e4a83d9c4");
+    assertThat(mdo.getAttributes()).hasSize(2);
+    checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.CATALOG, getMDOPathDesigner("Catalogs/Справочник1.xml"));
     assertThat(mdo).isNotNull();
@@ -365,6 +371,7 @@ class MetaDataObjectTest {
     assertThat(templates).hasSize(2);
     assertThat(templates.stream().allMatch(template -> template.getName().startsWith("Макет"))).isTrue();
     assertThat(templates.stream().allMatch(template -> template.getModulesByType() == null)).isTrue();
+    assertThat(mdo.getAttributes()).hasSize(4);
     checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.CHART_OF_ACCOUNTS, getMDOPathDesigner("ChartsOfAccounts/ПланСчетов1.xml"));

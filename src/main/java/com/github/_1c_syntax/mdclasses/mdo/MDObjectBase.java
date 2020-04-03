@@ -129,6 +129,17 @@ public class MDObjectBase {
             addCommand((Command) value);
           }
         }
+
+        value = properties.get("Attribute");
+        if (value != null) {
+          if (value instanceof List) {
+            List<?> values = new ArrayList<>((Collection<?>) value);
+            values.forEach(attribute -> addAttribute((MDOAttribute) attribute));
+          } else {
+            addAttribute((MDOAttribute) value);
+          }
+        }
+
       }
       return this.self();
     }
