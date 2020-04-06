@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
@@ -372,6 +373,11 @@ class MetaDataObjectTest {
     assertThat(templates.stream().allMatch(template -> template.getName().startsWith("Макет"))).isTrue();
     assertThat(templates.stream().allMatch(template -> template.getModulesByType() == null)).isTrue();
     assertThat(mdo.getAttributes()).hasSize(4);
+    assertThat(mdo.getAttributes()
+      .stream()
+      .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
+      .allMatch(attribute -> attribute.getAttributes().size() == 2))
+      .isTrue();
     checkParent(mdo);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.CHART_OF_ACCOUNTS, getMDOPathDesigner("ChartsOfAccounts/ПланСчетов1.xml"));

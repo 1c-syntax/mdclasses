@@ -72,13 +72,16 @@ abstract class AbstractDeserializer extends JsonDeserializer<Object> {
 
       // обрабатываем только свойства
       if (token == JsonToken.FIELD_NAME) {
-        readToken(parser, childObjects, name);
+        readToken(parser, childObjects, name, context);
       }
     }
     return childObjects;
   }
 
-  protected abstract void readToken(JsonParser parser, Map<String, Object> childObjects, String name) throws IOException;
+  protected abstract void readToken(JsonParser parser,
+                                    Map<String, Object> childObjects,
+                                    String name,
+                                    DeserializationContext context) throws IOException;
 
   private int correctLevel(String name, JsonToken token, int level) {
     var isRoot = rootKey.equals(name);
@@ -104,6 +107,10 @@ abstract class AbstractDeserializer extends JsonDeserializer<Object> {
 
   protected <T> T getValueFromNode(TreeNode node, Class<T> classValue) {
     return ObjectMapperFactory.getXmlMapper().convertValue(node, classValue);
+  }
+
+  protected <T> T readValueByType(JsonParser parser, Class<T> classValue) throws IOException {
+    return ObjectMapperFactory.getXmlMapper().readValue(parser, classValue);
   }
 
   protected void addProperty(Map<String, Object> childObjects, String name, Object newValue) {

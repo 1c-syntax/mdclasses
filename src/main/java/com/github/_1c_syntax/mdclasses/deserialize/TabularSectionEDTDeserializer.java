@@ -2,6 +2,7 @@ package com.github._1c_syntax.mdclasses.deserialize;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.DeserializationContext;
 import com.github._1c_syntax.mdclasses.mdo.Attribute;
 
 import java.io.IOException;
@@ -17,7 +18,10 @@ public class TabularSectionEDTDeserializer extends AbstractDeserializer {
   }
 
   @Override
-  protected void readToken(JsonParser parser, Map<String, Object> childObjects, String name) throws IOException {
+  protected void readToken(JsonParser parser,
+                           Map<String, Object> childObjects,
+                           String name,
+                           DeserializationContext context) throws IOException {
     parser.nextToken();
     if (parser.getCurrentToken() == JsonToken.START_OBJECT) {
       if (name.equals(ATTRIBUTE_KEY)) {

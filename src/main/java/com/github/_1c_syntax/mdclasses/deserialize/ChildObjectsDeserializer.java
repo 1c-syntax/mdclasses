@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.deserialize;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
 import com.github._1c_syntax.mdclasses.mdo.Attribute;
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Dimension;
@@ -46,7 +47,10 @@ public class ChildObjectsDeserializer extends AbstractDeserializer {
   }
 
   @Override
-  protected void readToken(JsonParser parser, Map<String, Object> childObjects, String name) throws IOException {
+  protected void readToken(JsonParser parser,
+                           Map<String, Object> childObjects,
+                           String name,
+                           DeserializationContext context) throws IOException {
     if (name.equals(COMMAND_KEY)) {
       parser.nextToken();
       var newValue = getValueFromNode(parser.readValueAsTree(), Command.class);
@@ -69,7 +73,7 @@ public class ChildObjectsDeserializer extends AbstractDeserializer {
       addProperty(childObjects, ATTRIBUTE_KEY, newValue);
     } else if (name.equals(TABULAR_SECTION_KEY)) {
       parser.nextToken();
-      var newValue = getValueFromNode(parser.readValueAsTree(), TabularSection.class);
+      var newValue = readValueByType(parser, TabularSection.class);
       addProperty(childObjects, ATTRIBUTE_KEY, newValue);
     }
   }

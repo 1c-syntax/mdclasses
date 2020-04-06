@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.deserialize;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.DeserializationContext;
 
 import java.io.IOException;
 import java.util.Map;
@@ -36,7 +37,11 @@ public class PropertiesDeserializer extends AbstractDeserializer {
   }
 
   @Override
-  protected void readToken(JsonParser parser, Map<String, Object> childObjects, String name) throws IOException {
+  protected void readToken(JsonParser parser,
+                           Map<String, Object> childObjects,
+                           String name,
+                           DeserializationContext context) throws IOException {
+
     parser.nextToken(); // вошли во внутрь
 
     if (parser.getCurrentToken() == JsonToken.START_OBJECT) {
