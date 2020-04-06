@@ -1,4 +1,25 @@
-package com.github._1c_syntax.mdclasses.metadata.utils;
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright © 2019 - 2020
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
+package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
@@ -93,21 +114,21 @@ class MDOUtilsTest {
   void getPathsTest() {
     Path rootPath = Paths.get("src/test/resources/metadata").toAbsolutePath();
 
-    assertThat(MDOUtils.getMDOTypeFolder(rootPath, MDOType.SUBSYSTEM)).isNull();
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.EDT, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
+    assertThat(MDOPathUtils.getMDOTypeFolder(rootPath, MDOType.SUBSYSTEM)).isNull();
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.EDT, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
       Paths.get(rootPath.toString(), "src", "Subsystems", "Подсистема", "Подсистема.mdo"));
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема")).isEqualTo(
       Paths.get(rootPath.toString(), "Subsystems", "Подсистема.xml"));
-    assertThat(MDOUtils.getMDOTypeFolder(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM)).isEqualTo(
+    assertThat(MDOPathUtils.getMDOTypeFolder(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM)).isEqualTo(
       Paths.get(rootPath.toString(), "Subsystems"));
 
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3"))
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3"))
       .isNotNull();
-    assertThat(MDOUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3")
+    assertThat(MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, rootPath, MDOType.SUBSYSTEM, "Подсистема3")
       .toFile().exists()).isFalse();
 
     rootPath = Paths.get("src/test/resources/metadata", "edt", "Catalog");
-    var mdoCatalog = MDOUtils.getMDOPath(ConfigurationSource.EDT, rootPath, "Справочник1");
+    var mdoCatalog = MDOPathUtils.getMDOPath(ConfigurationSource.EDT, rootPath, "Справочник1");
     assertThat(mdoCatalog).isNotNull();
   }
 

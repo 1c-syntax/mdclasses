@@ -19,23 +19,14 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.utils;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import lombok.Getter;
+import lombok.experimental.UtilityClass;
 
-@Value
-@EqualsAndHashCode(callSuper = true)
-@JsonDeserialize(builder = Template.TemplateBuilderImpl.class)
-@SuperBuilder
-public class Template extends MDObjectBase {
-
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class TemplateBuilderImpl extends Template.TemplateBuilder<Template, Template.TemplateBuilderImpl> {
-  }
+@UtilityClass
+public class ObjectMapperFactory {
+  @Getter(lazy = true)
+  private static final XmlMapper xmlMapper = new XmlMapper();
 }

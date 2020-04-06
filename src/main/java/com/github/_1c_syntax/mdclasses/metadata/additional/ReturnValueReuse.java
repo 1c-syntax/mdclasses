@@ -1,3 +1,24 @@
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright © 2019 - 2020
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,17 +34,17 @@ public enum ReturnValueReuse {
 
   private final String value;
 
-  ReturnValueReuse(String v) {
-    this.value = v;
+  ReturnValueReuse(String value) {
+    this.value = value;
   }
 
-  public static ReturnValueReuse fromValue(String v) {
-    for (ReturnValueReuse c : ReturnValueReuse.values()) {
-      if (c.value.equals(v)) {
-        return c;
+  public static ReturnValueReuse fromValue(String value) {
+    for (ReturnValueReuse returnValueReuse : ReturnValueReuse.values()) {
+      if (returnValueReuse.value.equals(value)) {
+        return returnValueReuse;
       }
     }
-    throw new IllegalArgumentException(v);
+    throw new IllegalArgumentException(value);
   }
 
   public String value() {
