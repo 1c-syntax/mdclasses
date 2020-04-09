@@ -72,7 +72,10 @@ public class CommonModule extends MDObjectBase {
       externalConnection(getOrFalse(properties, "ExternalConnection"));
       clientOrdinaryApplication(getOrFalse(properties, "ClientOrdinaryApplication"));
       serverCall(getOrFalse(properties, "ServerCall"));
-      returnValuesReuse(ReturnValueReuse.fromValue(getOrEmptyString(properties, "ReturnValuesReuse")));
+      var reuseValueString = getOrEmptyString(properties, "ReturnValuesReuse");
+      if (!reuseValueString.isEmpty()) {
+        returnValuesReuse(ReturnValueReuse.fromValue(reuseValueString));
+      }
       privileged(getOrFalse(properties, "Privileged"));
 
       return this.self();
