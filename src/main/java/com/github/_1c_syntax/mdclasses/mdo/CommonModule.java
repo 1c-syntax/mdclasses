@@ -29,6 +29,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
@@ -39,6 +40,7 @@ import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrFalse;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = CommonModule.CommonModuleBuilderImpl.class)
 @SuperBuilder
 public class CommonModule extends MDObjectBase {
@@ -53,6 +55,7 @@ public class CommonModule extends MDObjectBase {
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
   boolean privileged;
 
+  @Override
   public MDOType getType() {
     return MDOType.COMMON_MODULE;
   }

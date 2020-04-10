@@ -282,6 +282,9 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof Subsystem).isTrue();
     assertThat(mdo.getName()).isEqualTo("ПерваяПодсистема");
     assertThat(mdo.getUuid()).isEqualTo("3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
+    var children = ((Subsystem) mdo).getChildren();
+    assertThat(children).isNotNull();
+    assertThat(children).hasSize(2);
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.TASK, getMDOPathEDT("Tasks/Задача1/Задача1.mdo"));
     assertThat(mdo).isNotNull();

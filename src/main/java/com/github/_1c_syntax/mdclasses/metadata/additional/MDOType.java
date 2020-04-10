@@ -93,6 +93,10 @@ public enum MDOType {
     return shortClassName;
   }
 
+  public String getClassName() {
+    return shortClassName;
+  }
+
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
       return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)

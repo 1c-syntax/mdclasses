@@ -65,11 +65,13 @@ public class Configuration {
   Map<URI, ModuleType> modulesByType;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
+  Map<String, MDObjectBase> childrenByMdoRef;
   Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
     this.children = Collections.emptySet();
+    this.childrenByMdoRef = Collections.emptyMap();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
 
@@ -93,6 +95,9 @@ public class Configuration {
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
     this.configurationSource = configurationSource;
     this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
+    this.childrenByMdoRef = new HashMap<>();
+    this.children.forEach(mdo -> this.childrenByMdoRef.put(mdo.getMdoRef(), mdo));
+
     this.rootPath = rootPath;
 
     this.name = configurationXml.getName();

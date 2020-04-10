@@ -22,9 +22,11 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -72,6 +74,25 @@ class ConfigurationOriginTest {
 
     assertThat(configuration.getChildren().stream().filter(mdObject ->
       mdObject instanceof CommonModule)).hasSize(8);
+
+    Subsystem subsystem = (Subsystem) configuration.getChildrenByMdoRef().get("Subsystem.ПерваяПодсистема");
+    assertThat(subsystem).isNotNull();
+    assertThat(subsystem.getChildren()).isNotNull();
+    assertThat(subsystem.getChildren()).hasSize(4);
+    // 2 дочерних - это подсистемы
+    assertThat(subsystem.getChildren().stream().filter(child -> child.get().getType() == MDOType.SUBSYSTEM)).hasSize(2);
+
+    // проверим что у всех дочерних объектов дочерних подсистем подсситема в списке includedSubsystem
+    subsystem.getChildren().forEach(child -> {
+      var childMDO = child.get();
+      if (childMDO.getType() == MDOType.SUBSYSTEM) {
+        testSubsystem((Subsystem) childMDO);
+      } else {
+        assertThat(childMDO.getIncludedSubsystems()).isNotNull();
+        assertThat(childMDO.getIncludedSubsystems()).contains(subsystem);
+      }
+
+    });
   }
 
   @Test
@@ -81,6 +102,16 @@ class ConfigurationOriginTest {
     Configuration configuration = Configuration.create(srcPath);
 
     assertThat(configuration).isNotNull();
+  }
+
+  private void testSubsystem(Subsystem subsystem) {
+    assertThat(subsystem.getChildren()).isNotNull();
+    assertThat(subsystem.getChildren()).hasSize(2);
+    subsystem.getChildren().forEach(childMDO -> {
+      var mdo = childMDO.get();
+      assertThat(mdo.getIncludedSubsystems()).isNotNull();
+      assertThat(mdo.getIncludedSubsystems()).contains(subsystem);
+    });
   }
 
 }

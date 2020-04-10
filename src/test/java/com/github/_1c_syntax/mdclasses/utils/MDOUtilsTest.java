@@ -147,7 +147,7 @@ class MDOUtilsTest {
     assertThat(mdo instanceof MDOConfiguration).isTrue();
     assertThat(mdo.getName()).isEqualTo("Конфигурация");
 
-    MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.CONFIGURATION, Paths.get(srcPath.toString(),
+    mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.CONFIGURATION, Paths.get(srcPath.toString(),
       "src", "Configuration", "Configuration.mdo"));
     assertThat(mdo).isNotNull();
     assertThat(mdo instanceof MDOConfiguration).isTrue();

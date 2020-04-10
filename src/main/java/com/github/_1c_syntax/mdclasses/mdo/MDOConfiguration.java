@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
@@ -41,6 +42,7 @@ import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrEmptyStrin
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonRootName(value = "Configuration")
 @JsonDeserialize(builder = MDOConfiguration.MDOConfigurationBuilderImpl.class)
 @SuperBuilder
@@ -62,6 +64,7 @@ public class MDOConfiguration extends MDObjectBase {
   protected String dataLockControlMode;
   protected String objectAutonumerationMode;
 
+  @Override
   public MDOType getType() {
     return MDOType.CONFIGURATION;
   }
