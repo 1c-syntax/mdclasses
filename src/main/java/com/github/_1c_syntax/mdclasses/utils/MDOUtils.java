@@ -317,9 +317,12 @@ public class MDOUtils {
     }
 
     Set<Either<String, MDObjectBase>> newChildren = new HashSet<>();
-    var folder = Paths.get(
-      MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, Paths.get(subsystem.getMdoURI())).toString(),
-      subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
+    var rootFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, Paths.get(subsystem.getMdoURI()));
+    if (rootFolder == null) {
+      return;
+    }
+
+    var folder = Paths.get(rootFolder.toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
 
     children.forEach(child -> {
       if (child.isLeft()) {
@@ -370,26 +373,7 @@ public class MDOUtils {
   private void updateMDOForms(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
     var childrenFolder = getChildrenFolder(mdo, folder, MDOType.FORM);
 
-    // для EDT пока ничего не делаем, MDO для формы нету
-    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
-      List<Form> mdoForms = new ArrayList<>();
-      getMDOFilesInFolder(configurationSource, childrenFolder)
-        .forEach(mdoFile -> {
-          Form mdoForm = null;
-          var xmlMapper = ObjectMapperFactory.getXmlMapper();
-          try {
-            MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
-            mdoForm = metaDataObject.getForm();
-          } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
-          }
-          if (mdoForm != null) {
-            mdoForms.add(mdoForm);
-          }
-        });
-
-      mdo.setForms(mdoForms);
-    }
+    mdo.setForms(readDesignerMDOChildren(configurationSource, childrenFolder, MDOType.FORM, Form.class));
 
     if (mdo.getForms() != null) {
       mdo.getForms().forEach(form -> {
@@ -403,26 +387,7 @@ public class MDOUtils {
   private void updateMDOTemplates(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
     var childrenFolder = getChildrenFolder(mdo, folder, MDOType.TEMPLATE);
 
-    // для EDT пока ничего не делаем, MDO для макета нету
-    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
-      List<Template> mdoTemplates = new ArrayList<>();
-      getMDOFilesInFolder(configurationSource, childrenFolder)
-        .forEach(mdoFile -> {
-          Template mdoTemplate = null;
-          var xmlMapper = ObjectMapperFactory.getXmlMapper();
-          try {
-            MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
-            mdoTemplate = metaDataObject.getTemplate();
-          } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
-          }
-          if (mdoTemplate != null) {
-            mdoTemplates.add(mdoTemplate);
-          }
-        });
-
-      mdo.setTemplates(mdoTemplates);
-    }
+    mdo.setTemplates(readDesignerMDOChildren(configurationSource, childrenFolder, MDOType.TEMPLATE, Template.class));
 
     if (mdo.getTemplates() != null) {
       mdo.getTemplates().forEach(template -> {
@@ -492,6 +457,30 @@ public class MDOUtils {
       }
     }
     return null;
+  }
+
+  private static <T extends MDObjectBase> List<T> readDesignerMDOChildren(ConfigurationSource configurationSource,
+                                                                          Path childrenFolder,
+                                                                          MDOType type,
+                                                                          Class<T> childClass) {
+    List<T> mdos = new ArrayList<>();
+    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
+      getMDOFilesInFolder(configurationSource, childrenFolder)
+        .forEach(mdoFile -> {
+          MDObjectBase mdo = null;
+          var xmlMapper = ObjectMapperFactory.getXmlMapper();
+          try {
+            MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
+            mdo = metaDataObject.getPropertyByType(type);
+          } catch (IOException e) {
+            LOGGER.error(e.getMessage(), e);
+          }
+          if (mdo != null) {
+            mdos.add(childClass.cast(mdo));
+          }
+        });
+    }
+    return mdos;
   }
 
 }
