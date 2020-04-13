@@ -74,6 +74,7 @@ public enum MDOType {
 
   FORM("Form", "Forms"),
   COMMAND("Command", "Commands"),
+  TEMPLATE("Template", "Templates"),
   ;
 
   private String shortClassName;

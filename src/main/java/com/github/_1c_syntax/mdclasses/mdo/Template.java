@@ -24,9 +24,12 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
 @Value
@@ -35,6 +38,23 @@ import lombok.experimental.SuperBuilder;
 @JsonDeserialize(builder = Template.TemplateBuilderImpl.class)
 @SuperBuilder
 public class Template extends MDObjectBase {
+
+  @NonFinal
+  @Setter
+  MDObjectBase parent;
+
+  @Override
+  public MDOType getType() {
+    return MDOType.TEMPLATE;
+  }
+
+  @Override
+  public void computeMdoRef() {
+    super.computeMdoRef();
+    if (parent != null) {
+      this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
+    }
+  }
 
   @JsonPOJOBuilder(withPrefix = "")
   @JsonIgnoreProperties(ignoreUnknown = true)

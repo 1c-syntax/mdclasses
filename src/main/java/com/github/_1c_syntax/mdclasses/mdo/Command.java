@@ -26,8 +26,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
 @Value
@@ -37,9 +39,21 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Command extends MDObjectBase {
 
+  @NonFinal
+  @Setter
+  MDObjectBase parent;
+
   @Override
   public MDOType getType() {
     return MDOType.COMMAND;
+  }
+
+  @Override
+  public void computeMdoRef() {
+    super.computeMdoRef();
+    if (parent != null) {
+      this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
+    }
   }
 
   @JsonPOJOBuilder(withPrefix = "")
