@@ -111,3 +111,10 @@ license {
             "**/*.os",
             "**/*.bsl"))
 }
+
+tasks.register("precommit") {
+    description = "Run all precommit tasks"
+    group = "Developer tools"
+    dependsOn(":test")
+    dependsOn(":licenseFormat")
+}
