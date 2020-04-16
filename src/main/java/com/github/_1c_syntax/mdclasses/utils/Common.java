@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 @Slf4j
 @UtilityClass
@@ -113,6 +114,17 @@ public class Common {
       }
     );
     return modulesByType;
+  }
+
+  public static Map<String, MDObjectBase> getCommonModulesByName(Configuration configuration) {
+    Map<String, MDObjectBase> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+    configuration.getChildren().forEach(mdObject -> {
+      if (mdObject.getType() == MDOType.COMMON_MODULE) {
+        modulesByName.put(mdObject.getName(), mdObject);
+      }
+    });
+    return modulesByName;
   }
 
   public Map<MDOType, Set<ModuleType>> getModuleTypesForMdoTypes() {

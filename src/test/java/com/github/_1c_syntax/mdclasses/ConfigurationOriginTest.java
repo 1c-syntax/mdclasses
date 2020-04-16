@@ -56,6 +56,7 @@ class ConfigurationOriginTest {
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
     assertThat(configuration.getModulesByType()).hasSize(22);
+    assertThat(configuration.getCommonModulesByName()).hasSize(8);
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.ManagerModule);
@@ -71,6 +72,9 @@ class ConfigurationOriginTest {
       .findFirst().get();
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
+
+    assertThat(configuration.commonModuleIsPresent("ПростойОбщийМодуль")).isTrue();
+    assertThat(configuration.commonModuleIsPresent("ТряЛяЛя")).isFalse();
 
     assertThat(configuration.getChildren().stream().filter(mdObject ->
       mdObject instanceof CommonModule)).hasSize(8);

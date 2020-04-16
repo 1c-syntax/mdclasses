@@ -41,6 +41,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 @Value
 @Slf4j
@@ -63,6 +64,7 @@ public class Configuration {
   UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   Map<URI, ModuleType> modulesByType;
+  TreeMap<String, MDObjectBase> commonModulesByName;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
   Map<String, MDObjectBase> childrenByMdoRef;
@@ -74,6 +76,7 @@ public class Configuration {
     this.childrenByMdoRef = Collections.emptyMap();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
+    this.commonModulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     this.rootPath = null;
     this.name = "";
@@ -117,6 +120,8 @@ public class Configuration {
 
     this.modulesByType = Common.getModuleTypesByPath(this);
     this.modulesBySupport = Common.getModuleSupports(this);
+    this.commonModulesByName = (TreeMap<String, MDObjectBase>) Common.getCommonModulesByName(this);
+
   }
 
   public static Configuration create() {
@@ -143,4 +148,9 @@ public class Configuration {
   public Map<SupportConfiguration, SupportVariant> getModuleSupport(URI uri) {
     return modulesBySupport.getOrDefault(uri, new HashMap<>());
   }
+
+  public boolean commonModuleIsPresent(String name) {
+    return commonModulesByName.get(name) != null;
+  }
+
 }
