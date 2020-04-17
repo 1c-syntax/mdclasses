@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
@@ -116,12 +117,12 @@ public class Common {
     return modulesByType;
   }
 
-  public static Map<String, MDObjectBase> getCommonModulesByName(Configuration configuration) {
-    Map<String, MDObjectBase> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+  public static Map<String, CommonModule> getCommonModules(Configuration configuration) {
+    Map<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     configuration.getChildren().forEach(mdObject -> {
-      if (mdObject.getType() == MDOType.COMMON_MODULE) {
-        modulesByName.put(mdObject.getName(), mdObject);
+      if (mdObject.getType() == MDOType.COMMON_MODULE & mdObject instanceof CommonModule) {
+        modulesByName.put(mdObject.getName(), (CommonModule) mdObject);
       }
     });
     return modulesByName;
