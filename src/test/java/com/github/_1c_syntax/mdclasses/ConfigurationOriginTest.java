@@ -73,7 +73,7 @@ class ConfigurationOriginTest {
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
 
-    assertThat(configuration.getCommonModule("ПростойОбщийМодуль")).isPresent();
+    assertThat(configuration.getCommonModule("пРостойобщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ТряЛяЛя")).isNotPresent();
 
     assertThat(configuration.getChildren().stream().filter(mdObject ->
