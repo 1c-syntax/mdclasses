@@ -67,6 +67,7 @@ public class Configuration {
 
   Map<URI, ModuleType> modulesByType;
   TreeMap<String, CommonModule> commonModules;
+  Map<URI, MDObjectBase> modulesByURI;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
   Map<String, MDObjectBase> childrenByMdoRef;
@@ -79,6 +80,7 @@ public class Configuration {
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
     this.commonModules = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    this.modulesByURI = Collections.emptyMap();
 
     this.rootPath = null;
     this.name = "";
@@ -123,6 +125,7 @@ public class Configuration {
     this.modulesByType = Common.getModuleTypesByPath(this);
     this.modulesBySupport = Common.getModuleSupports(this);
     this.commonModules = (TreeMap<String, CommonModule>) Common.getCommonModules(this);
+    this.modulesByURI = Common.getModulesByURI(this);
 
   }
 

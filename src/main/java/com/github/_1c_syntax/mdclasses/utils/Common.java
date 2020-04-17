@@ -117,6 +117,35 @@ public class Common {
     return modulesByType;
   }
 
+  public static Map<URI, MDObjectBase> getModulesByURI(Configuration configuration) {
+    Map<URI, MDObjectBase> modulesByType = new HashMap<>();
+
+    configuration.getChildren().forEach(mdObject -> {
+        if (mdObject.getModulesByType() != null) {
+          mdObject.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, mdObject));
+        }
+
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> {
+            if (form.getModulesByType() != null) {
+              form.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, form));
+            }
+          });
+        }
+
+        if (mdObject.getCommands() != null) {
+          mdObject.getCommands().forEach(command -> {
+            if (command.getModulesByType() != null) {
+              command.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, command));
+            }
+          });
+        }
+
+      }
+    );
+    return modulesByType;
+  }
+
   public static Map<String, CommonModule> getCommonModules(Configuration configuration) {
     Map<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
