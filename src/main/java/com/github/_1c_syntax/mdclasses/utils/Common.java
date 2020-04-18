@@ -146,8 +146,8 @@ public class Common {
     return modulesByType;
   }
 
-  public static Map<String, CommonModule> getCommonModules(Configuration configuration) {
-    Map<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+  public static TreeMap<String, CommonModule> getCommonModules(Configuration configuration) {
+    TreeMap<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     configuration.getChildren().forEach(mdObject -> {
       if (mdObject.getType() == MDOType.COMMON_MODULE & mdObject instanceof CommonModule) {

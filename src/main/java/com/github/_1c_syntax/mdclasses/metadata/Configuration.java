@@ -124,7 +124,7 @@ public class Configuration {
 
     this.modulesByType = Common.getModuleTypesByPath(this);
     this.modulesBySupport = Common.getModuleSupports(this);
-    this.commonModules = (TreeMap<String, CommonModule>) Common.getCommonModules(this);
+    this.commonModules = Common.getCommonModules(this);
     this.modulesByURI = Common.getModulesByURI(this);
 
   }
