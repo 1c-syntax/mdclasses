@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.TreeMap;
 
 @Value
@@ -67,7 +66,7 @@ public class Configuration {
   UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   Map<URI, ModuleType> modulesByType;
-  SortedMap<String, CommonModule> commonModules;
+  Map<String, CommonModule> commonModules;
   Map<URI, MDObjectBase> modulesByURI;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
