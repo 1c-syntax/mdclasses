@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 @Slf4j
@@ -146,7 +147,7 @@ public class Common {
     return modulesByType;
   }
 
-  public static TreeMap<String, CommonModule> getCommonModules(Configuration configuration) {
+  public static SortedMap<String, CommonModule> getCommonModules(Configuration configuration) {
     TreeMap<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     configuration.getChildren().forEach(mdObject -> {
