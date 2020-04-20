@@ -35,6 +35,7 @@ import com.github._1c_syntax.mdclasses.utils.Common;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.nio.file.Path;
@@ -43,7 +44,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.TreeMap;
 
 @Value
 @Slf4j
@@ -79,7 +79,7 @@ public class Configuration {
     this.childrenByMdoRef = Collections.emptyMap();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
-    this.commonModules = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    this.commonModules = new CaseInsensitiveMap<>();
     this.modulesByURI = Collections.emptyMap();
 
     this.rootPath = null;

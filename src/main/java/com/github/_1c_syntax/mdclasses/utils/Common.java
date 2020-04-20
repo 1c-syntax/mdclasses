@@ -31,6 +31,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.util.Collections;
@@ -38,8 +39,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 @Slf4j
 @UtilityClass
@@ -147,8 +146,8 @@ public class Common {
     return modulesByType;
   }
 
-  public static SortedMap<String, CommonModule> getCommonModules(Configuration configuration) {
-    TreeMap<String, CommonModule> modulesByName = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+  public static Map<String, CommonModule> getCommonModules(Configuration configuration) {
+    Map<String, CommonModule> modulesByName = new CaseInsensitiveMap<>();
 
     configuration.getChildren().forEach(mdObject -> {
       if (mdObject.getType() == MDOType.COMMON_MODULE & mdObject instanceof CommonModule) {

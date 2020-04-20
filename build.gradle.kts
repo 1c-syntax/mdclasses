@@ -24,10 +24,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
     implementation("io.vavr", "vavr", "0.10.2")
+    implementation("org.apache.commons", "commons-collections4", "4.4")
 
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.10.3")
     implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.10.3")
-
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")
     implementation("org.slf4j", "slf4j-simple", "1.8.0-beta4")
