@@ -194,6 +194,8 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof EventSubscription).isTrue();
     assertThat(mdo.getName()).isEqualTo("ПодпискаНаСобытие1");
     assertThat(mdo.getUuid()).isEqualTo("4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd");
+    assertThat(((EventSubscription) mdo).getHandler()).isNotNull();
+    assertThat(((EventSubscription) mdo).getHandler()).isEqualTo("CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью");
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.EXCHANGE_PLAN, getMDOPathEDT("ExchangePlans/ПланОбмена1/ПланОбмена1.mdo"));
     assertThat(mdo).isNotNull();
@@ -484,6 +486,8 @@ class MetaDataObjectTest {
     assertThat(mdo instanceof EventSubscription).isTrue();
     assertThat(mdo.getName()).isEqualTo("ПодпискаНаСобытие1");
     assertThat(mdo.getUuid()).isEqualTo("4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd");
+    assertThat(((EventSubscription) mdo).getHandler()).isNotNull();
+    assertThat(((EventSubscription) mdo).getHandler()).isEqualTo("CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью");
 
     mdo = MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.EXCHANGE_PLAN, getMDOPathDesigner("ExchangePlans/ПланОбмена1.xml"));
     assertThat(mdo).isNotNull();
