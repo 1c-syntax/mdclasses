@@ -330,6 +330,7 @@ public class MDOUtils {
         if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getClassName())) {
           var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
           Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
+          // FIXME: нужен рефакторинг
           if(childSubsystem != null) {
             childSubsystem.setParent(subsystem);
             childSubsystem.computeMdoRef();
