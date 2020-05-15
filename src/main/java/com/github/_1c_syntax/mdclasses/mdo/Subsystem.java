@@ -66,7 +66,6 @@ public class Subsystem extends MDObjectBase {
     if(parent != null) {
       this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
     }
-
   }
 
   public abstract static class SubsystemBuilder<C extends Subsystem, B extends Subsystem.SubsystemBuilder<C, B>> extends MDObjectBaseBuilder<C, B> {

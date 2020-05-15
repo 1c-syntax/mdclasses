@@ -24,16 +24,18 @@ package com.github._1c_syntax.mdclasses.deserialize;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.github._1c_syntax.mdclasses.mdo.Attribute;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class PropertiesDeserializer extends AbstractDeserializer {
+public class TabularSectionEDTDeserializer extends AbstractDeserializer {
 
-  private static final String CONTENT_KEY = "Content";
+  private static final String ATTRIBUTE_KEY = "attributes";
+  private static final String ATTRIBUTES_KEY = "tabularAttributes";
 
-  protected PropertiesDeserializer() {
-    super("Properties");
+  public TabularSectionEDTDeserializer() {
+    super("tabularSections");
   }
 
   @Override
@@ -41,12 +43,11 @@ public class PropertiesDeserializer extends AbstractDeserializer {
                            Map<String, Object> childObjects,
                            String name,
                            DeserializationContext context) throws IOException {
-
-    parser.nextToken(); // вошли во внутрь
-
+    parser.nextToken();
     if (parser.getCurrentToken() == JsonToken.START_OBJECT) {
-      if (name.equals(CONTENT_KEY)) {
-        readContent(parser, childObjects, name);
+      if (name.equals(ATTRIBUTE_KEY)) {
+        var newValue = getValueFromNode(parser.readValueAsTree(), Attribute.class);
+        addProperty(childObjects, ATTRIBUTES_KEY, newValue);
       } else {
         // объекты пропускаем
         while (parser.nextToken() != null) {
@@ -57,18 +58,6 @@ public class PropertiesDeserializer extends AbstractDeserializer {
       }
     } else {
       readAndAddProperty(childObjects, name, parser);
-    }
-  }
-
-  private void readContent(JsonParser parser, Map<String, Object> childObjects, String name) throws IOException {
-    while (parser.nextToken() != null) {
-      if (isEndToken(name, parser)) {
-        break;
-      }
-      parser.nextToken();
-      var value = parser.readValueAsTree();
-      var newValue = getValueFromNode(value.get(""));
-      addProperty(childObjects, name, newValue);
     }
   }
 }

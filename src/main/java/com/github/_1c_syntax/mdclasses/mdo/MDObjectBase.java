@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.deserialize.ChildObjectsDeserializer;
 import com.github._1c_syntax.mdclasses.deserialize.PropertiesDeserializer;
+import com.github._1c_syntax.mdclasses.deserialize.TabularSectionEDTDeserializer;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.utils.ObjectMapperFactory;
@@ -65,6 +66,7 @@ public class MDObjectBase {
   protected List<Template> templates;
   protected List<Command> commands;
   protected List<Subsystem> includedSubsystems;
+  protected List<MDOAttribute> attributes;
 
   public MDOType getType() {
     return null;
@@ -128,6 +130,17 @@ public class MDObjectBase {
             addCommand((Command) value);
           }
         }
+
+        value = properties.get("Attribute");
+        if (value != null) {
+          if (value instanceof List) {
+            List<?> values = new ArrayList<>((Collection<?>) value);
+            values.forEach(attribute -> addAttribute((MDOAttribute) attribute));
+          } else {
+            addAttribute((MDOAttribute) value);
+          }
+        }
+
       }
       return this.self();
     }
@@ -162,11 +175,65 @@ public class MDObjectBase {
       return this.self();
     }
 
+    @JsonProperty("attributes")
+    protected MDObjectBaseBuilder<C, B> attributes(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Attribute.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("dimensions")
+    protected MDObjectBaseBuilder<C, B> dimensions(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Dimension.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("resources")
+    protected MDObjectBaseBuilder<C, B> resources(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, Resource.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("tabularSections")
+    @JsonDeserialize(using = TabularSectionEDTDeserializer.class)
+    protected MDObjectBaseBuilder<C, B> tabularSections(Map<String, Object> properties) {
+      if (properties != null) {
+        addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(properties, TabularSection.class));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("tabularAttributes")
+    protected MDObjectBaseBuilder<C, B> tabularAttributes(Object value) {
+      if (value != null) {
+        if (value instanceof List) {
+          List<?> values = new ArrayList<>((Collection<?>) value);
+          values.forEach(attribute ->
+            addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(attribute, Attribute.class)));
+        } else {
+          addAttribute(ObjectMapperFactory.getXmlMapper().convertValue(value, Attribute.class));
+        }
+      }
+      return this.self();
+    }
+
     private void addCommand(Command command) {
       if (commands == null) {
         commands = new ArrayList<>();
       }
       commands.add(command);
+    }
+
+    private void addAttribute(MDOAttribute attribute) {
+      if (attributes == null) {
+        attributes = new ArrayList<>();
+      }
+      attributes.add(attribute);
     }
   }
 
