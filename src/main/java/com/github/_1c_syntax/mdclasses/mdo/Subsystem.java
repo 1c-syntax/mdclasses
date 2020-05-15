@@ -34,11 +34,10 @@ import lombok.Value;
 import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 @Value
@@ -127,8 +126,9 @@ public class Subsystem extends MDObjectBase {
 
       if (value != null) {
         if (value instanceof List) {
-          List<?> values = new ArrayList<>((Collection<?>) value);
-          values.forEach(subsystemName -> childrenValue.add(Either.left(subsystemName.toString())));
+          ((List<?>) value).stream()
+            .filter(Objects::nonNull)
+            .forEach(subsystemName -> childrenValue.add(Either.left(subsystemName.toString())));
         } else {
           childrenValue.add(Either.left(value.toString()));
         }
