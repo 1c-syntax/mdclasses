@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.SupportConfiguration;
@@ -30,6 +31,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.util.Collections;
@@ -113,6 +115,46 @@ public class Common {
       }
     );
     return modulesByType;
+  }
+
+  public static Map<URI, MDObjectBase> getModulesByURI(Configuration configuration) {
+    Map<URI, MDObjectBase> modulesByType = new HashMap<>();
+
+    configuration.getChildren().forEach(mdObject -> {
+        if (mdObject.getModulesByType() != null) {
+          mdObject.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, mdObject));
+        }
+
+        if (mdObject.getForms() != null) {
+          mdObject.getForms().forEach(form -> {
+            if (form.getModulesByType() != null) {
+              form.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, form));
+            }
+          });
+        }
+
+        if (mdObject.getCommands() != null) {
+          mdObject.getCommands().forEach(command -> {
+            if (command.getModulesByType() != null) {
+              command.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, command));
+            }
+          });
+        }
+
+      }
+    );
+    return modulesByType;
+  }
+
+  public static Map<String, CommonModule> getCommonModules(Configuration configuration) {
+    Map<String, CommonModule> modulesByName = new CaseInsensitiveMap<>();
+
+    configuration.getChildren().forEach(mdObject -> {
+      if (mdObject.getType() == MDOType.COMMON_MODULE & mdObject instanceof CommonModule) {
+        modulesByName.put(mdObject.getName(), (CommonModule) mdObject);
+      }
+    });
+    return modulesByName;
   }
 
   public Map<MDOType, Set<ModuleType>> getModuleTypesForMdoTypes() {
