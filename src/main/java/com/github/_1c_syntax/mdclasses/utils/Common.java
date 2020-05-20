@@ -90,7 +90,7 @@ public class Common {
     return modulesBySupport;
   }
 
-  public static Map<URI, ModuleType> getModuleTypesByPath(Configuration configuration) {
+  public static Map<URI, ModuleType> getModuleTypesByType(Configuration configuration) {
     Map<URI, ModuleType> modulesByType = new HashMap<>();
 
     configuration.getChildren().forEach(mdObject -> {
@@ -117,18 +117,18 @@ public class Common {
     return modulesByType;
   }
 
-  public static Map<URI, MDObjectBase> getModulesByURI(Configuration configuration) {
-    Map<URI, MDObjectBase> modulesByType = new HashMap<>();
+  public static Map<URI, MDObjectBase> getModulesByObject(Configuration configuration) {
+    Map<URI, MDObjectBase> modulesByObject = new HashMap<>();
 
     configuration.getChildren().forEach(mdObject -> {
         if (mdObject.getModulesByType() != null) {
-          mdObject.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, mdObject));
+          mdObject.getModulesByType().forEach((uri, moduleType) -> modulesByObject.put(uri, mdObject));
         }
 
         if (mdObject.getForms() != null) {
           mdObject.getForms().forEach(form -> {
             if (form.getModulesByType() != null) {
-              form.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, form));
+              form.getModulesByType().forEach((uri, moduleType) -> modulesByObject.put(uri, form));
             }
           });
         }
@@ -136,14 +136,14 @@ public class Common {
         if (mdObject.getCommands() != null) {
           mdObject.getCommands().forEach(command -> {
             if (command.getModulesByType() != null) {
-              command.getModulesByType().forEach((uri, moduleType) -> modulesByType.put(uri, command));
+              command.getModulesByType().forEach((uri, moduleType) -> modulesByObject.put(uri, command));
             }
           });
         }
 
       }
     );
-    return modulesByType;
+    return modulesByObject;
   }
 
   public static Map<String, CommonModule> getCommonModules(Configuration configuration) {

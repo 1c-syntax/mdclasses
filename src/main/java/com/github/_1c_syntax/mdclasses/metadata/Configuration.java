@@ -67,7 +67,7 @@ public class Configuration {
 
   Map<URI, ModuleType> modulesByType;
   Map<String, CommonModule> commonModules;
-  Map<URI, MDObjectBase> modulesByURI;
+  Map<URI, MDObjectBase> modulesByObject;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
   Map<String, MDObjectBase> childrenByMdoRef;
@@ -80,7 +80,7 @@ public class Configuration {
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
     this.commonModules = new CaseInsensitiveMap<>();
-    this.modulesByURI = Collections.emptyMap();
+    this.modulesByObject = Collections.emptyMap();
 
     this.rootPath = null;
     this.name = "";
@@ -122,10 +122,10 @@ public class Configuration {
     this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
-    this.modulesByType = Common.getModuleTypesByPath(this);
+    this.modulesByType = Common.getModuleTypesByType(this);
     this.modulesBySupport = Common.getModuleSupports(this);
     this.commonModules = Common.getCommonModules(this);
-    this.modulesByURI = Common.getModulesByURI(this);
+    this.modulesByObject = Common.getModulesByObject(this);
 
   }
 
