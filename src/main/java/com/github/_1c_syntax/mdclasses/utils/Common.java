@@ -150,7 +150,7 @@ public class Common {
     Map<String, CommonModule> modulesByName = new CaseInsensitiveMap<>();
 
     configuration.getChildren().forEach(mdObject -> {
-      if (mdObject.getType() == MDOType.COMMON_MODULE & mdObject instanceof CommonModule) {
+      if (mdObject.getType() == MDOType.COMMON_MODULE && mdObject instanceof CommonModule) {
         modulesByName.put(mdObject.getName(), (CommonModule) mdObject);
       }
     });
