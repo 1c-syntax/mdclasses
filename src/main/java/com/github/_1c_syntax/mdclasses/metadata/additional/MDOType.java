@@ -91,6 +91,9 @@ public enum MDOType {
     this.groupNameRu = groupNameRu;
   }
 
+  /**
+   * Возвращает имя MDO класса
+   */
   public String getMDOClassName() {
     if (this == CONFIGURATION
       || this == ENUM
@@ -116,6 +119,11 @@ public enum MDOType {
     return groupNameRu;
   }
 
+  /**
+   * Возвращает список элементов перечисления с возможностью фильтрации
+   * @param withoutChildren - возможность исключить дочерние типы
+   * @return - список с примененным фильтром
+   */
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
       return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)
@@ -124,6 +132,12 @@ public enum MDOType {
     return Arrays.asList(values());
   }
 
+  /**
+   * Возвращает MDOType по строковому идентификатору
+   * @param value - Строковый идентификатор типа. Может быть на русском или английском языках,
+   *              а так же во множественном или единственном числе
+   * @return - Найденный тип
+   */
   public static Optional<MDOType> fromValue(String value) {
     for (MDOType mdoType : MDOType.values()) {
       if (mdoType.name.equalsIgnoreCase(value)

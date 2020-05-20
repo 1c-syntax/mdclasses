@@ -35,11 +35,14 @@ class MDOTypeTest {
     var groupRu = "Справочники";
     var groupEn = "Catalogs";
 
+    var groupRu2 = "СправОЧНикИ";
+
     var wrong = "Справочнег";
 
     assertThat(MDOType.fromValue(nameEn)).isEqualTo(MDOType.fromValue(nameRu));
     assertThat(MDOType.fromValue(groupEn)).isEqualTo(MDOType.fromValue(groupRu));
     assertThat(MDOType.fromValue(groupEn)).isEqualTo(MDOType.fromValue(nameEn));
+    assertThat(MDOType.fromValue(groupEn)).isEqualTo(MDOType.fromValue(groupRu2));
     assertThat(MDOType.fromValue(wrong)).isEmpty();
   }
 }
