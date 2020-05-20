@@ -80,7 +80,7 @@ public class Subsystem extends MDObjectBase {
     @JsonProperty("subsystems")
     public SubsystemBuilder<C, B> subsystems(String name) {
       if (name != null) {
-        childrenAdd((MDOType.SUBSYSTEM.getClassName() + "." + name));
+        childrenAdd((MDOType.SUBSYSTEM.getName() + "." + name));
       }
       return this.self();
     }

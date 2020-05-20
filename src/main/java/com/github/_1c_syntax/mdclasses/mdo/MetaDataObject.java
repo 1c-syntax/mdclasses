@@ -161,7 +161,7 @@ public class MetaDataObject {
       case XDTO_PACKAGE:
         return getXdtoPackage();
       default:
-        String propertyName = type.getShortClassName();
+        String propertyName = type.getMDOClassName();
         try {
           return (MDObjectBase) getClass()
             .getDeclaredField(

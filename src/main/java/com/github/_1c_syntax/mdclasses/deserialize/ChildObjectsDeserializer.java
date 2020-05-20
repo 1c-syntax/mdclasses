@@ -57,7 +57,7 @@ public class ChildObjectsDeserializer extends AbstractDeserializer {
       addProperty(childObjects, name, newValue);
     } else if (name.equals(SUBSYSTEM_KEY)) {
       parser.nextToken();
-      var newValue = MDOType.SUBSYSTEM.getClassName() + "." + getValueFromNode(parser.readValueAsTree());
+      var newValue = MDOType.SUBSYSTEM.getName() + "." + getValueFromNode(parser.readValueAsTree());
       addProperty(childObjects, name, newValue);
     } else if (name.equals(DIMENSION_KEY)) {
       parser.nextToken();

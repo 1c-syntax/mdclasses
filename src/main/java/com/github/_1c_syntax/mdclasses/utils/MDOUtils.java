@@ -113,7 +113,7 @@ public class MDOUtils {
         try {
           mdo = (MDObjectBase) xmlMapper
             .readValue(mdoPath.toFile(),
-              Class.forName(MDObjectBase.class.getPackageName() + "." + type.getShortClassName()));
+              Class.forName(MDObjectBase.class.getPackageName() + "." + type.getMDOClassName()));
         } catch (IOException | ClassNotFoundException e) {
           LOGGER.error(e.getMessage(), e);
         }
@@ -328,7 +328,7 @@ public class MDOUtils {
     children.forEach(child -> {
       if (child.isLeft()) {
         var partNames = child.getLeft().split("\\.");
-        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getClassName())) {
+        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getName())) {
           var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
           Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
           childSubsystem.setParent(subsystem);
