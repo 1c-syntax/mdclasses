@@ -101,7 +101,7 @@ public class MDObjectBase {
   }
 
   public void computeMdoRef() {
-    this.mdoRef = getType().getClassName() + "." + getName();
+    this.mdoRef = getType().getName() + "." + getName();
   }
 
   public abstract static class MDObjectBaseBuilder

@@ -48,6 +48,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -113,7 +114,7 @@ public class MDOUtils {
         try {
           mdo = (MDObjectBase) xmlMapper
             .readValue(mdoPath.toFile(),
-              Class.forName(MDObjectBase.class.getPackageName() + "." + type.getShortClassName()));
+              Class.forName(MDObjectBase.class.getPackageName() + "." + type.getMDOClassName()));
         } catch (IOException | ClassNotFoundException e) {
           LOGGER.error(e.getMessage(), e);
         }
@@ -178,7 +179,7 @@ public class MDOUtils {
    */
   public static Map<URI, ModuleType> getModuleTypesByPath(ConfigurationSource configurationSource, Path rootPath) {
 
-    Map<URI, ModuleType> modulesByType = new HashMap<>();
+    Map<URI, ModuleType> modulesByType = Collections.synchronizedMap(new HashMap<>());
 
     for (MDOType mdoType : MDOType.values(true)) {
       var folder = MDOPathUtils.getMDOTypeFolder(configurationSource, rootPath, mdoType);
@@ -256,7 +257,8 @@ public class MDOUtils {
                                               Path rootPath,
                                               MDOType type) {
 
-    Set<MDObjectBase> children = new HashSet<>();
+    Set<MDObjectBase> children = Collections.synchronizedSet(new HashSet<>());
+
     if (configurationSource == ConfigurationSource.EMPTY) {
       return children;
     }
@@ -328,7 +330,7 @@ public class MDOUtils {
     children.forEach(child -> {
       if (child.isLeft()) {
         var partNames = child.getLeft().split("\\.");
-        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getClassName())) {
+        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getName())) {
           var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
           Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
           // FIXME: нужен рефакторинг
