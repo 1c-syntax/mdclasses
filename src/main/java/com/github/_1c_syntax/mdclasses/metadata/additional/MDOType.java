@@ -87,7 +87,7 @@ public enum MDOType {
   private String nameRu;
   private String groupNameRu;
 
-  public static Map<String, MDOType> mapNames = computeMapTypes();
+  private static final Map<String, MDOType> mapTypes = computeMapTypes();
 
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
@@ -144,7 +144,7 @@ public enum MDOType {
    * @return - Найденный тип
    */
   public static Optional<MDOType> fromValue(String value) {
-    var type = Optional.ofNullable(mapNames.get(value));
+    var type = Optional.ofNullable(mapTypes.get(value));
     if (type.isPresent()) {
       return type;
     }
