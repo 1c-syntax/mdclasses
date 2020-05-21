@@ -328,13 +328,16 @@ public class MDOUtils {
     var folder = Paths.get(rootFolder.toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
 
     children.forEach(child -> {
+      if (subsystem.getMdoRef().equals(child.getLeft())) {
+        return;
+      }
       if (child.isLeft()) {
         var partNames = child.getLeft().split("\\.");
         if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getName())) {
           var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
           Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
           // FIXME: нужен рефакторинг
-          if(childSubsystem != null) {
+          if (childSubsystem != null) {
             childSubsystem.setParent(subsystem);
             childSubsystem.computeMdoRef();
             newChildren.add(Either.right(childSubsystem));
@@ -346,7 +349,7 @@ public class MDOUtils {
             newChildren.add(Either.right(mdo));
             mdo.addIncludedSubsystems(subsystem);
           } else {
-            LOGGER.error("Unknown MDO {}", child.getLeft());
+            LOGGER.error("Broken link {} - {}", subsystem.getName(), child.getLeft());
           }
         }
       } else {
