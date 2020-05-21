@@ -21,8 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -84,6 +87,8 @@ public enum MDOType {
   private String nameRu;
   private String groupNameRu;
 
+  public static Map<String, MDOType> mapNames = computeMapTypes();
+
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
     this.groupName = groupNameEn;
@@ -139,16 +144,22 @@ public enum MDOType {
    * @return - Найденный тип
    */
   public static Optional<MDOType> fromValue(String value) {
-    for (MDOType mdoType : MDOType.values()) {
-      if (mdoType.name.equalsIgnoreCase(value)
-        || mdoType.nameRu.equalsIgnoreCase(value)
-        || mdoType.groupName.equalsIgnoreCase(value)
-        || mdoType.groupNameRu.equalsIgnoreCase(value)
-      ) {
-        return Optional.of(mdoType);
-      }
+    var type = Optional.ofNullable(mapNames.get(value));
+    if (type.isPresent()) {
+      return type;
     }
     return Optional.empty();
+  }
+
+  private static Map<String, MDOType> computeMapTypes() {
+    Map<String, MDOType> map = new CaseInsensitiveMap<>();
+    for (MDOType mdoType : MDOType.values()) {
+      map.put(mdoType.getName(), mdoType);
+      map.put(mdoType.getGroupName(), mdoType);
+      map.put(mdoType.getNameRu(), mdoType);
+      map.put(mdoType.getGroupNameRu(), mdoType);
+    }
+    return map;
   }
 
 }
