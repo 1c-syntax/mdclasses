@@ -21,78 +21,114 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public enum MDOType {
-  ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters"),
-  ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters"),
-  BUSINESS_PROCESS("BusinessProcess", "BusinessProcesses"),
-  CALCULATION_REGISTER("CalculationRegister", "CalculationRegisters"),
-  CATALOG("Catalog", "Catalogs"),
-  CHART_OF_ACCOUNTS("ChartOfAccounts", "ChartsOfAccounts"),
-  CHART_OF_CALCULATION_TYPES("ChartOfCalculationTypes", "ChartsOfCalculationTypes"),
-  CHART_OF_CHARACTERISTIC_TYPES("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes"),
-  COMMAND_GROUP("CommandGroup", "CommandGroups"),
-  COMMON_ATTRIBUTE("CommonAttribute", "CommonAttributes"),
-  COMMON_COMMAND("CommonCommand", "CommonCommands"),
-  COMMON_FORM("CommonForm", "CommonForms"),
-  COMMON_MODULE("CommonModule", "CommonModules"),
-  COMMON_PICTURE("CommonPicture", "CommonPictures"),
-  COMMON_TEMPLATE("CommonTemplate", "CommonTemplates"),
-  CONFIGURATION("Configuration", ""),
-  CONSTANT("Constant", "Constants"),
-  DATA_PROCESSOR("DataProcessor", "DataProcessors"),
-  DEFINED_TYPE("DefinedType", "DefinedTypes"),
-  DOCUMENT_JOURNAL("DocumentJournal", "DocumentJournals"),
-  DOCUMENT_NUMERATOR("DocumentNumerator", "DocumentNumerators"),
-  DOCUMENT("Document", "Documents"),
-  ENUM("Enum", "Enums"),
-  EVENT_SUBSCRIPTION("EventSubscription", "EventSubscriptions"),
-  EXCHANGE_PLAN("ExchangePlan", "ExchangePlans"),
-  FILTER_CRITERION("FilterCriterion", "FilterCriteria"),
-  FUNCTIONAL_OPTION("FunctionalOption", "FunctionalOptions"),
-  FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters"),
-  HTTP_SERVICE("HTTPService", "HTTPServices"),
-  INFORMATION_REGISTER("InformationRegister", "InformationRegisters"),
-  INTERFACE("Interface", "Interfaces"),
-  LANGUAGE("Language", "Languages"),
-  REPORT("Report", "Reports"),
-  ROLE("Role", "Roles"),
-  SCHEDULED_JOB("ScheduledJob", "ScheduledJobs"),
-  SEQUENCE("Sequence", "Sequences"),
-  SESSION_PARAMETER("SessionParameter", "SessionParameters"),
-  SETTINGS_STORAGE("SettingsStorage", "SettingsStorages"),
-  STYLE_ITEM("StyleItem", "StyleItems"),
-  STYLE("Style", "Styles"),
-  SUBSYSTEM("Subsystem", "Subsystems"),
-  TASK("Task", "Tasks"),
-  WEB_SERVICE("WebService", "WebServices"),
-  WS_REFERENCE("WSReference", "WSReferences"),
-  XDTO_PACKAGE("XDTOPackage", "XDTOPackages"),
+  ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters", "РегистрБухгалтерии", "РегистрыБухгалтерии"),
+  ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters", "РегистрНакопления", "РегистрыНакопления"),
+  BUSINESS_PROCESS("BusinessProcess", "BusinessProcesses", "БизнесПроцесс", "БизнесПроцессы"),
+  CALCULATION_REGISTER("CalculationRegister", "CalculationRegisters", "РегистрРасчета", "РегистрыРасчета"),
+  CATALOG("Catalog", "Catalogs", "Справочник", "Справочники"),
+  CHART_OF_ACCOUNTS("ChartOfAccounts", "ChartsOfAccounts", "ПланСчетов", "ПланыСчетов"),
+  CHART_OF_CALCULATION_TYPES("ChartOfCalculationTypes", "ChartsOfCalculationTypes", "ПланВидовРасчета", "ПланыВидовРасчета"),
+  CHART_OF_CHARACTERISTIC_TYPES("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes", "ПланВидовХарактеристик", "ПланыВидовХарактеристик"),
+  COMMAND_GROUP("CommandGroup", "CommandGroups", "ГруппаКоманд", "ГруппыКоманд"),
+  COMMON_ATTRIBUTE("CommonAttribute", "CommonAttributes", "ОбщийРеквизит", "ОбщиеРеквизиты"),
+  COMMON_COMMAND("CommonCommand", "CommonCommands", "ОбщаяКоманда", "ОбщиеКоманды"),
+  COMMON_FORM("CommonForm", "CommonForms", "ОбщаяФорма", "ОбщиеФормы"),
+  COMMON_MODULE("CommonModule", "CommonModules", "ОбщийМодуль", "ОбщиеМодули"),
+  COMMON_PICTURE("CommonPicture", "CommonPictures", "ОбщаяКартика", "ОбщиеКартинки"),
+  COMMON_TEMPLATE("CommonTemplate", "CommonTemplates", "ОбщийМакет", "ОбщиеМакеты"),
+  CONFIGURATION("Configuration", "", "Конфигурация", ""),
+  CONSTANT("Constant", "Constants", "Константа", "Константы"),
+  DATA_PROCESSOR("DataProcessor", "DataProcessors", "Обработка", "Обработки"),
+  DEFINED_TYPE("DefinedType", "DefinedTypes", "ОпределяемыйТип", "ОпределяемыеТипы"),
+  DOCUMENT_JOURNAL("DocumentJournal", "DocumentJournals", "ЖурналДокументов", "ЖурналыДокументов"),
+  DOCUMENT_NUMERATOR("DocumentNumerator", "DocumentNumerators", "Нумератор", "Нумераторы"),
+  DOCUMENT("Document", "Documents", "Документ", "Документы"),
+  ENUM("Enum", "Enums", "Перечисление", "Перечисления"),
+  EVENT_SUBSCRIPTION("EventSubscription", "EventSubscriptions", "ПодпискаНаСобытие", "ПодпискиНаСобытия"),
+  EXCHANGE_PLAN("ExchangePlan", "ExchangePlans", "ПланОбмена", "ПланыОбмена"),
+  FILTER_CRITERION("FilterCriterion", "FilterCriteria", "КритерийОтбора", "КритерииОтбора"),
+  FUNCTIONAL_OPTION("FunctionalOption", "FunctionalOptions", "ФункциональнаяОпция", "ФункциональныеОпции"),
+  FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters", "ПараметрФункциональныхОпций", "ПараметрыФункциональныхОпций"),
+  HTTP_SERVICE("HTTPService", "HTTPServices", "HTTPСервис", "HTTPСервисы"),
+  INFORMATION_REGISTER("InformationRegister", "InformationRegisters", "РегистрСведений", "РегистрыСведений"),
+  INTERFACE("Interface", "Interfaces", "Интерфейс", "Интерфейсы"),
+  LANGUAGE("Language", "Languages", "Язык", "Языки"),
+  REPORT("Report", "Reports", "Отчет", "Отчеты"),
+  ROLE("Role", "Roles", "Роль", "Роли"),
+  SCHEDULED_JOB("ScheduledJob", "ScheduledJobs", "РегламентноеЗадание", "РегламентныеЗадания"),
+  SEQUENCE("Sequence", "Sequences", "Последовательность", "Последовательности"),
+  SESSION_PARAMETER("SessionParameter", "SessionParameters", "ПараметрСеанса", "ПараметрыСеанса"),
+  SETTINGS_STORAGE("SettingsStorage", "SettingsStorages", "ХранилищеНастроек", "ХранилищаНастроек"),
+  STYLE_ITEM("StyleItem", "StyleItems", "ЭлементСтиля", "ЭлементыСтиля"),
+  STYLE("Style", "Styles", "Стиль", "Стили"),
+  SUBSYSTEM("Subsystem", "Subsystems", "Подсистема", "Подсистемы"),
+  TASK("Task", "Tasks", "Задача", "Задачи"),
+  WEB_SERVICE("WebService", "WebServices", "WebСервис", "WebСервисы"),
+  WS_REFERENCE("WSReference", "WSReferences", "WSСсылка", "WSСсылки"),
+  XDTO_PACKAGE("XDTOPackage", "XDTOPackages", "ПакетXDTO", "ПакетыXDTO"),
 
-  FORM("Form", "Forms"),
-  COMMAND("Command", "Commands"),
+  FORM("Form", "Forms", "Форма", "Формы"),
+  COMMAND("Command", "Commands", "Команда", "Команды"),
+  TEMPLATE("Template", "Templates", "Макет", "Макеты"),
+  ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
   ;
 
-  private String shortClassName;
+  private String name;
   private String groupName;
+  private String nameRu;
+  private String groupNameRu;
 
-  MDOType(String shortName, String groupName) {
-    this.shortClassName = shortName;
-    this.groupName = groupName;
+  private static final Map<String, MDOType> mapTypes = computeMapTypes();
+
+  MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
+    this.name = nameEn;
+    this.groupName = groupNameEn;
+    this.nameRu = nameRu;
+    this.groupNameRu = groupNameRu;
   }
 
-  public String getShortClassName() {
+  /**
+   * Возвращает имя MDO класса
+   */
+  public String getMDOClassName() {
     if (this == CONFIGURATION
       || this == ENUM
       || this == INTERFACE) {
-      return "MDO" + shortClassName;
+      return "MDO" + name;
     }
-    return shortClassName;
+    return name;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public String getGroupName() {
+    return groupName;
+  }
+
+  public String getNameRu() {
+    return nameRu;
+  }
+
+  public String getGroupNameRu() {
+    return groupNameRu;
+  }
+
+  /**
+   * Возвращает список элементов перечисления с возможностью фильтрации
+   * @param withoutChildren - возможность исключить дочерние типы
+   * @return - список с примененным фильтром
+   */
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
       return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)
@@ -101,8 +137,25 @@ public enum MDOType {
     return Arrays.asList(values());
   }
 
-  public String getGroupName() {
-    return groupName;
+  /**
+   * Возвращает MDOType по строковому идентификатору
+   * @param value - Строковый идентификатор типа. Может быть на русском или английском языках,
+   *              а так же во множественном или единственном числе
+   * @return - Найденный тип
+   */
+  public static Optional<MDOType> fromValue(String value) {
+    return Optional.ofNullable(mapTypes.get(value));
+  }
+
+  private static Map<String, MDOType> computeMapTypes() {
+    Map<String, MDOType> map = new CaseInsensitiveMap<>();
+    for (MDOType mdoType : MDOType.values()) {
+      map.put(mdoType.getName(), mdoType);
+      map.put(mdoType.getGroupName(), mdoType);
+      map.put(mdoType.getNameRu(), mdoType);
+      map.put(mdoType.getGroupNameRu(), mdoType);
+    }
+    return map;
   }
 
 }

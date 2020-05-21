@@ -22,9 +22,11 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.metadata.Configuration;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -32,6 +34,7 @@ import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -54,6 +57,8 @@ class ConfigurationOriginTest {
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(), new CompatibilityMode(3, 10))).isEqualTo(0);
     assertThat(configuration.getModulesByType()).hasSize(22);
+    assertThat(configuration.getModulesByObject().size()).isEqualTo(22);
+    assertThat(configuration.getCommonModules()).hasSize(8);
 
     File file = new File("src/test/resources/metadata/original/Documents/ПоступлениеТоваровУслуг/Ext/ManagerModule.bsl");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.ManagerModule);
@@ -70,8 +75,33 @@ class ConfigurationOriginTest {
     assertThat(commonModule).isNotNull();
     assertThat(commonModule.getName()).isEqualTo("ПростойОбщийМодуль");
 
+    assertThat(configuration.getCommonModule("пРостойобщийМодуль")).isPresent();
+    assertThat(configuration.getCommonModule("ТряЛяЛя")).isNotPresent();
+
+    URI uri = Paths.get("src/test/resources/metadata/original/CommonModules/ГлобальныйКлиент/Ext/Module.bsl").toUri();
+    assertThat(configuration.getModulesByObject().get(uri).getName()).isEqualTo("ГлобальныйКлиент");
+
     assertThat(configuration.getChildren().stream().filter(mdObject ->
       mdObject instanceof CommonModule)).hasSize(8);
+
+    Subsystem subsystem = (Subsystem) configuration.getChildrenByMdoRef().get("Subsystem.ПерваяПодсистема");
+    assertThat(subsystem).isNotNull();
+    assertThat(subsystem.getChildren()).isNotNull();
+    assertThat(subsystem.getChildren()).hasSize(4);
+    // 2 дочерних - это подсистемы
+    assertThat(subsystem.getChildren().stream().filter(child -> child.get().getType() == MDOType.SUBSYSTEM)).hasSize(2);
+
+    // проверим что у всех дочерних объектов дочерних подсистем подсситема в списке includedSubsystem
+    subsystem.getChildren().forEach(child -> {
+      var childMDO = child.get();
+      if (childMDO.getType() == MDOType.SUBSYSTEM) {
+        testSubsystem((Subsystem) childMDO);
+      } else {
+        assertThat(childMDO.getIncludedSubsystems()).isNotNull();
+        assertThat(childMDO.getIncludedSubsystems()).contains(subsystem);
+      }
+
+    });
   }
 
   @Test
@@ -81,6 +111,16 @@ class ConfigurationOriginTest {
     Configuration configuration = Configuration.create(srcPath);
 
     assertThat(configuration).isNotNull();
+  }
+
+  private void testSubsystem(Subsystem subsystem) {
+    assertThat(subsystem.getChildren()).isNotNull();
+    assertThat(subsystem.getChildren()).hasSize(2);
+    subsystem.getChildren().forEach(childMDO -> {
+      var mdo = childMDO.get();
+      assertThat(mdo.getIncludedSubsystems()).isNotNull();
+      assertThat(mdo.getIncludedSubsystems()).contains(subsystem);
+    });
   }
 
 }

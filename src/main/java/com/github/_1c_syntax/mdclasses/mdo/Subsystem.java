@@ -22,25 +22,118 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import io.vavr.control.Either;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 import lombok.experimental.SuperBuilder;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @JsonDeserialize(builder = Subsystem.SubsystemBuilderImpl.class)
 @SuperBuilder
 public class Subsystem extends MDObjectBase {
 
+  @NonFinal
+  @Setter
+  Set<Either<String, MDObjectBase>> children;
+
+  @NonFinal
+  @Setter
+  Subsystem parent;
+
+  @Override
   public MDOType getType() {
     return MDOType.SUBSYSTEM;
   }
 
+  @Override
+  public void computeMdoRef() {
+    super.computeMdoRef();
+    if(parent != null) {
+      this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
+    }
+  }
+
+  public abstract static class SubsystemBuilder<C extends Subsystem, B extends Subsystem.SubsystemBuilder<C, B>> extends MDObjectBaseBuilder<C, B> {
+
+    private void childrenAdd(String value) {
+      if (children == null) {
+        children = new HashSet<>();
+      }
+      children.add(Either.left(value.intern()));
+    }
+
+    @JsonProperty("subsystems")
+    public SubsystemBuilder<C, B> subsystems(String name) {
+      if (name != null) {
+        childrenAdd((MDOType.SUBSYSTEM.getName() + "." + name));
+      }
+      return this.self();
+    }
+
+    @JsonProperty("content")
+    public SubsystemBuilder<C, B> content(String name) {
+      if (name != null) {
+        childrenAdd(name);
+      }
+      return this.self();
+    }
+  }
+
   @JsonPOJOBuilder(withPrefix = "")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class SubsystemBuilderImpl extends Subsystem.SubsystemBuilder<Subsystem, Subsystem.SubsystemBuilderImpl> {
+  static class SubsystemBuilderImpl extends Subsystem.SubsystemBuilder<Subsystem, Subsystem.SubsystemBuilderImpl> {
+
+    private Set<Either<String, MDObjectBase>> childrenValue;
+
+    @Override
+    protected MDObjectBaseBuilder<Subsystem, SubsystemBuilderImpl> childObjects(Map<String, Object> properties) {
+      super.childObjects(properties);
+      if (properties != null) {
+        childrenAdd(properties.get("Subsystem"));
+      }
+      return this.self();
+    }
+
+    @Override
+    protected MDObjectBaseBuilder<Subsystem, SubsystemBuilderImpl> properties(Map<String, Object> properties) {
+      super.properties(properties);
+      if (properties != null) {
+        childrenAdd(properties.get("Content"));
+      }
+      return this.self();
+    }
+
+    private void childrenAdd(Object value) {
+      if (childrenValue == null) {
+        childrenValue = new HashSet<>();
+      }
+
+      if (value != null) {
+        if (value instanceof List) {
+          ((List<?>) value).stream()
+            .filter(Objects::nonNull)
+            .forEach(subsystemName -> childrenValue.add(Either.left(subsystemName.toString())));
+        } else {
+          childrenValue.add(Either.left(value.toString()));
+        }
+      }
+      children(childrenValue);
+    }
   }
+
 }

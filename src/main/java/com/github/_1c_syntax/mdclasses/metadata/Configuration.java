@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
@@ -34,12 +35,14 @@ import com.github._1c_syntax.mdclasses.utils.Common;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @Value
@@ -63,15 +66,21 @@ public class Configuration {
   UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   Map<URI, ModuleType> modulesByType;
+  Map<String, CommonModule> commonModules;
+  Map<URI, MDObjectBase> modulesByObject;
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   Set<MDObjectBase> children;
+  Map<String, MDObjectBase> childrenByMdoRef;
   Path rootPath;
 
   private Configuration() {
     this.configurationSource = ConfigurationSource.EMPTY;
     this.children = Collections.emptySet();
+    this.childrenByMdoRef = Collections.emptyMap();
     this.modulesByType = Collections.emptyMap();
     this.modulesBySupport = Collections.emptyMap();
+    this.commonModules = new CaseInsensitiveMap<>();
+    this.modulesByObject = Collections.emptyMap();
 
     this.rootPath = null;
     this.name = "";
@@ -93,6 +102,9 @@ public class Configuration {
   private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
     this.configurationSource = configurationSource;
     this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
+    this.childrenByMdoRef = new HashMap<>();
+    this.children.forEach(mdo -> this.childrenByMdoRef.put(mdo.getMdoRef(), mdo));
+
     this.rootPath = rootPath;
 
     this.name = configurationXml.getName();
@@ -110,8 +122,11 @@ public class Configuration {
     this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
     this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
-    this.modulesByType = Common.getModuleTypesByPath(this);
+    this.modulesByType = Common.getModuleTypesByType(this);
     this.modulesBySupport = Common.getModuleSupports(this);
+    this.commonModules = Common.getCommonModules(this);
+    this.modulesByObject = Common.getModulesByObject(this);
+
   }
 
   public static Configuration create() {
@@ -138,4 +153,9 @@ public class Configuration {
   public Map<SupportConfiguration, SupportVariant> getModuleSupport(URI uri) {
     return modulesBySupport.getOrDefault(uri, new HashMap<>());
   }
+
+  public Optional<CommonModule> getCommonModule(String name) {
+    return Optional.ofNullable(commonModules.get(name));
+  }
+
 }

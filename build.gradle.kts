@@ -22,9 +22,12 @@ repositories {
 val junitVersion = "5.5.2"
 dependencies {
 
+    // https://mvnrepository.com/artifact/io.vavr/vavr
+    implementation("io.vavr", "vavr", "0.10.2")
+    implementation("org.apache.commons", "commons-collections4", "4.4")
+
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.10.3")
     implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.10.3")
-
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")
     implementation("org.slf4j", "slf4j-simple", "1.8.0-beta4")
@@ -68,6 +71,17 @@ tasks.test {
     }
 }
 
+tasks.check {
+    dependsOn(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.isEnabled = true
+        xml.destination = File("$buildDir/reports/jacoco/test/jacoco.xml")
+    }
+}
+
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("-Xlint:unchecked")
@@ -82,6 +96,7 @@ sonarqube {
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/gen/**/*.*")
+        property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
 }
 
@@ -107,4 +122,11 @@ license {
             "**/*.json",
             "**/*.os",
             "**/*.bsl"))
+}
+
+tasks.register("precommit") {
+    description = "Run all precommit tasks"
+    group = "Developer tools"
+    dependsOn(":test")
+    dependsOn(":licenseFormat")
 }
