@@ -48,6 +48,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -178,7 +179,7 @@ public class MDOUtils {
    */
   public static Map<URI, ModuleType> getModuleTypesByPath(ConfigurationSource configurationSource, Path rootPath) {
 
-    Map<URI, ModuleType> modulesByType = new HashMap<>();
+    Map<URI, ModuleType> modulesByType = Collections.synchronizedMap(new HashMap<>());
 
     for (MDOType mdoType : MDOType.values(true)) {
       var folder = MDOPathUtils.getMDOTypeFolder(configurationSource, rootPath, mdoType);
@@ -256,7 +257,8 @@ public class MDOUtils {
                                               Path rootPath,
                                               MDOType type) {
 
-    Set<MDObjectBase> children = new HashSet<>();
+    Set<MDObjectBase> children = Collections.synchronizedSet(new HashSet<>());
+
     if (configurationSource == ConfigurationSource.EMPTY) {
       return children;
     }
