@@ -226,7 +226,7 @@ abstract public class AbstractMDOTest {
     assertThat(modules).hasSize(count);
     assertThat(modules)
       .allMatch(mdoModule -> List.of(types).contains(mdoModule.getModuleType()))
-      .extracting(MDOModule::getUri).extracting(URI::toString)
+      .extracting(MDOModule::getUri).extracting(URI::getPath)
       .allMatch(s -> s.contains(parentName));
   }
 
