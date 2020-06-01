@@ -14,7 +14,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
-import org.apache.commons.io.FilenameUtils;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,6 +29,16 @@ import java.util.stream.Collectors;
  */
 @UtilityClass
 public class MDOFactory {
+
+  /**
+   * Читает конфигурацию из корня проекта
+   */
+  public Optional<MDObjectBase> readMDOConfiguration(ConfigurationSource configurationSource, Path rootPath) {
+    return MDOPathUtils.getMDOPath(configurationSource, rootPath,
+      MDOType.CONFIGURATION,
+      MDOType.CONFIGURATION.getName())
+      .flatMap(mdoPath -> readMDObject(configurationSource, MDOType.CONFIGURATION, mdoPath));
+  }
 
   /**
    * Читает объект по его файлу описания, а также его дочерние при наличии
@@ -62,12 +71,11 @@ public class MDOFactory {
       }
       // загрузка всех объектов конфигурации
       if (mdoValue instanceof MDOConfiguration) {
-        var rootPath = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath);
-        if (configurationSource == ConfigurationSource.EDT) {
-          rootPath = Paths.get(FilenameUtils.getFullPathNoEndSeparator(rootPath.toString()));
-        }
-        computeAllMDObject((MDOConfiguration) mdoValue, configurationSource, rootPath);
-        setIncludedSubsystems((MDOConfiguration) mdoValue);
+        MDOPathUtils.getRootPathByConfigurationMDO(configurationSource, mdoPath)
+          .ifPresent(rootPath -> {
+            computeAllMDObject((MDOConfiguration) mdoValue, configurationSource, rootPath);
+            setIncludedSubsystems((MDOConfiguration) mdoValue);
+          });
       }
     });
 
@@ -96,17 +104,6 @@ public class MDOFactory {
     return mdo;
   }
 
-  // TODO перенести отседова
-  public Path getChildrenFolder(String mdoName, Path folder, MDOType type) {
-    if (folder != null) {
-      var formFolder = Paths.get(folder.toString(), mdoName, type.getGroupName());
-      if (formFolder.toFile().exists()) {
-        return formFolder;
-      }
-    }
-    return null;
-  }
-
   private void computeAllMDObject(MDOConfiguration configuration,
                                   ConfigurationSource configurationSource,
                                   Path rootPath) {
@@ -121,8 +118,8 @@ public class MDOFactory {
         var name = value.substring(dotPosition + 1);
 
         if (type.isPresent()) {
-          var mdo = readMDObject(configurationSource, type.get(),
-            MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name));
+          var mdo = MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name)
+            .flatMap(pathValue -> readMDObject(configurationSource, type.get(), pathValue));
           if (mdo.isPresent()) {
             children.add(Either.right(mdo.get()));
           } else {
@@ -174,33 +171,33 @@ public class MDOFactory {
 
     List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var rootFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, subsystemMDOPath);
-    if (rootFolder == null) {
+    if (rootFolder.isEmpty()) {
       return;
     }
 
-    var folder = Paths.get(rootFolder.toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
-    final var startName = MDOType.SUBSYSTEM.getClassName() + ".";
+    var folder = Paths.get(rootFolder.get().toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
+    final var startName = MDOType.SUBSYSTEM.getMDOClassName() + ".";
     children.stream()
       .filter(Either::isLeft)
       .filter(child -> child.getLeft().startsWith(startName)
         && !child.getLeft().contains("-")) // для исключения битых ссылок сразу
       .forEach(child -> {
         var subsystemName = child.getLeft().substring(startName.length());
-        var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, subsystemName);
-        if (mdoPath != null) {
-          var childSubsystem = readMDObjectFromFile(configurationSource, MDOType.SUBSYSTEM, mdoPath);
-          childSubsystem.ifPresent(mdoValue -> {
-            if (mdoValue.getMdoReference() == null) {
-              mdoValue.setMdoReference(new MDOReference(mdoValue, subsystem));
+        MDOPathUtils.getMDOPath(configurationSource, folder, subsystemName)
+          .ifPresent(mdoPath -> {
+            var childSubsystem = readMDObjectFromFile(configurationSource, MDOType.SUBSYSTEM, mdoPath);
+            childSubsystem.ifPresent(mdoValue -> {
+              if (mdoValue.getMdoReference() == null) {
+                mdoValue.setMdoReference(new MDOReference(mdoValue, subsystem));
+              }
+              newChildren.add(Either.right(mdoValue));
+              computeSubsystemChildren(configurationSource, (Subsystem) mdoValue, mdoPath);
+            });
+            if (childSubsystem.isEmpty()) {
+              // вернем несуществующий объект обратно в набор
+              newChildren.add(child);
             }
-            newChildren.add(Either.right(mdoValue));
-            computeSubsystemChildren(configurationSource, (Subsystem) mdoValue, mdoPath);
           });
-          if (childSubsystem.isEmpty()) {
-            // вернем несуществующий объект обратно в набор
-            newChildren.add(child);
-          }
-        }
       });
     children.stream()
       .filter(Either::isLeft)
@@ -211,16 +208,20 @@ public class MDOFactory {
   }
 
   private void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
-    var folder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath, mdo.getType());
-    setModules(mdo, configurationSource, folder);
-
-    if (mdo instanceof MDObjectComplex) {
-      var formFolder = getChildrenFolder(mdo.getName(), folder, MDOType.FORM);
-      var commandFolder = getChildrenFolder(mdo.getName(), folder, MDOType.COMMAND);
-      ((MDObjectComplex) mdo).getCommands().forEach(command ->
-        setModules(command, configurationSource, commandFolder));
-      ((MDObjectComplex) mdo).getForms().forEach(form -> setModules(form, configurationSource, formFolder));
-    }
+    MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath, mdo.getType())
+      .ifPresent(folder -> {
+        setModules(mdo, configurationSource, folder);
+        if (mdo instanceof MDObjectComplex) {
+          MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.FORM)
+            .ifPresent(formFolder ->
+              ((MDObjectComplex) mdo).getForms().forEach(form ->
+                setModules(form, configurationSource, formFolder)));
+          MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.COMMAND)
+            .ifPresent(commandFolder ->
+              ((MDObjectComplex) mdo).getCommands().forEach(command ->
+                setModules(command, configurationSource, commandFolder)));
+        }
+      });
   }
 
   private void setModules(MDObjectBSL mdo, ConfigurationSource configurationSource, Path folder) {
@@ -230,17 +231,19 @@ public class MDOFactory {
 
     List<MDOModule> modules = new ArrayList<>();
 
-    var moduleTypes = Common.getModuleTypesForMdoTypes().getOrDefault(mdo.getType(), Collections.emptySet());
+    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdo.getType(), Collections.emptySet());
     if (!moduleTypes.isEmpty()) {
       moduleTypes.forEach(moduleType -> {
         var mdoName = mdo.getName();
         if (mdo.getType() == MDOType.CONFIGURATION) {
           mdoName = "";
         }
-        var modulePath = MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType);
-        if (modulePath != null && modulePath.toFile().exists()) {
-          modules.add(new MDOModule(moduleType, modulePath.toUri()));
-        }
+        MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
+          .ifPresent(modulePath -> {
+            if (modulePath.toFile().exists()) {
+              modules.add(new MDOModule(moduleType, modulePath.toUri()));
+            }
+          });
       });
     }
 

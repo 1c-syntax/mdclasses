@@ -98,7 +98,7 @@ public class XStreamFactory {
 
     // дочерние элементы
     MDOType.values(true).forEach(type -> {
-      xStream.aliasField(type.getClassName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
+      xStream.aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
 
       if(type.getGroupName().isEmpty()) {
         return;

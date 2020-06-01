@@ -195,6 +195,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WEB_SERVICE, 1);
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
+
   }
 
   private void checkChildCount(MDOConfiguration configuration, MDOType type, int count) {

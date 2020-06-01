@@ -83,8 +83,6 @@ public enum MDOType {
   COMMAND("Command", "Commands", "Команда", "Команды"),
   TEMPLATE("Template", "Templates", "Макет", "Макеты"),
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
-  ;
-
   UNKNOWN("", "", "", "");
 
   private String name;
@@ -131,6 +129,7 @@ public enum MDOType {
 
   /**
    * Возвращает список элементов перечисления с возможностью фильтрации
+   *
    * @param withoutChildren - возможность исключить дочерние типы
    * @return - список с примененным фильтром
    */

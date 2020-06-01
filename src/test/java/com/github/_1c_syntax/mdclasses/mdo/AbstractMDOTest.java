@@ -46,11 +46,6 @@ abstract public class AbstractMDOTest {
     mdoType = type;
   }
 
-  // TODO DELETE ME
-  AbstractMDOTest() {
-    mdoType = MDOType.UNKNOWN;
-  }
-
   /**
    * Обязательный тест в формате EDT
    */
@@ -114,7 +109,7 @@ abstract public class AbstractMDOTest {
       .isNotNull().extracting(MDOReference::getType)
       .isEqualTo(mdoType);
     assertThat(mdo.getMdoReference().getMdoRef())
-      .isEqualTo(mdoType.getClassName() + "." + name);
+      .isEqualTo(mdoType.getName() + "." + name);
 
   }
 
@@ -239,19 +234,12 @@ abstract public class AbstractMDOTest {
       .isEqualTo(type);
     assertThat(child.getMdoReference().getMdoRef())
       .startsWith(parentName)
-      .endsWith("." + type.getClassName() + "." + child.getName());
-    if(child instanceof MDObjectBSL) {
+      .endsWith("." + type.getMDOClassName() + "." + child.getName());
+    if (child instanceof MDObjectBSL) {
       checkModules(((MDObjectBSL) child).getModules(), 1,
         type.getGroupName() + "/" + child.getName(), moduleType);
     }
   }
-
-
-
-
-
-
-
 
 
   protected static Path getMDOPathEDT(String path) {

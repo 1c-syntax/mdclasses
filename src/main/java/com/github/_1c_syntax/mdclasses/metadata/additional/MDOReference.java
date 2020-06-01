@@ -29,7 +29,7 @@ public class MDOReference {
 
   public MDOReference(MDObjectBase mdo) {
     type = mdo.getType();
-    mdoRef = getType().getClassName() + "." + mdo.getName();
+    mdoRef = getType().getName() + "." + mdo.getName();
   }
 
   /**

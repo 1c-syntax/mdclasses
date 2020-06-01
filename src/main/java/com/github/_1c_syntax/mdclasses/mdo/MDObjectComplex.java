@@ -69,33 +69,27 @@ public class MDObjectComplex extends MDObjectBSL {
     setMdoReference(new MDOReference(this));
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
-    var configurationSource = ConfigurationSource.DESIGNER;
-    var mdoFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, designerMDO.getMdoPath());
-    computeForms(configurationSource, mdoFolder, designerMDO.getChildObjects().getForms());
-    computeTemplates(configurationSource, mdoFolder, designerMDO.getChildObjects().getTemplates());
+    MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
+      .ifPresent(mdoFolder -> {
+        computeForms(mdoFolder, designerMDO.getChildObjects().getForms());
+        computeTemplates(mdoFolder, designerMDO.getChildObjects().getTemplates());
+      });
 
     // эти данные лежат сразу в файле описания,
     computeCommands(designerMDO.getChildObjects().getCommands());
-
     computeChildren(designerMDO.getChildObjects());
   }
 
-  private void computeForms(ConfigurationSource configurationSource, Path folder, List<String> formNames) {
-    var childrenFolder = MDOFactory.getChildrenFolder(getName(), folder, MDOType.FORM);
-
-    if (configurationSource == ConfigurationSource.DESIGNER) {
-      setForms(readDesignerMDOChildren(childrenFolder, MDOType.FORM, Form.class, formNames));
-    }
-
+  private void computeForms(Path folder, List<String> formNames) {
+    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.FORM)
+      .ifPresent(childrenFolder ->
+        setForms(readDesignerMDOChildren(childrenFolder, MDOType.FORM, Form.class, formNames)));
   }
 
-  private void computeTemplates(ConfigurationSource configurationSource, Path folder, List<String> templateNames) {
-    var childrenFolder = MDOFactory.getChildrenFolder(getName(), folder, MDOType.TEMPLATE);
-
-    if (configurationSource == ConfigurationSource.DESIGNER) {
-      setTemplates(readDesignerMDOChildren(childrenFolder, MDOType.TEMPLATE, Template.class, templateNames));
-    }
-
+  private void computeTemplates(Path folder, List<String> templateNames) {
+    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.TEMPLATE)
+      .ifPresent(childrenFolder ->
+        setTemplates(readDesignerMDOChildren(childrenFolder, MDOType.TEMPLATE, Template.class, templateNames)));
   }
 
   private void computeCommands(List<DesignerMDO> commandsDesigner) {
@@ -158,19 +152,4 @@ public class MDObjectComplex extends MDObjectBSL {
 
     return childrenNames;
   }
-
-//
-//  protected URI mdoURI; TODO Вроде не нужно
-//  protected List<com.github._1c_syntax.mdclasses.mdo_old.Subsystem> includedSubsystems;
-//
-//
-//  public void addIncludedSubsystems(Subsystem subsystem) {
-//    if (this.includedSubsystems == null) {
-//      this.includedSubsystems = new ArrayList<>();
-//    }
-//    this.includedSubsystems.add(subsystem);
-//  }
-
-//
-
 }

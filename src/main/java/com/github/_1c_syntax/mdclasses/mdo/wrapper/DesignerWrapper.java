@@ -156,7 +156,7 @@ public class DesignerWrapper {
     if (value.isPresent()) {
       try {
         Class<?> clazz = Class.forName(MDObjectBase.class.getPackageName()
-          + "." + type.getShortClassName());
+          + "." + type.getMDOClassName());
         var designerMDO = value.get();
         designerMDO.setMdoPath(mdoPath);
         return Optional.of((MDObjectBase) clazz.getConstructor(DesignerMDO.class)
@@ -187,7 +187,7 @@ public class DesignerWrapper {
         return Optional.of(getXdtoPackage());
       default:
         try {
-          String propertyName = type.getShortClassName();
+          String propertyName = type.getName();
           return Optional.of((DesignerMDO) getClass()
             .getDeclaredField(
               propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))

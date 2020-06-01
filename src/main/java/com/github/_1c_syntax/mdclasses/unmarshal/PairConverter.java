@@ -35,7 +35,7 @@ public class PairConverter implements Converter {
     } else {
       var type = MDOType.fromValue(reader.getNodeName());
       return type
-        .map(mdoType -> Either.left(mdoType.getClassName() + "." + reader.getValue()))
+        .map(mdoType -> Either.left(mdoType.getName() + "." + reader.getValue()))
         .orElseGet(() -> Either.left(reader.getNodeName() + "." + reader.getValue()));
     }
   }
