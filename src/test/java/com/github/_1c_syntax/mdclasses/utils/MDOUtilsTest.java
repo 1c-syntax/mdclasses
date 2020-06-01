@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo_old.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo_old.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -78,6 +78,9 @@ class MDOUtilsTest {
     correct.put(Paths.get(srcPath, "src", "InformationRegisters", "РегистрСведений1", "RecordSetModule.bsl").toUri(), ModuleType.RecordSetModule);
     correct.put(Paths.get(srcPath, "src", "Configuration", "SessionModule.bsl").toUri(), ModuleType.SessionModule);
     correct.put(Paths.get(srcPath, "src", "Constants", "Константа1", "ValueManagerModule.bsl").toUri(), ModuleType.ValueManagerModule);
+    correct.put(Paths.get(srcPath, "src", "Documents", "Документ1", "Forms", "ФормаВыбора", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "src", "Documents", "Документ1", "Forms", "ФормаСписка", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "src", "DataProcessors", "Обработка1", "Forms", "Форма", "Module.bsl").toUri(), ModuleType.FormModule);
 
     return correct;
   }
@@ -106,6 +109,12 @@ class MDOUtilsTest {
     correct.put(Paths.get(srcPath, "Ext", "ExternalConnectionModule.bsl").toUri(), ModuleType.ExternalConnectionModule);
     correct.put(Paths.get(srcPath, "Ext", "ManagedApplicationModule.bsl").toUri(), ModuleType.ManagedApplicationModule);
     correct.put(Paths.get(srcPath, "Ext", "SessionModule.bsl").toUri(), ModuleType.SessionModule);
+    correct.put(Paths.get(srcPath, "Documents", "Документ1", "Forms", "ФормаДокумента", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "Documents", "Документ1", "Forms", "ФормаВыбора", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "Documents", "Документ1", "Forms", "ФормаСписка", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "DataProcessors", "Обработка1", "Forms", "Форма", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "Catalogs", "Справочник1", "Forms", "ФормаСписка", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
+    correct.put(Paths.get(srcPath, "Catalogs", "Справочник1", "Forms", "ФормаЭлемента", "Ext", "Form", "Module.bsl").toUri(), ModuleType.FormModule);
 
     return correct;
   }
@@ -189,6 +198,14 @@ class MDOUtilsTest {
       assertThat(value).isEqualTo(moduleType);
     });
 
+    moduleTypesByPath.forEach((uri, moduleType) -> {
+      var value = correct.get(uri);
+      if(value == null) {
+        LOGGER.info(uri.toString() + " = " + moduleType.toString());
+      }
+      assertThat(value).isNotNull();
+    });
+
     assertThat(moduleTypesByPath.size()).isEqualTo(correct.size());
   }
 
@@ -201,9 +218,16 @@ class MDOUtilsTest {
     assertThat(moduleTypesByPath).isNotEmpty();
     correct.forEach((uri, moduleType) -> {
       var value = moduleTypesByPath.get(uri);
-      LOGGER.debug(uri.toString() + " = " + moduleType.toString());
       assertThat(value).isNotNull();
       assertThat(value).isEqualTo(moduleType);
+    });
+
+    moduleTypesByPath.forEach((uri, moduleType) -> {
+      var value = correct.get(uri);
+      if(value == null) {
+        LOGGER.info(uri.toString() + " = " + moduleType.toString());
+      }
+      assertThat(value).isNotNull();
     });
 
     assertThat(moduleTypesByPath.size()).isEqualTo(correct.size());

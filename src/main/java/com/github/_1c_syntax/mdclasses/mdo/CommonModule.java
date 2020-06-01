@@ -21,67 +21,77 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
-import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-import java.util.Map;
-
-import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrEmptyString;
-import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrFalse;
-
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = CommonModule.CommonModuleBuilderImpl.class)
-@SuperBuilder
-public class CommonModule extends MDObjectBase {
+@NoArgsConstructor
+public class CommonModule extends MDObjectBSL {
 
-  boolean server;
-  boolean global;
-  boolean clientManagedApplication;
-  boolean externalConnection;
-  boolean clientOrdinaryApplication;
-  boolean serverCall;
-  @Builder.Default
+  /**
+   * Признак Сервер
+   */
+  boolean server = false;
+
+  /**
+   * Признак Глобальный
+   */
+  boolean global = false;
+
+  /**
+   * Признак Клиент-управляемое приложение
+   */
+  boolean clientManagedApplication = false;
+
+  /**
+   * Признак Внешнее соединение
+   */
+  boolean externalConnection = false;
+
+  /**
+   * Признак Клиент-обычное приложение
+   */
+  boolean clientOrdinaryApplication = false;
+
+  /**
+   * Признак Вызов сервера
+   */
+  boolean serverCall = false;
+
+  /**
+   * Признак Привилегированный режим
+   */
+  boolean privileged = false;
+
+  /**
+   * Режим повторного использования значений
+   */
+  @NonNull
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
-  boolean privileged;
+
+  public CommonModule(DesignerMDO designerMDO) {
+    super(designerMDO);
+    server = designerMDO.getProperties().isServer();
+    global = designerMDO.getProperties().isGlobal();
+    clientManagedApplication = designerMDO.getProperties().isClientManagedApplication();
+    externalConnection = designerMDO.getProperties().isExternalConnection();
+    clientOrdinaryApplication = designerMDO.getProperties().isClientOrdinaryApplication();
+    serverCall = designerMDO.getProperties().isServerCall();
+    privileged = designerMDO.getProperties().isPrivileged();
+    returnValuesReuse = designerMDO.getProperties().getReturnValuesReuse();
+  }
 
   @Override
-  public MDOType getType() {
+  public @NonNull MDOType getType() {
     return MDOType.COMMON_MODULE;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class CommonModuleBuilderImpl extends CommonModule.CommonModuleBuilder<CommonModule, CommonModule.CommonModuleBuilderImpl> {
-
-    @JsonProperty("Properties")
-    @Override
-    public CommonModule.CommonModuleBuilderImpl properties(Map<String, Object> properties) {
-      super.properties(properties);
-
-      server(getOrFalse(properties, "Server"));
-      global(getOrFalse(properties, "Global"));
-      clientManagedApplication(getOrFalse(properties, "ClientManagedApplication"));
-      externalConnection(getOrFalse(properties, "ExternalConnection"));
-      clientOrdinaryApplication(getOrFalse(properties, "ClientOrdinaryApplication"));
-      serverCall(getOrFalse(properties, "ServerCall"));
-      var reuseValueString = getOrEmptyString(properties, "ReturnValuesReuse");
-      if (!reuseValueString.isEmpty()) {
-        returnValuesReuse(ReturnValueReuse.fromValue(reuseValueString));
-      }
-      privileged(getOrFalse(properties, "Privileged"));
-
-      return this.self();
-    }
-  }
 }

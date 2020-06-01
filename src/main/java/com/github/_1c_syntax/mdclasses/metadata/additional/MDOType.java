@@ -29,6 +29,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Типы объектов метаданных
+ */
 public enum MDOType {
   ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters", "РегистрБухгалтерии", "РегистрыБухгалтерии"),
   ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters", "РегистрНакопления", "РегистрыНакопления"),
@@ -82,6 +85,8 @@ public enum MDOType {
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
   ;
 
+  UNKNOWN("", "", "", "");
+
   private String name;
   private String groupName;
   private String nameRu;
@@ -131,7 +136,12 @@ public enum MDOType {
    */
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
-      return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)
+      return Arrays.stream(values()).filter(mdoType ->
+        mdoType != FORM
+          && mdoType != COMMAND
+          && mdoType != ATTRIBUTE
+          && mdoType != TEMPLATE
+          && mdoType != UNKNOWN)
         .collect(Collectors.toList());
     }
     return Arrays.asList(values());
@@ -139,6 +149,7 @@ public enum MDOType {
 
   /**
    * Возвращает MDOType по строковому идентификатору
+   *
    * @param value - Строковый идентификатор типа. Может быть на русском или английском языках,
    *              а так же во множественном или единственном числе
    * @return - Найденный тип

@@ -23,6 +23,9 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 
 import lombok.Getter;
 
+/**
+ * Класс реализующий объект для хранения режима совместимости конфигурации
+ */
 public class CompatibilityMode {
 
   private static final String DONT_USE = "DontUse";
@@ -56,6 +59,16 @@ public class CompatibilityMode {
     setVersionComponents(minor, version);
   }
 
+  /**
+   * Выполняет сравнение двух режимов соместимости
+   *
+   * @param versionA - Первый режим совместимости
+   * @param versionB - Второй режим совместимости
+   * @return - Результат сравнения
+   * 0 - равны
+   * 1 - вторая версия больше
+   * -1 - первая версия больше
+   */
   public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB) {
 
     // TODO: переделать в цикл
@@ -78,7 +91,20 @@ public class CompatibilityMode {
     } else {
       return 1;
     }
+  }
 
+  /**
+   * Выполняет сравнение двух режимов соместимости, используя в качестве второгой версии - строкове представление
+   *
+   * @param versionA - Первый режим совместимости
+   * @param versionB - Второй режим совместимости в виде строки вида Version_8_3_10
+   * @return - Результат сравнения
+   * 0 - равны
+   * 1 - вторая версия больше
+   * -1 - первая версия больше
+   */
+  public static int compareTo(CompatibilityMode versionA, String versionB) {
+    return compareTo(versionA, new CompatibilityMode(versionB));
   }
 
   private void setVersionComponents(int minor, int version) {

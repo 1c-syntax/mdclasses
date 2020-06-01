@@ -62,6 +62,7 @@ class ConfigurationVersionTest {
     assertThat(CompatibilityMode.compareTo(versionA, versionB)).isEqualTo(1);
     assertThat(CompatibilityMode.compareTo(versionB, versionA)).isEqualTo(-1);
     assertThat(CompatibilityMode.compareTo(versionA, new CompatibilityMode(3, 10))).isEqualTo(0);
+    assertThat(CompatibilityMode.compareTo(versionA, "Version_8_3_10")).isEqualTo(0);
 
   }
 

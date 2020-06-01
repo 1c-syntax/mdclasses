@@ -21,24 +21,18 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-import java.util.Map;
-
-import static com.github._1c_syntax.mdclasses.utils.MapExtension.getOrEmptyString;
-
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = EventSubscription.EventSubscriptionBuilderImpl.class)
-@SuperBuilder
+@NoArgsConstructor
 public class EventSubscription extends MDObjectBase {
 
   /**
@@ -46,22 +40,16 @@ public class EventSubscription extends MDObjectBase {
    * Формат mdoRef + имя метода
    * Пример CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью
    */
-  String handler;
+  String handler = ""; // TODO сделать классом
 
-  @Override
-  public MDOType getType() {
-    return MDOType.EVENT_SUBSCRIPTION;
+  public EventSubscription(DesignerMDO designerMDO) {
+    super(designerMDO);
+    handler = designerMDO.getProperties().getHandler();
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class EventSubscriptionBuilderImpl extends EventSubscription.EventSubscriptionBuilder<EventSubscription, EventSubscription.EventSubscriptionBuilderImpl> {
-    @Override
-    protected MDObjectBaseBuilder<EventSubscription, EventSubscriptionBuilderImpl> properties(Map<String, Object> properties) {
-      super.properties(properties);
-      handler(getOrEmptyString(properties, "Handler"));
-      return this.self();
-    }
+  @Override
+  public @NonNull MDOType getType() {
+    return MDOType.EVENT_SUBSCRIPTION;
   }
 
 }

@@ -21,44 +21,35 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 
+/**
+ * Класс для всех атрибутов (включая табличные части) объектов
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = MDOAttribute.MDOAttributeBuilderImpl.class)
-@SuperBuilder
-public class MDOAttribute extends MDObjectBase {
-
-  MDObjectBase parent;
+@NoArgsConstructor
+public class MDOAttribute extends MDObjectBase implements MDOAttributeExtensions {
+  public MDOAttribute(DesignerMDO designerMDO) {
+    super(designerMDO);
+  }
 
   @Override
-  public MDOType getType() {
+  public @NonNull MDOType getType() {
     return MDOType.ATTRIBUTE;
   }
 
-  public AttributeType getAttributeType() {
-    return null;
-  }
-
   @Override
-  public void computeMdoRef() {
-    this.mdoRef = getAttributeType().getClassName() + "." + getName();
-    if (parent != null) {
-      this.mdoRef = this.parent.getMdoRef() + "." + this.mdoRef;
-    }
+  public @NonNull AttributeType getAttributeType() {
+    return AttributeType.UNKNOWN;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class MDOAttributeBuilderImpl extends MDOAttribute.MDOAttributeBuilder<MDOAttribute, MDOAttribute.MDOAttributeBuilderImpl> {
-  }
 }

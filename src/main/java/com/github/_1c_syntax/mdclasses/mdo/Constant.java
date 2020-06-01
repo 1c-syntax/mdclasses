@@ -21,29 +21,27 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = Constant.ConstantBuilderImpl.class)
-@SuperBuilder
-public class Constant extends MDObjectBase {
+@NoArgsConstructor
+public class Constant extends MDObjectBSL {
+
+  public Constant(DesignerMDO designerMDO) {
+    super(designerMDO);
+  }
 
   @Override
-  public MDOType getType() {
+  public @NonNull MDOType getType() {
     return MDOType.CONSTANT;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class ConstantBuilderImpl extends Constant.ConstantBuilder<Constant, Constant.ConstantBuilderImpl> {
-  }
 }

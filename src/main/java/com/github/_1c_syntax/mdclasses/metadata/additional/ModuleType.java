@@ -21,6 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+/**
+ * Возможные типы модулей объектов
+ */
 public enum ModuleType {
 
   CommandModule("CommandModule.bsl"),
@@ -37,9 +40,12 @@ public enum ModuleType {
   OrdinaryApplicationModule("OrdinaryApplicationModule.bsl"),
   HTTPServiceModule("Module.bsl"),
   WEBServiceModule("Module.bsl"),
-  Unknown("");
+  Unknown(""); // для неизвестных типов модулей
 
-  private String fileName;
+  /**
+   * Имя файла
+   */
+  private final String fileName;
 
   ModuleType(String fileName) {
     this.fileName = fileName;

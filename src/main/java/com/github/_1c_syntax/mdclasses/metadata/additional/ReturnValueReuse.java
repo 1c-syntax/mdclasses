@@ -21,15 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * Возможные варианты повторного использования значений модулей
+ */
 public enum ReturnValueReuse {
 
-  @JsonProperty("DontUse")
   DONT_USE("DontUse"),
-  @JsonProperty("DuringRequest")
   DURING_REQUEST("DuringRequest"),
-  @JsonProperty("DuringSession")
   DURING_SESSION("DuringSession");
 
   private final String value;

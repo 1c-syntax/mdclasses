@@ -21,29 +21,31 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
+/**
+ * ВНИМАНИЕ!
+ * Данный класс актуальен только для формата конфигуратора, в EDT интерфейсов нет
+ */
 @Value
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = MDOInterface.MDOInterfaceBuilderImpl.class)
-@SuperBuilder
+@NoArgsConstructor
 public class MDOInterface extends MDObjectBase {
 
+  public MDOInterface(DesignerMDO designerMDO) {
+    super(designerMDO);
+  }
+
   @Override
-  public MDOType getType() {
+  public @NonNull MDOType getType() {
     return MDOType.INTERFACE;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class MDOInterfaceBuilderImpl extends MDOInterface.MDOInterfaceBuilder<MDOInterface, MDOInterface.MDOInterfaceBuilderImpl> {
-  }
 }
