@@ -70,10 +70,25 @@ import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.basic.BooleanConverter;
+import com.thoughtworks.xstream.converters.basic.ByteConverter;
+import com.thoughtworks.xstream.converters.basic.DateConverter;
+import com.thoughtworks.xstream.converters.basic.DoubleConverter;
+import com.thoughtworks.xstream.converters.basic.FloatConverter;
+import com.thoughtworks.xstream.converters.basic.IntConverter;
+import com.thoughtworks.xstream.converters.basic.LongConverter;
+import com.thoughtworks.xstream.converters.basic.NullConverter;
+import com.thoughtworks.xstream.converters.basic.ShortConverter;
+import com.thoughtworks.xstream.converters.basic.StringConverter;
+import com.thoughtworks.xstream.converters.collections.CollectionConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
-import com.thoughtworks.xstream.security.PrimitiveTypePermission;
+import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
+import com.thoughtworks.xstream.io.xml.XppDriver;
+import com.thoughtworks.xstream.security.NoTypePermission;
+import com.thoughtworks.xstream.security.WildcardTypePermission;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 
@@ -85,6 +100,7 @@ import java.io.File;
 @UtilityClass
 public class XStreamFactory {
 
+  private static final XppDriver XPP_DRIVER = new XppDriver();
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
 
@@ -100,10 +116,40 @@ public class XStreamFactory {
 
   private XStream createXMLMapper() {
     // данный провайдер неробходим для корректной обработки значений по умолчанию, чтобы не было null
-    var xStream = new XStream(new PureJavaReflectionProvider());
-    xStream.addPermission(PrimitiveTypePermission.PRIMITIVES);
+    var xStream = new XStream(new PureJavaReflectionProvider(), XPP_DRIVER) {
+
+      // TODO как починят https://github.com/x-stream/xstream/issues/101
+      // После исправления бага (с 2017 года) убрать этот код
+
+      /**
+       * Переопределение списка реистрируемых конвертеров, оставлены только те, что нужны, особенно исключены те,
+       * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
+       */
+      @Override
+      protected void setupConverters() {
+        registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
+        registerConverter(new IntConverter(), PRIORITY_NORMAL);
+        registerConverter(new FloatConverter(), PRIORITY_NORMAL);
+        registerConverter(new DoubleConverter(), PRIORITY_NORMAL);
+        registerConverter(new LongConverter(), PRIORITY_NORMAL);
+        registerConverter(new ShortConverter(), PRIORITY_NORMAL);
+        registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
+        registerConverter(new ByteConverter(), PRIORITY_NORMAL);
+        registerConverter(new StringConverter(), PRIORITY_NORMAL);
+        registerConverter(new DateConverter(), PRIORITY_NORMAL);
+        registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
+        registerConverter(new ReflectionConverter(getMapper(), getReflectionProvider()), PRIORITY_VERY_LOW);
+      }
+    };
+    // автоопределение аннотаций
     xStream.autodetectAnnotations(true);
+    // игнорирование неизвестных тэгов
     xStream.ignoreUnknownElements();
+    // настройки безопасности доступа к данным
+    xStream.setMode(XStream.NO_REFERENCES);
+    XStream.setupDefaultSecurity(xStream);
+    xStream.addPermission(NoTypePermission.NONE);
+    xStream.addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
 
     // необходимо зарегистрировать все классы, имена которых в XML отличаются от имен самих классов
     addClassAliases(xStream);
@@ -213,6 +259,7 @@ public class XStreamFactory {
   private void addConverters(XStream xStream) {
     xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter(UseMode.class));
+    xStream.registerConverter(new EnumConverter(ScriptVariant.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
 
