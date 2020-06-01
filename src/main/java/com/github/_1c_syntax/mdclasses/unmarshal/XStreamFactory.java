@@ -86,7 +86,6 @@ import com.thoughtworks.xstream.converters.basic.StringConverter;
 import com.thoughtworks.xstream.converters.collections.CollectionConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
-import com.thoughtworks.xstream.io.xml.XppDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import lombok.Getter;
@@ -100,7 +99,6 @@ import java.io.File;
 @UtilityClass
 public class XStreamFactory {
 
-  private static final XppDriver XPP_DRIVER = new XppDriver();
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
 
@@ -116,7 +114,7 @@ public class XStreamFactory {
 
   private XStream createXMLMapper() {
     // данный провайдер неробходим для корректной обработки значений по умолчанию, чтобы не было null
-    var xStream = new XStream(new PureJavaReflectionProvider(), XPP_DRIVER) {
+    var xStream = new XStream(new PureJavaReflectionProvider()) {
 
       // TODO как починят https://github.com/x-stream/xstream/issues/101
       // После исправления бага (с 2017 года) убрать этот код
