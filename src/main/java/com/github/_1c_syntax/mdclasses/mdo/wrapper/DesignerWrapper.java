@@ -148,7 +148,7 @@ public class DesignerWrapper {
   protected DesignerMDO xdtoPackage;
 
   /**
-   * @param type    - Тип читаемого объекта, по нему определяется имя свойства
+   * @param type - Тип читаемого объекта, по нему определяется имя свойства
    * @return - Возвращает MDObjectBase объект
    */
   public Optional<MDObjectBase> getPropertyByType(MDOType type, Path mdoPath) {

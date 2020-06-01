@@ -240,6 +240,30 @@ public class Configuration {
     modulesByObject = modulesObject;
   }
 
+  /**
+   * Метод для создания пустой конфигурации
+   */
+  public static Configuration create() {
+    return new Configuration();
+  }
+
+  /**
+   * Метод создания конфигурации каталогу исходных файлов
+   *
+   * @param rootPath - Адрес корневого каталога конфигурации
+   */
+  public static Configuration create(Path rootPath) {
+    ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
+    if (configurationSource != ConfigurationSource.EMPTY) {
+      var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
+      if (configurationMDO.isPresent()) {
+        return new Configuration((MDOConfiguration) configurationMDO.get(), configurationSource, rootPath);
+      }
+    }
+
+    return create();
+  }
+
   private Set<MDObjectBase> getAllChildren(MDOConfiguration mdoConfiguration) {
     Set<MDObjectBase> allChildren = new HashSet<>();
     mdoConfiguration.getChildren().stream().filter(Either::isRight).map(Either::get)
@@ -267,30 +291,6 @@ public class Configuration {
       return Optional.empty();
     }
     return Optional.of(rootPath);
-  }
-
-  /**
-   * Метод для создания пустой конфигурации
-   */
-  public static Configuration create() {
-    return new Configuration();
-  }
-
-  /**
-   * Метод создания конфигурации каталогу исходных файлов
-   *
-   * @param rootPath - Адрес корневого каталога конфигурации
-   */
-  public static Configuration create(Path rootPath) {
-    ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
-    if (configurationSource != ConfigurationSource.EMPTY) {
-      var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
-      if (configurationMDO.isPresent()) {
-        return new Configuration((MDOConfiguration) configurationMDO.get(), configurationSource, rootPath);
-      }
-    }
-
-    return create();
   }
 
   /**
