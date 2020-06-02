@@ -63,7 +63,8 @@ public class MDOPathUtils {
   /**
    * Получает путь к MDO файлу объекта метаданных относительно корня проекта с учетом указанном типа исходников
    */
-  public static Optional<Path> getMDOPath(ConfigurationSource configurationSource, Path rootPath, MDOType type, String name) {
+  public static Optional<Path> getMDOPath(ConfigurationSource configurationSource,
+                                          Path rootPath, MDOType type, String name) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = getMDOPathEDT(getMDOTypeFolderPathEDT(rootPath, type), name);

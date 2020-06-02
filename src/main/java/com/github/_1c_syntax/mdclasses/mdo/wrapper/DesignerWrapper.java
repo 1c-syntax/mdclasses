@@ -170,33 +170,43 @@ public class DesignerWrapper {
   }
 
   private Optional<DesignerMDO> getPropertyValue(MDOType type) {
+    Optional<DesignerMDO> result;
     switch (type) {
       case CONFIGURATION:
-        return Optional.of(getConfiguration());
+        result = Optional.of(getConfiguration());
+        break;
       case ENUM:
-        return Optional.of(get_enum());
+        result = Optional.of(get_enum());
+        break;
       case INTERFACE:
-        return Optional.of(get_interface());
+        result = Optional.of(get_interface());
+        break;
       case HTTP_SERVICE:
-        return Optional.of(getHttpService());
+        result = Optional.of(getHttpService());
+        break;
       case WEB_SERVICE:
-        return Optional.of(getWebService());
+        result = Optional.of(getWebService());
+        break;
       case WS_REFERENCE:
-        return Optional.of(getWsReference());
+        result = Optional.of(getWsReference());
+        break;
       case XDTO_PACKAGE:
-        return Optional.of(getXdtoPackage());
+        result = Optional.of(getXdtoPackage());
+        break;
       default:
         try {
           String propertyName = type.getName();
-          return Optional.of((DesignerMDO) getClass()
+          result = Optional.of((DesignerMDO) getClass()
             .getDeclaredField(
               propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1))
             .get(this));
+          break;
         } catch (IllegalAccessException | NoSuchFieldException e) {
           LOGGER.error("Can't find property for name", e);
         }
 
-        return Optional.empty();
+        result = Optional.empty();
     }
+    return result;
   }
 }

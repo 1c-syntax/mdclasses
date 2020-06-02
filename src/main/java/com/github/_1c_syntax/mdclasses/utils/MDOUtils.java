@@ -29,6 +29,7 @@ import lombok.experimental.UtilityClass;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class MDOUtils {
   }
 
   private static Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {
-    Map<MDOType, Set<ModuleType>> result = new HashMap<>();
+    Map<MDOType, Set<ModuleType>> result = new EnumMap<>(MDOType.class);
 
     for (MDOType mdoType : MDOType.values()) {
       Set<ModuleType> types = new HashSet<>();

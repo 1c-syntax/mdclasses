@@ -162,7 +162,7 @@ public class XStreamFactory {
   private void addFieldAliases(XStream xStream) {
 
     // дочерние элементы
-    MDOType.values(true).forEach(type -> {
+    MDOType.values(true).forEach((MDOType type) -> {
       xStream.aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
 
       if (type.getGroupName().isEmpty()) {
@@ -190,7 +190,7 @@ public class XStreamFactory {
     xStream.aliasField("dimensions", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
     xStream.aliasField("resources", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
     xStream.aliasField("recalculations", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("attributes", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField(ATTRIBUTE_FIELD_NAME, MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
     xStream.aliasField("tabularSections", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
     xStream.aliasField("accountingFlags", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
     xStream.aliasField("extDimensionAccountingFlags", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
@@ -198,7 +198,7 @@ public class XStreamFactory {
     xStream.aliasField("addressingAttributes", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
 
     // у табличной части тоже есть свои атрибуты
-    xStream.aliasField("attributes", TabularSection.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField(ATTRIBUTE_FIELD_NAME, TabularSection.class, ATTRIBUTE_FIELD_NAME);
 
     // поля подсистем
     xStream.aliasField("subsystems", Subsystem.class, CHILDREN_FIELD_NAME);

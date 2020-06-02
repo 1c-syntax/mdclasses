@@ -45,19 +45,19 @@ public class DesignerProperties {
   String comment = "";
 
   @XStreamAlias("Server")
-  boolean server = false;
+  boolean server;
   @XStreamAlias("Global")
-  boolean global = false;
+  boolean global;
   @XStreamAlias("ClientManagedApplication")
-  boolean clientManagedApplication = false;
+  boolean clientManagedApplication;
   @XStreamAlias("ExternalConnection")
-  boolean externalConnection = false;
+  boolean externalConnection;
   @XStreamAlias("ClientOrdinaryApplication")
-  boolean clientOrdinaryApplication = false;
+  boolean clientOrdinaryApplication;
   @XStreamAlias("ServerCall")
-  boolean serverCall = false;
+  boolean serverCall;
   @XStreamAlias("Privileged")
-  boolean privileged = false;
+  boolean privileged;
   @NonNull
   @XStreamAlias("ReturnValuesReuse")
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;

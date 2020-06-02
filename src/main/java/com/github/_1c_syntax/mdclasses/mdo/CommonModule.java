@@ -39,37 +39,37 @@ public class CommonModule extends MDObjectBSL {
   /**
    * Признак Сервер
    */
-  boolean server = false;
+  boolean server;
 
   /**
    * Признак Глобальный
    */
-  boolean global = false;
+  boolean global;
 
   /**
    * Признак Клиент-управляемое приложение
    */
-  boolean clientManagedApplication = false;
+  boolean clientManagedApplication;
 
   /**
    * Признак Внешнее соединение
    */
-  boolean externalConnection = false;
+  boolean externalConnection;
 
   /**
    * Признак Клиент-обычное приложение
    */
-  boolean clientOrdinaryApplication = false;
+  boolean clientOrdinaryApplication;
 
   /**
    * Признак Вызов сервера
    */
-  boolean serverCall = false;
+  boolean serverCall;
 
   /**
    * Признак Привилегированный режим
    */
-  boolean privileged = false;
+  boolean privileged;
 
   /**
    * Режим повторного использования значений

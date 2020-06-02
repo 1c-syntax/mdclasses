@@ -91,7 +91,7 @@ public class MDObjectComplex extends MDObjectBSL {
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
-      .ifPresent(mdoFolder -> {
+      .ifPresent((Path mdoFolder) -> {
         computeForms(mdoFolder, designerMDO.getChildObjects().getForms());
         computeTemplates(mdoFolder, designerMDO.getChildObjects().getTemplates());
       });
@@ -103,35 +103,52 @@ public class MDObjectComplex extends MDObjectBSL {
 
   private void computeForms(Path folder, List<String> formNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.FORM)
-      .ifPresent(childrenFolder ->
+      .ifPresent((Path childrenFolder) ->
         setForms(readDesignerMDOChildren(childrenFolder, MDOType.FORM, Form.class, formNames)));
   }
 
   private void computeTemplates(Path folder, List<String> templateNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.TEMPLATE)
-      .ifPresent(childrenFolder ->
+      .ifPresent((Path childrenFolder) ->
         setTemplates(readDesignerMDOChildren(childrenFolder, MDOType.TEMPLATE, Template.class, templateNames)));
   }
 
   private void computeCommands(List<DesignerMDO> commandsDesigner) {
     List<Command> computedCommands = new ArrayList<>();
-    commandsDesigner.forEach(designerMDO -> computedCommands.add(new Command(designerMDO)));
+    commandsDesigner.forEach((DesignerMDO designerMDO) -> computedCommands.add(new Command(designerMDO)));
     setCommands(computedCommands);
   }
 
   private void computeChildren(DesignerChildObjects childObjects) {
     List<MDOAttribute> computedAttributes = new ArrayList<>();
-    childObjects.getAccountingFlags().forEach(designerMDO -> computedAttributes.add(new AccountingFlag(designerMDO)));
-    childObjects.getAddressingAttributes().forEach(designerMDO ->
+
+    childObjects.getAccountingFlags().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new AccountingFlag(designerMDO)));
+
+    childObjects.getAddressingAttributes().forEach((DesignerMDO designerMDO) ->
       computedAttributes.add(new AddressingAttribute(designerMDO)));
-    childObjects.getAttributes().forEach(designerMDO -> computedAttributes.add(new Attribute(designerMDO)));
-    childObjects.getColumns().forEach(designerMDO -> computedAttributes.add(new Column(designerMDO)));
-    childObjects.getDimensions().forEach(designerMDO -> computedAttributes.add(new Dimension(designerMDO)));
+
+    childObjects.getAttributes().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new Attribute(designerMDO)));
+
+    childObjects.getColumns().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new Column(designerMDO)));
+
+    childObjects.getDimensions().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new Dimension(designerMDO)));
+
     childObjects.getExtDimensionAccountingFlags().forEach(designerMDO ->
       computedAttributes.add(new ExtDimensionAccountingFlag(designerMDO)));
-    childObjects.getRecalculations().forEach(designerMDO -> computedAttributes.add(new Recalculation(designerMDO)));
-    childObjects.getResources().forEach(designerMDO -> computedAttributes.add(new Resource(designerMDO)));
-    childObjects.getTabularSections().forEach(designerMDO -> computedAttributes.add(new TabularSection(designerMDO)));
+
+    childObjects.getRecalculations().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new Recalculation(designerMDO)));
+
+    childObjects.getResources().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new Resource(designerMDO)));
+
+    childObjects.getTabularSections().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new TabularSection(designerMDO)));
+
     setAttributes(computedAttributes);
   }
 
@@ -143,9 +160,9 @@ public class MDObjectComplex extends MDObjectBSL {
     var configurationSource = ConfigurationSource.DESIGNER;
     if (childrenFolder != null) {
       getMDOFilesInFolder(childrenFolder, childNames)
-        .forEach(mdoFile -> {
+        .forEach((Path mdoFile) -> {
           var child = MDOFactory.readMDObjectFromFile(configurationSource, type, mdoFile);
-          child.ifPresent(mdo -> {
+          child.ifPresent((MDObjectBase mdo) -> {
               mdo.setMdoReference(new MDOReference(mdo, this));
               children.add(childClass.cast(mdo));
             }
@@ -165,8 +182,8 @@ public class MDObjectComplex extends MDObjectBSL {
       try (Stream<Path> files = Files.walk(folder, maxDepth)) {
         childrenNames = files
           .parallel()
-          .filter(f -> f.toString().endsWith(extension.get()))
-          .filter(f -> childNames.contains(FilenameUtils.getBaseName(f.toString())))
+          .filter((Path path) -> path.toString().endsWith(extension.get()))
+          .filter((Path path) -> childNames.contains(FilenameUtils.getBaseName(path.toString())))
           .collect(Collectors.toList());
       }
     }

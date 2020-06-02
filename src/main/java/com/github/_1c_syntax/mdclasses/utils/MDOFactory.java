@@ -21,17 +21,22 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.Command;
+import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
@@ -58,7 +63,7 @@ public class MDOFactory {
     return MDOPathUtils.getMDOPath(configurationSource, rootPath,
       MDOType.CONFIGURATION,
       MDOType.CONFIGURATION.getName())
-      .flatMap(mdoPath -> readMDObject(configurationSource, MDOType.CONFIGURATION, mdoPath));
+      .flatMap((Path mdoPath) -> readMDObject(configurationSource, MDOType.CONFIGURATION, mdoPath));
   }
 
   /**
@@ -73,7 +78,7 @@ public class MDOFactory {
                                              MDOType type,
                                              Path mdoPath) {
     Optional<MDObjectBase> mdo = readMDObjectFromFile(configurationSource, type, mdoPath);
-    mdo.ifPresent(mdoValue -> {
+    mdo.ifPresent((MDObjectBase mdoValue) -> {
       // проставляем mdo ссылку для объекта
       if (mdoValue.getMdoReference() == null) {
         mdoValue.setMdoReference(new MDOReference(mdoValue));
@@ -93,7 +98,7 @@ public class MDOFactory {
       // загрузка всех объектов конфигурации
       if (mdoValue instanceof MDOConfiguration) {
         MDOPathUtils.getRootPathByConfigurationMDO(configurationSource, mdoPath)
-          .ifPresent(rootPath -> {
+          .ifPresent((Path rootPath) -> {
             computeAllMDObject((MDOConfiguration) mdoValue, configurationSource, rootPath);
             setIncludedSubsystems((MDOConfiguration) mdoValue);
           });
@@ -129,18 +134,18 @@ public class MDOFactory {
                                   ConfigurationSource configurationSource,
                                   Path rootPath) {
     List<Either<String, MDObjectBase>> children = new ArrayList<>();
-    configuration.getChildren().forEach(child -> {
+    configuration.getChildren().forEach((Either<String, MDObjectBase> child) -> {
       if (child.isRight()) {
         children.add(child);
       } else {
         var value = child.getLeft();
-        var dotPosition = value.indexOf(".");
+        var dotPosition = value.indexOf('.');
         var type = MDOType.fromValue(value.substring(0, dotPosition));
         var name = value.substring(dotPosition + 1);
 
         if (type.isPresent()) {
           var mdo = MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name)
-            .flatMap(pathValue -> readMDObject(configurationSource, type.get(), pathValue));
+            .flatMap((Path pathValue) -> readMDObject(configurationSource, type.get(), pathValue));
           if (mdo.isPresent()) {
             children.add(Either.right(mdo.get()));
           } else {
@@ -158,17 +163,17 @@ public class MDOFactory {
   }
 
   private void computeMdoReference(MDObjectComplex mdoValue) {
-    mdoValue.getForms().forEach(child -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getTemplates().forEach(child -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getCommands().forEach(child -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getAttributes().forEach(child -> {
+    mdoValue.getForms().forEach((Form child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getTemplates().forEach((Template child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getCommands().forEach((Command child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getAttributes().forEach((MDOAttribute child) -> {
       if (child.getMdoReference() == null) {
         child.setMdoReference(new MDOReference(child, mdoValue));
       }
       // для табличной части надо дополнительно по реквизитам заполнить
       if (child instanceof TabularSection) {
         ((TabularSection) child).getAttributes()
-          .forEach(childTabular -> {
+          .forEach((MDOAttribute childTabular) -> {
             if (childTabular.getMdoReference() == null) {
               childTabular.setMdoReference(new MDOReference(childTabular, child));
             }
@@ -200,14 +205,14 @@ public class MDOFactory {
     final var startName = MDOType.SUBSYSTEM.getMDOClassName() + ".";
     children.stream()
       .filter(Either::isLeft)
-      .filter(child -> child.getLeft().startsWith(startName)
+      .filter((Either<String, MDObjectBase> child) -> child.getLeft().startsWith(startName)
         && !child.getLeft().contains("-")) // для исключения битых ссылок сразу
-      .forEach(child -> {
+      .forEach((Either<String, MDObjectBase> child) -> {
         var subsystemName = child.getLeft().substring(startName.length());
         MDOPathUtils.getMDOPath(configurationSource, folder, subsystemName)
-          .ifPresent(mdoPath -> {
+          .ifPresent((Path mdoPath) -> {
             var childSubsystem = readMDObjectFromFile(configurationSource, MDOType.SUBSYSTEM, mdoPath);
-            childSubsystem.ifPresent(mdoValue -> {
+            childSubsystem.ifPresent((MDObjectBase mdoValue) -> {
               if (mdoValue.getMdoReference() == null) {
                 mdoValue.setMdoReference(new MDOReference(mdoValue, subsystem));
               }
@@ -222,7 +227,7 @@ public class MDOFactory {
       });
     children.stream()
       .filter(Either::isLeft)
-      .filter(child -> !child.getLeft().startsWith(startName))
+      .filter((Either<String, MDObjectBase> child) -> !child.getLeft().startsWith(startName))
       .forEach(newChildren::add);
 
     subsystem.setChildren(newChildren);
@@ -230,16 +235,18 @@ public class MDOFactory {
 
   private void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
     MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath, mdo.getType())
-      .ifPresent(folder -> {
+      .ifPresent((Path folder) -> {
         setModules(mdo, configurationSource, folder);
         if (mdo instanceof MDObjectComplex) {
+
           MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.FORM)
-            .ifPresent(formFolder ->
-              ((MDObjectComplex) mdo).getForms().forEach(form ->
+            .ifPresent((Path formFolder) ->
+              ((MDObjectComplex) mdo).getForms().forEach((Form form) ->
                 setModules(form, configurationSource, formFolder)));
+
           MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.COMMAND)
-            .ifPresent(commandFolder ->
-              ((MDObjectComplex) mdo).getCommands().forEach(command ->
+            .ifPresent((Path commandFolder) ->
+              ((MDObjectComplex) mdo).getCommands().forEach((Command command) ->
                 setModules(command, configurationSource, commandFolder)));
         }
       });
@@ -254,13 +261,13 @@ public class MDOFactory {
 
     var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdo.getType(), Collections.emptySet());
     if (!moduleTypes.isEmpty()) {
-      moduleTypes.forEach(moduleType -> {
+      moduleTypes.forEach((ModuleType moduleType) -> {
         var mdoName = mdo.getName();
         if (mdo.getType() == MDOType.CONFIGURATION) {
           mdoName = "";
         }
         MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
-          .ifPresent(modulePath -> {
+          .ifPresent((Path modulePath) -> {
             if (modulePath.toFile().exists()) {
               modules.add(new MDOModule(moduleType, modulePath.toUri()));
             }
@@ -273,17 +280,18 @@ public class MDOFactory {
 
   private void setIncludedSubsystems(MDOConfiguration configuration) {
     Map<String, MDObjectBase> children = configuration.getChildren().stream().filter(Either::isRight)
-      .map(Either::get).collect(Collectors.toMap(mdo -> mdo.getMdoReference().getMdoRef(), mdo -> mdo));
+      .map(Either::get).collect(Collectors.toMap((MDObjectBase mdo)
+        -> mdo.getMdoReference().getMdoRef(), (MDObjectBase mdo) -> mdo));
 
     configuration.getChildren().stream().filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.SUBSYSTEM)
+      .filter((MDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
       .forEach(subsystem -> setSubsystemForChildren((Subsystem) subsystem, children));
   }
 
   private void setSubsystemForChildren(Subsystem subsystem, Map<String, MDObjectBase> allChildren) {
     List<Either<String, MDObjectBase>> children = new ArrayList<>();
 
-    subsystem.getChildren().forEach(mdoPair -> {
+    subsystem.getChildren().forEach((Either<String, MDObjectBase> mdoPair) -> {
       if (mdoPair.isLeft()) {
         var mdo = allChildren.get(mdoPair.getLeft());
         if (mdo != null) {

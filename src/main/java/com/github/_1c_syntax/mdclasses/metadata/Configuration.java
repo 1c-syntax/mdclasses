@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
@@ -29,6 +30,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
@@ -190,7 +192,7 @@ public class Configuration {
     children = getAllChildren(mdoConfiguration);
     childrenByMdoRef = new HashMap<>();
     commonModules = new HashMap<>();
-    children.forEach(mdo -> {
+    children.forEach((MDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof CommonModule) {
         this.commonModules.put(mdo.getName(), (CommonModule) mdo);
@@ -218,14 +220,15 @@ public class Configuration {
     objectAutonumerationMode = mdoConfiguration.getObjectAutonumerationMode();
     modalityUseMode = mdoConfiguration.getModalityUseMode();
     synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
-    synchronousPlatformExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
+    synchronousPlatformExtensionAndAddInCallUseMode =
+      mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
     Map<URI, MDObjectBase> modulesObject = new HashMap<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
-    children.forEach(mdo -> {
+    children.forEach((MDObjectBase mdo) -> {
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
 
       // todo возможно надо будет добавить ссылку на mdo файл
@@ -267,13 +270,13 @@ public class Configuration {
   private Set<MDObjectBase> getAllChildren(MDOConfiguration mdoConfiguration) {
     Set<MDObjectBase> allChildren = new HashSet<>();
     mdoConfiguration.getChildren().stream().filter(Either::isRight).map(Either::get)
-      .forEach(mdo -> {
+      .forEach((MDObjectBase mdo) -> {
         allChildren.add(mdo);
         if (mdo instanceof MDObjectComplex) {
           allChildren.addAll(((MDObjectComplex) mdo).getForms());
           allChildren.addAll(((MDObjectComplex) mdo).getCommands());
           allChildren.addAll(((MDObjectComplex) mdo).getTemplates());
-          ((MDObjectComplex) mdo).getAttributes().forEach(child -> {
+          ((MDObjectComplex) mdo).getAttributes().forEach((MDOAttribute child) -> {
             allChildren.add(child);
             if (child instanceof TabularSection) {
               allChildren.addAll(((TabularSection) child).getAttributes());
@@ -330,7 +333,7 @@ public class Configuration {
                               Map<URI, MDObjectBase> modulesObject,
                               MDObjectBSL mdo,
                               Map<SupportConfiguration, SupportVariant> supports) {
-    mdo.getModules().forEach(module -> {
+    mdo.getModules().forEach((MDOModule module) -> {
       var uri = module.getUri();
       modulesType.put(uri, module.getModuleType());
       modulesObject.put(uri, mdo);
