@@ -87,7 +87,7 @@ public class MDObjectComplex extends MDObjectBSL {
     super(designerMDO);
 
     // формирование mdo ссылки, которая будет использована в дочерних объектах
-    this.setMdoReference(new MDOReference(this));
+    mdoReference = new MDOReference(this);
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
