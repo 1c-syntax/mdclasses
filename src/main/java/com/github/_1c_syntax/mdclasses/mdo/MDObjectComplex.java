@@ -172,18 +172,16 @@ public class MDObjectComplex extends MDObjectBSL {
 
   @SneakyThrows
   private static List<Path> getMDOFilesInFolder(Path folder, List<String> childNames) {
-    List<Path> childrenNames = new ArrayList<>();
-    if (folder.toFile().exists()) {
-      int maxDepth = 1;
-      AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(
-        ConfigurationSource.DESIGNER, true));
-      try (Stream<Path> files = Files.walk(folder, maxDepth)) {
-        childrenNames = files
-          .parallel()
-          .filter((Path path) -> path.toString().endsWith(extension.get()))
-          .filter((Path path) -> childNames.contains(FilenameUtils.getBaseName(path.toString())))
-          .collect(Collectors.toList());
-      }
+    List<Path> childrenNames;
+    int maxDepth = 1;
+    AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(
+      ConfigurationSource.DESIGNER, true));
+    try (Stream<Path> files = Files.walk(folder, maxDepth)) {
+      childrenNames = files
+        .parallel()
+        .filter((Path path) -> path.toString().endsWith(extension.get()))
+        .filter((Path path) -> childNames.contains(FilenameUtils.getBaseName(path.toString())))
+        .collect(Collectors.toList());
     }
 
     return childrenNames;
