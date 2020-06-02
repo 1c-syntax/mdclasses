@@ -87,7 +87,7 @@ public class MDObjectComplex extends MDObjectBSL {
     super(designerMDO);
 
     // формирование mdo ссылки, которая будет использована в дочерних объектах
-    setMdoReference(new MDOReference(this));
+    this.setMdoReference(new MDOReference(this));
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
@@ -173,7 +173,7 @@ public class MDObjectComplex extends MDObjectBSL {
   }
 
   @SneakyThrows
-  private List<Path> getMDOFilesInFolder(Path folder, List<String> childNames) {
+  private static List<Path> getMDOFilesInFolder(Path folder, List<String> childNames) {
     List<Path> childrenNames = new ArrayList<>();
     if (folder.toFile().exists()) {
       int maxDepth = 1;

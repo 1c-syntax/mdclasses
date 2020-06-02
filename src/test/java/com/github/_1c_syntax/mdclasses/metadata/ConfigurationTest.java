@@ -335,7 +335,7 @@ class ConfigurationTest {
     assertThat(configuration.getRootPath()).isNotPresent();
 
     File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ManagerModule.bsl");
-    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.Unknown);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.UNKNOWN);
 
     Configuration configuration2 = Configuration.create();
 
@@ -352,7 +352,7 @@ class ConfigurationTest {
     assertThat(configuration).isNotNull();
 
     File file = new File("src/test/resources/metadata/Module.os");
-    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.Unknown);
+    assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.UNKNOWN);
   }
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {

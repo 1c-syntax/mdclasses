@@ -40,7 +40,7 @@ public enum ModuleType {
   OrdinaryApplicationModule("OrdinaryApplicationModule.bsl"),
   HTTPServiceModule("Module.bsl"),
   WEBServiceModule("Module.bsl"),
-  Unknown(""); // для неизвестных типов модулей
+  UNKNOWN(""); // для неизвестных типов модулей
 
   /**
    * Имя файла

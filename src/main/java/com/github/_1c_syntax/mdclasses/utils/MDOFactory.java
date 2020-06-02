@@ -116,17 +116,23 @@ public class MDOFactory {
    * @param mdoPath             - путь к файлу описания объекта
    * @return - прочитанный объект
    */
-  public Optional<MDObjectBase> readMDObjectFromFile(ConfigurationSource configurationSource, MDOType type, Path mdoPath) {
-    Optional<MDObjectBase> mdo = Optional.empty();
+  public Optional<MDObjectBase> readMDObjectFromFile(ConfigurationSource configurationSource,
+                                                     MDOType type, Path mdoPath) {
     var mdoFile = mdoPath.toFile();
-    if (mdoFile.exists()) {
-      if (configurationSource == ConfigurationSource.EDT) {
-        mdo = Optional.of((MDObjectBase) XStreamFactory.fromXML(mdoFile));
-      } else if (configurationSource == ConfigurationSource.DESIGNER) {
-        DesignerWrapper metaDataObject = (DesignerWrapper) XStreamFactory.fromXML(mdoFile);
-        mdo = metaDataObject.getPropertyByType(type, mdoPath);
-      }
+    if (!mdoFile.exists()) {
+      return Optional.empty();
     }
+
+    Optional<MDObjectBase> mdo;
+    if (configurationSource == ConfigurationSource.EDT) {
+      mdo = Optional.of((MDObjectBase) XStreamFactory.fromXML(mdoFile));
+    } else if (configurationSource == ConfigurationSource.DESIGNER) {
+      DesignerWrapper metaDataObject = (DesignerWrapper) XStreamFactory.fromXML(mdoFile);
+      mdo = metaDataObject.getPropertyByType(type, mdoPath);
+    } else {
+      mdo = Optional.empty();
+    }
+
     return mdo;
   }
 
@@ -162,7 +168,7 @@ public class MDOFactory {
     configuration.setChildren(children);
   }
 
-  private void computeMdoReference(MDObjectComplex mdoValue) {
+  private static void computeMdoReference(MDObjectComplex mdoValue) {
     mdoValue.getForms().forEach((Form child) -> computeMdoReferenceForChild(mdoValue, child));
     mdoValue.getTemplates().forEach((Template child) -> computeMdoReferenceForChild(mdoValue, child));
     mdoValue.getCommands().forEach((Command child) -> computeMdoReferenceForChild(mdoValue, child));
@@ -225,10 +231,10 @@ public class MDOFactory {
             }
           });
       });
-    children.stream()
+    newChildren.addAll(children.stream()
       .filter(Either::isLeft)
       .filter((Either<String, MDObjectBase> child) -> !child.getLeft().startsWith(startName))
-      .forEach(newChildren::add);
+      .collect(Collectors.toList()));
 
     subsystem.setChildren(newChildren);
   }
@@ -252,11 +258,7 @@ public class MDOFactory {
       });
   }
 
-  private void setModules(MDObjectBSL mdo, ConfigurationSource configurationSource, Path folder) {
-    if (folder == null) {
-      return;
-    }
-
+  private static void setModules(MDObjectBSL mdo, ConfigurationSource configurationSource, Path folder) {
     List<MDOModule> modules = new ArrayList<>();
 
     var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdo.getType(), Collections.emptySet());

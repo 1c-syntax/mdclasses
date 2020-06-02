@@ -92,6 +92,7 @@ import lombok.Getter;
 import lombok.experimental.UtilityClass;
 
 import java.io.File;
+import java.util.Locale;
 
 /**
  * Класс для чтения XML и MDO файлов конфигурации
@@ -181,7 +182,7 @@ public class XStreamFactory {
           break;
         default:
           var groupName = type.getGroupName();
-          fieldName = groupName.substring(0, 1).toLowerCase() + groupName.substring(1);
+          fieldName = groupName.substring(0, 1).toLowerCase(Locale.ENGLISH) + groupName.substring(1);
       }
       xStream.aliasField(fieldName, MDOConfiguration.class, CHILDREN_FIELD_NAME);
     });
@@ -205,7 +206,7 @@ public class XStreamFactory {
     xStream.aliasField("content", Subsystem.class, CHILDREN_FIELD_NAME);
   }
 
-  private void addClassAliases(XStream xStream) {
+  private static void addClassAliases(XStream xStream) {
     xStream.alias("mdclass:AccountingRegister", AccountingRegister.class);
     xStream.alias("mdclass:AccumulationRegister", AccumulationRegister.class);
     xStream.alias("mdclass:BusinessProcess", BusinessProcess.class);
@@ -254,7 +255,7 @@ public class XStreamFactory {
     xStream.alias("MetaDataObject", DesignerWrapper.class);
   }
 
-  private void addConverters(XStream xStream) {
+  private static void addConverters(XStream xStream) {
     xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter(UseMode.class));
     xStream.registerConverter(new EnumConverter(ScriptVariant.class));

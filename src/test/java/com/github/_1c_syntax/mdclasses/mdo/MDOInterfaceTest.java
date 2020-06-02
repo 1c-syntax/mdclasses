@@ -24,6 +24,8 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class MDOInterfaceTest extends AbstractMDOTest {
   MDOInterfaceTest() {
     super(MDOType.INTERFACE);
@@ -33,6 +35,7 @@ class MDOInterfaceTest extends AbstractMDOTest {
   @Test
   void testEDT() {
     // TODO интерфейсов в едт нет
+    assertThat(true).isTrue();
   }
 
   @Override

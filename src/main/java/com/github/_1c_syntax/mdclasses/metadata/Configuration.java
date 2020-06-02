@@ -267,7 +267,7 @@ public class Configuration {
     return create();
   }
 
-  private Set<MDObjectBase> getAllChildren(MDOConfiguration mdoConfiguration) {
+  private static Set<MDObjectBase> getAllChildren(MDOConfiguration mdoConfiguration) {
     Set<MDObjectBase> allChildren = new HashSet<>();
     mdoConfiguration.getChildren().stream().filter(Either::isRight).map(Either::get)
       .forEach((MDObjectBase mdo) -> {
@@ -300,7 +300,7 @@ public class Configuration {
    * Возвращает тип модулея по ссылке на его файл
    */
   public ModuleType getModuleType(URI uri) {
-    return modulesByType.getOrDefault(uri, ModuleType.Unknown);
+    return modulesByType.getOrDefault(uri, ModuleType.UNKNOWN);
   }
 
   /**
@@ -328,7 +328,7 @@ public class Configuration {
     return Collections.emptyMap();
   }
 
-  private void computeModules(Map<URI, ModuleType> modulesType,
+  private static void computeModules(Map<URI, ModuleType> modulesType,
                               Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
                               Map<URI, MDObjectBase> modulesObject,
                               MDObjectBSL mdo,

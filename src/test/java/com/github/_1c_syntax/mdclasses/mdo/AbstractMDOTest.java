@@ -175,7 +175,7 @@ abstract class AbstractMDOTest {
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(MDObjectBase.class::isInstance);
     assertThat(children).allMatch(child -> List.of(names).contains(child.getName()));
-    children.forEach(child -> checkChild(parentName, MDOType.TEMPLATE, ModuleType.Unknown, child));
+    children.forEach(child -> checkChild(parentName, MDOType.TEMPLATE, ModuleType.UNKNOWN, child));
   }
 
   /**

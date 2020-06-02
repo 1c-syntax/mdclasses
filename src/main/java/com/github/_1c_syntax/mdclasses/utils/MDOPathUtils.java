@@ -128,18 +128,20 @@ public class MDOPathUtils {
    * по описанию объекта метаданных
    */
   public Optional<Path> getMDOTypeFolderByMDOPath(ConfigurationSource configurationSource, Path mdoPath, MDOType type) {
+    Optional<Path> result;
     if (type == MDOType.CONFIGURATION) {
       // для конфигурации один уровень, а не 2
       if (configurationSource == ConfigurationSource.EDT) {
-        return Optional.of(Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
+        result = Optional.of(Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
       } else if (configurationSource == ConfigurationSource.DESIGNER) {
-        return Optional.of(getMDOTypeFolderPathByMDOPathDesigner(mdoPath));
+        result = Optional.of(getMDOTypeFolderPathByMDOPathDesigner(mdoPath));
       } else {
-        return Optional.empty();
+        result = Optional.empty();
       }
     } else {
-      return getMDOTypeFolderByMDOPath(configurationSource, mdoPath);
+      result = getMDOTypeFolderByMDOPath(configurationSource, mdoPath);
     }
+    return result;
   }
 
   /**

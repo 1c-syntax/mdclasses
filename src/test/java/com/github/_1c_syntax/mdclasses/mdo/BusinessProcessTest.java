@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import org.junit.jupiter.api.Test;
@@ -58,7 +57,7 @@ class BusinessProcessTest extends AbstractMDOTest {
     checkTemplates(mdo);
     checkCommands(mdo);
     assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
-    checkModules(((MDObjectBSL) mdo).getModules(), 0, "0", ModuleType.Unknown);
+    checkModules(((MDObjectBSL) mdo).getModules(), 0, "0", ModuleType.UNKNOWN);
   }
 
 }

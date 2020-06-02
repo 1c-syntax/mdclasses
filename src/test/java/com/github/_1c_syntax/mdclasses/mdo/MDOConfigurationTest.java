@@ -117,7 +117,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
   }
 
   @Test
-  protected void testEDTEng() {
+  void testEDTEng() {
     var mdo = getMDObjectEDTEn("Configuration/Configuration.mdo");
     checkBaseField(mdo, MDOConfiguration.class, "Configuration",
       "04c0322d-92da-49ab-87e5-82c8dcd50888");

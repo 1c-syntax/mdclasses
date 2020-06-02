@@ -50,29 +50,40 @@ public class AttributeConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    Object result;
     var uuid = reader.getAttribute("uuid");
     switch (reader.getNodeName()) {
       case "dimensions":
-        return getMdoAttribute(context, uuid, Dimension.class);
+        result = getMdoAttribute(context, uuid, Dimension.class);
+        break;
       case "resources":
-        return getMdoAttribute(context, uuid, Resource.class);
+        result = getMdoAttribute(context, uuid, Resource.class);
+        break;
       case "recalculations":
-        return getMdoAttribute(context, uuid, Recalculation.class);
+        result = getMdoAttribute(context, uuid, Recalculation.class);
+        break;
       case "attributes":
-        return getMdoAttribute(context, uuid, Attribute.class);
+        result = getMdoAttribute(context, uuid, Attribute.class);
+        break;
       case "tabularSections":
-        return getMdoAttribute(context, uuid, TabularSection.class);
+        result = getMdoAttribute(context, uuid, TabularSection.class);
+        break;
       case "accountingFlags":
-        return getMdoAttribute(context, uuid, AccountingFlag.class);
+        result = getMdoAttribute(context, uuid, AccountingFlag.class);
+        break;
       case "extDimensionAccountingFlags":
-        return getMdoAttribute(context, uuid, ExtDimensionAccountingFlag.class);
+        result = getMdoAttribute(context, uuid, ExtDimensionAccountingFlag.class);
+        break;
       case "columns":
-        return getMdoAttribute(context, uuid, Column.class);
+        result = getMdoAttribute(context, uuid, Column.class);
+        break;
       case "addressingAttributes":
-        return getMdoAttribute(context, uuid, AddressingAttribute.class);
+        result = getMdoAttribute(context, uuid, AddressingAttribute.class);
+        break;
       default:
         throw new IllegalStateException("Unexpected value: " + reader.getNodeName());
     }
+    return result;
   }
 
   @Override
@@ -80,7 +91,7 @@ public class AttributeConverter implements Converter {
     return type == MDOAttribute.class;
   }
 
-  private MDOAttribute getMdoAttribute(UnmarshallingContext context, String uuid, Class<? extends MDOAttribute> clazz) {
+  private static MDOAttribute getMdoAttribute(UnmarshallingContext context, String uuid, Class<? extends MDOAttribute> clazz) {
     var tmp = new MDObjectBase();
     MDOAttribute attribute = clazz.cast(context.convertAnother(tmp, clazz));
     attribute.setUuid(uuid);

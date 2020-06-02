@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -91,6 +92,7 @@ public enum MDOType {
   private String groupNameRu;
 
   private static final Map<String, MDOType> mapTypes = computeMapTypes();
+  private static final Set<MDOType> childTypes = computeChildTypes();
 
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
@@ -136,11 +138,7 @@ public enum MDOType {
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
       return Arrays.stream(values()).filter(mdoType ->
-        mdoType != FORM
-          && mdoType != COMMAND
-          && mdoType != ATTRIBUTE
-          && mdoType != TEMPLATE
-          && mdoType != UNKNOWN)
+        !childTypes.contains(mdoType) && mdoType != UNKNOWN)
         .collect(Collectors.toList());
     }
     return Arrays.asList(values());
@@ -166,6 +164,10 @@ public enum MDOType {
       map.put(mdoType.getGroupNameRu(), mdoType);
     }
     return map;
+  }
+
+  private static Set<MDOType> computeChildTypes() {
+    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE);
   }
 
 }

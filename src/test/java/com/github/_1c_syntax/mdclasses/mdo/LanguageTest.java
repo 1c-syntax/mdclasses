@@ -24,6 +24,8 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class LanguageTest extends AbstractMDOTest {
   LanguageTest() {
     super(MDOType.LANGUAGE);
@@ -33,6 +35,7 @@ class LanguageTest extends AbstractMDOTest {
   @Test
   void testEDT() {
     // TODO язык входит в состав конфигурации и отдельно не существует
+    assertThat(true).isTrue();
   }
 
   @Override
