@@ -44,7 +44,7 @@ class InformationRegisterTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "InformationRegister.РегистрСведений1",
       AttributeType.DIMENSION);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "InformationRegisters/РегистрСведений1",
+    checkModules(((MDObjectBSL) mdo).getModules(), 1, "InformationRegisters/РегистрСведени",
       ModuleType.RecordSetModule);
 
   }

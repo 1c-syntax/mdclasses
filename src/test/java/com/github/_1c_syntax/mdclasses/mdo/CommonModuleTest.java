@@ -43,7 +43,7 @@ class CommonModuleTest extends AbstractMDOTest {
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
     checkModules(((MDObjectBSL) mdo).getModules(), 1,
-      "CommonModules/ГлобальныйОбщийМодуль", ModuleType.CommonModule);
+      "CommonModules/Глобальны", ModuleType.CommonModule);
 
     var commonModule = (CommonModule) mdo;
     assertThat(commonModule.isClientManagedApplication()).isTrue();
@@ -86,7 +86,7 @@ class CommonModuleTest extends AbstractMDOTest {
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
     checkModules(((MDObjectBSL) mdo).getModules(), 1,
-      "CommonModules/ГлобальныйОбщийМодуль", ModuleType.CommonModule);
+      "CommonModules/Глобальны", ModuleType.CommonModule);
 
     var commonModule = (CommonModule) mdo;
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);

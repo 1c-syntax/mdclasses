@@ -42,7 +42,7 @@ class FilterCriterionTest extends AbstractMDOTest {
     checkTemplates(mdo);
     checkCommands(mdo);
     assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "FilterCriteria/КритерийОтбора1",
+    checkModules(((MDObjectBSL) mdo).getModules(), 1, "FilterCriteria/Критери",
       ModuleType.ManagerModule);
 
   }
