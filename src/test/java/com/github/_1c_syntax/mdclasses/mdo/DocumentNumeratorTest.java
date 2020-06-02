@@ -31,7 +31,7 @@ class DocumentNumeratorTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("DocumentNumerators/НумераторДокументов1/НумераторДокументов1.mdo");
     checkBaseField(mdo, DocumentNumerator.class, "НумераторДокументов1",
       "e401f835-6bfc-4cd4-8d87-5e6b6332a3f6");
@@ -41,7 +41,7 @@ class DocumentNumeratorTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("DocumentNumerators/НумераторДокументов1.xml");
     checkBaseField(mdo, DocumentNumerator.class, "НумераторДокументов1",
       "e401f835-6bfc-4cd4-8d87-5e6b6332a3f6");

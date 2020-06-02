@@ -34,7 +34,7 @@ class MDOEnumTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Enums/Перечисление1/Перечисление1.mdo");
     checkBaseField(mdo, MDOEnum.class, "Перечисление1",
       "f11f3441-4b64-4344-b1a0-0e4b3e466e03");
@@ -48,7 +48,7 @@ class MDOEnumTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Enums/Перечисление1.xml");
     checkBaseField(mdo, MDOEnum.class, "Перечисление1",
       "f11f3441-4b64-4344-b1a0-0e4b3e466e03");

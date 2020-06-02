@@ -43,7 +43,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Configuration/Configuration.mdo");
     checkBaseField(mdo, MDOConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");
@@ -146,7 +146,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Configuration.xml");
     checkBaseField(mdo, MDOConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");

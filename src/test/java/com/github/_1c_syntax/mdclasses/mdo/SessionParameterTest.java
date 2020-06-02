@@ -31,7 +31,7 @@ class SessionParameterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("SessionParameters/ПараметрСеанса1/ПараметрСеанса1.mdo");
     checkBaseField(mdo, SessionParameter.class, "ПараметрСеанса1",
       "66844df5-823b-40f1-ab8a-b07c1cb7462f");
@@ -41,7 +41,7 @@ class SessionParameterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("SessionParameters/ПараметрСеанса1.xml");
     checkBaseField(mdo, SessionParameter.class, "ПараметрСеанса1",
       "66844df5-823b-40f1-ab8a-b07c1cb7462f");

@@ -34,7 +34,7 @@ class ReportTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Reports/Отчет1/Отчет1.mdo");
     checkBaseField(mdo, Report.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");
@@ -48,7 +48,7 @@ class ReportTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Reports/Отчет1.xml");
     checkBaseField(mdo, Report.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");

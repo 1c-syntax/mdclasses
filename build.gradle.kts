@@ -103,8 +103,8 @@ sonarqube {
 }
 
 lombok {
-    version = "1.18.8"
-    sha256 = "0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc"
+    version = "1.18.12"
+    sha256 = "49381508ecb02b3c173368436ef71b24c0d4418ad260e6cc98becbcf4b345406"
 }
 
 license {

@@ -31,7 +31,7 @@ class XDTOPackageTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("XDTOPackages/ПакетXDTO1/ПакетXDTO1.mdo");
     checkBaseField(mdo, XDTOPackage.class, "ПакетXDTO1",
       "b8a93cce-56e4-4507-b281-5c525a466a0f");
@@ -41,7 +41,7 @@ class XDTOPackageTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("XDTOPackages/ПакетXDTO1.xml");
     checkBaseField(mdo, XDTOPackage.class, "ПакетXDTO1",
       "b8a93cce-56e4-4507-b281-5c525a466a0f");

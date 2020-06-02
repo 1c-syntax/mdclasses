@@ -195,12 +195,12 @@ public class MDOFactory {
       return;
     }
 
-    List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var rootFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, subsystemMDOPath);
     if (rootFolder.isEmpty()) {
       return;
     }
 
+    List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var folder = Paths.get(rootFolder.get().toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
     final var startName = MDOType.SUBSYSTEM.getMDOClassName() + ".";
     children.stream()

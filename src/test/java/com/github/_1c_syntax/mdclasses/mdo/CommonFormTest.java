@@ -32,7 +32,7 @@ class CommonFormTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommonForms/Форма/Форма.mdo");
     checkBaseField(mdo, CommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
@@ -43,7 +43,7 @@ class CommonFormTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommonForms/Форма.xml");
     checkBaseField(mdo, CommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");

@@ -41,7 +41,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Базовый класс для тестов объектов метаданных
  */
-abstract public class AbstractMDOTest {
+abstract class AbstractMDOTest {
 
   /**
    * Каталог исходников конфигурации в формате EDT
@@ -71,13 +71,13 @@ abstract public class AbstractMDOTest {
    * Обязательный тест в формате EDT
    */
   @Test
-  abstract protected void testEDT();
+  abstract void testEDT();
 
   /**
    * Обязательный тест в формате Конфигуратора
    */
   @Test
-  abstract protected void testDesigner();
+  abstract void testDesigner();
 
   /**
    * Возвращает объект метаданных по файлу описания в формате EDT

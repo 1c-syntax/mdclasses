@@ -35,7 +35,7 @@ class CommandGroupTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommandGroups/ГруппаКоманд1/ГруппаКоманд1.mdo");
     checkBaseField(mdo, CommandGroup.class, "ГруппаКоманд1",
       "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");
@@ -45,7 +45,7 @@ class CommandGroupTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommandGroups/ГруппаКоманд1.xml");
     checkBaseField(mdo, CommandGroup.class, "ГруппаКоманд1",
       "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");

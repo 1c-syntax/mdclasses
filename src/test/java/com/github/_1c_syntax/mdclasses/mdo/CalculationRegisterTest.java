@@ -35,7 +35,7 @@ class CalculationRegisterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CalculationRegisters/РегистрРасчета1/РегистрРасчета1.mdo");
     checkBaseField(mdo, CalculationRegister.class, "РегистрРасчета1",
       "90587c7d-b950-4476-ac14-426e4a83d9c4");
@@ -50,7 +50,7 @@ class CalculationRegisterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CalculationRegisters/РегистрРасчета1.xml");
     checkBaseField(mdo, CalculationRegister.class, "РегистрРасчета1",
       "90587c7d-b950-4476-ac14-426e4a83d9c4");

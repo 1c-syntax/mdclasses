@@ -32,7 +32,7 @@ class CommonCommandTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommonCommands/ОбщаяКоманда1/ОбщаяКоманда1.mdo");
     checkBaseField(mdo, CommonCommand.class, "ОбщаяКоманда1",
       "a608f796-f58e-4f8a-b63f-272342b32f35");
@@ -43,7 +43,7 @@ class CommonCommandTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommonCommands/ОбщаяКоманда1.xml");
     checkBaseField(mdo, CommonCommand.class, "ОбщаяКоманда1",
       "a608f796-f58e-4f8a-b63f-272342b32f35");

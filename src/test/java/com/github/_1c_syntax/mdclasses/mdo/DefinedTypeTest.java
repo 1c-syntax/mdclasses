@@ -31,7 +31,7 @@ class DefinedTypeTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("DefinedTypes/ОпределяемыйТип1/ОпределяемыйТип1.mdo");
     checkBaseField(mdo, DefinedType.class, "ОпределяемыйТип1",
       "e8c616d9-4957-48ab-a917-afb6847f6840");
@@ -41,7 +41,7 @@ class DefinedTypeTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("DefinedTypes/ОпределяемыйТип1.xml");
     checkBaseField(mdo, DefinedType.class, "ОпределяемыйТип1",
       "e8c616d9-4957-48ab-a917-afb6847f6840");

@@ -33,7 +33,7 @@ class EventSubscriptionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("EventSubscriptions/ПодпискаНаСобытие1/ПодпискаНаСобытие1.mdo");
     checkBaseField(mdo, EventSubscription.class, "ПодпискаНаСобытие1",
       "4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd");
@@ -45,7 +45,7 @@ class EventSubscriptionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectEDT("EventSubscriptions/ПодпискаНаСобытие1/ПодпискаНаСобытие1.mdo");
     checkBaseField(mdo, EventSubscription.class, "ПодпискаНаСобытие1",
       "4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd");

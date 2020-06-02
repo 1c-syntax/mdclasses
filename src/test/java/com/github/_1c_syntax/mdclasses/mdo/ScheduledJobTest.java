@@ -31,7 +31,7 @@ class ScheduledJobTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("ScheduledJobs/РегламентноеЗадание1/РегламентноеЗадание1.mdo");
     checkBaseField(mdo, ScheduledJob.class, "РегламентноеЗадание1",
       "0de0c839-4427-46d9-be68-302f88ac162c");
@@ -41,7 +41,7 @@ class ScheduledJobTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("ScheduledJobs/РегламентноеЗадание1.xml");
     checkBaseField(mdo, ScheduledJob.class, "РегламентноеЗадание1",
       "0de0c839-4427-46d9-be68-302f88ac162c");

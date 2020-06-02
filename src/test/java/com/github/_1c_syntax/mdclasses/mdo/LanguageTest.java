@@ -31,13 +31,13 @@ class LanguageTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     // TODO язык входит в состав конфигурации и отдельно не существует
   }
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Languages/Русский.xml");
     checkBaseField(mdo, Language.class, "Русский",
       "1b5f5cd6-14b2-422e-ab6c-1103fd375982");

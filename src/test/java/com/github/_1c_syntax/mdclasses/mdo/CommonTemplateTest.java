@@ -31,7 +31,7 @@ class CommonTemplateTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommonTemplates/Макет/Макет.mdo");
     checkBaseField(mdo, CommonTemplate.class, "Макет",
       "799e0ae7-f5ea-4b50-8853-e2c58ef5d9cd");
@@ -41,7 +41,7 @@ class CommonTemplateTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommonTemplates/Макет.xml");
     checkBaseField(mdo, CommonTemplate.class, "Макет",
       "799e0ae7-f5ea-4b50-8853-e2c58ef5d9cd");

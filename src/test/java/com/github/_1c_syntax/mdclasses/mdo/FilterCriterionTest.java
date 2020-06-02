@@ -34,7 +34,7 @@ class FilterCriterionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("FilterCriteria/КритерийОтбора1/КритерийОтбора1.mdo");
     checkBaseField(mdo, FilterCriterion.class, "КритерийОтбора1",
       "6e9d3381-0607-43df-866d-14ee5d65a294");
@@ -49,7 +49,7 @@ class FilterCriterionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("FilterCriteria/КритерийОтбора1.xml");
     checkBaseField(mdo, FilterCriterion.class, "КритерийОтбора1",
       "6e9d3381-0607-43df-866d-14ee5d65a294");

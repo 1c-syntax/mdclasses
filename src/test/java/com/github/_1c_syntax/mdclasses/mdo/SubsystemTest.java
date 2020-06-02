@@ -35,7 +35,7 @@ class SubsystemTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Subsystems/ПерваяПодсистема/ПерваяПодсистема.mdo");
     checkBaseField(mdo, Subsystem.class, "ПерваяПодсистема",
       "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
@@ -90,7 +90,7 @@ class SubsystemTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
 
     var mdo = getMDObjectDesigner("Subsystems/ПерваяПодсистема.xml");
     checkBaseField(mdo, Subsystem.class, "ПерваяПодсистема",

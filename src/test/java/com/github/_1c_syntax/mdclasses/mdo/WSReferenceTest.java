@@ -31,7 +31,7 @@ class WSReferenceTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("WSReferences/WSСсылка/WSСсылка.mdo");
     checkBaseField(mdo, WSReference.class, "WSСсылка",
       "95b745f2-e1fa-4f94-b7f9-f3f0224fc8c7");
@@ -41,7 +41,7 @@ class WSReferenceTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("WSReferences/WSСсылка1.xml");
     checkBaseField(mdo, WSReference.class, "WSСсылка1",
       "7b8d6924-7aa9-4699-b794-6797c79d83c7");

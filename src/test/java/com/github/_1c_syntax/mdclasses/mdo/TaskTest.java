@@ -34,7 +34,7 @@ class TaskTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Tasks/Задача1/Задача1.mdo");
     checkBaseField(mdo, Task.class, "Задача1",
       "c251fcec-ec02-4ef4-8f70-4d70db6631ea");
@@ -48,7 +48,7 @@ class TaskTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Tasks/Задача1.xml");
     checkBaseField(mdo, Task.class, "Задача1",
       "c251fcec-ec02-4ef4-8f70-4d70db6631ea");

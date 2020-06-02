@@ -34,7 +34,7 @@ class ChartOfCharacteristicTypesTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/ПланВидовХарактеристик1.mdo");
     checkBaseField(mdo, ChartOfCharacteristicTypes.class, "ПланВидовХарактеристик1",
       "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452");
@@ -49,7 +49,7 @@ class ChartOfCharacteristicTypesTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("ChartsOfCharacteristicTypes/ПланВидовХарактеристик1.xml");
     checkBaseField(mdo, ChartOfCharacteristicTypes.class, "ПланВидовХарактеристик1",
       "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452");

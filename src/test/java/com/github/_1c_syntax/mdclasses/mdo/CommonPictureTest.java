@@ -31,7 +31,7 @@ class CommonPictureTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommonPictures/ОбщаяКартинка1/ОбщаяКартинка1.mdo");
     checkBaseField(mdo, CommonPicture.class, "ОбщаяКартинка1",
       "db84513d-2535-494b-843e-6d8931cb2f82");
@@ -41,7 +41,7 @@ class CommonPictureTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommonPictures/ОбщаяКартинка1.xml");
     checkBaseField(mdo, CommonPicture.class, "ОбщаяКартинка1",
       "db84513d-2535-494b-843e-6d8931cb2f82");

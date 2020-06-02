@@ -34,7 +34,7 @@ class DataProcessorTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("DataProcessors/Обработка1/Обработка1.mdo");
     checkBaseField(mdo, DataProcessor.class, "Обработка1",
       "a7c57ba0-75d8-487d-b8ea-ae5083d8a503");
@@ -47,7 +47,7 @@ class DataProcessorTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("DataProcessors/Обработка1.xml");
     checkBaseField(mdo, DataProcessor.class, "Обработка1",
       "a7c57ba0-75d8-487d-b8ea-ae5083d8a503");

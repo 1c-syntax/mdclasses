@@ -34,7 +34,7 @@ class SettingsStorageTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("SettingsStorages/ХранилищеНастроек1/ХранилищеНастроек1.mdo");
     checkBaseField(mdo, SettingsStorage.class, "ХранилищеНастроек1",
       "e7a9947d-7565-4681-b75c-c9a229b45042");
@@ -48,7 +48,7 @@ class SettingsStorageTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("SettingsStorages/ХранилищеНастроек1.xml");
     checkBaseField(mdo, SettingsStorage.class, "ХранилищеНастроек1",
       "e7a9947d-7565-4681-b75c-c9a229b45042");

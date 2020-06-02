@@ -31,7 +31,7 @@ class FunctionalOptionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("FunctionalOptions/ФункциональнаяОпция1/ФункциональнаяОпция1.mdo");
     checkBaseField(mdo, FunctionalOption.class, "ФункциональнаяОпция1",
       "d3b7fd71-6570-4047-91e0-b3df75dba08d");
@@ -41,7 +41,7 @@ class FunctionalOptionTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("FunctionalOptions/ФункциональнаяОпция1.xml");
     checkBaseField(mdo, FunctionalOption.class, "ФункциональнаяОпция1",
       "d3b7fd71-6570-4047-91e0-b3df75dba08d");

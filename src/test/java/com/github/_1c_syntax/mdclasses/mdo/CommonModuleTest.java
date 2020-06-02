@@ -36,7 +36,7 @@ class CommonModuleTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
 
     var mdo = getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
     checkBaseField(mdo, CommonModule.class, "ГлобальныйОбщийМодуль",
@@ -79,7 +79,7 @@ class CommonModuleTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
 
     var mdo = getMDObjectDesigner("CommonModules/ГлобальныйОбщийМодуль.xml");
     checkBaseField(mdo, CommonModule.class, "ГлобальныйОбщийМодуль",

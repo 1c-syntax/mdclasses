@@ -31,13 +31,13 @@ class MDOInterfaceTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     // TODO интерфейсов в едт нет
   }
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Interfaces/Интерфейс1.xml");
     checkBaseField(mdo, MDOInterface.class, "Интерфейс1",
       "874d641c-12f7-4db7-bde2-dd72c3d5b522");

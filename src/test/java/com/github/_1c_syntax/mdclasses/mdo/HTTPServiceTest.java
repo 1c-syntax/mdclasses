@@ -34,7 +34,7 @@ class HTTPServiceTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("HTTPServices/HTTPСервис1/HTTPСервис1.mdo");
     checkBaseField(mdo, HTTPService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
@@ -45,7 +45,7 @@ class HTTPServiceTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("HTTPServices/HTTPСервис1.xml");
     checkBaseField(mdo, HTTPService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");

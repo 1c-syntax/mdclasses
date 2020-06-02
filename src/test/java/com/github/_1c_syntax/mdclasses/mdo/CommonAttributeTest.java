@@ -31,7 +31,7 @@ class CommonAttributeTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("CommonAttributes/ОбщийРеквизит1/ОбщийРеквизит1.mdo");
     checkBaseField(mdo, CommonAttribute.class, "ОбщийРеквизит1",
       "d4f0c0ac-ed26-4085-a1b4-e52314b973ad");
@@ -41,7 +41,7 @@ class CommonAttributeTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("CommonAttributes/ОбщийРеквизит1.xml");
     checkBaseField(mdo, CommonAttribute.class, "ОбщийРеквизит1",
       "d4f0c0ac-ed26-4085-a1b4-e52314b973ad");

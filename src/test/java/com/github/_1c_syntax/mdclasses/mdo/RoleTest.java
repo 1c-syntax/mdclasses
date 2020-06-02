@@ -31,7 +31,7 @@ class RoleTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("Roles/Роль1/Роль1.mdo");
     checkBaseField(mdo, Role.class, "Роль1",
       "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41");
@@ -41,7 +41,7 @@ class RoleTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("Roles/Роль1.xml");
     checkBaseField(mdo, Role.class, "Роль1",
       "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41");

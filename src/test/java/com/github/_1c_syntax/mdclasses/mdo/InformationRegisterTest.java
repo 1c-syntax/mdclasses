@@ -35,7 +35,7 @@ class InformationRegisterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testEDT() {
+  void testEDT() {
     var mdo = getMDObjectEDT("InformationRegisters/РегистрСведений1/РегистрСведений1.mdo");
     checkBaseField(mdo, InformationRegister.class, "РегистрСведений1",
       "184d9d78-9523-4cfa-9542-a7ba72efe4dd");
@@ -51,7 +51,7 @@ class InformationRegisterTest extends AbstractMDOTest {
 
   @Override
   @Test
-  protected void testDesigner() {
+  void testDesigner() {
     var mdo = getMDObjectDesigner("InformationRegisters/РегистрСведений1.xml");
     checkBaseField(mdo, InformationRegister.class, "РегистрСведений1",
       "184d9d78-9523-4cfa-9542-a7ba72efe4dd");
