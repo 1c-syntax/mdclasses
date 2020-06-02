@@ -188,7 +188,7 @@ public class MDOFactory {
     });
   }
 
-  private void computeMdoReferenceForChild(MDObjectComplex mdoValue, MDObjectBase child) {
+  private static void computeMdoReferenceForChild(MDObjectComplex mdoValue, MDObjectBase child) {
     if (child.getMdoReference() == null) {
       child.setMdoReference(new MDOReference(child, mdoValue));
     }
@@ -239,7 +239,7 @@ public class MDOFactory {
     subsystem.setChildren(newChildren);
   }
 
-  private void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
+  private static void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
     MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath, mdo.getType())
       .ifPresent((Path folder) -> {
         setModules(mdo, configurationSource, folder);

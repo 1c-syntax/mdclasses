@@ -91,7 +91,8 @@ public class AttributeConverter implements Converter {
     return type == MDOAttribute.class;
   }
 
-  private static MDOAttribute getMdoAttribute(UnmarshallingContext context, String uuid, Class<? extends MDOAttribute> clazz) {
+  private static MDOAttribute getMdoAttribute(UnmarshallingContext context,
+                                              String uuid, Class<? extends MDOAttribute> clazz) {
     var tmp = new MDObjectBase();
     MDOAttribute attribute = clazz.cast(context.convertAnother(tmp, clazz));
     attribute.setUuid(uuid);
