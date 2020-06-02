@@ -158,17 +158,15 @@ public class MDObjectComplex extends MDObjectBSL {
                                                                    List<String> childNames) {
     List<T> children = new ArrayList<>();
     var configurationSource = ConfigurationSource.DESIGNER;
-    if (childrenFolder != null) {
-      getMDOFilesInFolder(childrenFolder, childNames)
-        .forEach((Path mdoFile) -> {
-          var child = MDOFactory.readMDObjectFromFile(configurationSource, type, mdoFile);
-          child.ifPresent((MDObjectBase mdo) -> {
-              mdo.setMdoReference(new MDOReference(mdo, this));
-              children.add(childClass.cast(mdo));
-            }
-          );
-        });
-    }
+    getMDOFilesInFolder(childrenFolder, childNames)
+      .forEach((Path mdoFile) -> {
+        var child = MDOFactory.readMDObjectFromFile(configurationSource, type, mdoFile);
+        child.ifPresent((MDObjectBase mdo) -> {
+            mdo.setMdoReference(new MDOReference(mdo, this));
+            children.add(childClass.cast(mdo));
+          }
+        );
+      });
     return children;
   }
 

@@ -58,7 +58,8 @@ class DocumentJournalTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
+    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
+      AttributeType.COLUMN);
     assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
   }
 

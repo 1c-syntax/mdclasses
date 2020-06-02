@@ -55,7 +55,8 @@ class TaskTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
+    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
+      AttributeType.ADDRESSING_ATTRIBUTE);
     assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
   }
 }
