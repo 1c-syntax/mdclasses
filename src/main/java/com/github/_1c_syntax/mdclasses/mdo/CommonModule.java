@@ -39,43 +39,43 @@ public class CommonModule extends MDObjectBSL {
   /**
    * Признак Сервер
    */
-  boolean server;
+  private boolean server;
 
   /**
    * Признак Глобальный
    */
-  boolean global;
+  private boolean global;
 
   /**
    * Признак Клиент-управляемое приложение
    */
-  boolean clientManagedApplication;
+  private boolean clientManagedApplication;
 
   /**
    * Признак Внешнее соединение
    */
-  boolean externalConnection;
+  private boolean externalConnection;
 
   /**
    * Признак Клиент-обычное приложение
    */
-  boolean clientOrdinaryApplication;
+  private boolean clientOrdinaryApplication;
 
   /**
    * Признак Вызов сервера
    */
-  boolean serverCall;
+  private boolean serverCall;
 
   /**
    * Признак Привилегированный режим
    */
-  boolean privileged;
+  private boolean privileged;
 
   /**
    * Режим повторного использования значений
    */
   @NonNull
-  ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
+  private ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   public CommonModule(DesignerMDO designerMDO) {
     super(designerMDO);

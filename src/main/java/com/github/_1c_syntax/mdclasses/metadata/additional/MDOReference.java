@@ -40,13 +40,13 @@ public class MDOReference {
    * Тип объекта метаданных
    */
   @NonNull
-  MDOType type;
+  private MDOType type;
 
   /**
    * Строковое представление ссылки
    */
   @NonNull
-  String mdoRef;
+  private String mdoRef;
 
   public MDOReference(MDObjectBase mdo) {
     type = mdo.getType();

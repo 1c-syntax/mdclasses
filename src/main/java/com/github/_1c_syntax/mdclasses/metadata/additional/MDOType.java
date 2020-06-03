@@ -86,10 +86,10 @@ public enum MDOType {
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
   UNKNOWN("", "", "", "");
 
-  private String name;
-  private String groupName;
-  private String nameRu;
-  private String groupNameRu;
+  private final String name;
+  private final String groupName;
+  private final String nameRu;
+  private final String groupNameRu;
 
   private static final Map<String, MDOType> mapTypes = computeMapTypes();
   private static final Set<MDOType> childTypes = computeChildTypes();
@@ -99,18 +99,6 @@ public enum MDOType {
     this.groupName = groupNameEn;
     this.nameRu = nameRu;
     this.groupNameRu = groupNameRu;
-  }
-
-  /**
-   * Возвращает имя MDO класса
-   */
-  public String getMDOClassName() {
-    if (this == CONFIGURATION
-      || this == ENUM
-      || this == INTERFACE) {
-      return "MDO" + name;
-    }
-    return name;
   }
 
   public String getName() {

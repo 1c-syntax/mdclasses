@@ -255,7 +255,7 @@ abstract class AbstractMDOTest {
       .isEqualTo(type);
     assertThat(child.getMdoReference().getMdoRef())
       .startsWith(parentName)
-      .endsWith("." + type.getMDOClassName() + "." + child.getName());
+      .endsWith("." + type.getName() + "." + child.getName());
     if (child instanceof MDObjectBSL) {
       checkModules(((MDObjectBSL) child).getModules(), 1,
         type.getGroupName() + "/" + child.getName(), moduleType);

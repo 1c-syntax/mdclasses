@@ -49,30 +49,30 @@ public class MDObjectBase implements MDOExtensions {
    */
   @NonNull
   @XStreamAsAttribute
-  String uuid = "";
+  protected String uuid = "";
 
   /**
    * Имя объекта
    */
   @NonNull
-  String name = "";
+  protected String name = "";
 
   /**
    * Строка с комментарием объекта
    */
   @NonNull
-  String comment = "";
+  protected String comment = "";
 
   /**
    * MDO-Ссылка на объект
    */
-  MDOReference mdoReference;
+  protected MDOReference mdoReference;
 
   /**
    * Список подсистем, в состав которых входит объект
    */
   @NonNull
-  List<Subsystem> includedSubsystems = Collections.emptyList();
+  protected List<Subsystem> includedSubsystems = Collections.emptyList();
 
   /**
    * Используется для заполнения объекта на основании информации формата конфигуратора

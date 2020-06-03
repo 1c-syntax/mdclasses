@@ -40,7 +40,7 @@ public class EventSubscription extends MDObjectBase {
    * Формат mdoRef + имя метода
    * Пример CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью
    */
-  String handler = ""; // TODO сделать классом
+  private String handler = ""; // TODO сделать классом
 
   public EventSubscription(DesignerMDO designerMDO) {
     super(designerMDO);

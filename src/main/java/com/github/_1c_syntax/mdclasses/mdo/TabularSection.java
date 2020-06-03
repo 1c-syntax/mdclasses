@@ -45,7 +45,7 @@ public class TabularSection extends MDOAttribute {
    */
   @NonNull
   @XStreamImplicit
-  List<MDOAttribute> attributes = Collections.emptyList();
+  private List<MDOAttribute> attributes = Collections.emptyList();
 
   public TabularSection(DesignerMDO designerMDO) {
     super(designerMDO);

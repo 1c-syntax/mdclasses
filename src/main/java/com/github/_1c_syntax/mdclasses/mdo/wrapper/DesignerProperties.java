@@ -39,66 +39,66 @@ public class DesignerProperties {
 
   @NonNull
   @XStreamAlias("Name")
-  String name;
+  private String name;
   @NonNull
   @XStreamAlias("Comment")
-  String comment = "";
+  private String comment = "";
 
   @XStreamAlias("Server")
-  boolean server;
+  private boolean server;
   @XStreamAlias("Global")
-  boolean global;
+  private boolean global;
   @XStreamAlias("ClientManagedApplication")
-  boolean clientManagedApplication;
+  private boolean clientManagedApplication;
   @XStreamAlias("ExternalConnection")
-  boolean externalConnection;
+  private boolean externalConnection;
   @XStreamAlias("ClientOrdinaryApplication")
-  boolean clientOrdinaryApplication;
+  private boolean clientOrdinaryApplication;
   @XStreamAlias("ServerCall")
-  boolean serverCall;
+  private boolean serverCall;
   @XStreamAlias("Privileged")
-  boolean privileged;
+  private boolean privileged;
   @NonNull
   @XStreamAlias("ReturnValuesReuse")
-  ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
+  private ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   @NonNull
   @XStreamAlias("Handler")
-  String handler = "";
+  private String handler = "";
 
   @NonNull
   @XStreamAlias("Content")
-  DesignerXRItems content = new DesignerXRItems();
+  private DesignerXRItems content = new DesignerXRItems();
 
   @NonNull
   @XStreamAlias("ScriptVariant")
-  ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
+  private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   @NonNull
   @XStreamAlias("CompatibilityMode")
-  CompatibilityMode compatibilityMode = new CompatibilityMode();
+  private CompatibilityMode compatibilityMode = new CompatibilityMode();
   @NonNull
   @XStreamAlias("ConfigurationExtensionCompatibilityMode")
-  CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
+  private CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
   @NonNull
   @XStreamAlias("ModalityUseMode")
-  UseMode modalityUseMode = UseMode.USE;
+  private UseMode modalityUseMode = UseMode.USE;
   @NonNull
   @XStreamAlias("SynchronousExtensionAndAddInCallUseMode")
-  UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
+  private UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
   @NonNull
   @XStreamAlias("SynchronousPlatformExtensionAndAddInCallUseMode")
-  UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+  private UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
   @NonNull
   @XStreamAlias("DefaultRunMode")
-  String defaultRunMode = "";
+  private String defaultRunMode = "";
   @NonNull
   @XStreamAlias("DefaultLanguage")
-  String defaultLanguage = "";
+  private String defaultLanguage = "";
   @NonNull
   @XStreamAlias("DataLockControlMode")
-  String dataLockControlMode = "";
+  private String dataLockControlMode = "";
   @NonNull
   @XStreamAlias("ObjectAutonumerationMode")
-  String objectAutonumerationMode = "";
+  private String objectAutonumerationMode = "";
 
 }

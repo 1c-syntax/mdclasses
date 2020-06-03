@@ -47,68 +47,68 @@ public class MDOConfiguration extends MDObjectBSL {
    * Вариант языка исходного кода
    */
   @NonNull
-  ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
+  private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
 
   /**
    * Режим совместимости конфигурации
    */
   @NonNull
-  CompatibilityMode compatibilityMode = new CompatibilityMode();
+  private CompatibilityMode compatibilityMode = new CompatibilityMode();
 
   /**
    * Режим совместимости расширений конфигурации
    */
   @NonNull
-  CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
+  private CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
 
   /**
    * Использование модального режима
    */
   @NonNull
-  UseMode modalityUseMode = UseMode.USE;
+  private UseMode modalityUseMode = UseMode.USE;
 
   /**
    * Использование синхронных вызовов расширений и внешних компонент
    */
   @NonNull
-  UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
+  private UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
 
   /**
    * Использования синхронных вызовов расширений платформы и внешних компонент
    */
   @NonNull
-  UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+  private UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
 
   /**
    * Режим запуска клиента по умолчанию
    */
   @NonNull
-  String defaultRunMode = "";
+  private String defaultRunMode = "";
 
   /**
    * Язык приложения по умолчанию
    */
   @NonNull
-  String defaultLanguage = "";
+  private String defaultLanguage = "";
 
   /**
    * Режим управления блокировками
    */
   @NonNull
-  String dataLockControlMode = "";
+  private String dataLockControlMode = "";
 
   /**
    * Режим автонумерации объектов
    */
   @NonNull
-  String objectAutonumerationMode = "";
+  private String objectAutonumerationMode = "";
 
   /**
    * Все объекты конфигурации первого уровня
    */
   @NonNull
   @XStreamImplicit
-  List<Either<String, MDObjectBase>> children = Collections.emptyList();
+  private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
   public MDOConfiguration(DesignerMDO designerMDO) {
     super(designerMDO);

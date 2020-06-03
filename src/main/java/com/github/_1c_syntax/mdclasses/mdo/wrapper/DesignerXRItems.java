@@ -37,5 +37,5 @@ import java.util.List;
 public class DesignerXRItems {
   @NonNull
   @XStreamImplicit(itemFieldName = "xr:Item")
-  List<String> items = Collections.emptyList();
+  private List<String> items = Collections.emptyList();
 }

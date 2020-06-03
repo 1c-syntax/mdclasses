@@ -48,7 +48,7 @@ public class Subsystem extends MDObjectBase {
    */
   @NonNull
   @XStreamImplicit
-  List<Either<String, MDObjectBase>> children = Collections.emptyList();
+  private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
   public Subsystem(DesignerMDO designerMDO) {
     super(designerMDO);

@@ -208,7 +208,7 @@ public class MDOFactory {
 
     List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var folder = Paths.get(rootFolder.get().toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
-    final var startName = MDOType.SUBSYSTEM.getMDOClassName() + ".";
+    final var startName = MDOType.SUBSYSTEM.getName() + ".";
     children.stream()
       .filter(Either::isLeft)
       .filter((Either<String, MDObjectBase> child) -> child.getLeft().startsWith(startName)

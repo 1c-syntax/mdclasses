@@ -60,34 +60,34 @@ public class MDObjectComplex extends MDObjectBSL {
    */
   @NonNull
   @XStreamImplicit
-  List<Form> forms = Collections.emptyList();
+  private List<Form> forms = Collections.emptyList();
 
   /**
    * Подчиненные макеты
    */
   @NonNull
   @XStreamImplicit
-  List<Template> templates = Collections.emptyList();
+  private List<Template> templates = Collections.emptyList();
 
   /**
    * Подчиненные команды
    */
   @NonNull
   @XStreamImplicit
-  List<Command> commands = Collections.emptyList();
+  private List<Command> commands = Collections.emptyList();
 
   /**
    * Реквизиты, табличные части и их реквизиты объекта
    */
   @NonNull
   @XStreamImplicit
-  List<MDOAttribute> attributes = Collections.emptyList();
+  private List<MDOAttribute> attributes = Collections.emptyList();
 
   public MDObjectComplex(DesignerMDO designerMDO) {
     super(designerMDO);
 
     // формирование mdo ссылки, которая будет использована в дочерних объектах
-    mdoReference = new MDOReference(this);
+    mdoReference = (new MDOReference(this));
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
