@@ -88,6 +88,6 @@ public class DesignerProperties {
   @XStreamAlias("LanguageCode")
   private String languageCode = "";
   @XStreamAlias("IncludeInCommandInterface")
-  boolean includeInCommandInterface;
+  private boolean includeInCommandInterface;
 
 }

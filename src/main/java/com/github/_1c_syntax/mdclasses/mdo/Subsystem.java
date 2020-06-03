@@ -51,7 +51,7 @@ public class Subsystem extends MDObjectBase {
   /**
    * Признак "Включать в командный интерфейс"
    */
-  boolean includeInCommandInterface;
+  private boolean includeInCommandInterface;
 
   public Subsystem(DesignerMDO designerMDO) {
     super(designerMDO);
