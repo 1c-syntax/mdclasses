@@ -80,7 +80,7 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Язык приложения по умолчанию
    */
-  private String defaultLanguage = "";
+  private Either<String, Language> defaultLanguage;
 
   /**
    * Режим управления блокировками
@@ -101,19 +101,19 @@ public class MDOConfiguration extends MDObjectBSL {
   public MDOConfiguration(DesignerMDO designerMDO) {
     super(designerMDO);
     var designerProperties = designerMDO.getProperties();
-    setScriptVariant(designerProperties.getScriptVariant());
-    setCompatibilityMode(designerProperties.getCompatibilityMode());
-    setConfigurationExtensionCompatibilityMode(designerProperties.getConfigurationExtensionCompatibilityMode());
-    setDataLockControlMode(designerProperties.getDataLockControlMode());
-    setDefaultLanguage(designerProperties.getDefaultLanguage());
-    setDefaultRunMode(designerProperties.getDefaultRunMode());
-    setModalityUseMode(designerProperties.getModalityUseMode());
-    setObjectAutonumerationMode(designerProperties.getObjectAutonumerationMode());
-    setSynchronousExtensionAndAddInCallUseMode(designerProperties.getSynchronousExtensionAndAddInCallUseMode());
-    setSynchronousPlatformExtensionAndAddInCallUseMode(
-      designerProperties.getSynchronousPlatformExtensionAndAddInCallUseMode());
+    scriptVariant = designerProperties.getScriptVariant();
+    compatibilityMode = designerProperties.getCompatibilityMode();
+    configurationExtensionCompatibilityMode = designerProperties.getConfigurationExtensionCompatibilityMode();
+    dataLockControlMode = designerProperties.getDataLockControlMode();
+    defaultLanguage = Either.left(designerProperties.getDefaultLanguage());
+    defaultRunMode = designerProperties.getDefaultRunMode();
+    modalityUseMode = designerProperties.getModalityUseMode();
+    objectAutonumerationMode = designerProperties.getObjectAutonumerationMode();
+    synchronousExtensionAndAddInCallUseMode = designerProperties.getSynchronousExtensionAndAddInCallUseMode();
+    synchronousPlatformExtensionAndAddInCallUseMode =
+      designerProperties.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
-    setChildren(designerMDO.getChildObjects().getChildren());
+    children = designerMDO.getChildObjects().getChildren();
   }
 
   @Override
