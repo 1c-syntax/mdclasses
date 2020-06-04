@@ -43,6 +43,7 @@ import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import io.vavr.control.Either;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.nio.file.Path;
@@ -171,7 +172,7 @@ public class Configuration {
     configurationSource = source;
     children = getAllChildren(mdoConfiguration);
     childrenByMdoRef = new HashMap<>();
-    commonModules = new HashMap<>();
+    commonModules = new CaseInsensitiveMap<>();
     children.forEach((MDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof CommonModule) {
@@ -309,10 +310,10 @@ public class Configuration {
   }
 
   private static void computeModules(Map<URI, ModuleType> modulesType,
-                              Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                              Map<URI, MDObjectBase> modulesObject,
-                              MDObjectBSL mdo,
-                              Map<SupportConfiguration, SupportVariant> supports) {
+                                     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
+                                     Map<URI, MDObjectBase> modulesObject,
+                                     MDObjectBSL mdo,
+                                     Map<SupportConfiguration, SupportVariant> supports) {
     mdo.getModules().forEach((MDOModule module) -> {
       var uri = module.getUri();
       modulesType.put(uri, module.getModuleType());
