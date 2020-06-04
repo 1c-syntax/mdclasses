@@ -24,7 +24,6 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.util.Collections;
 import java.util.List;

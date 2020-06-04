@@ -28,7 +28,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 /**
  * Враппер над свойствами объекта в формате конфигуратора

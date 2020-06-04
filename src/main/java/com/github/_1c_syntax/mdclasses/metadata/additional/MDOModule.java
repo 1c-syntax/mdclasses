@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import lombok.NonNull;
 import lombok.Value;
 
 import java.net.URI;

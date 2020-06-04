@@ -27,7 +27,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.ToString;
 
 @Data

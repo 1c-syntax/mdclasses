@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
-import lombok.NonNull;
 
 /**
  * Интерфейс для классов-атрибутов
