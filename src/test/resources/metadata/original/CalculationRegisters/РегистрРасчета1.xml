@@ -38,12 +38,12 @@
 			<UseStandardCommands>true</UseStandardCommands>
 			<DefaultListForm/>
 			<AuxiliaryListForm/>
-			<Periodicity>Month</Periodicity>
-			<ActionPeriod>false</ActionPeriod>
-			<BasePeriod>false</BasePeriod>
-			<Schedule/>
-			<ScheduleValue/>
-			<ScheduleDate/>
+			<Periodicity>Day</Periodicity>
+			<ActionPeriod>true</ActionPeriod>
+			<BasePeriod>true</BasePeriod>
+			<Schedule>InformationRegister.РегистрСведений1</Schedule>
+			<ScheduleValue>InformationRegister.РегистрСведений1.Resource.Ресурсц</ScheduleValue>
+			<ScheduleDate>InformationRegister.РегистрСведений1.Dimension.ИзмерениеДата</ScheduleDate>
 			<ChartOfCalculationTypes>ChartOfCalculationTypes.ПланВидовРасчета1</ChartOfCalculationTypes>
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<DataLockControlMode>Managed</DataLockControlMode>
@@ -94,11 +94,7 @@
 					<Synonym/>
 					<Comment/>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>10</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>cfg:CatalogRef.Справочник1</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -126,20 +122,44 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Dimension>
-			<Recalculation uuid="16b54095-8711-4ef1-a38b-93d12f6f6e93">
+			<Dimension uuid="34832bba-43e0-4ca8-bbc1-25665b7f8fb4">
 				<Properties>
-					<ProducedTypes>
-						<RecordType typeId="83030d59-d0d5-4485-bcb5-15a760f12513" valueTypeId="97e5d722-0289-4f02-bb14-f759f459a7ca"/>
-						<ManagerType typeId="0beef2c9-4876-4479-ae09-688da7bccf85" valueTypeId="8b6e6c8c-c15b-48ca-8ebb-ce8c8fe82b21"/>
-						<RecordSetType typeId="cbae3876-8a6d-4f40-bfc4-45dc2868e0fa" valueTypeId="dd9fa15c-60dd-47cc-a46b-6aa3e06d4e4e"/>
-					</ProducedTypes>
-					<Name>Перерасчет</Name>
+					<Name>Измерение</Name>
 					<Synonym>
-						<Key>ru</Key>
-						<Value>Перерасчет</Value>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Измерение</v8:content>
+						</v8:item>
 					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Справочник1</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip/>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<DenyIncompleteValues>false</DenyIncompleteValues>
+					<BaseDimension>false</BaseDimension>
+					<ScheduleLink/>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
-			</Recalculation>
+			</Dimension>
+			<Recalculation>Перерасчет</Recalculation>
 		</ChildObjects>
 	</CalculationRegister>
 </MetaDataObject>
