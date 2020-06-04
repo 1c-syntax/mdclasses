@@ -278,7 +278,7 @@ public class Configuration {
   }
 
   /**
-   * Возвращает тип модулея по ссылке на его файл
+   * Возвращает тип модуля по ссылке на его файл
    */
   public ModuleType getModuleType(URI uri) {
     return modulesByType.getOrDefault(uri, ModuleType.UNKNOWN);

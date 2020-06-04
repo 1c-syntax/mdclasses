@@ -179,7 +179,7 @@ public class MDOPathUtils {
   }
 
   /**
-   * Назходит каталог дочерних объектов в текущем каталоге
+   * Находит каталог дочерних объектов в текущем каталоге
    */
   public Optional<Path> getChildrenFolder(String mdoName, Path folder, MDOType type) {
     var formFolder = Paths.get(folder.toString(), mdoName, type.getGroupName());
