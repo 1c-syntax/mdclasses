@@ -107,15 +107,5 @@ class CommonModuleTest extends AbstractMDOTest {
     assertThat(commonModule.isPrivileged()).isFalse();
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
-
-    commonModule = (CommonModule) getMDObjectDesigner("CommonModules/ОбщегоНазначенияПовторногоИспользования.xml");
-    assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);
-    assertThat(commonModule.isClientManagedApplication()).isTrue();
-    assertThat(commonModule.isClientOrdinaryApplication()).isTrue();
-    assertThat(commonModule.isExternalConnection()).isTrue();
-    assertThat(commonModule.isGlobal()).isFalse();
-    assertThat(commonModule.isPrivileged()).isFalse();
-    assertThat(commonModule.isServer()).isTrue();
-    assertThat(commonModule.isServerCall()).isFalse();
   }
 }

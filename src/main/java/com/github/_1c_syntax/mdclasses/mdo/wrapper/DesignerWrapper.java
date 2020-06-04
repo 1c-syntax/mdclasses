@@ -56,6 +56,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
 import com.github._1c_syntax.mdclasses.mdo.MDOInterface;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.Report;
 import com.github._1c_syntax.mdclasses.mdo.Role;
 import com.github._1c_syntax.mdclasses.mdo.ScheduledJob;
@@ -216,7 +217,7 @@ public class DesignerWrapper {
             .newInstance(designerMDO));
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException
           | NoSuchMethodException e) {
-          LOGGER.error("Can't read property for name", e);
+          LOGGER.error("Can't read property for type `{}`", type, e);
         }
       } else {
         LOGGER.error("Unknown mdo type `{}`", type);
@@ -414,6 +415,9 @@ public class DesignerWrapper {
           break;
         case TEMPLATE:
           clazz = Template.class;
+          break;
+        case RECALCULATION:
+          clazz = Recalculation.class;
           break;
         default:
           // noop

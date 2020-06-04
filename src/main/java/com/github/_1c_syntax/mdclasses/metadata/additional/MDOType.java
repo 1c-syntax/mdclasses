@@ -84,6 +84,7 @@ public enum MDOType {
   COMMAND("Command", "Commands", "Команда", "Команды"),
   TEMPLATE("Template", "Templates", "Макет", "Макеты"),
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
+  RECALCULATION("Recalculation", "Recalculations", "Перерасчет", "Перерасчеты"),
   UNKNOWN("", "", "", "");
 
   private final String name;
@@ -155,7 +156,7 @@ public enum MDOType {
   }
 
   private static Set<MDOType> computeChildTypes() {
-    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE);
+    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION);
   }
 
 }

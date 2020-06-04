@@ -89,6 +89,7 @@ public class MDObjectComplex extends MDObjectBSL {
       .ifPresent((Path mdoFolder) -> {
         computeForms(mdoFolder, designerMDO.getChildObjects().getForms());
         computeTemplates(mdoFolder, designerMDO.getChildObjects().getTemplates());
+        computeRecalculations(mdoFolder, designerMDO.getChildObjects().getRecalculations());
       });
 
     // эти данные лежат сразу в файле описания,
@@ -114,14 +115,23 @@ public class MDObjectComplex extends MDObjectBSL {
     setCommands(computedCommands);
   }
 
+  private void computeRecalculations(Path folder, List<String> recalculationNames) {
+    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.RECALCULATION)
+      .ifPresent((Path childrenFolder) -> {
+        var recalculations = readDesignerMDOChildren(childrenFolder, MDOType.RECALCULATION, Recalculation.class, recalculationNames);
+        setAttributes(recalculations.stream().map(MDOAttribute.class::cast).collect(Collectors.toList()));
+      });
+
+  }
+
   private void computeChildren(DesignerChildObjects childObjects) {
-    List<MDOAttribute> computedAttributes = new ArrayList<>();
+    List<MDOAttribute> computedAttributes = new ArrayList<>(getAttributes());
 
     childObjects.getAccountingFlags().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new AccountingFlag(designerMDO)));
 
-    childObjects.getAddressingAttributes().forEach((DesignerMDO designerMDO) ->
-      computedAttributes.add(new AddressingAttribute(designerMDO)));
+    childObjects.getAddressingAttributes().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new AddressingAttribute(designerMDO)));
 
     childObjects.getAttributes().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new Attribute(designerMDO)));
@@ -132,11 +142,8 @@ public class MDObjectComplex extends MDObjectBSL {
     childObjects.getDimensions().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new Dimension(designerMDO)));
 
-    childObjects.getExtDimensionAccountingFlags().forEach(designerMDO ->
-      computedAttributes.add(new ExtDimensionAccountingFlag(designerMDO)));
-
-    childObjects.getRecalculations().forEach((DesignerMDO designerMDO)
-      -> computedAttributes.add(new Recalculation(designerMDO)));
+    childObjects.getExtDimensionAccountingFlags().forEach(designerMDO
+      -> computedAttributes.add(new ExtDimensionAccountingFlag(designerMDO)));
 
     childObjects.getResources().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new Resource(designerMDO)));

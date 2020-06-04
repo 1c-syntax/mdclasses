@@ -53,7 +53,7 @@ public class DesignerChildObjects {
   private List<DesignerMDO> resources = Collections.emptyList();
 
   @XStreamImplicit(itemFieldName = "Recalculation")
-  private List<DesignerMDO> recalculations = Collections.emptyList();
+  private List<String> recalculations = Collections.emptyList();
 
   @XStreamImplicit(itemFieldName = "Attribute")
   private List<DesignerMDO> attributes = Collections.emptyList();

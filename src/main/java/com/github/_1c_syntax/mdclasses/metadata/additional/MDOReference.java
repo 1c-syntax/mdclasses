@@ -58,20 +58,10 @@ public class MDOReference {
    */
   public MDOReference(MDObjectBase mdo, MDObjectBase parent) {
     this(mdo);
-    if (parent.getMdoReference() != null) {
-      mdoRef = parent.getMdoReference().getMdoRef() + "." + mdoRef;
+    if(mdo instanceof MDOAttribute) {
+      mdoRef = ((MDOAttribute) mdo).getAttributeType().getClassName() + "." + mdo.getName();
     }
-  }
 
-  /**
-   * Создает ссылку для атрибутов объекта
-   *
-   * @param mdo    - Объект-атрибут
-   * @param parent - Родительский объект
-   */
-  public MDOReference(MDOAttribute mdo, MDObjectBase parent) {
-    type = mdo.getType();
-    mdoRef = mdo.getAttributeType().getClassName() + "." + mdo.getName();
     if (parent.getMdoReference() != null) {
       mdoRef = parent.getMdoReference().getMdoRef() + "." + mdoRef;
     }

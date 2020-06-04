@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import org.junit.jupiter.api.Test;
 
@@ -54,8 +55,14 @@ class ChartOfCalculationTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 3, "ChartOfCalculationTypes.ПланВидовРасчета1",
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
+    var tabularSection = (TabularSection) ((MDObjectComplex) mdo).getAttributes().stream()
+      .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
+      .findFirst().get();
+    checkAttributes(tabularSection.getAttributes(), 1,
+      "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть", AttributeType.ATTRIBUTE);
+
   }
 
 }
