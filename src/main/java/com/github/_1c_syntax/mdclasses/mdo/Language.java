@@ -41,7 +41,6 @@ public class Language extends MDObjectBase {
   /**
    * Код языка
    */
-  @NonNull
   private String languageCode = "";
 
   public Language(DesignerMDO designerMDO) {

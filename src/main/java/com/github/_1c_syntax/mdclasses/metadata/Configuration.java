@@ -141,7 +141,6 @@ public class Configuration {
   /**
    * Доступные языки конфигурации, ключ - код языка
    */
-  @NonNull
   Map<String, Language> languages;
   /**
    * Корневой каталог конфигурации
