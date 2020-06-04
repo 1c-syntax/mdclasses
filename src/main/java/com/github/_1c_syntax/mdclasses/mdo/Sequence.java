@@ -40,7 +40,7 @@ public class Sequence extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.SEQUENCE;
   }
 

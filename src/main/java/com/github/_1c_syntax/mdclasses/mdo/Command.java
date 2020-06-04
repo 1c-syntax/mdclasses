@@ -40,7 +40,7 @@ public class Command extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMAND;
   }
 

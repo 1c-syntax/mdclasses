@@ -40,7 +40,7 @@ public class XDTOPackage extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.XDTO_PACKAGE;
   }
 

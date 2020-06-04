@@ -43,7 +43,6 @@ public class TabularSection extends MDOAttribute {
   /**
    * Реквизиты табличной части
    */
-  @NonNull
   @XStreamImplicit
   private List<MDOAttribute> attributes = Collections.emptyList();
 

@@ -37,10 +37,8 @@ import lombok.NonNull;
 @NoArgsConstructor
 public class DesignerProperties {
 
-  @NonNull
   @XStreamAlias("Name")
   private String name;
-  @NonNull
   @XStreamAlias("Comment")
   private String comment = "";
 
@@ -58,46 +56,33 @@ public class DesignerProperties {
   private boolean serverCall;
   @XStreamAlias("Privileged")
   private boolean privileged;
-  @NonNull
   @XStreamAlias("ReturnValuesReuse")
   private ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
-  @NonNull
   @XStreamAlias("Handler")
   private String handler = "";
 
-  @NonNull
   @XStreamAlias("Content")
   private DesignerXRItems content = new DesignerXRItems();
 
-  @NonNull
   @XStreamAlias("ScriptVariant")
   private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
-  @NonNull
   @XStreamAlias("CompatibilityMode")
   private CompatibilityMode compatibilityMode = new CompatibilityMode();
-  @NonNull
   @XStreamAlias("ConfigurationExtensionCompatibilityMode")
   private CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
-  @NonNull
   @XStreamAlias("ModalityUseMode")
   private UseMode modalityUseMode = UseMode.USE;
-  @NonNull
   @XStreamAlias("SynchronousExtensionAndAddInCallUseMode")
   private UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
-  @NonNull
   @XStreamAlias("SynchronousPlatformExtensionAndAddInCallUseMode")
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
-  @NonNull
   @XStreamAlias("DefaultRunMode")
   private String defaultRunMode = "";
-  @NonNull
   @XStreamAlias("DefaultLanguage")
   private String defaultLanguage = "";
-  @NonNull
   @XStreamAlias("DataLockControlMode")
   private String dataLockControlMode = "";
-  @NonNull
   @XStreamAlias("ObjectAutonumerationMode")
   private String objectAutonumerationMode = "";
 

@@ -39,7 +39,7 @@ public class Dimension extends MDOAttribute {
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.DIMENSION;
   }
 

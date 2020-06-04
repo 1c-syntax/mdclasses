@@ -40,7 +40,7 @@ public class FunctionalOption extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.FUNCTIONAL_OPTION;
   }
 

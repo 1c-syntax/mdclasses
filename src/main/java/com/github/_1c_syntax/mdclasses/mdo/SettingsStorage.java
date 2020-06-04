@@ -40,7 +40,7 @@ public class SettingsStorage extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.SETTINGS_STORAGE;
   }
 

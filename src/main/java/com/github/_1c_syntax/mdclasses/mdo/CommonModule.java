@@ -74,7 +74,6 @@ public class CommonModule extends MDObjectBSL {
   /**
    * Режим повторного использования значений
    */
-  @NonNull
   private ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   public CommonModule(DesignerMDO designerMDO) {
@@ -90,7 +89,7 @@ public class CommonModule extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMON_MODULE;
   }
 

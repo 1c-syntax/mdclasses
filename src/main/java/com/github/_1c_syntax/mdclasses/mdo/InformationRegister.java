@@ -40,7 +40,7 @@ public class InformationRegister extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.INFORMATION_REGISTER;
   }
 

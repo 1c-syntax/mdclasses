@@ -40,7 +40,7 @@ public class DocumentNumerator extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.DOCUMENT_NUMERATOR;
   }
 

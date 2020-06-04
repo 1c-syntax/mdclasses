@@ -47,20 +47,17 @@ public class MDObjectBase implements MDOExtensions {
   /**
    * уникальный идентификатор объекта
    */
-  @NonNull
   @XStreamAsAttribute
   protected String uuid = "";
 
   /**
    * Имя объекта
    */
-  @NonNull
   protected String name = "";
 
   /**
    * Строка с комментарием объекта
    */
-  @NonNull
   protected String comment = "";
 
   /**
@@ -71,7 +68,6 @@ public class MDObjectBase implements MDOExtensions {
   /**
    * Список подсистем, в состав которых входит объект
    */
-  @NonNull
   protected List<Subsystem> includedSubsystems = Collections.emptyList();
 
   /**
@@ -86,7 +82,7 @@ public class MDObjectBase implements MDOExtensions {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.UNKNOWN;
   }
 

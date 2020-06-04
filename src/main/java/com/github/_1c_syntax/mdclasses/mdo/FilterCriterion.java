@@ -39,7 +39,7 @@ public class FilterCriterion extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.FILTER_CRITERION;
   }
 

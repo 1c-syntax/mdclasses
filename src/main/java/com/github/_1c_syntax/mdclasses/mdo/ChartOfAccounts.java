@@ -39,7 +39,7 @@ public class ChartOfAccounts extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.CHART_OF_ACCOUNTS;
   }
 

@@ -40,7 +40,7 @@ public class Report extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.REPORT;
   }
 

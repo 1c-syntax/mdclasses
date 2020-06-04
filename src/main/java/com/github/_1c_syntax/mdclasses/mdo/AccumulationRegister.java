@@ -39,7 +39,7 @@ public class AccumulationRegister extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.ACCUMULATION_REGISTER;
   }
 }

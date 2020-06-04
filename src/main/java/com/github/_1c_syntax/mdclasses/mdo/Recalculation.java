@@ -39,7 +39,7 @@ public class Recalculation extends MDOAttribute {
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.RECALCULATION;
   }
 

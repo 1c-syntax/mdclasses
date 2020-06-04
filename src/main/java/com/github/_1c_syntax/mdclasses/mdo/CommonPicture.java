@@ -40,7 +40,7 @@ public class CommonPicture extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMON_PICTURE;
   }
 

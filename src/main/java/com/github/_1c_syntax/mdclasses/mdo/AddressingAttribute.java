@@ -39,7 +39,7 @@ public class AddressingAttribute extends MDOAttribute {
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.ADDRESSING_ATTRIBUTE;
   }
 

@@ -44,7 +44,7 @@ public class Language extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.LANGUAGE;
   }
 

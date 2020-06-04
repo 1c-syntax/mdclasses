@@ -31,6 +31,5 @@ public interface MDOExtensions {
   /**
    * @return Тип метаданных, к котором относится объект
    */
-  @NonNull
   MDOType getType();
 }

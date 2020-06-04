@@ -43,12 +43,12 @@ public class MDOAttribute extends MDObjectBase implements MDOAttributeExtensions
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.ATTRIBUTE;
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.UNKNOWN;
   }
 

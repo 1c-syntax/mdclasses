@@ -46,67 +46,56 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Вариант языка исходного кода
    */
-  @NonNull
   private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
 
   /**
    * Режим совместимости конфигурации
    */
-  @NonNull
   private CompatibilityMode compatibilityMode = new CompatibilityMode();
 
   /**
    * Режим совместимости расширений конфигурации
    */
-  @NonNull
   private CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
 
   /**
    * Использование модального режима
    */
-  @NonNull
   private UseMode modalityUseMode = UseMode.USE;
 
   /**
    * Использование синхронных вызовов расширений и внешних компонент
    */
-  @NonNull
   private UseMode synchronousExtensionAndAddInCallUseMode = UseMode.USE;
 
   /**
    * Использования синхронных вызовов расширений платформы и внешних компонент
    */
-  @NonNull
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
 
   /**
    * Режим запуска клиента по умолчанию
    */
-  @NonNull
   private String defaultRunMode = "";
 
   /**
    * Язык приложения по умолчанию
    */
-  @NonNull
   private String defaultLanguage = "";
 
   /**
    * Режим управления блокировками
    */
-  @NonNull
   private String dataLockControlMode = "";
 
   /**
    * Режим автонумерации объектов
    */
-  @NonNull
   private String objectAutonumerationMode = "";
 
   /**
    * Все объекты конфигурации первого уровня
    */
-  @NonNull
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
@@ -129,7 +118,7 @@ public class MDOConfiguration extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.CONFIGURATION;
   }
 

@@ -40,7 +40,7 @@ public class SessionParameter extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.SESSION_PARAMETER;
   }
 

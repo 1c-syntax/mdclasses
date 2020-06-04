@@ -40,7 +40,7 @@ public class WebService extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.WEB_SERVICE;
   }
 

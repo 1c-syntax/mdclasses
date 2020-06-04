@@ -48,7 +48,7 @@ public class EventSubscription extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.EVENT_SUBSCRIPTION;
   }
 

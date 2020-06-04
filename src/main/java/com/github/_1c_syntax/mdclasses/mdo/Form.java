@@ -40,7 +40,7 @@ public class Form extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.FORM;
   }
 

@@ -39,7 +39,7 @@ public class BusinessProcess extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.BUSINESS_PROCESS;
   }
 

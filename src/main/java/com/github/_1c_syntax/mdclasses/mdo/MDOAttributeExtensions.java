@@ -34,6 +34,5 @@ public interface MDOAttributeExtensions {
    *
    * @return - тип атрибута
    */
-  @NonNull
   AttributeType getAttributeType();
 }

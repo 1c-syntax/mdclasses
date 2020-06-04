@@ -39,7 +39,7 @@ public class DataProcessor extends MDObjectComplex {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.DATA_PROCESSOR;
   }
 

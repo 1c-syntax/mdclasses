@@ -61,100 +61,81 @@ public class Configuration {
   /**
    * Имя конфигурации
    */
-  @NonNull
   String name;
   /**
    * Уникальный идентификатор конфигурации
    */
-  @NonNull
   String uuid;
 
   /**
    * Вариант исходников конфигурации
    */
-  @NonNull
   ConfigurationSource configurationSource;
   /**
    * Режим совместимости
    */
-  @NonNull
   CompatibilityMode compatibilityMode;
   /**
    * Режим совместимости расширений
    */
-  @NonNull
   CompatibilityMode configurationExtensionCompatibilityMode;
   /**
    * Язык, на котором ведется разработка
    */
-  @NonNull
   ScriptVariant scriptVariant;
 
   /**
    * Режим запуска приложения по умолчанию
    */
-  @NonNull
   String defaultRunMode;
   /**
    * Язык приложения по умолчанию
    */
-  @NonNull
   String defaultLanguage;
   /**
    * Режим управления блокировкой данных
    */
-  @NonNull
   String dataLockControlMode;
   /**
    * Режим автонумерации объектов
    */
-  @NonNull
   String objectAutonumerationMode;
   /**
    * Режим использования модальных окон
    */
-  @NonNull
   UseMode modalityUseMode;
   /**
    * Режим использования синхронных вызовов
    */
-  @NonNull
   UseMode synchronousExtensionAndAddInCallUseMode;
   /**
    * Режим использования синхронных вызовов для платформенных объектов и расширений
    */
-  @NonNull
   UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
-  @NonNull
   Map<URI, ModuleType> modulesByType;
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  @NonNull
   Map<URI, MDObjectBase> modulesByObject;
   /**
    * Режимы поддержки в связке со ссылкой на файлы
    */
-  @NonNull
   Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  @NonNull
   Set<MDObjectBase> children;
   /**
    * Дочерние объекты конфигурации с MDO ссылками на них
    */
-  @NonNull
   Map<MDOReference, MDObjectBase> childrenByMdoRef;
   /**
    * Дочерние общие модули
    */
-  @NonNull
   Map<String, CommonModule> commonModules;
   /**
    * Корневой каталог конфигурации

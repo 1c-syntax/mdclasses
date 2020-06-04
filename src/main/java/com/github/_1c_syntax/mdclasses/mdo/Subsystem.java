@@ -46,7 +46,6 @@ public class Subsystem extends MDObjectBase {
    * включенные в подсистему
    * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
    */
-  @NonNull
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
@@ -61,7 +60,7 @@ public class Subsystem extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.SUBSYSTEM;
   }
 

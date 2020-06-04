@@ -40,7 +40,7 @@ public class Role extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.ROLE;
   }
 

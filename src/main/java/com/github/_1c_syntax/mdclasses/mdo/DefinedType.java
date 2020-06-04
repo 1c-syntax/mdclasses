@@ -40,7 +40,7 @@ public class DefinedType extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.DEFINED_TYPE;
   }
 

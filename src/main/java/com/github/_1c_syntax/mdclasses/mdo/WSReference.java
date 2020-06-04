@@ -40,7 +40,7 @@ public class WSReference extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.WS_REFERENCE;
   }
 

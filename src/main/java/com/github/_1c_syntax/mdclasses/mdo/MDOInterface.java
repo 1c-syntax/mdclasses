@@ -44,7 +44,7 @@ public class MDOInterface extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.INTERFACE;
   }
 

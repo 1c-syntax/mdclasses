@@ -40,7 +40,7 @@ public class ScheduledJob extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.SCHEDULED_JOB;
   }
 

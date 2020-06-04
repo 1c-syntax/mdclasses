@@ -35,16 +35,14 @@ public class MDOModule {
   /**
    * Тип модуля
    */
-  @NonNull
   ModuleType moduleType;
 
   /**
    * Ссылка на файл bsl модуля
    */
-  @NonNull
   URI uri;
 
-  public MDOModule(@NonNull ModuleType moduleType, @NonNull URI uri) {
+  public MDOModule(ModuleType moduleType, URI uri) {
     this.moduleType = moduleType;
     this.uri = uri;
   }

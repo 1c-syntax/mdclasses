@@ -39,13 +39,11 @@ public class MDOReference {
   /**
    * Тип объекта метаданных
    */
-  @NonNull
   private MDOType type;
 
   /**
    * Строковое представление ссылки
    */
-  @NonNull
   private String mdoRef;
 
   public MDOReference(MDObjectBase mdo) {

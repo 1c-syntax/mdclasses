@@ -35,13 +35,11 @@ import java.nio.file.Path;
 @Data
 @NoArgsConstructor
 public class DesignerMDO {
-  @NonNull
+
   @XStreamAsAttribute
   private String uuid;
-  @NonNull
   @XStreamAlias("Properties")
   private DesignerProperties properties;
-  @NonNull
   @XStreamAlias("ChildObjects")
   private DesignerChildObjects childObjects;
 

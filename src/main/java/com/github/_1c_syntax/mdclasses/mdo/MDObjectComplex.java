@@ -58,28 +58,24 @@ public class MDObjectComplex extends MDObjectBSL {
   /**
    * Подчиненные формы
    */
-  @NonNull
   @XStreamImplicit
   private List<Form> forms = Collections.emptyList();
 
   /**
    * Подчиненные макеты
    */
-  @NonNull
   @XStreamImplicit
   private List<Template> templates = Collections.emptyList();
 
   /**
    * Подчиненные команды
    */
-  @NonNull
   @XStreamImplicit
   private List<Command> commands = Collections.emptyList();
 
   /**
    * Реквизиты, табличные части и их реквизиты объекта
    */
-  @NonNull
   @XStreamImplicit
   private List<MDOAttribute> attributes = Collections.emptyList();
 

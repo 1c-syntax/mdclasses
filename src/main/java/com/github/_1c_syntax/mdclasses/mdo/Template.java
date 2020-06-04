@@ -40,8 +40,7 @@ public class Template extends MDObjectBase {
   }
 
   @Override
-  public @NonNull
-  MDOType getType() {
+  public MDOType getType() {
     return MDOType.TEMPLATE;
   }
 

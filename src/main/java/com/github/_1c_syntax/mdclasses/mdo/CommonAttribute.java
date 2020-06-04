@@ -40,7 +40,7 @@ public class CommonAttribute extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMON_ATTRIBUTE;
   }
 

@@ -40,7 +40,7 @@ public class StyleItem extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.STYLE_ITEM;
   }
 

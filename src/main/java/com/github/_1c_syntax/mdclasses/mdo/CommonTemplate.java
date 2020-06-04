@@ -40,7 +40,7 @@ public class CommonTemplate extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMON_TEMPLATE;
   }
 

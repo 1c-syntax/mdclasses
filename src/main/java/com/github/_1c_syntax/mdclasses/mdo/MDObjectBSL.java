@@ -44,7 +44,6 @@ public class MDObjectBSL extends MDObjectBase {
   /**
    * Список модулей объекта
    */
-  @NonNull
   private List<MDOModule> modules = Collections.emptyList();
 
   public MDObjectBSL(DesignerMDO designerMDO) {

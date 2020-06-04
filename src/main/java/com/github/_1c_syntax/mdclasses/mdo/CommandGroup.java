@@ -40,7 +40,7 @@ public class CommandGroup extends MDObjectBase {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMAND_GROUP;
   }
 

@@ -40,7 +40,7 @@ public class HTTPService extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.HTTP_SERVICE;
   }
 

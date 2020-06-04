@@ -39,7 +39,7 @@ public class ExtDimensionAccountingFlag extends MDOAttribute {
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG;
   }
 

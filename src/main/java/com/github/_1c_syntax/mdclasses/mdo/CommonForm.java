@@ -40,7 +40,7 @@ public class CommonForm extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.COMMON_FORM;
   }
 

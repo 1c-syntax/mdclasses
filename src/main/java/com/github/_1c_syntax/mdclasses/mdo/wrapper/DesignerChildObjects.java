@@ -37,55 +37,43 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class DesignerChildObjects {
-  @NonNull
+
   @XStreamImplicit(itemFieldName = "Form")
   private List<String> forms = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Template")
   private List<String> templates = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Command")
   private List<DesignerMDO> commands = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Dimension")
   private List<DesignerMDO> dimensions = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Resource")
   private List<DesignerMDO> resources = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Recalculation")
   private List<DesignerMDO> recalculations = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Attribute")
   private List<DesignerMDO> attributes = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "TabularSection")
   private List<DesignerMDO> tabularSections = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "AccountingFlag")
   private List<DesignerMDO> accountingFlags = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "ExtDimensionAccountingFlag")
   private List<DesignerMDO> extDimensionAccountingFlags = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "Column")
   private List<DesignerMDO> columns = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit(itemFieldName = "AddressingAttribute")
   private List<DesignerMDO> addressingAttributes = Collections.emptyList();
 
-  @NonNull
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 

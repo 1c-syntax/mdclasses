@@ -39,7 +39,7 @@ public class AccountingFlag extends MDOAttribute {
   }
 
   @Override
-  public @NonNull AttributeType getAttributeType() {
+  public AttributeType getAttributeType() {
     return AttributeType.ACCOUNTING_FLAG;
   }
 

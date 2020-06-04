@@ -40,7 +40,7 @@ public class Constant extends MDObjectBSL {
   }
 
   @Override
-  public @NonNull MDOType getType() {
+  public MDOType getType() {
     return MDOType.CONSTANT;
   }
 
