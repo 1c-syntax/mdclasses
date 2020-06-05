@@ -36,7 +36,7 @@ import lombok.ToString;
 public class WEBServiceOperation extends MDObjectBase {
 
   /**
-   * Обработчик подписки на событие. Пока строкой
+   * Обработчик операции. Пока строкой
    * Формат имя метода
    * Пример Операция1
    */

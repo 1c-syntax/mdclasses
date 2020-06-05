@@ -37,26 +37,26 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class HTTPService extends MDObjectBSL {
+public class HTTPServiceURLTemplate extends MDObjectBase {
 
   /**
-   * Шаблоны URL HTTP-сервиса
+   * Методы шаблона URL HTTP-сервиса
    */
-  @XStreamImplicit
-  List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
+  @XStreamImplicit(itemFieldName = "methods")
+  List<HTTPServiceMethod> httpServiceMethods = Collections.emptyList();
 
-  public HTTPService(DesignerMDO designerMDO) {
+  public HTTPServiceURLTemplate(DesignerMDO designerMDO) {
     super(designerMDO);
-    var templates = new ArrayList<>(urlTemplates);
-    designerMDO.getChildObjects().getHttpUrlTemplates().forEach((DesignerMDO urlTemplate) ->
-      templates.add(new HTTPServiceURLTemplate(urlTemplate))
+    var httpMethods = new ArrayList<>(httpServiceMethods);
+    designerMDO.getChildObjects().getHttpServiceMethods().forEach((DesignerMDO httpMethod) ->
+      httpMethods.add(new HTTPServiceMethod(httpMethod))
     );
-    urlTemplates = templates;
+    httpServiceMethods = httpMethods;
   }
 
   @Override
   public MDOType getType() {
-    return MDOType.HTTP_SERVICE;
+    return MDOType.HTTP_SERVICE_URL_TEMPLATE;
   }
 
 }

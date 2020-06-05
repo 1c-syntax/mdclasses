@@ -67,13 +67,15 @@ class ConfigurationTest {
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
-    assertThat(configuration.getChildren()).hasSize(92);
+    assertThat(configuration.getChildren()).hasSize(95);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 3);
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 26);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
+    checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -119,7 +121,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(92);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(95);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
@@ -192,13 +194,15 @@ class ConfigurationTest {
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
-    assertThat(configuration.getChildren()).hasSize(96);
+    assertThat(configuration.getChildren()).hasSize(99);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 33);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
+    checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -245,7 +249,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(96);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(99);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();

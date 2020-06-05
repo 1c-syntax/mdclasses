@@ -79,4 +79,10 @@ public class DesignerChildObjects {
   @XStreamImplicit(itemFieldName = "Operation")
   private List<DesignerMDO> operations = Collections.emptyList();
 
+  @XStreamImplicit(itemFieldName = "URLTemplate")
+  private List<DesignerMDO> httpUrlTemplates = Collections.emptyList();
+
+  @XStreamImplicit(itemFieldName = "Method")
+  private List<DesignerMDO> httpServiceMethods = Collections.emptyList();
+
 }

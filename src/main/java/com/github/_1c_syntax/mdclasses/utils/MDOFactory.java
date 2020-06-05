@@ -24,6 +24,8 @@ package com.github._1c_syntax.mdclasses.utils;
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.Language;
+import com.github._1c_syntax.mdclasses.mdo.HTTPService;
+import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
@@ -94,6 +96,14 @@ public class MDOFactory {
       if (mdoValue instanceof WebService) {
         ((WebService) mdoValue).getOperations().forEach(
           (WEBServiceOperation child) -> computeMdoReferenceForChild(mdoValue, child));
+      }
+      // проставляем mdo ссылку дочерних объектов http сервиса
+      if (mdoValue instanceof HTTPService) {
+        ((HTTPService) mdoValue).getUrlTemplates().forEach(
+          (HTTPServiceURLTemplate child) -> {
+            computeMdoReferenceForChild(mdoValue, child);
+            child.getHttpServiceMethods().forEach(method -> computeMdoReferenceForChild(child, method));
+          });
       }
       // загружаем дочерние подсистемы для каждой подсистемы
       if (mdoValue instanceof Subsystem) {

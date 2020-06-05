@@ -86,6 +86,8 @@ public enum MDOType {
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
   RECALCULATION("Recalculation", "Recalculations", "Перерасчет", "Перерасчеты"),
   WS_OPERATION("Operation", "Operations", "Операция", "Операции"),
+  HTTP_SERVICE_URL_TEMPLATE("URLTemplate", "URLTemplates", "ШаблонURL", "ШаблоныURL"),
+  HTTP_SERVICE_METHOD("Method", "Methods", "Метод", "Методы"),
   UNKNOWN("", "", "", "");
 
   private final String name;
@@ -157,7 +159,8 @@ public enum MDOType {
   }
 
   private static Set<MDOType> computeChildTypes() {
-    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION, WS_OPERATION);
+    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION, WS_OPERATION, HTTP_SERVICE_URL_TEMPLATE,
+      HTTP_SERVICE_METHOD);
   }
 
 }

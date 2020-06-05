@@ -21,32 +21,34 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import org.junit.jupiter.api.Test;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-class CommandGroupTest extends AbstractMDOTest {
-  CommandGroupTest() {
-    super(MDOType.COMMAND_GROUP);
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+public class HTTPServiceMethod extends MDObjectBase {
+
+  /**
+   * Обработчик метода http сервиса. Пока строкой
+   * Формат имя метода
+   * Пример ШаблонURLМетод1
+   */
+  private String handler = ""; // TODO сделать классом
+
+  public HTTPServiceMethod(DesignerMDO designerMDO) {
+    super(designerMDO);
+    handler = designerMDO.getProperties().getHandler();
   }
 
   @Override
-  @Test
-  void testEDT() {
-    var mdo = getMDObjectEDT("CommandGroups/ГруппаКоманд1/ГруппаКоманд1.mdo");
-    checkBaseField(mdo, CommandGroup.class, "ГруппаКоманд1",
-      "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");
-    checkNoChildren(mdo);
-    checkNoModules(mdo);
-  }
-
-  @Override
-  @Test
-  void testDesigner() {
-    var mdo = getMDObjectDesigner("CommandGroups/ГруппаКоманд1.xml");
-    checkBaseField(mdo, CommandGroup.class, "ГруппаКоманд1",
-      "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");
-    checkNoChildren(mdo);
-    checkNoModules(mdo);
+  public MDOType getType() {
+    return MDOType.HTTP_SERVICE_METHOD;
   }
 
 }

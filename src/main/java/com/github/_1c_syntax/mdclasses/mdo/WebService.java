@@ -39,6 +39,9 @@ import java.util.List;
 @NoArgsConstructor
 public class WebService extends MDObjectBSL {
 
+  /**
+   * Операции веб-сервиса
+   */
   @XStreamImplicit
   List<WEBServiceOperation> operations = Collections.emptyList();
 
