@@ -21,11 +21,20 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+/**
+ * Типы атрибутов (реквизитов)
+ */
 public enum AttributeType {
   ATTRIBUTE("Attribute"),
   DIMENSION("Dimension"),
   RESOURCE("Resource"),
-  TABULAR_SECTION("TabularSection");
+  TABULAR_SECTION("TabularSection"),
+  RECALCULATION("Recalculation"),
+  ACCOUNTING_FLAG("AccountingFlag"),
+  EXT_DIMENSION_ACCOUNTING_FLAG("ExtDimensionAccountingFlag"),
+  COLUMN("Column"),
+  ADDRESSING_ATTRIBUTE("AddressingAttribute"),
+  UNKNOWN("");
 
   private String shortClassName;
 

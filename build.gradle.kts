@@ -24,10 +24,12 @@ dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
     implementation("io.vavr", "vavr", "0.10.2")
+
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
-    implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-xml", "2.10.3")
-    implementation("com.fasterxml.jackson.module", "jackson-module-parameter-names", "2.10.3")
+    // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.12")
+
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")
     implementation("org.slf4j", "slf4j-simple", "1.8.0-beta4")
@@ -101,8 +103,8 @@ sonarqube {
 }
 
 lombok {
-    version = "1.18.8"
-    sha256 = "0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc"
+    version = "1.18.12"
+    sha256 = "49381508ecb02b3c173368436ef71b24c0d4418ad260e6cc98becbcf4b345406"
 }
 
 license {

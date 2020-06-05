@@ -21,29 +21,25 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = DataProcessor.DataProcessorBuilderImpl.class)
-@SuperBuilder
-public class DataProcessor extends MDObjectBase {
+@NoArgsConstructor
+public class DataProcessor extends MDObjectComplex {
+  public DataProcessor(DesignerMDO designerMDO) {
+    super(designerMDO);
+  }
 
   @Override
   public MDOType getType() {
     return MDOType.DATA_PROCESSOR;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class DataProcessorBuilderImpl extends DataProcessor.DataProcessorBuilder<DataProcessor, DataProcessor.DataProcessorBuilderImpl> {
-  }
 }

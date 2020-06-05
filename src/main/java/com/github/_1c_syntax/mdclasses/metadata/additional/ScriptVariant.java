@@ -21,12 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * Возможные варианты языков, на которых разрабатывается код
+ */
 public enum ScriptVariant {
-  @JsonProperty("English")
   ENGLISH("English"),
-  @JsonProperty("Russian")
   RUSSIAN("Russian");
 
   private final String value;

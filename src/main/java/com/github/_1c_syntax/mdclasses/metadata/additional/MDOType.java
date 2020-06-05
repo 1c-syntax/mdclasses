@@ -27,8 +27,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Типы объектов метаданных
+ */
 public enum MDOType {
   ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters", "РегистрБухгалтерии", "РегистрыБухгалтерии"),
   ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters", "РегистрНакопления", "РегистрыНакопления"),
@@ -80,32 +84,22 @@ public enum MDOType {
   COMMAND("Command", "Commands", "Команда", "Команды"),
   TEMPLATE("Template", "Templates", "Макет", "Макеты"),
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
-  ;
+  RECALCULATION("Recalculation", "Recalculations", "Перерасчет", "Перерасчеты"),
+  UNKNOWN("", "", "", "");
 
-  private String name;
-  private String groupName;
-  private String nameRu;
-  private String groupNameRu;
+  private final String name;
+  private final String groupName;
+  private final String nameRu;
+  private final String groupNameRu;
 
   private static final Map<String, MDOType> mapTypes = computeMapTypes();
+  private static final Set<MDOType> childTypes = computeChildTypes();
 
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
     this.groupName = groupNameEn;
     this.nameRu = nameRu;
     this.groupNameRu = groupNameRu;
-  }
-
-  /**
-   * Возвращает имя MDO класса
-   */
-  public String getMDOClassName() {
-    if (this == CONFIGURATION
-      || this == ENUM
-      || this == INTERFACE) {
-      return "MDO" + name;
-    }
-    return name;
   }
 
   public String getName() {
@@ -126,12 +120,14 @@ public enum MDOType {
 
   /**
    * Возвращает список элементов перечисления с возможностью фильтрации
+   *
    * @param withoutChildren - возможность исключить дочерние типы
    * @return - список с примененным фильтром
    */
   public static List<MDOType> values(boolean withoutChildren) {
     if (withoutChildren) {
-      return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)
+      return Arrays.stream(values()).filter(mdoType ->
+        !childTypes.contains(mdoType) && mdoType != UNKNOWN)
         .collect(Collectors.toList());
     }
     return Arrays.asList(values());
@@ -139,6 +135,7 @@ public enum MDOType {
 
   /**
    * Возвращает MDOType по строковому идентификатору
+   *
    * @param value - Строковый идентификатор типа. Может быть на русском или английском языках,
    *              а так же во множественном или единственном числе
    * @return - Найденный тип
@@ -156,6 +153,10 @@ public enum MDOType {
       map.put(mdoType.getGroupNameRu(), mdoType);
     }
     return map;
+  }
+
+  private static Set<MDOType> computeChildTypes() {
+    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION);
   }
 
 }

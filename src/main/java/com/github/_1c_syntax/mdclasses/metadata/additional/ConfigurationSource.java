@@ -21,6 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+/**
+ * Возможные виды конфигураций по формату данных
+ */
 public enum ConfigurationSource {
   DESIGNER,
   EDT,
