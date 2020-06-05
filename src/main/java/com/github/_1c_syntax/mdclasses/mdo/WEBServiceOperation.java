@@ -23,37 +23,34 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class WebService extends MDObjectBSL {
+public class WEBServiceOperation extends MDObjectBase {
 
-  @XStreamImplicit
-  List<WEBServiceOperation> operations = Collections.emptyList();
+  /**
+   * Обработчик подписки на событие. Пока строкой
+   * Формат имя метода
+   * Пример Операция1
+   */
+  @XStreamAlias("procedureName")
+  private String handler = ""; // TODO сделать классом
 
-  public WebService(DesignerMDO designerMDO) {
+  public WEBServiceOperation(DesignerMDO designerMDO) {
     super(designerMDO);
-    var wsOperations = new ArrayList<>(operations);
-    designerMDO.getChildObjects().getOperations().forEach((DesignerMDO wsOperation) ->
-      wsOperations.add(new WEBServiceOperation(wsOperation))
-    );
-    operations = wsOperations;
+    handler = designerMDO.getProperties().getWsOperationProcedureName();
   }
 
   @Override
   public MDOType getType() {
-    return MDOType.WEB_SERVICE;
+    return MDOType.WS_OPERATION;
   }
 
 }

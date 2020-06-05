@@ -67,12 +67,13 @@ class ConfigurationTest {
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
-    assertThat(configuration.getChildren()).hasSize(91);
+    assertThat(configuration.getChildren()).hasSize(92);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 3);
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 26);
+    checkChildCount(configuration, MDOType.WS_OPERATION, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -118,7 +119,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(91);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(92);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
@@ -185,9 +186,9 @@ class ConfigurationTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
-    assertThat(configuration.getModulesByType()).hasSize(16);
+    assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).hasSize(0);
-    assertThat(configuration.getModulesByObject()).hasSize(16);
+    assertThat(configuration.getModulesByObject()).hasSize(17);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
@@ -197,6 +198,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 33);
+    checkChildCount(configuration, MDOType.WS_OPERATION, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);

@@ -247,7 +247,7 @@ abstract class AbstractMDOTest {
   /**
    * Проверка корректности заполнения дочерних элементов
    */
-  private void checkChild(String parentName, MDOType type, ModuleType moduleType, MDObjectBase child) {
+  protected void checkChild(String parentName, MDOType type, ModuleType moduleType, MDObjectBase child) {
     checkNoChildren(child);
     assertThat(child.getMdoReference())
       .isNotNull()

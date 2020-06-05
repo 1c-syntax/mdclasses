@@ -32,6 +32,8 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
+import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
+import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -87,6 +89,11 @@ public class MDOFactory {
       // проставляем mdo ссылку для дочерних объектов
       if (mdoValue instanceof MDObjectComplex) {
         computeMdoReference((MDObjectComplex) mdoValue);
+      }
+      // проставляем mdo ссылку для операций
+      if (mdoValue instanceof WebService) {
+        ((WebService) mdoValue).getOperations().forEach(
+          (WEBServiceOperation child) -> computeMdoReferenceForChild(mdoValue, child));
       }
       // загружаем дочерние подсистемы для каждой подсистемы
       if (mdoValue instanceof Subsystem) {
@@ -202,7 +209,7 @@ public class MDOFactory {
     });
   }
 
-  private static void computeMdoReferenceForChild(MDObjectComplex mdoValue, MDObjectBase child) {
+  private static void computeMdoReferenceForChild(MDObjectBase mdoValue, MDObjectBase child) {
     if (child.getMdoReference() == null) {
       child.setMdoReference(new MDOReference(child, mdoValue));
     }

@@ -29,6 +29,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -273,6 +274,10 @@ public class Configuration {
               allChildren.addAll(((TabularSection) child).getAttributes());
             }
           });
+        }
+        // операции веб-сервиса
+        if (mdo instanceof WebService) {
+          allChildren.addAll(((WebService) mdo).getOperations());
         }
       });
 

@@ -76,4 +76,7 @@ public class DesignerChildObjects {
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
+  @XStreamImplicit(itemFieldName = "Operation")
+  private List<DesignerMDO> operations = Collections.emptyList();
+
 }
