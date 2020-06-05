@@ -43,7 +43,7 @@ public class HTTPService extends MDObjectBSL {
    * Шаблоны URL HTTP-сервиса
    */
   @XStreamImplicit
-  List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
+  private List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
 
   public HTTPService(DesignerMDO designerMDO) {
     super(designerMDO);

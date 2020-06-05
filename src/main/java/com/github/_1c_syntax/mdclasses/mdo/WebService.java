@@ -43,7 +43,7 @@ public class WebService extends MDObjectBSL {
    * Операции веб-сервиса
    */
   @XStreamImplicit
-  List<WEBServiceOperation> operations = Collections.emptyList();
+  private List<WEBServiceOperation> operations = Collections.emptyList();
 
   public WebService(DesignerMDO designerMDO) {
     super(designerMDO);

@@ -43,7 +43,7 @@ public class HTTPServiceURLTemplate extends MDObjectBase {
    * Методы шаблона URL HTTP-сервиса
    */
   @XStreamImplicit(itemFieldName = "methods")
-  List<HTTPServiceMethod> httpServiceMethods = Collections.emptyList();
+  private List<HTTPServiceMethod> httpServiceMethods = Collections.emptyList();
 
   public HTTPServiceURLTemplate(DesignerMDO designerMDO) {
     super(designerMDO);

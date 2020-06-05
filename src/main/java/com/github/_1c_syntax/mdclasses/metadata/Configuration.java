@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.metadata;
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
+import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
@@ -282,7 +283,7 @@ public class Configuration {
         }
         // дочерние http-сервиса
         if (mdo instanceof HTTPService) {
-          ((HTTPService) mdo).getUrlTemplates().forEach(httpServiceURLTemplate -> {
+          ((HTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
             allChildren.add(httpServiceURLTemplate);
             allChildren.addAll(httpServiceURLTemplate.getHttpServiceMethods());
           });
