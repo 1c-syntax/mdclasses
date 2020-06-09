@@ -59,7 +59,8 @@ class MDOConfigurationTest extends AbstractMDOTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isEqualTo(0);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
-    assertThat(configuration.getDefaultLanguage()).isEqualTo("Language.Русский");
+    assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
+    assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -67,7 +68,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
-    assertThat(configuration.getChildren()).hasSize(51)
+    assertThat(configuration.getChildren()).hasSize(52)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -98,7 +99,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.FUNCTIONAL_OPTIONS_PARAMETER, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE, 1);
     checkChildCount(configuration, MDOType.INFORMATION_REGISTER, 2);
-    checkChildCount(configuration, MDOType.LANGUAGE, 2);
+    checkChildCount(configuration, MDOType.LANGUAGE, 3);
     checkChildCount(configuration, MDOType.REPORT, 1);
     checkChildCount(configuration, MDOType.ROLE, 1);
     checkChildCount(configuration, MDOType.SCHEDULED_JOB, 1);
@@ -132,7 +133,8 @@ class MDOConfigurationTest extends AbstractMDOTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 14)))
       .isEqualTo(0);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
-    assertThat(configuration.getDefaultLanguage()).isEqualTo("Language.English");
+    assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
+    assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("English");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -162,7 +164,8 @@ class MDOConfigurationTest extends AbstractMDOTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isEqualTo(0);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
-    assertThat(configuration.getDefaultLanguage()).isEqualTo("Language.Русский");
+    assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
+    assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -170,7 +173,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
-    assertThat(configuration.getChildren()).hasSize(50)
+    assertThat(configuration.getChildren()).hasSize(52)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -202,7 +205,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.HTTP_SERVICE, 1);
     checkChildCount(configuration, MDOType.INFORMATION_REGISTER, 2);
     checkChildCount(configuration, MDOType.INTERFACE, 1);
-    checkChildCount(configuration, MDOType.LANGUAGE, 1);
+    checkChildCount(configuration, MDOType.LANGUAGE, 3);
     checkChildCount(configuration, MDOType.REPORT, 1);
     checkChildCount(configuration, MDOType.ROLE, 1);
     checkChildCount(configuration, MDOType.SCHEDULED_JOB, 1);

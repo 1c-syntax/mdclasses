@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
@@ -100,6 +101,7 @@ public class MDOFactory {
         MDOPathUtils.getRootPathByConfigurationMDO(configurationSource, mdoPath)
           .ifPresent((Path rootPath) -> {
             computeAllMDObject((MDOConfiguration) mdoValue, configurationSource, rootPath);
+            setDefaultConfigurationLanguage((MDOConfiguration) mdoValue);
             setIncludedSubsystems((MDOConfiguration) mdoValue);
           });
       }
@@ -166,6 +168,18 @@ public class MDOFactory {
     });
 
     configuration.setChildren(children);
+  }
+
+  private static void setDefaultConfigurationLanguage(MDOConfiguration configuration) {
+    if (configuration.getDefaultLanguage().isLeft()) {
+      var defaultLang = configuration.getDefaultLanguage().getLeft();
+
+      var language = configuration.getChildren().stream().filter(Either::isRight)
+        .map(Either::get).filter((MDObjectBase mdo) -> defaultLang.equals(mdo.getMdoReference().getMdoRef()))
+        .findFirst();
+      language.ifPresent((MDObjectBase mdo) ->
+        configuration.setDefaultLanguage(Either.right((Language) mdo)));
+    }
   }
 
   private static void computeMdoReference(MDObjectComplex mdoValue) {

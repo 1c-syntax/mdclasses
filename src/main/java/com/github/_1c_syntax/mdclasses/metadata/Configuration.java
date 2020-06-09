@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
@@ -91,7 +92,7 @@ public class Configuration {
   /**
    * Язык приложения по умолчанию
    */
-  String defaultLanguage;
+  Either<String, Language> defaultLanguage;
   /**
    * Режим управления блокировкой данных
    */
@@ -138,6 +139,10 @@ public class Configuration {
    */
   Map<String, CommonModule> commonModules;
   /**
+   * Доступные языки конфигурации, ключ - код языка
+   */
+  Map<String, Language> languages;
+  /**
    * Корневой каталог конфигурации
    */
   Path rootPath;
@@ -150,6 +155,7 @@ public class Configuration {
     modulesBySupport = Collections.emptyMap();
     modulesByObject = Collections.emptyMap();
     commonModules = Collections.emptyMap();
+    languages = Collections.emptyMap();
 
     rootPath = null;
     name = "";
@@ -160,7 +166,7 @@ public class Configuration {
     scriptVariant = ScriptVariant.ENGLISH;
 
     defaultRunMode = "";
-    defaultLanguage = "";
+    defaultLanguage = Either.left(""); // пустой язык
     dataLockControlMode = "";
     objectAutonumerationMode = "";
     modalityUseMode = UseMode.USE;
@@ -173,10 +179,14 @@ public class Configuration {
     children = getAllChildren(mdoConfiguration);
     childrenByMdoRef = new HashMap<>();
     commonModules = new CaseInsensitiveMap<>();
+    languages = new HashMap<>();
     children.forEach((MDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof CommonModule) {
         this.commonModules.put(mdo.getName(), (CommonModule) mdo);
+      }
+      if (mdo instanceof Language) {
+        this.languages.put(((Language) mdo).getLanguageCode(), (Language) mdo);
       }
     });
 

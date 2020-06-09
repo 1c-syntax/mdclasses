@@ -85,4 +85,6 @@ public class DesignerProperties {
   @XStreamAlias("ObjectAutonumerationMode")
   private String objectAutonumerationMode = "";
 
+  @XStreamAlias("LanguageCode")
+  private String languageCode = "";
 }

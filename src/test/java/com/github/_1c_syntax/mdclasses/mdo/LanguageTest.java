@@ -46,6 +46,7 @@ class LanguageTest extends AbstractMDOTest {
       "1b5f5cd6-14b2-422e-ab6c-1103fd375982");
     checkNoChildren(mdo);
     checkNoModules(mdo);
+    assertThat(((Language) mdo).getLanguageCode()).isEqualTo("ru");
   }
 
 }
