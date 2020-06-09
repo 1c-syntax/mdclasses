@@ -250,7 +250,7 @@ public class MDOPathUtils {
 
   /**
    * Получает путь к файлу-модулю объекта метаданных для формата конфигуратора относительно произвольного каталога, по имени
-   * объекта метаднных и типу модуля
+   * объекта метаданных и типу модуля
    */
   private static Path getModulePathDesigner(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
