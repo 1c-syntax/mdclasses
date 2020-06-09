@@ -48,12 +48,17 @@ public class Subsystem extends MDObjectBase {
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
+  /**
+   * Признак "Включать в командный интерфейс"
+   */
+  private boolean includeInCommandInterface;
+
   public Subsystem(DesignerMDO designerMDO) {
     super(designerMDO);
     List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     designerMDO.getProperties().getContent()
       .getItems().forEach(item -> newChildren.add(Either.left(item)));
-
+    includeInCommandInterface = designerMDO.getProperties().isIncludeInCommandInterface();
     newChildren.addAll(designerMDO.getChildObjects().getChildren());
     setChildren(newChildren);
   }

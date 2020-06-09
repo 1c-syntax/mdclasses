@@ -42,6 +42,8 @@ class SubsystemTest extends AbstractMDOTest {
     checkNoChildren(mdo);
     checkNoModules(mdo);
 
+    assertThat(((Subsystem) mdo).isIncludeInCommandInterface()).isTrue();
+
     var children = ((Subsystem) mdo).getChildren();
     assertThat(children).hasSize(2);
     assertThat(children)
@@ -97,6 +99,7 @@ class SubsystemTest extends AbstractMDOTest {
       "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
     checkNoChildren(mdo);
     checkNoModules(mdo);
+    assertThat(((Subsystem) mdo).isIncludeInCommandInterface()).isTrue();
 
     var children = ((Subsystem) mdo).getChildren();
     assertThat(children).hasSize(4);
