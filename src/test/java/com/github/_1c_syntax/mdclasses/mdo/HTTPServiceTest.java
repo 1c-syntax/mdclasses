@@ -41,6 +41,20 @@ class HTTPServiceTest extends AbstractMDOTest {
     checkNoChildren(mdo);
     checkModules(((MDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
       ModuleType.HTTPServiceModule);
+    assertThat(((HTTPService) mdo).getUrlTemplates()).hasSize(1);
+    ((HTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+      checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
+        ModuleType.UNKNOWN, httpServiceURLTemplate);
+      httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
+        checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL", MDOType.HTTP_SERVICE_METHOD,
+          ModuleType.UNKNOWN, httpServiceMethod));
+    });
+    assertThat(((HTTPService) mdo).getUrlTemplates())
+      .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
+      .hasSize(2)
+      .extracting(HTTPServiceMethod::getHandler)
+      .anyMatch("ШаблонURLМетод"::equals)
+      .anyMatch("ШаблонURLМетод1"::equals);
   }
 
   @Override
@@ -50,6 +64,21 @@ class HTTPServiceTest extends AbstractMDOTest {
     checkBaseField(mdo, HTTPService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    checkModules(((MDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
+      ModuleType.HTTPServiceModule);
+    assertThat(((HTTPService) mdo).getUrlTemplates()).hasSize(1);
+    ((HTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+      checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
+        ModuleType.UNKNOWN, httpServiceURLTemplate);
+      httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
+        checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1", MDOType.HTTP_SERVICE_METHOD,
+          ModuleType.UNKNOWN, httpServiceMethod));
+    });
+    assertThat(((HTTPService) mdo).getUrlTemplates())
+      .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
+      .hasSize(2)
+      .extracting(HTTPServiceMethod::getHandler)
+      .anyMatch("ШаблонURL1Метод2"::equals)
+      .anyMatch("ШаблонURL1Метод1"::equals);
   }
 }

@@ -9,6 +9,35 @@
 			<ReuseSessions>AutoUse</ReuseSessions>
 			<SessionMaxAge>20</SessionMaxAge>
 		</Properties>
-		<ChildObjects/>
+		<ChildObjects>
+			<URLTemplate uuid="82b6ade4-b8c1-40ea-b9ee-d529b184c5dc">
+				<Properties>
+					<Name>ШаблонURL1</Name>
+					<Synonym/>
+					<Comment/>
+					<Template>/*</Template>
+				</Properties>
+				<ChildObjects>
+					<Method uuid="6255c7e0-f3c8-4c1f-bc1a-4882647c0f35">
+						<Properties>
+							<Name>Метод1</Name>
+							<Synonym/>
+							<Comment/>
+							<HTTPMethod>GET</HTTPMethod>
+							<Handler>ШаблонURL1Метод1</Handler>
+						</Properties>
+					</Method>
+					<Method uuid="7b6bf2c8-eee3-461c-a062-be7815666274">
+						<Properties>
+							<Name>Метод2</Name>
+							<Synonym/>
+							<Comment/>
+							<HTTPMethod>DELETE</HTTPMethod>
+							<Handler>ШаблонURL1Метод2</Handler>
+						</Properties>
+					</Method>
+				</ChildObjects>
+			</URLTemplate>
+		</ChildObjects>
 	</HTTPService>
 </MetaDataObject>

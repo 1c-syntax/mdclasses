@@ -118,7 +118,8 @@ public class MDObjectComplex extends MDObjectBSL {
   private void computeRecalculations(Path folder, List<String> recalculationNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.RECALCULATION)
       .ifPresent((Path childrenFolder) -> {
-        var recalculations = readDesignerMDOChildren(childrenFolder, MDOType.RECALCULATION, Recalculation.class, recalculationNames);
+        var recalculations = readDesignerMDOChildren(childrenFolder, MDOType.RECALCULATION,
+          Recalculation.class, recalculationNames);
         setAttributes(recalculations.stream().map(MDOAttribute.class::cast).collect(Collectors.toList()));
       });
 

@@ -41,6 +41,12 @@ class WebServiceTest extends AbstractMDOTest {
     checkNoChildren(mdo);
     checkModules(((MDObjectBSL) mdo).getModules(), 1, "WebServices/WebСервис1",
       ModuleType.WEBServiceModule);
+    assertThat(((WebService) mdo).getOperations()).hasSize(2);
+    assertThat(((WebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
+      .anyMatch("Операция1"::equals)
+      .anyMatch("Операция11"::equals);
+    ((WebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
+      checkChild("WebService.WebСервис1", MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
   }
 
   @Override
@@ -51,5 +57,11 @@ class WebServiceTest extends AbstractMDOTest {
       "d7f9b06b-0799-486e-adff-c45a2d5b8101");
     checkNoChildren(mdo);
     assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((WebService) mdo).getOperations()).hasSize(2);
+    assertThat(((WebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
+      .anyMatch("Операция1"::equals)
+      .anyMatch("Операция2"::equals);
+    ((WebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
+      checkChild("WebService.WebСервис1", MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
   }
 }

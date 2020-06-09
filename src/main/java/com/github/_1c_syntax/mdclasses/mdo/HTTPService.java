@@ -23,19 +23,35 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class HTTPService extends MDObjectBSL {
 
+  /**
+   * Шаблоны URL HTTP-сервиса
+   */
+  @XStreamImplicit
+  private List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
+
   public HTTPService(DesignerMDO designerMDO) {
     super(designerMDO);
+    var templates = new ArrayList<>(urlTemplates);
+    designerMDO.getChildObjects().getHttpUrlTemplates().forEach((DesignerMDO urlTemplate) ->
+      templates.add(new HTTPServiceURLTemplate(urlTemplate))
+    );
+    urlTemplates = templates;
   }
 
   @Override

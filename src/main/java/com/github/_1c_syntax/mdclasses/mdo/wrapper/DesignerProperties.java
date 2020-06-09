@@ -84,7 +84,8 @@ public class DesignerProperties {
   private String dataLockControlMode = "";
   @XStreamAlias("ObjectAutonumerationMode")
   private String objectAutonumerationMode = "";
-
+  @XStreamAlias("ProcedureName")
+  private String wsOperationProcedureName = "";
   @XStreamAlias("LanguageCode")
   private String languageCode = "";
   @XStreamAlias("IncludeInCommandInterface")

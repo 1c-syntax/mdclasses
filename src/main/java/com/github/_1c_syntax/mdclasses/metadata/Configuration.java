@@ -22,6 +22,8 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.HTTPService;
+import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
@@ -29,6 +31,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -272,6 +275,17 @@ public class Configuration {
             if (child instanceof TabularSection) {
               allChildren.addAll(((TabularSection) child).getAttributes());
             }
+          });
+        }
+        // операции веб-сервиса
+        if (mdo instanceof WebService) {
+          allChildren.addAll(((WebService) mdo).getOperations());
+        }
+        // дочерние http-сервиса
+        if (mdo instanceof HTTPService) {
+          ((HTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+            allChildren.add(httpServiceURLTemplate);
+            allChildren.addAll(httpServiceURLTemplate.getHttpServiceMethods());
           });
         }
       });
