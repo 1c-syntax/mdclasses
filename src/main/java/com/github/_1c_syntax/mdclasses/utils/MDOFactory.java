@@ -23,9 +23,9 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
-import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
+import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
@@ -42,6 +42,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
@@ -153,6 +154,24 @@ public class MDOFactory {
     }
 
     return mdo;
+  }
+
+  /**
+   * Создает объект языка если вдруг его не оказалось в данных конфигурации
+   *
+   * @param scriptVariant - вариант языка конфигурации
+   * @return - созданный и минимально заполненный объект языка
+   */
+  public static Language fakeLanguage(ScriptVariant scriptVariant) {
+    var lang = new Language();
+    if (scriptVariant == ScriptVariant.ENGLISH) {
+      lang.setName("English");
+      lang.setLanguageCode("en");
+    } else {
+      lang.setName("Русский");
+      lang.setLanguageCode("ru");
+    }
+    return lang;
   }
 
   private void computeAllMDObject(MDOConfiguration configuration,
