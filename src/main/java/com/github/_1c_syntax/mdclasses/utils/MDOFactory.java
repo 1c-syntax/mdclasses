@@ -179,8 +179,8 @@ public class MDOFactory {
                                   Path rootPath) {
     List<Either<String, MDObjectBase>> children =
       configuration.getChildren().parallelStream()
-        .map((Either<String, MDObjectBase> child) ->
-          readChildMDO(configurationSource, rootPath, child)).collect(Collectors.toList());
+        .map(child -> readChildMDO(configurationSource, rootPath, child))
+        .collect(Collectors.toList());
 
     configuration.setChildren(children);
   }
