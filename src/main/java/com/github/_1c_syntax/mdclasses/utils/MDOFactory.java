@@ -177,8 +177,8 @@ public class MDOFactory {
   private void computeAllMDObject(MDOConfiguration configuration,
                                   ConfigurationSource configurationSource,
                                   Path rootPath) {
-    List<Either<String, MDObjectBase>> children = new ArrayList<>();
-    configuration.getChildren().forEach((Either<String, MDObjectBase> child) -> {
+    List<Either<String, MDObjectBase>> children = Collections.synchronizedList(new ArrayList<>());
+    configuration.getChildren().parallelStream().forEach((Either<String, MDObjectBase> child) -> {
       if (child.isRight()) {
         children.add(child);
       } else {
