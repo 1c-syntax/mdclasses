@@ -95,7 +95,7 @@ public class Configuration {
   /**
    * Язык приложения по умолчанию
    */
-  Either<String, Language> defaultLanguage;
+  Language defaultLanguage;
   /**
    * Режим управления блокировкой данных
    */
@@ -169,7 +169,7 @@ public class Configuration {
     scriptVariant = ScriptVariant.ENGLISH;
 
     defaultRunMode = "";
-    defaultLanguage = Either.left(""); // пустой язык
+    defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
     dataLockControlMode = "";
     objectAutonumerationMode = "";
     modalityUseMode = UseMode.USE;
@@ -207,9 +207,14 @@ public class Configuration {
     }
 
     scriptVariant = mdoConfiguration.getScriptVariant();
-
     defaultRunMode = mdoConfiguration.getDefaultRunMode();
-    defaultLanguage = mdoConfiguration.getDefaultLanguage();
+
+    if (mdoConfiguration.getDefaultLanguage().isRight()) {
+      defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
+    } else {
+      defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
+    }
+
     dataLockControlMode = mdoConfiguration.getDataLockControlMode();
     objectAutonumerationMode = mdoConfiguration.getObjectAutonumerationMode();
     modalityUseMode = mdoConfiguration.getModalityUseMode();
@@ -347,4 +352,5 @@ public class Configuration {
       }
     });
   }
+
 }
