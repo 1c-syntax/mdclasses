@@ -177,33 +177,30 @@ public class MDOFactory {
   private void computeAllMDObject(MDOConfiguration configuration,
                                   ConfigurationSource configurationSource,
                                   Path rootPath) {
-    List<Either<String, MDObjectBase>> children = Collections.synchronizedList(new ArrayList<>());
-    configuration.getChildren().parallelStream().forEach((Either<String, MDObjectBase> child) -> {
-      if (child.isRight()) {
-        children.add(child);
-      } else {
-        var value = child.getLeft();
-        var dotPosition = value.indexOf('.');
-        var type = MDOType.fromValue(value.substring(0, dotPosition));
-        var name = value.substring(dotPosition + 1);
-
-        if (type.isPresent()) {
-          var mdo = MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name)
-            .flatMap((Path pathValue) -> readMDObject(configurationSource, type.get(), pathValue));
-          if (mdo.isPresent()) {
-            children.add(Either.right(mdo.get()));
-          } else {
-            // мусор сохраним
-            children.add(child);
-          }
-        } else {
-          // мусор сохраним
-          children.add(child);
-        }
-      }
-    });
+    List<Either<String, MDObjectBase>> children =
+    configuration.getChildren().parallelStream()
+      .map((Either<String, MDObjectBase> child) ->
+         readChildMDO(configurationSource, rootPath, child)).collect(Collectors.toList());
 
     configuration.setChildren(children);
+  }
+
+  private static Either<String, MDObjectBase> readChildMDO(ConfigurationSource configurationSource,
+                                                           Path rootPath,
+                                                           Either<String, MDObjectBase> child) {
+    if (!child.isRight()) {
+      var value = child.getLeft();
+      var dotPosition = value.indexOf('.');
+      var type = MDOType.fromValue(value.substring(0, dotPosition));
+      var name = value.substring(dotPosition + 1);
+
+      if (type.isPresent()) {
+        var mdo = MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name)
+          .flatMap((Path pathValue) -> readMDObject(configurationSource, type.get(), pathValue));
+        return mdo.<Either<String, MDObjectBase>>map(Either::right).orElse(child);
+      }
+    }
+    return child;
   }
 
   private static void setDefaultConfigurationLanguage(MDOConfiguration configuration) {
