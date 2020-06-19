@@ -188,8 +188,7 @@ class ConfigurationTest {
       new CompatibilityMode(3, 14))).isEqualTo(0);
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
-    assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
-    assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
+    assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
@@ -467,8 +466,7 @@ class ConfigurationTest {
       .isEqualTo(0);
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
-    assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
-    assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
+    assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEmpty();
