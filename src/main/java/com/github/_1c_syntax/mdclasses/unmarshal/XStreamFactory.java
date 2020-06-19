@@ -68,7 +68,9 @@ import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -259,6 +261,8 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter(UseMode.class));
     xStream.registerConverter(new EnumConverter(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter(ConfigurationExtensionPurpose.class));
+    xStream.registerConverter(new EnumConverter(ObjectBelonging.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
 

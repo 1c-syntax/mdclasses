@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -98,6 +99,16 @@ public class MDOConfiguration extends MDObjectBSL {
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
+  /**
+   * Назначение расширения конфигурации
+   */
+  private ConfigurationExtensionPurpose configurationExtensionPurpose = ConfigurationExtensionPurpose.PATCH;
+
+  /**
+   * Префикс собственных объектов расширения
+   */
+  private String namePrefix = "";
+
   public MDOConfiguration(DesignerMDO designerMDO) {
     super(designerMDO);
     var designerProperties = designerMDO.getProperties();
@@ -112,6 +123,8 @@ public class MDOConfiguration extends MDObjectBSL {
     synchronousExtensionAndAddInCallUseMode = designerProperties.getSynchronousExtensionAndAddInCallUseMode();
     synchronousPlatformExtensionAndAddInCallUseMode =
       designerProperties.getSynchronousPlatformExtensionAndAddInCallUseMode();
+    configurationExtensionPurpose = designerProperties.getConfigurationExtensionPurpose();
+    namePrefix = designerProperties.getNamePrefix();
 
     children = designerMDO.getChildObjects().getChildren();
   }

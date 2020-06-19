@@ -22,29 +22,30 @@
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
 /**
- * Типы атрибутов (реквизитов)
+ * Возможные виды расширений
  */
-public enum AttributeType {
-  ATTRIBUTE("Attribute"),
-  DIMENSION("Dimension"),
-  RESOURCE("Resource"),
-  TABULAR_SECTION("TabularSection"),
-  RECALCULATION("Recalculation"),
-  ACCOUNTING_FLAG("AccountingFlag"),
-  EXT_DIMENSION_ACCOUNTING_FLAG("ExtDimensionAccountingFlag"),
-  COLUMN("Column"),
-  ADDRESSING_ATTRIBUTE("AddressingAttribute"),
-  UNKNOWN("");
+public enum ConfigurationExtensionPurpose {
+  CUSTOMIZATION("Customization"),
+  ADD_ON("AddOn"),
+  PATCH("Path");
 
-  private final String shortClassName;
+  private final String value;
 
-  AttributeType(String shortName) {
-    this.shortClassName = shortName;
+  ConfigurationExtensionPurpose(String value) {
+    this.value = value;
   }
 
-  public String getClassName() {
-    return shortClassName;
+  public static ConfigurationExtensionPurpose fromValue(String value) {
+    for (ConfigurationExtensionPurpose configurationExtensionPurpose : ConfigurationExtensionPurpose.values()) {
+      if (configurationExtensionPurpose.value.equals(value)) {
+        return configurationExtensionPurpose;
+      }
+    }
+    throw new IllegalArgumentException(value);
+  }
+
+  public String value() {
+    return value;
   }
 
 }
-

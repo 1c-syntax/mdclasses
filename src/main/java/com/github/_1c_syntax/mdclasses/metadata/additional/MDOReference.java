@@ -58,7 +58,7 @@ public class MDOReference {
    */
   public MDOReference(MDObjectBase mdo, MDObjectBase parent) {
     this(mdo);
-    if(mdo instanceof MDOAttribute) {
+    if (mdo instanceof MDOAttribute) {
       mdoRef = ((MDOAttribute) mdo).getAttributeType().getClassName() + "." + mdo.getName();
     }
 

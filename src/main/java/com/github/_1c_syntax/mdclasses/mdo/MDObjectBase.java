@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -70,6 +71,11 @@ public class MDObjectBase implements MDOExtensions {
   protected List<Subsystem> includedSubsystems = Collections.emptyList();
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  protected ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Используется для заполнения объекта на основании информации формата конфигуратора
    *
    * @param designerMDO - Служебный объект, содержащий данные в формате конфигуратора.
@@ -78,6 +84,7 @@ public class MDObjectBase implements MDOExtensions {
     uuid = designerMDO.getUuid();
     name = designerMDO.getProperties().getName();
     comment = designerMDO.getProperties().getComment();
+    objectBelonging = designerMDO.getProperties().getObjectBelonging();
   }
 
   @Override

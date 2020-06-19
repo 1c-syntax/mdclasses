@@ -33,10 +33,13 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
@@ -150,6 +153,21 @@ public class Configuration {
    */
   Path rootPath;
 
+  /**
+   * Назначение расширения конфигурации
+   */
+  ConfigurationExtensionPurpose configurationExtensionPurpose;
+
+  /**
+   * Префикс собственных объектов расширения
+   */
+  String namePrefix;
+
+  /**
+   * Тип конфигурации
+   */
+  ConfigurationType configurationType;
+
   private Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
     children = Collections.emptySet();
@@ -163,6 +181,7 @@ public class Configuration {
     rootPath = null;
     name = "";
     uuid = "";
+    namePrefix = "";
 
     compatibilityMode = new CompatibilityMode();
     configurationExtensionCompatibilityMode = new CompatibilityMode();
@@ -175,6 +194,8 @@ public class Configuration {
     modalityUseMode = UseMode.USE;
     synchronousExtensionAndAddInCallUseMode = UseMode.USE;
     synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+    configurationExtensionPurpose = ConfigurationExtensionPurpose.PATCH;
+    configurationType = ConfigurationType.CONFIGURATION;
   }
 
   private Configuration(MDOConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
@@ -197,6 +218,7 @@ public class Configuration {
 
     name = mdoConfiguration.getName();
     uuid = mdoConfiguration.getUuid();
+    namePrefix = mdoConfiguration.getNamePrefix();
 
     // если версии совместимости конфигурации нет, то используем версию совместимости расширения
     configurationExtensionCompatibilityMode = mdoConfiguration.getConfigurationExtensionCompatibilityMode();
@@ -221,6 +243,13 @@ public class Configuration {
     synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
     synchronousPlatformExtensionAndAddInCallUseMode =
       mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
+    configurationExtensionPurpose = mdoConfiguration.getConfigurationExtensionPurpose();
+
+    if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
+      configurationType = ConfigurationType.EXTENSION;
+    } else {
+      configurationType = ConfigurationType.CONFIGURATION;
+    }
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();

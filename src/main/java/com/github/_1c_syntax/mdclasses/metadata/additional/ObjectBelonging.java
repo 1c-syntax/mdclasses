@@ -22,29 +22,29 @@
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
 /**
- * Типы атрибутов (реквизитов)
+ * Признак принадлежности объекта к конфигурации
  */
-public enum AttributeType {
-  ATTRIBUTE("Attribute"),
-  DIMENSION("Dimension"),
-  RESOURCE("Resource"),
-  TABULAR_SECTION("TabularSection"),
-  RECALCULATION("Recalculation"),
-  ACCOUNTING_FLAG("AccountingFlag"),
-  EXT_DIMENSION_ACCOUNTING_FLAG("ExtDimensionAccountingFlag"),
-  COLUMN("Column"),
-  ADDRESSING_ATTRIBUTE("AddressingAttribute"),
-  UNKNOWN("");
+public enum ObjectBelonging {
+  ADOPTED("Adopted"),
+  OWN("Own");
 
-  private final String shortClassName;
+  private final String value;
 
-  AttributeType(String shortName) {
-    this.shortClassName = shortName;
+  ObjectBelonging(String value) {
+    this.value = value;
   }
 
-  public String getClassName() {
-    return shortClassName;
+  public static ObjectBelonging fromValue(String value) {
+    for (ObjectBelonging objectBelonging : ObjectBelonging.values()) {
+      if (objectBelonging.value.equals(value)) {
+        return objectBelonging;
+      }
+    }
+    throw new IllegalArgumentException(value);
+  }
+
+  public String value() {
+    return value;
   }
 
 }
-
