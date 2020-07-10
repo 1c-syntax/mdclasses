@@ -56,11 +56,11 @@ public class ParseSupportData {
     LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
     try {
       read();
+    } catch (FileNotFoundException exception) {
+      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
     } catch (NumberFormatException exception) {
       LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
       supportMap.clear();
-    } catch (FileNotFoundException exception) {
-      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
     }
   }
 
