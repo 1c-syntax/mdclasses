@@ -27,16 +27,18 @@ import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ParseSupportDataTest {
 
-  private final File parentConfigurationsBin = new File("src/test/resources", "ParentConfigurations.bin");
+  private static final String BASE_PATH = "src/test/resources/support/support";
+  private final File parentConfigurationsBin = new File(BASE_PATH, "correct/ParentConfigurations.bin");
 
   @Test
-  public void testRead() {
+  void testRead() {
     ParseSupportData parseSupportData = new ParseSupportData(parentConfigurationsBin.toPath());
     assertThat(parseSupportData.getSupportMap().size()).isNotZero();
   }
@@ -84,6 +86,13 @@ public class ParseSupportDataTest {
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_SUPPORTED)).isTrue();
     path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl").toAbsolutePath();
     assertThat(configuration.getModuleSupport(path.toUri()).containsValue(SupportVariant.NOT_EDITABLE)).isTrue();
+  }
+
+  @Test
+  void testIncorrectSupportBin() {
+    var path = Path.of(BASE_PATH, "incorrect/ParentConfigurations.bin");
+    ParseSupportData parseSupportData = new ParseSupportData(path);
+    assertThat(parseSupportData.getSupportMap()).hasSize(0);
   }
 
 }
