@@ -48,7 +48,7 @@ public class ParseSupportData {
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
 
-  private Path pathToBinFile;
+  private final Path pathToBinFile;
   private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
   public ParseSupportData(Path pathToBinFile) {
@@ -56,12 +56,15 @@ public class ParseSupportData {
     LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
     try {
       read();
-    } catch (FileNotFoundException e) {
-      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", e);
+    } catch (FileNotFoundException exception) {
+      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
+    } catch (NumberFormatException exception) {
+      LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
+      supportMap.clear();
     }
   }
 
-  private void read() throws FileNotFoundException {
+  private void read() throws FileNotFoundException, NumberFormatException {
 
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());
