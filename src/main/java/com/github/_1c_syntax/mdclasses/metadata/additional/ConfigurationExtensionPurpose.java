@@ -27,8 +27,9 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 public enum ConfigurationExtensionPurpose {
   CUSTOMIZATION("Customization"),
   ADD_ON("AddOn"),
-  PATCH("Patch");
-
+  PATCH("Patch"),
+  UNDEFINED("Undefined")
+  ;
 
   private final String value;
 

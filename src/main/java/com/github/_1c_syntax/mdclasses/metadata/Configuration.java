@@ -194,7 +194,7 @@ public class Configuration {
     modalityUseMode = UseMode.USE;
     synchronousExtensionAndAddInCallUseMode = UseMode.USE;
     synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
-    configurationExtensionPurpose = ConfigurationExtensionPurpose.PATCH;
+    configurationExtensionPurpose = ConfigurationExtensionPurpose.UNDEFINED;
     configurationType = ConfigurationType.CONFIGURATION;
   }
 
@@ -243,12 +243,13 @@ public class Configuration {
     synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
     synchronousPlatformExtensionAndAddInCallUseMode =
       mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
-    configurationExtensionPurpose = mdoConfiguration.getConfigurationExtensionPurpose();
 
     if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
       configurationType = ConfigurationType.EXTENSION;
+      configurationExtensionPurpose = mdoConfiguration.getConfigurationExtensionPurpose();
     } else {
       configurationType = ConfigurationType.CONFIGURATION;
+      configurationExtensionPurpose = ConfigurationExtensionPurpose.UNDEFINED;
     }
 
     Map<URI, ModuleType> modulesType = new HashMap<>();

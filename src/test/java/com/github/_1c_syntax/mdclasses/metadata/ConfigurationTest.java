@@ -63,12 +63,12 @@ class ConfigurationTest {
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
     assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(38);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(38);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
@@ -154,12 +154,12 @@ class ConfigurationTest {
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
     assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(2);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(2);
     assertThat(configuration.getCommonModules()).hasSize(2);
     assertThat(configuration.getLanguages()).hasSize(1);
@@ -289,12 +289,12 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
     assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(17);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(17);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
