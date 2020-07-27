@@ -95,15 +95,15 @@ public class MDOFactory {
       }
       // проставляем mdo ссылку для операций
       if (mdoValue instanceof WebService) {
-        ((WebService) mdoValue).getOperations().forEach(
+        ((WebService) mdoValue).getOperations().parallelStream().forEach(
           (WEBServiceOperation child) -> computeMdoReferenceForChild(mdoValue, child));
       }
       // проставляем mdo ссылку дочерних объектов http сервиса
       if (mdoValue instanceof HTTPService) {
-        ((HTTPService) mdoValue).getUrlTemplates().forEach(
+        ((HTTPService) mdoValue).getUrlTemplates().parallelStream().forEach(
           (HTTPServiceURLTemplate child) -> {
             computeMdoReferenceForChild(mdoValue, child);
-            child.getHttpServiceMethods().forEach(method -> computeMdoReferenceForChild(child, method));
+            child.getHttpServiceMethods().parallelStream().forEach(method -> computeMdoReferenceForChild(child, method));
           });
       }
       // загружаем дочерние подсистемы для каждой подсистемы
@@ -216,10 +216,10 @@ public class MDOFactory {
   }
 
   private static void computeMdoReference(MDObjectComplex mdoValue) {
-    mdoValue.getForms().forEach((Form child) -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getTemplates().forEach((Template child) -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getCommands().forEach((Command child) -> computeMdoReferenceForChild(mdoValue, child));
-    mdoValue.getAttributes().forEach((MDOAttribute child) -> {
+    mdoValue.getForms().parallelStream().forEach((Form child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getTemplates().parallelStream().forEach((Template child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getCommands().parallelStream().forEach((Command child) -> computeMdoReferenceForChild(mdoValue, child));
+    mdoValue.getAttributes().parallelStream().forEach((MDOAttribute child) -> {
       if (child.getMdoReference() == null) {
         child.setMdoReference(new MDOReference(child, mdoValue));
       }
@@ -256,7 +256,7 @@ public class MDOFactory {
     List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var folder = Paths.get(rootFolder.get().toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
     final var startName = MDOType.SUBSYSTEM.getName() + ".";
-    children.stream()
+    children.parallelStream()
       .filter(Either::isLeft)
       .filter((Either<String, MDObjectBase> child) -> child.getLeft().startsWith(startName)
         && !child.getLeft().contains("-")) // для исключения битых ссылок сразу
@@ -294,12 +294,12 @@ public class MDOFactory {
 
           MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.FORM)
             .ifPresent((Path formFolder) ->
-              ((MDObjectComplex) mdo).getForms().forEach((Form form) ->
+              ((MDObjectComplex) mdo).getForms().parallelStream().forEach((Form form) ->
                 setModules(form, configurationSource, formFolder)));
 
           MDOPathUtils.getChildrenFolder(mdo.getName(), folder, MDOType.COMMAND)
             .ifPresent((Path commandFolder) ->
-              ((MDObjectComplex) mdo).getCommands().forEach((Command command) ->
+              ((MDObjectComplex) mdo).getCommands().parallelStream().forEach((Command command) ->
                 setModules(command, configurationSource, commandFolder)));
         }
       });
