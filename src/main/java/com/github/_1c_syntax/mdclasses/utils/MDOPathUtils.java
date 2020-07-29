@@ -37,14 +37,14 @@ import java.util.Optional;
 @UtilityClass
 public class MDOPathUtils {
 
-  private static final String FILE_SEPARATOR = System.getProperty("file.separator");
-  private static final String EXTENSION_XML = "xml";
-  private static final String EXTENSION_MDO = "mdo";
+  private final String FILE_SEPARATOR = System.getProperty("file.separator");
+  private final String EXTENSION_XML = "xml";
+  private final String EXTENSION_MDO = "mdo";
 
   /**
    * Расширение MDO файла с учетом типа исходников
    */
-  public static String mdoExtension(ConfigurationSource configurationSource, boolean withDot) {
+  public String mdoExtension(ConfigurationSource configurationSource, boolean withDot) {
     String dot = ".";
     if (!withDot) {
       dot = "";
@@ -63,8 +63,8 @@ public class MDOPathUtils {
   /**
    * Получает путь к MDO файлу объекта метаданных относительно корня проекта с учетом указанном типа исходников
    */
-  public static Optional<Path> getMDOPath(ConfigurationSource configurationSource,
-                                          Path rootPath, MDOType type, String name) {
+  public Optional<Path> getMDOPath(ConfigurationSource configurationSource,
+                                   Path rootPath, MDOType type, String name) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = getMDOPathEDT(getMDOTypeFolderPathEDT(rootPath, type), name);
@@ -79,7 +79,7 @@ public class MDOPathUtils {
   /**
    * Получает путь к MDO файлу объекта метаданных относительно корня проекта
    */
-  public static Optional<Path> getMDOPath(ConfigurationSource configurationSource, Path folder, String name) {
+  public Optional<Path> getMDOPath(ConfigurationSource configurationSource, Path folder, String name) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = getMDOPathEDT(folder, name);
@@ -94,7 +94,7 @@ public class MDOPathUtils {
   /**
    * Получает каталог проекта по файлу описания конфигурации
    */
-  public static Optional<Path> getRootPathByConfigurationMDO(ConfigurationSource configurationSource, Path mdoPath) {
+  public Optional<Path> getRootPathByConfigurationMDO(ConfigurationSource configurationSource, Path mdoPath) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = Paths.get(FilenameUtils.getFullPathNoEndSeparator(
@@ -109,9 +109,9 @@ public class MDOPathUtils {
 
   /**
    * Получает каталог типа объекта метаданных относительно корня проекта с учетом указанном типа исходников
-   * по описанию объекта метаданныъ
+   * по описанию объекта метаданных
    */
-  public static Optional<Path> getMDOTypeFolderByMDOPath(ConfigurationSource configurationSource, Path mdoPath) {
+  public Optional<Path> getMDOTypeFolderByMDOPath(ConfigurationSource configurationSource, Path mdoPath) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = getMDOTypeFolderPathByMDOPathEDT(mdoPath);
@@ -145,13 +145,13 @@ public class MDOPathUtils {
   }
 
   /**
-   * Получает путь к файлу-модулю объекта метаданных относительно корня проекта, по имени объекта метаднных
+   * Получает путь к файлу-модулю объекта метаданных относительно корня проекта, по имени объекта метаданных
    * и типу модуля с учетом указанном типа исходников
    */
-  public static Optional<Path> getModulePath(ConfigurationSource configurationSource,
-                                             Path folder,
-                                             String name,
-                                             ModuleType moduleType) {
+  public Optional<Path> getModulePath(ConfigurationSource configurationSource,
+                                      Path folder,
+                                      String name,
+                                      ModuleType moduleType) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = getModulePathEDT(folder, name, moduleType);
@@ -166,7 +166,7 @@ public class MDOPathUtils {
   /**
    * Возвращает путь к файлу описания поддержки
    */
-  public static Optional<Path> getParentConfigurationsPath(ConfigurationSource configurationSource, Path rootPath) {
+  public Optional<Path> getParentConfigurationsPath(ConfigurationSource configurationSource, Path rootPath) {
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.getName(), "ParentConfigurations.bin");
@@ -194,7 +194,7 @@ public class MDOPathUtils {
   /**
    * Получает каталог типа объекта метаданных для EDT формата относительно корня проекта
    */
-  private static Path getMDOTypeFolderPathEDT(Path rootPath, MDOType type) {
+  private Path getMDOTypeFolderPathEDT(Path rootPath, MDOType type) {
     return Paths.get(rootPath.toString(), "src", type.getGroupName());
   }
 
@@ -202,7 +202,7 @@ public class MDOPathUtils {
    * Получает каталог типа объекта метаданных для EDT формата относительно корня проекта
    * по пути MDO файла
    */
-  private static Path getMDOTypeFolderPathByMDOPathEDT(Path mdoPath) {
+  private Path getMDOTypeFolderPathByMDOPathEDT(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
       FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }
@@ -211,15 +211,15 @@ public class MDOPathUtils {
    * Получает путь к MDO файлу объекта метаданных для EDT формата относительно произвольного каталога
    * Используется для получения дочерних метаданных
    */
-  private static Path getMDOPathEDT(Path folder, String name) {
+  private Path getMDOPathEDT(Path folder, String name) {
     return Paths.get(folder.toString(), name, name + "." + EXTENSION_MDO);
   }
 
   /**
    * Получает путь к файлу-модулю объекта метаданных для EDT формата относительно произвольного каталога, по имени
-   * объекта метаднных и типу модуля
+   * объекта метаданных и типу модуля
    */
-  private static Path getModulePathEDT(Path folder, String name, ModuleType moduleType) {
+  private Path getModulePathEDT(Path folder, String name, ModuleType moduleType) {
     return Paths.get(folder.toString(), name, moduleType.getFileName());
   }
 
@@ -228,7 +228,7 @@ public class MDOPathUtils {
   /**
    * Получает каталог типа объекта метаданных для формата конфигуратора относительно корня проекта
    */
-  private static Path getMDOTypeFolderPathDesigner(Path rootPath, MDOType type) {
+  private Path getMDOTypeFolderPathDesigner(Path rootPath, MDOType type) {
     return Paths.get(rootPath.toString(), type.getGroupName());
   }
 
@@ -236,7 +236,7 @@ public class MDOPathUtils {
    * Получает каталог типа объекта метаданных для формата конфигуратора относительно корня проекта
    * по пути MDO файла
    */
-  private static Path getMDOTypeFolderPathByMDOPathDesigner(Path mdoPath) {
+  private Path getMDOTypeFolderPathByMDOPathDesigner(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString()));
   }
 
@@ -244,7 +244,7 @@ public class MDOPathUtils {
    * Получает путь к MDO файлу объекта метаданных для формата конфигуратора относительно произвольного каталога
    * Используется для получения дочерних метаданных
    */
-  private static Path getMDOPathDesigner(Path folder, String name) {
+  private Path getMDOPathDesigner(Path folder, String name) {
     return Paths.get(folder.toString(), name + "." + EXTENSION_XML);
   }
 
@@ -252,7 +252,7 @@ public class MDOPathUtils {
    * Получает путь к файлу-модулю объекта метаданных для формата конфигуратора относительно произвольного каталога,
    * по имени объекта метаданных и типу модуля
    */
-  private static Path getModulePathDesigner(Path folder, String name, ModuleType moduleType) {
+  private Path getModulePathDesigner(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
     if (moduleType == ModuleType.FormModule) {
       subdirectory += FILE_SEPARATOR + "Form";

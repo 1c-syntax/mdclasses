@@ -41,7 +41,7 @@ class ReportTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo, 1, "Report.Отчет1", "МакетОтчета");
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
+    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((MDObjectBSL) mdo).getModules(), 2, "Reports/Отчет1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
   }
@@ -55,7 +55,7 @@ class ReportTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

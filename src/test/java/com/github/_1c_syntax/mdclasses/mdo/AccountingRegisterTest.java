@@ -44,7 +44,7 @@ class AccountingRegisterTest extends AbstractMDOTest {
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2,
       "AccountingRegister.РегистрБухгалтерии1",
       AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
   @Override
@@ -59,6 +59,6 @@ class AccountingRegisterTest extends AbstractMDOTest {
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2,
       "AccountingRegister.РегистрБухгалтерии1",
       AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

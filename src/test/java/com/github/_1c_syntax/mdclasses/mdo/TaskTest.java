@@ -43,7 +43,7 @@ class TaskTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
       AttributeType.ADDRESSING_ATTRIBUTE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
   @Override
@@ -57,6 +57,6 @@ class TaskTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
       AttributeType.ADDRESSING_ATTRIBUTE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

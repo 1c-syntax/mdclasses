@@ -52,9 +52,9 @@ class ConfigurationTest {
     assertThat(configuration.getUuid()).isEqualTo("46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(),
-      new CompatibilityMode(3, 10))).isEqualTo(0);
+      new CompatibilityMode(3, 10))).isZero();
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
-      new CompatibilityMode(3, 10))).isEqualTo(0);
+      new CompatibilityMode(3, 10))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
@@ -143,9 +143,9 @@ class ConfigurationTest {
     assertThat(configuration.getUuid()).isEqualTo("04c0322d-92da-49ab-87e5-82c8dcd50888");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(),
-      new CompatibilityMode(3, 14))).isEqualTo(0);
+      new CompatibilityMode(3, 14))).isZero();
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
-      new CompatibilityMode(3, 14))).isEqualTo(0);
+      new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.ENGLISH);
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("English");
@@ -183,9 +183,9 @@ class ConfigurationTest {
     assertThat(configuration.getUuid()).isEqualTo("6e50eb82-8de4-4aff-ba5b-6b441963a56a");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
     assertThat(CompatibilityMode.compareTo(configuration.getCompatibilityMode(),
-      new CompatibilityMode(3, 10))).isEqualTo(0);
+      new CompatibilityMode(3, 10))).isZero();
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
-      new CompatibilityMode(3, 14))).isEqualTo(0);
+      new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
@@ -199,7 +199,7 @@ class ConfigurationTest {
     assertThat(configuration.getNamePrefix()).isEqualTo("Расш_");
 
     assertThat(configuration.getModulesByType()).hasSize(9);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(9);
     assertThat(configuration.getCommonModules()).hasSize(9);
     assertThat(configuration.getLanguages()).hasSize(1);
@@ -276,10 +276,10 @@ class ConfigurationTest {
 
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
@@ -367,10 +367,10 @@ class ConfigurationTest {
     Configuration configuration = Configuration.create(srcPath.toPath());
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 16)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 16)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
@@ -385,7 +385,7 @@ class ConfigurationTest {
     assertThat(configuration.getNamePrefix()).isEqualTo("Расш_");
 
     assertThat(configuration.getModulesByType()).hasSize(9);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -460,10 +460,10 @@ class ConfigurationTest {
     Configuration configuration = Configuration.create(srcPath.toPath());
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
@@ -478,7 +478,7 @@ class ConfigurationTest {
     assertThat(configuration.getNamePrefix()).isEqualTo("Расш1_");
 
     assertThat(configuration.getModulesByType()).hasSize(2);
-    assertThat(configuration.getModulesBySupport()).hasSize(0);
+    assertThat(configuration.getModulesBySupport()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(5);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);

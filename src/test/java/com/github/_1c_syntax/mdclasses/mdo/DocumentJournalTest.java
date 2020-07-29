@@ -60,7 +60,7 @@ class DocumentJournalTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
       AttributeType.COLUMN);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

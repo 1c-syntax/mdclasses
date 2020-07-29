@@ -60,7 +60,7 @@ class SequenceTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Sequence.Последовательность1",
       AttributeType.DIMENSION);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

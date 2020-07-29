@@ -43,7 +43,7 @@ class CalculationRegisterTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 3, "CalculationRegister.РегистрРасчета1",
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
 
   }
 
@@ -58,7 +58,7 @@ class CalculationRegisterTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 4, "CalculationRegister.РегистрРасчета1",
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

@@ -28,7 +28,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * Класс-ссылка на объект в формате ВидОбъектаМетаднных.ИмяОбъекта
+ * Класс-ссылка на объект в формате ВидОбъектаМетаданных.ИмяОбъекта
  */
 @Data
 @EqualsAndHashCode(of = {"mdoRef"})

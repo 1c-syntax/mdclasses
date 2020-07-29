@@ -44,7 +44,7 @@ class AccumulationRegisterTest extends AbstractMDOTest {
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2,
       "AccumulationRegister.РегистрНакопления1",
       AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
 
   }
 
@@ -60,6 +60,6 @@ class AccumulationRegisterTest extends AbstractMDOTest {
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2,
       "AccumulationRegister.РегистрНакопления1",
       AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

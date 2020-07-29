@@ -188,7 +188,7 @@ abstract class AbstractMDOTest {
   protected void checkForms(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getForms()).hasSize(0);
+    assertThat(mdoComplex.getForms()).isEmpty();
   }
 
   /**
@@ -210,7 +210,7 @@ abstract class AbstractMDOTest {
   protected void checkTemplates(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getTemplates()).hasSize(0);
+    assertThat(mdoComplex.getTemplates()).isEmpty();
   }
 
   /**
@@ -232,7 +232,7 @@ abstract class AbstractMDOTest {
   protected void checkCommands(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getCommands()).hasSize(0);
+    assertThat(mdoComplex.getCommands()).isEmpty();
   }
 
   /**

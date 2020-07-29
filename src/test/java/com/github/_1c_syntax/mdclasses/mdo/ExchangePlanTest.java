@@ -41,7 +41,7 @@ class ExchangePlanTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
+    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((MDObjectBSL) mdo).getModules(), 1, "ExchangePlans/ПланОбмена1",
       ModuleType.ObjectModule);
 
@@ -56,8 +56,8 @@ class ExchangePlanTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).hasSize(0);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

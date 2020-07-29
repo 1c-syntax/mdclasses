@@ -57,10 +57,10 @@ class MDOConfigurationTest extends AbstractMDOTest {
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
@@ -129,15 +129,15 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkBaseField(mdo, MDOConfiguration.class, "Configuration",
       "04c0322d-92da-49ab-87e5-82c8dcd50888");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
 
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 14)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 14)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("English");
@@ -168,10 +168,10 @@ class MDOConfigurationTest extends AbstractMDOTest {
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");

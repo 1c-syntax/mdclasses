@@ -269,163 +269,57 @@ public class DesignerWrapper {
 
   private static Map<MDOType, Class<?>> computeTypesClasses() {
     Map<MDOType, Class<?>> classes = new EnumMap<>(MDOType.class);
-    for (MDOType mdoType : MDOType.values()) {
-      Class<?> clazz = null;
-      switch (mdoType) {
-        case ACCOUNTING_REGISTER:
-          clazz = AccountingRegister.class;
-          break;
-        case ACCUMULATION_REGISTER:
-          clazz = AccumulationRegister.class;
-          break;
-        case BUSINESS_PROCESS:
-          clazz = BusinessProcess.class;
-          break;
-        case CALCULATION_REGISTER:
-          clazz = CalculationRegister.class;
-          break;
-        case CATALOG:
-          clazz = Catalog.class;
-          break;
-        case CHART_OF_ACCOUNTS:
-          clazz = ChartOfAccounts.class;
-          break;
-        case CHART_OF_CALCULATION_TYPES:
-          clazz = ChartOfCalculationTypes.class;
-          break;
-        case CHART_OF_CHARACTERISTIC_TYPES:
-          clazz = ChartOfCharacteristicTypes.class;
-          break;
-        case COMMAND_GROUP:
-          clazz = CommandGroup.class;
-          break;
-        case COMMON_ATTRIBUTE:
-          clazz = CommonAttribute.class;
-          break;
-        case COMMON_COMMAND:
-          clazz = CommonCommand.class;
-          break;
-        case COMMON_FORM:
-          clazz = CommonForm.class;
-          break;
-        case COMMON_MODULE:
-          clazz = CommonModule.class;
-          break;
-        case COMMON_PICTURE:
-          clazz = CommonPicture.class;
-          break;
-        case COMMON_TEMPLATE:
-          clazz = CommonTemplate.class;
-          break;
-        case CONFIGURATION:
-          clazz = MDOConfiguration.class;
-          break;
-        case CONSTANT:
-          clazz = Constant.class;
-          break;
-        case DATA_PROCESSOR:
-          clazz = DataProcessor.class;
-          break;
-        case DEFINED_TYPE:
-          clazz = DefinedType.class;
-          break;
-        case DOCUMENT_JOURNAL:
-          clazz = DocumentJournal.class;
-          break;
-        case DOCUMENT_NUMERATOR:
-          clazz = DocumentNumerator.class;
-          break;
-        case DOCUMENT:
-          clazz = Document.class;
-          break;
-        case ENUM:
-          clazz = MDOEnum.class;
-          break;
-        case EVENT_SUBSCRIPTION:
-          clazz = EventSubscription.class;
-          break;
-        case EXCHANGE_PLAN:
-          clazz = ExchangePlan.class;
-          break;
-        case FILTER_CRITERION:
-          clazz = FilterCriterion.class;
-          break;
-        case FUNCTIONAL_OPTION:
-          clazz = FunctionalOption.class;
-          break;
-        case FUNCTIONAL_OPTIONS_PARAMETER:
-          clazz = FunctionalOptionsParameter.class;
-          break;
-        case HTTP_SERVICE:
-          clazz = HTTPService.class;
-          break;
-        case INFORMATION_REGISTER:
-          clazz = InformationRegister.class;
-          break;
-        case INTERFACE:
-          clazz = MDOInterface.class;
-          break;
-        case LANGUAGE:
-          clazz = Language.class;
-          break;
-        case REPORT:
-          clazz = Report.class;
-          break;
-        case ROLE:
-          clazz = Role.class;
-          break;
-        case SCHEDULED_JOB:
-          clazz = ScheduledJob.class;
-          break;
-        case SEQUENCE:
-          clazz = Sequence.class;
-          break;
-        case SESSION_PARAMETER:
-          clazz = SessionParameter.class;
-          break;
-        case SETTINGS_STORAGE:
-          clazz = SettingsStorage.class;
-          break;
-        case STYLE_ITEM:
-          clazz = StyleItem.class;
-          break;
-        case STYLE:
-          clazz = Style.class;
-          break;
-        case SUBSYSTEM:
-          clazz = Subsystem.class;
-          break;
-        case TASK:
-          clazz = Task.class;
-          break;
-        case WEB_SERVICE:
-          clazz = WebService.class;
-          break;
-        case WS_REFERENCE:
-          clazz = WSReference.class;
-          break;
-        case XDTO_PACKAGE:
-          clazz = XDTOPackage.class;
-          break;
-        case FORM:
-          clazz = Form.class;
-          break;
-        case COMMAND:
-          clazz = Command.class;
-          break;
-        case TEMPLATE:
-          clazz = Template.class;
-          break;
-        case RECALCULATION:
-          clazz = Recalculation.class;
-          break;
-        default:
-          // noop
-      }
-      if (clazz != null) {
-        classes.put(mdoType, clazz);
-      }
-    }
+
+    classes.put(MDOType.ACCOUNTING_REGISTER, AccountingRegister.class);
+    classes.put(MDOType.ACCUMULATION_REGISTER, AccumulationRegister.class);
+    classes.put(MDOType.BUSINESS_PROCESS, BusinessProcess.class);
+    classes.put(MDOType.CALCULATION_REGISTER, CalculationRegister.class);
+    classes.put(MDOType.CATALOG, Catalog.class);
+    classes.put(MDOType.CHART_OF_ACCOUNTS, ChartOfAccounts.class);
+    classes.put(MDOType.CHART_OF_CALCULATION_TYPES, ChartOfCalculationTypes.class);
+    classes.put(MDOType.CHART_OF_CHARACTERISTIC_TYPES, ChartOfCharacteristicTypes.class);
+    classes.put(MDOType.COMMAND_GROUP, CommandGroup.class);
+    classes.put(MDOType.COMMON_ATTRIBUTE, CommonAttribute.class);
+    classes.put(MDOType.COMMON_COMMAND, CommonCommand.class);
+    classes.put(MDOType.COMMON_FORM, CommonForm.class);
+    classes.put(MDOType.COMMON_MODULE, CommonModule.class);
+    classes.put(MDOType.COMMON_PICTURE, CommonPicture.class);
+    classes.put(MDOType.COMMON_TEMPLATE, CommonTemplate.class);
+    classes.put(MDOType.CONFIGURATION, MDOConfiguration.class);
+    classes.put(MDOType.CONSTANT, Constant.class);
+    classes.put(MDOType.DATA_PROCESSOR, DataProcessor.class);
+    classes.put(MDOType.DEFINED_TYPE, DefinedType.class);
+    classes.put(MDOType.DOCUMENT_JOURNAL, DocumentJournal.class);
+    classes.put(MDOType.DOCUMENT_NUMERATOR, DocumentNumerator.class);
+    classes.put(MDOType.DOCUMENT, Document.class);
+    classes.put(MDOType.ENUM, MDOEnum.class);
+    classes.put(MDOType.EVENT_SUBSCRIPTION, EventSubscription.class);
+    classes.put(MDOType.EXCHANGE_PLAN, ExchangePlan.class);
+    classes.put(MDOType.FILTER_CRITERION, FilterCriterion.class);
+    classes.put(MDOType.FUNCTIONAL_OPTION, FunctionalOption.class);
+    classes.put(MDOType.FUNCTIONAL_OPTIONS_PARAMETER, FunctionalOptionsParameter.class);
+    classes.put(MDOType.HTTP_SERVICE, HTTPService.class);
+    classes.put(MDOType.INFORMATION_REGISTER, InformationRegister.class);
+    classes.put(MDOType.INTERFACE, MDOInterface.class);
+    classes.put(MDOType.LANGUAGE, Language.class);
+    classes.put(MDOType.REPORT, Report.class);
+    classes.put(MDOType.ROLE, Role.class);
+    classes.put(MDOType.SCHEDULED_JOB, ScheduledJob.class);
+    classes.put(MDOType.SEQUENCE, Sequence.class);
+    classes.put(MDOType.SESSION_PARAMETER, SessionParameter.class);
+    classes.put(MDOType.SETTINGS_STORAGE, SettingsStorage.class);
+    classes.put(MDOType.STYLE_ITEM, StyleItem.class);
+    classes.put(MDOType.STYLE, Style.class);
+    classes.put(MDOType.SUBSYSTEM, Subsystem.class);
+    classes.put(MDOType.TASK, Task.class);
+    classes.put(MDOType.WEB_SERVICE, WebService.class);
+    classes.put(MDOType.WS_REFERENCE, WSReference.class);
+    classes.put(MDOType.XDTO_PACKAGE, XDTOPackage.class);
+    classes.put(MDOType.FORM, Form.class);
+    classes.put(MDOType.COMMAND, Command.class);
+    classes.put(MDOType.TEMPLATE, Template.class);
+    classes.put(MDOType.RECALCULATION, Recalculation.class);
+
     return classes;
   }
 }

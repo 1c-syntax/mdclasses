@@ -32,7 +32,7 @@ import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ParseSupportDataTest {
+class ParseSupportDataTest {
 
   private static final String BASE_PATH = "src/test/resources/support/support";
   private final File parentConfigurationsBin = new File(BASE_PATH, "correct/ParentConfigurations.bin");

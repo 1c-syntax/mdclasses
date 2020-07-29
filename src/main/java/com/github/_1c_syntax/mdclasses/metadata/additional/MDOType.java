@@ -49,7 +49,7 @@ public enum MDOType {
   COMMON_COMMAND("CommonCommand", "CommonCommands", "ОбщаяКоманда", "ОбщиеКоманды"),
   COMMON_FORM("CommonForm", "CommonForms", "ОбщаяФорма", "ОбщиеФормы"),
   COMMON_MODULE("CommonModule", "CommonModules", "ОбщийМодуль", "ОбщиеМодули"),
-  COMMON_PICTURE("CommonPicture", "CommonPictures", "ОбщаяКартика", "ОбщиеКартинки"),
+  COMMON_PICTURE("CommonPicture", "CommonPictures", "ОбщаяКартинка", "ОбщиеКартинки"),
   COMMON_TEMPLATE("CommonTemplate", "CommonTemplates", "ОбщийМакет", "ОбщиеМакеты"),
   CONFIGURATION("Configuration", "", "Конфигурация", ""),
   CONSTANT("Constant", "Constants", "Константа", "Константы"),
@@ -125,18 +125,14 @@ public enum MDOType {
   }
 
   /**
-   * Возвращает список элементов перечисления с возможностью фильтрации
+   * Возвращает список элементов перечисления без дочерних
    *
-   * @param withoutChildren - возможность исключить дочерние типы
-   * @return - список с примененным фильтром
+   * @return - список с примененным фильтром (без дочерних)
    */
-  public static List<MDOType> values(boolean withoutChildren) {
-    if (withoutChildren) {
-      return Arrays.stream(values()).filter(mdoType ->
-        !childTypes.contains(mdoType) && mdoType != UNKNOWN)
-        .collect(Collectors.toList());
-    }
-    return Arrays.asList(values());
+  public static List<MDOType> valuesWithoutChildren() {
+    return Arrays.stream(values()).filter(mdoType ->
+      !childTypes.contains(mdoType) && mdoType != UNKNOWN)
+      .collect(Collectors.toList());
   }
 
   /**
