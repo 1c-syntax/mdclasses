@@ -24,14 +24,12 @@ package com.github._1c_syntax.mdclasses.metadata;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.github._1c_syntax.utils.Absolute;
-import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -47,7 +45,7 @@ class ConfigurationTest {
 
     File srcPath = new File("src/test/resources/metadata/edt");
     Configuration configuration = Configuration.create(srcPath.toPath());
-
+    assertThat(configuration).isNotInstanceOf(ConfigurationExtension.class);
     assertThat(configuration.getName()).isEqualTo("Конфигурация");
     assertThat(configuration.getUuid()).isEqualTo("46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
@@ -63,9 +61,6 @@ class ConfigurationTest {
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
-    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -139,6 +134,7 @@ class ConfigurationTest {
     File srcPath = new File("src/test/resources/metadata/edt_en");
     Configuration configuration = Configuration.create(srcPath.toPath());
 
+    assertThat(configuration).isNotInstanceOf(ConfigurationExtension.class);
     assertThat(configuration.getName()).isEqualTo("Configuration");
     assertThat(configuration.getUuid()).isEqualTo("04c0322d-92da-49ab-87e5-82c8dcd50888");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
@@ -154,9 +150,6 @@ class ConfigurationTest {
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
-    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -179,6 +172,7 @@ class ConfigurationTest {
     File srcPath = new File("src/test/resources/metadata/edt_ext");
     Configuration configuration = Configuration.create(srcPath.toPath());
 
+    assertThat(configuration).isInstanceOf(ConfigurationExtension.class);
     assertThat(configuration.getName()).isEqualTo("Расширение");
     assertThat(configuration.getUuid()).isEqualTo("6e50eb82-8de4-4aff-ba5b-6b441963a56a");
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EDT);
@@ -194,9 +188,8 @@ class ConfigurationTest {
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.EXTENSION);
-    assertThat(configuration.getNamePrefix()).isEqualTo("Расш_");
+    assertThat(((ConfigurationExtension) configuration).getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(((ConfigurationExtension) configuration).getNamePrefix()).isEqualTo("Расш_");
 
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -274,6 +267,7 @@ class ConfigurationTest {
     File srcPath = new File("src/test/resources/metadata/original");
     Configuration configuration = Configuration.create(srcPath.toPath());
 
+    assertThat(configuration).isNotInstanceOf(ConfigurationExtension.class);
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
@@ -289,9 +283,6 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.CONFIGURATION);
-    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -365,6 +356,8 @@ class ConfigurationTest {
 
     File srcPath = new File("src/test/resources/metadata/original_ext");
     Configuration configuration = Configuration.create(srcPath.toPath());
+
+    assertThat(configuration).isInstanceOf(ConfigurationExtension.class);
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 16)))
       .isZero();
@@ -380,9 +373,8 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.CUSTOMIZATION);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.EXTENSION);
-    assertThat(configuration.getNamePrefix()).isEqualTo("Расш_");
+    assertThat(((ConfigurationExtension) configuration).getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.CUSTOMIZATION);
+    assertThat(((ConfigurationExtension) configuration).getNamePrefix()).isEqualTo("Расш_");
 
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -458,6 +450,7 @@ class ConfigurationTest {
 
     File srcPath = new File("src/test/resources/metadata/original_ext2");
     Configuration configuration = Configuration.create(srcPath.toPath());
+    assertThat(configuration).isInstanceOf(ConfigurationExtension.class);
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
@@ -473,9 +466,8 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
-    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.ADD_ON);
-    assertThat(configuration.getConfigurationType()).isEqualTo(ConfigurationType.EXTENSION);
-    assertThat(configuration.getNamePrefix()).isEqualTo("Расш1_");
+    assertThat(((ConfigurationExtension) configuration).getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.ADD_ON);
+    assertThat(((ConfigurationExtension) configuration).getNamePrefix()).isEqualTo("Расш1_");
 
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -509,7 +501,6 @@ class ConfigurationTest {
     assertThat(configuration).isNotNull();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
     assertThat(configuration.getRootPath()).isNotPresent();
-    assertThat(configuration.getNamePrefix()).isEmpty();
 
     File file = new File("src/test/resources/metadata/edt/src/Constants/Константа1/ManagerModule.bsl");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.UNKNOWN);
@@ -519,6 +510,14 @@ class ConfigurationTest {
     assertThat(configuration2).isNotNull();
     assertThat(configuration2.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
     assertThat(configuration2.getChildren()).isEmpty();
+
+    Configuration configuration3 = Configuration.createExtension();
+
+    assertThat(configuration3).isNotNull();
+    assertThat(configuration3.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
+    assertThat(configuration3.getChildren()).isEmpty();
+    assertThat(((ConfigurationExtension) configuration3).getConfigurationExtensionPurpose())
+      .isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
   }
 
   @Test
