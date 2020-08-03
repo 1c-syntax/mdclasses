@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="12881534-1e26-4791-9def-0926cd47dff7">
+  <producedTypes>
+    <selectionType typeId="6637ce37-4234-4cae-89cf-329bbf2e754b" valueTypeId="b0b8a589-3584-4ea1-8df1-c6456a6da6bd"/>
+    <listType typeId="93e2535c-df63-4bd9-aa37-607a205060c8" valueTypeId="0c1f6003-b3da-4e44-a07a-5bd837fa6a50"/>
+    <managerType typeId="bd8855fc-a455-4d3b-b16f-bbb82834e8c2" valueTypeId="46a2101c-1a30-422a-8cbb-17d2324e4f94"/>
+    <recordSetType typeId="c3c36d20-ea75-450f-bc45-4e0af843ad0e" valueTypeId="1bffb460-199e-430d-afc3-fa95d897de4f"/>
+    <recordKeyType typeId="1098c35c-6a94-4e12-8de1-6fb974c200d4" valueTypeId="76ed140a-57f0-4ef7-8670-1adc71608ab5"/>
+    <recordType typeId="cd17c187-cf65-4566-ace1-f0e00967cb64" valueTypeId="1f27a351-ac4c-4158-92be-4a5b716bcbd5"/>
+  </producedTypes>
+  <name>РегистрНакопления1</name>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:AccumulationRegisterExtension">
+    <registerType>Checked</registerType>
+  </extension>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="615c62f8-f84d-4da3-bf37-b5bdc4017793">
+    <name>Ресурс1</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <type>Checked</type>
+    </extension>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+      </numberQualifiers>
+    </type>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="af959d8d-13a2-4f74-9854-c418b11f1c46">
+    <name>Измерение1</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <type>Checked</type>
+    </extension>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

@@ -33,7 +33,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import io.vavr.control.Either;
 
 /**
- * Конвертирует строки с mdoref в Either для последующей обработки
+ * Конвертирует строки с mdoRef в Either для последующей обработки
  */
 public class PairConverter implements Converter {
 

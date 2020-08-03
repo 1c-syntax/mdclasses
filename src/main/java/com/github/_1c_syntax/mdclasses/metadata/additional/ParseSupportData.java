@@ -49,7 +49,7 @@ public class ParseSupportData {
   private static final int COUNT_ELEMENT_OBJECT = 4;
 
   private final Path pathToBinFile;
-  private Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
+  private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
   public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
@@ -64,7 +64,7 @@ public class ParseSupportData {
     }
   }
 
-  private void read() throws FileNotFoundException, NumberFormatException {
+  private void read() throws FileNotFoundException {
 
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());

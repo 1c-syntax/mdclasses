@@ -103,7 +103,8 @@ public class MDOFactory {
         ((HTTPService) mdoValue).getUrlTemplates().parallelStream().forEach(
           (HTTPServiceURLTemplate child) -> {
             computeMdoReferenceForChild(mdoValue, child);
-            child.getHttpServiceMethods().parallelStream().forEach(method -> computeMdoReferenceForChild(child, method));
+            child.getHttpServiceMethods().parallelStream().forEach(method ->
+              computeMdoReferenceForChild(child, method));
           });
       }
       // загружаем дочерние подсистемы для каждой подсистемы
@@ -162,7 +163,7 @@ public class MDOFactory {
    * @param scriptVariant - вариант языка конфигурации
    * @return - созданный и минимально заполненный объект языка
    */
-  public static Language fakeLanguage(ScriptVariant scriptVariant) {
+  public Language fakeLanguage(ScriptVariant scriptVariant) {
     var lang = new Language();
     if (scriptVariant == ScriptVariant.ENGLISH) {
       lang.setName("English");
@@ -185,7 +186,7 @@ public class MDOFactory {
     configuration.setChildren(children);
   }
 
-  private static Either<String, MDObjectBase> readChildMDO(ConfigurationSource configurationSource,
+  private Either<String, MDObjectBase> readChildMDO(ConfigurationSource configurationSource,
                                                            Path rootPath,
                                                            Either<String, MDObjectBase> child) {
     if (!child.isRight()) {
@@ -203,7 +204,7 @@ public class MDOFactory {
     return child;
   }
 
-  private static void setDefaultConfigurationLanguage(MDOConfiguration configuration) {
+  private void setDefaultConfigurationLanguage(MDOConfiguration configuration) {
     if (configuration.getDefaultLanguage().isLeft()) {
       var defaultLang = configuration.getDefaultLanguage().getLeft();
 
@@ -215,7 +216,7 @@ public class MDOFactory {
     }
   }
 
-  private static void computeMdoReference(MDObjectComplex mdoValue) {
+  private void computeMdoReference(MDObjectComplex mdoValue) {
     mdoValue.getForms().parallelStream().forEach((Form child) -> computeMdoReferenceForChild(mdoValue, child));
     mdoValue.getTemplates().parallelStream().forEach((Template child) -> computeMdoReferenceForChild(mdoValue, child));
     mdoValue.getCommands().parallelStream().forEach((Command child) -> computeMdoReferenceForChild(mdoValue, child));
@@ -235,7 +236,7 @@ public class MDOFactory {
     });
   }
 
-  private static void computeMdoReferenceForChild(MDObjectBase mdoValue, MDObjectBase child) {
+  private void computeMdoReferenceForChild(MDObjectBase mdoValue, MDObjectBase child) {
     if (child.getMdoReference() == null) {
       child.setMdoReference(new MDOReference(child, mdoValue));
     }
@@ -286,7 +287,7 @@ public class MDOFactory {
     subsystem.setChildren(newChildren);
   }
 
-  private static void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
+  private void computeMdoModules(ConfigurationSource configurationSource, MDObjectBSL mdo, Path mdoPath) {
     MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath, mdo.getType())
       .ifPresent((Path folder) -> {
         setModules(mdo, configurationSource, folder);
@@ -305,7 +306,7 @@ public class MDOFactory {
       });
   }
 
-  private static void setModules(MDObjectBSL mdo, ConfigurationSource configurationSource, Path folder) {
+  private void setModules(MDObjectBSL mdo, ConfigurationSource configurationSource, Path folder) {
     List<MDOModule> modules = new ArrayList<>();
 
     var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdo.getType(), Collections.emptySet());

@@ -37,6 +37,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
@@ -45,7 +46,7 @@ import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import io.vavr.control.Either;
-import lombok.Value;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
@@ -58,99 +59,102 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-@Value
+/**
+ * Корневой класс конфигурации 1с
+ */
+@Data
 @Slf4j
 public class Configuration {
 
   /**
    * Имя конфигурации
    */
-  String name;
+  private String name;
   /**
    * Уникальный идентификатор конфигурации
    */
-  String uuid;
+  private String uuid;
 
   /**
    * Вариант исходников конфигурации
    */
-  ConfigurationSource configurationSource;
+  private ConfigurationSource configurationSource;
   /**
    * Режим совместимости
    */
-  CompatibilityMode compatibilityMode;
+  private CompatibilityMode compatibilityMode;
   /**
    * Режим совместимости расширений
    */
-  CompatibilityMode configurationExtensionCompatibilityMode;
+  private CompatibilityMode configurationExtensionCompatibilityMode;
   /**
    * Язык, на котором ведется разработка
    */
-  ScriptVariant scriptVariant;
+  private ScriptVariant scriptVariant;
 
   /**
    * Режим запуска приложения по умолчанию
    */
-  String defaultRunMode;
+  private String defaultRunMode;
   /**
    * Язык приложения по умолчанию
    */
-  Language defaultLanguage;
+  private Language defaultLanguage;
   /**
    * Режим управления блокировкой данных
    */
-  String dataLockControlMode;
+  private String dataLockControlMode;
   /**
    * Режим автонумерации объектов
    */
-  String objectAutonumerationMode;
+  private String objectAutonumerationMode;
   /**
    * Режим использования модальных окон
    */
-  UseMode modalityUseMode;
+  private UseMode modalityUseMode;
   /**
    * Режим использования синхронных вызовов
    */
-  UseMode synchronousExtensionAndAddInCallUseMode;
+  private UseMode synchronousExtensionAndAddInCallUseMode;
   /**
    * Режим использования синхронных вызовов для платформенных объектов и расширений
    */
-  UseMode synchronousPlatformExtensionAndAddInCallUseMode;
+  private UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
-  Map<URI, ModuleType> modulesByType;
+  private Map<URI, ModuleType> modulesByType;
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  Map<URI, MDObjectBase> modulesByObject;
+  private Map<URI, MDObjectBase> modulesByObject;
   /**
    * Режимы поддержки в связке со ссылкой на файлы
    */
-  Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
+  private Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  Set<MDObjectBase> children;
+  private Set<MDObjectBase> children;
   /**
    * Дочерние объекты конфигурации с MDO ссылками на них
    */
-  Map<MDOReference, MDObjectBase> childrenByMdoRef;
+  private Map<MDOReference, MDObjectBase> childrenByMdoRef;
   /**
    * Дочерние общие модули
    */
-  Map<String, CommonModule> commonModules;
+  private Map<String, CommonModule> commonModules;
   /**
    * Доступные языки конфигурации, ключ - код языка
    */
-  Map<String, Language> languages;
+  private Map<String, Language> languages;
   /**
    * Корневой каталог конфигурации
    */
-  Path rootPath;
+  private Path rootPath;
 
-  private Configuration() {
+  protected Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
     children = Collections.emptySet();
     childrenByMdoRef = Collections.emptyMap();
@@ -175,9 +179,10 @@ public class Configuration {
     modalityUseMode = UseMode.USE;
     synchronousExtensionAndAddInCallUseMode = UseMode.USE;
     synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+
   }
 
-  private Configuration(MDOConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
+  protected Configuration(MDOConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
     configurationSource = source;
     children = getAllChildren(mdoConfiguration);
     childrenByMdoRef = new HashMap<>();
@@ -250,6 +255,13 @@ public class Configuration {
   }
 
   /**
+   * Метод для создания пустой конфигурации расширения
+   */
+  public static Configuration createExtension() {
+    return new ConfigurationExtension();
+  }
+
+  /**
    * Метод создания конфигурации каталогу исходных файлов
    *
    * @param rootPath - Адрес корневого каталога конфигурации
@@ -259,7 +271,12 @@ public class Configuration {
     if (configurationSource != ConfigurationSource.EMPTY) {
       var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
       if (configurationMDO.isPresent()) {
-        return new Configuration((MDOConfiguration) configurationMDO.get(), configurationSource, rootPath);
+        MDOConfiguration mdoConfiguration = (MDOConfiguration) configurationMDO.get();
+        if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
+          return new ConfigurationExtension(mdoConfiguration, configurationSource, rootPath);
+        } else {
+          return new Configuration(mdoConfiguration, configurationSource, rootPath);
+        }
       }
     }
 

@@ -37,12 +37,12 @@ import java.util.Set;
 @UtilityClass
 public class MDOUtils {
 
-  private static final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
+  private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
 
   /**
    * Определяет тип исходников по корню проекта
    */
-  public static ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
+  public ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
     ConfigurationSource configurationSource = ConfigurationSource.EMPTY;
     if (rootPath != null) {
       String rootPathString = rootPath.toString();
@@ -68,7 +68,7 @@ public class MDOUtils {
     return MODULE_TYPES_FOR_MDO_TYPES;
   }
 
-  private static Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {
+  private Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {
     Map<MDOType, Set<ModuleType>> result = new EnumMap<>(MDOType.class);
 
     for (MDOType mdoType : MDOType.values()) {

@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +50,11 @@ abstract class AbstractMDOTest {
   private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
 
   /**
+   * Каталог исходников расширения конфигурации в формате EDT
+   */
+  private static final String SRC_EXT_EDT = "src/test/resources/metadata/edt_ext/src";
+
+  /**
    * Каталог исходников конфигурации в формате EDT для англоязычной конфигурации
    */
   private static final String SRC_EDT_EN = "src/test/resources/metadata/edt_en/src";
@@ -59,12 +65,28 @@ abstract class AbstractMDOTest {
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
 
   /**
+   * Каталог исходников расширения конфигурации в формате Конфигуратора
+   */
+  private static final String SRC_EXT_DESIGNER = "src/test/resources/metadata/original_ext";
+
+  /**
    * Тип тестируемого объекта метаданных
    */
   private final MDOType mdoType;
 
+  /**
+   * Ппинадлженость объектов по умолчанию
+   */
+  private final ObjectBelonging objectBelonging;
+
   AbstractMDOTest(MDOType type) {
     mdoType = type;
+    objectBelonging = ObjectBelonging.OWN;
+  }
+
+  AbstractMDOTest(MDOType type, ObjectBelonging belonging) {
+    mdoType = type;
+    objectBelonging = belonging;
   }
 
   /**
@@ -87,6 +109,18 @@ abstract class AbstractMDOTest {
    */
   protected MDObjectBase getMDObjectEDT(String partPath) {
     var mdo = MDOFactory.readMDObject(ConfigurationSource.EDT, mdoType, Paths.get(SRC_EDT, partPath));
+    assertThat(mdo).isPresent();
+    return mdo.get();
+  }
+
+  /**
+   * Возвращает объект метаданных по файлу описания в формате EDT для расширения
+   *
+   * @param partPath путь к файлу описания объекта
+   * @return прочитанный объект
+   */
+  protected MDObjectBase getMDObjectEDTExt(String partPath) {
+    var mdo = MDOFactory.readMDObject(ConfigurationSource.EDT, mdoType, Paths.get(SRC_EXT_EDT, partPath));
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -116,6 +150,18 @@ abstract class AbstractMDOTest {
   }
 
   /**
+   * Возвращает объект метаданных по файлу описания в формате Конфигуратора
+   *
+   * @param partPath путь к файлу описания объекта
+   * @return прочитанный объект
+   */
+  protected MDObjectBase getMDObjectDesignerExt(String partPath) {
+    var mdo = MDOFactory.readMDObject(ConfigurationSource.DESIGNER, mdoType, Paths.get(SRC_EXT_DESIGNER, partPath));
+    assertThat(mdo).isPresent();
+    return mdo.get();
+  }
+
+  /**
    * Проверяет корректность чтения базовых полей
    */
   protected void checkBaseField(MDObjectBase mdo, Class<?> clazz, String name, String uuid) {
@@ -132,6 +178,8 @@ abstract class AbstractMDOTest {
     assertThat(mdo.getMdoReference().getMdoRef())
       .isEqualTo(mdoType.getName() + "." + name);
 
+    assertThat(mdo.getObjectBelonging()).isEqualTo(objectBelonging);
+
   }
 
   /**
@@ -140,7 +188,7 @@ abstract class AbstractMDOTest {
   protected void checkForms(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getForms()).hasSize(0);
+    assertThat(mdoComplex.getForms()).isEmpty();
   }
 
   /**
@@ -162,7 +210,7 @@ abstract class AbstractMDOTest {
   protected void checkTemplates(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getTemplates()).hasSize(0);
+    assertThat(mdoComplex.getTemplates()).isEmpty();
   }
 
   /**
@@ -184,7 +232,7 @@ abstract class AbstractMDOTest {
   protected void checkCommands(MDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(MDObjectComplex.class);
     var mdoComplex = (MDObjectComplex) mdo;
-    assertThat(mdoComplex.getCommands()).hasSize(0);
+    assertThat(mdoComplex.getCommands()).isEmpty();
   }
 
   /**
@@ -208,6 +256,9 @@ abstract class AbstractMDOTest {
     assertThat(children).allMatch(MDObjectBase.class::isInstance);
     assertThat(children)
       .allMatch(mdoAttribute -> List.of(types).contains(mdoAttribute.getAttributeType()));
+
+    assertThat(children).allMatch(mdoAttribute -> mdoAttribute.getObjectBelonging() == objectBelonging);
+
     children.forEach(attribute -> {
       assertThat(attribute.getMdoReference())
         .isNotNull()
@@ -256,12 +307,14 @@ abstract class AbstractMDOTest {
     assertThat(child.getMdoReference().getMdoRef())
       .startsWith(parentName)
       .endsWith("." + type.getName() + "." + child.getName());
+
+    assertThat(child.getObjectBelonging()).isEqualTo(objectBelonging);
+
     if (child instanceof MDObjectBSL) {
       checkModules(((MDObjectBSL) child).getModules(), 1,
         type.getGroupName() + "/" + child.getName(), moduleType);
     }
   }
-
 
   protected static Path getMDOPathEDT(String path) {
     return Paths.get(SRC_EDT, path);
@@ -278,6 +331,4 @@ abstract class AbstractMDOTest {
   protected static Optional<MDObjectBase> getMDObjectDesigner(MDOType type, String partPath) {
     return MDOFactory.readMDObject(ConfigurationSource.DESIGNER, type, getMDOPathDesigner(partPath));
   }
-
-
 }

@@ -22,6 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -40,6 +42,8 @@ public class DesignerProperties {
   private String name;
   @XStreamAlias("Comment")
   private String comment = "";
+  @XStreamAlias("ObjectBelonging")
+  protected ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   @XStreamAlias("Server")
   private boolean server;
@@ -88,6 +92,11 @@ public class DesignerProperties {
   private String wsOperationProcedureName = "";
   @XStreamAlias("LanguageCode")
   private String languageCode = "";
+  @XStreamAlias("ConfigurationExtensionPurpose")
+  private ConfigurationExtensionPurpose configurationExtensionPurpose = ConfigurationExtensionPurpose.PATCH;
+  @XStreamAlias("NamePrefix")
+  private String namePrefix = "";
+
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
 

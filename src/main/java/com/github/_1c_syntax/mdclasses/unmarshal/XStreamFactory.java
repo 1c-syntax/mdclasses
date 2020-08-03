@@ -68,7 +68,9 @@ import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -142,7 +144,7 @@ public class XStreamFactory {
     };
     // автоопределение аннотаций
     xStream.autodetectAnnotations(true);
-    // игнорирование неизвестных тэгов
+    // игнорирование неизвестных тегов
     xStream.ignoreUnknownElements();
     // настройки безопасности доступа к данным
     xStream.setMode(XStream.NO_REFERENCES);
@@ -163,7 +165,7 @@ public class XStreamFactory {
   private void addFieldAliases(XStream xStream) {
 
     // дочерние элементы
-    MDOType.values(true).forEach((MDOType type) -> {
+    MDOType.valuesWithoutChildren().forEach((MDOType type) -> {
       xStream.aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
 
       if (type.getGroupName().isEmpty()) {
@@ -206,7 +208,7 @@ public class XStreamFactory {
     xStream.aliasField("content", Subsystem.class, CHILDREN_FIELD_NAME);
   }
 
-  private static void addClassAliases(XStream xStream) {
+  private void addClassAliases(XStream xStream) {
     xStream.alias("mdclass:AccountingRegister", AccountingRegister.class);
     xStream.alias("mdclass:AccumulationRegister", AccumulationRegister.class);
     xStream.alias("mdclass:BusinessProcess", BusinessProcess.class);
@@ -255,10 +257,12 @@ public class XStreamFactory {
     xStream.alias("MetaDataObject", DesignerWrapper.class);
   }
 
-  private static void addConverters(XStream xStream) {
+  private void addConverters(XStream xStream) {
     xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter(UseMode.class));
     xStream.registerConverter(new EnumConverter(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter(ConfigurationExtensionPurpose.class));
+    xStream.registerConverter(new EnumConverter(ObjectBelonging.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
 

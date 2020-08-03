@@ -22,8 +22,10 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import io.vavr.control.Either;
@@ -54,10 +56,10 @@ class MDOConfigurationTest extends AbstractMDOTest {
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
@@ -67,6 +69,9 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(52)
       .allMatch(Either::isRight);
@@ -123,15 +128,15 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkBaseField(mdo, MDOConfiguration.class, "Configuration",
       "04c0322d-92da-49ab-87e5-82c8dcd50888");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
 
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 14)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 14)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("English");
@@ -141,6 +146,9 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.ENGLISH);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(3)
       .allMatch(Either::isRight);
@@ -159,10 +167,10 @@ class MDOConfigurationTest extends AbstractMDOTest {
     var configuration = (MDOConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
       configuration.getCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
-      .isEqualTo(0);
+      .isZero();
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
@@ -172,6 +180,9 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+    assertThat(configuration.getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
+    assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(configuration.getNamePrefix()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(52)
       .allMatch(Either::isRight);
@@ -219,7 +230,6 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WEB_SERVICE, 1);
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
-
   }
 
   private void checkChildCount(MDOConfiguration configuration, MDOType type, int count) {

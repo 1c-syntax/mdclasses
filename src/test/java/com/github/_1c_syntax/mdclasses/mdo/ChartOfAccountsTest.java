@@ -60,7 +60,7 @@ class ChartOfAccountsTest extends AbstractMDOTest {
     checkCommands(mdo);
     checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2, "ChartOfAccounts.ПланСчетов1",
       AttributeType.ACCOUNTING_FLAG, AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

@@ -36,7 +36,7 @@ public enum AttributeType {
   ADDRESSING_ATTRIBUTE("AddressingAttribute"),
   UNKNOWN("");
 
-  private String shortClassName;
+  private final String shortClassName;
 
   AttributeType(String shortName) {
     this.shortClassName = shortName;

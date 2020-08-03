@@ -123,7 +123,8 @@ license {
             "**/*.xml",
             "**/*.json",
             "**/*.os",
-            "**/*.bsl"))
+            "**/*.bsl",
+            "**/*.orig"))
 }
 
 tasks.register("precommit") {

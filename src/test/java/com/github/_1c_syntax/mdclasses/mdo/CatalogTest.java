@@ -70,7 +70,7 @@ class CatalogTest extends AbstractMDOTest {
       .findFirst().get();
     checkAttributes(tabularSection.getAttributes(), 2,
       "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

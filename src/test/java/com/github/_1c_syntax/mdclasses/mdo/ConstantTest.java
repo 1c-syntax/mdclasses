@@ -50,6 +50,6 @@ class ConstantTest extends AbstractMDOTest {
     checkBaseField(mdo, Constant.class, "Константа1",
       "61e6a6f2-7057-4e93-96c3-7bd2559217f4");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).hasSize(0);
+    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
   }
 }
