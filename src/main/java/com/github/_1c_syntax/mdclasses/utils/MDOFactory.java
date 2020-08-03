@@ -46,6 +46,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -187,8 +188,8 @@ public class MDOFactory {
   }
 
   private Either<String, MDObjectBase> readChildMDO(ConfigurationSource configurationSource,
-                                                           Path rootPath,
-                                                           Either<String, MDObjectBase> child) {
+                                                    Path rootPath,
+                                                    Either<String, MDObjectBase> child) {
     if (!child.isRight()) {
       var value = child.getLeft();
       var dotPosition = value.indexOf('.');
@@ -257,12 +258,14 @@ public class MDOFactory {
     List<Either<String, MDObjectBase>> newChildren = new ArrayList<>();
     var folder = Paths.get(rootFolder.get().toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
     final var startName = MDOType.SUBSYSTEM.getName() + ".";
-    children.parallelStream()
+    children.stream() // параллелизм нельзя!!!! может произойти чтение подсистем из одного фала разными потоками
       .filter(Either::isLeft)
       .filter((Either<String, MDObjectBase> child) -> child.getLeft().startsWith(startName)
         && !child.getLeft().contains("-")) // для исключения битых ссылок сразу
       .forEach((Either<String, MDObjectBase> child) -> {
-        var subsystemName = child.getLeft().substring(startName.length());
+        // для обработки имен Subsystem._ДемоСервисныеПодсистемы.Subsystem._ДемоПолучениеФайловИзИнтернета
+        var subsystemObjectLastPosition = child.getLeft().lastIndexOf(startName);
+        var subsystemName = child.getLeft().substring(subsystemObjectLastPosition + startName.length());
         MDOPathUtils.getMDOPath(configurationSource, folder, subsystemName)
           .ifPresent((Path mdoPath) -> {
             var childSubsystem = readMDObjectFromFile(configurationSource, MDOType.SUBSYSTEM, mdoPath);
@@ -274,8 +277,11 @@ public class MDOFactory {
               computeSubsystemChildren(configurationSource, (Subsystem) mdoValue, mdoPath);
             });
             if (childSubsystem.isEmpty()) {
-              // вернем несуществующий объект обратно в набор
-              newChildren.add(child);
+              if (!child.getLeft().equals(subsystem.getMdoReference().getMdoRef())) {
+                // ссылку на самого себя исключаем
+                // вернем несуществующий объект обратно в набор
+                newChildren.add(child);
+              }
             }
           });
       });
