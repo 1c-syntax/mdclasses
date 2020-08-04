@@ -75,6 +75,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
 import com.thoughtworks.xstream.converters.basic.ByteConverter;
 import com.thoughtworks.xstream.converters.basic.DateConverter;
@@ -92,6 +93,7 @@ import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.util.Locale;
@@ -99,6 +101,7 @@ import java.util.Locale;
 /**
  * Класс для чтения XML и MDO файлов конфигурации
  */
+@Slf4j
 @UtilityClass
 public class XStreamFactory {
 
@@ -112,7 +115,14 @@ public class XStreamFactory {
    * Выполняет чтение объекта из XML файла
    */
   public Object fromXML(File file) {
-    return getXstream().fromXML(file);
+    Object result;
+    try {
+      result = getXstream().fromXML(file);
+    } catch (ConversionException e) {
+      LOGGER.error("Can't read file '{}' - it's broken \n: ", file.toString(), e);
+      throw e;
+    }
+    return result;
   }
 
   private XStream createXMLMapper() {

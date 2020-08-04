@@ -26,12 +26,14 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import com.thoughtworks.xstream.converters.ConversionException;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class XStreamFactoryTest {
 
@@ -63,6 +65,14 @@ class XStreamFactoryTest {
     assertThat(mdo).isEqualTo(mdo2);
   }
 
+  @Test
+  void testBrokenXml() {
+    assertThrows(ConversionException.class, () -> {
+      MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.CONFIGURATION,
+        Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
+    });
+  }
+
   private Path getMDOPathEDT(String path) {
     return Paths.get(SRC_EDT, path);
   }
@@ -70,4 +80,5 @@ class XStreamFactoryTest {
   private Path getMDOPathDesigner(String path) {
     return Paths.get(SRC_DESIGNER, path);
   }
+
 }
