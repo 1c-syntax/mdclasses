@@ -21,53 +21,120 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SubsystemTest {
+class SubsystemTest extends AbstractMDOTest {
+  SubsystemTest() {
+    super(MDOType.SUBSYSTEM);
+  }
 
-  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
-  private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
-
+  @Override
   @Test
   void testEDT() {
-    Subsystem mdo = (Subsystem) MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.SUBSYSTEM, getMDOPathEDT("Subsystems/ПерваяПодсистема/ПерваяПодсистема.mdo"));
-    assertThat(mdo).isNotNull();
-    assertThat(mdo.getChildren()).isNotNull();
-    assertThat(mdo.getChildren()).hasSize(2);
+    var mdo = getMDObjectEDT("Subsystems/ПерваяПодсистема/ПерваяПодсистема.mdo");
+    checkBaseField(mdo, Subsystem.class, "ПерваяПодсистема",
+      "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
+    checkNoChildren(mdo);
+    checkNoModules(mdo);
 
-    mdo = (Subsystem) MDOUtils.getMDObject(ConfigurationSource.EDT, MDOType.SUBSYSTEM, getMDOPathEDT("Subsystems/ПерваяПодсистема/Subsystems/ПочиненнаяСистема2/ПочиненнаяСистема2.mdo"));
-    assertThat(mdo).isNotNull();
-    assertThat(mdo.getChildren()).isNotNull();
-    assertThat(mdo.getChildren()).hasSize(2);
+    assertThat(((Subsystem) mdo).isIncludeInCommandInterface()).isTrue();
+
+    var children = ((Subsystem) mdo).getChildren();
+    assertThat(children).hasSize(2);
+    assertThat(children)
+      .allMatch(Either::isRight)
+      .extracting(Either::get)
+      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема"))
+      .anyMatch(child -> child.getName().equals("ПочиненнаяСистема2"));
+
+    var subsystem = (Subsystem) children.stream().map(Either::get)
+      .filter(child -> child.getName().equals("ПодчиненнаяПодсистема"))
+      .findFirst().get();
+    assertThat(subsystem.getChildren()).hasSize(2)
+      .allMatch(Either::isLeft);
+    assertThat(subsystem.getMdoReference())
+      .isNotNull()
+      .extracting(MDOReference::getType)
+      .isEqualTo(MDOType.SUBSYSTEM);
+    assertThat(subsystem.getMdoReference().getMdoRef())
+      .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
+
+    subsystem = (Subsystem) children.stream().map(Either::get)
+      .filter(child -> child.getName().equals("ПочиненнаяСистема2"))
+      .findFirst().get();
+    assertThat(subsystem.getChildren()).hasSize(3);
+    assertThat(subsystem.getChildren()).filteredOn(Either::isLeft).hasSize(2);
+    assertThat(subsystem.getChildren()).filteredOn(Either::isRight).hasSize(1);
+    assertThat(subsystem.getChildren()).filteredOn(Either::isRight)
+      .extracting(Either::get)
+      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"))
+      .anyMatch(child -> child instanceof Subsystem);
+    assertThat(subsystem.getMdoReference())
+      .isNotNull()
+      .extracting(MDOReference::getType)
+      .isEqualTo(MDOType.SUBSYSTEM);
+    assertThat(subsystem.getMdoReference().getMdoRef())
+      .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");
+
+    var childSubsystem = (Subsystem) subsystem.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .filter(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"))
+      .findFirst().get();
+    assertThat(childSubsystem.getChildren()).hasSize(3);
+    assertThat(childSubsystem.getChildren()).filteredOn(Either::isLeft).hasSize(3);
   }
 
+  @Override
   @Test
   void testDesigner() {
-    Subsystem mdo = (Subsystem) MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.SUBSYSTEM, getMDOPathDesigner("Subsystems/ПерваяПодсистема.xml"));
-    assertThat(mdo).isNotNull();
-    assertThat(mdo.getChildren()).isNotNull();
-    assertThat(mdo.getChildren()).hasSize(4);
 
-    mdo = (Subsystem) MDOUtils.getMDObject(ConfigurationSource.DESIGNER, MDOType.SUBSYSTEM, getMDOPathDesigner("Subsystems/ПерваяПодсистема/Subsystems/ПочиненнаяСистема2.xml"));
-    assertThat(mdo).isNotNull();
-    assertThat(mdo.getChildren()).isNotNull();
-    assertThat(mdo.getChildren()).hasSize(2);
-  }
+    var mdo = getMDObjectDesigner("Subsystems/ПерваяПодсистема.xml");
+    checkBaseField(mdo, Subsystem.class, "ПерваяПодсистема",
+      "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
+    checkNoChildren(mdo);
+    checkNoModules(mdo);
+    assertThat(((Subsystem) mdo).isIncludeInCommandInterface()).isTrue();
 
-  private Path getMDOPathEDT(String path) {
-    return Paths.get(SRC_EDT, path);
-  }
+    var children = ((Subsystem) mdo).getChildren();
+    assertThat(children).hasSize(4);
+    assertThat(children).filteredOn(Either::isLeft).hasSize(2);
+    assertThat(children).filteredOn(Either::isRight).hasSize(2);
+    assertThat(children)
+      .filteredOn(Either::isRight)
+      .extracting(Either::get)
+      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема"))
+      .anyMatch(child -> child.getName().equals("ПочиненнаяСистема2"));
 
-  private Path getMDOPathDesigner(String path) {
-    return Paths.get(SRC_DESIGNER, path);
+    var subsystem = (Subsystem) children.stream().filter(Either::isRight).map(Either::get)
+      .filter(child -> child.getName().equals("ПодчиненнаяПодсистема"))
+      .findFirst().get();
+    assertThat(subsystem.getChildren()).hasSize(3)
+      .allMatch(Either::isLeft);
+    assertThat(subsystem.getMdoReference())
+      .isNotNull()
+      .extracting(MDOReference::getType)
+      .isEqualTo(MDOType.SUBSYSTEM);
+    assertThat(subsystem.getMdoReference().getMdoRef())
+      .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
+
+    subsystem = (Subsystem) children.stream().filter(Either::isRight).map(Either::get)
+      .filter(child -> child.getName().equals("ПочиненнаяСистема2"))
+      .findFirst().get();
+    assertThat(subsystem.getChildren()).hasSize(2);
+    assertThat(subsystem.getChildren()).filteredOn(Either::isLeft).hasSize(2);
+    assertThat(subsystem.getMdoReference())
+      .isNotNull()
+      .extracting(MDOReference::getType)
+      .isEqualTo(MDOType.SUBSYSTEM);
+    assertThat(subsystem.getMdoReference().getMdoRef())
+      .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");
+
   }
 
 }

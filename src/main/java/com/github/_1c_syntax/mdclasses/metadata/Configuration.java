@@ -22,18 +22,31 @@
 package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonModule;
+import com.github._1c_syntax.mdclasses.mdo.HTTPService;
+import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
+import com.github._1c_syntax.mdclasses.mdo.Language;
+import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
+import com.github._1c_syntax.mdclasses.mdo.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
+import com.github._1c_syntax.mdclasses.metadata.additional.ParseSupportData;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.SupportVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
-import com.github._1c_syntax.mdclasses.utils.Common;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import lombok.Value;
+import io.vavr.control.Either;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
@@ -41,121 +54,320 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-@Value
+/**
+ * Корневой класс конфигурации 1с
+ */
+@Data
 @Slf4j
 public class Configuration {
 
-  String name;
-  String uuid;
+  /**
+   * Имя конфигурации
+   */
+  private String name;
+  /**
+   * Уникальный идентификатор конфигурации
+   */
+  private String uuid;
 
-  ConfigurationSource configurationSource;
-  CompatibilityMode compatibilityMode;
-  CompatibilityMode configurationExtensionCompatibilityMode;
-  ScriptVariant scriptVariant;
+  /**
+   * Вариант исходников конфигурации
+   */
+  private ConfigurationSource configurationSource;
+  /**
+   * Режим совместимости
+   */
+  private CompatibilityMode compatibilityMode;
+  /**
+   * Режим совместимости расширений
+   */
+  private CompatibilityMode configurationExtensionCompatibilityMode;
+  /**
+   * Язык, на котором ведется разработка
+   */
+  private ScriptVariant scriptVariant;
 
-  String defaultRunMode;
-  String defaultLanguage;
-  String dataLockControlMode;
-  String objectAutonumerationMode;
-  UseMode modalityUseMode;
-  UseMode synchronousExtensionAndAddInCallUseMode;
-  UseMode synchronousPlatformExtensionAndAddInCallUseMode;
+  /**
+   * Режим запуска приложения по умолчанию
+   */
+  private String defaultRunMode;
+  /**
+   * Язык приложения по умолчанию
+   */
+  private Language defaultLanguage;
+  /**
+   * Режим управления блокировкой данных
+   */
+  private String dataLockControlMode;
+  /**
+   * Режим автонумерации объектов
+   */
+  private String objectAutonumerationMode;
+  /**
+   * Режим использования модальных окон
+   */
+  private UseMode modalityUseMode;
+  /**
+   * Режим использования синхронных вызовов
+   */
+  private UseMode synchronousExtensionAndAddInCallUseMode;
+  /**
+   * Режим использования синхронных вызовов для платформенных объектов и расширений
+   */
+  private UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
-  Map<URI, ModuleType> modulesByType;
-  Map<String, CommonModule> commonModules;
-  Map<URI, MDObjectBase> modulesByObject;
-  Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
-  Set<MDObjectBase> children;
-  Map<String, MDObjectBase> childrenByMdoRef;
-  Path rootPath;
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы
+   */
+  private Map<URI, ModuleType> modulesByType;
+  /**
+   * Объекты конфигурации в связке со ссылкой на файлы
+   */
+  private Map<URI, MDObjectBase> modulesByObject;
+  /**
+   * Режимы поддержки в связке со ссылкой на файлы
+   */
+  private Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
+  /**
+   * Дочерние объекты конфигурации (все, включая дочерние)
+   */
+  private Set<MDObjectBase> children;
+  /**
+   * Дочерние объекты конфигурации с MDO ссылками на них
+   */
+  private Map<MDOReference, MDObjectBase> childrenByMdoRef;
+  /**
+   * Дочерние общие модули
+   */
+  private Map<String, CommonModule> commonModules;
+  /**
+   * Доступные языки конфигурации, ключ - код языка
+   */
+  private Map<String, Language> languages;
+  /**
+   * Корневой каталог конфигурации
+   */
+  private Path rootPath;
 
-  private Configuration() {
-    this.configurationSource = ConfigurationSource.EMPTY;
-    this.children = Collections.emptySet();
-    this.childrenByMdoRef = Collections.emptyMap();
-    this.modulesByType = Collections.emptyMap();
-    this.modulesBySupport = Collections.emptyMap();
-    this.commonModules = new CaseInsensitiveMap<>();
-    this.modulesByObject = Collections.emptyMap();
+  protected Configuration() {
+    configurationSource = ConfigurationSource.EMPTY;
+    children = Collections.emptySet();
+    childrenByMdoRef = Collections.emptyMap();
+    modulesByType = Collections.emptyMap();
+    modulesBySupport = Collections.emptyMap();
+    modulesByObject = Collections.emptyMap();
+    commonModules = Collections.emptyMap();
+    languages = Collections.emptyMap();
 
-    this.rootPath = null;
-    this.name = "";
-    this.uuid = "";
+    rootPath = null;
+    name = "";
+    uuid = "";
 
-    this.compatibilityMode = new CompatibilityMode();
-    this.configurationExtensionCompatibilityMode = new CompatibilityMode();
-    this.scriptVariant = ScriptVariant.ENGLISH;
+    compatibilityMode = new CompatibilityMode();
+    configurationExtensionCompatibilityMode = new CompatibilityMode();
+    scriptVariant = ScriptVariant.ENGLISH;
 
-    this.defaultRunMode = "";
-    this.defaultLanguage = "";
-    this.dataLockControlMode = "";
-    this.objectAutonumerationMode = "";
-    this.modalityUseMode = UseMode.USE;
-    this.synchronousExtensionAndAddInCallUseMode = UseMode.USE;
-    this.synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+    defaultRunMode = "";
+    defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
+    dataLockControlMode = "";
+    objectAutonumerationMode = "";
+    modalityUseMode = UseMode.USE;
+    synchronousExtensionAndAddInCallUseMode = UseMode.USE;
+    synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
+
   }
 
-  private Configuration(MDOConfiguration configurationXml, ConfigurationSource configurationSource, Path rootPath) {
-    this.configurationSource = configurationSource;
-    this.children = MDOUtils.getAllChildren(configurationSource, rootPath, true);
-    this.childrenByMdoRef = new HashMap<>();
-    this.children.forEach(mdo -> this.childrenByMdoRef.put(mdo.getMdoRef(), mdo));
+  protected Configuration(MDOConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
+    configurationSource = source;
+    children = getAllChildren(mdoConfiguration);
+    childrenByMdoRef = new HashMap<>();
+    commonModules = new CaseInsensitiveMap<>();
+    languages = new HashMap<>();
+    children.forEach((MDObjectBase mdo) -> {
+      this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
+      if (mdo instanceof CommonModule) {
+        this.commonModules.put(mdo.getName(), (CommonModule) mdo);
+      }
+      if (mdo instanceof Language) {
+        this.languages.put(((Language) mdo).getLanguageCode(), (Language) mdo);
+      }
+    });
 
-    this.rootPath = rootPath;
+    rootPath = path;
 
-    this.name = configurationXml.getName();
-    this.uuid = configurationXml.getUuid();
+    name = mdoConfiguration.getName();
+    uuid = mdoConfiguration.getUuid();
 
-    this.compatibilityMode = configurationXml.getCompatibilityMode();
-    this.configurationExtensionCompatibilityMode = configurationXml.getConfigurationExtensionCompatibilityMode();
-    this.scriptVariant = configurationXml.getScriptVariant();
+    // если версии совместимости конфигурации нет, то используем версию совместимости расширения
+    configurationExtensionCompatibilityMode = mdoConfiguration.getConfigurationExtensionCompatibilityMode();
+    if (CompatibilityMode.compareTo(mdoConfiguration.getCompatibilityMode(), "") == 0) {
+      compatibilityMode = mdoConfiguration.getConfigurationExtensionCompatibilityMode();
+    } else {
+      compatibilityMode = mdoConfiguration.getCompatibilityMode();
+    }
 
-    this.defaultRunMode = configurationXml.getDefaultRunMode();
-    this.defaultLanguage = configurationXml.getDefaultLanguage();
-    this.dataLockControlMode = configurationXml.getDataLockControlMode();
-    this.objectAutonumerationMode = configurationXml.getObjectAutonumerationMode();
-    this.modalityUseMode = configurationXml.getModalityUseMode();
-    this.synchronousExtensionAndAddInCallUseMode = configurationXml.getSynchronousExtensionAndAddInCallUseMode();
-    this.synchronousPlatformExtensionAndAddInCallUseMode = configurationXml.getSynchronousPlatformExtensionAndAddInCallUseMode();
+    scriptVariant = mdoConfiguration.getScriptVariant();
+    defaultRunMode = mdoConfiguration.getDefaultRunMode();
 
-    this.modulesByType = Common.getModuleTypesByType(this);
-    this.modulesBySupport = Common.getModuleSupports(this);
-    this.commonModules = Common.getCommonModules(this);
-    this.modulesByObject = Common.getModulesByObject(this);
+    if (mdoConfiguration.getDefaultLanguage().isRight()) {
+      defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
+    } else {
+      defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
+    }
 
+    dataLockControlMode = mdoConfiguration.getDataLockControlMode();
+    objectAutonumerationMode = mdoConfiguration.getObjectAutonumerationMode();
+    modalityUseMode = mdoConfiguration.getModalityUseMode();
+    synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
+    synchronousPlatformExtensionAndAddInCallUseMode =
+      mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
+
+    Map<URI, ModuleType> modulesType = new HashMap<>();
+    Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
+    Map<URI, MDObjectBase> modulesObject = new HashMap<>();
+    final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
+
+    children.forEach((MDObjectBase mdo) -> {
+      var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
+
+      // todo возможно надо будет добавить ссылку на mdo файл
+
+      if (mdo instanceof MDObjectBSL) {
+        computeModules(modulesType, modulesSupport, modulesObject, (MDObjectBSL) mdo, supports);
+      }
+    });
+
+    modulesBySupport = modulesSupport;
+    modulesByType = modulesType;
+    modulesByObject = modulesObject;
   }
 
+  /**
+   * Метод для создания пустой конфигурации
+   */
   public static Configuration create() {
     return new Configuration();
   }
 
+  /**
+   * Метод для создания пустой конфигурации расширения
+   */
+  public static Configuration createExtension() {
+    return new ConfigurationExtension();
+  }
+
+  /**
+   * Метод создания конфигурации каталогу исходных файлов
+   *
+   * @param rootPath - Адрес корневого каталога конфигурации
+   */
   public static Configuration create(Path rootPath) {
     ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
     if (configurationSource != ConfigurationSource.EMPTY) {
-      MDOConfiguration configurationXML = (MDOConfiguration) MDOUtils.getMDObject(configurationSource,
-        rootPath, MDOType.CONFIGURATION, "Configuration");
-      if (configurationXML != null) {
-        return new Configuration(configurationXML, configurationSource, rootPath);
+      var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
+      if (configurationMDO.isPresent()) {
+        MDOConfiguration mdoConfiguration = (MDOConfiguration) configurationMDO.get();
+        if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
+          return new ConfigurationExtension(mdoConfiguration, configurationSource, rootPath);
+        } else {
+          return new Configuration(mdoConfiguration, configurationSource, rootPath);
+        }
       }
     }
 
     return create();
   }
 
-  public ModuleType getModuleType(URI uri) {
-    return modulesByType.getOrDefault(uri, ModuleType.Unknown);
+  private static Set<MDObjectBase> getAllChildren(MDOConfiguration mdoConfiguration) {
+    Set<MDObjectBase> allChildren = new HashSet<>();
+    mdoConfiguration.getChildren().stream().filter(Either::isRight).map(Either::get)
+      .forEach((MDObjectBase mdo) -> {
+        allChildren.add(mdo);
+        if (mdo instanceof MDObjectComplex) {
+          allChildren.addAll(((MDObjectComplex) mdo).getForms());
+          allChildren.addAll(((MDObjectComplex) mdo).getCommands());
+          allChildren.addAll(((MDObjectComplex) mdo).getTemplates());
+          ((MDObjectComplex) mdo).getAttributes().forEach((MDOAttribute child) -> {
+            allChildren.add(child);
+            if (child instanceof TabularSection) {
+              allChildren.addAll(((TabularSection) child).getAttributes());
+            }
+          });
+        }
+        // операции веб-сервиса
+        if (mdo instanceof WebService) {
+          allChildren.addAll(((WebService) mdo).getOperations());
+        }
+        // дочерние http-сервиса
+        if (mdo instanceof HTTPService) {
+          ((HTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+            allChildren.add(httpServiceURLTemplate);
+            allChildren.addAll(httpServiceURLTemplate.getHttpServiceMethods());
+          });
+        }
+      });
+
+    allChildren.add(mdoConfiguration);
+    return allChildren;
   }
 
+  public Optional<Path> getRootPath() {
+    if (rootPath == null) {
+      return Optional.empty();
+    }
+    return Optional.of(rootPath);
+  }
+
+  /**
+   * Возвращает тип модуля по ссылке на его файл
+   */
+  public ModuleType getModuleType(URI uri) {
+    return modulesByType.getOrDefault(uri, ModuleType.UNKNOWN);
+  }
+
+  /**
+   * Возвращает режим поддержки по ссылке на файл
+   */
   public Map<SupportConfiguration, SupportVariant> getModuleSupport(URI uri) {
     return modulesBySupport.getOrDefault(uri, new HashMap<>());
   }
 
+  /**
+   * Возвращает общий модуль по его имени
+   *
+   * @param name - Имя модуля
+   */
   public Optional<CommonModule> getCommonModule(String name) {
     return Optional.ofNullable(commonModules.get(name));
+  }
+
+  private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
+    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
+    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
+      ParseSupportData supportData = new ParseSupportData(fileParentConfiguration.get());
+      return supportData.getSupportMap();
+    }
+    return Collections.emptyMap();
+  }
+
+  private static void computeModules(Map<URI, ModuleType> modulesType,
+                                     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
+                                     Map<URI, MDObjectBase> modulesObject,
+                                     MDObjectBSL mdo,
+                                     Map<SupportConfiguration, SupportVariant> supports) {
+    mdo.getModules().forEach((MDOModule module) -> {
+      var uri = module.getUri();
+      modulesType.put(uri, module.getModuleType());
+      modulesObject.put(uri, mdo);
+      if (!supports.isEmpty()) {
+        modulesSupport.put(uri, supports);
+      }
+    });
   }
 
 }

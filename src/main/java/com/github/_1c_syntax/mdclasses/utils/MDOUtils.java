@@ -21,46 +21,28 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.Form;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MetaDataObject;
-import com.github._1c_syntax.mdclasses.mdo.Subsystem;
-import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import io.vavr.control.Either;
-import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-@Slf4j
 @UtilityClass
 public class MDOUtils {
+
+  private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
 
   /**
    * Определяет тип исходников по корню проекта
    */
-  public static ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
+  public ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
     ConfigurationSource configurationSource = ConfigurationSource.EMPTY;
     if (rootPath != null) {
       String rootPathString = rootPath.toString();
@@ -69,7 +51,8 @@ public class MDOUtils {
       if (rootConfiguration.exists()) {
         configurationSource = ConfigurationSource.DESIGNER;
       } else {
-        rootConfiguration = Paths.get(rootPathString, "src", "Configuration", "Configuration.mdo").toFile();
+        rootConfiguration = Paths.get(rootPathString, "src", MDOType.CONFIGURATION.getName(),
+          "Configuration.mdo").toFile();
         if (rootConfiguration.exists()) {
           configurationSource = ConfigurationSource.EDT;
         }
@@ -79,429 +62,99 @@ public class MDOUtils {
   }
 
   /**
-   * Получает объект метаданных по каталогу проекта, типу и имению объекта метаданных
+   * Возвращает соответствие типов объектов и доступных им типов модулей
    */
-  public static MDObjectBase getMDObject(Path rootPath, MDOType type, String name) {
-    return getMDObject(getConfigurationSourceByPath(rootPath), rootPath, type, name);
+  public Map<MDOType, Set<ModuleType>> getModuleTypesForMdoTypes() {
+    return MODULE_TYPES_FOR_MDO_TYPES;
   }
 
-  /**
-   * Получает объект метаданных по каталогу проекта, типу и имению объекта метаданных с учетом типа исходников
-   */
-  public static MDObjectBase getMDObject(ConfigurationSource configurationSource,
-                                         Path rootPath,
-                                         MDOType type,
-                                         String name) {
-    Path mdoPath = MDOPathUtils.getMDOPath(configurationSource, rootPath, type, name);
-    if (mdoPath == null || !mdoPath.toFile().exists()) {
-      return null;
-    }
+  private Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {
+    Map<MDOType, Set<ModuleType>> result = new EnumMap<>(MDOType.class);
 
-    return getMDObject(configurationSource, type, mdoPath);
-  }
-
-  /**
-   * Получает объект метаданных по типу исходников, типу объекта метаданных из MDO файла
-   */
-  public static MDObjectBase getMDObject(ConfigurationSource configurationSource,
-                                         MDOType type,
-                                         Path mdoPath) {
-    MDObjectBase mdo = null;
-    var mdoFile = mdoPath.toFile();
-    if (mdoFile.exists()) {
-      var xmlMapper = ObjectMapperFactory.getXmlMapper();
-      if (configurationSource == ConfigurationSource.EDT) {
-        try {
-          mdo = (MDObjectBase) xmlMapper
-            .readValue(mdoPath.toFile(),
-              Class.forName(MDObjectBase.class.getPackageName() + "." + type.getMDOClassName()));
-        } catch (IOException | ClassNotFoundException e) {
-          LOGGER.error(e.getMessage(), e);
-        }
-      } else if (configurationSource == ConfigurationSource.DESIGNER) {
-        try {
-          MetaDataObject metaDataObject = xmlMapper.readValue(mdoPath.toFile(), MetaDataObject.class);
-          mdo = metaDataObject.getPropertyByType(type);
-        } catch (IOException e) {
-          LOGGER.error(e.getMessage(), e);
-        }
-      }
-    }
-
-    if (mdo != null) {
-      var mdoFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, mdoPath);
-      mdo.setMdoURI(mdoPath.toUri());
-      mdo.setModulesByType(getModuleTypesByMDOPath(
-        configurationSource,
-        mdoPath,
-        mdoFolder,
-        type));
-      mdo.computeMdoRef();
-      updateMDOForms(configurationSource, mdo, mdoFolder);
-      updateMDOTemplates(configurationSource, mdo, mdoFolder);
-      updateMDOCommands(configurationSource, mdo, mdoFolder);
-      updateMDOAttributes(mdo);
-    }
-
-    return mdo;
-  }
-
-  /**
-   * Возвращает файлы модулей для объекта с указанием их типов из каталога проекта
-   * по пути к файлу описания объекта
-   */
-  public static Map<URI, ModuleType> getModuleTypesByMDOPath(ConfigurationSource configurationSource, Path mdoPath, Path folder, MDOType mdoType) {
-    Map<URI, ModuleType> modulesByType = new HashMap<>();
-    var mdoName = FilenameUtils.getBaseName(mdoPath.toString());
-
-    var moduleTypes = Common.getModuleTypesForMdoTypes().getOrDefault(mdoType, Collections.emptySet());
-    if (!moduleTypes.isEmpty()) {
-      moduleTypes.forEach(moduleType -> {
-        var modulePath = MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType);
-        if (modulePath != null && modulePath.toFile().exists()) {
-          modulesByType.put(modulePath.toUri(), moduleType);
-        }
-      });
-    }
-
-    return modulesByType;
-  }
-
-  /**
-   * Возвращает файлы модулей объектов с указанием их типов из каталога проекта
-   */
-  public static Map<URI, ModuleType> getModuleTypesByPath(Path rootPath) {
-    return getModuleTypesByPath(getConfigurationSourceByPath(rootPath), rootPath);
-  }
-
-  /**
-   * Возвращает файлы модулей объектов с указанием их типов из каталога проекта с учетом указанного типа исходников
-   */
-  public static Map<URI, ModuleType> getModuleTypesByPath(ConfigurationSource configurationSource, Path rootPath) {
-
-    Map<URI, ModuleType> modulesByType = Collections.synchronizedMap(new HashMap<>());
-
-    for (MDOType mdoType : MDOType.values(true)) {
-      var folder = MDOPathUtils.getMDOTypeFolder(configurationSource, rootPath, mdoType);
-      if (folder == null || !folder.toFile().exists()) {
-        continue;
+    for (MDOType mdoType : MDOType.values()) {
+      Set<ModuleType> types = new HashSet<>();
+      switch (mdoType) {
+        case ACCOUNTING_REGISTER:
+        case ACCUMULATION_REGISTER:
+        case CALCULATION_REGISTER:
+        case INFORMATION_REGISTER:
+          types.add(ModuleType.ManagerModule);
+          types.add(ModuleType.RecordSetModule);
+          break;
+        case BUSINESS_PROCESS:
+        case CATALOG:
+        case CHART_OF_ACCOUNTS:
+        case CHART_OF_CALCULATION_TYPES:
+        case CHART_OF_CHARACTERISTIC_TYPES:
+        case DATA_PROCESSOR:
+        case DOCUMENT:
+        case EXCHANGE_PLAN:
+        case REPORT:
+        case TASK:
+          types.add(ModuleType.ManagerModule);
+          types.add(ModuleType.ObjectModule);
+          break;
+        case COMMAND_GROUP:
+        case COMMON_ATTRIBUTE:
+        case COMMON_PICTURE:
+        case COMMON_TEMPLATE:
+        case DEFINED_TYPE:
+        case DOCUMENT_NUMERATOR:
+        case EVENT_SUBSCRIPTION:
+        case FUNCTIONAL_OPTION:
+        case ROLE:
+        case SCHEDULED_JOB:
+        case SESSION_PARAMETER:
+        case STYLE_ITEM:
+        case STYLE:
+        case SUBSYSTEM:
+        case WS_REFERENCE:
+        case XDTO_PACKAGE:
+          break;
+        case COMMON_COMMAND:
+        case COMMAND:
+          types.add(ModuleType.CommandModule);
+          break;
+        case COMMON_FORM:
+        case FORM:
+          types.add(ModuleType.FormModule);
+          break;
+        case COMMON_MODULE:
+          types.add(ModuleType.CommonModule);
+          break;
+        case CONFIGURATION:
+          types.add(ModuleType.ApplicationModule);
+          types.add(ModuleType.SessionModule);
+          types.add(ModuleType.ExternalConnectionModule);
+          types.add(ModuleType.ManagedApplicationModule);
+          types.add(ModuleType.OrdinaryApplicationModule);
+          break;
+        case CONSTANT:
+          types.add(ModuleType.ValueManagerModule);
+          break;
+        case DOCUMENT_JOURNAL:
+        case ENUM:
+        case FILTER_CRITERION:
+        case SETTINGS_STORAGE:
+          types.add(ModuleType.ManagerModule);
+          break;
+        case HTTP_SERVICE:
+          types.add(ModuleType.HTTPServiceModule);
+          break;
+        case SEQUENCE:
+          types.add(ModuleType.RecordSetModule);
+          break;
+        case WEB_SERVICE:
+          types.add(ModuleType.WEBServiceModule);
+          break;
+        default:
+          // non
       }
 
-      getMDOFilesInFolder(configurationSource, folder)
-        .parallelStream()
-        .forEach(mdoPath -> {
-            var baseName = FilenameUtils.getBaseName(mdoPath.toString());
-            modulesByType.putAll(getModuleTypesByMDOPath(configurationSource, mdoPath, folder, mdoType));
-            modulesByType.putAll(getFormsMDOModuleTypes(configurationSource, folder, baseName));
-            modulesByType.putAll(getCommandsMDOModuleTypes(configurationSource, folder, baseName));
-          }
-        );
+      result.put(mdoType, types);
     }
 
-    return modulesByType;
-  }
-
-  /**
-   * MDOModuleTypes
-   */
-
-  @SneakyThrows
-  private static Map<URI, ModuleType> getChildrenMDOModuleTypes(ConfigurationSource configurationSource,
-                                                                Path rootPath,
-                                                                ModuleType moduleType) {
-    Map<URI, ModuleType> modulesByType = new HashMap<>();
-
-    if (rootPath.toFile().exists()) {
-      try (Stream<Path> files = Files.walk(rootPath, 1)) {
-        files
-          .filter(MDOUtils::isDirectory)
-          .forEach(mdoPath -> {
-            var name = FilenameUtils.getBaseName(mdoPath.toString());
-            var modulePath = MDOPathUtils.getModulePath(configurationSource, rootPath, name, moduleType);
-            if (modulePath != null && modulePath.toFile().exists()) {
-              modulesByType.put(modulePath.toUri(), moduleType);
-            }
-          });
-      }
-    }
-
-    return modulesByType;
-  }
-
-  private static boolean isDirectory(Path path) {
-    return Files.isDirectory(path);
-  }
-
-  private static Map<URI, ModuleType> getFormsMDOModuleTypes(ConfigurationSource configurationSource,
-                                                             Path folder,
-                                                             String name) {
-    return getChildrenMDOModuleTypes(configurationSource,
-      Paths.get(folder.toString(), name, MDOType.FORM.getGroupName()),
-      ModuleType.FormModule);
-  }
-
-  private static Map<URI, ModuleType> getCommandsMDOModuleTypes(ConfigurationSource configurationSource,
-                                                                Path folder,
-                                                                String name) {
-
-    return getChildrenMDOModuleTypes(configurationSource,
-      Paths.get(folder.toString(), name, "Commands"),
-      ModuleType.CommandModule);
-  }
-
-  /**
-   * Children
-   */
-
-  public static Set<MDObjectBase> getChildren(ConfigurationSource configurationSource,
-                                              Path rootPath,
-                                              MDOType type) {
-
-    Set<MDObjectBase> children = Collections.synchronizedSet(new HashSet<>());
-
-    if (configurationSource == ConfigurationSource.EMPTY) {
-      return children;
-    }
-
-    Path folder = MDOPathUtils.getMDOTypeFolder(configurationSource, rootPath, type);
-    if (folder == null || !folder.toFile().exists()) {
-      return children;
-    }
-
-    getChildrenNamesInFolder(configurationSource, folder)
-      .parallelStream()
-      .forEach(childName -> {
-        MDObjectBase child = getMDObject(configurationSource, rootPath, type, childName);
-        if (child != null) {
-          children.add(child);
-        }
-      });
-
-    return children;
-  }
-
-  public static Set<MDObjectBase> getAllChildren(ConfigurationSource configurationSource,
-                                                 Path rootPath,
-                                                 boolean includeConfiguration) {
-
-
-    Set<MDObjectBase> allChildren = new HashSet<>();
-    if (configurationSource == ConfigurationSource.EMPTY) {
-      return allChildren;
-    }
-
-    // сбор информации первого уровня
-    for (MDOType type : MDOType.values(true)) {
-      if (!includeConfiguration && type == MDOType.CONFIGURATION
-        || type == MDOType.SUBSYSTEM) {
-        continue;
-      }
-      allChildren.addAll(getChildren(configurationSource, rootPath, type));
-    }
-
-    Map<String, MDObjectBase> childrenByMdoRef = new HashMap<>();
-    allChildren.forEach(mdo -> childrenByMdoRef.put(mdo.getMdoRef(), mdo));
-
-    // догрузка подсистем
-    var subsystems = getChildren(configurationSource, rootPath, MDOType.SUBSYSTEM);
-    if (!subsystems.isEmpty()) {
-      allChildren.addAll(subsystems);
-
-      subsystems.forEach(subsystem -> computeChildren(configurationSource, (Subsystem) subsystem, childrenByMdoRef));
-    }
-
-    return allChildren;
-  }
-
-  private void computeChildren(ConfigurationSource configurationSource, Subsystem subsystem, Map<String, MDObjectBase> childrenByMdoRef) {
-    var children = subsystem.getChildren();
-    if (children == null) {
-      return;
-    }
-
-    Set<Either<String, MDObjectBase>> newChildren = new HashSet<>();
-    var rootFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, Paths.get(subsystem.getMdoURI()));
-    if (rootFolder == null) {
-      return;
-    }
-
-    var folder = Paths.get(rootFolder.toString(), subsystem.getName(), MDOType.SUBSYSTEM.getGroupName());
-
-    children.forEach(child -> {
-      if (subsystem.getMdoRef().equals(child.getLeft())) {
-        return;
-      }
-      if (child.isLeft()) {
-        var partNames = child.getLeft().split("\\.");
-        if (partNames.length == 2 && partNames[0].startsWith(MDOType.SUBSYSTEM.getName())) {
-          var mdoPath = MDOPathUtils.getMDOPath(configurationSource, folder, partNames[1]);
-          Subsystem childSubsystem = (Subsystem) getMDObject(configurationSource, MDOType.SUBSYSTEM, mdoPath);
-          // FIXME: нужен рефакторинг
-          if (childSubsystem != null) {
-            childSubsystem.setParent(subsystem);
-            childSubsystem.computeMdoRef();
-            newChildren.add(Either.right(childSubsystem));
-            computeChildren(configurationSource, childSubsystem, childrenByMdoRef);
-          }
-        } else {
-          var mdo = childrenByMdoRef.get(child.getLeft());
-          if (mdo != null) {
-            newChildren.add(Either.right(mdo));
-            mdo.addIncludedSubsystems(subsystem);
-          } else {
-            LOGGER.error("Broken link {} - {}", subsystem.getName(), child.getLeft());
-          }
-        }
-      } else {
-        newChildren.add(Either.right(child.get()));
-      }
-    });
-    subsystem.setChildren(newChildren);
-  }
-
-  @SneakyThrows
-  private List<String> getChildrenNamesInFolder(ConfigurationSource configurationSource, Path folder) {
-    List<String> childrenNames;
-    int maxDepth = 1;
-    AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(configurationSource, true));
-    if (configurationSource == ConfigurationSource.EDT) {
-      maxDepth = 2;
-    }
-
-    try (Stream<Path> files = Files.walk(folder, maxDepth)) {
-      childrenNames = files
-        .map(Path::toString)
-        .filter(f -> f.endsWith(extension.get()))
-        .map(FilenameUtils::getBaseName)
-        .collect(Collectors.toList());
-    }
-
-    return childrenNames;
-  }
-
-  private void updateMDOForms(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
-    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.FORM);
-
-    mdo.setForms(readDesignerMDOChildren(configurationSource, childrenFolder, MDOType.FORM, Form.class));
-
-    if (mdo.getForms() != null) {
-      mdo.getForms().forEach(form -> {
-        setModulesByType(configurationSource, childrenFolder, form, ModuleType.FormModule);
-        form.setParent(mdo);
-        form.computeMdoRef();
-      });
-    }
-  }
-
-  private void updateMDOTemplates(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
-    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.TEMPLATE);
-
-    mdo.setTemplates(readDesignerMDOChildren(configurationSource, childrenFolder, MDOType.TEMPLATE, Template.class));
-
-    if (mdo.getTemplates() != null) {
-      mdo.getTemplates().forEach(template -> {
-        template.setParent(mdo);
-        template.computeMdoRef();
-      });
-    }
-  }
-
-  private void updateMDOCommands(ConfigurationSource configurationSource, MDObjectBase mdo, Path folder) {
-    var childrenFolder = getChildrenFolder(mdo, folder, MDOType.COMMAND);
-
-    if (mdo.getCommands() != null) {
-      mdo.getCommands().forEach(command -> {
-        setModulesByType(configurationSource, childrenFolder, command, ModuleType.CommandModule);
-        command.setParent(mdo);
-        command.computeMdoRef();
-      });
-    }
-  }
-
-  private void updateMDOAttributes(MDObjectBase mdo) {
-
-    if (mdo.getAttributes() != null) {
-      mdo.getAttributes().forEach(attribute -> {
-        attribute.setParent(mdo);
-        attribute.computeMdoRef();
-        // у табличных частей есть дочерние элементы
-        updateMDOAttributes(attribute);
-      });
-    }
-  }
-
-  /**
-   * Other
-   */
-
-  @SneakyThrows
-  private List<Path> getMDOFilesInFolder(ConfigurationSource configurationSource, Path folder) {
-    List<Path> childrenNames = new ArrayList<>();
-    if (folder.toFile().exists()) {
-      int maxDepth = 1;
-      AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(configurationSource, true));
-      if (configurationSource == ConfigurationSource.EDT) {
-        maxDepth = 2;
-      }
-      try (Stream<Path> files = Files.walk(folder, maxDepth)) {
-        childrenNames = files
-          .parallel()
-          .filter(f -> f.toString().endsWith(extension.get()))
-          .filter(f -> !FilenameUtils.getBaseName(f.toString()).equals("ConfigDumpInfo"))
-          .collect(Collectors.toList());
-      }
-    }
-
-    return childrenNames;
-  }
-
-  private static void setModulesByType(ConfigurationSource configurationSource,
-                                       Path folder,
-                                       MDObjectBase mdo,
-                                       ModuleType moduleType) {
-    if (folder != null) {
-      Map<URI, ModuleType> modulesByType = new HashMap<>();
-      var modulePath = MDOPathUtils.getModulePath(configurationSource, folder, mdo.getName(), moduleType);
-      if (modulePath != null && modulePath.toFile().exists()) {
-        modulesByType.put(modulePath.toUri(), moduleType);
-      }
-
-      mdo.setModulesByType(modulesByType);
-    }
-  }
-
-  private static Path getChildrenFolder(MDObjectBase mdo, Path folder, MDOType type) {
-    if (folder != null) {
-      var formFolder = Paths.get(folder.toString(), mdo.getName(), type.getGroupName());
-      if (formFolder.toFile().exists()) {
-        return formFolder;
-      }
-    }
-    return null;
-  }
-
-  private static <T extends MDObjectBase> List<T> readDesignerMDOChildren(ConfigurationSource configurationSource,
-                                                                          Path childrenFolder,
-                                                                          MDOType type,
-                                                                          Class<T> childClass) {
-    List<T> mdos = new ArrayList<>();
-    if (childrenFolder != null && configurationSource != ConfigurationSource.EDT) {
-      getMDOFilesInFolder(configurationSource, childrenFolder)
-        .forEach(mdoFile -> {
-          MDObjectBase mdo = null;
-          var xmlMapper = ObjectMapperFactory.getXmlMapper();
-          try {
-            MetaDataObject metaDataObject = xmlMapper.readValue(mdoFile.toFile(), MetaDataObject.class);
-            mdo = metaDataObject.getPropertyByType(type);
-          } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
-          }
-          if (mdo != null) {
-            mdos.add(childClass.cast(mdo));
-          }
-        });
-    }
-    return mdos;
+    return result;
   }
 
 }

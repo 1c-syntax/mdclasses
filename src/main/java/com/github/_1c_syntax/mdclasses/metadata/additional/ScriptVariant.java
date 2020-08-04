@@ -21,12 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Locale;
 
+/**
+ * Возможные варианты языков, на которых разрабатывается код
+ */
 public enum ScriptVariant {
-  @JsonProperty("English")
   ENGLISH("English"),
-  @JsonProperty("Russian")
   RUSSIAN("Russian");
 
   private final String value;
@@ -36,7 +37,7 @@ public enum ScriptVariant {
   }
 
   public static ScriptVariant fromValue(String value) {
-    return valueOf(value.toUpperCase());
+    return valueOf(value.toUpperCase(Locale.ENGLISH));
   }
 
   public String value() {

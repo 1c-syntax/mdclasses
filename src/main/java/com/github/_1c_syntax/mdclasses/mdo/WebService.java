@@ -21,29 +21,42 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-@Value
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = WebService.WebServiceBuilderImpl.class)
-@SuperBuilder
-public class WebService extends MDObjectBase {
+@NoArgsConstructor
+public class WebService extends MDObjectBSL {
+
+  /**
+   * Операции веб-сервиса
+   */
+  @XStreamImplicit
+  private List<WEBServiceOperation> operations = Collections.emptyList();
+
+  public WebService(DesignerMDO designerMDO) {
+    super(designerMDO);
+    var wsOperations = new ArrayList<>(operations);
+    designerMDO.getChildObjects().getOperations().forEach((DesignerMDO wsOperation) ->
+      wsOperations.add(new WEBServiceOperation(wsOperation))
+    );
+    operations = wsOperations;
+  }
 
   @Override
   public MDOType getType() {
     return MDOType.WEB_SERVICE;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class WebServiceBuilderImpl extends WebService.WebServiceBuilder<WebService, WebService.WebServiceBuilderImpl> {
-  }
 }

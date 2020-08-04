@@ -21,29 +21,41 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-@Value
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = TabularSection.TabularSectionBuilderImpl.class)
-@SuperBuilder
+@NoArgsConstructor
 public class TabularSection extends MDOAttribute {
+
+  /**
+   * Реквизиты табличной части
+   */
+  @XStreamImplicit
+  private List<MDOAttribute> attributes = Collections.emptyList();
+
+  public TabularSection(DesignerMDO designerMDO) {
+    super(designerMDO);
+    List<MDOAttribute> computedAttributes = new ArrayList<>();
+    designerMDO.getChildObjects().getAttributes().forEach(
+      designerMDOAttribute -> computedAttributes.add(new Attribute(designerMDOAttribute)));
+    setAttributes(computedAttributes);
+  }
 
   @Override
   public AttributeType getAttributeType() {
     return AttributeType.TABULAR_SECTION;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class TabularSectionBuilderImpl extends TabularSection.TabularSectionBuilder<TabularSection, TabularSection.TabularSectionBuilderImpl> {
-  }
 }

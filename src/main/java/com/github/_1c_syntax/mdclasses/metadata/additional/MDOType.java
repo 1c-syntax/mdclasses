@@ -27,8 +27,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Типы объектов метаданных
+ */
 public enum MDOType {
   ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters", "РегистрБухгалтерии", "РегистрыБухгалтерии"),
   ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters", "РегистрНакопления", "РегистрыНакопления"),
@@ -36,14 +40,16 @@ public enum MDOType {
   CALCULATION_REGISTER("CalculationRegister", "CalculationRegisters", "РегистрРасчета", "РегистрыРасчета"),
   CATALOG("Catalog", "Catalogs", "Справочник", "Справочники"),
   CHART_OF_ACCOUNTS("ChartOfAccounts", "ChartsOfAccounts", "ПланСчетов", "ПланыСчетов"),
-  CHART_OF_CALCULATION_TYPES("ChartOfCalculationTypes", "ChartsOfCalculationTypes", "ПланВидовРасчета", "ПланыВидовРасчета"),
-  CHART_OF_CHARACTERISTIC_TYPES("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes", "ПланВидовХарактеристик", "ПланыВидовХарактеристик"),
+  CHART_OF_CALCULATION_TYPES("ChartOfCalculationTypes", "ChartsOfCalculationTypes", "ПланВидовРасчета",
+    "ПланыВидовРасчета"),
+  CHART_OF_CHARACTERISTIC_TYPES("ChartOfCharacteristicTypes", "ChartsOfCharacteristicTypes",
+    "ПланВидовХарактеристик", "ПланыВидовХарактеристик"),
   COMMAND_GROUP("CommandGroup", "CommandGroups", "ГруппаКоманд", "ГруппыКоманд"),
   COMMON_ATTRIBUTE("CommonAttribute", "CommonAttributes", "ОбщийРеквизит", "ОбщиеРеквизиты"),
   COMMON_COMMAND("CommonCommand", "CommonCommands", "ОбщаяКоманда", "ОбщиеКоманды"),
   COMMON_FORM("CommonForm", "CommonForms", "ОбщаяФорма", "ОбщиеФормы"),
   COMMON_MODULE("CommonModule", "CommonModules", "ОбщийМодуль", "ОбщиеМодули"),
-  COMMON_PICTURE("CommonPicture", "CommonPictures", "ОбщаяКартика", "ОбщиеКартинки"),
+  COMMON_PICTURE("CommonPicture", "CommonPictures", "ОбщаяКартинка", "ОбщиеКартинки"),
   COMMON_TEMPLATE("CommonTemplate", "CommonTemplates", "ОбщийМакет", "ОбщиеМакеты"),
   CONFIGURATION("Configuration", "", "Конфигурация", ""),
   CONSTANT("Constant", "Constants", "Константа", "Константы"),
@@ -57,7 +63,8 @@ public enum MDOType {
   EXCHANGE_PLAN("ExchangePlan", "ExchangePlans", "ПланОбмена", "ПланыОбмена"),
   FILTER_CRITERION("FilterCriterion", "FilterCriteria", "КритерийОтбора", "КритерииОтбора"),
   FUNCTIONAL_OPTION("FunctionalOption", "FunctionalOptions", "ФункциональнаяОпция", "ФункциональныеОпции"),
-  FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters", "ПараметрФункциональныхОпций", "ПараметрыФункциональныхОпций"),
+  FUNCTIONAL_OPTIONS_PARAMETER("FunctionalOptionsParameter", "FunctionalOptionsParameters",
+    "ПараметрФункциональныхОпций", "ПараметрыФункциональныхОпций"),
   HTTP_SERVICE("HTTPService", "HTTPServices", "HTTPСервис", "HTTPСервисы"),
   INFORMATION_REGISTER("InformationRegister", "InformationRegisters", "РегистрСведений", "РегистрыСведений"),
   INTERFACE("Interface", "Interfaces", "Интерфейс", "Интерфейсы"),
@@ -80,32 +87,25 @@ public enum MDOType {
   COMMAND("Command", "Commands", "Команда", "Команды"),
   TEMPLATE("Template", "Templates", "Макет", "Макеты"),
   ATTRIBUTE("Attribute", "Attributes", "Реквизит", "Реквизиты"),
-  ;
+  RECALCULATION("Recalculation", "Recalculations", "Перерасчет", "Перерасчеты"),
+  WS_OPERATION("Operation", "Operations", "Операция", "Операции"),
+  HTTP_SERVICE_URL_TEMPLATE("URLTemplate", "URLTemplates", "ШаблонURL", "ШаблоныURL"),
+  HTTP_SERVICE_METHOD("Method", "Methods", "Метод", "Методы"),
+  UNKNOWN("", "", "", "");
 
-  private String name;
-  private String groupName;
-  private String nameRu;
-  private String groupNameRu;
+  private final String name;
+  private final String groupName;
+  private final String nameRu;
+  private final String groupNameRu;
 
   private static final Map<String, MDOType> mapTypes = computeMapTypes();
+  private static final Set<MDOType> childTypes = computeChildTypes();
 
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
     this.groupName = groupNameEn;
     this.nameRu = nameRu;
     this.groupNameRu = groupNameRu;
-  }
-
-  /**
-   * Возвращает имя MDO класса
-   */
-  public String getMDOClassName() {
-    if (this == CONFIGURATION
-      || this == ENUM
-      || this == INTERFACE) {
-      return "MDO" + name;
-    }
-    return name;
   }
 
   public String getName() {
@@ -125,20 +125,19 @@ public enum MDOType {
   }
 
   /**
-   * Возвращает список элементов перечисления с возможностью фильтрации
-   * @param withoutChildren - возможность исключить дочерние типы
-   * @return - список с примененным фильтром
+   * Возвращает список элементов перечисления без дочерних
+   *
+   * @return - список с примененным фильтром (без дочерних)
    */
-  public static List<MDOType> values(boolean withoutChildren) {
-    if (withoutChildren) {
-      return Arrays.stream(values()).filter(mdoType -> mdoType != FORM && mdoType != COMMAND)
-        .collect(Collectors.toList());
-    }
-    return Arrays.asList(values());
+  public static List<MDOType> valuesWithoutChildren() {
+    return Arrays.stream(values()).filter(mdoType ->
+      !childTypes.contains(mdoType) && mdoType != UNKNOWN)
+      .collect(Collectors.toList());
   }
 
   /**
    * Возвращает MDOType по строковому идентификатору
+   *
    * @param value - Строковый идентификатор типа. Может быть на русском или английском языках,
    *              а так же во множественном или единственном числе
    * @return - Найденный тип
@@ -156,6 +155,11 @@ public enum MDOType {
       map.put(mdoType.getGroupNameRu(), mdoType);
     }
     return map;
+  }
+
+  private static Set<MDOType> computeChildTypes() {
+    return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION, WS_OPERATION, HTTP_SERVICE_URL_TEMPLATE,
+      HTTP_SERVICE_METHOD);
   }
 
 }

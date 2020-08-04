@@ -21,29 +21,36 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
-import lombok.experimental.SuperBuilder;
 
-@Value
+/**
+ * ВНИМАНИЕ!
+ * Для формата EDT хранится в файле Configuration.mdo, т.е. отдельного файла нет
+ */
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
-@JsonDeserialize(builder = Language.LanguageBuilderImpl.class)
-@SuperBuilder
+@NoArgsConstructor
 public class Language extends MDObjectBase {
+
+  /**
+   * Код языка
+   */
+  private String languageCode = "";
+
+  public Language(DesignerMDO designerMDO) {
+    super(designerMDO);
+    languageCode = designerMDO.getProperties().getLanguageCode();
+  }
 
   @Override
   public MDOType getType() {
     return MDOType.LANGUAGE;
   }
 
-  @JsonPOJOBuilder(withPrefix = "")
-  @JsonIgnoreProperties(ignoreUnknown = true)
-  static final class LanguageBuilderImpl extends Language.LanguageBuilder<Language, Language.LanguageBuilderImpl> {
-  }
 }
