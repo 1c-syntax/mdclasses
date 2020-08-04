@@ -32,7 +32,7 @@ dependencies {
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")
-    implementation("org.slf4j", "slf4j-simple", "1.8.0-beta4")
+
     // прочее
     implementation("commons-io", "commons-io", "2.6")
     implementation("org.apache.commons", "commons-lang3", "3.9")
