@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.net.URI;
@@ -29,6 +31,7 @@ import java.net.URI;
  * Класс-описание модуля объекта
  */
 @Value
+@AllArgsConstructor
 public class MDOModule {
 
   /**
@@ -41,8 +44,8 @@ public class MDOModule {
    */
   URI uri;
 
-  public MDOModule(ModuleType moduleType, URI uri) {
-    this.moduleType = moduleType;
-    this.uri = uri;
-  }
+  /**
+   * Ссылка на объект метаданных которому принадлежит модуль
+   */
+  MDObjectBSL owner;
 }
