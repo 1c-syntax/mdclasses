@@ -53,9 +53,11 @@ import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -138,7 +140,11 @@ public class Configuration {
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  private Map<URI, MDObjectBase> modulesByObject;
+  private Map<URI, MDObjectBSL> modulesByObject;
+  /**
+   * Модули конфигурации
+   */
+  private List<MDOModule> modules;
   /**
    * Режимы поддержки в связке со ссылкой на файлы
    */
@@ -171,6 +177,7 @@ public class Configuration {
     modulesByType = Collections.emptyMap();
     modulesBySupport = Collections.emptyMap();
     modulesByObject = Collections.emptyMap();
+    modules = Collections.emptyList();
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
 
@@ -242,7 +249,8 @@ public class Configuration {
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, MDObjectBase> modulesObject = new HashMap<>();
+    Map<URI, MDObjectBSL> modulesObject = new HashMap<>();
+    List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
     children.forEach((MDObjectBase mdo) -> {
@@ -251,13 +259,14 @@ public class Configuration {
       // todo возможно надо будет добавить ссылку на mdo файл
 
       if (mdo instanceof MDObjectBSL) {
-        computeModules(modulesType, modulesSupport, modulesObject, (MDObjectBSL) mdo, supports);
+        computeModules(modulesType, modulesSupport, modulesObject, modulesList, (MDObjectBSL) mdo, supports);
       }
     });
 
     modulesBySupport = modulesSupport;
     modulesByType = modulesType;
     modulesByObject = modulesObject;
+    modules = modulesList;
   }
 
   /**
@@ -370,7 +379,8 @@ public class Configuration {
 
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, MDObjectBase> modulesObject,
+                                     Map<URI, MDObjectBSL> modulesObject,
+                                     List<MDOModule> modulesList,
                                      MDObjectBSL mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
     mdo.getModules().forEach((MDOModule module) -> {
@@ -380,6 +390,7 @@ public class Configuration {
       if (!supports.isEmpty()) {
         modulesSupport.put(uri, supports);
       }
+      modulesList.add(module);
     });
   }
 
