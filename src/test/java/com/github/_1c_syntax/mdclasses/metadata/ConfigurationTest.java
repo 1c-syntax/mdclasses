@@ -65,6 +65,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(38);
+    assertThat(configuration.getModules()).hasSize(38);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
@@ -154,6 +155,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(2);
+    assertThat(configuration.getModules()).hasSize(2);
     assertThat(configuration.getCommonModules()).hasSize(2);
     assertThat(configuration.getLanguages()).hasSize(1);
 
@@ -287,6 +289,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(17);
+    assertThat(configuration.getModules()).hasSize(17);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
@@ -378,6 +381,7 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
+    assertThat(configuration.getModules()).hasSize(9);
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -471,6 +475,7 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
+    assertThat(configuration.getModules()).hasSize(2);
 
     assertThat(configuration.getChildren()).hasSize(5);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
