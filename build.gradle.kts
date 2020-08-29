@@ -31,7 +31,7 @@ dependencies {
     implementation("com.thoughtworks.xstream", "xstream", "1.4.12")
 
     // логирование
-    implementation("org.slf4j", "slf4j-api", "1.8.0-beta4")
+    implementation("org.slf4j", "slf4j-api", "1.7.30")
 
     // прочее
     implementation("commons-io", "commons-io", "2.6")
