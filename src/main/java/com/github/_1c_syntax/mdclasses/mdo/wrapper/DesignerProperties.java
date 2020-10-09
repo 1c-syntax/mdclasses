@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
+import com.github._1c_syntax.mdclasses.mdo.MDODesignerSynonym;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -31,6 +32,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * Враппер над свойствами объекта в формате конфигуратора
  */
@@ -40,6 +43,8 @@ public class DesignerProperties {
 
   @XStreamAlias("Name")
   private String name;
+  @XStreamAlias("Synonym")
+  private List<MDODesignerSynonym> synonyms;
   @XStreamAlias("Comment")
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
