@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
@@ -36,6 +37,7 @@ import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -46,7 +48,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -125,9 +126,33 @@ public class MDOFactory {
             setIncludedSubsystems((MDOConfiguration) mdoValue);
           });
       }
+
+      if (mdoValue instanceof MDObjectComplex) {
+        ((MDObjectComplex) mdoValue).getForms().forEach(form -> {
+          Path formDataPath = MDOUtils.getFormDataPath(configurationSource, mdoPath.getParent().toString(),
+            mdoValue.getName(), form.getName());
+          var formDataOptional = readFormData(configurationSource, formDataPath);
+          formDataOptional.ifPresent(form::setData);
+        });
+      }
+
     });
 
     return mdo;
+  }
+
+  public Optional<FormData> readFormData(ConfigurationSource configurationSource, Path path) {
+    if (!path.toFile().exists()) {
+      return Optional.empty();
+    }
+    FormData formData = null;
+    if (configurationSource == ConfigurationSource.EDT) {
+      formData = (FormData) XStreamFactory.fromXML(path.toFile());
+    } else {
+      var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
+      formData = new FormData(designerForm);
+    }
+    return Optional.ofNullable(formData);
   }
 
   /**
@@ -239,7 +264,8 @@ public class MDOFactory {
 
   private void computeMdoReferenceForChild(MDObjectBase mdoValue, MDObjectBase child) {
     if (child.getMdoReference() == null) {
-      child.setMdoReference(new MDOReference(child, mdoValue));
+      var mdoReference = new MDOReference(child, mdoValue);
+      child.setMdoReference(mdoReference);
     }
   }
 

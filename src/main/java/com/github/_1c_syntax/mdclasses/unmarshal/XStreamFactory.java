@@ -45,6 +45,8 @@ import com.github._1c_syntax.mdclasses.mdo.DocumentNumerator;
 import com.github._1c_syntax.mdclasses.mdo.EventSubscription;
 import com.github._1c_syntax.mdclasses.mdo.ExchangePlan;
 import com.github._1c_syntax.mdclasses.mdo.FilterCriterion;
+import com.github._1c_syntax.mdclasses.mdo.FormData;
+import com.github._1c_syntax.mdclasses.mdo.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.FunctionalOption;
 import com.github._1c_syntax.mdclasses.mdo.FunctionalOptionsParameter;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
@@ -66,7 +68,9 @@ import com.github._1c_syntax.mdclasses.mdo.Task;
 import com.github._1c_syntax.mdclasses.mdo.WSReference;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
@@ -96,6 +100,8 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -104,9 +110,9 @@ import java.util.Locale;
 @Slf4j
 @UtilityClass
 public class XStreamFactory {
-
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
+  private static final List<Class<?>> CLASSES_FOR_FORM = createListClassesForForm();
 
   @Getter(lazy = true)
   private final XStream xstream = createXMLMapper();
@@ -216,6 +222,60 @@ public class XStreamFactory {
     // поля подсистем
     xStream.aliasField("subsystems", Subsystem.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("content", Subsystem.class, CHILDREN_FIELD_NAME);
+
+    // свойства формы
+    CLASSES_FOR_FORM.forEach(aClass -> {
+      xStream.aliasField("items", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("autoCommandBar", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("extendedTooltip", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("contextMenu", aClass, CHILDREN_FIELD_NAME);
+    });
+
+    addDesignerFormItemAliases(xStream);
+  }
+
+  private void addDesignerFormItemAliases(XStream xStream) {
+    xStream.aliasField("ChildItems", DesignerForm.class, "childItems");
+
+    // элементы формы
+    xStream.aliasField("AutoCommandBar", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Button", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ButtonGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("CalendarField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ChartField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("CheckBoxField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ColumnGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Command", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("CommandBar", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("CommandBarButton", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("CommandBarHyperlink", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ContextMenu", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("DendrogramField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("FormattedDocumentField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("GanttChartField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("GeographicalSchemaField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("GraphicalSchemaField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("HTMLDocumentField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Hyperlink", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("InputField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("LabelDecoration", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("LabelField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Navigator", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Page", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Pages", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("PeriodField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("PictureDecoration", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("PictureField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("PlannerField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ProgressBarField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("RadioButtonField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("SpreadSheetDocumentField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Table", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("TextDocumentField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("TrackBarField", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("UsualButton", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("UsualGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("Popup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
   }
 
   private void addClassAliases(XStream xStream) {
@@ -261,10 +321,11 @@ public class XStreamFactory {
     xStream.alias("mdclass:WebService", WebService.class);
     xStream.alias("mdclass:WSReference", WSReference.class);
     xStream.alias("mdclass:XDTOPackage", XDTOPackage.class);
-
     xStream.alias("mdclass:Configuration", MDOConfiguration.class);
+    xStream.alias("form:Form", FormData.class);
 
     xStream.alias("MetaDataObject", DesignerWrapper.class);
+    xStream.alias("Form", DesignerForm.class);
   }
 
   private void addConverters(XStream xStream) {
@@ -275,7 +336,14 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter(ObjectBelonging.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
-
     xStream.registerConverter(new PairConverter());
+    xStream.registerConverter(new DataPathConverter());
+  }
+
+  private static List<Class<?>> createListClassesForForm() {
+    List<Class<?>> list = new ArrayList<>();
+    list.add(FormData.class);
+    list.add(FormItem.class);
+    return list;
   }
 }

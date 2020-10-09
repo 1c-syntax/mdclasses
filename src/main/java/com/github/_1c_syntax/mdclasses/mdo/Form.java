@@ -34,6 +34,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Form extends MDObjectBSL {
 
+  private FormData data;
+
   public Form(DesignerMDO designerMDO) {
     super(designerMDO);
   }
