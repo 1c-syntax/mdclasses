@@ -40,6 +40,10 @@ class ScheduledJobAttributesTest extends AbstractMDOTest {
         assertThat(handler.getMethodName()).isNotBlank();
         assertThat(handler.getMethodPath()).isNotBlank();
         assertThat(handler.getModuleName()).isNotBlank();
+
+        assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
+        assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
+        assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
     }
 
     @Override
@@ -49,5 +53,9 @@ class ScheduledJobAttributesTest extends AbstractMDOTest {
         assertThat(handler.getMethodName()).isNotBlank();
         assertThat(handler.getMethodPath()).isNotBlank();
         assertThat(handler.getModuleName()).isNotBlank();
+
+        assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
+        assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
+        assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
     }
 }

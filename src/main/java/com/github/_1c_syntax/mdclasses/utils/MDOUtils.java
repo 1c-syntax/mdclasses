@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.Handler;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -34,15 +33,11 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 @UtilityClass
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
-  private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
-  private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
-
   /**
    * Определяет тип исходников по корню проекта
    */
@@ -70,28 +65,6 @@ public class MDOUtils {
    */
   public Map<MDOType, Set<ModuleType>> getModuleTypesForMdoTypes() {
     return MODULE_TYPES_FOR_MDO_TYPES;
-  }
-
-  /**
-   * Метод разбивает строковый полный путь метода на атрибуты и возвращает POJO представление объекта
-   * @param methodPath полный путь метода РЗ в формате: CommonModule.ОбщийМодуль1.РегламентноеЗадание1
-   * @return POJO представление полного пути метода
-   */
-  public Handler getMDOHandler(String methodPath) {
-    Handler handler = new Handler();
-
-    if (methodPath == null || methodPath.isBlank()) {
-      return handler;
-    }
-
-    handler.setMethodPath(methodPath);
-    String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
-    if (data.length > 1) {
-      handler.setMethodName(data[2]);
-      handler.setModuleName(data[1]);
-    }
-
-    return handler;
   }
 
   private Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {

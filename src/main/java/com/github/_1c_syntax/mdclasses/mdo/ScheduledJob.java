@@ -24,10 +24,12 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.MethodHandlerConverter;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -44,7 +46,7 @@ public class ScheduledJob extends MDObjectBase {
 
   public ScheduledJob(DesignerMDO designerMDO) {
     super(designerMDO);
-    this.handler = MDOUtils.getMDOHandler(designerMDO.getProperties().getMethodName());
+    this.handler = new Handler(designerMDO.getProperties().getMethodName());
   }
 
   @Override
