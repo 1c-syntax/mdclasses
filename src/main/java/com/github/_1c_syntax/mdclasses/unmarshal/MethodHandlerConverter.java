@@ -42,6 +42,6 @@ public class MethodHandlerConverter implements Converter {
 
     @Override
     public boolean canConvert(Class type) {
-        return true;
+        return type == Handler.class;
     }
 }
