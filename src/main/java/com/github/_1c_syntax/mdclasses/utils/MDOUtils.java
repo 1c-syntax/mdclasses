@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.ScheduledJobAttribute;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -33,11 +34,14 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @UtilityClass
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
+  private static final String REGEX = "\\.";
+  private static final Pattern PATTERN = Pattern.compile(REGEX);
 
   /**
    * Определяет тип исходников по корню проекта
@@ -66,6 +70,28 @@ public class MDOUtils {
    */
   public Map<MDOType, Set<ModuleType>> getModuleTypesForMdoTypes() {
     return MODULE_TYPES_FOR_MDO_TYPES;
+  }
+
+  /**
+   * Метод разбивает строковый полный путь метода на атрибуты и возвращает POJO представление объекта
+   * @param methodPath полный путь метода РЗ в формате: CommonModule.ОбщийМодуль1.РегламентноеЗадание1
+   * @return POJO представление полного пути метода
+   */
+  public ScheduledJobAttribute getScheduledJobAttribute(String methodPath) {
+    ScheduledJobAttribute scheduledJobAttribute = new ScheduledJobAttribute();
+
+    if (methodPath == null || methodPath.isBlank()) {
+      return scheduledJobAttribute;
+    }
+
+    scheduledJobAttribute.setMethodPath(methodPath);
+    String[] data = PATTERN.split(methodPath);
+    if (data.length > 1) {
+      scheduledJobAttribute.setMethodName(data[2]);
+      scheduledJobAttribute.setModuleName(data[1]);
+    }
+
+    return scheduledJobAttribute;
   }
 
   private Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {
