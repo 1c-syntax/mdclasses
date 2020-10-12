@@ -36,18 +36,18 @@ class ScheduledJobAttributesTest extends AbstractMDOTest {
     @Test
     void testEDT() {
         var mdo = (ScheduledJob) getMDObjectEDT("ScheduledJobs/РегламентноеЗадание1/РегламентноеЗадание1.mdo");
-        ScheduledJobAttribute scheduledJobAttribute = mdo.getMethodAttributes();
-        assertThat(scheduledJobAttribute.getMethodName()).isNotBlank();
-        assertThat(scheduledJobAttribute.getMethodPath()).isNotBlank();
-        assertThat(scheduledJobAttribute.getModuleName()).isNotBlank();
+        Handler handler = mdo.getHandler();
+        assertThat(handler.getMethodName()).isNotBlank();
+        assertThat(handler.getMethodPath()).isNotBlank();
+        assertThat(handler.getModuleName()).isNotBlank();
     }
 
     @Override
     void testDesigner() {
         var mdo = (ScheduledJob) getMDObjectDesigner("ScheduledJobs/РегламентноеЗадание1.xml");
-        ScheduledJobAttribute scheduledJobAttribute = mdo.getMethodAttributes();
-        assertThat(scheduledJobAttribute.getMethodName()).isNotBlank();
-        assertThat(scheduledJobAttribute.getMethodPath()).isNotBlank();
-        assertThat(scheduledJobAttribute.getModuleName()).isNotBlank();
+        Handler handler = mdo.getHandler();
+        assertThat(handler.getMethodName()).isNotBlank();
+        assertThat(handler.getMethodPath()).isNotBlank();
+        assertThat(handler.getModuleName()).isNotBlank();
     }
 }

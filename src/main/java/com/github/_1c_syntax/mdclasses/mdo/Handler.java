@@ -21,12 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-public class ScheduledJobAttribute {
+public class Handler {
 
     private String methodPath = "";
     private String moduleName = "";

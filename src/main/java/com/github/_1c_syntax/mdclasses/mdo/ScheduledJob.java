@@ -23,14 +23,11 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.unmarshal.ScheduledJobAttributesConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.MethodHandlerConverter;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -41,13 +38,13 @@ public class ScheduledJob extends MDObjectBase {
   /**
    * Полное имя метода, включающее имя общего модуля
    */
-  @XStreamConverter(ScheduledJobAttributesConverter.class)
+  @XStreamConverter(MethodHandlerConverter.class)
   @XStreamAlias("methodName")
-  private ScheduledJobAttribute methodAttributes;
+  private Handler handler;
 
   public ScheduledJob(DesignerMDO designerMDO) {
     super(designerMDO);
-    this.methodAttributes = MDOUtils.getScheduledJobAttribute(designerMDO.getProperties().getMethodName());
+    this.handler = MDOUtils.getMDOHandler(designerMDO.getProperties().getMethodName());
   }
 
   @Override

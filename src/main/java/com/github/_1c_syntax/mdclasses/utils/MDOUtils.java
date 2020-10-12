@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.ScheduledJobAttribute;
+import com.github._1c_syntax.mdclasses.mdo.Handler;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -40,8 +40,8 @@ import java.util.regex.Pattern;
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
-  private static final String REGEX = "\\.";
-  private static final Pattern PATTERN = Pattern.compile(REGEX);
+  private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
+  private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
 
   /**
    * Определяет тип исходников по корню проекта
@@ -77,21 +77,21 @@ public class MDOUtils {
    * @param methodPath полный путь метода РЗ в формате: CommonModule.ОбщийМодуль1.РегламентноеЗадание1
    * @return POJO представление полного пути метода
    */
-  public ScheduledJobAttribute getScheduledJobAttribute(String methodPath) {
-    ScheduledJobAttribute scheduledJobAttribute = new ScheduledJobAttribute();
+  public Handler getMDOHandler(String methodPath) {
+    Handler handler = new Handler();
 
     if (methodPath == null || methodPath.isBlank()) {
-      return scheduledJobAttribute;
+      return handler;
     }
 
-    scheduledJobAttribute.setMethodPath(methodPath);
-    String[] data = PATTERN.split(methodPath);
+    handler.setMethodPath(methodPath);
+    String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
     if (data.length > 1) {
-      scheduledJobAttribute.setMethodName(data[2]);
-      scheduledJobAttribute.setModuleName(data[1]);
+      handler.setMethodName(data[2]);
+      handler.setModuleName(data[1]);
     }
 
-    return scheduledJobAttribute;
+    return handler;
   }
 
   private Map<MDOType, Set<ModuleType>> moduleTypesForMDOTypes() {

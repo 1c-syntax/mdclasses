@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-public class ScheduledJobAttributesConverter implements Converter {
+public class MethodHandlerConverter implements Converter {
 
     @Override
     public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -37,7 +37,7 @@ public class ScheduledJobAttributesConverter implements Converter {
 
     @Override
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-        return MDOUtils.getScheduledJobAttribute(reader.getValue());
+        return MDOUtils.getMDOHandler(reader.getValue());
     }
 
     @Override
