@@ -21,9 +21,30 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.*;
+import com.github._1c_syntax.mdclasses.mdo.Command;
+import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.HTTPService;
+import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
+import com.github._1c_syntax.mdclasses.mdo.Language;
+import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
+import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
+import com.github._1c_syntax.mdclasses.mdo.Role;
+import com.github._1c_syntax.mdclasses.mdo.RoleData;
+import com.github._1c_syntax.mdclasses.mdo.Subsystem;
+import com.github._1c_syntax.mdclasses.mdo.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.Template;
+import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
+import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
-import com.github._1c_syntax.mdclasses.metadata.additional.*;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
@@ -31,7 +52,11 @@ import lombok.experimental.UtilityClass;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
