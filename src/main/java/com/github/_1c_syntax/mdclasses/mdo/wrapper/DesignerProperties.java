@@ -21,7 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.*;
+import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
+import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
+import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
