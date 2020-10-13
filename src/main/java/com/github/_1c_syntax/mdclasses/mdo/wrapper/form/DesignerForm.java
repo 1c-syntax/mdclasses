@@ -19,28 +19,19 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.wrapper;
+package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DesignerFormItem {
-  @XStreamAsAttribute
-  private String name;
-  @XStreamAsAttribute
-  private int id;
-  @XStreamAlias("DataPath")
-  private String dataPath;
-  @XStreamAlias("ChildItems")
+public class DesignerForm {
   private DesignerChildItems childItems;
-  @XStreamAlias("ContextMenu")
-  private DesignerFormItem contextMenu;
-  @XStreamAlias("ExtendedTooltip")
-  private DesignerFormItem extendedTooltip;
-  @XStreamAlias("AutoCommandBar")
   private DesignerFormItem autoCommandBar;
+  @XStreamAlias("Events")
+  private DesignerEvents events;
+  @XStreamAlias("Attributes")
+  private DesignerAttributes attributes;
 }

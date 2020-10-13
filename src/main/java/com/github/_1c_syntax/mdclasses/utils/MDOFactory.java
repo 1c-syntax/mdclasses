@@ -37,8 +37,8 @@ import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
@@ -129,7 +129,7 @@ public class MDOFactory {
 
       if (mdoValue instanceof MDObjectComplex) {
         ((MDObjectComplex) mdoValue).getForms().forEach(form -> {
-          Path formDataPath = MDOUtils.getFormDataPath(configurationSource, mdoPath.getParent().toString(),
+          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoPath.getParent().toString(),
             mdoValue.getName(), form.getName());
           var formDataOptional = readFormData(configurationSource, formDataPath);
           formDataOptional.ifPresent(form::setData);

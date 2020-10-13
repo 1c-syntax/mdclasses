@@ -19,29 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
-@ToString(of = {"id", "name"})
+@EqualsAndHashCode(of = {"id", "name"})
 @NoArgsConstructor
-public class FormItem {
-  private String name;
-  private int id = -1;
+public class DesignerColumn {
   @XStreamAsAttribute
-  private String type; // FIXME: если пустой, надо подумать как туда прокинуть autoCommandBar
-  private boolean visible = true;
-  private boolean enabled = true;
-  @XStreamImplicit
-  private List<FormItem> children = new ArrayList<>();
-  private DataPath dataPath = DataPath.EMPTY;
+  private String name;
+  @XStreamAsAttribute
+  private int id;
+  // TODO: загрузка title
+  // TODO: загрузка type
 }

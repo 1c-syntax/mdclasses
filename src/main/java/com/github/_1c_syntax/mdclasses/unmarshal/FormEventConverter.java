@@ -19,20 +19,32 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.unmarshal;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.thoughtworks.xstream.converters.Converter;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-@Data
-@NoArgsConstructor
-public class FormHandlerItem {
-  private String event;
-  private String name;
+public class FormEventConverter implements Converter {
+  @Override
+  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+    // noop
+  }
 
-  public FormHandlerItem(DesignerEvent designerEvent) {
-    setName(designerEvent.getValue());
-    setEvent(designerEvent.getName());
+  @Override
+  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    var event = new DesignerEvent();
+    var name = reader.getAttribute("name");
+    event.setValue(reader.getValue());
+    event.setName(name);
+    return event;
+  }
+
+  @Override
+  public boolean canConvert(Class type) {
+    return type == DesignerEvent.class;
   }
 }

@@ -68,10 +68,12 @@ import com.github._1c_syntax.mdclasses.mdo.Task;
 import com.github._1c_syntax.mdclasses.mdo.WSReference;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerChildItems;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -231,12 +233,22 @@ public class XStreamFactory {
       xStream.aliasField("contextMenu", aClass, CHILDREN_FIELD_NAME);
     });
 
+    xStream.aliasField("Events", DesignerForm.class, "events");
+
     addDesignerFormItemAliases(xStream);
+    addDesignerFormCommonAliases(xStream);
+  }
+
+  private void addDesignerFormCommonAliases(XStream xStream) {
+    xStream.aliasField("ChildItems", DesignerForm.class, "childItems");
+    xStream.aliasField("ChildItems", DesignerFormItem.class, "childItems");
+
+    xStream.aliasField("MainAttribute", DesignerAttribute.class, "main");
+    xStream.aliasField("Columns", DesignerAttribute.class, "designerColumns");
+    xStream.aliasField("DataPath", DesignerFormItem.class, "dataPath");
   }
 
   private void addDesignerFormItemAliases(XStream xStream) {
-    xStream.aliasField("ChildItems", DesignerForm.class, "childItems");
-
     // элементы формы
     xStream.aliasField("AutoCommandBar", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("Button", DesignerChildItems.class, CHILDREN_FIELD_NAME);
@@ -276,6 +288,12 @@ public class XStreamFactory {
     xStream.aliasField("UsualButton", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("UsualGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("Popup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    // корень формы
+    xStream.aliasField("AutoCommandBar", DesignerForm.class, "autoCommandBar");
+    // элемент формы
+    xStream.aliasField("ContextMenu", DesignerFormItem.class, "contextMenu");
+    xStream.aliasField("ExtendedTooltip", DesignerFormItem.class, "extendedTooltip");
+    xStream.aliasField("AutoCommandBar", DesignerFormItem.class, "autoCommandBar");
   }
 
   private void addClassAliases(XStream xStream) {
@@ -323,7 +341,6 @@ public class XStreamFactory {
     xStream.alias("mdclass:XDTOPackage", XDTOPackage.class);
     xStream.alias("mdclass:Configuration", MDOConfiguration.class);
     xStream.alias("form:Form", FormData.class);
-
     xStream.alias("MetaDataObject", DesignerWrapper.class);
     xStream.alias("Form", DesignerForm.class);
   }
@@ -338,6 +355,7 @@ public class XStreamFactory {
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
     xStream.registerConverter(new DataPathConverter());
+    xStream.registerConverter(new FormEventConverter());
   }
 
   private static List<Class<?>> createListClassesForForm() {

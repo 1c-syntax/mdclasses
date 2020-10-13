@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildItems;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerForm;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerFormItem;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerChildItems;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -33,12 +33,13 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Data
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class FormData {
-  // плоский список дочерних элементов
   private List<FormItem> plainChildren = new ArrayList<>();
   @XStreamImplicit
   private List<FormItem> children = new ArrayList<>();
@@ -46,24 +47,29 @@ public class FormData {
   private List<FormHandlerItem> handlers = Collections.emptyList();
   @XStreamImplicit
   private List<FormAttribute> attributes = Collections.emptyList();
-  private String group;
-  private String windowOpeningMode;
-  private boolean autoTitle;
-  private boolean autoUrl;
-  private boolean autoFillCheck;
-  private boolean allowFormCustomize;
-  private boolean showTitle;
-  private boolean showCloseButton;
-  private boolean enabled;
+  private boolean enabled = true;
   // TODO: реализовать командный интерфейс
-  // commandInterface
-  // -- navigationPanel
-  // -- commandBar
 
   public FormData(DesignerForm designerForm) {
+    // элементы формы
     fillChildrenItems(designerForm.getChildItems(), children);
     addDesignerFormItem(designerForm.getAutoCommandBar(), children);
     fillPlainChildren(children);
+
+    // события
+    handlers = Optional.ofNullable(designerForm.getEvents())
+      .map(designerEvents -> designerEvents.getChildren().stream()
+        .map(FormHandlerItem::new)
+        .collect(Collectors.toList()))
+      .orElse(Collections.emptyList());
+
+    // аттрибуты
+    attributes = Optional.ofNullable(designerForm.getAttributes())
+      .map(designerAttributes -> designerAttributes.getChildren().stream()
+        .map(FormAttribute::new)
+        .collect(Collectors.toList()))
+      .orElse(Collections.emptyList());
+
   }
 
   public void fillPlainChildren(List<FormItem> itemList) {
@@ -92,10 +98,10 @@ public class FormData {
     addDesignerFormItem(designerFormItem.getContextMenu(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getAutoCommandBar(), formItem.getChildren());
-
     if (designerFormItem.getChildItems() != null) {
       fillChildrenItems(designerFormItem.getChildItems(), formItem.getChildren());
     }
+
     return formItem;
   }
 

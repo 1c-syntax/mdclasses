@@ -61,16 +61,6 @@ public class MDOUtils {
     return configurationSource;
   }
 
-  public Path getFormDataPath(ConfigurationSource configurationSource, String basePath, String mdoName, String formName) {
-    Path path;
-    if (configurationSource == ConfigurationSource.EDT) {
-      path = Path.of(basePath, "Forms", formName, "Form.form");
-    } else {
-      path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
-    }
-    return path;
-  }
-
   /**
    * Возвращает соответствие типов объектов и доступных им типов модулей
    */

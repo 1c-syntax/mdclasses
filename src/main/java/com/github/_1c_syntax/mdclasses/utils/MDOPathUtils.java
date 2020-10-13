@@ -189,6 +189,16 @@ public class MDOPathUtils {
     return Optional.empty();
   }
 
+  public Path getFormDataPath(ConfigurationSource configurationSource, String basePath, String mdoName, String formName) {
+    Path path;
+    if (configurationSource == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Forms", formName, "Form.form");
+    } else {
+      path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
+    }
+    return path;
+  }
+
   // Формат EDT
 
   /**

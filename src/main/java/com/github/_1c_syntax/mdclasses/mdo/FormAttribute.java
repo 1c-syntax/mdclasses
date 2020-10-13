@@ -21,17 +21,23 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString(onlyExplicitlyIncluded = true)
+@ToString(of = {"id", "name"})
 @NoArgsConstructor
 public class FormAttribute {
   private String name;
   private int id;
   // TODO: valueType
   private boolean main = false;
-  private boolean savedData = false;
+
+  public FormAttribute(DesignerAttribute designerAttribute) {
+    setName(designerAttribute.getName());
+    setId(designerAttribute.getId());
+    setMain(designerAttribute.isMain());
+  }
 }
