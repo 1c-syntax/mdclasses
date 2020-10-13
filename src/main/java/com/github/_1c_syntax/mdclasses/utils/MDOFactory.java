@@ -21,40 +21,17 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.Command;
-import com.github._1c_syntax.mdclasses.mdo.Form;
-import com.github._1c_syntax.mdclasses.mdo.HTTPService;
-import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
-import com.github._1c_syntax.mdclasses.mdo.Language;
-import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
-import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.Subsystem;
-import com.github._1c_syntax.mdclasses.mdo.TabularSection;
-import com.github._1c_syntax.mdclasses.mdo.Template;
-import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
-import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.*;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.*;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -125,9 +102,31 @@ public class MDOFactory {
             setIncludedSubsystems((MDOConfiguration) mdoValue);
           });
       }
+
+      // загрузка данных роли
+      if (mdoValue instanceof Role) {
+        var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
+                mdoPath.getParent().toString(), mdoValue.getName());
+        var roleDataOptional = readRoleData(roleDataPath);
+        roleDataOptional.ifPresent(((Role) mdoValue)::setRoleData);
+      }
     });
 
     return mdo;
+  }
+
+  /**
+   * Читает данные роли из файла Rights
+   *
+   * @param roleDataPath - путь к файлу прав роли.
+   * @return {@code Optional} POJO представление данных ролей
+   */
+  private static Optional<RoleData> readRoleData(Path roleDataPath) {
+    if (Files.notExists(roleDataPath)) {
+      return Optional.empty();
+    }
+
+    return Optional.ofNullable((RoleData) XStreamFactory.fromXML(roleDataPath.toFile()));
   }
 
   /**
