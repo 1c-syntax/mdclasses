@@ -57,6 +57,9 @@ class FormDataTest {
 
     assertThat(item.getDataPath()).isNotNull();
     assertThat(item.getDataPath().getSegment()).isEqualTo("Критичность");
+    assertThat(item.getHandlers())
+      .hasSizeGreaterThan(0)
+      .anyMatch(handler -> handler.getName().equals("КритичностьПриИзменении") && handler.getEvent().equals("OnChange"));
 
     var findEmptyType = formData.getPlainChildren().stream()
       .anyMatch(formItem -> formItem.getType().isEmpty());

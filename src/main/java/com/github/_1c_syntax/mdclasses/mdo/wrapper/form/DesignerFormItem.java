@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,4 +43,6 @@ public class DesignerFormItem {
   private DesignerFormItem autoCommandBar;
   private DesignerFormItem searchStringAddition;
   private DesignerFormItem viewStatusAddition;
+  @XStreamAlias("Events")
+  private DesignerEvents events;
 }

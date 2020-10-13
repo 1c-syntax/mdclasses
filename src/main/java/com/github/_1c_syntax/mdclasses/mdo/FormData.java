@@ -115,6 +115,13 @@ public class FormData {
       fillChildrenItems(designerFormItem.getChildItems(), formItem.getChildren());
     }
 
+    if (designerFormItem.getEvents() != null) {
+      List<FormHandlerItem> handlers = designerFormItem.getEvents().getChildren().stream()
+        .map(FormHandlerItem::new)
+        .collect(Collectors.toList());
+      formItem.setHandlers(handlers);
+    }
+
     return formItem;
   }
 

@@ -29,6 +29,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -68,4 +69,10 @@ public class FormItem {
    * Путь к данным элемента формы. Путь к данным может быть пустым (пустая строка)
    */
   private DataPath dataPath = DataPath.EMPTY;
+
+  /**
+   * Обработчики событий элемента
+   */
+  @XStreamImplicit
+  private List<FormHandlerItem> handlers = Collections.emptyList();
 }
