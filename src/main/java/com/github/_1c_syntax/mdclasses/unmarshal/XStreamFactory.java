@@ -82,6 +82,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
+import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
 import com.thoughtworks.xstream.converters.basic.ByteConverter;
 import com.thoughtworks.xstream.converters.basic.DateConverter;
@@ -115,6 +116,8 @@ public class XStreamFactory {
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
   private static final List<Class<?>> CLASSES_FOR_FORM = createListClassesForForm();
+  @Getter
+  private static Converter reflectionConverter;
 
   @Getter(lazy = true)
   private final XStream xstream = createXMLMapper();
@@ -146,6 +149,8 @@ public class XStreamFactory {
        */
       @Override
       protected void setupConverters() {
+        reflectionConverter = new ReflectionConverter(getMapper(), getReflectionProvider());
+
         registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
         registerConverter(new IntConverter(), PRIORITY_NORMAL);
         registerConverter(new FloatConverter(), PRIORITY_NORMAL);
@@ -157,7 +162,7 @@ public class XStreamFactory {
         registerConverter(new StringConverter(), PRIORITY_NORMAL);
         registerConverter(new DateConverter(), PRIORITY_NORMAL);
         registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
-        registerConverter(new ReflectionConverter(getMapper(), getReflectionProvider()), PRIORITY_VERY_LOW);
+        registerConverter(reflectionConverter, PRIORITY_VERY_LOW);
       }
     };
     // автоопределение аннотаций
@@ -356,6 +361,8 @@ public class XStreamFactory {
     xStream.registerConverter(new PairConverter());
     xStream.registerConverter(new DataPathConverter());
     xStream.registerConverter(new FormEventConverter());
+    xStream.registerConverter(new DesignerFormItemConverter());
+    xStream.registerConverter(new FormItemConverter());
   }
 
   private static List<Class<?>> createListClassesForForm() {

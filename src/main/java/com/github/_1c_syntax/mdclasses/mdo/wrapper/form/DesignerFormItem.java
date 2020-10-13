@@ -34,6 +34,7 @@ public class DesignerFormItem {
   private String name;
   @XStreamAsAttribute
   private int id;
+  private String type;
   private String dataPath;
   private DesignerChildItems childItems;
   private DesignerFormItem contextMenu;

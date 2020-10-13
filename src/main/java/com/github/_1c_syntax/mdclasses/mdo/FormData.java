@@ -94,6 +94,7 @@ public class FormData {
       var dataPath = new DataPath(designerFormItem.getDataPath());
       formItem.setDataPath(dataPath);
     }
+    formItem.setType(designerFormItem.getType());
 
     addDesignerFormItem(designerFormItem.getContextMenu(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());

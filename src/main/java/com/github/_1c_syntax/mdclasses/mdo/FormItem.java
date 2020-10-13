@@ -38,7 +38,7 @@ public class FormItem {
   private String name;
   private int id = -1;
   @XStreamAsAttribute
-  private String type; // FIXME: если пустой, надо подумать как туда прокинуть autoCommandBar
+  private String type = "";
   private boolean visible = true;
   private boolean enabled = true;
   @XStreamImplicit
