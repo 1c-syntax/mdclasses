@@ -19,16 +19,18 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @XStreamAlias("v8:item")
-public class MDODesignerSynonym {
+public class DesignerSynonym {
 
     @XStreamAlias("v8:lang")
     private String language = "";

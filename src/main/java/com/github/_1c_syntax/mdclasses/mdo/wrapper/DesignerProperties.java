@@ -21,13 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
-import com.github._1c_syntax.mdclasses.mdo.MDODesignerSynonym;
-import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
-import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
-import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.*;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,7 +39,7 @@ public class DesignerProperties {
   @XStreamAlias("Name")
   private String name;
   @XStreamAlias("Synonym")
-  private List<MDODesignerSynonym> synonyms = Collections.emptyList();
+  private List<DesignerSynonym> synonyms = Collections.emptyList();
   @XStreamAlias("Comment")
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
