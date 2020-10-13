@@ -52,6 +52,12 @@ class FormDataTest {
       .hasSize(127)
       .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора") && formItem.getId() == 103);
 
+    var item = formData.getPlainChildren().stream()
+      .filter(formItem -> formItem.getName().equals("Критичность")).findAny().get();
+
+    assertThat(item.getDataPath()).isNotNull();
+    assertThat(item.getDataPath().getSegment()).isEqualTo("Критичность");
+
     var findEmptyType = formData.getPlainChildren().stream()
       .anyMatch(formItem -> formItem.getType().isEmpty());
     assertThat(findEmptyType).isFalse();
