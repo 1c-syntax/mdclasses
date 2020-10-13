@@ -22,9 +22,15 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerColumn;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @ToString(of = {"id", "name"})
@@ -43,10 +49,35 @@ public class FormAttribute {
    * Признак, что реквизит является основным для формы
    */
   private boolean main = false;
+  /**
+   * Подчиненные реквизиты, например колонки в табличной части
+   */
+  @XStreamAlias("columns")
+  @XStreamImplicit
+  private List<FormAttribute> children = new ArrayList<>();
 
+  /**
+   * Конструктор модели для реквизита формата конфигуратора
+   *
+   * @param designerAttribute - модель формата конфигуратора
+   */
   public FormAttribute(DesignerAttribute designerAttribute) {
     setName(designerAttribute.getName());
     setId(designerAttribute.getId());
     setMain(designerAttribute.isMain());
+    if (designerAttribute.getDesignerColumns() != null) {
+      designerAttribute.getDesignerColumns().getChildren()
+        .forEach(designerColumn -> children.add(new FormAttribute(designerColumn)));
+    }
+  }
+
+  /**
+   * Конструктор модели для колонки реквизита формата конфигуратора
+   *
+   * @param designerColumn - модель формата конфигуратора
+   */
+  public FormAttribute(DesignerColumn designerColumn) {
+    setName(designerColumn.getName());
+    setId(designerColumn.getId());
   }
 }

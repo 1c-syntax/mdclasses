@@ -26,7 +26,6 @@ import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -69,7 +68,15 @@ class FormDataTest {
         && handler.getName().equals("ОбработкаВыбора"));
 
     assertThat(formData.getAttributes()).hasSize(12)
-      .anyMatch(attribute -> attribute.getName().equals("Объект") && attribute.getId() == 1 && attribute.isMain());
+      .anyMatch(attribute -> attribute.getName().equals("Объект") && attribute.getId() == 1 && attribute.isMain())
+      .anyMatch(attribute -> attribute.getName().equals("Журнал") && attribute.getId() == 4 && !attribute.isMain());
+
+    FormAttribute attribute = formData.getAttributes().stream()
+      .filter(formAttribute -> formAttribute.getName().equals("Журнал")).findAny().get();
+
+    assertThat(attribute.getChildren()).hasSize(26)
+      .anyMatch(formAttribute -> formAttribute.getName().equals("ВспомогательныйIPПорт"));
+
   }
 
 }
