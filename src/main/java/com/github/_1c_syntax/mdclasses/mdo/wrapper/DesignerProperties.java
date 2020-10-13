@@ -100,4 +100,7 @@ public class DesignerProperties {
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
 
+  @XStreamAlias("MethodName")
+  private String methodName = "";
+
 }
