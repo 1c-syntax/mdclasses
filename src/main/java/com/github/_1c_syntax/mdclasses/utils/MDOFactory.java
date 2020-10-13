@@ -141,6 +141,13 @@ public class MDOFactory {
     return mdo;
   }
 
+  /**
+   * Читает данные формы (FormData) в объект из файла
+   *
+   * @param configurationSource - формат исходных файлов
+   * @param path                - путь к файлу описания объекта
+   * @return - прочитанный объект
+   */
   public Optional<FormData> readFormData(ConfigurationSource configurationSource, Path path) {
     if (!path.toFile().exists()) {
       return Optional.empty();
@@ -264,8 +271,7 @@ public class MDOFactory {
 
   private void computeMdoReferenceForChild(MDObjectBase mdoValue, MDObjectBase child) {
     if (child.getMdoReference() == null) {
-      var mdoReference = new MDOReference(child, mdoValue);
-      child.setMdoReference(mdoReference);
+      child.setMdoReference(new MDOReference(child, mdoValue));
     }
   }
 

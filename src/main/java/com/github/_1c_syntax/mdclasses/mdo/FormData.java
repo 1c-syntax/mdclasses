@@ -40,16 +40,33 @@ import java.util.stream.Collectors;
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class FormData {
+  /**
+   * "Плоский" список элементов формы
+   */
   private List<FormItem> plainChildren = new ArrayList<>();
+  /**
+   * Дерево элементов формы
+   */
   @XStreamImplicit
   private List<FormItem> children = new ArrayList<>();
+  /**
+   * Обработчик событий формы
+   */
   @XStreamImplicit
   private List<FormHandlerItem> handlers = Collections.emptyList();
+  /**
+   * Список реквизитов формы
+   */
   @XStreamImplicit
   private List<FormAttribute> attributes = Collections.emptyList();
   private boolean enabled = true;
   // TODO: реализовать командный интерфейс
 
+  /**
+   * Конструктор для создания данных формы на основании модели конфигуратора
+   *
+   * @param designerForm - модель данных формата конфигуратора
+   */
   public FormData(DesignerForm designerForm) {
     // элементы формы
     fillChildrenItems(designerForm.getChildItems(), children);
@@ -72,21 +89,14 @@ public class FormData {
 
   }
 
-  public void fillPlainChildren(List<FormItem> itemList) {
-    itemList.forEach(formItem -> {
-      plainChildren.add(formItem);
-      fillPlainChildren(formItem.getChildren());
-    });
-  }
-
-  private void fillChildrenItems(DesignerChildItems designerChildItems, List<FormItem> list) {
+  private static void fillChildrenItems(DesignerChildItems designerChildItems, List<FormItem> list) {
     if (designerChildItems == null) {
       return;
     }
     designerChildItems.getChildren().forEach(formItem -> list.add(newFormItem(formItem)));
   }
 
-  private FormItem newFormItem(DesignerFormItem designerFormItem) {
+  private static FormItem newFormItem(DesignerFormItem designerFormItem) {
     var formItem = new FormItem();
     formItem.setName(designerFormItem.getName());
     formItem.setId(designerFormItem.getId());
@@ -106,10 +116,16 @@ public class FormData {
     return formItem;
   }
 
-  private void addDesignerFormItem(DesignerFormItem designerFormItem, List<FormItem> children) {
+  private static void addDesignerFormItem(DesignerFormItem designerFormItem, List<FormItem> children) {
     if (designerFormItem != null) {
       children.add(newFormItem(designerFormItem));
     }
   }
 
+  public void fillPlainChildren(List<FormItem> itemList) {
+    itemList.forEach(formItem -> {
+      plainChildren.add(formItem);
+      fillPlainChildren(formItem.getChildren());
+    });
+  }
 }

@@ -116,9 +116,11 @@ public class XStreamFactory {
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
   private static final List<Class<?>> CLASSES_FOR_FORM = createListClassesForForm();
+  /**
+   * Используется для чтения элементов формы (см. FormEventConverter, DesignerFormItemConverter)
+   */
   @Getter
   private static Converter reflectionConverter;
-
   @Getter(lazy = true)
   private final XStream xstream = createXMLMapper();
 

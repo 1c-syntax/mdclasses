@@ -28,9 +28,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class FormHandlerItem {
+  /**
+   * Имя события элемента формы (в том числе формы)
+   */
   private String event;
+  /**
+   * Назначенный метод, который обрабатывает событие элемента
+   */
   private String name;
 
+  /**
+   * Конструктор создания обработчика событий на основании модели конфигуратора
+   *
+   * @param designerEvent - модель данных формата конфигуратора
+   */
   public FormHandlerItem(DesignerEvent designerEvent) {
     setName(designerEvent.getValue());
     setEvent(designerEvent.getName());

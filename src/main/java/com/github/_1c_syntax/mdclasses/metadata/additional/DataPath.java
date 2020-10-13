@@ -24,6 +24,9 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Модель пути к данным. Используется в элементах формы
+ */
 @Data
 @NoArgsConstructor
 public class DataPath {

@@ -30,9 +30,18 @@ import lombok.ToString;
 @ToString(of = {"id", "name"})
 @NoArgsConstructor
 public class FormAttribute {
+  /**
+   * Имя реквизита
+   */
   private String name;
+  /**
+   * Идентификатор реквизита, в конфигураторе не отображается.
+   */
   private int id;
   // TODO: valueType
+  /**
+   * Признак, что реквизит является основным для формы
+   */
   private boolean main = false;
 
   public FormAttribute(DesignerAttribute designerAttribute) {

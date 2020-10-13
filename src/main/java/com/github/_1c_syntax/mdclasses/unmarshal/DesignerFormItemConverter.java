@@ -7,6 +7,9 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * Конвертирует элемент формы в DesignerFormItem (формат конфигуратора)
+ */
 public class DesignerFormItemConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -15,6 +18,7 @@ public class DesignerFormItemConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    // тип элемента = имя узла. Например ButtonGroup
     var nodeName = reader.getNodeName();
     var item = (DesignerFormItem) context.convertAnother(reader, DesignerFormItem.class,
       XStreamFactory.getReflectionConverter());

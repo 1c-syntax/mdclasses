@@ -28,6 +28,9 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * Конвертирует событие формы в DesignerEvent
+ */
 public class FormEventConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -36,11 +39,8 @@ public class FormEventConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var event = new DesignerEvent();
     var name = reader.getAttribute("name");
-    event.setValue(reader.getValue());
-    event.setName(name);
-    return event;
+    return new DesignerEvent(name, reader.getValue());
   }
 
   @Override

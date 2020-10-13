@@ -31,17 +31,41 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Модель элемента формы в формате EDT
+ */
 @Data
 @ToString(of = {"id", "name"})
 @NoArgsConstructor
 public class FormItem {
+  /**
+   * Имя элемента
+   */
   private String name;
+  /**
+   * Идентификатор элемента, в конфигураторе не отображается
+   */
   private int id = -1;
+  /**
+   * Тип элемента. Например Label или InputField. На текущий момент в виде строки
+   */
   @XStreamAsAttribute
   private String type = "";
+  /**
+   * Признак видимости элемента
+   */
   private boolean visible = true;
+  /**
+   * Признак доступности элемента
+   */
   private boolean enabled = true;
+  /**
+   * Подчиненные элементы формы
+   */
   @XStreamImplicit
   private List<FormItem> children = new ArrayList<>();
+  /**
+   * Путь к данным элемента формы. Путь к данным может быть пустым (пустая строка)
+   */
   private DataPath dataPath = DataPath.EMPTY;
 }

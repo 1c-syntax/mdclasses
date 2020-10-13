@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class DesignerEvent {
   @XStreamAsAttribute
   private String name;

@@ -7,6 +7,9 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * Конвертирует в FormItem элемент формы
+ */
 public class FormItemConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -15,6 +18,7 @@ public class FormItemConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    // если свойство type отсутствует, тип элемента заполняется из атрибута
     var nodeName = reader.getNodeName();
     var type = getItemType(nodeName, reader.getAttribute("xsi:type"));
     var item = (FormItem) context.convertAnother(reader, FormItem.class,
