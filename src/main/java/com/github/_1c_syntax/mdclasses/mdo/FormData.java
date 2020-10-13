@@ -109,6 +109,8 @@ public class FormData {
     addDesignerFormItem(designerFormItem.getContextMenu(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getAutoCommandBar(), formItem.getChildren());
+    addDesignerFormItem(designerFormItem.getSearchStringAddition(), formItem.getChildren());
+    addDesignerFormItem(designerFormItem.getViewStatusAddition(), formItem.getChildren());
     if (designerFormItem.getChildItems() != null) {
       fillChildrenItems(designerFormItem.getChildItems(), formItem.getChildren());
     }

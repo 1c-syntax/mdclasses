@@ -40,4 +40,6 @@ public class DesignerFormItem {
   private DesignerFormItem contextMenu;
   private DesignerFormItem extendedTooltip;
   private DesignerFormItem autoCommandBar;
+  private DesignerFormItem searchStringAddition;
+  private DesignerFormItem viewStatusAddition;
 }

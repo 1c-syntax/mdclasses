@@ -238,6 +238,8 @@ public class XStreamFactory {
       xStream.aliasField("autoCommandBar", aClass, CHILDREN_FIELD_NAME);
       xStream.aliasField("extendedTooltip", aClass, CHILDREN_FIELD_NAME);
       xStream.aliasField("contextMenu", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("viewStatusAddition", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("searchControlAddition", aClass, CHILDREN_FIELD_NAME);
     });
 
     xStream.aliasField("Events", DesignerForm.class, "events");
@@ -295,12 +297,19 @@ public class XStreamFactory {
     xStream.aliasField("UsualButton", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("UsualGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("Popup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ViewStatusAddition", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("ExtendedTooltip", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("SearchStringAddition", DesignerChildItems.class, CHILDREN_FIELD_NAME);
+
     // корень формы
     xStream.aliasField("AutoCommandBar", DesignerForm.class, "autoCommandBar");
+
     // элемент формы
     xStream.aliasField("ContextMenu", DesignerFormItem.class, "contextMenu");
     xStream.aliasField("ExtendedTooltip", DesignerFormItem.class, "extendedTooltip");
     xStream.aliasField("AutoCommandBar", DesignerFormItem.class, "autoCommandBar");
+    xStream.aliasField("SearchStringAddition", DesignerFormItem.class, "searchStringAddition");
+    xStream.aliasField("ViewStatusAddition", DesignerFormItem.class, "viewStatusAddition");
   }
 
   private void addClassAliases(XStream xStream) {

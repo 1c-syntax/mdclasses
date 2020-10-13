@@ -49,7 +49,7 @@ class FormDataTest {
 
   private void checkFormData(FormData formData) {
     assertThat(formData.getPlainChildren())
-      .hasSize(127)
+      .hasSize(133)
       .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора") && formItem.getId() == 103);
 
     var item = formData.getPlainChildren().stream()
