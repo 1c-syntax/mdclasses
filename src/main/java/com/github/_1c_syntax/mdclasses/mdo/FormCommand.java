@@ -19,21 +19,26 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
+package com.github._1c_syntax.mdclasses.mdo;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommand;
+import com.github._1c_syntax.mdclasses.unmarshal.CommandActionConverter;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DesignerForm {
-  private DesignerChildItems childItems;
-  private DesignerFormItem autoCommandBar;
-  @XStreamAlias("Events")
-  private DesignerEvents events;
-  @XStreamAlias("Attributes")
-  private DesignerAttributes attributes;
-  @XStreamAlias("Commands")
-  private DesignerFormCommands commands;
+public class FormCommand {
+  private String name;
+  // TODO: title
+  private int id;
+  @XStreamConverter(value = CommandActionConverter.class)
+  private String action;
+
+  public FormCommand(DesignerFormCommand formCommand) {
+    setName(formCommand.getName());
+    setId(formCommand.getId());
+    setAction(formCommand.getAction());
+  }
 }

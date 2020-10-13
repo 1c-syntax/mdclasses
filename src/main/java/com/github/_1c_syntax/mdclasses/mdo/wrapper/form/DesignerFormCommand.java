@@ -22,18 +22,18 @@
 package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DesignerForm {
-  private DesignerChildItems childItems;
-  private DesignerFormItem autoCommandBar;
-  @XStreamAlias("Events")
-  private DesignerEvents events;
-  @XStreamAlias("Attributes")
-  private DesignerAttributes attributes;
-  @XStreamAlias("Commands")
-  private DesignerFormCommands commands;
+public class DesignerFormCommand {
+  @XStreamAsAttribute
+  private String name;
+  @XStreamAsAttribute
+  private int id;
+  // TODO: Title
+  @XStreamAlias("Action")
+  private String action;
 }

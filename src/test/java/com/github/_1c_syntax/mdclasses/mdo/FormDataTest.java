@@ -86,6 +86,10 @@ class FormDataTest {
     assertThat(attribute.getChildren()).hasSize(26)
       .anyMatch(formAttribute -> formAttribute.getName().equals("ВспомогательныйIPПорт"));
 
+    assertThat(formData.getCommands()).hasSize(8)
+      .anyMatch(formCommand -> formCommand.getName().equals("ВыгрузитьЖурналДляПередачиВТехподдержку")
+        && formCommand.getAction().equals("ВыгрузитьЖурналДляПередачиВТехподдержку"));
+
   }
 
 }

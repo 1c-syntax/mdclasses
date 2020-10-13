@@ -22,18 +22,17 @@
 package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
-public class DesignerForm {
-  private DesignerChildItems childItems;
-  private DesignerFormItem autoCommandBar;
-  @XStreamAlias("Events")
-  private DesignerEvents events;
-  @XStreamAlias("Attributes")
-  private DesignerAttributes attributes;
-  @XStreamAlias("Commands")
-  private DesignerFormCommands commands;
+public class DesignerFormCommands {
+  @XStreamAlias("Command")
+  @XStreamImplicit
+  private List<DesignerFormCommand> children = Collections.emptyList();
 }

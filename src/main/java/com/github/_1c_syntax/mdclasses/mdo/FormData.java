@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,25 +42,35 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class FormData {
   /**
-   * "Плоский" список элементов формы
+   * "Плоский" список элементов
    */
   private List<FormItem> plainChildren = new ArrayList<>();
   /**
-   * Дерево элементов формы
+   * Дерево элементов
    */
   @XStreamImplicit
   private List<FormItem> children = new ArrayList<>();
   /**
-   * Обработчик событий формы
+   * Обработчики событий
    */
   @XStreamImplicit
   private List<FormHandlerItem> handlers = Collections.emptyList();
   /**
-   * Список реквизитов формы
+   * Список реквизитов
    */
   @XStreamImplicit
   private List<FormAttribute> attributes = Collections.emptyList();
+  /**
+   * Доступность формы
+   */
   private boolean enabled = true;
+  /**
+   * Список команд
+   */
+  @XStreamAlias("formCommands")
+  @XStreamImplicit
+  private List<FormCommand> commands = Collections.emptyList();
+
   // TODO: реализовать командный интерфейс
 
   /**
@@ -80,10 +91,17 @@ public class FormData {
         .collect(Collectors.toList()))
       .orElse(Collections.emptyList());
 
-    // аттрибуты
+    // реквизиты
     attributes = Optional.ofNullable(designerForm.getAttributes())
       .map(designerAttributes -> designerAttributes.getChildren().stream()
         .map(FormAttribute::new)
+        .collect(Collectors.toList()))
+      .orElse(Collections.emptyList());
+
+    // команды
+    commands = Optional.ofNullable(designerForm.getCommands())
+      .map(designerFormCommands -> designerFormCommands.getChildren().stream()
+        .map(FormCommand::new)
         .collect(Collectors.toList()))
       .orElse(Collections.emptyList());
 
