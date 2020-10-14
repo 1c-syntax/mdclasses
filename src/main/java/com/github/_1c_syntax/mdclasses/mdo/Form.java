@@ -33,6 +33,14 @@ import lombok.ToString;
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class Form extends MDObjectBSL {
+  /**
+   * Данные формы. Читается из отдельного файла
+   * и предоставляет информацию о:
+   * + список элементов формы
+   * + список обработчиков формы
+   * + список реквизитов формы
+   */
+  private FormData data;
 
   public Form(DesignerMDO designerMDO) {
     super(designerMDO);
