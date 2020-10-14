@@ -22,10 +22,12 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerSynonym;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -56,6 +58,12 @@ public class MDObjectBase implements MDOExtensions {
   protected String name = "";
 
   /**
+   * Синонимы объекта
+   */
+  @XStreamImplicit(itemFieldName = "synonym")
+  protected List<MDOSynonym> synonyms = Collections.emptyList();
+
+  /**
    * Строка с комментарием объекта
    */
   protected String comment = "";
@@ -83,6 +91,7 @@ public class MDObjectBase implements MDOExtensions {
   public MDObjectBase(DesignerMDO designerMDO) {
     uuid = designerMDO.getUuid();
     name = designerMDO.getProperties().getName();
+    synonyms = getSynonymsFromDesignerMDO(designerMDO.getProperties().getSynonyms());
     comment = designerMDO.getProperties().getComment();
     objectBelonging = designerMDO.getProperties().getObjectBelonging();
   }
@@ -102,5 +111,22 @@ public class MDObjectBase implements MDOExtensions {
       includedSubsystems = new ArrayList<>();
     }
     includedSubsystems.add(subsystem);
+  }
+
+  private List<MDOSynonym> getSynonymsFromDesignerMDO(List<DesignerSynonym> synonyms) {
+
+    if (synonyms.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<MDOSynonym> result = new ArrayList<>();
+    for (DesignerSynonym synonym : synonyms) {
+      MDOSynonym mdoSynonym = new MDOSynonym();
+      mdoSynonym.setLanguage(synonym.getLanguage());
+      mdoSynonym.setContent(synonym.getContent());
+
+      result.add(mdoSynonym);
+    }
+
+    return result;
   }
 }

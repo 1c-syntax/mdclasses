@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
@@ -39,6 +40,7 @@ import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
@@ -128,6 +130,16 @@ public class MDOFactory {
           });
       }
 
+      if (mdoValue instanceof MDObjectComplex) {
+        ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
+          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoPath.getParent().toString(),
+            mdoValue.getName(), form.getName());
+          var formDataOptional = readFormData(configurationSource, formDataPath);
+          formDataOptional.ifPresent(form::setData);
+        });
+      }
+
+
       // загрузка данных роли
       if (mdoValue instanceof Role) {
         var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
@@ -138,6 +150,27 @@ public class MDOFactory {
     });
 
     return mdo;
+  }
+
+  /**
+   * Читает данные формы (FormData) в объект из файла
+   *
+   * @param configurationSource - формат исходных файлов
+   * @param path                - путь к файлу описания объекта
+   * @return - прочитанный объект
+   */
+  public Optional<FormData> readFormData(ConfigurationSource configurationSource, Path path) {
+    if (!path.toFile().exists()) {
+      return Optional.empty();
+    }
+    FormData formData = null;
+    if (configurationSource == ConfigurationSource.EDT) {
+      formData = (FormData) XStreamFactory.fromXML(path.toFile());
+    } else {
+      var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
+      formData = new FormData(designerForm);
+    }
+    return Optional.ofNullable(formData);
   }
 
   /**

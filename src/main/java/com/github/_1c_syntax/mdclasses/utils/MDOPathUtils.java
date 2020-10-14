@@ -189,6 +189,24 @@ public class MDOPathUtils {
     return Optional.empty();
   }
 
+  /**
+   * Возвращает путь к файлу описания данных формы
+   * @param configurationSource - формат исходных файлов
+   * @param basePath - базовый каталог объекта
+   * @param mdoName - имя объекта
+   * @param formName - имя формы
+   * @return - путь к файлу описания
+   */
+  public Path getFormDataPath(ConfigurationSource configurationSource, String basePath, String mdoName, String formName) {
+    Path path;
+    if (configurationSource == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Forms", formName, "Form.form");
+    } else {
+      path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
+    }
+    return path;
+  }
+
   // Формат EDT
 
   /**
