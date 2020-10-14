@@ -31,6 +31,9 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Враппер над свойствами объекта в формате конфигуратора
  */
@@ -40,6 +43,8 @@ public class DesignerProperties {
 
   @XStreamAlias("Name")
   private String name;
+  @XStreamAlias("Synonym")
+  private List<DesignerSynonym> synonyms = Collections.emptyList();
   @XStreamAlias("Comment")
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
