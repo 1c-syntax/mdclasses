@@ -23,16 +23,18 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class Role extends MDObjectBase {
+
+  private RoleData roleData;
 
   public Role(DesignerMDO designerMDO) {
     super(designerMDO);

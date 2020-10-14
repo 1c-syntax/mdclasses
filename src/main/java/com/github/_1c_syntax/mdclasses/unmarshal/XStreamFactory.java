@@ -56,6 +56,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.Report;
 import com.github._1c_syntax.mdclasses.mdo.Role;
+import com.github._1c_syntax.mdclasses.mdo.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.ScheduledJob;
 import com.github._1c_syntax.mdclasses.mdo.Sequence;
 import com.github._1c_syntax.mdclasses.mdo.SessionParameter;
@@ -344,6 +345,7 @@ public class XStreamFactory {
     xStream.alias("mdclass:Enum", MDOEnum.class);
     xStream.alias("mdclass:Report", Report.class);
     xStream.alias("mdclass:Role", Role.class);
+    xStream.alias("Rights", RoleData.class);
     xStream.alias("mdclass:ScheduledJob", ScheduledJob.class);
     xStream.alias("mdclass:Sequence", Sequence.class);
     xStream.alias("mdclass:SessionParameter", SessionParameter.class);
