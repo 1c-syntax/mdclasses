@@ -22,19 +22,35 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerXRItems;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class Document extends MDObjectComplex {
+  /**
+   * Список связанных регистров (где документ является регистратором)
+   */
+  @XStreamImplicit
+  private List<String> registerRecords = Collections.emptyList();
+
   public Document(DesignerMDO designerMDO) {
     super(designerMDO);
+    // registerRecords
+    Optional.ofNullable(designerMDO.getProperties().getRegisterRecords())
+      .map(DesignerXRItems::getItems)
+      .ifPresent(this::setRegisterRecords);
   }
 
   @Override
