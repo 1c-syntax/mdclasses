@@ -39,10 +39,21 @@ import java.util.List;
 @Setter
 public class RoleData {
 
+    /**
+     * Устанавливать права для новых объектов
+     */
     @XStreamAlias("setForNewObjects")
     private boolean setForNewObjects = false;
+
+    /**
+     * Устанавливать права для реквизитов и табличных частей по умолчанию
+     */
     @XStreamAlias("setForAttributesByDefault")
     private boolean setForAttributesByDefault = false;
+
+    /**
+     * Независимые права подчиненных объектов
+     */
     @XStreamAlias("independentRightsOfChildObjects")
     private boolean independentRightsOfChildObjects = false;
 
