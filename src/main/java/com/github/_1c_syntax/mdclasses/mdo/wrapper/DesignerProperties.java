@@ -73,6 +73,9 @@ public class DesignerProperties {
   @XStreamAlias("Content")
   private DesignerXRItems content = new DesignerXRItems();
 
+  @XStreamAlias("RegisterRecords")
+  private DesignerXRItems registerRecords = new DesignerXRItems();
+
   @XStreamAlias("ScriptVariant")
   private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   @XStreamAlias("CompatibilityMode")
