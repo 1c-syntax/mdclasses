@@ -76,12 +76,12 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Использовать управляемые формы в обычном приложении
    */
-  private boolean useManagedFormInOrdinaryApplication = false;
+  private boolean useManagedFormInOrdinaryApplication;
 
   /**
    * Использовать обычные формы в управляемом приложении
    */
-  private boolean useOrdinaryFormInManagedApplication = false;
+  private boolean useOrdinaryFormInManagedApplication;
 
   /**
    * Режим запуска клиента по умолчанию

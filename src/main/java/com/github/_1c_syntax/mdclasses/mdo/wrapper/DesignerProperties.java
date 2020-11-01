@@ -106,9 +106,9 @@ public class DesignerProperties {
   private String namePrefix = "";
 
   @XStreamAlias("UseManagedFormInOrdinaryApplication")
-  private boolean useManagedFormInOrdinaryApplication = false;
+  private boolean useManagedFormInOrdinaryApplication;
   @XStreamAlias("UseOrdinaryFormInManagedApplication")
-  private boolean useOrdinaryFormInManagedApplication = false;
+  private boolean useOrdinaryFormInManagedApplication;
 
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
