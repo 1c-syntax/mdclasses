@@ -74,6 +74,16 @@ public class MDOConfiguration extends MDObjectBSL {
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
 
   /**
+   * Использовать управляемые формы в обычном приложении
+   */
+  private boolean useManagedFormInOrdinaryApplication = false;
+
+  /**
+   * Использовать обычные формы в управляемом приложении
+   */
+  private boolean useOrdinaryFormInManagedApplication = false;
+
+  /**
    * Режим запуска клиента по умолчанию
    */
   private String defaultRunMode = "";
@@ -125,6 +135,9 @@ public class MDOConfiguration extends MDObjectBSL {
       designerProperties.getSynchronousPlatformExtensionAndAddInCallUseMode();
     configurationExtensionPurpose = designerProperties.getConfigurationExtensionPurpose();
     namePrefix = designerProperties.getNamePrefix();
+
+    useManagedFormInOrdinaryApplication = designerProperties.isUseManagedFormInOrdinaryApplication();
+    useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
     children = designerMDO.getChildObjects().getChildren();
   }

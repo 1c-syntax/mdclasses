@@ -122,6 +122,15 @@ public class Configuration {
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   /**
+   * Использовать управляемые формы в обычном приложении
+   */
+  private boolean useManagedFormInOrdinaryApplication;
+  /**
+   * Использовать обычные формы в управляемом приложении
+   */
+  private boolean useOrdinaryFormInManagedApplication;
+
+  /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
   private Map<URI, ModuleType> modulesByType;
@@ -226,6 +235,9 @@ public class Configuration {
     synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
     synchronousPlatformExtensionAndAddInCallUseMode =
       mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
+
+    useManagedFormInOrdinaryApplication = mdoConfiguration.isUseManagedFormInOrdinaryApplication();
+    useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
