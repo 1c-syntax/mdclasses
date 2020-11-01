@@ -105,6 +105,11 @@ public class DesignerProperties {
   @XStreamAlias("NamePrefix")
   private String namePrefix = "";
 
+  @XStreamAlias("UseManagedFormInOrdinaryApplication")
+  private boolean useManagedFormInOrdinaryApplication;
+  @XStreamAlias("UseOrdinaryFormInManagedApplication")
+  private boolean useOrdinaryFormInManagedApplication;
+
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
 

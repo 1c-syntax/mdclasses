@@ -62,6 +62,9 @@ class ConfigurationTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isTrue();
+
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(38);
@@ -283,6 +286,9 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
