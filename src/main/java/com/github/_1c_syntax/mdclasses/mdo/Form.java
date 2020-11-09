@@ -32,7 +32,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class Form extends MDObjectBSL {
+public class Form extends MDObjectBSL implements MDOForm {
   /**
    * Данные формы. Читается из отдельного файла
    * и предоставляет информацию о:
@@ -50,5 +50,4 @@ public class Form extends MDObjectBSL {
   public MDOType getType() {
     return MDOType.FORM;
   }
-
 }
