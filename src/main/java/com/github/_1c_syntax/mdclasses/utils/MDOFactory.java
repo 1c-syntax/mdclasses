@@ -211,6 +211,7 @@ public class MDOFactory {
     } else {
       mdo = Optional.empty();
     }
+    mdo.ifPresent(mdObjectBase -> mdObjectBase.setPath(mdoPath));
 
     return mdo;
   }
