@@ -21,6 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonForm;
+import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
@@ -36,6 +39,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -131,6 +136,9 @@ class ConfigurationTest {
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
+
+    checkFillPath(configuration.getChildren());
+
   }
 
   @Test
@@ -359,6 +367,8 @@ class ConfigurationTest {
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
+
+    checkFillPath(configuration.getChildren());
   }
 
   @Test
@@ -548,6 +558,15 @@ class ConfigurationTest {
     File srcPath = new File("src/test/resources/metadata/original_ordinary");
     Configuration configuration = Configuration.create(srcPath.toPath());
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.ORDINARY_APPLICATION);
+  }
+
+  private void checkFillPath(Set<MDObjectBase> child) {
+    var elements = child.parallelStream()
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> mdObjectBase.getPath() == null)
+      .filter(mdObjectBase -> !mdObjectBase.getPath().toFile().exists())
+      .collect(Collectors.toList());
+    assertThat(elements).isEmpty();
   }
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {
