@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.CommonForm;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
@@ -137,6 +138,7 @@ class ConfigurationTest {
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
 
     checkFillPath(configuration.getChildren());
+    checkFormData(configuration.getChildren());
 
   }
 
@@ -366,6 +368,7 @@ class ConfigurationTest {
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
 
     checkFillPath(configuration.getChildren());
+    checkFormData(configuration.getChildren());
   }
 
   @Test
@@ -560,6 +563,14 @@ class ConfigurationTest {
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
       .filter(mdObjectBase -> mdObjectBase.getPath() == null)
       .filter(mdObjectBase -> !mdObjectBase.getPath().toFile().exists())
+      .collect(Collectors.toList());
+    assertThat(elements).isEmpty();
+  }
+
+  private void checkFormData(Set<MDObjectBase> child) {
+    var elements = child.parallelStream()
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> ((MDOForm) mdObjectBase).getData() == null)
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();
   }
