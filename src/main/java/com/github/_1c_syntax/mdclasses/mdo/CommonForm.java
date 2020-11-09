@@ -23,16 +23,24 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class CommonForm extends MDObjectBSL {
+public class CommonForm extends MDObjectBSL implements MDOForm {
+  /**
+   * Данные формы. Читается из отдельного файла
+   * и предоставляет информацию о:
+   * + список элементов формы
+   * + список обработчиков формы
+   * + список реквизитов формы
+   */
+  private FormData data;
 
   public CommonForm(DesignerMDO designerMDO) {
     super(designerMDO);
