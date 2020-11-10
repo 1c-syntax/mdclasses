@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -54,13 +55,16 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 10))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isTrue();
 
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -143,7 +147,7 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.ENGLISH);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("English");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -181,7 +185,7 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -277,12 +281,15 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
+
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
@@ -367,7 +374,7 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEmpty();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
@@ -460,7 +467,7 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEmpty();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
@@ -529,6 +536,13 @@ class ConfigurationTest {
 
     File file = new File("src/test/resources/metadata/Module.os");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.UNKNOWN);
+  }
+
+  @Test
+  void testOrdinaryMode() {
+    File srcPath = new File("src/test/resources/metadata/original_ordinary");
+    Configuration configuration = Configuration.create(srcPath.toPath());
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.ORDINARY_APPLICATION);
   }
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {

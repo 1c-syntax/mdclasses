@@ -51,7 +51,7 @@ class DocumentTest extends AbstractMDOTest {
       "Document.Документ1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
     checkModules(((MDObjectBSL) mdo).getModules(), 2, "Documents/Документ1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
-
+    checkRegisterRecords((Document) mdo);
   }
 
   @Override
@@ -71,6 +71,17 @@ class DocumentTest extends AbstractMDOTest {
     checkAttributes(tabularSection.getAttributes(), 2,
       "Document.Документ1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
     assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    checkRegisterRecords((Document) mdo);
+  }
+
+  private void checkRegisterRecords(Document mdo) {
+    assertThat(mdo.getRegisterRecords())
+      .hasSize(4)
+      .anyMatch(value -> value.equals("AccumulationRegister.РегистрНакопления1"))
+      .anyMatch(value -> value.equals("CalculationRegister.РегистрРасчета1"))
+      .anyMatch(value -> value.equals("InformationRegister.РегистрСведений2"))
+      .anyMatch(value -> value.equals("AccountingRegister.РегистрБухгалтерии1"))
+    ;
   }
 
 }

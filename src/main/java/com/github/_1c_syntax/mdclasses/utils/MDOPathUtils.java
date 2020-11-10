@@ -189,6 +189,24 @@ public class MDOPathUtils {
     return Optional.empty();
   }
 
+  /**
+   * Возвращает путь к файлу описания данных формы
+   * @param configurationSource - формат исходных файлов
+   * @param basePath - базовый каталог объекта
+   * @param mdoName - имя объекта
+   * @param formName - имя формы
+   * @return - путь к файлу описания
+   */
+  public Path getFormDataPath(ConfigurationSource configurationSource, String basePath, String mdoName, String formName) {
+    Path path;
+    if (configurationSource == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Forms", formName, "Form.form");
+    } else {
+      path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
+    }
+    return path;
+  }
+
   // Формат EDT
 
   /**
@@ -265,4 +283,23 @@ public class MDOPathUtils {
     return Paths.get(folder.toString(), subdirectory, moduleType.getFileName());
   }
 
+  /**
+   * Получает путь к файлу прав роли для любого формата относительного базового каталога,
+   * и имени объекта
+   *
+   * @param configurationSource - формат данных, конфигуратор или EDT
+   * @param basePath - базовый каталог конфигурации
+   * @param mdoName - имя объекта метаданных, без расширения
+   * @return - путь к файлу прав конкретной роли
+   */
+  public static Path getRoleDataPath(ConfigurationSource configurationSource, String basePath, String mdoName) {
+    Path path;
+    if (configurationSource == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Rights.rights");
+    } else {
+      path = Path.of(basePath, mdoName, "Ext", "Rights.xml");
+    }
+
+    return path;
+  }
 }

@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -95,7 +96,7 @@ public class Configuration {
   /**
    * Режим запуска приложения по умолчанию
    */
-  private String defaultRunMode;
+  private ApplicationRunMode defaultRunMode;
   /**
    * Язык приложения по умолчанию
    */
@@ -120,6 +121,15 @@ public class Configuration {
    * Режим использования синхронных вызовов для платформенных объектов и расширений
    */
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode;
+
+  /**
+   * Использовать управляемые формы в обычном приложении
+   */
+  private boolean useManagedFormInOrdinaryApplication;
+  /**
+   * Использовать обычные формы в управляемом приложении
+   */
+  private boolean useOrdinaryFormInManagedApplication;
 
   /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
@@ -172,7 +182,7 @@ public class Configuration {
     configurationExtensionCompatibilityMode = new CompatibilityMode();
     scriptVariant = ScriptVariant.ENGLISH;
 
-    defaultRunMode = "";
+    defaultRunMode = ApplicationRunMode.MANAGED_APPLICATION;
     defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
     dataLockControlMode = "";
     objectAutonumerationMode = "";
@@ -212,7 +222,7 @@ public class Configuration {
     }
 
     scriptVariant = mdoConfiguration.getScriptVariant();
-    defaultRunMode = mdoConfiguration.getDefaultRunMode();
+    defaultRunMode = ApplicationRunMode.getByName(mdoConfiguration.getDefaultRunMode());
 
     if (mdoConfiguration.getDefaultLanguage().isRight()) {
       defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
@@ -226,6 +236,9 @@ public class Configuration {
     synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
     synchronousPlatformExtensionAndAddInCallUseMode =
       mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
+
+    useManagedFormInOrdinaryApplication = mdoConfiguration.isUseManagedFormInOrdinaryApplication();
+    useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
