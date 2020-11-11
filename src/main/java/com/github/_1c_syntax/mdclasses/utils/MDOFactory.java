@@ -177,6 +177,7 @@ public class MDOFactory {
     FormData formData = null;
     if (configurationSource == ConfigurationSource.EDT) {
       formData = (FormData) XStreamFactory.fromXML(path.toFile());
+      formData.fillPlainChildren(formData.getChildren());
     } else {
       var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
       formData = new FormData(designerForm);
