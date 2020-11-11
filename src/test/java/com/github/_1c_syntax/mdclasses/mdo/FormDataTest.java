@@ -22,7 +22,9 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -34,16 +36,14 @@ class FormDataTest {
   @Test
   void testEDT() {
     var path = Path.of("src/test/resources/metadata/formdata/edt/ЖурналРегистрации/Form.form");
-    FormData formDataEDT = (FormData) XStreamFactory.fromXML(path.toFile());
-    formDataEDT.fillPlainChildren(formDataEDT.getChildren());
+    var formDataEDT = MDOFactory.readFormData(ConfigurationSource.EDT, path).get();
     checkFormData(formDataEDT);
   }
 
   @Test
   void testDesigner() {
     var path = Path.of("src/test/resources/metadata/formdata/original/ЖурналРегистрации/Ext/Form.xml");
-    var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
-    FormData formDataOrigin = new FormData(designerForm);
+    var formDataOrigin = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path).get();
     checkFormData(formDataOrigin);
   }
 
