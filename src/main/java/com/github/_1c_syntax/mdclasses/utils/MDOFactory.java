@@ -135,8 +135,8 @@ public class MDOFactory {
       if (mdoValue instanceof MDObjectComplex) {
         ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
           var parentPath = mdoPath.getParent().toString();
-
-          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue, parentPath, form.getName());
+          var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue, parentPath,
+            form.getName());
           readFormData(configurationSource, formDataPath).ifPresent(form::setData);
 
           var pathToForm = MDOPathUtils.getPathToForm(configurationSource, parentPath,

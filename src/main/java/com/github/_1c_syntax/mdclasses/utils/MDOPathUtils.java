@@ -195,14 +195,14 @@ public class MDOPathUtils {
    * Возвращает путь к файлу описания данных формы
    *
    * @param source   - формат исходных файлов
-   * @param mdo      - базовй объект
+   * @param mdo      - базовый объект
    * @param basePath - базовый каталог объекта
    * @param formName - имя формы
    * @return - путь к файлу описания
    */
   public Path getFormDataPath(ConfigurationSource source, MDObjectBase mdo, String basePath, String formName) {
     Path path;
-    Path currentPath = Path.of(basePath);
+    var currentPath = Path.of(basePath);
     if (!(mdo instanceof CommonForm)) {
       if (source == ConfigurationSource.EDT) {
         currentPath = Paths.get(basePath, "Forms", formName);
