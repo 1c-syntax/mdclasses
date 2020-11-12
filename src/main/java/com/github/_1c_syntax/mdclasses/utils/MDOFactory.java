@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
+import com.github._1c_syntax.mdclasses.mdo.CommonForm;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
@@ -29,6 +30,7 @@ import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
@@ -133,9 +135,8 @@ public class MDOFactory {
       if (mdoValue instanceof MDObjectComplex) {
         ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
           var parentPath = mdoPath.getParent().toString();
-
-          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, parentPath,
-            mdoValue.getName(), form.getName());
+          var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue, parentPath,
+            form.getName());
           readFormData(configurationSource, formDataPath).ifPresent(form::setData);
 
           var pathToForm = MDOPathUtils.getPathToForm(configurationSource, parentPath,
@@ -144,9 +145,14 @@ public class MDOFactory {
         });
       }
 
+      if (mdoValue.getType() == MDOType.COMMON_FORM) {
+        var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue,
+          mdoPath.getParent().toString(), mdoValue.getName());
+        readFormData(configurationSource, formDataPath).ifPresent(((MDOForm) mdoValue)::setData);
+      }
 
       // загрузка данных роли
-      if (mdoValue instanceof Role) {
+      if (mdoValue.getType() == MDOType.ROLE) {
         var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
           mdoPath.getParent().toString(), mdoValue.getName());
         var roleDataOptional = readRoleData(roleDataPath);
@@ -171,6 +177,7 @@ public class MDOFactory {
     FormData formData = null;
     if (configurationSource == ConfigurationSource.EDT) {
       formData = (FormData) XStreamFactory.fromXML(path.toFile());
+      formData.fillPlainChildren(formData.getChildren());
     } else {
       var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
       formData = new FormData(designerForm);

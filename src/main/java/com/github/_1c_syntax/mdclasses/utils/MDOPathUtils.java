@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonForm;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -193,17 +195,25 @@ public class MDOPathUtils {
    * Возвращает путь к файлу описания данных формы
    *
    * @param source   - формат исходных файлов
+   * @param mdo      - базовый объект
    * @param basePath - базовый каталог объекта
-   * @param mdoName  - имя объекта
    * @param formName - имя формы
    * @return - путь к файлу описания
    */
-  public Path getFormDataPath(ConfigurationSource source, String basePath, String mdoName, String formName) {
+  public Path getFormDataPath(ConfigurationSource source, MDObjectBase mdo, String basePath, String formName) {
     Path path;
+    var currentPath = Path.of(basePath);
+    if (!(mdo instanceof CommonForm)) {
+      if (source == ConfigurationSource.EDT) {
+        currentPath = Paths.get(basePath, MDOType.FORM.getGroupName(), formName);
+      } else {
+        currentPath = Paths.get(basePath, mdo.getName(), MDOType.FORM.getGroupName());
+      }
+    }
     if (source == ConfigurationSource.EDT) {
-      path = Path.of(basePath, "Forms", formName, "Form.form");
+      path = Path.of(currentPath.toString(), "Form.form");
     } else {
-      path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
+      path = Path.of(currentPath.toString(), formName, "Ext", "Form.xml");
     }
     return path;
   }
@@ -220,9 +230,9 @@ public class MDOPathUtils {
   public Path getPathToForm(ConfigurationSource source, String basePath, String mdoName, String formName) {
     Path path;
     if (source == ConfigurationSource.EDT) {
-      path = Path.of(basePath, "Forms", formName, "Form.form");
+      path = Path.of(basePath, MDOType.FORM.getGroupName(), formName, "Form.form");
     } else {
-      path = Path.of(basePath, mdoName, "Forms", formName + "." + EXTENSION_XML);
+      path = Path.of(basePath, mdoName, MDOType.FORM.getGroupName(), formName + "." + EXTENSION_XML);
     }
     return path;
   }
