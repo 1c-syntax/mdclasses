@@ -191,18 +191,38 @@ public class MDOPathUtils {
 
   /**
    * Возвращает путь к файлу описания данных формы
-   * @param configurationSource - формат исходных файлов
+   *
+   * @param source   - формат исходных файлов
    * @param basePath - базовый каталог объекта
-   * @param mdoName - имя объекта
+   * @param mdoName  - имя объекта
    * @param formName - имя формы
    * @return - путь к файлу описания
    */
-  public Path getFormDataPath(ConfigurationSource configurationSource, String basePath, String mdoName, String formName) {
+  public Path getFormDataPath(ConfigurationSource source, String basePath, String mdoName, String formName) {
     Path path;
-    if (configurationSource == ConfigurationSource.EDT) {
+    if (source == ConfigurationSource.EDT) {
       path = Path.of(basePath, "Forms", formName, "Form.form");
     } else {
       path = Path.of(basePath, mdoName, "Forms", formName, "Ext", "Form.xml");
+    }
+    return path;
+  }
+
+  /**
+   * Возвращает путь к файлу описания формы
+   *
+   * @param source   - формат исходных файлов
+   * @param basePath - базовый каталог объекта
+   * @param mdoName  - имя объекта
+   * @param formName - имя формы
+   * @return - путь к файлу описания
+   */
+  public Path getPathToForm(ConfigurationSource source, String basePath, String mdoName, String formName) {
+    Path path;
+    if (source == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Forms", formName, "Form.form");
+    } else {
+      path = Path.of(basePath, mdoName, "Forms", formName + "." + EXTENSION_XML);
     }
     return path;
   }
@@ -288,8 +308,8 @@ public class MDOPathUtils {
    * и имени объекта
    *
    * @param configurationSource - формат данных, конфигуратор или EDT
-   * @param basePath - базовый каталог конфигурации
-   * @param mdoName - имя объекта метаданных, без расширения
+   * @param basePath            - базовый каталог конфигурации
+   * @param mdoName             - имя объекта метаданных, без расширения
    * @return - путь к файлу прав конкретной роли
    */
   public static Path getRoleDataPath(ConfigurationSource configurationSource, String basePath, String mdoName) {

@@ -33,6 +33,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,6 +57,11 @@ public class MDObjectBase implements MDOExtensions {
    * Имя объекта
    */
   protected String name = "";
+
+  /**
+   * Путь к файлу объекта
+   */
+  protected Path path;
 
   /**
    * Синонимы объекта

@@ -132,10 +132,15 @@ public class MDOFactory {
 
       if (mdoValue instanceof MDObjectComplex) {
         ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
-          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoPath.getParent().toString(),
+          var parentPath = mdoPath.getParent().toString();
+
+          Path formDataPath = MDOPathUtils.getFormDataPath(configurationSource, parentPath,
             mdoValue.getName(), form.getName());
-          var formDataOptional = readFormData(configurationSource, formDataPath);
-          formDataOptional.ifPresent(form::setData);
+          readFormData(configurationSource, formDataPath).ifPresent(form::setData);
+
+          var pathToForm = MDOPathUtils.getPathToForm(configurationSource, parentPath,
+            mdoValue.getName(), form.getName());
+          form.setPath(pathToForm);
         });
       }
 
@@ -143,7 +148,7 @@ public class MDOFactory {
       // загрузка данных роли
       if (mdoValue instanceof Role) {
         var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
-                mdoPath.getParent().toString(), mdoValue.getName());
+          mdoPath.getParent().toString(), mdoValue.getName());
         var roleDataOptional = readRoleData(roleDataPath);
         roleDataOptional.ifPresent(((Role) mdoValue)::setRoleData);
       }
@@ -211,6 +216,7 @@ public class MDOFactory {
     } else {
       mdo = Optional.empty();
     }
+    mdo.ifPresent(mdObjectBase -> mdObjectBase.setPath(mdoPath));
 
     return mdo;
   }
