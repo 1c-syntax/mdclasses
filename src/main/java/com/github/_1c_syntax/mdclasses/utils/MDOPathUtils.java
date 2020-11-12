@@ -205,9 +205,9 @@ public class MDOPathUtils {
     var currentPath = Path.of(basePath);
     if (!(mdo instanceof CommonForm)) {
       if (source == ConfigurationSource.EDT) {
-        currentPath = Paths.get(basePath, "Forms", formName);
+        currentPath = Paths.get(basePath, MDOType.FORM.getGroupName(), formName);
       } else {
-        currentPath = Paths.get(basePath, mdo.getName(), "Forms");
+        currentPath = Paths.get(basePath, mdo.getName(), MDOType.FORM.getGroupName());
       }
     }
     if (source == ConfigurationSource.EDT) {
@@ -230,9 +230,9 @@ public class MDOPathUtils {
   public Path getPathToForm(ConfigurationSource source, String basePath, String mdoName, String formName) {
     Path path;
     if (source == ConfigurationSource.EDT) {
-      path = Path.of(basePath, "Forms", formName, "Form.form");
+      path = Path.of(basePath, MDOType.FORM.getGroupName(), formName, "Form.form");
     } else {
-      path = Path.of(basePath, mdoName, "Forms", formName + "." + EXTENSION_XML);
+      path = Path.of(basePath, mdoName, MDOType.FORM.getGroupName(), formName + "." + EXTENSION_XML);
     }
     return path;
   }
