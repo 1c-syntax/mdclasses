@@ -382,7 +382,7 @@ public class MDOFactory {
         MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
           .ifPresent((Path modulePath) -> {
             if (modulePath.toFile().exists()) {
-              modules.add(new MDOModule(moduleType, modulePath.toUri()));
+              modules.add(new MDOModule(moduleType, modulePath.toUri(), mdo));
             }
           });
       });
