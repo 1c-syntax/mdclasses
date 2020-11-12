@@ -145,14 +145,14 @@ public class MDOFactory {
         });
       }
 
-      if (mdoValue instanceof CommonForm) {
+      if (mdoValue.getType() == MDOType.COMMON_FORM) {
         var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue,
           mdoPath.getParent().toString(), mdoValue.getName());
         readFormData(configurationSource, formDataPath).ifPresent(((MDOForm) mdoValue)::setData);
       }
 
       // загрузка данных роли
-      if (mdoValue instanceof Role) {
+      if (mdoValue.getType() == MDOType.ROLE) {
         var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
           mdoPath.getParent().toString(), mdoValue.getName());
         var roleDataOptional = readRoleData(roleDataPath);
