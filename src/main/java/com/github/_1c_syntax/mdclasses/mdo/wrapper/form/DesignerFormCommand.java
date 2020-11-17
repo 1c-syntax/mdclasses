@@ -23,8 +23,12 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Collections;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -34,6 +38,8 @@ public class DesignerFormCommand {
   @XStreamAsAttribute
   private int id;
   // TODO: Title
+  // List - обход проблемы с несколькими Action у FormCommand
   @XStreamAlias("Action")
-  private String action;
+  @XStreamImplicit
+  private List<String> actions = Collections.emptyList();
 }

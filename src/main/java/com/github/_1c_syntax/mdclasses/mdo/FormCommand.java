@@ -34,11 +34,13 @@ public class FormCommand {
   // TODO: title
   private int id;
   @XStreamConverter(value = CommandActionConverter.class)
-  private String action;
+  private String action = "";
 
   public FormCommand(DesignerFormCommand formCommand) {
     setName(formCommand.getName());
     setId(formCommand.getId());
-    setAction(formCommand.getAction());
+    if (!formCommand.getActions().isEmpty()) {
+      setAction(formCommand.getActions().get(0));
+    }
   }
 }
