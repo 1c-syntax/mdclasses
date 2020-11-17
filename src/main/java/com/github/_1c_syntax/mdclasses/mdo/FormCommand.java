@@ -39,6 +39,8 @@ public class FormCommand {
   public FormCommand(DesignerFormCommand formCommand) {
     setName(formCommand.getName());
     setId(formCommand.getId());
-    setAction(formCommand.getAction());
+    if (!formCommand.getActions().isEmpty()) {
+      setAction(formCommand.getActions().get(0));
+    }
   }
 }

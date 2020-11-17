@@ -21,9 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +43,21 @@ class FormDataTest {
     var path = Path.of("src/test/resources/metadata/formdata/original/ЖурналРегистрации/Ext/Form.xml");
     var formDataOrigin = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path).get();
     checkFormData(formDataOrigin);
+  }
+
+  @Test
+  void testBrokenForm() {
+    var path = Path.of("src/test/resources/metadata/original_broken/Form/Form.xml");
+    var dataOptional = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path);
+    assertThat(dataOptional).isPresent();
+
+    var formData = dataOptional.get();
+    var command = formData.getCommands().stream()
+      .filter(formCommand -> formCommand.getId() == 800)
+      .findAny();
+
+    assertThat(command).isPresent();
+    assertThat(command.get().getAction()).isEqualTo("ЗаявкиНаСогласованиеУправленческойОтсрочкиПосле");
   }
 
   private void checkFormData(FormData formData) {
