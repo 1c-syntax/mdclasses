@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,7 +36,8 @@ public class DesignerAttribute {
   @XStreamAsAttribute
   private int id;
   // TODO: загрузка title
-  // TODO: загрузка type
+  @XStreamAlias("Type")
+  private DesignerAttributeType type;
   private boolean main = false;
   private DesignerColumns designerColumns;
 }
