@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.form.FormAttribute;
 import com.github._1c_syntax.mdclasses.mdo.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.form.attribute.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,25 @@ class FormDataTest {
 
     assertThat(command).isPresent();
     assertThat(command.get().getAction()).isEqualTo("ЗаявкиНаСогласованиеУправленческойОтсрочкиПосле");
+
+  }
+
+  @Test
+  void testDynamicList() {
+    var path = Path.of("src/test/resources/metadata/formdata/dynamic_list/edt/Form.form");
+    var formData = MDOFactory.readFormData(ConfigurationSource.EDT, path).get();
+    checkExtInfo(formData);
+
+    path = Path.of("src/test/resources/metadata/formdata/dynamic_list/original/Form.xml");
+    formData = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path).get();
+    checkExtInfo(formData);
+  }
+
+  private void checkExtInfo(FormData formData) {
+    var extInfo = formData.getAttributes().get(1).getExtInfo();
+    assertThat(extInfo)
+      .isNotNull()
+      .isInstanceOf(DynamicListExtInfo.class);
   }
 
   private void checkFormData(FormData formData) {
