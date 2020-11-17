@@ -19,26 +19,31 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.form;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommand;
-import com.github._1c_syntax.mdclasses.unmarshal.CommandActionConverter;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class FormCommand {
+public class FormHandlerItem {
+  /**
+   * Имя события элемента формы (в том числе формы)
+   */
+  private String event;
+  /**
+   * Назначенный метод, который обрабатывает событие элемента
+   */
   private String name;
-  // TODO: title
-  private int id;
-  @XStreamConverter(value = CommandActionConverter.class)
-  private String action;
 
-  public FormCommand(DesignerFormCommand formCommand) {
-    setName(formCommand.getName());
-    setId(formCommand.getId());
-    setAction(formCommand.getAction());
+  /**
+   * Конструктор создания обработчика событий на основании модели конфигуратора
+   *
+   * @param designerEvent - модель данных формата конфигуратора
+   */
+  public FormHandlerItem(DesignerEvent designerEvent) {
+    setName(designerEvent.getValue());
+    setEvent(designerEvent.getName());
   }
 }
