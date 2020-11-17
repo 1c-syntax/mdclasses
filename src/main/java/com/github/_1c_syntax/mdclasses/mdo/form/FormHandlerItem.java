@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.form;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
 import lombok.Data;
