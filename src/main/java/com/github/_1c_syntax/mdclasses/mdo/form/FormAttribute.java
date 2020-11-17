@@ -23,14 +23,18 @@ package com.github._1c_syntax.mdclasses.mdo.form;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerColumn;
+import com.github._1c_syntax.mdclasses.unmarshal.ValueTypeConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @ToString(of = {"id", "name"})
@@ -44,7 +48,14 @@ public class FormAttribute {
    * Идентификатор реквизита, в конфигураторе не отображается.
    */
   private int id;
-  // TODO: valueType
+
+  /**
+   * Список типов значений
+   */
+  @XStreamConverter(value = ValueTypeConverter.class)
+  @XStreamAlias("valueType")
+  private List<String> valueTypes = Collections.emptyList();
+
   /**
    * Признак, что реквизит является основным для формы
    */
@@ -68,6 +79,12 @@ public class FormAttribute {
     if (designerAttribute.getDesignerColumns() != null) {
       designerAttribute.getDesignerColumns().getChildren()
         .forEach(designerColumn -> children.add(new FormAttribute(designerColumn)));
+    }
+    if (designerAttribute.getType() != null) {
+      var list = designerAttribute.getType().getTypes().stream()
+        .map(value -> value.replace("cfg:", "")) // TODO: чтение типов реквизитов
+        .collect(Collectors.toList());
+      setValueTypes(list);
     }
   }
 

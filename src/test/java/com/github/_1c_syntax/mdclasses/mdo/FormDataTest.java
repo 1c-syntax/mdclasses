@@ -101,6 +101,13 @@ class FormDataTest {
     assertThat(attribute.getChildren()).hasSize(26)
       .anyMatch(formAttribute -> formAttribute.getName().equals("ВспомогательныйIPПорт"));
 
+    attribute = formData.getAttributes().stream()
+      .filter(formAttribute -> formAttribute.getName().equals("Объект"))
+      .findAny().get();
+
+    assertThat(attribute.getValueTypes()).hasSize(1);
+    assertThat(attribute.getValueTypes().get(0)).isEqualTo("DataProcessorObject.ЖурналРегистрации");
+
     assertThat(formData.getCommands()).hasSize(8)
       .anyMatch(formCommand -> formCommand.getName().equals("ВыгрузитьЖурналДляПередачиВТехподдержку")
         && formCommand.getAction().equals("ВыгрузитьЖурналДляПередачиВТехподдержку"));
