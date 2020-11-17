@@ -76,10 +76,13 @@ class FormDataTest {
   }
 
   private void checkExtInfo(FormData formData) {
-    var extInfo = formData.getAttributes().get(1).getExtInfo();
+    var extInfo = (DynamicListExtInfo) formData.getAttributes().get(1).getExtInfo();
     assertThat(extInfo)
       .isNotNull()
       .isInstanceOf(DynamicListExtInfo.class);
+
+    assertThat(extInfo.isCustomQuery()).isTrue();
+    assertThat(extInfo.getQueryText()).isNotEmpty();
   }
 
   private void checkFormData(FormData formData) {

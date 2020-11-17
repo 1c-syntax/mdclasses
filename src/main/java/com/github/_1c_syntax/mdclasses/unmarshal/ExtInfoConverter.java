@@ -42,7 +42,7 @@ public class ExtInfoConverter implements Converter {
     ExtInfo item;
     var type = Optional.ofNullable(reader.getAttribute("xsi:type")).orElse(ExtInfo.UNKNOWN);
     if (type.equals("form:DynamicListExtInfo")) {
-      item = (DynamicListExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
+      item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
         XStreamFactory.getReflectionConverter());
     } else {
       item = new ExtInfo();
