@@ -40,4 +40,6 @@ public class DesignerAttribute {
   private DesignerAttributeType type;
   private boolean main = false;
   private DesignerColumns designerColumns;
+  @XStreamAlias("Settings")
+  private DesignerAttributeSetting setting;
 }

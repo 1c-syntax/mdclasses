@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.form;
 
+import com.github._1c_syntax.mdclasses.mdo.form.attribute.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.form.attribute.ExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerColumn;
@@ -94,6 +95,13 @@ public class FormAttribute {
         .collect(Collectors.toList());
       setValueTypes(list);
     }
+    ExtInfo extInfo;
+    if (designerAttribute.getSetting() == null) {
+      extInfo = new ExtInfo();
+    } else {
+      extInfo = new DynamicListExtInfo(designerAttribute.getSetting());
+    }
+    setExtInfo(extInfo);
   }
 
   /**
