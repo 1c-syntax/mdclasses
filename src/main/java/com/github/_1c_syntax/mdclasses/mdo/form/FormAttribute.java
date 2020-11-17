@@ -21,8 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.form;
 
+import com.github._1c_syntax.mdclasses.mdo.form.attribute.ExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerColumn;
+import com.github._1c_syntax.mdclasses.unmarshal.ExtInfoConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.ValueTypeConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
@@ -66,6 +68,12 @@ public class FormAttribute {
   @XStreamAlias("columns")
   @XStreamImplicit
   private List<FormAttribute> children = new ArrayList<>();
+
+  /**
+   * Дополнительная информация о реквизите
+   */
+  @XStreamConverter(value = ExtInfoConverter.class)
+  private ExtInfo extInfo;
 
   /**
    * Конструктор модели для реквизита формата конфигуратора
