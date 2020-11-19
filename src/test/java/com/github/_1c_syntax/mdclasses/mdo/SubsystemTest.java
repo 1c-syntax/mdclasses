@@ -126,8 +126,8 @@ class SubsystemTest extends AbstractMDOTest {
     subsystem = (Subsystem) children.stream().filter(Either::isRight).map(Either::get)
       .filter(child -> child.getName().equals("ПочиненнаяСистема2"))
       .findFirst().get();
-    assertThat(subsystem.getChildren()).hasSize(2);
-    assertThat(subsystem.getChildren()).filteredOn(Either::isLeft).hasSize(2);
+    assertThat(subsystem.getChildren()).hasSize(3);
+    assertThat(subsystem.getChildren()).filteredOn(Either::isLeft).hasSize(3);
     assertThat(subsystem.getMdoReference())
       .isNotNull()
       .extracting(MDOReference::getType)

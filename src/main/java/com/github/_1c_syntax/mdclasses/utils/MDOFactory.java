@@ -52,6 +52,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -67,6 +68,7 @@ import java.util.stream.Collectors;
  * Фабрика для создания MDO объекта
  */
 @UtilityClass
+@Slf4j
 public class MDOFactory {
 
   /**
@@ -427,9 +429,11 @@ public class MDOFactory {
           children.add(mdoPair);
         }
       } else {
-        children.add(mdoPair);
         var mdo = mdoPair.get();
-        setSubsystemForChild(subsystem, allChildren, mdo);
+        if (!mdo.getIncludedSubsystems().contains(subsystem)) {
+          children.add(mdoPair);
+          setSubsystemForChild(subsystem, allChildren, mdo);
+        }
       }
     });
 
