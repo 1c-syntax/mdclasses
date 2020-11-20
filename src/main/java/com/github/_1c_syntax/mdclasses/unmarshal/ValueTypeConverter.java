@@ -21,16 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.github._1c_syntax.mdclasses.metadata.additional.ValueType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import lombok.Data;
-
-import java.util.Collections;
-import java.util.List;
 
 public class ValueTypeConverter implements Converter {
   @Override
@@ -50,9 +46,4 @@ public class ValueTypeConverter implements Converter {
     return true;
   }
 
-  @Data
-  private static class ValueType {
-    @XStreamImplicit
-    List<String> types = Collections.emptyList();
-  }
 }
