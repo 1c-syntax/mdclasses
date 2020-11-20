@@ -368,6 +368,28 @@ public class Configuration {
     return Optional.ofNullable(commonModules.get(name));
   }
 
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Строковая ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<URI, ModuleType> getModulesByType(String mdoRef) {
+    Map<URI, ModuleType> result = new HashMap<>();
+
+    childrenByMdoRef.entrySet().stream()
+      .filter((Map.Entry<MDOReference, MDObjectBase> entry) ->
+        entry.getKey().getMdoRef().equalsIgnoreCase(mdoRef) && entry.getValue() instanceof MDObjectBSL)
+      .map(Map.Entry::getValue)
+      .findFirst()
+      .ifPresent((MDObjectBase mdObjectBase) -> {
+        ((MDObjectBSL) mdObjectBase).getModules().forEach(mdoModule ->
+          result.put(mdoModule.getUri(), mdoModule.getModuleType())
+        );
+      });
+    return result;
+  }
+
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {

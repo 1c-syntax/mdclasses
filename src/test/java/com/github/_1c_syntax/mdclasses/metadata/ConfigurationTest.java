@@ -141,6 +141,14 @@ class ConfigurationTest {
     checkFillPath(configuration.getChildren());
     checkFormData(configuration.getChildren());
 
+    var modulesByType = configuration.getModulesByType("Document.ДОкумент1");
+    assertThat(modulesByType).hasSize(2)
+      .containsValue(ModuleType.ManagerModule)
+      .containsValue(ModuleType.ObjectModule);
+
+    modulesByType = configuration.getModulesByType("WSReference.WSСсылка");
+    assertThat(modulesByType).isEmpty();
+
   }
 
   @Test
@@ -372,6 +380,13 @@ class ConfigurationTest {
 
     checkFillPath(configuration.getChildren());
     checkFormData(configuration.getChildren());
+
+    var modulesByType = configuration.getModulesByType("CommonModule.ГлобальныйОбщийМодуль");
+    assertThat(modulesByType).hasSize(1)
+      .containsValue(ModuleType.CommonModule);
+
+    modulesByType = configuration.getModulesByType("WSReference.WSСсылка");
+    assertThat(modulesByType).isEmpty();
   }
 
   @Test
