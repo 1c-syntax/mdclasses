@@ -34,6 +34,11 @@ public class DesignerAttributeSetting {
   private String mainTable = "";
   @XStreamAlias("DynamicDataRead")
   private boolean dynamicDataRead = true;
+  @XStreamAlias("GetInvisibleFieldPresentations")
+  private boolean getInvisibleFieldPresentations = true;
+  @XStreamAlias("AutoSaveUserSettings")
+  private boolean autoSaveUserSettings = true;
+  // TODO: autoFillAvailableFields
   @XStreamAlias("ManualQuery")
   private boolean customQuery = false;
   @XStreamAlias("QueryText")
