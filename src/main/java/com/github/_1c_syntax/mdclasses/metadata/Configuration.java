@@ -382,11 +382,12 @@ public class Configuration {
         entry.getKey().getMdoRef().equalsIgnoreCase(mdoRef) && entry.getValue() instanceof MDObjectBSL)
       .map(Map.Entry::getValue)
       .findFirst()
-      .ifPresent((MDObjectBase mdObjectBase) -> {
-        ((MDObjectBSL) mdObjectBase).getModules().forEach(mdoModule ->
-          result.put(mdoModule.getUri(), mdoModule.getModuleType())
-        );
-      });
+      .ifPresent((MDObjectBase mdObjectBase) ->
+        ((MDObjectBSL) mdObjectBase).getModules()
+          .forEach((MDOModule mdoModule) ->
+            result.put(mdoModule.getUri(), mdoModule.getModuleType())
+          )
+      );
     return result;
   }
 
