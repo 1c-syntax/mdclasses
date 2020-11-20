@@ -19,28 +19,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommand;
-import com.github._1c_syntax.mdclasses.unmarshal.CommandActionConverter;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.Collections;
+import java.util.List;
 
 @Data
-@NoArgsConstructor
-public class FormCommand {
-  private String name;
-  // TODO: title
-  private int id;
-  @XStreamConverter(value = CommandActionConverter.class)
-  private String action = "";
-
-  public FormCommand(DesignerFormCommand formCommand) {
-    setName(formCommand.getName());
-    setId(formCommand.getId());
-    if (!formCommand.getActions().isEmpty()) {
-      setAction(formCommand.getActions().get(0));
-    }
-  }
+public class ValueType {
+  @XStreamImplicit
+  List<String> types = Collections.emptyList();
 }

@@ -19,31 +19,14 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.form.attribute;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class FormHandlerItem {
-  /**
-   * Имя события элемента формы (в том числе формы)
-   */
-  private String event;
-  /**
-   * Назначенный метод, который обрабатывает событие элемента
-   */
-  private String name;
-
-  /**
-   * Конструктор создания обработчика событий на основании модели конфигуратора
-   *
-   * @param designerEvent - модель данных формата конфигуратора
-   */
-  public FormHandlerItem(DesignerEvent designerEvent) {
-    setName(designerEvent.getValue());
-    setEvent(designerEvent.getName());
-  }
+public class ExtInfo {
+  public static final String UNKNOWN = "unknown";
+  private String type = UNKNOWN;
 }

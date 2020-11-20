@@ -19,11 +19,28 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public interface MDOForm {
-  FormData getData();
-  void setData(FormData formData);
+@Data
+@NoArgsConstructor
+public class DesignerAttributeSetting {
+  @XStreamAlias("xsi:type")
+  private String type;
+  @XStreamAlias("MainTable")
+  private String mainTable = "";
+  @XStreamAlias("DynamicDataRead")
+  private boolean dynamicDataRead = true;
+  @XStreamAlias("GetInvisibleFieldPresentations")
+  private boolean getInvisibleFieldPresentations = true;
+  @XStreamAlias("AutoSaveUserSettings")
+  private boolean autoSaveUserSettings = true;
+  // TODO: autoFillAvailableFields
+  @XStreamAlias("ManualQuery")
+  private boolean customQuery = false;
+  @XStreamAlias("QueryText")
+  private String queryText = "";
 }

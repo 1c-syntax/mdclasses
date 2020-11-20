@@ -19,27 +19,31 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
+package com.github._1c_syntax.mdclasses.mdo.form;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(of = {"id", "name"})
 @NoArgsConstructor
-public class DesignerAttribute {
-  @XStreamAsAttribute
+public class FormHandlerItem {
+  /**
+   * Имя события элемента формы (в том числе формы)
+   */
+  private String event;
+  /**
+   * Назначенный метод, который обрабатывает событие элемента
+   */
   private String name;
-  @XStreamAsAttribute
-  private int id;
-  // TODO: загрузка title
-  @XStreamAlias("Type")
-  private DesignerAttributeType type;
-  private boolean main = false;
-  private DesignerColumns designerColumns;
-  @XStreamAlias("Settings")
-  private DesignerAttributeSetting setting;
+
+  /**
+   * Конструктор создания обработчика событий на основании модели конфигуратора
+   *
+   * @param designerEvent - модель данных формата конфигуратора
+   */
+  public FormHandlerItem(DesignerEvent designerEvent) {
+    setName(designerEvent.getValue());
+    setEvent(designerEvent.getName());
+  }
 }

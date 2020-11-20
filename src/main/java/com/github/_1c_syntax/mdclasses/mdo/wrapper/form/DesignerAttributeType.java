@@ -19,11 +19,20 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.wrapper.form;
 
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public interface MDOForm {
-  FormData getData();
-  void setData(FormData formData);
+import java.util.Collections;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+public class DesignerAttributeType {
+  @XStreamAlias("v8:Type")
+  @XStreamImplicit
+  private List<String> types = Collections.emptyList();
 }
