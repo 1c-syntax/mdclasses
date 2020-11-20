@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
-import com.github._1c_syntax.mdclasses.mdo.CommonForm;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
@@ -427,9 +426,11 @@ public class MDOFactory {
           children.add(mdoPair);
         }
       } else {
-        children.add(mdoPair);
         var mdo = mdoPair.get();
-        setSubsystemForChild(subsystem, allChildren, mdo);
+        if (!mdo.getIncludedSubsystems().contains(subsystem)) {
+          children.add(mdoPair);
+          setSubsystemForChild(subsystem, allChildren, mdo);
+        }
       }
     });
 
