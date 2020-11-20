@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
-import com.github._1c_syntax.mdclasses.mdo.CommonForm;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
@@ -52,7 +51,6 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,7 +66,6 @@ import java.util.stream.Collectors;
  * Фабрика для создания MDO объекта
  */
 @UtilityClass
-@Slf4j
 public class MDOFactory {
 
   /**

@@ -29,8 +29,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.apache.commons.lang3.builder.HashCodeExclude;
-import org.apache.commons.lang3.builder.ToStringExclude;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,8 +46,6 @@ public class Subsystem extends MDObjectBase {
    * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
    */
   @XStreamImplicit
-  @ToStringExclude
-  @HashCodeExclude
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
 
   /**
