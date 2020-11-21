@@ -386,6 +386,16 @@ public class Configuration {
     return modulesByMDORef.getOrDefault(mdoRef, Collections.emptyMap());
   }
 
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<ModuleType, URI> getModulesByMDORef(MDOReference mdoRef) {
+    return getModulesByMDORef(mdoRef.getMdoRef());
+  }
+
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {

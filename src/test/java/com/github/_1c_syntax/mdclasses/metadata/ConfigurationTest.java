@@ -387,6 +387,11 @@ class ConfigurationTest {
 
     modulesByType = configuration.getModulesByMDORef("WSReference.WSСсылка");
     assertThat(modulesByType).isEmpty();
+
+    modulesByType = configuration.getModulesByMDORef(configuration.getCommonModule("ГлобальныйОбщийМодуль")
+      .get().getMdoReference());
+    assertThat(modulesByType).hasSize(1)
+      .containsKey(ModuleType.CommonModule);
   }
 
   @Test
