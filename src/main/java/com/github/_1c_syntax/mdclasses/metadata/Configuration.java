@@ -55,6 +55,7 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -138,6 +139,10 @@ public class Configuration {
    */
   private Map<URI, ModuleType> modulesByType;
   /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы, сгруппированные по представлению mdoRef
+   */
+  private Map<String, Map<ModuleType, URI>> modulesByMDORef;
+  /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
   private Map<URI, MDObjectBSL> modulesByObject;
@@ -180,6 +185,7 @@ public class Configuration {
     modules = Collections.emptyList();
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
+    modulesByMDORef = Collections.emptyMap();
 
     rootPath = null;
     name = "";
@@ -250,6 +256,7 @@ public class Configuration {
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
     Map<URI, MDObjectBSL> modulesObject = new HashMap<>();
+    Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
@@ -259,7 +266,7 @@ public class Configuration {
       // todo возможно надо будет добавить ссылку на mdo файл
 
       if (mdo instanceof MDObjectBSL) {
-        computeModules(modulesType, modulesSupport, modulesObject, modulesList, (MDObjectBSL) mdo, supports);
+        computeModules(modulesType, modulesSupport, modulesObject, modulesList, modulesMDORef, (MDObjectBSL) mdo, supports);
       }
     });
 
@@ -267,6 +274,7 @@ public class Configuration {
     modulesByType = modulesType;
     modulesByObject = modulesObject;
     modules = modulesList;
+    modulesByMDORef = modulesMDORef;
   }
 
   /**
@@ -368,6 +376,26 @@ public class Configuration {
     return Optional.ofNullable(commonModules.get(name));
   }
 
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Строковая ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<ModuleType, URI> getModulesByMDORef(String mdoRef) {
+    return modulesByMDORef.getOrDefault(mdoRef, Collections.emptyMap());
+  }
+
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<ModuleType, URI> getModulesByMDORef(MDOReference mdoRef) {
+    return getModulesByMDORef(mdoRef.getMdoRef());
+  }
+
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
@@ -377,21 +405,25 @@ public class Configuration {
     return Collections.emptyMap();
   }
 
+  // todo надо рефакторить!!!!
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
                                      Map<URI, MDObjectBSL> modulesObject,
                                      List<MDOModule> modulesList,
-                                     MDObjectBSL mdo,
+                                     Map<String, Map<ModuleType, URI>> modulesMDORef, MDObjectBSL mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
+    Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
       var uri = module.getUri();
       modulesType.put(uri, module.getModuleType());
+      modulesTypesAndURIs.put(module.getModuleType(), uri);
       modulesObject.put(uri, mdo);
       if (!supports.isEmpty()) {
         modulesSupport.put(uri, supports);
       }
       modulesList.add(module);
     });
+    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
 }
