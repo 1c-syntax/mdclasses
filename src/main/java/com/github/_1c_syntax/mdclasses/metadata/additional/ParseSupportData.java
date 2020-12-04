@@ -47,7 +47,7 @@ public class ParseSupportData {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
-  public static final int CONFIGURATION_SUPPORT = 1;
+  private static final int CONFIGURATION_SUPPORT = 1;
 
   private final Path pathToBinFile;
   private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
