@@ -26,8 +26,9 @@ dependencies {
     implementation("io.vavr", "vavr", "0.10.2")
 
     implementation("org.apache.commons", "commons-collections4", "4.4")
-    
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.12")
+
+//    implementation("com.thoughtworks.xstream", "xstream", "1.4.12")
+    implementation("com.github.nixel2007.xstream", "xstream", "7c5b15dedea167761ebeae31097f8d91ad3acc81")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
