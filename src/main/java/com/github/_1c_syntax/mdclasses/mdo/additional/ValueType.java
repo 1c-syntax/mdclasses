@@ -19,21 +19,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.metadata.additional;
+package com.github._1c_syntax.mdclasses.mdo.additional;
 
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-/**
- * Модель пути к данным. Используется в элементах формы
- */
+import java.util.Collections;
+import java.util.List;
+
 @Data
-@NoArgsConstructor
-public class DataPath {
-  public static final DataPath EMPTY = new DataPath();
-  private String segment = "";
-
-  public DataPath(String segment) {
-    this.setSegment(segment);
-  }
+public class ValueType {
+  @XStreamImplicit
+  List<String> types = Collections.emptyList();
 }

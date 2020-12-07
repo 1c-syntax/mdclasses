@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ValueType;
+import com.github._1c_syntax.mdclasses.mdo.additional.ValueType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
