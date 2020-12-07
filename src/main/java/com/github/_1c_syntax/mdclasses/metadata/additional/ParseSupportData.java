@@ -85,7 +85,7 @@ public class ParseSupportData {
       var configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
       var countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
       var configurationSupport = Integer.parseInt(dataStrings[CONFIGURATION_SUPPORT]);
-      var configurationSupportVariant = getSupportVariantByInt(configurationSupport);
+      var configurationSupportVariant = getGeneralSupportVariantByInt(configurationSupport);
 
       var supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
@@ -104,7 +104,7 @@ public class ParseSupportData {
         var support = Integer.parseInt(dataStrings[currentObjectPoint]);
         var guidObject = dataStrings[currentObjectPoint + 2];
         SupportVariant supportVariant;
-        if (configurationSupportVariant == SupportVariant.EDITABLE_SUPPORT_ENABLED) {
+        if (configurationSupportVariant == GeneralSupportVariant.LOCKED) {
           supportVariant = SupportVariant.NOT_EDITABLE;
         } else {
           supportVariant = getSupportVariantByInt(support);
@@ -120,6 +120,14 @@ public class ParseSupportData {
 
   public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
+  }
+
+  private static GeneralSupportVariant getGeneralSupportVariantByInt(int support) {
+    if (support == 0) {
+      return GeneralSupportVariant.UNLOCKED;
+    }
+
+    return GeneralSupportVariant.LOCKED;
   }
 
   private static SupportVariant getSupportVariantByInt(int support) {
