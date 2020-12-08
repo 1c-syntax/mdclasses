@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Value;

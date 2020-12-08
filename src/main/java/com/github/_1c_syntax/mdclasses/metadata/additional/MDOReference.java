@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
