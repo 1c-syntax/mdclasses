@@ -23,7 +23,7 @@ package com.github._1c_syntax.mdclasses.unmarshal;
 
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.additional.MDOReference;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

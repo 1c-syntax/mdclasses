@@ -22,7 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.mdo.additional.MDOModule;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.form;
 
-import com.github._1c_syntax.mdclasses.mdo.additional.DataPath;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;

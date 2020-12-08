@@ -19,36 +19,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.additional;
+package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import lombok.Data;
 
-import java.net.URI;
+import java.util.Collections;
+import java.util.List;
 
-/**
- * Класс-описание модуля объекта
- */
-@Value
-@EqualsAndHashCode(exclude = {"owner"})
-@AllArgsConstructor
-public class MDOModule {
-
-  /**
-   * Тип модуля
-   */
-  ModuleType moduleType;
-
-  /**
-   * Ссылка на файл bsl модуля
-   */
-  URI uri;
-
-  /**
-   * Ссылка на объект метаданных которому принадлежит модуль
-   */
-  MDObjectBSL owner;
+@Data
+public class ValueType {
+  @XStreamImplicit
+  List<String> types = Collections.emptyList();
 }

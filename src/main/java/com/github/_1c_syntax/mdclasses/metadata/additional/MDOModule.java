@@ -19,21 +19,36 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.additional;
+package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+
+import java.net.URI;
 
 /**
- * Модель пути к данным. Используется в элементах формы
+ * Класс-описание модуля объекта
  */
-@Data
-@NoArgsConstructor
-public class DataPath {
-  public static final DataPath EMPTY = new DataPath();
-  private String segment = "";
+@Value
+@EqualsAndHashCode(exclude = {"owner"})
+@AllArgsConstructor
+public class MDOModule {
 
-  public DataPath(String segment) {
-    this.setSegment(segment);
-  }
+  /**
+   * Тип модуля
+   */
+  ModuleType moduleType;
+
+  /**
+   * Ссылка на файл bsl модуля
+   */
+  URI uri;
+
+  /**
+   * Ссылка на объект метаданных которому принадлежит модуль
+   */
+  MDObjectBSL owner;
 }
