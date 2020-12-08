@@ -23,20 +23,25 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
+import com.github._1c_syntax.mdclasses.mdo.Role;
+import com.github._1c_syntax.mdclasses.mdo.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
@@ -46,8 +51,8 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -125,9 +130,72 @@ public class MDOFactory {
             setIncludedSubsystems((MDOConfiguration) mdoValue);
           });
       }
+
+      if (mdoValue instanceof MDObjectComplex) {
+        ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
+          var parentPath = mdoPath.getParent().toString();
+          var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue, parentPath,
+            form.getName());
+          readFormData(configurationSource, formDataPath).ifPresent(form::setData);
+
+          var pathToForm = MDOPathUtils.getPathToForm(configurationSource, parentPath,
+            mdoValue.getName(), form.getName());
+          form.setPath(pathToForm);
+        });
+      }
+
+      if (mdoValue.getType() == MDOType.COMMON_FORM) {
+        var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue,
+          mdoPath.getParent().toString(), mdoValue.getName());
+        readFormData(configurationSource, formDataPath).ifPresent(((MDOForm) mdoValue)::setData);
+      }
+
+      // загрузка данных роли
+      if (mdoValue.getType() == MDOType.ROLE) {
+        var roleDataPath = MDOPathUtils.getRoleDataPath(configurationSource,
+          mdoPath.getParent().toString(), mdoValue.getName());
+        var roleDataOptional = readRoleData(roleDataPath);
+        roleDataOptional.ifPresent(((Role) mdoValue)::setRoleData);
+      }
     });
 
     return mdo;
+  }
+
+  /**
+   * Читает данные формы (FormData) в объект из файла
+   *
+   * @param configurationSource - формат исходных файлов
+   * @param path                - путь к файлу описания объекта
+   * @return - прочитанный объект
+   */
+  public Optional<FormData> readFormData(ConfigurationSource configurationSource, Path path) {
+    if (!path.toFile().exists()) {
+      return Optional.empty();
+    }
+    FormData formData = null;
+    if (configurationSource == ConfigurationSource.EDT) {
+      formData = (FormData) XStreamFactory.fromXML(path.toFile());
+      formData.fillPlainChildren(formData.getChildren());
+    } else {
+      var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
+      formData = new FormData(designerForm);
+    }
+    return Optional.ofNullable(formData);
+  }
+
+  /**
+   * Читает данные роли из файла Rights
+   *
+   * @param roleDataPath - путь к файлу прав роли.
+   * @return {@code Optional} POJO представление данных ролей
+   */
+  private static Optional<RoleData> readRoleData(Path roleDataPath) {
+    if (Files.notExists(roleDataPath)) {
+      return Optional.empty();
+    }
+
+    return Optional.ofNullable((RoleData) XStreamFactory.fromXML(roleDataPath.toFile()));
   }
 
   /**
@@ -154,6 +222,7 @@ public class MDOFactory {
     } else {
       mdo = Optional.empty();
     }
+    mdo.ifPresent(mdObjectBase -> mdObjectBase.setPath(mdoPath));
 
     return mdo;
   }
@@ -325,7 +394,7 @@ public class MDOFactory {
         MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
           .ifPresent((Path modulePath) -> {
             if (modulePath.toFile().exists()) {
-              modules.add(new MDOModule(moduleType, modulePath.toUri()));
+              modules.add(new MDOModule(moduleType, modulePath.toUri(), mdo));
             }
           });
       });
@@ -357,9 +426,11 @@ public class MDOFactory {
           children.add(mdoPair);
         }
       } else {
-        children.add(mdoPair);
         var mdo = mdoPair.get();
-        setSubsystemForChild(subsystem, allChildren, mdo);
+        if (!mdo.getIncludedSubsystems().contains(subsystem)) {
+          children.add(mdoPair);
+          setSubsystemForChild(subsystem, allChildren, mdo);
+        }
       }
     });
 

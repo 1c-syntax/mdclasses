@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -52,9 +53,12 @@ import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -95,7 +99,7 @@ public class Configuration {
   /**
    * Режим запуска приложения по умолчанию
    */
-  private String defaultRunMode;
+  private ApplicationRunMode defaultRunMode;
   /**
    * Язык приложения по умолчанию
    */
@@ -122,13 +126,30 @@ public class Configuration {
   private UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   /**
+   * Использовать управляемые формы в обычном приложении
+   */
+  private boolean useManagedFormInOrdinaryApplication;
+  /**
+   * Использовать обычные формы в управляемом приложении
+   */
+  private boolean useOrdinaryFormInManagedApplication;
+
+  /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
   private Map<URI, ModuleType> modulesByType;
   /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы, сгруппированные по представлению mdoRef
+   */
+  private Map<String, Map<ModuleType, URI>> modulesByMDORef;
+  /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  private Map<URI, MDObjectBase> modulesByObject;
+  private Map<URI, MDObjectBSL> modulesByObject;
+  /**
+   * Модули конфигурации
+   */
+  private List<MDOModule> modules;
   /**
    * Режимы поддержки в связке со ссылкой на файлы
    */
@@ -161,8 +182,10 @@ public class Configuration {
     modulesByType = Collections.emptyMap();
     modulesBySupport = Collections.emptyMap();
     modulesByObject = Collections.emptyMap();
+    modules = Collections.emptyList();
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
+    modulesByMDORef = Collections.emptyMap();
 
     rootPath = null;
     name = "";
@@ -172,7 +195,7 @@ public class Configuration {
     configurationExtensionCompatibilityMode = new CompatibilityMode();
     scriptVariant = ScriptVariant.ENGLISH;
 
-    defaultRunMode = "";
+    defaultRunMode = ApplicationRunMode.MANAGED_APPLICATION;
     defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
     dataLockControlMode = "";
     objectAutonumerationMode = "";
@@ -212,7 +235,7 @@ public class Configuration {
     }
 
     scriptVariant = mdoConfiguration.getScriptVariant();
-    defaultRunMode = mdoConfiguration.getDefaultRunMode();
+    defaultRunMode = ApplicationRunMode.getByName(mdoConfiguration.getDefaultRunMode());
 
     if (mdoConfiguration.getDefaultLanguage().isRight()) {
       defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
@@ -227,9 +250,14 @@ public class Configuration {
     synchronousPlatformExtensionAndAddInCallUseMode =
       mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
 
+    useManagedFormInOrdinaryApplication = mdoConfiguration.isUseManagedFormInOrdinaryApplication();
+    useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
+
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, MDObjectBase> modulesObject = new HashMap<>();
+    Map<URI, MDObjectBSL> modulesObject = new HashMap<>();
+    Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
+    List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
     children.forEach((MDObjectBase mdo) -> {
@@ -238,13 +266,15 @@ public class Configuration {
       // todo возможно надо будет добавить ссылку на mdo файл
 
       if (mdo instanceof MDObjectBSL) {
-        computeModules(modulesType, modulesSupport, modulesObject, (MDObjectBSL) mdo, supports);
+        computeModules(modulesType, modulesSupport, modulesObject, modulesList, modulesMDORef, (MDObjectBSL) mdo, supports);
       }
     });
 
     modulesBySupport = modulesSupport;
     modulesByType = modulesType;
     modulesByObject = modulesObject;
+    modules = modulesList;
+    modulesByMDORef = modulesMDORef;
   }
 
   /**
@@ -346,6 +376,26 @@ public class Configuration {
     return Optional.ofNullable(commonModules.get(name));
   }
 
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Строковая ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<ModuleType, URI> getModulesByMDORef(String mdoRef) {
+    return modulesByMDORef.getOrDefault(mdoRef, Collections.emptyMap());
+  }
+
+  /**
+   * Модули объектов конфигурации в связке со ссылкой на файлы по ссылке mdoRef
+   *
+   * @param mdoRef Ссылка на объект
+   * @return Соответствие ссылки на файл и его тип
+   */
+  public Map<ModuleType, URI> getModulesByMDORef(MDOReference mdoRef) {
+    return getModulesByMDORef(mdoRef.getMdoRef());
+  }
+
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
@@ -355,19 +405,25 @@ public class Configuration {
     return Collections.emptyMap();
   }
 
+  // todo надо рефакторить!!!!
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, MDObjectBase> modulesObject,
-                                     MDObjectBSL mdo,
+                                     Map<URI, MDObjectBSL> modulesObject,
+                                     List<MDOModule> modulesList,
+                                     Map<String, Map<ModuleType, URI>> modulesMDORef, MDObjectBSL mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
+    Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
       var uri = module.getUri();
       modulesType.put(uri, module.getModuleType());
+      modulesTypesAndURIs.put(module.getModuleType(), uri);
       modulesObject.put(uri, mdo);
       if (!supports.isEmpty()) {
         modulesSupport.put(uri, supports);
       }
+      modulesList.add(module);
     });
+    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
 }

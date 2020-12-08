@@ -91,6 +91,26 @@ class ParseSupportDataTest {
   }
 
   @Test
+  void testConfigurationFullSupportDesigner() {
+
+    final var PATH_TO_SUPPORT = "src/test/resources/support/original-full-support";
+    var srcPath = new File(PATH_TO_SUPPORT);
+    var configuration = Configuration.create(srcPath.toPath());
+
+    assertThat(configuration.getModulesBySupport()).isNotEmpty();
+
+    var path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl").toAbsolutePath();
+    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+
+    path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl").toAbsolutePath();
+    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+
+    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl")
+            .toAbsolutePath();
+    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+  }
+
+  @Test
   void testIncorrectSupportBin() {
     var path = Path.of(BASE_PATH, "incorrect/ParentConfigurations.bin");
     ParseSupportData parseSupportData = new ParseSupportData(path);

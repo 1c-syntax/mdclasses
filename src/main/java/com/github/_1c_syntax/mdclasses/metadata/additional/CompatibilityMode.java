@@ -27,7 +27,7 @@ import lombok.Getter;
  * Класс реализующий объект для хранения режима совместимости конфигурации
  */
 public class CompatibilityMode {
-
+  private static final String VERSION8_1 = "Version8_1";
   private static final String DONT_USE = "DontUse";
   @Getter
   private int major = 8;
@@ -44,6 +44,11 @@ public class CompatibilityMode {
 
     if (value.equalsIgnoreCase(DONT_USE) || value.isEmpty()) {
       setVersionComponents(3, 99);
+      return;
+    }
+
+    if (value.equals(VERSION8_1)) {
+      setVersionComponents(1, 0);
       return;
     }
 

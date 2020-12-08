@@ -38,7 +38,6 @@ import java.util.Set;
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
-
   /**
    * Определяет тип исходников по корню проекта
    */

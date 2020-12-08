@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import lombok.Data;
@@ -32,7 +33,15 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class Form extends MDObjectBSL {
+public class Form extends MDObjectBSL implements MDOForm {
+  /**
+   * Данные формы. Читается из отдельного файла
+   * и предоставляет информацию о:
+   * + список элементов формы
+   * + список обработчиков формы
+   * + список реквизитов формы
+   */
+  private FormData data;
 
   public Form(DesignerMDO designerMDO) {
     super(designerMDO);
@@ -42,5 +51,4 @@ public class Form extends MDObjectBSL {
   public MDOType getType() {
     return MDOType.FORM;
   }
-
 }

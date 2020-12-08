@@ -21,6 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonForm;
+import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.MDOForm;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -35,6 +40,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -54,7 +61,7 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 10))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -62,9 +69,13 @@ class ConfigurationTest {
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isTrue();
+
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(38);
+    assertThat(configuration.getModules()).hasSize(38);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
@@ -126,6 +137,18 @@ class ConfigurationTest {
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
+
+    checkFillPath(configuration.getChildren());
+    checkFormData(configuration.getChildren());
+
+    var modulesByType = configuration.getModulesByMDORef("Document.ДОкумент1");
+    assertThat(modulesByType).hasSize(2)
+      .containsKey(ModuleType.ManagerModule)
+      .containsKey(ModuleType.ObjectModule);
+
+    modulesByType = configuration.getModulesByMDORef("WSReference.WSСсылка");
+    assertThat(modulesByType).isEmpty();
+
   }
 
   @Test
@@ -143,7 +166,7 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.ENGLISH);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("English");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -154,6 +177,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(2);
+    assertThat(configuration.getModules()).hasSize(2);
     assertThat(configuration.getCommonModules()).hasSize(2);
     assertThat(configuration.getLanguages()).hasSize(1);
 
@@ -181,7 +205,7 @@ class ConfigurationTest {
     assertThat(CompatibilityMode.compareTo(configuration.getConfigurationExtensionCompatibilityMode(),
       new CompatibilityMode(3, 14))).isZero();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
@@ -277,16 +301,20 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
 
+    assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
+    assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
+
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(17);
+    assertThat(configuration.getModules()).hasSize(17);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
@@ -349,6 +377,21 @@ class ConfigurationTest {
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
+
+    checkFillPath(configuration.getChildren());
+    checkFormData(configuration.getChildren());
+
+    var modulesByType = configuration.getModulesByMDORef("CommonModule.ГлобальныйОбщийМодуль");
+    assertThat(modulesByType).hasSize(1)
+      .containsKey(ModuleType.CommonModule);
+
+    modulesByType = configuration.getModulesByMDORef("WSReference.WSСсылка");
+    assertThat(modulesByType).isEmpty();
+
+    modulesByType = configuration.getModulesByMDORef(configuration.getCommonModule("ГлобальныйОбщийМодуль")
+      .get().getMdoReference());
+    assertThat(modulesByType).hasSize(1)
+      .containsKey(ModuleType.CommonModule);
   }
 
   @Test
@@ -367,7 +410,7 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEmpty();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
@@ -378,6 +421,7 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
+    assertThat(configuration.getModules()).hasSize(9);
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -460,7 +504,7 @@ class ConfigurationTest {
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
     assertThat(configuration.getDataLockControlMode()).isEmpty();
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getObjectAutonumerationMode()).isEmpty();
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
@@ -471,6 +515,7 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
+    assertThat(configuration.getModules()).hasSize(2);
 
     assertThat(configuration.getChildren()).hasSize(5);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -529,6 +574,30 @@ class ConfigurationTest {
 
     File file = new File("src/test/resources/metadata/Module.os");
     assertThat(configuration.getModuleType(Absolute.uri(file))).isEqualTo(ModuleType.UNKNOWN);
+  }
+
+  @Test
+  void testOrdinaryMode() {
+    File srcPath = new File("src/test/resources/metadata/original_ordinary");
+    Configuration configuration = Configuration.create(srcPath.toPath());
+    assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.ORDINARY_APPLICATION);
+  }
+
+  private void checkFillPath(Set<MDObjectBase> child) {
+    var elements = child.parallelStream()
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> mdObjectBase.getPath() == null)
+      .filter(mdObjectBase -> !mdObjectBase.getPath().toFile().exists())
+      .collect(Collectors.toList());
+    assertThat(elements).isEmpty();
+  }
+
+  private void checkFormData(Set<MDObjectBase> child) {
+    var elements = child.parallelStream()
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> ((MDOForm) mdObjectBase).getData() == null)
+      .collect(Collectors.toList());
+    assertThat(elements).isEmpty();
   }
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {

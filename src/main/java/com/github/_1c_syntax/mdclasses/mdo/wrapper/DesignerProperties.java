@@ -31,6 +31,9 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Враппер над свойствами объекта в формате конфигуратора
  */
@@ -40,6 +43,8 @@ public class DesignerProperties {
 
   @XStreamAlias("Name")
   private String name;
+  @XStreamAlias("Synonym")
+  private List<DesignerSynonym> synonyms = Collections.emptyList();
   @XStreamAlias("Comment")
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
@@ -67,6 +72,9 @@ public class DesignerProperties {
 
   @XStreamAlias("Content")
   private DesignerXRItems content = new DesignerXRItems();
+
+  @XStreamAlias("RegisterRecords")
+  private DesignerXRItems registerRecords = new DesignerXRItems();
 
   @XStreamAlias("ScriptVariant")
   private ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
@@ -97,7 +105,15 @@ public class DesignerProperties {
   @XStreamAlias("NamePrefix")
   private String namePrefix = "";
 
+  @XStreamAlias("UseManagedFormInOrdinaryApplication")
+  private boolean useManagedFormInOrdinaryApplication;
+  @XStreamAlias("UseOrdinaryFormInManagedApplication")
+  private boolean useOrdinaryFormInManagedApplication;
+
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
+
+  @XStreamAlias("MethodName")
+  private String methodName = "";
 
 }

@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.mdclasses.mdo.CommonForm;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -189,6 +191,52 @@ public class MDOPathUtils {
     return Optional.empty();
   }
 
+  /**
+   * Возвращает путь к файлу описания данных формы
+   *
+   * @param source   - формат исходных файлов
+   * @param mdo      - базовый объект
+   * @param basePath - базовый каталог объекта
+   * @param formName - имя формы
+   * @return - путь к файлу описания
+   */
+  public Path getFormDataPath(ConfigurationSource source, MDObjectBase mdo, String basePath, String formName) {
+    Path path;
+    var currentPath = Path.of(basePath);
+    if (!(mdo instanceof CommonForm)) {
+      if (source == ConfigurationSource.EDT) {
+        currentPath = Paths.get(basePath, MDOType.FORM.getGroupName(), formName);
+      } else {
+        currentPath = Paths.get(basePath, mdo.getName(), MDOType.FORM.getGroupName());
+      }
+    }
+    if (source == ConfigurationSource.EDT) {
+      path = Path.of(currentPath.toString(), "Form.form");
+    } else {
+      path = Path.of(currentPath.toString(), formName, "Ext", "Form.xml");
+    }
+    return path;
+  }
+
+  /**
+   * Возвращает путь к файлу описания формы
+   *
+   * @param source   - формат исходных файлов
+   * @param basePath - базовый каталог объекта
+   * @param mdoName  - имя объекта
+   * @param formName - имя формы
+   * @return - путь к файлу описания
+   */
+  public Path getPathToForm(ConfigurationSource source, String basePath, String mdoName, String formName) {
+    Path path;
+    if (source == ConfigurationSource.EDT) {
+      path = Path.of(basePath, MDOType.FORM.getGroupName(), formName, "Form.form");
+    } else {
+      path = Path.of(basePath, mdoName, MDOType.FORM.getGroupName(), formName + "." + EXTENSION_XML);
+    }
+    return path;
+  }
+
   // Формат EDT
 
   /**
@@ -265,4 +313,23 @@ public class MDOPathUtils {
     return Paths.get(folder.toString(), subdirectory, moduleType.getFileName());
   }
 
+  /**
+   * Получает путь к файлу прав роли для любого формата относительного базового каталога,
+   * и имени объекта
+   *
+   * @param configurationSource - формат данных, конфигуратор или EDT
+   * @param basePath            - базовый каталог конфигурации
+   * @param mdoName             - имя объекта метаданных, без расширения
+   * @return - путь к файлу прав конкретной роли
+   */
+  public static Path getRoleDataPath(ConfigurationSource configurationSource, String basePath, String mdoName) {
+    Path path;
+    if (configurationSource == ConfigurationSource.EDT) {
+      path = Path.of(basePath, "Rights.rights");
+    } else {
+      path = Path.of(basePath, mdoName, "Ext", "Rights.xml");
+    }
+
+    return path;
+  }
 }

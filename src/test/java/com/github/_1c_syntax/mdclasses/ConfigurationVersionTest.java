@@ -31,8 +31,8 @@ class ConfigurationVersionTest {
   @Test
   void testClass() {
 
-    String version8_3_10 = "Version_8_3_10";
-    String versionDontUse = "DontUse";
+    var version8_3_10 = "Version_8_3_10";
+    var versionDontUse = "DontUse";
 
     CompatibilityMode version;
 
@@ -51,6 +51,11 @@ class ConfigurationVersionTest {
     assertThat(version.getMinor()).isEqualTo(3);
     assertThat(version.getVersion()).isEqualTo(10);
 
+    var version8_1 = "Version8_1";
+    version = new CompatibilityMode(version8_1);
+    assertThat(version.getMajor()).isEqualTo(8);
+    assertThat(version.getMinor()).isEqualTo(1);
+    assertThat(version.getVersion()).isEqualTo(0);
   }
 
   @Test

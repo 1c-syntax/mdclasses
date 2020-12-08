@@ -47,6 +47,7 @@ public class ParseSupportData {
   private static final int SHIFT_CONFIGURATION_COUNT_OBJECT = 6;
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
+  private static final int CONFIGURATION_SUPPORT = 1;
 
   private final Path pathToBinFile;
   private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
@@ -83,6 +84,8 @@ public class ParseSupportData {
       var configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
       var configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
       var countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
+      var configurationSupport = Integer.parseInt(dataStrings[CONFIGURATION_SUPPORT]);
+      var configurationSupportVariant = getGeneralSupportVariantByInt(configurationSupport);
 
       var supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
@@ -100,7 +103,12 @@ public class ParseSupportData {
         // 0 - не редактируется, 1 - с сохранением поддержки, 2 - снято
         var support = Integer.parseInt(dataStrings[currentObjectPoint]);
         var guidObject = dataStrings[currentObjectPoint + 2];
-        var supportVariant = getSupportVariantByInt(support);
+        SupportVariant supportVariant;
+        if (configurationSupportVariant == GeneralSupportVariant.LOCKED) {
+          supportVariant = SupportVariant.NOT_EDITABLE;
+        } else {
+          supportVariant = getSupportVariantByInt(support);
+        }
 
         Map<SupportConfiguration, SupportVariant> map = supportMap.computeIfAbsent(guidObject, k -> new HashMap<>());
         map.put(supportConfiguration, supportVariant);
@@ -112,6 +120,14 @@ public class ParseSupportData {
 
   public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
+  }
+
+  private static GeneralSupportVariant getGeneralSupportVariantByInt(int support) {
+    if (support == 0) {
+      return GeneralSupportVariant.UNLOCKED;
+    }
+
+    return GeneralSupportVariant.LOCKED;
   }
 
   private static SupportVariant getSupportVariantByInt(int support) {
