@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensio
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -91,7 +92,7 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Язык приложения по умолчанию
    */
-  private Either<String, Language> defaultLanguage;
+  private Either<String, Language> defaultLanguage = Either.right(MDOFactory.fakeLanguage(scriptVariant));
 
   /**
    * Режим управления блокировками

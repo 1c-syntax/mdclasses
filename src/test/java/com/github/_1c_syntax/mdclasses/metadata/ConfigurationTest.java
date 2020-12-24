@@ -583,6 +583,14 @@ class ConfigurationTest {
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.ORDINARY_APPLICATION);
   }
 
+  @Test
+  void testBrokenLanguageIntoExtension() {
+
+    var srcPath = new File("src/test/resources/metadata/edt_ext_broken");
+    var configuration = Configuration.create(srcPath.toPath());
+
+  }
+
   private void checkFillPath(Set<MDObjectBase> child) {
     var elements = child.parallelStream()
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
