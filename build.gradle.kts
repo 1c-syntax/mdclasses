@@ -1,13 +1,12 @@
-import java.net.URI
 import java.util.*
 
 plugins {
     java
-    maven
+    `maven-publish`
     jacoco
     id("com.github.hierynomus.license") version "0.15.0"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.franzbecker.gradle-lombok") version "3.1.0"
+    id("io.franzbecker.gradle-lombok") version "4.0.0"
     id("org.sonarqube") version "2.7.1"
 }
 
@@ -16,10 +15,10 @@ version = gitVersionCalculator.calculateVersion("v")
 
 repositories {
     mavenCentral()
-    maven { url = URI("https://jitpack.io") }
+    maven(url = "https://jitpack.io")
 }
 
-val junitVersion = "5.5.2"
+val junitVersion = "5.6.1"
 dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
@@ -28,22 +27,21 @@ dependencies {
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    // https://github.com/x-stream/xstream/pull/228
-    implementation("com.github.nixel2007.xstream", "xstream", "7c5b15dedea167761ebeae31097f8d91ad3acc81")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.15")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
 
     // прочее
-    implementation("commons-io", "commons-io", "2.6")
-    implementation("org.apache.commons", "commons-lang3", "3.9")
+    implementation("commons-io", "commons-io", "2.8.0")
+    implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.2.1")
     // генерики
     compileOnly("org.projectlombok", "lombok", lombok.version)
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)
-    testImplementation("org.assertj", "assertj-core", "3.12.2")
+    testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
 }
 
@@ -104,8 +102,8 @@ sonarqube {
 }
 
 lombok {
-    version = "1.18.12"
-    sha256 = "49381508ecb02b3c173368436ef71b24c0d4418ad260e6cc98becbcf4b345406"
+    version = "1.18.16"
+    sha256 = "7206cbbfd6efd5e85bceff29545633645650be58d58910a23b0d4835fbd15ed7"
 }
 
 license {
