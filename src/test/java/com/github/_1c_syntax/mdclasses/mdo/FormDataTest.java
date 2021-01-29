@@ -82,7 +82,7 @@ class FormDataTest {
       .isInstanceOf(DynamicListExtInfo.class);
 
     assertThat(extInfo.isCustomQuery()).isTrue();
-    assertThat(extInfo.getQueryText()).isNotEmpty();
+    assertThat(extInfo.getQuery().getTextQuery()).isNotEmpty();
   }
 
   private void checkFormData(FormData formData) {
