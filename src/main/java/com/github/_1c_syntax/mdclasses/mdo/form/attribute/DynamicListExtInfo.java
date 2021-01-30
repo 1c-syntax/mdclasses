@@ -22,6 +22,10 @@
 package com.github._1c_syntax.mdclasses.mdo.form.attribute;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttributeSetting;
+import com.github._1c_syntax.mdclasses.metadata.additional.QuerySource;
+import com.github._1c_syntax.mdclasses.unmarshal.QuerySourceConverter;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -39,13 +43,15 @@ public class DynamicListExtInfo extends ExtInfo {
   private boolean autoSaveUserSettings = true;
   private boolean getInvisibleFieldPresentations = true;
   private boolean customQuery = false;
-  private String queryText = "";
+  @XStreamAlias("queryText")
+  @XStreamConverter(QuerySourceConverter.class)
+  private QuerySource query;
 
   public DynamicListExtInfo(DesignerAttributeSetting setting) {
     setMainTable(setting.getMainTable());
     setDynamicDataRead(setting.isDynamicDataRead());
     setCustomQuery(setting.isCustomQuery());
-    setQueryText(setting.getQueryText());
+    setQuery(setting.getQuery());
     setGetInvisibleFieldPresentations(setting.isGetInvisibleFieldPresentations());
     setAutoSaveUserSettings(setting.isAutoSaveUserSettings());
   }
