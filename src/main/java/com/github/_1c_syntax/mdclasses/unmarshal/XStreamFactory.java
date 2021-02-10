@@ -519,11 +519,11 @@ public class XStreamFactory {
   }
 
   private void addConverters(XStream xStream) {
-    xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
-    xStream.registerConverter(new EnumConverter(UseMode.class));
-    xStream.registerConverter(new EnumConverter(ScriptVariant.class));
-    xStream.registerConverter(new EnumConverter(ConfigurationExtensionPurpose.class));
-    xStream.registerConverter(new EnumConverter(ObjectBelonging.class));
+    xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
+    xStream.registerConverter(new EnumConverter<>(UseMode.class));
+    xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
+    xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());

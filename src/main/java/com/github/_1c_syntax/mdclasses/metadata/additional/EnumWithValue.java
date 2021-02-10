@@ -21,23 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import java.util.Locale;
-
 /**
- * Возможные варианты языков, на которых разрабатывается код
+ * Расширение для перечислений, необходимое для использования в анмаршалинге
+ * автор идеи: alkoleft (https://github.com/alkoleft)
  */
-public enum ScriptVariant implements EnumWithValue {
-  ENGLISH("English"),
-  RUSSIAN("Russian");
-
-  private final String value;
-
-  ScriptVariant(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return value;
-  }
+public interface EnumWithValue {
+  /**
+   * Возвращает значение перечисления
+   * @return Строковое значение перечисления
+   */
+  String value();
 }
