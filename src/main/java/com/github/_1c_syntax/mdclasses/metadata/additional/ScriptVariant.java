@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import java.util.Locale;
-
 /**
  * Возможные варианты языков, на которых разрабатывается код
  */

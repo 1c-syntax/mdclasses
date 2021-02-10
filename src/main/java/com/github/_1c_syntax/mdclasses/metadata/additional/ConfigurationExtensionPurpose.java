@@ -28,8 +28,7 @@ public enum ConfigurationExtensionPurpose implements EnumWithValue {
   CUSTOMIZATION("Customization"),
   ADD_ON("AddOn"),
   PATCH("Patch"),
-  UNDEFINED("Undefined")
-  ;
+  UNDEFINED("Undefined");
 
   private final String value;
 
