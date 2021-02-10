@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
@@ -93,7 +94,7 @@ public class DesignerProperties {
   @XStreamAlias("DefaultLanguage")
   private String defaultLanguage = "";
   @XStreamAlias("DataLockControlMode")
-  private String dataLockControlMode = "";
+  private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
   @XStreamAlias("ObjectAutonumerationMode")
   private String objectAutonumerationMode = "";
   @XStreamAlias("ProcedureName")

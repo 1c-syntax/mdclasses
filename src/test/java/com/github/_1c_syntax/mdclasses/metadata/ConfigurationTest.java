@@ -29,6 +29,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -63,7 +64,7 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
@@ -168,7 +169,7 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.ENGLISH);
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("English");
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC_AND_MANAGED);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
@@ -207,7 +208,7 @@ class ConfigurationTest {
     assertThat(configuration.getScriptVariant()).isEqualTo(ScriptVariant.RUSSIAN);
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.MANAGED);
     assertThat(configuration.getObjectAutonumerationMode()).isEqualTo("NotAutoFree");
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
     assertThat(configuration.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
@@ -299,7 +300,7 @@ class ConfigurationTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.DONT_USE);
@@ -408,7 +409,7 @@ class ConfigurationTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 16)))
       .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
-    assertThat(configuration.getDataLockControlMode()).isEmpty();
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);
@@ -502,7 +503,7 @@ class ConfigurationTest {
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
     assertThat(configuration.getConfigurationSource()).isEqualTo(ConfigurationSource.DESIGNER);
-    assertThat(configuration.getDataLockControlMode()).isEmpty();
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
     assertThat(configuration.getModalityUseMode()).isEqualTo(UseMode.USE);

@@ -35,6 +35,7 @@ import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
@@ -107,7 +108,7 @@ public class Configuration {
   /**
    * Режим управления блокировкой данных
    */
-  private String dataLockControlMode;
+  private DataLockControlMode dataLockControlMode;
   /**
    * Режим автонумерации объектов
    */
@@ -197,12 +198,11 @@ public class Configuration {
 
     defaultRunMode = ApplicationRunMode.MANAGED_APPLICATION;
     defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
-    dataLockControlMode = "";
+    dataLockControlMode = DataLockControlMode.AUTOMATIC;
     objectAutonumerationMode = "";
     modalityUseMode = UseMode.USE;
     synchronousExtensionAndAddInCallUseMode = UseMode.USE;
     synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
-
   }
 
   protected Configuration(MDOConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
