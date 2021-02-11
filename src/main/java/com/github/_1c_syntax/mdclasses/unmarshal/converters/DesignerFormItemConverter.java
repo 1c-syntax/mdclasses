@@ -19,16 +19,20 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ValueType;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-public class ValueTypeConverter implements Converter {
+/**
+ * Конвертирует элемент формы в DesignerFormItem (формат конфигуратора)
+ */
+public class DesignerFormItemConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -36,14 +40,16 @@ public class ValueTypeConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var valueType = (ValueType) context.convertAnother(reader, ValueType.class,
+    // тип элемента = имя узла. Например ButtonGroup
+    var nodeName = reader.getNodeName();
+    var item = (DesignerFormItem) context.convertAnother(reader, DesignerFormItem.class,
       XStreamFactory.getReflectionConverter());
-    return valueType.getTypes();
+    item.setType(nodeName);
+    return item;
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return true;
+    return type == DesignerFormItem.class;
   }
-
 }

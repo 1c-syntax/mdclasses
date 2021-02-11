@@ -32,8 +32,8 @@ import lombok.Setter;
 @XStreamAlias("v8:item")
 public class DesignerSynonym {
 
-    @XStreamAlias("v8:lang")
-    private String language = "";
-    @XStreamAlias("v8:content")
-    private String content = "";
+  @XStreamAlias("v8:lang")
+  private String language = "";
+  @XStreamAlias("v8:content")
+  private String content = "";
 }

@@ -23,7 +23,9 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.MethodHandlerConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -36,16 +38,15 @@ import lombok.ToString;
 public class WEBServiceOperation extends MDObjectBase {
 
   /**
-   * Обработчик операции. Пока строкой
-   * Формат имя метода
-   * Пример Операция1
+   * Обработчик операции
    */
+  @XStreamConverter(MethodHandlerConverter.class)
   @XStreamAlias("procedureName")
-  private String handler = ""; // TODO сделать классом
+  private Handler handler;
 
   public WEBServiceOperation(DesignerMDO designerMDO) {
     super(designerMDO);
-    handler = designerMDO.getProperties().getWsOperationProcedureName();
+    handler = new Handler(designerMDO.getProperties().getWsOperationProcedureName());
   }
 
   @Override

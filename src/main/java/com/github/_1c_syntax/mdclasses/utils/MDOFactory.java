@@ -23,7 +23,6 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.Form;
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
@@ -40,6 +39,7 @@ import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -48,7 +48,8 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.mdclasses.unmarshal.DesignerXStreamFactory;
+import com.github._1c_syntax.mdclasses.unmarshal.EDTXStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
 
@@ -175,10 +176,10 @@ public class MDOFactory {
     }
     FormData formData = null;
     if (configurationSource == ConfigurationSource.EDT) {
-      formData = (FormData) XStreamFactory.fromXML(path.toFile());
+      formData = (FormData) EDTXStreamFactory.fromXML(path.toFile());
       formData.fillPlainChildren(formData.getChildren());
     } else {
-      var designerForm = (DesignerForm) XStreamFactory.fromXML(path.toFile());
+      var designerForm = (DesignerForm) DesignerXStreamFactory.fromXML(path.toFile());
       formData = new FormData(designerForm);
     }
     return Optional.ofNullable(formData);
@@ -195,7 +196,8 @@ public class MDOFactory {
       return Optional.empty();
     }
 
-    return Optional.ofNullable((RoleData) XStreamFactory.fromXML(roleDataPath.toFile()));
+    // todo edt and designer?
+    return Optional.ofNullable((RoleData) EDTXStreamFactory.fromXML(roleDataPath.toFile()));
   }
 
   /**
@@ -215,9 +217,9 @@ public class MDOFactory {
 
     Optional<MDObjectBase> mdo;
     if (configurationSource == ConfigurationSource.EDT) {
-      mdo = Optional.of((MDObjectBase) XStreamFactory.fromXML(mdoFile));
+      mdo = Optional.of((MDObjectBase) EDTXStreamFactory.fromXML(mdoFile));
     } else if (configurationSource == ConfigurationSource.DESIGNER) {
-      DesignerWrapper metaDataObject = (DesignerWrapper) XStreamFactory.fromXML(mdoFile);
+      DesignerWrapper metaDataObject = (DesignerWrapper) DesignerXStreamFactory.fromXML(mdoFile);
       mdo = metaDataObject.getPropertyByType(type, mdoPath);
     } else {
       mdo = Optional.empty();

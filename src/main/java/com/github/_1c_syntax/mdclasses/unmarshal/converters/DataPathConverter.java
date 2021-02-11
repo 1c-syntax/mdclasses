@@ -19,19 +19,20 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.form.attribute.DynamicListExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.form.attribute.ExtInfo;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-import java.util.Optional;
+/**
+ * Конвертирует dataPath с учетом нескольких видов описания
+ */
+public class DataPathConverter implements Converter {
 
-public class ExtInfoConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -39,20 +40,23 @@ public class ExtInfoConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    ExtInfo item;
-    var type = Optional.ofNullable(reader.getAttribute("xsi:type")).orElse(ExtInfo.UNKNOWN);
-    if (type.equals("form:DynamicListExtInfo")) {
-      item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
-        XStreamFactory.getReflectionConverter());
-    } else {
-      item = new ExtInfo();
+    var segment = "";
+    reader.moveDown();
+    if (reader.getNodeName().equals("paths")) {
+      reader.moveDown();
     }
-    item.setType(type);
-    return item;
+    if (reader.getNodeName().equals("segments")) {
+      segment = reader.getValue();
+      reader.moveUp();
+    }
+    if (reader.getNodeName().equals("paths")) {
+      reader.moveUp();
+    }
+    return new DataPath(segment);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return type == ExtInfo.class;
+    return type == DataPath.class;
   }
 }

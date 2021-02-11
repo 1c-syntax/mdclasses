@@ -22,7 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.form;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommand;
-import com.github._1c_syntax.mdclasses.unmarshal.CommandActionConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.CommandActionConverter;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;

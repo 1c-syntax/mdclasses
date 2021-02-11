@@ -23,6 +23,9 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.MethodHandlerConverter;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -35,15 +38,15 @@ import lombok.ToString;
 public class EventSubscription extends MDObjectBase {
 
   /**
-   * Обработчик подписки на событие. Пока строкой
-   * Формат mdoRef + имя метода
-   * Пример CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью
+   * Обработчик подписки на событие
    */
-  private String handler = ""; // TODO сделать классом
+  @XStreamConverter(MethodHandlerConverter.class)
+  @XStreamAlias("handler")
+  private Handler handler;
 
   public EventSubscription(DesignerMDO designerMDO) {
     super(designerMDO);
-    handler = designerMDO.getProperties().getHandler();
+    handler = new Handler(designerMDO.getProperties().getHandler());
   }
 
   @Override

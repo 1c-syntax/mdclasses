@@ -28,8 +28,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class MDOSynonym {
-    @XStreamAlias("key")
-    private String language;
-    @XStreamAlias("value")
-    private String content;
+  @XStreamAlias("key")
+  private String language;
+  @XStreamAlias("value")
+  private String content;
 }

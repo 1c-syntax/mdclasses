@@ -32,6 +32,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Right {
-    private String name = "";
-    private boolean value = false;
+  private String name = "";
+  private boolean value = false;
 }

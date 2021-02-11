@@ -37,9 +37,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class ObjectRight {
-    private String name = "";
+  private String name = "";
 
-    @XStreamAlias("right")
-    @XStreamImplicit
-    List<Right> rights = Collections.emptyList();
+  @XStreamAlias("right")
+  @XStreamImplicit
+  List<Right> rights = Collections.emptyList();
 }

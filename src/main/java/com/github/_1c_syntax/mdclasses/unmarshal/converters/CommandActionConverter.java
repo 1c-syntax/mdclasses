@@ -19,29 +19,32 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.Handler;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-public class MethodHandlerConverter implements Converter {
+public class CommandActionConverter implements Converter {
+  @Override
+  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+    // noop
+  }
 
-    @Override
-    public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-        // noop
-    }
+  @Override
+  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    reader.moveDown();
+    reader.moveDown();
+    var handler = reader.getValue();
+    reader.moveUp();
+    reader.moveUp();
+    return handler;
+  }
 
-    @Override
-    public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-        return new Handler(reader.getValue());
-    }
-
-    @Override
-    public boolean canConvert(Class type) {
-        return type == Handler.class;
-    }
+  @Override
+  public boolean canConvert(Class type) {
+    return type == String.class;
+  }
 }

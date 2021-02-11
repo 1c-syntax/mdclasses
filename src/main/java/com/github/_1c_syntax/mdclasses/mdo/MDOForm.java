@@ -25,5 +25,6 @@ import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 
 public interface MDOForm {
   FormData getData();
+
   void setData(FormData formData);
 }

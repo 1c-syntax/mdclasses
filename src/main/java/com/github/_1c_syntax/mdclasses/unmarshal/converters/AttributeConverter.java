@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
 import com.github._1c_syntax.mdclasses.mdo.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.AddressingAttribute;

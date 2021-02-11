@@ -53,6 +53,7 @@ class HTTPServiceTest extends AbstractMDOTest {
       .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
       .hasSize(2)
       .extracting(HTTPServiceMethod::getHandler)
+      .extracting(Handler::getMethodPath)
       .anyMatch("ШаблонURLМетод"::equals)
       .anyMatch("ШаблонURLМетод1"::equals);
   }
@@ -78,6 +79,7 @@ class HTTPServiceTest extends AbstractMDOTest {
       .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
       .hasSize(2)
       .extracting(HTTPServiceMethod::getHandler)
+      .extracting(Handler::getMethodPath)
       .anyMatch("ШаблонURL1Метод2"::equals)
       .anyMatch("ШаблонURL1Метод1"::equals);
   }

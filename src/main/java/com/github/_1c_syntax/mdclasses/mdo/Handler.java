@@ -36,25 +36,25 @@ import java.util.regex.Pattern;
 @NoArgsConstructor
 public class Handler {
 
-    private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
-    private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
+  private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
+  private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
 
-    private String methodPath = "";
-    private String moduleName = "";
-    private String methodName = "";
+  private String methodPath = "";
+  private String moduleName = "";
+  private String methodName = "";
 
-    public Handler(String methodPath) {
-        methodPath = methodPath == null ? "" : methodPath;
+  public Handler(String methodPath) {
+    methodPath = methodPath == null ? "" : methodPath;
 
-        this.methodPath = methodPath;
-        String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
-        if (data.length > 1) {
-            this.methodName = data[2];
-            this.moduleName = data[1];
-        }
+    this.methodPath = methodPath;
+    String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
+    if (data.length > 1) {
+      this.methodName = data[2];
+      this.moduleName = data[1];
     }
+  }
 
-    public boolean isEmpty() {
-        return methodPath.isBlank();
-    }
+  public boolean isEmpty() {
+    return methodPath.isBlank();
+  }
 }

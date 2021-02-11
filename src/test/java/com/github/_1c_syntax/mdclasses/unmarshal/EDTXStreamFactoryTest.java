@@ -35,7 +35,7 @@ import java.nio.file.Paths;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class XStreamFactoryTest {
+class EDTXStreamFactoryTest {
 
   private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";

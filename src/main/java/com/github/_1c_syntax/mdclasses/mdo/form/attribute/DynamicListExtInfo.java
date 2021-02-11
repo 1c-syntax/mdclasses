@@ -23,7 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.form.attribute;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttributeSetting;
 import com.github._1c_syntax.mdclasses.metadata.additional.QuerySource;
-import com.github._1c_syntax.mdclasses.unmarshal.QuerySourceConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.QuerySourceConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;

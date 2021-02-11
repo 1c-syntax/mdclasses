@@ -43,6 +43,7 @@ class WebServiceTest extends AbstractMDOTest {
       ModuleType.WEBServiceModule);
     assertThat(((WebService) mdo).getOperations()).hasSize(2);
     assertThat(((WebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
+      .extracting(Handler::getMethodPath)
       .anyMatch("Операция1"::equals)
       .anyMatch("Операция11"::equals);
     ((WebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
@@ -59,6 +60,7 @@ class WebServiceTest extends AbstractMDOTest {
     assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
     assertThat(((WebService) mdo).getOperations()).hasSize(2);
     assertThat(((WebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
+      .extracting(Handler::getMethodPath)
       .anyMatch("Операция1"::equals)
       .anyMatch("Операция2"::equals);
     ((WebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->

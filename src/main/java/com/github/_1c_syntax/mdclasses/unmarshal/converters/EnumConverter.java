@@ -19,50 +19,45 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.Language;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import io.vavr.control.Either;
+import lombok.SneakyThrows;
 
 /**
- * Конвертирует строки с mdoRef в Either для последующей обработки
+ * Класс-конвертер из строкового значения в элемент перечисления.
+ * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от текущего.
+ * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
+ * XStreamFactory.
+ * <p>
+ * Внимание!
+ * В перечислении должен быть реализован метод "fromValue" со стоковым параметром, возвращающий элемент перечисления
  */
-public class PairConverter implements Converter {
+public class EnumConverter implements Converter {
+
+  private final Class<?> mdoEnum;
+
+  public EnumConverter(Class<?> mdoEnum) {
+    this.mdoEnum = mdoEnum;
+  }
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
   }
 
+  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if ("languages".equals(reader.getNodeName())) {
-      var uuid = reader.getAttribute("uuid");
-      var tmp = new MDObjectBase();
-      var language = (Language) context.convertAnother(tmp, Language.class);
-      language.setUuid(uuid);
-      language.setMdoReference(new MDOReference(language));
-      return Either.right(language);
-    } else if (reader.getValue().contains(".")) { // уже лежит имя
-      return Either.left(reader.getValue());
-    } else {
-      var type = MDOType.fromValue(reader.getNodeName());
-      return type
-        .map(mdoType -> Either.left(mdoType.getName() + "." + reader.getValue()))
-        .orElseGet(() -> Either.left(reader.getNodeName() + "." + reader.getValue()));
-    }
+    return mdoEnum.getMethod("fromValue", String.class).invoke(this, reader.getValue());
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return Either.class.isAssignableFrom(type);
+    return mdoEnum.isAssignableFrom(type);
   }
 }

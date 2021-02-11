@@ -19,9 +19,9 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerEvent;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -29,10 +29,9 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 /**
- * Конвертирует dataPath с учетом нескольких видов описания
+ * Конвертирует событие формы в DesignerEvent
  */
-public class DataPathConverter implements Converter {
-
+public class FormEventConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -40,23 +39,12 @@ public class DataPathConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var segment = "";
-    reader.moveDown();
-    if (reader.getNodeName().equals("paths")) {
-      reader.moveDown();
-    }
-    if (reader.getNodeName().equals("segments")) {
-      segment = reader.getValue();
-      reader.moveUp();
-    }
-    if (reader.getNodeName().equals("paths")) {
-      reader.moveUp();
-    }
-    return new DataPath(segment);
+    var name = reader.getAttribute("name");
+    return new DesignerEvent(name, reader.getValue());
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return type == DataPath.class;
+    return type == DesignerEvent.class;
   }
 }
