@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
@@ -97,7 +98,7 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Режим управления блокировками
    */
-  private String dataLockControlMode = "";
+  private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
   /**
    * Режим автонумерации объектов
