@@ -21,21 +21,40 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Optional;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class Template extends MDObjectBase {
+public class Template extends MDObjectBase implements MDOTemplate {
+  /**
+   * Тип макета. Например, `ТабличныйДокумент`.
+   */
+  @XStreamAlias("templateType")
+  private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
+  /**
+   * Схема компоновки данных
+   */
+  private DataCompositionSchema dataCompositionSchema;
 
   public Template(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Optional<DataCompositionSchema> getDataCompositionScheme() {
+    return Optional.ofNullable(dataCompositionSchema);
   }
 
   @Override

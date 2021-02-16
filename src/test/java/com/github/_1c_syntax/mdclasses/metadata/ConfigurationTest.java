@@ -592,6 +592,15 @@ class ConfigurationTest {
 
   }
 
+  @Test
+  void testReport() {
+
+    var srcPath = new File("src/test/resources/metadata/skd/edt");
+    var configuration = Configuration.create(srcPath.toPath());
+    int stop = 1;
+
+  }
+
   private void checkFillPath(Set<MDObjectBase> child) {
     var elements = child.parallelStream()
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)

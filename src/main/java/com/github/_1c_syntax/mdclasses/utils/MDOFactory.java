@@ -22,7 +22,9 @@
 package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.mdo.Command;
+import com.github._1c_syntax.mdclasses.mdo.CommonTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
 import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
@@ -40,6 +42,7 @@ import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -48,6 +51,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import io.vavr.control.Either;
 import lombok.experimental.UtilityClass;
@@ -132,8 +136,9 @@ public class MDOFactory {
       }
 
       if (mdoValue instanceof MDObjectComplex) {
-        ((MDObjectComplex) mdoValue).getForms().parallelStream().forEach(form -> {
-          var parentPath = mdoPath.getParent().toString();
+        var mdObjectComplex = (MDObjectComplex) mdoValue;
+        var parentPath = mdoPath.getParent().toString();
+        mdObjectComplex.getForms().parallelStream().forEach(form -> {
           var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue, parentPath,
             form.getName());
           readFormData(configurationSource, formDataPath).ifPresent(form::setData);
@@ -142,12 +147,32 @@ public class MDOFactory {
             mdoValue.getName(), form.getName());
           form.setPath(pathToForm);
         });
+
+        // template
+        mdObjectComplex.getTemplates().forEach(template -> {
+          if (template.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
+            var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, mdoValue,
+              parentPath, mdoValue.getName(), template.getName());
+            readDataCompositionSchema(configurationSource, pathToTemplate)
+              .ifPresent(template::setDataCompositionSchema);
+          }
+        });
       }
 
       if (mdoValue.getType() == MDOType.COMMON_FORM) {
         var formDataPath = MDOPathUtils.getFormDataPath(configurationSource, mdoValue,
           mdoPath.getParent().toString(), mdoValue.getName());
         readFormData(configurationSource, formDataPath).ifPresent(((MDOForm) mdoValue)::setData);
+      }
+
+      if (mdoValue.getType() == MDOType.COMMON_TEMPLATE) {
+        var template = (CommonTemplate) mdoValue;
+        if (template.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
+          var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, template,
+            mdoPath.getParent().toString(), mdoValue.getName(), template.getName());
+          readDataCompositionSchema(configurationSource, pathToTemplate)
+            .ifPresent(template::setDataCompositionSchema);
+        }
       }
 
       // загрузка данных роли
@@ -182,6 +207,19 @@ public class MDOFactory {
       formData = new FormData(designerForm);
     }
     return Optional.ofNullable(formData);
+  }
+
+  public Optional<DataCompositionSchema> readDataCompositionSchema(ConfigurationSource configurationSource, Path path) {
+    if (!path.toFile().exists()) {
+      return Optional.empty();
+    }
+    DataCompositionSchema dataCompositionSchema = null;
+    if (configurationSource != ConfigurationSource.EMPTY) {
+      dataCompositionSchema = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
+      dataCompositionSchema.fillPlainDataSets();
+    }
+
+    return Optional.ofNullable(dataCompositionSchema);
   }
 
   /**

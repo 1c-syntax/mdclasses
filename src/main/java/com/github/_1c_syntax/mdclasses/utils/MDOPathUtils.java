@@ -237,6 +237,26 @@ public class MDOPathUtils {
     return path;
   }
 
+  public Path getPathToTemplate(ConfigurationSource source, MDObjectBase mdo, String basePath, String mdoName, String name) {
+    Path path;
+    if (source == ConfigurationSource.EDT) {
+      if (mdo.getType() == MDOType.COMMON_TEMPLATE) {
+        path = Path.of(basePath, "Template.dcs");
+      } else {
+        path = Path.of(basePath, "Templates", name, "Template.dcs");
+      }
+    } else {
+      // src/test/resources/metadata/skd/original/CommonTemplates/МакетСКД/Ext/Template.xml
+      // src/test/resources/metadata/skd/original/Reports/Отчет1/Templates/СКД/Ext/Template.xml
+      if (mdo.getType() == MDOType.COMMON_TEMPLATE) {
+        path = Paths.get(basePath, name, "Ext", "Template.xml");
+      } else {
+        path = Paths.get(basePath, mdoName, "Templates", name, "Ext", "Template.xml");
+      }
+    }
+    return path;
+  }
+
   // Формат EDT
 
   /**
