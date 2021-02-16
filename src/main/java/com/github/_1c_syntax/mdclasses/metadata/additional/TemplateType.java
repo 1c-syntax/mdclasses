@@ -37,15 +37,6 @@ public enum TemplateType implements EnumWithValue {
     this.value = value;
   }
 
-  public static TemplateType fromValue(String value) {
-    for (TemplateType templateType : TemplateType.values()) {
-      if (templateType.value.equals(value)) {
-        return templateType;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
   @Override
   public String value() {
     return value;
