@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
@@ -116,5 +117,8 @@ public class DesignerProperties {
 
   @XStreamAlias("MethodName")
   private String methodName = "";
+
+  @XStreamAlias("TemplateType")
+  private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
 
 }

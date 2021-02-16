@@ -24,8 +24,6 @@ package com.github._1c_syntax.mdclasses.utils;
 import com.github._1c_syntax.mdclasses.mdo.Command;
 import com.github._1c_syntax.mdclasses.mdo.CommonTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Form;
-import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Language;
@@ -42,7 +40,9 @@ import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.template.DataCompositionSchema;
+import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -150,12 +150,12 @@ public class MDOFactory {
 
         // template
         mdObjectComplex.getTemplates().forEach(template -> {
-          if (template.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
-            var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, mdoValue,
-              parentPath, mdoValue.getName(), template.getName());
-            readDataCompositionSchema(configurationSource, pathToTemplate)
-              .ifPresent(template::setDataCompositionSchema);
-          }
+          var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, mdoValue,
+            parentPath, mdoValue.getName(), template.getName());
+          template.setPath(pathToTemplate);
+          var templateData = readTemplateData(configurationSource, template.getTemplateType(),
+            pathToTemplate);
+          template.setTemplateData(templateData);
         });
       }
 
@@ -167,12 +167,12 @@ public class MDOFactory {
 
       if (mdoValue.getType() == MDOType.COMMON_TEMPLATE) {
         var template = (CommonTemplate) mdoValue;
-        if (template.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
-          var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, template,
-            mdoPath.getParent().toString(), mdoValue.getName(), template.getName());
-          readDataCompositionSchema(configurationSource, pathToTemplate)
-            .ifPresent(template::setDataCompositionSchema);
-        }
+        var pathToTemplate = MDOPathUtils.getPathToTemplate(configurationSource, template,
+          mdoPath.getParent().toString(), mdoValue.getName(), template.getName());
+        template.setPath(pathToTemplate);
+        var templateData = readTemplateData(configurationSource, template.getTemplateType(),
+          pathToTemplate);
+        template.setTemplateData(templateData);
       }
 
       // загрузка данных роли
@@ -207,6 +207,17 @@ public class MDOFactory {
       formData = new FormData(designerForm);
     }
     return Optional.ofNullable(formData);
+  }
+
+  public TemplateData<?> readTemplateData(ConfigurationSource configurationSource, TemplateType type, Path path) {
+    if (type == TemplateType.DATA_COMPOSITION_SCHEME) {
+      var optionalDataCompositionSchema =
+        readDataCompositionSchema(configurationSource, path);
+      if (optionalDataCompositionSchema.isPresent()) {
+        return new TemplateData<>(optionalDataCompositionSchema.get());
+      }
+    }
+    return TemplateData.empty();
   }
 
   public Optional<DataCompositionSchema> readDataCompositionSchema(ConfigurationSource configurationSource, Path path) {

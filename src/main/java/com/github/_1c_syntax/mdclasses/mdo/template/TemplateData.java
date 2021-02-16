@@ -19,12 +19,26 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.template;
 
-import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
-import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
+import lombok.RequiredArgsConstructor;
 
-public interface MDOTemplate {
-  TemplateType getTemplateType();
-  TemplateData<?> getTemplateData();
+import java.util.Optional;
+
+@RequiredArgsConstructor
+public class TemplateData<T> {
+  private static final TemplateData<String> EMPTY = new TemplateData<>();
+  private final T data;
+
+  public TemplateData() {
+    data = null;
+  }
+
+  public Optional<T> getData() {
+    return Optional.ofNullable(data);
+  }
+
+  public static TemplateData<String> empty() {
+    return EMPTY;
+  }
 }
