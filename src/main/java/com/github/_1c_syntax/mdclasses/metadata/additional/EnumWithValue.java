@@ -22,30 +22,13 @@
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
 /**
- * Возможные варианты режима блокировки
+ * Расширение для перечислений, необходимое для использования в анмаршалинге
+ * автор идеи: alkoleft (https://github.com/alkoleft)
  */
-public enum DataLockControlMode implements EnumWithValue {
-  AUTOMATIC("Automatic"),
-  MANAGED("Managed"),
-  AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
-
-  private final String value;
-
-  DataLockControlMode(String value) {
-    this.value = value;
-  }
-
-  public static DataLockControlMode fromValue(String value) {
-    for (DataLockControlMode dataLockControlMode : DataLockControlMode.values()) {
-      if (dataLockControlMode.value.equals(value)) {
-        return dataLockControlMode;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
-  public String value() {
-    return this.value;
-  }
-
+public interface EnumWithValue {
+  /**
+   * Возвращает значение перечисления
+   * @return Строковое значение перечисления
+   */
+  String value();
 }

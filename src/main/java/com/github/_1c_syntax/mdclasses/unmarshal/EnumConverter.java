@@ -21,28 +21,25 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.EnumWithValue;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import lombok.SneakyThrows;
 
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
  * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от текущего.
  * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
  * XStreamFactory.
- * <p>
- * Внимание!
- * В перечислении должен быть реализован метод "fromValue" со стоковым параметром, возвращающий элемент перечисления
  */
-public class EnumConverter implements Converter {
+public class EnumConverter<T extends Enum<T> & EnumWithValue> implements Converter {
 
-  private final Class<?> mdoEnum;
+  private final Class<T> enumClazz;
 
-  public EnumConverter(Class<?> mdoEnum) {
-    this.mdoEnum = mdoEnum;
+  public EnumConverter(Class<T> enumClazz) {
+    this.enumClazz = enumClazz;
   }
 
   @Override
@@ -50,14 +47,22 @@ public class EnumConverter implements Converter {
     // noop
   }
 
-  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    return mdoEnum.getMethod("fromValue", String.class).invoke(this, reader.getValue());
+    return fromValue(enumClazz, reader.getValue());
+  }
+
+  private static <T extends Enum<T> & EnumWithValue> T fromValue(Class<T> clazz, String value) {
+    for (T item : clazz.getEnumConstants()) {
+      if (item.value().equals(value)) {
+        return item;
+      }
+    }
+    throw new IllegalArgumentException(value);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return mdoEnum.isAssignableFrom(type);
+    return enumClazz.isAssignableFrom(type);
   }
 }
