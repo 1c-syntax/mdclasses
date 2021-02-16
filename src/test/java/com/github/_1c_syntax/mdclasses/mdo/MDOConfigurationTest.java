@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -60,7 +61,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
@@ -137,7 +138,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 14)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC_AND_MANAGED);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("English");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
@@ -171,7 +172,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");

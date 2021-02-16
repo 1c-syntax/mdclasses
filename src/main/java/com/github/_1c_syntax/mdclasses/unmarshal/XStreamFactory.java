@@ -71,6 +71,7 @@ import com.github._1c_syntax.mdclasses.mdo.Resource;
 import com.github._1c_syntax.mdclasses.mdo.Right;
 import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
@@ -524,6 +525,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
     xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
+    xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
