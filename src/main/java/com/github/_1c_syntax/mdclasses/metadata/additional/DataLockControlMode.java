@@ -24,7 +24,7 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 /**
  * Возможные варианты режима блокировки
  */
-public enum DataLockControlMode {
+public enum DataLockControlMode implements EnumWithValue {
   AUTOMATIC("Automatic"),
   MANAGED("Managed"),
   AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
