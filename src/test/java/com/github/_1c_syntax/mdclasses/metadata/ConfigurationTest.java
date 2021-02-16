@@ -586,19 +586,8 @@ class ConfigurationTest {
 
   @Test
   void testBrokenLanguageIntoExtension() {
-
     var srcPath = new File("src/test/resources/metadata/edt_ext_broken");
     var configuration = Configuration.create(srcPath.toPath());
-
-  }
-
-  @Test
-  void testReport() {
-
-    var srcPath = new File("src/test/resources/metadata/skd/edt");
-    var configuration = Configuration.create(srcPath.toPath());
-    int stop = 1;
-
   }
 
   private void checkFillPath(Set<MDObjectBase> child) {
