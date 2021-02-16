@@ -27,6 +27,11 @@ import lombok.Value;
 @Value
 @RequiredArgsConstructor
 public class QuerySource {
+  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
   SourcePosition position;
   String textQuery;
+
+  public static QuerySource empty() {
+    return EMPTY;
+  }
 }
