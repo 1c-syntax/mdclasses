@@ -21,17 +21,28 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+public enum DataSetType implements EnumWithValue {
+  DATA_SET_QUERY("DataSetQuery"),
+  DATA_SET_UNION("DataSetUnion"),
+  DATA_SET_OBJECT("DataSetObject");
 
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
+  private final String value;
 
-  public static QuerySource empty() {
-    return EMPTY;
+  DataSetType(String value) {
+    this.value = value;
+  }
+
+  public static DataSetType fromValue(String value) {
+    for (DataSetType dataSetType : DataSetType.values()) {
+      if (dataSetType.value.equals(value)) {
+        return dataSetType;
+      }
+    }
+    throw new IllegalArgumentException(value);
+  }
+
+  @Override
+  public String value() {
+    return value;
   }
 }

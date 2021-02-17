@@ -19,19 +19,12 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.metadata.additional;
+package com.github._1c_syntax.mdclasses.mdo;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
 
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
-
-  public static QuerySource empty() {
-    return EMPTY;
-  }
+public interface MDOTemplate {
+  TemplateType getTemplateType();
+  TemplateData<?> getTemplateData();
 }

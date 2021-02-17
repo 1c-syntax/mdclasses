@@ -21,17 +21,24 @@
  */
 package com.github._1c_syntax.mdclasses.metadata.additional;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+public enum TemplateType implements EnumWithValue {
+  ADD_IN("AddIn"),
+  BINARY_DATA("BinaryData"),
+  DATA_COMPOSITION_SCHEME("DataCompositionSchema"),
+  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate"),
+  GRAPHICAL_SCHEME("GraphicalSchema"),
+  HTML_DOCUMENT("HTMLDocument"),
+  SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
+  TEXT_DOCUMENT("TextDocument");
 
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
+  private final String value;
 
-  public static QuerySource empty() {
-    return EMPTY;
+  TemplateType(String value) {
+    this.value = value;
+  }
+
+  @Override
+  public String value() {
+    return value;
   }
 }

@@ -19,19 +19,24 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.metadata.additional;
+package com.github._1c_syntax.mdclasses.mdo.template;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
-
-  public static QuerySource empty() {
-    return EMPTY;
-  }
+@Data
+@ToString(onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+public class DataSetField {
+  /**
+   * Путь к данным поля
+   */
+  String dataPath;
+  /**
+   * Имя поля
+   */
+  @XStreamAlias("field")
+  String name;
 }
