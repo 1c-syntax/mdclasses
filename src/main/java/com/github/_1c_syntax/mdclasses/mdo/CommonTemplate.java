@@ -21,8 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,10 +35,20 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class CommonTemplate extends Template {
+public class CommonTemplate extends MDObjectBase implements MDOTemplate {
+  /**
+   * Тип макета. Например, `ТабличныйДокумент`.
+   */
+  @XStreamAlias("templateType")
+  private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
+  /**
+   * Содержимое макета. Например, Схема компоновки данных
+   */
+  private TemplateData<?> templateData;
 
   public CommonTemplate(DesignerMDO designerMDO) {
     super(designerMDO);
+    setTemplateType(designerMDO.getProperties().getTemplateType());
   }
 
   @Override
