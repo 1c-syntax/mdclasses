@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(edtName = "mdclass:CommonForm")
 public class CommonForm extends MDObjectBSL implements MDOForm {
   /**
    * Данные формы. Читается из отдельного файла

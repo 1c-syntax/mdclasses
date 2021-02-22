@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -32,6 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(edtName = "mdclass:CommonCommand")
 public class CommonCommand extends MDObjectBSL {
 
   public CommonCommand(DesignerMDO designerMDO) {

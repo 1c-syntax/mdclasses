@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Getter;
@@ -37,6 +38,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@TypeAlias(edtName = "Rights")
 public class RoleData {
 
   /**

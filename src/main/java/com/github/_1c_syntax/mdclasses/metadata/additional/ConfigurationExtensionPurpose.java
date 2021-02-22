@@ -28,8 +28,7 @@ public enum ConfigurationExtensionPurpose {
   CUSTOMIZATION("Customization"),
   ADD_ON("AddOn"),
   PATCH("Patch"),
-  UNDEFINED("Undefined")
-  ;
+  UNDEFINED("Undefined");
 
   private final String value;
 

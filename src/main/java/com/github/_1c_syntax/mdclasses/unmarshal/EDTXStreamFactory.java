@@ -21,55 +21,20 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.mdo.AccountingRegister;
-import com.github._1c_syntax.mdclasses.mdo.AccumulationRegister;
-import com.github._1c_syntax.mdclasses.mdo.BusinessProcess;
-import com.github._1c_syntax.mdclasses.mdo.CalculationRegister;
-import com.github._1c_syntax.mdclasses.mdo.Catalog;
-import com.github._1c_syntax.mdclasses.mdo.ChartOfAccounts;
-import com.github._1c_syntax.mdclasses.mdo.ChartOfCalculationTypes;
-import com.github._1c_syntax.mdclasses.mdo.ChartOfCharacteristicTypes;
-import com.github._1c_syntax.mdclasses.mdo.CommandGroup;
-import com.github._1c_syntax.mdclasses.mdo.CommonAttribute;
-import com.github._1c_syntax.mdclasses.mdo.CommonCommand;
-import com.github._1c_syntax.mdclasses.mdo.CommonForm;
-import com.github._1c_syntax.mdclasses.mdo.CommonModule;
-import com.github._1c_syntax.mdclasses.mdo.CommonPicture;
-import com.github._1c_syntax.mdclasses.mdo.CommonTemplate;
-import com.github._1c_syntax.mdclasses.mdo.Constant;
-import com.github._1c_syntax.mdclasses.mdo.DataProcessor;
-import com.github._1c_syntax.mdclasses.mdo.DefinedType;
 import com.github._1c_syntax.mdclasses.mdo.Document;
-import com.github._1c_syntax.mdclasses.mdo.DocumentJournal;
-import com.github._1c_syntax.mdclasses.mdo.DocumentNumerator;
 import com.github._1c_syntax.mdclasses.mdo.EventSubscription;
-import com.github._1c_syntax.mdclasses.mdo.ExchangePlan;
-import com.github._1c_syntax.mdclasses.mdo.FilterCriterion;
-import com.github._1c_syntax.mdclasses.mdo.FunctionalOption;
-import com.github._1c_syntax.mdclasses.mdo.FunctionalOptionsParameter;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
-import com.github._1c_syntax.mdclasses.mdo.InformationRegister;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.Report;
 import com.github._1c_syntax.mdclasses.mdo.Role;
-import com.github._1c_syntax.mdclasses.mdo.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.ScheduledJob;
-import com.github._1c_syntax.mdclasses.mdo.Sequence;
-import com.github._1c_syntax.mdclasses.mdo.SessionParameter;
-import com.github._1c_syntax.mdclasses.mdo.SettingsStorage;
-import com.github._1c_syntax.mdclasses.mdo.Style;
-import com.github._1c_syntax.mdclasses.mdo.StyleItem;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
-import com.github._1c_syntax.mdclasses.mdo.Task;
-import com.github._1c_syntax.mdclasses.mdo.WSReference;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
-import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
 import com.github._1c_syntax.mdclasses.mdo.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.form.FormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.AttributeConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DataPathConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
@@ -77,6 +42,7 @@ import com.thoughtworks.xstream.XStream;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.atteo.classindex.ClassIndex;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -195,53 +161,14 @@ public class EDTXStreamFactory {
   }
 
   private void addClassAliases(XStream xStream) {
-    xStream.alias("mdclass:AccountingRegister", AccountingRegister.class);
-    xStream.alias("mdclass:AccumulationRegister", AccumulationRegister.class);
-    xStream.alias("mdclass:BusinessProcess", BusinessProcess.class);
-    xStream.alias("mdclass:CalculationRegister", CalculationRegister.class);
-    xStream.alias("mdclass:Catalog", Catalog.class);
-    xStream.alias("mdclass:ChartOfAccounts", ChartOfAccounts.class);
-    xStream.alias("mdclass:ChartOfCalculationTypes", ChartOfCalculationTypes.class);
-    xStream.alias("mdclass:ChartOfCharacteristicTypes", ChartOfCharacteristicTypes.class);
-    xStream.alias("mdclass:CommandGroup", CommandGroup.class);
-    xStream.alias("mdclass:CommonAttribute", CommonAttribute.class);
-    xStream.alias("mdclass:CommonCommand", CommonCommand.class);
-    xStream.alias("mdclass:CommonForm", CommonForm.class);
-    xStream.alias("mdclass:CommonModule", CommonModule.class);
-    xStream.alias("mdclass:CommonPicture", CommonPicture.class);
-    xStream.alias("mdclass:CommonTemplate", CommonTemplate.class);
-    xStream.alias("mdclass:Constant", Constant.class);
-    xStream.alias("mdclass:DataProcessor", DataProcessor.class);
-    xStream.alias("mdclass:DefinedType", DefinedType.class);
-    xStream.alias("mdclass:Document", Document.class);
-    xStream.alias("mdclass:DocumentJournal", DocumentJournal.class);
-    xStream.alias("mdclass:DocumentNumerator", DocumentNumerator.class);
-    xStream.alias("mdclass:EventSubscription", EventSubscription.class);
-    xStream.alias("mdclass:ExchangePlan", ExchangePlan.class);
-    xStream.alias("mdclass:FilterCriterion", FilterCriterion.class);
-    xStream.alias("mdclass:FunctionalOption", FunctionalOption.class);
-    xStream.alias("mdclass:FunctionalOptionsParameter", FunctionalOptionsParameter.class);
-    xStream.alias("mdclass:HTTPService", HTTPService.class);
-    xStream.alias("mdclass:InformationRegister", InformationRegister.class);
-    xStream.alias("mdclass:Enum", MDOEnum.class);
-    xStream.alias("mdclass:Report", Report.class);
-    xStream.alias("mdclass:Role", Role.class);
-    xStream.alias("Rights", RoleData.class);
-    xStream.alias("mdclass:ScheduledJob", ScheduledJob.class);
-    xStream.alias("mdclass:Sequence", Sequence.class);
-    xStream.alias("mdclass:SessionParameter", SessionParameter.class);
-    xStream.alias("mdclass:SettingsStorage", SettingsStorage.class);
-    xStream.alias("mdclass:Style", Style.class);
-    xStream.alias("mdclass:StyleItem", StyleItem.class);
-    xStream.alias("mdclass:Subsystem", Subsystem.class);
-    xStream.alias("mdclass:Task", Task.class);
-    xStream.alias("mdclass:WebService", WebService.class);
-    xStream.alias("mdclass:WSReference", WSReference.class);
-    xStream.alias("mdclass:XDTOPackage", XDTOPackage.class);
-    xStream.alias("mdclass:Configuration", MDOConfiguration.class);
-    xStream.alias("form:Form", FormData.class);
+    ClassIndex.getAnnotated(TypeAlias.class).forEach(clazz -> {
+      var annotation = clazz.getAnnotation(TypeAlias.class);
+      var alias = (annotation.name().isEmpty()) ? annotation.edtName() : annotation.name();
+      if (!alias.isEmpty()) {
+        xStream.alias(alias, clazz);
+      }
+    });
   }
-
 
   private static List<Class<?>> createListClassesForForm() {
     List<Class<?>> list = new ArrayList<>();

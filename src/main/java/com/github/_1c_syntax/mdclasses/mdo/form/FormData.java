@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -40,6 +41,7 @@ import java.util.stream.Collectors;
 @Data
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(edtName = "form:Form")
 public class FormData {
   /**
    * "Плоский" список элементов

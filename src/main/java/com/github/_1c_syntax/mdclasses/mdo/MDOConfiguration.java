@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensio
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
@@ -42,6 +43,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(edtName = "mdclass:Configuration")
 public class MDOConfiguration extends MDObjectBSL {
 
   /**

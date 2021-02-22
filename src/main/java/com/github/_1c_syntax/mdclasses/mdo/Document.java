@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerXRItems;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -38,6 +39,7 @@ import java.util.Optional;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(edtName = "mdclass:Document")
 public class Document extends MDObjectComplex {
   /**
    * Список связанных регистров (где документ является регистратором)

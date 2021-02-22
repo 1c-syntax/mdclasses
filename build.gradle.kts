@@ -37,6 +37,11 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.2.1")
+
+    // reflection
+    implementation("org.atteo.classindex", "classindex", "3.10")
+    annotationProcessor("org.atteo.classindex", "classindex", "3.10")
+
     // генерики
     compileOnly("org.projectlombok", "lombok", lombok.version)
     // тестирование
