@@ -33,7 +33,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Role")
+@TypeAlias(edtName = "mdclass:Role", designerName = "Role", useDesignerWrapper = true)
 public class Role extends MDObjectBase {
 
   private RoleData roleData;

@@ -38,7 +38,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:HTTPService")
+@TypeAlias(edtName = "mdclass:HTTPService", designerName = "HTTPService", useDesignerWrapper = true)
 public class HTTPService extends MDObjectBSL {
 
   /**

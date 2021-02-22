@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:WSReference")
+@TypeAlias(edtName = "mdclass:WSReference", designerName = "WSReference", useDesignerWrapper = true)
 public class WSReference extends MDObjectBase {
 
   public WSReference(DesignerMDO designerMDO) {

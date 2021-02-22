@@ -36,7 +36,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:EventSubscription")
+@TypeAlias(edtName = "mdclass:EventSubscription", designerName = "EventSubscription", useDesignerWrapper = true)
 public class EventSubscription extends MDObjectBase {
 
   /**

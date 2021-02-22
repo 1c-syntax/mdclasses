@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonPicture")
+@TypeAlias(edtName = "mdclass:CommonPicture", designerName = "CommonPicture", useDesignerWrapper = true)
 public class CommonPicture extends MDObjectBase {
 
   public CommonPicture(DesignerMDO designerMDO) {

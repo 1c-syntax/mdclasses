@@ -43,4 +43,5 @@ public class DesignerMDO {
   private DesignerChildObjects childObjects;
 
   private Path mdoPath;
+  private Class<?> realClass;
 }

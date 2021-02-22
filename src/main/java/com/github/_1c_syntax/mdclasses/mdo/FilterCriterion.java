@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:FilterCriterion")
+@TypeAlias(edtName = "mdclass:FilterCriterion", designerName = "FilterCriterion", useDesignerWrapper = true)
 public class FilterCriterion extends MDObjectComplex {
   public FilterCriterion(DesignerMDO designerMDO) {
     super(designerMDO);

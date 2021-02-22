@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:StyleItem")
+@TypeAlias(edtName = "mdclass:StyleItem", designerName = "StyleItem", useDesignerWrapper = true)
 public class StyleItem extends MDObjectBase {
 
   public StyleItem(DesignerMDO designerMDO) {

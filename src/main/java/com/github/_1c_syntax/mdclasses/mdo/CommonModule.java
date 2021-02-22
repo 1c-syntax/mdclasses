@@ -34,7 +34,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonModule")
+@TypeAlias(edtName = "mdclass:CommonModule", designerName = "CommonModule", useDesignerWrapper = true)
 public class CommonModule extends MDObjectBSL {
 
   /**

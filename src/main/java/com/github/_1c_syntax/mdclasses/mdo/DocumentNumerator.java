@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:DocumentNumerator")
+@TypeAlias(edtName = "mdclass:DocumentNumerator", designerName = "DocumentNumerator", useDesignerWrapper = true)
 public class DocumentNumerator extends MDObjectBase {
 
   public DocumentNumerator(DesignerMDO designerMDO) {

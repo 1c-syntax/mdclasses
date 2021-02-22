@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:DataProcessor")
+@TypeAlias(edtName = "mdclass:DataProcessor", designerName = "DataProcessor", useDesignerWrapper = true)
 public class DataProcessor extends MDObjectComplex {
   public DataProcessor(DesignerMDO designerMDO) {
     super(designerMDO);

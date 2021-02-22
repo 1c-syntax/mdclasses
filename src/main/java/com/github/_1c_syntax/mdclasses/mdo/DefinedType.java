@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:DefinedType")
+@TypeAlias(edtName = "mdclass:DefinedType", designerName = "DefinedType", useDesignerWrapper = true)
 public class DefinedType extends MDObjectBase {
 
   public DefinedType(DesignerMDO designerMDO) {
@@ -44,5 +44,4 @@ public class DefinedType extends MDObjectBase {
   public MDOType getType() {
     return MDOType.DEFINED_TYPE;
   }
-
 }

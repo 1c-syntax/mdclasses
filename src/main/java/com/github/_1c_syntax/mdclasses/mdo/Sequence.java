@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Sequence")
+@TypeAlias(edtName = "mdclass:Sequence", designerName = "Sequence", useDesignerWrapper = true)
 public class Sequence extends MDObjectComplex {
 
   public Sequence(DesignerMDO designerMDO) {

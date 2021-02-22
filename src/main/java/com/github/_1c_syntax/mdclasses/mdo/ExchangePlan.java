@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:ExchangePlan")
+@TypeAlias(edtName = "mdclass:ExchangePlan", designerName = "ExchangePlan", useDesignerWrapper = true)
 public class ExchangePlan extends MDObjectComplex {
   public ExchangePlan(DesignerMDO designerMDO) {
     super(designerMDO);

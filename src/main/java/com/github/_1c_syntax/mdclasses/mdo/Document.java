@@ -39,7 +39,7 @@ import java.util.Optional;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Document")
+@TypeAlias(edtName = "mdclass:Document", designerName = "Document", useDesignerWrapper = true)
 public class Document extends MDObjectComplex {
   /**
    * Список связанных регистров (где документ является регистратором)

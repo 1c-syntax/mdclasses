@@ -28,4 +28,9 @@ public @interface TypeAlias {
    * Имя класса для формата Конфигуратора
    */
   String designerName() default "";
+
+  /**
+   * Признак заворачивания класса во враппер MetaDataObject
+   */
+  boolean useDesignerWrapper() default false;
 }

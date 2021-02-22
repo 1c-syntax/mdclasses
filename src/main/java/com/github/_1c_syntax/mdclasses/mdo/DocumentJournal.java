@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:DocumentJournal")
+@TypeAlias(edtName = "mdclass:DocumentJournal", designerName = "DocumentJournal", useDesignerWrapper = true)
 public class DocumentJournal extends MDObjectComplex {
   public DocumentJournal(DesignerMDO designerMDO) {
     super(designerMDO);

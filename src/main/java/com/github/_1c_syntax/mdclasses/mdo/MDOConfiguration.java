@@ -43,7 +43,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Configuration")
+@TypeAlias(edtName = "mdclass:Configuration", designerName = "Configuration", useDesignerWrapper = true)
 public class MDOConfiguration extends MDObjectBSL {
 
   /**

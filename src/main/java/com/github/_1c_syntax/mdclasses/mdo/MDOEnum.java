@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Enum")
+@TypeAlias(edtName = "mdclass:Enum", designerName = "Enum", useDesignerWrapper = true)
 public class MDOEnum extends MDObjectComplex {
 
   public MDOEnum(DesignerMDO designerMDO) {

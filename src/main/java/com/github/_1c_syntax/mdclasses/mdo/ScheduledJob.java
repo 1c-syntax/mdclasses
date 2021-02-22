@@ -36,7 +36,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:ScheduledJob")
+@TypeAlias(edtName = "mdclass:ScheduledJob", designerName = "ScheduledJob", useDesignerWrapper = true)
 public class ScheduledJob extends MDObjectBase {
 
   /**

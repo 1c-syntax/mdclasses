@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommandGroup")
+@TypeAlias(edtName = "mdclass:CommandGroup", designerName = "CommandGroup", useDesignerWrapper = true)
 public class CommandGroup extends MDObjectBase {
 
   public CommandGroup(DesignerMDO designerMDO) {

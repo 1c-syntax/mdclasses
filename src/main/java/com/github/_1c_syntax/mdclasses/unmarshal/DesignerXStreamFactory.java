@@ -22,18 +22,23 @@
 package com.github._1c_syntax.mdclasses.unmarshal;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerAttribute;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormItemConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.FormConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormEventConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.MetaDataObjectConverter;
 import com.thoughtworks.xstream.XStream;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.atteo.classindex.ClassIndex;
 
 import java.io.File;
 
@@ -43,6 +48,8 @@ import java.io.File;
 @Slf4j
 @UtilityClass
 public class DesignerXStreamFactory {
+  private static final String WRAPPER_PREFIX = "WRAP";
+
   private final String CHILDREN_FIELD_NAME = "children";
 
   @Getter(lazy = true)
@@ -55,8 +62,16 @@ public class DesignerXStreamFactory {
     return XStreamFactory.fromXML(getXstream(), file);
   }
 
+  public Class<?> getRealClass(String className) {
+    return getXstream().getMapper().realClass(className);
+  }
+
+  public Class<?> getWrappedClass(String className) {
+    return getXstream().getMapper().realClass(WRAPPER_PREFIX + className);
+  }
+
   private XStream createXMLMapper() {
-    var xStream = XStreamFactory.getXstream();
+    var xStream = XStreamFactory.createXMLMapper();
 
     // для каждого типа данных или поля необходимо зарегистрировать конвертер
     addConverters(xStream);
@@ -76,10 +91,13 @@ public class DesignerXStreamFactory {
   private void addConverters(XStream xStream) {
     xStream.registerConverter(new FormEventConverter());
     xStream.registerConverter(new DesignerFormItemConverter());
+    xStream.registerConverter(new MetaDataObjectConverter());
+    xStream.registerConverter(new FormConverter());
   }
 
   private void processAnnotationsForMDO(XStream xstream) {
     xstream.processAnnotations(DesignerWrapper.class);
+    xstream.processAnnotations(DesignerMDO.class);
     xstream.processAnnotations(DesignerForm.class);
   }
 
@@ -157,8 +175,21 @@ public class DesignerXStreamFactory {
   }
 
   private void addClassAliases(XStream xStream) {
-    xStream.alias("MetaDataObject", DesignerWrapper.class);
-    xStream.alias("Form", DesignerForm.class);
+    ClassIndex.getAnnotated(TypeAlias.class).forEach(clazz -> {
+      var annotation = clazz.getAnnotation(TypeAlias.class);
+      var alias = (annotation.name().isEmpty()) ? annotation.designerName() : annotation.name();
+      if (!alias.isEmpty()) {
+        if (annotation.useDesignerWrapper()) {
+          xStream.alias(WRAPPER_PREFIX + alias, DesignerMDO.class);
+        }
+        xStream.alias(alias, clazz);
+      }
+    });
+//
+//    xStream.alias("MetaDataObject", DesignerWrapper.class);
+////    xStream.alias("Form", DesignerForm.class);
+//    xStream.alias("Configuration", DesignerMDO.class);
+//    xStream.alias("DesignerConfiguration", MDOConfiguration.class);
   }
 
 }

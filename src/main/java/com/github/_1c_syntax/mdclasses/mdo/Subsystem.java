@@ -39,7 +39,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Subsystem")
+@TypeAlias(edtName = "mdclass:Subsystem", designerName = "Subsystem", useDesignerWrapper = true)
 public class Subsystem extends MDObjectBase {
 
   /**

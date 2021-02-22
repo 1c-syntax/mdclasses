@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:SettingsStorage")
+@TypeAlias(edtName = "mdclass:SettingsStorage", designerName = "SettingsStorage", useDesignerWrapper = true)
 public class SettingsStorage extends MDObjectComplex {
 
   public SettingsStorage(DesignerMDO designerMDO) {

@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:InformationRegister")
+@TypeAlias(edtName = "mdclass:InformationRegister", designerName = "InformationRegister", useDesignerWrapper = true)
 public class InformationRegister extends MDObjectComplex {
 
   public InformationRegister(DesignerMDO designerMDO) {

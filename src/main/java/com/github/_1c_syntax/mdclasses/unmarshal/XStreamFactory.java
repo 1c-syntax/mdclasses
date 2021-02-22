@@ -67,9 +67,6 @@ public class XStreamFactory {
   @Getter
   private static Converter reflectionConverter;
 
-  @Getter(lazy = true)
-  private final XStream xstream = createXMLMapper();
-
   /**
    * Выполняет чтение объекта из XML файла
    */
@@ -84,7 +81,7 @@ public class XStreamFactory {
     return result;
   }
 
-  private XStream createXMLMapper() {
+  protected XStream createXMLMapper() {
     // данный провайдер необходим для корректной обработки значений по умолчанию, чтобы не было null
     var xStream = new XStream(new PureJavaReflectionProvider()) {
 

@@ -38,7 +38,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:WebService")
+@TypeAlias(edtName = "mdclass:WebService", designerName = "WebService", useDesignerWrapper = true)
 public class WebService extends MDObjectBSL {
 
   /**

@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonTemplate")
+@TypeAlias(edtName = "mdclass:CommonTemplate", designerName = "CommonTemplate", useDesignerWrapper = true)
 public class CommonTemplate extends MDObjectBase {
 
   public CommonTemplate(DesignerMDO designerMDO) {

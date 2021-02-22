@@ -40,7 +40,7 @@ import com.github._1c_syntax.mdclasses.mdo.Template;
 import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerWrapper;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
@@ -51,6 +51,7 @@ import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.DesignerXStreamFactory;
 import com.github._1c_syntax.mdclasses.unmarshal.EDTXStreamFactory;
 import io.vavr.control.Either;
+import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Files;
@@ -174,7 +175,7 @@ public class MDOFactory {
     if (!path.toFile().exists()) {
       return Optional.empty();
     }
-    FormData formData = null;
+    FormData formData;
     if (configurationSource == ConfigurationSource.EDT) {
       formData = (FormData) EDTXStreamFactory.fromXML(path.toFile());
       formData.fillPlainChildren(formData.getChildren());
@@ -182,7 +183,7 @@ public class MDOFactory {
       var designerForm = (DesignerForm) DesignerXStreamFactory.fromXML(path.toFile());
       formData = new FormData(designerForm);
     }
-    return Optional.ofNullable(formData);
+    return Optional.of(formData);
   }
 
   /**
@@ -208,6 +209,7 @@ public class MDOFactory {
    * @param mdoPath             - путь к файлу описания объекта
    * @return - прочитанный объект
    */
+  @SneakyThrows
   public Optional<MDObjectBase> readMDObjectFromFile(ConfigurationSource configurationSource,
                                                      MDOType type, Path mdoPath) {
     var mdoFile = mdoPath.toFile();
@@ -219,8 +221,11 @@ public class MDOFactory {
     if (configurationSource == ConfigurationSource.EDT) {
       mdo = Optional.of((MDObjectBase) EDTXStreamFactory.fromXML(mdoFile));
     } else if (configurationSource == ConfigurationSource.DESIGNER) {
-      DesignerWrapper metaDataObject = (DesignerWrapper) DesignerXStreamFactory.fromXML(mdoFile);
-      mdo = metaDataObject.getPropertyByType(type, mdoPath);
+      var wrapperMDO = (DesignerMDO) DesignerXStreamFactory.fromXML(mdoFile);
+      wrapperMDO.setMdoPath(mdoPath);
+      mdo = Optional.of(
+        (MDObjectBase) wrapperMDO.getRealClass().getConstructor(DesignerMDO.class).newInstance(wrapperMDO)
+      );
     } else {
       mdo = Optional.empty();
     }

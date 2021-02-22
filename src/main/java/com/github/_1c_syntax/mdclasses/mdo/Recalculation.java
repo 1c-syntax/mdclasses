@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.AttributeType;
+import com.github._1c_syntax.mdclasses.unmarshal.annotation.TypeAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@TypeAlias(designerName = "Recalculation", useDesignerWrapper = true)
 public class Recalculation extends MDOAttribute {
   public Recalculation(DesignerMDO designerMDO) {
     super(designerMDO);

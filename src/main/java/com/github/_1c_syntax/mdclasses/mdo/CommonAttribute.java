@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonAttribute")
+@TypeAlias(edtName = "mdclass:CommonAttribute", designerName = "CommonAttribute", useDesignerWrapper = true)
 public class CommonAttribute extends MDObjectBase {
 
   public CommonAttribute(DesignerMDO designerMDO) {

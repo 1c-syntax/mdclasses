@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:SessionParameter")
+@TypeAlias(edtName = "mdclass:SessionParameter", designerName = "SessionParameter", useDesignerWrapper = true)
 public class SessionParameter extends MDObjectBase {
 
   public SessionParameter(DesignerMDO designerMDO) {

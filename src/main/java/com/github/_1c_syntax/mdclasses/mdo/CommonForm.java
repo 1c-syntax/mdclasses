@@ -34,7 +34,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonForm")
+@TypeAlias(edtName = "mdclass:CommonForm", designerName = "CommonForm", useDesignerWrapper = true)
 public class CommonForm extends MDObjectBSL implements MDOForm {
   /**
    * Данные формы. Читается из отдельного файла

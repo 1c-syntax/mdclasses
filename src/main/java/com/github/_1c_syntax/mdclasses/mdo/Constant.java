@@ -33,7 +33,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:Constant")
+@TypeAlias(edtName = "mdclass:Constant", designerName = "Constant", useDesignerWrapper = true)
 public class Constant extends MDObjectBSL {
 
   public Constant(DesignerMDO designerMDO) {

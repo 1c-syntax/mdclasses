@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:XDTOPackage")
+@TypeAlias(edtName = "mdclass:XDTOPackage", designerName = "XDTOPackage", useDesignerWrapper = true)
 public class XDTOPackage extends MDObjectBase {
 
   public XDTOPackage(DesignerMDO designerMDO) {

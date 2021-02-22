@@ -71,7 +71,7 @@ public class EDTXStreamFactory {
   }
 
   private XStream createXMLMapper() {
-    var xStream = XStreamFactory.getXstream();
+    var xStream = XStreamFactory.createXMLMapper();
 
     // для каждого типа данных или поля необходимо зарегистрировать конвертер
     addConverters(xStream);

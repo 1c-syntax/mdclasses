@@ -33,7 +33,7 @@ import lombok.Value;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@TypeAlias(edtName = "mdclass:CommonCommand")
+@TypeAlias(edtName = "mdclass:CommonCommand", designerName = "CommonCommand", useDesignerWrapper = true)
 public class CommonCommand extends MDObjectBSL {
 
   public CommonCommand(DesignerMDO designerMDO) {
