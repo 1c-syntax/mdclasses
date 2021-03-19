@@ -74,7 +74,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(52)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -90,7 +90,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
     checkChildCount(configuration, MDOType.COMMON_PICTURE, 1);
-    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 10);
     checkChildCount(configuration, MDOType.CONSTANT, 1);
     checkChildCount(configuration, MDOType.DATA_PROCESSOR, 1);
     checkChildCount(configuration, MDOType.DEFINED_TYPE, 1);
@@ -185,7 +185,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(52)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -201,7 +201,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
     checkChildCount(configuration, MDOType.COMMON_PICTURE, 1);
-    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 10);
     checkChildCount(configuration, MDOType.CONSTANT, 1);
     checkChildCount(configuration, MDOType.DATA_PROCESSOR, 1);
     checkChildCount(configuration, MDOType.DEFINED_TYPE, 1);

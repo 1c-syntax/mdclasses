@@ -29,6 +29,8 @@ public enum TemplateType implements EnumWithValue {
   GRAPHICAL_SCHEME("GraphicalSchema"),
   HTML_DOCUMENT("HTMLDocument"),
   SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
+  ACTIVE_DOCUMENT("ActiveDocument"),
+  GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
   TEXT_DOCUMENT("TextDocument");
 
   private final String value;
