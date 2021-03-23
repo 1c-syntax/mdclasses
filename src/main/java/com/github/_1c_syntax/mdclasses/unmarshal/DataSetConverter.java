@@ -38,7 +38,7 @@ public class DataSetConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var type = reader.getAttribute("xsi:type");
+    var type = reader.getAttribute("type");
     var dataSet = (DataSet) context.convertAnother(reader, DataSet.class,
       XStreamFactory.getReflectionConverter());
     dataSet.setType(DataSetType.fromValue(type));

@@ -32,7 +32,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class DesignerAttributeType {
-  @XStreamAlias("v8:Type")
+  @XStreamAlias("Type")
   @XStreamImplicit
   private List<String> types = Collections.emptyList();
 }
