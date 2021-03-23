@@ -40,7 +40,7 @@ public class ExtInfoConverter implements Converter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     ExtInfo item;
-    var type = Optional.ofNullable(reader.getAttribute("xsi:type")).orElse(ExtInfo.UNKNOWN);
+    var type = Optional.ofNullable(reader.getAttribute("type")).orElse(ExtInfo.UNKNOWN);
     if (type.equals("form:DynamicListExtInfo")) {
       item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
         XStreamFactory.getReflectionConverter());

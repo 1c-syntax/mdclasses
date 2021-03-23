@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class DesignerAttributeSetting {
-  @XStreamAlias("xsi:type")
+  @XStreamAlias("type")
   private String type;
   @XStreamAlias("MainTable")
   private String mainTable = "";

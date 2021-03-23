@@ -29,11 +29,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@XStreamAlias("v8:item")
+@XStreamAlias("item")
 public class DesignerSynonym {
 
-    @XStreamAlias("v8:lang")
+    @XStreamAlias("lang")
     private String language = "";
-    @XStreamAlias("v8:content")
+    @XStreamAlias("content")
     private String content = "";
 }

@@ -34,8 +34,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class DesignerXRItems {
-  @XStreamImplicit(itemFieldName = "xr:Item")
+  @XStreamImplicit(itemFieldName = "Item")
   private List<String> items = Collections.emptyList();
-  @XStreamImplicit(itemFieldName = "xr:Object")
+  @XStreamImplicit(itemFieldName = "Object")
   private List<String> itemsObject = Collections.emptyList();
 }

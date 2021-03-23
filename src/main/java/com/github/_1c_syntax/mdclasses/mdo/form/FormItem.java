@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo.form;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,7 +49,6 @@ public class FormItem {
   /**
    * Тип элемента. Например Label или InputField. На текущий момент в виде строки
    */
-  @XStreamAsAttribute
   private String type = "";
   /**
    * Признак видимости элемента
