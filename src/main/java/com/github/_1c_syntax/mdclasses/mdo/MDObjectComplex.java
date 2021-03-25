@@ -175,7 +175,6 @@ public class MDObjectComplex extends MDObjectBSL {
       .forEach((Path mdoFile) -> {
         var child = MDOFactory.readMDO(mdoFile);
         if (child != null) {
-          child.setMdoReference(new MDOReference(child, this));
           children.add(childClass.cast(child));
         }
       });
