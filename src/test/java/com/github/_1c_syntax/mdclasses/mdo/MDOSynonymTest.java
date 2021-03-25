@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,18 +58,18 @@ class MDOSynonymTest extends AbstractMDOTest {
         performEmptyLanguageCheck(thirdMdo);
     }
 
-    private void performEmptyLanguageCheck(MDObjectBase mdo) {
+    private void performEmptyLanguageCheck(AbstractMDObjectBase mdo) {
         assertThat(mdo.getSynonyms()).isEmpty();
     }
 
-    private void performOneLanguageCheck(MDObjectBase mdo) {
+    private void performOneLanguageCheck(AbstractMDObjectBase mdo) {
         assertThat(mdo.getSynonyms())
                 .hasSize(1);
         assertThat(mdo.getSynonyms().get(0).getLanguage()).isEqualTo("ru");
         assertThat(mdo.getSynonyms().get(0).getContent()).isEqualTo("Регистр бухгалтерии");
     }
 
-    private void performTwoLanguagesCheck(MDObjectBase mdo) {
+    private void performTwoLanguagesCheck(AbstractMDObjectBase mdo) {
         assertThat(mdo.getSynonyms())
                 .hasSize(2);
         assertThat(mdo.getSynonyms().get(0).getLanguage()).isEqualTo("ru");

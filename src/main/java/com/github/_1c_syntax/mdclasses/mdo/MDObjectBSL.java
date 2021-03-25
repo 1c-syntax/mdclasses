@@ -21,13 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,7 +44,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class MDObjectBSL extends MDObjectBase {
+public class MDObjectBSL extends AbstractMDObjectBase {
 
   /**
    * Список модулей объекта
@@ -47,5 +53,38 @@ public class MDObjectBSL extends MDObjectBase {
 
   public MDObjectBSL(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public void supplement() {
+    super.supplement();
+    MDOPathUtils.getMDOTypeFolderByMDOPath(path, getType()).ifPresent(this::computeAndSetModules);
+  }
+
+  @Override
+  public void supplement(AbstractMDObjectBase parent) {
+    super.supplement(parent);
+    MDOPathUtils.getMDOTypeFolderByMDOPath(parent.getPath(), parent.getType())
+      .flatMap(folder -> MDOPathUtils.getChildrenFolder(parent.getName(), folder, getType()))
+      .ifPresent(this::computeAndSetModules);
+  }
+
+  private void computeAndSetModules(Path folder) {
+    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getType(), Collections.emptySet());
+    if (moduleTypes.isEmpty()) {
+      return;
+    }
+
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    var mdoName = (getType() == MDOType.CONFIGURATION) ? "" : getName();
+    List<MDOModule> mdoModules = new ArrayList<>();
+    moduleTypes.forEach((ModuleType moduleType) ->
+      MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
+        .ifPresent((Path modulePath) -> {
+          if (modulePath.toFile().exists()) {
+            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this));
+          }
+        }));
+    setModules(mdoModules);
   }
 }

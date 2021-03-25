@@ -37,8 +37,14 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.2.1")
+
+    // быстрый поиск классов
+    implementation("org.atteo.classindex", "classindex", "3.10")
+    annotationProcessor("org.atteo.classindex", "classindex", "3.10")
+
     // генерики
     compileOnly("org.projectlombok", "lombok", lombok.version)
+
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)

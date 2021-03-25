@@ -21,11 +21,24 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Attribute;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Column;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
+import com.github._1c_syntax.mdclasses.mdo.attributes.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Resource;
+import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.children.Command;
+import com.github._1c_syntax.mdclasses.mdo.children.Form;
+import com.github._1c_syntax.mdclasses.mdo.children.Template;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
@@ -76,7 +89,7 @@ public class MDObjectComplex extends MDObjectBSL {
    * Реквизиты, табличные части и их реквизиты объекта
    */
   @XStreamImplicit
-  private List<MDOAttribute> attributes = Collections.emptyList();
+  private List<AbstractMDOAttribute> attributes = Collections.emptyList();
 
   public MDObjectComplex(DesignerMDO designerMDO) {
     super(designerMDO);
@@ -100,13 +113,13 @@ public class MDObjectComplex extends MDObjectBSL {
   private void computeForms(Path folder, List<String> formNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.FORM)
       .ifPresent((Path childrenFolder) ->
-        setForms(readDesignerMDOChildren(childrenFolder, MDOType.FORM, Form.class, formNames)));
+        setForms(readDesignerMDOChildren(childrenFolder, Form.class, formNames)));
   }
 
   private void computeTemplates(Path folder, List<String> templateNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.TEMPLATE)
       .ifPresent((Path childrenFolder) ->
-        setTemplates(readDesignerMDOChildren(childrenFolder, MDOType.TEMPLATE, Template.class, templateNames)));
+        setTemplates(readDesignerMDOChildren(childrenFolder, Template.class, templateNames)));
   }
 
   private void computeCommands(List<DesignerMDO> commandsDesigner) {
@@ -118,15 +131,14 @@ public class MDObjectComplex extends MDObjectBSL {
   private void computeRecalculations(Path folder, List<String> recalculationNames) {
     MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.RECALCULATION)
       .ifPresent((Path childrenFolder) -> {
-        var recalculations = readDesignerMDOChildren(childrenFolder, MDOType.RECALCULATION,
-          Recalculation.class, recalculationNames);
-        setAttributes(recalculations.stream().map(MDOAttribute.class::cast).collect(Collectors.toList()));
+        var recalculations = readDesignerMDOChildren(childrenFolder, Recalculation.class, recalculationNames);
+        setAttributes(recalculations.stream().map(AbstractMDOAttribute.class::cast).collect(Collectors.toList()));
       });
 
   }
 
   private void computeChildren(DesignerChildObjects childObjects) {
-    List<MDOAttribute> computedAttributes = new ArrayList<>(getAttributes());
+    List<AbstractMDOAttribute> computedAttributes = new ArrayList<>(getAttributes());
 
     childObjects.getAccountingFlags().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new AccountingFlag(designerMDO)));
@@ -155,22 +167,35 @@ public class MDObjectComplex extends MDObjectBSL {
     setAttributes(computedAttributes);
   }
 
-  private <T extends MDObjectBase> List<T> readDesignerMDOChildren(Path childrenFolder,
-                                                                   MDOType type,
-                                                                   Class<T> childClass,
-                                                                   List<String> childNames) {
+  private <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
+                                                                  Class<T> childClass,
+                                                                  List<String> childNames) {
     List<T> children = new ArrayList<>();
-    var configurationSource = ConfigurationSource.DESIGNER;
     getMDOFilesInFolder(childrenFolder, childNames)
       .forEach((Path mdoFile) -> {
-        var child = MDOFactory.readMDObjectFromFile(configurationSource, type, mdoFile);
-        child.ifPresent((MDObjectBase mdo) -> {
-            mdo.setMdoReference(new MDOReference(mdo, this));
-            children.add(childClass.cast(mdo));
-          }
-        );
+        var child = MDOFactory.readMDO(mdoFile);
+        if (child != null) {
+          child.setMdoReference(new MDOReference(child, this));
+          children.add(childClass.cast(child));
+        }
       });
     return children;
+  }
+
+  @Override
+  public void supplement() {
+    super.supplement();
+
+    forms.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    forms.parallelStream().forEach(child -> child.supplement(this));
+
+    templates.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    templates.parallelStream().forEach(child -> child.supplement(this));
+
+    commands.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    commands.parallelStream().forEach(child -> child.supplement(this));
+
+    attributes.parallelStream().forEach(child -> child.supplement(this));
   }
 
   @SneakyThrows
