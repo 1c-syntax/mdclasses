@@ -60,7 +60,7 @@ public class FormAttribute {
   /**
    * Признак, что реквизит является основным для формы
    */
-  private boolean main = false;
+  private boolean main;
   /**
    * Подчиненные реквизиты, например колонки в табличной части
    */

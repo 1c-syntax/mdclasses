@@ -96,6 +96,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataSet;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
@@ -380,7 +381,7 @@ public class XStreamFactory {
 
     MetadataStorage.getStorage().forEach((aClass, metadata) -> xstream.aliasType(metadata.name(), aClass));
 
-    MetadataStorage.getAttributeStorage().forEach((aClass, metadata) -> {
+    MetadataStorage.getAttributeStorage().forEach((Class<?> aClass, AttributeMetadata metadata) -> {
       xstream.aliasType(metadata.name(), aClass);
       xstream.aliasType(metadata.fieldNameEDT(), aClass);
     });

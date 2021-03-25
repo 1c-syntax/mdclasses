@@ -41,12 +41,12 @@ public class AttributeConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var uuid = reader.getAttribute("uuid");
     var nodeName = reader.getNodeName();
     Class<?> realClass = XStreamFactory.getRealClass(nodeName);
     if (realClass == null) {
       throw new IllegalStateException("Unexpected type: " + nodeName);
     }
+    var uuid = reader.getAttribute("uuid");
     var attribute = (AbstractMDOAttribute) context.convertAnother(reader, realClass);
     attribute.setUuid(uuid);
 

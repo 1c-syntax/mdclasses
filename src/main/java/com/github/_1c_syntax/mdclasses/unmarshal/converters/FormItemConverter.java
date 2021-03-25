@@ -33,6 +33,9 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  * Конвертирует в FormItem элемент формы
  */
 public class FormItemConverter implements Converter {
+
+  private static final String NODE_NAME = "items";
+
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -56,8 +59,8 @@ public class FormItemConverter implements Converter {
     return type == FormItem.class;
   }
 
-  private String getItemType(String nodeName, String attribute) {
-    if (nodeName.equals("items")) {
+  private static String getItemType(String nodeName, String attribute) {
+    if (NODE_NAME.equals(nodeName)) {
       return attribute;
     } else {
       return nodeName;

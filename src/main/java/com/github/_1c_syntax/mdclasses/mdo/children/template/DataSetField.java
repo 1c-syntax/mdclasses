@@ -33,10 +33,10 @@ public class DataSetField {
   /**
    * Путь к данным поля
    */
-  String dataPath;
+  private String dataPath;
   /**
    * Имя поля
    */
   @XStreamAlias("field")
-  String name;
+  private String name;
 }

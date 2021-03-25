@@ -93,13 +93,13 @@ public enum MDOType {
   HTTP_SERVICE_METHOD("Method", "Methods", "Метод", "Методы"),
   UNKNOWN("", "", "", "");
 
+  private static final Map<String, MDOType> MAP_TYPES = computeMapTypes();
+  private static final Set<MDOType> CHILD_TYPES = computeChildTypes();
+
   private final String name;
   private final String groupName;
   private final String nameRu;
   private final String groupNameRu;
-
-  private static final Map<String, MDOType> mapTypes = computeMapTypes();
-  private static final Set<MDOType> childTypes = computeChildTypes();
 
   MDOType(String nameEn, String groupNameEn, String nameRu, String groupNameRu) {
     this.name = nameEn;
@@ -131,7 +131,7 @@ public enum MDOType {
    */
   public static List<MDOType> valuesWithoutChildren() {
     return Arrays.stream(values()).filter(mdoType ->
-      !childTypes.contains(mdoType) && mdoType != UNKNOWN)
+      !CHILD_TYPES.contains(mdoType) && mdoType != UNKNOWN)
       .collect(Collectors.toList());
   }
 
@@ -143,7 +143,7 @@ public enum MDOType {
    * @return - Найденный тип
    */
   public static Optional<MDOType> fromValue(String value) {
-    return Optional.ofNullable(mapTypes.get(value));
+    return Optional.ofNullable(MAP_TYPES.get(value));
   }
 
   private static Map<String, MDOType> computeMapTypes() {

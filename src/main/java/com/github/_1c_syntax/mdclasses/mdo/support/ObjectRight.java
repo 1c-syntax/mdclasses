@@ -41,5 +41,5 @@ public class ObjectRight {
 
   @XStreamAlias("right")
   @XStreamImplicit
-  List<Right> rights = Collections.emptyList();
+  private List<Right> rights = Collections.emptyList();
 }

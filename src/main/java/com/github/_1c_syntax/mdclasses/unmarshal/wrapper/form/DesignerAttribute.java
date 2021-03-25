@@ -38,7 +38,7 @@ public class DesignerAttribute {
   // TODO: загрузка title
   @XStreamAlias("Type")
   private DesignerAttributeType type;
-  private boolean main = false;
+  private boolean main;
   private DesignerColumns designerColumns;
   @XStreamAlias("Settings")
   private DesignerAttributeSetting setting;

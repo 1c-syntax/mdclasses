@@ -33,6 +33,9 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  */
 public class DataPathConverter implements Converter {
 
+  private static final String PATHS_NODE = "paths";
+  private static final String SEGMENTS_NODE = "segments";
+
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -42,14 +45,14 @@ public class DataPathConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var segment = "";
     reader.moveDown();
-    if (reader.getNodeName().equals("paths")) {
+    if (PATHS_NODE.equals(reader.getNodeName())) {
       reader.moveDown();
     }
-    if (reader.getNodeName().equals("segments")) {
+    if (SEGMENTS_NODE.equals(reader.getNodeName())) {
       segment = reader.getValue();
       reader.moveUp();
     }
-    if (reader.getNodeName().equals("paths")) {
+    if (PATHS_NODE.equals(reader.getNodeName())) {
       reader.moveUp();
     }
     return new DataPath(segment);

@@ -23,18 +23,26 @@ package com.github._1c_syntax.mdclasses.common;
 
 import lombok.Getter;
 
+import java.util.Locale;
+import java.util.regex.Pattern;
+
 /**
  * Класс реализующий объект для хранения режима совместимости конфигурации
  */
 public class CompatibilityMode {
   private static final String VERSION8_1 = "Version8_1";
   private static final String DONT_USE = "DontUse";
+  private static final int MAX_VERSION = 99;
+  private static final int THIRD_VERSION = 3;
+  private static final int VERSION_POSITION = 2;
+  private static final Pattern VERSION_SPLITTER = Pattern.compile("([_.])");
+
   @Getter
-  private final int major = 8;
+  private static final int major = 8;
   @Getter
-  private int minor = 0;
+  private int minor;
   @Getter
-  private int version = 0;
+  private int version;
 
   public CompatibilityMode() {
     this(DONT_USE);
@@ -43,7 +51,7 @@ public class CompatibilityMode {
   public CompatibilityMode(String value) {
 
     if (value.equalsIgnoreCase(DONT_USE) || value.isEmpty()) {
-      setVersionComponents(3, 99);
+      setVersionComponents(THIRD_VERSION, MAX_VERSION);
       return;
     }
 
@@ -53,10 +61,10 @@ public class CompatibilityMode {
     }
 
     // парсим версию, например Version_8_3_10
-    String newValue = value.toUpperCase().replace("VERSION_", "");
+    String newValue = value.toUpperCase(Locale.ENGLISH).replace("VERSION_", "");
 
-    String[] array = newValue.split("([_.])");
-    setVersionComponents(Integer.parseInt(array[1]), Integer.parseInt(array[2]));
+    String[] array = VERSION_SPLITTER.split(newValue);
+    setVersionComponents(Integer.parseInt(array[1]), Integer.parseInt(array[VERSION_POSITION]));
 
   }
 
@@ -75,27 +83,16 @@ public class CompatibilityMode {
    * -1 - первая версия больше
    */
   public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB) {
-
-    // TODO: переделать в цикл
-    if (versionA.major == versionB.major) {
-      if (versionA.minor == versionB.minor) {
-        if (versionA.version == versionB.version) {
-          return 0;
-        } else if (versionA.version >= versionB.version) {
-          return -1;
-        } else {
-          return 1;
-        }
-      } else if (versionA.minor >= versionB.minor) {
+    if (versionA.minor == versionB.minor) {
+      if (versionA.version == versionB.version) {
+        return 0;
+      } else if (versionA.version >= versionB.version) {
         return -1;
-      } else {
-        return 1;
       }
-    } else if (versionA.major >= versionB.major) {
+    } else if (versionA.minor >= versionB.minor) {
       return -1;
-    } else {
-      return 1;
     }
+    return 1;
   }
 
   /**

@@ -171,7 +171,7 @@ public class MDConfiguration extends MDObjectBSL {
 
       children.stream().filter(Either::isRight)
         .map(Either::get)
-        .filter((AbstractMDObjectBase mdo) -> mdo instanceof MDLanguage)
+        .filter(MDLanguage.class::isInstance)
         .map(MDLanguage.class::cast)
         .filter((MDLanguage mdo) -> defaultLang.equals(mdo.getMdoReference().getMdoRef()))
         .findFirst()
@@ -187,9 +187,9 @@ public class MDConfiguration extends MDObjectBSL {
         .collect(Collectors.toList());
   }
 
-  private Either<String, AbstractMDObjectBase> readChildMDO(ConfigurationSource configurationSource,
-                                                            Path rootPath,
-                                                            Either<String, AbstractMDObjectBase> child) {
+  private static Either<String, AbstractMDObjectBase> readChildMDO(ConfigurationSource configurationSource,
+                                                                   Path rootPath,
+                                                                   Either<String, AbstractMDObjectBase> child) {
     if (!child.isRight()) {
       var value = child.getLeft();
       var dotPosition = value.indexOf('.');

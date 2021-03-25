@@ -38,6 +38,8 @@ public class Handler {
 
   private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
   private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
+  private static final int METHOD_NAME_POSITION = 2;
+  private static final int MODULE_NAME_POSITION = 1;
 
   private String methodPath = "";
   private String moduleName = "";
@@ -49,8 +51,8 @@ public class Handler {
     this.methodPath = methodPath;
     String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
     if (data.length > 1) {
-      this.methodName = data[2];
-      this.moduleName = data[1];
+      this.methodName = data[METHOD_NAME_POSITION];
+      this.moduleName = data[MODULE_NAME_POSITION];
     }
   }
 

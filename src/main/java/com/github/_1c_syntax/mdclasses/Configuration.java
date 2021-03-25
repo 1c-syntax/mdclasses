@@ -264,10 +264,14 @@ public class Configuration {
     children.forEach((AbstractMDObjectBase mdo) -> {
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
 
-      // todo возможно надо будет добавить ссылку на mdo файл
-
       if (mdo instanceof MDObjectBSL) {
-        computeModules(modulesType, modulesSupport, modulesObject, modulesList, modulesMDORef, (MDObjectBSL) mdo, supports);
+        computeModules(modulesType,
+          modulesSupport,
+          modulesObject,
+          modulesList,
+          modulesMDORef,
+          (MDObjectBSL) mdo,
+          supports);
       }
     });
 

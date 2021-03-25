@@ -47,6 +47,8 @@ public class ParseSupportData {
   private static final int SHIFT_OBJECT_COUNT = 7;
   private static final int COUNT_ELEMENT_OBJECT = 4;
   private static final int CONFIGURATION_SUPPORT = 1;
+  private static final int START_READ_POSITION = 3;
+  private static final int SHIFT_SIZE = 2;
 
   private final Path pathToBinFile;
   private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
@@ -77,7 +79,7 @@ public class ParseSupportData {
     var countConfiguration = Integer.parseInt(dataStrings[POINT_COUNT_CONFIGURATION]);
     LOGGER.debug("Найдено конфигураций: {}", countConfiguration);
 
-    var startPoint = 3;
+    var startPoint = START_READ_POSITION;
     for (var numberConfiguration = 1; numberConfiguration <= countConfiguration; numberConfiguration++) {
       var configurationVersion = dataStrings[startPoint + SHIFT_CONFIGURATION_VERSION];
       var configurationProducer = dataStrings[startPoint + SHIFT_CONFIGURATION_PRODUCER];
@@ -101,7 +103,7 @@ public class ParseSupportData {
         var currentObjectPoint = startObjectPoint + numberObject * COUNT_ELEMENT_OBJECT;
         // 0 - не редактируется, 1 - с сохранением поддержки, 2 - снято
         var support = Integer.parseInt(dataStrings[currentObjectPoint]);
-        var guidObject = dataStrings[currentObjectPoint + 2];
+        var guidObject = dataStrings[currentObjectPoint + SHIFT_SIZE];
         SupportVariant supportVariant;
         if (configurationSupportVariant == GeneralSupportVariant.LOCKED) {
           supportVariant = SupportVariant.NOT_EDITABLE;
@@ -113,7 +115,7 @@ public class ParseSupportData {
         map.put(supportConfiguration, supportVariant);
       }
 
-      startPoint = startObjectPoint + 2 + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
+      startPoint = startObjectPoint + SHIFT_SIZE + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
     }
   }
 

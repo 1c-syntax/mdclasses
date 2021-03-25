@@ -145,10 +145,12 @@ public class MDSubsystem extends AbstractMDObjectBase {
             if (childSubsystem != null) {
               childSubsystem.supplement(this);
               newChildren.add(Either.right(childSubsystem));
-            } else if (!child.getLeft().equals(getMdoReference().getMdoRef())) {
-              // ссылку на самого себя исключаем
-              // вернем несуществующий объект обратно в набор
-              newChildren.add(child);
+            } else {
+              if (!child.getLeft().equals(getMdoReference().getMdoRef())) {
+                // ссылку на самого себя исключаем
+                // вернем несуществующий объект обратно в набор
+                newChildren.add(child);
+              }
             }
           });
       });

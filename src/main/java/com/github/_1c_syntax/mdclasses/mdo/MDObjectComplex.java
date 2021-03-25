@@ -167,7 +167,7 @@ public class MDObjectComplex extends MDObjectBSL {
     setAttributes(computedAttributes);
   }
 
-  private <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
+  private static <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
                                                                   Class<T> childClass,
                                                                   List<String> childNames) {
     List<T> children = new ArrayList<>();

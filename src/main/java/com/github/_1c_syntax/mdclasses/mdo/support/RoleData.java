@@ -43,21 +43,21 @@ public class RoleData {
    * Устанавливать права для новых объектов
    */
   @XStreamAlias("setForNewObjects")
-  private boolean setForNewObjects = false;
+  private boolean setForNewObjects;
 
   /**
    * Устанавливать права для реквизитов и табличных частей по умолчанию
    */
   @XStreamAlias("setForAttributesByDefault")
-  private boolean setForAttributesByDefault = false;
+  private boolean setForAttributesByDefault;
 
   /**
    * Независимые права подчиненных объектов
    */
   @XStreamAlias("independentRightsOfChildObjects")
-  private boolean independentRightsOfChildObjects = false;
+  private boolean independentRightsOfChildObjects;
 
   @XStreamAlias("object")
   @XStreamImplicit
-  List<ObjectRight> objectRights = Collections.emptyList();
+  private List<ObjectRight> objectRights = Collections.emptyList();
 }

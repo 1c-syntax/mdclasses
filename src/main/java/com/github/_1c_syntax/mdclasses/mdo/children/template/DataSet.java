@@ -43,32 +43,32 @@ public class DataSet {
   /**
    * Имя набора данных
    */
-  String name;
+  private String name;
   /**
    * Тип набора данных
    */
   @XStreamAlias("xsi:type")
-  DataSetType type = DataSetType.DATA_SET_QUERY;
+  private DataSetType type = DataSetType.DATA_SET_QUERY;
   /**
    * Имя источника данных
    */
-  String dataSource = "";
+  private String dataSource = "";
   /**
    * Подчиненные наборы данных
    */
   @XStreamAlias("item")
   @XStreamImplicit
-  List<DataSet> items = new ArrayList<>();
+  private List<DataSet> items = new ArrayList<>();
   /**
    * Текста запроса (опционально)
    */
   @XStreamAlias("query")
   @XStreamConverter(QuerySourceConverter.class)
-  QuerySource querySource = QuerySource.empty();
+  private QuerySource querySource = QuerySource.empty();
   /**
    * Поля набора данных
    */
   @XStreamAlias("field")
   @XStreamImplicit
-  List<DataSetField> fields = new ArrayList<>();
+  private List<DataSetField> fields = new ArrayList<>();
 }

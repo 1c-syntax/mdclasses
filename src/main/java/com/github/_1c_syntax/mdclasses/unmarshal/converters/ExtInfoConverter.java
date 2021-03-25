@@ -33,6 +33,9 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import java.util.Optional;
 
 public class ExtInfoConverter implements Converter {
+
+  private static final String TYPE_NAME = "form:DynamicListExtInfo";
+
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -42,7 +45,7 @@ public class ExtInfoConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     ExtInfo item;
     var type = Optional.ofNullable(reader.getAttribute("type")).orElse(ExtInfo.UNKNOWN);
-    if (type.equals("form:DynamicListExtInfo")) {
+    if (TYPE_NAME.equals(type)) {
       item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
         XStreamFactory.getReflectionConverter());
     } else {

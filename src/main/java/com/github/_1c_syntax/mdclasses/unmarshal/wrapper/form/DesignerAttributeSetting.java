@@ -43,7 +43,7 @@ public class DesignerAttributeSetting {
   private boolean autoSaveUserSettings = true;
   // TODO: autoFillAvailableFields
   @XStreamAlias("ManualQuery")
-  private boolean customQuery = false;
+  private boolean customQuery;
   @XStreamAlias("QueryText")
   @XStreamConverter(QuerySourceConverter.class)
   private QuerySource query;

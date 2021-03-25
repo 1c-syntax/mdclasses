@@ -33,7 +33,7 @@ public enum ApplicationRunMode {
   MANAGED_APPLICATION("ManagedApplication"),
   ORDINARY_APPLICATION("OrdinaryApplication");
 
-  String name;
+  private final String name;
 
   public static ApplicationRunMode getByName(String value) {
     return Arrays.stream(values())

@@ -42,7 +42,7 @@ public class DynamicListExtInfo extends ExtInfo {
   private boolean autoFillAvailableFields = true;
   private boolean autoSaveUserSettings = true;
   private boolean getInvisibleFieldPresentations = true;
-  private boolean customQuery = false;
+  private boolean customQuery;
   @XStreamAlias("queryText")
   @XStreamConverter(QuerySourceConverter.class)
   private QuerySource query;

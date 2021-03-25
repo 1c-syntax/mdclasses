@@ -26,7 +26,6 @@ import com.github._1c_syntax.mdclasses.mdo.support.MDOSynonym;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerSynonym;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -34,9 +33,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Базовый класс всех данных 1С. Необходимо гарантировать отсутствие null значений в полях
@@ -87,9 +86,11 @@ public abstract class AbstractMDO {
   protected AbstractMDO(DesignerMDO designerMDO) {
     uuid = designerMDO.getUuid();
     name = designerMDO.getProperties().getName();
-    synonyms = getSynonymsFromDesignerMDO(designerMDO.getProperties().getSynonyms());
     comment = designerMDO.getProperties().getComment();
     objectBelonging = designerMDO.getProperties().getObjectBelonging();
+
+    synonyms = designerMDO.getProperties().getSynonyms().stream()
+      .map(synonym -> new MDOSynonym(synonym.getLanguage(), synonym.getContent())).collect(Collectors.toList());
   }
 
   /**
@@ -101,21 +102,4 @@ public abstract class AbstractMDO {
    * Возвращает имя метаданных объекта
    */
   public abstract String getMetadataName();
-
-  private List<MDOSynonym> getSynonymsFromDesignerMDO(List<DesignerSynonym> synonyms) {
-
-    if (synonyms.isEmpty()) {
-      return Collections.emptyList();
-    }
-    List<MDOSynonym> result = new ArrayList<>();
-    for (DesignerSynonym synonym : synonyms) {
-      MDOSynonym mdoSynonym = new MDOSynonym();
-      mdoSynonym.setLanguage(synonym.getLanguage());
-      mdoSynonym.setContent(synonym.getContent());
-
-      result.add(mdoSynonym);
-    }
-
-    return result;
-  }
 }

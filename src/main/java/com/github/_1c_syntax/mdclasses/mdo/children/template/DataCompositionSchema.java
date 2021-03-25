@@ -39,18 +39,18 @@ public class DataCompositionSchema {
    */
   @XStreamAlias("dataSet")
   @XStreamImplicit
-  List<DataSet> dataSets = new ArrayList<>();
+  private List<DataSet> dataSets = new ArrayList<>();
   /**
    * Плоский список наборов данных
    */
-  List<DataSet> plainDataSets = new ArrayList<>();
+  private List<DataSet> plainDataSets = new ArrayList<>();
 
   public void fillPlainDataSets() {
     fillPlaintDataSetByList(getDataSets());
   }
 
   private void fillPlaintDataSetByList(List<DataSet> items) {
-    items.forEach(dataSet -> {
+    items.forEach((DataSet dataSet) -> {
       plainDataSets.add(dataSet);
       fillPlaintDataSetByList(dataSet.getItems());
     });

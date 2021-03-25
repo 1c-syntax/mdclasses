@@ -19,16 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
-
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import lombok.Data;
-
-import java.util.Collections;
-import java.util.List;
-
-@Data
-public class ValueType {
-  @XStreamImplicit
-  private List<String> types = Collections.emptyList();
-}
+/**
+ * Вспомогательные классы для чтения информации по макетам
+ */
+package com.github._1c_syntax.mdclasses.mdo.children.template;

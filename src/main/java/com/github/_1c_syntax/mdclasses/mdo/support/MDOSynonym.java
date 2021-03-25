@@ -32,4 +32,9 @@ public class MDOSynonym {
   private String language;
   @XStreamAlias("value")
   private String content;
+
+  public MDOSynonym(String language, String content) {
+    this.language = language;
+    this.content = content;
+  }
 }
