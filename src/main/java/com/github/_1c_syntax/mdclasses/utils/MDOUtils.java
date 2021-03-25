@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
 
 import java.io.File;
@@ -38,6 +38,7 @@ import java.util.Set;
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
+
   /**
    * Определяет тип исходников по корню проекта
    */
@@ -58,6 +59,15 @@ public class MDOUtils {
       }
     }
     return configurationSource;
+  }
+
+  /**
+   * Определяет тип исходников по MDO файлу
+   */
+  public ConfigurationSource getConfigurationSourceByMDOPath(Path path) {
+    return (path.toString().endsWith(MDOPathUtils.mdoExtension(ConfigurationSource.DESIGNER, true))) ?
+      ConfigurationSource.DESIGNER
+      : ConfigurationSource.EDT;
   }
 
   /**

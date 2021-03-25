@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;

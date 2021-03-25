@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
+import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -33,46 +33,46 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RoleDataTest {
 
-    private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
-    private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
+  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
+  private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
 
-    @Test
-    void testRoleDataEdt() {
-        var mdo = MDOFactory.readMDObject(ConfigurationSource.EDT,
-                MDOType.ROLE, Paths.get(SRC_EDT, "Roles/Роль1/Роль1.mdo"));
-        assertThat(mdo).isPresent();
-        Role role = (Role) mdo.get();
-        testRole(role);
-    }
+  @Test
+  void testRoleDataEdt() {
+    var mdo = MDOFactory.readMDObject(
+      Paths.get(SRC_EDT, "Roles/Роль1/Роль1.mdo"));
+    assertThat(mdo).isPresent();
+    MDRole role = (MDRole) mdo.get();
+    testRole(role);
+  }
 
-    @Test
-    void testRoleDataDesigner() {
-        var mdo = MDOFactory.readMDObject(ConfigurationSource.DESIGNER,
-                MDOType.ROLE, Paths.get(SRC_DESIGNER, "Roles/Роль1.xml"));
-        assertThat(mdo).isPresent();
-        Role role = (Role) mdo.get();
-        testRole(role);
-    }
+  @Test
+  void testRoleDataDesigner() {
+    var mdo = MDOFactory.readMDObject(
+      Paths.get(SRC_DESIGNER, "Roles/Роль1.xml"));
+    assertThat(mdo).isPresent();
+    MDRole role = (MDRole) mdo.get();
+    testRole(role);
+  }
 
 
-    private void testRole(Role role) {
+  private void testRole(MDRole role) {
 
-        RoleData roleData = role.getRoleData();
-        assertThat(roleData).isNotNull();
+    RoleData roleData = role.getRoleData();
+    assertThat(roleData).isNotNull();
 
-        List<ObjectRight> objectRights = roleData.getObjectRights();
-        assertThat(objectRights).hasSize(3);
+    List<ObjectRight> objectRights = roleData.getObjectRights();
+    assertThat(objectRights).hasSize(3);
 
-        ObjectRight confRights = objectRights.get(0);
-        assertThat(confRights.getName()).isEqualTo("Configuration.Конфигурация");
-        assertThat(confRights.getRights()).hasSize(18);
+    ObjectRight confRights = objectRights.get(0);
+    assertThat(confRights.getName()).isEqualTo("Configuration.Конфигурация");
+    assertThat(confRights.getRights()).hasSize(18);
 
-        ObjectRight documentRights = objectRights.get(1);
-        assertThat(documentRights.getName()).isEqualTo("Document.Документ1");
-        assertThat(documentRights.getRights()).hasSize(18);
+    ObjectRight documentRights = objectRights.get(1);
+    assertThat(documentRights.getName()).isEqualTo("Document.Документ1");
+    assertThat(documentRights.getRights()).hasSize(18);
 
-        ObjectRight catalogRights = objectRights.get(2);
-        assertThat(catalogRights.getName()).isEqualTo("Catalog.Справочник1");
-        assertThat(catalogRights.getRights()).hasSize(16);
-    }
+    ObjectRight catalogRights = objectRights.get(2);
+    assertThat(catalogRights.getName()).isEqualTo("Catalog.Справочник1");
+    assertThat(catalogRights.getRights()).hasSize(16);
+  }
 }
