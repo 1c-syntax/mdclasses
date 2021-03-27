@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
 public enum MDOType {
   ACCOUNTING_REGISTER("AccountingRegister", "AccountingRegisters", "РегистрБухгалтерии", "РегистрыБухгалтерии"),
   ACCUMULATION_REGISTER("AccumulationRegister", "AccumulationRegisters", "РегистрНакопления", "РегистрыНакопления"),
+  BOT("Bot", "Bots", "Бот", "Боты"),
   BUSINESS_PROCESS("BusinessProcess", "BusinessProcesses", "БизнесПроцесс", "БизнесПроцессы"),
   CALCULATION_REGISTER("CalculationRegister", "CalculationRegisters", "РегистрРасчета", "РегистрыРасчета"),
   CATALOG("Catalog", "Catalogs", "Справочник", "Справочники"),

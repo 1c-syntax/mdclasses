@@ -26,6 +26,7 @@ import com.github._1c_syntax.mdclasses.mdo.AccountingRegister;
 import com.github._1c_syntax.mdclasses.mdo.AccumulationRegister;
 import com.github._1c_syntax.mdclasses.mdo.AddressingAttribute;
 import com.github._1c_syntax.mdclasses.mdo.Attribute;
+import com.github._1c_syntax.mdclasses.mdo.Bot;
 import com.github._1c_syntax.mdclasses.mdo.BusinessProcess;
 import com.github._1c_syntax.mdclasses.mdo.CalculationRegister;
 import com.github._1c_syntax.mdclasses.mdo.Catalog;
@@ -247,6 +248,7 @@ public class XStreamFactory {
     xstream.processAnnotations(AccountingFlag.class);
     xstream.processAnnotations(AccountingRegister.class);
     xstream.processAnnotations(AccumulationRegister.class);
+    xstream.processAnnotations(Bot.class);
     xstream.processAnnotations(DataPath.class);
     xstream.processAnnotations(MDOModule.class);
     xstream.processAnnotations(MDOReference.class);
@@ -478,6 +480,7 @@ public class XStreamFactory {
   private void addClassAliases(XStream xStream) {
     xStream.alias("mdclass:AccountingRegister", AccountingRegister.class);
     xStream.alias("mdclass:AccumulationRegister", AccumulationRegister.class);
+    xStream.alias("mdclass:Bot", Bot.class);
     xStream.alias("mdclass:BusinessProcess", BusinessProcess.class);
     xStream.alias("mdclass:CalculationRegister", CalculationRegister.class);
     xStream.alias("mdclass:Catalog", Catalog.class);

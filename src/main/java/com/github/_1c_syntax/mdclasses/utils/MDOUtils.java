@@ -73,6 +73,9 @@ public class MDOUtils {
     for (MDOType mdoType : MDOType.values()) {
       Set<ModuleType> types = new HashSet<>();
       switch (mdoType) {
+        case BOT:
+          types.add(ModuleType.BotModule);
+          break;
         case ACCOUNTING_REGISTER:
         case ACCUMULATION_REGISTER:
         case CALCULATION_REGISTER:

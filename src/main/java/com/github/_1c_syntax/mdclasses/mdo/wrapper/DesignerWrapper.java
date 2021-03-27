@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
 import com.github._1c_syntax.mdclasses.mdo.AccountingRegister;
 import com.github._1c_syntax.mdclasses.mdo.AccumulationRegister;
+import com.github._1c_syntax.mdclasses.mdo.Bot;
 import com.github._1c_syntax.mdclasses.mdo.BusinessProcess;
 import com.github._1c_syntax.mdclasses.mdo.CalculationRegister;
 import com.github._1c_syntax.mdclasses.mdo.Catalog;
@@ -96,6 +97,8 @@ public class DesignerWrapper {
   protected DesignerMDO accountingRegister;
   @XStreamAlias("AccumulationRegister")
   protected DesignerMDO accumulationRegister;
+  @XStreamAlias("Bot")
+  protected DesignerMDO bot;
   @XStreamAlias("BusinessProcess")
   protected DesignerMDO businessProcess;
   @XStreamAlias("CalculationRegister")
@@ -272,6 +275,7 @@ public class DesignerWrapper {
 
     classes.put(MDOType.ACCOUNTING_REGISTER, AccountingRegister.class);
     classes.put(MDOType.ACCUMULATION_REGISTER, AccumulationRegister.class);
+    classes.put(MDOType.BOT, Bot.class);
     classes.put(MDOType.BUSINESS_PROCESS, BusinessProcess.class);
     classes.put(MDOType.CALCULATION_REGISTER, CalculationRegister.class);
     classes.put(MDOType.CATALOG, Catalog.class);
