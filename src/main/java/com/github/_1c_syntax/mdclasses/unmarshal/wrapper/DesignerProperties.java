@@ -52,6 +52,9 @@ public class DesignerProperties {
   @XStreamAlias("ObjectBelonging")
   protected ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
+  @XStreamAlias("Predefined")
+  private boolean predefined;
+
   @XStreamAlias("Server")
   private boolean server;
   @XStreamAlias("Global")
