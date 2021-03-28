@@ -73,6 +73,9 @@ public class MDOUtils {
     for (MDOType mdoType : MDOType.values()) {
       Set<ModuleType> types = new HashSet<>();
       switch (mdoType) {
+        case INTEGRATION_SERVICE:
+          types.add(ModuleType.IntegrationServiceModule);
+          break;
         case BOT:
           types.add(ModuleType.BotModule);
           break;

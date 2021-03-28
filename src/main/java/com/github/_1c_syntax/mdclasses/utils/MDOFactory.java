@@ -26,6 +26,8 @@ import com.github._1c_syntax.mdclasses.mdo.CommonTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Form;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
+import com.github._1c_syntax.mdclasses.mdo.IntegrationService;
+import com.github._1c_syntax.mdclasses.mdo.IntegrationServiceChannel;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
@@ -108,6 +110,12 @@ public class MDOFactory {
         ((WebService) mdoValue).getOperations().parallelStream().forEach(
           (WEBServiceOperation child) -> computeMdoReferenceForChild(mdoValue, child));
       }
+
+      if (mdoValue instanceof IntegrationService) {
+        ((IntegrationService) mdoValue).getIntegrationChannels().parallelStream().forEach(
+                (IntegrationServiceChannel channel) -> computeMdoReferenceForChild(mdoValue, channel));
+      }
+
       // проставляем mdo ссылку дочерних объектов http сервиса
       if (mdoValue instanceof HTTPService) {
         ((HTTPService) mdoValue).getUrlTemplates().parallelStream().forEach(

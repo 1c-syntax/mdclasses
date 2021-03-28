@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
+import com.github._1c_syntax.mdclasses.mdo.IntegrationServiceChannel;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
@@ -75,6 +76,9 @@ public class DesignerChildObjects {
 
   @XStreamImplicit
   private List<Either<String, MDObjectBase>> children = Collections.emptyList();
+
+  @XStreamImplicit(itemFieldName = "IntegrationServiceChannel")
+  private List<DesignerMDO> integrationChannels = Collections.emptyList();
 
   @XStreamImplicit(itemFieldName = "Operation")
   private List<DesignerMDO> operations = Collections.emptyList();

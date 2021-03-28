@@ -52,6 +52,7 @@ import com.github._1c_syntax.mdclasses.mdo.FunctionalOption;
 import com.github._1c_syntax.mdclasses.mdo.FunctionalOptionsParameter;
 import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.InformationRegister;
+import com.github._1c_syntax.mdclasses.mdo.IntegrationService;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
@@ -167,6 +168,8 @@ public class DesignerWrapper {
   protected DesignerMDO httpService;
   @XStreamAlias("InformationRegister")
   protected DesignerMDO informationRegister;
+  @XStreamAlias("IntegrationService")
+  protected DesignerMDO integrationService;
   @XStreamAlias("Interface")
   protected DesignerMDO _interface;
   @XStreamAlias("Language")
@@ -304,6 +307,7 @@ public class DesignerWrapper {
     classes.put(MDOType.FUNCTIONAL_OPTIONS_PARAMETER, FunctionalOptionsParameter.class);
     classes.put(MDOType.HTTP_SERVICE, HTTPService.class);
     classes.put(MDOType.INFORMATION_REGISTER, InformationRegister.class);
+    classes.put(MDOType.INTEGRATION_SERVICE, IntegrationService.class);
     classes.put(MDOType.INTERFACE, MDOInterface.class);
     classes.put(MDOType.LANGUAGE, Language.class);
     classes.put(MDOType.REPORT, Report.class);

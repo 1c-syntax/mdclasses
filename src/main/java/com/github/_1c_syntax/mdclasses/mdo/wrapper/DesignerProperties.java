@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.MessageDirection;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
@@ -54,6 +55,15 @@ public class DesignerProperties {
 
   @XStreamAlias("Predefined")
   private boolean predefined;
+
+  @XStreamAlias("ExternalIntegrationServiceAddress")
+  private String externalIntegrationServiceAddress = "";
+  @XStreamAlias("MessageDirection")
+  private MessageDirection messageDirection = MessageDirection.SEND;
+  @XStreamAlias("ReceiveMessageProcessing")
+  private String receiveMessageProcessing = "";
+  @XStreamAlias("ExternalIntegrationServiceChannelName")
+  private String externalIntegrationServiceChannelName = "";
 
   @XStreamAlias("Server")
   private boolean server;

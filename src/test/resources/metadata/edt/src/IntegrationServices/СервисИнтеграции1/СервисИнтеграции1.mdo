@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:IntegrationService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="94ed2401-fd3c-4e92-b34d-1cdad2d8ee42">
+  <producedTypes>
+    <managerType typeId="83306e98-7e48-4f3a-9d27-ce56ccc7fb46" valueTypeId="3b05f19d-935e-4a86-b8e7-c163d855795c"/>
+  </producedTypes>
+  <name>СервисИнтеграции1</name>
+  <externalIntegrationServiceAddress>http://</externalIntegrationServiceAddress>
+  <integrationServiceChannels uuid="fd0a0d02-c211-4985-ab9e-f0e7e63a6943">
+    <producedTypes>
+      <managerType typeId="64e5d17f-38a3-4a6b-9053-34a98c5e1c10" valueTypeId="74409eac-5da1-4021-9124-805c1c111d4f"/>
+    </producedTypes>
+    <name>КаналСервисаИнтеграции1</name>
+    <externalIntegrationServiceChannelName>Имя</externalIntegrationServiceChannelName>
+    <messageDirection>Receive</messageDirection>
+    <receiveMessageProcessing>КаналСервисаИнтеграции1ОбработкаПолученияСообщения</receiveMessageProcessing>
+  </integrationServiceChannels>
+  <integrationServiceChannels uuid="69b7fd46-77b8-465a-abcc-a59c1e2ae126">
+    <producedTypes>
+      <managerType typeId="999ebae9-3c0e-4524-8903-ba59a6e5b9af" valueTypeId="25da786a-0c55-4d45-a8dd-fa260437c5f7"/>
+    </producedTypes>
+    <name>КаналСервисаИнтеграции2</name>
+    <externalIntegrationServiceChannelName>Имя</externalIntegrationServiceChannelName>
+  </integrationServiceChannels>
+</mdclass:IntegrationService>
