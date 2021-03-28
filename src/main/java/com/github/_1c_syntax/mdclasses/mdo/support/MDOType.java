@@ -68,6 +68,7 @@ public enum MDOType {
     "ПараметрФункциональныхОпций", "ПараметрыФункциональныхОпций"),
   HTTP_SERVICE("HTTPService", "HTTPServices", "HTTPСервис", "HTTPСервисы"),
   INFORMATION_REGISTER("InformationRegister", "InformationRegisters", "РегистрСведений", "РегистрыСведений"),
+  INTEGRATION_SERVICE("IntegrationService", "IntegrationServices", "СервисИнтеграции", "СервисыИнтеграции"),
   INTERFACE("Interface", "Interfaces", "Интерфейс", "Интерфейсы"),
   LANGUAGE("Language", "Languages", "Язык", "Языки"),
   REPORT("Report", "Reports", "Отчет", "Отчеты"),
@@ -92,6 +93,7 @@ public enum MDOType {
   WS_OPERATION("Operation", "Operations", "Операция", "Операции"),
   HTTP_SERVICE_URL_TEMPLATE("URLTemplate", "URLTemplates", "ШаблонURL", "ШаблоныURL"),
   HTTP_SERVICE_METHOD("Method", "Methods", "Метод", "Методы"),
+  INTEGRATION_SERVICE_CHANNEL("IntegrationServiceChannel", "IntegrationServiceChannels", "КаналСервисаИнтеграции", "Каналы"),
   UNKNOWN("", "", "", "");
 
   private static final Map<String, MDOType> MAP_TYPES = computeMapTypes();
@@ -160,7 +162,7 @@ public enum MDOType {
 
   private static Set<MDOType> computeChildTypes() {
     return Set.of(FORM, COMMAND, TEMPLATE, ATTRIBUTE, RECALCULATION, WS_OPERATION, HTTP_SERVICE_URL_TEMPLATE,
-      HTTP_SERVICE_METHOD);
+      HTTP_SERVICE_METHOD, INTEGRATION_SERVICE_CHANNEL);
   }
 
 }

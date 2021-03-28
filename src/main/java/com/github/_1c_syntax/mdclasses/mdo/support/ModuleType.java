@@ -27,6 +27,7 @@ package com.github._1c_syntax.mdclasses.mdo.support;
 public enum ModuleType {
 
   BotModule("Module.bsl"),
+  IntegrationServiceModule("Module.bsl"),
   CommandModule("CommandModule.bsl"),
   CommonModule("Module.bsl"),
   ObjectModule("ObjectModule.bsl"),

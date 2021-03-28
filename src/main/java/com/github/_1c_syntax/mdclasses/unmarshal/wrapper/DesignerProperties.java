@@ -55,6 +55,15 @@ public class DesignerProperties {
   @XStreamAlias("Predefined")
   private boolean predefined;
 
+  @XStreamAlias("ExternalIntegrationServiceAddress")
+  private String externalIntegrationServiceAddress = "";
+  @XStreamAlias("MessageDirection")
+  private MessageDirection messageDirection = MessageDirection.SEND;
+  @XStreamAlias("ReceiveMessageProcessing")
+  private String receiveMessageProcessing = "";
+  @XStreamAlias("ExternalIntegrationServiceChannelName")
+  private String externalIntegrationServiceChannelName = "";
+
   @XStreamAlias("Server")
   private boolean server;
   @XStreamAlias("Global")
