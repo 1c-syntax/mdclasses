@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "CalculationRegisters",
   groupNameRu = "РегистрыРасчета"
 )
-public class MDCalculationRegister extends MDObjectComplex {
+public class MDCalculationRegister extends AbstractMDObjectComplex {
   public MDCalculationRegister(DesignerMDO designerMDO) {
     super(designerMDO);
   }

@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "Enums",
   groupNameRu = "Перечисления"
 )
-public class MDEnum extends MDObjectComplex {
+public class MDEnum extends AbstractMDObjectComplex {
   public MDEnum(DesignerMDO designerMDO) {
     super(designerMDO);
   }

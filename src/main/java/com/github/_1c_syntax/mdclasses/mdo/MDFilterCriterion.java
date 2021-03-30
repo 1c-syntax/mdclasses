@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "FilterCriteria",
   groupNameRu = "КритерииОтбора"
 )
-public class MDFilterCriterion extends MDObjectComplex {
+public class MDFilterCriterion extends AbstractMDObjectComplex {
   public MDFilterCriterion(DesignerMDO designerMDO) {
     super(designerMDO);
   }

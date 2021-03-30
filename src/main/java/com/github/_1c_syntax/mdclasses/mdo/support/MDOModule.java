@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -49,5 +49,5 @@ public class MDOModule {
   /**
    * Ссылка на объект метаданных которому принадлежит модуль
    */
-  MDObjectBSL owner;
+  AbstractMDObjectBSL owner;
 }

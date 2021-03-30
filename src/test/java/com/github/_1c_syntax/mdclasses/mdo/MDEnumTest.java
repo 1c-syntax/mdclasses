@@ -41,8 +41,8 @@ class MDEnumTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "Enums/Перечисление1",
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "Enums/Перечисление1",
       ModuleType.ManagerModule);
   }
 
@@ -55,7 +55,7 @@ class MDEnumTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

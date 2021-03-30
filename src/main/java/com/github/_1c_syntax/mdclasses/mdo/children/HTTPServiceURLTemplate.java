@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -33,7 +34,9 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -46,7 +49,7 @@ import java.util.List;
   groupName = "",
   groupNameRu = ""
 )
-public class HTTPServiceURLTemplate extends AbstractMDObjectBase {
+public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOHasChildren {
 
   /**
    * Методы шаблона URL HTTP-сервиса
@@ -67,5 +70,10 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase {
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
     httpServiceMethods.parallelStream().forEach(child -> child.supplement(this));
+  }
+
+  @Override
+  public Set<AbstractMDObjectBase> getChildren() {
+    return new HashSet<>(httpServiceMethods);
   }
 }

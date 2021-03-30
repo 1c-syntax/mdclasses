@@ -37,7 +37,7 @@ class MDCommonFormTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonForms/Форма", ModuleType.FormModule);
   }
 
@@ -48,7 +48,7 @@ class MDCommonFormTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonForms/Форма", ModuleType.FormModule);
   }
 }

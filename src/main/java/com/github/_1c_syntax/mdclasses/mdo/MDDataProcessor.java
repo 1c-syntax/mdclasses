@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "DataProcessors",
   groupNameRu = "Обработки"
 )
-public class MDDataProcessor extends MDObjectComplex {
+public class MDDataProcessor extends AbstractMDObjectComplex {
   public MDDataProcessor(DesignerMDO designerMDO) {
     super(designerMDO);
   }

@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "AccountingRegisters",
   groupNameRu = "РегистрыБухгалтерии"
 )
-public class MDAccountingRegister extends MDObjectComplex {
+public class MDAccountingRegister extends AbstractMDObjectComplex {
   public MDAccountingRegister(DesignerMDO designerMDO) {
     super(designerMDO);
   }

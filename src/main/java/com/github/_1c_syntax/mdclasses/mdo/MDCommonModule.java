@@ -41,7 +41,7 @@ import lombok.ToString;
   groupName = "CommonModules",
   groupNameRu = "ОбщиеМодули"
 )
-public class MDCommonModule extends MDObjectBSL {
+public class MDCommonModule extends AbstractMDObjectBSL {
 
   /**
    * Признак Сервер

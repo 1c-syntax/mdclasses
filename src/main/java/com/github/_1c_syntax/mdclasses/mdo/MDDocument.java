@@ -46,7 +46,7 @@ import java.util.Optional;
   groupName = "Documents",
   groupNameRu = "Документы"
 )
-public class MDDocument extends MDObjectComplex {
+public class MDDocument extends AbstractMDObjectComplex {
   /**
    * Список связанных регистров (где документ является регистратором)
    */

@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "ChartsOfAccounts",
   groupNameRu = "ПланыСчетов"
 )
-public class MDChartOfAccounts extends MDObjectComplex {
+public class MDChartOfAccounts extends AbstractMDObjectComplex {
   public MDChartOfAccounts(DesignerMDO designerMDO) {
     super(designerMDO);
   }

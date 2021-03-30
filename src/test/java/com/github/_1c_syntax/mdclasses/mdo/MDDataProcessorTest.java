@@ -40,8 +40,8 @@ class MDDataProcessorTest extends AbstractMDOTest {
     checkForms(mdo, 1, "DataProcessor.Обработка1", "Форма");
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
   @Override
@@ -53,7 +53,7 @@ class MDDataProcessorTest extends AbstractMDOTest {
     checkForms(mdo, 1, "DataProcessor.Обработка1", "Форма");
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

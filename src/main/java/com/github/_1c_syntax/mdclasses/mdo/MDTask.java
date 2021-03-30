@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "Tasks",
   groupNameRu = "Задачи"
 )
-public class MDTask extends MDObjectComplex {
+public class MDTask extends AbstractMDObjectComplex {
   public MDTask(DesignerMDO designerMDO) {
     super(designerMDO);
   }

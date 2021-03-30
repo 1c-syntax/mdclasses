@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -41,7 +41,7 @@ import lombok.ToString;
   groupName = "Commands",
   groupNameRu = "Команды"
 )
-public class Command extends MDObjectBSL {
+public class Command extends AbstractMDObjectBSL {
   public Command(DesignerMDO designerMDO) {
     super(designerMDO);
   }

@@ -56,7 +56,7 @@ import java.util.stream.Collectors;
   groupName = "",
   groupNameRu = ""
 )
-public class MDConfiguration extends MDObjectBSL {
+public class MDConfiguration extends AbstractMDObjectBSL {
 
   /**
    * Вариант языка исходного кода

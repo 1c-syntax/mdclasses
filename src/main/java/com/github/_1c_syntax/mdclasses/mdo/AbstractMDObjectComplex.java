@@ -53,7 +53,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -65,7 +67,7 @@ import java.util.stream.Stream;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class MDObjectComplex extends MDObjectBSL {
+public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implements MDOHasChildren {
 
   /**
    * Подчиненные формы
@@ -91,7 +93,7 @@ public class MDObjectComplex extends MDObjectBSL {
   @XStreamImplicit
   private List<AbstractMDOAttribute> attributes = Collections.emptyList();
 
-  public MDObjectComplex(DesignerMDO designerMDO) {
+  protected AbstractMDObjectComplex(DesignerMDO designerMDO) {
     super(designerMDO);
 
     // формирование mdo ссылки, которая будет использована в дочерних объектах
@@ -108,6 +110,21 @@ public class MDObjectComplex extends MDObjectBSL {
     // эти данные лежат сразу в файле описания,
     computeCommands(designerMDO.getChildObjects().getCommands());
     computeChildren(designerMDO.getChildObjects());
+  }
+
+  @Override
+  public Set<AbstractMDObjectBase> getChildren() {
+    Set<AbstractMDObjectBase> allChildren = new HashSet<>();
+
+    allChildren.addAll(forms);
+    allChildren.addAll(commands);
+    allChildren.addAll(templates);
+    allChildren.addAll(attributes);
+    attributes.stream().filter(MDOHasChildren.class::isInstance)
+      .map(MDOHasChildren.class::cast)
+      .forEach(mdo -> allChildren.addAll(mdo.getChildren()));
+
+    return allChildren;
   }
 
   private void computeForms(Path folder, List<String> formNames) {
@@ -168,8 +185,8 @@ public class MDObjectComplex extends MDObjectBSL {
   }
 
   private static <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
-                                                                  Class<T> childClass,
-                                                                  List<String> childNames) {
+                                                                         Class<T> childClass,
+                                                                         List<String> childNames) {
     List<T> children = new ArrayList<>();
     getMDOFilesInFolder(childrenFolder, childNames)
       .forEach((Path mdoFile) -> {

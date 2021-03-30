@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "ChartsOfCalculationTypes",
   groupNameRu = "ПланыВидовРасчета"
 )
-public class MDChartOfCalculationTypes extends MDObjectComplex {
+public class MDChartOfCalculationTypes extends AbstractMDObjectComplex {
   public MDChartOfCalculationTypes(DesignerMDO designerMDO) {
     super(designerMDO);
   }

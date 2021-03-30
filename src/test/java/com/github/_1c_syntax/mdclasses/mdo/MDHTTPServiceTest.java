@@ -41,7 +41,7 @@ class MDHTTPServiceTest extends AbstractMDOTest {
     checkBaseField(mdo, MDHTTPService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
       ModuleType.HTTPServiceModule);
     assertThat(((MDHTTPService) mdo).getUrlTemplates()).hasSize(1);
     ((MDHTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
@@ -66,7 +66,7 @@ class MDHTTPServiceTest extends AbstractMDOTest {
     checkBaseField(mdo, MDHTTPService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
       ModuleType.HTTPServiceModule);
     assertThat(((MDHTTPService) mdo).getUrlTemplates()).hasSize(1);
     ((MDHTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {

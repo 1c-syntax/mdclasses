@@ -37,7 +37,7 @@ class MDCommonCommandTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonCommand.class, "ОбщаяКоманда1",
       "a608f796-f58e-4f8a-b63f-272342b32f35");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonCommands/ОбщаяКоманда1", ModuleType.CommandModule);
   }
 
@@ -48,7 +48,7 @@ class MDCommonCommandTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonCommand.class, "ОбщаяКоманда1",
       "a608f796-f58e-4f8a-b63f-272342b32f35");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonCommands/ОбщаяКоманда1", ModuleType.CommandModule);
   }
 }

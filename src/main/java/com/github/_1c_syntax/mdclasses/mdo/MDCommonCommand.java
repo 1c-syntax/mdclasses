@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "CommonCommands",
   groupNameRu = "ОбщиеКоманды"
 )
-public class MDCommonCommand extends MDObjectBSL {
+public class MDCommonCommand extends AbstractMDObjectBSL {
   public MDCommonCommand(DesignerMDO designerMDO) {
     super(designerMDO);
   }

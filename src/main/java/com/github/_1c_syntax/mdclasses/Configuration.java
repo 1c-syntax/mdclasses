@@ -23,17 +23,12 @@ package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDHTTPService;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.MDWebService;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
-import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
-import com.github._1c_syntax.mdclasses.mdo.children.HTTPServiceURLTemplate;
+import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -56,14 +51,15 @@ import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Корневой класс конфигурации 1с
@@ -147,7 +143,7 @@ public class Configuration {
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  private Map<URI, MDObjectBSL> modulesByObject;
+  private Map<URI, AbstractMDObjectBSL> modulesByObject;
   /**
    * Модули конфигурации
    */
@@ -256,21 +252,53 @@ public class Configuration {
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, MDObjectBSL> modulesObject = new HashMap<>();
+    Map<URI, AbstractMDObjectBSL> modulesObject = new HashMap<>();
     Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
-    children.forEach((AbstractMDObjectBase mdo) -> {
-      var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
+//    modulesBySupport = new HashMap<>();
+//    modulesByType = new HashMap<>();
+//    modulesByObject = new HashMap<>();
+//    modules = new ArrayList<>();
+//    modulesByMDORef = new HashMap<>();
+//
+//    children.stream()
+//      .filter(AbstractMDObjectBSL.class::isInstance)
+//      .map(AbstractMDObjectBSL.class::cast)
+//      .map(AbstractMDObjectBSL::getModules)
+//      .flatMap(Collection::stream)
+//      .forEach((MDOModule module) -> {
+//        var uri = module.getUri();
+//        modulesByType.put(uri, module.getModuleType());
+//        modulesByObject.put(uri, module.getOwner());
+//        modules.add(module);
+//
+//        var supports = supportMap.getOrDefault(module.getOwner().getUuid(), Collections.emptyMap());
+//        if (!supports.isEmpty()) {
+//          modulesBySupport.put(uri, supports);
+//        }
+//
+//        var key = module.getOwner().getMdoReference().getMdoRef();
+//        var modulesTypesAndURIs = modulesByMDORef.getOrDefault(key, new EnumMap<>(ModuleType.class));
+//        modulesTypesAndURIs.put(module.getModuleType(), uri);
+//        modulesByMDORef.put(key, modulesTypesAndURIs);
+//      });
 
-      if (mdo instanceof MDObjectBSL) {
+//    mdo.getModules().forEach((MDOModule module) -> {
+//      var uri = module.getUri();
+//    });
+//    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
+    children.forEach((AbstractMDObjectBase mdo) -> {
+
+      var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
+      if (mdo instanceof AbstractMDObjectBSL) {
         computeModules(modulesType,
           modulesSupport,
           modulesObject,
           modulesList,
           modulesMDORef,
-          (MDObjectBSL) mdo,
+          (AbstractMDObjectBSL) mdo,
           supports);
       }
     });
@@ -316,39 +344,6 @@ public class Configuration {
     }
 
     return create();
-  }
-
-  private static Set<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
-    Set<AbstractMDObjectBase> allChildren = new HashSet<>();
-    mdoConfiguration.getChildren().stream().filter(Either::isRight).map(Either::get)
-      .forEach((AbstractMDObjectBase mdo) -> {
-        allChildren.add(mdo);
-        if (mdo instanceof MDObjectComplex) {
-          allChildren.addAll(((MDObjectComplex) mdo).getForms());
-          allChildren.addAll(((MDObjectComplex) mdo).getCommands());
-          allChildren.addAll(((MDObjectComplex) mdo).getTemplates());
-          ((MDObjectComplex) mdo).getAttributes().forEach((AbstractMDOAttribute child) -> {
-            allChildren.add(child);
-            if (child instanceof TabularSection) {
-              allChildren.addAll(((TabularSection) child).getAttributes());
-            }
-          });
-        }
-        // операции веб-сервиса
-        if (mdo instanceof MDWebService) {
-          allChildren.addAll(((MDWebService) mdo).getOperations());
-        }
-        // дочерние http-сервиса
-        if (mdo instanceof MDHTTPService) {
-          ((MDHTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
-            allChildren.add(httpServiceURLTemplate);
-            allChildren.addAll(httpServiceURLTemplate.getHttpServiceMethods());
-          });
-        }
-      });
-
-    allChildren.add(mdoConfiguration);
-    return allChildren;
   }
 
   public Optional<Path> getRootPath() {
@@ -413,9 +408,9 @@ public class Configuration {
   // todo надо рефакторить!!!!
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, MDObjectBSL> modulesObject,
+                                     Map<URI, AbstractMDObjectBSL> modulesObject,
                                      List<MDOModule> modulesList,
-                                     Map<String, Map<ModuleType, URI>> modulesMDORef, MDObjectBSL mdo,
+                                     Map<String, Map<ModuleType, URI>> modulesMDORef, AbstractMDObjectBSL mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
@@ -429,6 +424,22 @@ public class Configuration {
       modulesList.add(module);
     });
     modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
+  }
+
+  private static Set<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
+    Set<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
+      .filter(Either::isRight).map(Either::get)
+      .collect(Collectors.toSet());
+
+    allChildren.addAll(allChildren.stream()
+      .filter(MDOHasChildren.class::isInstance)
+      .map(MDOHasChildren.class::cast)
+      .map(MDOHasChildren::getChildren)
+      .flatMap(Collection::stream)
+      .collect(Collectors.toSet()));
+
+    allChildren.add(mdoConfiguration);
+    return allChildren;
   }
 
 }

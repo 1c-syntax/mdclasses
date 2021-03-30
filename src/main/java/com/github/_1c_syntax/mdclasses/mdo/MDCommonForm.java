@@ -45,7 +45,7 @@ import java.nio.file.Path;
   groupName = "CommonForms",
   groupNameRu = "ОбщиеФормы"
 )
-public class MDCommonForm extends MDObjectBSL implements MDOForm {
+public class MDCommonForm extends AbstractMDObjectBSL implements MDOForm {
   /**
    * Данные формы. Читается из отдельного файла
    * и предоставляет информацию о:

@@ -40,7 +40,7 @@ import lombok.ToString;
   groupName = "Constants",
   groupNameRu = "Константы"
 )
-public class MDConstant extends MDObjectBSL {
+public class MDConstant extends AbstractMDObjectBSL {
   public MDConstant(DesignerMDO designerMDO) {
     super(designerMDO);
   }

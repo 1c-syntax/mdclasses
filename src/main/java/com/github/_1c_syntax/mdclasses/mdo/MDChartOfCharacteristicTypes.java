@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "ChartsOfCharacteristicTypes",
   groupNameRu = "ПланыВидовХарактеристик"
 )
-public class MDChartOfCharacteristicTypes extends MDObjectComplex {
+public class MDChartOfCharacteristicTypes extends AbstractMDObjectComplex {
   public MDChartOfCharacteristicTypes(DesignerMDO designerMDO) {
     super(designerMDO);
   }

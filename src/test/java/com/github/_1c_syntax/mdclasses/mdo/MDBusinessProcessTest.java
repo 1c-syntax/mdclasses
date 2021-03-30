@@ -41,8 +41,8 @@ class MDBusinessProcessTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "BusinessProcesses/БизнесПроцесс1",
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "BusinessProcesses/БизнесПроцесс1",
       ModuleType.ObjectModule);
 
   }
@@ -56,8 +56,8 @@ class MDBusinessProcessTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    checkModules(((MDObjectBSL) mdo).getModules(), 0, "0", ModuleType.UNKNOWN);
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 0, "0", ModuleType.UNKNOWN);
   }
 
 }

@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "AccumulationRegisters",
   groupNameRu = "РегистрыНакопления"
 )
-public class MDAccumulationRegister extends MDObjectComplex {
+public class MDAccumulationRegister extends AbstractMDObjectComplex {
   public MDAccumulationRegister(DesignerMDO designerMDO) {
     super(designerMDO);
   }

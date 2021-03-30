@@ -42,8 +42,8 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
   }
 
@@ -56,9 +56,9 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 3, "ChartOfCalculationTypes.ПланВидовРасчета1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, "ChartOfCalculationTypes.ПланВидовРасчета1",
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
-    var tabularSection = (TabularSection) ((MDObjectComplex) mdo).getAttributes().stream()
+    var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
     checkAttributes(tabularSection.getAttributes(), 1,

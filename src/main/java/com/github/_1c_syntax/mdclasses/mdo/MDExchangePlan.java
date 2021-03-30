@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "ExchangePlans",
   groupNameRu = "ПланыОбмена"
 )
-public class MDExchangePlan extends MDObjectComplex {
+public class MDExchangePlan extends AbstractMDObjectComplex {
   public MDExchangePlan(DesignerMDO designerMDO) {
     super(designerMDO);
   }

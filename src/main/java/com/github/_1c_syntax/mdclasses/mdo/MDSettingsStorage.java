@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "SettingsStorages",
   groupNameRu = "ХранилищаНастроек"
 )
-public class MDSettingsStorage extends MDObjectComplex {
+public class MDSettingsStorage extends AbstractMDObjectComplex {
   public MDSettingsStorage(DesignerMDO designerMDO) {
     super(designerMDO);
   }

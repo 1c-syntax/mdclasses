@@ -51,7 +51,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkBaseField(mdo, MDConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 3, "Configuration",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 3, "Configuration",
       ModuleType.SessionModule, ModuleType.ExternalConnectionModule, ModuleType.ManagedApplicationModule);
 
     var configuration = (MDConfiguration) mdo;
@@ -129,7 +129,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkBaseField(mdo, MDConfiguration.class, "Configuration",
       "04c0322d-92da-49ab-87e5-82c8dcd50888");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
     var configuration = (MDConfiguration) mdo;
     assertThat(CompatibilityMode.compareTo(
@@ -162,7 +162,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkBaseField(mdo, MDConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 3, "Ext",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 3, "Ext",
       ModuleType.SessionModule, ModuleType.ExternalConnectionModule, ModuleType.ManagedApplicationModule);
 
     var configuration = (MDConfiguration) mdo;

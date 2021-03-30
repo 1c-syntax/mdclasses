@@ -185,8 +185,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних форм - пусто
    */
   protected void checkForms(AbstractMDObjectBase mdo) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getForms()).isEmpty();
   }
 
@@ -194,8 +194,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних форм
    */
   protected void checkForms(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getForms();
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
@@ -207,8 +207,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних макетов - пусто
    */
   protected void checkTemplates(AbstractMDObjectBase mdo) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getTemplates()).isEmpty();
   }
 
@@ -216,8 +216,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних макетов
    */
   protected void checkTemplates(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getTemplates();
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
@@ -229,8 +229,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних команд - пусто
    */
   protected void checkCommands(AbstractMDObjectBase mdo) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getCommands()).isEmpty();
   }
 
@@ -238,8 +238,8 @@ abstract class AbstractMDOTest {
    * Выполнение проверки дочерних команд
    */
   protected void checkCommands(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
-    assertThat(mdo).isInstanceOf(MDObjectComplex.class);
-    var mdoComplex = (MDObjectComplex) mdo;
+    assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
+    var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getCommands();
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
@@ -284,14 +284,14 @@ abstract class AbstractMDOTest {
    * Проверка на невозможность наличия модулей
    */
   protected void checkNoModules(AbstractMDObjectBase mdo) {
-    assertThat(mdo).isNotInstanceOf(MDObjectBSL.class);
+    assertThat(mdo).isNotInstanceOf(AbstractMDObjectBSL.class);
   }
 
   /**
    * Проверка на невозможность наличия дочерних объектов
    */
   protected void checkNoChildren(AbstractMDObjectBase mdo) {
-    assertThat(mdo).isNotInstanceOf(MDObjectComplex.class);
+    assertThat(mdo).isNotInstanceOf(AbstractMDObjectComplex.class);
   }
 
   /**
@@ -309,8 +309,8 @@ abstract class AbstractMDOTest {
 
     assertThat(child.getObjectBelonging()).isEqualTo(objectBelonging);
 
-    if (child instanceof MDObjectBSL) {
-      checkModules(((MDObjectBSL) child).getModules(), 1,
+    if (child instanceof AbstractMDObjectBSL) {
+      checkModules(((AbstractMDObjectBSL) child).getModules(), 1,
         type.getGroupName() + "/" + child.getName(), moduleType);
     }
   }

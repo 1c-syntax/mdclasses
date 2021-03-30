@@ -40,7 +40,7 @@ class MDWebServiceTest extends AbstractMDOTest {
     checkBaseField(mdo, MDWebService.class, "WebСервис1",
       "d7f9b06b-0799-486e-adff-c45a2d5b8101");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "WebServices/WebСервис1",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "WebServices/WebСервис1",
       ModuleType.WEBServiceModule);
     assertThat(((MDWebService) mdo).getOperations()).hasSize(2);
     assertThat(((MDWebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
@@ -57,7 +57,7 @@ class MDWebServiceTest extends AbstractMDOTest {
     checkBaseField(mdo, MDWebService.class, "WebСервис1",
       "d7f9b06b-0799-486e-adff-c45a2d5b8101");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
     assertThat(((MDWebService) mdo).getOperations()).hasSize(2);
     assertThat(((MDWebService) mdo).getOperations()).extracting(WEBServiceOperation::getHandler)
       .anyMatch("Операция1"::equals)

@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "Sequences",
   groupNameRu = "Последовательности"
 )
-public class MDSequence extends MDObjectComplex {
+public class MDSequence extends AbstractMDObjectComplex {
   public MDSequence(DesignerMDO designerMDO) {
     super(designerMDO);
   }

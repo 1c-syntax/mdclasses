@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "DocumentJournals",
   groupNameRu = "ЖурналыДокументов"
 )
-public class MDDocumentJournal extends MDObjectComplex {
+public class MDDocumentJournal extends AbstractMDObjectComplex {
   public MDDocumentJournal(DesignerMDO designerMDO) {
     super(designerMDO);
   }

@@ -33,7 +33,9 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -46,7 +48,7 @@ import java.util.List;
   groupName = "HTTPServices",
   groupNameRu = "HTTPСервисы"
 )
-public class MDHTTPService extends MDObjectBSL {
+public class MDHTTPService extends AbstractMDObjectBSL implements MDOHasChildren {
 
   /**
    * Шаблоны URL HTTP-сервиса
@@ -67,5 +69,13 @@ public class MDHTTPService extends MDObjectBSL {
   public void supplement() {
     super.supplement();
     urlTemplates.parallelStream().forEach(child -> child.supplement(this));
+  }
+
+  @Override
+  public Set<AbstractMDObjectBase> getChildren() {
+    Set<AbstractMDObjectBase> allChildren = new HashSet<>(urlTemplates);
+    urlTemplates.forEach(mdo -> allChildren.addAll(mdo.getChildren()));
+
+    return allChildren;
   }
 }

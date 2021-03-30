@@ -39,7 +39,7 @@ class MDConstantTest extends AbstractMDOTest {
     checkBaseField(mdo, MDConstant.class, "Константа1",
       "61e6a6f2-7057-4e93-96c3-7bd2559217f4");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "Constants/Константа1", ModuleType.ValueManagerModule);
   }
 
@@ -50,6 +50,6 @@ class MDConstantTest extends AbstractMDOTest {
     checkBaseField(mdo, MDConstant.class, "Константа1",
       "61e6a6f2-7057-4e93-96c3-7bd2559217f4");
     checkNoChildren(mdo);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

@@ -33,7 +33,9 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -46,7 +48,7 @@ import java.util.List;
   groupName = "WebServices",
   groupNameRu = "WebСервисы"
 )
-public class MDWebService extends MDObjectBSL {
+public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren {
 
   /**
    * Операции веб-сервиса
@@ -67,5 +69,10 @@ public class MDWebService extends MDObjectBSL {
   public void supplement() {
     super.supplement();
     operations.parallelStream().forEach(child -> child.supplement(this));
+  }
+
+  @Override
+  public Set<AbstractMDObjectBase> getChildren() {
+    return new HashSet<>(operations);
   }
 }

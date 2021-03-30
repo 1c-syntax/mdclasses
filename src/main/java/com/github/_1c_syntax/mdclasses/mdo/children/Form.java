@@ -23,7 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOForm;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
@@ -48,7 +48,7 @@ import java.nio.file.Path;
   groupName = "Forms",
   groupNameRu = "Формы"
 )
-public class Form extends MDObjectBSL implements MDOForm {
+public class Form extends AbstractMDObjectBSL implements MDOForm {
   /**
    * Данные формы. Читается из отдельного файла
    * и предоставляет информацию о:

@@ -42,7 +42,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonModule.class, "ГлобальныйОбщийМодуль",
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonModules/Глобальны", ModuleType.CommonModule);
 
     var commonModule = (MDCommonModule) mdo;
@@ -85,7 +85,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
     checkBaseField(mdo, MDCommonModule.class, "ГлобальныйОбщийМодуль",
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1,
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonModules/Глобальны", ModuleType.CommonModule);
 
     var commonModule = (MDCommonModule) mdo;

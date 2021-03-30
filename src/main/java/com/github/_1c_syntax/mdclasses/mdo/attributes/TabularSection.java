@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -33,7 +34,9 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
@@ -44,7 +47,7 @@ import java.util.List;
   name = "TabularSection",
   fieldNameEDT = "tabularSections"
 )
-public class TabularSection extends AbstractMDOAttribute {
+public class TabularSection extends AbstractMDOAttribute implements MDOHasChildren {
 
   /**
    * Реквизиты табличной части
@@ -64,5 +67,10 @@ public class TabularSection extends AbstractMDOAttribute {
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
     attributes.parallelStream().forEach(child -> child.supplement(this));
+  }
+
+  @Override
+  public Set<AbstractMDObjectBase> getChildren() {
+    return new HashSet<>(attributes);
   }
 }

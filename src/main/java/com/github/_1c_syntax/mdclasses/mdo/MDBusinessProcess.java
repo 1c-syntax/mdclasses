@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "BusinessProcesses",
   groupNameRu = "БизнесПроцессы"
 )
-public class MDBusinessProcess extends MDObjectComplex {
+public class MDBusinessProcess extends AbstractMDObjectComplex {
   public MDBusinessProcess(DesignerMDO designerMDO) {
     super(designerMDO);
   }

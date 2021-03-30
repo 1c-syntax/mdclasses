@@ -42,9 +42,9 @@ class MDChartOfAccountsTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2, "ChartOfAccounts.ПланСчетов1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, "ChartOfAccounts.ПланСчетов1",
       AttributeType.ACCOUNTING_FLAG, AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "ChartsOfAccounts/ПланСчетов1",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ChartsOfAccounts/ПланСчетов1",
       ModuleType.ObjectModule);
 
   }
@@ -58,9 +58,9 @@ class MDChartOfAccountsTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 2, "ChartOfAccounts.ПланСчетов1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, "ChartOfAccounts.ПланСчетов1",
       AttributeType.ACCOUNTING_FLAG, AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

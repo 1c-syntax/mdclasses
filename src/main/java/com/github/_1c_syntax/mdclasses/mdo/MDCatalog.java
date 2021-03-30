@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "Catalogs",
   groupNameRu = "Справочники"
 )
-public class MDCatalog extends MDObjectComplex {
+public class MDCatalog extends AbstractMDObjectComplex {
   public MDCatalog(DesignerMDO designerMDO) {
     super(designerMDO);
   }

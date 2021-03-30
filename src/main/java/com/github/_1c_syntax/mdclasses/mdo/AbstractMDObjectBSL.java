@@ -44,14 +44,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class MDObjectBSL extends AbstractMDObjectBase {
+public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase {
 
   /**
    * Список модулей объекта
    */
   private List<MDOModule> modules = Collections.emptyList();
 
-  public MDObjectBSL(DesignerMDO designerMDO) {
+  protected AbstractMDObjectBSL(DesignerMDO designerMDO) {
     super(designerMDO);
   }
 

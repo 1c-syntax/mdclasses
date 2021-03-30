@@ -40,7 +40,7 @@ import lombok.Value;
   groupName = "Reports",
   groupNameRu = "Отчеты"
 )
-public class MDReport extends MDObjectComplex {
+public class MDReport extends AbstractMDObjectComplex {
   public MDReport(DesignerMDO designerMDO) {
     super(designerMDO);
   }

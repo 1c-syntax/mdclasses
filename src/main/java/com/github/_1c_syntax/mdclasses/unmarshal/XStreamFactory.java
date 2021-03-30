@@ -55,8 +55,8 @@ import com.github._1c_syntax.mdclasses.mdo.MDInformationRegister;
 import com.github._1c_syntax.mdclasses.mdo.MDInterface;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOForm;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.MDReport;
 import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.MDScheduledJob;
@@ -331,8 +331,8 @@ public class XStreamFactory {
     xstream.processAnnotations(MDLanguage.class);
     xstream.processAnnotations(AbstractMDOAttribute.class);
     xstream.processAnnotations(AbstractMDObjectBase.class);
-    xstream.processAnnotations(MDObjectBSL.class);
-    xstream.processAnnotations(MDObjectComplex.class);
+    xstream.processAnnotations(AbstractMDObjectBSL.class);
+    xstream.processAnnotations(AbstractMDObjectComplex.class);
     xstream.processAnnotations(MDConfiguration.class);
     xstream.processAnnotations(MDEnum.class);
     xstream.processAnnotations(MDOForm.class);
@@ -415,15 +415,15 @@ public class XStreamFactory {
     });
 
     // реквизиты объекта
-    xStream.aliasField("dimensions", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("resources", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("recalculations", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField(ATTRIBUTE_FIELD_NAME, MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("tabularSections", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("accountingFlags", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("extDimensionAccountingFlags", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("columns", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("addressingAttributes", MDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("dimensions", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("resources", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("recalculations", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField(ATTRIBUTE_FIELD_NAME, AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("tabularSections", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("accountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("extDimensionAccountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("columns", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("addressingAttributes", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
 
     // у табличной части тоже есть свои атрибуты
     xStream.aliasField(ATTRIBUTE_FIELD_NAME, TabularSection.class, ATTRIBUTE_FIELD_NAME);

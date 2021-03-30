@@ -41,9 +41,9 @@ class MDTaskTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
       AttributeType.ADDRESSING_ATTRIBUTE);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
   @Override
@@ -55,8 +55,8 @@ class MDTaskTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "Task.Задача1",
       AttributeType.ADDRESSING_ATTRIBUTE);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 }

@@ -42,9 +42,9 @@ class MDDocumentJournalTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
       AttributeType.COLUMN);
-    checkModules(((MDObjectBSL) mdo).getModules(), 1, "DocumentJournals/ЖурналДокументов1",
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "DocumentJournals/ЖурналДокументов1",
       ModuleType.ManagerModule);
 
   }
@@ -58,9 +58,9 @@ class MDDocumentJournalTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((MDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "DocumentJournal.ЖурналДокументов1",
       AttributeType.COLUMN);
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }

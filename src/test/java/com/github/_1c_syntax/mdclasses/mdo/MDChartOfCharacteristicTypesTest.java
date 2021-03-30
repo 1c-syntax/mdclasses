@@ -41,8 +41,8 @@ class MDChartOfCharacteristicTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    checkModules(((MDObjectBSL) mdo).getModules(), 2,
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2,
       "ChartsOfCharacteristicTypes/ПланВидовХарактеристик1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
   }
@@ -56,8 +56,8 @@ class MDChartOfCharacteristicTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((MDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((MDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
 }
