@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,7 +24,7 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 /**
  * Признак принадлежности объекта к конфигурации
  */
-public enum ObjectBelonging {
+public enum ObjectBelonging implements EnumWithValue {
   ADOPTED("Adopted"),
   OWN("Own");
 
@@ -34,15 +34,7 @@ public enum ObjectBelonging {
     this.value = value;
   }
 
-  public static ObjectBelonging fromValue(String value) {
-    for (ObjectBelonging objectBelonging : ObjectBelonging.values()) {
-      if (objectBelonging.value.equals(value)) {
-        return objectBelonging;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
+  @Override
   public String value() {
     return value;
   }

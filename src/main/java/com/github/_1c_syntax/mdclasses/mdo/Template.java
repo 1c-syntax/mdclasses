@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,10 +35,20 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class Template extends MDObjectBase {
+public class Template extends MDObjectBase implements MDOTemplate {
+  /**
+   * Тип макета. Например, `ТабличныйДокумент`.
+   */
+  @XStreamAlias("templateType")
+  private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
+  /**
+   * Содержимое макета. Например, Схема компоновки данных
+   */
+  private TemplateData<?> templateData;
 
   public Template(DesignerMDO designerMDO) {
     super(designerMDO);
+    setTemplateType(designerMDO.getProperties().getTemplateType());
   }
 
   @Override

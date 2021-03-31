@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -60,7 +61,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
@@ -73,7 +74,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(52)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -89,7 +90,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
     checkChildCount(configuration, MDOType.COMMON_PICTURE, 1);
-    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 10);
     checkChildCount(configuration, MDOType.CONSTANT, 1);
     checkChildCount(configuration, MDOType.DATA_PROCESSOR, 1);
     checkChildCount(configuration, MDOType.DEFINED_TYPE, 1);
@@ -137,7 +138,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 14)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC_AND_MANAGED);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("English");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
@@ -171,7 +172,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(CompatibilityMode.compareTo(
       configuration.getConfigurationExtensionCompatibilityMode(), new CompatibilityMode(3, 10)))
       .isZero();
-    assertThat(configuration.getDataLockControlMode()).isEqualTo("Managed");
+    assertThat(configuration.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
     assertThat(configuration.getDefaultLanguage().isRight()).isTrue();
     assertThat(configuration.getDefaultLanguage().get().getName()).isEqualTo("Русский");
     assertThat(configuration.getDefaultRunMode()).isEqualTo("ManagedApplication");
@@ -184,7 +185,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(52)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -200,7 +201,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
     checkChildCount(configuration, MDOType.COMMON_PICTURE, 1);
-    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 1);
+    checkChildCount(configuration, MDOType.COMMON_TEMPLATE, 10);
     checkChildCount(configuration, MDOType.CONSTANT, 1);
     checkChildCount(configuration, MDOType.DATA_PROCESSOR, 1);
     checkChildCount(configuration, MDOType.DEFINED_TYPE, 1);

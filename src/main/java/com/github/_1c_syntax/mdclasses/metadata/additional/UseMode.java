@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,7 +24,7 @@ package com.github._1c_syntax.mdclasses.metadata.additional;
 /**
  * Возможные варианты "использования"
  */
-public enum UseMode {
+public enum UseMode implements EnumWithValue {
   DONT_USE("DontUse"),
   USE("Use"),
   USE_WITH_WARNINGS("UseWithWarnings");
@@ -35,15 +35,7 @@ public enum UseMode {
     this.value = value;
   }
 
-  public static UseMode fromValue(String value) {
-    for (UseMode useMode : UseMode.values()) {
-      if (useMode.value.equals(value)) {
-        return useMode;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
+  @Override
   public String value() {
     return this.value;
   }

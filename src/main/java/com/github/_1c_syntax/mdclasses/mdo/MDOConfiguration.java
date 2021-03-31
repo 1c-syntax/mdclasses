@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,9 +24,11 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -91,12 +93,12 @@ public class MDOConfiguration extends MDObjectBSL {
   /**
    * Язык приложения по умолчанию
    */
-  private Either<String, Language> defaultLanguage;
+  private Either<String, Language> defaultLanguage = Either.right(MDOFactory.fakeLanguage(scriptVariant));
 
   /**
    * Режим управления блокировками
    */
-  private String dataLockControlMode = "";
+  private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
   /**
    * Режим автонумерации объектов

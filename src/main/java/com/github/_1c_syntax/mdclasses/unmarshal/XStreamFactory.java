@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -53,41 +53,30 @@ import com.github._1c_syntax.mdclasses.mdo.ExchangePlan;
 import com.github._1c_syntax.mdclasses.mdo.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.FilterCriterion;
 import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.mdo.FunctionalOption;
+import com.github._1c_syntax.mdclasses.mdo.FunctionalOptionsParameter;
+import com.github._1c_syntax.mdclasses.mdo.HTTPService;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceMethod;
 import com.github._1c_syntax.mdclasses.mdo.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.Handler;
+import com.github._1c_syntax.mdclasses.mdo.InformationRegister;
 import com.github._1c_syntax.mdclasses.mdo.Language;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.MDOAttributeExtensions;
+import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
+import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
 import com.github._1c_syntax.mdclasses.mdo.MDOExtensions;
 import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.MDOInterface;
 import com.github._1c_syntax.mdclasses.mdo.MDOSynonym;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.ObjectRight;
 import com.github._1c_syntax.mdclasses.mdo.Recalculation;
+import com.github._1c_syntax.mdclasses.mdo.Report;
 import com.github._1c_syntax.mdclasses.mdo.Resource;
 import com.github._1c_syntax.mdclasses.mdo.Right;
-import com.github._1c_syntax.mdclasses.mdo.Template;
-import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
-import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
-import com.github._1c_syntax.mdclasses.metadata.additional.ValueType;
-import com.github._1c_syntax.mdclasses.mdo.form.FormAttribute;
-import com.github._1c_syntax.mdclasses.mdo.form.FormCommand;
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.form.FormHandlerItem;
-import com.github._1c_syntax.mdclasses.mdo.form.FormItem;
-import com.github._1c_syntax.mdclasses.mdo.FunctionalOption;
-import com.github._1c_syntax.mdclasses.mdo.FunctionalOptionsParameter;
-import com.github._1c_syntax.mdclasses.mdo.HTTPService;
-import com.github._1c_syntax.mdclasses.mdo.InformationRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDOConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDOEnum;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.Report;
 import com.github._1c_syntax.mdclasses.mdo.Role;
 import com.github._1c_syntax.mdclasses.mdo.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.ScheduledJob;
@@ -99,11 +88,20 @@ import com.github._1c_syntax.mdclasses.mdo.StyleItem;
 import com.github._1c_syntax.mdclasses.mdo.Subsystem;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.Task;
+import com.github._1c_syntax.mdclasses.mdo.Template;
+import com.github._1c_syntax.mdclasses.mdo.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.WSReference;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
 import com.github._1c_syntax.mdclasses.mdo.XDTOPackage;
+import com.github._1c_syntax.mdclasses.mdo.form.FormAttribute;
+import com.github._1c_syntax.mdclasses.mdo.form.FormCommand;
+import com.github._1c_syntax.mdclasses.mdo.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.form.FormHandlerItem;
+import com.github._1c_syntax.mdclasses.mdo.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.form.attribute.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.form.attribute.ExtInfo;
+import com.github._1c_syntax.mdclasses.mdo.template.DataCompositionSchema;
+import com.github._1c_syntax.mdclasses.mdo.template.DataSet;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerProperties;
@@ -124,11 +122,18 @@ import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommand;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormCommands;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataSetType;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
+import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.metadata.additional.ValueType;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
@@ -279,6 +284,8 @@ public class XStreamFactory {
     xstream.processAnnotations(FormAttribute.class);
     xstream.processAnnotations(FormCommand.class);
     xstream.processAnnotations(FormData.class);
+    xstream.processAnnotations(DataCompositionSchema.class);
+    xstream.processAnnotations(DataSet.class);
     xstream.processAnnotations(FormHandlerItem.class);
     xstream.processAnnotations(FormItem.class);
     xstream.processAnnotations(Form.class);
@@ -516,14 +523,17 @@ public class XStreamFactory {
     xStream.alias("form:Form", FormData.class);
     xStream.alias("MetaDataObject", DesignerWrapper.class);
     xStream.alias("Form", DesignerForm.class);
+    xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
   }
 
   private void addConverters(XStream xStream) {
-    xStream.registerConverter(new EnumConverter(ReturnValueReuse.class));
-    xStream.registerConverter(new EnumConverter(UseMode.class));
-    xStream.registerConverter(new EnumConverter(ScriptVariant.class));
-    xStream.registerConverter(new EnumConverter(ConfigurationExtensionPurpose.class));
-    xStream.registerConverter(new EnumConverter(ObjectBelonging.class));
+    xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
+    xStream.registerConverter(new EnumConverter<>(UseMode.class));
+    xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
+    xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
+    xStream.registerConverter(new EnumConverter<>(TemplateType.class));
+    xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
@@ -531,6 +541,7 @@ public class XStreamFactory {
     xStream.registerConverter(new FormEventConverter());
     xStream.registerConverter(new DesignerFormItemConverter());
     xStream.registerConverter(new FormItemConverter());
+    xStream.registerConverter(new DataSetConverter());
   }
 
   private static List<Class<?>> createListClassesForForm() {

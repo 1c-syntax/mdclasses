@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,9 +23,11 @@ package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.metadata.additional.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
+import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
 import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
@@ -93,7 +95,7 @@ public class DesignerProperties {
   @XStreamAlias("DefaultLanguage")
   private String defaultLanguage = "";
   @XStreamAlias("DataLockControlMode")
-  private String dataLockControlMode = "";
+  private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
   @XStreamAlias("ObjectAutonumerationMode")
   private String objectAutonumerationMode = "";
   @XStreamAlias("ProcedureName")
@@ -115,5 +117,8 @@ public class DesignerProperties {
 
   @XStreamAlias("MethodName")
   private String methodName = "";
+
+  @XStreamAlias("TemplateType")
+  private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
 
 }
