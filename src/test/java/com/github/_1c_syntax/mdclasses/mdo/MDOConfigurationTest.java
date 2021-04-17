@@ -74,7 +74,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(63)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -185,7 +185,7 @@ class MDOConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(63)
+    assertThat(configuration.getChildren()).hasSize(61)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
