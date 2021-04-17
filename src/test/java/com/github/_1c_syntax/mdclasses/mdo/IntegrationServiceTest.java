@@ -21,13 +21,16 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MessageDirection;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Paths;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class IntegrationServiceTest extends AbstractMDOTest {
 
@@ -38,7 +41,14 @@ class IntegrationServiceTest extends AbstractMDOTest {
     @Override
     @Test
     void testEDT() {
-        var mdo = getMDObjectEDT("IntegrationServices/СервисИнтеграции1/СервисИнтеграции1.mdo");
+        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.EDT, MDOType.INTEGRATION_SERVICE,
+                Paths.get("src/test/resources/metadata/edt_3_18/src",
+                        "IntegrationServices/СервисИнтеграции1/СервисИнтеграции1.mdo"));
+
+        assertThat(mdoOpt).isPresent();
+
+        var mdo = mdoOpt.get();
+
         var service = (IntegrationService) mdo;
         checkBaseField(mdo, IntegrationService.class, "СервисИнтеграции1",
                 "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42");
@@ -61,7 +71,14 @@ class IntegrationServiceTest extends AbstractMDOTest {
     @Override
     @Test
     void testDesigner() {
-        var mdo = getMDObjectDesigner("IntegrationServices/СервисИнтеграции1.xml");
+        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.INTEGRATION_SERVICE,
+                Paths.get("src/test/resources/metadata/original_3_18",
+                        "IntegrationServices/СервисИнтеграции1.xml"));
+
+        assertThat(mdoOpt).isPresent();
+
+        var mdo = mdoOpt.get();
+
         var service = (IntegrationService) mdo;
         checkBaseField(mdo, IntegrationService.class, "СервисИнтеграции1",
                 "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42");

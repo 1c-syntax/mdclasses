@@ -21,9 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,7 +40,12 @@ class BotTest extends AbstractMDOTest {
     @Override
     @Test
     void testEDT() {
-        var mdo = getMDObjectEDT("Bots/Бот1/Бот1.mdo");
+        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.EDT, MDOType.BOT,
+                Paths.get("src/test/resources/metadata/edt_3_18/src", "Bots/Бот1/Бот1.mdo"));
+
+        assertThat(mdoOpt).isPresent();
+
+        var mdo = mdoOpt.get();
         checkBaseField(mdo, Bot.class, "Бот1",
                 "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
 
@@ -50,7 +59,13 @@ class BotTest extends AbstractMDOTest {
     @Override
     @Test
     void testDesigner() {
-        var mdo = getMDObjectDesigner("Bots/Бот1.xml");
+        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.BOT,
+                Paths.get("src/test/resources/metadata/original_3_18", "Bots/Бот1.xml"));
+
+        assertThat(mdoOpt).isPresent();
+
+        var mdo = mdoOpt.get();
+
         checkBaseField(mdo, Bot.class, "Бот1",
                 "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
 
