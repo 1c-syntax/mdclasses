@@ -2,8 +2,8 @@ import java.net.URI
 import java.util.*
 
 plugins {
-    java
-    maven
+    `java-library`
+    `maven-publish`
     jacoco
     id("net.kyori.indra.license-header") version "1.3.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
