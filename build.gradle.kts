@@ -8,7 +8,7 @@ plugins {
     id("com.github.hierynomus.license") version "0.15.0"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("io.franzbecker.gradle-lombok") version "3.1.0"
-    id("org.sonarqube") version "2.7.1"
+    id("org.sonarqube") version "3.2.0"
 }
 
 group = "com.github.1c-syntax"
