@@ -5,7 +5,7 @@ plugins {
     java
     maven
     jacoco
-    id("com.github.hierynomus.license") version "0.15.0"
+    id("net.kyori.indra.license-header") version "1.3.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("io.franzbecker.gradle-lombok") version "4.0.0"
     id("org.sonarqube") version "3.2.0"
@@ -112,19 +112,16 @@ license {
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
-    strictCheck = true
-    mapping("java", "SLASHSTAR_STYLE")
-    excludes(listOf(
-            "**/edt*/**",
-            "**/origin*/**",
-            "**/*.bin",
-            "**/*.html",
-            "**/*.properties",
-            "**/*.xml",
-            "**/*.json",
-            "**/*.os",
-            "**/*.bsl",
-            "**/*.orig"))
+    exclude("**/edt*/**")
+    exclude("**/origin*/**")
+    exclude("**/*.bin")
+    exclude("**/*.html")
+    exclude("**/*.properties")
+    exclude("**/*.xml")
+    exclude("**/*.json")
+    exclude("**/*.os")
+    exclude("**/*.bsl")
+    exclude("**/*.orig")
 }
 
 tasks.register("precommit") {
