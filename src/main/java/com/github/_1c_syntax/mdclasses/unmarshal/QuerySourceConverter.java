@@ -28,14 +28,17 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import com.thoughtworks.xstream.io.xml.XppReader;
+import com.thoughtworks.xstream.io.ReaderWrapper;
+import com.thoughtworks.xstream.io.xml.StaxReader;
 import lombok.SneakyThrows;
-import org.xmlpull.mxp1.MXParser;
 
+import javax.xml.stream.Location;
+import javax.xml.stream.XMLStreamReader;
 import java.lang.reflect.Field;
 
 public class QuerySourceConverter implements Converter {
-  private static final Field parserField = getParserField();
+  private static final Field STAX_READER_FLD = getStaxReaderFld();
+  private static final Field XML_STREAM_READER_FLD = getXmlStreamReaderFld();
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -44,9 +47,16 @@ public class QuerySourceConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    var location = getLocation(reader);
     var query = reader.getValue();
-    var position = getSourcePosition(reader, query);
+    var position = new SourcePosition(location.getLineNumber(), location.getColumnNumber());
     return new QuerySource(position, query);
+  }
+
+  @SneakyThrows
+  private Location getLocation(HierarchicalStreamReader reader) {
+    // TODO проектное решение, правильно делать через свой reader
+    return ((XMLStreamReader) XML_STREAM_READER_FLD.get(STAX_READER_FLD.get(reader))).getLocation();
   }
 
   @Override
@@ -55,16 +65,17 @@ public class QuerySourceConverter implements Converter {
   }
 
   @SneakyThrows
-  private static SourcePosition getSourcePosition(HierarchicalStreamReader reader, String query) {
-    var lines = query.split("\n").length;
-    var parser = (MXParser) parserField.get(reader);
-    return new SourcePosition(parser.getLineNumber() - lines + 1, 0);
+  private static Field getStaxReaderFld() {
+    var filed = ReaderWrapper.class.getDeclaredField("wrapped");
+    // TODO проектное решение, правильно делать через свой reader
+    filed.setAccessible(true);
+    return filed;
   }
 
   @SneakyThrows
-  private static Field getParserField() {
-    var filed = XppReader.class.getDeclaredField("parser");
-    // проектное решение, правильно делать через свой reader
+  private static Field getXmlStreamReaderFld() {
+    var filed = StaxReader.class.getDeclaredField("in");
+    // TODO проектное решение, правильно делать через свой reader
     filed.setAccessible(true);
     return filed;
   }

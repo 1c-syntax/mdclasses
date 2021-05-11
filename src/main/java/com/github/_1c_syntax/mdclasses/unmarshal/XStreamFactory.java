@@ -124,7 +124,6 @@ import com.github._1c_syntax.mdclasses.mdo.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataPath;
-import com.github._1c_syntax.mdclasses.metadata.additional.DataSetType;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOModule;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
@@ -150,12 +149,15 @@ import com.thoughtworks.xstream.converters.basic.StringConverter;
 import com.thoughtworks.xstream.converters.collections.CollectionConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
+import com.thoughtworks.xstream.io.xml.QNameMap;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.xml.namespace.QName;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +196,11 @@ public class XStreamFactory {
 
   private XStream createXMLMapper() {
     // данный провайдер необходим для корректной обработки значений по умолчанию, чтобы не было null
-    var xStream = new XStream(new PureJavaReflectionProvider()) {
+    var qNameMap = new QNameMap();
+    qNameMap.registerMapping(new QName("http://g5.1c.ru/v8/dt/form", "Form", "form"), FormData.class);
+    qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), DesignerForm.class);
+
+    var xStream = new XStream(new PureJavaReflectionProvider(), new StaxDriver(qNameMap)) {
 
       // TODO как починят https://github.com/x-stream/xstream/issues/101
       // После исправления бага (с 2017 года) убрать этот код
@@ -476,53 +482,51 @@ public class XStreamFactory {
   }
 
   private void addClassAliases(XStream xStream) {
-    xStream.alias("mdclass:AccountingRegister", AccountingRegister.class);
-    xStream.alias("mdclass:AccumulationRegister", AccumulationRegister.class);
-    xStream.alias("mdclass:BusinessProcess", BusinessProcess.class);
-    xStream.alias("mdclass:CalculationRegister", CalculationRegister.class);
-    xStream.alias("mdclass:Catalog", Catalog.class);
-    xStream.alias("mdclass:ChartOfAccounts", ChartOfAccounts.class);
-    xStream.alias("mdclass:ChartOfCalculationTypes", ChartOfCalculationTypes.class);
-    xStream.alias("mdclass:ChartOfCharacteristicTypes", ChartOfCharacteristicTypes.class);
-    xStream.alias("mdclass:CommandGroup", CommandGroup.class);
-    xStream.alias("mdclass:CommonAttribute", CommonAttribute.class);
-    xStream.alias("mdclass:CommonCommand", CommonCommand.class);
-    xStream.alias("mdclass:CommonForm", CommonForm.class);
-    xStream.alias("mdclass:CommonModule", CommonModule.class);
-    xStream.alias("mdclass:CommonPicture", CommonPicture.class);
-    xStream.alias("mdclass:CommonTemplate", CommonTemplate.class);
-    xStream.alias("mdclass:Constant", Constant.class);
-    xStream.alias("mdclass:DataProcessor", DataProcessor.class);
-    xStream.alias("mdclass:DefinedType", DefinedType.class);
-    xStream.alias("mdclass:Document", Document.class);
-    xStream.alias("mdclass:DocumentJournal", DocumentJournal.class);
-    xStream.alias("mdclass:DocumentNumerator", DocumentNumerator.class);
-    xStream.alias("mdclass:EventSubscription", EventSubscription.class);
-    xStream.alias("mdclass:ExchangePlan", ExchangePlan.class);
-    xStream.alias("mdclass:FilterCriterion", FilterCriterion.class);
-    xStream.alias("mdclass:FunctionalOption", FunctionalOption.class);
-    xStream.alias("mdclass:FunctionalOptionsParameter", FunctionalOptionsParameter.class);
-    xStream.alias("mdclass:HTTPService", HTTPService.class);
-    xStream.alias("mdclass:InformationRegister", InformationRegister.class);
-    xStream.alias("mdclass:Enum", MDOEnum.class);
-    xStream.alias("mdclass:Report", Report.class);
-    xStream.alias("mdclass:Role", Role.class);
+    xStream.alias("AccountingRegister", AccountingRegister.class);
+    xStream.alias("AccumulationRegister", AccumulationRegister.class);
+    xStream.alias("BusinessProcess", BusinessProcess.class);
+    xStream.alias("CalculationRegister", CalculationRegister.class);
+    xStream.alias("Catalog", Catalog.class);
+    xStream.alias("ChartOfAccounts", ChartOfAccounts.class);
+    xStream.alias("ChartOfCalculationTypes", ChartOfCalculationTypes.class);
+    xStream.alias("ChartOfCharacteristicTypes", ChartOfCharacteristicTypes.class);
+    xStream.alias("CommandGroup", CommandGroup.class);
+    xStream.alias("CommonAttribute", CommonAttribute.class);
+    xStream.alias("CommonCommand", CommonCommand.class);
+    xStream.alias("CommonForm", CommonForm.class);
+    xStream.alias("CommonModule", CommonModule.class);
+    xStream.alias("CommonPicture", CommonPicture.class);
+    xStream.alias("CommonTemplate", CommonTemplate.class);
+    xStream.alias("Constant", Constant.class);
+    xStream.alias("DataProcessor", DataProcessor.class);
+    xStream.alias("DefinedType", DefinedType.class);
+    xStream.alias("Document", Document.class);
+    xStream.alias("DocumentJournal", DocumentJournal.class);
+    xStream.alias("DocumentNumerator", DocumentNumerator.class);
+    xStream.alias("EventSubscription", EventSubscription.class);
+    xStream.alias("ExchangePlan", ExchangePlan.class);
+    xStream.alias("FilterCriterion", FilterCriterion.class);
+    xStream.alias("FunctionalOption", FunctionalOption.class);
+    xStream.alias("FunctionalOptionsParameter", FunctionalOptionsParameter.class);
+    xStream.alias("HTTPService", HTTPService.class);
+    xStream.alias("InformationRegister", InformationRegister.class);
+    xStream.alias("Enum", MDOEnum.class);
+    xStream.alias("Report", Report.class);
+    xStream.alias("Role", Role.class);
     xStream.alias("Rights", RoleData.class);
-    xStream.alias("mdclass:ScheduledJob", ScheduledJob.class);
-    xStream.alias("mdclass:Sequence", Sequence.class);
-    xStream.alias("mdclass:SessionParameter", SessionParameter.class);
-    xStream.alias("mdclass:SettingsStorage", SettingsStorage.class);
-    xStream.alias("mdclass:Style", Style.class);
-    xStream.alias("mdclass:StyleItem", StyleItem.class);
-    xStream.alias("mdclass:Subsystem", Subsystem.class);
-    xStream.alias("mdclass:Task", Task.class);
-    xStream.alias("mdclass:WebService", WebService.class);
-    xStream.alias("mdclass:WSReference", WSReference.class);
-    xStream.alias("mdclass:XDTOPackage", XDTOPackage.class);
-    xStream.alias("mdclass:Configuration", MDOConfiguration.class);
-    xStream.alias("form:Form", FormData.class);
+    xStream.alias("ScheduledJob", ScheduledJob.class);
+    xStream.alias("Sequence", Sequence.class);
+    xStream.alias("SessionParameter", SessionParameter.class);
+    xStream.alias("SettingsStorage", SettingsStorage.class);
+    xStream.alias("Style", Style.class);
+    xStream.alias("StyleItem", StyleItem.class);
+    xStream.alias("Subsystem", Subsystem.class);
+    xStream.alias("Task", Task.class);
+    xStream.alias("WebService", WebService.class);
+    xStream.alias("WSReference", WSReference.class);
+    xStream.alias("XDTOPackage", XDTOPackage.class);
+    xStream.alias("Configuration", MDOConfiguration.class);
     xStream.alias("MetaDataObject", DesignerWrapper.class);
-    xStream.alias("Form", DesignerForm.class);
     xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
   }
 

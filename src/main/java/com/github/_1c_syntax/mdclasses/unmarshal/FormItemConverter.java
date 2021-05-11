@@ -41,7 +41,7 @@ public class FormItemConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // если свойство type отсутствует, тип элемента заполняется из атрибута
     var nodeName = reader.getNodeName();
-    var type = getItemType(nodeName, reader.getAttribute("xsi:type"));
+    var type = getItemType(nodeName, reader.getAttribute("type"));
     var item = (FormItem) context.convertAnother(reader, FormItem.class,
       XStreamFactory.getReflectionConverter());
     if (item.getType().isEmpty()) {
