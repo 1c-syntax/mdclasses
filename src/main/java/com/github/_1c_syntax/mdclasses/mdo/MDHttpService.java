@@ -82,6 +82,6 @@ public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren
       children = new HashSet<>(urlTemplates);
       urlTemplates.forEach(mdo -> children.addAll(mdo.getChildren()));
     }
-    return children;
+    return Collections.unmodifiableSet(children);
   }
 }

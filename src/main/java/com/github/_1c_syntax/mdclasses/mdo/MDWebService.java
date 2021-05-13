@@ -81,6 +81,6 @@ public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren 
     if (children == null) {
       children = new HashSet<>(operations);
     }
-    return children;
+    return Collections.unmodifiableSet(children);
   }
 }

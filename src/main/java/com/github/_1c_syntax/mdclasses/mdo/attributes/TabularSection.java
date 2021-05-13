@@ -79,6 +79,6 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
     if (children == null) {
       children = new HashSet<>(attributes);
     }
-    return children;
+    return Collections.unmodifiableSet(children);
   }
 }

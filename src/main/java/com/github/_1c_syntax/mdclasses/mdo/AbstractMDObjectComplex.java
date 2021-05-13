@@ -130,7 +130,7 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
         .map(MDOHasChildren.class::cast)
         .forEach(mdo -> children.addAll(mdo.getChildren()));
     }
-    return children;
+    return Collections.unmodifiableSet(children);
   }
 
   private void computeForms(Path folder, List<String> formNames) {

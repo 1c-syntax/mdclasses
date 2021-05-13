@@ -82,6 +82,6 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
     if (children == null) {
       children = new HashSet<>(httpServiceMethods);
     }
-    return children;
+    return Collections.unmodifiableSet(children);
   }
 }
