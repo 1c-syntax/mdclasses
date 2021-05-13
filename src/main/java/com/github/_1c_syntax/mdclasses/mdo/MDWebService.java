@@ -51,6 +51,11 @@ import java.util.Set;
 public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren {
 
   /**
+   * Закэшированные данные о дочерних элементах
+   */
+  private Set<AbstractMDObjectBase> children;
+
+  /**
    * Операции веб-сервиса
    */
   @XStreamImplicit
@@ -73,6 +78,9 @@ public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren 
 
   @Override
   public Set<AbstractMDObjectBase> getChildren() {
-    return new HashSet<>(operations);
+    if (children == null) {
+      children = new HashSet<>(operations);
+    }
+    return children;
   }
 }

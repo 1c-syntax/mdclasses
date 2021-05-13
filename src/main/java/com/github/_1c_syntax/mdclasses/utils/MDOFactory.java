@@ -129,6 +129,10 @@ public class MDOFactory {
    * @return - созданный и минимально заполненный объект языка
    */
   public MDLanguage fakeLanguage(ScriptVariant scriptVariant) {
-    return (scriptVariant == ScriptVariant.ENGLISH) ? MDLanguage.ENGLISH : MDLanguage.RUSSIAN;
+    if (scriptVariant == ScriptVariant.ENGLISH) {
+      return MDLanguage.ENGLISH;
+    } else {
+      return MDLanguage.RUSSIAN;
+    }
   }
 }

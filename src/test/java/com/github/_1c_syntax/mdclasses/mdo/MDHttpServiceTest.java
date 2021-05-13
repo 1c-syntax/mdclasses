@@ -29,8 +29,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MDHTTPServiceTest extends AbstractMDOTest {
-  MDHTTPServiceTest() {
+class MDHttpServiceTest extends AbstractMDOTest {
+  MDHttpServiceTest() {
     super(MDOType.HTTP_SERVICE);
   }
 
@@ -38,20 +38,20 @@ class MDHTTPServiceTest extends AbstractMDOTest {
   @Test
   void testEDT() {
     var mdo = getMDObjectEDT("HTTPServices/HTTPСервис1/HTTPСервис1.mdo");
-    checkBaseField(mdo, MDHTTPService.class, "HTTPСервис1",
+    checkBaseField(mdo, MDHttpService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
       ModuleType.HTTPServiceModule);
-    assertThat(((MDHTTPService) mdo).getUrlTemplates()).hasSize(1);
-    ((MDHTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+    assertThat(((MDHttpService) mdo).getUrlTemplates()).hasSize(1);
+    ((MDHttpService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
       checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
         ModuleType.UNKNOWN, httpServiceURLTemplate);
       httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
         checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL", MDOType.HTTP_SERVICE_METHOD,
           ModuleType.UNKNOWN, httpServiceMethod));
     });
-    assertThat(((MDHTTPService) mdo).getUrlTemplates())
+    assertThat(((MDHttpService) mdo).getUrlTemplates())
       .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
       .hasSize(2)
       .extracting(HTTPServiceMethod::getHandler)
@@ -63,20 +63,20 @@ class MDHTTPServiceTest extends AbstractMDOTest {
   @Test
   void testDesigner() {
     var mdo = getMDObjectDesigner("HTTPServices/HTTPСервис1.xml");
-    checkBaseField(mdo, MDHTTPService.class, "HTTPСервис1",
+    checkBaseField(mdo, MDHttpService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "HTTPServices/HTTPСервис1",
       ModuleType.HTTPServiceModule);
-    assertThat(((MDHTTPService) mdo).getUrlTemplates()).hasSize(1);
-    ((MDHTTPService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
+    assertThat(((MDHttpService) mdo).getUrlTemplates()).hasSize(1);
+    ((MDHttpService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
       checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
         ModuleType.UNKNOWN, httpServiceURLTemplate);
       httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
         checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1", MDOType.HTTP_SERVICE_METHOD,
           ModuleType.UNKNOWN, httpServiceMethod));
     });
-    assertThat(((MDHTTPService) mdo).getUrlTemplates())
+    assertThat(((MDHttpService) mdo).getUrlTemplates())
       .flatExtracting(HTTPServiceURLTemplate::getHttpServiceMethods)
       .hasSize(2)
       .extracting(HTTPServiceMethod::getHandler)

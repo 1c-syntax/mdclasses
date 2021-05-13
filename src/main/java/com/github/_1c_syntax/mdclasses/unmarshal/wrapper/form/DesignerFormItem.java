@@ -36,12 +36,19 @@ public class DesignerFormItem {
   @XStreamAsAttribute
   private int id;
   private String type;
+  @XStreamAlias("DataPath")
   private String dataPath;
+  @XStreamAlias("ChildItems")
   private DesignerChildItems childItems;
+  @XStreamAlias("ContextMenu")
   private DesignerFormItem contextMenu;
+  @XStreamAlias("ExtendedTooltip")
   private DesignerFormItem extendedTooltip;
+  @XStreamAlias("AutoCommandBar")
   private DesignerFormItem autoCommandBar;
+  @XStreamAlias("SearchStringAddition")
   private DesignerFormItem searchStringAddition;
+  @XStreamAlias("ViewStatusAddition")
   private DesignerFormItem viewStatusAddition;
   @XStreamAlias("Events")
   private DesignerEvents events;

@@ -52,7 +52,7 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   /**
    * Реквизиты табличной части
    */
-  @XStreamImplicit
+  @XStreamImplicit(itemFieldName = "attributes")
   private List<AbstractMDOAttribute> attributes = Collections.emptyList();
 
   public TabularSection(DesignerMDO designerMDO) {

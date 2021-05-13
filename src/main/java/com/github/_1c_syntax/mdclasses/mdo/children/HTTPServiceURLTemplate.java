@@ -57,6 +57,11 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
   @XStreamImplicit(itemFieldName = "methods")
   private List<HTTPServiceMethod> httpServiceMethods = Collections.emptyList();
 
+  /**
+   * Закэшированные данные о дочерних элементах
+   */
+  private Set<AbstractMDObjectBase> children;
+
   public HTTPServiceURLTemplate(DesignerMDO designerMDO) {
     super(designerMDO);
     var httpMethods = new ArrayList<>(httpServiceMethods);
@@ -74,6 +79,9 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
 
   @Override
   public Set<AbstractMDObjectBase> getChildren() {
-    return new HashSet<>(httpServiceMethods);
+    if (children == null) {
+      children = new HashSet<>(httpServiceMethods);
+    }
+    return children;
   }
 }

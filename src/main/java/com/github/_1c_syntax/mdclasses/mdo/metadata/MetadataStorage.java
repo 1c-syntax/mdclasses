@@ -65,7 +65,7 @@ public final class MetadataStorage {
    * @param clazz MD класс
    * @return Метаданные класса
    */
-  public static AttributeMetadata getA(Class<?> clazz) {
+  public static AttributeMetadata getAttribute(Class<?> clazz) {
     return ATTRIBUTE_STORAGE.get(clazz);
   }
 

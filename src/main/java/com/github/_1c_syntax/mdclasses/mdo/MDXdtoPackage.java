@@ -21,31 +21,27 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import org.junit.jupiter.api.Test;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.Value;
 
-class MDXDTOPackageTest extends AbstractMDOTest {
-  MDXDTOPackageTest() {
-    super(MDOType.XDTO_PACKAGE);
-  }
-
-  @Override
-  @Test
-  void testEDT() {
-    var mdo = getMDObjectEDT("XDTOPackages/ПакетXDTO1/ПакетXDTO1.mdo");
-    checkBaseField(mdo, MDXDTOPackage.class, "ПакетXDTO1",
-      "b8a93cce-56e4-4507-b281-5c525a466a0f");
-    checkNoChildren(mdo);
-    checkNoModules(mdo);
-  }
-
-  @Override
-  @Test
-  void testDesigner() {
-    var mdo = getMDObjectDesigner("XDTOPackages/ПакетXDTO1.xml");
-    checkBaseField(mdo, MDXDTOPackage.class, "ПакетXDTO1",
-      "b8a93cce-56e4-4507-b281-5c525a466a0f");
-    checkNoChildren(mdo);
-    checkNoModules(mdo);
+@Value
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@Metadata(
+  type = MDOType.XDTO_PACKAGE,
+  name = "XDTOPackage",
+  nameRu = "ПакетXDTO",
+  groupName = "XDTOPackages",
+  groupNameRu = "ПакетыXDTO"
+)
+public class MDXdtoPackage extends AbstractMDObjectBase {
+  public MDXdtoPackage(DesignerMDO designerMDO) {
+    super(designerMDO);
   }
 }

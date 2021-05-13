@@ -48,7 +48,7 @@ import java.util.Set;
   groupName = "HTTPServices",
   groupNameRu = "HTTPСервисы"
 )
-public class MDHTTPService extends AbstractMDObjectBSL implements MDOHasChildren {
+public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren {
 
   /**
    * Шаблоны URL HTTP-сервиса
@@ -56,7 +56,7 @@ public class MDHTTPService extends AbstractMDObjectBSL implements MDOHasChildren
   @XStreamImplicit
   private List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
 
-  public MDHTTPService(DesignerMDO designerMDO) {
+  public MDHttpService(DesignerMDO designerMDO) {
     super(designerMDO);
     var templates = new ArrayList<>(urlTemplates);
     designerMDO.getChildObjects().getHttpUrlTemplates().forEach((DesignerMDO urlTemplate) ->

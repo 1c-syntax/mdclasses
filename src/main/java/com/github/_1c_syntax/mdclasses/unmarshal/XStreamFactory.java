@@ -21,95 +21,26 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDAccountingRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDAccumulationRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDBusinessProcess;
-import com.github._1c_syntax.mdclasses.mdo.MDCalculationRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDCatalog;
-import com.github._1c_syntax.mdclasses.mdo.MDChartOfAccounts;
-import com.github._1c_syntax.mdclasses.mdo.MDChartOfCalculationTypes;
-import com.github._1c_syntax.mdclasses.mdo.MDChartOfCharacteristicTypes;
-import com.github._1c_syntax.mdclasses.mdo.MDCommandGroup;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonAttribute;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonCommand;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonPicture;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonTemplate;
-import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDConstant;
-import com.github._1c_syntax.mdclasses.mdo.MDDataProcessor;
-import com.github._1c_syntax.mdclasses.mdo.MDDefinedType;
-import com.github._1c_syntax.mdclasses.mdo.MDDocument;
-import com.github._1c_syntax.mdclasses.mdo.MDDocumentJournal;
-import com.github._1c_syntax.mdclasses.mdo.MDDocumentNumerator;
-import com.github._1c_syntax.mdclasses.mdo.MDEnum;
-import com.github._1c_syntax.mdclasses.mdo.MDEventSubscription;
-import com.github._1c_syntax.mdclasses.mdo.MDExchangePlan;
-import com.github._1c_syntax.mdclasses.mdo.MDFilterCriterion;
-import com.github._1c_syntax.mdclasses.mdo.MDFunctionalOption;
-import com.github._1c_syntax.mdclasses.mdo.MDFunctionalOptionsParameter;
-import com.github._1c_syntax.mdclasses.mdo.MDHTTPService;
-import com.github._1c_syntax.mdclasses.mdo.MDInformationRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDInterface;
-import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.MDOForm;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.MDReport;
-import com.github._1c_syntax.mdclasses.mdo.MDRole;
-import com.github._1c_syntax.mdclasses.mdo.MDScheduledJob;
-import com.github._1c_syntax.mdclasses.mdo.MDSequence;
-import com.github._1c_syntax.mdclasses.mdo.MDSessionParameter;
-import com.github._1c_syntax.mdclasses.mdo.MDSettingsStorage;
-import com.github._1c_syntax.mdclasses.mdo.MDStyle;
-import com.github._1c_syntax.mdclasses.mdo.MDStyleItem;
+import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDSubsystem;
-import com.github._1c_syntax.mdclasses.mdo.MDTask;
-import com.github._1c_syntax.mdclasses.mdo.MDWSReference;
-import com.github._1c_syntax.mdclasses.mdo.MDWebService;
-import com.github._1c_syntax.mdclasses.mdo.MDXDTOPackage;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
-import com.github._1c_syntax.mdclasses.mdo.attributes.Attribute;
-import com.github._1c_syntax.mdclasses.mdo.attributes.Column;
-import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
-import com.github._1c_syntax.mdclasses.mdo.attributes.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
-import com.github._1c_syntax.mdclasses.mdo.attributes.Resource;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
-import com.github._1c_syntax.mdclasses.mdo.children.Command;
-import com.github._1c_syntax.mdclasses.mdo.children.Form;
-import com.github._1c_syntax.mdclasses.mdo.children.HTTPServiceMethod;
-import com.github._1c_syntax.mdclasses.mdo.children.HTTPServiceURLTemplate;
-import com.github._1c_syntax.mdclasses.mdo.children.Template;
-import com.github._1c_syntax.mdclasses.mdo.children.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.children.form.ExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormAttribute;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormCommand;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormHandlerItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataSet;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
-import com.github._1c_syntax.mdclasses.mdo.support.Handler;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOSynonym;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
-import com.github._1c_syntax.mdclasses.mdo.support.Right;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
@@ -128,23 +59,14 @@ import com.github._1c_syntax.mdclasses.unmarshal.converters.PairConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerProperties;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerRootWrapper;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerSynonym;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerXRItems;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttribute;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttributeSetting;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttributeType;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttributes;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerChildItems;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerColumn;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerColumns;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerEvent;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerEvents;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormCommand;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormCommands;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormItem;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
@@ -185,7 +107,6 @@ import java.util.Locale;
 public class XStreamFactory {
   private final String ATTRIBUTE_FIELD_NAME = "attributes";
   private final String CHILDREN_FIELD_NAME = "children";
-  private static final List<Class<?>> CLASSES_FOR_FORM = createListClassesForForm();
   /**
    * Используется для чтения элементов формы (см. FormEventConverter, DesignerFormItemConverter)
    */
@@ -255,7 +176,6 @@ public class XStreamFactory {
     };
     // автоопределение аннотаций
     xStream.autodetectAnnotations(false);
-    processAnnotationsForMDO(xStream);
 
     // игнорирование неизвестных тегов
     xStream.ignoreUnknownElements();
@@ -266,199 +186,59 @@ public class XStreamFactory {
     xStream.addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
 
     // необходимо зарегистрировать все классы, имена которых в XML отличаются от имен самих классов
-    addClassAliases(xStream);
+    registerClasses(xStream);
     // для каждого типа данных или поля необходимо зарегистрировать конвертер
-    addConverters(xStream);
-    // все типы реквизитов добавляются в одно поле
-    addFieldAliases(xStream);
+    registerConverters(xStream);
 
     return xStream;
   }
 
-  private void processAnnotationsForMDO(XStream xstream) {
-    xstream.processAnnotations(AccountingFlag.class);
-    xstream.processAnnotations(MDAccountingRegister.class);
-    xstream.processAnnotations(MDAccumulationRegister.class);
-    xstream.processAnnotations(DataPath.class);
-    xstream.processAnnotations(MDOModule.class);
-    xstream.processAnnotations(MDOReference.class);
-    xstream.processAnnotations(ValueType.class);
-    xstream.processAnnotations(AddressingAttribute.class);
-    xstream.processAnnotations(Attribute.class);
-    xstream.processAnnotations(MDBusinessProcess.class);
-    xstream.processAnnotations(MDCalculationRegister.class);
-    xstream.processAnnotations(MDCatalog.class);
-    xstream.processAnnotations(MDChartOfAccounts.class);
-    xstream.processAnnotations(MDChartOfCalculationTypes.class);
-    xstream.processAnnotations(MDChartOfCharacteristicTypes.class);
-    xstream.processAnnotations(Column.class);
-    xstream.processAnnotations(Command.class);
-    xstream.processAnnotations(MDCommandGroup.class);
-    xstream.processAnnotations(MDCommonAttribute.class);
-    xstream.processAnnotations(MDCommonCommand.class);
-    xstream.processAnnotations(MDCommonForm.class);
-    xstream.processAnnotations(MDCommonModule.class);
-    xstream.processAnnotations(MDCommonPicture.class);
-    xstream.processAnnotations(MDCommonTemplate.class);
-    xstream.processAnnotations(MDConstant.class);
-    xstream.processAnnotations(MDDataProcessor.class);
-    xstream.processAnnotations(MDDefinedType.class);
-    xstream.processAnnotations(Dimension.class);
-    xstream.processAnnotations(MDDocument.class);
-    xstream.processAnnotations(MDDocumentJournal.class);
-    xstream.processAnnotations(MDDocumentNumerator.class);
-    xstream.processAnnotations(MDEventSubscription.class);
-    xstream.processAnnotations(MDExchangePlan.class);
-    xstream.processAnnotations(ExtDimensionAccountingFlag.class);
-    xstream.processAnnotations(MDFilterCriterion.class);
-    xstream.processAnnotations(DynamicListExtInfo.class);
-    xstream.processAnnotations(ExtInfo.class);
-    xstream.processAnnotations(FormAttribute.class);
-    xstream.processAnnotations(FormCommand.class);
-    xstream.processAnnotations(FormData.class);
-    xstream.processAnnotations(DataCompositionSchema.class);
-    xstream.processAnnotations(DataSet.class);
-    xstream.processAnnotations(FormHandlerItem.class);
-    xstream.processAnnotations(FormItem.class);
-    xstream.processAnnotations(Form.class);
-    xstream.processAnnotations(MDFunctionalOption.class);
-    xstream.processAnnotations(MDFunctionalOptionsParameter.class);
-    xstream.processAnnotations(Handler.class);
-    xstream.processAnnotations(MDHTTPService.class);
-    xstream.processAnnotations(HTTPServiceMethod.class);
-    xstream.processAnnotations(HTTPServiceURLTemplate.class);
-    xstream.processAnnotations(MDInformationRegister.class);
-    xstream.processAnnotations(MDLanguage.class);
-    xstream.processAnnotations(AbstractMDOAttribute.class);
-    xstream.processAnnotations(AbstractMDObjectBase.class);
-    xstream.processAnnotations(AbstractMDObjectBSL.class);
-    xstream.processAnnotations(AbstractMDObjectComplex.class);
-    xstream.processAnnotations(MDConfiguration.class);
-    xstream.processAnnotations(MDEnum.class);
-    xstream.processAnnotations(MDOForm.class);
-    xstream.processAnnotations(MDInterface.class);
-    xstream.processAnnotations(MDOSynonym.class);
-    xstream.processAnnotations(ObjectRight.class);
-    xstream.processAnnotations(Recalculation.class);
-    xstream.processAnnotations(MDReport.class);
-    xstream.processAnnotations(Resource.class);
-    xstream.processAnnotations(Right.class);
-    xstream.processAnnotations(MDRole.class);
-    xstream.processAnnotations(RoleData.class);
-    xstream.processAnnotations(MDScheduledJob.class);
-    xstream.processAnnotations(MDSequence.class);
-    xstream.processAnnotations(MDSessionParameter.class);
-    xstream.processAnnotations(MDSettingsStorage.class);
-    xstream.processAnnotations(MDStyle.class);
-    xstream.processAnnotations(MDStyleItem.class);
-    xstream.processAnnotations(MDSubsystem.class);
-    xstream.processAnnotations(TabularSection.class);
-    xstream.processAnnotations(MDTask.class);
-    xstream.processAnnotations(Template.class);
-    xstream.processAnnotations(MDWebService.class);
-    xstream.processAnnotations(WEBServiceOperation.class);
-    xstream.processAnnotations(DesignerChildObjects.class);
-    xstream.processAnnotations(DesignerMDO.class);
-    xstream.processAnnotations(DesignerProperties.class);
-    xstream.processAnnotations(DesignerSynonym.class);
-    xstream.processAnnotations(DesignerRootWrapper.class);
-    xstream.processAnnotations(DesignerXRItems.class);
-    xstream.processAnnotations(DesignerAttribute.class);
-    xstream.processAnnotations(DesignerAttributes.class);
-    xstream.processAnnotations(DesignerAttributeSetting.class);
-    xstream.processAnnotations(DesignerAttributeType.class);
-    xstream.processAnnotations(DesignerChildItems.class);
-    xstream.processAnnotations(DesignerColumn.class);
-    xstream.processAnnotations(DesignerColumns.class);
-    xstream.processAnnotations(DesignerEvent.class);
-    xstream.processAnnotations(DesignerEvents.class);
-    xstream.processAnnotations(DesignerForm.class);
-    xstream.processAnnotations(DesignerFormCommand.class);
-    xstream.processAnnotations(DesignerFormCommands.class);
-    xstream.processAnnotations(DesignerFormItem.class);
-    xstream.processAnnotations(MDWSReference.class);
-    xstream.processAnnotations(MDXDTOPackage.class);
+  private void registerClasses(XStream xStream) {
 
-    MetadataStorage.getStorage().forEach((aClass, metadata) -> xstream.aliasType(metadata.name(), aClass));
+    registerClassesByMetadata(xStream);
+
+    xStream.processAnnotations(AccountingFlag.class);
+    xStream.processAnnotations(DataPath.class);
+    xStream.processAnnotations(MDOModule.class);
+    xStream.processAnnotations(ValueType.class);
+    xStream.processAnnotations(DynamicListExtInfo.class);
+    xStream.processAnnotations(DataCompositionSchema.class);
+    xStream.processAnnotations(Recalculation.class);
+    xStream.processAnnotations(TabularSection.class);
+    xStream.processAnnotations(DesignerChildObjects.class);
+    xStream.processAnnotations(DesignerMDO.class);
+    xStream.processAnnotations(DesignerAttributeType.class);
+    xStream.processAnnotations(DesignerColumns.class);
+    xStream.processAnnotations(DesignerEvent.class);
+    xStream.processAnnotations(DesignerForm.class);
+    xStream.processAnnotations(DesignerFormCommand.class);
+    xStream.processAnnotations(DesignerFormCommands.class);
+
+    xStream.alias("Rights", RoleData.class);
+    xStream.alias("MetaDataObject", DesignerRootWrapper.class);
+    xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
+
+    registerDesignerFormItemAliases(xStream);
+    registerAbstractMDOAttributeAliases(xStream);
+    registerSubsystemChildrenAliases(xStream);
+    registerFormsChildrenAliases(xStream);
+    registerSimpleTypeAliases(xStream);
+
+  }
+
+  private void registerClassesByMetadata(XStream xStream) {
+    MetadataStorage.getStorage().forEach((aClass, metadata) -> {
+      xStream.alias(metadata.name(), aClass);
+      xStream.processAnnotations(aClass);
+    });
 
     MetadataStorage.getAttributeStorage().forEach((Class<?> aClass, AttributeMetadata metadata) -> {
-      xstream.aliasType(metadata.name(), aClass);
-      xstream.aliasType(metadata.fieldNameEDT(), aClass);
+      xStream.alias(metadata.name(), aClass);
+      xStream.alias(metadata.fieldNameEDT(), aClass);
     });
   }
 
-  private void addFieldAliases(XStream xStream) {
-
-    // дочерние элементы
-    MDOType.valuesWithoutChildren().forEach((MDOType type) -> {
-      xStream.aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
-
-      if (type.getGroupName().isEmpty()) {
-        return;
-      }
-      String fieldName;
-      switch (type) {
-        case WS_REFERENCE:
-          fieldName = "wsReferences";
-          break;
-        case XDTO_PACKAGE:
-          fieldName = "xDTOPackages";
-          break;
-        case HTTP_SERVICE:
-          fieldName = "httpServices";
-          break;
-        default:
-          var groupName = type.getGroupName();
-          fieldName = groupName.substring(0, 1).toLowerCase(Locale.ENGLISH) + groupName.substring(1);
-      }
-      xStream.aliasField(fieldName, MDConfiguration.class, CHILDREN_FIELD_NAME);
-    });
-
-    // реквизиты объекта
-    xStream.aliasField("dimensions", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("resources", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("recalculations", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField(ATTRIBUTE_FIELD_NAME, AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("tabularSections", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("accountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("extDimensionAccountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("columns", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-    xStream.aliasField("addressingAttributes", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
-
-    // у табличной части тоже есть свои атрибуты
-    xStream.aliasField(ATTRIBUTE_FIELD_NAME, TabularSection.class, ATTRIBUTE_FIELD_NAME);
-
-    // поля подсистем
-    xStream.aliasField("subsystems", MDSubsystem.class, CHILDREN_FIELD_NAME);
-    xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
-
-    // свойства формы
-    CLASSES_FOR_FORM.forEach(aClass -> {
-      xStream.aliasField("items", aClass, CHILDREN_FIELD_NAME);
-      xStream.aliasField("autoCommandBar", aClass, CHILDREN_FIELD_NAME);
-      xStream.aliasField("extendedTooltip", aClass, CHILDREN_FIELD_NAME);
-      xStream.aliasField("contextMenu", aClass, CHILDREN_FIELD_NAME);
-      xStream.aliasField("viewStatusAddition", aClass, CHILDREN_FIELD_NAME);
-      xStream.aliasField("searchControlAddition", aClass, CHILDREN_FIELD_NAME);
-    });
-
-    xStream.aliasField("Events", DesignerForm.class, "events");
-
-    addDesignerFormItemAliases(xStream);
-    addDesignerFormCommonAliases(xStream);
-  }
-
-  private void addDesignerFormCommonAliases(XStream xStream) {
-    xStream.aliasField("ChildItems", DesignerForm.class, "childItems");
-    xStream.aliasField("ChildItems", DesignerFormItem.class, "childItems");
-
-    xStream.aliasField("MainAttribute", DesignerAttribute.class, "main");
-    xStream.aliasField("Columns", DesignerAttribute.class, "designerColumns");
-    xStream.aliasField("DataPath", DesignerFormItem.class, "dataPath");
-  }
-
-  private void addDesignerFormItemAliases(XStream xStream) {
-    // элементы формы
+  private void registerDesignerFormItemAliases(XStream xStream) {
     xStream.aliasField("AutoCommandBar", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("Button", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("ButtonGroup", DesignerChildItems.class, CHILDREN_FIELD_NAME);
@@ -500,68 +280,68 @@ public class XStreamFactory {
     xStream.aliasField("ViewStatusAddition", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("ExtendedTooltip", DesignerChildItems.class, CHILDREN_FIELD_NAME);
     xStream.aliasField("SearchStringAddition", DesignerChildItems.class, CHILDREN_FIELD_NAME);
-
-    // корень формы
-    xStream.aliasField("AutoCommandBar", DesignerForm.class, "autoCommandBar");
-
-    // элемент формы
-    xStream.aliasField("ContextMenu", DesignerFormItem.class, "contextMenu");
-    xStream.aliasField("ExtendedTooltip", DesignerFormItem.class, "extendedTooltip");
-    xStream.aliasField("AutoCommandBar", DesignerFormItem.class, "autoCommandBar");
-    xStream.aliasField("SearchStringAddition", DesignerFormItem.class, "searchStringAddition");
-    xStream.aliasField("ViewStatusAddition", DesignerFormItem.class, "viewStatusAddition");
   }
 
-  private void addClassAliases(XStream xStream) {
-    xStream.alias("AccountingRegister", MDAccountingRegister.class);
-    xStream.alias("AccumulationRegister", MDAccumulationRegister.class);
-    xStream.alias("BusinessProcess", MDBusinessProcess.class);
-    xStream.alias("CalculationRegister", MDCalculationRegister.class);
-    xStream.alias("Catalog", MDCatalog.class);
-    xStream.alias("ChartOfAccounts", MDChartOfAccounts.class);
-    xStream.alias("ChartOfCalculationTypes", MDChartOfCalculationTypes.class);
-    xStream.alias("ChartOfCharacteristicTypes", MDChartOfCharacteristicTypes.class);
-    xStream.alias("CommandGroup", MDCommandGroup.class);
-    xStream.alias("CommonAttribute", MDCommonAttribute.class);
-    xStream.alias("CommonCommand", MDCommonCommand.class);
-    xStream.alias("CommonForm", MDCommonForm.class);
-    xStream.alias("CommonModule", MDCommonModule.class);
-    xStream.alias("CommonPicture", MDCommonPicture.class);
-    xStream.alias("CommonTemplate", MDCommonTemplate.class);
-    xStream.alias("Constant", MDConstant.class);
-    xStream.alias("DataProcessor", MDDataProcessor.class);
-    xStream.alias("DefinedType", MDDefinedType.class);
-    xStream.alias("Document", MDDocument.class);
-    xStream.alias("DocumentJournal", MDDocumentJournal.class);
-    xStream.alias("DocumentNumerator", MDDocumentNumerator.class);
-    xStream.alias("EventSubscription", MDEventSubscription.class);
-    xStream.alias("ExchangePlan", MDExchangePlan.class);
-    xStream.alias("FilterCriterion", MDFilterCriterion.class);
-    xStream.alias("FunctionalOption", MDFunctionalOption.class);
-    xStream.alias("FunctionalOptionsParameter", MDFunctionalOptionsParameter.class);
-    xStream.alias("HTTPService", MDHTTPService.class);
-    xStream.alias("InformationRegister", MDInformationRegister.class);
-    xStream.alias("Enum", MDEnum.class);
-    xStream.alias("Report", MDReport.class);
-    xStream.alias("Role", MDRole.class);
-    xStream.alias("Rights", RoleData.class);
-    xStream.alias("ScheduledJob", MDScheduledJob.class);
-    xStream.alias("Sequence", MDSequence.class);
-    xStream.alias("SessionParameter", MDSessionParameter.class);
-    xStream.alias("SettingsStorage", MDSettingsStorage.class);
-    xStream.alias("Style", MDStyle.class);
-    xStream.alias("StyleItem", MDStyleItem.class);
-    xStream.alias("Subsystem", MDSubsystem.class);
-    xStream.alias("Task", MDTask.class);
-    xStream.alias("WebService", MDWebService.class);
-    xStream.alias("WSReference", MDWSReference.class);
-    xStream.alias("XDTOPackage", MDXDTOPackage.class);
-    xStream.alias("Configuration", MDConfiguration.class);
-    xStream.alias("MetaDataObject", DesignerRootWrapper.class);
-    xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
+  private void registerAbstractMDOAttributeAliases(XStream xStream) {
+    xStream.aliasField("dimensions", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("resources", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("recalculations", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField(ATTRIBUTE_FIELD_NAME, AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("tabularSections", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("accountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("extDimensionAccountingFlags", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("columns", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
+    xStream.aliasField("addressingAttributes", AbstractMDObjectComplex.class, ATTRIBUTE_FIELD_NAME);
   }
 
-  private void addConverters(XStream xStream) {
+  private void registerSubsystemChildrenAliases(XStream xStream) {
+    xStream.aliasField("subsystems", MDSubsystem.class, CHILDREN_FIELD_NAME);
+    xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
+  }
+
+  private void registerFormsChildrenAliases(XStream xStream) {
+    List<Class<?>> formClasses = new ArrayList<>();
+    formClasses.add(FormData.class);
+    formClasses.add(FormItem.class);
+
+    formClasses.forEach(aClass -> {
+      xStream.aliasField("items", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("autoCommandBar", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("extendedTooltip", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("contextMenu", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("viewStatusAddition", aClass, CHILDREN_FIELD_NAME);
+      xStream.aliasField("searchControlAddition", aClass, CHILDREN_FIELD_NAME);
+    });
+  }
+
+  private void registerSimpleTypeAliases(XStream xStream) {
+    // дочерние элементы
+    MDOType.valuesWithoutChildren().forEach((MDOType type) -> {
+      xStream.aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
+
+      if (type.getGroupName().isEmpty()) {
+        return;
+      }
+      String fieldName;
+      switch (type) {
+        case WS_REFERENCE:
+          fieldName = "wsReferences";
+          break;
+        case XDTO_PACKAGE:
+          fieldName = "xDTOPackages";
+          break;
+        case HTTP_SERVICE:
+          fieldName = "httpServices";
+          break;
+        default:
+          var groupName = type.getGroupName();
+          fieldName = groupName.substring(0, 1).toLowerCase(Locale.ENGLISH) + groupName.substring(1);
+      }
+      xStream.aliasField(fieldName, MDConfiguration.class, CHILDREN_FIELD_NAME);
+    });
+  }
+
+  private void registerConverters(XStream xStream) {
     xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter<>(UseMode.class));
     xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
@@ -581,10 +361,4 @@ public class XStreamFactory {
     xStream.registerConverter(new DesignerFormConverter());
   }
 
-  private static List<Class<?>> createListClassesForForm() {
-    List<Class<?>> list = new ArrayList<>();
-    list.add(FormData.class);
-    list.add(FormItem.class);
-    return list;
-  }
 }

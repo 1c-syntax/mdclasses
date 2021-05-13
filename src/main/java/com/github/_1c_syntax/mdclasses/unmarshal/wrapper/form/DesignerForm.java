@@ -28,7 +28,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class DesignerForm {
+  @XStreamAlias("ChildItems")
   private DesignerChildItems childItems;
+  @XStreamAlias("AutoCommandBar")
   private DesignerFormItem autoCommandBar;
   @XStreamAlias("Events")
   private DesignerEvents events;
