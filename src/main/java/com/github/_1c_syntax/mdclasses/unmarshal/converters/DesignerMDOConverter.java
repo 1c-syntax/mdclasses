@@ -69,7 +69,7 @@ public class DesignerMDOConverter implements Converter {
 
   private Constructor<?> getConstructor(Class<?> realClass) {
     return constructors.computeIfAbsent(realClass,
-      realClazz -> {
+      (Class<?> realClazz) -> {
         try {
           return realClazz.getDeclaredConstructor(DesignerMDO.class);
         } catch (NoSuchMethodException e) {

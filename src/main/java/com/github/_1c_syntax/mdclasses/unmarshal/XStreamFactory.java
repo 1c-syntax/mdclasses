@@ -33,6 +33,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
+import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
@@ -227,7 +228,7 @@ public class XStreamFactory {
   }
 
   private void registerClassesByMetadata(XStream xStream) {
-    MetadataStorage.getStorage().forEach((aClass, metadata) -> {
+    MetadataStorage.getStorage().forEach((Class<?> aClass, Metadata metadata) -> {
       xStream.alias(metadata.name(), aClass);
       xStream.processAnnotations(aClass);
     });
@@ -304,7 +305,7 @@ public class XStreamFactory {
     formClasses.add(FormData.class);
     formClasses.add(FormItem.class);
 
-    formClasses.forEach(aClass -> {
+    formClasses.forEach((Class<?> aClass) -> {
       xStream.aliasField("items", aClass, CHILDREN_FIELD_NAME);
       xStream.aliasField("autoCommandBar", aClass, CHILDREN_FIELD_NAME);
       xStream.aliasField("extendedTooltip", aClass, CHILDREN_FIELD_NAME);
