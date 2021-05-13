@@ -46,7 +46,7 @@ public class MDOPathUtils {
    * Расширение MDO файла с учетом типа исходников
    */
   public String mdoExtension(ConfigurationSource configurationSource, boolean withDot) {
-    String dot = ".";
+    var dot = ".";
     if (!withDot) {
       dot = "";
     }
@@ -199,7 +199,7 @@ public class MDOPathUtils {
    * @return - путь к файлу описания
    */
   public Path getFormDataPath(AbstractMDObjectBase form) {
-    Path currentPath = form.getPath().getParent();
+    var currentPath = form.getPath().getParent();
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(form.getPath());
     if (configurationSource == ConfigurationSource.EDT) {
@@ -221,7 +221,7 @@ public class MDOPathUtils {
    * @return - путь к файлу описания
    */
   public Path getTemplateDataPath(AbstractMDObjectBase template) {
-    Path currentPath = template.getPath().getParent();
+    var currentPath = template.getPath().getParent();
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(template.getPath());
     if (configurationSource == ConfigurationSource.EDT) {

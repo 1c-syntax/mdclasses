@@ -67,14 +67,14 @@ public class DesignerMDOConverter implements Converter {
     return type == DesignerRootWrapper.class;
   }
 
-  @SneakyThrows
   private Constructor<?> getConstructor(Class<?> realClass) {
-    var constructor = constructors.get(realClass);
-    if (constructor == null) {
-      constructor = realClass.getConstructor(DesignerMDO.class);
-      constructors.put(realClass, constructor);
-    }
-
-    return constructor;
+    return constructors.computeIfAbsent(realClass,
+      realClazz -> {
+        try {
+          return realClazz.getDeclaredConstructor(DesignerMDO.class);
+        } catch (NoSuchMethodException e) {
+          throw new IllegalStateException("No constructor found: " + realClass.getCanonicalName());
+        }
+      });
   }
 }

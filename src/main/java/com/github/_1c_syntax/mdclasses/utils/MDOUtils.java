@@ -43,11 +43,11 @@ public class MDOUtils {
    * Определяет тип исходников по корню проекта
    */
   public ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
-    ConfigurationSource configurationSource = ConfigurationSource.EMPTY;
+    var configurationSource = ConfigurationSource.EMPTY;
     if (rootPath != null) {
-      String rootPathString = rootPath.toString();
+      var rootPathString = rootPath.toString();
 
-      File rootConfiguration = new File(rootPathString, "Configuration.xml");
+      var rootConfiguration = new File(rootPathString, "Configuration.xml");
       if (rootConfiguration.exists()) {
         configurationSource = ConfigurationSource.DESIGNER;
       } else {

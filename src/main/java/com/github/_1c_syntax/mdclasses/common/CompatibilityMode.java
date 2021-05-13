@@ -37,8 +37,7 @@ public class CompatibilityMode {
   private static final int VERSION_POSITION = 2;
   private static final Pattern VERSION_SPLITTER = Pattern.compile("([_.])");
 
-  @Getter
-  private static final int major = 8;
+  private static final int MAJOR = 8;
   @Getter
   private int minor;
   @Getter
@@ -83,16 +82,17 @@ public class CompatibilityMode {
    * -1 - первая версия больше
    */
   public static int compareTo(CompatibilityMode versionA, CompatibilityMode versionB) {
+    var result = 1;
     if (versionA.minor == versionB.minor) {
       if (versionA.version == versionB.version) {
-        return 0;
+        result = 0;
       } else if (versionA.version >= versionB.version) {
-        return -1;
+        result = -1;
       }
     } else if (versionA.minor >= versionB.minor) {
-      return -1;
+      result = -1;
     }
-    return 1;
+    return result;
   }
 
   /**
@@ -107,6 +107,10 @@ public class CompatibilityMode {
    */
   public static int compareTo(CompatibilityMode versionA, String versionB) {
     return compareTo(versionA, new CompatibilityMode(versionB));
+  }
+
+  public static int getMajor() {
+    return MAJOR;
   }
 
   private void setVersionComponents(int minor, int version) {

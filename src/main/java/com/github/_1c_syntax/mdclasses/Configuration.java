@@ -257,38 +257,6 @@ public class Configuration {
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
-//    modulesBySupport = new HashMap<>();
-//    modulesByType = new HashMap<>();
-//    modulesByObject = new HashMap<>();
-//    modules = new ArrayList<>();
-//    modulesByMDORef = new HashMap<>();
-//
-//    children.stream()
-//      .filter(AbstractMDObjectBSL.class::isInstance)
-//      .map(AbstractMDObjectBSL.class::cast)
-//      .map(AbstractMDObjectBSL::getModules)
-//      .flatMap(Collection::stream)
-//      .forEach((MDOModule module) -> {
-//        var uri = module.getUri();
-//        modulesByType.put(uri, module.getModuleType());
-//        modulesByObject.put(uri, module.getOwner());
-//        modules.add(module);
-//
-//        var supports = supportMap.getOrDefault(module.getOwner().getUuid(), Collections.emptyMap());
-//        if (!supports.isEmpty()) {
-//          modulesBySupport.put(uri, supports);
-//        }
-//
-//        var key = module.getOwner().getMdoReference().getMdoRef();
-//        var modulesTypesAndURIs = modulesByMDORef.getOrDefault(key, new EnumMap<>(ModuleType.class));
-//        modulesTypesAndURIs.put(module.getModuleType(), uri);
-//        modulesByMDORef.put(key, modulesTypesAndURIs);
-//      });
-
-//    mdo.getModules().forEach((MDOModule module) -> {
-//      var uri = module.getUri();
-//    });
-//    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
     children.forEach((AbstractMDObjectBase mdo) -> {
 
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
@@ -330,11 +298,11 @@ public class Configuration {
    * @param rootPath - Адрес корневого каталога конфигурации
    */
   public static Configuration create(Path rootPath) {
-    ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
+    var configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
     if (configurationSource != ConfigurationSource.EMPTY) {
       var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
       if (configurationMDO.isPresent()) {
-        MDConfiguration mdoConfiguration = (MDConfiguration) configurationMDO.get();
+        var mdoConfiguration = (MDConfiguration) configurationMDO.get();
         if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
           return new ConfigurationExtension(mdoConfiguration, configurationSource, rootPath);
         } else {
@@ -399,7 +367,7 @@ public class Configuration {
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-      ParseSupportData supportData = new ParseSupportData(fileParentConfiguration.get());
+      var supportData = new ParseSupportData(fileParentConfiguration.get());
       return supportData.getSupportMap();
     }
     return Collections.emptyMap();

@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Расширенная модель StaxDriver для возможности пр чтении иметь доступ к файлу, который читается
+ * Расширенная модель StaxDriver для возможности при чтении иметь доступ к файлу, который читается
  */
 public class ExtendStaxDriver extends StaxDriver {
 

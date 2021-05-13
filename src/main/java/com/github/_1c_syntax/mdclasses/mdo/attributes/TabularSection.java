@@ -55,6 +55,11 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   @XStreamImplicit(itemFieldName = "attributes")
   private List<AbstractMDOAttribute> attributes = Collections.emptyList();
 
+  /**
+   * Закэшированные данные о дочерних элементах
+   */
+  private Set<AbstractMDObjectBase> children;
+
   public TabularSection(DesignerMDO designerMDO) {
     super(designerMDO);
     List<AbstractMDOAttribute> computedAttributes = new ArrayList<>();
@@ -71,6 +76,9 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
 
   @Override
   public Set<AbstractMDObjectBase> getChildren() {
-    return new HashSet<>(attributes);
+    if (children == null) {
+      children = new HashSet<>(attributes);
+    }
+    return children;
   }
 }

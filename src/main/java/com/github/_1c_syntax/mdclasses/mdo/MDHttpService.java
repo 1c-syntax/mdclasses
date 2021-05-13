@@ -56,6 +56,11 @@ public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren
   @XStreamImplicit
   private List<HTTPServiceURLTemplate> urlTemplates = Collections.emptyList();
 
+  /**
+   * Закэшированные данные о дочерних элементах
+   */
+  private Set<AbstractMDObjectBase> children;
+
   public MDHttpService(DesignerMDO designerMDO) {
     super(designerMDO);
     var templates = new ArrayList<>(urlTemplates);
@@ -73,9 +78,10 @@ public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren
 
   @Override
   public Set<AbstractMDObjectBase> getChildren() {
-    Set<AbstractMDObjectBase> allChildren = new HashSet<>(urlTemplates);
-    urlTemplates.forEach(mdo -> allChildren.addAll(mdo.getChildren()));
-
-    return allChildren;
+    if (children == null) {
+      children = new HashSet<>(urlTemplates);
+      urlTemplates.forEach(mdo -> children.addAll(mdo.getChildren()));
+    }
+    return children;
   }
 }

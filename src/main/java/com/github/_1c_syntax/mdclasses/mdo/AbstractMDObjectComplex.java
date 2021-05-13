@@ -88,6 +88,11 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   private List<Command> commands = Collections.emptyList();
 
   /**
+   * Закэшированные данные о дочерних элементах
+   */
+  private Set<AbstractMDObjectBase> children;
+
+  /**
    * Реквизиты, табличные части и их реквизиты объекта
    */
   @XStreamImplicit
@@ -114,17 +119,18 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
 
   @Override
   public Set<AbstractMDObjectBase> getChildren() {
-    Set<AbstractMDObjectBase> allChildren = new HashSet<>();
+    if (children == null) {
+      children = new HashSet<>();
 
-    allChildren.addAll(forms);
-    allChildren.addAll(commands);
-    allChildren.addAll(templates);
-    allChildren.addAll(attributes);
-    attributes.stream().filter(MDOHasChildren.class::isInstance)
-      .map(MDOHasChildren.class::cast)
-      .forEach(mdo -> allChildren.addAll(mdo.getChildren()));
-
-    return allChildren;
+      children.addAll(forms);
+      children.addAll(commands);
+      children.addAll(templates);
+      children.addAll(attributes);
+      attributes.stream().filter(MDOHasChildren.class::isInstance)
+        .map(MDOHasChildren.class::cast)
+        .forEach(mdo -> children.addAll(mdo.getChildren()));
+    }
+    return children;
   }
 
   private void computeForms(Path folder, List<String> formNames) {
@@ -217,7 +223,7 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   @SneakyThrows
   private static List<Path> getMDOFilesInFolder(Path folder, List<String> childNames) {
     List<Path> childrenNames;
-    int maxDepth = 1;
+    var maxDepth = 1;
     AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(
       ConfigurationSource.DESIGNER, true));
     try (Stream<Path> files = Files.walk(folder, maxDepth)) {
