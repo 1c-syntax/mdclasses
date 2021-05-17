@@ -93,6 +93,9 @@ public class MDConfiguration extends AbstractMDObjectBSL {
    */
   private boolean useManagedFormInOrdinaryApplication;
 
+  @XStreamImplicit(itemFieldName = "copyright")
+  private List<Copyright> copyrights = Collections.emptyList();
+
   /**
    * Использовать обычные формы в управляемом приложении
    */
@@ -154,7 +157,26 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     useManagedFormInOrdinaryApplication = designerProperties.isUseManagedFormInOrdinaryApplication();
     useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
+    copyrights = createCopyrights(designerProperties.getCopyrights());
+
     children = designerMDO.getChildObjects().getChildren();
+  }
+
+  private List<Copyright> createCopyrights(List<DesignerCopyright> designerCopyrights) {
+
+    if (designerCopyrights.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    List<Copyright> copyrightList = new ArrayList<>();
+    for (var designerCopyright : designerCopyrights) {
+      var copyright = new Copyright();
+      copyright.setCopyrightContent(designerCopyright.getCopyrightContent());
+      copyright.setLanguage(designerCopyright.getLanguage());
+      copyrightList.add(copyright);
+    }
+
+    return copyrightList;
   }
 
   @Override

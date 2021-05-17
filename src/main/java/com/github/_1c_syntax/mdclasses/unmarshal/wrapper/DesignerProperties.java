@@ -125,6 +125,9 @@ public class DesignerProperties {
   @XStreamAlias("UseOrdinaryFormInManagedApplication")
   private boolean useOrdinaryFormInManagedApplication;
 
+  @XStreamAlias("Copyright")
+  private List<DesignerCopyright> copyrights = Collections.emptyList();
+
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
 

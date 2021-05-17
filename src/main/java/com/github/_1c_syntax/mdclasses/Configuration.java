@@ -133,6 +133,11 @@ public class Configuration {
   private boolean useOrdinaryFormInManagedApplication;
 
   /**
+   * Информация о копирайте на разных языках
+   */
+  private List<Copyright> copyrights;
+
+  /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
   private Map<URI, ModuleType> modulesByType;
@@ -184,6 +189,7 @@ public class Configuration {
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
+    copyrights = Collections.emptyList();
 
     rootPath = null;
     name = "";
@@ -249,6 +255,8 @@ public class Configuration {
 
     useManagedFormInOrdinaryApplication = mdoConfiguration.isUseManagedFormInOrdinaryApplication();
     useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
+
+    copyrights = mdoConfiguration.getCopyrights();
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
