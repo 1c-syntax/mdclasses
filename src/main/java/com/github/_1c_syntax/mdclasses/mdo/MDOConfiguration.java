@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerCopyright;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.metadata.additional.Copyright;
 import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
@@ -36,6 +38,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -79,6 +82,9 @@ public class MDOConfiguration extends MDObjectBSL {
    * Использовать управляемые формы в обычном приложении
    */
   private boolean useManagedFormInOrdinaryApplication;
+
+  @XStreamImplicit(itemFieldName = "copyright")
+  private List<Copyright> copyrights = Collections.emptyList();
 
   /**
    * Использовать обычные формы в управляемом приложении
@@ -141,7 +147,26 @@ public class MDOConfiguration extends MDObjectBSL {
     useManagedFormInOrdinaryApplication = designerProperties.isUseManagedFormInOrdinaryApplication();
     useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
+    copyrights = createCopyrights(designerProperties.getCopyrights());
+
     children = designerMDO.getChildObjects().getChildren();
+  }
+
+  private List<Copyright> createCopyrights(List<DesignerCopyright> designerCopyrights) {
+
+    if (designerCopyrights.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    List<Copyright> copyrightList = new ArrayList<>();
+    for (var designerCopyright : designerCopyrights) {
+      var copyright = new Copyright();
+      copyright.setCopyrightContent(designerCopyright.getCopyrightContent());
+      copyright.setLanguage(designerCopyright.getLanguage());
+      copyrightList.add(copyright);
+    }
+
+    return copyrightList;
   }
 
   @Override
