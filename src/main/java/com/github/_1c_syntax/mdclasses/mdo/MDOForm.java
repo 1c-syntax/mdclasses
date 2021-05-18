@@ -21,9 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 
 public interface MDOForm {
   FormData getData();
+
   void setData(FormData formData);
 }

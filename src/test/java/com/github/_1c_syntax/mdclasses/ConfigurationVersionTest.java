@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,26 +34,25 @@ class ConfigurationVersionTest {
     var version8_3_10 = "Version_8_3_10";
     var versionDontUse = "DontUse";
 
+    assertThat(CompatibilityMode.getMAJOR()).isEqualTo(8);
+
     CompatibilityMode version;
 
     version = new CompatibilityMode(3, 99);
-    assertThat(version.getMajor()).isEqualTo(8);
+
     assertThat(version.getMinor()).isEqualTo(3);
     assertThat(version.getVersion()).isEqualTo(99);
 
     version = new CompatibilityMode(versionDontUse);
-    assertThat(version.getMajor()).isEqualTo(8);
     assertThat(version.getMinor()).isEqualTo(3);
     assertThat(version.getVersion()).isEqualTo(99);
 
     version = new CompatibilityMode(version8_3_10);
-    assertThat(version.getMajor()).isEqualTo(8);
     assertThat(version.getMinor()).isEqualTo(3);
     assertThat(version.getVersion()).isEqualTo(10);
 
     var version8_1 = "Version8_1";
     version = new CompatibilityMode(version8_1);
-    assertThat(version.getMajor()).isEqualTo(8);
     assertThat(version.getMinor()).isEqualTo(1);
     assertThat(version.getVersion()).isEqualTo(0);
   }

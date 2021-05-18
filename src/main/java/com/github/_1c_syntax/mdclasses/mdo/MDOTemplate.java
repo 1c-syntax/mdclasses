@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.template.TemplateData;
-import com.github._1c_syntax.mdclasses.metadata.additional.TemplateType;
+import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
+import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 
 public interface MDOTemplate {
   TemplateType getTemplateType();
+
   TemplateData<?> getTemplateData();
 }
