@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.WebService;
+import com.github._1c_syntax.mdclasses.mdo.Role;
 import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
@@ -175,6 +176,10 @@ public class Configuration {
    * Корневой каталог конфигурации
    */
   private Path rootPath;
+  /**
+   * Роли
+   */
+  private List<Role> roles;
 
   protected Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
@@ -187,6 +192,7 @@ public class Configuration {
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
+    roles = Collections.emptyList();
 
     rootPath = null;
     name = "";
@@ -211,13 +217,15 @@ public class Configuration {
     childrenByMdoRef = new HashMap<>();
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
+    roles = new ArrayList<>();
     children.forEach((MDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof CommonModule) {
         this.commonModules.put(mdo.getName(), (CommonModule) mdo);
-      }
-      if (mdo instanceof Language) {
+      } else if (mdo instanceof Language) {
         this.languages.put(((Language) mdo).getLanguageCode(), (Language) mdo);
+      } else if (mdo instanceof Role) {
+        this.roles.add((Role) mdo);
       }
     });
 
