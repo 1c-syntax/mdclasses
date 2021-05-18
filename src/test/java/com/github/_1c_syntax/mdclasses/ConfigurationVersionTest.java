@@ -34,7 +34,7 @@ class ConfigurationVersionTest {
     var version8_3_10 = "Version_8_3_10";
     var versionDontUse = "DontUse";
 
-    assertThat(CompatibilityMode.getMajor()).isEqualTo(8);
+    assertThat(CompatibilityMode.getMAJOR()).isEqualTo(8);
 
     CompatibilityMode version;
 

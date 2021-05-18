@@ -32,7 +32,6 @@ dependencies {
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
-    implementation("org.slf4j", "slf4j-nop", "1.7.30")
 
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
@@ -43,14 +42,15 @@ dependencies {
     implementation("org.atteo.classindex", "classindex", "3.10")
     annotationProcessor("org.atteo.classindex", "classindex", "3.10")
 
-    // генерики
-    compileOnly("org.projectlombok", "lombok", lombok.version)
-
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)
     testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
+
+    // логирование
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    testImplementation("org.slf4j", "slf4j-log4j12", "1.7.30")
 }
 
 configure<JavaPluginConvention> {
@@ -107,11 +107,6 @@ sonarqube {
         property("sonar.exclusions", "**/gen/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
-}
-
-lombok {
-    version = "1.18.16"
-    sha256 = "7206cbbfd6efd5e85bceff29545633645650be58d58910a23b0d4835fbd15ed7"
 }
 
 license {
