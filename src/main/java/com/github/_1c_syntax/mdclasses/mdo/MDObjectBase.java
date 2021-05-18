@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerSynonym;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOReference;
 import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
 import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
@@ -119,14 +119,14 @@ public class MDObjectBase implements MDOExtensions {
     includedSubsystems.add(subsystem);
   }
 
-  private List<MDOSynonym> getSynonymsFromDesignerMDO(List<DesignerSynonym> synonyms) {
+  private List<MDOSynonym> getSynonymsFromDesignerMDO(List<DesignerContentItem> synonyms) {
 
     if (synonyms.isEmpty()) {
       return Collections.emptyList();
     }
     List<MDOSynonym> result = new ArrayList<>();
-    for (DesignerSynonym synonym : synonyms) {
-      MDOSynonym mdoSynonym = new MDOSynonym();
+    for (DesignerContentItem synonym : synonyms) {
+      var mdoSynonym = new MDOSynonym();
       mdoSynonym.setLanguage(synonym.getLanguage());
       mdoSynonym.setContent(synonym.getContent());
 

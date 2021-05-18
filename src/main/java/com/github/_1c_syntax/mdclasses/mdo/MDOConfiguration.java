@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerCopyright;
+import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
@@ -152,7 +152,7 @@ public class MDOConfiguration extends MDObjectBSL {
     children = designerMDO.getChildObjects().getChildren();
   }
 
-  private List<Copyright> createCopyrights(List<DesignerCopyright> designerCopyrights) {
+  private List<Copyright> createCopyrights(List<DesignerContentItem> designerCopyrights) {
 
     if (designerCopyrights.isEmpty()) {
       return Collections.emptyList();
@@ -161,8 +161,8 @@ public class MDOConfiguration extends MDObjectBSL {
     List<Copyright> copyrightList = new ArrayList<>();
     for (var designerCopyright : designerCopyrights) {
       var copyright = new Copyright();
-      copyright.setCopyrightContent(designerCopyright.getCopyrightContent());
       copyright.setLanguage(designerCopyright.getLanguage());
+      copyright.setCopyrightContent(designerCopyright.getContent());
       copyrightList.add(copyright);
     }
 
