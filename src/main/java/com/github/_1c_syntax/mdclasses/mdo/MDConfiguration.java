@@ -162,7 +162,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children = designerMDO.getChildObjects().getChildren();
   }
 
-  private List<Copyright> createCopyrights(List<DesignerCopyright> designerCopyrights) {
+  private List<Copyright> createCopyrights(List<DesignerContentItem> designerCopyrights) {
 
     if (designerCopyrights.isEmpty()) {
       return Collections.emptyList();
@@ -171,8 +171,8 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     List<Copyright> copyrightList = new ArrayList<>();
     for (var designerCopyright : designerCopyrights) {
       var copyright = new Copyright();
-      copyright.setCopyrightContent(designerCopyright.getCopyrightContent());
       copyright.setLanguage(designerCopyright.getLanguage());
+      copyright.setCopyrightContent(designerCopyright.getContent());
       copyrightList.add(copyright);
     }
 

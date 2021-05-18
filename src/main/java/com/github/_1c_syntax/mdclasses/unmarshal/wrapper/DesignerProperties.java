@@ -47,7 +47,7 @@ public class DesignerProperties {
   @XStreamAlias("Name")
   private String name;
   @XStreamAlias("Synonym")
-  private List<DesignerSynonym> synonyms = Collections.emptyList();
+  private List<DesignerContentItem> synonyms = Collections.emptyList();
   @XStreamAlias("Comment")
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
@@ -126,7 +126,7 @@ public class DesignerProperties {
   private boolean useOrdinaryFormInManagedApplication;
 
   @XStreamAlias("Copyright")
-  private List<DesignerCopyright> copyrights = Collections.emptyList();
+  private List<DesignerContentItem> copyrights = Collections.emptyList();
 
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;

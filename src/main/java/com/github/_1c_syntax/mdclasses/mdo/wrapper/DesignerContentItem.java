@@ -19,9 +19,18 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
-
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
-public class DesignerSynonym extends DesignerContentItem {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@XStreamAlias("item")
+public class DesignerContentItem {
+    @XStreamAlias("lang")
+    private String language = "";
+    @XStreamAlias("content")
+    private String content = "";
 }

@@ -21,16 +21,5 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.wrapper;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@XStreamAlias("item")
-public class DesignerCopyright {
-    @XStreamAlias("lang")
-    private String language = "";
-    @XStreamAlias("content")
-    private String copyrightContent = "";
+public class DesignerCopyright extends DesignerContentItem {
 }
