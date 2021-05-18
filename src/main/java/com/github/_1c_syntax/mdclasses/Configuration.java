@@ -28,6 +28,7 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
+import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
@@ -172,6 +173,10 @@ public class Configuration {
    * Корневой каталог конфигурации
    */
   private Path rootPath;
+  /**
+   * Роли
+   */
+  private List<MDRole> roles;
 
   protected Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
@@ -184,6 +189,7 @@ public class Configuration {
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
+    roles = Collections.emptyList();
 
     rootPath = null;
     name = "";
@@ -208,13 +214,15 @@ public class Configuration {
     childrenByMdoRef = new HashMap<>();
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
+    roles = new ArrayList<>();
     children.forEach((AbstractMDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof MDCommonModule) {
         this.commonModules.put(mdo.getName(), (MDCommonModule) mdo);
-      }
-      if (mdo instanceof MDLanguage) {
+      } else if (mdo instanceof MDLanguage) {
         this.languages.put(((MDLanguage) mdo).getLanguageCode(), (MDLanguage) mdo);
+      } else if (mdo instanceof MDRole) {
+        this.roles.add((MDRole) mdo);
       }
     });
 
@@ -298,7 +306,7 @@ public class Configuration {
    * @param rootPath - Адрес корневого каталога конфигурации
    */
   public static Configuration create(Path rootPath) {
-    var configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
+    ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
     if (configurationSource != ConfigurationSource.EMPTY) {
       var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
       if (configurationMDO.isPresent()) {
