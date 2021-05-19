@@ -47,13 +47,13 @@ public class XdtoProperty {
    * Минимальное количество атрибутов (для множественных)
    */
   @XStreamAsAttribute
-  private int lowerBound = 0;
+  private int lowerBound;
 
   /**
    * Максимальное количество атрибутов (для множественных)
    */
   @XStreamAsAttribute
-  private int upperBound = 0;
+  private int upperBound;
 
   /**
    * Возможность принимать NULL

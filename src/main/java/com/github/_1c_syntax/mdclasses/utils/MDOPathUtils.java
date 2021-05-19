@@ -23,7 +23,6 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDXdtoPackage;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -243,7 +242,7 @@ public class MDOPathUtils {
    * @param xdto - xdto пакет
    * @return - путь к файлу схемы
    */
-  public static Path getPackageDataPath(MDXdtoPackage xdto) {
+  public static Path getPackageDataPath(AbstractMDObjectBase xdto) {
     var currentPath = xdto.getPath().getParent();
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(xdto.getPath());
