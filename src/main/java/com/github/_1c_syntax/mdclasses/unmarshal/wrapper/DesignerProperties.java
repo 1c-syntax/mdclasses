@@ -121,4 +121,7 @@ public class DesignerProperties {
   @XStreamAlias("TemplateType")
   private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
 
+  @XStreamAlias("Namespace")
+  private String namespace;
+
 }
