@@ -346,6 +346,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter<>(UseMode.class));
     xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter<>(MessageDirection.class));
     xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
     xStream.registerConverter(new EnumConverter<>(TemplateType.class));
