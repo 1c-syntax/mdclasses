@@ -29,34 +29,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MDScheduledJobAttributesTest extends AbstractMDOTest {
 
-    MDScheduledJobAttributesTest() {
-        super(MDOType.SCHEDULED_JOB);
-    }
+  MDScheduledJobAttributesTest() {
+    super(MDOType.SCHEDULED_JOB);
+  }
 
-    @Override
-    @Test
-    void testEDT() {
-        var mdo = (MDScheduledJob) getMDObjectEDT("ScheduledJobs/РегламентноеЗадание1/РегламентноеЗадание1.mdo");
-        Handler handler = mdo.getHandler();
-        assertThat(handler.getMethodName()).isNotBlank();
-        assertThat(handler.getMethodPath()).isNotBlank();
-        assertThat(handler.getModuleName()).isNotBlank();
+  @Override
+  @Test
+  void testEDT() {
+    var mdo = (MDScheduledJob) getMDObjectEDT("ScheduledJobs/РегламентноеЗадание1/РегламентноеЗадание1.mdo");
+    Handler handler = mdo.getHandler();
+    assertThat(handler.getMethodName()).isNotBlank();
+    assertThat(handler.getMethodPath()).isNotBlank();
+    assertThat(handler.getModuleName()).isNotBlank();
 
-        assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
-        assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
-        assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
-    }
+    assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
+    assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
+    assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
+  }
 
-    @Override
-    void testDesigner() {
-        var mdo = (MDScheduledJob) getMDObjectDesigner("ScheduledJobs/РегламентноеЗадание1.xml");
-        Handler handler = mdo.getHandler();
-        assertThat(handler.getMethodName()).isNotBlank();
-        assertThat(handler.getMethodPath()).isNotBlank();
-        assertThat(handler.getModuleName()).isNotBlank();
+  @Override
+  void testDesigner() {
+    var mdo = (MDScheduledJob) getMDObjectDesigner("ScheduledJobs/РегламентноеЗадание1.xml");
+    Handler handler = mdo.getHandler();
+    assertThat(handler.getMethodName()).isNotBlank();
+    assertThat(handler.getMethodPath()).isNotBlank();
+    assertThat(handler.getModuleName()).isNotBlank();
 
-        assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
-        assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
-        assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
-    }
+    assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
+    assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
+    assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
+  }
 }

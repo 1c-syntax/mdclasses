@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.metadata.additional;
+package com.github._1c_syntax.mdclasses.mdo.support;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
@@ -28,8 +28,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Copyright {
-    @XStreamAlias("key")
-    private String language = "";
-    @XStreamAlias("value")
-    private String copyrightContent = "";
+  @XStreamAlias("key")
+  private String language = "";
+  @XStreamAlias("value")
+  private String copyrightContent = "";
 }

@@ -30,6 +30,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;

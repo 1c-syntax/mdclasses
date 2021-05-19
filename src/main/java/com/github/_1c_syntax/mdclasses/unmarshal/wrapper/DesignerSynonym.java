@@ -21,7 +21,5 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
-package com.github._1c_syntax.mdclasses.mdo.wrapper;
-
 public class DesignerSynonym extends DesignerContentItem {
 }
