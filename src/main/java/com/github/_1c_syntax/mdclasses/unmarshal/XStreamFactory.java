@@ -40,6 +40,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;

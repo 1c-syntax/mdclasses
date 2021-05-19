@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -33,46 +32,46 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BotTest extends AbstractMDOTest {
 
-    BotTest() {
-        super(MDOType.BOT);
-    }
+  BotTest() {
+    super(MDOType.BOT);
+  }
 
-    @Override
-    @Test
-    void testEDT() {
-        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.EDT, MDOType.BOT,
-                Paths.get("src/test/resources/metadata/edt_3_18/src", "Bots/Бот1/Бот1.mdo"));
+  @Override
+  @Test
+  void testEDT() {
+    var mdoOpt = MDOFactory.readMDObject(
+      Paths.get("src/test/resources/metadata/edt_3_18/src", "Bots/Бот1/Бот1.mdo"));
 
-        assertThat(mdoOpt).isPresent();
+    assertThat(mdoOpt).isPresent();
 
-        var mdo = mdoOpt.get();
-        checkBaseField(mdo, Bot.class, "Бот1",
-                "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
+    var mdo = mdoOpt.get();
+    checkBaseField(mdo, MDBot.class, "Бот1",
+      "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
 
-        checkNoChildren(mdo);
-        checkModules(((MDObjectBSL) mdo).getModules(), 1,
-                "Bots/Бот1", ModuleType.BotModule);
-        var bot = (Bot) mdo;
-        assertThat(bot.isPredefined()).isTrue();
-    }
+    checkNoChildren(mdo);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
+      "Bots/Бот1", ModuleType.BotModule);
+    var bot = (MDBot) mdo;
+    assertThat(bot.isPredefined()).isTrue();
+  }
 
-    @Override
-    @Test
-    void testDesigner() {
-        var mdoOpt = MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.BOT,
-                Paths.get("src/test/resources/metadata/original_3_18", "Bots/Бот1.xml"));
+  @Override
+  @Test
+  void testDesigner() {
+    var mdoOpt = MDOFactory.readMDObject(
+      Paths.get("src/test/resources/metadata/original_3_18", "Bots/Бот1.xml"));
 
-        assertThat(mdoOpt).isPresent();
+    assertThat(mdoOpt).isPresent();
 
-        var mdo = mdoOpt.get();
+    var mdo = mdoOpt.get();
 
-        checkBaseField(mdo, Bot.class, "Бот1",
-                "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
+    checkBaseField(mdo, MDBot.class, "Бот1",
+      "89c58e6a-00ee-49b9-8717-d1dd272f9b96");
 
-        checkNoChildren(mdo);
-        checkModules(((MDObjectBSL) mdo).getModules(), 1,
-                "Bots/Бот1", ModuleType.BotModule);
-        var bot = (Bot) mdo;
-        assertThat(bot.isPredefined()).isTrue();
-    }
+    checkNoChildren(mdo);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
+      "Bots/Бот1", ModuleType.BotModule);
+    var bot = (MDBot) mdo;
+    assertThat(bot.isPredefined()).isTrue();
+  }
 }

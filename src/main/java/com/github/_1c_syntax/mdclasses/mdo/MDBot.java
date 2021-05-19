@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,17 +33,19 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class Bot extends MDObjectBSL {
+@Metadata(
+  type = MDOType.BOT,
+  name = "Bot",
+  nameRu = "Бот",
+  groupName = "Bots",
+  groupNameRu = "Боты"
+)
+public class MDBot extends AbstractMDObjectBSL {
 
-    private boolean predefined;
+  private boolean predefined;
 
-    public Bot(DesignerMDO designerMDO) {
-        super(designerMDO);
-        predefined = designerMDO.getProperties().isPredefined();
-    }
-
-    @Override
-    public MDOType getType() {
-        return MDOType.BOT;
-    }
+  public MDBot(DesignerMDO designerMDO) {
+    super(designerMDO);
+    predefined = designerMDO.getProperties().isPredefined();
+  }
 }

@@ -19,20 +19,20 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.metadata.additional;
+package com.github._1c_syntax.mdclasses.mdo.support;
 
 public enum MessageDirection implements EnumWithValue {
-    SEND("Send"),
-    RECEIVE("Receive");
+  SEND("Send"),
+  RECEIVE("Receive");
 
-    private final String value;
+  private final String value;
 
-    MessageDirection(String value) {
-        this.value = value;
-    }
+  MessageDirection(String value) {
+    this.value = value;
+  }
 
-    @Override
-    public String value() {
-        return this.value;
-    }
+  @Override
+  public String value() {
+    return this.value;
+  }
 }
