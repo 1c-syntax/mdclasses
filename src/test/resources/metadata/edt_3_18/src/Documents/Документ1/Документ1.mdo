@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4f287f85-6a15-4766-a289-f0566cfad0b8">
+  <producedTypes>
+    <objectType typeId="74e71e7a-60e4-440c-bd5d-3018ffbd353a" valueTypeId="0600d8da-b26e-4e1f-837d-a121f268e1a7"/>
+    <refType typeId="dab60519-64fe-48d4-bb9f-4a1a64b512b1" valueTypeId="cbbee88a-3be9-4079-a2a5-cf3ddb05f085"/>
+    <selectionType typeId="daaa7049-a3e0-4333-86d9-7d3dc424344b" valueTypeId="b8e05ac4-c43e-4132-8cc7-07ffb828537c"/>
+    <listType typeId="5b05a90f-226c-47de-8ef2-1b2dbdaa1383" valueTypeId="a9489bb1-7578-474f-9092-98f67262c21e"/>
+    <managerType typeId="874feacf-5bdb-4db8-8172-f6d3ddf16543" valueTypeId="94edd1b2-f395-44ef-9adb-92381f7d737b"/>
+  </producedTypes>
+  <name>Документ1</name>
+  <synonym>
+    <key>ru</key>
+    <value>Документ</value>
+  </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Document</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.Документ1.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <numberType>String</numberType>
+  <numberLength>9</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.Документ1.Form.ФормаДокумента</defaultObjectForm>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="446eb478-5c22-4841-ae62-e7c0fa7ad70d">
+    <name>Реквизит1</name>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="61eb6a8f-8e42-42ef-9c4b-e0922137860a">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="7d350b9a-5874-464e-81ce-2e058b361a40">
+    <producedTypes>
+      <objectType typeId="bc4707a0-88ab-4b8a-abf9-d274716fa0c9" valueTypeId="42733363-c967-4169-a3dc-1f33398bff62"/>
+      <rowType typeId="769fa706-5a52-422d-8d66-a9328cca041d" valueTypeId="5eff575c-cd3d-4b1c-a7ab-016cdb8f11de"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть1</name>
+    <attributes uuid="bfc15ba8-4dfc-4680-b4e6-86754baf51ce">
+      <name>Реквизит1</name>
+      <type>
+        <types>DocumentRef.Документ1</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

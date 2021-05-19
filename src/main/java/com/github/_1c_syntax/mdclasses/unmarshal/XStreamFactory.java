@@ -40,6 +40,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
@@ -346,6 +347,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter<>(UseMode.class));
     xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
+    xStream.registerConverter(new EnumConverter<>(MessageDirection.class));
     xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
     xStream.registerConverter(new EnumConverter<>(TemplateType.class));

@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
@@ -51,6 +52,18 @@ public class DesignerProperties {
   private String comment = "";
   @XStreamAlias("ObjectBelonging")
   protected ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @XStreamAlias("Predefined")
+  private boolean predefined;
+
+  @XStreamAlias("ExternalIntegrationServiceAddress")
+  private String externalIntegrationServiceAddress = "";
+  @XStreamAlias("MessageDirection")
+  private MessageDirection messageDirection = MessageDirection.SEND;
+  @XStreamAlias("ReceiveMessageProcessing")
+  private String receiveMessageProcessing = "";
+  @XStreamAlias("ExternalIntegrationServiceChannelName")
+  private String externalIntegrationServiceChannelName = "";
 
   @XStreamAlias("Server")
   private boolean server;
