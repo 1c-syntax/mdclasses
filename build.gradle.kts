@@ -126,6 +126,49 @@ license {
     exclude("**/*.orig")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifact(tasks["jar"])
+
+            pom {
+                description.set("Metadata read/write library for Language 1C (BSL)")
+                url.set("https://github.com/1c-syntax/mdclasses")
+                licenses {
+                    license {
+                        name.set("GNU LGPL 3")
+                        url.set("https://www.gnu.org/licenses/lgpl-3.0.txt")
+                        distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("otymko")
+                        name.set("Oleg Tymko")
+                        email.set("olegtymko@yandex.ru")
+                        url.set("https://github.com/otymko")
+                        organization.set("1c-syntax")
+                        organizationUrl.set("https://github.com/1c-syntax")
+                    }
+                    developer {
+                        id.set("theshadowco")
+                        name.set("Valery Maximov")
+                        email.set("maximovvalery@gmail.com")
+                        url.set("https://github.com/theshadowco")
+                        organization.set("1c-syntax")
+                        organizationUrl.set("https://github.com/1c-syntax")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/1c-syntax/mdclasses.git")
+                    developerConnection.set("scm:git:git@github.com:1c-syntax/mdclasses.git")
+                    url.set("https://github.com/1c-syntax/mdclasses")
+                }
+            }
+        }
+    }
+}
+
 tasks.register("precommit") {
     description = "Run all precommit tasks"
     group = "Developer tools"
