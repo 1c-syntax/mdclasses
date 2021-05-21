@@ -139,8 +139,7 @@ license {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifact(tasks["jar"])
-
+            from(components["java"])
             pom {
                 description.set("Metadata read/write library for Language 1C (BSL)")
                 url.set("https://github.com/1c-syntax/mdclasses")
