@@ -71,7 +71,7 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   @Override
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
-    attributes.parallelStream().forEach(child -> child.supplement(this));
+    attributes.forEach(child -> child.supplement(this));
   }
 
   @Override

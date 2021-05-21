@@ -73,7 +73,7 @@ public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren
   @Override
   public void supplement() {
     super.supplement();
-    urlTemplates.parallelStream().forEach(child -> child.supplement(this));
+    urlTemplates.forEach(child -> child.supplement(this));
   }
 
   @Override
