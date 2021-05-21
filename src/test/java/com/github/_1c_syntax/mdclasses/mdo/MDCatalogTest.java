@@ -62,8 +62,8 @@ class MDCatalogTest extends AbstractMDOTest {
     var mdo = getMDObjectDesigner("Catalogs/Справочник1.xml");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
-    checkForms(mdo, 4, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора"
-      , "ФормаЭлементаОбычная");
+    checkForms(mdo, 4, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора",
+      "ФормаЭлементаОбычная");
     checkTemplates(mdo, 2, "Catalog.Справочник1", "Макет", "Макет2");
     checkCommands(mdo, 1, "Catalog.Справочник1", "Команда1");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, "Catalog.Справочник1",
