@@ -19,12 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.support;
 
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+/**
+ * Тип формы (обычная или управляемая)
+ */
+public enum FormType implements EnumWithValue {
+  ORDINARY("Ordinary"),
+  MANAGED("Managed");
 
-public interface MDOForm {
-  FormData getData();
+  private final String value;
 
-  void setData(FormData formData);
+  FormType(String value) {
+    this.value = value;
+  }
+
+  @Override
+  public String value() {
+    return this.value;
+  }
 }

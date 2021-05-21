@@ -21,9 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MDCommonFormTest extends AbstractMDOTest {
   MDCommonFormTest() {
@@ -36,6 +39,7 @@ class MDCommonFormTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("CommonForms/Форма/Форма.mdo");
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
+    assertThat(((AbstractMDOForm) mdo).getFormType()).isEqualTo(FormType.MANAGED);
     checkNoChildren(mdo);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonForms/Форма", ModuleType.FormModule);
@@ -47,6 +51,7 @@ class MDCommonFormTest extends AbstractMDOTest {
     var mdo = getMDObjectDesigner("CommonForms/Форма.xml");
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
+    assertThat(((AbstractMDOForm) mdo).getFormType()).isEqualTo(FormType.MANAGED);
     checkNoChildren(mdo);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1,
       "CommonForms/Форма", ModuleType.FormModule);

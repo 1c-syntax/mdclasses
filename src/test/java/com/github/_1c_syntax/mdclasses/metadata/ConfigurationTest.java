@@ -25,9 +25,9 @@ import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
-import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
@@ -317,14 +317,14 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(17);
-    assertThat(configuration.getModules()).hasSize(17);
+    assertThat(configuration.getModules()).hasSize(18);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
 
-    assertThat(configuration.getChildren()).hasSize(110);
+    assertThat(configuration.getChildren()).hasSize(111);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
-    checkChildCount(configuration, MDOType.FORM, 7);
+    checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 33);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
@@ -604,7 +604,7 @@ class ConfigurationTest {
   private void checkFormData(Set<AbstractMDObjectBase> child) {
     var elements = child.parallelStream()
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof MDCommonForm)
-      .filter(mdObjectBase -> ((MDOForm) mdObjectBase).getData() == null)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getData() == null)
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();
   }

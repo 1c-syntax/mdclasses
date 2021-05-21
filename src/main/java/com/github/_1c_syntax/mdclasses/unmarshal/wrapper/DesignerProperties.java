@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
@@ -133,5 +134,7 @@ public class DesignerProperties {
 
   @XStreamAlias("TemplateType")
   private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
+  @XStreamAlias("FormType")
+  private FormType formType = FormType.ORDINARY;
 
 }
