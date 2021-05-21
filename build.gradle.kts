@@ -8,6 +8,8 @@ plugins {
     id("net.kyori.indra.license-header") version "1.3.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("io.freefair.lombok") version "6.0.0-m2"
+    id("io.freefair.javadoc-links") version "6.0.0-m2"
+    id("io.freefair.javadoc-utf-8") version "6.0.0-m2"
     id("org.sonarqube") version "3.2.0"
 }
 
@@ -60,6 +62,8 @@ configure<JavaPluginConvention> {
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
 }
 
 sourceSets {
@@ -107,6 +111,12 @@ sonarqube {
         property("sonar.exclusions", "**/gen/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
+}
+
+artifacts {
+    archives(tasks["jar"])
+    archives(tasks["sourcesJar"])
+    archives(tasks["javadocJar"])
 }
 
 license {
