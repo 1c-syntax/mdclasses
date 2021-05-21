@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.mdo.AccountingRegister;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDAccountingRegister;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.converters.ConversionException;
 import org.junit.jupiter.api.Test;
@@ -42,24 +40,24 @@ class XStreamFactoryTest {
 
   @Test
   void test() {
-    var mdo = MDOFactory.readMDObject(ConfigurationSource.EDT, MDOType.ACCOUNTING_REGISTER, getMDOPathEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo"));
+    var mdo = MDOFactory.readMDObject(getMDOPathEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo"));
     assertThat(mdo)
       .isPresent()
-      .containsInstanceOf(AccountingRegister.class)
-      .map(MDObjectBase::getName)
+      .containsInstanceOf(MDAccountingRegister.class)
+      .map(AbstractMDObjectBase::getName)
       .contains("РегистрБухгалтерии1");
     assertThat(mdo)
-      .map(MDObjectBase::getUuid)
+      .map(AbstractMDObjectBase::getUuid)
       .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
 
-    var mdo2 = MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.ACCOUNTING_REGISTER, getMDOPathDesigner("AccountingRegisters/РегистрБухгалтерии1.xml"));
+    var mdo2 = MDOFactory.readMDObject(getMDOPathDesigner("AccountingRegisters/РегистрБухгалтерии1.xml"));
     assertThat(mdo2)
       .isPresent()
-      .containsInstanceOf(AccountingRegister.class)
-      .map(MDObjectBase::getName)
+      .containsInstanceOf(MDAccountingRegister.class)
+      .map(AbstractMDObjectBase::getName)
       .contains("РегистрБухгалтерии1");
     assertThat(mdo2)
-      .map(MDObjectBase::getUuid)
+      .map(AbstractMDObjectBase::getUuid)
       .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
 
     assertThat(mdo).isEqualTo(mdo2);
@@ -68,8 +66,7 @@ class XStreamFactoryTest {
   @Test
   void testBrokenXml() {
     assertThrows(ConversionException.class, () -> {
-      MDOFactory.readMDObject(ConfigurationSource.DESIGNER, MDOType.CONFIGURATION,
-        Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
+      MDOFactory.readMDObject(Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
     });
   }
 

@@ -21,20 +21,22 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
-import com.github._1c_syntax.mdclasses.mdo.CommonForm;
-import com.github._1c_syntax.mdclasses.mdo.Form;
+import com.github._1c_syntax.mdclasses.Configuration;
+import com.github._1c_syntax.mdclasses.ConfigurationExtension;
+import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
 import com.github._1c_syntax.mdclasses.mdo.MDOForm;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.metadata.additional.ApplicationRunMode;
-import com.github._1c_syntax.mdclasses.metadata.additional.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.metadata.additional.ScriptVariant;
-import com.github._1c_syntax.mdclasses.metadata.additional.UseMode;
+import com.github._1c_syntax.mdclasses.mdo.children.Form;
+import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
+import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
@@ -590,18 +592,18 @@ class ConfigurationTest {
     var configuration = Configuration.create(srcPath.toPath());
   }
 
-  private void checkFillPath(Set<MDObjectBase> child) {
+  private void checkFillPath(Set<AbstractMDObjectBase> child) {
     var elements = child.parallelStream()
-      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof MDCommonForm)
       .filter(mdObjectBase -> mdObjectBase.getPath() == null)
       .filter(mdObjectBase -> !mdObjectBase.getPath().toFile().exists())
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();
   }
 
-  private void checkFormData(Set<MDObjectBase> child) {
+  private void checkFormData(Set<AbstractMDObjectBase> child) {
     var elements = child.parallelStream()
-      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof CommonForm)
+      .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof MDCommonForm)
       .filter(mdObjectBase -> ((MDOForm) mdObjectBase).getData() == null)
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();

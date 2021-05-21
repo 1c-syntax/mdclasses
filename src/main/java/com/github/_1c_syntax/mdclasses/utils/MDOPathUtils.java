@@ -21,11 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.mdo.CommonForm;
-import com.github._1c_syntax.mdclasses.mdo.MDObjectBase;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FilenameUtils;
 
@@ -47,7 +46,7 @@ public class MDOPathUtils {
    * Расширение MDO файла с учетом типа исходников
    */
   public String mdoExtension(ConfigurationSource configurationSource, boolean withDot) {
-    String dot = ".";
+    var dot = ".";
     if (!withDot) {
       dot = "";
     }
@@ -96,7 +95,8 @@ public class MDOPathUtils {
   /**
    * Получает каталог проекта по файлу описания конфигурации
    */
-  public Optional<Path> getRootPathByConfigurationMDO(ConfigurationSource configurationSource, Path mdoPath) {
+  public Optional<Path> getRootPathByConfigurationMDO(Path mdoPath) {
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = Paths.get(FilenameUtils.getFullPathNoEndSeparator(
@@ -129,7 +129,8 @@ public class MDOPathUtils {
    * Получает каталог типа объекта метаданных относительно корня проекта с учетом указанном типа исходников
    * по описанию объекта метаданных
    */
-  public Optional<Path> getMDOTypeFolderByMDOPath(ConfigurationSource configurationSource, Path mdoPath, MDOType type) {
+  public Optional<Path> getMDOTypeFolderByMDOPath(Path mdoPath, MDOType type) {
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
     Optional<Path> result;
     if (type == MDOType.CONFIGURATION) {
       // для конфигурации один уровень, а не 2
@@ -194,67 +195,45 @@ public class MDOPathUtils {
   /**
    * Возвращает путь к файлу описания данных формы
    *
-   * @param source   - формат исходных файлов
-   * @param mdo      - базовый объект
-   * @param basePath - базовый каталог объекта
-   * @param formName - имя формы
+   * @param form - Форма
    * @return - путь к файлу описания
    */
-  public Path getFormDataPath(ConfigurationSource source, MDObjectBase mdo, String basePath, String formName) {
-    Path path;
-    var currentPath = Path.of(basePath);
-    if (!(mdo instanceof CommonForm)) {
-      if (source == ConfigurationSource.EDT) {
-        currentPath = Paths.get(basePath, MDOType.FORM.getGroupName(), formName);
+  public Path getFormDataPath(AbstractMDObjectBase form) {
+    var currentPath = form.getPath().getParent();
+    var basePath = currentPath.toString();
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(form.getPath());
+    if (configurationSource == ConfigurationSource.EDT) {
+      if (form.getType() == MDOType.COMMON_FORM) {
+        currentPath = Path.of(basePath, "Form.form");
       } else {
-        currentPath = Paths.get(basePath, mdo.getName(), MDOType.FORM.getGroupName());
+        currentPath = Path.of(basePath, MDOType.FORM.getGroupName(), form.getName(), "Form.form");
       }
-    }
-    if (source == ConfigurationSource.EDT) {
-      path = Path.of(currentPath.toString(), "Form.form");
     } else {
-      path = Path.of(currentPath.toString(), formName, "Ext", "Form.xml");
+      currentPath = Path.of(currentPath.toString(), form.getName(), "Ext", "Form.xml");
     }
-    return path;
+    return currentPath;
   }
 
   /**
-   * Возвращает путь к файлу описания формы
+   * Возвращает путь к файлу описания данных макета
    *
-   * @param source   - формат исходных файлов
-   * @param basePath - базовый каталог объекта
-   * @param mdoName  - имя объекта
-   * @param formName - имя формы
+   * @param template - Макет
    * @return - путь к файлу описания
    */
-  public Path getPathToForm(ConfigurationSource source, String basePath, String mdoName, String formName) {
-    Path path;
-    if (source == ConfigurationSource.EDT) {
-      path = Path.of(basePath, MDOType.FORM.getGroupName(), formName, "Form.form");
-    } else {
-      path = Path.of(basePath, mdoName, MDOType.FORM.getGroupName(), formName + "." + EXTENSION_XML);
-    }
-    return path;
-  }
-
-  public Path getPathToTemplate(ConfigurationSource source, MDObjectBase mdo, String basePath, String mdoName, String name) {
-    Path path;
-    if (source == ConfigurationSource.EDT) {
-      if (mdo.getType() == MDOType.COMMON_TEMPLATE) {
-        path = Path.of(basePath, "Template.dcs");
+  public Path getTemplateDataPath(AbstractMDObjectBase template) {
+    var currentPath = template.getPath().getParent();
+    var basePath = currentPath.toString();
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(template.getPath());
+    if (configurationSource == ConfigurationSource.EDT) {
+      if (template.getType() == MDOType.COMMON_TEMPLATE) {
+        currentPath = Path.of(basePath, "Template.dcs");
       } else {
-        path = Path.of(basePath, "Templates", name, "Template.dcs");
+        currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), template.getName(), "Template.dcs");
       }
     } else {
-      // src/test/resources/metadata/skd/original/CommonTemplates/МакетСКД/Ext/Template.xml
-      // src/test/resources/metadata/skd/original/Reports/Отчет1/Templates/СКД/Ext/Template.xml
-      if (mdo.getType() == MDOType.COMMON_TEMPLATE) {
-        path = Paths.get(basePath, name, "Ext", "Template.xml");
-      } else {
-        path = Paths.get(basePath, mdoName, "Templates", name, "Ext", "Template.xml");
-      }
+      currentPath = Paths.get(basePath, template.getName(), "Ext", "Template.xml");
     }
-    return path;
+    return currentPath;
   }
 
   // Формат EDT

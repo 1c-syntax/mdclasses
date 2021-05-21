@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.metadata.additional.MDOType;
-import com.github._1c_syntax.mdclasses.metadata.additional.ModuleType;
+import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
 
 import java.io.File;
@@ -38,15 +38,16 @@ import java.util.Set;
 public class MDOUtils {
 
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
+
   /**
    * Определяет тип исходников по корню проекта
    */
   public ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
-    ConfigurationSource configurationSource = ConfigurationSource.EMPTY;
+    var configurationSource = ConfigurationSource.EMPTY;
     if (rootPath != null) {
-      String rootPathString = rootPath.toString();
+      var rootPathString = rootPath.toString();
 
-      File rootConfiguration = new File(rootPathString, "Configuration.xml");
+      var rootConfiguration = new File(rootPathString, "Configuration.xml");
       if (rootConfiguration.exists()) {
         configurationSource = ConfigurationSource.DESIGNER;
       } else {
@@ -58,6 +59,17 @@ public class MDOUtils {
       }
     }
     return configurationSource;
+  }
+
+  /**
+   * Определяет тип исходников по MDO файлу
+   */
+  public ConfigurationSource getConfigurationSourceByMDOPath(Path path) {
+    if (path.toString().endsWith(MDOPathUtils.mdoExtension(ConfigurationSource.DESIGNER, true))) {
+      return ConfigurationSource.DESIGNER;
+    } else {
+      return ConfigurationSource.EDT;
+    }
   }
 
   /**
@@ -73,6 +85,12 @@ public class MDOUtils {
     for (MDOType mdoType : MDOType.values()) {
       Set<ModuleType> types = new HashSet<>();
       switch (mdoType) {
+        case INTEGRATION_SERVICE:
+          types.add(ModuleType.IntegrationServiceModule);
+          break;
+        case BOT:
+          types.add(ModuleType.BotModule);
+          break;
         case ACCOUNTING_REGISTER:
         case ACCUMULATION_REGISTER:
         case CALCULATION_REGISTER:
