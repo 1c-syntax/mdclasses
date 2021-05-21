@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
@@ -314,9 +315,9 @@ class ConfigurationTest {
     assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
     assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
-    assertThat(configuration.getModulesByType()).hasSize(17);
+    assertThat(configuration.getModulesByType()).hasSize(18);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(17);
+    assertThat(configuration.getModulesByObject()).hasSize(18);
     assertThat(configuration.getModules()).hasSize(18);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
@@ -376,7 +377,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(110);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(111);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
@@ -604,6 +605,8 @@ class ConfigurationTest {
   private void checkFormData(Set<AbstractMDObjectBase> child) {
     var elements = child.parallelStream()
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof MDCommonForm)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getFormType() == FormType.MANAGED)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getData() == null)
       .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getData() == null)
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();
