@@ -306,7 +306,7 @@ public class Configuration {
    * @param rootPath - Адрес корневого каталога конфигурации
    */
   public static Configuration create(Path rootPath) {
-    ConfigurationSource configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
+    var configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
     if (configurationSource != ConfigurationSource.EMPTY) {
       var configurationMDO = MDOFactory.readMDOConfiguration(configurationSource, rootPath);
       if (configurationMDO.isPresent()) {
