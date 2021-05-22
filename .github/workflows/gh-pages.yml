@@ -74,11 +74,6 @@ jobs:
         rm -rf temp/docs/en
         cd temp
         mkdocs build
-
-    - name: Copy javadoc
-      run: |
-        cp -R build/docs/javadoc temp/site/javadoc
-        echo "" > temp/site/.nojekyll
  
     - name: Public Russian Master
       if: github.ref == 'refs/heads/master'
