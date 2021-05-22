@@ -24,9 +24,6 @@ jobs:
         java-version: 16
         distribution: 'adopt'
 
-    - name: Build javadoc
-      run: ./gradlew --no-daemon javadoc
-
     - name: Set up Python
       uses: actions/setup-python@v2.2.2
       with:
@@ -58,16 +55,6 @@ jobs:
         cp -R ${GITHUB_REPOSITORY#*/}-gh-pages/. public || true
         rm -rf public/dev || true
         mkdir public/dev
-
-    - name: Backup benchmark (master)
-      if: github.ref == 'refs/heads/master'
-      run: |
-        cp -R ${GITHUB_REPOSITORY#*/}-gh-pages/bench/. tmp-bench || true
-
-    - name: Backup benchmark (develop)
-      if: github.ref == 'refs/heads/develop'
-      run: |
-        cp -R ${GITHUB_REPOSITORY#*/}-gh-pages/dev/bench/. tmp-bench || true
             
     - name: Patch Develop
       if: github.ref == 'refs/heads/develop'
