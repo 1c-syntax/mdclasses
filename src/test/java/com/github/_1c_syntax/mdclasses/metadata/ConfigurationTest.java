@@ -331,7 +331,6 @@ class ConfigurationTest {
       .anyMatch(copyright -> copyright.getCopyrightContent().equals("My program")
         && copyright.getLanguage().equals("en"));
 
-    assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(18);
     assertThat(configuration.getModules()).hasSize(18);
