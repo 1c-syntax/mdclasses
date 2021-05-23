@@ -22,7 +22,10 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MDCommonAttributeTest extends AbstractMDOTest {
   MDCommonAttributeTest() {
@@ -37,6 +40,9 @@ class MDCommonAttributeTest extends AbstractMDOTest {
       "d4f0c0ac-ed26-4085-a1b4-e52314b973ad");
     checkNoChildren(mdo);
     checkNoModules(mdo);
+    var commonAttribute = (MDCommonAttribute) mdo;
+    assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
+    assertThat(commonAttribute.getDataSeparation()).isEqualTo(UseMode.DONT_USE);
   }
 
   @Override
@@ -47,6 +53,9 @@ class MDCommonAttributeTest extends AbstractMDOTest {
       "d4f0c0ac-ed26-4085-a1b4-e52314b973ad");
     checkNoChildren(mdo);
     checkNoModules(mdo);
+    var commonAttribute = (MDCommonAttribute) mdo;
+    assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
+    assertThat(commonAttribute.getDataSeparation()).isEqualTo(UseMode.DONT_USE);
   }
 
 }

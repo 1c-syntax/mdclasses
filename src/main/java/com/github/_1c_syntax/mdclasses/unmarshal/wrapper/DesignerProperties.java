@@ -32,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -143,4 +144,8 @@ public class DesignerProperties {
   @XStreamAlias("Namespace")
   private String namespace;
 
+  @XStreamAlias("AutoUse")
+  private UseMode autoUse = UseMode.DONT_USE;
+  @XStreamAlias("DataSeparation")
+  private UseMode dataSeparation = UseMode.DONT_USE;
 }

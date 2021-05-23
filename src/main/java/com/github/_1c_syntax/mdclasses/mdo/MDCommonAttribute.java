@@ -23,13 +23,14 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
@@ -41,7 +42,25 @@ import lombok.Value;
   groupNameRu = "ОбщиеРеквизиты"
 )
 public class MDCommonAttribute extends AbstractMDObjectBase {
+
+  /**
+   * Признак автоиспользования общего реквизита
+   */
+  private UseMode autoUse = UseMode.DONT_USE;
+  /**
+   * Признак использования общего реквизита как разделителя данных
+   */
+  private UseMode dataSeparation = UseMode.DONT_USE;
+
   public MDCommonAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
+    autoUse = designerMDO.getProperties().getAutoUse();
+    dataSeparation = designerMDO.getProperties().getDataSeparation();
+  }
+
+  @Override
+  public void supplement() {
+    super.supplement();
+
   }
 }
