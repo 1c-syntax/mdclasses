@@ -21,18 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.nio.file.Path;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -45,29 +40,9 @@ import java.nio.file.Path;
   groupName = "CommonForms",
   groupNameRu = "ОбщиеФормы"
 )
-public class MDCommonForm extends AbstractMDObjectBSL implements MDOForm {
-  /**
-   * Данные формы. Читается из отдельного файла
-   * и предоставляет информацию о:
-   * + список элементов формы
-   * + список обработчиков формы
-   * + список реквизитов формы
-   */
-  private FormData data;
-
-  /**
-   * Путь к файлу с данными формы
-   */
-  private Path formDataPath;
-
+public class MDCommonForm extends AbstractMDOForm {
   public MDCommonForm(DesignerMDO designerMDO) {
     super(designerMDO);
   }
 
-  @Override
-  public void supplement() {
-    super.supplement();
-    formDataPath = MDOPathUtils.getFormDataPath(this);
-    MDOFactory.readFormData(formDataPath).ifPresent(this::setData);
-  }
 }

@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
+import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import org.junit.jupiter.api.Test;
@@ -61,7 +62,8 @@ class MDCatalogTest extends AbstractMDOTest {
     var mdo = getMDObjectDesigner("Catalogs/Справочник1.xml");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
-    checkForms(mdo, 3, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора");
+    checkForms(mdo, 4, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора",
+      "ФормаЭлементаОбычная");
     checkTemplates(mdo, 2, "Catalog.Справочник1", "Макет", "Макет2");
     checkCommands(mdo, 1, "Catalog.Справочник1", "Команда1");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, "Catalog.Справочник1",
@@ -72,6 +74,10 @@ class MDCatalogTest extends AbstractMDOTest {
     checkAttributes(tabularSection.getAttributes(), 2,
       "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+
+    var catalog = (MDCatalog) mdo;
+    assertThat(catalog.getForms())
+      .anyMatch(form -> form.getFormType() == FormType.ORDINARY);
   }
 
 }
