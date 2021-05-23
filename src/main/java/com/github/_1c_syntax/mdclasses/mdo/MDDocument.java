@@ -31,6 +31,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -56,8 +57,13 @@ public class MDDocument extends AbstractMDObjectComplex {
   public MDDocument(DesignerMDO designerMDO) {
     super(designerMDO);
     // registerRecords
+    var designerRegisterRecords = new ArrayList<>(registerRecords);
+
     Optional.ofNullable(designerMDO.getProperties().getRegisterRecords())
       .map(DesignerXRItems::getItems)
-      .ifPresent(this::setRegisterRecords);
+      .ifPresent(metadataItems -> metadataItems
+        .forEach(item -> designerRegisterRecords.add(item.getValue())));
+
+    setRegisterRecords(designerRegisterRecords);
   }
 }

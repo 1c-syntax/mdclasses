@@ -72,7 +72,7 @@ public class MDSubsystem extends AbstractMDObjectBase {
     super(designerMDO);
     List<Either<String, AbstractMDObjectBase>> newChildren = new ArrayList<>();
     designerMDO.getProperties().getContent()
-      .getItems().forEach(item -> newChildren.add(Either.left(item)));
+      .getItems().forEach(item -> newChildren.add(Either.left(item.getValue())));
     includeInCommandInterface = designerMDO.getProperties().isIncludeInCommandInterface();
     newChildren.addAll(designerMDO.getChildObjects().getChildren());
     setChildren(newChildren);
