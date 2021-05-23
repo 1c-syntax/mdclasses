@@ -24,6 +24,9 @@ jobs:
         java-version: 16
         distribution: 'adopt'
 
+    - name: Build javadoc
+      run: ./gradlew --no-daemon javadoc
+
     - name: Set up Python
       uses: actions/setup-python@v2.2.2
       with:
