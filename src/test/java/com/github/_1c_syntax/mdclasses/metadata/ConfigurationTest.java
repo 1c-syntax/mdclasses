@@ -25,13 +25,14 @@ import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
-import com.github._1c_syntax.mdclasses.mdo.MDOForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
@@ -87,6 +88,7 @@ class ConfigurationTest {
     assertThat(configuration.getModules()).hasSize(38);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
+    assertThat(configuration.getRoles()).hasSize(1);
 
     assertThat(configuration.getChildren()).hasSize(105);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -189,6 +191,7 @@ class ConfigurationTest {
     assertThat(configuration.getModules()).hasSize(2);
     assertThat(configuration.getCommonModules()).hasSize(2);
     assertThat(configuration.getLanguages()).hasSize(1);
+    assertThat(configuration.getRoles()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(4);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 2);
@@ -229,6 +232,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByObject()).hasSize(9);
     assertThat(configuration.getCommonModules()).hasSize(9);
     assertThat(configuration.getLanguages()).hasSize(1);
+    assertThat(configuration.getRoles()).hasSize(2);
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -320,6 +324,7 @@ class ConfigurationTest {
     assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
     assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
+    assertThat(configuration.getModulesByType()).hasSize(18);
     assertThat(configuration.getCopyrights()).hasSize(2)
       .anyMatch(copyright -> copyright.getCopyrightContent().equals("Моя Программа")
         && copyright.getLanguage().equals("ru"))
@@ -328,15 +333,16 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(17);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(17);
-    assertThat(configuration.getModules()).hasSize(17);
+    assertThat(configuration.getModulesByObject()).hasSize(18);
+    assertThat(configuration.getModules()).hasSize(18);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
+    assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(110);
+    assertThat(configuration.getChildren()).hasSize(111);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
-    checkChildCount(configuration, MDOType.FORM, 7);
+    checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
     checkChildCount(configuration, MDOType.ATTRIBUTE, 33);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
@@ -388,7 +394,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(110);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(111);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
@@ -437,6 +443,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModules()).hasSize(9);
+    assertThat(configuration.getRoles()).hasSize(2);
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -531,6 +538,7 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(2);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModules()).hasSize(2);
+    assertThat(configuration.getRoles()).isEmpty();
 
     assertThat(configuration.getChildren()).hasSize(5);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
@@ -570,12 +578,14 @@ class ConfigurationTest {
     assertThat(configuration2).isNotNull();
     assertThat(configuration2.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
     assertThat(configuration2.getChildren()).isEmpty();
+    assertThat(configuration2.getRoles()).isEmpty();
 
     Configuration configuration3 = Configuration.createExtension();
 
     assertThat(configuration3).isNotNull();
     assertThat(configuration3.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
     assertThat(configuration3.getChildren()).isEmpty();
+    assertThat(configuration3.getRoles()).isEmpty();
     assertThat(((ConfigurationExtension) configuration3).getConfigurationExtensionPurpose())
       .isEqualTo(ConfigurationExtensionPurpose.UNDEFINED);
   }
@@ -616,7 +626,9 @@ class ConfigurationTest {
   private void checkFormData(Set<AbstractMDObjectBase> child) {
     var elements = child.parallelStream()
       .filter(mdObjectBase -> mdObjectBase instanceof Form || mdObjectBase instanceof MDCommonForm)
-      .filter(mdObjectBase -> ((MDOForm) mdObjectBase).getData() == null)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getFormType() == FormType.MANAGED)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getData() == null)
+      .filter(mdObjectBase -> ((AbstractMDOForm) mdObjectBase).getData() == null)
       .collect(Collectors.toList());
     assertThat(elements).isEmpty();
   }

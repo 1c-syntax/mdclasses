@@ -208,16 +208,16 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   public void supplement() {
     super.supplement();
 
-    forms.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
-    forms.parallelStream().forEach(child -> child.supplement(this));
+    forms.stream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    forms.forEach(child -> child.supplement(this));
 
-    templates.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
-    templates.parallelStream().forEach(child -> child.supplement(this));
+    templates.stream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    templates.forEach(child -> child.supplement(this));
 
-    commands.parallelStream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
-    commands.parallelStream().forEach(child -> child.supplement(this));
+    commands.stream().filter(child -> child.getPath() == null).forEach(child -> child.setPath(path));
+    commands.forEach(child -> child.supplement(this));
 
-    attributes.parallelStream().forEach(child -> child.supplement(this));
+    attributes.forEach(child -> child.supplement(this));
   }
 
   @SneakyThrows

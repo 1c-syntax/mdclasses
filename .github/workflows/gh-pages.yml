@@ -1,0 +1,129 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+    - master
+    - develop
+    paths:
+    - 'docs/**'
+    - 'src/main/java/**'
+    - 'mkdocs.yml'
+    - 'mkdocs.en.yml'
+    - '.github/workflows/gh-pages.yml'
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - name: Setup JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 16
+        distribution: 'adopt'
+
+    - name: Build javadoc
+      run: ./gradlew --no-daemon javadoc
+
+    - name: Set up Python
+      uses: actions/setup-python@v2.2.2
+      with:
+        python-version: '3.6'
+        architecture: 'x64'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install mkdocs mkdocs-material pygments-bsl
+    
+    - name: Dowload latest GitHub Pages
+      run: |
+        wget https://github.com/${{ github.repository }}/archive/gh-pages.zip || true
+        unzip gh-pages.zip || true
+        mkdir tmp-bench
+    
+    - name: Save latest Develop
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mkdir public
+        mkdir public/dev
+        cp -R ${GITHUB_REPOSITORY#*/}-gh-pages/dev/. public/dev || true
+        
+    - name: Save latest Master
+      if: github.ref == 'refs/heads/develop'
+      run: |
+        mkdir public
+        cp -R ${GITHUB_REPOSITORY#*/}-gh-pages/. public || true
+        rm -rf public/dev || true
+        mkdir public/dev
+            
+    - name: Patch Develop
+      if: github.ref == 'refs/heads/develop'
+      run: |         
+        sed -i "s%MDClasses%MDClasses Dev%g" mkdocs.yml
+        sed -i "s%MDClasses%MDClasses Dev%g" mkdocs.en.yml
+        sed -i "s%https://1c-syntax.github.io/mdclasses%https://1c-syntax.github.io/mdclasses/dev%g" mkdocs.yml
+        sed -i "s%https://1c-syntax.github.io/mdclasses%https://1c-syntax.github.io/mdclasses/dev%g" mkdocs.en.yml
+        sed -i "s%link: /mdclasses/%link: /mdclasses/dev/%g" mkdocs.yml
+        sed -i "s%link: /mdclasses/%link: /mdclasses/dev/%g" mkdocs.en.yml
+    
+    - name: Build Russian
+      run: |
+        mkdir temp
+        cp mkdocs.yml temp
+        cp -R docs/ru/. temp/docs
+        mkdir temp/docs/assets
+        cp -R docs/assets/. temp/docs/assets
+        rm -rf temp/docs/en
+        cd temp
+        mkdocs build
+
+    - name: Copy javadoc
+      run: |
+        cp -R build/docs/javadoc temp/site/javadoc
+        echo "" > temp/site/.nojekyll
+ 
+    - name: Public Russian Master
+      if: github.ref == 'refs/heads/master'
+      run: |
+        cp -R temp/site/. public
+    
+    - name: Public Russian Develop
+      if: github.ref == 'refs/heads/develop'
+      run: |
+        cp -R temp/site/. public/dev
+    
+    - name: Clean temp
+      run: rm -rf temp
+
+    - name: Build English
+      run: |
+        mkdir temp
+        cp mkdocs.en.yml temp/mkdocs.yml
+        mkdir temp/docs
+        cp -R docs/en/. temp/docs
+        mkdir temp/docs/assets
+        cp -R docs/assets/. temp/docs/assets
+        cd temp
+        mkdocs build
+        
+    - name: Public English Master
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mkdir public/en
+        cp -R temp/site/. public/en
+    
+    - name: Public English Develop
+      if: github.ref == 'refs/heads/develop'
+      run: |
+        mkdir public/dev/en
+        cp -R temp/site/. public/dev/en
+        
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_branch: gh-pages
+        publish_dir: ./public

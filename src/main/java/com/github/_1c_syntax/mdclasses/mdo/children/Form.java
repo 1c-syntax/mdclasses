@@ -21,21 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDOForm;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.nio.file.Path;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -48,29 +41,9 @@ import java.nio.file.Path;
   groupName = "Forms",
   groupNameRu = "Формы"
 )
-public class Form extends AbstractMDObjectBSL implements MDOForm {
-  /**
-   * Данные формы. Читается из отдельного файла
-   * и предоставляет информацию о:
-   * + список элементов формы
-   * + список обработчиков формы
-   * + список реквизитов формы
-   */
-  private FormData data;
-
-  /**
-   * Путь к файлу с данными формы
-   */
-  private Path formDataPath;
+public class Form extends AbstractMDOForm {
 
   public Form(DesignerMDO designerMDO) {
     super(designerMDO);
-  }
-
-  @Override
-  public void supplement(AbstractMDObjectBase parent) {
-    super.supplement(parent);
-    formDataPath = MDOPathUtils.getFormDataPath(this);
-    MDOFactory.readFormData(formDataPath).ifPresent(this::setData);
   }
 }

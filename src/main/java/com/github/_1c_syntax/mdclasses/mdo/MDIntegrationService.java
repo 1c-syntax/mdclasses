@@ -78,7 +78,7 @@ public class MDIntegrationService extends AbstractMDObjectBSL implements MDOHasC
   @Override
   public void supplement() {
     super.supplement();
-    integrationChannels.parallelStream().forEach(child -> child.supplement(this));
+    integrationChannels.forEach(child -> child.supplement(this));
   }
 
   @Override
