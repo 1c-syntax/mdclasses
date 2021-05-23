@@ -2,12 +2,14 @@ import java.net.URI
 import java.util.*
 
 plugins {
-    java
-    maven
+    `java-library`
+    `maven-publish`
     jacoco
     id("net.kyori.indra.license-header") version "1.3.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.franzbecker.gradle-lombok") version "4.0.0"
+    id("io.freefair.lombok") version "6.0.0-m2"
+    id("io.freefair.javadoc-links") version "6.0.0-m2"
+    id("io.freefair.javadoc-utf-8") version "6.0.0-m2"
     id("org.sonarqube") version "3.2.0"
 }
 
@@ -60,6 +62,8 @@ configure<JavaPluginConvention> {
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
 }
 
 sourceSets {
@@ -109,6 +113,12 @@ sonarqube {
     }
 }
 
+artifacts {
+    archives(tasks["jar"])
+    archives(tasks["sourcesJar"])
+    archives(tasks["javadocJar"])
+}
+
 license {
     header = rootProject.file("license/HEADER.txt")
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
@@ -124,6 +134,48 @@ license {
     exclude("**/*.os")
     exclude("**/*.bsl")
     exclude("**/*.orig")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+            pom {
+                description.set("Metadata read/write library for Language 1C (BSL)")
+                url.set("https://github.com/1c-syntax/mdclasses")
+                licenses {
+                    license {
+                        name.set("GNU LGPL 3")
+                        url.set("https://www.gnu.org/licenses/lgpl-3.0.txt")
+                        distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("otymko")
+                        name.set("Oleg Tymko")
+                        email.set("olegtymko@yandex.ru")
+                        url.set("https://github.com/otymko")
+                        organization.set("1c-syntax")
+                        organizationUrl.set("https://github.com/1c-syntax")
+                    }
+                    developer {
+                        id.set("theshadowco")
+                        name.set("Valery Maximov")
+                        email.set("maximovvalery@gmail.com")
+                        url.set("https://github.com/theshadowco")
+                        organization.set("1c-syntax")
+                        organizationUrl.set("https://github.com/1c-syntax")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/1c-syntax/mdclasses.git")
+                    developerConnection.set("scm:git:git@github.com:1c-syntax/mdclasses.git")
+                    url.set("https://github.com/1c-syntax/mdclasses")
+                }
+            }
+        }
+    }
 }
 
 tasks.register("precommit") {

@@ -74,7 +74,7 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
   @Override
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
-    httpServiceMethods.parallelStream().forEach(child -> child.supplement(this));
+    httpServiceMethods.forEach(child -> child.supplement(this));
   }
 
   @Override

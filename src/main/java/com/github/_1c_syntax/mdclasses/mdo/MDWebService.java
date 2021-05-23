@@ -73,7 +73,7 @@ public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren 
   @Override
   public void supplement() {
     super.supplement();
-    operations.parallelStream().forEach(child -> child.supplement(this));
+    operations.forEach(child -> child.supplement(this));
   }
 
   @Override
