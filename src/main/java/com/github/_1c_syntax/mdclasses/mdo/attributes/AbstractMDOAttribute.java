@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo.attributes;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
+import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
@@ -39,6 +40,12 @@ import lombok.ToString;
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
+
+  /**
+   * Вид атрибута
+   */
+  private AttributeKind kind = AttributeKind.CUSTOM;
+
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
   }
