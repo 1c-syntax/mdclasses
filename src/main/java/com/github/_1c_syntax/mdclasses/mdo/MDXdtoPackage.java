@@ -21,15 +21,20 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+import java.nio.file.Path;
+
+@Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
@@ -41,7 +46,31 @@ import lombok.Value;
   groupNameRu = "ПакетыXDTO"
 )
 public class MDXdtoPackage extends AbstractMDObjectBase {
+
+  /**
+   * Пространство имен xdto-пакета
+   */
+  private String namespace = "";
+
+  /**
+   * Путь к файлу с данными xsd-схемы
+   */
+  private Path packageDataPath;
+
+  /**
+   * Содержимое xsd-схемы пакета
+   */
+  private XDTOPackageData data;
+
   public MDXdtoPackage(DesignerMDO designerMDO) {
     super(designerMDO);
+    namespace = designerMDO.getProperties().getNamespace();
+  }
+
+  @Override
+  public void supplement() {
+    super.supplement();
+    packageDataPath = MDOPathUtils.getPackageDataPath(this);
+    MDOFactory.readXDTOPackageData(packageDataPath).ifPresent(this::setData);
   }
 }

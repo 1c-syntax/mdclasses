@@ -236,6 +236,24 @@ public class MDOPathUtils {
     return currentPath;
   }
 
+  /**
+   * Возвращает путь к файлу с описанием xsd-схемы xdto пакета
+   *
+   * @param xdto - xdto пакет
+   * @return - путь к файлу схемы
+   */
+  public static Path getPackageDataPath(AbstractMDObjectBase xdto) {
+    var currentPath = xdto.getPath().getParent();
+    var basePath = currentPath.toString();
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(xdto.getPath());
+    if (configurationSource == ConfigurationSource.EDT) {
+      currentPath = Path.of(basePath, "Package.xdto");
+    } else {
+      currentPath = Paths.get(basePath, xdto.getName(), "Ext", "Package.bin");
+    }
+    return currentPath;
+  }
+
   // Формат EDT
 
   /**
@@ -331,4 +349,5 @@ public class MDOPathUtils {
 
     return path;
   }
+
 }

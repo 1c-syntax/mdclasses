@@ -140,4 +140,7 @@ public class DesignerProperties {
   @XStreamAlias("FormType")
   private FormType formType = FormType.ORDINARY;
 
+  @XStreamAlias("Namespace")
+  private String namespace;
+
 }
