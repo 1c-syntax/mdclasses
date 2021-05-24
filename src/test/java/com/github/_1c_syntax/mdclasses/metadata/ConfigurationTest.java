@@ -338,7 +338,7 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(111);
+    assertThat(configuration.getChildren()).hasSize(112);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
     checkChildCount(configuration, MDOType.FORM, 8);

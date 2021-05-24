@@ -49,6 +49,6 @@ public class CommonAttribute extends AbstractMDOAttribute {
     this.path = mdCommonAttribute.getPath();
     this.synonyms = mdCommonAttribute.getSynonyms();
     this.uuid = mdCommonAttribute.getUuid();
-    this.setKind(AttributeKind.COMMON);
+    setKind(AttributeKind.COMMON);
   }
 }

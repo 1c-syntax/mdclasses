@@ -98,7 +98,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
       return;
     }
     using = new ArrayList<>();
-    content.forEach(useContent -> {
+    content.forEach((UseContent useContent) -> {
       var mdo = allMDO.get(useContent.getMetadata());
       if (mdo instanceof AbstractMDObjectComplex) {
         var mdoComplex = (AbstractMDObjectComplex) mdo;

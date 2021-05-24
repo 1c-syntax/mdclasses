@@ -32,7 +32,6 @@ import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
