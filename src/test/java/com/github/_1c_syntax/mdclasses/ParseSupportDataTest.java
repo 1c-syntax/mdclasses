@@ -105,7 +105,7 @@ class ParseSupportDataTest {
     assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
 
     path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl")
-            .toAbsolutePath();
+      .toAbsolutePath();
     assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
   }
 

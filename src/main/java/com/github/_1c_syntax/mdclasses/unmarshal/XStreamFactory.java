@@ -60,6 +60,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.converters.FormEventConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.PairConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerRootWrapper;
@@ -216,6 +217,7 @@ public class XStreamFactory {
     xStream.processAnnotations(DesignerForm.class);
     xStream.processAnnotations(DesignerFormCommand.class);
     xStream.processAnnotations(DesignerFormCommands.class);
+    xStream.processAnnotations(DesignerContentItem.class);
 
     xStream.alias("Rights", RoleData.class);
     xStream.alias("MetaDataObject", DesignerRootWrapper.class);

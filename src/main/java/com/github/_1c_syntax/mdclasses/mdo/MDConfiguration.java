@@ -25,10 +25,12 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -41,6 +43,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -92,6 +95,9 @@ public class MDConfiguration extends AbstractMDObjectBSL {
    * Использовать управляемые формы в обычном приложении
    */
   private boolean useManagedFormInOrdinaryApplication;
+
+  @XStreamImplicit(itemFieldName = "copyright")
+  private List<Copyright> copyrights = Collections.emptyList();
 
   /**
    * Использовать обычные формы в управляемом приложении
@@ -154,7 +160,26 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     useManagedFormInOrdinaryApplication = designerProperties.isUseManagedFormInOrdinaryApplication();
     useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
+    copyrights = createCopyrights(designerProperties.getCopyrights());
+
     children = designerMDO.getChildObjects().getChildren();
+  }
+
+  private List<Copyright> createCopyrights(List<DesignerContentItem> designerCopyrights) {
+
+    if (designerCopyrights.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    List<Copyright> copyrightList = new ArrayList<>();
+    for (var designerCopyright : designerCopyrights) {
+      var copyright = new Copyright();
+      copyright.setLanguage(designerCopyright.getLanguage());
+      copyright.setCopyrightContent(designerCopyright.getContent());
+      copyrightList.add(copyright);
+    }
+
+    return copyrightList;
   }
 
   @Override
