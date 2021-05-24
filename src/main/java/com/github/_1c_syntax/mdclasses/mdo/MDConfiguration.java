@@ -188,7 +188,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     super.supplement();
     MDOPathUtils.getRootPathByConfigurationMDO(path).ifPresent(this::computeAllMDObject);
 
-    Map<String, AbstractMDObjectBase> localChildren = getAllMDO();
+    var localChildren = getAllMDO();
     linkChildAndSubsystem(localChildren);
     linkCommonAttributesAndUsing(localChildren);
 
