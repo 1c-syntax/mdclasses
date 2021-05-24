@@ -33,15 +33,15 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Constructor;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Конвертор для объектов в формате конфигуратора, минуя класс враппер
  */
 @Slf4j
 public class DesignerMDOConverter implements Converter {
-  private final Map<Class<?>, Constructor<?>> constructors = new HashMap<>();
+  private final Map<Class<?>, Constructor<?>> constructors = new ConcurrentHashMap<>();
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
