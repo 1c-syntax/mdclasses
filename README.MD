@@ -15,3 +15,9 @@
 ## Сайт проекта (документация)
 - [Релизная версия](https://1c-syntax.github.io/mdclasses/)
 - [Текущая (Develop) версия](https://1c-syntax.github.io/mdclasses/dev/)
+
+## Спасибо контрибьютерам
+
+<a href="https://github.com/1c-syntax/mdclasses/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=1c-syntax/mdclasses" />
+</a>
