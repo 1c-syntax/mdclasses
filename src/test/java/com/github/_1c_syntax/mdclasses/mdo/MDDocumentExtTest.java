@@ -42,12 +42,12 @@ class MDDocumentExtTest extends AbstractMDOTest {
     var mdo = getMDObjectEDTExt("Documents/Документ1/Документ1.mdo");
     checkBaseField(mdo, MDDocument.class, "Документ1",
       "4ac0c9d8-7ef6-4804-bdf8-15219fa4e6da");
-    checkForms(mdo, 3, "Document.Документ1", "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
+    checkForms(mdo, 3, "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
     checkTemplates(mdo);
     checkCommands(mdo);
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes().stream().filter(
       mdoAttribute -> mdoAttribute.getObjectBelonging() == ObjectBelonging.ADOPTED).collect(Collectors.toList()),
-      4, "Document.Документ1",
+      4, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes())
       .filteredOn(mdoAttribute -> mdoAttribute.getObjectBelonging() == ObjectBelonging.OWN)
@@ -55,8 +55,7 @@ class MDDocumentExtTest extends AbstractMDOTest {
     var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
-    checkAttributes(tabularSection.getAttributes(), 2,
-      "Document.Документ1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
+    checkAttributes(tabularSection.getAttributes(), 2, tabularSection.getMdoReference(), AttributeType.ATTRIBUTE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
   }
@@ -67,16 +66,15 @@ class MDDocumentExtTest extends AbstractMDOTest {
     var mdo = getMDObjectDesignerExt("Documents/Документ1.xml");
     checkBaseField(mdo, MDDocument.class, "Документ1",
       "4ac0c9d8-7ef6-4804-bdf8-15219fa4e6da");
-    checkForms(mdo, 3, "Document.Документ1", "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
+    checkForms(mdo, 3, "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, "Document.Документ1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
-    checkAttributes(tabularSection.getAttributes(), 2,
-      "Document.Документ1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
+    checkAttributes(tabularSection.getAttributes(), 2, tabularSection.getMdoReference(), AttributeType.ATTRIBUTE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 

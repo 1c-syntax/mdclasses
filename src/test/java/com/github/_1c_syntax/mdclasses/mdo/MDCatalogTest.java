@@ -41,16 +41,15 @@ class MDCatalogTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("Catalogs/Справочник1/Справочник1.mdo");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
-    checkForms(mdo, 3, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора");
-    checkTemplates(mdo, 1, "Catalog.Справочник1", "Макет");
-    checkCommands(mdo, 1, "Catalog.Справочник1", "Команда1");
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, "Catalog.Справочник1",
+    checkForms(mdo, 3, "ФормаЭлемента", "ФормаСписка", "ФормаВыбора");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда1");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
-    checkAttributes(tabularSection.getAttributes(), 2,
-      "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
+    checkAttributes(tabularSection.getAttributes(), 2, tabularSection.getMdoReference(), AttributeType.ATTRIBUTE);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "Catalogs/Справочник1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
 
@@ -62,17 +61,16 @@ class MDCatalogTest extends AbstractMDOTest {
     var mdo = getMDObjectDesigner("Catalogs/Справочник1.xml");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
-    checkForms(mdo, 4, "Catalog.Справочник1", "ФормаЭлемента", "ФормаСписка", "ФормаВыбора",
+    checkForms(mdo, 4, "ФормаЭлемента", "ФормаСписка", "ФормаВыбора",
       "ФормаЭлементаОбычная");
-    checkTemplates(mdo, 2, "Catalog.Справочник1", "Макет", "Макет2");
-    checkCommands(mdo, 1, "Catalog.Справочник1", "Команда1");
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, "Catalog.Справочник1",
+    checkTemplates(mdo, 2, "Макет", "Макет2");
+    checkCommands(mdo, 1, "Команда1");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
-    checkAttributes(tabularSection.getAttributes(), 2,
-      "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1", AttributeType.ATTRIBUTE);
+    checkAttributes(tabularSection.getAttributes(), 2, mdo.getMdoReference(), AttributeType.ATTRIBUTE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
     var catalog = (MDCatalog) mdo;

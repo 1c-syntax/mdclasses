@@ -47,7 +47,7 @@ class MDWebServiceTest extends AbstractMDOTest {
       .anyMatch("Операция1"::equals)
       .anyMatch("Операция11"::equals);
     ((MDWebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
-      checkChild("WebService.WebСервис1", MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
+      checkChild(mdo.getMdoReference(), MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
   }
 
   @Override
@@ -63,6 +63,6 @@ class MDWebServiceTest extends AbstractMDOTest {
       .anyMatch("Операция1"::equals)
       .anyMatch("Операция2"::equals);
     ((MDWebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
-      checkChild("WebService.WebСервис1", MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
+      checkChild(mdo.getMdoReference(), MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
   }
 }

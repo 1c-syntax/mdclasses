@@ -45,7 +45,7 @@ import java.util.Set;
 @Metadata(
   type = MDOType.HTTP_SERVICE_URL_TEMPLATE,
   name = "URLTemplate",
-  nameRu = "Шаблон URL",
+  nameRu = "ШаблонURL",
   groupName = "",
   groupNameRu = ""
 )

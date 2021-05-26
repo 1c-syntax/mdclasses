@@ -42,7 +42,7 @@ class MDInformationRegisterTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "InformationRegister.РегистрСведений1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
       AttributeType.DIMENSION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "InformationRegisters/РегистрСведени",
       ModuleType.RecordSetModule);
@@ -58,7 +58,7 @@ class MDInformationRegisterTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, "InformationRegister.РегистрСведений1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }

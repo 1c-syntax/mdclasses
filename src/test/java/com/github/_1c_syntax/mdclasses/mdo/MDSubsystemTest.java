@@ -63,6 +63,8 @@ class MDSubsystemTest extends AbstractMDOTest {
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
+    assertThat(subsystem.getMdoReference().getMdoRefRu())
+      .isEqualTo("Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема");
 
     subsystem = (MDSubsystem) children.stream().map(Either::get)
       .filter(child -> child.getName().equals("ПочиненнаяСистема2"))
@@ -80,6 +82,8 @@ class MDSubsystemTest extends AbstractMDOTest {
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");
+    assertThat(subsystem.getMdoReference().getMdoRefRu())
+      .isEqualTo("Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2");
 
     var childSubsystem = (MDSubsystem) subsystem.getChildren().stream()
       .filter(Either::isRight)
@@ -122,6 +126,8 @@ class MDSubsystemTest extends AbstractMDOTest {
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
+    assertThat(subsystem.getMdoReference().getMdoRefRu())
+      .isEqualTo("Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема");
 
     subsystem = (MDSubsystem) children.stream().filter(Either::isRight).map(Either::get)
       .filter(child -> child.getName().equals("ПочиненнаяСистема2"))
@@ -134,7 +140,7 @@ class MDSubsystemTest extends AbstractMDOTest {
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");
-
+    assertThat(subsystem.getMdoReference().getMdoRefRu())
+      .isEqualTo("Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2");
   }
-
 }

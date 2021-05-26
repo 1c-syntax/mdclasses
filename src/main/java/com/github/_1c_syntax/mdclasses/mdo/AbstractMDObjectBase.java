@@ -73,6 +73,11 @@ public abstract class AbstractMDObjectBase extends AbstractMDO {
     return MetadataStorage.get(getClass()).name();
   }
 
+  @Override
+  public String getMetadataNameRu() {
+    return MetadataStorage.get(getClass()).nameRu();
+  }
+
   /**
    * Метод должен вызываться в конце чтения объекта для его дозаполнения.
    * При необходимости, можно переопределить в дочерних объектах для персональной дообработки

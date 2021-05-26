@@ -61,7 +61,7 @@ class MDIntegrationServiceTest extends AbstractMDOTest {
       .anyMatch("КаналСервисаИнтеграции1ОбработкаПолученияСообщения"::equals);
     assertThat(service.getExternalIntegrationServiceAddress()).isNotBlank();
     service.getIntegrationChannels().forEach(channel -> {
-      checkChild("IntegrationService.СервисИнтеграции1", MDOType.INTEGRATION_SERVICE_CHANNEL,
+      checkChild(mdo.getMdoReference(), MDOType.INTEGRATION_SERVICE_CHANNEL,
         ModuleType.UNKNOWN, channel);
       assertThat(channel.getExternalIntegrationServiceChannelName()).isNotBlank();
       assertThat(channel.getMessageDirection()).isBetween(MessageDirection.SEND, MessageDirection.RECEIVE);
@@ -91,8 +91,7 @@ class MDIntegrationServiceTest extends AbstractMDOTest {
       .anyMatch("КаналСервисаИнтеграции1ОбработкаПолученияСообщения"::equals);
     assertThat(service.getExternalIntegrationServiceAddress()).isNotBlank();
     service.getIntegrationChannels().forEach(channel -> {
-      checkChild("IntegrationService.СервисИнтеграции1", MDOType.INTEGRATION_SERVICE_CHANNEL,
-        ModuleType.UNKNOWN, channel);
+      checkChild(mdo.getMdoReference(), MDOType.INTEGRATION_SERVICE_CHANNEL, ModuleType.UNKNOWN, channel);
       assertThat(channel.getExternalIntegrationServiceChannelName()).isNotBlank();
       assertThat(channel.getMessageDirection()).isBetween(MessageDirection.SEND, MessageDirection.RECEIVE);
     });

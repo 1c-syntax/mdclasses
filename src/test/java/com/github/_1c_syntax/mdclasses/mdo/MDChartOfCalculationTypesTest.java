@@ -56,13 +56,12 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, "ChartOfCalculationTypes.ПланВидовРасчета1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     var tabularSection = (TabularSection) ((AbstractMDObjectComplex) mdo).getAttributes().stream()
       .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
       .findFirst().get();
-    checkAttributes(tabularSection.getAttributes(), 1,
-      "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть", AttributeType.ATTRIBUTE);
+    checkAttributes(tabularSection.getAttributes(), 1, tabularSection.getMdoReference(), AttributeType.ATTRIBUTE);
 
   }
 

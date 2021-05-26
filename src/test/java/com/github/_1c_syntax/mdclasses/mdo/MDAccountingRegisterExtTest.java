@@ -43,8 +43,7 @@ class MDAccountingRegisterExtTest extends AbstractMDOTest {
     checkTemplates(mdo);
     checkCommands(mdo);
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
-      "AccountingRegister.РегистрБухгалтерии1",
-      AttributeType.DIMENSION, AttributeType.RESOURCE);
+      mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 
@@ -58,8 +57,7 @@ class MDAccountingRegisterExtTest extends AbstractMDOTest {
     checkTemplates(mdo);
     checkCommands(mdo);
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
-      "AccountingRegister.РегистрБухгалтерии1",
-      AttributeType.DIMENSION, AttributeType.RESOURCE);
+      mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }
 }
