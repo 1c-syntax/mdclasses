@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collections;
-import java.util.List;
-
 /**
- * Враппер свойств-item для формата конфигуратора
+ * Враппер свойства (item) для формата конфигуратора
  */
 @Data
 @NoArgsConstructor
-public class DesignerXRItems {
-  @XStreamImplicit(itemFieldName = "Item")
-  private List<DesignerXRItem> items = Collections.emptyList();
-  @XStreamImplicit(itemFieldName = "Object")
-  private List<String> itemsObject = Collections.emptyList();
+public class DesignerXRItem {
+
+  private String value = "";
+  @XStreamAlias("Metadata")
+  private String metadata = "";
+  @XStreamAlias("Use")
+  private UseMode use = UseMode.DONT_USE;
+
+  public DesignerXRItem(String value) {
+    this.value = value;
+  }
 }

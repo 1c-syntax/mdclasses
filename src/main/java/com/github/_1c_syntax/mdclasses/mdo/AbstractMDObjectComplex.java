@@ -236,4 +236,15 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
 
     return childrenNames;
   }
+
+  /**
+   * Добавление реквизита объекта
+   *
+   * @param attribute Добавляемый реквизит
+   */
+  public void addAttribute(AbstractMDOAttribute attribute) {
+    List<AbstractMDOAttribute> computedAttributes = new ArrayList<>(getAttributes());
+    computedAttributes.add(attribute);
+    setAttributes(computedAttributes);
+  }
 }

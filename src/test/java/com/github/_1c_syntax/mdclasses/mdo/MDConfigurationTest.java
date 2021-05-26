@@ -22,6 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
+import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
@@ -36,6 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -121,6 +124,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
     checkSubsystems(configuration, 5);
+    checkCommonAttributes(configuration);
   }
 
   @Test
@@ -231,6 +235,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WEB_SERVICE, 1);
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
+    checkCommonAttributes(configuration);
   }
 
   private void checkChildCount(MDConfiguration configuration, MDOType type, int count) {
@@ -268,4 +273,21 @@ class MDConfigurationTest extends AbstractMDOTest {
     subsystems.put(subsystem, mdoList);
   }
 
+  private void checkCommonAttributes(MDConfiguration configuration) {
+    var commonAttributes = configuration.getChildren().stream()
+      .filter(Either::isRight).map(Either::get)
+      .filter(mdo -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .map(MDCommonAttribute.class::cast)
+      .collect(Collectors.toList());
+
+    assertThat(commonAttributes).hasSize(1);
+    commonAttributes.forEach(commonAttribute -> {
+      assertThat(commonAttribute.getUsing()).isNotEmpty();
+      commonAttribute.getUsing().forEach(mdo ->
+        assertThat(mdo.getAttributes()).anyMatch(attribute ->
+          attribute.getAttributeType() == AttributeType.COMMON_ATTRIBUTE
+            && attribute.getKind() == AttributeKind.COMMON
+            && attribute.equals(commonAttribute.getCommonAttribute())));
+    });
+  }
 }

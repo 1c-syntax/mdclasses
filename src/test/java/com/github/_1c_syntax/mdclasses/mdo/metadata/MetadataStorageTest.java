@@ -53,7 +53,7 @@ class MetadataStorageTest {
     var meta = MetadataStorage.getAttributeStorage();
     assertThat(meta)
       .isNotEmpty()
-      .hasSize(9);
+      .hasSize(10);
 
     // проверка на ошибки и дубли
     assertThat(meta.values().stream().map(AttributeMetadata::type).distinct()).hasSize(meta.size());

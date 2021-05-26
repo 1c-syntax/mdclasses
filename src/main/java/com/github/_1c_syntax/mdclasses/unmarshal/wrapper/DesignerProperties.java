@@ -143,4 +143,8 @@ public class DesignerProperties {
   @XStreamAlias("Namespace")
   private String namespace;
 
+  @XStreamAlias("AutoUse")
+  private UseMode autoUse = UseMode.DONT_USE;
+  @XStreamAlias("DataSeparation")
+  private UseMode dataSeparation = UseMode.DONT_USE;
 }

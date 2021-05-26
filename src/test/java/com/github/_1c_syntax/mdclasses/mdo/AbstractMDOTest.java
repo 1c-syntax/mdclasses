@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
+import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
@@ -257,6 +258,7 @@ abstract class AbstractMDOTest {
       .allMatch(mdoAttribute -> List.of(types).contains(mdoAttribute.getAttributeType()));
 
     assertThat(children).allMatch(mdoAttribute -> mdoAttribute.getObjectBelonging() == objectBelonging);
+    assertThat(children).allMatch(mdoAttribute -> mdoAttribute.getKind() == AttributeKind.CUSTOM);
 
     children.forEach(attribute -> {
       assertThat(attribute.getMdoReference())

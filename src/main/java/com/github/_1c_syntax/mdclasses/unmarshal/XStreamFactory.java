@@ -56,6 +56,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.converters.DataSetConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerMDOConverter;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerXRItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.EnumConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormEventConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
@@ -367,6 +368,7 @@ public class XStreamFactory {
     xStream.registerConverter(new DataSetConverter());
     xStream.registerConverter(new DesignerMDOConverter());
     xStream.registerConverter(new DesignerFormConverter());
+    xStream.registerConverter(new DesignerXRItemConverter());
   }
 
 }

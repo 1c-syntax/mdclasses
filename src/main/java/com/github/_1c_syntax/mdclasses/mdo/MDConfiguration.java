@@ -46,6 +46,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Data
@@ -186,7 +187,11 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   public void supplement() {
     super.supplement();
     MDOPathUtils.getRootPathByConfigurationMDO(path).ifPresent(this::computeAllMDObject);
-    linkChildAndSubsystem();
+
+    var localChildren = getAllMDO();
+    linkChildAndSubsystem(localChildren);
+    linkCommonAttributesAndUsing(localChildren);
+
     setDefaultConfigurationLanguage();
   }
 
@@ -206,10 +211,11 @@ public class MDConfiguration extends AbstractMDObjectBSL {
 
   private void computeAllMDObject(Path rootPath) {
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
-    children =
+    var localChildren =
       children.parallelStream()
         .map(child -> readChildMDO(configurationSource, rootPath, child))
         .collect(Collectors.toList());
+    setChildren(localChildren);
   }
 
   private static Either<String, AbstractMDObjectBase> readChildMDO(ConfigurationSource configurationSource,
@@ -230,19 +236,29 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     return child;
   }
 
-  private void linkChildAndSubsystem() {
-    var localChildren = children.stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .collect(Collectors.toMap((AbstractMDObjectBase mdo)
-        -> mdo.getMdoReference().getMdoRef(), (AbstractMDObjectBase mdo) -> mdo));
-
+  private void linkChildAndSubsystem(Map<String, AbstractMDObjectBase> allMDO) {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
       .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
       .map(MDSubsystem.class::cast)
-      .forEach(subsystem -> subsystem.linkToChildren(localChildren));
+      .forEach(subsystem -> subsystem.linkToChildren(allMDO));
   }
 
+  private void linkCommonAttributesAndUsing(Map<String, AbstractMDObjectBase> allMDO) {
+    children.stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .map(MDCommonAttribute.class::cast)
+      .forEach(commonAttribute -> commonAttribute.linkUsing(allMDO));
+  }
+
+  private Map<String, AbstractMDObjectBase> getAllMDO() {
+    return children.stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .collect(Collectors.toMap((AbstractMDObjectBase mdo)
+        -> mdo.getMdoReference().getMdoRef(), (AbstractMDObjectBase mdo) -> mdo));
+  }
 }
