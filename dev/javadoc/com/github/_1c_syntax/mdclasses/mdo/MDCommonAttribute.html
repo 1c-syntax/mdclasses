@@ -44,7 +44,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -82,11 +82,26 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="description">
 <hr>
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">MDCommonAttribute</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MDCommonAttribute</span>
 <span class="extends-implements">extends <a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<li>
+<section class="nested-class-summary" id="nested.class.summary">
+<h2>Nested Class Summary</h2>
+<div class="caption"><span>Nested Classes</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Class</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>protected static class&nbsp;</code></div>
+<div class="col-second even-row-color"><code><span class="member-name-link"><a href="MDCommonAttribute.UseContent.html" title="class in com.github._1c_syntax.mdclasses.mdo">MDCommonAttribute.UseContent</a></span></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+</div>
+</section>
+</li>
 <!-- =========== FIELD SUMMARY =========== -->
 <li>
 <section class="field-summary" id="field.summary">
@@ -131,12 +146,55 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a></code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getAutoUse()">getAutoUse</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак автоиспользования общего реквизита</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="attributes/CommonAttribute.html" title="class in com.github._1c_syntax.mdclasses.mdo.attributes">CommonAttribute</a></code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getCommonAttribute()">getCommonAttribute</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Ссылка на атрибут</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a></code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getDataSeparation()">getDataSeparation</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак использования общего реквизита как разделителя данных</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getUsing()">getUsing</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Список объектов, использующих общий реквизит</div>
+</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#hashCode()">hashCode</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#toString()">toString</a></span>()</code></div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>protected void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#linkUsing(java.util.Map)">linkUsing</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,&#8203;<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a>&gt;&nbsp;allMDO)</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setAutoUse(com.github._1c_syntax.mdclasses.mdo.support.UseMode)">setAutoUse</a></span>&#8203;(<a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a>&nbsp;autoUse)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак автоиспользования общего реквизита</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setContent(java.util.List)">setContent</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MDCommonAttribute.UseContent.html" title="class in com.github._1c_syntax.mdclasses.mdo">MDCommonAttribute.UseContent</a>&gt;&nbsp;content)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Объекты, использующие общий реквизит, и варианты использования</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setDataSeparation(com.github._1c_syntax.mdclasses.mdo.support.UseMode)">setDataSeparation</a></span>&#8203;(<a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a>&nbsp;dataSeparation)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак использования общего реквизита как разделителя данных</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setUsing(java.util.List)">setUsing</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a>&gt;&nbsp;using)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Список объектов, использующих общий реквизит</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#toString()">toString</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -180,6 +238,68 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method.detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="linkUsing(java.util.Map)">
+<h3>linkUsing</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">linkUsing</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,&#8203;<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a>&gt;&nbsp;allMDO)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAutoUse()">
+<h3>getAutoUse</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a></span>&nbsp;<span class="element-name">getAutoUse</span>()</div>
+<div class="block">Признак автоиспользования общего реквизита</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getDataSeparation()">
+<h3>getDataSeparation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a></span>&nbsp;<span class="element-name">getDataSeparation</span>()</div>
+<div class="block">Признак использования общего реквизита как разделителя данных</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getUsing()">
+<h3>getUsing</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a>&gt;</span>&nbsp;<span class="element-name">getUsing</span>()</div>
+<div class="block">Список объектов, использующих общий реквизит</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getCommonAttribute()">
+<h3>getCommonAttribute</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="attributes/CommonAttribute.html" title="class in com.github._1c_syntax.mdclasses.mdo.attributes">CommonAttribute</a></span>&nbsp;<span class="element-name">getCommonAttribute</span>()</div>
+<div class="block">Ссылка на атрибут</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setAutoUse(com.github._1c_syntax.mdclasses.mdo.support.UseMode)">
+<h3>setAutoUse</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAutoUse</span>&#8203;<span class="parameters">(<a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a>&nbsp;autoUse)</span></div>
+<div class="block">Признак автоиспользования общего реквизита</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setDataSeparation(com.github._1c_syntax.mdclasses.mdo.support.UseMode)">
+<h3>setDataSeparation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDataSeparation</span>&#8203;<span class="parameters">(<a href="support/UseMode.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">UseMode</a>&nbsp;dataSeparation)</span></div>
+<div class="block">Признак использования общего реквизита как разделителя данных</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setUsing(java.util.List)">
+<h3>setUsing</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUsing</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a>&gt;&nbsp;using)</span></div>
+<div class="block">Список объектов, использующих общий реквизит</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setContent(java.util.List)">
+<h3>setContent</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setContent</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MDCommonAttribute.UseContent.html" title="class in com.github._1c_syntax.mdclasses.mdo">MDCommonAttribute.UseContent</a>&gt;&nbsp;content)</span></div>
+<div class="block">Объекты, использующие общий реквизит, и варианты использования</div>
+</section>
+</li>
 <li>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>
