@@ -12,6 +12,6 @@
 [![JitPack](https://jitpack.io/v/1c-syntax/mdclasses.svg)](https://jitpack.io/#1c-syntax/mdclasses)
 [![GitHub Releases](https://img.shields.io/github/downloads/1c-syntax/mdclasses/latest/total?style=flat-square)](https://github.com/1c-syntax/mdclasses/releases)
 
-## Документация
-- [На русском языке](ru/index.md)
-- [In English](en/index.md)
+## Сайт проекта (документация)
+- [Релизная версия](https://1c-syntax.github.io/mdclasses/)
+- [Текущая (Develop) версия](https://1c-syntax.github.io/mdclasses/dev/)
