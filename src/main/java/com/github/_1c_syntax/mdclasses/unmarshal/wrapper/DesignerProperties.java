@@ -129,6 +129,11 @@ public class DesignerProperties {
   @XStreamAlias("Copyright")
   private List<DesignerContentItem> copyrights = Collections.emptyList();
 
+  @XStreamAlias("BriefInformation")
+  private List<DesignerContentItem> briefInformation = Collections.emptyList();
+  @XStreamAlias("DetailedInformation")
+  private List<DesignerContentItem> detailedInformation = Collections.emptyList();
+
   @XStreamAlias("IncludeInCommandInterface")
   private boolean includeInCommandInterface;
 

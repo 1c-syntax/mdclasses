@@ -82,6 +82,18 @@ class ConfigurationTest {
       .anyMatch(copyright -> copyright.getCopyrightContent().equals("My program")
         && copyright.getLanguage().equals("en"));
 
+    assertThat(configuration.getBriefInformation()).hasSize(2)
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("ru")
+                    && briefInfo.getContent().equals("Краткая информация"))
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
+                    && briefInfo.getContent().equals("Short info"));
+
+    assertThat(configuration.getDetailedInformation()).hasSize(2)
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("ru")
+                    && briefInfo.getContent().equals("Подробная информация"))
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
+                    && briefInfo.getContent().equals("Detailed info"));
+
     assertThat(configuration.getModulesByType()).hasSize(38);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(38);
@@ -330,6 +342,18 @@ class ConfigurationTest {
         && copyright.getLanguage().equals("ru"))
       .anyMatch(copyright -> copyright.getCopyrightContent().equals("My program")
         && copyright.getLanguage().equals("en"));
+
+    assertThat(configuration.getBriefInformation()).hasSize(2)
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("ru")
+                    && briefInfo.getContent().equals("Краткая информация"))
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
+                    && briefInfo.getContent().equals("Short info"));
+
+    assertThat(configuration.getDetailedInformation()).hasSize(2)
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("ru")
+                    && briefInfo.getContent().equals("Подробная информация"))
+            .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
+                    && briefInfo.getContent().equals("Detailed info"));
 
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModulesByObject()).hasSize(18);

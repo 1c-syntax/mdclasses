@@ -28,9 +28,10 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
+import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationInformation;
 import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -140,6 +141,16 @@ public class Configuration {
   private List<Copyright> copyrights;
 
   /**
+   * Детальная информация о конфигурации, на разных языках
+   */
+  private List<ConfigurationInformation> detailedInformation;
+
+  /**
+   * Краткая информация о конфигурации, на разных языках
+   */
+  private List<ConfigurationInformation> briefInformation;
+
+  /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
    */
   private Map<URI, ModuleType> modulesByType;
@@ -197,6 +208,8 @@ public class Configuration {
     modulesByMDORef = Collections.emptyMap();
     roles = Collections.emptyList();
     copyrights = Collections.emptyList();
+    detailedInformation = Collections.emptyList();
+    briefInformation = Collections.emptyList();
 
     rootPath = null;
     name = "";
@@ -266,6 +279,9 @@ public class Configuration {
     useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
 
     copyrights = mdoConfiguration.getCopyrights();
+
+    briefInformation = mdoConfiguration.getBriefInformation();
+    detailedInformation = mdoConfiguration.getDetailedInformation();
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();

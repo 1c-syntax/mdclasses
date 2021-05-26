@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationInformation;
 import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
@@ -97,8 +98,23 @@ public class MDConfiguration extends AbstractMDObjectBSL {
    */
   private boolean useManagedFormInOrdinaryApplication;
 
+  /**
+   * Информация об авторском праве, на разных языках
+   */
   @XStreamImplicit(itemFieldName = "copyright")
   private List<Copyright> copyrights = Collections.emptyList();
+
+  /**
+   * Детальная информация о конфигурации, на разных языках
+   */
+  @XStreamImplicit(itemFieldName = "detailedInformation")
+  private List<ConfigurationInformation> detailedInformation = Collections.emptyList();
+
+  /**
+   * Краткая информация о конфигурации, на разных языках
+   */
+  @XStreamImplicit(itemFieldName = "briefInformation")
+  private List<ConfigurationInformation> briefInformation = Collections.emptyList();
 
   /**
    * Использовать обычные формы в управляемом приложении
@@ -162,8 +178,26 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
     copyrights = createCopyrights(designerProperties.getCopyrights());
+    briefInformation = createInfo(designerProperties.getBriefInformation());
+    detailedInformation = createInfo(designerProperties.getDetailedInformation());
 
     children = designerMDO.getChildObjects().getChildren();
+  }
+
+  private List<ConfigurationInformation> createInfo(List<DesignerContentItem> designerInformation) {
+    if (designerInformation.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    List<ConfigurationInformation> configurationInfo = new ArrayList<>();
+    for (var designerInfo : designerInformation) {
+      var info = new ConfigurationInformation();
+      info.setLanguage(designerInfo.getLanguage());
+      info.setContent(designerInfo.getContent());
+      configurationInfo.add(info);
+    }
+
+    return configurationInfo;
   }
 
   private List<Copyright> createCopyrights(List<DesignerContentItem> designerCopyrights) {
