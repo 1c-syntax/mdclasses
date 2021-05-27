@@ -77,9 +77,9 @@ class ConfigurationTest {
     assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isTrue();
 
     assertThat(configuration.getCopyrights()).hasSize(2)
-      .anyMatch(copyright -> copyright.getCopyrightContent().equals("Моя Программа")
+      .anyMatch(copyright -> copyright.getContent().equals("Моя Программа")
         && copyright.getLanguage().equals("ru"))
-      .anyMatch(copyright -> copyright.getCopyrightContent().equals("My program")
+      .anyMatch(copyright -> copyright.getContent().equals("My program")
         && copyright.getLanguage().equals("en"));
 
     assertThat(configuration.getBriefInformation()).hasSize(2)
@@ -338,9 +338,9 @@ class ConfigurationTest {
 
     assertThat(configuration.getModulesByType()).hasSize(18);
     assertThat(configuration.getCopyrights()).hasSize(2)
-      .anyMatch(copyright -> copyright.getCopyrightContent().equals("Моя Программа")
+      .anyMatch(copyright -> copyright.getContent().equals("Моя Программа")
         && copyright.getLanguage().equals("ru"))
-      .anyMatch(copyright -> copyright.getCopyrightContent().equals("My program")
+      .anyMatch(copyright -> copyright.getContent().equals("My program")
         && copyright.getLanguage().equals("en"));
 
     assertThat(configuration.getBriefInformation()).hasSize(2)

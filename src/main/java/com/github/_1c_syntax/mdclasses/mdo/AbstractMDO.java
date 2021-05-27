@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOSynonym;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -61,7 +61,7 @@ public abstract class AbstractMDO {
    * Синонимы объекта
    */
   @XStreamImplicit(itemFieldName = "synonym")
-  protected List<MDOSynonym> synonyms = Collections.emptyList();
+  protected List<LanguageContent> synonyms = Collections.emptyList();
 
   /**
    * Строка с комментарием объекта
@@ -90,7 +90,8 @@ public abstract class AbstractMDO {
     objectBelonging = designerMDO.getProperties().getObjectBelonging();
 
     synonyms = designerMDO.getProperties().getSynonyms().stream()
-      .map(synonym -> new MDOSynonym(synonym.getLanguage(), synonym.getContent())).collect(Collectors.toList());
+      .map(synonym -> new LanguageContent(synonym.getLanguage(), synonym.getContent()))
+      .collect(Collectors.toList());
   }
 
   /**

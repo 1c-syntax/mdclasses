@@ -25,9 +25,8 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationInformation;
-import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
@@ -44,7 +43,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -102,19 +100,19 @@ public class MDConfiguration extends AbstractMDObjectBSL {
    * Информация об авторском праве, на разных языках
    */
   @XStreamImplicit(itemFieldName = "copyright")
-  private List<Copyright> copyrights = Collections.emptyList();
+  private List<LanguageContent> copyrights = Collections.emptyList();
 
   /**
    * Детальная информация о конфигурации, на разных языках
    */
   @XStreamImplicit(itemFieldName = "detailedInformation")
-  private List<ConfigurationInformation> detailedInformation = Collections.emptyList();
+  private List<LanguageContent> detailedInformation = Collections.emptyList();
 
   /**
    * Краткая информация о конфигурации, на разных языках
    */
   @XStreamImplicit(itemFieldName = "briefInformation")
-  private List<ConfigurationInformation> briefInformation = Collections.emptyList();
+  private List<LanguageContent> briefInformation = Collections.emptyList();
 
   /**
    * Использовать обычные формы в управляемом приложении
@@ -177,44 +175,11 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     useManagedFormInOrdinaryApplication = designerProperties.isUseManagedFormInOrdinaryApplication();
     useOrdinaryFormInManagedApplication = designerProperties.isUseOrdinaryFormInManagedApplication();
 
-    copyrights = createCopyrights(designerProperties.getCopyrights());
-    briefInformation = createInfo(designerProperties.getBriefInformation());
-    detailedInformation = createInfo(designerProperties.getDetailedInformation());
+    copyrights = createLanguageContent(designerProperties.getCopyrights());
+    briefInformation = createLanguageContent(designerProperties.getBriefInformation());
+    detailedInformation = createLanguageContent(designerProperties.getDetailedInformation());
 
     children = designerMDO.getChildObjects().getChildren();
-  }
-
-  private List<ConfigurationInformation> createInfo(List<DesignerContentItem> designerInformation) {
-    if (designerInformation.isEmpty()) {
-      return Collections.emptyList();
-    }
-
-    List<ConfigurationInformation> configurationInfo = new ArrayList<>();
-    for (var designerInfo : designerInformation) {
-      var info = new ConfigurationInformation();
-      info.setLanguage(designerInfo.getLanguage());
-      info.setContent(designerInfo.getContent());
-      configurationInfo.add(info);
-    }
-
-    return configurationInfo;
-  }
-
-  private List<Copyright> createCopyrights(List<DesignerContentItem> designerCopyrights) {
-
-    if (designerCopyrights.isEmpty()) {
-      return Collections.emptyList();
-    }
-
-    List<Copyright> copyrightList = new ArrayList<>();
-    for (var designerCopyright : designerCopyrights) {
-      var copyright = new Copyright();
-      copyright.setLanguage(designerCopyright.getLanguage());
-      copyright.setCopyrightContent(designerCopyright.getContent());
-      copyrightList.add(copyright);
-    }
-
-    return copyrightList;
   }
 
   @Override
@@ -227,6 +192,16 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     linkCommonAttributesAndUsing(localChildren);
 
     setDefaultConfigurationLanguage();
+  }
+
+  private static List<LanguageContent> createLanguageContent(List<DesignerContentItem> designerContentItems) {
+    if (designerContentItems.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    return designerContentItems.stream()
+      .map(designerCopyright -> new LanguageContent(designerCopyright.getLanguage(), designerCopyright.getContent()))
+      .collect(Collectors.toList());
   }
 
   private void setDefaultConfigurationLanguage() {

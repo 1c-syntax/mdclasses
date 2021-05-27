@@ -22,14 +22,26 @@
 package com.github._1c_syntax.mdclasses.mdo.support;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Класс-модель представления языковых строк. Используется для хранения
+ * синонимов, копирайта и других мультиязычных значений.
+ */
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
-public class Copyright {
+public class LanguageContent {
+  /**
+   * Ключ языка, например `ru`
+   */
   @XStreamAlias("key")
-  private String language = "";
+  private String language;
+  /**
+   * Содержание языковой строки, может быть многострочным
+   */
   @XStreamAlias("value")
-  private String copyrightContent = "";
+  private String content;
 }

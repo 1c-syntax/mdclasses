@@ -31,9 +31,8 @@ import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationInformation;
-import com.github._1c_syntax.mdclasses.mdo.support.Copyright;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
@@ -138,17 +137,17 @@ public class Configuration {
   /**
    * Информация о копирайте на разных языках
    */
-  private List<Copyright> copyrights;
+  private List<LanguageContent> copyrights;
 
   /**
    * Детальная информация о конфигурации, на разных языках
    */
-  private List<ConfigurationInformation> detailedInformation;
+  private List<LanguageContent> detailedInformation;
 
   /**
    * Краткая информация о конфигурации, на разных языках
    */
-  private List<ConfigurationInformation> briefInformation;
+  private List<LanguageContent> briefInformation;
 
   /**
    * Модули объектов конфигурации в связке со ссылкой на файлы
