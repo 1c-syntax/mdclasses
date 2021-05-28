@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.11">
+	<IntegrationService uuid="94ed2401-fd3c-4e92-b34d-1cdad2d8ee42">
+		<InternalInfo>
+			<xr:GeneratedType name="IntegrationServiceManager.СервисИнтеграции1" category="Manager">
+				<xr:TypeId>83306e98-7e48-4f3a-9d27-ce56ccc7fb46</xr:TypeId>
+				<xr:ValueId>3b05f19d-935e-4a86-b8e7-c163d855795c</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>СервисИнтеграции1</Name>
+			<Synonym/>
+			<Comment/>
+			<ExternalIntegrationServiceAddress>http://</ExternalIntegrationServiceAddress>
+		</Properties>
+		<ChildObjects>
+			<IntegrationServiceChannel uuid="fd0a0d02-c211-4985-ab9e-f0e7e63a6943">
+				<InternalInfo>
+					<xr:GeneratedType name="IntegrationServiceChannelManager.СервисИнтеграции1.КаналСервисаИнтеграции1" category="Manager">
+						<xr:TypeId>64e5d17f-38a3-4a6b-9053-34a98c5e1c10</xr:TypeId>
+						<xr:ValueId>74409eac-5da1-4021-9124-805c1c111d4f</xr:ValueId>
+					</xr:GeneratedType>
+				</InternalInfo>
+				<Properties>
+					<Name>КаналСервисаИнтеграции1</Name>
+					<Synonym/>
+					<Comment/>
+					<ExternalIntegrationServiceChannelName>Имя</ExternalIntegrationServiceChannelName>
+					<MessageDirection>Receive</MessageDirection>
+					<ReceiveMessageProcessing>КаналСервисаИнтеграции1ОбработкаПолученияСообщения</ReceiveMessageProcessing>
+				</Properties>
+			</IntegrationServiceChannel>
+			<IntegrationServiceChannel uuid="69b7fd46-77b8-465a-abcc-a59c1e2ae126">
+				<InternalInfo>
+					<xr:GeneratedType name="IntegrationServiceChannelManager.СервисИнтеграции1.КаналСервисаИнтеграции2" category="Manager">
+						<xr:TypeId>999ebae9-3c0e-4524-8903-ba59a6e5b9af</xr:TypeId>
+						<xr:ValueId>25da786a-0c55-4d45-a8dd-fa260437c5f7</xr:ValueId>
+					</xr:GeneratedType>
+				</InternalInfo>
+				<Properties>
+					<Name>КаналСервисаИнтеграции2</Name>
+					<Synonym/>
+					<Comment/>
+					<ExternalIntegrationServiceChannelName>Имя</ExternalIntegrationServiceChannelName>
+					<MessageDirection>Send</MessageDirection>
+					<ReceiveMessageProcessing/>
+				</Properties>
+			</IntegrationServiceChannel>
+		</ChildObjects>
+	</IntegrationService>
+</MetaDataObject>

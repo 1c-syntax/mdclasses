@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2020
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,10 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.form.FormAttribute;
-import com.github._1c_syntax.mdclasses.mdo.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.form.attribute.DynamicListExtInfo;
-import com.github._1c_syntax.mdclasses.metadata.additional.ConfigurationSource;
+import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
+import com.github._1c_syntax.mdclasses.mdo.children.form.FormAttribute;
+import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -37,21 +36,21 @@ class FormDataTest {
   @Test
   void testEDT() {
     var path = Path.of("src/test/resources/metadata/formdata/edt/ЖурналРегистрации/Form.form");
-    var formDataEDT = MDOFactory.readFormData(ConfigurationSource.EDT, path).get();
+    var formDataEDT = MDOFactory.readFormData(path).get();
     checkFormData(formDataEDT);
   }
 
   @Test
   void testDesigner() {
     var path = Path.of("src/test/resources/metadata/formdata/original/ЖурналРегистрации/Ext/Form.xml");
-    var formDataOrigin = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path).get();
+    var formDataOrigin = MDOFactory.readFormData(path).get();
     checkFormData(formDataOrigin);
   }
 
   @Test
   void testBrokenForm() {
     var path = Path.of("src/test/resources/metadata/original_broken/Form/Form.xml");
-    var dataOptional = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path);
+    var dataOptional = MDOFactory.readFormData(path);
     assertThat(dataOptional).isPresent();
 
     var formData = dataOptional.get();
@@ -67,11 +66,11 @@ class FormDataTest {
   @Test
   void testDynamicList() {
     var path = Path.of("src/test/resources/metadata/formdata/dynamic_list/edt/Form.form");
-    var formData = MDOFactory.readFormData(ConfigurationSource.EDT, path).get();
+    var formData = MDOFactory.readFormData(path).get();
     checkExtInfo(formData);
 
     path = Path.of("src/test/resources/metadata/formdata/dynamic_list/original/Form.xml");
-    formData = MDOFactory.readFormData(ConfigurationSource.DESIGNER, path).get();
+    formData = MDOFactory.readFormData(path).get();
     checkExtInfo(formData);
   }
 
@@ -82,7 +81,7 @@ class FormDataTest {
       .isInstanceOf(DynamicListExtInfo.class);
 
     assertThat(extInfo.isCustomQuery()).isTrue();
-    assertThat(extInfo.getQueryText()).isNotEmpty();
+    assertThat(extInfo.getQuery().getTextQuery()).isNotEmpty();
   }
 
   private void checkFormData(FormData formData) {
