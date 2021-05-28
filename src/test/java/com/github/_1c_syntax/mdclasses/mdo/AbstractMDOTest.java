@@ -177,6 +177,8 @@ abstract class AbstractMDOTest {
       .isEqualTo(mdoType);
     assertThat(mdo.getMdoReference().getMdoRef())
       .isEqualTo(mdoType.getName() + "." + name);
+    assertThat(mdo.getMdoReference().getMdoRefRu())
+      .isEqualTo(mdoType.getNameRu() + "." + name);
 
     assertThat(mdo.getObjectBelonging()).isEqualTo(objectBelonging);
 
@@ -194,14 +196,17 @@ abstract class AbstractMDOTest {
   /**
    * Выполнение проверки дочерних форм
    */
-  protected void checkForms(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
+  protected void checkForms(AbstractMDObjectBase mdo,
+                            int count,
+                            String... names) {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getForms();
+    assertThat(names).hasSize(count);
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
     assertThat(children).allMatch(child -> List.of(names).contains(child.getName()));
-    children.forEach(child -> checkChild(parentName, MDOType.FORM, ModuleType.FormModule, child));
+    children.forEach(child -> checkChild(mdo.getMdoReference(), MDOType.FORM, ModuleType.FormModule, child));
   }
 
   /**
@@ -216,14 +221,15 @@ abstract class AbstractMDOTest {
   /**
    * Выполнение проверки дочерних макетов
    */
-  protected void checkTemplates(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
+  protected void checkTemplates(AbstractMDObjectBase mdo, int count, String... names) {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getTemplates();
+    assertThat(names).hasSize(count);
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
     assertThat(children).allMatch(child -> List.of(names).contains(child.getName()));
-    children.forEach(child -> checkChild(parentName, MDOType.TEMPLATE, ModuleType.UNKNOWN, child));
+    children.forEach(child -> checkChild(mdo.getMdoReference(), MDOType.TEMPLATE, ModuleType.UNKNOWN, child));
   }
 
   /**
@@ -238,20 +244,24 @@ abstract class AbstractMDOTest {
   /**
    * Выполнение проверки дочерних команд
    */
-  protected void checkCommands(AbstractMDObjectBase mdo, int count, String parentName, String... names) {
+  protected void checkCommands(AbstractMDObjectBase mdo, int count, String... names) {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     var children = mdoComplex.getCommands();
+    assertThat(names).hasSize(count);
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
     assertThat(children).allMatch(child -> List.of(names).contains(child.getName()));
-    children.forEach(child -> checkChild(parentName, MDOType.COMMAND, ModuleType.CommandModule, child));
+    children.forEach(child -> checkChild(mdo.getMdoReference(), MDOType.COMMAND, ModuleType.CommandModule, child));
   }
 
   /**
    * Выполняет проверку дочерних элементов-реквизитов и табличных частей
    */
-  protected void checkAttributes(List<AbstractMDOAttribute> children, int count, String parentName, AttributeType... types) {
+  protected void checkAttributes(List<AbstractMDOAttribute> children,
+                                 int count,
+                                 MDOReference parentMdoReference,
+                                 AttributeType... types) {
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
     assertThat(children)
@@ -266,20 +276,23 @@ abstract class AbstractMDOTest {
         .extracting(MDOReference::getType)
         .isEqualTo(MDOType.ATTRIBUTE);
       assertThat(attribute.getMdoReference().getMdoRef())
-        .startsWith(parentName)
+        .startsWith(parentMdoReference.getMdoRef())
         .endsWith("." + attribute.getMetadataName() + "." + attribute.getName());
+      assertThat(attribute.getMdoReference().getMdoRefRu())
+        .startsWith(parentMdoReference.getMdoRefRu())
+        .endsWith("." + attribute.getMetadataNameRu() + "." + attribute.getName());
     });
   }
 
   /**
    * Выполняет проверку модулей
    */
-  protected void checkModules(List<MDOModule> modules, int count, String parentName, ModuleType... types) {
+  protected void checkModules(List<MDOModule> modules, int count, String parentPartPath, ModuleType... types) {
     assertThat(modules).hasSize(count);
     assertThat(modules)
       .allMatch(mdoModule -> List.of(types).contains(mdoModule.getModuleType()))
       .extracting(MDOModule::getUri).extracting(URI::getPath)
-      .allMatch(s -> s.contains(parentName));
+      .allMatch(s -> s.contains(parentPartPath));
   }
 
   /**
@@ -299,15 +312,21 @@ abstract class AbstractMDOTest {
   /**
    * Проверка корректности заполнения дочерних элементов
    */
-  protected void checkChild(String parentName, MDOType type, ModuleType moduleType, AbstractMDObjectBase child) {
+  protected void checkChild(MDOReference parentMdoReference,
+                            MDOType type,
+                            ModuleType moduleType,
+                            AbstractMDObjectBase child) {
     checkNoChildren(child);
     assertThat(child.getMdoReference())
       .isNotNull()
       .extracting(MDOReference::getType)
       .isEqualTo(type);
     assertThat(child.getMdoReference().getMdoRef())
-      .startsWith(parentName)
+      .startsWith(parentMdoReference.getMdoRef())
       .endsWith("." + type.getName() + "." + child.getName());
+    assertThat(child.getMdoReference().getMdoRefRu())
+      .startsWith(parentMdoReference.getMdoRefRu())
+      .endsWith("." + type.getNameRu() + "." + child.getName());
 
     assertThat(child.getObjectBelonging()).isEqualTo(objectBelonging);
 

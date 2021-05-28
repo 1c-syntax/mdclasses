@@ -42,7 +42,7 @@ class MDSequenceTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "Sequence.Последовательность1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
       AttributeType.DIMENSION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "Sequences/Последовательность1",
       ModuleType.RecordSetModule);
@@ -58,7 +58,7 @@ class MDSequenceTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, "Sequence.Последовательность1",
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
       AttributeType.DIMENSION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
   }

@@ -103,4 +103,9 @@ public abstract class AbstractMDO {
    * Возвращает имя метаданных объекта
    */
   public abstract String getMetadataName();
+
+  /**
+   * Возвращает имя метаданных объекта на русском языке
+   */
+  public abstract String getMetadataNameRu();
 }

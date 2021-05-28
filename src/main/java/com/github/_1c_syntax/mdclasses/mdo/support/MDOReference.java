@@ -44,9 +44,15 @@ public class MDOReference {
    */
   private String mdoRef;
 
+  /**
+   * Строковое представление ссылки на русском языке
+   */
+  private String mdoRefRu;
+
   public MDOReference(AbstractMDO mdo) {
     type = mdo.getType();
     mdoRef = mdo.getMetadataName() + "." + mdo.getName();
+    mdoRefRu = mdo.getMetadataNameRu() + "." + mdo.getName();
   }
 
   /**
@@ -59,6 +65,7 @@ public class MDOReference {
     this(mdo);
     if (parent.getMdoReference() != null) {
       mdoRef = parent.getMdoReference().getMdoRef() + "." + mdoRef;
+      mdoRefRu = parent.getMdoReference().getMdoRefRu() + "." + mdoRefRu;
     }
   }
 }

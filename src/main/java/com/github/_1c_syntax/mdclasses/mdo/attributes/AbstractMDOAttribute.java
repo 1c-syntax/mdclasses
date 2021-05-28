@@ -60,6 +60,11 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     return MetadataStorage.getAttribute(getClass()).name();
   }
 
+  @Override
+  public String getMetadataNameRu() {
+    return getMetadataName();
+  }
+
   public AttributeType getAttributeType() {
     return MetadataStorage.getAttribute(getClass()).type();
   }

@@ -45,10 +45,10 @@ class MDHttpServiceTest extends AbstractMDOTest {
       ModuleType.HTTPServiceModule);
     assertThat(((MDHttpService) mdo).getUrlTemplates()).hasSize(1);
     ((MDHttpService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
-      checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
+      checkChild(mdo.getMdoReference(), MDOType.HTTP_SERVICE_URL_TEMPLATE,
         ModuleType.UNKNOWN, httpServiceURLTemplate);
       httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
-        checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL", MDOType.HTTP_SERVICE_METHOD,
+        checkChild(httpServiceURLTemplate.getMdoReference(), MDOType.HTTP_SERVICE_METHOD,
           ModuleType.UNKNOWN, httpServiceMethod));
     });
     assertThat(((MDHttpService) mdo).getUrlTemplates())
@@ -70,10 +70,10 @@ class MDHttpServiceTest extends AbstractMDOTest {
       ModuleType.HTTPServiceModule);
     assertThat(((MDHttpService) mdo).getUrlTemplates()).hasSize(1);
     ((MDHttpService) mdo).getUrlTemplates().forEach((HTTPServiceURLTemplate httpServiceURLTemplate) -> {
-      checkChild("HTTPService.HTTPСервис1", MDOType.HTTP_SERVICE_URL_TEMPLATE,
+      checkChild(mdo.getMdoReference(), MDOType.HTTP_SERVICE_URL_TEMPLATE,
         ModuleType.UNKNOWN, httpServiceURLTemplate);
       httpServiceURLTemplate.getHttpServiceMethods().forEach((HTTPServiceMethod httpServiceMethod) ->
-        checkChild("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1", MDOType.HTTP_SERVICE_METHOD,
+        checkChild(httpServiceURLTemplate.getMdoReference(), MDOType.HTTP_SERVICE_METHOD,
           ModuleType.UNKNOWN, httpServiceMethod));
     });
     assertThat(((MDHttpService) mdo).getUrlTemplates())

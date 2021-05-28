@@ -39,7 +39,7 @@ class MDReportTest extends AbstractMDOTest {
     checkBaseField(mdo, MDReport.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");
     checkForms(mdo);
-    checkTemplates(mdo, 1, "Report.Отчет1", "МакетОтчета");
+    checkTemplates(mdo, 1, "МакетОтчета");
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "Reports/Отчет1",
