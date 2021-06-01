@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
 import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
@@ -29,6 +30,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Используется для хранения кэша метаинформации по MD классам
@@ -81,18 +83,23 @@ public final class MetadataStorage {
 
       Map<Class<?>, T> localStorage = new HashMap<>();
       var classes = scanResult.getClassesWithAnnotation(annotation.getName());
-      classes.stream().map(classInfo -> {
-        try {
-          return Class.forName(classInfo.getName());
-        } catch (ClassNotFoundException e) {
-          LOGGER.error("Cannot resolve class: " + classInfo.getName());
-          return null;
-        }
-      })
+      classes.stream()
+              .map(getClassFromInfoClass())
               .filter(Objects::nonNull)
               .forEach(aClass -> localStorage.put(aClass, aClass.getAnnotation(annotation)));
 
       return Collections.unmodifiableMap(localStorage);
     }
+  }
+
+  private static Function<ClassInfo, ? extends Class<?>> getClassFromInfoClass() {
+    return classInfo -> {
+      try {
+        return Class.forName(classInfo.getName());
+      } catch (ClassNotFoundException e) {
+        LOGGER.error("Cannot resolve class: " + classInfo.getName());
+        return null;
+      }
+    };
   }
 }
