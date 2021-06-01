@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
 import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
@@ -151,5 +152,5 @@ public class DesignerProperties {
   @XStreamAlias("AutoUse")
   private UseMode autoUse = UseMode.DONT_USE;
   @XStreamAlias("DataSeparation")
-  private UseMode dataSeparation = UseMode.DONT_USE;
+  private DataSeparation dataSeparation = DataSeparation.DONT_USE;
 }
