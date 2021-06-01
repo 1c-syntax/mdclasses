@@ -24,8 +24,12 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 
+import java.nio.file.Path;
+
 public interface MDOTemplate {
   TemplateType getTemplateType();
 
   TemplateData<?> getTemplateData();
+
+  Path getTemplateDataPath();
 }
