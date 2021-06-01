@@ -41,6 +41,8 @@ public class ExtendStaxDriver extends StaxDriver {
 
   public ExtendStaxDriver(QNameMap qNameMap) {
     super(qNameMap);
+    // Do not delete. Implementation via XMLInputFactoryImpl
+    System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
   }
 
   @Override
