@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import org.atteo.classindex.IndexAnnotated;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -32,7 +31,6 @@ import java.lang.annotation.Target;
 /**
  * Содержит набор метаинформации о типе метаданных
  */
-@IndexAnnotated
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Metadata {
