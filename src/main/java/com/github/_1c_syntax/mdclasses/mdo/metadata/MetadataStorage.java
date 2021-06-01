@@ -21,16 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
-import org.atteo.classindex.ClassIndex;
+import io.github.classgraph.ClassGraph;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Используется для хранения кэша метаинформации по MD классам
  */
+@Slf4j
 public final class MetadataStorage {
 
   private static final Map<Class<?>, Metadata> STORAGE = computeStorage(Metadata.class);
@@ -70,9 +73,26 @@ public final class MetadataStorage {
   }
 
   private static <T extends Annotation> Map<Class<?>, T> computeStorage(Class<T> annotation) {
-    Map<Class<?>, T> localStorage = new HashMap<>();
-    ClassIndex.getAnnotated(annotation).forEach(
-      clazz -> localStorage.put(clazz, clazz.getAnnotation(annotation)));
-    return Collections.unmodifiableMap(localStorage);
+    try (var scanResult = new ClassGraph()
+            .enableClassInfo()
+            .enableAnnotationInfo()
+            .acceptPackages("com.github._1c_syntax.mdclasses")
+            .scan()) {
+
+      Map<Class<?>, T> localStorage = new HashMap<>();
+      var classes = scanResult.getClassesWithAnnotation(annotation.getName());
+      classes.stream().map(classInfo -> {
+        try {
+          return Class.forName(classInfo.getName());
+        } catch (ClassNotFoundException e) {
+          LOGGER.error("Cannot resolve class: " + classInfo.getName());
+          return null;
+        }
+      })
+              .filter(Objects::nonNull)
+              .forEach(aClass -> localStorage.put(aClass, aClass.getAnnotation(annotation)));
+
+      return Collections.unmodifiableMap(localStorage);
+    }
   }
 }
