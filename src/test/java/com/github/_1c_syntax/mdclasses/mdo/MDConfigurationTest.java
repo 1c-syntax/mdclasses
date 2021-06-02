@@ -125,6 +125,7 @@ class MDConfigurationTest extends AbstractMDOTest {
 
     checkSubsystems(configuration, 5);
     checkCommonAttributes(configuration);
+    checkExchangePlans(configuration);
   }
 
   @Test
@@ -236,6 +237,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
     checkCommonAttributes(configuration);
+    checkExchangePlans(configuration);
   }
 
   private void checkChildCount(MDConfiguration configuration, MDOType type, int count) {
@@ -290,4 +292,17 @@ class MDConfigurationTest extends AbstractMDOTest {
             && attribute.equals(commonAttribute.getCommonAttribute())));
     });
   }
+
+  private void checkExchangePlans(MDConfiguration configuration) {
+    var exchangePlans = configuration.getChildren().stream()
+      .filter(Either::isRight).map(Either::get)
+      .filter(mdo -> mdo.getType() == MDOType.EXCHANGE_PLAN)
+      .map(MDExchangePlan.class::cast)
+      .collect(Collectors.toList());
+    assertThat(exchangePlans).hasSize(1);
+    exchangePlans.forEach(exchangePlan ->
+      assertThat(exchangePlan.getContent())
+        .anyMatch(exchangePlanItem -> exchangePlanItem.getMdObject().isRight()));
+  }
+
 }

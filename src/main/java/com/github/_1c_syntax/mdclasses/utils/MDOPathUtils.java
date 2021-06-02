@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.MDExchangePlan;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -252,6 +253,18 @@ public class MDOPathUtils {
       currentPath = Paths.get(basePath, xdto.getName(), "Ext", "Package.bin");
     }
     return currentPath;
+  }
+
+  /**
+   * Возвращает путь к файлу с составом плана обмена
+   * Внимание! Только для формата конфигуратора!
+   *
+   * @param exchangePlan План обмена
+   * @return Путь к составу плана обмена
+   */
+  public static Path getExchangePlanContentPath(MDExchangePlan exchangePlan) {
+    var basePath = exchangePlan.getPath().getParent().toString();
+    return Paths.get(basePath, exchangePlan.getName(), "Ext", "Content.xml");
   }
 
   // Формат EDT
