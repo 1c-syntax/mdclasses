@@ -25,16 +25,20 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
+import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -129,6 +133,21 @@ public class MDOFactory {
     var value = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
     value.fillPlainDataSets();
     return Optional.of(value);
+  }
+
+  /**
+   * Читает состав плана обмена для формата конфигуратора
+   *
+   * @param path Путь к файлу с составом плана обмена
+   * @return Состав плана обмена
+   */
+  public List<ExchangePlanItem> readExchangeContext(Path path) {
+    if (Files.notExists(path)) {
+      return Collections.emptyList();
+    }
+
+    var value = (DesignerExchangePlanContent) XStreamFactory.fromXML(path.toFile());
+    return value.getContent();
   }
 
   /**

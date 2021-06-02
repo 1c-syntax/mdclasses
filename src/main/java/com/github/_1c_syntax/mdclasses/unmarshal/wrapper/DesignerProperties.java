@@ -156,4 +156,9 @@ public class DesignerProperties {
   private DataSeparation dataSeparation = DataSeparation.DONT_USE;
   @XStreamAlias("Indexing")
   private IndexingType indexing = IndexingType.DONT_INDEX;
+  
+  @XStreamAlias("DistributedInfoBase")
+  private boolean distributedInfoBase;
+  @XStreamAlias("IncludeConfigurationExtensions")
+  private boolean includeConfigurationExtensions;
 }
