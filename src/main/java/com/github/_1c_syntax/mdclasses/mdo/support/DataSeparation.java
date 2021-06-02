@@ -19,17 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.mdclasses.mdo.support;
 
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
-import java.nio.file.Path;
+/**
+ * Возможные варианты свойства `Разделение данных`
+ */
+@AllArgsConstructor
+public enum DataSeparation implements EnumWithValue {
+  DONT_USE("DontUse"),
+  SEPARATE("Separate");
 
-public interface MDOTemplate {
-  TemplateType getTemplateType();
-
-  TemplateData<?> getTemplateData();
-
-  Path getTemplateDataPath();
+  @Getter
+  @Accessors(fluent = true)
+  private final String value;
 }

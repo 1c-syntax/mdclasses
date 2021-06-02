@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -62,7 +63,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   /**
    * Признак использования общего реквизита как разделителя данных
    */
-  private UseMode dataSeparation = UseMode.DONT_USE;
+  private DataSeparation dataSeparation = DataSeparation.SEPARATE;
 
   /**
    * Список объектов, использующих общий реквизит

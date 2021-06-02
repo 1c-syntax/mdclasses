@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import org.junit.jupiter.api.Test;
@@ -42,7 +43,7 @@ class MDCommonAttributeTest extends AbstractMDOTest {
     checkNoModules(mdo);
     var commonAttribute = (MDCommonAttribute) mdo;
     assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
-    assertThat(commonAttribute.getDataSeparation()).isEqualTo(UseMode.DONT_USE);
+    assertThat(commonAttribute.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
   }
 
   @Override
@@ -55,7 +56,7 @@ class MDCommonAttributeTest extends AbstractMDOTest {
     checkNoModules(mdo);
     var commonAttribute = (MDCommonAttribute) mdo;
     assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
-    assertThat(commonAttribute.getDataSeparation()).isEqualTo(UseMode.DONT_USE);
+    assertThat(commonAttribute.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
   }
 
 }
