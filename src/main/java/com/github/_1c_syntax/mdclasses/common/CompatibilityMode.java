@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.common;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Locale;
@@ -29,6 +30,7 @@ import java.util.regex.Pattern;
 /**
  * Класс реализующий объект для хранения режима совместимости конфигурации
  */
+@EqualsAndHashCode
 public class CompatibilityMode {
   private static final String VERSION8_1 = "Version8_1";
   private static final String DONT_USE = "DontUse";
