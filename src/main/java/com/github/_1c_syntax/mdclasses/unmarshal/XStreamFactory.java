@@ -41,6 +41,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
 import com.github._1c_syntax.mdclasses.mdo.support.FormType;
+import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
@@ -360,6 +361,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
     xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
     xStream.registerConverter(new EnumConverter<>(FormType.class));
+    xStream.registerConverter(new EnumConverter<>(IndexingType.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());

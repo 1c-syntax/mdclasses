@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
 import com.github._1c_syntax.mdclasses.mdo.support.FormType;
+import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
@@ -153,4 +154,6 @@ public class DesignerProperties {
   private UseMode autoUse = UseMode.DONT_USE;
   @XStreamAlias("DataSeparation")
   private DataSeparation dataSeparation = DataSeparation.DONT_USE;
+  @XStreamAlias("Indexing")
+  private IndexingType indexing = IndexingType.DONT_INDEX;
 }

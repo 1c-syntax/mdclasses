@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.FormType;
+import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,9 @@ class MDCatalogTest extends AbstractMDOTest {
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "Catalogs/Справочник1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
 
+    var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.INDEX_WITH_ADDITIONAL_ORDER);
+
   }
 
   @Override
@@ -76,6 +80,9 @@ class MDCatalogTest extends AbstractMDOTest {
     var catalog = (MDCatalog) mdo;
     assertThat(catalog.getForms())
       .anyMatch(form -> form.getFormType() == FormType.ORDINARY);
+
+    var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
 }
