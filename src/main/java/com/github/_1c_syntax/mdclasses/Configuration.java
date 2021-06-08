@@ -35,6 +35,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
@@ -57,6 +58,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -178,6 +180,10 @@ public class Configuration {
    */
   private Map<MDOReference, AbstractMDObjectBase> childrenByMdoRef;
   /**
+   * Упорядоченный список объектов метаданных верхнего уровня в разрезе типов метаданных
+   */
+  private Map<MDOType, List<AbstractMDObjectBase>> orderedTopMDObjects;
+  /**
    * Дочерние общие модули
    */
   private Map<String, MDCommonModule> commonModules;
@@ -205,6 +211,7 @@ public class Configuration {
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
+    orderedTopMDObjects = Collections.emptyMap();
     roles = Collections.emptyList();
     copyrights = Collections.emptyList();
     detailedInformation = Collections.emptyList();
@@ -228,9 +235,12 @@ public class Configuration {
   }
 
   protected Configuration(MDConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
+    var allChildren = getAllChildren(mdoConfiguration);
+
     configurationSource = source;
-    children = getAllChildren(mdoConfiguration);
+    children = new HashSet<>(allChildren);
     childrenByMdoRef = new HashMap<>();
+    orderedTopMDObjects = getOrderedTopObjectsByChildren(allChildren);
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
     roles = new ArrayList<>();
@@ -426,20 +436,27 @@ public class Configuration {
     modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
-  private static Set<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
-    Set<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
+  private static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
+    List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
-      .collect(Collectors.toSet());
+      .collect(Collectors.toList());
 
     allChildren.addAll(allChildren.stream()
       .filter(MDOHasChildren.class::isInstance)
       .map(MDOHasChildren.class::cast)
       .map(MDOHasChildren::getChildren)
       .flatMap(Collection::stream)
-      .collect(Collectors.toSet()));
+      .collect(Collectors.toList()));
 
     allChildren.add(mdoConfiguration);
     return allChildren;
+  }
+
+  private static Map<MDOType, List<AbstractMDObjectBase>> getOrderedTopObjectsByChildren(
+    List<AbstractMDObjectBase> children) {
+
+    return children.stream().collect(Collectors.groupingBy(AbstractMDObjectBase::getType));
+    
   }
 
 }
