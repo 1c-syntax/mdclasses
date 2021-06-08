@@ -21,21 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 /**
  * Типы авторегистрации в плане обмена
  */
+@AllArgsConstructor
 public enum AutoRecordType implements EnumWithValue {
   ALLOW("Allow"),
   DENY("Deny");
 
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
-
-  AutoRecordType(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
-  }
 }
