@@ -92,6 +92,7 @@ import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
+import com.thoughtworks.xstream.security.ExplicitTypePermission;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import lombok.Getter;
@@ -191,6 +192,7 @@ public class XStreamFactory {
     XStream.setupDefaultSecurity(xStream);
     xStream.addPermission(NoTypePermission.NONE);
     xStream.addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
+    xStream.addPermission(new ExplicitTypePermission(new String[]{"java.time.Period"}));
 
     // необходимо зарегистрировать все классы, имена которых в XML отличаются от имен самих классов
     registerClasses(xStream);
