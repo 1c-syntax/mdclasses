@@ -44,6 +44,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -172,6 +173,7 @@ class ConfigurationTest {
     modulesByType = configuration.getModulesByMDORef("WSReference.WSСсылка");
     assertThat(modulesByType).isEmpty();
 
+    checkOrderedCommonModules(configuration);
   }
 
   @Test
@@ -436,6 +438,8 @@ class ConfigurationTest {
       .get().getMdoReference());
     assertThat(modulesByType).hasSize(1)
       .containsKey(ModuleType.CommonModule);
+
+    checkOrderedCommonModules(configuration);
   }
 
   @Test
@@ -659,6 +663,21 @@ class ConfigurationTest {
   private void checkChildCount(Configuration configuration, MDOType type, int count) {
     assertThat(configuration.getChildren())
       .filteredOn(mdObjectBase -> mdObjectBase.getType() == type).hasSize(count);
+  }
+
+  private static void checkOrderedCommonModules(Configuration configuration) {
+    var orderedCommonModules = configuration.getOrderedTopMDObjects().get(MDOType.COMMON_MODULE);
+    checkPosition(orderedCommonModules, "ПростойОбщийМодуль", 0);
+    checkPosition(orderedCommonModules, "ГлобальныйОбщийМодуль", 1);
+    checkPosition(orderedCommonModules, "ОбщийМодульВызовСервера", 2);
+    checkPosition(orderedCommonModules, "ОбщийМодульПовтИспВызов", 3);
+    checkPosition(orderedCommonModules, "ОбщийМодульПовтИспСеанс", 4);
+    checkPosition(orderedCommonModules, "ОбщийМодульПолныйеПрава", 5);
+  }
+
+  private static void checkPosition(List<AbstractMDObjectBase> children, String name, int position) {
+    var child = children.get(position);
+    assertThat(child.getName()).isEqualTo(name);
   }
 
 }
