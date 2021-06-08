@@ -165,4 +165,11 @@ public class DesignerProperties {
 
   @XStreamAlias("PasswordMode")
   private boolean passwordMode;
+
+  @XStreamAlias("UseInTotals")
+  private boolean useInTotals = true;
+  @XStreamAlias("DenyIncompleteValues")
+  private boolean denyIncompleteValues;
+  @XStreamAlias("Master")
+  private boolean master;
 }
