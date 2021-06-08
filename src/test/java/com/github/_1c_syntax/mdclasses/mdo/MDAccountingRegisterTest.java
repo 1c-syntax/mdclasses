@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,8 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
   @Override
@@ -58,5 +61,7 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.INDEX);
   }
 }
