@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
@@ -52,6 +53,11 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     recalculation.ifPresent(attribute -> {
       assertThat(((Recalculation) attribute).getModules()).hasSize(1);
     });
+
+	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    assertThat(dimension.isDenyIncompleteValues()).isTrue();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
   }
 
   @Override
@@ -72,6 +78,12 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     recalculation.ifPresent(attribute -> {
       assertThat(((Recalculation) attribute).getModules()).hasSize(1);
     });
+
+	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    assertThat(dimension.isDenyIncompleteValues()).isFalse();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
+
   }
 
 }

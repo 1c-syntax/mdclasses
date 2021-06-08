@@ -24,12 +24,12 @@ package com.github._1c_syntax.mdclasses.mdo.attributes;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
@@ -39,7 +39,27 @@ import lombok.Value;
   fieldNameEDT = "dimensions"
 )
 public class Dimension extends AbstractMDOAttribute {
+
+  /**
+   * Признак использования в итогах
+   * TODO: Для регистра сведений не применимо, но не противоречит логике
+   */
+  private boolean useInTotals = true;
+
+  /**
+   * Признак запрета незаполненного значения
+   */
+  private boolean denyIncompleteValues;
+
+  /**
+   * Признак ведущее
+   */
+  private boolean master;
+
   public Dimension(DesignerMDO designerMDO) {
     super(designerMDO);
+    useInTotals = designerMDO.getProperties().isUseInTotals();
+    denyIncompleteValues = designerMDO.getProperties().isDenyIncompleteValues();
+    master = designerMDO.getProperties().isMaster();
   }
 }
