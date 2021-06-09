@@ -23,7 +23,6 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDExchangePlan;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -262,7 +261,7 @@ public class MDOPathUtils {
    * @param exchangePlan План обмена
    * @return Путь к составу плана обмена
    */
-  public static Path getExchangePlanContentPath(MDExchangePlan exchangePlan) {
+  public static Path getExchangePlanContentPath(AbstractMDObjectBase exchangePlan) {
     var basePath = exchangePlan.getPath().getParent().toString();
     return Paths.get(basePath, exchangePlan.getName(), "Ext", "Content.xml");
   }
