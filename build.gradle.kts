@@ -10,7 +10,7 @@ plugins {
     id("io.freefair.lombok") version "6.0.0-m2"
     id("io.freefair.javadoc-links") version "6.0.0-m2"
     id("io.freefair.javadoc-utf-8") version "6.0.0-m2"
-    id("org.sonarqube") version "3.2.0"
+    id("org.sonarqube") version "3.3"
 }
 
 group = "com.github.1c-syntax"
