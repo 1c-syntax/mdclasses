@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
+import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
@@ -46,8 +47,14 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
    */
   private AttributeKind kind = AttributeKind.CUSTOM;
 
+  /**
+   * Вариант индексирования реквизита
+   */
+  private IndexingType indexing = IndexingType.DONT_INDEX;
+
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
+    indexing = designerMDO.getProperties().getIndexing();
   }
 
   @Override
