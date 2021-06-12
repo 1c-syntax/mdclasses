@@ -52,9 +52,15 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
    */
   private IndexingType indexing = IndexingType.DONT_INDEX;
 
+  /**
+   * Режим пароля. Только для аттрибутов с типом `Строка`
+   */
+  private boolean passwordMode = false;
+
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
     indexing = designerMDO.getProperties().getIndexing();
+    passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
   @Override
