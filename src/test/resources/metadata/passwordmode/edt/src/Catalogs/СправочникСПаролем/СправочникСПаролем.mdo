@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ae03fb8e-6eab-4013-aecb-22908adfc47e">
+  <producedTypes>
+    <objectType typeId="b20a73a4-bbf1-4111-b3fd-0a98de6f549c" valueTypeId="1ba500f6-0f40-4040-8b0a-eaca6b392caf"/>
+    <refType typeId="6c51bc9b-995d-4cdc-9ead-6fbb34829b1d" valueTypeId="9f569c02-e2aa-4479-9d39-0c3b82b3713c"/>
+    <selectionType typeId="7d20cc0a-5ff5-412b-8354-81dbfbd1cdfd" valueTypeId="9fd7efd8-e1e8-4302-91d4-3089863d13ca"/>
+    <listType typeId="3fead5c1-e6df-498f-8638-d88aa38df752" valueTypeId="904f52e7-35e6-4b37-9b27-979e98a7f44d"/>
+    <managerType typeId="166d2c69-f5ca-40e9-a875-35bc7b7cf81a" valueTypeId="4ca143b0-172e-44de-a3f8-243e7348554d"/>
+  </producedTypes>
+  <name>СправочникСПаролем</name>
+  <synonym>
+    <key>ru</key>
+    <value>Справочник с паролем</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Catalog.СправочникСПаролем.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.СправочникСПаролем.StandardAttribute.Code</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <levelCount>2</levelCount>
+  <foldersOnTop>true</foldersOnTop>
+  <codeLength>9</codeLength>
+  <descriptionLength>25</descriptionLength>
+  <codeType>String</codeType>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>Catalog.СправочникСПаролем.Form.ФормаЭлемента</defaultObjectForm>
+  <attributes uuid="62d7e645-8512-43a2-9554-251ec74ed398">
+    <name>Пароль</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пароль</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <passwordMode>true</passwordMode>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <tabularSections uuid="6f094600-52d3-4bd6-82f4-92794b41da90">
+    <producedTypes>
+      <objectType typeId="3f195be8-6cdf-4565-bb04-a55870703f44" valueTypeId="96824859-2167-47c5-af3f-31bb3af8dae0"/>
+      <rowType typeId="38a5ecee-d45f-4fb6-a8cc-53cd1505035a" valueTypeId="fbb2bb22-f46a-4997-b2b7-4232167cff13"/>
+    </producedTypes>
+    <name>ТаблЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табл часть</value>
+    </synonym>
+    <attributes uuid="e16d7a67-3272-4c69-9440-b44c6c7e06e7">
+      <name>Пароль</name>
+      <synonym>
+        <key>ru</key>
+        <value>Пароль</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <passwordMode>true</passwordMode>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="0d9a36d9-4952-4ab5-bf63-adb15bc369cc">
+      <name>Реквизит1</name>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="bc6871f6-0917-4d81-8de2-cb6d9a853da4">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:Catalog>

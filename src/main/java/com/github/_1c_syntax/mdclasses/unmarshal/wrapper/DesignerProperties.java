@@ -156,4 +156,7 @@ public class DesignerProperties {
   private DataSeparation dataSeparation = DataSeparation.DONT_USE;
   @XStreamAlias("Indexing")
   private IndexingType indexing = IndexingType.DONT_INDEX;
+
+  @XStreamAlias("PasswordMode")
+  private boolean passwordMode = false;
 }
