@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<InputField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="Пароль" id="7">
+			<DataPath>Объект.Пароль</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<PasswordMode>true</PasswordMode>
+			<ContextMenu name="ПарольКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Реквизит1" id="10">
+			<DataPath>Реквизит1</DataPath>
+			<ContextMenu name="Реквизит1КонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="Реквизит1РасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="Реквизит2" id="13">
+			<DataPath>Реквизит2</DataPath>
+			<PasswordMode>false</PasswordMode>
+			<ContextMenu name="Реквизит2КонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="Реквизит2РасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<Table name="ТаблЧасть" id="16">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ТаблЧасть</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблЧастьКонтекстноеМеню" id="17"/>
+			<AutoCommandBar name="ТаблЧастьКоманднаяПанель" id="18"/>
+			<ExtendedTooltip name="ТаблЧастьРасширеннаяПодсказка" id="19"/>
+			<SearchStringAddition name="ТаблЧастьСтрокаПоиска" id="20">
+				<AdditionSource>
+					<Item>ТаблЧасть</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблЧастьСтрокаПоискаКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ТаблЧастьСтрокаПоискаРасширеннаяПодсказка" id="22"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблЧастьСостояниеПросмотра" id="23">
+				<AdditionSource>
+					<Item>ТаблЧасть</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблЧастьСостояниеПросмотраКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="ТаблЧастьСостояниеПросмотраРасширеннаяПодсказка" id="25"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблЧастьУправлениеПоиском" id="26">
+				<AdditionSource>
+					<Item>ТаблЧасть</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблЧастьУправлениеПоискомКонтекстноеМеню" id="27"/>
+				<ExtendedTooltip name="ТаблЧастьУправлениеПоискомРасширеннаяПодсказка" id="28"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ТаблЧастьНомерСтроки" id="29">
+					<DataPath>Объект.ТаблЧасть.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблЧастьНомерСтрокиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ТаблЧастьНомерСтрокиРасширеннаяПодсказка" id="31"/>
+				</LabelField>
+				<InputField name="ТаблЧастьПароль" id="32">
+					<DataPath>Объект.ТаблЧасть.Пароль</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<PasswordMode>true</PasswordMode>
+					<ContextMenu name="ТаблЧастьПарольКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ТаблЧастьПарольРасширеннаяПодсказка" id="34"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СправочникСПаролем</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Реквизит1" id="2">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Реквизит2" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>
