@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDSubsystem;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
+import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
@@ -36,6 +37,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
+import com.github._1c_syntax.mdclasses.mdo.support.AutoRecordType;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
@@ -65,6 +67,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.PairConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerRootWrapper;
@@ -224,6 +227,7 @@ public class XStreamFactory {
     xStream.processAnnotations(DesignerFormCommand.class);
     xStream.processAnnotations(DesignerFormCommands.class);
     xStream.processAnnotations(DesignerContentItem.class);
+    xStream.processAnnotations(DesignerExchangePlanContent.class);
 
     xStream.alias("Rights", RoleData.class);
     xStream.alias("package", XDTOPackageData.class);
@@ -235,6 +239,7 @@ public class XStreamFactory {
     registerSubsystemChildrenAliases(xStream);
     registerFormsChildrenAliases(xStream);
     registerSimpleTypeAliases(xStream);
+    registerExchangePlanItemMDOAliases(xStream);
   }
 
   private void registerClassesByMetadata(XStream xStream) {
@@ -310,6 +315,11 @@ public class XStreamFactory {
     xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
   }
 
+  private void registerExchangePlanItemMDOAliases(XStream xStream) {
+    xStream.aliasField("Metadata", ExchangePlanItem.class, "mdObject");
+    xStream.aliasField("mdObject", ExchangePlanItem.class, "mdObject");
+  }
+
   private void registerFormsChildrenAliases(XStream xStream) {
     List<Class<?>> formClasses = new ArrayList<>();
     formClasses.add(FormData.class);
@@ -364,6 +374,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
     xStream.registerConverter(new EnumConverter<>(FormType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
+    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
