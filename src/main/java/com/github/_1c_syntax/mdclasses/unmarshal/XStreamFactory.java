@@ -69,7 +69,6 @@ import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.PairConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerRootWrapper;
@@ -230,7 +229,6 @@ public class XStreamFactory {
     xStream.processAnnotations(DesignerFormCommand.class);
     xStream.processAnnotations(DesignerFormCommands.class);
     xStream.processAnnotations(DesignerContentItem.class);
-    xStream.processAnnotations(DesignerExchangePlanContent.class);
 
     xStream.alias("Rights", RoleData.class);
     xStream.alias("package", XDTOPackageData.class);
@@ -242,7 +240,6 @@ public class XStreamFactory {
     registerSubsystemChildrenAliases(xStream);
     registerFormsChildrenAliases(xStream);
     registerSimpleTypeAliases(xStream);
-    registerExchangePlanItemMDOAliases(xStream);
   }
 
   private void registerClassesByMetadata(XStream xStream) {
@@ -318,11 +315,6 @@ public class XStreamFactory {
     xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
   }
 
-  private void registerExchangePlanItemMDOAliases(XStream xStream) {
-    xStream.aliasField("Metadata", ExchangePlanItem.class, "mdObject");
-    xStream.aliasField("mdObject", ExchangePlanItem.class, "mdObject");
-  }
-
   private void registerFormsChildrenAliases(XStream xStream) {
     List<Class<?>> formClasses = new ArrayList<>();
     formClasses.add(FormData.class);
@@ -377,6 +369,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
     xStream.registerConverter(new EnumConverter<>(FormType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
+    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
     xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new AttributeConverter());
