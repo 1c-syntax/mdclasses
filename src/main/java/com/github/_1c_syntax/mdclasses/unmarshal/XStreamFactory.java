@@ -46,10 +46,12 @@ import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
+import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
+import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
@@ -216,6 +218,7 @@ public class XStreamFactory {
     xStream.processAnnotations(MDOModule.class);
     xStream.processAnnotations(ValueType.class);
     xStream.processAnnotations(DynamicListExtInfo.class);
+    xStream.processAnnotations(InputFieldExtInfo.class);
     xStream.processAnnotations(DataCompositionSchema.class);
     xStream.processAnnotations(Recalculation.class);
     xStream.processAnnotations(TabularSection.class);
@@ -377,6 +380,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataSetType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
     xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
+    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
