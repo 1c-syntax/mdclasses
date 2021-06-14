@@ -164,5 +164,5 @@ public class DesignerProperties {
   private boolean includeConfigurationExtensions;
 
   @XStreamAlias("PasswordMode")
-  private boolean passwordMode = false;
+  private boolean passwordMode;
 }

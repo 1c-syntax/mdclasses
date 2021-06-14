@@ -55,7 +55,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
   /**
    * Режим пароля. Только для аттрибутов с типом `Строка`
    */
-  private boolean passwordMode = false;
+  private boolean passwordMode;
 
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);

@@ -46,10 +46,11 @@ public class ExtInfoConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     ExtInfo item;
     var type = Optional.ofNullable(reader.getAttribute("type")).orElse(ExtInfo.UNKNOWN);
+    // TODO: отрефакторить при добавлении нового типа ExtInfo
     if (TYPE_DYNAMIC_LIST.equals(type)) {
-      item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class, XStreamFactory.getReflectionConverter());
+      item = createExtInfo(reader, context, DynamicListExtInfo.class);
     } else if (TYPE_INPUT_FIELD.equals(type)) {
-      item = (ExtInfo) context.convertAnother(reader, InputFieldExtInfo.class, XStreamFactory.getReflectionConverter());
+      item = createExtInfo(reader, context, InputFieldExtInfo.class);
     } else {
       item = new ExtInfo();
     }
@@ -62,4 +63,8 @@ public class ExtInfoConverter implements Converter {
     return type == ExtInfo.class;
   }
 
+  private static ExtInfo createExtInfo(HierarchicalStreamReader reader, UnmarshallingContext context,
+                                       Class<? extends ExtInfo> classTo) {
+    return (ExtInfo) context.convertAnother(reader, classTo, XStreamFactory.getReflectionConverter());
+  }
 }

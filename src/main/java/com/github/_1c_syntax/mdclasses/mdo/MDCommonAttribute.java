@@ -86,7 +86,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
    */
-  private boolean passwordMode = false;
+  private boolean passwordMode;
 
   public MDCommonAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
