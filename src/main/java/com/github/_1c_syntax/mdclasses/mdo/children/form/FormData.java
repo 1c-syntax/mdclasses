@@ -123,6 +123,14 @@ public class FormData {
     }
     formItem.setType(designerFormItem.getType());
 
+    if (designerFormItem.getType().equals("InputField")) {
+      var extInfo = new InputFieldExtInfo();
+      extInfo.setPasswordMode(designerFormItem.getPasswordMode());
+      formItem.setExtInfo(extInfo);
+    } else {
+      formItem.setExtInfo(new ExtInfo());
+    }
+
     addDesignerFormItem(designerFormItem.getContextMenu(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getAutoCommandBar(), formItem.getChildren());
