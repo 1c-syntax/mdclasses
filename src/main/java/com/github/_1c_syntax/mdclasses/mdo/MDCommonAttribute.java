@@ -83,6 +83,11 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   @Setter(AccessLevel.NONE)
   private CommonAttribute commonAttribute;
 
+  /**
+   * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
+   */
+  private boolean passwordMode;
+
   public MDCommonAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
     autoUse = designerMDO.getProperties().getAutoUse();
@@ -92,6 +97,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
       metadataItem -> designerContent.add(new UseContent(metadataItem.getMetadata(), metadataItem.getUse()))
     );
     setContent(designerContent);
+    setPasswordMode(designerMDO.getProperties().isPasswordMode());
   }
 
   protected void linkUsing(Map<String, AbstractMDObjectBase> allMDO) {

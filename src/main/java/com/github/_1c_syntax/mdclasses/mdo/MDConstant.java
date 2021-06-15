@@ -41,7 +41,13 @@ import lombok.ToString;
   groupNameRu = "Константы"
 )
 public class MDConstant extends AbstractMDObjectBSL {
+  /**
+   * Режим пароля. Только для констант с типом `Строка`
+   */
+  private boolean passwordMode;
+
   public MDConstant(DesignerMDO designerMDO) {
     super(designerMDO);
+    setPasswordMode(designerMDO.getProperties().isPasswordMode());
   }
 }

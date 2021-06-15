@@ -19,40 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal.wrapper.form;
+package com.github._1c_syntax.mdclasses.mdo.children.form;
 
 import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(of = {"id", "name"})
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class DesignerFormItem {
-  @XStreamAsAttribute
-  private String name;
-  @XStreamAsAttribute
-  private int id;
-  private String type;
-  @XStreamAlias("DataPath")
-  private String dataPath;
-  @XStreamAlias("ChildItems")
-  private DesignerChildItems childItems;
-  @XStreamAlias("ContextMenu")
-  private DesignerFormItem contextMenu;
-  @XStreamAlias("ExtendedTooltip")
-  private DesignerFormItem extendedTooltip;
-  @XStreamAlias("AutoCommandBar")
-  private DesignerFormItem autoCommandBar;
-  @XStreamAlias("SearchStringAddition")
-  private DesignerFormItem searchStringAddition;
-  @XStreamAlias("ViewStatusAddition")
-  private DesignerFormItem viewStatusAddition;
-  @XStreamAlias("Events")
-  private DesignerEvents events;
-  @XStreamAlias("PasswordMode")
+public class InputFieldExtInfo extends ExtInfo {
+  /**
+   * Режим пароля. Только для данных с типом `Строка`
+   */
   private BWAValue passwordMode = BWAValue.AUTO;
 }

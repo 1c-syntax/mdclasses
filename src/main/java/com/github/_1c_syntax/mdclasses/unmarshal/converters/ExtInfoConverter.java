@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.ExtInfo;
+import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -33,8 +34,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import java.util.Optional;
 
 public class ExtInfoConverter implements Converter {
-
-  private static final String TYPE_NAME = "form:DynamicListExtInfo";
+  private static final String TYPE_DYNAMIC_LIST = "form:DynamicListExtInfo";
+  private static final String TYPE_INPUT_FIELD = "form:InputFieldExtInfo";
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -45,9 +46,11 @@ public class ExtInfoConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     ExtInfo item;
     var type = Optional.ofNullable(reader.getAttribute("type")).orElse(ExtInfo.UNKNOWN);
-    if (TYPE_NAME.equals(type)) {
-      item = (ExtInfo) context.convertAnother(reader, DynamicListExtInfo.class,
-        XStreamFactory.getReflectionConverter());
+    // TODO: отрефакторить при добавлении нового типа ExtInfo
+    if (TYPE_DYNAMIC_LIST.equals(type)) {
+      item = createExtInfo(reader, context, DynamicListExtInfo.class);
+    } else if (TYPE_INPUT_FIELD.equals(type)) {
+      item = createExtInfo(reader, context, InputFieldExtInfo.class);
     } else {
       item = new ExtInfo();
     }
@@ -58,5 +61,10 @@ public class ExtInfoConverter implements Converter {
   @Override
   public boolean canConvert(Class type) {
     return type == ExtInfo.class;
+  }
+
+  private static ExtInfo createExtInfo(HierarchicalStreamReader reader, UnmarshallingContext context,
+                                       Class<? extends ExtInfo> classTo) {
+    return (ExtInfo) context.convertAnother(reader, classTo, XStreamFactory.getReflectionConverter());
   }
 }
