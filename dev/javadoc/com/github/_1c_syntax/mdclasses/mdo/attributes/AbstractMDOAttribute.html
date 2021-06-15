@@ -170,15 +170,25 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#hashCode()">hashCode</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setIndexing(com.github._1c_syntax.mdclasses.mdo.support.IndexingType)">setIndexing</a></span>&#8203;(<a href="../support/IndexingType.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">IndexingType</a>&nbsp;indexing)</code></div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isPasswordMode()">isPasswordMode</a></span>()</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-<div class="block">Вариант индексирования реквизита</div>
+<div class="block">Режим пароля.</div>
 </div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setKind(com.github._1c_syntax.mdclasses.mdo.support.AttributeKind)">setKind</a></span>&#8203;(<a href="../support/AttributeKind.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">AttributeKind</a>&nbsp;kind)</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setIndexing(com.github._1c_syntax.mdclasses.mdo.support.IndexingType)">setIndexing</a></span>&#8203;(<a href="../support/IndexingType.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">IndexingType</a>&nbsp;indexing)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Вариант индексирования реквизита</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setKind(com.github._1c_syntax.mdclasses.mdo.support.AttributeKind)">setKind</a></span>&#8203;(<a href="../support/AttributeKind.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">AttributeKind</a>&nbsp;kind)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Вид атрибута</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setPasswordMode(boolean)">setPasswordMode</a></span>&#8203;(boolean&nbsp;passwordMode)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Режим пароля.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#toString()">toString</a></span>()</code></div>
@@ -283,6 +293,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="isPasswordMode()">
+<h3>isPasswordMode</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPasswordMode</span>()</div>
+<div class="block">Режим пароля. Только для аттрибутов с типом `Строка`</div>
+</section>
+</li>
+<li>
 <section class="detail" id="setKind(com.github._1c_syntax.mdclasses.mdo.support.AttributeKind)">
 <h3>setKind</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setKind</span>&#8203;<span class="parameters">(<a href="../support/AttributeKind.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">AttributeKind</a>&nbsp;kind)</span></div>
@@ -294,6 +311,13 @@ loadScripts(document, 'script');</script>
 <h3>setIndexing</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setIndexing</span>&#8203;<span class="parameters">(<a href="../support/IndexingType.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">IndexingType</a>&nbsp;indexing)</span></div>
 <div class="block">Вариант индексирования реквизита</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setPasswordMode(boolean)">
+<h3>setPasswordMode</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPasswordMode</span>&#8203;<span class="parameters">(boolean&nbsp;passwordMode)</span></div>
+<div class="block">Режим пароля. Только для аттрибутов с типом `Строка`</div>
 </section>
 </li>
 <li>
