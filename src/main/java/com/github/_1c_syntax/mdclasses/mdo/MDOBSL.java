@@ -19,35 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.MDOBSL;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 
-import java.net.URI;
+import java.util.List;
 
 /**
- * Класс-описание модуля объекта
+ * Интерфейс объектов, имеющих модули
  */
-@Value
-@EqualsAndHashCode(exclude = {"owner"})
-@AllArgsConstructor
-public class MDOModule {
+public interface MDOBSL extends MDOBase {
 
   /**
-   * Тип модуля
+   * Перечень модулей объекта
+   *
+   * @return Список модулей
    */
-  ModuleType moduleType;
-
-  /**
-   * Ссылка на файл bsl модуля
-   */
-  URI uri;
-
-  /**
-   * Ссылка на объект метаданных которому принадлежит модуль
-   */
-  MDOBSL owner;
+  List<MDOModule> getModules();
 }
