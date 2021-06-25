@@ -78,12 +78,17 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="description">
 <dl class="notes">
+<dt>All Implemented Interfaces:</dt>
+<dd><code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
+<dl class="notes">
 <dt>Direct Known Subclasses:</dt>
 <dd><code><a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">AbstractMDO</span>
-<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
+implements <a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></span></div>
 <div class="block">Базовый класс всех данных 1С. Необходимо гарантировать отсутствие null значений в полях</div>
 </section>
 <section class="summary">
@@ -367,6 +372,10 @@ loadScripts(document, 'script');</script>
 <h3>getUuid</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getUuid</span>()</div>
 <div class="block">уникальный идентификатор объекта</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getUuid()">getUuid</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -374,6 +383,10 @@ loadScripts(document, 'script');</script>
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
 <div class="block">Имя объекта</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getName()">getName</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -381,6 +394,10 @@ loadScripts(document, 'script');</script>
 <h3>getSynonyms</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="support/LanguageContent.html" title="class in com.github._1c_syntax.mdclasses.mdo.support">LanguageContent</a>&gt;</span>&nbsp;<span class="element-name">getSynonyms</span>()</div>
 <div class="block">Синонимы объекта</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getSynonyms()">getSynonyms</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -388,6 +405,10 @@ loadScripts(document, 'script');</script>
 <h3>getComment</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getComment</span>()</div>
 <div class="block">Строка с комментарием объекта</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getComment()">getComment</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -395,6 +416,10 @@ loadScripts(document, 'script');</script>
 <h3>getMdoReference</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="support/MDOReference.html" title="class in com.github._1c_syntax.mdclasses.mdo.support">MDOReference</a></span>&nbsp;<span class="element-name">getMdoReference</span>()</div>
 <div class="block">MDO-Ссылка на объект</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getMdoReference()">getMdoReference</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -402,6 +427,10 @@ loadScripts(document, 'script');</script>
 <h3>getObjectBelonging</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="support/ObjectBelonging.html" title="enum class in com.github._1c_syntax.mdclasses.mdo.support">ObjectBelonging</a></span>&nbsp;<span class="element-name">getObjectBelonging</span>()</div>
 <div class="block">Принадлежность объекта конфигурации (собственный или заимствованный)</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="MDO.html#getObjectBelonging()">getObjectBelonging</a></code>&nbsp;in interface&nbsp;<code><a href="MDO.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
