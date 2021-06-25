@@ -42,7 +42,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDObjectBase extends AbstractMDO {
+public abstract class AbstractMDObjectBase extends AbstractMDO implements MDOBase {
 
   /**
    * Путь к файлу объекта

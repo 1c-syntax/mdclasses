@@ -42,6 +42,7 @@ public enum ModuleType {
   OrdinaryApplicationModule("OrdinaryApplicationModule.bsl"),
   HTTPServiceModule("Module.bsl"),
   WEBServiceModule("Module.bsl"),
+  RecalculationModule("RecordSetModule.bsl"),
   UNKNOWN(""); // для неизвестных типов модулей
 
   /**

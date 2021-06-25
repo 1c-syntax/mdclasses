@@ -164,6 +164,9 @@ public class MDOUtils {
         case WEB_SERVICE:
           types.add(ModuleType.WEBServiceModule);
           break;
+        case RECALCULATION:
+          types.add(ModuleType.RecalculationModule);
+          break;
         default:
           // non
       }

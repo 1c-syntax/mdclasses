@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 @NoArgsConstructor
-public abstract class AbstractMDO {
+public abstract class AbstractMDO implements MDO {
 
   /**
    * уникальный идентификатор объекта

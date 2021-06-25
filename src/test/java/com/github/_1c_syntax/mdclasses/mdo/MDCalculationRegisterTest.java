@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,12 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
+    var calcRegister = (MDCalculationRegister) mdo;
+    var recalculation = calcRegister.getAttributes().stream()
+      .filter(attribute -> attribute.getAttributeType() == AttributeType.RECALCULATION).findFirst();
+    recalculation.ifPresent(attribute -> {
+      assertThat(((Recalculation) attribute).getModules()).hasSize(1);
+    });
   }
 
   @Override
@@ -59,6 +66,12 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    var calcRegister = (MDCalculationRegister) mdo;
+    var recalculation = calcRegister.getAttributes().stream()
+      .filter(attribute -> attribute.getAttributeType() == AttributeType.RECALCULATION).findFirst();
+    recalculation.ifPresent(attribute -> {
+      assertThat(((Recalculation) attribute).getModules()).hasSize(1);
+    });
   }
 
 }
