@@ -28,7 +28,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
-import com.github._1c_syntax.mdclasses.mdo.MDOBSL;
+import com.github._1c_syntax.mdclasses.mdo.MDOHasModule;
 import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
@@ -162,7 +162,7 @@ public class Configuration {
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  private Map<URI, MDOBSL> modulesByObject;
+  private Map<URI, MDOHasModule> modulesByObject;
   /**
    * Модули конфигурации
    */
@@ -294,7 +294,7 @@ public class Configuration {
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, MDOBSL> modulesObject = new HashMap<>();
+    Map<URI, MDOHasModule> modulesObject = new HashMap<>();
     Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
@@ -302,13 +302,13 @@ public class Configuration {
     children.forEach((AbstractMDObjectBase mdo) -> {
 
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
-      if (mdo instanceof MDOBSL) {
+      if (mdo instanceof MDOHasModule) {
         computeModules(modulesType,
           modulesSupport,
           modulesObject,
           modulesList,
           modulesMDORef,
-          (MDOBSL) mdo,
+          (MDOHasModule) mdo,
           supports);
       }
     });
@@ -418,9 +418,9 @@ public class Configuration {
   // todo надо рефакторить!!!!
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, MDOBSL> modulesObject,
+                                     Map<URI, MDOHasModule> modulesObject,
                                      List<MDOModule> modulesList,
-                                     Map<String, Map<ModuleType, URI>> modulesMDORef, MDOBSL mdo,
+                                     Map<String, Map<ModuleType, URI>> modulesMDORef, MDOHasModule mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {

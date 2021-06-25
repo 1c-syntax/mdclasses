@@ -44,7 +44,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implements MDOBSL {
+public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implements MDOHasModule {
 
   /**
    * Список модулей объекта

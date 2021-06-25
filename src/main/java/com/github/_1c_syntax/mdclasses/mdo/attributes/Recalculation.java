@@ -23,7 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.attributes;
 
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDOBSL;
+import com.github._1c_syntax.mdclasses.mdo.MDOHasModule;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -51,7 +51,7 @@ import java.util.List;
   name = "Recalculation",
   fieldNameEDT = "recalculations"
 )
-public class Recalculation extends AbstractMDOAttribute implements MDOBSL {
+public class Recalculation extends AbstractMDOAttribute implements MDOHasModule {
 
   /**
    * Список модулей объекта

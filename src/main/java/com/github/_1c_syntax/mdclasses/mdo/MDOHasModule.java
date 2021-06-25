@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Интерфейс объектов, имеющих модули
  */
-public interface MDOBSL extends MDOBase {
+public interface MDOHasModule extends MDO {
 
   /**
    * Перечень модулей объекта
