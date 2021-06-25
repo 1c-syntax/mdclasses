@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.bsl_common_library.types.MDOType;
+import com.github._1c_syntax.bsl_common_library.types.ModuleType;
 import org.junit.jupiter.api.Test;
 
 class MDCommonCommandTest extends AbstractMDOTest {

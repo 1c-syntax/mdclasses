@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.bsl_common_library.CompatibilityMode;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;

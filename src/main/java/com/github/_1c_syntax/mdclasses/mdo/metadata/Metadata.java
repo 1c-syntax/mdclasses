@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.bsl_common_library.types.MDOType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
