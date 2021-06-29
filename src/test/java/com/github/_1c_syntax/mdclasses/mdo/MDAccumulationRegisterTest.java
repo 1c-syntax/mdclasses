@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import org.junit.jupiter.api.Test;
@@ -45,6 +46,10 @@ class MDAccumulationRegisterTest extends AbstractMDOTest {
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    assertThat(dimension.isDenyIncompleteValues()).isFalse();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
   }
 
   @Override
@@ -59,5 +64,10 @@ class MDAccumulationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    assertThat(dimension.isDenyIncompleteValues()).isTrue();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
   }
 }
