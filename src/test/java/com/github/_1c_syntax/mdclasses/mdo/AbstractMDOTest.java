@@ -75,7 +75,7 @@ abstract class AbstractMDOTest {
   private final MDOType mdoType;
 
   /**
-   * Ппинадлженость объектов по умолчанию
+   * Принадлежность объектов по умолчанию
    */
   private final ObjectBelonging objectBelonging;
 

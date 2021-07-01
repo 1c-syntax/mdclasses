@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +34,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Right {
-  private String name = "";
+
+  @XStreamAlias("name")
+  private RightType rightType;
   private boolean value;
+
 }

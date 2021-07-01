@@ -63,7 +63,7 @@ class MDExchangePlanTest extends AbstractMDOTest {
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
     var exchangePlan = (MDExchangePlan) mdo;
     assertThat(exchangePlan.isDistributedInfoBase()).isTrue();
-    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isTrue();
+    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
     assertThat(exchangePlan.getContent()).hasSize(2);
   }
 

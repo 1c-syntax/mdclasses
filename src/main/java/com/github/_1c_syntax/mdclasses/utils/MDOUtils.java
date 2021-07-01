@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.utils;
 import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.support.RightType;
 import lombok.experimental.UtilityClass;
 
 import java.io.File;
@@ -37,7 +38,9 @@ import java.util.Set;
 @UtilityClass
 public class MDOUtils {
   public final String TYPE_INPUT_FIELD = "InputField";
+
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
+  private final Map<MDOType, Set<RightType>> RIGHT_TYPES_FOR_MDO_TYPES = rightTypesForMDOTypes();
 
   /**
    * Определяет тип исходников по корню проекта
@@ -177,4 +180,296 @@ public class MDOUtils {
     return result;
   }
 
+  /**
+   * Возвращает соответствие типов объектов и применимых к ним прав доступа
+   */
+  public Map<MDOType, Set<RightType>> getRightTypesForMDOTypes() {
+    return RIGHT_TYPES_FOR_MDO_TYPES;
+  }
+
+  private Map<MDOType, Set<RightType>> rightTypesForMDOTypes() {
+    Map<MDOType, Set<RightType>> result = new EnumMap<>(MDOType.class);
+
+    for (MDOType mdoType : MDOType.values()) {
+      Set<RightType> types = new HashSet<>();
+      switch (mdoType) {
+        case CONFIGURATION:
+          types.add(RightType.ADMINISTRATION);
+          types.add(RightType.DATA_ADMINISTRATION);
+          types.add(RightType.UPDATE_DATABASE_CONFIGURATION);
+          types.add(RightType.EXCLUSIVE_MODE);
+          types.add(RightType.ACTIVE_USERS);
+          types.add(RightType.EVENTLOG);
+          types.add(RightType.THIN_CLIENT);
+          types.add(RightType.WEB_CLIENT);
+          types.add(RightType.MOBILE_CLIENT);
+          types.add(RightType.THICK_CLIENT);
+          types.add(RightType.EXTERNAL_CONNECTION);
+          types.add(RightType.AUTOMATION);
+          types.add(RightType.TECHNICAL_SPECIALIST_MODE);
+          types.add(RightType.ALL_FUNCTIONS_MODE); // deprecated
+          types.add(RightType.COLLABORATION_SYSTEM_INFOBASE_REGISTRATION);
+          types.add(RightType.MAIN_WINDOW_MODE_NORMAL);
+          types.add(RightType.MAIN_WINDOW_MODE_WORKPLACE);
+          types.add(RightType.MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE);
+          types.add(RightType.MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE);
+          types.add(RightType.MAIN_WINDOW_MODE_KIOSK);
+          types.add(RightType.ANALYTICS_SYSTEM_CLIENT);
+          types.add(RightType.SAVE_USER_DATA);
+          types.add(RightType.CONFIGURATION_EXTENSIONS_ADMINISTRATION);
+          types.add(RightType.INTERACTIVE_OPEN_EXT_DATA_PROCESSORS);
+          types.add(RightType.INTERACTIVE_OPEN_EXT_REPORTS);
+          types.add(RightType.EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START);
+          types.add(RightType.OUTPUT);
+          break;
+        case SUBSYSTEM:
+        case WS_OPERATION:
+        case HTTP_SERVICE_METHOD:
+          types.add(RightType.USE);
+          break;
+        case SESSION_PARAMETER:
+          types.add(RightType.GET);
+          types.add(RightType.SET);
+          break;
+        case COMMON_ATTRIBUTE:
+        case ATTRIBUTE:
+//        case TABULAR_SECTION:
+//        case ACCOUNTING_FLAG:
+//        case EXT_DIMENSION_ACCOUNTING_FLAG:
+//        case STANDARD_TABULAR_SECTION_ATTRIBUTE:
+//        case DIMENSION:
+//        case RESOURCE:
+//        case ADDRESSING_ATTRIBUTE:
+          types.add(RightType.VIEW);
+          types.add(RightType.EDIT);
+          break;
+        case EXCHANGE_PLAN:
+          types.add(RightType.READ);
+          types.add(RightType.INSERT);
+          types.add(RightType.UPDATE);
+          types.add(RightType.DELETE);
+          types.add(RightType.VIEW);
+          types.add(RightType.INTERACTIVE_INSERT);
+          types.add(RightType.EDIT);
+          types.add(RightType.INTERACTIVE_DELETE);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED);
+          types.add(RightType.INPUT_BY_STRING);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case FILTER_CRITERION:
+        case COMMON_COMMAND:
+        case COMMON_FORM:
+        case COMMAND:
+          types.add(RightType.VIEW);
+          break;
+        case CONSTANT:
+          types.add(RightType.READ);
+          types.add(RightType.UPDATE);
+          types.add(RightType.VIEW);
+          types.add(RightType.EDIT);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case CATALOG:
+        case CHART_OF_CHARACTERISTIC_TYPES:
+        case CHART_OF_ACCOUNTS:
+        case CHART_OF_CALCULATION_TYPES:
+          types.add(RightType.READ);
+          types.add(RightType.INSERT);
+          types.add(RightType.UPDATE);
+          types.add(RightType.DELETE);
+          types.add(RightType.VIEW);
+          types.add(RightType.INTERACTIVE_INSERT);
+          types.add(RightType.EDIT);
+          types.add(RightType.INTERACTIVE_DELETE);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED);
+          types.add(RightType.INPUT_BY_STRING);
+          types.add(RightType.INTERACTIVE_DELETE_PREDEFINED_DATA);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case DOCUMENT:
+          types.add(RightType.READ);
+          types.add(RightType.INSERT);
+          types.add(RightType.UPDATE);
+          types.add(RightType.DELETE);
+          types.add(RightType.POSTING);
+          types.add(RightType.UNDO_POSTING);
+          types.add(RightType.VIEW);
+          types.add(RightType.INTERACTIVE_INSERT);
+          types.add(RightType.EDIT);
+          types.add(RightType.INTERACTIVE_DELETE);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED);
+          types.add(RightType.INTERACTIVE_POSTING);
+          types.add(RightType.INTERACTIVE_POSTING_REGULAR);
+          types.add(RightType.INTERACTIVE_UNDO_POSTING);
+          types.add(RightType.INTERACTIVE_CHANGE_POSTED);
+          types.add(RightType.INTERACTIVE_CHANGE_OF_POSTED); // deprecated since?
+          types.add(RightType.INPUT_BY_STRING);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case DOCUMENT_NUMERATOR:
+        case RECALCULATION:
+          types.add(RightType.READ);
+          types.add(RightType.UPDATE);
+          break;
+        case DOCUMENT_JOURNAL:
+//        case CUBE:
+//          types.add(RightType.READ);
+//          types.add(RightType.VIEW);
+//          break;
+        case REPORT:
+        case DATA_PROCESSOR:
+//        case FUNCTION:
+//          types.add(RightType.USE);
+//          types.add(RightType.VIEW);
+//          break;
+        case INFORMATION_REGISTER:
+          types.add(RightType.READ);
+          types.add(RightType.UPDATE);
+          types.add(RightType.VIEW);
+          types.add(RightType.EDIT);
+          types.add(RightType.TOTALS_CONTROL);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case ACCUMULATION_REGISTER:
+        case ACCOUNTING_REGISTER:
+          types.add(RightType.READ);
+          types.add(RightType.UPDATE);
+          types.add(RightType.VIEW);
+          types.add(RightType.EDIT);
+          types.add(RightType.TOTALS_CONTROL);
+          break;
+        case CALCULATION_REGISTER:
+          types.add(RightType.READ);
+          types.add(RightType.UPDATE);
+          types.add(RightType.VIEW);
+          types.add(RightType.EDIT);
+          break;
+        case BUSINESS_PROCESS:
+          types.add(RightType.READ);
+          types.add(RightType.INSERT);
+          types.add(RightType.UPDATE);
+          types.add(RightType.DELETE);
+          types.add(RightType.VIEW);
+          types.add(RightType.INTERACTIVE_INSERT);
+          types.add(RightType.EDIT);
+          types.add(RightType.INTERACTIVE_DELETE);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED);
+          types.add(RightType.INPUT_BY_STRING);
+          types.add(RightType.INTERACTIVE_ACTIVATE);
+          types.add(RightType.START);
+          types.add(RightType.INTERACTIVE_START);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+        case TASK:
+          types.add(RightType.READ);
+          types.add(RightType.INSERT);
+          types.add(RightType.UPDATE);
+          types.add(RightType.DELETE);
+          types.add(RightType.VIEW);
+          types.add(RightType.INTERACTIVE_INSERT);
+          types.add(RightType.EDIT);
+          types.add(RightType.INTERACTIVE_DELETE);
+          types.add(RightType.INTERACTIVE_SET_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_CLEAR_DELETION_MARK);
+          types.add(RightType.INTERACTIVE_DELETE_MARKED);
+          types.add(RightType.INPUT_BY_STRING);
+          types.add(RightType.INTERACTIVE_ACTIVATE);
+          types.add(RightType.EXECUTE);
+          types.add(RightType.INTERACTIVE_EXECUTE);
+          types.add(RightType.READ_DATA_HISTORY);
+          types.add(RightType.READ_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY);
+          types.add(RightType.UPDATE_MISSING_DATA_HISTORY);
+          types.add(RightType.UPDATE_DATA_HISTORY_SETTINGS);
+          types.add(RightType.UPDATE_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.VIEW_DATA_HISTORY);
+          types.add(RightType.EDIT_DATA_HISTORY_VERSION_COMMENT);
+          types.add(RightType.SWITCH_TO_DATA_HISTORY_VERSION);
+          break;
+//        case EXTERNAL_DATA_SOURCE:
+//          types.add(RightType.USE);
+//          types.add(RightType.ADMINISTRATION);
+//          types.add(RightType.STANDARD_AUTHENTICATION_CHANGE);
+//          types.add(RightType.SESSION_STANDARD_AUTHENTICATION_CHANGE);
+//          types.add(RightType.SESSION_OS_AUTHENTICATION_CHANGE);
+//          break;
+//
+//        case TABLE:
+//          types.add(RightType.READ);
+//          types.add(RightType.INSERT);
+//          types.add(RightType.UPDATE);
+//          types.add(RightType.DELETE);
+//          types.add(RightType.VIEW);
+//          types.add(RightType.INTERACTIVE_INSERT);
+//          types.add(RightType.EDIT);
+//          types.add(RightType.INTERACTIVE_DELETE);
+//          types.add(RightType.INPUT_BY_STRING);
+//          break;
+
+        default:
+          // non
+      }
+
+      result.put(mdoType, types);
+    }
+
+    return result;
+  }
 }

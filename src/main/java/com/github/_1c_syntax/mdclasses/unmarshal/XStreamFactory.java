@@ -52,6 +52,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
+import com.github._1c_syntax.mdclasses.mdo.support.RightType;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.mdo.support.ValueType;
@@ -374,6 +375,7 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
     xStream.registerConverter(new EnumConverter<>(TemplateType.class));
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
+    xStream.registerConverter(new EnumConverter<>(RightType.class));
     xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
     xStream.registerConverter(new EnumConverter<>(FormType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
