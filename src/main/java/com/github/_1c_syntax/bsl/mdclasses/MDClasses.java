@@ -39,9 +39,9 @@ import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -82,15 +82,15 @@ public class MDClasses {
     return Configuration.builder().build();
   }
 
-  private static Set<MDObject> computeChildren(MDConfiguration configurationValue) {
+  private static List<MDObject> computeChildren(MDConfiguration configurationValue) {
     return configurationValue.getChildren().stream().filter(Either::isRight).map(Either::get)
       .map(AbstractMDObjectBase::buildMDObject)
       .filter(Objects::nonNull)
       .map(MDClasses::build)
-      .collect(Collectors.toSet());
+      .collect(Collectors.toList());
   }
 
-  private static Set<MDObject> computeAllChildren(Set<MDObject> children) {
+  private static List<MDObject> computeAllChildren(List<MDObject> children) {
     // todo
     return children;
   }

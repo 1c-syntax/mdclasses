@@ -23,26 +23,20 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.net.URI;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Класс расширения конфигурации 1с
@@ -145,12 +139,12 @@ public class ConfigurationExtension implements MDClass {
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  Set<MDObject> children;
+  List<MDObject> children;
 
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  Set<MDObject> allChildren;
+  List<MDObject> allChildren;
 
   /**
    * Назначение расширения конфигурации

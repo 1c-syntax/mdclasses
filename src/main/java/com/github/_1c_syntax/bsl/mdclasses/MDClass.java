@@ -42,7 +42,12 @@ public interface MDClass {
   /**
    * Дочерние объекты
    */
-  Set<MDObject> getChildren();
+  List<MDObject> getChildren();
+
+  /**
+   * Дочерние объекты включая подчиненные
+   */
+  List<MDObject> getAllChildren();
 
   /**
    * Вариант исходников

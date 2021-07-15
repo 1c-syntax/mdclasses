@@ -143,12 +143,12 @@ public class Configuration implements MDClass {
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  Set<MDObject> children;
+  List<MDObject> children;
 
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  Set<MDObject> allChildren;
+  List<MDObject> allChildren;
 
   public List<Role> roles() {
     return getChildrenByType(Role.class);
