@@ -108,7 +108,6 @@ public class TransformationUtils {
   }
 
   public static Object getBuilderByClassName(String name) {
-    Object builder = null;
     var clazz = classes.get(name);
     if (clazz == null) {
       if (classes.containsKey(name)) {
@@ -123,6 +122,7 @@ public class TransformationUtils {
       }
     }
 
+    Object builder = null;
     if (clazz != null) {
       try {
         builder = clazz.getDeclaredMethod("builder").invoke(clazz);

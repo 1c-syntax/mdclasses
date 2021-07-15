@@ -99,4 +99,3 @@ public class WebService implements MDObject, ModuleOwner, IncludedSubsystems {
    */
   List<WebServiceOperation> operations;
 }
-

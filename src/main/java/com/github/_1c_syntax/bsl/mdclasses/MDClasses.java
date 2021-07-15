@@ -83,7 +83,9 @@ public class MDClasses {
   }
 
   private static List<MDObject> computeChildren(MDConfiguration configurationValue) {
-    return configurationValue.getChildren().stream().filter(Either::isRight).map(Either::get)
+    return configurationValue.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .map(AbstractMDObjectBase::buildMDObject)
       .filter(Objects::nonNull)
       .map(MDClasses::build)
@@ -95,7 +97,10 @@ public class MDClasses {
     return children;
   }
 
-  private static void computeConfigurationBaseFields(Configuration.ConfigurationBuilder builder, MDConfiguration source) {
+  private static void computeConfigurationBaseFields(
+    Configuration.ConfigurationBuilder builder,
+    MDConfiguration source) {
+
     builder
       .uuid(source.getUuid())
       .name(source.getName())
@@ -130,8 +135,10 @@ public class MDClasses {
   }
 
   // todo копипаста
-  private static void computeConfigurationBaseFields(ConfigurationExtension.ConfigurationExtensionBuilder builder,
-                                                     MDConfiguration source) {
+  private static void computeConfigurationBaseFields(
+    ConfigurationExtension.ConfigurationExtensionBuilder builder,
+    MDConfiguration source) {
+
     builder
       .uuid(source.getUuid())
       .name(source.getName())

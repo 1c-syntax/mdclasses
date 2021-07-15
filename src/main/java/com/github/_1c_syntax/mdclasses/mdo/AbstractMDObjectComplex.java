@@ -128,7 +128,8 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
       children.addAll(commands);
       children.addAll(templates);
       children.addAll(attributes);
-      attributes.stream().filter(MDOHasChildren.class::isInstance)
+      attributes.stream()
+        .filter(MDOHasChildren.class::isInstance)
         .map(MDOHasChildren.class::cast)
         .forEach(mdo -> children.addAll(mdo.getChildren()));
     }

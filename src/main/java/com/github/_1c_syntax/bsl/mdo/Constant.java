@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Constant implements MDObject, IncludedSubsystems, Attribute {
+public class Constant implements Attribute, IncludedSubsystems {
 
   /**
    * Имя

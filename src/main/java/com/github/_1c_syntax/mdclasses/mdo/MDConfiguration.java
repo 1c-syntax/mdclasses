@@ -209,7 +209,8 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     if (defaultLanguage.isLeft()) {
       var defaultLang = defaultLanguage.getLeft();
 
-      children.stream().filter(Either::isRight)
+      children.stream()
+        .filter(Either::isRight)
         .map(Either::get)
         .filter(MDLanguage.class::isInstance)
         .map(MDLanguage.class::cast)

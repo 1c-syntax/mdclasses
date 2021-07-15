@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonForm implements MDObject, IncludedSubsystems, Form {
+public class CommonForm implements Form, IncludedSubsystems {
 
   /**
    * Имя

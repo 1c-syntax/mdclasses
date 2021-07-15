@@ -438,7 +438,8 @@ public class Configuration {
 
   private static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
     List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
-      .filter(Either::isRight).map(Either::get)
+      .filter(Either::isRight)
+      .map(Either::get)
       .collect(Collectors.toList());
 
     allChildren.addAll(allChildren.stream()

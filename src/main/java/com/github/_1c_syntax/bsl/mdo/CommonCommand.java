@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonCommand implements MDObject, IncludedSubsystems, Command {
+public class CommonCommand implements Command, IncludedSubsystems {
 
   /**
    * Имя

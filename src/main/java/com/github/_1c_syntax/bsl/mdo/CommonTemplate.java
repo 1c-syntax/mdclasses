@@ -39,7 +39,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonTemplate implements MDObject, IncludedSubsystems, Template {
+public class CommonTemplate implements Template, IncludedSubsystems {
 
   /**
    * Имя

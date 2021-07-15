@@ -108,7 +108,9 @@ public interface MDClass {
    * @return Список дочерних элементов
    */
   default <T extends MDObject> List<T> getChildrenByType(Class<T> clazz) {
-    return getChildren().stream().filter(clazz::isInstance).map(clazz::cast)
+    return getChildren().stream()
+      .filter(clazz::isInstance)
+      .map(clazz::cast)
       .collect(Collectors.toUnmodifiableList());
   }
 }

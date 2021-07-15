@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public abstract class AbstractMDO implements MDO {
 
-  Object builder;
+  protected Object builder;
 
   /**
    * уникальный идентификатор объекта
