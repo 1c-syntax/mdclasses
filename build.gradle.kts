@@ -39,9 +39,12 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.2.1")
+    implementation("com.github.1c-syntax", "bsl-common-library", "develop-SNAPSHOT")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.110")
+
+//remove me    implementation("commons-beanutils", "commons-beanutils", "1.9.4")
 
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
@@ -182,4 +185,9 @@ tasks.register("precommit") {
     group = "Developer tools"
     dependsOn(":test")
     dependsOn(":licenseFormat")
+}
+
+tasks.withType<Javadoc> {
+    (options as StandardJavadocDocletOptions)
+            .addStringOption("Xdoclint:none", "-quiet")
 }

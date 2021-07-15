@@ -21,12 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -36,6 +38,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Базовый класс объектов метаданных, имеющих модули с исходным кодом
@@ -86,5 +89,17 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
           }
         }));
     setModules(mdoModules);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    if (builder != null) {
+      TransformationUtils.setValue(builder, "modules",
+        modules.stream().map(MDOModule::buildMDObject)
+          .map(MDClasses::buildModule)
+          .collect(Collectors.toList()));
+    }
+    return builder;
   }
 }

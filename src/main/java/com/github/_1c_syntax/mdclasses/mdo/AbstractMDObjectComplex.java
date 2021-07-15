@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
@@ -36,11 +38,11 @@ import com.github._1c_syntax.mdclasses.mdo.children.Command;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.children.Template;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -246,5 +248,29 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     List<AbstractMDOAttribute> computedAttributes = new ArrayList<>(getAttributes());
     computedAttributes.add(attribute);
     setAttributes(computedAttributes);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    if (builder != null) {
+      TransformationUtils.setValue(builder, "commands",
+        commands.stream().map(Command::buildMDObject)
+          .map(MDClasses::build)
+          .collect(Collectors.toList()));
+      TransformationUtils.setValue(builder, "forms",
+        forms.stream().map(Form::buildMDObject)
+          .map(MDClasses::build)
+          .collect(Collectors.toList()));
+      TransformationUtils.setValue(builder, "attributes",
+        attributes.stream().map(AbstractMDOAttribute::buildMDObject)
+          .map(MDClasses::build)
+          .collect(Collectors.toList()));
+      TransformationUtils.setValue(builder, "templates",
+        templates.stream().map(Template::buildMDObject)
+          .map(MDClasses::build)
+          .collect(Collectors.toList()));
+    }
+    return builder;
   }
 }

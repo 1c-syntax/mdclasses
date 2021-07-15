@@ -21,13 +21,16 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -42,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -128,5 +132,19 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   protected static class UseContent {
     private String metadata = "";
     private UseMode use = UseMode.USE;
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "autoUse", autoUse);
+    TransformationUtils.setValue(builder, "dataSeparation", dataSeparation);
+    TransformationUtils.setValue(builder, "passwordMode", passwordMode);
+    TransformationUtils.setValue(builder, "using", new ContentStorage(using.stream()
+      .map(AbstractMDO::getMdoReference)
+      .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+      .collect(Collectors.toList())));
+
+    return builder;
   }
 }

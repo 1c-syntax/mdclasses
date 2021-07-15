@@ -21,9 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -47,5 +48,12 @@ public class MDBot extends AbstractMDObjectBSL {
   public MDBot(DesignerMDO designerMDO) {
     super(designerMDO);
     predefined = designerMDO.getProperties().isPredefined();
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "predefined", predefined);
+    return builder;
   }
 }

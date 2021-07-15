@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,6 +41,7 @@ import lombok.Value;
   groupNameRu = "РегистрыБухгалтерии"
 )
 public class MDAccountingRegister extends AbstractMDObjectComplex {
+
   public MDAccountingRegister(DesignerMDO designerMDO) {
     super(designerMDO);
   }

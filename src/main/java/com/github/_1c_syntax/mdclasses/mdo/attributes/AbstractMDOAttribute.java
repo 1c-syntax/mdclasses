@@ -21,12 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -61,6 +62,12 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     super(designerMDO);
     indexing = designerMDO.getProperties().getIndexing();
     passwordMode = designerMDO.getProperties().isPasswordMode();
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(ObjectAttribute.builder());
+    return super.buildMDObject();
   }
 
   @Override

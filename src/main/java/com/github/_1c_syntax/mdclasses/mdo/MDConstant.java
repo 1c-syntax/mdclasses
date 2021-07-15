@@ -21,9 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -49,5 +50,12 @@ public class MDConstant extends AbstractMDObjectBSL {
   public MDConstant(DesignerMDO designerMDO) {
     super(designerMDO);
     setPasswordMode(designerMDO.getProperties().isPasswordMode());
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "passwordMode", passwordMode);
+    return builder;
   }
 }

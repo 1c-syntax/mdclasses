@@ -21,9 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.Handler;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.MethodHandlerConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -43,14 +48,21 @@ import lombok.ToString;
 public class MDEventSubscription extends AbstractMDObjectBase {
 
   /**
-   * Обработчик подписки на событие. Пока строкой
-   * Формат mdoRef + имя метода
-   * Пример CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью
+   * Обработчик подписки на событие
    */
-  private String handler = ""; // TODO сделать классом
+  @XStreamConverter(MethodHandlerConverter.class)
+  @XStreamAlias("Handler")
+  private Handler handler;
 
   public MDEventSubscription(DesignerMDO designerMDO) {
     super(designerMDO);
-    handler = designerMDO.getProperties().getHandler();
+    handler = new Handler(designerMDO.getProperties().getHandler());
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "handler", handler);
+    return builder;
   }
 }

@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -55,5 +57,13 @@ public class WEBServiceOperation extends AbstractMDObjectBase {
   public WEBServiceOperation(DesignerMDO designerMDO) {
     super(designerMDO);
     handler = designerMDO.getProperties().getWsOperationProcedureName();
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(WebServiceOperation.builder());
+    var builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "handler", handler);
+    return builder;
   }
 }

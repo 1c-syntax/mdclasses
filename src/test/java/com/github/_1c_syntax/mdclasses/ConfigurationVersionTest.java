@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

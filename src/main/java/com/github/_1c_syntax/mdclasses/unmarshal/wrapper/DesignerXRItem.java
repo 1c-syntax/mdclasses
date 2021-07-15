@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;

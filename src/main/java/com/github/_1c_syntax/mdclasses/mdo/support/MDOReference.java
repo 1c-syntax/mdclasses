@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

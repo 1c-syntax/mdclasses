@@ -21,16 +21,20 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.ToString;
 
 import java.util.Collections;
@@ -45,6 +49,8 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode(of = {"name", "uuid"})
 @NoArgsConstructor
 public abstract class AbstractMDO implements MDO {
+
+  Object builder;
 
   /**
    * уникальный идентификатор объекта
@@ -92,6 +98,30 @@ public abstract class AbstractMDO implements MDO {
     synonyms = designerMDO.getProperties().getSynonyms().stream()
       .map(synonym -> new LanguageContent(synonym.getLanguage(), synonym.getContent()))
       .collect(Collectors.toList());
+  }
+
+  @SneakyThrows
+  public Object buildMDObject() {
+    if (builder == null) {
+      builder = TransformationUtils.getBuilderByClassName(this.getClass().getSimpleName());
+    }
+
+    if (builder != null) {
+      TransformationUtils.setValue(builder, "uuid", uuid);
+      TransformationUtils.setValue(builder, "name", name);
+      TransformationUtils.setValue(builder, "comment", comment);
+      TransformationUtils.setValue(builder, "objectBelonging", objectBelonging);
+      TransformationUtils.setValue(builder, "synonyms", new MultiLanguageString(synonyms.stream()
+        .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
+      TransformationUtils.setValue(builder, "metadataName", getMetadataName());
+
+      TransformationUtils.setValue(builder, "metadataNameRu", getMetadataNameRu());
+      TransformationUtils.setValue(builder, "type", getType());
+      TransformationUtils.setValue(builder, "mdoReference",
+        MdoReference.create(mdoReference.getType(),
+          mdoReference.getMdoRef(), mdoReference.getMdoRefRu()));
+    }
+    return builder;
   }
 
   /**

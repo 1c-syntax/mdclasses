@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,7 +39,7 @@ class MDEventSubscriptionTest extends AbstractMDOTest {
       "4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd");
     checkNoChildren(mdo);
     checkNoModules(mdo);
-    assertThat(((MDEventSubscription) mdo).getHandler())
+    assertThat(((MDEventSubscription) mdo).getHandler().getMethodPath())
       .isEqualTo("CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью");
   }
 
@@ -52,7 +52,7 @@ class MDEventSubscriptionTest extends AbstractMDOTest {
     checkNoChildren(mdo);
     checkNoModules(mdo);
 
-    assertThat(((MDEventSubscription) mdo).getHandler())
+    assertThat(((MDEventSubscription) mdo).getHandler().getMethodPath())
       .isEqualTo("CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью");
   }
 }

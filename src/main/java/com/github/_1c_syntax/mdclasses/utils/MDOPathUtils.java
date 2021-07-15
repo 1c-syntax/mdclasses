@@ -21,10 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FilenameUtils;
 
@@ -159,6 +159,27 @@ public class MDOPathUtils {
     if (configurationSource == ConfigurationSource.EDT) {
       value = getModulePathEDT(folder, name, moduleType);
     } else if (configurationSource == ConfigurationSource.DESIGNER) {
+      value = getModulePathDesigner(folder, name, moduleType);
+    } else {
+      return Optional.empty();
+    }
+    return Optional.of(value);
+  }
+
+  /**
+   * Получает путь к файлу-модулю объекта метаданных относительно корня проекта, по имени объекта метаданных
+   * и типу модуля с учетом указанном типа исходников
+   */
+  public Optional<Path> getModulePath(Path mdoPath,
+                                      String name,
+                                      ModuleType moduleType) {
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
+    Path value;
+    if (configurationSource == ConfigurationSource.EDT) {
+      var folder = mdoPath.getParent().getParent();
+      value = getModulePathEDT(folder, name, moduleType);
+    } else if (configurationSource == ConfigurationSource.DESIGNER) {
+      var folder = mdoPath.getParent();
       value = getModulePathDesigner(folder, name, moduleType);
     } else {
       return Optional.empty();

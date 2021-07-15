@@ -37,4 +37,5 @@ public interface MDOBase extends MDO {
    * Список подсистем, в состав которых входит объект
    */
   List<MDSubsystem> getIncludedSubsystems();
+
 }

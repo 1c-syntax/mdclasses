@@ -21,13 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -65,5 +66,21 @@ public class MDRole extends AbstractMDObjectBase {
     roleDataPath = MDOPathUtils.getRoleDataPath(MDOUtils.getConfigurationSourceByMDOPath(path),
       path.getParent().toString(), name);
     MDOFactory.readRoleData(roleDataPath).ifPresent(this::setRoleData);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    if (roleData == null) {
+      return builder;
+    }
+    TransformationUtils.setValue(builder, "setForNewObjects", roleData.isSetForNewObjects());
+    TransformationUtils.setValue(builder, "setForAttributesByDefault",
+      roleData.isSetForAttributesByDefault());
+    TransformationUtils.setValue(builder, "independentRightsOfChildObjects",
+      roleData.isIndependentRightsOfChildObjects());
+    TransformationUtils.setValue(builder, "roleDataPath", roleDataPath);
+
+    return builder;
   }
 }

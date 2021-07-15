@@ -21,11 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -64,5 +65,16 @@ public class IntegrationServiceChannel extends AbstractMDObjectBase {
     messageDirection = designerMDO.getProperties().getMessageDirection();
     receiveMessageProcessing = designerMDO.getProperties().getReceiveMessageProcessing();
     externalIntegrationServiceChannelName = designerMDO.getProperties().getExternalIntegrationServiceChannelName();
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.builder());
+    var builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "messageDirection", messageDirection);
+    TransformationUtils.setValue(builder, "handler", receiveMessageProcessing);
+    TransformationUtils.setValue(builder, "externalIntegrationServiceChannelName",
+      externalIntegrationServiceChannelName);
+    return builder;
   }
 }

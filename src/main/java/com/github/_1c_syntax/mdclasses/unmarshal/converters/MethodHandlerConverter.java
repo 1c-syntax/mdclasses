@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.support.Handler;
+import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
