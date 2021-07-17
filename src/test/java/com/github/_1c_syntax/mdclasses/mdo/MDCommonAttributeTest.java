@@ -43,7 +43,7 @@ class MDCommonAttributeTest extends AbstractMDOTest {
     checkNoChildren(mdo);
     checkNoModules(mdo);
     var commonAttribute = (MDCommonAttribute) mdo;
-    assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
+    assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.DONT_USE);
     assertThat(commonAttribute.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
     assertThat(commonAttribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }

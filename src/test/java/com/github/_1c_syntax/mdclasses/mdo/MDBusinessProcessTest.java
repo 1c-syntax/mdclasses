@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,12 +39,13 @@ class MDBusinessProcessTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("BusinessProcesses/БизнесПроцесс1/БизнесПроцесс1.mdo");
     checkBaseField(mdo, MDBusinessProcess.class, "БизнесПроцесс1",
       "560a32ca-028d-4b88-b6f2-6b7212bf31f8");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "BusinessProcesses/БизнесПроцесс1",
-      ModuleType.ObjectModule);
+    checkForms(mdo, 1, "ФормаЭлемента");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "BusinessProcesses/БизнесПроцесс1",
+      ModuleType.ObjectModule, ModuleType.ManagerModule);
 
   }
 

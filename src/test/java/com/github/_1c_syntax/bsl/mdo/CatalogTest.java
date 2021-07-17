@@ -38,4 +38,12 @@ class CatalogTest extends AbstractMDObjectTest<Catalog> {
       "Справочник1", "eeef463d-d5e7-42f2-ae53-10279661f59d",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Catalogs/Справочник1/Справочник1");
+    checkBaseField(mdo, MDOType.CATALOG,
+      "Справочник1", "eeef463d-d5e7-42f2-ae53-10279661f59d",
+      ObjectBelonging.OWN);
+  }
 }

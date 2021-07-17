@@ -38,4 +38,12 @@ class TaskTest extends AbstractMDObjectTest<Task> {
       "Задача1", "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Tasks/Задача1/Задача1");
+    checkBaseField(mdo, MDOType.TASK,
+      "Задача1", "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+      ObjectBelonging.OWN);
+  }
 }

@@ -38,4 +38,13 @@ class ChartOfCharacteristicTypesTest extends AbstractMDObjectTest<ChartOfCharact
       "ПланВидовХарактеристик1", "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT(
+      "ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/ПланВидовХарактеристик1");
+    checkBaseField(mdo, MDOType.CHART_OF_CHARACTERISTIC_TYPES,
+      "ПланВидовХарактеристик1", "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+      ObjectBelonging.OWN);
+  }
 }

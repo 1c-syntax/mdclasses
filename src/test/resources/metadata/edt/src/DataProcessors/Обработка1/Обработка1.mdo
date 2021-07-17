@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a7c57ba0-75d8-487d-b8ea-ae5083d8a503">
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a7c57ba0-75d8-487d-b8ea-ae5083d8a503">
   <producedTypes>
     <objectType typeId="5de9e8a8-7d73-4e4c-bd74-aec3700fabcf" valueTypeId="b08f5188-05e3-4b11-9df8-571ece238eff"/>
     <managerType typeId="1c479e84-5c8a-4aa4-9e69-11b20e5d9bb1" valueTypeId="2d777df9-f63e-4f3d-a30a-0ea01e9404e8"/>
@@ -7,6 +7,47 @@
   <name>Обработка1</name>
   <useStandardCommands>true</useStandardCommands>
   <defaultForm>DataProcessor.Обработка1.Form.Форма</defaultForm>
+  <attributes uuid="6dd3a446-52f1-4f34-9ecb-28911c8d0f1d">
+    <name>Реквизит</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <tabularSections uuid="c28cea46-9113-474d-a1f2-115c12d9d7fb">
+    <producedTypes>
+      <objectType typeId="1756eb00-5b6c-4c1c-a164-9b7f9f3dc1a6" valueTypeId="2202fe19-3e7f-491c-81b4-c43bf7f1d38d"/>
+      <rowType typeId="a545b1fa-df89-45c0-9b94-ddfd81706ea9" valueTypeId="02457908-43df-4f67-afda-a7550e8bd3fb"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть</value>
+    </synonym>
+    <attributes uuid="788e277b-47b1-4988-81b6-c65eec3766e9">
+      <name>Реквизит</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
   <forms uuid="5a32de80-b66f-4d6d-be8b-a117f5f71480">
     <name>Форма</name>
     <synonym>
@@ -16,4 +57,21 @@
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>
+  <templates uuid="23c07ed7-69c3-46de-a114-f2a8fa669ea5">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+    <templateType>DataCompositionAppearanceTemplate</templateType>
+  </templates>
+  <commands uuid="d2dca064-4048-4289-a518-d96da49380c3">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:DataProcessor>

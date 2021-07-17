@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
@@ -39,14 +40,15 @@ class MDAccumulationRegisterTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("AccumulationRegisters/РегистрНакопления1/РегистрНакопления1.mdo");
     checkBaseField(mdo, MDAccumulationRegister.class, "РегистрНакопления1",
       "8ea07f36-d671-4649-bc7a-94daa939e77f");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
-      mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkForms(mdo, 1, "ФормаСписка");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3,
+      mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.ATTRIBUTE);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "AccumulationRegisters/РегистрНакопления1",
+      ModuleType.RecordSetModule);
 
-    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(2);
     assertThat(dimension.isDenyIncompleteValues()).isFalse();
     assertThat(dimension.isMaster()).isFalse();
     assertThat(dimension.isUseInTotals()).isTrue();

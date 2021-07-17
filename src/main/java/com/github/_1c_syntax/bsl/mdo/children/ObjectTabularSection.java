@@ -48,11 +48,6 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

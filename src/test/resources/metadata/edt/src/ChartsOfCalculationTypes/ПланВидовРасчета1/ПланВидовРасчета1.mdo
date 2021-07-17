@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:ChartOfCalculationTypes xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1755c534-9ccd-49c4-9f8b-2aa066424aaa">
+<mdclass:ChartOfCalculationTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1755c534-9ccd-49c4-9f8b-2aa066424aaa">
   <producedTypes>
     <objectType typeId="26c012b3-cf45-4c9e-a25e-4fb9ac8d4293" valueTypeId="fae50475-9e35-48b2-9d82-1540105d58dc"/>
     <refType typeId="dc453d53-ad97-4041-be9a-d8266be7ed82" valueTypeId="4473172a-60b7-43f5-b7f5-a1ab4f680147"/>
@@ -28,4 +28,74 @@
   <defaultPresentation>AsDescription</defaultPresentation>
   <editType>InDialog</editType>
   <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>ChartOfCalculationTypes.ПланВидовРасчета1.Form.ФормаЭлемента</defaultObjectForm>
+  <attributes uuid="3ef419e4-1b25-41e4-af8f-98b26c7f3287">
+    <name>Реквизит</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <tabularSections uuid="30f1cedf-4d10-455f-8091-d08880e21987">
+    <producedTypes>
+      <objectType typeId="7ca656c5-454c-4e32-86e0-668ce68ceb9a" valueTypeId="93e37366-81b4-4624-b0f7-b50035f7978a"/>
+      <rowType typeId="23124c9d-296c-43ae-a3b9-7be5408e93b1" valueTypeId="01106db5-8298-404b-ab3f-c5fae645e318"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть</value>
+    </synonym>
+    <attributes uuid="fb4a3c9b-1f1a-4e60-b959-9f8d713a05ca">
+      <name>Реквизит</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="580cd87b-3194-4e6b-9930-480c64aabef7">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="d3f68ce9-9ad3-4a69-9715-337aeca62f14">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+  </templates>
+  <commands uuid="0f28da06-421e-4ba1-8e6c-56ec5b933d32">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:ChartOfCalculationTypes>

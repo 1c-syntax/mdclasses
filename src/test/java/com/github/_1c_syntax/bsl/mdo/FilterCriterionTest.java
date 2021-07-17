@@ -38,4 +38,12 @@ class FilterCriterionTest extends AbstractMDObjectTest<FilterCriterion> {
       "КритерийОтбора1", "6e9d3381-0607-43df-866d-14ee5d65a294",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("FilterCriteria/КритерийОтбора1/КритерийОтбора1");
+    checkBaseField(mdo, MDOType.FILTER_CRITERION,
+      "КритерийОтбора1", "6e9d3381-0607-43df-866d-14ee5d65a294",
+      ObjectBelonging.OWN);
+  }
 }

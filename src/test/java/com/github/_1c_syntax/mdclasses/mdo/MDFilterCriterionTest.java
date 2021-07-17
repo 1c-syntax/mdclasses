@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,9 +39,9 @@ class MDFilterCriterionTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("FilterCriteria/КритерийОтбора1/КритерийОтбора1.mdo");
     checkBaseField(mdo, MDFilterCriterion.class, "КритерийОтбора1",
       "6e9d3381-0607-43df-866d-14ee5d65a294");
-    checkForms(mdo);
+    checkForms(mdo, 1, "ФормаСписка");
     checkTemplates(mdo);
-    checkCommands(mdo);
+    checkCommands(mdo, 1, "Команда");
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "FilterCriteria/Критери",
       ModuleType.ManagerModule);

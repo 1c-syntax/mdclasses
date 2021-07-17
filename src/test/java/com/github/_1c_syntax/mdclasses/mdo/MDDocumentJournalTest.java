@@ -39,9 +39,9 @@ class MDDocumentJournalTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("DocumentJournals/ЖурналДокументов1/ЖурналДокументов1.mdo");
     checkBaseField(mdo, MDDocumentJournal.class, "ЖурналДокументов1",
       "c6743657-4787-40de-9a45-2493c630f626");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
+    checkForms(mdo, 1, "ФормаСписка");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
       AttributeType.COLUMN);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "DocumentJournals/ЖурналДокументов1",

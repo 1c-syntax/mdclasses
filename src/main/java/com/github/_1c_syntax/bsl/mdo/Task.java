@@ -50,11 +50,6 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;
@@ -114,3 +109,5 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
    */
   List<TabularSection> tabularSections;
 }
+
+// todo реквизиты адресации положить отдельно

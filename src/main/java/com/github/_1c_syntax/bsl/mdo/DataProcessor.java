@@ -50,11 +50,6 @@ public class DataProcessor implements MDObject, AttributeOwner, FormOwner, Comma
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

@@ -39,6 +39,15 @@ class ConstantTest extends AbstractMDObjectTest<Constant> {
     checkBaseField(mdo, MDOType.CONSTANT,
       "Константа1", "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
       ObjectBelonging.OWN);
-    assertThat(mdo.isPasswordMode()).isFalse();
+    assertThat(mdo.isPasswordMode()).isTrue();
+  }
+
+  @Test
+  void testEDT() {
+    var mdo = getMDObject("Constants/Константа1");
+    checkBaseField(mdo, MDOType.CONSTANT,
+      "Константа1", "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+      ObjectBelonging.OWN);
+    assertThat(mdo.isPasswordMode()).isTrue();
   }
 }

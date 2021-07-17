@@ -50,11 +50,6 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

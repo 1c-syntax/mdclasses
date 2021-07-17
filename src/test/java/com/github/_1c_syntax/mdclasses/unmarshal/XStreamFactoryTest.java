@@ -59,8 +59,6 @@ class XStreamFactoryTest {
     assertThat(mdo2)
       .map(AbstractMDObjectBase::getUuid)
       .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
-
-    assertThat(mdo).isEqualTo(mdo2);
   }
 
   @Test

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
@@ -40,12 +41,13 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo");
     checkBaseField(mdo, MDAccountingRegister.class, "РегистрБухгалтерии1",
       "e5930f2f-15d9-48a1-ac69-379ad990b02a");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
+    checkForms(mdo, 1, "ФормаСписка");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2,
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "AccountingRegisters/РегистрБухгалтерии1",
+      ModuleType.RecordSetModule);
     var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
     assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
     var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(0);

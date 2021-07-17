@@ -48,11 +48,6 @@ public class DefinedType implements MDObject, Type {
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

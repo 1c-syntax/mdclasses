@@ -32,3 +32,5 @@ public interface AttributeOwner {
    */
   List<Attribute> getAttributes();
 }
+
+// todo надо разделить атрибуты

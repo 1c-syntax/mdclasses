@@ -14,6 +14,7 @@
     <value>Регистр накопления</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>AccumulationRegister.РегистрНакопления1.Form.ФормаСписка</defaultListForm>
   <dataLockControlMode>Managed</dataLockControlMode>
   <enableTotalsSplitting>true</enableTotalsSplitting>
   <resources uuid="a187a281-f5cd-4e1c-8f3f-37212a840339">
@@ -28,6 +29,22 @@
     <maxValue xsi:type="core:UndefinedValue"/>
     <fullTextSearch>Use</fullTextSearch>
   </resources>
+  <attributes uuid="393bc58b-5bf0-429c-b7d8-1b94bd3bbdf9">
+    <name>Реквизит</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
   <dimensions uuid="461cae93-fe90-4bbb-8f79-0963e2d39ec5">
     <name>Измерение1</name>
     <type>
@@ -41,4 +58,29 @@
     <fullTextSearch>Use</fullTextSearch>
     <useInTotals>true</useInTotals>
   </dimensions>
+  <forms uuid="9873715b-7983-4ee5-b09a-764fb340f47b">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="90958c5b-069b-4c59-9aee-28d8c23bfb68">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+  </templates>
+  <commands uuid="1494e7c4-8428-4a41-8797-f4b6d0718dd0">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:AccumulationRegister>

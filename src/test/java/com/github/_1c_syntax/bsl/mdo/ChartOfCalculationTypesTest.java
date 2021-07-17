@@ -38,4 +38,12 @@ class ChartOfCalculationTypesTest extends AbstractMDObjectTest<ChartOfCalculatio
       "ПланВидовРасчета1", "1755c534-9ccd-49c4-9f8b-2aa066424aaa",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("ChartsOfCalculationTypes/ПланВидовРасчета1/ПланВидовРасчета1");
+    checkBaseField(mdo, MDOType.CHART_OF_CALCULATION_TYPES,
+      "ПланВидовРасчета1", "1755c534-9ccd-49c4-9f8b-2aa066424aaa",
+      ObjectBelonging.OWN);
+  }
 }

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
@@ -38,12 +39,13 @@ class MDTaskTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("Tasks/Задача1/Задача1.mdo");
     checkBaseField(mdo, MDTask.class, "Задача1",
       "c251fcec-ec02-4ef4-8f70-4d70db6631ea");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
-      AttributeType.ADDRESSING_ATTRIBUTE);
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkForms(mdo, 1, "Форма");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
+      AttributeType.ADDRESSING_ATTRIBUTE, AttributeType.TABULAR_SECTION, AttributeType.ATTRIBUTE);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "Tasks/Задача1",
+      ModuleType.ManagerModule);
   }
 
   @Override

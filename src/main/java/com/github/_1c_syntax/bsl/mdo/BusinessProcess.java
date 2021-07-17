@@ -50,11 +50,6 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;
@@ -114,3 +109,5 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
    */
   List<TabularSection> tabularSections;
 }
+
+// todo добавить ссылки на задачи

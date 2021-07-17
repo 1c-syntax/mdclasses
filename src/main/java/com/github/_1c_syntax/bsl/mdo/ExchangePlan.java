@@ -50,11 +50,6 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

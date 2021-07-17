@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
@@ -39,11 +40,13 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("ChartsOfCalculationTypes/ПланВидовРасчета1/ПланВидовРасчета1.mdo");
     checkBaseField(mdo, MDChartOfCalculationTypes.class, "ПланВидовРасчета1",
       "1755c534-9ccd-49c4-9f8b-2aa066424aaa");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkForms(mdo, 1, "ФормаЭлемента");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ChartsOfCalculationTypes/ПланВидовРасчета1",
+      ModuleType.ManagerModule);
 
   }
 

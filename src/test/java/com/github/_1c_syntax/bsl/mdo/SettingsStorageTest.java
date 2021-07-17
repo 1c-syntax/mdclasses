@@ -38,4 +38,12 @@ class SettingsStorageTest extends AbstractMDObjectTest<SettingsStorage> {
       "ХранилищеНастроек1", "e7a9947d-7565-4681-b75c-c9a229b45042",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("SettingsStorages/ХранилищеНастроек1/ХранилищеНастроек1");
+    checkBaseField(mdo, MDOType.SETTINGS_STORAGE,
+      "ХранилищеНастроек1", "e7a9947d-7565-4681-b75c-c9a229b45042",
+      ObjectBelonging.OWN);
+  }
 }

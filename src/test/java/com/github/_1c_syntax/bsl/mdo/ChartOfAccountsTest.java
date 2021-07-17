@@ -38,4 +38,12 @@ class ChartOfAccountsTest extends AbstractMDObjectTest<ChartOfAccounts> {
       "ПланСчетов1", "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1");
+    checkBaseField(mdo, MDOType.CHART_OF_ACCOUNTS,
+      "ПланСчетов1", "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+      ObjectBelonging.OWN);
+  }
 }

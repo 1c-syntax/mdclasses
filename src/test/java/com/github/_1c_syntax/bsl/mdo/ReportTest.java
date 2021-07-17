@@ -38,4 +38,12 @@ class ReportTest extends AbstractMDObjectTest<Report> {
       "Отчет1", "34d3754d-298c-4786-92f6-a487db249fc7",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Reports/Отчет1/Отчет1");
+    checkBaseField(mdo, MDOType.REPORT,
+      "Отчет1", "34d3754d-298c-4786-92f6-a487db249fc7",
+      ObjectBelonging.OWN);
+  }
 }

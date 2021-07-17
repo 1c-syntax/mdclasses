@@ -38,4 +38,12 @@ class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> 
       "РегистрРасчета1", "90587c7d-b950-4476-ac14-426e4a83d9c4",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("CalculationRegisters/РегистрРасчета1/РегистрРасчета1");
+    checkBaseField(mdo, MDOType.CALCULATION_REGISTER,
+      "РегистрРасчета1", "90587c7d-b950-4476-ac14-426e4a83d9c4",
+      ObjectBelonging.OWN);
+  }
 }

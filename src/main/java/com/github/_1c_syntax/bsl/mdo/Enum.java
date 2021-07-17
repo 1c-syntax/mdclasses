@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Enum implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
+public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
   ModuleOwner {
 
   /**
@@ -48,11 +48,6 @@ public class Enum implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
    * Уникальный идентификатор
    */
   String uuid;
-
-  /**
-   * Комментарий к объекту
-   */
-  String comment;
 
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
@@ -83,11 +78,6 @@ public class Enum implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
-
-  /**
-   * Список атрибутов
-   */
-  List<Attribute> attributes;
 
   /**
    * Список форм

@@ -93,20 +93,20 @@ class ConfigurationTest {
       .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
         && briefInfo.getContent().equals("Detailed info"));
 
-    assertThat(configuration.getModulesByType()).hasSize(39);
+    assertThat(configuration.getModulesByType()).hasSize(76);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(39);
-    assertThat(configuration.getModules()).hasSize(39);
+    assertThat(configuration.getModulesByObject()).hasSize(76);
+    assertThat(configuration.getModules()).hasSize(76);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(106);
+    assertThat(configuration.getChildren()).hasSize(177);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
-    checkChildCount(configuration, MDOType.COMMAND, 3);
-    checkChildCount(configuration, MDOType.FORM, 7);
-    checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 27);
+    checkChildCount(configuration, MDOType.COMMAND, 18);
+    checkChildCount(configuration, MDOType.FORM, 22);
+    checkChildCount(configuration, MDOType.TEMPLATE, 17);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 53);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
@@ -155,7 +155,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(105);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(176);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();

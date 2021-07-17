@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:ChartOfAccounts xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2766f353-abd2-4e7f-9a95-53f05c83f5d4">
+<mdclass:ChartOfAccounts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2766f353-abd2-4e7f-9a95-53f05c83f5d4">
   <producedTypes>
     <objectType typeId="57a247df-0936-49bb-8176-aab962e6a0d3" valueTypeId="40b405e1-6efc-49ea-9ebc-1bbaa606e44c"/>
     <refType typeId="8d09ca85-51cb-4390-86af-0d3c3ee6439f" valueTypeId="560bfdfb-5652-4c21-9d55-8e97deac61bd"/>
@@ -22,6 +22,34 @@
   <checkUnique>true</checkUnique>
   <editType>InDialog</editType>
   <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>ChartOfAccounts.ПланСчетов1.Form.ФормаЭлемента</defaultObjectForm>
+  <tabularSections uuid="4926546a-32c1-4972-89a7-91f0deb2b6de">
+    <producedTypes>
+      <objectType typeId="69e588fa-254f-4215-9a98-365051cc0bb2" valueTypeId="e6ba87f7-df86-497b-b83e-24fffbea2c3b"/>
+      <rowType typeId="2502d6d7-09a3-4c0b-9ecf-7247f9357e1b" valueTypeId="15544d94-4e36-4045-8b52-37582cc8ec2c"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть</value>
+    </synonym>
+    <attributes uuid="b41effad-f26d-43a4-bfb5-38e955fcc07b">
+      <name>Реквизит</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
   <accountingFlags uuid="957a5154-1e63-49e1-8e99-3893490da6f6">
     <name>ПризнакУчета</name>
     <synonym>
@@ -42,4 +70,30 @@
       <types>Boolean</types>
     </type>
   </extDimensionAccountingFlags>
+  <forms uuid="10f1186c-db42-4be7-8ba7-777f10807abb">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="21a14299-195f-448c-9f47-cbddf8a63352">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+    <templateType>GeographicalSchema</templateType>
+  </templates>
+  <commands uuid="fd7f03cd-37b0-4914-b4d9-e0bcf51c4d0d">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:ChartOfAccounts>

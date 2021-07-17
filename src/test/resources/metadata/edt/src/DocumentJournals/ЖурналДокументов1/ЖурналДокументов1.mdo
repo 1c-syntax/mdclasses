@@ -6,6 +6,7 @@
     <managerType typeId="9081ac6f-d856-449e-8e35-879c003c687b" valueTypeId="e951d77c-eead-4a45-b62f-e3ea9033bd33"/>
   </producedTypes>
   <name>ЖурналДокументов1</name>
+  <defaultForm>DocumentJournal.ЖурналДокументов1.Form.ФормаСписка</defaultForm>
   <useStandardCommands>true</useStandardCommands>
   <registeredDocuments>Document.Документ1</registeredDocuments>
   <columns uuid="b52d063e-5d2c-498b-a333-4957277f47e3">
@@ -16,4 +17,30 @@
     </synonym>
     <references>Document.Документ1.Attribute.Реквизит1</references>
   </columns>
+  <forms uuid="8146070f-9d3e-4c87-a25a-dbfea7d44243">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="0f5a6fe7-3441-49cc-ad50-b4725d15d946">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+    <templateType>DataCompositionSchema</templateType>
+  </templates>
+  <commands uuid="d64fc3f1-6681-463f-9177-76d00c90e363">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:DocumentJournal>

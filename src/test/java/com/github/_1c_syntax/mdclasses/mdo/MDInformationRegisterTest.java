@@ -40,14 +40,14 @@ class MDInformationRegisterTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("InformationRegisters/РегистрСведений1/РегистрСведений1.mdo");
     checkBaseField(mdo, MDInformationRegister.class, "РегистрСведений1",
       "184d9d78-9523-4cfa-9542-a7ba72efe4dd");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 1, mdo.getMdoReference(),
-      AttributeType.DIMENSION);
+    checkForms(mdo, 1, "ФормаЗаписи");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
+      AttributeType.DIMENSION, AttributeType.ATTRIBUTE, AttributeType.RESOURCE);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "InformationRegisters/РегистрСведени",
       ModuleType.RecordSetModule);
-    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(2);
     assertThat(dimension.isDenyIncompleteValues()).isFalse();
     assertThat(dimension.isMaster()).isFalse();
     assertThat(dimension.isUseInTotals()).isTrue();

@@ -41,7 +41,7 @@ class MDDocumentTest extends AbstractMDOTest {
     checkBaseField(mdo, MDDocument.class, "Документ1",
       "ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd");
     checkForms(mdo, 3, "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
-    checkTemplates(mdo);
+    checkTemplates(mdo, 1, "Макет");
     checkCommands(mdo, 2, "Команда", "Команда2");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);

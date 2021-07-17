@@ -41,4 +41,13 @@ class DocumentTest extends AbstractMDObjectTest<Document> {
       ObjectBelonging.OWN);
     assertThat(mdo.getRegisterRecords()).hasSize(4);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Documents/Документ1/Документ1");
+    checkBaseField(mdo, MDOType.DOCUMENT,
+      "Документ1", "ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd",
+      ObjectBelonging.OWN);
+    assertThat(mdo.getRegisterRecords()).hasSize(4);
+  }
 }

@@ -38,4 +38,12 @@ class DataProcessorTest extends AbstractMDObjectTest<DataProcessor> {
       "Обработка1", "a7c57ba0-75d8-487d-b8ea-ae5083d8a503",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("DataProcessors/Обработка1/Обработка1");
+    checkBaseField(mdo, MDOType.DATA_PROCESSOR,
+      "Обработка1", "a7c57ba0-75d8-487d-b8ea-ae5083d8a503",
+      ObjectBelonging.OWN);
+  }
 }

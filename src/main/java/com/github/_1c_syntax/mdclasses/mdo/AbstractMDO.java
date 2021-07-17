@@ -109,7 +109,6 @@ public abstract class AbstractMDO implements MDO {
     if (builder != null) {
       TransformationUtils.setValue(builder, "uuid", uuid);
       TransformationUtils.setValue(builder, "name", name);
-      TransformationUtils.setValue(builder, "comment", comment);
       TransformationUtils.setValue(builder, "objectBelonging", objectBelonging);
       TransformationUtils.setValue(builder, "synonyms", new MultiLanguageString(synonyms.stream()
         .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));

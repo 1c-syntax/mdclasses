@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:ExchangePlan xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="242cb07d-3d2b-4689-b590-d3ed23ac9d10" thisNode="1bb86fc9-93d2-48a7-8cc4-054c2cc0dee7">
+<mdclass:ExchangePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="242cb07d-3d2b-4689-b590-d3ed23ac9d10" thisNode="1bb86fc9-93d2-48a7-8cc4-054c2cc0dee7">
   <producedTypes>
     <objectType typeId="e9f3e497-bd48-4a47-99b4-9f4ea88597e4" valueTypeId="16b55766-30d4-42d2-aa0d-33eb58b5b7bc"/>
     <refType typeId="3fa1c3b8-78aa-4b74-8564-2e11346c8b2a" valueTypeId="4ea54eab-af10-4d65-b82a-f07989be324c"/>
@@ -19,13 +19,84 @@
   <codeAllowedLength>Variable</codeAllowedLength>
   <descriptionLength>25</descriptionLength>
   <content>
-      <mdObject>Catalog.Справочник1</mdObject>
-      <autoRecord>Allow</autoRecord>
+    <mdObject>Catalog.Справочник1</mdObject>
+    <autoRecord>Allow</autoRecord>
   </content>
   <content>
-      <mdObject>Document.Документ1</mdObject>
+    <mdObject>Document.Документ1</mdObject>
   </content>
   <defaultPresentation>AsDescription</defaultPresentation>
   <editType>InDialog</editType>
   <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>ExchangePlan.ПланОбмена1.Form.ФормаУзла</defaultObjectForm>
+  <attributes uuid="dbc326e3-d65f-4a7b-a426-ed39be45cfdc">
+    <name>Реквизит</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <tabularSections uuid="3b60ae22-8c6b-43a7-b599-cfc2d5074a97">
+    <producedTypes>
+      <objectType typeId="6767dfaf-e810-4c7d-ae05-76d9c7851071" valueTypeId="03e15178-3974-4a8b-aa95-dbc13a2ab9bc"/>
+      <rowType typeId="adc4959c-5ab8-4d44-80b6-db722f9fb138" valueTypeId="3944575c-d986-4c84-af9e-a7a24dd6fd6b"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть</value>
+    </synonym>
+    <attributes uuid="5217b3d1-1b6d-40d5-b08c-b85f81ca01fb">
+      <name>Реквизит</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="829f7375-1f16-4c24-b6b3-189f87c43778">
+    <name>ФормаУзла</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма узла</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="a1126315-8ec0-4e8e-9327-3a8fff6cc716">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+    <templateType>GeographicalSchema</templateType>
+  </templates>
+  <commands uuid="70ab6afa-2da0-463c-b1be-4b05968bb991">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:ExchangePlan>

@@ -39,11 +39,11 @@ class MDChartOfAccountsTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1.mdo");
     checkBaseField(mdo, MDChartOfAccounts.class, "ПланСчетов1",
       "2766f353-abd2-4e7f-9a95-53f05c83f5d4");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
-      AttributeType.ACCOUNTING_FLAG, AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG);
+    checkForms(mdo, 1, "ФормаЭлемента");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
+      AttributeType.ACCOUNTING_FLAG, AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG, AttributeType.TABULAR_SECTION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ChartsOfAccounts/ПланСчетов1",
       ModuleType.ObjectModule);
 

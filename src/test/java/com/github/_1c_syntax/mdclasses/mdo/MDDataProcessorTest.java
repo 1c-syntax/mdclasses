@@ -22,6 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,10 +40,12 @@ class MDDataProcessorTest extends AbstractMDOTest {
     checkBaseField(mdo, MDDataProcessor.class, "Обработка1",
       "a7c57ba0-75d8-487d-b8ea-ae5083d8a503");
     checkForms(mdo, 1, "Форма");
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "DataProcessors/Обработка1",
+      ModuleType.ObjectModule);
   }
 
   @Override

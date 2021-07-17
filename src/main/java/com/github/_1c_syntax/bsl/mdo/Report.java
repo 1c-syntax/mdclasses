@@ -50,11 +50,6 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

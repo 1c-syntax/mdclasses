@@ -38,4 +38,12 @@ class BusinessProcessTest extends AbstractMDObjectTest<BusinessProcess> {
       "БизнесПроцесс1", "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("BusinessProcesses/БизнесПроцесс1/БизнесПроцесс1");
+    checkBaseField(mdo, MDOType.BUSINESS_PROCESS,
+      "БизнесПроцесс1", "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+      ObjectBelonging.OWN);
+  }
 }

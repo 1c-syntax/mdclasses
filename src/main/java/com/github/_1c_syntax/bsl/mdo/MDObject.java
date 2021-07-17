@@ -49,11 +49,6 @@ public interface MDObject {
   MultiLanguageString getSynonyms();
 
   /**
-   * Строка с комментарием объекта
-   */
-  String getComment();
-
-  /**
    * MDO-Ссылка на объект
    */
   MdoReference getMdoReference();

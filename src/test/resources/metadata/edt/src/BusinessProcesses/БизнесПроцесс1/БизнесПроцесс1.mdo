@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:BusinessProcess xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="560a32ca-028d-4b88-b6f2-6b7212bf31f8">
+<mdclass:BusinessProcess xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="560a32ca-028d-4b88-b6f2-6b7212bf31f8">
   <producedTypes>
     <objectType typeId="127d0aee-838a-4453-8469-c7820e669ded" valueTypeId="92672b70-3ca3-4bf1-b8fb-77ec0ab96c00"/>
     <refType typeId="48996390-d71e-482c-b55c-8f0f3e7a3e95" valueTypeId="20c62a84-b3dc-4ddd-84ab-bf937047eb9c"/>
@@ -16,6 +16,7 @@
   <dataLockControlMode>Managed</dataLockControlMode>
   <fullTextSearch>Use</fullTextSearch>
   <editType>InDialog</editType>
+  <defaultObjectForm>BusinessProcess.БизнесПроцесс1.Form.ФормаЭлемента</defaultObjectForm>
   <numberType>String</numberType>
   <numberLength>9</numberLength>
   <numberAllowedLength>Variable</numberAllowedLength>
@@ -23,4 +24,73 @@
   <autonumbering>true</autonumbering>
   <task>Task.Задача1</task>
   <createTaskInPrivilegedMode>true</createTaskInPrivilegedMode>
+  <attributes uuid="b3d2a544-baef-41a3-9485-c6b364fe87b7">
+    <name>Реквизит</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <tabularSections uuid="ad9aacc9-4b7f-43e3-8016-8b0b22cb6191">
+    <producedTypes>
+      <objectType typeId="2a3349ef-5eac-4588-8ea7-5b9159927eb1" valueTypeId="50dc6acb-2334-4e75-95ff-85c586e33b19"/>
+      <rowType typeId="a48709d4-5a55-4f9e-876b-fa8c12786d51" valueTypeId="ffa08489-b3ee-404c-8b81-d2f0aa745311"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть</value>
+    </synonym>
+    <attributes uuid="b048a37d-61a1-4ace-bd16-d218b6d4a9fe">
+      <name>Реквизит</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="4c6e3430-02e1-4490-8037-a6bc3ba208cf">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="b1568d42-f083-4a86-9500-5b630340199e">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+  </templates>
+  <commands uuid="61241c39-482a-41ad-90f7-6ecb1358bf84">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:BusinessProcess>

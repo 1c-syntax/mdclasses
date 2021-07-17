@@ -49,11 +49,6 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

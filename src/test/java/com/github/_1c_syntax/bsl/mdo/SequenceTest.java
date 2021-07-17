@@ -38,4 +38,12 @@ class SequenceTest extends AbstractMDObjectTest<Sequence> {
       "Последовательность1", "514bbcf4-7fc4-4a3e-9245-598fad397eec",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Sequences/Последовательность1/Последовательность1");
+    checkBaseField(mdo, MDOType.SEQUENCE,
+      "Последовательность1", "514bbcf4-7fc4-4a3e-9245-598fad397eec",
+      ObjectBelonging.OWN);
+  }
 }

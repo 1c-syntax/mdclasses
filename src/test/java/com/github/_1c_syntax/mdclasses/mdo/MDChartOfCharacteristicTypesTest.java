@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,10 +39,11 @@ class MDChartOfCharacteristicTypesTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/ПланВидовХарактеристик1.mdo");
     checkBaseField(mdo, MDChartOfCharacteristicTypes.class, "ПланВидовХарактеристик1",
       "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkForms(mdo, 1, "ФормаЭлемента");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2,
       "ChartsOfCharacteristicTypes/ПланВидовХарактеристик1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);

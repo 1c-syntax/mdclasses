@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
@@ -40,12 +41,13 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("CalculationRegisters/РегистрРасчета1/РегистрРасчета1.mdo");
     checkBaseField(mdo, MDCalculationRegister.class, "РегистрРасчета1",
       "90587c7d-b950-4476-ac14-426e4a83d9c4");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
+    checkForms(mdo, 1, "ФормаСписка");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
-    assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "CalculationRegisters/РегистрРасчета1",
+      ModuleType.RecordSetModule);
 
     var calcRegister = (MDCalculationRegister) mdo;
     var recalculation = calcRegister.getAttributes().stream()

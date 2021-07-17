@@ -79,7 +79,6 @@ public class MDRole extends AbstractMDObjectBase {
       roleData.isSetForAttributesByDefault());
     TransformationUtils.setValue(builder, "independentRightsOfChildObjects",
       roleData.isIndependentRightsOfChildObjects());
-    TransformationUtils.setValue(builder, "roleDataPath", roleDataPath);
 
     return builder;
   }

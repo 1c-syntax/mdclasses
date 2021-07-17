@@ -42,7 +42,16 @@ class RoleTest extends AbstractMDObjectTest<Role> {
     assertThat(mdo.isIndependentRightsOfChildObjects()).isFalse();
     assertThat(mdo.isSetForAttributesByDefault()).isTrue();
     assertThat(mdo.isSetForNewObjects()).isFalse();
-    assertThat(mdo.getRoleDataPath())
-      .hasToString("src/test/resources/metadata/original/Roles/Роль1/Ext/Rights.xml");
+  }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("Roles/Роль1/Роль1");
+    checkBaseField(mdo, MDOType.ROLE,
+      "Роль1", "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41",
+      ObjectBelonging.OWN);
+    assertThat(mdo.isIndependentRightsOfChildObjects()).isTrue();
+    assertThat(mdo.isSetForAttributesByDefault()).isTrue();
+    assertThat(mdo.isSetForNewObjects()).isTrue();
   }
 }

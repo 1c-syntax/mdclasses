@@ -42,4 +42,14 @@ class ExchangePlanTest extends AbstractMDObjectTest<ExchangePlan> {
     assertThat(mdo.isDistributedInfoBase()).isTrue();
     assertThat(mdo.isIncludeConfigurationExtensions()).isTrue();
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("ExchangePlans/ПланОбмена1/ПланОбмена1");
+    checkBaseField(mdo, MDOType.EXCHANGE_PLAN,
+      "ПланОбмена1", "242cb07d-3d2b-4689-b590-d3ed23ac9d10",
+      ObjectBelonging.OWN);
+    assertThat(mdo.isDistributedInfoBase()).isFalse();
+    assertThat(mdo.isIncludeConfigurationExtensions()).isFalse();
+  }
 }

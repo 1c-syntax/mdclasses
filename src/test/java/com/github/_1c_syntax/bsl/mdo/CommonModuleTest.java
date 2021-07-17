@@ -54,20 +54,20 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
 
   @Test
   void test2() {
-    var mdo = getMDObject("CommonModules/ОбщийМодульПовтИспСеанс");
+    var mdo = getMDObjectEDT("CommonModules/ОбщийМодульПолныйеПрава/ОбщийМодульПолныйеПрава");
     checkBaseField(mdo, MDOType.COMMON_MODULE,
-      "ОбщийМодульПовтИспСеанс", "a09f73b1-0058-4f3b-a22b-799ef3c2a33d",
+      "ОбщийМодульПолныйеПрава", "5733cabc-1b65-48f8-9ab6-269f1b73a21c",
       ObjectBelonging.OWN);
     assertThat(mdo.isClientManagedApplication()).isFalse();
     assertThat(mdo.isClientOrdinaryApplication()).isFalse();
     assertThat(mdo.isGlobal()).isFalse();
-    assertThat(mdo.isPrivileged()).isFalse();
+    assertThat(mdo.isPrivileged()).isTrue();
     assertThat(mdo.isServer()).isTrue();
     assertThat(mdo.isExternalConnection()).isFalse();
-    assertThat(mdo.isServerCall()).isFalse();
+    assertThat(mdo.isServerCall()).isTrue();
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
-      .endsWith("src/test/resources/metadata/original/CommonModules/ОбщийМодульПовтИспСеанс/Ext/Module.bsl");
+      .endsWith("src/test/resources/metadata/edt/src/CommonModules/ОбщийМодульПолныйеПрава/Module.bsl");
   }
 
   @Test
@@ -86,5 +86,23 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
       .endsWith("src/test/resources/metadata/original/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl");
+  }
+
+  @Test
+  void test4() {
+    var mdo = getMDObject("CommonModules/ОбщийМодульПовтИспСеанс");
+    checkBaseField(mdo, MDOType.COMMON_MODULE,
+      "ОбщийМодульПовтИспСеанс", "a09f73b1-0058-4f3b-a22b-799ef3c2a33d",
+      ObjectBelonging.OWN);
+    assertThat(mdo.isClientManagedApplication()).isFalse();
+    assertThat(mdo.isClientOrdinaryApplication()).isFalse();
+    assertThat(mdo.isGlobal()).isFalse();
+    assertThat(mdo.isPrivileged()).isFalse();
+    assertThat(mdo.isServer()).isTrue();
+    assertThat(mdo.isExternalConnection()).isFalse();
+    assertThat(mdo.isServerCall()).isFalse();
+    assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
+    assertThat(mdo.getUri().getPath())
+      .endsWith("src/test/resources/metadata/original/CommonModules/ОбщийМодульПовтИспСеанс/Ext/Module.bsl");
   }
 }

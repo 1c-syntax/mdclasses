@@ -38,10 +38,9 @@ class MDEnumTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("Enums/Перечисление1/Перечисление1.mdo");
     checkBaseField(mdo, MDEnum.class, "Перечисление1",
       "f11f3441-4b64-4344-b1a0-0e4b3e466e03");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkForms(mdo, 1, "ФормаСписка");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "Enums/Перечисление1",
       ModuleType.ManagerModule);
   }

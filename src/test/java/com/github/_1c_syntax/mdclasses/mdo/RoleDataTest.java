@@ -42,7 +42,24 @@ class RoleDataTest {
       Paths.get(SRC_EDT, "Roles/Роль1/Роль1.mdo"));
     assertThat(mdo).isPresent();
     MDRole role = (MDRole) mdo.get();
-    testRole(role);
+    RoleData roleData = role.getRoleData();
+    assertThat(roleData).isNotNull();
+
+    List<ObjectRight> objectRights = roleData.getObjectRights();
+    assertThat(objectRights).hasSize(44);
+
+    ObjectRight confRights = objectRights.get(0);
+    assertThat(confRights.getName()).isEqualTo(
+      "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня");
+    assertThat(confRights.getRights()).hasSize(1);
+
+    ObjectRight documentRights = objectRights.get(1);
+    assertThat(documentRights.getName()).isEqualTo("Subsystem.ВтораяПодсистема");
+    assertThat(documentRights.getRights()).hasSize(1);
+
+    ObjectRight catalogRights = objectRights.get(22);
+    assertThat(catalogRights.getName()).isEqualTo("DocumentJournal.ЖурналДокументов1.Command.Команда");
+    assertThat(catalogRights.getRights()).hasSize(1);
   }
 
   @Test
@@ -51,12 +68,6 @@ class RoleDataTest {
       Paths.get(SRC_DESIGNER, "Roles/Роль1.xml"));
     assertThat(mdo).isPresent();
     MDRole role = (MDRole) mdo.get();
-    testRole(role);
-  }
-
-
-  private void testRole(MDRole role) {
-
     RoleData roleData = role.getRoleData();
     assertThat(roleData).isNotNull();
 
@@ -75,4 +86,5 @@ class RoleDataTest {
     assertThat(catalogRights.getName()).isEqualTo("Catalog.Справочник1");
     assertThat(catalogRights.getRights()).hasSize(16);
   }
+
 }

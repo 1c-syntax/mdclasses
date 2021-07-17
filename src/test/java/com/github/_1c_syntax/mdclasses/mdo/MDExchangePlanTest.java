@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,10 +39,11 @@ class MDExchangePlanTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("ExchangePlans/ПланОбмена1/ПланОбмена1.mdo");
     checkBaseField(mdo, MDExchangePlan.class, "ПланОбмена1",
       "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
-    checkForms(mdo);
-    checkTemplates(mdo);
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkForms(mdo, 1, "ФормаУзла");
+    checkTemplates(mdo, 1, "Макет");
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ExchangePlans/ПланОбмена1",
       ModuleType.ObjectModule);
     var exchangePlan = (MDExchangePlan) mdo;

@@ -50,11 +50,6 @@ public class Catalog implements MDObject, AttributeOwner, FormOwner, CommandOwne
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

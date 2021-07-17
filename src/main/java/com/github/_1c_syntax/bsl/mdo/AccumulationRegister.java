@@ -50,11 +50,6 @@ public class AccumulationRegister implements MDObject, AttributeOwner, FormOwner
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

@@ -38,4 +38,12 @@ class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
       "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1");
+    checkBaseField(mdo, MDOType.ACCOUNTING_REGISTER,
+      "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+      ObjectBelonging.OWN);
+  }
 }

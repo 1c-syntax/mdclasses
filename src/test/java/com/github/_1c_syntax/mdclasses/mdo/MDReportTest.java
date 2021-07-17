@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,10 +39,11 @@ class MDReportTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("Reports/Отчет1/Отчет1.mdo");
     checkBaseField(mdo, MDReport.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");
-    checkForms(mdo);
+    checkForms(mdo, 1, "ФормаОтчета");
     checkTemplates(mdo, 1, "МакетОтчета");
-    checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    checkCommands(mdo, 1, "Команда");
+    checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 2, mdo.getMdoReference(),
+      AttributeType.ATTRIBUTE, AttributeType.TABULAR_SECTION);
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "Reports/Отчет1",
       ModuleType.ObjectModule, ModuleType.ManagerModule);
   }

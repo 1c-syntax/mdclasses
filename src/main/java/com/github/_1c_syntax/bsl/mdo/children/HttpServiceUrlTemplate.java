@@ -45,11 +45,6 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

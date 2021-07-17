@@ -38,8 +38,8 @@ class MDSettingsStorageTest extends AbstractMDOTest {
     var mdo = getMDObjectEDT("SettingsStorages/ХранилищеНастроек1/ХранилищеНастроек1.mdo");
     checkBaseField(mdo, MDSettingsStorage.class, "ХранилищеНастроек1",
       "e7a9947d-7565-4681-b75c-c9a229b45042");
-    checkForms(mdo);
-    checkTemplates(mdo);
+    checkForms(mdo, 1, "ФормаСохраненияНастроек");
+    checkTemplates(mdo, 1, "Макет");
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "SettingsStorages/ХранилищеНастроек1",

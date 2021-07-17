@@ -38,4 +38,12 @@ class InformationRegisterTest extends AbstractMDObjectTest<InformationRegister> 
       "РегистрСведений1", "184d9d78-9523-4cfa-9542-a7ba72efe4dd",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("InformationRegisters/РегистрСведений1/РегистрСведений1");
+    checkBaseField(mdo, MDOType.INFORMATION_REGISTER,
+      "РегистрСведений1", "184d9d78-9523-4cfa-9542-a7ba72efe4dd",
+      ObjectBelonging.OWN);
+  }
 }

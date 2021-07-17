@@ -46,4 +46,16 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     assertThat(mdo.isPasswordMode()).isFalse();
     assertThat(mdo.getUsing().getContent()).isEmpty();
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("CommonAttributes/ОбщийРеквизит1/ОбщийРеквизит1");
+    checkBaseField(mdo, MDOType.COMMON_ATTRIBUTE,
+      "ОбщийРеквизит1", "d4f0c0ac-ed26-4085-a1b4-e52314b973ad",
+      ObjectBelonging.OWN);
+    assertThat(mdo.getAutoUse()).isEqualTo(UseMode.DONT_USE);
+    assertThat(mdo.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
+    assertThat(mdo.isPasswordMode()).isTrue();
+    assertThat(mdo.getUsing().getContent()).isEmpty();
+  }
 }

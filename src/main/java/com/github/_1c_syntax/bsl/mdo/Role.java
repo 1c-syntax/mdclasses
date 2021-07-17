@@ -49,11 +49,6 @@ public class Role implements MDObject {
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;
@@ -97,11 +92,6 @@ public class Role implements MDObject {
    * Независимые права подчиненных объектов
    */
   boolean independentRightsOfChildObjects;
-
-  /**
-   * Путь к файлу с данными
-   */
-  Path roleDataPath;
 
 //  @XStreamAlias("object")
 //  @XStreamImplicit

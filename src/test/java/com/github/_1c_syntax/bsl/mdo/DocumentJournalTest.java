@@ -38,4 +38,12 @@ class DocumentJournalTest extends AbstractMDObjectTest<DocumentJournal> {
       "ЖурналДокументов1", "c6743657-4787-40de-9a45-2493c630f626",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT("DocumentJournals/ЖурналДокументов1/ЖурналДокументов1");
+    checkBaseField(mdo, MDOType.DOCUMENT_JOURNAL,
+      "ЖурналДокументов1", "c6743657-4787-40de-9a45-2493c630f626",
+      ObjectBelonging.OWN);
+  }
 }

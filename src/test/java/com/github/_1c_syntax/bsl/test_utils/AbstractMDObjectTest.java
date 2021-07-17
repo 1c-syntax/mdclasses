@@ -30,16 +30,51 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import static com.github._1c_syntax.bsl.test_utils.Assertions.assertThat;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 abstract public class AbstractMDObjectTest<T extends MDObject> {
   private final Class<T> clazz;
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
+  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
   private static final String SRC_DESIGNER18 = "src/test/resources/metadata/original_3_18";
+
+  private List<String> untestedFields;
+  private List<String> testedFields;
+
+  @BeforeAll
+  void beforeTest() {
+    untestedFields = new ArrayList<>();
+    testedFields = new ArrayList<>();
+  }
+
+  @AfterAll
+  void afterTest() {
+    var message = new StringBuilder();
+    untestedFields.forEach(field -> {
+      message
+        .append("\n\t")
+        .append(field);
+    });
+
+    if (!message.toString().isEmpty()) {
+      message.insert(0, "\nUntested field(-s):");
+    }
+
+    assertThat(message).isEmpty();
+  }
 
   protected AbstractMDObjectTest(Class<T> clazz) {
     this.clazz = clazz;
@@ -51,6 +86,14 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
   protected T getMDObject(String name) {
     return getMDObject(Paths.get(SRC_DESIGNER,
       name + MDOPathUtils.mdoExtension(ConfigurationSource.DESIGNER, true)));
+  }
+
+  /**
+   * Возвращает прочитанный объект
+   */
+  protected T getMDObjectEDT(String name) {
+    return getMDObject(Paths.get(SRC_EDT,
+      name + MDOPathUtils.mdoExtension(ConfigurationSource.EDT, true)));
   }
 
   /**
@@ -70,6 +113,26 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var fields = clazz.getDeclaredFields();
     for (var field : fields) {
       assertThat(field, true).isNotNull(mdo);
+      var fieldType = field.getType();
+
+      if (testedFields.contains(field.getName())) {
+        untestedFields.remove(field.getName());
+        continue;
+      }
+
+      if (fieldType.isAssignableFrom(boolean.class) && Objects.equals(field.get(mdo), false)
+        || fieldType.isAssignableFrom(String.class) && Objects.equals(field.get(mdo), "")
+        || fieldType.isAssignableFrom(int.class) && Objects.equals(field.get(mdo), 0)
+        || fieldType.isAssignableFrom(List.class) && ((ArrayList) field.get(mdo)).isEmpty()
+        || fieldType.isAssignableFrom(Map.class) && ((HashMap) field.get(mdo)).isEmpty()) {
+
+        if (!untestedFields.contains(field.getName())) {
+          untestedFields.add(field.getName());
+        }
+      } else {
+        testedFields.add(field.getName());
+        untestedFields.remove(field.getName());
+      }
     }
 
     assertThat(mdo.getType()).isEqualTo(type);

@@ -49,11 +49,6 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

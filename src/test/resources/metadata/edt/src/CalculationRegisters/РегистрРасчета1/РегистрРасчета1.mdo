@@ -11,6 +11,7 @@
   </producedTypes>
   <name>РегистрРасчета1</name>
   <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>CalculationRegister.РегистрРасчета1.Form.ФормаСписка</defaultListForm>
   <periodicity>Month</periodicity>
   <chartOfCalculationTypes>ChartOfCalculationTypes.ПланВидовРасчета1</chartOfCalculationTypes>
   <dataLockControlMode>Managed</dataLockControlMode>
@@ -36,8 +37,8 @@
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
     <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
   </dimensions>
   <recalculations uuid="16b54095-8711-4ef1-a38b-93d12f6f6e93">
     <producedTypes>
@@ -50,5 +51,39 @@
       <key>ru</key>
       <value>Перерасчет</value>
     </synonym>
+    <dimensions uuid="cfc9f78b-387d-475d-82c4-f1b363d1da31">
+      <name>Измерение</name>
+      <synonym>
+        <key>ru</key>
+        <value>Измерение</value>
+      </synonym>
+      <registerDimension>CalculationRegister.РегистрРасчета1.Dimension.Измерение1</registerDimension>
+    </dimensions>
   </recalculations>
+  <forms uuid="eee0b9fc-95de-4cb0-bb73-c78ddade2be9">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="1509af7a-aeee-4906-adcb-32d2df6b7e21">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+    <templateType>HTMLDocument</templateType>
+  </templates>
+  <commands uuid="ecd63a0d-51c9-49f2-8df6-d8a1b14aee04">
+    <name>Команда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Команда</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <representation>Auto</representation>
+  </commands>
 </mdclass:CalculationRegister>

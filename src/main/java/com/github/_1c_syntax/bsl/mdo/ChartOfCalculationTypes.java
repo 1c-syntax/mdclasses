@@ -50,11 +50,6 @@ public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOw
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

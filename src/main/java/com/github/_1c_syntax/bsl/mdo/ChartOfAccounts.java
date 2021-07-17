@@ -50,11 +50,6 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
   String uuid;
 
   /**
-   * Комментарий к объекту
-   */
-  String comment;
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   ObjectBelonging objectBelonging;

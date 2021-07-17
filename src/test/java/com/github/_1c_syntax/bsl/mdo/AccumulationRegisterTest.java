@@ -38,4 +38,13 @@ class AccumulationRegisterTest extends AbstractMDObjectTest<AccumulationRegister
       "РегистрНакопления1", "8ea07f36-d671-4649-bc7a-94daa939e77f",
       ObjectBelonging.OWN);
   }
+
+  @Test
+  void test2() {
+    var mdo = getMDObjectEDT(
+      "AccumulationRegisters/РегистрНакопления1/РегистрНакопления1");
+    checkBaseField(mdo, MDOType.ACCUMULATION_REGISTER,
+      "РегистрНакопления1", "8ea07f36-d671-4649-bc7a-94daa939e77f",
+      ObjectBelonging.OWN);
+  }
 }
