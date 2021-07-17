@@ -37,7 +37,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner {
 
   /**
    * Имя
@@ -109,8 +109,4 @@ public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, 
    */
   List<Module> modules;
 
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 }

@@ -21,9 +21,22 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+
 public interface Attribute extends MDObject {
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
   boolean isPasswordMode();
+
+  /**
+   * Вид атрибута
+   */
+  AttributeKind getKind();
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  IndexingType getIndexing();
 }

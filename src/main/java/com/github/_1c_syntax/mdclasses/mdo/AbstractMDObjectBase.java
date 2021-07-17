@@ -31,9 +31,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Базовый класс всех типов и дочерних объектов 1С
@@ -48,11 +45,6 @@ public abstract class AbstractMDObjectBase extends AbstractMDO implements MDOBas
    * Путь к файлу объекта
    */
   protected Path path;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  protected List<MDSubsystem> includedSubsystems = Collections.emptyList();
 
   /**
    * Используется для заполнения объекта на основании информации формата конфигуратора
@@ -97,17 +89,4 @@ public abstract class AbstractMDObjectBase extends AbstractMDO implements MDOBas
       setMdoReference(new MDOReference(this, parent));
     }
   }
-
-  /**
-   * Для добавления ссылки на подсистему, в которую включен объект
-   *
-   * @param subsystem - Подсистема, в которую включен объект
-   */
-  public void addIncludedSubsystem(MDSubsystem subsystem) {
-    if (includedSubsystems.equals(Collections.emptyList())) {
-      includedSubsystems = new ArrayList<>();
-    }
-    includedSubsystems.add(subsystem);
-  }
-
 }

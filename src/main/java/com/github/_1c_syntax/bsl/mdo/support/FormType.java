@@ -19,23 +19,22 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import com.github._1c_syntax.mdclasses.mdo.support.EnumWithValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
  * Тип формы (обычная или управляемая)
  */
+@AllArgsConstructor
 public enum FormType implements EnumWithValue {
   ORDINARY("Ordinary"),
   MANAGED("Managed");
 
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
-
-  FormType(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
-  }
 }

@@ -29,7 +29,7 @@ public enum AttributeType {
   DIMENSION,
   RESOURCE,
   TABULAR_SECTION,
-  RECALCULATION,
+  RECALCULATION, // todo убрать, это не ревизит
   ACCOUNTING_FLAG,
   EXT_DIMENSION_ACCOUNTING_FLAG,
   COLUMN,

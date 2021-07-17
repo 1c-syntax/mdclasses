@@ -30,13 +30,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.List;
-
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class SessionParameter implements MDObject, IncludedSubsystems {
+public class SessionParameter implements MDObject {
 
   /**
    * Имя
@@ -82,11 +80,6 @@ public class SessionParameter implements MDObject, IncludedSubsystems {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
 }
 // todo добавить инетерфейс атрибута

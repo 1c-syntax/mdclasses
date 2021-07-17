@@ -21,10 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;

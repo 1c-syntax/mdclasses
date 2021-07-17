@@ -33,13 +33,12 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.nio.file.Path;
-import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonTemplate implements Template, IncludedSubsystems {
+public class CommonTemplate implements Template {
 
   /**
    * Имя
@@ -85,11 +84,6 @@ public class CommonTemplate implements Template, IncludedSubsystems {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
   /**
    * Тип макета. Например, `ТабличныйДокумент`.

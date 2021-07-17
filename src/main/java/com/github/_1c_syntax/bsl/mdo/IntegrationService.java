@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.children.IntegrationServiceChannel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -37,7 +37,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class IntegrationService implements MDObject, ModuleOwner, IncludedSubsystems {
+public class IntegrationService implements MDObject, ModuleOwner {
 
   /**
    * Имя
@@ -90,11 +90,6 @@ public class IntegrationService implements MDObject, ModuleOwner, IncludedSubsys
   List<Module> modules;
 
   /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
-
-  /**
    * Адрес внешнего сервиса интеграции
    */
   String externalIntegrationServiceAddress;
@@ -103,4 +98,11 @@ public class IntegrationService implements MDObject, ModuleOwner, IncludedSubsys
    * Каналы сервиса интеграции
    */
   List<IntegrationServiceChannel> integrationChannels;
+
+  @Override
+  public List<MDObject> getChildren() {
+    var children = MDObject.super.getChildren();
+    children.addAll(integrationChannels);
+    return children;
+  }
 }

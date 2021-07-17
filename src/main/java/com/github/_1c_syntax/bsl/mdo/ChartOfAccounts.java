@@ -37,7 +37,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner, TabularSectionOwner {
 
   /**
    * Имя
@@ -110,9 +110,9 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
   List<Module> modules;
 
   /**
-   * Список подсистем, в состав которых входит объект
+   * Список табличных частей
    */
-  List<Subsystem> includedSubsystems;
+  List<TabularSection> tabularSections;
 
   // todo отдельно вынести признаки учета и признаки учета субконто
 }

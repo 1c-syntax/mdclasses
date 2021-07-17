@@ -69,10 +69,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
 
     var fields = clazz.getDeclaredFields();
     for (var field : fields) {
-      // todo времянка
-      if (field.getName().equals("includedSubsystems")) {
-        continue;
-      }
       assertThat(field, true).isNotNull(mdo);
     }
 

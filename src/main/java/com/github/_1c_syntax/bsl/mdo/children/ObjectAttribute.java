@@ -22,6 +22,8 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -81,4 +83,14 @@ public class ObjectAttribute implements Attribute {
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
   boolean passwordMode;
+
+  /**
+   * Вид атрибута
+   */
+  AttributeKind kind;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  IndexingType indexing;
 }

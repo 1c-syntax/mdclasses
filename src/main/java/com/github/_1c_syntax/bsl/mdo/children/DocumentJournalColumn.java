@@ -19,26 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.children;
 
-import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.Value;
-
-import java.util.List;
 
 @Value
 @Builder
-@ToString(of = {"name", "uuid"})
-@EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonForm implements Form {
-
+public class DocumentJournalColumn implements Attribute {
   /**
    * Имя
    */
@@ -85,21 +80,19 @@ public class CommonForm implements Form {
   MdoReference mdoReference;
 
   /**
-   * Тип формы
+   * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
-  FormType formType;
-
-//  /**
-//   * Данные формы:
-//   * + список элементов формы
-//   * + список обработчиков формы
-//   * + список реквизитов формы
-//   */
-//  FormData data;
+  boolean passwordMode;
 
   /**
-   * Список модулей объекта
+   * Вид атрибута
    */
-  List<Module> modules;
+  AttributeKind kind;
 
+  /**
+   * Вариант индексирования реквизита
+   */
+  IndexingType indexing;
+
+  // todo ссылки надо положить? возможно в тип
 }

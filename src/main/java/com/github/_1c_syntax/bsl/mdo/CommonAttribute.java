@@ -21,8 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -33,13 +35,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.List;
-
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonAttribute implements Attribute, IncludedSubsystems {
+public class CommonAttribute implements Attribute {
 
   /**
    * Имя
@@ -87,14 +87,14 @@ public class CommonAttribute implements Attribute, IncludedSubsystems {
   MdoReference mdoReference;
 
   /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
-
-  /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
    */
   boolean passwordMode;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  IndexingType indexing;
 
   /**
    * Признак автоиспользования общего реквизита
@@ -111,6 +111,10 @@ public class CommonAttribute implements Attribute, IncludedSubsystems {
    */
   ContentStorage using;
 
+  @Override
+  public AttributeKind getKind() {
+    return AttributeKind.COMMON;
+  }
 }
 
 //  /**

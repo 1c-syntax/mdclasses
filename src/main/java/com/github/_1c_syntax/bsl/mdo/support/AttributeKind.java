@@ -19,22 +19,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.Accessors;
+package com.github._1c_syntax.bsl.mdo.support;
 
 /**
- * Варианты индексирования реквизитов
+ * Вид атрибута
+ * - CUSTOM - пользовательский (все созданные пользователями)
+ * - COMMON - общий реквизит
+ * - STANDARD - стандартный реквизит
  */
-@AllArgsConstructor
-public enum IndexingType implements EnumWithValue {
-  DONT_INDEX("DontIndex"),                                  // не индексировать
-  INDEX("Index"),                                           // индексировать
-  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder");  // индексировать с доп упорядочиванием
-
-  @Getter
-  @Accessors(fluent = true)
-  private final String value;
+public enum AttributeKind {
+  CUSTOM,
+  COMMON,
+  STANDARD;
 }

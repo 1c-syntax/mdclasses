@@ -21,18 +21,18 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
-import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
-import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
-import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;

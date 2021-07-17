@@ -35,7 +35,7 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 

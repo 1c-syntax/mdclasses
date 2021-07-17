@@ -37,7 +37,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class InformationRegister implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner {
 
   /**
    * Имя
@@ -108,10 +108,5 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
    * Список модулей объекта
    */
   List<Module> modules;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
 }

@@ -21,10 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonFormTest extends AbstractMDObjectTest<CommonForm> {
   CommonFormTest() {
@@ -37,5 +40,6 @@ class CommonFormTest extends AbstractMDObjectTest<CommonForm> {
     checkBaseField(mdo, MDOType.COMMON_FORM,
       "Форма", "5ac59104-28a5-40b1-ab5b-2857fb41991a",
       ObjectBelonging.OWN);
+    assertThat(mdo.getFormType()).isEqualTo(FormType.MANAGED);
   }
 }

@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Sequence implements MDObject, AttributeOwner, ModuleOwner, IncludedSubsystems {
+public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
 
   /**
    * Имя
@@ -92,11 +92,6 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner, Included
    * Список модулей объекта
    */
   List<Module> modules;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
 }
 

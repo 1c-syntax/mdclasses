@@ -37,7 +37,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class HttpService implements MDObject, ModuleOwner, IncludedSubsystems {
+public class HttpService implements MDObject, ModuleOwner {
 
   /**
    * Имя
@@ -90,12 +90,14 @@ public class HttpService implements MDObject, ModuleOwner, IncludedSubsystems {
   List<Module> modules;
 
   /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
-
-  /**
    * Шаблоны URL HTTP-сервиса
    */
   List<HttpServiceUrlTemplate> urlTemplates;
+
+  @Override
+  public List<MDObject> getChildren() {
+    var children = MDObject.super.getChildren();
+    children.addAll(urlTemplates);
+    return children;
+  }
 }

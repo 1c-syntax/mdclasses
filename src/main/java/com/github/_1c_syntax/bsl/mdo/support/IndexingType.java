@@ -19,16 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import java.util.List;
+import com.github._1c_syntax.mdclasses.mdo.support.EnumWithValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
- * Расширение - возможность вхождения в подсистемы
+ * Варианты индексирования реквизитов
  */
-public interface IncludedSubsystems {
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> getIncludedSubsystems();
+@AllArgsConstructor
+public enum IndexingType implements EnumWithValue {
+  DONT_INDEX("DontIndex"),                                  // не индексировать
+  INDEX("Index"),                                           // индексировать
+  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder");  // индексировать с доп упорядочиванием
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String value;
 }

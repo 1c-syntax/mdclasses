@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import java.nio.file.Path;
-import java.util.List;
 
 /**
  * TODO Временное решение
@@ -32,10 +31,5 @@ public interface MDOBase extends MDO {
    * Путь к файлу объекта
    */
   Path getPath();
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<MDSubsystem> getIncludedSubsystems();
 
 }

@@ -31,13 +31,12 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.nio.file.Path;
-import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Role implements MDObject, IncludedSubsystems {
+public class Role implements MDObject {
 
   /**
    * Имя
@@ -83,11 +82,6 @@ public class Role implements MDObject, IncludedSubsystems {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
   /**
    * Устанавливать права для новых объектов

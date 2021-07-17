@@ -21,9 +21,16 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
@@ -39,20 +46,13 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
-import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.AutoRecordType;
 import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
-import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
-import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
-import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
-import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.mdclasses.mdo.support.ValueType;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.AttributeConverter;

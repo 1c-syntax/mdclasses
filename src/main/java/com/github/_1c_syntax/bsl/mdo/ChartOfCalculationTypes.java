@@ -37,7 +37,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner, TabularSectionOwner {
 
   /**
    * Имя
@@ -110,8 +110,7 @@ public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOw
   List<Module> modules;
 
   /**
-   * Список подсистем, в состав которых входит объект
+   * Список табличных частей
    */
-  List<Subsystem> includedSubsystems;
-
+  List<TabularSection> tabularSections;
 }

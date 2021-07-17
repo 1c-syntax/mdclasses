@@ -22,13 +22,14 @@
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
-import com.github._1c_syntax.mdclasses.mdo.support.IndexingType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -66,8 +67,13 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    setBuilder(ObjectAttribute.builder());
-    return super.buildMDObject();
+    if (getBuilder() == null) {
+      setBuilder(ObjectAttribute.builder());
+    }
+    var builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "kind", kind);
+    TransformationUtils.setValue(builder, "indexing", indexing);
+    return builder;
   }
 
   @Override

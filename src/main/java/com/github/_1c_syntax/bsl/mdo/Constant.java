@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -30,13 +32,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.List;
-
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Constant implements Attribute, IncludedSubsystems {
+public class Constant implements Attribute {
 
   /**
    * Имя
@@ -84,12 +84,17 @@ public class Constant implements Attribute, IncludedSubsystems {
   MdoReference mdoReference;
 
   /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
-
-  /**
    * Режим пароля. Только для констант с типом `Строка`
    */
   boolean passwordMode;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  IndexingType indexing;
+
+  @Override
+  public AttributeKind getKind() {
+    return AttributeKind.STANDARD;
+  }
 }

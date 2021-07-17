@@ -83,6 +83,13 @@ public class HttpServiceUrlTemplate implements MDObject {
    * Методы шаблона URL HTTP-сервиса
    */
   List<HttpServiceMethod> httpServiceMethods;
+
+  @Override
+  public List<MDObject> getChildren() {
+    var children = MDObject.super.getChildren();
+    children.addAll(httpServiceMethods);
+    return children;
+  }
 }
 
 // todo добавить шаблон

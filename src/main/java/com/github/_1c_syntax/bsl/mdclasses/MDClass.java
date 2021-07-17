@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public interface MDClass {

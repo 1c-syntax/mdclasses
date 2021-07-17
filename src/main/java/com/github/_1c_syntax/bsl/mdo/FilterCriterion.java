@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class FilterCriterion implements MDObject, FormOwner, CommandOwner, ModuleOwner, IncludedSubsystems {
+public class FilterCriterion implements MDObject, FormOwner, CommandOwner, ModuleOwner {
 
   /**
    * Имя
@@ -97,11 +97,6 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
    * Список модулей объекта
    */
   List<Module> modules;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
 }
 

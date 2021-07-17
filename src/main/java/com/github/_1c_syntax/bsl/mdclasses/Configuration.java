@@ -38,8 +38,6 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Корневой класс конфигурации 1с

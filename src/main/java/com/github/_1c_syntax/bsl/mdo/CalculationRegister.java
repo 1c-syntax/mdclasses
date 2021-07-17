@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -37,7 +38,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CalculationRegister implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner {
 
   /**
    * Имя
@@ -110,9 +111,14 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   List<Module> modules;
 
   /**
-   * Список подсистем, в состав которых входит объект
+   * Список перерасчетов
    */
-  List<Subsystem> includedSubsystems;
+  List<Recalculation> recalculations;
 
-  // todo перерасчеты надо сделать отдельно
+  @Override
+  public List<MDObject> getChildren() {
+    var children = MDObject.super.getChildren();
+    children.addAll(recalculations);
+    return children;
+  }
 }

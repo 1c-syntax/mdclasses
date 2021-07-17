@@ -33,13 +33,12 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
-import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonModule implements MDObject, IncludedSubsystems, Module {
+public class CommonModule implements MDObject, Module {
 
   /**
    * Имя
@@ -85,11 +84,6 @@ public class CommonModule implements MDObject, IncludedSubsystems, Module {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
   /**
    * Тип модуля

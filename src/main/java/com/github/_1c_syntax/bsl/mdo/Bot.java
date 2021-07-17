@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Bot implements MDObject, ModuleOwner, IncludedSubsystems {
+public class Bot implements MDObject, ModuleOwner {
 
   /**
    * Имя
@@ -87,11 +87,6 @@ public class Bot implements MDObject, ModuleOwner, IncludedSubsystems {
    * Список модулей объекта
    */
   List<Module> modules;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
   /**
    * Признак предопределенности бота

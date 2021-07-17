@@ -99,16 +99,14 @@ public class MDSubsystem extends AbstractMDObjectBase {
         var mdo = allMDO.get(mdoPair.getLeft());
         if (mdo != null) {
           localChildren.add(Either.right(mdo));
-          setSubsystemForChild(allMDO, mdo);
         } else {
+          // оставляем строку
           localChildren.add(mdoPair);
         }
       } else {
         var mdo = mdoPair.get();
-        if (!mdo.getIncludedSubsystems().contains(this)) {
-          localChildren.add(mdoPair);
-          setSubsystemForChild(allMDO, mdo);
-        }
+        localChildren.add(mdoPair);
+        setSubsystemForChild(allMDO, mdo);
       }
     });
 
@@ -165,7 +163,6 @@ public class MDSubsystem extends AbstractMDObjectBase {
   }
 
   private void setSubsystemForChild(Map<String, AbstractMDObjectBase> allMDO, AbstractMDObjectBase mdo) {
-    mdo.addIncludedSubsystem(this);
     if (mdo instanceof MDSubsystem) {
       ((MDSubsystem) mdo).linkToChildren(allMDO);
     }

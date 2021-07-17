@@ -37,7 +37,7 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwner, TemplateOwner,
-  ModuleOwner, IncludedSubsystems {
+  ModuleOwner, TabularSectionOwner {
 
   /**
    * Имя
@@ -109,15 +109,14 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
    */
   List<Module> modules;
 
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
-
   // todo переделать на ContentStorage
   /**
    * Список связанных регистров (где документ является регистратором)
    */
   List<String> registerRecords;
 
+  /**
+   * Список табличных частей
+   */
+  List<TabularSection> tabularSections;
 }

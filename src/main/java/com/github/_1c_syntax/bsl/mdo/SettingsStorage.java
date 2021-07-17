@@ -36,7 +36,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, ModuleOwner, IncludedSubsystems {
+public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, ModuleOwner {
 
   /**
    * Имя
@@ -97,10 +97,5 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
    * Список модулей объекта
    */
   List<Module> modules;
-
-  /**
-   * Список подсистем, в состав которых входит объект
-   */
-  List<Subsystem> includedSubsystems;
 
 }

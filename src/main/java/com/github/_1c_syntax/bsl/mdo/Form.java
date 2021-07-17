@@ -21,5 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-public interface Form extends MDObject {
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+
+public interface Form extends MDObject, ModuleOwner {
+  /**
+   * Тип формы
+   */
+  FormType getFormType();
+
+  // todo нужна нормальная модель
+//  /**
+//   * Данные формы:
+//   * + список элементов формы
+//   * + список обработчиков формы
+//   * + список реквизитов формы
+//   */
+//  FormData getData();
 }

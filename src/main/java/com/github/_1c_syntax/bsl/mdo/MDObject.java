@@ -26,6 +26,9 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Базовый интерфейс всех объектов метаданных
  */
@@ -75,5 +78,36 @@ public interface MDObject {
    */
   String getMetadataNameRu();
 
+  /**
+   * Возвращает дочерние элементы объекта.
+   * Реализация по умолчанию подходит для большинства случаев, но для объектов, имеющих иные дочерние
+   * элементы необходимо переопределение
+   */
+  default List<MDObject> getChildren() {
+    List<MDObject> children = new ArrayList<>();
 
+    if (this instanceof AttributeOwner) {
+      children.addAll(((AttributeOwner) this).getAttributes());
+    }
+
+    if (this instanceof TabularSectionOwner) {
+      children.addAll(((TabularSectionOwner) this).getTabularSections());
+    }
+
+    if (this instanceof FormOwner) {
+      children.addAll(((FormOwner) this).getForms());
+    }
+
+    if (this instanceof CommandOwner) {
+      children.addAll(((CommandOwner) this).getCommands());
+    }
+
+    if (this instanceof TemplateOwner) {
+      children.addAll(((TemplateOwner) this).getTemplates());
+    }
+
+    return children;
+  }
+
+// todo добавить ИНФО о поддержке, чтобы прям из объекта можно было понимать
 }

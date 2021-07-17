@@ -22,12 +22,16 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+
+import java.util.List;
 
 @Value
 @Builder
@@ -76,4 +80,22 @@ public class ObjectForm implements Form {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  /**
+   * Тип формы
+   */
+  FormType formType;
+
+//  /**
+//   * Данные формы:
+//   * + список элементов формы
+//   * + список обработчиков формы
+//   * + список реквизитов формы
+//   */
+//  FormData data;
+
+  /**
+   * Список модулей объекта
+   */
+  List<Module> modules;
 }
