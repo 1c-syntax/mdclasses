@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -34,7 +35,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class ObjectTabularSection implements TabularSection {
+public class ObjectTabularSection implements TabularSection, MDChildObject {
 
   /**
    * Имя
@@ -86,4 +87,8 @@ public class ObjectTabularSection implements TabularSection {
    */
   List<Attribute> attributes;
 
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 }

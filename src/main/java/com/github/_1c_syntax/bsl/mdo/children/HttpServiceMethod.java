@@ -31,7 +31,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class HttpServiceMethod implements MDObject {
+public class HttpServiceMethod implements MDObject, MDChildObject {
   /**
    * Имя
    */
@@ -78,9 +78,15 @@ public class HttpServiceMethod implements MDObject {
   MdoReference mdoReference;
 
   /**
+   * Родительский объект
+   */
+  MDObject owner;
+
+  /**
    * Обработчик метода http сервиса. Пока строкой
    * Формат имя метода
    * Пример ШаблонURLМетод1
    */
   String handler; // TODO сделать классом
+
 }

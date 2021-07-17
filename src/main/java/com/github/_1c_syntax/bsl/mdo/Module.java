@@ -25,6 +25,9 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
 
+/**
+ * Интерфейс модулей (объектов, форм) и общих модулей
+ */
 public interface Module {
   /**
    * Тип модуля

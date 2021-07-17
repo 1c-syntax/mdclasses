@@ -33,7 +33,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class HttpServiceUrlTemplate implements MDObject {
+public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
   /**
    * Имя
    */
@@ -78,6 +78,11 @@ public class HttpServiceUrlTemplate implements MDObject {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   /**
    * Методы шаблона URL HTTP-сервиса

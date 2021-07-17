@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -33,7 +34,8 @@ import lombok.Value;
 
 @Value
 @Builder
-public class AccountingFlag implements Attribute {
+public class AccountingFlag implements Attribute, MDChildObject {
+
   /**
    * Имя
    */
@@ -88,6 +90,11 @@ public class AccountingFlag implements Attribute {
    * Вид атрибута
    */
   AttributeKind kind;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   @Override
   public IndexingType getIndexing() {

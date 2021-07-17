@@ -23,8 +23,13 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.Type;
 
-public interface Attribute extends MDObject {
+/**
+ * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящие данные
+ * это могут быть реквизиты, колонки, измерения, а также общие реквизиты и константы
+ */
+public interface Attribute extends MDObject, Type {
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */

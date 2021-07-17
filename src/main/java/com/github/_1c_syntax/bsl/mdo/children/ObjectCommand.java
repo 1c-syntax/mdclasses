@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Command;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -31,7 +32,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class ObjectCommand implements Command {
+public class ObjectCommand implements Command, MDChildObject {
   /**
    * Имя
    */
@@ -76,4 +77,9 @@ public class ObjectCommand implements Command {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 }

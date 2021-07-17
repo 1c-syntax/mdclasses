@@ -32,7 +32,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class IntegrationServiceChannel implements MDObject {
+public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Имя
    */
@@ -87,6 +87,11 @@ public class IntegrationServiceChannel implements MDObject {
    * Обработчик получения сообщения
    */
   String handler; //todo сделать объектом
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   /**
    * Имя канала внешнего сервиса интеграции

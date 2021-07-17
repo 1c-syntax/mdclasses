@@ -19,16 +19,16 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.children;
 
-import java.util.List;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 
 /**
- * Расширение - Владелец дочерних команды
+ * Интерфейс всех дочерних объектов
  */
-public interface CommandOwner {
+public interface MDChildObject {
   /**
-   * Список команд объекта
+   * Родительский объект
    */
-  List<Command> getCommands();
+  MDObject getOwner();
 }

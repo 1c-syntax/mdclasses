@@ -35,7 +35,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class Recalculation implements MDObject, ModuleOwner {
+public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   /**
    * Имя
    */
@@ -85,6 +85,11 @@ public class Recalculation implements MDObject, ModuleOwner {
    * Список модулей объекта
    */
   List<Module> modules;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   // todo добавить измерения
 }

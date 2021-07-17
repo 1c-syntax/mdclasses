@@ -93,3 +93,8 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     return clazz.cast(MDClasses.build(mdo.get().buildMDObject()));
   }
 }
+
+// todo добавить проверки
+// - что все поля с дефолтными значениями были хоть раз отличными от них
+// - что коллекции были заполнены
+// - что дочерние заполнены (включая и их)

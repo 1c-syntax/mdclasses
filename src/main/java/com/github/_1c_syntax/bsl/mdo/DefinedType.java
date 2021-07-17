@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.Type;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -34,7 +35,7 @@ import lombok.Value;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class DefinedType implements MDObject {
+public class DefinedType implements MDObject, Type {
 
   /**
    * Имя

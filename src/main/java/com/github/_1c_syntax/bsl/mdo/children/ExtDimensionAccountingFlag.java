@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -33,7 +34,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class ExtDimensionAccountingFlag implements Attribute {
+public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
   /**
    * Имя
    */
@@ -88,6 +89,11 @@ public class ExtDimensionAccountingFlag implements Attribute {
    * Вид атрибута
    */
   AttributeKind kind;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   @Override
   public IndexingType getIndexing() {

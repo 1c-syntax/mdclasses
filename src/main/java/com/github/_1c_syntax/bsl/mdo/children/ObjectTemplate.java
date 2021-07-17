@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -35,7 +36,7 @@ import java.nio.file.Path;
 
 @Value
 @Builder
-public class ObjectTemplate implements Template {
+public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Имя
    */
@@ -95,4 +96,9 @@ public class ObjectTemplate implements Template {
    * Путь к самому файлу макета
    */
   Path templateDataPath;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 }

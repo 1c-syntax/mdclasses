@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import java.util.List;
 
 /**
- * Расширение - имеет дочерние реквизиты
+ * Расширение - Владелец реквизитов реквизиты
  */
 public interface AttributeOwner {
   /**

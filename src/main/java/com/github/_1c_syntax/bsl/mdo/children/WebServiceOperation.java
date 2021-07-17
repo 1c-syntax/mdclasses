@@ -31,7 +31,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class WebServiceOperation implements MDObject {
+public class WebServiceOperation implements MDObject, MDChildObject {
   /**
    * Имя
    */
@@ -77,6 +77,11 @@ public class WebServiceOperation implements MDObject {
    */
   MdoReference mdoReference;
 
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
+  
   /**
    * Обработчик операции. Пока строкой
    * Формат имя метода

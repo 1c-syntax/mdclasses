@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import java.util.List;
 
 /**
- * Расширение - Имеет дочерние формы
+ * Расширение - Владелец дочерних форм
  */
 public interface FormOwner {
   /**

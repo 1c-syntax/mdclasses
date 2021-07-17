@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import java.util.List;
 
 /**
- * Расширение - Имеет дочерние макеты
+ * Расширение - Владелец дочерних макетов
  */
 public interface TemplateOwner {
   /**

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -35,7 +36,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class ObjectForm implements Form {
+public class ObjectForm implements Form, MDChildObject {
   /**
    * Имя
    */
@@ -80,6 +81,11 @@ public class ObjectForm implements Form {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   /**
    * Тип формы

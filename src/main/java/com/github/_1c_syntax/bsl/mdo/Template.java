@@ -26,6 +26,9 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 
 import java.nio.file.Path;
 
+/**
+ * Интерфейс макетов объектов и общих макетов
+ */
 public interface Template extends MDObject {
   /**
    * Тип макета. Например, `ТабличныйДокумент`.

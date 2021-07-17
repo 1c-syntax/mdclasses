@@ -19,16 +19,10 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
-
-import java.util.List;
+package com.github._1c_syntax.bsl.mdo.support;
 
 /**
- * Расширение - Владелец дочерних команды
+ * Интерфейс для объектов, имеющих тип значения (например атрибуты или определяемый тип)
  */
-public interface CommandOwner {
-  /**
-   * Список команд объекта
-   */
-  List<Command> getCommands();
+public interface Type {
 }

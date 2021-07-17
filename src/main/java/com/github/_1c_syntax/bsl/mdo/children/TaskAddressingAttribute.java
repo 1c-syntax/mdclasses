@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -33,7 +34,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class TaskAddressingAttribute implements Attribute {
+public class TaskAddressingAttribute implements Attribute, MDChildObject {
   /**
    * Имя
    */
@@ -93,4 +94,9 @@ public class TaskAddressingAttribute implements Attribute {
    * Вариант индексирования реквизита
    */
   IndexingType indexing;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 }

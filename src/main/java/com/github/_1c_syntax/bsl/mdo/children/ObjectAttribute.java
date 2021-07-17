@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -33,7 +34,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class ObjectAttribute implements Attribute {
+public class ObjectAttribute implements Attribute, MDChildObject {
   /**
    * Имя
    */
@@ -78,6 +79,11 @@ public class ObjectAttribute implements Attribute {
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  /**
+   * Родительский объект
+   */
+  MDObject owner;
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
