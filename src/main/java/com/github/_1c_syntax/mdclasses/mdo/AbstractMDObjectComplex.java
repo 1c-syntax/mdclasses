@@ -37,6 +37,7 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.Command;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.children.Template;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -264,7 +265,16 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
           .map(MDClasses::build)
           .collect(Collectors.toList()));
       TransformationUtils.setValue(builder, "attributes",
-        attributes.stream().map(AbstractMDOAttribute::buildMDObject)
+        attributes.stream()
+          .filter(attribute -> attribute.getAttributeType() != AttributeType.TABULAR_SECTION
+            && attribute.getAttributeType() != AttributeType.RECALCULATION)
+          .map(AbstractMDOAttribute::buildMDObject)
+          .map(MDClasses::build)
+          .collect(Collectors.toList()));
+      TransformationUtils.setValue(builder, "tabularSections",
+        attributes.stream()
+          .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
+          .map(AbstractMDOAttribute::buildMDObject)
           .map(MDClasses::build)
           .collect(Collectors.toList()));
       TransformationUtils.setValue(builder, "templates",

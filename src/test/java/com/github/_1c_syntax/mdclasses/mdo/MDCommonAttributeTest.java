@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
@@ -44,6 +45,7 @@ class MDCommonAttributeTest extends AbstractMDOTest {
     var commonAttribute = (MDCommonAttribute) mdo;
     assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
     assertThat(commonAttribute.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
+    assertThat(commonAttribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
   @Override
@@ -57,6 +59,7 @@ class MDCommonAttributeTest extends AbstractMDOTest {
     var commonAttribute = (MDCommonAttribute) mdo;
     assertThat(commonAttribute.getAutoUse()).isEqualTo(UseMode.USE);
     assertThat(commonAttribute.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
+    assertThat(commonAttribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
 }

@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -92,6 +93,11 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
    */
   private boolean passwordMode;
 
+  /**
+   * Вариант индексирования реквизита
+   */
+  private IndexingType indexing = IndexingType.DONT_INDEX;
+
   public MDCommonAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
     autoUse = designerMDO.getProperties().getAutoUse();
@@ -102,6 +108,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
     );
     setContent(designerContent);
     setPasswordMode(designerMDO.getProperties().isPasswordMode());
+    indexing = designerMDO.getProperties().getIndexing();
   }
 
   protected void linkUsing(Map<String, AbstractMDObjectBase> allMDO) {
@@ -140,6 +147,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
     TransformationUtils.setValue(builder, "autoUse", autoUse);
     TransformationUtils.setValue(builder, "dataSeparation", dataSeparation);
     TransformationUtils.setValue(builder, "passwordMode", passwordMode);
+    TransformationUtils.setValue(builder, "indexing", indexing);
     TransformationUtils.setValue(builder, "using", new ContentStorage(using.stream()
       .map(AbstractMDO::getMdoReference)
       .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))

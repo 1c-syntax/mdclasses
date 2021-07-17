@@ -88,13 +88,13 @@ public class Constant implements Attribute {
    */
   boolean passwordMode;
 
-  /**
-   * Вариант индексирования реквизита
-   */
-  IndexingType indexing;
-
   @Override
   public AttributeKind getKind() {
     return AttributeKind.STANDARD;
+  }
+
+  @Override
+  public IndexingType getIndexing() {
+    return IndexingType.DONT_INDEX;
   }
 }

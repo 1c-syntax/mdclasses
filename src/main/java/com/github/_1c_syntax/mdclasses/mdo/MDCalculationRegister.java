@@ -21,13 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.stream.Collectors;
 
 @Value
 @EqualsAndHashCode(callSuper = true)
@@ -43,5 +49,17 @@ import lombok.Value;
 public class MDCalculationRegister extends AbstractMDObjectComplex {
   public MDCalculationRegister(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "recalculations",
+      getAttributes().stream()
+        .filter(attribute -> attribute.getAttributeType() == AttributeType.RECALCULATION)
+        .map(AbstractMDOAttribute::buildMDObject)
+        .map(MDClasses::build)
+        .collect(Collectors.toList()));
+    return builder;
   }
 }
