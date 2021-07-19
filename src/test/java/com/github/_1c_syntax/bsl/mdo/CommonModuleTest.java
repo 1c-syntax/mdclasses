@@ -67,7 +67,7 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
     assertThat(mdo.isServerCall()).isTrue();
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
-      .endsWith("src/test/resources/metadata/edt/src/CommonModules/ОбщийМодульПолныйеПрава/Module.bsl");
+      .endsWith("еПрава/Module.bsl");
   }
 
   @Test
@@ -85,7 +85,7 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
     assertThat(mdo.isServerCall()).isFalse();
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
-      .endsWith("src/test/resources/metadata/original/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl");
+      .endsWith("Модуль/Ext/Module.bsl");
   }
 
   @Test
@@ -103,6 +103,6 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
     assertThat(mdo.isServerCall()).isFalse();
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
-      .endsWith("src/test/resources/metadata/original/CommonModules/ОбщийМодульПовтИспСеанс/Ext/Module.bsl");
+      .endsWith("МодульПовтИспСеанс/Ext/Module.bsl");
   }
 }

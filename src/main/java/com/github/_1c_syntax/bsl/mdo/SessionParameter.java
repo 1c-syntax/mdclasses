@@ -77,4 +77,4 @@ public class SessionParameter implements MDObject {
   MdoReference mdoReference;
 
 }
-// todo добавить инетерфейс атрибута
+// todo добавить интерфейс атрибута?

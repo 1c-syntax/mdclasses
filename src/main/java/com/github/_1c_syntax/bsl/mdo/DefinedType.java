@@ -78,5 +78,3 @@ public class DefinedType implements MDObject, Type {
   MdoReference mdoReference;
 
 }
-
-// todo   добавить интерфейс атрибута

@@ -23,12 +23,15 @@ package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Command;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+
+import java.util.List;
 
 @Value
 @Builder
@@ -77,4 +80,9 @@ public class ObjectCommand implements Command, MDChildObject {
    * Родительский объект
    */
   MDObject owner;
+
+  /**
+   * Список модулей объекта
+   */
+  List<Module> modules;
 }

@@ -30,6 +30,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
@@ -76,6 +78,8 @@ public class CommonCommand implements Command {
    */
   MdoReference mdoReference;
 
+  /**
+   * Список модулей объекта
+   */
+  List<Module> modules;
 }
-
-// todo добавить интерфейс команды

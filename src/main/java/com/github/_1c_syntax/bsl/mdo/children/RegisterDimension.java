@@ -98,7 +98,8 @@ public class RegisterDimension implements Attribute, MDChildObject {
 
   /**
    * Признак использования в итогах
-   * TODO: Для регистра сведений не применимо, но не противоречит логике
+   * ATTENTIONS!
+   * Для регистра сведений не применимо, но не противоречит логике
    */
   boolean useInTotals;
 
