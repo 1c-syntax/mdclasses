@@ -19,18 +19,8 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
-
-import java.util.List;
-
 /**
- * Расширение - Владелец реквизитов реквизиты
+ * Данных пакет предназначен для данных контейнеров метаданных (Конфигурация, Расширение,
+ * Внешние обработки и отчеты), и предоставления точек входа в библиотеку
  */
-public interface AttributeOwner {
-  /**
-   * Список реквизитов объекта
-   */
-  List<Attribute> getAttributes();
-}
-
-// todo надо разделить атрибуты
+package com.github._1c_syntax.bsl.mdclasses;
