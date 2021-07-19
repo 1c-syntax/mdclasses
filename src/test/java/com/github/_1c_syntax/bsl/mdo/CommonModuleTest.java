@@ -49,7 +49,7 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
     assertThat(mdo.isServerCall()).isFalse();
     assertThat(mdo.getModuleType()).isEqualTo(ModuleType.CommonModule);
     assertThat(mdo.getUri().getPath())
-      .endsWith("src/test/resources/metadata/original/CommonModules/ГлобальныйОбщийМодуль/Ext/Module.bsl");
+      .endsWith("Модуль/Ext/Module.bsl");
   }
 
   @Test
