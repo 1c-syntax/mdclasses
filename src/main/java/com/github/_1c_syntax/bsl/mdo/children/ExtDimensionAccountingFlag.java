@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 @Value
 @Builder
@@ -88,10 +89,18 @@ public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
   /**
    * Родительский объект
    */
+  @NonFinal
   MDObject owner;
 
   @Override
   public IndexingType getIndexing() {
     return IndexingType.DONT_INDEX;
+  }
+
+  @Override
+  public void setOwner(MDObject owner) {
+    if (this.owner == null) {
+      this.owner = owner;
+    }
   }
 }

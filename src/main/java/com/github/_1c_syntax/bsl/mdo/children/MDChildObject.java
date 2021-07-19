@@ -31,4 +31,9 @@ public interface MDChildObject {
    * Родительский объект
    */
   MDObject getOwner();
+
+  /**
+   * Установка родительского объекта
+   */
+  void setOwner(MDObject owner);
 }

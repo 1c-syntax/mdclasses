@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -41,5 +42,11 @@ import lombok.Value;
 public class AddressingAttribute extends AbstractMDOAttribute {
   public AddressingAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(TaskAddressingAttribute.builder());
+    return super.buildMDObject();
   }
 }

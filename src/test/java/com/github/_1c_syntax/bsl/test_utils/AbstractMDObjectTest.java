@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -115,8 +116,10 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       assertThat(field, true).isNotNull(mdo);
       var fieldType = field.getType();
 
-      if (testedFields.contains(field.getName())) {
-        untestedFields.remove(field.getName());
+      var key = field.getName();
+
+      if (testedFields.contains(key)) {
+        untestedFields.remove(key);
         continue;
       }
 
@@ -126,12 +129,12 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
         || fieldType.isAssignableFrom(List.class) && ((ArrayList) field.get(mdo)).isEmpty()
         || fieldType.isAssignableFrom(Map.class) && ((HashMap) field.get(mdo)).isEmpty()) {
 
-        if (!untestedFields.contains(field.getName())) {
-          untestedFields.add(field.getName());
+        if (!untestedFields.contains(key)) {
+          untestedFields.add(key);
         }
       } else {
-        testedFields.add(field.getName());
-        untestedFields.remove(field.getName());
+        testedFields.add(key);
+        untestedFields.remove(key);
       }
     }
 
@@ -150,6 +153,41 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     assertThat(mdo.getObjectBelonging()).isEqualTo(objectBelonging);
   }
 
+  @SneakyThrows
+  protected void checkAttributeField(Attribute mdo, String name, String uuid) {
+
+    var attributeClass = mdo.getClass();
+    var fields = attributeClass.getDeclaredFields();
+    for (var field : fields) {
+      assertThat(field, true).isNotNull(mdo);
+      var fieldType = field.getType();
+
+      var key = attributeClass.getName() + "." + field.getName();
+
+      if (testedFields.contains(key)) {
+        untestedFields.remove(key);
+        continue;
+      }
+
+      if (fieldType.isAssignableFrom(boolean.class) && Objects.equals(field.get(mdo), false)
+        || fieldType.isAssignableFrom(String.class) && Objects.equals(field.get(mdo), "")
+        || fieldType.isAssignableFrom(int.class) && Objects.equals(field.get(mdo), 0)
+        || fieldType.isAssignableFrom(List.class) && ((ArrayList) field.get(mdo)).isEmpty()
+        || fieldType.isAssignableFrom(Map.class) && ((HashMap) field.get(mdo)).isEmpty()) {
+
+        if (!untestedFields.contains(key)) {
+          untestedFields.add(key);
+        }
+      } else {
+        testedFields.add(key);
+        untestedFields.remove(key);
+      }
+    }
+
+    assertThat(mdo.getName()).isEqualTo(name);
+    assertThat(mdo.getUuid()).isEqualTo(uuid);
+  }
+
   protected T getMDObject(Path path) {
     var mdo = MDOFactory.readMDObject(path);
     assertThat(mdo).isPresent();
@@ -158,6 +196,4 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
 }
 
 // todo добавить проверки
-// - что все поля с дефолтными значениями были хоть раз отличными от них
-// - что коллекции были заполнены
 // - что дочерние заполнены (включая и их)

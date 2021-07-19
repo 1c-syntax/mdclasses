@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
   /**
    * Родительский объект
    */
+  @NonFinal
   MDObject owner;
 
   /**
@@ -89,6 +91,13 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
     var children = MDObject.super.getChildren();
     children.addAll(httpServiceMethods);
     return children;
+  }
+
+  @Override
+  public void setOwner(MDObject owner) {
+    if (this.owner == null) {
+      this.owner = owner;
+    }
   }
 }
 

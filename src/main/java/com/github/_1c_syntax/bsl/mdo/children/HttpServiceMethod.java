@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 @Value
 @Builder
@@ -75,6 +76,7 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   /**
    * Родительский объект
    */
+  @NonFinal
   MDObject owner;
 
   /**
@@ -83,5 +85,12 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
    * Пример ШаблонURLМетод1
    */
   String handler; // TODO сделать классом
+
+  @Override
+  public void setOwner(MDObject owner) {
+    if (this.owner == null) {
+      this.owner = owner;
+    }
+  }
 
 }

@@ -21,10 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
   AccountingRegisterTest() {
@@ -37,6 +40,7 @@ class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
     checkBaseField(mdo, MDOType.ACCOUNTING_REGISTER,
       "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
       ObjectBelonging.OWN);
+
   }
 
   @Test
@@ -45,5 +49,7 @@ class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
     checkBaseField(mdo, MDOType.ACCOUNTING_REGISTER,
       "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
       ObjectBelonging.OWN);
+    checkAttributeField(mdo.getAttributes().get(0), "Измерение1", "902c08a9-e457-436a-b0fb-b996f0d9bb00");
+    checkAttributeField(mdo.getAttributes().get(1), "Ресурс1", "e88df8bd-bf97-41a4-88fc-09c84a51824b");
   }
 }

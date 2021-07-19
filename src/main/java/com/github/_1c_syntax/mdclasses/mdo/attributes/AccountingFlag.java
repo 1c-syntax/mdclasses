@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -41,5 +43,11 @@ import lombok.Value;
 public class AccountingFlag extends AbstractMDOAttribute {
   public AccountingFlag(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(com.github._1c_syntax.bsl.mdo.children.AccountingFlag.builder());
+    return super.buildMDObject();
   }
 }

@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.nio.file.Path;
 
@@ -95,5 +96,13 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Родительский объект
    */
+  @NonFinal
   MDObject owner;
+
+  @Override
+  public void setOwner(MDObject owner) {
+    if (this.owner == null) {
+      this.owner = owner;
+    }
+  }
 }

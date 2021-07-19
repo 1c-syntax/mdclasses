@@ -21,11 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -37,6 +40,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
@@ -80,5 +84,17 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
       children = new HashSet<>(attributes);
     }
     return Collections.unmodifiableSet(children);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(ObjectTabularSection.builder());
+    var builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "attributes",
+      attributes.stream()
+        .map(AbstractMDOAttribute::buildMDObject)
+        .map(MDClasses::build)
+        .collect(Collectors.toList()));
+    return builder;
   }
 }

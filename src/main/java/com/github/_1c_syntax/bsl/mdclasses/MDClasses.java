@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -184,13 +185,19 @@ public class MDClasses {
   @SneakyThrows
   // todo времянка
   public MDObject build(Object builder) {
+    MDObject result;
     if (mdObjects.containsKey(builder)) {
-      return mdObjects.get(builder);
+      result = mdObjects.get(builder);
     } else {
       var mdObject = (MDObject) builder.getClass().getDeclaredMethod("build").invoke(builder);
       mdObjects.put(builder, mdObject);
-      return mdObject;
+      result = mdObject;
     }
+    result.getChildren().stream()
+      .filter(MDChildObject.class::isInstance)
+      .map(MDChildObject.class::cast)
+      .forEach(mdObject -> mdObject.setOwner(result));
+    return result;
   }
 
   @SneakyThrows
