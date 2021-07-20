@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +34,15 @@ class IntegrationServiceTest extends AbstractMDObjectTest<IntegrationService> {
     super(IntegrationService.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject18("IntegrationServices/СервисИнтеграции1");
-    checkBaseField(mdo, MDOType.INTEGRATION_SERVICE,
-      "СервисИнтеграции1", "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "СервисИнтеграции1,94ed2401-fd3c-4e92-b34d-1cdad2d8ee42,,,IntegrationService,СервисИнтеграции,0,0,0,0,0,1"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject18("IntegrationServices/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.INTEGRATION_SERVICE, argumentsAccessor);
     assertThat(mdo.getIntegrationChannels()).hasSize(2);
     assertThat(mdo.getExternalIntegrationServiceAddress()).isEqualTo("http://");
   }

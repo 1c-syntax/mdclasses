@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +34,15 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
     super(Subsystem.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("Subsystems/ПерваяПодсистема");
-    checkBaseField(mdo, MDOType.SUBSYSTEM,
-      "ПерваяПодсистема", "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ПерваяПодсистема,3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293,,Первая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("Subsystems/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.SUBSYSTEM, argumentsAccessor);
     assertThat(mdo.isIncludeInCommandInterface()).isTrue();
   }
 }

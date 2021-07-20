@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class SessionParameterTest extends AbstractMDObjectTest<SessionParameter> {
   SessionParameterTest() {
     super(SessionParameter.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("SessionParameters/ПараметрСеанса1");
-    checkBaseField(mdo, MDOType.SESSION_PARAMETER,
-      "ПараметрСеанса1", "66844df5-823b-40f1-ab8a-b07c1cb7462f",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ПараметрСеанса1,66844df5-823b-40f1-ab8a-b07c1cb7462f,,,SessionParameter,ПараметрСеанса,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("SessionParameters/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.SESSION_PARAMETER, argumentsAccessor);
   }
 }

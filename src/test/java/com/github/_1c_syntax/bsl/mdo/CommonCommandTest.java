@@ -21,21 +21,26 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CommonCommandTest extends AbstractMDObjectTest<CommonCommand> {
   CommonCommandTest() {
     super(CommonCommand.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("CommonCommands/ОбщаяКоманда1");
-    checkBaseField(mdo, MDOType.COMMON_COMMAND,
-      "ОбщаяКоманда1", "a608f796-f58e-4f8a-b63f-272342b32f35",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ОбщаяКоманда1,a608f796-f58e-4f8a-b63f-272342b32f35,,,CommonCommand,ОбщаяКоманда,0,0,0,0,0,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("CommonCommands/" + name + "/" + name);
+    mdoTest(mdo, MDOType.COMMON_COMMAND, argumentsAccessor);
   }
 }

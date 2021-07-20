@@ -21,21 +21,26 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class FunctionalOptionTest extends AbstractMDObjectTest<FunctionalOption> {
   FunctionalOptionTest() {
     super(FunctionalOption.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("FunctionalOptions/ФункциональнаяОпция1");
-    checkBaseField(mdo, MDOType.FUNCTIONAL_OPTION,
-      "ФункциональнаяОпция1", "d3b7fd71-6570-4047-91e0-b3df75dba08d",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ФункциональнаяОпция1,d3b7fd71-6570-4047-91e0-b3df75dba08d,,,FunctionalOption,ФункциональнаяОпция,0,0,0,0,0,0"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("FunctionalOptions/" + name + "/" + name);
+    mdoTest(mdo, MDOType.FUNCTIONAL_OPTION, argumentsAccessor);
   }
 }

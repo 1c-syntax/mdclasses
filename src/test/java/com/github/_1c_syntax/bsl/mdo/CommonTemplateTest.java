@@ -21,11 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,13 +35,17 @@ class CommonTemplateTest extends AbstractMDObjectTest<CommonTemplate> {
     super(CommonTemplate.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("CommonTemplates/ГрафическаяСхема");
-    checkBaseField(mdo, MDOType.COMMON_TEMPLATE,
-      "ГрафическаяСхема", "4333f027-4fc2-40a0-ae7d-48fbf0cea50b",
-      ObjectBelonging.OWN);
-//    assertThat(mdo.getTemplateData());
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ГрафическаяСхема,4333f027-4fc2-40a0-ae7d-48fbf0cea50b,,Графическая схема,CommonTemplate,ОбщийМакет,0,0,0,0,0,0"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("CommonTemplates/" + name + "/" + name);
+    mdoTest(mdo, MDOType.COMMON_TEMPLATE, argumentsAccessor);
+    //    assertThat(mdo.getTemplateData());
     assertThat(mdo.getTemplateType()).isEqualTo(TemplateType.GRAPHICAL_SCHEME);
 //    assertThat(mdo.getTemplateDataPath());
   }

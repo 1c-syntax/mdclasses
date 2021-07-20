@@ -30,6 +30,8 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
@@ -37,6 +39,8 @@ import java.nio.file.Path;
 
 @Value
 @Builder
+@ToString(of = {"name", "uuid"})
+@EqualsAndHashCode(of = {"name", "uuid"})
 public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Имя

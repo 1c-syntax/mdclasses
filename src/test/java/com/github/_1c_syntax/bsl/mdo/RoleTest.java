@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,23 +34,30 @@ class RoleTest extends AbstractMDObjectTest<Role> {
     super(Role.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("Roles/Роль1");
-    checkBaseField(mdo, MDOType.ROLE,
-      "Роль1", "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("Roles/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
     assertThat(mdo.isIndependentRightsOfChildObjects()).isFalse();
     assertThat(mdo.isSetForAttributesByDefault()).isTrue();
     assertThat(mdo.isSetForNewObjects()).isFalse();
   }
 
-  @Test
-  void test2() {
-    var mdo = getMDObjectEDT("Roles/Роль1/Роль1");
-    checkBaseField(mdo, MDOType.ROLE,
-      "Роль1", "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("Roles/" + name + "/" + name);
+    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
     assertThat(mdo.isIndependentRightsOfChildObjects()).isTrue();
     assertThat(mdo.isSetForAttributesByDefault()).isTrue();
     assertThat(mdo.isSetForNewObjects()).isTrue();

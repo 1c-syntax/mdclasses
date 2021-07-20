@@ -21,35 +21,56 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
 class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
   AccountingRegisterTest() {
     super(AccountingRegister.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("AccountingRegisters/РегистрБухгалтерии1");
-    checkBaseField(mdo, MDOType.ACCOUNTING_REGISTER,
-      "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
-      ObjectBelonging.OWN);
-
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "РегистрБухгалтерии1,e5930f2f-15d9-48a1-ac69-379ad990b02a,Accounting register,Регистр бухгалтерии,AccountingRegister,РегистрБухгалтерии,2,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("AccountingRegisters/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.ACCOUNTING_REGISTER, argumentsAccessor);
   }
 
-  @Test
-  void test2() {
-    var mdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1");
-    checkBaseField(mdo, MDOType.ACCOUNTING_REGISTER,
-      "РегистрБухгалтерии1", "e5930f2f-15d9-48a1-ac69-379ad990b02a",
-      ObjectBelonging.OWN);
-    checkAttributeField(mdo.getAttributes().get(0), "Измерение1", "902c08a9-e457-436a-b0fb-b996f0d9bb00");
-    checkAttributeField(mdo.getAttributes().get(1), "Ресурс1", "e88df8bd-bf97-41a4-88fc-09c84a51824b");
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "РегистрБухгалтерии1,e5930f2f-15d9-48a1-ac69-379ad990b02a,Accounting register,Регистр бухгалтерии,AccountingRegister,РегистрБухгалтерии,2,0,1,1,1,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("AccountingRegisters/" + name + "/" + name);
+    mdoTest(mdo, MDOType.ACCOUNTING_REGISTER, argumentsAccessor);
+
+    checkAttributeField(mdo.getAttributes().get(0),
+      "Измерение1", "902c08a9-e457-436a-b0fb-b996f0d9bb00",
+      List.of("master"));
+    checkAttributeField(mdo.getAttributes().get(1),
+      "Ресурс1", "e88df8bd-bf97-41a4-88fc-09c84a51824b",
+      List.of("passwordMode") // бывает только для строк, а здесь строк быть не может
+    );
+
+    checkChildField(mdo.getForms().get(0),
+      "ФормаСписка", "ac1810eb-867a-4c1d-9ebd-2d44b5138c3d");
+
+    checkChildField(mdo.getTemplates().get(0),
+      "Макет", "853bafc9-fa4d-483f-86af-e9ee4bd07c5f");
+
+    checkChildField(mdo.getCommands().get(0),
+      "Команда", "69297dd8-66d9-4b38-a4df-532d046dfb35");
   }
 }

@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   XdtoPackageTest() {
     super(XdtoPackage.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("XDTOPackages/ПакетXDTO1");
-    checkBaseField(mdo, MDOType.XDTO_PACKAGE,
-      "ПакетXDTO1", "b8a93cce-56e4-4507-b281-5c525a466a0f",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ПакетXDTO1,b8a93cce-56e4-4507-b281-5c525a466a0f,,,XDTOPackage,ПакетXDTO,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("XDTOPackages/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.XDTO_PACKAGE, argumentsAccessor);
   }
 }

@@ -21,29 +21,56 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
 
 class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> {
   CalculationRegisterTest() {
     super(CalculationRegister.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("CalculationRegisters/РегистрРасчета1");
-    checkBaseField(mdo, MDOType.CALCULATION_REGISTER,
-      "РегистрРасчета1", "90587c7d-b950-4476-ac14-426e4a83d9c4",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "РегистрРасчета1,90587c7d-b950-4476-ac14-426e4a83d9c4,,,CalculationRegister,РегистрРасчета,3,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("CalculationRegisters/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.CALCULATION_REGISTER, argumentsAccessor);
   }
 
-  @Test
-  void test2() {
-    var mdo = getMDObjectEDT("CalculationRegisters/РегистрРасчета1/РегистрРасчета1");
-    checkBaseField(mdo, MDOType.CALCULATION_REGISTER,
-      "РегистрРасчета1", "90587c7d-b950-4476-ac14-426e4a83d9c4",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "РегистрРасчета1,90587c7d-b950-4476-ac14-426e4a83d9c4,,,CalculationRegister,РегистрРасчета,2,1,1,1,1,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("CalculationRegisters/" + name + "/" + name);
+    mdoTest(mdo, MDOType.CALCULATION_REGISTER, argumentsAccessor);
+
+    checkAttributeField(mdo.getAttributes().get(0),
+      "Ресурс1", "86f41061-e298-4da5-8d28-489a349d55fc",
+      List.of("passwordMode") // бывает только для строк, а здесь строк быть не может
+    );
+
+    checkChildField(mdo.getForms().get(0),
+      "ФормаСписка", "eee0b9fc-95de-4cb0-bb73-c78ddade2be9");
+
+    checkChildField(mdo.getTemplates().get(0),
+      "Макет", "1509af7a-aeee-4906-adcb-32d2df6b7e21");
+
+    checkChildField(mdo.getCommands().get(0),
+      "Команда", "ecd63a0d-51c9-49f2-8df6-d8a1b14aee04");
+
+    checkChildField(mdo.getRecalculations().get(0),
+      "Перерасчет", "16b54095-8711-4ef1-a38b-93d12f6f6e93");
   }
 }

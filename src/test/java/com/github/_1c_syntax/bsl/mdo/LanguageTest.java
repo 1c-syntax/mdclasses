@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +34,15 @@ class LanguageTest extends AbstractMDObjectTest<Language> {
     super(Language.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("Languages/Русский");
-    checkBaseField(mdo, MDOType.LANGUAGE,
-      "Русский", "1b5f5cd6-14b2-422e-ab6c-1103fd375982",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "Русский,1b5f5cd6-14b2-422e-ab6c-1103fd375982,Russian,Русский,Language,Язык,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("Languages/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.LANGUAGE, argumentsAccessor);
     assertThat(mdo.getLanguageCode()).isEqualTo("ru");
   }
 }

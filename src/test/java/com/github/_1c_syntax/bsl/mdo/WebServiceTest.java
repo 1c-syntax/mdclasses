@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,21 +34,28 @@ class WebServiceTest extends AbstractMDObjectTest<WebService> {
     super(WebService.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("WebServices/WebСервис1");
-    checkBaseField(mdo, MDOType.WEB_SERVICE,
-      "WebСервис1", "d7f9b06b-0799-486e-adff-c45a2d5b8101",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "WebСервис1,d7f9b06b-0799-486e-adff-c45a2d5b8101,,,WebService,WebСервис,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("WebServices/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.WEB_SERVICE, argumentsAccessor);
     assertThat(mdo.getOperations()).hasSize(2);
   }
 
-  @Test
-  void test2() {
-    var mdo = getMDObjectEDT("WebServices/WebСервис1/WebСервис1");
-    checkBaseField(mdo, MDOType.WEB_SERVICE,
-      "WebСервис1", "d7f9b06b-0799-486e-adff-c45a2d5b8101",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "WebСервис1,d7f9b06b-0799-486e-adff-c45a2d5b8101,,,WebService,WebСервис,0,0,0,0,0,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("WebServices/" + name + "/" + name);
+    mdoTest(mdo, MDOType.WEB_SERVICE, argumentsAccessor);
     assertThat(mdo.getOperations()).hasSize(2);
   }
 }

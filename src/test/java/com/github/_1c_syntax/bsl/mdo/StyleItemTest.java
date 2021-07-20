@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class StyleItemTest extends AbstractMDObjectTest<StyleItem> {
   StyleItemTest() {
     super(StyleItem.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("StyleItems/ЭлементСтиля1");
-    checkBaseField(mdo, MDOType.STYLE_ITEM,
-      "ЭлементСтиля1", "68047ae8-62aa-4696-9780-d364feb3cc10",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ЭлементСтиля1,68047ae8-62aa-4696-9780-d364feb3cc10,,,StyleItem,ЭлементСтиля,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("StyleItems/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.STYLE_ITEM, argumentsAccessor);
   }
 }

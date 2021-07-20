@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +34,16 @@ class HttpServiceTest extends AbstractMDObjectTest<HttpService> {
     super(HttpService.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("HTTPServices/HTTPСервис1");
-    checkBaseField(mdo, MDOType.HTTP_SERVICE,
-      "HTTPСервис1", "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "HTTPСервис1,3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe,,,HTTPService,HTTPСервис,0,0,0,0,0,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("HTTPServices/" + name + "/" + name);
+    mdoTest(mdo, MDOType.HTTP_SERVICE, argumentsAccessor);
     assertThat(mdo.getUrlTemplates()).hasSize(1);
   }
 }

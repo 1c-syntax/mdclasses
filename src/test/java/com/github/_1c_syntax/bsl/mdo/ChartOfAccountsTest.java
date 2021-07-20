@@ -21,29 +21,54 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
 
 class ChartOfAccountsTest extends AbstractMDObjectTest<ChartOfAccounts> {
   ChartOfAccountsTest() {
     super(ChartOfAccounts.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("ChartsOfAccounts/ПланСчетов1");
-    checkBaseField(mdo, MDOType.CHART_OF_ACCOUNTS,
-      "ПланСчетов1", "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ПланСчетов1,2766f353-abd2-4e7f-9a95-53f05c83f5d4,,,ChartOfAccounts,ПланСчетов,2,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("ChartsOfAccounts/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.CHART_OF_ACCOUNTS, argumentsAccessor);
   }
 
-  @Test
-  void test2() {
-    var mdo = getMDObjectEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1");
-    checkBaseField(mdo, MDOType.CHART_OF_ACCOUNTS,
-      "ПланСчетов1", "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ПланСчетов1,2766f353-abd2-4e7f-9a95-53f05c83f5d4,,,ChartOfAccounts,ПланСчетов,2,1,1,1,1,1"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("ChartsOfAccounts/" + name + "/" + name);
+    mdoTest(mdo, MDOType.CHART_OF_ACCOUNTS, argumentsAccessor);
+
+    checkAttributeField(mdo.getAttributes().get(0),
+      "ПризнакУчета", "957a5154-1e63-49e1-8e99-3893490da6f6", List.of("passwordMode"));
+
+    checkChildField(mdo.getForms().get(0),
+      "ФормаЭлемента", "10f1186c-db42-4be7-8ba7-777f10807abb");
+
+    checkChildField(mdo.getTemplates().get(0),
+      "Макет", "21a14299-195f-448c-9f47-cbddf8a63352");
+
+    checkChildField(mdo.getCommands().get(0),
+      "Команда", "fd7f03cd-37b0-4914-b4d9-e0bcf51c4d0d");
+
+    checkChildField(mdo.getTabularSections().get(0),
+      "ТабличнаяЧасть", "4926546a-32c1-4972-89a7-91f0deb2b6de");
   }
 }

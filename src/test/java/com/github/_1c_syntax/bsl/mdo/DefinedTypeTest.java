@@ -21,21 +21,26 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class DefinedTypeTest extends AbstractMDObjectTest<DefinedType> {
   DefinedTypeTest() {
     super(DefinedType.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("DefinedTypes/ОпределяемыйТип1");
-    checkBaseField(mdo, MDOType.DEFINED_TYPE,
-      "ОпределяемыйТип1", "e8c616d9-4957-48ab-a917-afb6847f6840",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ОпределяемыйТип1,e8c616d9-4957-48ab-a917-afb6847f6840,,,DefinedType,ОпределяемыйТип,0,0,0,0,0,0"
+    }
+  )
+  void testEdt(ArgumentsAccessor argumentsAccessor) {
+    var name = argumentsAccessor.getString(0);
+    var mdo = getMDObjectEDT("DefinedTypes/" + name + "/" + name);
+    mdoTest(mdo, MDOType.DEFINED_TYPE, argumentsAccessor);
   }
 }

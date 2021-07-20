@@ -51,7 +51,7 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
     var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
     assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
     var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
-    assertThat(dimension.isDenyIncompleteValues()).isFalse();
+    assertThat(dimension.isDenyIncompleteValues()).isTrue();
     assertThat(dimension.isMaster()).isFalse();
     assertThat(dimension.isUseInTotals()).isTrue();
   }

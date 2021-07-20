@@ -21,7 +21,7 @@ repositories {
     maven { url = URI("https://jitpack.io") }
 }
 
-val junitVersion = "5.6.1"
+val junitVersion = "5.7.0"
 dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
@@ -44,11 +44,10 @@ dependencies {
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.110")
 
-//remove me    implementation("commons-beanutils", "commons-beanutils", "1.9.4")
-
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
     testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
 

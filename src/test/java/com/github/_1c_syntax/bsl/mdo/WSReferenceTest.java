@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class WSReferenceTest extends AbstractMDObjectTest<WSReference> {
   WSReferenceTest() {
     super(WSReference.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("WSReferences/WSСсылка1");
-    checkBaseField(mdo, MDOType.WS_REFERENCE,
-      "WSСсылка1", "7b8d6924-7aa9-4699-b794-6797c79d83c7",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "WSСсылка1,7b8d6924-7aa9-4699-b794-6797c79d83c7,,,WSReference,WSСсылка,0,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("WSReferences/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.WS_REFERENCE, argumentsAccessor);
   }
 }

@@ -73,6 +73,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     var builder = super.buildMDObject();
     TransformationUtils.setValue(builder, "kind", kind);
     TransformationUtils.setValue(builder, "indexing", indexing);
+    TransformationUtils.setValue(builder, "passwordMode", passwordMode);
     return builder;
   }
 

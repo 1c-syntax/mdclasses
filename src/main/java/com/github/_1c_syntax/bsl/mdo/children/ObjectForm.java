@@ -30,6 +30,8 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
@@ -37,6 +39,8 @@ import java.util.List;
 
 @Value
 @Builder
+@ToString(of = {"name", "uuid"})
+@EqualsAndHashCode(of = {"name", "uuid"})
 public class ObjectForm implements Form, MDChildObject {
   /**
    * Имя

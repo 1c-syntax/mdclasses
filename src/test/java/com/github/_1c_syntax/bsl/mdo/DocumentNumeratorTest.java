@@ -21,21 +21,25 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class DocumentNumeratorTest extends AbstractMDObjectTest<DocumentNumerator> {
   DocumentNumeratorTest() {
     super(DocumentNumerator.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject("DocumentNumerators/НумераторДокументов1");
-    checkBaseField(mdo, MDOType.DOCUMENT_NUMERATOR,
-      "НумераторДокументов1", "e401f835-6bfc-4cd4-8d87-5e6b6332a3f6",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "НумераторДокументов1,e401f835-6bfc-4cd4-8d87-5e6b6332a3f6,,,DocumentNumerator,Нумератор,1,0,0,0,0,0"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject("DocumentNumerators/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.DOCUMENT_NUMERATOR, argumentsAccessor);
   }
 }

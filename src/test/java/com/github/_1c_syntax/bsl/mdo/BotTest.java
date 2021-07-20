@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +34,15 @@ class BotTest extends AbstractMDObjectTest<Bot> {
     super(Bot.class);
   }
 
-  @Test
-  void test() {
-    var mdo = getMDObject18("Bots/Бот1");
-    checkBaseField(mdo, MDOType.BOT,
-      "Бот1", "89c58e6a-00ee-49b9-8717-d1dd272f9b96",
-      ObjectBelonging.OWN);
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "Бот1,89c58e6a-00ee-49b9-8717-d1dd272f9b96,,,Bot,Бот,0,0,0,0,0,1"
+    }
+  )
+  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+    var mdo = getMDObject18("Bots/" + argumentsAccessor.getString(0));
+    mdoTest(mdo, MDOType.BOT, argumentsAccessor);
     assertThat(mdo.isPredefined()).isTrue();
   }
 }
