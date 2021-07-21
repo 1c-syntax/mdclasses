@@ -21,8 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
-import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoImport;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoObjectType;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoProperty;

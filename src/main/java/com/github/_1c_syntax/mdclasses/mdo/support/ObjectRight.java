@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
-import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Getter;

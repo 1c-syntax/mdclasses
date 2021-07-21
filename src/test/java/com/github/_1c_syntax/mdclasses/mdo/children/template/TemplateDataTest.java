@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
-import com.github._1c_syntax.bsl.mdo.support.TemplateData;
+import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.Configuration;

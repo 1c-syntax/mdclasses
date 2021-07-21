@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.xdtopackage;
 
-import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;

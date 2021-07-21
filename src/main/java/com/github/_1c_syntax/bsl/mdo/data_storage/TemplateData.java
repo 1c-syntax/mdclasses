@@ -19,8 +19,9 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.support;
+package com.github._1c_syntax.bsl.mdo.data_storage;
 
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import lombok.RequiredArgsConstructor;
 
