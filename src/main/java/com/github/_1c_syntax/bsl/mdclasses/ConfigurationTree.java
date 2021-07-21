@@ -52,6 +52,7 @@ import com.github._1c_syntax.bsl.mdo.FunctionalOptionsParameter;
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.IntegrationService;
+import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Report;
@@ -68,6 +69,7 @@ import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,7 +77,7 @@ import java.util.stream.Collectors;
  * Доступ к объектам метаданных
  * Методы расположены по порядку дерева конфигурации
  */
-public interface ConfigurationTree extends MDClass {
+public interface ConfigurationTree {
 
   /**
    * Подсистемы
@@ -208,6 +210,13 @@ public interface ConfigurationTree extends MDClass {
    */
   default List<CommonPicture> getCommonPictures() {
     return getChildrenByType(CommonPicture.class);
+  }
+
+  /**
+   * Интерфейсы
+   */
+  default List<Interface> getInterfaces() {
+    return getChildrenByType(Interface.class);
   }
 
   /**
@@ -402,9 +411,12 @@ public interface ConfigurationTree extends MDClass {
    * @return Список дочерних элементов
    */
   private <T extends MDObject> List<T> getChildrenByType(Class<T> clazz) {
-    return getChildren().stream()
-      .filter(clazz::isInstance)
-      .map(clazz::cast)
-      .collect(Collectors.toUnmodifiableList());
+    if (this instanceof MDClass) {
+      return ((MDClass) this).getChildren().stream()
+        .filter(clazz::isInstance)
+        .map(clazz::cast)
+        .collect(Collectors.toUnmodifiableList());
+    }
+    return Collections.emptyList();
   }
 }

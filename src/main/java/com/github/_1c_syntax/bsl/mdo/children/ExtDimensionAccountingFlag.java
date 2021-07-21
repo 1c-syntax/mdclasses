@@ -40,6 +40,9 @@ import lombok.experimental.NonFinal;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
+
+  private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
+
   /**
    * Имя
    */
@@ -98,7 +101,7 @@ public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
 
   @Override
   public IndexingType getIndexing() {
-    return IndexingType.DONT_INDEX;
+    return INDEXING;
   }
 
   @Override

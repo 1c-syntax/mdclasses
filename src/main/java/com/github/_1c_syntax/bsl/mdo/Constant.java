@@ -38,6 +38,9 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Constant implements Attribute {
 
+  private static final AttributeKind KIND = AttributeKind.STANDARD;
+  private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
+
   /**
    * Имя
    */
@@ -85,11 +88,11 @@ public class Constant implements Attribute {
 
   @Override
   public AttributeKind getKind() {
-    return AttributeKind.STANDARD;
+    return KIND;
   }
 
   @Override
   public IndexingType getIndexing() {
-    return IndexingType.DONT_INDEX;
+    return INDEXING;
   }
 }

@@ -21,8 +21,15 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
@@ -35,6 +42,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -46,6 +54,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Data
@@ -155,6 +164,8 @@ public class MDConfiguration extends AbstractMDObjectBSL {
    */
   private String namePrefix = "";
 
+  private ConfigurationSource configurationSource = ConfigurationSource.EDT;
+
   public MDConfiguration(DesignerMDO designerMDO) {
     super(designerMDO);
     var designerProperties = designerMDO.getProperties();
@@ -180,6 +191,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     detailedInformation = createLanguageContent(designerProperties.getDetailedInformation());
 
     children = designerMDO.getChildObjects().getChildren();
+    configurationSource = ConfigurationSource.DESIGNER;
   }
 
   @Override
@@ -280,5 +292,69 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       .map(Either::get)
       .collect(Collectors.toMap((AbstractMDObjectBase mdo)
         -> mdo.getMdoReference().getMdoRef(), (AbstractMDObjectBase mdo) -> mdo));
+  }
+
+  @Override
+  public Object buildMDObject() {
+    if (objectBelonging == ObjectBelonging.ADOPTED) {
+      builder = ConfigurationExtension.builder();
+    } else {
+      builder = Configuration.builder();
+    }
+
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "configurationSource", configurationSource);
+    TransformationUtils.setValue(builder, "compatibilityMode", compatibilityMode);
+    TransformationUtils.setValue(builder, "configurationExtensionCompatibilityMode",
+      configurationExtensionCompatibilityMode);
+    TransformationUtils.setValue(builder, "scriptVariant", scriptVariant);
+    TransformationUtils.setValue(builder, "defaultRunMode", ApplicationRunMode.getByName(defaultRunMode));
+
+    if (defaultLanguage.isRight()) {
+      var languageMDO = defaultLanguage.get();
+      if (languageMDO.getBuilder() == null) {
+        languageMDO.buildMDObject();
+      }
+      var language = (Language) MDClasses.build(languageMDO.getBuilder());
+      TransformationUtils.setValue(builder, "defaultLanguage", language);
+    }
+
+    TransformationUtils.setValue(builder, "dataLockControlMode", dataLockControlMode);
+    TransformationUtils.setValue(builder, "objectAutonumerationMode", objectAutonumerationMode);
+    TransformationUtils.setValue(builder, "modalityUseMode", modalityUseMode);
+    TransformationUtils.setValue(builder, "synchronousExtensionAndAddInCallUseMode",
+      synchronousExtensionAndAddInCallUseMode);
+    TransformationUtils.setValue(builder, "synchronousPlatformExtensionAndAddInCallUseMode",
+      synchronousPlatformExtensionAndAddInCallUseMode);
+
+    TransformationUtils.setValue(builder, "copyrights",
+      new MultiLanguageString(copyrights.stream()
+        .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
+    TransformationUtils.setValue(builder, "detailedInformation",
+      new MultiLanguageString(detailedInformation.stream()
+        .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
+    TransformationUtils.setValue(builder, "briefInformation",
+      new MultiLanguageString(briefInformation.stream()
+        .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
+
+    TransformationUtils.setValue(builder, "children",
+      getChildren().stream()
+        .filter(Either::isRight)
+        .map(Either::get)
+        .map(AbstractMDObjectBase::buildMDObject)
+        .filter(Objects::nonNull)
+        .map(MDClasses::build)
+        .collect(Collectors.toList()));
+
+    TransformationUtils.setValue(builder, "useManagedFormInOrdinaryApplication",
+      useManagedFormInOrdinaryApplication);
+    TransformationUtils.setValue(builder, "useOrdinaryFormInManagedApplication",
+      useOrdinaryFormInManagedApplication);
+
+    TransformationUtils.setValue(builder, "configurationExtensionPurpose",
+      configurationExtensionPurpose);
+    TransformationUtils.setValue(builder, "namePrefix", namePrefix);
+
+    return builder;
   }
 }

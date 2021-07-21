@@ -41,6 +41,8 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CommonAttribute implements Attribute {
 
+  private static final AttributeKind KIND = AttributeKind.COMMON;
+
   /**
    * Имя
    */
@@ -108,6 +110,6 @@ public class CommonAttribute implements Attribute {
 
   @Override
   public AttributeKind getKind() {
-    return AttributeKind.COMMON;
+    return KIND;
   }
 }

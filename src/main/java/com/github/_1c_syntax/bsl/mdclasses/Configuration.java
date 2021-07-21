@@ -44,7 +44,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Configuration implements ConfigurationTree {
+public class Configuration implements MDClass, ConfigurationTree {
 
   /**
    * Имя конфигурации
@@ -137,14 +137,14 @@ public class Configuration implements ConfigurationTree {
   MultiLanguageString briefInformation;
 
   /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
+   * Дочерние объекты конфигурации
    */
   List<MDObject> children;
 
-  /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  List<MDObject> allChildren;
+//  /**
+//   * Дочерние объекты конфигурации (все, включая дочерние)
+//   */
+//  List<MDObject> plainChildren;
 
 //
 //  /**
@@ -226,7 +226,7 @@ public class Configuration implements ConfigurationTree {
 //  }
 //
 //  protected Configuration(MDConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
-//    var allChildren = getAllChildren(mdoConfiguration);
+//    var allChildren = getPlainChildren(mdoConfiguration);
 //
 //    configurationSource = source;
 //    children = new HashSet<>(allChildren);
@@ -427,7 +427,7 @@ public class Configuration implements ConfigurationTree {
 //    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
 //  }
 //
-//   static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
+//   static List<AbstractMDObjectBase> getPlainChildren(MDConfiguration mdoConfiguration) {
 //    List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
 //      .filter(Either::isRight).map(Either::get)
 //      .collect(Collectors.toList());

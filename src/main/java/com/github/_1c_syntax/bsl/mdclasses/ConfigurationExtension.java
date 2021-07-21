@@ -45,7 +45,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ConfigurationExtension implements ConfigurationTree {
+public class ConfigurationExtension implements MDClass, ConfigurationTree {
 
   /**
    * Имя конфигурации
@@ -112,16 +112,6 @@ public class ConfigurationExtension implements ConfigurationTree {
   UseMode synchronousPlatformExtensionAndAddInCallUseMode;
 
   /**
-   * Использовать управляемые формы в обычном приложении
-   */
-  boolean useManagedFormInOrdinaryApplication;
-
-  /**
-   * Использовать обычные формы в управляемом приложении
-   */
-  boolean useOrdinaryFormInManagedApplication;
-
-  /**
    * Информация о копирайте на разных языках
    */
   MultiLanguageString copyrights;
@@ -137,14 +127,14 @@ public class ConfigurationExtension implements ConfigurationTree {
   MultiLanguageString briefInformation;
 
   /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
+   * Дочерние объекты конфигурации
    */
   List<MDObject> children;
 
-  /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  List<MDObject> allChildren;
+//  /**
+//   * Дочерние объекты конфигурации (все, включая дочерние)
+//   */
+//  List<MDObject> plainChildren;
 
   /**
    * Назначение расширения конфигурации
@@ -283,7 +273,7 @@ public class ConfigurationExtension implements ConfigurationTree {
 //  }
 //
 //  protected Configuration(MDConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
-//    var allChildren = getAllChildren(mdoConfiguration);
+//    var allChildren = getPlainChildren(mdoConfiguration);
 //
 //    configurationSource = source;
 //    children = new HashSet<>(allChildren);
@@ -484,7 +474,7 @@ public class ConfigurationExtension implements ConfigurationTree {
 //    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
 //  }
 //
-//   static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
+//   static List<AbstractMDObjectBase> getPlainChildren(MDConfiguration mdoConfiguration) {
 //    List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
 //      .filter(Either::isRight).map(Either::get)
 //      .collect(Collectors.toList());
