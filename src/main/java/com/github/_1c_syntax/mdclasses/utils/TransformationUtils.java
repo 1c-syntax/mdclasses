@@ -38,6 +38,7 @@ import java.util.Map;
 public class TransformationUtils {
   private static final Map<Class<?>, Map<String, Method>> methods = new HashMap<>();
   private static final Map<String, Class<?>> classes = new HashMap<>();
+  private static final int MD_PREFIX_LEN = 2;
 
   @SneakyThrows
   public void setValue(Object source, String methodName, Object value) {
@@ -115,7 +116,7 @@ public class TransformationUtils {
         return null;
       } else {
         try {
-          clazz = Class.forName(String.format("com.github._1c_syntax.bsl.mdo.%s", name.substring(2)));
+          clazz = Class.forName(String.format("com.github._1c_syntax.bsl.mdo.%s", name.substring(MD_PREFIX_LEN)));
         } catch (ClassNotFoundException e) {
           // класс не обнаружен
         }

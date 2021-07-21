@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface MDClass {
   /**
@@ -52,6 +51,7 @@ public interface MDClass {
    * Вариант исходников
    */
   ConfigurationSource getConfigurationSource();
+
 
 //  /**
 //   * Модули в связке со ссылкой на файлы
@@ -99,17 +99,5 @@ public interface MDClass {
 //   */
 //  Map<ModuleType, URI> getModulesByMDORef(MdoReference mdoRef);
 
-  /**
-   * Получение списка дочерних элементов по типу
-   *
-   * @param clazz Класс дочернего элемента
-   * @param <T>   Тип дочернего элемента
-   * @return Список дочерних элементов
-   */
-  default <T extends MDObject> List<T> getChildrenByType(Class<T> clazz) {
-    return getChildren().stream()
-      .filter(clazz::isInstance)
-      .map(clazz::cast)
-      .collect(Collectors.toUnmodifiableList());
-  }
+
 }

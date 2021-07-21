@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -46,7 +44,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Configuration implements MDClass {
+public class Configuration implements ConfigurationTree {
 
   /**
    * Имя конфигурации
@@ -147,14 +145,6 @@ public class Configuration implements MDClass {
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
   List<MDObject> allChildren;
-
-  public List<Role> roles() {
-    return getChildrenByType(Role.class);
-  }
-
-  public List<CommonModule> commonModules() {
-    return getChildrenByType(CommonModule.class);
-  }
 
 //
 //  /**

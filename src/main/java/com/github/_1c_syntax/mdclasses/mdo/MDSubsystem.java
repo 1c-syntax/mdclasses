@@ -162,7 +162,7 @@ public class MDSubsystem extends AbstractMDObjectBase {
     setChildren(newChildren);
   }
 
-  private void setSubsystemForChild(Map<String, AbstractMDObjectBase> allMDO, AbstractMDObjectBase mdo) {
+  private static void setSubsystemForChild(Map<String, AbstractMDObjectBase> allMDO, AbstractMDObjectBase mdo) {
     if (mdo instanceof MDSubsystem) {
       ((MDSubsystem) mdo).linkToChildren(allMDO);
     }

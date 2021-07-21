@@ -45,7 +45,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ConfigurationExtension implements MDClass {
+public class ConfigurationExtension implements ConfigurationTree {
 
   /**
    * Имя конфигурации
