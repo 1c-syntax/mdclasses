@@ -206,3 +206,8 @@ public class MDClasses {
     return (Module) builder.getClass().getDeclaredMethod("build").invoke(builder);
   }
 }
+
+// todo реализовать
+//  - при сборке конфигурации и расширения добавлять ссылки на общий реквизит в список реквизитов
+
+

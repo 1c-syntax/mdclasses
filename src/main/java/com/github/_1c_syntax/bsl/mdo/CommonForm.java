@@ -84,6 +84,15 @@ public class CommonForm implements Form {
    */
   FormType formType;
 
+  /**
+   * Список модулей объекта
+   */
+  List<Module> modules;
+
+}
+
+// todo реализовать
+// - хранение информации о данных формы
 //  /**
 //   * Данные формы:
 //   * + список элементов формы
@@ -91,10 +100,3 @@ public class CommonForm implements Form {
 //   * + список реквизитов формы
 //   */
 //  FormData data;
-
-  /**
-   * Список модулей объекта
-   */
-  List<Module> modules;
-
-}

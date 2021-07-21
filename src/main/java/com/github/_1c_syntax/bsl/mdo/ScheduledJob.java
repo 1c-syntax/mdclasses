@@ -82,5 +82,3 @@ public class ScheduledJob implements MDObject {
    */
   Handler handler;
 }
-
-// todo добавить расписание????

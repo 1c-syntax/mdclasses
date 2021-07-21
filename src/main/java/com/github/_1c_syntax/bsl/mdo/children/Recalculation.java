@@ -92,8 +92,6 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   @NonFinal
   MDObject owner;
 
-  // todo добавить измерения
-
   @Override
   public void setOwner(MDObject owner) {
     if (this.owner == null) {
@@ -101,3 +99,5 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
     }
   }
 }
+
+// todo добавить измерения

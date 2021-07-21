@@ -111,10 +111,3 @@ public class CommonAttribute implements Attribute {
     return AttributeKind.COMMON;
   }
 }
-
-//  /**
-//   * Ссылка на атрибут - не нужна
-//   */
-//  @Setter(AccessLevel.NONE)
-//  private com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute commonAttribute;
-

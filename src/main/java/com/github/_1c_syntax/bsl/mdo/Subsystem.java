@@ -82,14 +82,13 @@ public class Subsystem implements MDObject {
   boolean includeInCommandInterface;
 
 }
-//
-//  /**
-//   * Дочерние объекты подсистемы, включает в себя как дочерние подсистемы, так и и другие объекты,
-//   * включенные в подсистему
-//   * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
-//   */
-//  @XStreamImplicit
-//  private List<Either<String, AbstractMDObjectBase>> children = Collections.emptyList();
-//
 
-//}
+// todo реализовать хранение дочерних
+//   /**
+//    * Дочерние объекты подсистемы, включает в себя как дочерние подсистемы, так и и другие объекты,
+//    * включенные в подсистему
+//    * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
+//    */
+//   @XStreamImplicit
+//   private List<Either<String, AbstractMDObjectBase>> children = Collections.emptyList();
+//

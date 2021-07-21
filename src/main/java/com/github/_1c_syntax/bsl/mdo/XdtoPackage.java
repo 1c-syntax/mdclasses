@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -76,25 +77,13 @@ public class XdtoPackage implements MDObject {
    */
   MdoReference mdoReference;
 
-//  /**
-//   * Пространство имен xdto-пакета
-//   */
-//  String namespace;
+  /**
+   * Пространство имен xdto-пакета
+   */
+  String namespace;
 
-//  /**
-//   * Путь к файлу с данными xsd-схемы
-//   */
-//  private Path packageDataPath;
-//
-//  /**
-//   * Содержимое xsd-схемы пакета
-//   */
-//  private XDTOPackageData data;
-//
-//  public XdtoPackage(DesignerMDO designerMDO) {
-//    super(designerMDO);
-//    namespace = designerMDO.getProperties().getNamespace();
-//  }
-//
-//
+  /**
+   * Содержимое xsd-схемы пакета
+   */
+  XdtoPackageData data;
 }

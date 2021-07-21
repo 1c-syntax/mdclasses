@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Getter;
@@ -29,6 +30,7 @@ import lombok.Setter;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * POJO представление прав доступа объекта метаданных, содержащихся в конкретной роли
@@ -42,4 +44,9 @@ public class ObjectRight {
   @XStreamAlias("right")
   @XStreamImplicit
   private List<Right> rights = Collections.emptyList();
+
+  public Object buildMDObject() {
+    return new RoleRight(name,
+      rights.stream().collect(Collectors.toMap(Right::getName, Right::isValue)));
+  }
 }

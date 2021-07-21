@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.xdtopackage;
 
+import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -28,6 +29,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Вспомогательный класс для хранения описания типов объектов XDTO пакета
@@ -54,4 +56,11 @@ public class XdtoObjectType {
   @XStreamImplicit(itemFieldName = "property")
   private List<XdtoProperty> properties = Collections.emptyList();
 
+  public Object buildMDObject() {
+    return new XdtoPackageData.ObjectType(name, base,
+      properties.stream()
+        .map(XdtoProperty::buildMDObject)
+        .map(XdtoPackageData.Property.class::cast)
+        .collect(Collectors.toList()));
+  }
 }

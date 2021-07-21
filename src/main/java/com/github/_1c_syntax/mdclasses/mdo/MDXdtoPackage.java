@@ -27,6 +27,7 @@ import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -72,5 +73,16 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
     super.supplement();
     packageDataPath = MDOPathUtils.getPackageDataPath(this);
     MDOFactory.readXDTOPackageData(packageDataPath).ifPresent(this::setData);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    builder = super.buildMDObject();
+    TransformationUtils.setValue(builder, "namespace", namespace);
+    if (data != null) {
+      TransformationUtils.setValue(builder, "data", data.buildMDObject());
+    }
+
+    return builder;
   }
 }

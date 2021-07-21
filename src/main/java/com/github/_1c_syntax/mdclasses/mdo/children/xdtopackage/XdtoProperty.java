@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.xdtopackage;
 
+import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -66,5 +67,9 @@ public class XdtoProperty {
    */
   @XStreamAsAttribute
   private String form = "";
+
+  public Object buildMDObject() {
+    return new XdtoPackageData.Property(name, type, lowerBound, upperBound, nillable, form);
+  }
 
 }

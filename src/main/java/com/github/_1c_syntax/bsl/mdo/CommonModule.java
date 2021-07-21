@@ -87,7 +87,6 @@ public class CommonModule implements MDObject, Module {
 
   /**
    * Ссылка на файл bsl модуля
-   * todo может все таки path?
    */
   URI uri;
 

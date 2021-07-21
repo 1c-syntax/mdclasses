@@ -19,16 +19,25 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import java.util.List;
+import lombok.Value;
+
+import java.util.Map;
 
 /**
- * Расширение - Владелец реквизитов реквизиты
+ * Права роли на одну сущность
  */
-public interface AttributeOwner {
+@Value
+public class RoleRight {
+
   /**
-   * Список реквизитов объекта
+   * Имя объекта (часто mdoRef, но не всегда)
    */
-  List<Attribute> getAttributes();
+  String name;
+
+  /**
+   *
+   */
+  Map<String, Boolean> rights;
 }

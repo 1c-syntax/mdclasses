@@ -82,6 +82,7 @@ public class Language implements MDObject {
   String languageCode;
 }
 
-//  public static final Language ENGLISH = new Language("English", "en");
-//  public static final Language RUSSIAN = new Language("Русский", "ru");
+//  todo нужны ли?
+//   public static final Language ENGLISH = new Language("English", "en");
+//   public static final Language RUSSIAN = new Language("Русский", "ru");
 //

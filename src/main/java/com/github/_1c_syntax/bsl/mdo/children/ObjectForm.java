@@ -93,14 +93,6 @@ public class ObjectForm implements Form, MDChildObject {
    */
   FormType formType;
 
-//  /**
-//   * Данные формы:
-//   * + список элементов формы
-//   * + список обработчиков формы
-//   * + список реквизитов формы
-//   */
-//  FormData data;
-
   /**
    * Список модулей объекта
    */

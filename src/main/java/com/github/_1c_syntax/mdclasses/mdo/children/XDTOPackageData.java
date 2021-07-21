@@ -21,10 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.XdtoPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoImport;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoObjectType;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoProperty;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoValueType;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -33,6 +36,7 @@ import lombok.ToString;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Вспомогательный класс для хранения содержимого XDTO пакета
@@ -71,4 +75,19 @@ public class XDTOPackageData {
    */
   @XStreamImplicit(itemFieldName = "property")
   private List<XdtoProperty> properties = Collections.emptyList();
+
+  public Object buildMDObject() {
+    var builder = XdtoPackageData.builder();
+    TransformationUtils.setValue(builder, "targetNamespace", targetNamespace);
+    TransformationUtils.setValue(builder, "imports",
+      imports.stream().map(XdtoImport::getNamespace).collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "valueTypes",
+      valueTypes.stream().map(XdtoValueType::buildMDObject).collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "objectTypes",
+      objectTypes.stream().map(XdtoObjectType::buildMDObject).collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "properties",
+      properties.stream().map(XdtoProperty::buildMDObject).collect(Collectors.toList()));
+    return builder.build();
+  }
 }
+

@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
@@ -35,6 +36,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
+import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -79,6 +81,9 @@ public class MDRole extends AbstractMDObjectBase {
       roleData.isSetForAttributesByDefault());
     TransformationUtils.setValue(builder, "independentRightsOfChildObjects",
       roleData.isIndependentRightsOfChildObjects());
+    TransformationUtils.setValue(builder, "rights",
+      roleData.getObjectRights().stream()
+        .map(ObjectRight::buildMDObject).collect(Collectors.toList()));
 
     return builder;
   }

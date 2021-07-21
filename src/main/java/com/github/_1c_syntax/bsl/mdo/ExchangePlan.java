@@ -117,18 +117,10 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
    * Признак распространения в распределенной базе расширений
    */
   boolean includeConfigurationExtensions;
+}
 
-//  /**
-//   * Состав плана обмена.
-//   * Для формата EDT хранится в самом MDO файле, для формата конфигуратора - в отдельном
-//   */
+// todo реализовать
+//   Состав плана обмена.
 //  @XStreamImplicit
 //  private List<ExchangePlanItem> content = Collections.emptyList();
-//
-//  public ExchangePlan(DesignerMDO designerMDO) {
-//    super(designerMDO);
-//    distributedInfoBase = designerMDO.getProperties().isDistributedInfoBase();
-//    includeConfigurationExtensions = designerMDO.getProperties().isIncludeConfigurationExtensions();
-//  }
 
-}
