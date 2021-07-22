@@ -23,6 +23,8 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -45,7 +47,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ConfigurationExtension implements MDClass, ConfigurationTree {
+public class ConfigurationExtension implements MDClass, ConfigurationTree, ModuleOwner {
 
   /**
    * Имя конфигурации
@@ -131,10 +133,10 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree {
    */
   List<MDObject> children;
 
-//  /**
-//   * Дочерние объекты конфигурации (все, включая дочерние)
-//   */
-//  List<MDObject> plainChildren;
+  /**
+   * Дочерние объекты конфигурации (все, включая дочерние)
+   */
+  List<MDObject> plainChildren;
 
   /**
    * Назначение расширения конфигурации
@@ -145,6 +147,12 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree {
    * Префикс собственных объектов расширения
    */
   String namePrefix;
+
+  /**
+   * Список модулей конфигурации
+   */
+  List<Module> modules;
+
 //
 //  /**
 //   * Модули объектов конфигурации в связке со ссылкой на файлы

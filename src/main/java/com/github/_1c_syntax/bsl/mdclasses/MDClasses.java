@@ -21,12 +21,18 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
+import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
@@ -47,6 +53,9 @@ public class MDClasses {
       var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
       if (mdo.isPresent()) {
         MDClass configuration = (buildMDClass(mdo.get().buildMDObject()));
+        if (configuration instanceof Configuration) {
+          computeSupportConfiguration((Configuration) configuration, path);
+        }
         return configuration;
       }
     }
@@ -64,10 +73,20 @@ public class MDClasses {
       mdObjects.put(builder, mdObject);
       result = mdObject;
     }
-    result.getChildren().stream()
-      .filter(MDChildObject.class::isInstance)
-      .map(MDChildObject.class::cast)
-      .forEach(mdObject -> mdObject.setOwner(result));
+    if (result instanceof ChildrenOwner) {
+      ((ChildrenOwner) result).getChildren().stream()
+        .filter(MDChildObject.class::isInstance)
+        .map(MDChildObject.class::cast)
+        .forEach(mdObject -> mdObject.setOwner(result));
+    }
+
+    if (result instanceof ModuleOwner) {
+      ((ModuleOwner) result).getModules().stream()
+        .filter(ObjectModule.class::isInstance)
+        .map(ObjectModule.class::cast)
+        .forEach(module -> module.setOwner((ModuleOwner) result));
+    }
+
     return result;
   }
 
@@ -81,6 +100,27 @@ public class MDClasses {
   // todo времянка
   public MDClass buildMDClass(Object builder) {
     return (MDClass) builder.getClass().getDeclaredMethod("build").invoke(builder);
+  }
+
+  /**
+   * Заполняет информацию о поддержке для конфигурации
+   *
+   * @param configuration Конфигурация (для расширений поддержки нет)
+   */
+  private static void computeSupportConfiguration(Configuration configuration, Path path) {
+    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(
+      configuration.getConfigurationSource(), path);
+    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
+      var supportData = ParseSupportData.readSimple(fileParentConfiguration.get());
+
+      configuration.setSupportVariant(supportData.getOrDefault(configuration.getUuid(), SupportVariant.NONE));
+
+      configuration.getPlainChildren()
+        .forEach(mdo -> mdo.setSupportVariant(supportData.getOrDefault(mdo.getUuid(), SupportVariant.NONE)));
+    } else {
+      configuration.setSupportVariant(SupportVariant.NONE);
+      configuration.getPlainChildren().forEach(mdo -> mdo.setSupportVariant(SupportVariant.NONE));
+    }
   }
 }
 

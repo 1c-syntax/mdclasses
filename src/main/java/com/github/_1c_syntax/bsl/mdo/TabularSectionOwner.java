@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Расширение - Владелец табличных частей
  */
-public interface TabularSectionOwner {
+public interface TabularSectionOwner extends ChildrenOwner {
   /**
    * Список табличных частей
    */

@@ -30,10 +30,12 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 @Value
 @Builder
@@ -107,6 +109,19 @@ public class CommonAttribute implements Attribute {
    * Объекты, использующие общий реквизит
    */
   ContentStorage using;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 
   @Override
   public AttributeKind getKind() {

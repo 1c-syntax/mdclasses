@@ -21,12 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
-import java.util.List;
-
-public interface MDClass {
+public interface MDClass extends ChildrenOwner {
   /**
    * уникальный идентификатор объекта
    */
@@ -36,16 +34,6 @@ public interface MDClass {
    * Имя объекта
    */
   String getName();
-
-  /**
-   * Дочерние объекты
-   */
-  List<MDObject> getChildren();
-
-//  /**
-//   * Дочерние объекты включая подчиненные
-//   */
-//  List<MDObject> getPlainChildren();
 
   /**
    * Вариант исходников

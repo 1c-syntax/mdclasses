@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -30,7 +31,6 @@ import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
@@ -124,7 +124,6 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
     checkSubsystems(configuration, 5);
-    checkCommonAttributes(configuration);
     checkExchangePlans(configuration);
   }
 
@@ -236,7 +235,6 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WEB_SERVICE, 1);
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
-    checkCommonAttributes(configuration);
     checkExchangePlans(configuration);
   }
 

@@ -21,10 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.net.URI;
 
@@ -41,8 +45,23 @@ public class ObjectModule implements Module {
    */
   URI uri;
 
-//  /**
-//   * Ссылка на объект метаданных которому принадлежит модуль
-//   */
-//  ModuleOwner owner;
+  /**
+   * Ссылка на объект метаданных которому принадлежит модуль
+   */
+  @NonFinal
+  ModuleOwner owner;
+
+  @Override
+  public SupportVariant getSupportVariant() {
+    if (owner instanceof MDObject) {
+      return ((MDObject) owner).getSupportVariant();
+    }
+    return SupportVariant.NONE;
+  }
+
+  public void setOwner(ModuleOwner owner) {
+    if (this.owner == null) {
+      this.owner = owner;
+    }
+  }
 }

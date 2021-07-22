@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Расширение - Владелец дочерних макетов
  */
-public interface TemplateOwner {
+public interface TemplateOwner extends ChildrenOwner {
   /**
    * Список макетов объекта
    */

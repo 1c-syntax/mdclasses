@@ -25,10 +25,12 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -99,6 +101,18 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
    */
   List<Module> modules;
 
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 }
 
 // todo  добавить значения

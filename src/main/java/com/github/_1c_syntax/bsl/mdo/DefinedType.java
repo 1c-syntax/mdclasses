@@ -26,10 +26,12 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.Type;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 @Value
 @Builder
@@ -77,4 +79,16 @@ public class DefinedType implements MDObject, Type {
    */
   MdoReference mdoReference;
 
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 }

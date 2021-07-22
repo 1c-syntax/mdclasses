@@ -21,11 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -36,9 +38,9 @@ import java.util.List;
 
 @Value
 @Builder
-@ToString(of = {"name", "uuid"})
-@EqualsAndHashCode(of = {"name", "uuid"})
-public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
+@ToString(of = {"name", "uuid", "mdoReference"})
+@EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
+public class HttpServiceUrlTemplate implements MDObject, MDChildObject, ChildrenOwner {
   /**
    * Имя
    */
@@ -86,13 +88,26 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject {
   MDObject owner;
 
   /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
+
+  /**
    * Методы шаблона URL HTTP-сервиса
    */
   List<HttpServiceMethod> httpServiceMethods;
 
   @Override
   public List<MDObject> getChildren() {
-    var children = MDObject.super.getChildren();
+    var children = ChildrenOwner.super.getChildren();
     children.addAll(httpServiceMethods);
     return children;
   }

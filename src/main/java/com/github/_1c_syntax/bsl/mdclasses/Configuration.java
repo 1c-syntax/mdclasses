@@ -23,6 +23,8 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -30,10 +32,12 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -44,7 +48,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Configuration implements MDClass, ConfigurationTree {
+public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
 
   /**
    * Имя конфигурации
@@ -141,10 +145,27 @@ public class Configuration implements MDClass, ConfigurationTree {
    */
   List<MDObject> children;
 
-//  /**
-//   * Дочерние объекты конфигурации (все, включая дочерние)
-//   */
-//  List<MDObject> plainChildren;
+  /**
+   * Дочерние объекты конфигурации (все, включая дочерние)
+   */
+  List<MDObject> plainChildren;
+
+  /**
+   * Список модулей конфигурации
+   */
+  List<Module> modules;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 
 //
 //  /**

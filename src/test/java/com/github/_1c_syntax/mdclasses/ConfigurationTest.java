@@ -22,7 +22,9 @@
 package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -34,8 +36,6 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
-import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
@@ -101,12 +101,12 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(177);
+    assertThat(configuration.getChildren()).hasSize(176);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 18);
     checkChildCount(configuration, MDOType.FORM, 22);
     checkChildCount(configuration, MDOType.TEMPLATE, 17);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 53);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 52);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
@@ -239,9 +239,9 @@ class ConfigurationTest {
     assertThat(((ConfigurationExtension) configuration).getConfigurationExtensionPurpose()).isEqualTo(ConfigurationExtensionPurpose.PATCH);
     assertThat(((ConfigurationExtension) configuration).getNamePrefix()).isEqualTo("Расш_");
 
-    assertThat(configuration.getModulesByType()).hasSize(9);
+    assertThat(configuration.getModulesByType()).hasSize(10);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(9);
+    assertThat(configuration.getModulesByObject()).hasSize(10);
     assertThat(configuration.getCommonModules()).hasSize(9);
     assertThat(configuration.getLanguages()).hasSize(1);
     assertThat(configuration.getRoles()).hasSize(2);
@@ -362,12 +362,12 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(112);
+    assertThat(configuration.getChildren()).hasSize(111);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
     checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 34);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 33);
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);

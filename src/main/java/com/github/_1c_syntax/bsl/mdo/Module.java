@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 
 import java.net.URI;
 
@@ -38,4 +39,9 @@ public interface Module {
    * Ссылка на файл bsl модуля
    */
   URI getUri();
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  SupportVariant getSupportVariant();
 }

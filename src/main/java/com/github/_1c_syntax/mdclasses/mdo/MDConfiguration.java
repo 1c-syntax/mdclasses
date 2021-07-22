@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
@@ -51,6 +52,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -337,14 +339,22 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       new MultiLanguageString(briefInformation.stream()
         .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
 
-    TransformationUtils.setValue(builder, "children",
-      getChildren().stream()
-        .filter(Either::isRight)
-        .map(Either::get)
-        .map(AbstractMDObjectBase::buildMDObject)
-        .filter(Objects::nonNull)
-        .map(MDClasses::build)
-        .collect(Collectors.toList()));
+    var childrenMDO = getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .map(AbstractMDObjectBase::buildMDObject)
+      .filter(Objects::nonNull)
+      .map(MDClasses::build)
+      .collect(Collectors.toList());
+
+    var allChildrenMDO = new ArrayList<>(childrenMDO);
+    childrenMDO.stream()
+      .filter(ChildrenOwner.class::isInstance)
+      .map(ChildrenOwner.class::cast)
+      .forEach(mdObject -> allChildrenMDO.addAll(mdObject.getPlainChildren()));
+
+    TransformationUtils.setValue(builder, "children", childrenMDO);
+    TransformationUtils.setValue(builder, "plainChildren", allChildrenMDO);
 
     TransformationUtils.setValue(builder, "useManagedFormInOrdinaryApplication",
       useManagedFormInOrdinaryApplication);

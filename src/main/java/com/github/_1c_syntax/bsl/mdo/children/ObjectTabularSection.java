@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -38,8 +39,8 @@ import java.util.List;
 
 @Value
 @Builder
-@ToString(of = {"name", "uuid"})
-@EqualsAndHashCode(of = {"name", "uuid"})
+@ToString(of = {"name", "uuid", "mdoReference"})
+@EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class ObjectTabularSection implements TabularSection, MDChildObject {
 
   /**
@@ -92,6 +93,19 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
    */
   @NonFinal
   MDObject owner;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 
   @Override
   public void setOwner(MDObject owner) {

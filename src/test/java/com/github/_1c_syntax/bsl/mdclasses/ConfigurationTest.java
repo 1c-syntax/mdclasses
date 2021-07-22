@@ -22,10 +22,27 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
+import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
+import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
+import com.github._1c_syntax.bsl.mdo.children.RegisterResource;
+import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDClassTest;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -46,19 +63,19 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     {
       "src/test/resources/metadata/original,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, DESIGNER, " +
         "Version_8_3_10, Russian, ManagedApplication, Русский, Automatic, DONT_USE, USE, DONT_USE, true, " +
-        "false, 2",
+        "false, 2, 3, 16",
       "src/test/resources/metadata/original_ordinary,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, DESIGNER, " +
         "Version_8_3_10, Russian, OrdinaryApplication, Русский, AutomaticAndManaged, DONT_USE, USE, DONT_USE, true, " +
-        "false, 0",
+        "false, 0, 0, 0",
       "src/test/resources/metadata/edt,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, EDT, " +
         "Version_8_3_10, Russian, ManagedApplication, Русский, Automatic, USE, USE_WITH_WARNINGS, DONT_USE, true, " +
-        "true, 2",
+        "true, 2, 3, 72",
       "src/test/resources/metadata/edt_en,Configuration,04c0322d-92da-49ab-87e5-82c8dcd50888, EDT, " +
         "Version_8_3_14, English, ManagedApplication, English, AutomaticAndManaged, DONT_USE, USE, DONT_USE, false, " +
-        "false, 0",
+        "false, 0, 0, 0",
       "src/test/resources/metadata/original_3_18,Конфигурация,ade513fa-b8dc-4656-b1b6-68fde4fe18de, DESIGNER, " +
         "Version_8_3_18, Russian, ManagedApplication, Русский, AutomaticAndManaged, DONT_USE, USE, DONT_USE, true, " +
-        "true, 0"
+        "true, 0, 1, 8"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
@@ -89,6 +106,9 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     assertThat(mdc.getCopyrights().getContent()).hasSize(argumentsAccessor.getInteger(14));
     assertThat(mdc.getDetailedInformation().getContent()).hasSize(argumentsAccessor.getInteger(14));
     assertThat(mdc.getBriefInformation().getContent()).hasSize(argumentsAccessor.getInteger(14));
+
+    assertThat(mdc.getModules()).hasSize(argumentsAccessor.getInteger(15));
+    assertThat(mdc.getAllModules()).hasSize(argumentsAccessor.getInteger(16));
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -253,26 +273,114 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 
     mdc.getChildren().forEach(mdObject -> assertThat(children).contains(mdObject));
     children.forEach(mdObject -> assertThat(mdc.getChildren()).contains(mdObject));
+  }
+
+  @ParameterizedTest(name = "{index}: path {0}")
+  @CsvSource(
+    {
+      "src/test/resources/metadata/original, 110," +
+        "1,1,1,2,1,0,13,1,8,3,2,1,8,4,1,2",
+      "src/test/resources/metadata/original_ordinary, 1," +
+        "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "src/test/resources/metadata/edt, 175," +
+        "1,1,1,2,1,0,27,18,22,10,17,1,6,4,1,2",
+      "src/test/resources/metadata/edt_en, 3," +
+        "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+      "src/test/resources/metadata/original_3_18, 38," +
+        "0,0,0,0,0,2,5,0,3,1,0,0,2,1,0,0"
+    }
+  )
+  void testPlainChildren(ArgumentsAccessor argumentsAccessor) {
+    var mdc = getMDClass(argumentsAccessor.getString(0));
+
+    assertThat(mdc.getPlainChildren()).hasSize(argumentsAccessor.getInteger(1));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(AccountingFlag.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(2));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(DocumentJournalColumn.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(3));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ExtDimensionAccountingFlag.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(4));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(HttpServiceMethod.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(5));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(HttpServiceUrlTemplate.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(6));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(IntegrationServiceChannel.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(7));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ObjectAttribute.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(8));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ObjectCommand.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(9));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ObjectForm.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(10));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ObjectTabularSection.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(11));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(ObjectTemplate.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(12));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(Recalculation.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(13));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(RegisterDimension.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(14));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(RegisterResource.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(15));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(TaskAddressingAttribute.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(16));
+
+    assertThat(mdc.getPlainChildren().stream()
+      .filter(WebServiceOperation.class::isInstance)
+      .collect(Collectors.toList())
+    ).hasSize(argumentsAccessor.getInteger(17));
 
 //
 //    //    assertThat(mdc.getModulesByType()).hasSize(19);
 //
 ////    assertThat(mdc.getModulesBySupport()).isEmpty();
 ////    assertThat(mdc.getModulesByObject()).hasSize(19);
-////    assertThat(mdc.getModules()).hasSize(19);
-////    assertThat(mdc.getCommonModules()).hasSize(6);
-////    assertThat(mdc.getLanguages()).hasSize(3);
-////    assertThat(mdc.getRoles()).hasSize(1);
 //
-//    assertThat(mdc.getChildren()).hasSize(61);
-//    assertThat(mdc.getPlainChildren()).hasSize(61);
-////    checkChildCount(mdc, MDOType.COMMAND, 1);
-////    checkChildCount(mdc, MDOType.FORM, 8);
-////    checkChildCount(mdc, MDOType.TEMPLATE, 2);
-////    checkChildCount(mdc, MDOType.ATTRIBUTE, 34);
-////    checkChildCount(mdc, MDOType.WS_OPERATION, 2);
-////    checkChildCount(mdc, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
-////    checkChildCount(mdc, MDOType.HTTP_SERVICE_METHOD, 2);
 //
 //
 ////    assertThat(mdc.getChildrenByMdoRef()).hasSize(111);
@@ -298,4 +406,36 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 ////    checkOrderedCommonModules(mdc);
   }
 
+  @ParameterizedTest(name = "{index}: path {0}")
+  @CsvSource(
+    {
+      "src/test/resources/support/edt, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
+      "src/test/resources/support/original, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
+      "src/test/resources/metadata/edt, 175, 0, 0, 0, NONE",
+      "src/test/resources/metadata/edt_en, 3, 0, 0, 0, NONE",
+      "src/test/resources/support/original-full-support, 0, 0, 4, 0, NOT_EDITABLE"
+    }
+  )
+  void testSupport(ArgumentsAccessor argumentsAccessor) {
+    var configuration = getMDClass(argumentsAccessor.getString(0));
+
+    var mdo_NOT_SUPPORTED = configuration.getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getSupportVariant() == SupportVariant.NOT_SUPPORTED)
+      .collect(Collectors.toList());
+    var mdo_NONE = configuration.getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getSupportVariant() == SupportVariant.NONE)
+      .collect(Collectors.toList());
+    var mdo_EDITABLE_SUPPORT_ENABLED = configuration.getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getSupportVariant() == SupportVariant.EDITABLE_SUPPORT_ENABLED)
+      .collect(Collectors.toList());
+    var mdo_NOT_EDITABLE = configuration.getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getSupportVariant() == SupportVariant.NOT_EDITABLE)
+      .collect(Collectors.toList());
+
+    assertThat(mdo_NONE).hasSize(argumentsAccessor.getInteger(1));
+    assertThat(mdo_EDITABLE_SUPPORT_ENABLED).hasSize(argumentsAccessor.getInteger(2));
+    assertThat(mdo_NOT_EDITABLE).hasSize(argumentsAccessor.getInteger(3));
+    assertThat(mdo_NOT_SUPPORTED).hasSize(argumentsAccessor.getInteger(4));
+    assertThat(configuration.getSupportVariant().name()).isEqualTo(argumentsAccessor.getString(5));
+  }
 }

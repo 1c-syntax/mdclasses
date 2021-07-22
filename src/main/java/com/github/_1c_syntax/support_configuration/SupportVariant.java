@@ -19,8 +19,29 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.supportconf;
+package com.github._1c_syntax.support_configuration;
 
-public enum GeneralSupportVariant {
-  LOCKED, UNLOCKED
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.Collection;
+import java.util.Comparator;
+
+@AllArgsConstructor
+public enum SupportVariant {
+  NOT_EDITABLE(3), EDITABLE_SUPPORT_ENABLED(2), NOT_SUPPORTED(1), NONE(-1);
+
+  @Getter
+  private final int priority;
+
+  /**
+   * Возвращает вариант поддержки с максимальным уровнем
+   *
+   * @param variants Список вариантов поддержки
+   * @return Максимальный вариант поддержки
+   */
+  public static SupportVariant max(Collection<SupportVariant> variants) {
+    return variants.stream().max(Comparator.comparing(SupportVariant::getPriority))
+      .orElse(SupportVariant.NONE);
+  }
 }

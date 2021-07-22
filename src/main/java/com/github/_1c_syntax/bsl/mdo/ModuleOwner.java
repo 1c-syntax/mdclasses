@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - владелец модулей с исходным кодом
@@ -31,4 +33,20 @@ public interface ModuleOwner {
    * Список модулей объекта
    */
   List<Module> getModules();
+
+  /**
+   * Список модулей объекта, включая дочерние
+   */
+  default List<Module> getAllModules() {
+    var modules = new ArrayList<>(getModules());
+    if (this instanceof ChildrenOwner) {
+      modules.addAll(((ChildrenOwner) this).getPlainChildren().stream()
+        .filter(ModuleOwner.class::isInstance)
+        .map(ModuleOwner.class::cast)
+        .map(ModuleOwner::getModules)
+        .flatMap(List::stream)
+        .collect(Collectors.toList()));
+    }
+    return modules;
+  }
 }

@@ -19,15 +19,8 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.supportconf;
+package com.github._1c_syntax.support_configuration;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
-
-@Value
-@AllArgsConstructor
-public class SupportConfiguration {
-  String name;
-  String provider;
-  String version;
+public enum GeneralSupportVariant {
+  LOCKED, UNLOCKED
 }

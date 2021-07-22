@@ -29,6 +29,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> {
   CalculationRegisterTest() {
     super(CalculationRegister.class);
@@ -43,6 +45,7 @@ class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> 
   void testDesigner(ArgumentsAccessor argumentsAccessor) {
     var mdo = getMDObject("CalculationRegisters/" + argumentsAccessor.getString(0));
     mdoTest(mdo, MDOType.CALCULATION_REGISTER, argumentsAccessor);
+    assertThat(mdo.getAllModules()).hasSize(1);
   }
 
   @ParameterizedTest(name = "EDT {index}: {0}")
@@ -72,5 +75,7 @@ class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> 
 
     checkChildField(mdo.getRecalculations().get(0),
       "Перерасчет", "16b54095-8711-4ef1-a38b-93d12f6f6e93");
+
+    assertThat(mdo.getAllModules()).hasSize(4);
   }
 }

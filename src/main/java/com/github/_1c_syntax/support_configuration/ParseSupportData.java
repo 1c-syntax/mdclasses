@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.supportconf;
+package com.github._1c_syntax.support_configuration;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,6 +32,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * Используется для чтения информации о поддержке из файла ParentConfigurations.bin конфигурации
+ */
 @Slf4j
 public class ParseSupportData {
 
@@ -53,6 +56,23 @@ public class ParseSupportData {
   private final Path pathToBinFile;
   private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
+  /**
+   * Выполняет чтение информации о поддержке и возвращает упрощенный вариант: UUID->MAX(SupportVariant)
+   *
+   * @param path Путь к файлу описания поддержки
+   * @return Прочитанная информация
+   */
+  public static Map<String, SupportVariant> readSimple(Path path) {
+    var parser = new ParseSupportData(path);
+
+    Map<String, SupportVariant> result = new HashMap<>();
+    parser.getSupportMap().forEach((String uuid, Map<SupportConfiguration, SupportVariant> supportVariantMap)
+      -> result.put(uuid, SupportVariant.max(supportVariantMap.values())));
+
+    return result;
+  }
+
+  // todo убрать из паблика
   public ParseSupportData(Path pathToBinFile) {
     this.pathToBinFile = pathToBinFile;
     LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
@@ -119,6 +139,7 @@ public class ParseSupportData {
     }
   }
 
+  // todo убрать из паблика
   public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
   }
@@ -143,4 +164,7 @@ public class ParseSupportData {
         return SupportVariant.NONE;
     }
   }
+
+
+
 }

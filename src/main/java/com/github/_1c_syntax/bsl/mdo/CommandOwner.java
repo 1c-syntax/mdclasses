@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Расширение - Владелец дочерних команды
  */
-public interface CommandOwner {
+public interface CommandOwner extends ChildrenOwner {
   /**
    * Список команд объекта
    */

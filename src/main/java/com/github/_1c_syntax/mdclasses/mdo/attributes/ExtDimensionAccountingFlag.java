@@ -42,4 +42,10 @@ public class ExtDimensionAccountingFlag extends AbstractMDOAttribute {
   public ExtDimensionAccountingFlag(DesignerMDO designerMDO) {
     super(designerMDO);
   }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag.builder());
+    return super.buildMDObject();
+  }
 }

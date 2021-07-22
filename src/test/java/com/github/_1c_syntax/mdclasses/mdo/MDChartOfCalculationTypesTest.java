@@ -27,8 +27,6 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class MDChartOfCalculationTypesTest extends AbstractMDOTest {
   MDChartOfCalculationTypesTest() {
     super(MDOType.CHART_OF_CALCULATION_TYPES);

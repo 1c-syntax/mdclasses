@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
@@ -131,6 +132,11 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var attributeClass = mdo.getClass();
     var fields = attributeClass.getDeclaredFields();
     for (var field : fields) {
+
+      if ("supportVariant".equals(field.getName())) {
+        continue;
+      }
+
       assertThat(field, true).isNotNull(mdo);
       if (excludes.contains(field.getName())) {
         continue;
@@ -160,6 +166,11 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var childClass = child.getClass();
     var fields = childClass.getDeclaredFields();
     for (var field : fields) {
+
+      if ("supportVariant".equals(field.getName())) {
+        continue;
+      }
+
       assertThat(field, true).isNotNull(child);
 
       var fieldType = field.getType();
@@ -214,6 +225,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     assertThat(mdo.getMetadataNameRu()).isEqualTo(argumentsAccessor.getString(5));
 
     List<MDObject> children = new ArrayList<>();
+    List<MDObject> planChildren = new ArrayList<>();
 
     if (mdo instanceof AttributeOwner) {
       assertThat(((AttributeOwner) mdo).getAttributes()).hasSize(argumentsAccessor.getInteger(6));
@@ -223,6 +235,8 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     if (mdo instanceof TabularSectionOwner) {
       assertThat(((TabularSectionOwner) mdo).getTabularSections()).hasSize(argumentsAccessor.getInteger(7));
       children.addAll(((TabularSectionOwner) mdo).getTabularSections());
+      ((TabularSectionOwner) mdo).getTabularSections()
+        .forEach(tabularSection -> planChildren.addAll(tabularSection.getChildren()));
     }
 
     if (mdo instanceof FormOwner) {
@@ -240,14 +254,25 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       children.addAll(((TemplateOwner) mdo).getTemplates());
     }
 
-    assertThat(
-      mdo.getChildren().stream()
+    planChildren.addAll(children);
+
+    if (mdo instanceof ChildrenOwner) {
+      var childrenOwner = (ChildrenOwner) mdo;
+
+      assertThat(childrenOwner.getChildren().stream()
         .filter(mdObject -> !(mdObject instanceof Recalculation)
           && !(mdObject instanceof HttpServiceUrlTemplate)
           && !(mdObject instanceof IntegrationServiceChannel)
           && !(mdObject instanceof WebServiceOperation))
-        .collect(Collectors.toList())
-    ).isEqualTo(children);
+        .collect(Collectors.toList())).containsAll(children);
+
+      assertThat(childrenOwner.getPlainChildren().stream()
+        .filter(mdObject -> !(mdObject instanceof Recalculation)
+          && !(mdObject instanceof HttpServiceUrlTemplate)
+          && !(mdObject instanceof IntegrationServiceChannel)
+          && !(mdObject instanceof WebServiceOperation))
+        .collect(Collectors.toList())).containsAll(planChildren);
+    }
 
     if (mdo instanceof ModuleOwner) {
       assertThat(((ModuleOwner) mdo).getModules()).hasSize(argumentsAccessor.getInteger(11));
@@ -285,10 +310,14 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
 
     var fields = clazz.getDeclaredFields();
     for (var field : fields) {
-      assertThat(field, true).isNotNull(mdo);
       var fieldType = field.getType();
 
       var key = field.getName();
+      if ("supportVariant".equals(key)) {
+        continue;
+      }
+
+      assertThat(field, true).isNotNull(mdo);
 
       if (testedFields.contains(key)) {
         untestedFields.remove(key);

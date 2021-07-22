@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.supportconf.ParseSupportData;
-import com.github._1c_syntax.mdclasses.supportconf.SupportVariant;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

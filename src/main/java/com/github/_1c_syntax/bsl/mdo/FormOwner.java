@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Расширение - Владелец дочерних форм
  */
-public interface FormOwner {
+public interface FormOwner extends ChildrenOwner {
   /**
    * Список форм объекта
    */

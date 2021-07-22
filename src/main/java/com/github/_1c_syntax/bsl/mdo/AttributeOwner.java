@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Расширение - Владелец реквизитов реквизиты
  */
-public interface AttributeOwner {
+public interface AttributeOwner extends ChildrenOwner {
   /**
    * Список реквизитов объекта
    */

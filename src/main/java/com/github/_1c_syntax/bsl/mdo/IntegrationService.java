@@ -26,10 +26,12 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -37,7 +39,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class IntegrationService implements MDObject, ModuleOwner {
+public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner {
 
   /**
    * Имя
@@ -94,9 +96,22 @@ public class IntegrationService implements MDObject, ModuleOwner {
    */
   List<IntegrationServiceChannel> integrationChannels;
 
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
+
   @Override
   public List<MDObject> getChildren() {
-    var children = MDObject.super.getChildren();
+    var children = ChildrenOwner.super.getChildren();
     children.addAll(integrationChannels);
     return children;
   }
