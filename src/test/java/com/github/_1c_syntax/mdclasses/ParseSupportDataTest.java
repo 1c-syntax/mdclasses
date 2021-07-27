@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.support_configuration.ParseSupportData;
 import com.github._1c_syntax.support_configuration.SupportVariant;
 import org.junit.jupiter.api.Test;
@@ -47,66 +49,61 @@ class ParseSupportDataTest {
 
     final var PATH_TO_SUPPORT = "src/test/resources/support/edt";
     var srcPath = Paths.get(PATH_TO_SUPPORT).toAbsolutePath();
-    var configuration = Configuration.create(srcPath);
+    var configuration = (Configuration) MDClasses.createConfiguration(srcPath);
 
-    assertThat(configuration.getModulesBySupport().size()).isNotZero();
+    assertThat(configuration.getModulesBySupport()).isNotEmpty();
 
-    var path = Paths.get(PATH_TO_SUPPORT, "src/Catalogs/ПервыйСправочник/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    var path = Paths.get(PATH_TO_SUPPORT, "src/Catalogs/ПервыйСправочник/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
 
-    path = Paths.get(PATH_TO_SUPPORT, "src/Configuration/SessionModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.EDITABLE_SUPPORT_ENABLED);
+    path = Paths.get(PATH_TO_SUPPORT, "src/Configuration/SessionModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.EDITABLE_SUPPORT_ENABLED);
 
-    path = Paths.get(PATH_TO_SUPPORT, "src/Documents/ПервыйДокумент/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_SUPPORTED);
+    path = Paths.get(PATH_TO_SUPPORT, "src/Documents/ПервыйДокумент/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_SUPPORTED);
 
-    path = Paths.get(PATH_TO_SUPPORT, "src/Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Module.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
-
+    path = Paths.get(PATH_TO_SUPPORT, "src/Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Module.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
   }
 
   @Test
   void testConfigurationSupportDesigner() {
-
     final var PATH_TO_SUPPORT = "src/test/resources/support/original";
-    var srcPath = new File(PATH_TO_SUPPORT);
-    var configuration = Configuration.create(srcPath.toPath());
+    var srcPath = Paths.get(PATH_TO_SUPPORT).toAbsolutePath();
+    var configuration = (Configuration) MDClasses.createConfiguration(srcPath);
 
-    // пока просто проверим что там чтото есть
     assertThat(configuration.getModulesBySupport()).isNotEmpty();
 
-    var path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    var path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
 
-    path = Paths.get(PATH_TO_SUPPORT, "Ext/SessionModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.EDITABLE_SUPPORT_ENABLED);
+    path = Paths.get(PATH_TO_SUPPORT, "Ext/SessionModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.EDITABLE_SUPPORT_ENABLED);
 
-    path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_SUPPORTED);
+    path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_SUPPORTED);
 
-    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl")
-      .toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
   }
 
   @Test
   void testConfigurationFullSupportDesigner() {
 
     final var PATH_TO_SUPPORT = "src/test/resources/support/original-full-support";
-    var srcPath = new File(PATH_TO_SUPPORT);
-    var configuration = Configuration.create(srcPath.toPath());
+    var srcPath = Paths.get(PATH_TO_SUPPORT).toAbsolutePath();
+    var configuration = (Configuration) MDClasses.createConfiguration(srcPath);
 
     assertThat(configuration.getModulesBySupport()).isNotEmpty();
 
-    var path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    var path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
 
-    path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl").toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    path = Paths.get(PATH_TO_SUPPORT, "Documents/ПервыйДокумент/Ext/ObjectModule.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
 
-    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl")
-      .toAbsolutePath();
-    assertThat(configuration.getModuleSupport(path.toUri())).containsValue(SupportVariant.NOT_EDITABLE);
+    path = Paths.get(PATH_TO_SUPPORT, "Catalogs/ПервыйСправочник/Forms/ФормаЭлемента/Ext/Form/Module.bsl");
+    checkModuleSupport(configuration, path, SupportVariant.NOT_EDITABLE);
   }
 
   @Test
@@ -114,6 +111,14 @@ class ParseSupportDataTest {
     var path = Path.of(BASE_PATH, "incorrect/ParentConfigurations.bin");
     ParseSupportData parseSupportData = new ParseSupportData(path);
     assertThat(parseSupportData.getSupportMap()).isEmpty();
+  }
+
+  private void checkModuleSupport(Configuration configuration,
+                                  Path path,
+                                  SupportVariant supportVariant) {
+    var module = configuration.getModuleByUri(path.toAbsolutePath().toUri());
+    assertThat(module).isPresent();
+    assertThat(module.get().getSupportVariant()).isEqualTo(supportVariant);
   }
 
 }

@@ -27,7 +27,6 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -112,26 +111,14 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   }
 
   protected void linkUsing(Map<String, AbstractMDObjectBase> allMDO) {
-    // todo переделать на заполнение в configuration
-//    if (content.isEmpty()) {
-//      return;
-//    }
-//    using = new ArrayList<>();
-//    content.forEach((UseContent useContent) -> {
-//      var mdo = allMDO.get(useContent.getMetadata());
-//      if (mdo instanceof AbstractMDObjectComplex) {
-//        var mdoComplex = (AbstractMDObjectComplex) mdo;
-//        mdoComplex.addAttribute(getAttribute());
-//        using.add(mdoComplex);
-//      }
-//    });
-  }
-
-  private AbstractMDOAttribute getAttribute() {
-    if (commonAttribute == null) {
-      commonAttribute = new CommonAttribute(this);
-    }
-    return commonAttribute;
+    using = new ArrayList<>();
+    content.forEach((UseContent useContent) -> {
+      var mdo = allMDO.get(useContent.getMetadata());
+      if (mdo instanceof AbstractMDObjectComplex) {
+        var mdoComplex = (AbstractMDObjectComplex) mdo;
+        using.add(mdoComplex);
+      }
+    });
   }
 
   @Data

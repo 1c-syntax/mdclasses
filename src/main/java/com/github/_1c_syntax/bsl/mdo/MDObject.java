@@ -80,6 +80,4 @@ public interface MDObject {
    * Установка варианта поддержки родительской конфигурации
    */
   void setSupportVariant(SupportVariant supportVariant);
-
-// todo добавить ИНФО о поддержке, чтобы прям из объекта можно было понимать
 }

@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
@@ -56,6 +57,7 @@ public class MDClasses {
         if (configuration instanceof Configuration) {
           computeSupportConfiguration((Configuration) configuration, path);
         }
+        computeCommonAttributeLinks(configuration);
         return configuration;
       }
     }
@@ -99,7 +101,16 @@ public class MDClasses {
   @SneakyThrows
   // todo времянка
   public MDClass buildMDClass(Object builder) {
-    return (MDClass) builder.getClass().getDeclaredMethod("build").invoke(builder);
+    var result = (MDClass) builder.getClass().getDeclaredMethod("build").invoke(builder);
+
+    if (result instanceof ModuleOwner) {
+      ((ModuleOwner) result).getModules().stream()
+        .filter(ObjectModule.class::isInstance)
+        .map(ObjectModule.class::cast)
+        .forEach(module -> module.setOwner((ModuleOwner) result));
+    }
+
+    return result;
   }
 
   /**
@@ -122,9 +133,24 @@ public class MDClasses {
       configuration.getPlainChildren().forEach(mdo -> mdo.setSupportVariant(SupportVariant.NONE));
     }
   }
+
+  /**
+   * Выполняет связь общего реквизита с объектами из его состава
+   *
+   * @param mdc Конфигурация или расширение
+   */
+  private static void computeCommonAttributeLinks(MDClass mdc) {
+    if (mdc instanceof ConfigurationTree) {
+      var configuration = (ConfigurationTree) mdc;
+      configuration.getCommonAttributes()
+        .forEach(commonAttribute -> commonAttribute.getUsing().getContent()
+          .forEach(mdoReference -> mdc.findChild(mdoReference)
+            .ifPresent((MDObject mdObject) -> {
+              if (mdObject instanceof AttributeOwner) {
+                ((AttributeOwner) mdObject).addCommonAttribute(commonAttribute);
+              }
+            }))
+        );
+    }
+  }
 }
-
-// todo реализовать
-//  - при сборке конфигурации и расширения добавлять ссылки на общий реквизит в список реквизитов
-
-

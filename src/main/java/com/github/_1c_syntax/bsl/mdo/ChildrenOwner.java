@@ -21,8 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Расширение - владелец дочерних объектов
@@ -72,5 +75,17 @@ public interface ChildrenOwner {
       );
 
     return children;
+  }
+
+  /**
+   * Выполняет поиск дочернего (включая все уровни) объекта по ссылке
+   *
+   * @param ref Ссылка MdoReference на искомый объект
+   * @return Контейнер с найденным значением (может быть пустым)
+   */
+  default Optional<MDObject> findChild(MdoReference ref) {
+    return getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getMdoReference().equals(ref))
+      .findFirst();
   }
 }

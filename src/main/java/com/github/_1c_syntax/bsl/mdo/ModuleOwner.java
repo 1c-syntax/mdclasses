@@ -21,8 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -48,5 +50,15 @@ public interface ModuleOwner {
         .collect(Collectors.toList()));
     }
     return modules;
+  }
+
+  /**
+   * Ищет модуль по адресу его файла
+   *
+   * @param uri Адрес файла модуля
+   * @return Контейнер с найденным файлом
+   */
+  default Optional<Module> getModuleByUri(URI uri) {
+    return getAllModules().stream().filter(module -> module.getUri().equals(uri)).findFirst();
   }
 }

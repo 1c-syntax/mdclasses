@@ -21,14 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.nio.file.Path;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -68,5 +74,29 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     assertThat(mdo.isPasswordMode()).isTrue();
     assertThat(mdo.getUsing().getContent()).isEmpty();
     assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+  }
+
+  @Test
+  void testUsing() {
+    var rootPath = Path.of("src/test/resources/metadata/original");
+    var mdc = MDClasses.createConfiguration(rootPath);
+    assertThat(mdc)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+    var configuration = (Configuration) mdc;
+    assertThat(configuration.getCommonAttributes()).hasSize(1);
+    var commonAttribute = configuration.getCommonAttributes().get(0);
+    assertThat(commonAttribute.getUsing().getContent()).hasSize(2);
+    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().getContent().get(0)), commonAttribute);
+    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().getContent().get(1)), commonAttribute);
+  }
+
+  private void checkCommonAttributeLink(Optional<MDObject> mdo, CommonAttribute commonAttribute) {
+    assertThat(mdo).isPresent();
+    mdo.ifPresent((MDObject mdObject) -> {
+      assertThat(mdObject).isInstanceOf(AttributeOwner.class);
+      var attributeOwner = (AttributeOwner) mdObject;
+      assertThat(attributeOwner.getAttributes()).contains(commonAttribute);
+    });
   }
 }

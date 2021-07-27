@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.CommonAttribute;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -31,6 +32,7 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -112,5 +114,10 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
     if (this.owner == null) {
       this.owner = owner;
     }
+  }
+
+  @Override
+  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
+    // todo общего реквизита не бывает
   }
 }

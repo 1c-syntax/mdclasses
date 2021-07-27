@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -122,5 +123,10 @@ public class DataProcessor implements MDObject, AttributeOwner, FormOwner, Comma
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
     }
+  }
+
+  @Override
+  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
+    // todo общего реквизита быть не может
   }
 }

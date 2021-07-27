@@ -39,7 +39,10 @@ import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
+import java.net.URI;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Корневой класс конфигурации 1с
@@ -167,6 +170,15 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
     }
   }
 
+  /**
+   * Возвращает соответствие ссылок на файлы модулей их вариантам поддержки
+   *
+   * @return Соответствие ссылок на файлы и вариантов поддержки
+   */
+  public Map<URI, SupportVariant> getModulesBySupport() {
+    return getAllModules().stream().collect(Collectors.toMap(Module::getUri, Module::getSupportVariant));
+  }
+
 //
 //  /**
 //   * Модули объектов конфигурации в связке со ссылкой на файлы
@@ -212,98 +224,8 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
 //   Path rootPath;
 
 //
-//  protected Configuration() {
-//    configurationSource = ConfigurationSource.EMPTY;
-//    children = Collections.emptySet();
-//    childrenByMdoRef = Collections.emptyMap();
-//    modulesByType = Collections.emptyMap();
-//    modulesBySupport = Collections.emptyMap();
-//    modulesByObject = Collections.emptyMap();
-//    modules = Collections.emptyList();
-//    commonModules = Collections.emptyMap();
-//    languages = Collections.emptyMap();
-//    modulesByMDORef = Collections.emptyMap();
-//    orderedTopMDObjects = Collections.emptyMap();
-//    roles = Collections.emptyList();
-//    copyrights = Collections.emptyList();
-//    detailedInformation = Collections.emptyList();
-//    briefInformation = Collections.emptyList();
 //
-//    rootPath = null;
-//    name = "";
-//    uuid = "";
-//
-//    compatibilityMode = new CompatibilityMode();
-//    configurationExtensionCompatibilityMode = new CompatibilityMode();
-//    scriptVariant = ScriptVariant.ENGLISH;
-//
-//    defaultRunMode = ApplicationRunMode.MANAGED_APPLICATION;
-//    defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
-//    dataLockControlMode = DataLockControlMode.AUTOMATIC;
-//    objectAutonumerationMode = "";
-//    modalityUseMode = UseMode.USE;
-//    synchronousExtensionAndAddInCallUseMode = UseMode.USE;
-//    synchronousPlatformExtensionAndAddInCallUseMode = UseMode.USE;
-//  }
-//
-//  protected Configuration(MDConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
-//    var allChildren = getPlainChildren(mdoConfiguration);
-//
-//    configurationSource = source;
-//    children = new HashSet<>(allChildren);
-//    childrenByMdoRef = new HashMap<>();
-//    orderedTopMDObjects = getOrderedTopObjectsByChildren(allChildren);
-//    commonModules = new CaseInsensitiveMap<>();
-//    languages = new HashMap<>();
-//    roles = new ArrayList<>();
-//    children.forEach((AbstractMDObjectBase mdo) -> {
-//      this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
-//      if (mdo instanceof MDCommonModule) {
-//        this.commonModules.put(mdo.getName(), (MDCommonModule) mdo);
-//      } else if (mdo instanceof MDLanguage) {
-//        this.languages.put(((MDLanguage) mdo).getLanguageCode(), (MDLanguage) mdo);
-//      } else if (mdo instanceof MDRole) {
-//        this.roles.add((MDRole) mdo);
-//      }
-//    });
-//
-//    rootPath = path;
-//
-//    name = mdoConfiguration.getName();
-//    uuid = mdoConfiguration.getUuid();
-//
-//    // если версии совместимости конфигурации нет, то используем версию совместимости расширения
-//    configurationExtensionCompatibilityMode = mdoConfiguration.getConfigurationExtensionCompatibilityMode();
-//    if (CompatibilityMode.compareTo(mdoConfiguration.getCompatibilityMode(), "") == 0) {
-//      compatibilityMode = mdoConfiguration.getConfigurationExtensionCompatibilityMode();
-//    } else {
-//      compatibilityMode = mdoConfiguration.getCompatibilityMode();
-//    }
-//
-//    scriptVariant = mdoConfiguration.getScriptVariant();
-//    defaultRunMode = ApplicationRunMode.getByName(mdoConfiguration.getDefaultRunMode());
-//
-//    if (mdoConfiguration.getDefaultLanguage().isRight()) {
-//      defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
-//    } else {
-//      defaultLanguage = MDOFactory.fakeLanguage(scriptVariant);
-//    }
-//
-//    dataLockControlMode = mdoConfiguration.getDataLockControlMode();
-//    objectAutonumerationMode = mdoConfiguration.getObjectAutonumerationMode();
-//    modalityUseMode = mdoConfiguration.getModalityUseMode();
-//    synchronousExtensionAndAddInCallUseMode = mdoConfiguration.getSynchronousExtensionAndAddInCallUseMode();
-//    synchronousPlatformExtensionAndAddInCallUseMode =
-//      mdoConfiguration.getSynchronousPlatformExtensionAndAddInCallUseMode();
-//
-//    useManagedFormInOrdinaryApplication = mdoConfiguration.isUseManagedFormInOrdinaryApplication();
-//    useOrdinaryFormInManagedApplication = mdoConfiguration.isUseOrdinaryFormInManagedApplication();
-//
-//    copyrights = mdoConfiguration.getCopyrights();
-//
-//    briefInformation = mdoConfiguration.getBriefInformation();
-//    detailedInformation = mdoConfiguration.getDetailedInformation();
-//
+
 //    Map<URI, ModuleType> modulesType = new HashMap<>();
 //    Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
 //    Map<URI, MDOHasModule> modulesObject = new HashMap<>();
@@ -331,13 +253,7 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
 //    modules = modulesList;
 //    modulesByMDORef = modulesMDORef;
 //  }
-//
-//  /**
-//   * Метод для создания пустой конфигурации
-//   */
-//  public static Configuration create() {
-//    return new Configuration();
-//  }
+
 //
 //  /**
 //   * Метод для создания пустой конфигурации расширения

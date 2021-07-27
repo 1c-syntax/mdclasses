@@ -23,13 +23,21 @@ package com.github._1c_syntax.mdclasses.mdo.children.template;
 
 import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
+import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
-import org.junit.jupiter.api.Test;
+import com.github._1c_syntax.mdclasses.mdo.children.Template;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import io.vavr.control.Either;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -38,22 +46,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TemplateDataTest {
 
-  @Test
-  void testEdt() {
-    var srcPath = new File("src/test/resources/metadata/skd/edt");
-    var configuration = Configuration.create(srcPath.toPath());
-    checkTemplates(configuration);
+  @ParameterizedTest(name = "{index}: {0}")
+  @CsvSource(
+    {
+      "DESIGNER,src/test/resources/metadata/skd/original",
+      "EDT,src/test/resources/metadata/skd/edt",
+    }
+  )
+  void test(ArgumentsAccessor argumentsAccessor) {
+    final var src = Path.of(argumentsAccessor.getString(1));
+    MDOFactory.readMDOConfiguration(ConfigurationSource.valueOf(argumentsAccessor.getString(0)), src)
+      .ifPresent(configuration -> checkTemplates((MDConfiguration) configuration));
   }
 
-  @Test
-  void testOriginal() {
-    var srcPath = new File("src/test/resources/metadata/skd/original");
-    var configuration = Configuration.create(srcPath.toPath());
-    checkTemplates(configuration);
-  }
-
-  private void checkTemplates(Configuration configuration) {
+  private void checkTemplates(MDConfiguration configuration) {
     var commonTemplates = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.COMMON_TEMPLATE)
       .collect(Collectors.toList());
     assertThat(commonTemplates).hasSize(8)
@@ -63,6 +72,12 @@ class TemplateDataTest {
     checkCommonTemplate(commonTemplates);
 
     var templates = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .filter(AbstractMDObjectComplex.class::isInstance)
+      .map(AbstractMDObjectComplex.class::cast)
+      .map(AbstractMDObjectComplex::getTemplates)
+      .flatMap(Collection::stream)
       .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.TEMPLATE)
       .collect(Collectors.toList());
     assertThat(templates).hasSize(4);
@@ -84,7 +99,7 @@ class TemplateDataTest {
     assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
   }
 
-  private void checkTemplate(List<AbstractMDObjectBase> templates) {
+  private void checkTemplate(List<Template> templates) {
     var template = (MDOTemplate) templates.stream()
       .filter(mdObjectBase -> mdObjectBase.getName().equals("СКД"))
       .findAny()

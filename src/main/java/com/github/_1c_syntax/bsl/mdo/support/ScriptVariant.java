@@ -25,16 +25,58 @@ import com.github._1c_syntax.mdclasses.mdo.support.EnumWithValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+
+import java.util.Map;
 
 /**
  * Возможные варианты языков, на которых разрабатывается код
  */
 @AllArgsConstructor
 public enum ScriptVariant implements EnumWithValue {
-  ENGLISH("English"),
-  RUSSIAN("Russian");
+  ENGLISH("English", "Английский", "en"),
+  RUSSIAN("Russian", "Русский", "ru");
 
+  private static final Map<String, ScriptVariant> keys = computeKeys();
+
+  /**
+   * Английское имя
+   */
   @Getter
   @Accessors(fluent = true)
   private final String value;
+
+  /**
+   * Русское имя
+   */
+  @Getter
+  @Accessors(fluent = true)
+  private final String valueRu;
+
+  /**
+   * Сокращенное имя
+   */
+  @Getter
+  @Accessors(fluent = true)
+  private final String shortName;
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг, короткое)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то RUSSIAN
+   */
+  public static ScriptVariant valueByString(String string) {
+    return keys.getOrDefault(string, RUSSIAN);
+  }
+
+  private static Map<String, ScriptVariant> computeKeys() {
+    Map<String, ScriptVariant> keys = new CaseInsensitiveMap<>();
+    for (var element : ScriptVariant.values()) {
+      keys.put(element.value(), element);
+      keys.put(element.valueRu(), element);
+      keys.put(element.shortName(), element);
+    }
+    return keys;
+  }
 }

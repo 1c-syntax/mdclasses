@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -121,6 +122,13 @@ public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOw
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
+    }
+  }
+
+  @Override
+  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
+    if (attributes != null) {
+      attributes.add(commonAttribute);
     }
   }
 }

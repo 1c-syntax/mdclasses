@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import lombok.NonNull;
+
 import java.util.List;
 
 /**
@@ -31,4 +33,11 @@ public interface AttributeOwner extends ChildrenOwner {
    * Список реквизитов объекта
    */
   List<Attribute> getAttributes();
+
+  /**
+   * Метод для добавления общего реквизита к списку атрибутов
+   *
+   * @param commonAttribute Добавляемый Общий реквизит
+   */
+  void addCommonAttribute(@NonNull CommonAttribute commonAttribute);
 }

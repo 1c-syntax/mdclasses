@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -55,6 +56,8 @@ public class ObjectModule implements Module {
   public SupportVariant getSupportVariant() {
     if (owner instanceof MDObject) {
       return ((MDObject) owner).getSupportVariant();
+    } else if (owner instanceof Configuration) {
+      return ((Configuration) owner).getSupportVariant();
     }
     return SupportVariant.NONE;
   }

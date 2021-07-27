@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
@@ -30,7 +31,11 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
-import org.junit.jupiter.api.Test;
+import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import io.vavr.control.Either;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
 
@@ -39,29 +44,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PasswordModeTest {
   private static final String BASE_DIR = "src/test/resources/metadata/passwordmode";
 
-  @Test
-  void testOrigin() {
-    final var src = Path.of(BASE_DIR, "original");
-    var configuration = Configuration.create(src);
-    performCheck(configuration);
+  @ParameterizedTest(name = "{index}: {0}")
+  @CsvSource(
+    {
+      "DESIGNER,original",
+      "EDT,edt",
+    }
+  )
+  void test(ArgumentsAccessor argumentsAccessor) {
+    final var src = Path.of(BASE_DIR, argumentsAccessor.getString(1));
+    MDOFactory.readMDOConfiguration(ConfigurationSource.valueOf(argumentsAccessor.getString(0)), src)
+      .ifPresent(configuration -> performCheck((MDConfiguration) configuration));
   }
 
-  @Test
-  void testEDT() {
-    final var src = Path.of(BASE_DIR, "edt");
-    var configuration = Configuration.create(src);
-    performCheck(configuration);
-  }
-
-  private void performCheck(Configuration configuration) {
+  private void performCheck(MDConfiguration configuration) {
     checkCatalog(configuration);
     checkConstant(configuration);
     checkCommonAttribute(configuration);
     checkInformationRegister(configuration);
   }
 
-  private void checkInformationRegister(Configuration configuration) {
+  private void checkInformationRegister(MDConfiguration configuration) {
     var optionalInformationRegister = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.INFORMATION_REGISTER
         && abstractMDObjectBase.getName().equals("КакойТоРегистр"))
       .findAny();
@@ -92,8 +98,10 @@ class PasswordModeTest {
       && attribute.isPasswordMode() == passwordMode;
   }
 
-  private void checkConstant(Configuration configuration) {
+  private void checkConstant(MDConfiguration configuration) {
     var optionalConstant = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.CONSTANT
         && abstractMDObjectBase.getName().equals("Пароль"))
       .findAny();
@@ -103,8 +111,10 @@ class PasswordModeTest {
     assertThat(constant.isPasswordMode()).isTrue();
   }
 
-  private void checkCommonAttribute(Configuration configuration) {
+  private void checkCommonAttribute(MDConfiguration configuration) {
     var optionalCommonAttribute = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.COMMON_ATTRIBUTE
         && abstractMDObjectBase.getName().equals("ОбщийРеквизит1"))
       .findAny();
@@ -123,8 +133,10 @@ class PasswordModeTest {
     return true;
   }
 
-  private void checkCatalog(Configuration configuration) {
+  private void checkCatalog(MDConfiguration configuration) {
     var optionalCatalog = configuration.getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
       .filter(abstractMDObjectBase -> abstractMDObjectBase instanceof MDCatalog)
       .findAny();
 

@@ -328,6 +328,3 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     }
   }
 }
-
-// todo добавить проверки
-// - что дочерние заполнены (включая и их)
