@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -32,11 +33,13 @@ import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
+import java.util.List;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Subsystem implements MDObject {
+public class Subsystem implements MDObject, ChildrenOwner {
 
   /**
    * Имя
@@ -89,20 +92,27 @@ public class Subsystem implements MDObject {
   @NonFinal
   SupportVariant supportVariant;
 
+  /**
+   * Дочерние подсистемы
+   */
+  List<Subsystem> subsystems;
+
+  /**
+   * Объекты, входящие в состав подсистемы
+   */
+  ContentStorage content;
+
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
     }
   }
-}
 
-// todo реализовать хранение дочерних
-//   /**
-//    * Дочерние объекты подсистемы, включает в себя как дочерние подсистемы, так и и другие объекты,
-//    * включенные в подсистему
-//    * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
-//    */
-//   @XStreamImplicit
-//   private List<Either<String, AbstractMDObjectBase>> children = Collections.emptyList();
-//
+  @Override
+  public List<MDObject> getChildren() {
+    var children = ChildrenOwner.super.getChildren();
+    children.addAll(subsystems);
+    return children;
+  }
+}

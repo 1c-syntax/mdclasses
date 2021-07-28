@@ -21,6 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -92,21 +95,26 @@ public class MDSubsystem extends AbstractMDObjectBase {
   }
 
   public void linkToChildren(Map<String, AbstractMDObjectBase> allMDO) {
+    linkToChildren(allMDO, new ArrayList<>());
+  }
+
+  public void linkToChildren(Map<String, AbstractMDObjectBase> allMDO, List<AbstractMDObjectBase> excludes) {
     List<Either<String, AbstractMDObjectBase>> localChildren = new ArrayList<>();
+    excludes.add(this);
 
     children.forEach((Either<String, AbstractMDObjectBase> mdoPair) -> {
+      AbstractMDObjectBase mdo;
       if (mdoPair.isLeft()) {
-        var mdo = allMDO.get(mdoPair.getLeft());
-        if (mdo != null) {
-          localChildren.add(Either.right(mdo));
-        } else {
-          // оставляем строку
-          localChildren.add(mdoPair);
-        }
+        mdo = allMDO.get(mdoPair.getLeft());
       } else {
-        var mdo = mdoPair.get();
-        localChildren.add(mdoPair);
-        setSubsystemForChild(allMDO, mdo);
+        mdo = mdoPair.get();
+      }
+
+      if (mdo != null && !excludes.contains(mdo)) {
+        localChildren.add(Either.right(mdo));
+        if (mdo instanceof MDSubsystem) {
+          ((MDSubsystem) mdo).linkToChildren(allMDO, excludes);
+        }
       }
     });
 
@@ -162,17 +170,30 @@ public class MDSubsystem extends AbstractMDObjectBase {
     setChildren(newChildren);
   }
 
-  private static void setSubsystemForChild(Map<String, AbstractMDObjectBase> allMDO, AbstractMDObjectBase mdo) {
-    if (mdo instanceof MDSubsystem) {
-      ((MDSubsystem) mdo).linkToChildren(allMDO);
-    }
-  }
-
   @Override
   public Object buildMDObject() {
     builder = super.buildMDObject();
     TransformationUtils.setValue(builder, "includeInCommandInterface",
       includeInCommandInterface);
+    TransformationUtils.setValue(builder, "subsystems",
+      children.stream()
+        .filter(Either::isRight)
+        .map(Either::get)
+        .filter(MDSubsystem.class::isInstance)
+        .map(MDSubsystem.class::cast)
+        .map(MDSubsystem::buildMDObject)
+        .map(MDClasses::build)
+        .collect(Collectors.toList())
+    );
+
+    TransformationUtils.setValue(builder, "content", new ContentStorage(children.stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .filter(mdo -> !(mdo instanceof MDSubsystem))
+      .map(AbstractMDO::getMdoReference)
+      .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+      .collect(Collectors.toList())));
+
     return super.buildMDObject();
   }
 }

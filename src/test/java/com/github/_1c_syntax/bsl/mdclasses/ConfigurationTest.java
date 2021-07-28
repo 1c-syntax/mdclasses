@@ -278,11 +278,11 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
   @ParameterizedTest(name = "{index}: path {0}")
   @CsvSource(
     {
-      "src/test/resources/metadata/original, 110," +
+      "src/test/resources/metadata/original, 112," +
         "1,1,1,2,1,0,13,1,8,3,2,1,8,4,1,2",
       "src/test/resources/metadata/original_ordinary, 1," +
         "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-      "src/test/resources/metadata/edt, 175," +
+      "src/test/resources/metadata/edt, 178," +
         "1,1,1,2,1,0,27,18,22,10,17,1,6,4,1,2",
       "src/test/resources/metadata/edt_en, 3," +
         "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -411,7 +411,7 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     {
       "src/test/resources/support/edt, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
       "src/test/resources/support/original, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
-      "src/test/resources/metadata/edt, 175, 0, 0, 0, NONE",
+      "src/test/resources/metadata/edt, 178, 0, 0, 0, NONE",
       "src/test/resources/metadata/edt_en, 3, 0, 0, 0, NONE",
       "src/test/resources/support/original-full-support, 0, 0, 4, 0, NOT_EDITABLE"
     }
