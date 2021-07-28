@@ -93,13 +93,6 @@ public class ObjectAttribute implements Attribute, MDChildObject {
   @NonFinal
   SupportVariant supportVariant;
 
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
-
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
@@ -114,6 +107,13 @@ public class ObjectAttribute implements Attribute, MDChildObject {
    * Вариант индексирования реквизита
    */
   IndexingType indexing;
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 
   @Override
   public void setOwner(MDObject owner) {

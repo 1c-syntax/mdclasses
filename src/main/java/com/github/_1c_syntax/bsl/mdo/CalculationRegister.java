@@ -113,18 +113,18 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
    */
   List<Recalculation> recalculations;
 
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @NonFinal
+  SupportVariant supportVariant;
+
   @Override
   public List<MDObject> getChildren() {
     var children = AttributeOwner.super.getChildren();
     children.addAll(recalculations);
     return children;
   }
-
-  /**
-   * Вариант поддержки родительской конфигурации
-   */
-  @NonFinal
-  SupportVariant supportVariant;
 
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {

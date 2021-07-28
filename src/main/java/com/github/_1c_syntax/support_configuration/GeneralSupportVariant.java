@@ -22,5 +22,18 @@
 package com.github._1c_syntax.support_configuration;
 
 public enum GeneralSupportVariant {
-  LOCKED, UNLOCKED
+  LOCKED, UNLOCKED;
+
+  /**
+   * Находит элемент по приоритету
+   *
+   * @param priority номер приоритета
+   * @return Найденное значение
+   */
+  public static GeneralSupportVariant valueOf(int priority) {
+    if (priority == 0) {
+      return UNLOCKED;
+    }
+    return LOCKED;
+  }
 }

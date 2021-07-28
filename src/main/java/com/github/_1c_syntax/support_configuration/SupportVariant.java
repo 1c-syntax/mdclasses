@@ -24,12 +24,13 @@ package com.github._1c_syntax.support_configuration;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 
 @AllArgsConstructor
 public enum SupportVariant {
-  NOT_EDITABLE(3), EDITABLE_SUPPORT_ENABLED(2), NOT_SUPPORTED(1), NONE(-1);
+  NOT_EDITABLE(0), EDITABLE_SUPPORT_ENABLED(1), NOT_SUPPORTED(2), NONE(99);
 
   @Getter
   private final int priority;
@@ -41,7 +42,22 @@ public enum SupportVariant {
    * @return Максимальный вариант поддержки
    */
   public static SupportVariant max(Collection<SupportVariant> variants) {
-    return variants.stream().max(Comparator.comparing(SupportVariant::getPriority))
+    return variants.stream().min(Comparator.comparing(SupportVariant::getPriority))
       .orElse(SupportVariant.NONE);
+  }
+
+  /**
+   * Находит элемент по приоритету
+   *
+   * @param priority номер приоритета
+   * @return Найденное значение
+   */
+  public static SupportVariant valueOf(int priority) {
+    var result = Arrays.stream(values())
+      .filter(supportVariant -> supportVariant.priority == priority).findFirst();
+    if (result.isEmpty()) {
+      return NONE;
+    }
+    return result.get();
   }
 }

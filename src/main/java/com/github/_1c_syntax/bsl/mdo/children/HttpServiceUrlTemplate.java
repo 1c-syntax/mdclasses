@@ -93,17 +93,17 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   @NonFinal
   SupportVariant supportVariant;
 
+  /**
+   * Методы шаблона URL HTTP-сервиса
+   */
+  List<HttpServiceMethod> httpServiceMethods;
+
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
     }
   }
-
-  /**
-   * Методы шаблона URL HTTP-сервиса
-   */
-  List<HttpServiceMethod> httpServiceMethods;
 
   @Override
   public List<MDObject> getChildren() {

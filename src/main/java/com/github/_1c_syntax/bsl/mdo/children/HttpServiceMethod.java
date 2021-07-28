@@ -90,19 +90,19 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   @NonFinal
   SupportVariant supportVariant;
 
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
-
   /**
    * Обработчик метода http сервиса. Пока строкой
    * Формат имя метода
    * Пример ШаблонURLМетод1
    */
   String handler; // TODO сделать классом
+
+  @Override
+  public void setSupportVariant(SupportVariant supportVariant) {
+    if (this.supportVariant == null) {
+      this.supportVariant = supportVariant;
+    }
+  }
 
   @Override
   public void setOwner(MDObject owner) {

@@ -42,7 +42,6 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
@@ -235,7 +234,6 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   }
 
   private void computeAllMDObject(Path rootPath) {
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
     var localChildren =
       children.parallelStream()
         .map(child -> readChildMDO(configurationSource, rootPath, child))

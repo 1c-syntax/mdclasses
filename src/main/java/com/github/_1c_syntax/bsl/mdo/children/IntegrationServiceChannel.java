@@ -101,17 +101,17 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   @NonFinal
   SupportVariant supportVariant;
 
+  /**
+   * Имя канала внешнего сервиса интеграции
+   */
+  String externalIntegrationServiceChannelName;
+
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
     }
   }
-
-  /**
-   * Имя канала внешнего сервиса интеграции
-   */
-  String externalIntegrationServiceChannelName;
 
   @Override
   public void setOwner(MDObject owner) {

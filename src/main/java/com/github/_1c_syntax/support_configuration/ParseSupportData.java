@@ -56,6 +56,20 @@ public class ParseSupportData {
   private final Path pathToBinFile;
   private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
 
+  // todo убрать из паблика
+  public ParseSupportData(Path pathToBinFile) {
+    this.pathToBinFile = pathToBinFile;
+    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
+    try {
+      read();
+    } catch (FileNotFoundException exception) {
+      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
+    } catch (NumberFormatException exception) {
+      LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
+      supportMap.clear();
+    }
+  }
+
   /**
    * Выполняет чтение информации о поддержке и возвращает упрощенный вариант: UUID->MAX(SupportVariant)
    *
@@ -70,20 +84,6 @@ public class ParseSupportData {
       -> result.put(uuid, SupportVariant.max(supportVariantMap.values())));
 
     return result;
-  }
-
-  // todo убрать из паблика
-  public ParseSupportData(Path pathToBinFile) {
-    this.pathToBinFile = pathToBinFile;
-    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
-    try {
-      read();
-    } catch (FileNotFoundException exception) {
-      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
-    } catch (NumberFormatException exception) {
-      LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
-      supportMap.clear();
-    }
   }
 
   private void read() throws FileNotFoundException {
@@ -106,7 +106,7 @@ public class ParseSupportData {
       var configurationName = dataStrings[startPoint + SHIFT_CONFIGURATION_NAME];
       var countObjectsConfiguration = Integer.parseInt(dataStrings[startPoint + SHIFT_CONFIGURATION_COUNT_OBJECT]);
       var configurationSupport = Integer.parseInt(dataStrings[CONFIGURATION_SUPPORT]);
-      var configurationSupportVariant = getGeneralSupportVariantByInt(configurationSupport);
+      var configurationSupportVariant = GeneralSupportVariant.valueOf(configurationSupport);
 
       var supportConfiguration
         = new SupportConfiguration(configurationName, configurationProducer, configurationVersion);
@@ -128,7 +128,7 @@ public class ParseSupportData {
         if (configurationSupportVariant == GeneralSupportVariant.LOCKED) {
           supportVariant = SupportVariant.NOT_EDITABLE;
         } else {
-          supportVariant = getSupportVariantByInt(support);
+          supportVariant = SupportVariant.valueOf(support);
         }
 
         Map<SupportConfiguration, SupportVariant> map = supportMap.computeIfAbsent(guidObject, k -> new HashMap<>());
@@ -143,28 +143,5 @@ public class ParseSupportData {
   public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     return this.supportMap;
   }
-
-  private static GeneralSupportVariant getGeneralSupportVariantByInt(int support) {
-    if (support == 0) {
-      return GeneralSupportVariant.UNLOCKED;
-    }
-
-    return GeneralSupportVariant.LOCKED;
-  }
-
-  private static SupportVariant getSupportVariantByInt(int support) {
-    switch (support) {
-      case 0:
-        return SupportVariant.NOT_EDITABLE;
-      case 1:
-        return SupportVariant.EDITABLE_SUPPORT_ENABLED;
-      case 2:
-        return SupportVariant.NOT_SUPPORTED;
-      default:
-        return SupportVariant.NONE;
-    }
-  }
-
-
 
 }

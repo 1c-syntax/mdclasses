@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
+import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
@@ -273,6 +274,17 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 
     mdc.getChildren().forEach(mdObject -> assertThat(children).contains(mdObject));
     children.forEach(mdObject -> assertThat(mdc.getChildren()).contains(mdObject));
+
+    // smoky test
+    var newOwner = mdc.getChildren().get(0);
+    mdc.getPlainChildren().stream()
+      .filter(MDChildObject.class::isInstance)
+      .map(MDChildObject.class::cast)
+      .forEach(mdObject -> {
+        var owner = mdObject.getOwner();
+        mdObject.setOwner(newOwner);
+        assertThat(mdObject.getOwner()).isEqualTo(owner);
+      });
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -374,36 +386,6 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       .filter(WebServiceOperation.class::isInstance)
       .collect(Collectors.toList())
     ).hasSize(argumentsAccessor.getInteger(17));
-
-//
-//    //    assertThat(mdc.getModulesByType()).hasSize(19);
-//
-////    assertThat(mdc.getModulesBySupport()).isEmpty();
-////    assertThat(mdc.getModulesByObject()).hasSize(19);
-//
-//
-//
-////    assertThat(mdc.getChildrenByMdoRef()).hasSize(111);
-//
-////    assertThat(mdc.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
-////    assertThat(mdc.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
-//
-////    checkFillPath(mdc.getChildren());
-////    checkFormData(mdc.getChildren());
-//
-////    var modulesByType = mdc.getModulesByMDORef("CommonModule.ГлобальныйОбщийМодуль");
-////    assertThat(modulesByType).hasSize(1)
-////      .containsKey(ModuleType.CommonModule);
-////
-////    modulesByType = mdc.getModulesByMDORef("WSReference.WSСсылка");
-////    assertThat(modulesByType).isEmpty();
-////
-////    modulesByType = mdc.getModulesByMDORef(mdc.getCommonModule("ГлобальныйОбщийМодуль")
-////      .get().getMdoReference());
-////    assertThat(modulesByType).hasSize(1)
-////      .containsKey(ModuleType.CommonModule);
-////
-////    checkOrderedCommonModules(mdc);
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -439,5 +421,16 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     assertThat(mdo_NOT_EDITABLE).hasSize(argumentsAccessor.getInteger(3));
     assertThat(mdo_NOT_SUPPORTED).hasSize(argumentsAccessor.getInteger(4));
     assertThat(configuration.getSupportVariant().name()).isEqualTo(argumentsAccessor.getString(5));
+
+    // smoky test
+    configuration.getPlainChildren().forEach((MDObject mdo) -> {
+      var supportVariant = mdo.getSupportVariant();
+      if (supportVariant == SupportVariant.NONE) {
+        mdo.setSupportVariant(SupportVariant.NOT_SUPPORTED);
+      } else {
+        mdo.setSupportVariant(SupportVariant.NONE);
+      }
+      assertThat(mdo.getSupportVariant()).isEqualTo(supportVariant);
+    });
   }
 }
