@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -73,6 +74,7 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     assertThat(mdo.isPasswordMode()).isTrue();
     assertThat(mdo.getUsing()).isEmpty();
     assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+    assertThat(mdo.getKind()).isEqualTo(AttributeKind.COMMON);
   }
 
   @ParameterizedTest(name = "DESIGNER {index}: {0}")

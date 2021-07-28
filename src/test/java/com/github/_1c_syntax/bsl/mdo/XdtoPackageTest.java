@@ -27,6 +27,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   XdtoPackageTest() {
     super(XdtoPackage.class);
@@ -41,5 +43,18 @@ class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   void testDesigner(ArgumentsAccessor argumentsAccessor) {
     var mdo = getMDObject("XDTOPackages/" + argumentsAccessor.getString(0));
     mdoTest(mdo, MDOType.XDTO_PACKAGE, argumentsAccessor);
+    assertThat(mdo.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
+    assertThat(mdo.getData()).isNotNull();
+
+    assertThat(mdo.getData().getImports())
+      .hasSize(1)
+      .contains("http://www.1c.ru/SSL/Exchange/Message");
+    assertThat(mdo.getData().getObjectTypes())
+      .hasSize(737)
+      .anyMatch(objectType -> objectType.getName().equals("СоставнойЛюбойОбъект"));
+    assertThat(mdo.getData().getProperties()).isEmpty();
+    assertThat(mdo.getData().getValueTypes())
+      .hasSize(278)
+      .anyMatch(objectType -> objectType.getName().equals("ТипКурс"));
   }
 }

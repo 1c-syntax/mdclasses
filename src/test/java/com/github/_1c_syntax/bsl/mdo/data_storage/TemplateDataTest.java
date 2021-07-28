@@ -19,27 +19,19 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.children.template;
+package com.github._1c_syntax.bsl.mdo.data_storage;
 
-import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.CommonTemplate;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
-import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
-import com.github._1c_syntax.mdclasses.mdo.children.Template;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import io.vavr.control.Either;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,39 +47,29 @@ class TemplateDataTest {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     final var src = Path.of(argumentsAccessor.getString(1));
-    MDOFactory.readMDOConfiguration(ConfigurationSource.valueOf(argumentsAccessor.getString(0)), src)
-      .ifPresent(configuration -> checkTemplates((MDConfiguration) configuration));
+    var mdc = MDClasses.createConfiguration(src);
+    assertThat(mdc).isInstanceOf(Configuration.class);
+    checkTemplates((Configuration) mdc);
   }
 
-  private void checkTemplates(MDConfiguration configuration) {
-    var commonTemplates = configuration.getChildren().stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.COMMON_TEMPLATE)
-      .collect(Collectors.toList());
-    assertThat(commonTemplates).hasSize(8)
-      .extracting(AbstractMDObjectBase.class::cast)
-      .allMatch(mdObjectBase -> Objects.nonNull(mdObjectBase.getPath()));
+  private void checkTemplates(Configuration configuration) {
+    var commonTemplates = configuration.getCommonTemplates();
+    assertThat(commonTemplates).hasSize(8);
 
     checkCommonTemplate(commonTemplates);
 
-    var templates = configuration.getChildren().stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter(AbstractMDObjectComplex.class::isInstance)
-      .map(AbstractMDObjectComplex.class::cast)
-      .map(AbstractMDObjectComplex::getTemplates)
-      .flatMap(Collection::stream)
-      .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.TEMPLATE)
+    var templates = configuration.getPlainChildren().stream()
+      .filter(ObjectTemplate.class::isInstance)
+      .map(ObjectTemplate.class::cast)
       .collect(Collectors.toList());
     assertThat(templates).hasSize(4);
 
     checkTemplate(templates);
   }
 
-  private void checkCommonTemplate(List<AbstractMDObjectBase> commonTemplates) {
-    var template = (MDOTemplate) commonTemplates.stream()
-      .filter(mdObjectBase -> mdObjectBase.getName().equals("МакетСКД"))
+  private void checkCommonTemplate(List<CommonTemplate> commonTemplates) {
+    var template = commonTemplates.stream()
+      .filter(commonTemplate -> commonTemplate.getName().equals("МакетСКД"))
       .findAny()
       .get();
 
@@ -99,9 +81,9 @@ class TemplateDataTest {
     assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
   }
 
-  private void checkTemplate(List<Template> templates) {
-    var template = (MDOTemplate) templates.stream()
-      .filter(mdObjectBase -> mdObjectBase.getName().equals("СКД"))
+  private void checkTemplate(List<ObjectTemplate> templates) {
+    var template = templates.stream()
+      .filter(objectTemplate -> objectTemplate.getName().equals("СКД"))
       .findAny()
       .get();
 
@@ -112,5 +94,4 @@ class TemplateDataTest {
     assertThat(templateData).isPresent();
     assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
   }
-
 }

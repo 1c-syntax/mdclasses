@@ -31,6 +31,7 @@ import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -76,6 +77,9 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
       .hasSize(1)
       .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"));
     assertThat(mdo.getPlainChildren()).hasSize(3);
+    assertThat(mdo.getSubsystems())
+      .hasSize(2)
+      .containsAll(mdo.getChildren().stream().map(Subsystem.class::cast).collect(Collectors.toList()));
   }
 
   @ParameterizedTest(name = "EDT {index}: {0}")

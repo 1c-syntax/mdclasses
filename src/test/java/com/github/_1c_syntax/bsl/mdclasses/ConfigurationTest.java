@@ -412,7 +412,9 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       "src/test/resources/support/edt, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
       "src/test/resources/support/original, 0, 0, 7, 1, EDITABLE_SUPPORT_ENABLED",
       "src/test/resources/metadata/edt, 178, 0, 0, 0, NONE",
+      "src/test/resources/metadata/original, 112, 0, 0, 0, NONE",
       "src/test/resources/metadata/edt_en, 3, 0, 0, 0, NONE",
+      "src/test/resources/metadata/edt_3_18, 38, 0, 0, 0, NONE",
       "src/test/resources/support/original-full-support, 0, 0, 4, 0, NOT_EDITABLE"
     }
   )

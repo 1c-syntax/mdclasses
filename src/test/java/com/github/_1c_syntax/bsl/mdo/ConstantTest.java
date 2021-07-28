@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -57,5 +59,7 @@ class ConstantTest extends AbstractMDObjectTest<Constant> {
     var mdo = getMDObjectEDT("Constants/" + name + "/" + name);
     mdoTest(mdo, MDOType.CONSTANT, argumentsAccessor);
     assertThat(mdo.isPasswordMode()).isFalse();
+    assertThat(mdo.getKind()).isEqualTo(AttributeKind.STANDARD);
+    assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 }

@@ -61,5 +61,10 @@ class RoleTest extends AbstractMDObjectTest<Role> {
     assertThat(mdo.isIndependentRightsOfChildObjects()).isTrue();
     assertThat(mdo.isSetForAttributesByDefault()).isTrue();
     assertThat(mdo.isSetForNewObjects()).isTrue();
+    assertThat(mdo.getRights())
+      .hasSize(44)
+      .anyMatch(roleRight -> roleRight.getName().equals("Subsystem.ВтораяПодсистема")
+        && roleRight.getRights().containsKey("View")
+        && roleRight.getRights().containsValue(false));
   }
 }
