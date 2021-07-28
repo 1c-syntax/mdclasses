@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -100,7 +99,7 @@ public class Subsystem implements MDObject, ChildrenOwner {
   /**
    * Объекты, входящие в состав подсистемы
    */
-  ContentStorage content;
+  List<MdoReference> content;
 
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {

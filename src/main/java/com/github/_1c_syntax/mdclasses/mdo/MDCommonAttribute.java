@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -136,10 +135,10 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
     TransformationUtils.setValue(builder, "dataSeparation", dataSeparation);
     TransformationUtils.setValue(builder, "passwordMode", passwordMode);
     TransformationUtils.setValue(builder, "indexing", indexing);
-    TransformationUtils.setValue(builder, "using", new ContentStorage(using.stream()
+    TransformationUtils.setValue(builder, "using", using.stream()
       .map(AbstractMDO::getMdoReference)
       .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
-      .collect(Collectors.toList())));
+      .collect(Collectors.toList()));
 
     return builder;
   }

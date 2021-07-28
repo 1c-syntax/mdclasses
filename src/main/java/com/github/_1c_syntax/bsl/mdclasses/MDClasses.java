@@ -143,7 +143,7 @@ public class MDClasses {
     if (mdc instanceof ConfigurationTree) {
       var configuration = (ConfigurationTree) mdc;
       configuration.getCommonAttributes()
-        .forEach(commonAttribute -> commonAttribute.getUsing().getContent()
+        .forEach(commonAttribute -> commonAttribute.getUsing()
           .forEach(mdoReference -> mdc.findChild(mdoReference)
             .ifPresent((MDObject mdObject) -> {
               if (mdObject instanceof AttributeOwner) {

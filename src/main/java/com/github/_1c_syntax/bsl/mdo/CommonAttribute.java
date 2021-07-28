@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -36,6 +35,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
+
+import java.util.List;
 
 @Value
 @Builder
@@ -108,7 +109,7 @@ public class CommonAttribute implements Attribute {
   /**
    * Объекты, использующие общий реквизит
    */
-  ContentStorage using;
+  List<MdoReference> using;
 
   /**
    * Вариант поддержки родительской конфигурации

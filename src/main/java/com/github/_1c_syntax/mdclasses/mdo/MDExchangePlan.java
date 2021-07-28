@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
@@ -40,6 +42,7 @@ import lombok.ToString;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -106,7 +109,18 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
     builder = super.buildMDObject();
     TransformationUtils.setValue(builder, "distributedInfoBase", distributedInfoBase);
     TransformationUtils.setValue(builder, "includeConfigurationExtensions", includeConfigurationExtensions);
-    // todo TransformationUtils.setValue(builder, "content", content);
+    TransformationUtils.setValue(builder, "content",
+      content.stream()
+        .filter(exchangePlanItem -> exchangePlanItem.getMdObject().isRight())
+        .map(exchangePlanItem ->
+          new ExchangePlan.Item(
+            MDClasses.build(exchangePlanItem.getMdObject().get().buildMDObject()).getMdoReference(),
+            exchangePlanItem.getAutoRecord()
+          )
+        )
+        .collect(Collectors.toList())
+    );
+    
     return builder;
   }
 }

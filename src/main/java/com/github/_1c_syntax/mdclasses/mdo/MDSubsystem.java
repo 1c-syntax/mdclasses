@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
-import com.github._1c_syntax.bsl.mdo.support.ContentStorage;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -186,13 +185,13 @@ public class MDSubsystem extends AbstractMDObjectBase {
         .collect(Collectors.toList())
     );
 
-    TransformationUtils.setValue(builder, "content", new ContentStorage(children.stream()
+    TransformationUtils.setValue(builder, "content", children.stream()
       .filter(Either::isRight)
       .map(Either::get)
       .filter(mdo -> !(mdo instanceof MDSubsystem))
       .map(AbstractMDO::getMdoReference)
       .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
-      .collect(Collectors.toList())));
+      .collect(Collectors.toList()));
 
     return super.buildMDObject();
   }

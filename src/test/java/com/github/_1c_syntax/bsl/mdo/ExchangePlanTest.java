@@ -21,11 +21,18 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.nio.file.Path;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -74,5 +81,30 @@ class ExchangePlanTest extends AbstractMDObjectTest<ExchangePlan> {
       "ТабличнаяЧасть", "3b60ae22-8c6b-43a7-b599-cfc2d5074a97");
     assertThat(mdo.isDistributedInfoBase()).isFalse();
     assertThat(mdo.isIncludeConfigurationExtensions()).isFalse();
+  }
+
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ПланОбмена1,242cb07d-3d2b-4689-b590-d3ed23ac9d10,,,ExchangePlan,ПланОбмена,1,1,1,1,1,1"
+    }
+  )
+  void testContent(ArgumentsAccessor argumentsAccessor) {
+    var rootPath = Path.of("src/test/resources/metadata/edt");
+    var mdc = MDClasses.createConfiguration(rootPath);
+    assertThat(mdc)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+    var configuration = (Configuration) mdc;
+    assertThat(configuration.getExchangePlans()).hasSize(1);
+    var exchangePlan = configuration.getExchangePlans().get(0);
+    mdoTest(exchangePlan, MDOType.EXCHANGE_PLAN, argumentsAccessor);
+    assertThat(exchangePlan.getContent()).hasSize(2);
+    assertThat(exchangePlan.getContent().stream()
+      .collect(Collectors.toMap(ExchangePlan.Item::getMdoReference, ExchangePlan.Item::getAutoRecord)))
+      .containsKey(MdoReference.find("Catalog.Справочник1").get())
+      .containsKey(MdoReference.find("Document.Документ1").get())
+      .containsValue(AutoRecordType.ALLOW)
+      .containsValue(AutoRecordType.DENY);
   }
 }

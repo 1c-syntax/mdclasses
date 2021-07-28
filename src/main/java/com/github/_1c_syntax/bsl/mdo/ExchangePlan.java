@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -127,6 +128,11 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   @NonFinal
   SupportVariant supportVariant;
 
+  /**
+   * Элементы, входящие в состав плана обмена
+   */
+  List<Item> content;
+
   @Override
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
@@ -140,10 +146,20 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
       attributes.add(commonAttribute);
     }
   }
+
+  /**
+   * Описание элемента состава плана обмена
+   */
+  @Value
+  public static class Item {
+    /**
+     * Ссылка на объект в составе плана обмена
+     */
+    MdoReference mdoReference;
+
+    /**
+     * Режим автоматической регистрации
+     */
+    AutoRecordType autoRecord;
+  }
 }
-
-// todo реализовать
-//   Состав плана обмена.
-//  @XStreamImplicit
-//  private List<ExchangePlanItem> content = Collections.emptyList();
-

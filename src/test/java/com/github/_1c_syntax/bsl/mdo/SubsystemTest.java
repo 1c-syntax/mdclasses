@@ -26,7 +26,6 @@ import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -56,7 +55,7 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
       .anyMatch(child -> child.getName().equals("ПочиненнаяСистема2"));
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest(name = "EDT {index}: {0}")
   @CsvSource(
     {
       "ПерваяПодсистема,3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293,,Первая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
@@ -79,8 +78,13 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
     assertThat(mdo.getPlainChildren()).hasSize(3);
   }
 
-  @Test
-  void testContent() {
+  @ParameterizedTest(name = "EDT {index}: {0}")
+  @CsvSource(
+    {
+      "ВтораяПодсистема,c3abc915-b27d-4dfc-bfae-31b9c867492e,,Вторая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
+    }
+  )
+  void testContent(ArgumentsAccessor argumentsAccessor) {
     var rootPath = Path.of("src/test/resources/metadata/edt");
     var mdc = MDClasses.createConfiguration(rootPath);
     assertThat(mdc)
@@ -89,7 +93,8 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
     var configuration = (Configuration) mdc;
     assertThat(configuration.getSubsystems()).hasSize(2);
     var subsystem = configuration.getSubsystems().get(1);
-    assertThat(subsystem.getContent().getContent())
+    mdoTest(subsystem, MDOType.SUBSYSTEM, argumentsAccessor);
+    assertThat(subsystem.getContent())
       .hasSize(3)
       .contains(MdoReference.find("CalculationRegister.РегистрРасчета1").get())
       .contains(MdoReference.find("AccountingRegister.РегистрБухгалтерии1").get())

@@ -28,7 +28,6 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -55,7 +54,7 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     assertThat(mdo.getAutoUse()).isEqualTo(UseMode.USE);
     assertThat(mdo.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
     assertThat(mdo.isPasswordMode()).isFalse();
-    assertThat(mdo.getUsing().getContent()).isEmpty();
+    assertThat(mdo.getUsing()).isEmpty();
     assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
@@ -72,12 +71,17 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     assertThat(mdo.getAutoUse()).isEqualTo(UseMode.DONT_USE);
     assertThat(mdo.getDataSeparation()).isEqualTo(DataSeparation.DONT_USE);
     assertThat(mdo.isPasswordMode()).isTrue();
-    assertThat(mdo.getUsing().getContent()).isEmpty();
+    assertThat(mdo.getUsing()).isEmpty();
     assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
   }
 
-  @Test
-  void testUsing() {
+  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @CsvSource(
+    {
+      "ОбщийРеквизит1,d4f0c0ac-ed26-4085-a1b4-e52314b973ad,,,CommonAttribute,ОбщийРеквизит,0,0,0,0,0,0"
+    }
+  )
+  void testUsing(ArgumentsAccessor argumentsAccessor) {
     var rootPath = Path.of("src/test/resources/metadata/original");
     var mdc = MDClasses.createConfiguration(rootPath);
     assertThat(mdc)
@@ -86,9 +90,10 @@ class CommonAttributeTest extends AbstractMDObjectTest<CommonAttribute> {
     var configuration = (Configuration) mdc;
     assertThat(configuration.getCommonAttributes()).hasSize(1);
     var commonAttribute = configuration.getCommonAttributes().get(0);
-    assertThat(commonAttribute.getUsing().getContent()).hasSize(2);
-    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().getContent().get(0)), commonAttribute);
-    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().getContent().get(1)), commonAttribute);
+    mdoTest(commonAttribute, MDOType.COMMON_ATTRIBUTE, argumentsAccessor);
+    assertThat(commonAttribute.getUsing()).hasSize(2);
+    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().get(0)), commonAttribute);
+    checkCommonAttributeLink(configuration.findChild(commonAttribute.getUsing().get(1)), commonAttribute);
   }
 
   private void checkCommonAttributeLink(Optional<MDObject> mdo, CommonAttribute commonAttribute) {
