@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
@@ -97,14 +95,6 @@ public class TransformationUtils {
       methods.put(builder.getClass(), classMethods);
     }
 
-    var result = method.invoke(builder);
-
-    if (result instanceof ModuleOwner) {
-      ((ModuleOwner) result).getModules().stream()
-        .filter(ObjectModule.class::isInstance)
-        .map(ObjectModule.class::cast)
-        .forEach(module -> module.setOwner((ModuleOwner) result));
-    }
-    return result;
+    return method.invoke(builder);
   }
 }

@@ -29,6 +29,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -95,7 +96,8 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
   public Object buildMDObject() {
 
     TransformationUtils.setValue(builder, "modules",
-      modules.stream().map(MDOModule::buildMDObject)
+      modules.stream()
+        .map(child -> child.buildMDObject(mdoReference.getRef(), ParseSupportData.getSupportVariantByMDO(this)))
         .map(TransformationUtils::build)
         .map(Module.class::cast)
         .collect(Collectors.toList()));

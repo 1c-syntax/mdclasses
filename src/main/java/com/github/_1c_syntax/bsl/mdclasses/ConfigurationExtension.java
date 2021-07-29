@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -153,4 +154,8 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
    */
   List<Module> modules;
 
+  /**
+   * MDO-Ссылка на объект
+   */
+  MdoReference mdoReference;
 }

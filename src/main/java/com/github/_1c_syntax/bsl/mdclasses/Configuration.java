@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -161,6 +162,11 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
    * Вариант поддержки родительской конфигурации
    */
   SupportVariant supportVariant;
+
+  /**
+   * MDO-Ссылка на объект
+   */
+  MdoReference mdoReference;
 
   /**
    * Возвращает соответствие ссылок на файлы модулей их вариантам поддержки

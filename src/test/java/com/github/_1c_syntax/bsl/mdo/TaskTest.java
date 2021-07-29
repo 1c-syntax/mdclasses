@@ -141,7 +141,7 @@ class TaskTest extends AbstractMDObjectTest<Task> {
     assertThat(module).isInstanceOf(ObjectModule.class);
     assertThat(module.getModuleType()).isEqualTo(ModuleType.ManagerModule);
     assertThat(module.getUri().toString()).endsWith("ManagerModule.bsl");
-    assertThat(((ObjectModule) module).getOwner()).isEqualTo(mdo);
+    assertThat(((ObjectModule) module).getOwner()).isEqualTo(mdo.getMdoReference());
 
     var form = mdo.getForms().get(0);
     assertThat(form).isInstanceOf(ObjectForm.class);

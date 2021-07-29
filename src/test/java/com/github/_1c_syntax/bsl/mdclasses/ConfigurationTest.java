@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
@@ -277,6 +278,11 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     mdc.getChildren().forEach(mdObject -> assertThat(children).contains(mdObject));
     children.forEach(mdObject -> assertThat(mdc.getChildren()).contains(mdObject));
 
+    assertThat(mdc.getModules())
+      .allMatch(module ->
+        module instanceof ObjectModule
+          && ((ObjectModule) module).getOwner().equals(mdc.getMdoReference()));
+
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -418,6 +424,8 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     assertThat(mdo_NOT_SUPPORTED).hasSize(argumentsAccessor.getInteger(4));
     assertThat(mdo_NULL).isEmpty();
     assertThat(configuration.getSupportVariant().name()).isEqualTo(argumentsAccessor.getString(5));
+    assertThat(configuration.getModules())
+      .allMatch(module -> module.getSupportVariant().equals(configuration.getSupportVariant()));
   }
 
   @Test

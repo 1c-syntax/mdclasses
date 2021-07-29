@@ -35,6 +35,7 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -105,7 +106,9 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
 
     ((com.github._1c_syntax.bsl.mdo.children.Recalculation.RecalculationBuilder) builder)
       .modules(
-        modules.stream().map(MDOModule::buildMDObject)
+        modules.stream()
+          .map(child ->
+            child.buildMDObject(mdoReference.getRef(), ParseSupportData.getSupportVariantByMDO(this, ownerPath)))
           .map(TransformationUtils::build)
           .map(Module.class::cast)
           .collect(Collectors.toList()))

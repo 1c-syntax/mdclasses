@@ -22,8 +22,10 @@
 package com.github._1c_syntax.mdclasses.mdo.support;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasModule;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -53,12 +55,14 @@ public class MDOModule {
    */
   MDOHasModule owner;
 
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner, SupportVariant supportVariant) {
     var builder = ObjectModule.builder();
 
     builder
       .moduleType(moduleType)
-      .uri(uri);
+      .uri(uri)
+      .owner(owner)
+      .supportVariant(supportVariant);
 
     return builder;
   }

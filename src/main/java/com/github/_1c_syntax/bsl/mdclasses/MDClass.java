@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
 public interface MDClass extends ChildrenOwner {
@@ -39,4 +40,9 @@ public interface MDClass extends ChildrenOwner {
    * Вариант исходников
    */
   ConfigurationSource getConfigurationSource();
+
+  /**
+   * MDO-Ссылка на объект
+   */
+  MdoReference getMdoReference();
 }
