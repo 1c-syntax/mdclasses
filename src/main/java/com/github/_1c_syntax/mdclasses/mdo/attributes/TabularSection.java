@@ -34,6 +34,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -86,7 +87,7 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   }
 
   @Override
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(ObjectTabularSection.builder());
 
     var ref = MdoReference.create(mdoReference.getType(),
@@ -95,10 +96,10 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
     ((ObjectTabularSection.ObjectTabularSectionBuilder) builder)
       .attributes(
         attributes.stream()
-          .map(child -> child.buildMDObject(ref))
+          .map(child -> child.buildMDObject(ref, ownerPath))
           .map(com.github._1c_syntax.bsl.mdo.Attribute.class::cast)
           .collect(Collectors.toList()));
 
-    return super.buildMDObject(owner);
+    return super.buildMDObject(owner, ownerPath);
   }
 }

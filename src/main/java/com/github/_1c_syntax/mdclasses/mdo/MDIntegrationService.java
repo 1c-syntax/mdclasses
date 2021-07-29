@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.IntegrationService;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -96,13 +95,10 @@ public class MDIntegrationService extends AbstractMDObjectBSL implements MDOHasC
   public Object buildMDObject() {
     setBuilder(IntegrationService.builder());
 
-    var ref = MdoReference.create(mdoReference.getType(),
-      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
-
     ((IntegrationService.IntegrationServiceBuilder) builder)
       .integrationChannels(
         integrationChannels.stream()
-          .map(child -> child.buildMDObject(ref))
+          .map(child -> child.buildMDObject(mdoReference.getRef(), path))
           .map(com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.class::cast)
           .collect(Collectors.toList()))
       .externalIntegrationServiceAddress(externalIntegrationServiceAddress);

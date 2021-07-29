@@ -35,6 +35,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -89,7 +90,7 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
     return Collections.unmodifiableSet(children);
   }
 
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(HttpServiceUrlTemplate.builder());
 
     var ref = MdoReference.create(mdoReference.getType(),
@@ -97,11 +98,11 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
 
     ((HttpServiceUrlTemplate.HttpServiceUrlTemplateBuilder) builder)
       .httpServiceMethods(httpServiceMethods.stream()
-        .map(child -> child.buildMDObject(ref))
+        .map(child -> child.buildMDObject(ref, ownerPath))
         .map(HttpServiceMethod.class::cast)
         .collect(Collectors.toList()))
       .owner(owner);
 
-    return super.buildMDObject();
+    return super.buildMDObject(ownerPath);
   }
 }

@@ -22,9 +22,9 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.Subsystem;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -188,7 +188,7 @@ public class MDSubsystem extends AbstractMDObjectBase {
         .map(Either::get)
         .filter(mdo -> !(mdo instanceof MDSubsystem))
         .map(AbstractMDO::getMdoReference)
-        .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+        .map(MDOReference::getRef)
         .collect(Collectors.toList()));
 
     return super.buildMDObject();

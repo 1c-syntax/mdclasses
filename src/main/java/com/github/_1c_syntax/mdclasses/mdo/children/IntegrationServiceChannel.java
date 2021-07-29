@@ -32,6 +32,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -67,7 +69,7 @@ public class IntegrationServiceChannel extends AbstractMDObjectBase {
     externalIntegrationServiceChannelName = designerMDO.getProperties().getExternalIntegrationServiceChannelName();
   }
 
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.builder());
 
     ((com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.IntegrationServiceChannelBuilder) builder)
@@ -76,6 +78,6 @@ public class IntegrationServiceChannel extends AbstractMDObjectBase {
       .externalIntegrationServiceChannelName(externalIntegrationServiceChannelName)
       .owner(owner);
 
-    return super.buildMDObject();
+    return super.buildMDObject(ownerPath);
   }
 }

@@ -32,7 +32,6 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -89,20 +88,12 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
 
   /**
    * Методы шаблона URL HTTP-сервиса
    */
   List<HttpServiceMethod> httpServiceMethods;
-
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
 
   @Override
   public List<MDObject> getChildren() {

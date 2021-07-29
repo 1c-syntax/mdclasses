@@ -100,7 +100,7 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
   }
 
   @Override
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.Recalculation.builder());
 
     ((com.github._1c_syntax.bsl.mdo.children.Recalculation.RecalculationBuilder) builder)
@@ -111,6 +111,6 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
           .collect(Collectors.toList()))
       .type(MDOType.RECALCULATION);
 
-    return super.buildMDObject(owner);
+    return super.buildMDObject(owner, ownerPath);
   }
 }

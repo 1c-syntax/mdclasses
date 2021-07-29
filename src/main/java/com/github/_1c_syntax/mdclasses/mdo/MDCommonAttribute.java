@@ -23,11 +23,11 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.AccessLevel;
@@ -138,7 +138,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
       .indexing(indexing)
       .using(using.stream()
         .map(AbstractMDO::getMdoReference)
-        .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+        .map(MDOReference::getRef)
         .collect(Collectors.toList()));
 
     return super.buildMDObject();

@@ -31,6 +31,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
+
 @Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -66,7 +68,7 @@ public class Dimension extends AbstractMDOAttribute {
   }
 
   @Override
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(RegisterDimension.builder());
 
     ((RegisterDimension.RegisterDimensionBuilder) builder)
@@ -74,6 +76,6 @@ public class Dimension extends AbstractMDOAttribute {
       .denyIncompleteValues(denyIncompleteValues)
       .master(master);
 
-    return super.buildMDObject(owner);
+    return super.buildMDObject(owner, ownerPath);
   }
 }

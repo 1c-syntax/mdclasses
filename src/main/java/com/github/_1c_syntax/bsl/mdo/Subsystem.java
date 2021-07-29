@@ -30,7 +30,6 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -88,7 +87,6 @@ public class Subsystem implements MDObject, ChildrenOwner {
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
 
   /**
@@ -100,13 +98,6 @@ public class Subsystem implements MDObject, ChildrenOwner {
    * Объекты, входящие в состав подсистемы
    */
   List<MdoReference> content;
-
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
 
   @Override
   public List<MDObject> getChildren() {

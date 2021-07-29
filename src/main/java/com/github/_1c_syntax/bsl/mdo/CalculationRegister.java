@@ -32,7 +32,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -118,7 +117,6 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
 
   @Override
@@ -126,13 +124,6 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
     var children = AttributeOwner.super.getChildren();
     children.addAll(recalculations);
     return children;
-  }
-
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
   }
 
   @Override

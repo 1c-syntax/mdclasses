@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDO;
 import lombok.Data;
@@ -50,10 +51,16 @@ public class MDOReference {
    */
   private String mdoRefRu;
 
+  /**
+   * Ссылка в прикладной модели
+   */
+  private MdoReference ref;
+
   public MDOReference(AbstractMDO mdo) {
     type = mdo.getType();
     mdoRef = mdo.getMetadataName() + "." + mdo.getName();
     mdoRefRu = mdo.getMetadataNameRu() + "." + mdo.getName();
+    ref = MdoReference.create(type, mdoRef, mdoRefRu);
   }
 
   /**
@@ -67,6 +74,7 @@ public class MDOReference {
     if (parent.getMdoReference() != null) {
       mdoRef = parent.getMdoReference().getMdoRef() + "." + mdoRef;
       mdoRefRu = parent.getMdoReference().getMdoRefRu() + "." + mdoRefRu;
+      ref = MdoReference.create(type, mdoRef, mdoRefRu);
     }
   }
 }

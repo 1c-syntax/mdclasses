@@ -25,6 +25,8 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -88,5 +90,17 @@ public abstract class AbstractMDObjectBase extends AbstractMDO implements MDOBas
     if (getMdoReference() == null) {
       setMdoReference(new MDOReference(this, parent));
     }
+  }
+
+  @Override
+  public Object buildMDObject() {
+    TransformationUtils.setValue(builder, "supportVariant", ParseSupportData.getSupportVariantByMDO(this));
+    return super.buildMDObject();
+  }
+
+  public Object buildMDObject(Path ownerPath) {
+    TransformationUtils.setValue(builder, "supportVariant",
+      ParseSupportData.getSupportVariantByMDO(this, ownerPath));
+    return super.buildMDObject();
   }
 }

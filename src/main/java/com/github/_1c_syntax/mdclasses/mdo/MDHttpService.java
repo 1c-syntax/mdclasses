@@ -23,7 +23,6 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.HTTPServiceURLTemplate;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -93,12 +92,9 @@ public class MDHttpService extends AbstractMDObjectBSL implements MDOHasChildren
   public Object buildMDObject() {
     setBuilder(HttpService.builder());
 
-    var ref = MdoReference.create(mdoReference.getType(),
-      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
-
     ((HttpService.HttpServiceBuilder) builder)
       .urlTemplates(urlTemplates.stream()
-        .map(child -> child.buildMDObject(ref))
+        .map(child -> child.buildMDObject(mdoReference.getRef(), path))
         .map(HttpServiceUrlTemplate.class::cast)
         .collect(Collectors.toList()));
     return super.buildMDObject();

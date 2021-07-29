@@ -35,6 +35,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
+
 /**
  * Класс для всех атрибутов (включая табличные части) объектов
  */
@@ -65,7 +67,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     TransformationUtils.setValue(builder, "kind", kind);
     TransformationUtils.setValue(builder, "indexing", indexing);
     TransformationUtils.setValue(builder, "passwordMode", passwordMode);
@@ -74,7 +76,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     if (!(this instanceof Recalculation)) {
       TransformationUtils.setValue(builder, "type", getType());
     }
-    return super.buildMDObject();
+    return super.buildMDObject(ownerPath);
   }
 
   @Override

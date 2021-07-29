@@ -36,12 +36,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ParseSupportDataTest {
 
   private static final String BASE_PATH = "src/test/resources/support/support";
-  private final File parentConfigurationsBin = new File(BASE_PATH, "correct/ParentConfigurations.bin");
+  private final File parentConfigurationsBin = new File(BASE_PATH, "correct/Ext/ParentConfigurations.bin");
 
   @Test
   void testRead() {
-    ParseSupportData parseSupportData = new ParseSupportData(parentConfigurationsBin.toPath());
-    assertThat(parseSupportData.getSupportMap()).isNotEmpty();
+    var supportData = ParseSupportData.readFull(parentConfigurationsBin.toPath());
+    assertThat(supportData).isNotEmpty();
   }
 
   @Test
@@ -109,8 +109,8 @@ class ParseSupportDataTest {
   @Test
   void testIncorrectSupportBin() {
     var path = Path.of(BASE_PATH, "incorrect/ParentConfigurations.bin");
-    ParseSupportData parseSupportData = new ParseSupportData(path);
-    assertThat(parseSupportData.getSupportMap()).isEmpty();
+    var supportData = ParseSupportData.readFull(path);
+    assertThat(supportData).isEmpty();
   }
 
   private void checkModuleSupport(Configuration configuration,

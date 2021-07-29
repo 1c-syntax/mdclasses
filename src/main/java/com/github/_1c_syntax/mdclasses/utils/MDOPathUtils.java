@@ -110,6 +110,15 @@ public class MDOPathUtils {
   }
 
   /**
+   * Получает каталог проекта по файлу поддержки конфигурации
+   */
+  public Path getRootPathByParentConfigurations(Path mdoPath) {
+    return Paths.get(
+      FilenameUtils.getFullPathNoEndSeparator(
+        FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
+  }
+
+  /**
    * Получает каталог типа объекта метаданных относительно корня проекта с учетом указанном типа исходников
    * по описанию объекта метаданных
    */

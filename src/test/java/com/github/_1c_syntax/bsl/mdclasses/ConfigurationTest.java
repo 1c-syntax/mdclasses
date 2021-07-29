@@ -276,7 +276,7 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 
     mdc.getChildren().forEach(mdObject -> assertThat(children).contains(mdObject));
     children.forEach(mdObject -> assertThat(mdc.getChildren()).contains(mdObject));
-    
+
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -408,30 +408,16 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       .filter(mdObject -> mdObject.getSupportVariant() == SupportVariant.NOT_EDITABLE)
       .collect(Collectors.toList());
 
+    var mdo_NULL = configuration.getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getSupportVariant() == null)
+      .collect(Collectors.toList());
+
     assertThat(mdo_NONE).hasSize(argumentsAccessor.getInteger(1));
     assertThat(mdo_EDITABLE_SUPPORT_ENABLED).hasSize(argumentsAccessor.getInteger(2));
     assertThat(mdo_NOT_EDITABLE).hasSize(argumentsAccessor.getInteger(3));
     assertThat(mdo_NOT_SUPPORTED).hasSize(argumentsAccessor.getInteger(4));
+    assertThat(mdo_NULL).isEmpty();
     assertThat(configuration.getSupportVariant().name()).isEqualTo(argumentsAccessor.getString(5));
-
-    // smoky test
-    configuration.getPlainChildren().forEach((MDObject mdo) -> {
-      var supportVariant = mdo.getSupportVariant();
-      if (supportVariant == SupportVariant.NONE) {
-        mdo.setSupportVariant(SupportVariant.NOT_SUPPORTED);
-      } else {
-        mdo.setSupportVariant(SupportVariant.NONE);
-      }
-      assertThat(mdo.getSupportVariant()).isEqualTo(supportVariant);
-    });
-
-    var supportVariant = configuration.getSupportVariant();
-    if (supportVariant == SupportVariant.NONE) {
-      configuration.setSupportVariant(SupportVariant.NOT_SUPPORTED);
-    } else {
-      configuration.setSupportVariant(SupportVariant.NONE);
-    }
-    assertThat(configuration.getSupportVariant()).isEqualTo(supportVariant);
   }
 
   @Test

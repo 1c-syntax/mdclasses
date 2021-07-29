@@ -75,9 +75,4 @@ public interface MDObject {
    * Вариант поддержки родительской конфигурации
    */
   SupportVariant getSupportVariant();
-
-  /**
-   * Установка варианта поддержки родительской конфигурации
-   */
-  void setSupportVariant(SupportVariant supportVariant);
 }

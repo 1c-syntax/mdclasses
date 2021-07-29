@@ -32,7 +32,6 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 @Value
 @Builder
@@ -97,18 +96,10 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
 
   /**
    * Имя канала внешнего сервиса интеграции
    */
   String externalIntegrationServiceChannelName;
-
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
 }

@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.unmarshal.converters;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -43,11 +44,12 @@ public class PairConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if ("languages".equals(reader.getNodeName())) {
+    if ("languages" .equals(reader.getNodeName())) {
       var uuid = reader.getAttribute("uuid");
       var language = (MDLanguage) context.convertAnother(new MDLanguage(), MDLanguage.class);
       language.setUuid(uuid);
       language.setMdoReference(new MDOReference(language));
+      language.setPath(XStreamFactory.getCurrentPath(reader));
       return Either.right(language);
     } else if (reader.getValue().contains(".")) { // уже лежит имя
       return Either.left(reader.getValue());

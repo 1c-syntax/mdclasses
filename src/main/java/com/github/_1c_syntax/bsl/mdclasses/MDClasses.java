@@ -28,7 +28,6 @@ import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.support_configuration.ParseSupportData;
-import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
@@ -40,12 +39,14 @@ public class MDClasses {
   @SneakyThrows
   public MDClass createConfiguration(Path path) {
     var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
+    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
+    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
+      ParseSupportData.readSimple(fileParentConfiguration.get());
+    }
+
     var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
     if (mdo.isPresent()) {
       var configuration = (MDClass) mdo.get().buildMDObject();
-      if (configuration instanceof Configuration) {
-        computeSupportConfiguration((Configuration) configuration, path);
-      }
       computeCommonAttributeLinks(configuration);
       return configuration;
     }
@@ -53,27 +54,6 @@ public class MDClasses {
     var emptyBuilder = Configuration.builder();
     emptyBuilder.configurationSource(ConfigurationSource.EMPTY);
     return emptyBuilder.build();
-  }
-
-  /**
-   * Заполняет информацию о поддержке для конфигурации
-   *
-   * @param configuration Конфигурация (для расширений поддержки нет)
-   */
-  private static void computeSupportConfiguration(Configuration configuration, Path path) {
-    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(
-      configuration.getConfigurationSource(), path);
-    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-      var supportData = ParseSupportData.readSimple(fileParentConfiguration.get());
-
-      configuration.setSupportVariant(supportData.getOrDefault(configuration.getUuid(), SupportVariant.NONE));
-
-      configuration.getPlainChildren()
-        .forEach(mdo -> mdo.setSupportVariant(supportData.getOrDefault(mdo.getUuid(), SupportVariant.NONE)));
-    } else {
-      configuration.setSupportVariant(SupportVariant.NONE);
-      configuration.getPlainChildren().forEach(mdo -> mdo.setSupportVariant(SupportVariant.NONE));
-    }
   }
 
   /**

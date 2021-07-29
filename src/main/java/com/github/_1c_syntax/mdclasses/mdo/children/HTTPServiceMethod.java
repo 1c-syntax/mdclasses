@@ -32,6 +32,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -57,11 +59,11 @@ public class HTTPServiceMethod extends AbstractMDObjectBase {
     handler = designerMDO.getProperties().getHandler();
   }
 
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(HttpServiceMethod.builder());
     ((HttpServiceMethod.HttpServiceMethodBuilder) builder)
       .handler(handler)
       .owner(owner);
-    return super.buildMDObject();
+    return super.buildMDObject(ownerPath);
   }
 }

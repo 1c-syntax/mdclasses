@@ -37,7 +37,6 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import java.net.URI;
 import java.util.List;
@@ -161,14 +160,7 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
-
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
 
   /**
    * Возвращает соответствие ссылок на файлы модулей их вариантам поддержки

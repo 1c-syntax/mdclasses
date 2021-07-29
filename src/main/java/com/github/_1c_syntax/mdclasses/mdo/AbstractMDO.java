@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -118,9 +117,7 @@ public abstract class AbstractMDO implements MDO {
     if (!(this instanceof AbstractMDOAttribute)) {
       TransformationUtils.setValue(builder, "type", getType());
     }
-    TransformationUtils.setValue(builder, "mdoReference",
-      MdoReference.create(mdoReference.getType(),
-        mdoReference.getMdoRef(), mdoReference.getMdoRefRu()));
+    TransformationUtils.setValue(builder, "mdoReference", mdoReference.getRef());
 
     return TransformationUtils.build(builder);
   }

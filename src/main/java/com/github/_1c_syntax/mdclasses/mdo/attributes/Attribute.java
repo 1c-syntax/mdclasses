@@ -31,6 +31,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.Value;
 
+import java.nio.file.Path;
+
 @Value
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -46,8 +48,8 @@ public class Attribute extends AbstractMDOAttribute {
   }
 
   @Override
-  public Object buildMDObject(MdoReference owner) {
+  public Object buildMDObject(MdoReference owner, Path ownerPath) {
     setBuilder(ObjectAttribute.builder());
-    return super.buildMDObject(owner);
+    return super.buildMDObject(owner, ownerPath);
   }
 }

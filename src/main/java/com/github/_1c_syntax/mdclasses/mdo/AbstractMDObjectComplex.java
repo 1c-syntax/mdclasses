@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
@@ -255,28 +254,26 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   @Override
   public Object buildMDObject() {
 
-    var ref = MdoReference.create(mdoReference.getType(),
-      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
     TransformationUtils.setValue(builder, "commands",
-      commands.stream().map(child -> child.buildMDObject(ref))
+      commands.stream().map(child -> child.buildMDObject(mdoReference.getRef()))
         .collect(Collectors.toList()));
     TransformationUtils.setValue(builder, "forms",
-      forms.stream().map(child -> child.buildMDObject(ref))
+      forms.stream().map(child -> child.buildMDObject(mdoReference.getRef()))
         .collect(Collectors.toList()));
     TransformationUtils.setValue(builder, "attributes",
       attributes.stream()
         .filter(attribute -> attribute.getAttributeType() != AttributeType.TABULAR_SECTION
           && attribute.getAttributeType() != AttributeType.RECALCULATION)
-        .map(child -> child.buildMDObject(ref))
+        .map(child -> child.buildMDObject(mdoReference.getRef(), path))
         .collect(Collectors.toList()));
     TransformationUtils.setValue(builder, "tabularSections",
       attributes.stream()
         .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
-        .map(child -> child.buildMDObject(ref))
+        .map(child -> child.buildMDObject(mdoReference.getRef(), path))
         .collect(Collectors.toList()));
     TransformationUtils.setValue(builder, "templates",
       templates.stream()
-        .map(child -> child.buildMDObject(ref))
+        .map(child -> child.buildMDObject(mdoReference.getRef()))
         .collect(Collectors.toList()));
     return super.buildMDObject();
   }

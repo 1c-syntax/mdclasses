@@ -132,10 +132,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var fields = attributeClass.getDeclaredFields();
     for (var field : fields) {
 
-      if ("supportVariant" .equals(field.getName())) {
-        continue;
-      }
-
       assertThat(field, true).isNotNull(mdo);
       if (excludes.contains(field.getName())) {
         continue;
@@ -165,10 +161,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var childClass = child.getClass();
     var fields = childClass.getDeclaredFields();
     for (var field : fields) {
-
-      if ("supportVariant" .equals(field.getName())) {
-        continue;
-      }
 
       assertThat(field, true).isNotNull(child);
 
@@ -312,9 +304,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       var fieldType = field.getType();
 
       var key = field.getName();
-      if ("supportVariant" .equals(key)) {
-        continue;
-      }
 
       assertThat(field, true).isNotNull(mdo);
 

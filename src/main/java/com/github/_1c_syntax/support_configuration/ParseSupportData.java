@@ -21,21 +21,27 @@
  */
 package com.github._1c_syntax.support_configuration;
 
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
 /**
  * Используется для чтения информации о поддержке из файла ParentConfigurations.bin конфигурации
  */
 @Slf4j
+@UtilityClass
 public class ParseSupportData {
 
   // взято из https://stackoverflow.com/questions/18144431/regex-to-split-a-csv
@@ -53,22 +59,11 @@ public class ParseSupportData {
   private static final int START_READ_POSITION = 3;
   private static final int SHIFT_SIZE = 2;
 
-  private final Path pathToBinFile;
-  private final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
+  private static final Map<Path, Map<String, Map<SupportConfiguration, SupportVariant>>> SUPPORT_MAPS
+    = new ConcurrentHashMap<>();
 
-  // todo убрать из паблика
-  public ParseSupportData(Path pathToBinFile) {
-    this.pathToBinFile = pathToBinFile;
-    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
-    try {
-      read();
-    } catch (FileNotFoundException exception) {
-      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
-    } catch (NumberFormatException exception) {
-      LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
-      supportMap.clear();
-    }
-  }
+  private static final Map<Path, Map<String, SupportVariant>> SUPPORT_SIMPLE_MAPS
+    = new ConcurrentHashMap<>();
 
   /**
    * Выполняет чтение информации о поддержке и возвращает упрощенный вариант: UUID->MAX(SupportVariant)
@@ -77,17 +72,92 @@ public class ParseSupportData {
    * @return Прочитанная информация
    */
   public static Map<String, SupportVariant> readSimple(Path path) {
-    var parser = new ParseSupportData(path);
+    var rootPath = MDOPathUtils.getRootPathByParentConfigurations(path);
+    var supportMap = SUPPORT_SIMPLE_MAPS.get(rootPath);
+    if (supportMap == null) {
+      readFile(path, rootPath);
+      supportMap = SUPPORT_SIMPLE_MAPS.get(rootPath);
+    }
 
-    Map<String, SupportVariant> result = new HashMap<>();
-    parser.getSupportMap().forEach((String uuid, Map<SupportConfiguration, SupportVariant> supportVariantMap)
-      -> result.put(uuid, SupportVariant.max(supportVariantMap.values())));
+    if (supportMap == null) {
+      return Collections.emptyMap();
+    }
 
-    return result;
+    return supportMap;
   }
 
-  private void read() throws FileNotFoundException {
+  /**
+   * Выполняет чтение информации о поддержке и возвращает весь набор прочитанных данных
+   *
+   * @param path Путь к файлу описания поддержки
+   * @return Прочитанная информация
+   */
+  public static Map<String, Map<SupportConfiguration, SupportVariant>> readFull(Path path) {
+    var rootPath = MDOPathUtils.getRootPathByParentConfigurations(path);
+    var supportMap = SUPPORT_MAPS.get(rootPath);
+    if (supportMap == null) {
+      readFile(path, rootPath);
+      supportMap = SUPPORT_MAPS.get(rootPath);
+    }
 
+    if (supportMap == null) {
+      return Collections.emptyMap();
+    }
+
+    return supportMap;
+  }
+
+  /**
+   * Возвращает максимальный вариант поддержки для объекта
+   *
+   * @param mdo Объект, для которого определяется вариант поддержки
+   * @return Вариант поддержки
+   */
+  public static SupportVariant getSupportVariantByMDO(AbstractMDObjectBase mdo) {
+    return getSupportVariantByMDO(mdo, mdo.getPath());
+  }
+
+  /**
+   * Возвращает максимальный вариант поддержки для объекта с явным указанием пути.
+   * Используется обычно для объектов, не имеющих собственного файла
+   *
+   * @param mdo       Объект, для которого определяется вариант поддержки
+   * @param ownerPath Путь к родительскому объекту
+   * @return Вариант поддержки
+   */
+  public static SupportVariant getSupportVariantByMDO(AbstractMDObjectBase mdo, Path ownerPath) {
+    var key = SUPPORT_SIMPLE_MAPS.keySet().stream().filter(ownerPath::startsWith).findFirst();
+    if (key.isPresent()) {
+      return SUPPORT_SIMPLE_MAPS.get(key.get()).getOrDefault(mdo.getUuid(), SupportVariant.NONE);
+    }
+
+    return SupportVariant.NONE;
+  }
+
+  private void readFile(Path pathToBinFile, Path rootPath) {
+    LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");
+    if (!pathToBinFile.toFile().exists()) {
+      LOGGER.error(String.format("Файл ParentConfigurations.bin не обнаружен по пути '%s'", pathToBinFile.toFile()));
+      return;
+    }
+
+    try {
+      var supportMap = read(pathToBinFile);
+      SUPPORT_MAPS.put(rootPath, supportMap);
+
+      Map<String, SupportVariant> result = new HashMap<>();
+      supportMap.forEach((String uuid, Map<SupportConfiguration, SupportVariant> supportVariantMap)
+        -> result.put(uuid, SupportVariant.max(supportVariantMap.values())));
+      SUPPORT_SIMPLE_MAPS.put(rootPath, result);
+    } catch (FileNotFoundException exception) {
+      LOGGER.error("При чтении файла ParentConfigurations.bin произошла ошибка", exception);
+    } catch (NumberFormatException exception) {
+      LOGGER.error("Некорректный файл ParentConfigurations.bin", exception);
+    }
+  }
+
+  private Map<String, Map<SupportConfiguration, SupportVariant>> read(Path pathToBinFile) throws FileNotFoundException {
+    Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = new HashMap<>();
     String[] dataStrings;
     var fileInputStream = new FileInputStream(pathToBinFile.toFile());
     try (var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8)) {
@@ -137,11 +207,7 @@ public class ParseSupportData {
 
       startPoint = startObjectPoint + SHIFT_SIZE + countObjectsConfiguration * COUNT_ELEMENT_OBJECT;
     }
-  }
 
-  // todo убрать из паблика
-  public Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
-    return this.supportMap;
+    return supportMap;
   }
-
 }

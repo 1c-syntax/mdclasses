@@ -31,7 +31,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import java.util.List;
 
@@ -115,15 +114,7 @@ public class DataProcessor implements MDObject, AttributeOwner, FormOwner, Comma
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @NonFinal
   SupportVariant supportVariant;
-
-  @Override
-  public void setSupportVariant(SupportVariant supportVariant) {
-    if (this.supportVariant == null) {
-      this.supportVariant = supportVariant;
-    }
-  }
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
