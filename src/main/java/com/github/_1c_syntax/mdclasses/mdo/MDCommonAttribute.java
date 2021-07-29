@@ -130,7 +130,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(com.github._1c_syntax.bsl.mdo.CommonAttribute.builder());
-    super.buildMDObject();
+
     ((com.github._1c_syntax.bsl.mdo.CommonAttribute.CommonAttributeBuilder) builder)
       .autoUse(autoUse)
       .dataSeparation(dataSeparation)
@@ -141,6 +141,6 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
         .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
         .collect(Collectors.toList()));
 
-    return builder;
+    return super.buildMDObject();
   }
 }

@@ -84,8 +84,7 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -110,13 +109,6 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
     var children = ChildrenOwner.super.getChildren();
     children.addAll(httpServiceMethods);
     return children;
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
-    }
   }
 }
 

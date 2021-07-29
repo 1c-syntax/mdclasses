@@ -79,13 +79,12 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(XdtoPackage.builder());
-    super.buildMDObject();
 
     ((XdtoPackage.XdtoPackageBuilder) builder).namespace(namespace);
     if (data != null) {
       ((XdtoPackage.XdtoPackageBuilder) builder).data((XdtoPackageData) data.buildMDObject());
     }
 
-    return builder;
+    return super.buildMDObject();
   }
 }

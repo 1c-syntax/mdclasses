@@ -71,8 +71,7 @@ public class MDDocument extends AbstractMDObjectComplex {
   @Override
   public Object buildMDObject() {
     setBuilder(Document.builder());
-    super.buildMDObject();
     ((Document.DocumentBuilder) builder).registerRecords(registerRecords);
-    return builder;
+    return super.buildMDObject();
   }
 }

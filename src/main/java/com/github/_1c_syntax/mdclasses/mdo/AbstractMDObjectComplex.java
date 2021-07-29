@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
@@ -254,34 +254,30 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    if (builder != null) {
-      TransformationUtils.setValue(builder, "commands",
-        commands.stream().map(Command::buildMDObject)
-          .map(MDClasses::build)
-          .collect(Collectors.toList()));
-      TransformationUtils.setValue(builder, "forms",
-        forms.stream().map(Form::buildMDObject)
-          .map(MDClasses::build)
-          .collect(Collectors.toList()));
-      TransformationUtils.setValue(builder, "attributes",
-        attributes.stream()
-          .filter(attribute -> attribute.getAttributeType() != AttributeType.TABULAR_SECTION
-            && attribute.getAttributeType() != AttributeType.RECALCULATION)
-          .map(AbstractMDOAttribute::buildMDObject)
-          .map(MDClasses::build)
-          .collect(Collectors.toList()));
-      TransformationUtils.setValue(builder, "tabularSections",
-        attributes.stream()
-          .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
-          .map(AbstractMDOAttribute::buildMDObject)
-          .map(MDClasses::build)
-          .collect(Collectors.toList()));
-      TransformationUtils.setValue(builder, "templates",
-        templates.stream().map(Template::buildMDObject)
-          .map(MDClasses::build)
-          .collect(Collectors.toList()));
-    }
-    return builder;
+
+    var ref = MdoReference.create(mdoReference.getType(),
+      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
+    TransformationUtils.setValue(builder, "commands",
+      commands.stream().map(child -> child.buildMDObject(ref))
+        .collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "forms",
+      forms.stream().map(child -> child.buildMDObject(ref))
+        .collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "attributes",
+      attributes.stream()
+        .filter(attribute -> attribute.getAttributeType() != AttributeType.TABULAR_SECTION
+          && attribute.getAttributeType() != AttributeType.RECALCULATION)
+        .map(child -> child.buildMDObject(ref))
+        .collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "tabularSections",
+      attributes.stream()
+        .filter(attribute -> attribute.getAttributeType() == AttributeType.TABULAR_SECTION)
+        .map(child -> child.buildMDObject(ref))
+        .collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "templates",
+      templates.stream()
+        .map(child -> child.buildMDObject(ref))
+        .collect(Collectors.toList()));
+    return super.buildMDObject();
   }
 }

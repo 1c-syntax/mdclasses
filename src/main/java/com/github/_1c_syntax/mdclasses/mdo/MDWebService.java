@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -91,11 +91,13 @@ public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren 
   @Override
   public Object buildMDObject() {
     setBuilder(WebService.builder());
-    super.buildMDObject();
+
+    var ref = MdoReference.create(mdoReference.getType(),
+      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
 
     ((WebService.WebServiceBuilder) builder)
-      .operations(operations.stream().map(WEBServiceOperation::buildMDObject)
-        .map(MDClasses::build)
+      .operations(operations.stream()
+        .map(child -> child.buildMDObject(ref))
         .map(WebServiceOperation.class::cast)
         .collect(Collectors.toList()));
     return super.buildMDObject();

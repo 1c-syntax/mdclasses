@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -44,8 +45,8 @@ public class ExtDimensionAccountingFlag extends AbstractMDOAttribute {
   }
 
   @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag.builder());
-    return super.buildMDObject();
+    return super.buildMDObject(owner);
   }
 }

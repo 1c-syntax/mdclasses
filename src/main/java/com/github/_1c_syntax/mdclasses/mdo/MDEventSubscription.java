@@ -62,8 +62,7 @@ public class MDEventSubscription extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(EventSubscription.builder());
-    super.buildMDObject();
     ((EventSubscription.EventSubscriptionBuilder) builder).handler(handler);
-    return builder;
+    return super.buildMDObject();
   }
 }

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -56,11 +57,11 @@ public class HTTPServiceMethod extends AbstractMDObjectBase {
     handler = designerMDO.getProperties().getHandler();
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(HttpServiceMethod.builder());
-    super.buildMDObject();
-    ((HttpServiceMethod.HttpServiceMethodBuilder) builder).handler(handler);
-    return builder;
+    ((HttpServiceMethod.HttpServiceMethodBuilder) builder)
+      .handler(handler)
+      .owner(owner);
+    return super.buildMDObject();
   }
 }

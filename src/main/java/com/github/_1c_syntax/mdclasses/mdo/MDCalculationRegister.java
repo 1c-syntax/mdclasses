@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.CalculationRegister;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -54,15 +54,18 @@ public class MDCalculationRegister extends AbstractMDObjectComplex {
   @Override
   public Object buildMDObject() {
     setBuilder(CalculationRegister.builder());
-    super.buildMDObject();
+
+    var ref = MdoReference.create(mdoReference.getType(),
+      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
+
     ((CalculationRegister.CalculationRegisterBuilder) builder).recalculations(
       getAttributes().stream()
         .filter(attribute -> attribute.getAttributeType() == AttributeType.RECALCULATION)
         .map(com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation.class::cast)
-        .map(com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation::buildMDObject)
-        .map(MDClasses::build)
+        .map(child -> child.buildMDObject(ref))
         .map(Recalculation.class::cast)
         .collect(Collectors.toList()));
-    return builder;
+
+    return super.buildMDObject();
   }
 }

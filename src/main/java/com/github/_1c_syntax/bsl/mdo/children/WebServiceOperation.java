@@ -81,8 +81,7 @@ public class WebServiceOperation implements MDObject, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
   
   /**
    * Обработчик операции. Пока строкой
@@ -101,13 +100,6 @@ public class WebServiceOperation implements MDObject, MDChildObject {
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
-    }
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
     }
   }
 }

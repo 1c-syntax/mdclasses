@@ -53,8 +53,7 @@ public class MDBot extends AbstractMDObjectBSL {
   @Override
   public Object buildMDObject() {
     setBuilder(Bot.builder());
-    super.buildMDObject();
     ((Bot.BotBuilder) builder).predefined(predefined);
-    return builder;
+    return super.buildMDObject();
   }
 }

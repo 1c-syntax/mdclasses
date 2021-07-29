@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
@@ -65,16 +65,16 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
-  @Override
-  public Object buildMDObject() {
-    if (getBuilder() == null) {
-      setBuilder(ObjectAttribute.builder());
-    }
-    var builder = super.buildMDObject();
+  public Object buildMDObject(MdoReference owner) {
     TransformationUtils.setValue(builder, "kind", kind);
     TransformationUtils.setValue(builder, "indexing", indexing);
     TransformationUtils.setValue(builder, "passwordMode", passwordMode);
-    return builder;
+    TransformationUtils.setValue(builder, "owner", owner);
+
+    if (!(this instanceof Recalculation)) {
+      TransformationUtils.setValue(builder, "type", getType());
+    }
+    return super.buildMDObject();
   }
 
   @Override

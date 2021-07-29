@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.test_utils;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
@@ -133,7 +132,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var fields = attributeClass.getDeclaredFields();
     for (var field : fields) {
 
-      if ("supportVariant".equals(field.getName())) {
+      if ("supportVariant" .equals(field.getName())) {
         continue;
       }
 
@@ -167,7 +166,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var fields = childClass.getDeclaredFields();
     for (var field : fields) {
 
-      if ("supportVariant".equals(field.getName())) {
+      if ("supportVariant" .equals(field.getName())) {
         continue;
       }
 
@@ -286,7 +285,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
   protected T getMDObject(Path path) {
     var mdo = MDOFactory.readMDObject(path);
     assertThat(mdo).isPresent();
-    return clazz.cast(MDClasses.build(mdo.get().buildMDObject()));
+    return clazz.cast(mdo.get().buildMDObject());
   }
 
   protected void storeUntestedField(MDObject mdo, Field field, Class<?> fieldType, String key) throws IllegalAccessException {
@@ -313,7 +312,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       var fieldType = field.getType();
 
       var key = field.getName();
-      if ("supportVariant".equals(key)) {
+      if ("supportVariant" .equals(key)) {
         continue;
       }
 

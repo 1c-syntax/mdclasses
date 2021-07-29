@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.CommonAttribute;
-import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -93,8 +92,7 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -106,13 +104,6 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
-    }
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
     }
   }
 

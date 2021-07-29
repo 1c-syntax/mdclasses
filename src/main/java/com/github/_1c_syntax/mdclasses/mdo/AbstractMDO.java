@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -114,12 +115,14 @@ public abstract class AbstractMDO implements MDO {
     TransformationUtils.setValue(builder, "metadataName", getMetadataName());
 
     TransformationUtils.setValue(builder, "metadataNameRu", getMetadataNameRu());
-    TransformationUtils.setValue(builder, "type", getType());
+    if (!(this instanceof AbstractMDOAttribute)) {
+      TransformationUtils.setValue(builder, "type", getType());
+    }
     TransformationUtils.setValue(builder, "mdoReference",
       MdoReference.create(mdoReference.getType(),
         mdoReference.getMdoRef(), mdoReference.getMdoRefRu()));
 
-    return builder;
+    return TransformationUtils.build(builder);
   }
 
   /**
@@ -136,4 +139,6 @@ public abstract class AbstractMDO implements MDO {
    * Возвращает имя метаданных объекта на русском языке
    */
   public abstract String getMetadataNameRu();
+
+
 }

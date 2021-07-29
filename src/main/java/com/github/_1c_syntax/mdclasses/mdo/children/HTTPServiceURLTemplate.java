@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
@@ -89,18 +89,19 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
     return Collections.unmodifiableSet(children);
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(HttpServiceUrlTemplate.builder());
-    super.buildMDObject();
+
+    var ref = MdoReference.create(mdoReference.getType(),
+      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
 
     ((HttpServiceUrlTemplate.HttpServiceUrlTemplateBuilder) builder)
       .httpServiceMethods(httpServiceMethods.stream()
-        .map(HTTPServiceMethod::buildMDObject)
-        .map(MDClasses::build)
+        .map(child -> child.buildMDObject(ref))
         .map(HttpServiceMethod.class::cast)
-        .collect(Collectors.toList()));
+        .collect(Collectors.toList()))
+      .owner(owner);
 
-    return builder;
+    return super.buildMDObject();
   }
 }

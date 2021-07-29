@@ -78,13 +78,12 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements MDOTemplat
   @Override
   public Object buildMDObject() {
     setBuilder(CommonTemplate.builder());
-    super.buildMDObject();
 
     ((CommonTemplate.CommonTemplateBuilder) builder)
       .templateType(templateType)
       .templateData(templateData)
       .templateDataPath(templateDataPath);
 
-    return builder;
+    return super.buildMDObject();
   }
 }

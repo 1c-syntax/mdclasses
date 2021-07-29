@@ -68,8 +68,7 @@ public class MDLanguage extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(Language.builder());
-    super.buildMDObject();
     ((Language.LanguageBuilder) builder).languageCode(languageCode);
-    return builder;
+    return super.buildMDObject();
   }
 }

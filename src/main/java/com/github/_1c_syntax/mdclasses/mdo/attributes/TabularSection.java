@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
@@ -86,18 +86,19 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   }
 
   @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(ObjectTabularSection.builder());
-    var builder = super.buildMDObject();
+
+    var ref = MdoReference.create(mdoReference.getType(),
+      mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
 
     ((ObjectTabularSection.ObjectTabularSectionBuilder) builder)
       .attributes(
         attributes.stream()
-          .map(AbstractMDOAttribute::buildMDObject)
-          .map(MDClasses::build)
+          .map(child -> child.buildMDObject(ref))
           .map(com.github._1c_syntax.bsl.mdo.Attribute.class::cast)
           .collect(Collectors.toList()));
 
-    return builder;
+    return super.buildMDObject(owner);
   }
 }

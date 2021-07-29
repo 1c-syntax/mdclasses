@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -172,7 +171,6 @@ public class MDSubsystem extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(Subsystem.builder());
-    super.buildMDObject();
 
     ((Subsystem.SubsystemBuilder) builder)
       .includeInCommandInterface(includeInCommandInterface)
@@ -182,7 +180,6 @@ public class MDSubsystem extends AbstractMDObjectBase {
         .filter(MDSubsystem.class::isInstance)
         .map(MDSubsystem.class::cast)
         .map(MDSubsystem::buildMDObject)
-        .map(MDClasses::build)
         .map(Subsystem.class::cast)
         .collect(Collectors.toList())
       )

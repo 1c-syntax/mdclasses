@@ -23,12 +23,12 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
-import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
@@ -302,8 +302,6 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       setBuilder(Configuration.builder());
     }
 
-    super.buildMDObject();
-
     TransformationUtils.setValue(builder, "configurationSource", configurationSource);
     TransformationUtils.setValue(builder, "compatibilityMode", compatibilityMode);
     TransformationUtils.setValue(builder, "configurationExtensionCompatibilityMode",
@@ -311,13 +309,20 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     TransformationUtils.setValue(builder, "scriptVariant", scriptVariant);
     TransformationUtils.setValue(builder, "defaultRunMode", ApplicationRunMode.getByName(defaultRunMode));
 
+    var childrenMDO = getChildren().stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .map(AbstractMDObjectBase::buildMDObject)
+      .filter(Objects::nonNull)
+      .map(MDObject.class::cast)
+      .collect(Collectors.toList());
+
     if (defaultLanguage.isRight()) {
-      var languageMDO = defaultLanguage.get();
-      if (languageMDO.getBuilder() == null) {
-        languageMDO.buildMDObject();
-      }
-      var language = (Language) MDClasses.build(languageMDO.getBuilder());
-      TransformationUtils.setValue(builder, "defaultLanguage", language);
+      MdoReference.find(defaultLanguage.get().mdoReference.getMdoRef())
+        .flatMap(mdoReferenceLanguage -> childrenMDO.stream()
+          .filter(mdObject -> mdObject.getMdoReference().equals(mdoReferenceLanguage))
+          .findFirst()).ifPresent(language ->
+        TransformationUtils.setValue(builder, "defaultLanguage", language));
     }
 
     TransformationUtils.setValue(builder, "dataLockControlMode", dataLockControlMode);
@@ -338,13 +343,6 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       new MultiLanguageString(briefInformation.stream()
         .collect(Collectors.toUnmodifiableMap(LanguageContent::getLanguage, LanguageContent::getContent))));
 
-    var childrenMDO = getChildren().stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .map(AbstractMDObjectBase::buildMDObject)
-      .filter(Objects::nonNull)
-      .map(MDClasses::build)
-      .collect(Collectors.toList());
 
     var allChildrenMDO = new ArrayList<>(childrenMDO);
     childrenMDO.stream()
@@ -364,6 +362,6 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       configurationExtensionPurpose);
     TransformationUtils.setValue(builder, "namePrefix", namePrefix);
 
-    return builder;
+    return super.buildMDObject();
   }
 }

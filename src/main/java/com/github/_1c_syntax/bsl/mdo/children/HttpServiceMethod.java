@@ -81,8 +81,7 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -103,12 +102,4 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
       this.supportVariant = supportVariant;
     }
   }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
-    }
-  }
-
 }

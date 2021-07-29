@@ -101,7 +101,6 @@ public class MDCommonModule extends AbstractMDObjectBSL {
   @Override
   public Object buildMDObject() {
     setBuilder(CommonModule.builder());
-    super.buildMDObject();
 
     ((CommonModule.CommonModuleBuilder) builder)
       .server(server)
@@ -117,6 +116,6 @@ public class MDCommonModule extends AbstractMDObjectBSL {
     MDOPathUtils.getModulePath(path, name, ModuleType.CommonModule).
       ifPresent(value -> ((CommonModule.CommonModuleBuilder) builder).uri(value.toUri()));
 
-    return builder;
+    return super.buildMDObject();
   }
 }

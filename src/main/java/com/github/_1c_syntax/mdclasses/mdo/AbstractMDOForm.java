@@ -86,8 +86,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
     TransformationUtils.setValue(builder, "formType", formType);
-    return builder;
+    return super.buildMDObject();
   }
 }

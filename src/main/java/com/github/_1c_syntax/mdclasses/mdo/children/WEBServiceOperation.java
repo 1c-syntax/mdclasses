@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -58,11 +59,11 @@ public class WEBServiceOperation extends AbstractMDObjectBase {
     handler = designerMDO.getProperties().getWsOperationProcedureName();
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(WebServiceOperation.builder());
-    super.buildMDObject();
-    ((WebServiceOperation.WebServiceOperationBuilder) builder).handler(handler);
-    return builder;
+    ((WebServiceOperation.WebServiceOperationBuilder) builder)
+      .handler(handler)
+      .owner(owner);
+    return super.buildMDObject();
   }
 }

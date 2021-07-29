@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
-import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -99,8 +98,7 @@ public class RegisterResource implements Attribute, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -112,13 +110,6 @@ public class RegisterResource implements Attribute, MDChildObject {
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
-    }
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
     }
   }
 }

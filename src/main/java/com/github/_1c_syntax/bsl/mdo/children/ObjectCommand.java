@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Command;
-import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -85,8 +84,7 @@ public class ObjectCommand implements Command, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Список модулей объекта
@@ -103,13 +101,6 @@ public class ObjectCommand implements Command, MDChildObject {
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
-    }
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
     }
   }
 }

@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -93,13 +93,13 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    if (builder != null) {
-      TransformationUtils.setValue(builder, "modules",
-        modules.stream().map(MDOModule::buildMDObject)
-          .map(MDClasses::buildModule)
-          .collect(Collectors.toList()));
-    }
-    return builder;
+
+    TransformationUtils.setValue(builder, "modules",
+      modules.stream().map(MDOModule::buildMDObject)
+        .map(TransformationUtils::build)
+        .map(Module.class::cast)
+        .collect(Collectors.toList()));
+
+    return super.buildMDObject();
   }
 }

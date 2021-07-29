@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -47,9 +48,9 @@ public class Command extends AbstractMDObjectBSL {
     super(designerMDO);
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(ObjectCommand.builder());
+    ((ObjectCommand.ObjectCommandBuilder) builder).owner(owner);
     return super.buildMDObject();
   }
 }

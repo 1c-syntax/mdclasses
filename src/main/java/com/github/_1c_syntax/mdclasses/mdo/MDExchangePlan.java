@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
@@ -106,7 +106,6 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
   @Override
   public Object buildMDObject() {
     setBuilder(ExchangePlan.builder());
-    super.buildMDObject();
 
     ((ExchangePlan.ExchangePlanBuilder) builder)
       .distributedInfoBase(distributedInfoBase)
@@ -116,13 +115,13 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
           .filter(exchangePlanItem -> exchangePlanItem.getMdObject().isRight())
           .map(exchangePlanItem ->
             new ExchangePlan.Item(
-              MDClasses.build(exchangePlanItem.getMdObject().get().buildMDObject()).getMdoReference(),
+              ((MDObject) exchangePlanItem.getMdObject().get().buildMDObject()).getMdoReference(),
               exchangePlanItem.getAutoRecord()
             )
           )
           .collect(Collectors.toList())
       );
 
-    return builder;
+    return super.buildMDObject();
   }
 }

@@ -74,20 +74,18 @@ public class MDRole extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(Role.builder());
-    super.buildMDObject();
-    if (roleData == null) {
-      return builder;
+
+    if (roleData != null) {
+      ((Role.RoleBuilder) builder)
+        .setForNewObjects(roleData.isSetForNewObjects())
+        .setForAttributesByDefault(roleData.isSetForAttributesByDefault())
+        .independentRightsOfChildObjects(roleData.isIndependentRightsOfChildObjects())
+        .rights(roleData.getObjectRights().stream()
+          .map(ObjectRight::buildMDObject)
+          .map(RoleRight.class::cast)
+          .collect(Collectors.toList()));
     }
 
-    ((Role.RoleBuilder) builder)
-      .setForNewObjects(roleData.isSetForNewObjects())
-      .setForAttributesByDefault(roleData.isSetForAttributesByDefault())
-      .independentRightsOfChildObjects(roleData.isIndependentRightsOfChildObjects())
-      .rights(roleData.getObjectRights().stream()
-        .map(ObjectRight::buildMDObject)
-        .map(RoleRight.class::cast)
-        .collect(Collectors.toList()));
-
-    return builder;
+    return super.buildMDObject();
   }
 }

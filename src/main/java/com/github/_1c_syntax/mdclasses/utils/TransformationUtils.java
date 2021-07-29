@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
@@ -36,7 +38,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @UtilityClass
 public class TransformationUtils {
+
   private static final Map<Class<?>, Map<String, Method>> methods = new ConcurrentHashMap<>();
+  private static final String BUILDER_METHOD_NAME = "build";
 
   @SneakyThrows
   public void setValue(Object source, String methodName, Object value) {
@@ -75,5 +79,32 @@ public class TransformationUtils {
     }
 
     method.invoke(source, value);
+  }
+
+  @SneakyThrows
+  // todo времянка
+  public Object build(Object builder) {
+    var classMethods = methods.get(builder.getClass());
+    if (classMethods == null) {
+      classMethods = new HashMap<>();
+    }
+
+    var method = classMethods.get(BUILDER_METHOD_NAME);
+    // ключ метода в кэше есть, но метода нет
+    if (method == null) {
+      method = builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME);
+      classMethods.put(BUILDER_METHOD_NAME, method);
+      methods.put(builder.getClass(), classMethods);
+    }
+
+    var result = method.invoke(builder);
+
+    if (result instanceof ModuleOwner) {
+      ((ModuleOwner) result).getModules().stream()
+        .filter(ObjectModule.class::isInstance)
+        .map(ObjectModule.class::cast)
+        .forEach(module -> module.setOwner((ModuleOwner) result));
+    }
+    return result;
   }
 }

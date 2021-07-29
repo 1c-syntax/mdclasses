@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
@@ -77,16 +78,16 @@ public class Template extends AbstractMDObjectBase implements MDOTemplate {
     templateData = TemplateData.create(templateType, templateDataPath);
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(ObjectTemplate.builder());
-    super.buildMDObject();
 
     ((ObjectTemplate.ObjectTemplateBuilder) builder)
       .templateType(templateType)
       .templateData(templateData)
-      .templateDataPath(templateDataPath);
+      .templateDataPath(templateDataPath)
+      .owner(owner)
+    ;
 
-    return builder;
+    return super.buildMDObject();
   }
 }

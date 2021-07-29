@@ -90,8 +90,7 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   /**
    * Родительский объект
    */
-  @NonFinal
-  MDObject owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -103,13 +102,6 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   public void setSupportVariant(SupportVariant supportVariant) {
     if (this.supportVariant == null) {
       this.supportVariant = supportVariant;
-    }
-  }
-
-  @Override
-  public void setOwner(MDObject owner) {
-    if (this.owner == null) {
-      this.owner = owner;
     }
   }
 }

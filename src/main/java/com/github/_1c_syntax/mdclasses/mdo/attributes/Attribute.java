@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -41,5 +43,11 @@ import lombok.Value;
 public class Attribute extends AbstractMDOAttribute {
   public Attribute(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject(MdoReference owner) {
+    setBuilder(ObjectAttribute.builder());
+    return super.buildMDObject(owner);
   }
 }

@@ -28,7 +28,6 @@ import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
-import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
@@ -277,17 +276,7 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 
     mdc.getChildren().forEach(mdObject -> assertThat(children).contains(mdObject));
     children.forEach(mdObject -> assertThat(mdc.getChildren()).contains(mdObject));
-
-    // smoky test
-    var newOwner = mdc.getChildren().get(0);
-    mdc.getPlainChildren().stream()
-      .filter(MDChildObject.class::isInstance)
-      .map(MDChildObject.class::cast)
-      .forEach(mdObject -> {
-        var owner = mdObject.getOwner();
-        mdObject.setOwner(newOwner);
-        assertThat(mdObject.getOwner()).isEqualTo(owner);
-      });
+    
   }
 
   @ParameterizedTest(name = "{index}: path {0}")

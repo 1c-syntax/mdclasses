@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
@@ -66,16 +67,15 @@ public class IntegrationServiceChannel extends AbstractMDObjectBase {
     externalIntegrationServiceChannelName = designerMDO.getProperties().getExternalIntegrationServiceChannelName();
   }
 
-  @Override
-  public Object buildMDObject() {
+  public Object buildMDObject(MdoReference owner) {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.builder());
-    super.buildMDObject();
 
     ((com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.IntegrationServiceChannelBuilder) builder)
       .messageDirection(messageDirection)
       .handler(receiveMessageProcessing)
-      .externalIntegrationServiceChannelName(externalIntegrationServiceChannelName);
+      .externalIntegrationServiceChannelName(externalIntegrationServiceChannelName)
+      .owner(owner);
 
-    return builder;
+    return super.buildMDObject();
   }
 }

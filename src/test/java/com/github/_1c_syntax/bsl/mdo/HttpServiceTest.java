@@ -60,7 +60,7 @@ class HttpServiceTest extends AbstractMDObjectTest<HttpService> {
       .contains(Map.entry("ru", "Шаблон URL"));
     assertThat(httpServiceUrlTemplate.getMdoReference().getMdoRef())
       .isEqualTo("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL");
-    assertThat(httpServiceUrlTemplate.getOwner()).isEqualTo(mdo);
+    assertThat(httpServiceUrlTemplate.getOwner()).isEqualTo(mdo.getMdoReference());
     assertThat(httpServiceUrlTemplate.getHttpServiceMethods()).hasSize(2);
 
     var httpServiceMethod = httpServiceUrlTemplate.getHttpServiceMethods().get(0);
@@ -75,6 +75,6 @@ class HttpServiceTest extends AbstractMDObjectTest<HttpService> {
     assertThat(httpServiceMethod.getMdoReference().getMdoRef())
       .isEqualTo("HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод");
     assertThat(httpServiceMethod.getHandler()).isEqualTo("ШаблонURLМетод");
-    assertThat(httpServiceMethod.getOwner()).isEqualTo(httpServiceUrlTemplate);
+    assertThat(httpServiceMethod.getOwner()).isEqualTo(httpServiceUrlTemplate.getMdoReference());
   }
 }

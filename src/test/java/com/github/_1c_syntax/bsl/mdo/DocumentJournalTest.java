@@ -90,7 +90,7 @@ class DocumentJournalTest extends AbstractMDObjectTest<DocumentJournal> {
       .contains(Map.entry("ru", "Графа"));
     assertThat(attribute.getMdoReference().getMdoRef())
       .isEqualTo("DocumentJournal.ЖурналДокументов1.Column.Графа");
-    assertThat(((DocumentJournalColumn) attribute).getOwner()).isEqualTo(mdo);
+    assertThat(((DocumentJournalColumn) attribute).getOwner()).isEqualTo(mdo.getMdoReference());
 
   }
 }

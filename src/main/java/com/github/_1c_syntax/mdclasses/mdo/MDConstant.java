@@ -55,8 +55,7 @@ public class MDConstant extends AbstractMDObjectBSL {
   @Override
   public Object buildMDObject() {
     setBuilder(Constant.builder());
-    super.buildMDObject();
     ((Constant.ConstantBuilder) builder).passwordMode(passwordMode);
-    return builder;
+    return super.buildMDObject();
   }
 }

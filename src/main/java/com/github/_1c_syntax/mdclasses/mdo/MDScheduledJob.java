@@ -62,8 +62,7 @@ public class MDScheduledJob extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(ScheduledJob.builder());
-    super.buildMDObject();
     ((ScheduledJob.ScheduledJobBuilder) builder).handler(handler);
-    return builder;
+    return super.buildMDObject();
   }
 }

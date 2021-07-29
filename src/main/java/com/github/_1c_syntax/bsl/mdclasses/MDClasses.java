@@ -22,12 +22,7 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
-import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -38,22 +33,16 @@ import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @UtilityClass
 public class MDClasses {
 
-  private static final Map<Object, MDObject> mdObjects = new ConcurrentHashMap<>();
-  private static final String BUILDER_METHOD_NAME = "build";
-
   @SneakyThrows
   public MDClass createConfiguration(Path path) {
-    mdObjects.clear();
     var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
     var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
     if (mdo.isPresent()) {
-      var configuration = (buildMDClass(mdo.get().buildMDObject()));
+      var configuration = (MDClass) mdo.get().buildMDObject();
       if (configuration instanceof Configuration) {
         computeSupportConfiguration((Configuration) configuration, path);
       }
@@ -64,55 +53,6 @@ public class MDClasses {
     var emptyBuilder = Configuration.builder();
     emptyBuilder.configurationSource(ConfigurationSource.EMPTY);
     return emptyBuilder.build();
-  }
-
-  @SneakyThrows
-  // todo времянка
-  public MDObject build(Object builder) {
-    MDObject result;
-    if (mdObjects.containsKey(builder)) {
-      result = mdObjects.get(builder);
-    } else {
-      var mdObject = (MDObject) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
-      mdObjects.put(builder, mdObject);
-      result = mdObject;
-    }
-    if (result instanceof ChildrenOwner) {
-      ((ChildrenOwner) result).getChildren().stream()
-        .filter(MDChildObject.class::isInstance)
-        .map(MDChildObject.class::cast)
-        .forEach(mdObject -> mdObject.setOwner(result));
-    }
-
-    if (result instanceof ModuleOwner) {
-      ((ModuleOwner) result).getModules().stream()
-        .filter(ObjectModule.class::isInstance)
-        .map(ObjectModule.class::cast)
-        .forEach(module -> module.setOwner((ModuleOwner) result));
-    }
-
-    return result;
-  }
-
-  @SneakyThrows
-  // todo времянка
-  public Module buildModule(Object builder) {
-    return (Module) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
-  }
-
-  @SneakyThrows
-  // todo времянка
-  public MDClass buildMDClass(Object builder) {
-    var result = (MDClass) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
-
-    if (result instanceof ModuleOwner) {
-      ((ModuleOwner) result).getModules().stream()
-        .filter(ObjectModule.class::isInstance)
-        .map(ObjectModule.class::cast)
-        .forEach(module -> module.setOwner((ModuleOwner) result));
-    }
-
-    return result;
   }
 
   /**

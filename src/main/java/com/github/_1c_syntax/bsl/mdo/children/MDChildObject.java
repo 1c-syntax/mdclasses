@@ -21,19 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
-import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 
 /**
  * Интерфейс всех дочерних объектов
  */
 public interface MDChildObject {
   /**
-   * Родительский объект
+   * Ссылка на родительский объект
    */
-  MDObject getOwner();
-
-  /**
-   * Установка родительского объекта
-   */
-  void setOwner(MDObject owner);
+  MdoReference getOwner();
 }
