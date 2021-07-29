@@ -99,5 +99,3 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
    */
   SupportVariant supportVariant;
 }
-
-// todo добавить состав

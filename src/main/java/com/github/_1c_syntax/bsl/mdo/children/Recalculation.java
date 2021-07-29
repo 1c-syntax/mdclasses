@@ -96,5 +96,3 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
    */
   SupportVariant supportVariant;
 }
-
-// todo добавить измерения

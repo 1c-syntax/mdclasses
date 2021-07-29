@@ -82,4 +82,3 @@ public class WSReference implements MDObject {
    */
   SupportVariant supportVariant;
 }
-// todo прочесть ссылку + УРЛ

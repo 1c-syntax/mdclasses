@@ -86,12 +86,12 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Обработчик получения сообщения
    */
-  String handler; //todo сделать объектом
+  String handler;
 
   /**
    * Родительский объект
    */
-   MdoReference owner;
+  MdoReference owner;
 
   /**
    * Вариант поддержки родительской конфигурации

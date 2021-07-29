@@ -46,7 +46,7 @@ public class Dimension extends AbstractMDOAttribute {
 
   /**
    * Признак использования в итогах
-   * TODO: Для регистра сведений не применимо, но не противоречит логике
+   * Для регистра сведений не применимо, но не противоречит логике
    */
   private boolean useInTotals = true;
 

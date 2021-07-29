@@ -123,6 +123,4 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
     requireNonNull(attributes);
     attributes.add(commonAttribute);
   }
-
-  // todo отдельно вынести признаки учета и признаки учета субконто
 }

@@ -124,5 +124,3 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
     attributes.add(commonAttribute);
   }
 }
-
-// todo добавить ссылки на задачи

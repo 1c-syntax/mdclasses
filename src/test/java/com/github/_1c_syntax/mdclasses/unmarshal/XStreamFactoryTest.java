@@ -63,8 +63,9 @@ class XStreamFactoryTest {
 
   @Test
   void testBrokenXml() {
+    var path = Paths.get("src/test/resources/metadata/original_broken/Configuration.xml");
     try {
-      MDOFactory.readMDObject(Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
+      MDOFactory.readMDObject(path);
       fail("Expected an ConversionException to be thrown");
     } catch (ConversionException e) {
       // noop

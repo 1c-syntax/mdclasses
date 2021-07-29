@@ -87,7 +87,7 @@ public class WebServiceOperation implements MDObject, MDChildObject {
    * Формат имя метода
    * Пример Операция1
    */
-  String handler; // TODO сделать классом
+  String handler;
 
   /**
    * Вариант поддержки родительской конфигурации

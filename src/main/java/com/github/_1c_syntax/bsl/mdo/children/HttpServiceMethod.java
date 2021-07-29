@@ -92,5 +92,5 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
    * Формат имя метода
    * Пример ШаблонURLМетод1
    */
-  String handler; // TODO сделать классом
+  String handler;
 }

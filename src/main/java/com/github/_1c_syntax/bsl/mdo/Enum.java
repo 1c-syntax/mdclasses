@@ -105,5 +105,3 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
    */
   SupportVariant supportVariant;
 }
-
-// todo  добавить значения

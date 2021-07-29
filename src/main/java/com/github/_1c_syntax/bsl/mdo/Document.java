@@ -108,7 +108,6 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
    */
   List<Module> modules;
 
-  // todo переделать на ContentStorage
   /**
    * Список связанных регистров (где документ является регистратором)
    */

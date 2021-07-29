@@ -401,8 +401,6 @@ public interface ConfigurationTree {
     return getChildrenByType(Task.class);
   }
 
-  // todo реализовать чтение внешних источников данных
-
   /**
    * Получение списка дочерних элементов по типу
    *

@@ -82,4 +82,3 @@ public class SessionParameter implements MDObject {
    */
   SupportVariant supportVariant;
 }
-// todo добавить интерфейс атрибута?

@@ -54,7 +54,7 @@ public class WEBServiceOperation extends AbstractMDObjectBase {
    * Пример Операция1
    */
   @XStreamAlias("procedureName")
-  private String handler = ""; // TODO сделать классом
+  private String handler = "";
 
   public WEBServiceOperation(DesignerMDO designerMDO) {
     super(designerMDO);

@@ -104,5 +104,3 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
     attributes.add(commonAttribute);
   }
 }
-
-// todo добавить использование

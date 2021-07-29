@@ -68,8 +68,7 @@ public class TransformationUtils {
         // просто считаем, что метода нет
         method = null;
       }
-      classMethods.put(methodName, method);
-      methods.put(source.getClass(), classMethods);
+      saveMethod(source, classMethods, method, methodName);
 
       if (method == null) {
         return;
@@ -80,7 +79,6 @@ public class TransformationUtils {
   }
 
   @SneakyThrows
-  // todo времянка
   public Object build(Object builder) {
     var classMethods = methods.get(builder.getClass());
     if (classMethods == null) {
@@ -88,13 +86,19 @@ public class TransformationUtils {
     }
 
     var method = classMethods.get(BUILDER_METHOD_NAME);
-    // ключ метода в кэше есть, но метода нет
     if (method == null) {
       method = builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME);
-      classMethods.put(BUILDER_METHOD_NAME, method);
-      methods.put(builder.getClass(), classMethods);
+      saveMethod(builder, classMethods, method, BUILDER_METHOD_NAME);
     }
 
     return method.invoke(builder);
+  }
+
+  private static void saveMethod(Object builder,
+                                 Map<String, Method> classMethods,
+                                 Method method,
+                                 String builderMethodName) {
+    classMethods.put(builderMethodName, method);
+    methods.put(builder.getClass(), classMethods);
   }
 }

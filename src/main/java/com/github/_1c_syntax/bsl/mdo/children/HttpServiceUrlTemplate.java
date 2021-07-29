@@ -102,5 +102,3 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
     return children;
   }
 }
-
-// todo добавить шаблон

@@ -52,7 +52,7 @@ public class HTTPServiceMethod extends AbstractMDObjectBase {
    * Формат имя метода
    * Пример ШаблонURLМетод1
    */
-  private String handler = ""; // TODO сделать классом
+  private String handler = "";
 
   public HTTPServiceMethod(DesignerMDO designerMDO) {
     super(designerMDO);

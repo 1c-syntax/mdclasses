@@ -82,5 +82,3 @@ public class FunctionalOptionsParameter implements MDObject {
    */
   SupportVariant supportVariant;
 }
-
-// todo  добавить Использование
