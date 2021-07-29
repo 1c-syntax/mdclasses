@@ -21,12 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.EventSubscription;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.MethodHandlerConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
@@ -61,8 +61,9 @@ public class MDEventSubscription extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "handler", handler);
+    setBuilder(EventSubscription.builder());
+    super.buildMDObject();
+    ((EventSubscription.EventSubscriptionBuilder) builder).handler(handler);
     return builder;
   }
 }

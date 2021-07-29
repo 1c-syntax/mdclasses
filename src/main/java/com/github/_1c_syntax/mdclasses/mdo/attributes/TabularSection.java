@@ -28,7 +28,6 @@ import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -90,11 +89,15 @@ public class TabularSection extends AbstractMDOAttribute implements MDOHasChildr
   public Object buildMDObject() {
     setBuilder(ObjectTabularSection.builder());
     var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "attributes",
-      attributes.stream()
-        .map(AbstractMDOAttribute::buildMDObject)
-        .map(MDClasses::build)
-        .collect(Collectors.toList()));
+
+    ((ObjectTabularSection.ObjectTabularSectionBuilder) builder)
+      .attributes(
+        attributes.stream()
+          .map(AbstractMDOAttribute::buildMDObject)
+          .map(MDClasses::build)
+          .map(com.github._1c_syntax.bsl.mdo.Attribute.class::cast)
+          .collect(Collectors.toList()));
+
     return builder;
   }
 }

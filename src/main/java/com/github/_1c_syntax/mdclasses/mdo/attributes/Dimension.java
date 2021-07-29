@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -68,10 +67,13 @@ public class Dimension extends AbstractMDOAttribute {
   @Override
   public Object buildMDObject() {
     setBuilder(RegisterDimension.builder());
-    var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "useInTotals", useInTotals);
-    TransformationUtils.setValue(builder, "denyIncompleteValues", denyIncompleteValues);
-    TransformationUtils.setValue(builder, "master", master);
+    super.buildMDObject();
+
+    ((RegisterDimension.RegisterDimensionBuilder) builder)
+      .useInTotals(useInTotals)
+      .denyIncompleteValues(denyIncompleteValues)
+      .master(master);
+
     return builder;
   }
 }

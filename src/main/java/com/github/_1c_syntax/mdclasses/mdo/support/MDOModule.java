@@ -24,7 +24,6 @@ package com.github._1c_syntax.mdclasses.mdo.support;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasModule;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -56,8 +55,11 @@ public class MDOModule {
 
   public Object buildMDObject() {
     var builder = ObjectModule.builder();
-    TransformationUtils.setValue(builder, "moduleType", moduleType);
-    TransformationUtils.setValue(builder, "uri", uri);
+
+    builder
+      .moduleType(moduleType)
+      .uri(uri);
+
     return builder;
   }
 }

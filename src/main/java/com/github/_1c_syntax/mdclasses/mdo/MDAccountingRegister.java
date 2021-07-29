@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.AccountingRegister;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -44,5 +45,11 @@ public class MDAccountingRegister extends AbstractMDObjectComplex {
 
   public MDAccountingRegister(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(AccountingRegister.builder());
+    return super.buildMDObject();
   }
 }

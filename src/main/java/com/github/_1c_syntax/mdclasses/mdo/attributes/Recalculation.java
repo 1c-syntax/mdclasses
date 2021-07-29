@@ -33,7 +33,6 @@ import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -101,12 +100,15 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
   @Override
   public Object buildMDObject() {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.Recalculation.builder());
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "modules",
-      modules.stream().map(MDOModule::buildMDObject)
-        .map(MDClasses::buildModule)
-        .collect(Collectors.toList()));
-    TransformationUtils.setValue(builder, "type", MDOType.RECALCULATION);
+    super.buildMDObject();
+
+    ((com.github._1c_syntax.bsl.mdo.children.Recalculation.RecalculationBuilder) builder)
+      .modules(
+        modules.stream().map(MDOModule::buildMDObject)
+          .map(MDClasses::buildModule)
+          .collect(Collectors.toList()))
+      .type(MDOType.RECALCULATION);
+
     return builder;
   }
 }

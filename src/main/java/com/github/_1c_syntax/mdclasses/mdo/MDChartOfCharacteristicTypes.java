@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -43,5 +44,11 @@ import lombok.Value;
 public class MDChartOfCharacteristicTypes extends AbstractMDObjectComplex {
   public MDChartOfCharacteristicTypes(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(ChartOfCharacteristicTypes.builder());
+    return super.buildMDObject();
   }
 }

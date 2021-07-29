@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.XMLScope;
@@ -49,5 +50,11 @@ import lombok.ToString;
 public class MDInterface extends AbstractMDObjectBase {
   public MDInterface(DesignerMDO designerMDO) {
     super(designerMDO);
+  }
+
+  @Override
+  public Object buildMDObject() {
+    setBuilder(Interface.builder());
+    return super.buildMDObject();
   }
 }

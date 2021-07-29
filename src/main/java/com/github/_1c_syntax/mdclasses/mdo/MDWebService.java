@@ -22,11 +22,12 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.WEBServiceOperation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -89,10 +90,13 @@ public class MDWebService extends AbstractMDObjectBSL implements MDOHasChildren 
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "operations",
-      operations.stream().map(WEBServiceOperation::buildMDObject)
+    setBuilder(WebService.builder());
+    super.buildMDObject();
+
+    ((WebService.WebServiceBuilder) builder)
+      .operations(operations.stream().map(WEBServiceOperation::buildMDObject)
         .map(MDClasses::build)
+        .map(WebServiceOperation.class::cast)
         .collect(Collectors.toList()));
     return super.buildMDObject();
   }

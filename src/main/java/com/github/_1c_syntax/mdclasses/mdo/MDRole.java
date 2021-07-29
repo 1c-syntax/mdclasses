@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.Role;
+import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
@@ -29,7 +31,6 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -72,18 +73,20 @@ public class MDRole extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
+    setBuilder(Role.builder());
+    super.buildMDObject();
     if (roleData == null) {
       return builder;
     }
-    TransformationUtils.setValue(builder, "setForNewObjects", roleData.isSetForNewObjects());
-    TransformationUtils.setValue(builder, "setForAttributesByDefault",
-      roleData.isSetForAttributesByDefault());
-    TransformationUtils.setValue(builder, "independentRightsOfChildObjects",
-      roleData.isIndependentRightsOfChildObjects());
-    TransformationUtils.setValue(builder, "rights",
-      roleData.getObjectRights().stream()
-        .map(ObjectRight::buildMDObject).collect(Collectors.toList()));
+
+    ((Role.RoleBuilder) builder)
+      .setForNewObjects(roleData.isSetForNewObjects())
+      .setForAttributesByDefault(roleData.isSetForAttributesByDefault())
+      .independentRightsOfChildObjects(roleData.isIndependentRightsOfChildObjects())
+      .rights(roleData.getObjectRights().stream()
+        .map(ObjectRight::buildMDObject)
+        .map(RoleRight.class::cast)
+        .collect(Collectors.toList()));
 
     return builder;
   }

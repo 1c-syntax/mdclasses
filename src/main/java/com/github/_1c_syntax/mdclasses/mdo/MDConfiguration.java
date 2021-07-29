@@ -297,12 +297,13 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   @Override
   public Object buildMDObject() {
     if (objectBelonging == ObjectBelonging.ADOPTED) {
-      builder = ConfigurationExtension.builder();
+      setBuilder(ConfigurationExtension.builder());
     } else {
-      builder = Configuration.builder();
+      setBuilder(Configuration.builder());
     }
 
-    builder = super.buildMDObject();
+    super.buildMDObject();
+
     TransformationUtils.setValue(builder, "configurationSource", configurationSource);
     TransformationUtils.setValue(builder, "compatibilityMode", compatibilityMode);
     TransformationUtils.setValue(builder, "configurationExtensionCompatibilityMode",

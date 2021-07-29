@@ -26,7 +26,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -60,8 +59,8 @@ public class HTTPServiceMethod extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(HttpServiceMethod.builder());
-    var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "handler", handler);
+    super.buildMDObject();
+    ((HttpServiceMethod.HttpServiceMethodBuilder) builder).handler(handler);
     return builder;
   }
 }

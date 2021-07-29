@@ -21,13 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -100,19 +100,22 @@ public class MDCommonModule extends AbstractMDObjectBSL {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "server", server);
-    TransformationUtils.setValue(builder, "global", global);
-    TransformationUtils.setValue(builder, "clientManagedApplication", clientManagedApplication);
-    TransformationUtils.setValue(builder, "externalConnection", externalConnection);
-    TransformationUtils.setValue(builder, "clientOrdinaryApplication", clientOrdinaryApplication);
-    TransformationUtils.setValue(builder, "serverCall", serverCall);
-    TransformationUtils.setValue(builder, "privileged", privileged);
-    TransformationUtils.setValue(builder, "returnValuesReuse", returnValuesReuse);
-    TransformationUtils.setValue(builder, "moduleType", ModuleType.CommonModule);
+    setBuilder(CommonModule.builder());
+    super.buildMDObject();
+
+    ((CommonModule.CommonModuleBuilder) builder)
+      .server(server)
+      .global(global)
+      .clientManagedApplication(clientManagedApplication)
+      .externalConnection(externalConnection)
+      .clientOrdinaryApplication(clientOrdinaryApplication)
+      .serverCall(serverCall)
+      .privileged(privileged)
+      .returnValuesReuse(returnValuesReuse)
+      .moduleType(ModuleType.CommonModule);
+
     MDOPathUtils.getModulePath(path, name, ModuleType.CommonModule).
-      ifPresent(value -> TransformationUtils.setValue(builder, "uri",
-        value.toUri()));
+      ifPresent(value -> ((CommonModule.CommonModuleBuilder) builder).uri(value.toUri()));
 
     return builder;
   }

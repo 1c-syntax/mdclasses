@@ -26,7 +26,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -62,8 +61,8 @@ public class WEBServiceOperation extends AbstractMDObjectBase {
   @Override
   public Object buildMDObject() {
     setBuilder(WebServiceOperation.builder());
-    var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "handler", handler);
+    super.buildMDObject();
+    ((WebServiceOperation.WebServiceOperationBuilder) builder).handler(handler);
     return builder;
   }
 }

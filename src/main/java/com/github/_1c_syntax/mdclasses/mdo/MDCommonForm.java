@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -45,4 +46,9 @@ public class MDCommonForm extends AbstractMDOForm {
     super(designerMDO);
   }
 
+  @Override
+  public Object buildMDObject() {
+    setBuilder(CommonForm.builder());
+    return super.buildMDObject();
+  }
 }

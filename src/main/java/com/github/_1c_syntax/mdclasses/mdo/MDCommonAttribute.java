@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -130,15 +129,17 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "autoUse", autoUse);
-    TransformationUtils.setValue(builder, "dataSeparation", dataSeparation);
-    TransformationUtils.setValue(builder, "passwordMode", passwordMode);
-    TransformationUtils.setValue(builder, "indexing", indexing);
-    TransformationUtils.setValue(builder, "using", using.stream()
-      .map(AbstractMDO::getMdoReference)
-      .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
-      .collect(Collectors.toList()));
+    setBuilder(com.github._1c_syntax.bsl.mdo.CommonAttribute.builder());
+    super.buildMDObject();
+    ((com.github._1c_syntax.bsl.mdo.CommonAttribute.CommonAttributeBuilder) builder)
+      .autoUse(autoUse)
+      .dataSeparation(dataSeparation)
+      .passwordMode(passwordMode)
+      .indexing(indexing)
+      .using(using.stream()
+        .map(AbstractMDO::getMdoReference)
+        .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+        .collect(Collectors.toList()));
 
     return builder;
   }

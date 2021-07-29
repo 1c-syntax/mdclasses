@@ -21,13 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.CommonTemplate;
 import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -77,10 +77,14 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements MDOTemplat
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "templateType", templateType);
-    TransformationUtils.setValue(builder, "templateData", templateData);
-    TransformationUtils.setValue(builder, "templateDataPath", templateDataPath);
+    setBuilder(CommonTemplate.builder());
+    super.buildMDObject();
+
+    ((CommonTemplate.CommonTemplateBuilder) builder)
+      .templateType(templateType)
+      .templateData(templateData)
+      .templateDataPath(templateDataPath);
+
     return builder;
   }
 }

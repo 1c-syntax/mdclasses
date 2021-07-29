@@ -22,11 +22,11 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.IntegrationService;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -94,13 +94,17 @@ public class MDIntegrationService extends AbstractMDObjectBSL implements MDOHasC
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "integrationChannels",
-      integrationChannels.stream().map(IntegrationServiceChannel::buildMDObject)
-        .map(MDClasses::build)
-        .collect(Collectors.toList()));
-    TransformationUtils.setValue(builder, "externalIntegrationServiceAddress",
-      externalIntegrationServiceAddress);
+    setBuilder(IntegrationService.builder());
+    super.buildMDObject();
+
+    ((IntegrationService.IntegrationServiceBuilder) builder)
+      .integrationChannels(
+        integrationChannels.stream().map(IntegrationServiceChannel::buildMDObject)
+          .map(MDClasses::build)
+          .map(com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel.class::cast)
+          .collect(Collectors.toList()))
+      .externalIntegrationServiceAddress(externalIntegrationServiceAddress);
+
     return super.buildMDObject();
   }
 }

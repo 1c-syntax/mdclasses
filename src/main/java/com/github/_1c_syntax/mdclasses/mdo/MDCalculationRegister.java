@@ -22,12 +22,12 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.CalculationRegister;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -53,12 +53,15 @@ public class MDCalculationRegister extends AbstractMDObjectComplex {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "recalculations",
+    setBuilder(CalculationRegister.builder());
+    super.buildMDObject();
+    ((CalculationRegister.CalculationRegisterBuilder) builder).recalculations(
       getAttributes().stream()
         .filter(attribute -> attribute.getAttributeType() == AttributeType.RECALCULATION)
-        .map(AbstractMDOAttribute::buildMDObject)
+        .map(com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation.class::cast)
+        .map(com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation::buildMDObject)
         .map(MDClasses::build)
+        .map(Recalculation.class::cast)
         .collect(Collectors.toList()));
     return builder;
   }

@@ -26,7 +26,6 @@ import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoImport;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoObjectType;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoProperty;
 import com.github._1c_syntax.mdclasses.mdo.children.xdtopackage.XdtoValueType;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -77,15 +76,25 @@ public class XDTOPackageData {
 
   public Object buildMDObject() {
     var builder = XdtoPackageData.builder();
-    TransformationUtils.setValue(builder, "targetNamespace", targetNamespace);
-    TransformationUtils.setValue(builder, "imports",
-      imports.stream().map(XdtoImport::getNamespace).collect(Collectors.toList()));
-    TransformationUtils.setValue(builder, "valueTypes",
-      valueTypes.stream().map(XdtoValueType::buildMDObject).collect(Collectors.toList()));
-    TransformationUtils.setValue(builder, "objectTypes",
-      objectTypes.stream().map(XdtoObjectType::buildMDObject).collect(Collectors.toList()));
-    TransformationUtils.setValue(builder, "properties",
-      properties.stream().map(XdtoProperty::buildMDObject).collect(Collectors.toList()));
+
+    builder
+      .targetNamespace(targetNamespace)
+      .imports(imports.stream()
+        .map(XdtoImport::getNamespace)
+        .collect(Collectors.toList()))
+      .valueTypes(valueTypes.stream()
+        .map(XdtoValueType::buildMDObject)
+        .map(XdtoPackageData.ValueType.class::cast)
+        .collect(Collectors.toList()))
+      .objectTypes(objectTypes.stream()
+        .map(XdtoObjectType::buildMDObject)
+        .map(XdtoPackageData.ObjectType.class::cast)
+        .collect(Collectors.toList()))
+      .properties(properties.stream()
+        .map(XdtoProperty::buildMDObject)
+        .map(XdtoPackageData.Property.class::cast)
+        .collect(Collectors.toList()));
+
     return builder.build();
   }
 }

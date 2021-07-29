@@ -22,13 +22,13 @@
 package com.github._1c_syntax.mdclasses.mdo.children;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -92,11 +92,15 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
   @Override
   public Object buildMDObject() {
     setBuilder(HttpServiceUrlTemplate.builder());
-    var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "httpServiceMethods",
-      httpServiceMethods.stream().map(HTTPServiceMethod::buildMDObject)
+    super.buildMDObject();
+
+    ((HttpServiceUrlTemplate.HttpServiceUrlTemplateBuilder) builder)
+      .httpServiceMethods(httpServiceMethods.stream()
+        .map(HTTPServiceMethod::buildMDObject)
         .map(MDClasses::build)
+        .map(HttpServiceMethod.class::cast)
         .collect(Collectors.toList()));
+
     return builder;
   }
 }

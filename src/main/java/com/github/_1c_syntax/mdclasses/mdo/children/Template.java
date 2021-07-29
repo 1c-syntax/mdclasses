@@ -30,7 +30,6 @@ import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -81,10 +80,13 @@ public class Template extends AbstractMDObjectBase implements MDOTemplate {
   @Override
   public Object buildMDObject() {
     setBuilder(ObjectTemplate.builder());
-    var builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "templateType", templateType);
-    TransformationUtils.setValue(builder, "templateData", templateData);
-    TransformationUtils.setValue(builder, "templateDataPath", templateDataPath);
+    super.buildMDObject();
+
+    ((ObjectTemplate.ObjectTemplateBuilder) builder)
+      .templateType(templateType)
+      .templateData(templateData)
+      .templateDataPath(templateDataPath);
+
     return builder;
   }
 }

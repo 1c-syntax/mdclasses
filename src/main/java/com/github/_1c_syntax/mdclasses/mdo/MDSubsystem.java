@@ -22,6 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -29,7 +30,6 @@ import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -171,27 +171,28 @@ public class MDSubsystem extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "includeInCommandInterface",
-      includeInCommandInterface);
-    TransformationUtils.setValue(builder, "subsystems",
-      children.stream()
+    setBuilder(Subsystem.builder());
+    super.buildMDObject();
+
+    ((Subsystem.SubsystemBuilder) builder)
+      .includeInCommandInterface(includeInCommandInterface)
+      .subsystems(children.stream()
         .filter(Either::isRight)
         .map(Either::get)
         .filter(MDSubsystem.class::isInstance)
         .map(MDSubsystem.class::cast)
         .map(MDSubsystem::buildMDObject)
         .map(MDClasses::build)
+        .map(Subsystem.class::cast)
         .collect(Collectors.toList())
-    );
-
-    TransformationUtils.setValue(builder, "content", children.stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter(mdo -> !(mdo instanceof MDSubsystem))
-      .map(AbstractMDO::getMdoReference)
-      .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
-      .collect(Collectors.toList()));
+      )
+      .content(children.stream()
+        .filter(Either::isRight)
+        .map(Either::get)
+        .filter(mdo -> !(mdo instanceof MDSubsystem))
+        .map(AbstractMDO::getMdoReference)
+        .map(mdoRef -> MdoReference.create(mdoRef.getType(), mdoRef.getMdoRef(), mdoRef.getMdoRefRu()))
+        .collect(Collectors.toList()));
 
     return super.buildMDObject();
   }

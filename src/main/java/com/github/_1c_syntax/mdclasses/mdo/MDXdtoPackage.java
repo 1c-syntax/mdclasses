@@ -21,13 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.XdtoPackage;
+import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -77,10 +78,12 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
 
   @Override
   public Object buildMDObject() {
-    builder = super.buildMDObject();
-    TransformationUtils.setValue(builder, "namespace", namespace);
+    setBuilder(XdtoPackage.builder());
+    super.buildMDObject();
+
+    ((XdtoPackage.XdtoPackageBuilder) builder).namespace(namespace);
     if (data != null) {
-      TransformationUtils.setValue(builder, "data", data.buildMDObject());
+      ((XdtoPackage.XdtoPackageBuilder) builder).data((XdtoPackageData) data.buildMDObject());
     }
 
     return builder;
