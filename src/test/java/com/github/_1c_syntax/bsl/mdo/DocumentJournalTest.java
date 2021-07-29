@@ -21,6 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +32,9 @@ import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class DocumentJournalTest extends AbstractMDObjectTest<DocumentJournal> {
   DocumentJournalTest() {
@@ -67,5 +74,23 @@ class DocumentJournalTest extends AbstractMDObjectTest<DocumentJournal> {
 
     checkChildField(mdo.getCommands().get(0),
       "Команда", "d64fc3f1-6681-463f-9177-76d00c90e363");
+
+    var attribute = mdo.getAttributes().get(0);
+    assertThat(attribute).isInstanceOf(DocumentJournalColumn.class);
+    assertThat(attribute.getKind()).isEqualTo(AttributeKind.CUSTOM);
+    assertThat(attribute.getName()).isEqualTo("Графа");
+    assertThat(attribute.getType()).isEqualTo(MDOType.ATTRIBUTE);
+    assertThat(attribute.isPasswordMode()).isFalse();
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+    assertThat(attribute.getUuid()).isEqualTo("b52d063e-5d2c-498b-a333-4957277f47e3");
+    assertThat(attribute.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(attribute.getMetadataName()).isEqualTo("Column");
+    assertThat(attribute.getSynonyms().getContent())
+      .hasSize(1)
+      .contains(Map.entry("ru", "Графа"));
+    assertThat(attribute.getMdoReference().getMdoRef())
+      .isEqualTo("DocumentJournal.ЖурналДокументов1.Column.Графа");
+    assertThat(((DocumentJournalColumn) attribute).getOwner()).isEqualTo(mdo);
+
   }
 }

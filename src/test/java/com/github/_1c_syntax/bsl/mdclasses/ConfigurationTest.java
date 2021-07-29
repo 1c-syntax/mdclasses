@@ -43,11 +43,14 @@ import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDClassTest;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.support_configuration.SupportVariant;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -432,5 +435,21 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       }
       assertThat(mdo.getSupportVariant()).isEqualTo(supportVariant);
     });
+
+    var supportVariant = configuration.getSupportVariant();
+    if (supportVariant == SupportVariant.NONE) {
+      configuration.setSupportVariant(SupportVariant.NOT_SUPPORTED);
+    } else {
+      configuration.setSupportVariant(SupportVariant.NONE);
+    }
+    assertThat(configuration.getSupportVariant()).isEqualTo(supportVariant);
   }
+
+  @Test
+  void testEmpty() {
+    var mdc = MDClasses.createConfiguration(Path.of(""));
+    assertThat(mdc).isInstanceOf(Configuration.class);
+    assertThat(mdc.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
+  }
+
 }

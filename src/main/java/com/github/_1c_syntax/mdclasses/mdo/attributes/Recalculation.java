@@ -101,10 +101,12 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
   @Override
   public Object buildMDObject() {
     setBuilder(com.github._1c_syntax.bsl.mdo.children.Recalculation.builder());
+    builder = super.buildMDObject();
     TransformationUtils.setValue(builder, "modules",
       modules.stream().map(MDOModule::buildMDObject)
         .map(MDClasses::buildModule)
         .collect(Collectors.toList()));
-    return super.buildMDObject();
+    TransformationUtils.setValue(builder, "type", MDOType.RECALCULATION);
+    return builder;
   }
 }

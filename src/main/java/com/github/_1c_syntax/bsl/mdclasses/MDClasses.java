@@ -45,23 +45,25 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MDClasses {
 
   private static final Map<Object, MDObject> mdObjects = new ConcurrentHashMap<>();
+  private static final String BUILDER_METHOD_NAME = "build";
 
   @SneakyThrows
   public MDClass createConfiguration(Path path) {
     mdObjects.clear();
     var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
-    if (configurationSource != ConfigurationSource.EMPTY) {
-      var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
-      if (mdo.isPresent()) {
-        MDClass configuration = (buildMDClass(mdo.get().buildMDObject()));
-        if (configuration instanceof Configuration) {
-          computeSupportConfiguration((Configuration) configuration, path);
-        }
-        computeCommonAttributeLinks(configuration);
-        return configuration;
+    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
+    if (mdo.isPresent()) {
+      var configuration = (buildMDClass(mdo.get().buildMDObject()));
+      if (configuration instanceof Configuration) {
+        computeSupportConfiguration((Configuration) configuration, path);
       }
+      computeCommonAttributeLinks(configuration);
+      return configuration;
     }
-    return Configuration.builder().build();
+
+    var emptyBuilder = Configuration.builder();
+    emptyBuilder.configurationSource(ConfigurationSource.EMPTY);
+    return emptyBuilder.build();
   }
 
   @SneakyThrows
@@ -71,7 +73,7 @@ public class MDClasses {
     if (mdObjects.containsKey(builder)) {
       result = mdObjects.get(builder);
     } else {
-      var mdObject = (MDObject) builder.getClass().getDeclaredMethod("build").invoke(builder);
+      var mdObject = (MDObject) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
       mdObjects.put(builder, mdObject);
       result = mdObject;
     }
@@ -95,13 +97,13 @@ public class MDClasses {
   @SneakyThrows
   // todo времянка
   public Module buildModule(Object builder) {
-    return (Module) builder.getClass().getDeclaredMethod("build").invoke(builder);
+    return (Module) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
   }
 
   @SneakyThrows
   // todo времянка
   public MDClass buildMDClass(Object builder) {
-    var result = (MDClass) builder.getClass().getDeclaredMethod("build").invoke(builder);
+    var result = (MDClass) builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME).invoke(builder);
 
     if (result instanceof ModuleOwner) {
       ((ModuleOwner) result).getModules().stream()

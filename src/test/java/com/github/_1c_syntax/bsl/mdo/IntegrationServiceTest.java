@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -45,5 +47,19 @@ class IntegrationServiceTest extends AbstractMDObjectTest<IntegrationService> {
     mdoTest(mdo, MDOType.INTEGRATION_SERVICE, argumentsAccessor);
     assertThat(mdo.getIntegrationChannels()).hasSize(2);
     assertThat(mdo.getExternalIntegrationServiceAddress()).isEqualTo("http://");
+
+    var integrationServiceChannel = mdo.getIntegrationChannels().get(0);
+    assertThat(integrationServiceChannel.getMessageDirection()).isEqualTo(MessageDirection.RECEIVE);
+    assertThat(integrationServiceChannel.getName()).isEqualTo("КаналСервисаИнтеграции1");
+    assertThat(integrationServiceChannel.getType()).isEqualTo(MDOType.INTEGRATION_SERVICE_CHANNEL);
+    assertThat(integrationServiceChannel.getHandler()).isEqualTo("КаналСервисаИнтеграции1ОбработкаПолученияСообщения");
+    assertThat(integrationServiceChannel.getExternalIntegrationServiceChannelName()).isEqualTo("Имя");
+    assertThat(integrationServiceChannel.getUuid()).isEqualTo("fd0a0d02-c211-4985-ab9e-f0e7e63a6943");
+    assertThat(integrationServiceChannel.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(integrationServiceChannel.getMetadataName()).isEqualTo("IntegrationServiceChannel");
+    assertThat(integrationServiceChannel.getSynonyms().getContent()).isEmpty();
+    assertThat(integrationServiceChannel.getMdoReference().getMdoRef())
+      .isEqualTo("IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1");
+
   }
 }

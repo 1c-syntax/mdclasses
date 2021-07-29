@@ -21,6 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +32,8 @@ import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AccumulationRegisterTest extends AbstractMDObjectTest<AccumulationRegister> {
   AccumulationRegisterTest() {
@@ -71,5 +77,23 @@ class AccumulationRegisterTest extends AbstractMDObjectTest<AccumulationRegister
 
     checkChildField(mdo.getCommands().get(0),
       "Команда", "1494e7c4-8428-4a41-8797-f4b6d0718dd0");
+
+    var attribute = mdo.getAttributes().get(2);
+    assertThat(attribute).isInstanceOf(RegisterDimension.class);
+    assertThat(attribute.getKind()).isEqualTo(AttributeKind.CUSTOM);
+    assertThat(attribute.getName()).isEqualTo("Измерение1");
+    assertThat(attribute.getType()).isEqualTo(MDOType.ATTRIBUTE);
+    assertThat(attribute.isPasswordMode()).isFalse();
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+    assertThat(attribute.getUuid()).isEqualTo("461cae93-fe90-4bbb-8f79-0963e2d39ec5");
+    assertThat(attribute.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(attribute.getMetadataName()).isEqualTo("Dimension");
+    assertThat(attribute.getSynonyms().getContent()).isEmpty();
+    assertThat(((RegisterDimension) attribute).isDenyIncompleteValues()).isFalse();
+    assertThat(((RegisterDimension) attribute).isUseInTotals()).isTrue();
+    assertThat(((RegisterDimension) attribute).isMaster()).isFalse();
+    assertThat(attribute.getMdoReference().getMdoRef())
+      .isEqualTo("AccumulationRegister.РегистрНакопления1.Dimension.Измерение1");
+
   }
 }

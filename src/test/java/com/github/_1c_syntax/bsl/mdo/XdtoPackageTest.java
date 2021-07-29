@@ -46,15 +46,35 @@ class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
     assertThat(mdo.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
     assertThat(mdo.getData()).isNotNull();
 
-    assertThat(mdo.getData().getImports())
+    var xdtoData = mdo.getData();
+    assertThat(xdtoData.getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
+    assertThat(xdtoData.getImports())
       .hasSize(1)
       .contains("http://www.1c.ru/SSL/Exchange/Message");
-    assertThat(mdo.getData().getObjectTypes())
-      .hasSize(737)
-      .anyMatch(objectType -> objectType.getName().equals("СоставнойЛюбойОбъект"));
-    assertThat(mdo.getData().getProperties()).isEmpty();
-    assertThat(mdo.getData().getValueTypes())
-      .hasSize(278)
-      .anyMatch(objectType -> objectType.getName().equals("ТипКурс"));
+    assertThat(xdtoData.getObjectTypes())
+      .hasSize(737);
+
+    var objectType = xdtoData.getObjectTypes().get(1);
+    assertThat(objectType.getName()).isEqualTo("СоставнойЛюбойОбъект");
+    assertThat(objectType.getBase()).isEmpty();
+    assertThat(objectType.getProperties())
+      .hasSize(194);
+
+    var property = objectType.getProperties().get(1);
+    assertThat(property.getName()).isEqualTo("АвизоПоМПЗВходящее");
+    assertThat(property.getForm()).isEmpty();
+    assertThat(property.getLowerBound()).isZero();
+    assertThat(property.getUpperBound()).isZero();
+    assertThat(property.getType()).isEqualTo("d3p1:КлючевыеСвойстваАвизоПоМПЗВходящее");
+    assertThat(property.isNillable()).isFalse();
+
+    assertThat(xdtoData.getProperties()).isEmpty();
+
+    var valueType = xdtoData.getValueTypes().get(0);
+    assertThat(valueType.getName()).isEqualTo("ТипДатаФНС");
+    assertThat(valueType.getBase()).isEqualTo("xs:string");
+    assertThat(valueType.getEnumerations()).isEmpty();
+    assertThat(valueType.getVariety()).isEqualTo("Atomic");
+
   }
 }

@@ -35,6 +35,8 @@ import lombok.experimental.NonFinal;
 
 import java.util.List;
 
+import static java.util.Objects.requireNonNull;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
@@ -127,8 +129,7 @@ public class Catalog implements MDObject, AttributeOwner, FormOwner, CommandOwne
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    if (attributes != null) {
-      attributes.add(commonAttribute);
-    }
+    requireNonNull(attributes);
+    attributes.add(commonAttribute);
   }
 }

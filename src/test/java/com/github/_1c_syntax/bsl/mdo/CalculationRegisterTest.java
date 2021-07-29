@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +30,7 @@ import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -77,5 +80,19 @@ class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> 
       "Перерасчет", "16b54095-8711-4ef1-a38b-93d12f6f6e93");
 
     assertThat(mdo.getAllModules()).hasSize(4);
+
+    assertThat(mdo.getRecalculations()).hasSize(1);
+    var recalculation = mdo.getRecalculations().get(0);
+    assertThat(recalculation).isInstanceOf(Recalculation.class);
+    assertThat(recalculation.getName()).isEqualTo("Перерасчет");
+    assertThat(recalculation.getType()).isEqualTo(MDOType.RECALCULATION);
+    assertThat(recalculation.getUuid()).isEqualTo("16b54095-8711-4ef1-a38b-93d12f6f6e93");
+    assertThat(recalculation.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+    assertThat(recalculation.getMetadataName()).isEqualTo("Recalculation");
+    assertThat(recalculation.getSynonyms().getContent())
+      .hasSize(1)
+      .contains(Map.entry("ru", "Перерасчет"));
+    assertThat(recalculation.getMdoReference().getMdoRef())
+      .isEqualTo("CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет");
   }
 }

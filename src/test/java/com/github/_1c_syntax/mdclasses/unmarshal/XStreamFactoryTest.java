@@ -31,7 +31,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class XStreamFactoryTest {
 
@@ -63,9 +63,12 @@ class XStreamFactoryTest {
 
   @Test
   void testBrokenXml() {
-    assertThrows(ConversionException.class, () -> {
+    try {
       MDOFactory.readMDObject(Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
-    });
+      fail("Expected an ConversionException to be thrown");
+    } catch (ConversionException e) {
+      // noop
+    }
   }
 
   private Path getMDOPathEDT(String path) {

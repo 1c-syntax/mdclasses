@@ -28,6 +28,8 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
@@ -35,6 +37,8 @@ import java.net.URI;
 
 @Value
 @Builder
+@ToString(of = {"uri"})
+@EqualsAndHashCode(of = {"uri"})
 public class ObjectModule implements Module {
   /**
    * Тип модуля
@@ -58,8 +62,9 @@ public class ObjectModule implements Module {
       return ((MDObject) owner).getSupportVariant();
     } else if (owner instanceof Configuration) {
       return ((Configuration) owner).getSupportVariant();
+    } else {
+      return SupportVariant.NONE;
     }
-    return SupportVariant.NONE;
   }
 
   public void setOwner(ModuleOwner owner) {

@@ -54,7 +54,7 @@ class ConfigurationVersionTest {
     var version8_1 = "Version8_1";
     version = new CompatibilityMode(version8_1);
     assertThat(version.getMinor()).isEqualTo(1);
-    assertThat(version.getVersion()).isEqualTo(0);
+    assertThat(version.getVersion()).isZero();
   }
 
   @Test

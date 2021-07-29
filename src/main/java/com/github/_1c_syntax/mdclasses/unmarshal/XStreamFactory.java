@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
+import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
@@ -49,7 +50,6 @@ import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSche
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;

@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import io.vavr.control.Either;
 import lombok.Data;
 import lombok.NoArgsConstructor;

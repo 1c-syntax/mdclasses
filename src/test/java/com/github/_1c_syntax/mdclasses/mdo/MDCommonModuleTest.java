@@ -74,7 +74,6 @@ class MDCommonModuleTest extends AbstractMDOTest {
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DURING_SESSION);
-
   }
 
   @Override
