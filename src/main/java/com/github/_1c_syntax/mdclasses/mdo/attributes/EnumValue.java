@@ -19,31 +19,25 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.metadata;
+package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.types.MDOType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
+import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.Value;
 
-/**
- * Типы атрибутов (реквизитов)
- */
-@AllArgsConstructor
-public enum AttributeType {
-  ATTRIBUTE(MDOType.ATTRIBUTE),
-  DIMENSION(MDOType.DIMENSION),
-  RESOURCE(MDOType.RESOURCE),
-  TABULAR_SECTION(MDOType.TABULAR_SECTION),
-  RECALCULATION(MDOType.RECALCULATION),
-  ACCOUNTING_FLAG(MDOType.ACCOUNTING_FLAG),
-  EXT_DIMENSION_ACCOUNTING_FLAG(MDOType.EXT_DIMENSION_ACCOUNTING_FLAG),
-  COLUMN(MDOType.COLUMN),
-  ADDRESSING_ATTRIBUTE(MDOType.TASK_ADDRESSING_ATTRIBUTE),
-  UNKNOWN(MDOType.UNKNOWN),
-  COMMON_ATTRIBUTE(MDOType.COMMON_ATTRIBUTE),
-  ENUM_VALUE(MDOType.ENUM_VALUE);
-
-  @Getter
-  private final MDOType mdoType;
+@Value
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@AttributeMetadata(
+  type = AttributeType.ENUM_VALUE,
+  name = "EnumValue",
+  fieldNameEDT = "enumValues"
+)
+public class EnumValue extends AbstractMDOAttribute {
+  public EnumValue(DesignerMDO designerMDO) {
+    super(designerMDO);
+  }
 }
-

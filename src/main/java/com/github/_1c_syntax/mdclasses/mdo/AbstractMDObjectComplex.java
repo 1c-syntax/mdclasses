@@ -30,6 +30,7 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Attribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Column;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
+import com.github._1c_syntax.mdclasses.mdo.attributes.EnumValue;
 import com.github._1c_syntax.mdclasses.mdo.attributes.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Resource;
@@ -168,6 +169,9 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
 
     childObjects.getAttributes().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new Attribute(designerMDO)));
+
+    childObjects.getEnumValues().forEach((DesignerMDO designerMDO)
+      -> computedAttributes.add(new EnumValue(designerMDO)));
 
     childObjects.getColumns().forEach((DesignerMDO designerMDO)
       -> computedAttributes.add(new Column(designerMDO)));

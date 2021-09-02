@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -103,13 +103,13 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(106);
+    assertThat(configuration.getChildren()).hasSize(107);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 3);
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 10);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 10); //28
     checkChildCount(configuration, MDOType.DIMENSION, 6);
     checkChildCount(configuration, MDOType.RESOURCE, 3);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 2);
@@ -132,7 +132,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -167,7 +167,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(105);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(106);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
@@ -258,13 +258,13 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(1);
     assertThat(configuration.getRoles()).hasSize(2);
 
-    assertThat(configuration.getChildren()).hasSize(142);
+    assertThat(configuration.getChildren()).hasSize(144);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 2);
     checkChildCount(configuration, MDOType.FORM, 13);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 21);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 21); //44
     checkChildCount(configuration, MDOType.DIMENSION, 11);
     checkChildCount(configuration, MDOType.RESOURCE, 6);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
@@ -317,18 +317,18 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 2);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 2);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(142);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(144);
 
     assertThat(configuration.getCommonModule("ПростойОбщийМодуль1")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
 
     assertThat(configuration.getChildren())
       .filteredOn(mdObjectBase -> mdObjectBase.getObjectBelonging() == ObjectBelonging.ADOPTED)
-      .hasSize(77);
+      .hasSize(78);
 
     assertThat(configuration.getChildren())
       .filteredOn(mdObjectBase -> mdObjectBase.getObjectBelonging() == ObjectBelonging.OWN)
-      .hasSize(65);
+      .hasSize(66);
   }
 
   @Test
@@ -389,7 +389,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 13);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 13); //34 -> 35
     checkChildCount(configuration, MDOType.DIMENSION, 8);
     checkChildCount(configuration, MDOType.RESOURCE, 4);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 3);
@@ -412,7 +412,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -501,13 +501,13 @@ class ConfigurationTest {
     assertThat(configuration.getModules()).hasSize(9);
     assertThat(configuration.getRoles()).hasSize(2);
 
-    assertThat(configuration.getChildren()).hasSize(142);
+    assertThat(configuration.getChildren()).hasSize(144);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 2);
     checkChildCount(configuration, MDOType.FORM, 12);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 20);
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 20); //41 -> 43
     checkChildCount(configuration, MDOType.DIMENSION, 11);
     checkChildCount(configuration, MDOType.RESOURCE, 6);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
@@ -562,18 +562,18 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 2);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 2);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(142);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(144);
 
     assertThat(configuration.getCommonModule("ПростойОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
 
     assertThat(configuration.getChildren())
       .filteredOn(mdObjectBase -> mdObjectBase.getObjectBelonging() == ObjectBelonging.ADOPTED)
-      .hasSize(78);
+      .hasSize(79);
 
     assertThat(configuration.getChildren())
       .filteredOn(mdObjectBase -> mdObjectBase.getObjectBelonging() == ObjectBelonging.OWN)
-      .hasSize(64);
+      .hasSize(65);
   }
 
   @Test

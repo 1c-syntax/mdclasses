@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright © 2019 - 2021
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.attributes.EnumValue;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,10 @@ class MDEnumTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
+    var attributes = ((AbstractMDObjectComplex) mdo).getAttributes();
+    assertThat(attributes)
+      .hasSize(1)
+      .anyMatch(attribute -> attribute.name.equals("ЗначениеПеречисления1"));
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "Enums/Перечисление1",
       ModuleType.ManagerModule);
   }
@@ -55,7 +59,10 @@ class MDEnumTest extends AbstractMDOTest {
     checkForms(mdo);
     checkTemplates(mdo);
     checkCommands(mdo);
-    assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    var attributes = ((AbstractMDObjectComplex) mdo).getAttributes();
+    assertThat(attributes)
+      .hasSize(1)
+      .anyMatch(attribute -> ((EnumValue) attribute).name.equals("ЗначениеПеречисления1"));
   }
 }

@@ -58,6 +58,9 @@ public class DesignerChildObjects {
   @XStreamImplicit(itemFieldName = "Attribute")
   private List<DesignerMDO> attributes = Collections.emptyList();
 
+  @XStreamImplicit(itemFieldName = "EnumValue")
+  private List<DesignerMDO> enumValues = Collections.emptyList();
+
   @XStreamImplicit(itemFieldName = "TabularSection")
   private List<DesignerMDO> tabularSections = Collections.emptyList();
 
