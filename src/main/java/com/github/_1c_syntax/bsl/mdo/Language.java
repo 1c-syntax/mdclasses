@@ -31,11 +31,15 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Map;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Language implements MDObject {
+
+  public static final Language DEFAULT = defaultLanguage();
 
   /**
    * Имя
@@ -86,4 +90,22 @@ public class Language implements MDObject {
    * Вариант поддержки родительской конфигурации
    */
   SupportVariant supportVariant;
+
+  private static Language defaultLanguage() {
+    return Language.builder()
+      .name("Русский")
+      .uuid("")
+      .objectBelonging(ObjectBelonging.OWN)
+      .type(MDOType.LANGUAGE)
+      .metadataName(MDOType.LANGUAGE.getGroupName())
+      .metadataNameRu(MDOType.LANGUAGE.getGroupNameRu())
+      .synonyms(new MultiLanguageString(Map.of("ru", "Русский")))
+      .mdoReference(MdoReference.create(
+        MDOType.LANGUAGE,
+        MDOType.LANGUAGE.getGroupName() + ".Русский",
+        MDOType.LANGUAGE.getGroupNameRu() + ".Русский"))
+      .languageCode("ru")
+      .supportVariant(SupportVariant.NONE)
+      .build();
+  }
 }

@@ -22,20 +22,40 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
+import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.support_configuration.ParseSupportData;
+import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.Map;
 
 @UtilityClass
 public class MDClasses {
 
+  private static final String EMPTY_STRING = "empty";
+
+  /**
+   * Создает конфигурацию или расширение по указанному пути
+   *
+   * @param path Путь к корню проекта
+   * @return Конфигурация или расширение
+   */
   @SneakyThrows
   public MDClass createConfiguration(Path path) {
     var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
@@ -51,8 +71,39 @@ public class MDClasses {
       return configuration;
     }
 
+    return createConfiguration();
+  }
+
+  /**
+   * Создает пустую конфигурацию
+   *
+   * @return Пустая конфигурация
+   */
+  public MDClass createConfiguration() {
     var emptyBuilder = Configuration.builder();
-    emptyBuilder.configurationSource(ConfigurationSource.EMPTY);
+    emptyBuilder.configurationSource(ConfigurationSource.EMPTY)
+      .name(EMPTY_STRING)
+      .uuid(EMPTY_STRING)
+      .compatibilityMode(new CompatibilityMode())
+      .configurationExtensionCompatibilityMode(new CompatibilityMode())
+      .scriptVariant(ScriptVariant.RUSSIAN)
+      .defaultRunMode(ApplicationRunMode.AUTO)
+      .defaultLanguage(Language.DEFAULT)
+      .dataLockControlMode(DataLockControlMode.AUTOMATIC)
+      .objectAutonumerationMode("")
+      .modalityUseMode(UseMode.DONT_USE)
+      .synchronousExtensionAndAddInCallUseMode(UseMode.DONT_USE)
+      .synchronousPlatformExtensionAndAddInCallUseMode(UseMode.DONT_USE)
+      .copyrights(new MultiLanguageString(Map.of("", "")))
+      .detailedInformation(new MultiLanguageString(Map.of("", "")))
+      .briefInformation(new MultiLanguageString(Map.of("", "")))
+      .children(Collections.emptyList())
+      .plainChildren(Collections.emptyList())
+      .modules(Collections.emptyList())
+      .supportVariant(SupportVariant.NONE)
+      .mdoReference(MdoReference.create(MDOType.CONFIGURATION, EMPTY_STRING, EMPTY_STRING))
+    ;
+
     return emptyBuilder.build();
   }
 

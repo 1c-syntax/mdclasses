@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,14 @@ public interface ModuleOwner {
         .flatMap(List::stream)
         .collect(Collectors.toList()));
     }
+
+    // общие модули - это модули
+    if (this instanceof ConfigurationTree) {
+      modules.addAll(((ConfigurationTree) this).getCommonModules().stream()
+        .map(Module.class::cast)
+        .collect(Collectors.toList()));
+    }
+
     return modules;
   }
 

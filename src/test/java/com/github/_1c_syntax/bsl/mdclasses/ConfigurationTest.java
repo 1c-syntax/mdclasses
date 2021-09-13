@@ -40,17 +40,19 @@ import com.github._1c_syntax.bsl.mdo.children.RegisterResource;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDClassTest;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.support_configuration.SupportVariant;
+import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,19 +69,19 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     {
       "src/test/resources/metadata/original,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, DESIGNER, " +
         "Version_8_3_10, Russian, ManagedApplication, Русский, Automatic, DONT_USE, USE, DONT_USE, true, " +
-        "false, 2, 3, 16",
+        "false, 2, 3, 22",
       "src/test/resources/metadata/original_ordinary,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, DESIGNER, " +
         "Version_8_3_10, Russian, OrdinaryApplication, Русский, AutomaticAndManaged, DONT_USE, USE, DONT_USE, true, " +
         "false, 0, 0, 0",
       "src/test/resources/metadata/edt,Конфигурация,46c7c1d0-b04d-4295-9b04-ae3207c18d29, EDT, " +
         "Version_8_3_10, Russian, ManagedApplication, Русский, Automatic, USE, USE_WITH_WARNINGS, DONT_USE, true, " +
-        "true, 2, 3, 72",
+        "true, 2, 3, 78",
       "src/test/resources/metadata/edt_en,Configuration,04c0322d-92da-49ab-87e5-82c8dcd50888, EDT, " +
         "Version_8_3_14, English, ManagedApplication, English, AutomaticAndManaged, DONT_USE, USE, DONT_USE, false, " +
-        "false, 0, 0, 0",
+        "false, 0, 0, 2",
       "src/test/resources/metadata/original_3_18,Конфигурация,ade513fa-b8dc-4656-b1b6-68fde4fe18de, DESIGNER, " +
         "Version_8_3_18, Russian, ManagedApplication, Русский, AutomaticAndManaged, DONT_USE, USE, DONT_USE, true, " +
-        "true, 0, 1, 8"
+        "true, 0, 1, 9"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
@@ -113,6 +115,7 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
 
     assertThat(mdc.getModules()).hasSize(argumentsAccessor.getInteger(15));
     assertThat(mdc.getAllModules()).hasSize(argumentsAccessor.getInteger(16));
+    assertThat(mdc.getAllModules()).allMatch(module -> module.getUri() != null);
   }
 
   @ParameterizedTest(name = "{index}: path {0}")
@@ -428,11 +431,38 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       .allMatch(module -> module.getSupportVariant().equals(configuration.getSupportVariant()));
   }
 
+  @ParameterizedTest(name = "{index}: {1} (path {0})")
+  @CsvSource(
+    {
+      ",empty,empty, EMPTY, " +
+        "Version_8_3_10, Russian, ManagedApplication, Русский, Automatic, DONT_USE, USE, DONT_USE, true, " +
+        "false, 2, 3, 16"
+    }
+  )
+  void testEmpty(ArgumentsAccessor argumentsAccessor) {
+    var mdc = getMDClass("");
+    mdcTest(mdc, argumentsAccessor);
+  }
+
   @Test
-  void testEmpty() {
-    var mdc = MDClasses.createConfiguration(Path.of(""));
-    assertThat(mdc).isInstanceOf(Configuration.class);
-    assertThat(mdc.getConfigurationSource()).isEqualTo(ConfigurationSource.EMPTY);
+  void testFindChild() {
+    var mdc = getMDClass("src/test/resources/support/edt");
+    assertThat(mdc.findChild(Absolute.uri(Paths.get("").toFile()))).isEmpty();
+    assertThat(mdc.findChild(Absolute.uri(
+      Paths.get("src/test/resources/support/edt/src/CommonModules/ПервыйОбщийМодуль/Module.bsl").toFile())))
+      .isPresent();
+    assertThat(mdc.findChild(Absolute.uri(
+      Paths.get("src/test/resources/support/edt/src/CommonModules/ПервыйОбщийМодуль").toFile())))
+      .isEmpty();
+    assertThat(mdc.findChild(MdoReference.create(MDOType.LANGUAGE, "", ""))).isEmpty();
+    assertThat(mdc.findChild(
+      MdoReference.create(MDOType.LANGUAGE, "Language.Русский", "Язык.Русский")))
+      .isPresent();
+    assertThat(mdc.findChild("")).isEmpty();
+    assertThat(mdc.findChild("язык")).isEmpty();
+    assertThat(mdc.findChild("язык.русский")).isPresent();
+    assertThat(mdc.findChild("Язык.Русский")).isPresent();
+    assertThat(mdc.findChild("Language.Русский")).isPresent();
   }
 
 }

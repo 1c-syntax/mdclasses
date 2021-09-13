@@ -71,6 +71,8 @@ import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -87,10 +89,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск подсистемы по условию
+   */
+  default Optional<Subsystem> findSubsystem(Predicate<? super Subsystem> predicate) {
+    return getSubsystems().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Общие модули
    */
   default List<CommonModule> getCommonModules() {
     return getChildrenByType(CommonModule.class);
+  }
+
+  /**
+   * Поиск общего модуля по условию
+   */
+  default Optional<CommonModule> findCommonModule(Predicate<? super CommonModule> predicate) {
+    return getCommonModules().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -99,6 +115,15 @@ public interface ConfigurationTree {
   default List<SessionParameter> getSessionParameters() {
     return getChildrenByType(SessionParameter.class);
   }
+
+  /**
+   * Поиск параметра сеанса по условию
+   */
+  default Optional<SessionParameter> findSessionParameter(Predicate<? super SessionParameter> predicate) {
+    return getSessionParameters().stream().filter(predicate).findFirst();
+  }
+
+  //todo дописать для остальных
 
   /**
    * Роли

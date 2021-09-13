@@ -121,7 +121,7 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
     if (fieldType.isAssignableFrom(boolean.class) && Objects.equals(field.get(mdc), false)
       || fieldType.isAssignableFrom(String.class) && Objects.equals(field.get(mdc), "")
       || fieldType.isAssignableFrom(int.class) && Objects.equals(field.get(mdc), 0)
-      || fieldType.isAssignableFrom(List.class) && ((ArrayList) field.get(mdc)).isEmpty()
+      || fieldType.isAssignableFrom(List.class) && ((List) field.get(mdc)).isEmpty()
       || fieldType.isAssignableFrom(Map.class) && ((HashMap) field.get(mdc)).isEmpty()) {
 
       if (!untestedFields.contains(key)) {

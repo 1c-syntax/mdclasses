@@ -50,9 +50,11 @@ public class Handler {
 
     this.methodPath = methodPath;
     String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
-    if (data.length > 1) {
-      this.methodName = data[METHOD_NAME_POSITION];
+    if (data.length > MODULE_NAME_POSITION) {
       this.moduleName = data[MODULE_NAME_POSITION];
+    }
+    if (data.length > METHOD_NAME_POSITION) {
+      this.methodName = data[METHOD_NAME_POSITION];
     }
   }
 

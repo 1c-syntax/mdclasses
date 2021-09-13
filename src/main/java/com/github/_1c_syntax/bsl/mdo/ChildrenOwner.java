@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -86,6 +87,33 @@ public interface ChildrenOwner {
   default Optional<MDObject> findChild(MdoReference ref) {
     return getPlainChildren().stream()
       .filter(mdObject -> mdObject.getMdoReference().equals(ref))
+      .findFirst();
+  }
+
+  /**
+   * Выполняет поиск дочернего (включая все уровни) объекта по ссылке, переданной строкой
+   *
+   * @param mdoRef Строковое представление ссылки MdoReference на искомый объект
+   * @return Контейнер с найденным значением (может быть пустым)
+   */
+  default Optional<MDObject> findChild(String mdoRef) {
+    return getPlainChildren().stream()
+      .filter(mdObject -> mdObject.getMdoReference().getMdoRef().equalsIgnoreCase(mdoRef)
+        || mdObject.getMdoReference().getMdoRefRu().equalsIgnoreCase(mdoRef))
+      .findFirst();
+  }
+
+  /**
+   * Выполняет поиск дочернего (включая все уровни) объекта по ссылке на его модуль
+   *
+   * @param uri Ссылка на модуль исходного объекта
+   * @return Контейнер с найденным значением (может быть пустым)
+   */
+  default Optional<MDObject> findChild(URI uri) {
+    return getPlainChildren().stream()
+      .filter(mdObject ->
+        mdObject instanceof ModuleOwner && ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent()
+          || mdObject instanceof Module && ((Module) mdObject).getUri().equals(uri))
       .findFirst();
   }
 }

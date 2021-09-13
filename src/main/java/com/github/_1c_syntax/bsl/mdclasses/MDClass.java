@@ -22,7 +22,10 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
+import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
 public interface MDClass extends ChildrenOwner {
@@ -45,4 +48,19 @@ public interface MDClass extends ChildrenOwner {
    * MDO-Ссылка на объект
    */
   MdoReference getMdoReference();
+
+  /**
+   * Язык приложения по умолчанию
+   */
+  Language getDefaultLanguage();
+
+  /**
+   * Язык, на котором ведется разработка
+   */
+  ScriptVariant getScriptVariant();
+
+  /**
+   * Режим совместимости
+   */
+  CompatibilityMode getCompatibilityMode();
 }
