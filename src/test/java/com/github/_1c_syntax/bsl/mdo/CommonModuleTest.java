@@ -39,9 +39,12 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
   @ParameterizedTest(name = "DESIGNER {index}: {0}")
   @CsvSource(
     {
-      "ГлобальныйОбщийМодуль,9e9c021c-bdbd-4804-a53a-9442ba9eb18c,,Глобальный общий модуль,CommonModule,ОбщийМодуль,0,0,0,0,0,0,true,true,true,false,true,true,false,Модуль/Ext/Module.bsl",
-      "ПростойОбщийМодуль,1be4af7e-334e-49fa-a9f9-d80c737ff954,,Простой общий модуль,CommonModule,ОбщийМодуль,0,0,0,0,0,0,false,false,false,false,true,false,false,Модуль/Ext/Module.bsl",
-      "ОбщийМодульПовтИспСеанс,a09f73b1-0058-4f3b-a22b-799ef3c2a33d,,Общий модуль повт исп сеанс,CommonModule,ОбщийМодуль,0,0,0,0,0,0,false,false,false,false,true,false,false,МодульПовтИспСеанс/Ext/Module.bsl"
+      "ГлобальныйОбщийМодуль,9e9c021c-bdbd-4804-a53a-9442ba9eb18c,,Глобальный общий модуль,CommonModule,ОбщийМодуль," +
+        "0,0,0,0,0,1,true,true,true,false,true,true,false,Модуль/Ext/Module.bsl",
+      "ПростойОбщийМодуль,1be4af7e-334e-49fa-a9f9-d80c737ff954,,Простой общий модуль,CommonModule,ОбщийМодуль," +
+        "0,0,0,0,0,1,false,false,false,false,true,false,false,Модуль/Ext/Module.bsl",
+      "ОбщийМодульПовтИспСеанс,a09f73b1-0058-4f3b-a22b-799ef3c2a33d,,Общий модуль повт исп сеанс,CommonModule," +
+        "ОбщийМодуль,0,0,0,0,0,1,false,false,false,false,true,false,false,МодульПовтИспСеанс/Ext/Module.bsl"
     }
   )
   void testDesigner(ArgumentsAccessor argumentsAccessor) {
@@ -63,7 +66,7 @@ class CommonModuleTest extends AbstractMDObjectTest<CommonModule> {
   @ParameterizedTest(name = "EDT {index}: {0}")
   @CsvSource(
     {
-      "ОбщийМодульПолныйеПрава,5733cabc-1b65-48f8-9ab6-269f1b73a21c,,Общий модуль полныйе права,CommonModule,ОбщийМодуль,0,0,0,0,0,0"
+      "ОбщийМодульПолныйеПрава,5733cabc-1b65-48f8-9ab6-269f1b73a21c,,Общий модуль полныйе права,CommonModule,ОбщийМодуль,0,0,0,0,0,1"
     }
   )
   void testEdt(ArgumentsAccessor argumentsAccessor) {

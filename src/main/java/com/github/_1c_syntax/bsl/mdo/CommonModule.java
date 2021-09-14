@@ -34,12 +34,13 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
+import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonModule implements MDObject, Module {
+public class CommonModule implements MDObject, Module, ModuleOwner {
 
   /**
    * Имя
@@ -136,4 +137,12 @@ public class CommonModule implements MDObject, Module {
    */
   SupportVariant supportVariant;
 
+  /**
+   * Общий модуль сам является модулем
+   * @return Список модулей
+   */
+  @Override
+  public List<Module> getModules() {
+    return List.of(this);
+  }
 }
