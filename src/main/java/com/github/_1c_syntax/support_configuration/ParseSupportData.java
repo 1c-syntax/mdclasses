@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.support_configuration;
 
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.experimental.UtilityClass;

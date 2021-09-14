@@ -23,8 +23,8 @@ package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

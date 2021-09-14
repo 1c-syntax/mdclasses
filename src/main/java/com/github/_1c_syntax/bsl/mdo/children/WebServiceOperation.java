@@ -25,8 +25,8 @@ import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.support_configuration.SupportVariant;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -81,7 +81,7 @@ public class WebServiceOperation implements MDObject, MDChildObject {
    * Родительский объект
    */
   MdoReference owner;
-  
+
   /**
    * Обработчик операции. Пока строкой
    * Формат имя метода

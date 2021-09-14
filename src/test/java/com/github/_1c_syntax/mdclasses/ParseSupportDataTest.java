@@ -23,8 +23,8 @@ package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.support_configuration.ParseSupportData;
-import com.github._1c_syntax.support_configuration.SupportVariant;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

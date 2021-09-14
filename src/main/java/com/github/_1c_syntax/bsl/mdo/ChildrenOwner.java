@@ -109,11 +109,10 @@ public interface ChildrenOwner {
    * @param uri Ссылка на модуль исходного объекта
    * @return Контейнер с найденным значением (может быть пустым)
    */
-  default Optional<ModuleOwner> findChild(URI uri) {
+  default Optional<MDObject> findChild(URI uri) {
     return getPlainChildren().stream()
       .filter(ModuleOwner.class::isInstance)
-      .map(ModuleOwner.class::cast)
-      .filter(mdObject -> mdObject.getModuleByUri(uri).isPresent())
+      .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())
       .findFirst();
   }
 }
