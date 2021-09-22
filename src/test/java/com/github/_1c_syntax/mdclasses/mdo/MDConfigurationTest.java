@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -30,7 +29,6 @@ import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
@@ -270,24 +268,6 @@ class MDConfigurationTest extends AbstractMDOTest {
       });
 
     subsystems.put(subsystem, mdoList);
-  }
-
-  private void checkCommonAttributes(MDConfiguration configuration) {
-    var commonAttributes = configuration.getChildren().stream()
-      .filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
-      .map(MDCommonAttribute.class::cast)
-      .collect(Collectors.toList());
-
-    assertThat(commonAttributes).hasSize(1);
-    commonAttributes.forEach(commonAttribute -> {
-      assertThat(commonAttribute.getUsing()).isNotEmpty();
-      commonAttribute.getUsing().forEach(mdo ->
-        assertThat(mdo.getAttributes()).anyMatch(attribute ->
-          attribute.getAttributeType() == AttributeType.COMMON_ATTRIBUTE
-            && attribute.getKind() == AttributeKind.COMMON
-            && attribute.equals(commonAttribute.getCommonAttribute())));
-    });
   }
 
   private void checkExchangePlans(MDConfiguration configuration) {

@@ -465,4 +465,17 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     assertThat(mdc.findChild("Language.Русский")).isPresent();
   }
 
+  @Test
+  void testFindChildWithPredicate() {
+    var mdc = getMDClass("src/test/resources/metadata/edt");
+    assertThat(mdc.findSubsystem(subsystem -> subsystem.getUuid().equals("c3abc915-b27d-4dfc-bfae-31b9c867492e")))
+      .isPresent();
+    assertThat(mdc.findCommonModule(commonModule -> !commonModule.isPrivileged() && commonModule.isServer()))
+      .isPresent();
+    assertThat(mdc.findSessionParameter(sessionParameter -> sessionParameter.getUuid()
+      .equals("66844df5-823b-40f1-ab8a-b07c1cb7462f")))
+      .isPresent();
+
+
+  }
 }

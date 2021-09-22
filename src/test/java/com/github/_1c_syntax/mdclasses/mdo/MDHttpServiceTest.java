@@ -57,6 +57,12 @@ class MDHttpServiceTest extends AbstractMDOTest {
       .extracting(HTTPServiceMethod::getHandler)
       .anyMatch("ШаблонURLМетод"::equals)
       .anyMatch("ШаблонURLМетод1"::equals);
+
+    assertThat(((MDHttpService) mdo).getChildren()).hasSize(3);
+    assertThat(((MDHttpService) mdo).getUrlTemplates())
+      .flatExtracting(HTTPServiceURLTemplate::getChildren)
+      .hasSize(2);
+
   }
 
   @Override

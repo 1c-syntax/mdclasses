@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
@@ -36,7 +35,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
@@ -78,12 +76,6 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   @Getter(AccessLevel.PRIVATE)
   @XStreamImplicit
   private List<UseContent> content = Collections.emptyList();
-
-  /**
-   * Ссылка на атрибут
-   */
-  @Setter(AccessLevel.NONE)
-  private CommonAttribute commonAttribute;
 
   /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`

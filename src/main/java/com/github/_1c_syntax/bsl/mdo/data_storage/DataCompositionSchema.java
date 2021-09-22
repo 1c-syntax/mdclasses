@@ -36,16 +36,10 @@ import java.util.List;
 @Value
 public class DataCompositionSchema implements TemplateData {
 
-  @Override
-  public boolean isEmpty() {
-    return false;
-  }
-
   /**
    * Дерево наборов данных
    */
   List<DataSet> dataSets;
-
   /**
    * Плоский список наборов данных
    */
@@ -55,6 +49,18 @@ public class DataCompositionSchema implements TemplateData {
     this.dataSets = dataSets;
     plainDataSets = new ArrayList<>();
     fillPlaintDataSetByList(dataSets);
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return false;
+  }
+
+  private void fillPlaintDataSetByList(List<DataSet> items) {
+    items.forEach((DataSet dataSet) -> {
+      plainDataSets.add(dataSet);
+      fillPlaintDataSetByList(dataSet.getItems());
+    });
   }
 
   @Value
@@ -105,12 +111,5 @@ public class DataCompositionSchema implements TemplateData {
      * Имя поля
      */
     String name;
-  }
-
-  private void fillPlaintDataSetByList(List<DataSet> items) {
-    items.forEach((DataSet dataSet) -> {
-      plainDataSets.add(dataSet);
-      fillPlaintDataSetByList(dataSet.getItems());
-    });
   }
 }

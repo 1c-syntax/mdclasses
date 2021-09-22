@@ -48,6 +48,7 @@ class MDWebServiceTest extends AbstractMDOTest {
       .anyMatch("Операция11"::equals);
     ((MDWebService) mdo).getOperations().forEach((WEBServiceOperation webServiceOperation) ->
       checkChild(mdo.getMdoReference(), MDOType.WS_OPERATION, ModuleType.UNKNOWN, webServiceOperation));
+    assertThat(((MDWebService) mdo).getChildren()).hasSize(2);
   }
 
   @Override
