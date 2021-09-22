@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
-import com.github._1c_syntax.mdclasses.mdo.support.DataSetType;
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
+import com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.data_storage.QuerySource;
+import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DataSetConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.QuerySourceConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -34,6 +35,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @ToString(onlyExplicitlyIncluded = true)
@@ -71,4 +73,25 @@ public class DataSet {
   @XStreamAlias("field")
   @XStreamImplicit
   private List<DataSetField> fields = new ArrayList<>();
+
+  public DataCompositionSchema.DataSet buildMDObject() {
+    List<DataCompositionSchema.DataSet> dataSets =
+      items.stream()
+        .map(DataSet::buildMDObject)
+        .collect(Collectors.toList());
+
+    List<DataCompositionSchema.DataSetField> dataSetFields =
+      fields.stream()
+        .map(DataSetField::buildMDObject)
+        .collect(Collectors.toList());
+
+    return new DataCompositionSchema.DataSet(
+      name,
+      type,
+      dataSource,
+      dataSets,
+      querySource,
+      dataSetFields
+    );
+  }
 }

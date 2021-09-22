@@ -60,7 +60,7 @@ public class XdtoValueType {
   @XStreamImplicit(itemFieldName = "enumeration")
   private List<String> enumerations = Collections.emptyList();
 
-  public Object buildMDObject() {
+  public XdtoPackageData.ValueType buildMDObject() {
     return new XdtoPackageData.ValueType(name, base, variety, enumerations);
   }
 }

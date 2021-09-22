@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -29,7 +30,7 @@ import lombok.experimental.Accessors;
  * Используется в свойствах объектов, где может быть значение булево или неопределено (авто)
  */
 @AllArgsConstructor
-public enum BWAValue implements EnumWithValue{
+public enum BWAValue implements EnumWithValue {
   TRUE("true"),
   FALSE("false"),
   /**

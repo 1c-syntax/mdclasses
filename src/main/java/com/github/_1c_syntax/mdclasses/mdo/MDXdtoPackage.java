@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
-import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
@@ -82,7 +81,7 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
 
     ((XdtoPackage.XdtoPackageBuilder) builder).namespace(namespace);
     if (data != null) {
-      ((XdtoPackage.XdtoPackageBuilder) builder).data((XdtoPackageData) data.buildMDObject());
+      ((XdtoPackage.XdtoPackageBuilder) builder).data(data.buildMDObject());
     }
 
     return super.buildMDObject();

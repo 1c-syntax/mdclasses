@@ -19,30 +19,24 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-public enum DataSetType implements EnumWithValue {
-  DATA_SET_QUERY("DataSetQuery"),
-  DATA_SET_UNION("DataSetUnion"),
-  DATA_SET_OBJECT("DataSetObject");
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 
-  private final String value;
+/**
+ * Хранение позиции в исходном файле
+ */
+@Value
+@RequiredArgsConstructor
+public class SourcePosition {
+  /**
+   * Номер строки
+   */
+  int line;
 
-  DataSetType(String value) {
-    this.value = value;
-  }
-
-  public static DataSetType fromValue(String value) {
-    for (DataSetType dataSetType : DataSetType.values()) {
-      if (dataSetType.value.equals(value)) {
-        return dataSetType;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
-  @Override
-  public String value() {
-    return value;
-  }
+  /**
+   * Номер первого символа
+   */
+  int column;
 }

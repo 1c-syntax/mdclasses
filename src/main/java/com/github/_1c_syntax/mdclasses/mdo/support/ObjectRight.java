@@ -45,7 +45,7 @@ public class ObjectRight {
   @XStreamImplicit
   private List<Right> rights = Collections.emptyList();
 
-  public Object buildMDObject() {
+  public RoleRight buildMDObject() {
     return new RoleRight(name,
       rights.stream().collect(Collectors.toMap(Right::getName, Right::isValue)));
   }

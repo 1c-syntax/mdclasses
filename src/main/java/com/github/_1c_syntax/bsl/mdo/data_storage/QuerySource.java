@@ -19,17 +19,40 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.data_storage;
+
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 
 /**
- * Расширение для перечислений, необходимое для использования в анмаршалинге
- * автор идеи: alkoleft (https://github.com/alkoleft)
+ * Модель хранения информации о запросе СКД
  */
-public interface EnumWithValue {
+@Value
+@RequiredArgsConstructor
+public class QuerySource {
+
   /**
-   * Возвращает значение перечисления
-   *
-   * @return Строковое значение перечисления
+   * Пустой запрос
    */
-  String value();
+  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
+
+  /**
+   * Позиция запроса в исходном файле
+   */
+  SourcePosition position;
+
+  /**
+   * Текст запроса
+   */
+  String textQuery;
+
+  /**
+   * Ссылка на пустой запрос
+   *
+   * @return Пустой запрос
+   */
+  public static QuerySource empty() {
+    return EMPTY;
+  }
 }

@@ -56,11 +56,10 @@ public class XdtoObjectType {
   @XStreamImplicit(itemFieldName = "property")
   private List<XdtoProperty> properties = Collections.emptyList();
 
-  public Object buildMDObject() {
+  public XdtoPackageData.ObjectType buildMDObject() {
     return new XdtoPackageData.ObjectType(name, base,
       properties.stream()
         .map(XdtoProperty::buildMDObject)
-        .map(XdtoPackageData.Property.class::cast)
         .collect(Collectors.toList()));
   }
 }

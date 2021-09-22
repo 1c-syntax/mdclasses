@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.Role;
-import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
@@ -82,7 +81,6 @@ public class MDRole extends AbstractMDObjectBase {
         .independentRightsOfChildObjects(roleData.isIndependentRightsOfChildObjects())
         .rights(roleData.getObjectRights().stream()
           .map(ObjectRight::buildMDObject)
-          .map(RoleRight.class::cast)
           .collect(Collectors.toList()));
     }
 

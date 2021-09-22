@@ -76,9 +76,8 @@ class TemplateDataTest {
     assertThat(template.getTemplateType()).isEqualTo(TemplateType.DATA_COMPOSITION_SCHEME);
     assertThat(template.getTemplateData()).isNotNull();
 
-    var templateData = template.getTemplateData().getData();
-    assertThat(templateData).isPresent();
-    assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
+    var templateData = template.getTemplateData();
+    assertThat(templateData.isEmpty()).isFalse();
   }
 
   private void checkTemplate(List<ObjectTemplate> templates) {
@@ -90,8 +89,7 @@ class TemplateDataTest {
     assertThat(template.getTemplateType()).isEqualTo(TemplateType.DATA_COMPOSITION_SCHEME);
     assertThat(template.getTemplateData()).isNotNull();
 
-    var templateData = template.getTemplateData().getData();
-    assertThat(templateData).isPresent();
-    assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
+    var templateData = template.getTemplateData();
+    assertThat(templateData.isEmpty()).isFalse();
   }
 }

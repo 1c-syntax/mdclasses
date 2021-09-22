@@ -89,7 +89,7 @@ public class CommonTemplate implements Template {
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  TemplateData<?> templateData;
+  TemplateData templateData;
 
   /**
    * Путь к самому файлу макета

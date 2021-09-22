@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper.form;
 
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
+import com.github._1c_syntax.bsl.mdo.data_storage.QuerySource;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.QuerySourceConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;

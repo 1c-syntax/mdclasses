@@ -68,7 +68,7 @@ public class XdtoProperty {
   @XStreamAsAttribute
   private String form = "";
 
-  public Object buildMDObject() {
+  public XdtoPackageData.Property buildMDObject() {
     return new XdtoPackageData.Property(name, type, lowerBound, upperBound, nillable, form);
   }
 

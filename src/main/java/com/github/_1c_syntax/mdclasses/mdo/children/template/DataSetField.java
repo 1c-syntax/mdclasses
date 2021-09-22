@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
+import com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,8 @@ public class DataSetField {
    */
   @XStreamAlias("field")
   private String name;
+
+  public DataCompositionSchema.DataSetField buildMDObject() {
+    return new DataCompositionSchema.DataSetField(dataPath, name);
+  }
 }

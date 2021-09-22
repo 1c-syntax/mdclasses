@@ -29,6 +29,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @ToString(onlyExplicitlyIncluded = true)
@@ -47,6 +48,13 @@ public class DataCompositionSchema {
 
   public void fillPlainDataSets() {
     fillPlaintDataSetByList(getDataSets());
+  }
+
+  public com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema buildMDObject() {
+    var newDataSets = dataSets.stream()
+      .map(DataSet::buildMDObject)
+      .collect(Collectors.toList());
+    return new com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema(newDataSets);
   }
 
   private void fillPlaintDataSetByList(List<DataSet> items) {

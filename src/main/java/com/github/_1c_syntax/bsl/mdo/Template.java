@@ -38,7 +38,7 @@ public interface Template extends MDObject {
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  TemplateData<?> getTemplateData();
+  TemplateData getTemplateData();
 
   /**
    * Путь к самому файлу макета

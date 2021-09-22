@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.support.EnumWithValue;
+import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

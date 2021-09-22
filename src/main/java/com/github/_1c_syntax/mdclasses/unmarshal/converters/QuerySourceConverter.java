@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.common.SourcePosition;
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import com.github._1c_syntax.bsl.mdo.data_storage.QuerySource;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

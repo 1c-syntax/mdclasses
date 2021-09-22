@@ -89,7 +89,7 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  TemplateData<?> templateData;
+  TemplateData templateData;
 
   /**
    * Путь к самому файлу макета

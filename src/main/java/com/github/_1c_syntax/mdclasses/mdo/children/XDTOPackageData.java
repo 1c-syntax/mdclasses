@@ -74,7 +74,7 @@ public class XDTOPackageData {
   @XStreamImplicit(itemFieldName = "property")
   private List<XdtoProperty> properties = Collections.emptyList();
 
-  public Object buildMDObject() {
+  public XdtoPackageData buildMDObject() {
     var builder = XdtoPackageData.builder();
 
     builder
@@ -84,15 +84,12 @@ public class XDTOPackageData {
         .collect(Collectors.toList()))
       .valueTypes(valueTypes.stream()
         .map(XdtoValueType::buildMDObject)
-        .map(XdtoPackageData.ValueType.class::cast)
         .collect(Collectors.toList()))
       .objectTypes(objectTypes.stream()
         .map(XdtoObjectType::buildMDObject)
-        .map(XdtoPackageData.ObjectType.class::cast)
         .collect(Collectors.toList()))
       .properties(properties.stream()
         .map(XdtoProperty::buildMDObject)
-        .map(XdtoPackageData.Property.class::cast)
         .collect(Collectors.toList()));
 
     return builder.build();

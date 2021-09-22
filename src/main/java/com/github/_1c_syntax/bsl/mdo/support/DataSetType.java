@@ -25,20 +25,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
+/**
+ * Варианты типов данных макета СКД
+ */
 @AllArgsConstructor
-public enum TemplateType implements EnumWithValue {
-  ADD_IN("AddIn"),
-  BINARY_DATA("BinaryData"),
-  DATA_COMPOSITION_SCHEME("DataCompositionSchema"),
-  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate"),
-  GRAPHICAL_SCHEME("GraphicalSchema"),
-  HTML_DOCUMENT("HTMLDocument"),
-  SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
-  ACTIVE_DOCUMENT("ActiveDocument"),
-  GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
-  TEXT_DOCUMENT("TextDocument");
+public enum DataSetType implements EnumWithValue {
+  DATA_SET_QUERY("DataSetQuery"),
+  DATA_SET_UNION("DataSetUnion"),
+  DATA_SET_OBJECT("DataSetObject");
 
   @Getter
   @Accessors(fluent = true)
   private final String value;
+
+  /**
+   * Выполняет преобразование из строкового представления в значение
+   * @param value Строковое представление
+   * @return Найденный тип
+   */
+  public static DataSetType fromValue(String value) {
+    for (DataSetType dataSetType : DataSetType.values()) {
+      if (dataSetType.value.equals(value)) {
+        return dataSetType;
+      }
+    }
+    throw new IllegalArgumentException(value);
+  }
 }

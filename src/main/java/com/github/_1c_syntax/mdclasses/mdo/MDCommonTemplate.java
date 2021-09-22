@@ -22,9 +22,9 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.CommonTemplate;
-import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.children.TemplateData;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -81,7 +81,7 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements MDOTemplat
 
     ((CommonTemplate.CommonTemplateBuilder) builder)
       .templateType(templateType)
-      .templateData(templateData)
+      .templateData(templateData.buildMDObject())
       .templateDataPath(templateDataPath);
 
     return super.buildMDObject();

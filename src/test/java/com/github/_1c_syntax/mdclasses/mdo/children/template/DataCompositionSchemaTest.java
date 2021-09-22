@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
-import com.github._1c_syntax.mdclasses.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 

@@ -19,20 +19,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import com.github._1c_syntax.mdclasses.common.SourcePosition;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
-
-  public static QuerySource empty() {
-    return EMPTY;
-  }
+/**
+ * Расширение для перечислений, необходимое для использования в анмаршалинге
+ * автор идеи: alkoleft (https://github.com/alkoleft)
+ */
+public interface EnumWithValue {
+  /**
+   * Возвращает значение перечисления
+   *
+   * @return Строковое значение перечисления
+   */
+  String value();
 }
