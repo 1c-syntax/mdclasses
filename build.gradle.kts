@@ -5,10 +5,10 @@ plugins {
     `java-library`
     `maven-publish`
     jacoco
-    id("net.kyori.indra.license-header") version "1.3.1"
+    id("org.cadixdev.licenser") version "0.6.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.freefair.lombok") version "6.0.0-m2"
-    id("io.freefair.javadoc-links") version "6.0.0-m2"
+    id("io.freefair.lombok") version "6.2.0"
+    id("io.freefair.javadoc-links") version "6.2.0"
     id("io.freefair.javadoc-utf-8") version "6.2.0"
     id("org.sonarqube") version "3.3"
 }
@@ -54,10 +54,6 @@ dependencies {
     testImplementation("org.slf4j", "slf4j-log4j12", "1.7.30")
 }
 
-configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_11
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -79,7 +75,7 @@ tasks.test {
         events("passed", "skipped", "failed")
     }
     reports {
-        html.isEnabled = true
+        html.required.set(true)
     }
 }
 
@@ -89,8 +85,8 @@ tasks.check {
 
 tasks.jacocoTestReport {
     reports {
-        xml.isEnabled = true
-        xml.destination = File("$buildDir/reports/jacoco/test/jacoco.xml")
+        xml.required.set(true)
+        xml.outputLocation.set(File("$buildDir/reports/jacoco/test/jacoco.xml"))
     }
 }
 
@@ -119,7 +115,8 @@ artifacts {
 }
 
 license {
-    header = rootProject.file("license/HEADER.txt")
+    header(rootProject.file("license/HEADER.txt"))
+    newLine(false)
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
