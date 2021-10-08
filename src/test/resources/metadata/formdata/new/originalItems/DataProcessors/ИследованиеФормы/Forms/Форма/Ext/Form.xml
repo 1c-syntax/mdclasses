@@ -469,8 +469,8 @@
 				</v8:item>
 			</Title>
 			<Type>
+				<v8:Type xmlns:pl="http://v8.1c.ru/8.3/data/planner">pl:Planner</v8:Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
-				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="УправлениеДатой" id="3">
@@ -669,8 +669,8 @@
 					<currentLevel xmlns="http://v8.1c.ru/8.2/data/chart">0</currentLevel>
 				</pl:timeScale>
 				<pl:period>
-					<pl:begin>2021-10-08T00:00:00</pl:begin>
-					<pl:end>2021-10-08T23:59:59</pl:end>
+					<pl:begin>2021-10-09T00:00:00</pl:begin>
+					<pl:end>2021-10-09T23:59:59</pl:end>
 				</pl:period>
 				<pl:displayCurrentDate>true</pl:displayCurrentDate>
 				<pl:itemsTimeRepresentation>BeginTime</pl:itemsTimeRepresentation>
@@ -733,6 +733,8 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="Команда1" id="1"/>
+		<Command name="Команда1" id="1">
+			<AssociatedTableElementId xsi:type="xs:string">ТаблицаЗначений</AssociatedTableElementId>
+		</Command>
 	</Commands>
 </Form>

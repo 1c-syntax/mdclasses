@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.form.FormCommand;
 import com.github._1c_syntax.bsl.mdo.form.FormItemCreator;
 import com.github._1c_syntax.bsl.mdo.form.NewFormData;
-import com.github._1c_syntax.bsl.mdo.form.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
@@ -33,6 +32,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -96,11 +96,9 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
 
   @Override
   public Object buildMDObject() {
-    setBuilder(ObjectForm.builder());
+    TransformationUtils.setValue(builder, "formType", formType);
 
-    var currentBuild = (ObjectForm.ObjectFormBuilder) builder;
-    currentBuild.formType(formType);
-
+    NewFormData formData;
     if (getData() != null) {
 
       var children = createNewChildren(getData(), getData().getChildren());
@@ -125,11 +123,13 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
         .attributes(attributes)
         .commands(commands);
 
-      currentBuild.data(dataBuilder.build());
+      formData = dataBuilder.build();
 
     } else {
-      currentBuild.data(NewFormData.EMPTY);
+      formData = NewFormData.EMPTY;
     }
+
+    TransformationUtils.setValue(builder, "data", formData);
 
     return super.buildMDObject();
   }
