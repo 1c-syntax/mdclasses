@@ -19,25 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.form.item.group;
 
-import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
+import com.github._1c_syntax.bsl.mdo.form.item.GroupItem;
+import lombok.Builder;
+import lombok.ToString;
+import lombok.Value;
 
-/**
- * Интерфейс форм объектов и общих форм
- */
-public interface Form extends MDObject, ModuleOwner {
-  /**
-   * Тип формы
-   */
-  FormType getFormType();
+import java.util.List;
 
-  // todo нужна нормальная модель
-  //  /**
-  //  * Данные формы:
-  //  * + список элементов формы
-  //  * + список обработчиков формы
-  //  * + список реквизитов формы
-  //  */
-  //  FormData getData();
+@Value
+@Builder
+@ToString(of = {"name", "id"})
+public class CommandBar implements GroupItem {
+  String name;
+  int id;
+  List<BaseFormItem> children;
+  boolean visibility;
+  boolean enabled;
 }

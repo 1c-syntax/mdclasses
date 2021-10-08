@@ -21,18 +21,28 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.form.FormCommand;
+import com.github._1c_syntax.bsl.mdo.form.FormItemCreator;
+import com.github._1c_syntax.bsl.mdo.form.NewFormData;
+import com.github._1c_syntax.bsl.mdo.form.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Базовый класс объектов форм
@@ -86,7 +96,101 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
 
   @Override
   public Object buildMDObject() {
-    TransformationUtils.setValue(builder, "formType", formType);
+    setBuilder(ObjectForm.builder());
+
+    var currentBuild = (ObjectForm.ObjectFormBuilder) builder;
+    currentBuild.formType(formType);
+
+    if (getData() != null) {
+
+      var children = createNewChildren(getData(), getData().getChildren());
+      List<BaseFormItem> plainChildren = new ArrayList<>();
+      recursiveFillPlainChildren(children, plainChildren);
+
+      var attributes = getData().getAttributes().stream()
+        .map(AbstractMDOForm::newFormAttribute).collect(Collectors.toUnmodifiableList());
+
+      var commands = getData().getCommands().stream()
+        .map(formCommand -> {
+          var builder = FormCommand.builder();
+          builder.name(formCommand.getName());
+          builder.id(formCommand.getId());
+          builder.action(formCommand.getAction());
+          return builder.build();
+        }).collect(Collectors.toUnmodifiableList());
+
+      var dataBuilder = NewFormData.builder()
+        .children(children)
+        .plainChildren(plainChildren)
+        .attributes(attributes)
+        .commands(commands);
+
+      currentBuild.data(dataBuilder.build());
+
+    } else {
+      currentBuild.data(NewFormData.EMPTY);
+    }
+
     return super.buildMDObject();
   }
+
+  private static List<BaseFormItem> createNewChildren(FormData formData, List<FormItem> items) {
+    List<BaseFormItem> newItems = new ArrayList<>();
+
+    // создадим форму
+    var item = FormItemCreator.createFormItem(formData);
+    newItems.add(item);
+
+    for (FormItem formItem : items) {
+      item.getChildren().add(newItem(formItem));
+    }
+
+    return newItems;
+  }
+
+  private static void processChildItems(FormItem formItem, List<BaseFormItem> children) {
+    if (formItem.getChildren().isEmpty()) {
+      return;
+    }
+
+    formItem.getChildren().forEach(item -> {
+      var newItem = AbstractMDOForm.newItem(item);
+      children.add(newItem);
+    });
+  }
+
+  private static BaseFormItem newItem(FormItem formItem) {
+    var item = FormItemCreator.createByType(formItem, formItem.getType());
+
+    if (formItem.getChildren().isEmpty()) {
+      formItem.setChildren(Collections.emptyList());
+    } else {
+      processChildItems(formItem, item.getChildren());
+    }
+
+    return item;
+  }
+
+  private static void recursiveFillPlainChildren(List<BaseFormItem> children, List<BaseFormItem> plainChildren) {
+    children.forEach(baseFormItem -> {
+      plainChildren.add(baseFormItem);
+      recursiveFillPlainChildren(baseFormItem.getChildren(), plainChildren);
+    });
+  }
+
+  private static FormAttribute newFormAttribute(com.github._1c_syntax.mdclasses.mdo.children.form.FormAttribute formAttribute) {
+    var builder = FormAttribute.builder();
+    builder.name(formAttribute.getName());
+    builder.id(formAttribute.getId());
+    builder.valueTypes(formAttribute.getValueTypes());
+    builder.main(formAttribute.isMain());
+
+    var children = formAttribute.getChildren().stream()
+      .map(AbstractMDOForm::newFormAttribute)
+      .collect(Collectors.toList());
+    builder.children(children);
+
+    return builder.build();
+  }
+
 }

@@ -61,6 +61,8 @@ public class TransformationUtils {
           method = source.getClass().getDeclaredMethod(methodName, Path.class);
         } else if (value instanceof Boolean) {
           method = source.getClass().getDeclaredMethod(methodName, boolean.class);
+        } else if (value instanceof Integer) {
+          method = source.getClass().getDeclaredMethod(methodName, int.class);
         } else {
           method = source.getClass().getDeclaredMethod(methodName, value.getClass());
         }

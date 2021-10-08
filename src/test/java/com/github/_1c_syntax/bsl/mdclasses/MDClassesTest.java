@@ -36,4 +36,13 @@ class MDClassesTest {
 
     assertThat(configuration.getChildren()).hasSize(61);
   }
+
+  @Test
+  void simpleTest() {
+    var srcPath = new File("C:\\Develop\\SonarQube\\poligon\\drive\\src\\cf");
+    var configuration = MDClasses.createConfiguration(srcPath.toPath());
+
+    var a = 1;
+  }
+
 }
