@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.form.FormItemHandler;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
 import com.github._1c_syntax.bsl.mdo.form.item.FieldItem;
-import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
@@ -62,7 +61,7 @@ public class CheckBoxField implements FieldItem, EventDriven {
   /**
    * Данные, с которыми связан элемент
    */
-  DataPath dataPath;
+  String dataPath;
   /**
    * События элемента
    */

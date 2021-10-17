@@ -131,7 +131,7 @@ public class FormItemCreator {
 
   private static void fillIfDataPathRelated(Object builder, Class<? extends BaseFormItem> itemClass, FormItem formItem) {
     if (DataPathRelated.class.isAssignableFrom(itemClass)) {
-      TransformationUtils.setValue(builder, "dataPath", formItem.getDataPath());
+      TransformationUtils.setValue(builder, "dataPath", formItem.getDataPath().getSegment());
     }
   }
 
