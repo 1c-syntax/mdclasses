@@ -33,7 +33,7 @@ import com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes;
 import com.github._1c_syntax.bsl.mdo.CommandGroup;
 import com.github._1c_syntax.bsl.mdo.CommonAttribute;
 import com.github._1c_syntax.bsl.mdo.CommonCommand;
-import com.github._1c_syntax.bsl.mdo.form.CommonForm;
+import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.CommonPicture;
 import com.github._1c_syntax.bsl.mdo.CommonTemplate;

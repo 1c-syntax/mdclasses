@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.form;
 
+import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.DataProcessor;
 import com.github._1c_syntax.bsl.mdo.form.item.UnknownFormItem;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
