@@ -25,6 +25,7 @@ import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,11 +38,12 @@ public class UnknownFormItem implements BaseFormItem {
   /**
    * Имя элемента
    */
-  String name;
+  @Builder.Default
+  String name = "";
   /**
    * Идентификатор элемента
    */
-  int id;
+  int id = -1;
   /**
    * Тип группы элемента
    */
@@ -49,7 +51,8 @@ public class UnknownFormItem implements BaseFormItem {
   /**
    * Дочерние элементы
    */
-  List<BaseFormItem> children;
+  @Builder.Default
+  List<BaseFormItem> children = Collections.emptyList();
   /**
    * Видимость
    */

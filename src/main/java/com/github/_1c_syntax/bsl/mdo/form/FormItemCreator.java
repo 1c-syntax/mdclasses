@@ -107,11 +107,11 @@ public class FormItemCreator {
 
   public static BaseFormItem createFormItem(EdtFormData formData) {
     final var itemClass = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.class;
-    Object builder = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.builder();
+    var builder = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.builder();
 
     TransformationUtils.setValue(builder, "children", new ArrayList<>());
     TransformationUtils.setValue(builder, "visibility", true);
-    TransformationUtils.setValue(builder, "enabled", true); // FIXME: нужно откуда то читать
+    TransformationUtils.setValue(builder, "enabled", formData.isEnabled());
 
     fillIfEventDrivenItem(builder, itemClass, formData.getHandlers());
 

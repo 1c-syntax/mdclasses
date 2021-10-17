@@ -29,6 +29,7 @@ import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,15 +42,18 @@ public class CheckBoxField implements FieldItem, EventDriven {
   /**
    * Имя элемента
    */
-  String name;
+  @Builder.Default
+  String name = "";
   /**
    * Идентификатор элемента
    */
-  int id;
+  @Builder.Default
+  int id = -1;
   /**
    * Дочерние элементы
    */
-  List<BaseFormItem> children;
+  @Builder.Default
+  List<BaseFormItem> children = Collections.emptyList();
   /**
    * Видимость
    */
@@ -61,9 +65,11 @@ public class CheckBoxField implements FieldItem, EventDriven {
   /**
    * Данные, с которыми связан элемент
    */
-  String dataPath;
+  @Builder.Default
+  String dataPath = "";
   /**
    * События элемента
    */
-  List<FormItemHandler> handlers;
+  @Builder.Default
+  List<FormItemHandler> handlers = Collections.emptyList();
 }

@@ -29,6 +29,7 @@ import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,7 +55,8 @@ public class FormItem implements BaseFormItem, EventDriven {
   /**
    * Дочерние элементы
    */
-  List<BaseFormItem> children;
+  @Builder.Default
+  List<BaseFormItem> children = Collections.emptyList();
   /**
    * Видимость
    */
@@ -66,5 +68,6 @@ public class FormItem implements BaseFormItem, EventDriven {
   /**
    * События элемента
    */
-  List<FormItemHandler> handlers;
+  @Builder.Default
+  List<FormItemHandler> handlers = Collections.emptyList();
 }

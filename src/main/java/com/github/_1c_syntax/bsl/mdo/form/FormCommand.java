@@ -35,15 +35,18 @@ public class FormCommand {
   /**
    * Имя
    */
-  String name;
+  @Builder.Default
+  String name = "";
 
   /**
    * Идентификатор
    */
-  int id;
+  @Builder.Default
+  int id = -1;
 
   /**
    * Действие (имя метода)
    */
-  String action;
+  @Builder.Default
+  String action = "";
 }

@@ -25,6 +25,7 @@ import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,26 +38,26 @@ public class FormAttribute {
   /**
    * Имя
    */
-  String name;
-
+  @Builder.Default
+  String name = "";
   /**
    * Идентификатор
    */
-  int id;
-
+  @Builder.Default
+  int id = -1;
   /**
    * Типы значений
    */
-  List<String> valueTypes;
-
+  @Builder.Default
+  List<String> valueTypes = Collections.emptyList();
   /**
    * Основной реквизит
    */
   boolean main;
-
   /**
    * Подчиненные реквизиты
    */
-  List<FormAttribute> children;
+  @Builder.Default
+  List<FormAttribute> children = Collections.emptyList();
 
 }

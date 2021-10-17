@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,22 +39,26 @@ public class FormData {
   /**
    * Элементы формы, начиная с элемента Форма
    */
-  List<BaseFormItem> children;
+  @Builder.Default
+  List<BaseFormItem> children = Collections.emptyList();
 
   /**
    * Список реквизитов
    */
-  List<FormAttribute> attributes;
+  @Builder.Default
+  List<FormAttribute> attributes = Collections.emptyList();
 
   /**
    * Список команд
    */
-  List<FormCommand> commands;
+  @Builder.Default
+  List<FormCommand> commands = Collections.emptyList();
 
   /**
    * Плоский список элементов формы
    */
-  List<BaseFormItem> plainChildren;
+  @Builder.Default
+  List<BaseFormItem> plainChildren = Collections.emptyList();
 
   private static FormData createEmpty() {
     return FormData.builder().build();
