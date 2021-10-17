@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo.form.item.decoration;
 import com.github._1c_syntax.bsl.mdo.form.FormItemHandler;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.DecorationItem;
-import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
+import com.github._1c_syntax.bsl.mdo.form.item.FormItemEventDriven;
 import lombok.Builder;
 import lombok.ToString;
 import lombok.Value;
@@ -38,7 +38,7 @@ import java.util.List;
 @Value
 @Builder
 @ToString(of = {"name", "id"})
-public class LabelDecoration implements DecorationItem, EventDriven {
+public class LabelDecoration implements DecorationItem, FormItemEventDriven {
   /**
    * Имя элемента
    */

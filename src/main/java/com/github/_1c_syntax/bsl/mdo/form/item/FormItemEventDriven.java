@@ -25,7 +25,7 @@ import com.github._1c_syntax.bsl.mdo.form.FormItemHandler;
 
 import java.util.List;
 
-public interface EventDriven {
+public interface FormItemEventDriven {
   /**
    * События элемента
    */

@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdo.form.item.form;
 
 import com.github._1c_syntax.bsl.mdo.form.FormItemHandler;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
-import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
+import com.github._1c_syntax.bsl.mdo.form.item.FormItemEventDriven;
 import com.github._1c_syntax.bsl.mdo.form.item.FormItemGroupType;
 import lombok.Builder;
 import lombok.ToString;
@@ -38,7 +38,7 @@ import java.util.List;
 @Value
 @Builder
 @ToString(of = {"name", "id"})
-public class FormItem implements BaseFormItem, EventDriven {
+public class FormItem implements BaseFormItem, FormItemEventDriven {
   public static final String FORM_NAME = "$FORM";
   /**
    * Имя элемента

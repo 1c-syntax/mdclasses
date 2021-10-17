@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo.form.item.field;
 import com.github._1c_syntax.bsl.mdo.form.FormItemHandler;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.DataPathRelated;
-import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
+import com.github._1c_syntax.bsl.mdo.form.item.FormItemEventDriven;
 import com.github._1c_syntax.bsl.mdo.form.item.FieldItem;
 import lombok.Builder;
 import lombok.ToString;
@@ -39,7 +39,7 @@ import java.util.List;
 @Value
 @Builder
 @ToString(of = {"name", "id"})
-public class TextDocumentField implements FieldItem, DataPathRelated, EventDriven {
+public class TextDocumentField implements FieldItem, DataPathRelated, FormItemEventDriven {
   /**
    * Имя элемента
    */

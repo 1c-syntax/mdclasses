@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdo.form;
 
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.DataPathRelated;
-import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
+import com.github._1c_syntax.bsl.mdo.form.item.FormItemEventDriven;
 import com.github._1c_syntax.bsl.mdo.form.item.UnknownFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.additional.ExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.form.item.additional.SearchStringAddition;
@@ -69,6 +69,7 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,16 +79,13 @@ import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
+@UtilityClass
 public class FormItemCreator {
   private static final Map<String, Class<? extends BaseFormItem>> CLASS_MAPPING = createClassMapping();
   private static final Map<Class<? extends BaseFormItem>, Callable<Object>> BUILDER_MAPPING = createBuilderMapping();
 
-  private FormItemCreator() {
-    // none
-  }
-
   @SneakyThrows
-  public static BaseFormItem createByType(FormItem formItem, String type) {
+  public BaseFormItem createByType(FormItem formItem, String type) {
     var itemClass = CLASS_MAPPING.getOrDefault(type, UnknownFormItem.class);
     var builder = BUILDER_MAPPING.get(itemClass).call();
 
@@ -99,13 +97,13 @@ public class FormItemCreator {
     return baseBuild(builder, formItem);
   }
 
-  public static List<FormItemHandler> createFormItemHandlers(List<FormHandlerItem> handlers) {
+  public List<FormItemHandler> createFormItemHandlers(List<FormHandlerItem> handlers) {
     return handlers.stream()
       .map(handler -> new FormItemHandler(handler.getEvent(), handler.getName()))
       .collect(Collectors.toUnmodifiableList());
   }
 
-  public static BaseFormItem createFormItem(EdtFormData formData) {
+  public BaseFormItem createFormItem(EdtFormData formData) {
     final var itemClass = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.class;
     var builder = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.builder();
 
@@ -118,7 +116,7 @@ public class FormItemCreator {
     return (BaseFormItem) TransformationUtils.build(builder);
   }
 
-  private static void fillByItemType(Object builder, Class<? extends BaseFormItem> itemClass, FormItem formItem) {
+  private void fillByItemType(Object builder, Class<? extends BaseFormItem> itemClass, FormItem formItem) {
 
     if (itemClass.equals(InputField.class)) {
       var extInfo = formItem.getExtInfo();
@@ -129,26 +127,26 @@ public class FormItemCreator {
 
   }
 
-  private static void fillIfDataPathRelated(Object builder, Class<? extends BaseFormItem> itemClass, FormItem formItem) {
+  private void fillIfDataPathRelated(Object builder, Class<? extends BaseFormItem> itemClass, FormItem formItem) {
     if (DataPathRelated.class.isAssignableFrom(itemClass)) {
       TransformationUtils.setValue(builder, "dataPath", formItem.getDataPath().getSegment());
     }
   }
 
-  private static void fillIfEventDrivenItem(Object builder, Class<? extends BaseFormItem> itemClass, List<FormHandlerItem> handlers) {
-    if (EventDriven.class.isAssignableFrom(itemClass)) {
+  private void fillIfEventDrivenItem(Object builder, Class<? extends BaseFormItem> itemClass, List<FormHandlerItem> handlers) {
+    if (FormItemEventDriven.class.isAssignableFrom(itemClass)) {
       var newHandlers = createFormItemHandlers(handlers);
       TransformationUtils.setValue(builder, "handlers", newHandlers);
     }
 
   }
 
-  private static BaseFormItem baseBuild(Object baseBuilder, FormItem formItem) {
+  private BaseFormItem baseBuild(Object baseBuilder, FormItem formItem) {
     fillCommonFiled(baseBuilder, formItem);
     return (BaseFormItem) TransformationUtils.build(baseBuilder);
   }
 
-  private static void fillCommonFiled(Object builder, FormItem formItem) {
+  private void fillCommonFiled(Object builder, FormItem formItem) {
     TransformationUtils.setValue(builder, "name", formItem.getName());
     TransformationUtils.setValue(builder, "id", formItem.getId());
     TransformationUtils.setValue(builder, "children", new ArrayList<>());
@@ -156,15 +154,18 @@ public class FormItemCreator {
     TransformationUtils.setValue(builder, "enabled", formItem.isEnabled());
   }
 
-  private static Map<String, Class<? extends BaseFormItem>> createClassMapping() {
+  private Map<String, Class<? extends BaseFormItem>> createClassMapping() {
     var map = new TreeMap<String, Class<? extends BaseFormItem>>(String.CASE_INSENSITIVE_ORDER);
 
     // additional
+    // TODO: не ставить тип Label для ExtendedTooltip
     map.put("ExtendedTooltip", ExtendedTooltip.class);
+    map.put("SearchControlAddition", SearchStringAddition.class);
     map.put("SearchStringAddition", SearchStringAddition.class);
     map.put("ViewStatusAddition", ViewStatusAddition.class);
 
     // button
+    map.put("form:Button", CommandBarButton.class);
     map.put("CommandBarButton", CommandBarButton.class);
     map.put("CommandBarHyperlink", CommandBarHyperlink.class);
     map.put("Hyperlink", Hyperlink.class);
@@ -172,7 +173,9 @@ public class FormItemCreator {
     map.put("Button", UsualButton.class);
 
     // decoration
+    map.put("Label", LabelDecoration.class);
     map.put("LabelDecoration", LabelDecoration.class);
+    map.put("form:Decoration", PictureDecoration.class);
     map.put("PictureDecoration", PictureDecoration.class);
 
     // field
@@ -195,12 +198,12 @@ public class FormItemCreator {
     map.put("SpreadSheetDocumentField", SpreadSheetDocumentField.class);
     map.put("TextDocumentField", TextDocumentField.class);
     map.put("TrackBarField", TrackBarField.class);
-    // ??? ПолеПолосыРегулирования
 
     // form здесь нет
 
     // group
     map.put("AutoCommandBar", AutoCommandBar.class);
+    map.put("form:FormGroup", ButtonGroup.class);
     map.put("ButtonGroup", ButtonGroup.class);
     map.put("ColumnGroup", ColumnGroup.class);
     map.put("CommandBar", CommandBar.class);
@@ -211,12 +214,13 @@ public class FormItemCreator {
     map.put("UsualGroup", UsualGroup.class);
 
     // table
+    map.put("form:Table", TableItem.class);
     map.put("Table", TableItem.class);
 
     return map;
   }
 
-  private static Map<Class<? extends BaseFormItem>, Callable<Object>> createBuilderMapping() {
+  private Map<Class<? extends BaseFormItem>, Callable<Object>> createBuilderMapping() {
     Map<Class<? extends BaseFormItem>, Callable<Object>> map = new HashMap<>();
     map.put(UnknownFormItem.class, UnknownFormItem::builder);
 

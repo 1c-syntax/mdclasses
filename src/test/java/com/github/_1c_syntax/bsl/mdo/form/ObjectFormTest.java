@@ -23,17 +23,21 @@ package com.github._1c_syntax.bsl.mdo.form;
 
 import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.DataProcessor;
+import com.github._1c_syntax.bsl.mdo.form.item.DataPathRelated;
 import com.github._1c_syntax.bsl.mdo.form.item.UnknownFormItem;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ObjectFormTest extends AbstractMDObjectTest<ObjectForm> {
   private static final String BASE_PATH = "src/test/resources/metadata/formdata/new/originalItems";
+  private static final String EDT_BASE_PATH = "src/test/resources/metadata/formdata/new/edtItems/src";
 
   ObjectFormTest() {
     super(ObjectForm.class);
@@ -46,12 +50,17 @@ class ObjectFormTest extends AbstractMDObjectTest<ObjectForm> {
 
     var objectForm = dataProcessor.getForms().get(0);
     var data = objectForm.getData();
+    checkSimpleFormData(data);
+  }
 
-    assertThat(data.getChildren()).hasSize(1);
-    assertThat(data.getPlainChildren()).isNotEmpty()
-      .noneMatch(baseFormItem -> baseFormItem instanceof UnknownFormItem);
-    assertThat(data.getAttributes()).hasSize(16);
-    assertThat(data.getCommands()).hasSize(1);
+  @Test
+  void testObjectFormEdt() {
+    var pathToObject = Path.of(EDT_BASE_PATH, "DataProcessors/ИследованиеФормы/ИследованиеФормы.mdo");
+    var dataProcessor = getDataProcessor(pathToObject);
+
+    var objectForm = dataProcessor.getForms().get(0);
+    var data = objectForm.getData();
+    checkSimpleFormData(data);
   }
 
   @Test
@@ -60,6 +69,40 @@ class ObjectFormTest extends AbstractMDObjectTest<ObjectForm> {
     var commonForm = getCommonForm(pathToObject);
     var data = commonForm.getData();
     assertThat(data.getChildren()).hasSize(1);
+  }
+
+  private static void checkSimpleFormData(FormData data) {
+    assertThat(data.getChildren()).hasSize(1);
+    assertThat(data.getPlainChildren()).isNotEmpty()
+      .noneMatch(baseFormItem -> baseFormItem instanceof UnknownFormItem);
+    assertThat(data.getAttributes()).hasSize(16);
+    assertThat(data.getCommands()).hasSize(1);
+
+    checkBaseFormItem(data);
+    checkDataPathRelated(data);
+  }
+
+  private static void checkBaseFormItem(FormData data) {
+    assertThat(data.getPlainChildren())
+      .noneMatch(item -> item.getName() == null || item.getName().isEmpty())
+      .noneMatch(item -> item.getId() == 0)
+      .noneMatch(item -> item.getChildren() == null)
+    ;
+  }
+
+  private static void checkDataPathRelated(FormData data) {
+    var dataPathRelatedItems = data.getPlainChildren().stream()
+      .filter(item -> item instanceof DataPathRelated)
+      .map(DataPathRelated.class::cast)
+      .collect(Collectors.toList());
+
+    assertThat(dataPathRelatedItems).isNotEmpty()
+      .allMatch(item -> Objects.nonNull(item.getDataPath()));
+
+    var inputFiled = data.getPlainChildren().stream()
+      .filter(item -> item.getName().equals("ПолеВвода"))
+      .findAny().get();
+    assertThat(((DataPathRelated) inputFiled).getDataPath()).isEqualTo("ПростаяСтрока");
   }
 
   private static DataProcessor getDataProcessor(Path path) {
