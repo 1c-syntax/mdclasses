@@ -40,17 +40,17 @@ public interface BaseFormItem {
   FormItemGroupType getGroupType();
 
   /**
-   * Подчиненные элементы формы
+   * Дочерние элементы
    */
   List<BaseFormItem> getChildren();
 
   /**
-   * Видимость элемента
+   * Видимость
    */
   boolean isVisibility();
 
   /**
-   * Доступность элемента
+   * Доступность
    */
   boolean isEnabled();
 

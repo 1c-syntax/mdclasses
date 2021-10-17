@@ -31,14 +31,35 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Страницы
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class Pages implements GroupItem, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

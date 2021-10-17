@@ -28,21 +28,44 @@ import com.github._1c_syntax.bsl.mdo.form.item.EventDriven;
 import com.github._1c_syntax.bsl.mdo.form.item.FieldItem;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import lombok.Builder;
-import lombok.Data;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Поле периода
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class PeriodField implements FieldItem, DataPathRelated, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * Данные, с которыми связан элемент
+   */
   DataPath dataPath;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

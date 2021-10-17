@@ -32,14 +32,35 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Декорация - Надпись
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class LabelDecoration implements DecorationItem, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

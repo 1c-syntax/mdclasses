@@ -31,14 +31,35 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Декорация - Картинка
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class PictureDecoration implements DecorationItem, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

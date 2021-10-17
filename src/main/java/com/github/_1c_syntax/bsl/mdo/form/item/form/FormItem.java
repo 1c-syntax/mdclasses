@@ -32,19 +32,39 @@ import lombok.Value;
 import java.util.List;
 
 /**
- * TODO: Для FormItem нет интерфейса типа поля, т.к. реализация всего одна
+ * Элемент формы: Форма
  */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class FormItem implements BaseFormItem, EventDriven {
   public static final String FORM_NAME = "$FORM";
-
+  /**
+   * Имя элемента
+   */
   String name = FORM_NAME;
+  /**
+   * Идентификатор элемента
+   */
   int id = -1;
+  /**
+   * Тип группы элемента
+   */
   FormItemGroupType groupType = FormItemGroupType.FORM;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility = true;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

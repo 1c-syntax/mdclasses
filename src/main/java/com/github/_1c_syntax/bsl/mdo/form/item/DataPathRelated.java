@@ -24,5 +24,8 @@ package com.github._1c_syntax.bsl.mdo.form.item;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 
 public interface DataPathRelated {
+  /**
+   * Данные, с которыми связан элемент
+   */
   DataPath getDataPath();
 }

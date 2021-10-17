@@ -27,14 +27,35 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Неопределенный элемент формы
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class UnknownFormItem implements BaseFormItem {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Тип группы элемента
+   */
   FormItemGroupType groupType = FormItemGroupType.UNKNOWN;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
 }

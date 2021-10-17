@@ -29,13 +29,31 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Группа колонок
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class ColumnGroup implements GroupItem {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
-  boolean visibility;
-  boolean enabled;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
+  boolean visibility;
+  /**
+   * Доступность
+   */
+  boolean enabled;
 }

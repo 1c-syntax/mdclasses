@@ -24,19 +24,36 @@ package com.github._1c_syntax.bsl.mdo.form.item.additional;
 import com.github._1c_syntax.bsl.mdo.form.item.AdditionalItem;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import lombok.Builder;
-import lombok.Data;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Строка поиска
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class SearchStringAddition implements AdditionalItem {
+  /**
+   * Имя элемента
+   */
   String name;
-  int id ;
+  /**
+   * Идентификатор элемента
+   */
+  int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
 }

@@ -32,15 +32,39 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Поле флажка
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class CheckBoxField implements FieldItem, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * Данные, с которыми связан элемент
+   */
   DataPath dataPath;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }

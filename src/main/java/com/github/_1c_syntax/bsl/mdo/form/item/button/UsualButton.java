@@ -24,19 +24,36 @@ package com.github._1c_syntax.bsl.mdo.form.item.button;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.form.item.ButtonItem;
 import lombok.Builder;
-import lombok.Data;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Обычная кнопка
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class UsualButton implements ButtonItem {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
 }

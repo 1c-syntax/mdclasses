@@ -29,13 +29,31 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * Элемент формы: Командная панель
+ */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class CommandBar implements GroupItem {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
 }

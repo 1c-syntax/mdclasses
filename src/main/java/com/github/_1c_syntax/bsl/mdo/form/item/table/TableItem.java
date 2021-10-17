@@ -34,18 +34,42 @@ import lombok.Value;
 import java.util.List;
 
 /**
- * TODO: Для TableItem нет интерфейса типа поля, т.к. реализация всего одна
+ * Элемент формы: Таблица
  */
 @Value
 @Builder
 @ToString(of = {"name", "id"})
 public class TableItem implements BaseFormItem, DataPathRelated, EventDriven {
+  /**
+   * Имя элемента
+   */
   String name;
+  /**
+   * Идентификатор элемента
+   */
   int id;
+  /**
+   * Тип группы элемента
+   */
   FormItemGroupType groupType = FormItemGroupType.TABLE;
+  /**
+   * Дочерние элементы
+   */
   List<BaseFormItem> children;
+  /**
+   * Видимость
+   */
   boolean visibility;
+  /**
+   * Доступность
+   */
   boolean enabled;
+  /**
+   * Данные, с которыми связан элемент
+   */
   DataPath dataPath;
+  /**
+   * События элемента
+   */
   List<FormItemHandler> handlers;
 }
