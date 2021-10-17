@@ -23,7 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormAttribute;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.EdtFormData;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FormDataTest {
+class EdtFormDataTest {
 
   @Test
   void testEDT() {
@@ -74,7 +74,7 @@ class FormDataTest {
     checkExtInfo(formData);
   }
 
-  private void checkExtInfo(FormData formData) {
+  private void checkExtInfo(EdtFormData formData) {
     var extInfo = (DynamicListExtInfo) formData.getAttributes().get(1).getExtInfo();
     assertThat(extInfo)
       .isNotNull()
@@ -84,7 +84,7 @@ class FormDataTest {
     assertThat(extInfo.getQuery().getTextQuery()).isNotEmpty();
   }
 
-  private void checkFormData(FormData formData) {
+  private void checkFormData(EdtFormData formData) {
     assertThat(formData.getPlainChildren())
       .hasSize(133)
       .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора") && formItem.getId() == 103);

@@ -24,10 +24,10 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.bsl.mdo.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.form.FormCommand;
 import com.github._1c_syntax.bsl.mdo.form.FormItemCreator;
-import com.github._1c_syntax.bsl.mdo.form.NewFormData;
+import com.github._1c_syntax.bsl.mdo.form.FormData;
 import com.github._1c_syntax.bsl.mdo.form.item.BaseFormItem;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.EdtFormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
@@ -65,7 +65,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
    * + список обработчиков формы
    * + список реквизитов формы
    */
-  private FormData data;
+  private EdtFormData data;
 
   /**
    * Путь к файлу с данными формы
@@ -98,7 +98,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
   public Object buildMDObject() {
     TransformationUtils.setValue(builder, "formType", formType);
 
-    NewFormData formData;
+    FormData formData;
     if (getData() != null) {
 
       var children = createNewChildren(getData(), getData().getChildren());
@@ -117,7 +117,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
           return builder.build();
         }).collect(Collectors.toUnmodifiableList());
 
-      var dataBuilder = NewFormData.builder()
+      var dataBuilder = FormData.builder()
         .children(children)
         .plainChildren(plainChildren)
         .attributes(attributes)
@@ -126,7 +126,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
       formData = dataBuilder.build();
 
     } else {
-      formData = NewFormData.EMPTY;
+      formData = FormData.EMPTY;
     }
 
     TransformationUtils.setValue(builder, "data", formData);
@@ -134,7 +134,7 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL {
     return super.buildMDObject();
   }
 
-  private static List<BaseFormItem> createNewChildren(FormData formData, List<FormItem> items) {
+  private static List<BaseFormItem> createNewChildren(EdtFormData formData, List<FormItem> items) {
     List<BaseFormItem> newItems = new ArrayList<>();
 
     // создадим форму

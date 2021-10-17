@@ -32,8 +32,8 @@ import java.util.List;
  */
 @Value
 @Builder
-public class NewFormData {
-  public static final NewFormData EMPTY = createEmpty();
+public class FormData {
+  public static final FormData EMPTY = createEmpty();
 
   /**
    * Элементы формы, начиная с элемента Форма
@@ -55,7 +55,7 @@ public class NewFormData {
    */
   List<BaseFormItem> plainChildren;
 
-  private static NewFormData createEmpty() {
-    return NewFormData.builder().build();
+  private static FormData createEmpty() {
+    return FormData.builder().build();
   }
 }

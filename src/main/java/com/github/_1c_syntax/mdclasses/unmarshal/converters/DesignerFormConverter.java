@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.EdtFormData;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerForm;
 import com.thoughtworks.xstream.converters.Converter;
@@ -46,7 +46,7 @@ public class DesignerFormConverter implements Converter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var designerForm = (DesignerForm) context.convertAnother(reader, DesignerForm.class);
-    return new FormData(designerForm);
+    return new EdtFormData(designerForm);
   }
 
   @Override

@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
 @Data
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class FormData {
+public class EdtFormData {
   /**
    * "Плоский" список элементов
    */
@@ -79,7 +79,7 @@ public class FormData {
    *
    * @param designerForm - модель данных формата конфигуратора
    */
-  public FormData(DesignerForm designerForm) {
+  public EdtFormData(DesignerForm designerForm) {
     // элементы формы
     fillChildrenItems(designerForm.getChildItems(), children);
     addDesignerFormItem(designerForm.getAutoCommandBar(), children);

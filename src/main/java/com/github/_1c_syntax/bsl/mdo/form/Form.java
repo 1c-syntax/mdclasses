@@ -37,5 +37,5 @@ public interface Form extends MDObject, ModuleOwner {
   /**
    * Данные формы
    */
-  NewFormData getData();
+  FormData getData();
 }

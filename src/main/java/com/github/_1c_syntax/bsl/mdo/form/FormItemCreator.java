@@ -63,8 +63,7 @@ import com.github._1c_syntax.bsl.mdo.form.item.group.Pages;
 import com.github._1c_syntax.bsl.mdo.form.item.group.Popup;
 import com.github._1c_syntax.bsl.mdo.form.item.group.UsualGroup;
 import com.github._1c_syntax.bsl.mdo.form.item.table.TableItem;
-import com.github._1c_syntax.mdclasses.mdo.children.form.ExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.EdtFormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormHandlerItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
@@ -106,7 +105,7 @@ public class FormItemCreator {
       .collect(Collectors.toUnmodifiableList());
   }
 
-  public static BaseFormItem createFormItem(FormData formData) {
+  public static BaseFormItem createFormItem(EdtFormData formData) {
     final var itemClass = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.class;
     Object builder = com.github._1c_syntax.bsl.mdo.form.item.form.FormItem.builder();
 

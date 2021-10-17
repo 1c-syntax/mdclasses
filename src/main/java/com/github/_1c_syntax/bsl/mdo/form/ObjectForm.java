@@ -107,5 +107,5 @@ public class ObjectForm implements Form, MDChildObject {
   /**
    * Данные формы
    */
-  NewFormData data;
+  FormData data;
 }

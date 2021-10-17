@@ -43,7 +43,7 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
+import com.github._1c_syntax.mdclasses.mdo.children.form.EdtFormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
@@ -158,7 +158,7 @@ public class XStreamFactory {
   private XStream createXMLMapper() {
     // данный провайдер необходим для корректной обработки значений по умолчанию, чтобы не было null
     var qNameMap = new QNameMap();
-    qNameMap.registerMapping(new QName("http://g5.1c.ru/v8/dt/form", "Form", "form"), FormData.class);
+    qNameMap.registerMapping(new QName("http://g5.1c.ru/v8/dt/form", "Form", "form"), EdtFormData.class);
     qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), DesignerFormWrapper.class);
 
     var xStream = new XStream(new PureJavaReflectionProvider(), new ExtendStaxDriver(qNameMap)) {
@@ -325,7 +325,7 @@ public class XStreamFactory {
 
   private void registerFormsChildrenAliases(XStream xStream) {
     List<Class<?>> formClasses = new ArrayList<>();
-    formClasses.add(FormData.class);
+    formClasses.add(EdtFormData.class);
     formClasses.add(FormItem.class);
 
     formClasses.forEach((Class<?> aClass) -> {

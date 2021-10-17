@@ -22,7 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.form.Form;
-import com.github._1c_syntax.bsl.mdo.form.NewFormData;
+import com.github._1c_syntax.bsl.mdo.form.FormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -103,6 +103,6 @@ public class CommonForm implements Form {
   /**
    * Данные формы
    */
-  NewFormData data;
+  FormData data;
 
 }
