@@ -50,6 +50,7 @@ dependencies {
     testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
     testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
+    testImplementation("org.skyscreamer", "jsonassert", "1.5.0")
 
     // логирование
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12

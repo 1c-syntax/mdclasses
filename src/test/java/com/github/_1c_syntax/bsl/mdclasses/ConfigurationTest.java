@@ -57,7 +57,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.github._1c_syntax.bsl.test_utils.Assertions.assertThat;
 
 class ConfigurationTest extends AbstractMDClassTest<Configuration> {
   ConfigurationTest() {
@@ -477,5 +477,18 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
       .isPresent();
 
 
+  }
+
+  @ParameterizedTest()
+  @CsvSource(
+    {
+      "src/test/resources/metadata/original, src/test/resources/fixtures/original/configuration.json"
+    }
+  )
+  void testExample(ArgumentsAccessor argumentsAccessor) {
+    var mdc = getMDClass(argumentsAccessor.getString(0));
+    var current = createJson(mdc);
+    var fixture = getFixture(argumentsAccessor.getString(1));
+    assertThat(current, true).isEqual(fixture);
   }
 }

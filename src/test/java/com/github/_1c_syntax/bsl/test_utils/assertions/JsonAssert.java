@@ -19,19 +19,37 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.test_utils;
+package com.github._1c_syntax.bsl.test_utils.assertions;
 
-import com.github._1c_syntax.bsl.test_utils.assertions.FieldAssert;
-import com.github._1c_syntax.bsl.test_utils.assertions.JsonAssert;
+import org.assertj.core.api.AbstractAssert;
+import org.json.JSONException;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
-import java.lang.reflect.Field;
+/**
+ * Для единообразного Assertions сравнения двух json строк
+ */
+public class JsonAssert extends AbstractAssert<JsonAssert, String> {
 
-public class Assertions extends org.assertj.core.api.Assertions {
-  public static FieldAssert assertThat(Field actual, Object ignored) {
-    return new FieldAssert(actual);
+  public JsonAssert(String actual) {
+    super(actual, JsonAssert.class);
   }
 
-  public static JsonAssert assertThat(String actual, boolean ignored) {
+  public static JsonAssert assertThat(String actual) {
     return new JsonAssert(actual);
+  }
+
+  public JsonAssert isEqual(String fixture) {
+    // check that actual is not null.
+    isNotNull();
+
+    try {
+      JSONAssert.assertEquals(actual, fixture, JSONCompareMode.LENIENT);
+    } catch (JSONException e) {
+      failWithMessage(e.getMessage());
+    }
+
+    // return the current assertion for method chaining
+    return this;
   }
 }

@@ -24,6 +24,8 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,6 +33,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -133,6 +136,29 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
     }
   }
 
+  /**
+   * Для загрузки фикстуры по пути к файлу
+   *
+   * @param path Путь к файлу
+   * @return Содержимое файла
+   */
+  @SneakyThrows
+  protected String getFixture(String path) {
+    return Files.readString(Paths.get(path));
+  }
+
+  /**
+   * Генерация Json представления объекта
+   *
+   * @param mdc Контейнере метаданных
+   * @return Сериализованное в Json представление объекта
+   */
+  protected String createJson(MDClass mdc) {
+    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+    xstream.setMode(XStream.NO_REFERENCES);
+    return xstream.toXML(mdc);
+  }
+
   @SneakyThrows
   private void storeUntestedFields(MDClass mdc) {
 
@@ -151,4 +177,5 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
       storeUntestedField(mdc, field, fieldType, key);
     }
   }
+
 }
