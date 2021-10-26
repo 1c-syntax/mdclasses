@@ -4,6 +4,7 @@ import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.basic.URIConverter;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
@@ -37,6 +38,7 @@ public class MDTestUtils {
   public String createJson(Object md) {
     XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
     xstream.setMode(XStream.NO_REFERENCES);
+    xstream.registerConverter(new TestURIConverter());
     return xstream.toXML(md);
   }
 

@@ -2,6 +2,7 @@ package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -62,6 +63,8 @@ public class DesignerConverterCommon {
 
     // собственные поля на основании прочитанного
     properties.put("mdoReference", MdoReference.create(mdoType, (String) properties.get("Name")));
+
+    properties.put("supportVariant", SupportVariant.NONE);// todo Заглушка
 
     Map<String, Map<String, Object>> result = new HashMap<>();
     result.put("properties", properties);
