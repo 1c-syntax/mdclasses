@@ -40,24 +40,16 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import lombok.SneakyThrows;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 
-import java.lang.reflect.Field;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.github._1c_syntax.bsl.test_utils.Assertions.assertThat;
@@ -67,32 +59,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
   private final Class<T> clazz;
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
   private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
-  private static final String SRC_DESIGNER18 = "src/test/resources/metadata/original_3_18";
-
-  private List<String> untestedFields;
-  private List<String> testedFields;
-
-  @BeforeAll
-  void beforeTest() {
-    untestedFields = new ArrayList<>();
-    testedFields = new ArrayList<>();
-  }
-
-  @AfterAll
-  void afterTest() {
-    var message = new StringBuilder();
-    untestedFields.forEach(field -> {
-      message
-        .append("\n\t")
-        .append(field);
-    });
-
-    if (!message.toString().isEmpty()) {
-      message.insert(0, "\nUntested field(-s):");
-    }
-
-    assertThat(message).isEmpty();
-  }
 
   protected AbstractMDObjectTest(Class<T> clazz) {
     this.clazz = clazz;
@@ -115,14 +81,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
   }
 
   /**
-   * Возвращает прочитанный объект
-   */
-  protected T getMDObject18(String name) {
-    return getMDObject(Paths.get(SRC_DESIGNER18,
-      name + MDOPathUtils.mdoExtension(ConfigurationSource.DESIGNER, true)));
-  }
-
-  /**
    * Проверяет базовый набор реквизитов атрибута
    *
    * @param excludes используется для исключения атрибутов из проверки заполненности не дефолтным значением
@@ -136,19 +94,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     for (var field : fields) {
 
       assertThat(field, true).isNotNull(mdo);
-      if (excludes.contains(field.getName())) {
-        continue;
-      }
-
-      var fieldType = field.getType();
-      var key = attributeClass.getName() + "." + field.getName();
-
-      if (testedFields.contains(key)) {
-        untestedFields.remove(key);
-        continue;
-      }
-
-      storeUntestedField(mdo, field, fieldType, key);
     }
 
     assertThat(mdo.getName()).isEqualTo(name);
@@ -166,16 +111,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     for (var field : fields) {
 
       assertThat(field, true).isNotNull(child);
-
-      var fieldType = field.getType();
-      var key = childClass.getName() + "." + field.getName();
-
-      if (testedFields.contains(key)) {
-        untestedFields.remove(key);
-        continue;
-      }
-
-      storeUntestedField(child, field, fieldType, key);
     }
 
     assertThat(child.getName()).isEqualTo(name);
@@ -186,8 +121,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
    * Проверяет базовый набор реквизитов
    */
   protected void mdoTest(MDObject mdo, MDOType type, ArgumentsAccessor argumentsAccessor) {
-
-    storeUntestedFields(mdo);
 
     var name = argumentsAccessor.getString(0);
     assertThat(mdo.getName()).isEqualTo(name);
@@ -279,64 +212,5 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
     var mdo = MDOFactory.readMDObject(path);
     assertThat(mdo).isPresent();
     return clazz.cast(mdo.get().buildMDObject());
-  }
-
-  protected void storeUntestedField(MDObject mdo, Field field, Class<?> fieldType, String key) throws IllegalAccessException {
-    if (fieldType.isAssignableFrom(boolean.class) && Objects.equals(field.get(mdo), false)
-      || fieldType.isAssignableFrom(String.class) && Objects.equals(field.get(mdo), "")
-      || fieldType.isAssignableFrom(int.class) && Objects.equals(field.get(mdo), 0)
-      || fieldType.isAssignableFrom(List.class) && ((ArrayList) field.get(mdo)).isEmpty()
-      || fieldType.isAssignableFrom(Map.class) && ((HashMap) field.get(mdo)).isEmpty()) {
-
-      if (!untestedFields.contains(key)) {
-        untestedFields.add(key);
-      }
-    } else {
-      testedFields.add(key);
-      untestedFields.remove(key);
-    }
-  }
-
-  /**
-   * Для загрузки фикстуры по пути к файлу
-   *
-   * @param path Путь к файлу
-   * @return Содержимое файла
-   */
-  @SneakyThrows
-  protected String getFixture(String path) {
-    return Files.readString(Paths.get(path));
-  }
-
-  /**
-   * Генерация Json представления объекта
-   *
-   * @param mdo Объект метаданных
-   * @return Сериализованное в Json представление объекта
-   */
-  protected String createJson(MDObject mdo) {
-    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    xstream.setMode(XStream.NO_REFERENCES);
-    return xstream.toXML(mdo);
-  }
-
-  @SneakyThrows
-  private void storeUntestedFields(MDObject mdo) {
-
-    var fields = clazz.getDeclaredFields();
-    for (var field : fields) {
-      var fieldType = field.getType();
-
-      var key = field.getName();
-
-      assertThat(field, true).isNotNull(mdo);
-
-      if (testedFields.contains(key)) {
-        untestedFields.remove(key);
-        continue;
-      }
-
-      storeUntestedField(mdo, field, fieldType, key);
-    }
   }
 }

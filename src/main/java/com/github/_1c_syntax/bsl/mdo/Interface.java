@@ -84,5 +84,8 @@ public class Interface implements MDObject {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Переключаемый
+   */
   boolean switchable;
 }

@@ -32,11 +32,11 @@ class InterfaceTest extends AbstractMDObjectTest<Interface> {
     super(Interface.class);
   }
 
-  @ParameterizedTest()
+  @ParameterizedTest
   @CsvSource(
     {
       "original, Interface.Интерфейс1",
-//      "EDT, AccumulationRegister.Бот1",
+      "original, Interface.Интерфейс2"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
