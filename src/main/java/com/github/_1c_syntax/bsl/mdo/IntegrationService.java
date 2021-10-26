@@ -28,10 +28,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -51,54 +53,58 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.INTEGRATION_SERVICE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
-
-  /**
-   * Адрес внешнего сервиса интеграции
-   */
-  String externalIntegrationServiceAddress;
-
-  /**
-   * Каналы сервиса интеграции
-   */
-  List<IntegrationServiceChannel> integrationChannels;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Адрес внешнего сервиса интеграции
+   */
+  @Default
+  String externalIntegrationServiceAddress = "";
+
+  /**
+   * Каналы сервиса интеграции
+   */
+  @Default
+  List<IntegrationServiceChannel> integrationChannels = Collections.emptyList();
 
   @Override
   public List<MDObject> getChildren() {

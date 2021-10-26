@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -52,60 +53,57 @@ public class Language implements MDObject {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.LANGUAGE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
-
-  /**
-   * Код языка
-   */
-  String languageCode;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Код языка
+   */
+  @Default
+  String languageCode = "";
 
   private static Language defaultLanguage() {
     return Language.builder()
       .name("Русский")
       .uuid("")
-      .objectBelonging(ObjectBelonging.OWN)
-      .type(MDOType.LANGUAGE)
-      .metadataName(MDOType.LANGUAGE.getGroupName())
-      .metadataNameRu(MDOType.LANGUAGE.getGroupNameRu())
-      .synonyms(new MultiLanguageString(Map.of("ru", "Русский")))
+      .synonym(new MultiLanguageString(Map.of("ru", "Русский")))
       .mdoReference(MdoReference.create(
         MDOType.LANGUAGE,
         MDOType.LANGUAGE.getGroupName() + ".Русский",
         MDOType.LANGUAGE.getGroupNameRu() + ".Русский"))
       .languageCode("ru")
-      .supportVariant(SupportVariant.NONE)
       .build();
   }
 }

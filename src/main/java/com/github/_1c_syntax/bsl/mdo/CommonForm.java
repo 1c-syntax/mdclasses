@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -28,10 +29,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -51,50 +54,80 @@ public class CommonForm implements Form {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.COMMON_FORM;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Тип формы
    */
-  FormType formType;
+  @Default
+  FormType formType = FormType.MANAGED;
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Вариант применения
+   */
+  @Default
+  List<ApplicationUsePurpose> usePurposes = Collections.emptyList();
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  String extendedPresentation = "";
+
+  /**
+   * Пояснение
+   */
+  @Default
+  String explanation = "";
 }
 
 // todo реализовать

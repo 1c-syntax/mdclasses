@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -32,41 +33,42 @@ class ChartOfCharacteristicTypesTest extends AbstractMDObjectTest<ChartOfCharact
     super(ChartOfCharacteristicTypes.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ПланВидовХарактеристик1,f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452,,,ChartOfCharacteristicTypes,ПланВидовХарактеристик,0,0,0,0,0,0"
+      "original, ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+      "original_3_18, ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("ChartsOfCharacteristicTypes/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.CHART_OF_CHARACTERISTIC_TYPES, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "ПланВидовХарактеристик1,f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452,,,ChartOfCharacteristicTypes,ПланВидовХарактеристик,1,1,1,1,1,2"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes/" + name + "/" + name);
-    mdoTest(mdo, MDOType.CHART_OF_CHARACTERISTIC_TYPES, argumentsAccessor);
-
-    checkAttributeField(mdo.getAttributes().get(0),
-      "Реквизит", "fc53db45-c10b-4d0d-b7db-b08b1eb600ce");
-
-    checkChildField(mdo.getForms().get(0),
-      "ФормаЭлемента", "8bd7f127-527c-43ea-9ded-9adc3f5a5abe");
-
-    checkChildField(mdo.getTemplates().get(0),
-      "Макет", "a55d9aed-5bac-4565-858a-b866e5dfdd7b");
-
-    checkChildField(mdo.getCommands().get(0),
-      "Команда", "c7d21185-c0bd-4f66-b8a6-eedb5ace3fa3");
-
-    checkChildField(mdo.getTabularSections().get(0),
-      "ТабличнаяЧасть", "9ec021ee-9660-488c-80e8-23b17962c218");
-  }
+//  @ParameterizedTest(name = "EDT {index}: {0}")
+//  @CsvSource(
+//    {
+//      "ПланВидовХарактеристик1,f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452,,,ChartOfCharacteristicTypes,ПланВидовХарактеристик,1,1,1,1,1,2"
+//    }
+//  )
+//  void testEdt(ArgumentsAccessor argumentsAccessor) {
+//    var name = argumentsAccessor.getString(0);
+//    var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes/" + name + "/" + name);
+//    mdoTest(mdo, MDOType.CHART_OF_CHARACTERISTIC_TYPES, argumentsAccessor);
+//
+//    checkAttributeField(mdo.getAttributes().get(0),
+//      "Реквизит", "fc53db45-c10b-4d0d-b7db-b08b1eb600ce");
+//
+//    checkChildField(mdo.getForms().get(0),
+//      "ФормаЭлемента", "8bd7f127-527c-43ea-9ded-9adc3f5a5abe");
+//
+//    checkChildField(mdo.getTemplates().get(0),
+//      "Макет", "a55d9aed-5bac-4565-858a-b866e5dfdd7b");
+//
+//    checkChildField(mdo.getCommands().get(0),
+//      "Команда", "c7d21185-c0bd-4f66-b8a6-eedb5ace3fa3");
+//
+//    checkChildField(mdo.getTabularSections().get(0),
+//      "ТабличнаяЧасть", "9ec021ee-9660-488c-80e8-23b17962c218");
+//  }
 }

@@ -77,12 +77,7 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
     assertThat(message).isEmpty();
   }
 
-  /**
-   * Возвращает прочитанный объект
-   */
-  protected T getMDClass(String path) {
-    return getMDClass(Paths.get(path));
-  }
+
 
   /**
    * Проверяет базовый набор реквизитов
@@ -116,10 +111,6 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
       .filteredOn(mdObject -> mdObject.getType() == type).hasSize(count);
   }
 
-  protected T getMDClass(Path path) {
-    return clazz.cast(MDClasses.createConfiguration(path));
-  }
-
   protected void storeUntestedField(MDClass mdc, Field field, Class<?> fieldType, String key) throws IllegalAccessException {
     if (fieldType.isAssignableFrom(boolean.class) && Objects.equals(field.get(mdc), false)
       || fieldType.isAssignableFrom(String.class) && Objects.equals(field.get(mdc), "")
@@ -134,29 +125,6 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
       testedFields.add(key);
       untestedFields.remove(key);
     }
-  }
-
-  /**
-   * Для загрузки фикстуры по пути к файлу
-   *
-   * @param path Путь к файлу
-   * @return Содержимое файла
-   */
-  @SneakyThrows
-  protected String getFixture(String path) {
-    return Files.readString(Paths.get(path));
-  }
-
-  /**
-   * Генерация Json представления объекта
-   *
-   * @param mdc Контейнере метаданных
-   * @return Сериализованное в Json представление объекта
-   */
-  protected String createJson(MDClass mdc) {
-    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    xstream.setMode(XStream.NO_REFERENCES);
-    return xstream.toXML(mdc);
   }
 
   @SneakyThrows

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -29,9 +30,13 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.Collections;
+import java.util.List;
 
 @Value
 @Builder
@@ -53,34 +58,34 @@ public class Constant implements Attribute {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.CONSTANT;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Режим пароля. Только для констант с типом `Строка`
@@ -90,7 +95,75 @@ public class Constant implements Attribute {
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Форма по умолчанию
+   */
+  @Default
+  String defaultForm = "";
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  String extendedPresentation = "";
+
+  /**
+   * Пояснение
+   */
+  @Default
+  String explanation = "";
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  // todo описание
+
+  @Default
+  String value_type = "";
+  @Default
+  String format = "";
+  @Default
+  String editFormat = "";
+  @Default
+  String toolTip = "";
+  boolean markNegatives;
+  @Default
+  String mask = "";
+  boolean multiLine;
+  boolean extendedEdit;
+  @Default
+  String minValue = "";
+  @Default
+  String maxValue = "";
+  @Default
+  String fillChecking = "";
+  @Default
+  String choiceFoldersAndItems = "";
+  @Default
+  List<String> choiceParameterLinks = Collections.emptyList();
+  @Default
+  List<String> choiceParameters = Collections.emptyList();
+  @Default
+  String quickChoice = "";
+  @Default
+  String createOnInput = "";
+  @Default
+  String choiceForm = "";
+  @Default
+  String linkByType = "";
+  @Default
+  String choiceHistoryOnInput = "";
 
   @Override
   public AttributeKind getKind() {
@@ -101,4 +174,5 @@ public class Constant implements Attribute {
   public IndexingType getIndexing() {
     return INDEXING;
   }
+
 }

@@ -31,7 +31,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
+
+import static lombok.Builder.Default;
 
 @Value
 @Builder
@@ -50,39 +53,46 @@ public class Bot implements MDObject, ModuleOwner {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.BOT;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Признак предопределенности бота
@@ -90,7 +100,8 @@ public class Bot implements MDObject, ModuleOwner {
   boolean predefined;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Картинка
    */
-  SupportVariant supportVariant;
+  @Default
+  String picture = "";
 }

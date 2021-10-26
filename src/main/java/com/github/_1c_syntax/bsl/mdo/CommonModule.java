@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -53,44 +54,45 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.COMMON_MODULE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Тип модуля
    */
-  ModuleType moduleType;
+  @Default
+  ModuleType moduleType = ModuleType.CommonModule;
 
   /**
    * Ссылка на файл bsl модуля
    */
-  URI uri;
+  URI uri; // todo fake uri
 
   /**
    * Признак Сервер
@@ -130,15 +132,18 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   /**
    * Режим повторного использования значений
    */
-  ReturnValueReuse returnValuesReuse;
+  @Default
+  ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Общий модуль сам является модулем
+   *
    * @return Список модулей
    */
   @Override

@@ -44,7 +44,7 @@ public interface MDObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString getSynonyms();
+  MultiLanguageString getSynonym();
 
   /**
    * MDO-Ссылка на объект
@@ -61,15 +61,15 @@ public interface MDObject {
    */
   MDOType getType();
 
-  /**
-   * Возвращает имя метаданных объекта
-   */
-  String getMetadataName();
-
-  /**
-   * Возвращает имя метаданных объекта на русском языке
-   */
-  String getMetadataNameRu();
+//  /**
+//   * Возвращает имя метаданных объекта
+//   */
+//  String getMetadataName();
+//
+//  /**
+//   * Возвращает имя метаданных объекта на русском языке
+//   */
+//  String getMetadataNameRu();
 
   /**
    * Вариант поддержки родительской конфигурации

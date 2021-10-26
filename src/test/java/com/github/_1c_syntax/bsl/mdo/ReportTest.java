@@ -22,7 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,41 +32,41 @@ class ReportTest extends AbstractMDObjectTest<Report> {
     super(Report.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Отчет1,34d3754d-298c-4786-92f6-a487db249fc7,,,Report,Отчет,0,0,0,0,0,0"
+      "original, Report.Отчет1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Reports/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.REPORT, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "Отчет1,34d3754d-298c-4786-92f6-a487db249fc7,,,Report,Отчет,1,1,1,1,1,2"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("Reports/" + name + "/" + name);
-    mdoTest(mdo, MDOType.REPORT, argumentsAccessor);
-
-    checkAttributeField(mdo.getAttributes().get(0),
-      "Реквизит", "4e960a3d-4380-4343-a532-13d3daccf577");
-
-    checkChildField(mdo.getForms().get(0),
-      "ФормаОтчета", "619f2b7f-f08e-4111-bb6e-d1ddd265935d");
-
-    checkChildField(mdo.getTemplates().get(0),
-      "МакетОтчета", "938a7553-1ef1-4d93-b071-0ef1c0740f5b");
-
-    checkChildField(mdo.getCommands().get(0),
-      "Команда", "63b3e264-c28f-415a-93d0-2c90362709c1");
-
-    checkChildField(mdo.getTabularSections().get(0),
-      "ТабличнаяЧасть", "c3018149-521a-4b16-8319-056bc022f3bb");
-  }
+//    @ParameterizedTest(name = "EDT {index}: {0}")
+//  @CsvSource(
+//    {
+//      "Отчет1,34d3754d-298c-4786-92f6-a487db249fc7,,,Report,Отчет,1,1,1,1,1,2"
+//    }
+//  )
+//  void testEdt(ArgumentsAccessor argumentsAccessor) {
+//    var name = argumentsAccessor.getString(0);
+//    var mdo = getMDObjectEDT("Reports/" + name + "/" + name);
+//    mdoTest(mdo, MDOType.REPORT, argumentsAccessor);
+//
+//    checkAttributeField(mdo.getAttributes().get(0),
+//      "Реквизит", "4e960a3d-4380-4343-a532-13d3daccf577");
+//
+//    checkChildField(mdo.getForms().get(0),
+//      "ФормаОтчета", "619f2b7f-f08e-4111-bb6e-d1ddd265935d");
+//
+//    checkChildField(mdo.getTemplates().get(0),
+//      "МакетОтчета", "938a7553-1ef1-4d93-b071-0ef1c0740f5b");
+//
+//    checkChildField(mdo.getCommands().get(0),
+//      "Команда", "63b3e264-c28f-415a-93d0-2c90362709c1");
+//
+//    checkChildField(mdo.getTabularSections().get(0),
+//      "ТабличнаяЧасть", "c3018149-521a-4b16-8319-056bc022f3bb");
+//  }
 }

@@ -31,18 +31,18 @@ class ConfigurationExtensionTest extends AbstractMDClassTest<ConfigurationExtens
     super(ConfigurationExtension.class);
   }
 
-  @ParameterizedTest(name = "{index}: {1} (path {0})")
-  @CsvSource(
-    {
-      "src/test/resources/metadata/original_ext,Расширение,6e50eb82-8de4-4aff-ba5b-6b441963a56a",
-      "src/test/resources/metadata/edt_ext,Расширение,6e50eb82-8de4-4aff-ba5b-6b441963a56a",
-      "src/test/resources/metadata/original_ext2,Расширение1,3a54b148-94d1-45dc-9f8a-30bb86d0bd5d"
-    }
-  )
-  void test(ArgumentsAccessor argumentsAccessor) {
-    var mdc = getMDClass(argumentsAccessor.getString(0));
-    mdcTest(mdc, argumentsAccessor);
-  }
+//  @ParameterizedTest(name = "{index}: {1} (path {0})")
+//  @CsvSource(
+//    {
+//      "src/test/resources/metadata/original_ext,Расширение,6e50eb82-8de4-4aff-ba5b-6b441963a56a",
+//      "src/test/resources/metadata/edt_ext,Расширение,6e50eb82-8de4-4aff-ba5b-6b441963a56a",
+//      "src/test/resources/metadata/original_ext2,Расширение1,3a54b148-94d1-45dc-9f8a-30bb86d0bd5d"
+//    }
+//  )
+//  void test(ArgumentsAccessor argumentsAccessor) {
+//    var mdc = getMDClass(argumentsAccessor.getString(0));
+//    mdcTest(mdc, argumentsAccessor);
+//  }
 //  @Test
 //  void test() {
 //    var mdc = getMDClass("src/test/resources/metadata/original_ext");

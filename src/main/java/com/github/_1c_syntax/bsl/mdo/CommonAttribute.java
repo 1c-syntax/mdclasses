@@ -31,10 +31,12 @@ import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -56,34 +58,34 @@ public class CommonAttribute implements Attribute {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.COMMON_ATTRIBUTE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
@@ -93,27 +95,97 @@ public class CommonAttribute implements Attribute {
   /**
    * Вариант индексирования реквизита
    */
-  IndexingType indexing;
+  @Default
+  IndexingType indexing = IndexingType.DONT_INDEX;
 
   /**
    * Признак автоиспользования общего реквизита
    */
-  UseMode autoUse;
+  @Default
+  UseMode autoUse = UseMode.DONT_USE;
 
   /**
    * Признак использования общего реквизита как разделителя данных
    */
-  DataSeparation dataSeparation;
+  @Default
+  DataSeparation dataSeparation = DataSeparation.DONT_USE;
 
   /**
    * Объекты, использующие общий реквизит
    */
-  List<MdoReference> using;
+  @Default
+  List<MdoReference> using = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Использовать полнотекстовый поиск
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+// todo описания
+
+  @Default
+  String value_type = "";
+
+  @Default
+  String format = "";
+  @Default
+  String editFormat = "";
+  @Default
+  String toolTip = "";
+  boolean markNegatives;
+  @Default
+  String mask = "";
+  boolean multiLine;
+  boolean extendedEdit;
+  @Default
+  String minValue = "";
+  @Default
+  String maxValue = "";
+  boolean fillFromFillingValue;
+  @Default
+  String fillValue = "";
+  @Default
+  String fillChecking = "";
+  @Default
+  String choiceFoldersAndItems = "";
+  @Default
+  List<String> choiceParameterLinks = Collections.emptyList();
+  @Default
+  List<String> choiceParameters = Collections.emptyList();
+  @Default
+  String quickChoice = "";
+  @Default
+  String createOnInput = "";
+  @Default
+  String choiceForm = "";
+  @Default
+  String linkByType = "";
+  @Default
+  String choiceHistoryOnInput = "";
+
+  // Content
+
+  @Default
+  String separatedDataUse = "";
+  @Default
+  String dataSeparationValue = "";
+  @Default
+  String dataSeparationUse = "";
+  @Default
+  String conditionalSeparation = "";
+  @Default
+  String usersSeparation = "";
+  @Default
+  String authenticationSeparation = "";
+  @Default
+  String configurationExtensionsSeparation = "";
 
   @Override
   public AttributeKind getKind() {

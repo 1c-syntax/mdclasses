@@ -39,6 +39,8 @@ import java.util.concurrent.locks.ReentrantLock;
 @EqualsAndHashCode(of = {"mdoRef"})
 @ToString(of = {"mdoRef"})
 public class MdoReference {
+  public static final MdoReference EMPTY = new MdoReference(MDOType.UNKNOWN, "", "");
+
   /**
    * Кэш всех ссылок
    */
@@ -76,6 +78,20 @@ public class MdoReference {
    * @return Ссылка на объект
    */
   public static MdoReference create(MDOType type, String mdoRef, String mdoRefRu) {
+    return getOrCompute(type, mdoRef, mdoRefRu);
+  }
+
+  /**
+   * Создает ссылку, сохраняя ее в кэш
+   *
+   * @param type Тип метаданных
+   * @param name Имя объекта метаданных
+   * @return Ссылка на объект
+   */
+  public static MdoReference create(MDOType type, String name) {
+    var mdoRef = type.getName() + "." + name;
+    var mdoRefRu = type.getNameRu() + "." + name;
+
     return getOrCompute(type, mdoRef, mdoRefRu);
   }
 

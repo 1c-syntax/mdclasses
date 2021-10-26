@@ -21,17 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
@@ -54,64 +58,166 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.INFORMATION_REGISTER;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Список атрибутов
    */
-  List<Attribute> attributes;
+  @Default
+  List<Attribute> attributes = Collections.emptyList();
 
   /**
    * Список форм
    */
-  List<Form> forms;
+  @Default
+  List<Form> forms = Collections.emptyList();
 
   /**
    * Список команд
    */
-  List<Command> commands;
+  @Default
+  List<Command> commands = Collections.emptyList();
 
   /**
    * Список макетов
    */
-  List<Template> templates;
+  @Default
+  List<Template> templates = Collections.emptyList();
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Форма списка по умолчанию
+   */
+  @Default
+  String defaultListForm = "";
+
+  /**
+   * Форма записи по умолчанию
+   */
+  @Default
+  String defaultRecordForm = "";
+
+  /**
+   * Дополнительная форма записи
+   */
+  @Default
+  String auxiliaryRecordForm = "";
+
+  /**
+   * Дополнительная форма списка
+   */
+  @Default
+  String auxiliaryListForm = "";
+
+  /**
+   * Режим редактирования
+   */
+  @Default
+  String editType = "";
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Использовать полнотекстовый поиск
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+  /**
+   * Представление в списке
+   */
+  @Default
+  String listPresentation = "";
+
+  /**
+   * Расширенное представление в списке
+   */
+  @Default
+  String extendedListPresentation = "";
+
+  /**
+   * Представление записи
+   */
+  @Default
+  String recordPresentation = "";
+
+  /**
+   * Расширенное представление записи
+   */
+  @Default
+  String extendedRecordPresentation = "";
+
+  /**
+   * Пояснение
+   */
+  @Default
+  String explanation = "";
+
+  @Default
+  String dataHistory = "";
+
+  boolean updateDataHistoryImmediatelyAfterWrite;
+  boolean executeAfterWriteDataHistoryVersionProcessing;
+
+  @Default
+  String informationRegisterPeriodicity = "";
+  @Default
+  String writeMode = "";
+  boolean mainFilterOnPeriod;
+  boolean enableTotalsSliceFirst;
+  boolean enableTotalsSliceLast;
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

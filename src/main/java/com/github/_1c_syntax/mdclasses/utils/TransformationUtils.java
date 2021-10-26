@@ -23,11 +23,11 @@ package com.github._1c_syntax.mdclasses.utils;
 
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.lang.reflect.Method;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -38,13 +38,52 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TransformationUtils {
 
   private static final Map<Class<?>, Map<String, Method>> methods = new ConcurrentHashMap<>();
-  private static final String BUILDER_METHOD_NAME = "build";
+  private static final String BUILD_METHOD_NAME = "build";
+  private static final String BUILDER_METHOD_NAME = "builder";
 
   @SneakyThrows
   public void setValue(Object source, String methodName, Object value) {
-    var classMethods = methods.get(source.getClass());
+    var method = getMethod(source.getClass(), methodName);
+    if (method != null) {
+      try {
+        method.invoke(source, value);
+      } catch (IllegalArgumentException e) {
+        System.out.println("Class " + source.getClass() + ", method " + methodName);
+      }
+    }
+  }
+
+  @SneakyThrows
+  public Type fieldType(Object source, String methodName) {
+    var method = getMethod(source.getClass(), methodName);
+    if (method != null) {
+      return method.getGenericParameterTypes()[0];
+    }
+    return null;
+  }
+
+  @SneakyThrows
+  public static Object builder(Class<?> clazz) {
+    var method = getMethod(clazz, BUILDER_METHOD_NAME);
+    if (method != null) {
+      return method.invoke(clazz);
+    }
+    return null;
+  }
+
+  @SneakyThrows
+  public Object build(Object builder) {
+    var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
+    if (method != null) {
+      return method.invoke(builder);
+    }
+    return null;
+  }
+
+  private Method getMethod(Class<?> clazz, String methodName) {
+    var classMethods = methods.get(clazz);
     if (classMethods == null) {
-      classMethods = new HashMap<>();
+      classMethods = new CaseInsensitiveMap<>();
     }
 
     var method = classMethods.get(methodName);
@@ -52,53 +91,24 @@ public class TransformationUtils {
     if (method == null) {
       // ключ метода в кэше есть, но метода нет
       if (classMethods.containsKey(methodName)) {
-        return;
+        return null;
       }
-      try {
-        if (value instanceof List) {
-          method = source.getClass().getDeclaredMethod(methodName, List.class);
-        } else if (value instanceof Path) {
-          method = source.getClass().getDeclaredMethod(methodName, Path.class);
-        } else if (value instanceof Boolean) {
-          method = source.getClass().getDeclaredMethod(methodName, boolean.class);
-        } else {
-          method = source.getClass().getDeclaredMethod(methodName, value.getClass());
-        }
-      } catch (NoSuchMethodException e) {
-        // просто считаем, что метода нет
-        method = null;
-      }
-      saveMethod(source, classMethods, method, methodName);
-
-      if (method == null) {
-        return;
+      method = Arrays.stream(clazz.getDeclaredMethods())
+        .filter(classMethod -> methodName.equalsIgnoreCase(classMethod.getName()))
+        .findFirst()
+        .orElse(null);
+      if (method != null) {
+        saveMethod(clazz, classMethods, method, methodName);
       }
     }
-
-    method.invoke(source, value);
+    return method;
   }
 
-  @SneakyThrows
-  public Object build(Object builder) {
-    var classMethods = methods.get(builder.getClass());
-    if (classMethods == null) {
-      classMethods = new HashMap<>();
-    }
-
-    var method = classMethods.get(BUILDER_METHOD_NAME);
-    if (method == null) {
-      method = builder.getClass().getDeclaredMethod(BUILDER_METHOD_NAME);
-      saveMethod(builder, classMethods, method, BUILDER_METHOD_NAME);
-    }
-
-    return method.invoke(builder);
-  }
-
-  private static void saveMethod(Object builder,
+  private static void saveMethod(Class<?> builderClass,
                                  Map<String, Method> classMethods,
                                  Method method,
                                  String builderMethodName) {
     classMethods.put(builderMethodName, method);
-    methods.put(builder.getClass(), classMethods);
+    methods.put(builderClass, classMethods);
   }
 }

@@ -23,4 +23,8 @@
  * Данных пакет предназначен для данных контейнеров метаданных (Конфигурация, Расширение,
  * Внешние обработки и отчеты), и предоставления точек входа в библиотеку
  */
+
+@ParametersAreNonnullByDefault
 package com.github._1c_syntax.bsl.mdclasses;
+
+import javax.annotation.ParametersAreNonnullByDefault;

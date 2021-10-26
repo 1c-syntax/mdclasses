@@ -75,7 +75,7 @@ public class AccountingFlag implements Attribute, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

@@ -201,7 +201,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       context.put("ru", argumentsAccessor.getString(3));
     }
 
-    var testLangContent = new HashMap<>(mdo.getSynonyms().getContent());
+    var testLangContent = new HashMap<>(mdo.getSynonym().getContent());
     testLangContent.remove("ja"); // сложно передавать символы японского
     assertThat(testLangContent).isEqualTo(context);
 
@@ -215,8 +215,6 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
 
     assertThat(mdo.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(mdo.getType()).isEqualTo(type);
-    assertThat(mdo.getMetadataName()).isEqualTo(argumentsAccessor.getString(4));
-    assertThat(mdo.getMetadataNameRu()).isEqualTo(argumentsAccessor.getString(5));
 
     List<MDObject> children = new ArrayList<>();
     List<MDObject> planChildren = new ArrayList<>();

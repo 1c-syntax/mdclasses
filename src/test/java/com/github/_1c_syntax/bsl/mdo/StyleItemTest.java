@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -32,14 +33,14 @@ class StyleItemTest extends AbstractMDObjectTest<StyleItem> {
     super(StyleItem.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ЭлементСтиля1,68047ae8-62aa-4696-9780-d364feb3cc10,,,StyleItem,ЭлементСтиля,0,0,0,0,0,0"
+      "original, StyleItem.ЭлементСтиля1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("StyleItems/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.STYLE_ITEM, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

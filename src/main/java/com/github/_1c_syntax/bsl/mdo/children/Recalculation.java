@@ -74,7 +74,7 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

@@ -76,7 +76,7 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

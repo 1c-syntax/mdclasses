@@ -74,7 +74,7 @@ public class ObjectForm implements Form, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

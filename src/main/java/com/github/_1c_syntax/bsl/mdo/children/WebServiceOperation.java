@@ -70,7 +70,7 @@ public class WebServiceOperation implements MDObject, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

@@ -60,6 +60,11 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   String uuid;
 
   /**
+   * Синонимы объекта
+   */
+  MultiLanguageString synonym;
+
+  /**
    * Вариант исходников конфигурации
    */
   ConfigurationSource configurationSource;

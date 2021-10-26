@@ -22,7 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,15 +32,14 @@ class FunctionalOptionTest extends AbstractMDObjectTest<FunctionalOption> {
     super(FunctionalOption.class);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ФункциональнаяОпция1,d3b7fd71-6570-4047-91e0-b3df75dba08d,,,FunctionalOption,ФункциональнаяОпция,0,0,0,0,0,0"
+      "original, FunctionalOption.ФункциональнаяОпция1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("FunctionalOptions/" + name + "/" + name);
-    mdoTest(mdo, MDOType.FUNCTIONAL_OPTION, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

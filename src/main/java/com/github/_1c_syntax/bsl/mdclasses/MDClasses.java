@@ -34,11 +34,7 @@ import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.support_configuration.ParseSupportData;
-import lombok.SneakyThrows;
+import com.github._1c_syntax.reader.MDOReader;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Path;
@@ -56,22 +52,40 @@ public class MDClasses {
    * @param path Путь к корню проекта
    * @return Конфигурация или расширение
    */
-  @SneakyThrows
+//  @SneakyThrows
+//  public MDClass createConfiguration(Path path) {
+//    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
+//    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
+//    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
+//      ParseSupportData.readSimple(fileParentConfiguration.get());
+//    }
+//
+//    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
+//    if (mdo.isPresent()) {
+//      var configuration = (MDClass) mdo.get().buildMDObject();
+//      computeCommonAttributeLinks(configuration);
+//      return configuration;
+//    }
+//
+//    return createConfiguration();
+//  }
   public MDClass createConfiguration(Path path) {
-    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
-    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
-    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-      ParseSupportData.readSimple(fileParentConfiguration.get());
-    }
-
-    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
-    if (mdo.isPresent()) {
-      var configuration = (MDClass) mdo.get().buildMDObject();
-      computeCommonAttributeLinks(configuration);
-      return configuration;
-    }
-
-    return createConfiguration();
+    return MDOReader.readConfiguration(path);
+//
+//    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
+//    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
+//    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
+//      ParseSupportData.readSimple(fileParentConfiguration.get());
+//    }
+//
+//    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
+//    if (mdo.isPresent()) {
+//      var configuration = (MDClass) mdo.get().buildMDObject();
+//      computeCommonAttributeLinks(configuration);
+//      return configuration;
+//    }
+//
+//    return createConfiguration();
   }
 
   /**
@@ -92,9 +106,8 @@ public class MDClasses {
       .dataLockControlMode(DataLockControlMode.AUTOMATIC)
       .objectAutonumerationMode("")
       .modalityUseMode(UseMode.DONT_USE)
-      .synchronousExtensionAndAddInCallUseMode(UseMode.DONT_USE)
       .synchronousPlatformExtensionAndAddInCallUseMode(UseMode.DONT_USE)
-      .copyrights(new MultiLanguageString(Map.of("", "")))
+      .copyright(new MultiLanguageString(Map.of("", "")))
       .detailedInformation(new MultiLanguageString(Map.of("", "")))
       .briefInformation(new MultiLanguageString(Map.of("", "")))
       .children(Collections.emptyList())

@@ -72,7 +72,7 @@ public class TaskAddressingAttribute implements Attribute, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -34,15 +35,28 @@ class LanguageTest extends AbstractMDObjectTest<Language> {
     super(Language.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Русский,1b5f5cd6-14b2-422e-ab6c-1103fd375982,Russian,Русский,Language,Язык,0,0,0,0,0,0"
+      "original, Language.Русский",
+      "original, Language.Английский",
+      "original, Language.Японский",
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Languages/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.LANGUAGE, argumentsAccessor);
-    assertThat(mdo.getLanguageCode()).isEqualTo("ru");
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
+//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+//  @CsvSource(
+//    {
+//      "Русский,1b5f5cd6-14b2-422e-ab6c-1103fd375982,Russian,Русский,Language,Язык,0,0,0,0,0,0"
+//    }
+//  )
+//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+//    var mdo = getMDObject("Languages/" + argumentsAccessor.getString(0));
+//    mdoTest(mdo, MDOType.LANGUAGE, argumentsAccessor);
+//    assertThat(mdo.getLanguageCode()).isEqualTo("ru");
+//  }
 }

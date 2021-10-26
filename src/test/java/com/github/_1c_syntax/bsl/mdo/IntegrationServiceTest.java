@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -36,30 +37,41 @@ class IntegrationServiceTest extends AbstractMDObjectTest<IntegrationService> {
     super(IntegrationService.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "СервисИнтеграции1,94ed2401-fd3c-4e92-b34d-1cdad2d8ee42,,,IntegrationService,СервисИнтеграции,0,0,0,0,0,1"
+      "original_3_18, IntegrationService.СервисИнтеграции1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject18("IntegrationServices/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.INTEGRATION_SERVICE, argumentsAccessor);
-    assertThat(mdo.getIntegrationChannels()).hasSize(2);
-    assertThat(mdo.getExternalIntegrationServiceAddress()).isEqualTo("http://");
-
-    var integrationServiceChannel = mdo.getIntegrationChannels().get(0);
-    assertThat(integrationServiceChannel.getMessageDirection()).isEqualTo(MessageDirection.RECEIVE);
-    assertThat(integrationServiceChannel.getName()).isEqualTo("КаналСервисаИнтеграции1");
-    assertThat(integrationServiceChannel.getType()).isEqualTo(MDOType.INTEGRATION_SERVICE_CHANNEL);
-    assertThat(integrationServiceChannel.getHandler()).isEqualTo("КаналСервисаИнтеграции1ОбработкаПолученияСообщения");
-    assertThat(integrationServiceChannel.getExternalIntegrationServiceChannelName()).isEqualTo("Имя");
-    assertThat(integrationServiceChannel.getUuid()).isEqualTo("fd0a0d02-c211-4985-ab9e-f0e7e63a6943");
-    assertThat(integrationServiceChannel.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
-    assertThat(integrationServiceChannel.getMetadataName()).isEqualTo("IntegrationServiceChannel");
-    assertThat(integrationServiceChannel.getSynonyms().getContent()).isEmpty();
-    assertThat(integrationServiceChannel.getMdoReference().getMdoRef())
-      .isEqualTo("IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1");
-
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
+//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+//  @CsvSource(
+//    {
+//      "СервисИнтеграции1,94ed2401-fd3c-4e92-b34d-1cdad2d8ee42,,,IntegrationService,СервисИнтеграции,0,0,0,0,0,1"
+//    }
+//  )
+//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
+//    var mdo = getMDObject18("IntegrationServices/" + argumentsAccessor.getString(0));
+//    mdoTest(mdo, MDOType.INTEGRATION_SERVICE, argumentsAccessor);
+//    assertThat(mdo.getIntegrationChannels()).hasSize(2);
+//    assertThat(mdo.getExternalIntegrationServiceAddress()).isEqualTo("http://");
+//
+//    var integrationServiceChannel = mdo.getIntegrationChannels().get(0);
+//    assertThat(integrationServiceChannel.getMessageDirection()).isEqualTo(MessageDirection.RECEIVE);
+//    assertThat(integrationServiceChannel.getName()).isEqualTo("КаналСервисаИнтеграции1");
+//    assertThat(integrationServiceChannel.getType()).isEqualTo(MDOType.INTEGRATION_SERVICE_CHANNEL);
+//    assertThat(integrationServiceChannel.getHandler()).isEqualTo("КаналСервисаИнтеграции1ОбработкаПолученияСообщения");
+//    assertThat(integrationServiceChannel.getExternalIntegrationServiceChannelName()).isEqualTo("Имя");
+//    assertThat(integrationServiceChannel.getUuid()).isEqualTo("fd0a0d02-c211-4985-ab9e-f0e7e63a6943");
+//    assertThat(integrationServiceChannel.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
+//    assertThat(integrationServiceChannel.getMetadataName()).isEqualTo("IntegrationServiceChannel");
+//    assertThat(integrationServiceChannel.getSynonym().getContent()).isEmpty();
+//    assertThat(integrationServiceChannel.getMdoReference().getMdoRef())
+//      .isEqualTo("IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1");
+//
+//  }
 }

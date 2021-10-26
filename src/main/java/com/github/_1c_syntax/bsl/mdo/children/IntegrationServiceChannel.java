@@ -71,7 +71,7 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

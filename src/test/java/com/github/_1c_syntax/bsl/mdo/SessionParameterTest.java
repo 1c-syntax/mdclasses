@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -32,14 +33,14 @@ class SessionParameterTest extends AbstractMDObjectTest<SessionParameter> {
     super(SessionParameter.class);
   }
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ПараметрСеанса1,66844df5-823b-40f1-ab8a-b07c1cb7462f,,,SessionParameter,ПараметрСеанса,0,0,0,0,0,0"
+      "original, SessionParameter.ПараметрСеанса1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("SessionParameters/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.SESSION_PARAMETER, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

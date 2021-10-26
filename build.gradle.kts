@@ -39,10 +39,12 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.2.1")
-    implementation("com.github.1c-syntax", "bsl-common-library", "5529bb313a")
+    implementation("com.github.1c-syntax", "bsl-common-library", "a5c2e05979355fbc61e5489707b86caffd0ca1f5")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.110")
+
+    implementation("com.github.XDean:spring-annotation:5.0.4")
 
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)

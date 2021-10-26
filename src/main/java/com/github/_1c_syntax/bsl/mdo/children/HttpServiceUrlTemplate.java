@@ -73,7 +73,7 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  MultiLanguageString synonym;
 
   /**
    * MDO-Ссылка на объект

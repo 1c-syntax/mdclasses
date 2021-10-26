@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -32,15 +33,15 @@ class DefinedTypeTest extends AbstractMDObjectTest<DefinedType> {
     super(DefinedType.class);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ОпределяемыйТип1,e8c616d9-4957-48ab-a917-afb6847f6840,,,DefinedType,ОпределяемыйТип,0,0,0,0,0,0"
+      "original, DefinedType.ОпределяемыйТип1"
+//      "EDT, AccumulationRegister.Бот1",
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("DefinedTypes/" + name + "/" + name);
-    mdoTest(mdo, MDOType.DEFINED_TYPE, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
 }

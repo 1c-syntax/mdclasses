@@ -22,17 +22,21 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
@@ -55,64 +59,76 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType type = MDOType.EXCHANGE_PLAN;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Список атрибутов
    */
-  List<Attribute> attributes;
+  @Default
+  List<Attribute> attributes = Collections.emptyList();
 
   /**
    * Список форм
    */
-  List<Form> forms;
+  @Default
+  List<Form> forms = Collections.emptyList();
 
   /**
    * Список команд
    */
-  List<Command> commands;
+  @Default
+  List<Command> commands = Collections.emptyList();
 
   /**
    * Список макетов
    */
-  List<Template> templates;
+  @Default
+  List<Template> templates = Collections.emptyList();
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Список табличных частей
    */
-  List<TabularSection> tabularSections;
+  @Default
+  List<TabularSection> tabularSections = Collections.emptyList();
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Признак распределенной базы
@@ -124,14 +140,147 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   boolean includeConfigurationExtensions;
 
   /**
-   * Вариант поддержки родительской конфигурации
-   */
-  SupportVariant supportVariant;
-
-  /**
    * Элементы, входящие в состав плана обмена
    */
-  List<Item> content;
+  @Default
+  List<Item> content = Collections.emptyList();
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Форма списка по умолчанию
+   */
+  @Default
+  String defaultListForm = "";
+
+  /**
+   * Форма объекта по умолчанию
+   */
+  @Default
+  String defaultObjectForm = "";
+
+  /**
+   * Форма выбора по умолчанию
+   */
+  @Default
+  String defaultChoiceForm = "";
+
+  /**
+   * Дополнительная форма объекта
+   */
+  @Default
+  String auxiliaryObjectForm = "";
+
+  /**
+   * Дополнительная форма списка
+   */
+  @Default
+  String auxiliaryListForm = "";
+
+  /**
+   * Дополнительная форма выбора
+   */
+  @Default
+  String auxiliaryChoiceForm = "";
+
+  /**
+   * Режим редактирования
+   */
+  @Default
+  String editType = "";
+
+  /**
+   * Ввод по строке
+   */
+  @Default
+  List<String> inputByString = Collections.emptyList();
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  String createOnInput = "";
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Использовать полнотекстовый поиск
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+  /**
+   * Представление в списке
+   */
+  @Default
+  String listPresentation = "";
+
+  /**
+   * Расширенное представление в списке
+   */
+  @Default
+  String extendedListPresentation = "";
+
+  /**
+   * Представление объекта
+   */
+  @Default
+  String objectPresentation = "";
+
+  /**
+   * Расширенное представление объекта
+   */
+  @Default
+  String extendedObjectPresentation = "";
+
+  /**
+   * Пояснение
+   */
+  @Default
+  String explanation = "";
+
+  // todo описания
+
+  int codeLength;
+  int descriptionLength;
+  @Default
+  String codeAllowedLength = "";
+  @Default
+  String defaultPresentation = "";
+  @Default
+  List<String> characteristics = Collections.emptyList();
+  boolean quickChoice;
+  @Default
+  String choiceMode = "";
+  @Default
+  String searchStringModeOnInputByString = "";
+  @Default
+  String fullTextSearchOnInputByString = "";
+  @Default
+  String choiceDataGetModeOnInputByString = "";
+  @Default
+  List<String> basedOn = Collections.emptyList();
+  @Default
+  List<String> dataLockFields = Collections.emptyList();
+  @Default
+  String choiceHistoryOnInput = "";
+  @Default
+  String dataHistory = "";
+
+  boolean updateDataHistoryImmediatelyAfterWrite;
+  boolean executeAfterWriteDataHistoryVersionProcessing;
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
