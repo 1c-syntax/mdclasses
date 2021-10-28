@@ -46,18 +46,4 @@ class EventSubscriptionTest extends AbstractMDObjectTest<EventSubscription> {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ПодпискаНаСобытие1,4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd,,,EventSubscription,ПодпискаНаСобытие,0,0,0,0,0,0"
-//    }
-//  )
-//  void testEdt(ArgumentsAccessor argumentsAccessor) {
-//    var name = argumentsAccessor.getString(0);
-//    var mdo = getMDObjectEDT("EventSubscriptions/" + name + "/" + name);
-//    mdoTest(mdo, MDOType.EVENT_SUBSCRIPTION, argumentsAccessor);
-//    assertThat(mdo.getHandler().isEmpty()).isFalse();
-//    assertThat(mdo.getHandler().getMethodName()).isEqualTo("ПодпискаНаСобытие1ПередЗаписью");
-//  }
 }

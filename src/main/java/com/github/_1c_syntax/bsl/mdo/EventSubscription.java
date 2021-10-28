@@ -91,13 +91,19 @@ public class EventSubscription implements MDObject {
   /**
    * Обработчик подписки на событие
    */
-  Handler handler; // todo fake handler
-
-  // todo описание
-
   @Default
-  List<String> source = Collections.emptyList();
+  Handler handler = Handler.EMPTY;
+
+  /**
+   * Вид обработчика события
+   */
   @Default
-  String event = "";
+  String event = ""; // todo Сопоставить с контекстом
+
+  /**
+   * Список объектов для которых зарегистрированная данная подписка на событие
+   */
+  @Default
+  List<MdoReference> source = Collections.emptyList();
 
 }

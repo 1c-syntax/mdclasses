@@ -31,6 +31,7 @@ import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.regex.Pattern;
 
 /**
  * Ссылка на объект в формате ВидОбъектаМетаданных.ИмяОбъекта
@@ -40,6 +41,9 @@ import java.util.concurrent.locks.ReentrantLock;
 @ToString(of = {"mdoRef"})
 public class MdoReference {
   public static final MdoReference EMPTY = new MdoReference(MDOType.UNKNOWN, "", "");
+
+  private static final String REF_SPLIT_REGEX = "\\.";
+  private static final Pattern REF_SPLIT_PATTERN = Pattern.compile(REF_SPLIT_REGEX);
 
   /**
    * Кэш всех ссылок
@@ -77,7 +81,7 @@ public class MdoReference {
    * @param mdoRefRu Строковая ссылка на русском языке
    * @return Ссылка на объект
    */
-  public static MdoReference create(MDOType type, String mdoRef, String mdoRefRu) {
+  public static MdoReference create(@NonNull MDOType type, @NonNull String mdoRef, @NonNull String mdoRefRu) {
     return getOrCompute(type, mdoRef, mdoRefRu);
   }
 
@@ -88,11 +92,30 @@ public class MdoReference {
    * @param name Имя объекта метаданных
    * @return Ссылка на объект
    */
-  public static MdoReference create(MDOType type, String name) {
+  public static MdoReference create(@NonNull MDOType type, @NonNull String name) {
     var mdoRef = type.getName() + "." + name;
     var mdoRefRu = type.getNameRu() + "." + name;
 
     return getOrCompute(type, mdoRef, mdoRefRu);
+  }
+
+  /**
+   * Создает ссылку, сохраняя ее в кэш
+   *
+   * @param fullName Строковая ссылка на объект метаданных
+   * @return Ссылка на объект
+   */
+  public static MdoReference create(@NonNull String fullName) {
+    var nameParts = REF_SPLIT_PATTERN.split(fullName);
+    if (nameParts.length > 1) {
+      var mdoType = MDOType.fromValue(nameParts[0]);
+      if (mdoType.isPresent()) {
+        var mdoName = nameParts[1]; // todo остальное пока отбрасываем
+        return create(mdoType.get(), mdoName);
+      }
+    }
+
+    throw new IllegalArgumentException(fullName);
   }
 
   /**
@@ -111,7 +134,7 @@ public class MdoReference {
     return result;
   }
 
-  private static MdoReference getOrCompute(MDOType type, String mdoRef, String mdoRefRu) {
+  private static MdoReference getOrCompute(@NonNull MDOType type, @NonNull String mdoRef, @NonNull String mdoRefRu) {
     referenceLock.lock();
     if (REFERENCES.containsKey(mdoRef)) {
       referenceLock.unlock();

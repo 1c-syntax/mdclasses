@@ -1,7 +1,6 @@
 package com.github._1c_syntax.reader.designer;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
-import com.github._1c_syntax.bsl.mdo.AccountingRegister;
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
@@ -12,9 +11,11 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendReaderWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendStaxDriver;
+import com.github._1c_syntax.reader.common.converter.MethodHandlerConverter;
 import com.github._1c_syntax.reader.designer.converter.ApplicationUsePurposeConverter;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
 import com.github._1c_syntax.reader.designer.converter.EnumConverter;
+import com.github._1c_syntax.reader.designer.converter.MdoReferenceConverter;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerRootWrapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
@@ -145,7 +146,7 @@ public class DesignerXStreamFactory {
       var classes = scanResult.getClassesImplementing(MDObject.class.getName());
       classes
         .filter(classInfo -> !classInfo.isInterface())
-          .forEach(clazzInfo -> xStream.alias(clazzInfo.getSimpleName(), getClassFromClassInfo(clazzInfo)));
+        .forEach(clazzInfo -> xStream.alias(clazzInfo.getSimpleName(), getClassFromClassInfo(clazzInfo)));
     }
 
     xStream.alias(Configuration.class.getSimpleName(), Configuration.class);
@@ -184,6 +185,8 @@ public class DesignerXStreamFactory {
 //    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(ApplicationRunMode.class));
     xStream.registerConverter(new ApplicationUsePurposeConverter());
+    xStream.registerConverter(new MethodHandlerConverter());
+    xStream.registerConverter(new MdoReferenceConverter());
   }
 
   private static Function<ClassInfo, Converter> getObjectsFromInfoClass() {
