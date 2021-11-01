@@ -68,7 +68,7 @@ public class Bot implements MDObject, ModuleOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.BOT;
+  MDOType mdoType = MDOType.BOT;
 
   /**
    * Синонимы объекта

@@ -73,7 +73,7 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.INFORMATION_REGISTER;
+  MDOType mdoType = MDOType.INFORMATION_REGISTER;
 
   /**
    * Синонимы объекта

@@ -112,7 +112,7 @@ public class Recalculation extends AbstractMDOAttribute implements MDOHasModule 
           .map(TransformationUtils::build)
           .map(Module.class::cast)
           .collect(Collectors.toList()))
-      .type(MDOType.RECALCULATION);
+      .mdoType(MDOType.RECALCULATION);
 
     return super.buildMDObject(owner, ownerPath);
   }

@@ -68,7 +68,7 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.ENUM;
+  MDOType mdoType = MDOType.ENUM;
 
   /**
    * Синонимы объекта

@@ -59,7 +59,7 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

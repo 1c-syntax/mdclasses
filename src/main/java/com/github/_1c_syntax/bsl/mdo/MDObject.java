@@ -59,7 +59,7 @@ public interface MDObject {
   /**
    * Возвращает тип метаданных
    */
-  MDOType getType();
+  MDOType getMdoType();
 
 //  /**
 //   * Возвращает имя метаданных объекта

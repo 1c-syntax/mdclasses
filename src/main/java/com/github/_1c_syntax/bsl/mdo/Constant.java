@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -42,7 +43,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Constant implements Attribute {
+public class Constant implements Attribute, ModuleOwner {
 
   private static final AttributeKind KIND = AttributeKind.STANDARD;
   private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
@@ -73,7 +74,7 @@ public class Constant implements Attribute {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CONSTANT;
+  MDOType mdoType = MDOType.CONSTANT;
 
   /**
    * Синонимы объекта
@@ -91,6 +92,12 @@ public class Constant implements Attribute {
    * Режим пароля. Только для констант с типом `Строка`
    */
   boolean passwordMode;
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -127,10 +134,14 @@ public class Constant implements Attribute {
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
+  /**
+   * Тип значения
+   */
+  ValueType type; //todo добавить в состав атрибута
+
   // todo описание
 
-  @Default
-  String value_type = "";
+
   @Default
   String format = "";
   @Default

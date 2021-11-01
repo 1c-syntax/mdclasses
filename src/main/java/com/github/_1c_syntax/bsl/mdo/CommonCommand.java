@@ -67,7 +67,7 @@ public class CommonCommand implements Command {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_COMMAND;
+  MDOType mdoType = MDOType.COMMON_COMMAND;
 
   /**
    * Синонимы объекта

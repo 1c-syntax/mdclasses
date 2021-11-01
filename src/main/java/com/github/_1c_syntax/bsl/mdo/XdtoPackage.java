@@ -65,7 +65,7 @@ public class XdtoPackage implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.XDTO_PACKAGE;
+  MDOType mdoType = MDOType.XDTO_PACKAGE;
 
   /**
    * Синонимы объекта
@@ -94,6 +94,7 @@ public class XdtoPackage implements MDObject {
   /**
    * Содержимое xsd-схемы пакета
    */
-  XdtoPackageData data; // todo fake data
+  @Default
+  XdtoPackageData data = XdtoPackageData.EMPTY;
 
 }

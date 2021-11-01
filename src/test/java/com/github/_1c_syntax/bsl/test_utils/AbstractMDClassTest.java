@@ -22,10 +22,7 @@
 package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,9 +30,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 
 import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -108,7 +102,7 @@ abstract public class AbstractMDClassTest<T extends MDClass> {
 
   protected void checkChildCount(MDClass mdc, MDOType type, int count) {
     assertThat(mdc.getChildren())
-      .filteredOn(mdObject -> mdObject.getType() == type).hasSize(count);
+      .filteredOn(mdObject -> mdObject.getMdoType() == type).hasSize(count);
   }
 
   protected void storeUntestedField(MDClass mdc, Field field, Class<?> fieldType, String key) throws IllegalAccessException {

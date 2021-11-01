@@ -64,7 +64,7 @@ public class FunctionalOptionsParameter implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.FUNCTIONAL_OPTIONS_PARAMETER;
+  MDOType mdoType = MDOType.FUNCTIONAL_OPTIONS_PARAMETER;
 
   /**
    * Синонимы объекта

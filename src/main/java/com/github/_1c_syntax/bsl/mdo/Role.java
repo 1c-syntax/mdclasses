@@ -68,7 +68,7 @@ public class Role implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.ROLE;
+  MDOType mdoType = MDOType.ROLE;
 
   /**
    * Синонимы объекта

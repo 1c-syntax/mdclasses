@@ -4,6 +4,7 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
+import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
@@ -12,10 +13,12 @@ import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendReaderWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendStaxDriver;
 import com.github._1c_syntax.reader.common.converter.MethodHandlerConverter;
+import com.github._1c_syntax.reader.common.converter.XdtoPackageDataConverter;
 import com.github._1c_syntax.reader.designer.converter.ApplicationUsePurposeConverter;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
 import com.github._1c_syntax.reader.designer.converter.EnumConverter;
 import com.github._1c_syntax.reader.designer.converter.MdoReferenceConverter;
+import com.github._1c_syntax.reader.designer.converter.ValueTypeConverter;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerRootWrapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
@@ -152,6 +155,7 @@ public class DesignerXStreamFactory {
     xStream.alias(Configuration.class.getSimpleName(), Configuration.class);
     xStream.alias("XDTOPackage", XdtoPackage.class);
     xStream.alias("HTTPService", HttpService.class);
+    xStream.alias("package", XdtoPackageData.class);
   }
 
   private void registerConverters(XStream xStream) {
@@ -187,6 +191,8 @@ public class DesignerXStreamFactory {
     xStream.registerConverter(new ApplicationUsePurposeConverter());
     xStream.registerConverter(new MethodHandlerConverter());
     xStream.registerConverter(new MdoReferenceConverter());
+    xStream.registerConverter(new ValueTypeConverter());
+    xStream.registerConverter(new XdtoPackageDataConverter());
   }
 
   private static Function<ClassInfo, Converter> getObjectsFromInfoClass() {

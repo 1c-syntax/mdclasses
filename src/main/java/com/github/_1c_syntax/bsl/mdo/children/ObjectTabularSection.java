@@ -61,7 +61,7 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

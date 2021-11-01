@@ -64,7 +64,7 @@ public class SessionParameter implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.SESSION_PARAMETER;
+  MDOType mdoType = MDOType.SESSION_PARAMETER;
 
   /**
    * Синонимы объекта

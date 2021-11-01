@@ -68,7 +68,7 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.INTEGRATION_SERVICE;
+  MDOType mdoType = MDOType.INTEGRATION_SERVICE;
 
   /**
    * Синонимы объекта

@@ -41,7 +41,6 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
-import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
@@ -233,7 +232,6 @@ public class XStreamFactory {
     xStream.processAnnotations(DesignerExchangePlanContent.class);
 
     xStream.alias("Rights", RoleData.class);
-    xStream.alias("package", XDTOPackageData.class);
     xStream.alias("MetaDataObject", DesignerRootWrapper.class);
     xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
 

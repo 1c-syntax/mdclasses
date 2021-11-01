@@ -58,7 +58,7 @@ public class RegisterDimension implements Attribute, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

@@ -27,7 +27,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
-import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
@@ -96,14 +95,6 @@ public class MDOFactory {
     var value = (FormData) XStreamFactory.fromXML(path.toFile());
     value.fillPlainChildren(value.getChildren());
     return Optional.of(value);
-  }
-
-  public Optional<XDTOPackageData> readXDTOPackageData(Path path) {
-    if (Files.notExists(path)) {
-      return Optional.empty();
-    }
-
-    return Optional.of((XDTOPackageData) XStreamFactory.fromXML(path.toFile()));
   }
 
   /**

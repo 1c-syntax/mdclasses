@@ -59,7 +59,7 @@ public class ObjectForm implements Form, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

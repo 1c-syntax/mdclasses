@@ -65,7 +65,7 @@ public class DefinedType implements MDObject, Type {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.DEFINED_TYPE;
+  MDOType mdoType = MDOType.DEFINED_TYPE;
 
   /**
    * Синонимы объекта

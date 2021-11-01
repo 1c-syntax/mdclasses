@@ -27,6 +27,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   XdtoPackageTest() {
     super(XdtoPackage.class);
@@ -41,49 +43,15 @@ class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
+    var xdto = (XdtoPackage) mdo;
+    assertThat(xdto.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
+    assertThat(xdto.getData()).isNotNull();
+    assertThat(xdto.getData().getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
+    assertThat(xdto.getData().getImports())
+      .hasSize(2)
+      .anyMatch("http://v8.1c.ru/8.1/data/core"::equals);
+    assertThat(xdto.getData().getValueTypes()).hasSize(1);
+    assertThat(xdto.getData().getProperties()).hasSize(2);
+    assertThat(xdto.getData().getObjectTypes()).hasSize(8);
   }
-
-//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ПакетXDTO1,b8a93cce-56e4-4507-b281-5c525a466a0f,,,XDTOPackage,ПакетXDTO,0,0,0,0,0,0"
-//    }
-//  )
-//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-//    var mdo = getMDObject("XDTOPackages/" + argumentsAccessor.getString(0));
-//    mdoTest(mdo, MDOType.XDTO_PACKAGE, argumentsAccessor);
-//    assertThat(mdo.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
-//    assertThat(mdo.getData()).isNotNull();
-//
-//    var xdtoData = mdo.getData();
-//    assertThat(xdtoData.getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
-//    assertThat(xdtoData.getImports())
-//      .hasSize(1)
-//      .contains("http://www.1c.ru/SSL/Exchange/Message");
-//    assertThat(xdtoData.getObjectTypes())
-//      .hasSize(737);
-//
-//    var objectType = xdtoData.getObjectTypes().get(1);
-//    assertThat(objectType.getName()).isEqualTo("СоставнойЛюбойОбъект");
-//    assertThat(objectType.getBase()).isEmpty();
-//    assertThat(objectType.getProperties())
-//      .hasSize(194);
-//
-//    var property = objectType.getProperties().get(1);
-//    assertThat(property.getName()).isEqualTo("АвизоПоМПЗВходящее");
-//    assertThat(property.getForm()).isEmpty();
-//    assertThat(property.getLowerBound()).isZero();
-//    assertThat(property.getUpperBound()).isZero();
-//    assertThat(property.getType()).isEqualTo("d3p1:КлючевыеСвойстваАвизоПоМПЗВходящее");
-//    assertThat(property.isNillable()).isFalse();
-//
-//    assertThat(xdtoData.getProperties()).isEmpty();
-//
-//    var valueType = xdtoData.getValueTypes().get(0);
-//    assertThat(valueType.getName()).isEqualTo("ТипДатаФНС");
-//    assertThat(valueType.getBase()).isEqualTo("xs:string");
-//    assertThat(valueType.getEnumerations()).isEmpty();
-//    assertThat(valueType.getVariety()).isEqualTo("Atomic");
-//
-//  }
 }

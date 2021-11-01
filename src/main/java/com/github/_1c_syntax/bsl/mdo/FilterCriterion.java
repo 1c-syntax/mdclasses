@@ -67,7 +67,7 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.FILTER_CRITERION;
+  MDOType mdoType = MDOType.FILTER_CRITERION;
 
   /**
    * Синонимы объекта

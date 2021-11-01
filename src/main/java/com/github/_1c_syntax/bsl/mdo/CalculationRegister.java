@@ -74,7 +74,7 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CALCULATION_REGISTER;
+  MDOType mdoType = MDOType.CALCULATION_REGISTER;
 
   /**
    * Синонимы объекта

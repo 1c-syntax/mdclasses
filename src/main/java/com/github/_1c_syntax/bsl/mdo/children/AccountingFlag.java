@@ -60,7 +60,7 @@ public class AccountingFlag implements Attribute, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

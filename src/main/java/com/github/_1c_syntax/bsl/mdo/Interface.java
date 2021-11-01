@@ -64,7 +64,7 @@ public class Interface implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.INTERFACE;
+  MDOType mdoType = MDOType.INTERFACE;
 
   /**
    * Синонимы объекта

@@ -67,7 +67,7 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.SETTINGS_STORAGE;
+  MDOType mdoType = MDOType.SETTINGS_STORAGE;
 
   /**
    * Синонимы объекта

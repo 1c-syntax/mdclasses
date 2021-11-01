@@ -2,12 +2,15 @@ package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
+import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
@@ -19,10 +22,12 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 
@@ -81,6 +86,12 @@ public class MDObjectConverter implements Converter {
       }
     }
 
+    if (XdtoPackage.class.isAssignableFrom(realClass)) {
+      var packageDataPath = MDOPathUtils.getPackageDataPath(currentPath,
+        (String) properties.get("properties").get("Name"));
+      readXDTOPackageData(packageDataPath).ifPresent(xdtoPackageData ->
+        properties.get("properties").put("data", xdtoPackageData));
+    }
 
     DesignerConverterCommon.computeBuilder(builder, properties);
 
@@ -92,5 +103,13 @@ public class MDObjectConverter implements Converter {
   @Override
   public boolean canConvert(Class type) {
     return MDObject.class.isAssignableFrom(type);
+  }
+
+  private Optional<XdtoPackageData> readXDTOPackageData(Path path) {
+    if (Files.notExists(path)) {
+      return Optional.empty();
+    }
+
+    return Optional.of((XdtoPackageData) DesignerXStreamFactory.fromXML(path.toFile()));
   }
 }

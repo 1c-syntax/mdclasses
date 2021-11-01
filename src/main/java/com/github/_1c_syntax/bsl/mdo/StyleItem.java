@@ -64,7 +64,7 @@ public class StyleItem implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.STYLE_ITEM;
+  MDOType mdoType = MDOType.STYLE_ITEM;
 
   /**
    * Синонимы объекта

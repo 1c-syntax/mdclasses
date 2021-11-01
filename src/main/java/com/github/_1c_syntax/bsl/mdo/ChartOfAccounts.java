@@ -73,7 +73,7 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CHART_OF_ACCOUNTS;
+  MDOType mdoType = MDOType.CHART_OF_ACCOUNTS;
 
   /**
    * Синонимы объекта

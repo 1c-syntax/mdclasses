@@ -73,7 +73,7 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.DOCUMENT;
+  MDOType mdoType = MDOType.DOCUMENT;
 
   /**
    * Синонимы объекта

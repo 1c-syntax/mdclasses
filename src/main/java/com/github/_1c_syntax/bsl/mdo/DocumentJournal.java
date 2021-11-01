@@ -71,7 +71,7 @@ public class DocumentJournal implements MDObject, AttributeOwner, FormOwner, Com
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.DOCUMENT_JOURNAL;
+  MDOType mdoType = MDOType.DOCUMENT_JOURNAL;
 
   /**
    * Синонимы объекта

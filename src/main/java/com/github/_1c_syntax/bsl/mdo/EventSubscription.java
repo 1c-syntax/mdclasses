@@ -68,7 +68,7 @@ public class EventSubscription implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.EVENT_SUBSCRIPTION;
+  MDOType mdoType = MDOType.EVENT_SUBSCRIPTION;
 
   /**
    * Синонимы объекта

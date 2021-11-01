@@ -73,7 +73,7 @@ public class Catalog implements MDObject, AttributeOwner, FormOwner, CommandOwne
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CATALOG;
+  MDOType mdoType = MDOType.CATALOG;
 
   /**
    * Синонимы объекта

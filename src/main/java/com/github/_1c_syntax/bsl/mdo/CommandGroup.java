@@ -64,7 +64,7 @@ public class CommandGroup implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMAND_GROUP;
+  MDOType mdoType = MDOType.COMMAND_GROUP;
 
   /**
    * Синонимы объекта

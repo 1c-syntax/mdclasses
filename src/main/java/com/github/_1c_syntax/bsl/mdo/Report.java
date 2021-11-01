@@ -69,7 +69,7 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.REPORT;
+  MDOType mdoType = MDOType.REPORT;
 
   /**
    * Синонимы объекта

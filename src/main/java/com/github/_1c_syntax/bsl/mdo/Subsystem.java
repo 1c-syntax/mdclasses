@@ -67,7 +67,7 @@ public class Subsystem implements MDObject, ChildrenOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.SUBSYSTEM;
+  MDOType mdoType = MDOType.SUBSYSTEM;
 
   /**
    * Синонимы объекта

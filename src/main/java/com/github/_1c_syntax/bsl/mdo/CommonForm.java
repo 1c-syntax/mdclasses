@@ -69,7 +69,7 @@ public class CommonForm implements Form {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_FORM;
+  MDOType mdoType = MDOType.COMMON_FORM;
 
   /**
    * Синонимы объекта

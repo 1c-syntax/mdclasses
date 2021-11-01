@@ -68,7 +68,7 @@ public class WebService implements MDObject, ModuleOwner, ChildrenOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.WEB_SERVICE;
+  MDOType mdoType = MDOType.WEB_SERVICE;
 
   /**
    * Синонимы объекта

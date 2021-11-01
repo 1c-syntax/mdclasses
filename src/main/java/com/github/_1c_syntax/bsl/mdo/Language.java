@@ -68,7 +68,7 @@ public class Language implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.LANGUAGE;
+  MDOType mdoType = MDOType.LANGUAGE;
 
   /**
    * Синонимы объекта

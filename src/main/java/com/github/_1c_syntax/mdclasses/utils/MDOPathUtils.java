@@ -284,6 +284,18 @@ public class MDOPathUtils {
     return currentPath;
   }
 
+  public static Path getPackageDataPath(Path path, String name) {
+    var currentPath = path.getParent();
+    var basePath = currentPath.toString();
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    if (configurationSource == ConfigurationSource.EDT) {
+      currentPath = Path.of(basePath, "Package.xdto");
+    } else {
+      currentPath = Paths.get(basePath, name, "Ext", "Package.bin");
+    }
+    return currentPath;
+  }
+
   /**
    * Возвращает путь к файлу с составом плана обмена
    * Внимание! Только для формата конфигуратора!

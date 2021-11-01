@@ -69,7 +69,7 @@ public class DataProcessor implements MDObject, AttributeOwner, FormOwner, Comma
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.DATA_PROCESSOR;
+  MDOType mdoType = MDOType.DATA_PROCESSOR;
 
   /**
    * Синонимы объекта

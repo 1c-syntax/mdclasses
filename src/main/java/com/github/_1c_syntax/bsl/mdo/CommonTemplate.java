@@ -69,7 +69,7 @@ public class CommonTemplate implements Template {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_TEMPLATE;
+  MDOType mdoType = MDOType.COMMON_TEMPLATE;
 
   /**
    * Синонимы объекта

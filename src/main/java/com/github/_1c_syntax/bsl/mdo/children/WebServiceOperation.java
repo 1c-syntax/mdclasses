@@ -55,7 +55,7 @@ public class WebServiceOperation implements MDObject, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

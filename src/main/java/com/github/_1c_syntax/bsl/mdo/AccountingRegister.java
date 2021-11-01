@@ -73,7 +73,7 @@ public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, 
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.ACCOUNTING_REGISTER;
+  MDOType mdoType = MDOType.ACCOUNTING_REGISTER;
 
   /**
    * Синонимы объекта

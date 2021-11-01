@@ -68,7 +68,7 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.HTTP_SERVICE;
+  MDOType mdoType = MDOType.HTTP_SERVICE;
 
   /**
    * Синонимы объекта

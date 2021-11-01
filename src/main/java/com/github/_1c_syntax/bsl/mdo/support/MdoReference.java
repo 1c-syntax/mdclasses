@@ -76,27 +76,27 @@ public class MdoReference {
   /**
    * Создает ссылку, сохраняя ее в кэш
    *
-   * @param type     Тип метаданных
+   * @param mdoType  Тип метаданных
    * @param mdoRef   Строковая ссылка
    * @param mdoRefRu Строковая ссылка на русском языке
    * @return Ссылка на объект
    */
-  public static MdoReference create(@NonNull MDOType type, @NonNull String mdoRef, @NonNull String mdoRefRu) {
-    return getOrCompute(type, mdoRef, mdoRefRu);
+  public static MdoReference create(@NonNull MDOType mdoType, @NonNull String mdoRef, @NonNull String mdoRefRu) {
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
   }
 
   /**
    * Создает ссылку, сохраняя ее в кэш
    *
-   * @param type Тип метаданных
-   * @param name Имя объекта метаданных
+   * @param mdoType Тип метаданных
+   * @param name    Имя объекта метаданных
    * @return Ссылка на объект
    */
-  public static MdoReference create(@NonNull MDOType type, @NonNull String name) {
-    var mdoRef = type.getName() + "." + name;
-    var mdoRefRu = type.getNameRu() + "." + name;
+  public static MdoReference create(@NonNull MDOType mdoType, @NonNull String name) {
+    var mdoRef = mdoType.getName() + "." + name;
+    var mdoRefRu = mdoType.getNameRu() + "." + name;
 
-    return getOrCompute(type, mdoRef, mdoRefRu);
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
   }
 
   /**
@@ -134,13 +134,13 @@ public class MdoReference {
     return result;
   }
 
-  private static MdoReference getOrCompute(@NonNull MDOType type, @NonNull String mdoRef, @NonNull String mdoRefRu) {
+  private static MdoReference getOrCompute(@NonNull MDOType mdoType, @NonNull String mdoRef, @NonNull String mdoRefRu) {
     referenceLock.lock();
     if (REFERENCES.containsKey(mdoRef)) {
       referenceLock.unlock();
       return REFERENCES.get(mdoRef);
     }
-    var newMdoReference = new MdoReference(type, mdoRef, mdoRefRu);
+    var newMdoReference = new MdoReference(mdoType, mdoRef, mdoRefRu);
     REFERENCES.put(mdoRef, newMdoReference);
     referenceLock.unlock();
     return newMdoReference;

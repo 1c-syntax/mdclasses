@@ -58,7 +58,7 @@ public class ObjectCommand implements Command, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

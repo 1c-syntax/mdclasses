@@ -59,7 +59,7 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

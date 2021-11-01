@@ -73,7 +73,7 @@ public class CommonAttribute implements Attribute {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_ATTRIBUTE;
+  MDOType mdoType = MDOType.COMMON_ATTRIBUTE;
 
   /**
    * Синонимы объекта

@@ -58,7 +58,7 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

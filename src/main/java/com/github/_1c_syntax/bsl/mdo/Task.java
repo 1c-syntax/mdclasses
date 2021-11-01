@@ -73,7 +73,7 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.TASK;
+  MDOType mdoType = MDOType.TASK;
 
   /**
    * Синонимы объекта

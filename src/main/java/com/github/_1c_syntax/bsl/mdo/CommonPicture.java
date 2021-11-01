@@ -64,7 +64,7 @@ public class CommonPicture implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_PICTURE;
+  MDOType mdoType = MDOType.COMMON_PICTURE;
 
   /**
    * Синонимы объекта

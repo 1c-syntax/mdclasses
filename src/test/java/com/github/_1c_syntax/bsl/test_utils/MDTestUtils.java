@@ -80,5 +80,4 @@ public class MDTestUtils {
     Assertions.assertThat(current, true).isEqual(fixture);
     return mdo;
   }
-
 }

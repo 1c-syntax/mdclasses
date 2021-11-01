@@ -74,7 +74,7 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.EXCHANGE_PLAN;
+  MDOType mdoType = MDOType.EXCHANGE_PLAN;
 
   /**
    * Синонимы объекта

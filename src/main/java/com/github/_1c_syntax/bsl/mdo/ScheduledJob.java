@@ -65,7 +65,7 @@ public class ScheduledJob implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.SCHEDULED_JOB;
+  MDOType mdoType = MDOType.SCHEDULED_JOB;
 
   /**
    * Синонимы объекта

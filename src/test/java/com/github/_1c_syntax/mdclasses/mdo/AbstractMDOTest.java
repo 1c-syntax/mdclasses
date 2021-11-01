@@ -72,7 +72,7 @@ abstract class AbstractMDOTest {
   /**
    * Тип тестируемого объекта метаданных
    */
-  private final MDOType mdoType;
+  private final MDOType type;
 
   /**
    * Ппинадлженость объектов по умолчанию
@@ -80,12 +80,12 @@ abstract class AbstractMDOTest {
   private final ObjectBelonging objectBelonging;
 
   AbstractMDOTest(MDOType type) {
-    mdoType = type;
+    this.type = type;
     objectBelonging = ObjectBelonging.OWN;
   }
 
   AbstractMDOTest(MDOType type, ObjectBelonging belonging) {
-    mdoType = type;
+    this.type = type;
     objectBelonging = belonging;
   }
 
@@ -169,16 +169,16 @@ abstract class AbstractMDOTest {
       .isInstanceOf(clazz).extracting(AbstractMDObjectBase::getName)
       .isEqualTo(name);
 
-    assertThat(mdo.getType()).isEqualTo(mdoType);
+    assertThat(mdo.getType()).isEqualTo(type);
 
     assertThat(mdo.getUuid()).isEqualTo(uuid);
     assertThat(mdo.getMdoReference())
       .isNotNull().extracting(MDOReference::getType)
-      .isEqualTo(mdoType);
+      .isEqualTo(type);
     assertThat(mdo.getMdoReference().getMdoRef())
-      .isEqualTo(mdoType.getName() + "." + name);
+      .isEqualTo(type.getName() + "." + name);
     assertThat(mdo.getMdoReference().getMdoRefRu())
-      .isEqualTo(mdoType.getNameRu() + "." + name);
+      .isEqualTo(type.getNameRu() + "." + name);
 
     assertThat(mdo.getObjectBelonging()).isEqualTo(objectBelonging);
 
@@ -313,7 +313,7 @@ abstract class AbstractMDOTest {
    * Проверка корректности заполнения дочерних элементов
    */
   protected void checkChild(MDOReference parentMdoReference,
-                            MDOType type,
+                            MDOType mdoType,
                             ModuleType moduleType,
                             AbstractMDObjectBase child) {
     checkNoChildren(child);

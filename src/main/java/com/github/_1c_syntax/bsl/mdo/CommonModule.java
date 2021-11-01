@@ -69,7 +69,7 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.COMMON_MODULE;
+  MDOType mdoType = MDOType.COMMON_MODULE;
 
   /**
    * Синонимы объекта

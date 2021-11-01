@@ -64,7 +64,7 @@ public class Style implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.STYLE;
+  MDOType mdoType = MDOType.STYLE;
 
   /**
    * Синонимы объекта

@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.mdo.data_storage;
 
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
@@ -36,34 +38,43 @@ import java.util.List;
 @EqualsAndHashCode(of = {"targetNamespace"})
 @Builder
 public class XdtoPackageData {
+
+  public static final XdtoPackageData EMPTY = XdtoPackageData.builder().build();
+
   /**
    * Пространство имен пакета
    */
-  String targetNamespace;
+  @Default
+  String targetNamespace = "";
 
   /**
    * Список импортов пакета
    */
+  @Singular("oneImport")
   List<String> imports;
 
   /**
    * Список типов значений
    */
+  @Singular
   List<ValueType> valueTypes;
 
   /**
    * Список типов объектов
    */
+  @Singular
   List<ObjectType> objectTypes;
 
   /**
    * Список глобальных атрибутов
    */
+  @Singular
   List<Property> properties;
 
   @Value
   @ToString(of = {"name"})
   @EqualsAndHashCode(of = {"name"})
+  @Builder
   public static class ValueType {
     /**
      * Имя типа значений
@@ -73,22 +84,26 @@ public class XdtoPackageData {
     /**
      * Ссылка на базовый тип
      */
-    String base;
+    @Default
+    String base = "";
 
     /**
      * Тип коллекции
      */
-    String variety;
+    @Default
+    String variety = "";
 
     /**
      * Значения элементов перечисления
      */
+    @Singular
     List<String> enumerations;
   }
 
   @Value
   @ToString(of = {"name"})
   @EqualsAndHashCode(of = {"name"})
+  @Builder
   public static class ObjectType {
 
     /**
@@ -99,17 +114,20 @@ public class XdtoPackageData {
     /**
      * Ссылка на базовый тип
      */
-    String base;
+    @Default
+    String base = "";
 
     /**
      * Список атрибутов объекта
      */
+    @Singular
     List<Property> properties;
   }
 
   @Value
   @ToString(of = {"name"})
   @EqualsAndHashCode(of = {"name"})
+  @Builder
   public static class Property {
     /**
      * Имя атрибута
@@ -119,7 +137,8 @@ public class XdtoPackageData {
     /**
      * Тип атрибута
      */
-    String type;
+    @Default
+    String type = "";
 
     /**
      * Минимальное количество атрибутов (для множественных)
@@ -139,6 +158,7 @@ public class XdtoPackageData {
     /**
      * Имя формы
      */
-    String form;
+    @Default
+    String form = "";
   }
 }

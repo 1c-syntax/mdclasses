@@ -73,7 +73,7 @@ public class AccumulationRegister implements MDObject, AttributeOwner, FormOwner
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.ACCUMULATION_REGISTER;
+  MDOType mdoType = MDOType.ACCUMULATION_REGISTER;
 
   /**
    * Синонимы объекта

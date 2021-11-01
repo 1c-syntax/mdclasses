@@ -4,7 +4,7 @@
     "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
     "comment": "",
     "objectBelonging": "OWN",
-    "type": "CONSTANT",
+    "mdoType": "CONSTANT",
     "synonym": {
       "content": []
     },
@@ -14,13 +14,31 @@
       "mdoRefRu": "Константа.Константа1"
     },
     "passwordMode": true,
+    "modules": [
+      {
+        "moduleType": "ValueManagerModule",
+        "uri": "src/test/resources/metadata/original/Constants/Константа1/Ext/ValueManagerModule.bsl",
+        "owner": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.Константа1",
+          "mdoRefRu": "Константа.Константа1"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
     "supportVariant": "NONE",
     "useStandardCommands": true,
     "defaultForm": "",
     "extendedPresentation": "",
     "explanation": "",
     "dataLockControlMode": "MANAGED",
-    "value_type": "",
+    "type": {
+      "type": "xs:string",
+      "stringQualifier": {
+        "length": 10,
+        "allowedLength": "Variable"
+      }
+    },
     "format": "",
     "editFormat": "",
     "toolTip": "",

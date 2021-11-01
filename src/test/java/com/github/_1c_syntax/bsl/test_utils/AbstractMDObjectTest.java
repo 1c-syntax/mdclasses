@@ -147,7 +147,7 @@ abstract public class AbstractMDObjectTest<T extends MDObject> {
       .isEqualTo(type.getNameRu() + "." + name);
 
     assertThat(mdo.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
-    assertThat(mdo.getType()).isEqualTo(type);
+    assertThat(mdo.getMdoType()).isEqualTo(type);
 
     List<MDObject> children = new ArrayList<>();
     List<MDObject> planChildren = new ArrayList<>();

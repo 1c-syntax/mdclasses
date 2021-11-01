@@ -70,7 +70,7 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.SEQUENCE;
+  MDOType mdoType = MDOType.SEQUENCE;
 
   /**
    * Синонимы объекта

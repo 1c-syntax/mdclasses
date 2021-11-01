@@ -64,7 +64,7 @@ public class WSReference implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.WS_REFERENCE;
+  MDOType mdoType = MDOType.WS_REFERENCE;
 
   /**
    * Синонимы объекта

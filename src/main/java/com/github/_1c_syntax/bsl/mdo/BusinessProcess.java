@@ -73,7 +73,7 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.BUSINESS_PROCESS;
+  MDOType mdoType = MDOType.BUSINESS_PROCESS;
 
   /**
    * Синонимы объекта

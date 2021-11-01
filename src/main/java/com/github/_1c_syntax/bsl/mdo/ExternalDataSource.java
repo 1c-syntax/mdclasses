@@ -44,7 +44,7 @@ public class ExternalDataSource implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.EXTERNAL_DATA_SOURCE;
+  MDOType mdoType = MDOType.EXTERNAL_DATA_SOURCE;
 
   /**
    * Синонимы объекта

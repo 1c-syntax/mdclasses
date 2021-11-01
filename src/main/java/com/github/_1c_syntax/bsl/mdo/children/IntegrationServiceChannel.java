@@ -56,7 +56,7 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Тип метаданных
    */
-  MDOType type;
+  MDOType mdoType;
 
   /**
    * Имя метаданных объекта

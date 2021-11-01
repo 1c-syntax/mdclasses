@@ -73,7 +73,7 @@ public class ChartOfCharacteristicTypes implements MDObject, AttributeOwner, For
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CHART_OF_CHARACTERISTIC_TYPES;
+  MDOType mdoType = MDOType.CHART_OF_CHARACTERISTIC_TYPES;
 
   /**
    * Синонимы объекта

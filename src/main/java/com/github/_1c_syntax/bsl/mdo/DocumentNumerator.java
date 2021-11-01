@@ -64,7 +64,7 @@ public class DocumentNumerator implements MDObject {
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.DOCUMENT_NUMERATOR;
+  MDOType mdoType = MDOType.DOCUMENT_NUMERATOR;
 
   /**
    * Синонимы объекта

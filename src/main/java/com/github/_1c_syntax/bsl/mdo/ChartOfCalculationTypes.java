@@ -73,7 +73,7 @@ public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOw
    * Тип метаданных
    */
   @Default
-  MDOType type = MDOType.CHART_OF_CALCULATION_TYPES;
+  MDOType mdoType = MDOType.CHART_OF_CALCULATION_TYPES;
 
   /**
    * Синонимы объекта
