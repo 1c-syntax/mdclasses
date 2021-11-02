@@ -28,6 +28,7 @@ import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -160,5 +161,11 @@ public class XdtoPackageData {
      */
     @Default
     String form = "";
+
+    /**
+     * Свойства поля
+     */
+    @Singular("property")
+    List<Property> typeDef;
   }
 }

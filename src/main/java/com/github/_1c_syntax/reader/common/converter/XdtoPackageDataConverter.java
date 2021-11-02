@@ -140,6 +140,22 @@ public class XdtoPackageDataConverter implements Converter {
       builder.nillable(Boolean.parseBoolean(value));
     }
 
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var node = reader.getNodeName();
+      if ("typeDef".equals(node)) {
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          node = reader.getNodeName();
+          if ("property".equals(node)) {
+            builder.property(readProperty(reader));
+          }
+          reader.moveUp();
+        }
+      }
+      reader.moveUp();
+    }
+
     return builder.build();
   }
 

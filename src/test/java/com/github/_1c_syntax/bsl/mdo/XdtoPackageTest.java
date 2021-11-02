@@ -27,8 +27,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   XdtoPackageTest() {
     super(XdtoPackage.class);
@@ -37,21 +35,11 @@ class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, XDTOPackage.ПакетXDTO1"
+      "designer/ssl_3_1, XDTOPackage.АдресныйКлассификатор"
 //      "EDT, AccumulationRegister.Бот1",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
-    var xdto = (XdtoPackage) mdo;
-    assertThat(xdto.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
-    assertThat(xdto.getData()).isNotNull();
-    assertThat(xdto.getData().getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
-    assertThat(xdto.getData().getImports())
-      .hasSize(2)
-      .anyMatch("http://v8.1c.ru/8.1/data/core"::equals);
-    assertThat(xdto.getData().getValueTypes()).hasSize(1);
-    assertThat(xdto.getData().getProperties()).hasSize(2);
-    assertThat(xdto.getData().getObjectTypes()).hasSize(8);
   }
 }

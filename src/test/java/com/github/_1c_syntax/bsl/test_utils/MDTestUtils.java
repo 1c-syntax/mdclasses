@@ -75,7 +75,7 @@ public class MDTestUtils {
   public MDObject testAndGetMDO(ArgumentsAccessor argumentsAccessor) {
     var pack = argumentsAccessor.getString(0);
     var mdoRef = argumentsAccessor.getString(1);
-    var mdc = getMDClass("src/test/resources/metadata/" + pack);
+    var mdc = getMDClass("src/test/resources/ext/" + pack + "/src/cf");
     assertThat(mdc).isNotNull();
     var mdoOptional = mdc.findChild(mdoRef);
     assertThat(mdoOptional).isPresent();
