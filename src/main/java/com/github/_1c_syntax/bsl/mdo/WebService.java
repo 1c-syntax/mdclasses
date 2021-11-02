@@ -98,22 +98,41 @@ public class WebService implements MDObject, ModuleOwner, ChildrenOwner {
    * Операции веб-сервиса
    */
   @Default
-  List<WebServiceOperation> operations = Collections.emptyList();
+  List<WebServiceOperation> children = Collections.emptyList();
 
+  /**
+   * Пространство имен сервиса
+   */
   @Default
   String namespace = "";
+
+  /**
+   * Используемые XDTO пакеты
+   */
   @Default
-  List<String> xdtoPackages = Collections.emptyList();
+  List<String> xdtoPackages = Collections.emptyList(); // todo пока не читается
+
+  /**
+   * Имя файла публикации
+   */
   @Default
   String descriptorFileName = "";
+
+  /**
+   * Повторное использование сеанса
+   */
   @Default
   String reuseSessions = "";
+
+  /**
+   * Время жизни сеанса
+   */
   int sessionMaxAge;
 
   @Override
   public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(operations);
-    return children;
+    var superChildren = ChildrenOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
   }
 }

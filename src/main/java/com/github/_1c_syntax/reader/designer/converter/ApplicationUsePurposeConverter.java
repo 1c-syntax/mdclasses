@@ -38,6 +38,7 @@ import java.util.List;
  * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
  * XStreamFactory.
  */
+@DesignerConverter
 public class ApplicationUsePurposeConverter implements Converter {
 
   @Override

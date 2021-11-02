@@ -243,7 +243,6 @@ public class ChartOfCalculationTypes implements MDObject, AttributeOwner, FormOw
 
   // todo описания
 
-  @Default
   int codeLength;
   int descriptionLength;
   @Default

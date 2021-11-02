@@ -3,10 +3,26 @@
 	<WebService uuid="d7f9b06b-0799-486e-adff-c45a2d5b8101">
 		<Properties>
 			<Name>WebСервис1</Name>
-			<Synonym/>
+			<Synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тестовый веб-сервис</v8:content>
+				</v8:item>
+			</Synonym>
 			<Comment/>
 			<Namespace>http://test.test</Namespace>
-			<XDTOPackages/>
+			<XDTOPackages>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="xr:MDObjectRef">XDTOPackage.ПакетXDTO1</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="xs:string">http://v8.1c.ru/8.1/data/core</xr:Value>
+				</xr:Item>
+			</XDTOPackages>
 			<DescriptorFileName>ws1.1cws</DescriptorFileName>
 			<ReuseSessions>AutoUse</ReuseSessions>
 			<SessionMaxAge>20</SessionMaxAge>
@@ -36,7 +52,38 @@
 					<ProcedureName>Операция2</ProcedureName>
 					<DataLockControlMode>Managed</DataLockControlMode>
 				</Properties>
-				<ChildObjects/>
+				<ChildObjects>
+					<Parameter uuid="a132189c-6584-4bb1-9cfd-1415cd832281">
+						<Properties>
+							<Name>Scenario</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметр1</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<XDTOValueType>v8:Map</XDTOValueType>
+							<Nillable>false</Nillable>
+							<TransferDirection>In</TransferDirection>
+						</Properties>
+					</Parameter>
+					<Parameter uuid="4a180f2c-dc54-4591-8f62-f236d1e07729">
+						<Properties>
+							<Name>ResultMessage</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметр2</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<XDTOValueType>xs:string</XDTOValueType>
+							<Nillable>true</Nillable>
+							<TransferDirection>Out</TransferDirection>
+						</Properties>
+					</Parameter>
+				</ChildObjects>
 			</Operation>
 		</ChildObjects>
 	</WebService>

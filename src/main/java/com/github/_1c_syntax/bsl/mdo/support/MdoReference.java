@@ -99,6 +99,15 @@ public class MdoReference {
     return getOrCompute(mdoType, mdoRef, mdoRefRu);
   }
 
+  public static MdoReference create(@NonNull MdoReference mdoReferenceOwner,
+                                    @NonNull MDOType mdoType,
+                                    @NonNull String name) {
+    var mdoRef = mdoReferenceOwner.getMdoRef() + "." + mdoType.getName() + "." + name;
+    var mdoRefRu = mdoReferenceOwner.getMdoRefRu() + "." + mdoType.getNameRu() + "." + name;
+
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
+  }
+
   /**
    * Создает ссылку, сохраняя ее в кэш
    *

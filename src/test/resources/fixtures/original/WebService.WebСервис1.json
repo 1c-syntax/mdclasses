@@ -4,18 +4,150 @@
     "uuid": "d7f9b06b-0799-486e-adff-c45a2d5b8101",
     "comment": "",
     "objectBelonging": "OWN",
-    "type": "WEB_SERVICE",
+    "mdoType": "WEB_SERVICE",
     "synonym": {
-      "content": []
+      "content": [
+        [
+          "ru",
+          "Тестовый веб-сервис"
+        ]
+      ]
     },
     "mdoReference": {
       "type": "WEB_SERVICE",
       "mdoRef": "WebService.WebСервис1",
       "mdoRefRu": "WebСервис.WebСервис1"
     },
-    "modules": [],
-    "operations": [],
+    "modules": [
+      {
+        "moduleType": "WEBServiceModule",
+        "uri": "src/test/resources/metadata/original/WebServices/WebСервис1/Ext/Module.bsl",
+        "owner": {
+          "type": "WEB_SERVICE",
+          "mdoRef": "WebService.WebСервис1",
+          "mdoRefRu": "WebСервис.WebСервис1"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
     "supportVariant": "NONE",
+    "children": [
+      {
+        "name": "Операция1",
+        "uuid": "cd562f7f-8321-4e95-a845-e93bc5924c2a",
+        "comment": "",
+        "objectBelonging": "OWN",
+        "mdoType": "WS_OPERATION",
+        "synonym": {
+          "content": []
+        },
+        "mdoReference": {
+          "type": "WS_OPERATION",
+          "mdoRef": "WebService.WebСервис1.Operation.Операция1",
+          "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция1"
+        },
+        "owner": {
+          "type": "WEB_SERVICE",
+          "mdoRef": "WebService.WebСервис1",
+          "mdoRefRu": "WebСервис.WebСервис1"
+        },
+        "supportVariant": "NONE",
+        "handler": "Операция1",
+        "children": [],
+        "xdtoReturningValueType": "xs:string",
+        "nillable": false,
+        "transactioned": false,
+        "dataLockControlMode": "MANAGED"
+      },
+      {
+        "name": "Операция2",
+        "uuid": "e5815f61-e16e-48bf-91e9-b469342ad465",
+        "comment": "",
+        "objectBelonging": "OWN",
+        "mdoType": "WS_OPERATION",
+        "synonym": {
+          "content": []
+        },
+        "mdoReference": {
+          "type": "WS_OPERATION",
+          "mdoRef": "WebService.WebСервис1.Operation.Операция2",
+          "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция2"
+        },
+        "owner": {
+          "type": "WEB_SERVICE",
+          "mdoRef": "WebService.WebСервис1",
+          "mdoRefRu": "WebСервис.WebСервис1"
+        },
+        "supportVariant": "NONE",
+        "handler": "Операция2",
+        "children": [
+          {
+            "name": "Scenario",
+            "uuid": "a132189c-6584-4bb1-9cfd-1415cd832281",
+            "comment": "",
+            "objectBelonging": "OWN",
+            "mdoType": "UNKNOWN",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Параметр1"
+                ]
+              ]
+            },
+            "mdoReference": {
+              "type": "UNKNOWN",
+              "mdoRef": "WebService.WebСервис1.Operation.Операция2..Scenario",
+              "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция2..Scenario"
+            },
+            "owner": {
+              "type": "WS_OPERATION",
+              "mdoRef": "WebService.WebСервис1.Operation.Операция2",
+              "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция2"
+            },
+            "supportVariant": "NONE",
+            "xdtoValueType": "v8:Map",
+            "nillable": false,
+            "transactioned": false,
+            "transferDirection": "In"
+          },
+          {
+            "name": "ResultMessage",
+            "uuid": "4a180f2c-dc54-4591-8f62-f236d1e07729",
+            "comment": "",
+            "objectBelonging": "OWN",
+            "mdoType": "UNKNOWN",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Параметр2"
+                ]
+              ]
+            },
+            "mdoReference": {
+              "type": "UNKNOWN",
+              "mdoRef": "WebService.WebСервис1.Operation.Операция2..ResultMessage",
+              "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция2..ResultMessage"
+            },
+            "owner": {
+              "type": "WS_OPERATION",
+              "mdoRef": "WebService.WebСервис1.Operation.Операция2",
+              "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция2"
+            },
+            "supportVariant": "NONE",
+            "xdtoValueType": "xs:string",
+            "nillable": true,
+            "transactioned": false,
+            "transferDirection": "Out"
+          }
+        ],
+        "xdtoReturningValueType": "xs:string",
+        "nillable": true,
+        "transactioned": true,
+        "dataLockControlMode": "MANAGED"
+      }
+    ],
     "namespace": "http://test.test",
     "xdtoPackages": [],
     "descriptorFileName": "ws1.1cws",

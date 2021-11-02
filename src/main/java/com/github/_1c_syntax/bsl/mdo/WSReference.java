@@ -84,6 +84,9 @@ public class WSReference implements MDObject {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Адрес WS ссылки
+   */
   @Default
   String locationURL = "";
 }

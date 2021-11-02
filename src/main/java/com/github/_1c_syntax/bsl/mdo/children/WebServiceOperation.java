@@ -21,22 +21,28 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.Collections;
+import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
-public class WebServiceOperation implements MDObject, MDChildObject {
+public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwner {
   /**
    * Имя
    */
@@ -48,49 +54,87 @@ public class WebServiceOperation implements MDObject, MDChildObject {
   String uuid;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType mdoType;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType mdoType = MDOType.WS_OPERATION;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonym;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Обработчик операции. Пока строкой
    * Формат имя метода
    * Пример Операция1
    */
-  String handler;
+  @Default
+  String handler = "";
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Операции веб-сервиса
    */
-  SupportVariant supportVariant;
+  @Default
+  List<WebServiceOperationParameter> children = Collections.emptyList();
+
+  /**
+   * Тип возвращаемого значения
+   */
+  @Default
+  String xdtoReturningValueType = "";
+
+  /**
+   * Может быть Null
+   */
+  boolean nillable;
+
+  /**
+   * В транзакции
+   */
+  boolean transactioned;
+
+  /**
+   * Режим управления блокировкой
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  @Override
+  public List<MDObject> getChildren() {
+    var superChildren = ChildrenOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
+  }
 }

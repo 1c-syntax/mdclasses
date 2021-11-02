@@ -5,6 +5,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.reader.designer.wrapper.DesignerProperties;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.NonNull;
@@ -72,6 +73,14 @@ public class DesignerConverterCommon {
     return result;
   }
 
+  public void computeBuilder(@NonNull Object builder, @NonNull DesignerProperties properties) {
+    properties.getProperties().forEach((key, value) -> TransformationUtils.setValue(builder, key, value));
+    TransformationUtils.setValue(builder, "mdoReference", properties.getMdoReference());
+    TransformationUtils.setValue(builder, "mdoType", properties.getMdoType());
+    TransformationUtils.setValue(builder, "supportVariant", properties.getSupportVariant());
+    TransformationUtils.setValue(builder, "children", properties.getChildren());
+  }
+
   public void computeBuilder(@NonNull Object builder, @NonNull Map<String, Map<String, Object>> properties) {
     if (properties.containsKey("attributes")) {
       properties.get("attributes").forEach((key, value) ->
@@ -83,4 +92,6 @@ public class DesignerConverterCommon {
         TransformationUtils.setValue(builder, key, value));
     }
   }
+
+
 }

@@ -4,6 +4,8 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -156,6 +158,8 @@ public class DesignerXStreamFactory {
     xStream.alias("XDTOPackage", XdtoPackage.class);
     xStream.alias("HTTPService", HttpService.class);
     xStream.alias("package", XdtoPackageData.class);
+    xStream.alias("Operation", WebServiceOperation.class);
+    xStream.alias("Parameter", WebServiceOperationParameter.class);
   }
 
   private void registerConverters(XStream xStream) {
@@ -188,10 +192,8 @@ public class DesignerXStreamFactory {
 //    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
 //    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(ApplicationRunMode.class));
-    xStream.registerConverter(new ApplicationUsePurposeConverter());
+
     xStream.registerConverter(new MethodHandlerConverter());
-    xStream.registerConverter(new MdoReferenceConverter());
-    xStream.registerConverter(new ValueTypeConverter());
     xStream.registerConverter(new XdtoPackageDataConverter());
   }
 
