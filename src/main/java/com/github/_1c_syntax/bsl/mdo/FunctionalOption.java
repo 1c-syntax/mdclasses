@@ -32,6 +32,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
+import java.util.List;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
@@ -84,9 +87,20 @@ public class FunctionalOption implements MDObject {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Расположение (хранение)
+   */
   @Default
   String location = "";
+
+  /**
+   * Получение в привилегированном режиме
+   */
   boolean privilegedGetMode;
+
+  /**
+   * Состав
+   */
   @Default
-  String content = "";
+  List<String> content = Collections.emptyList(); // todo пока не читается
 }

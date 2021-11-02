@@ -137,7 +137,8 @@ public class Constant implements Attribute, ModuleOwner {
   /**
    * Тип значения
    */
-  ValueType type; //todo добавить в состав атрибута
+  @Default
+  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
 
   // todo описание
 

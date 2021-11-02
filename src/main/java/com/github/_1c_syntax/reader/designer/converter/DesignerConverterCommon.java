@@ -1,5 +1,6 @@
 package com.github._1c_syntax.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -78,7 +79,12 @@ public class DesignerConverterCommon {
     TransformationUtils.setValue(builder, "mdoReference", properties.getMdoReference());
     TransformationUtils.setValue(builder, "mdoType", properties.getMdoType());
     TransformationUtils.setValue(builder, "supportVariant", properties.getSupportVariant());
-    TransformationUtils.setValue(builder, "children", properties.getChildren());
+
+    if (AttributeOwner.class.isAssignableFrom(properties.getRealClass())) {
+      TransformationUtils.setValue(builder, "attributes", properties.getChildren());
+    } else {
+      TransformationUtils.setValue(builder, "children", properties.getChildren());
+    }
   }
 
   public void computeBuilder(@NonNull Object builder, @NonNull Map<String, Map<String, Object>> properties) {

@@ -48,15 +48,4 @@ class LanguageTest extends AbstractMDObjectTest<Language> {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
-//  @CsvSource(
-//    {
-//      "Русский,1b5f5cd6-14b2-422e-ab6c-1103fd375982,Russian,Русский,Language,Язык,0,0,0,0,0,0"
-//    }
-//  )
-//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-//    var mdo = getMDObject("Languages/" + argumentsAccessor.getString(0));
-//    mdoTest(mdo, MDOType.LANGUAGE, argumentsAccessor);
-//    assertThat(mdo.getLanguageCode()).isEqualTo("ru");
-//  }
 }

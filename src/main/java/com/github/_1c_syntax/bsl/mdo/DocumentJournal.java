@@ -135,13 +135,13 @@ public class DocumentJournal implements MDObject, AttributeOwner, FormOwner, Com
    * Форма по умолчанию
    */
   @Default
-  String defaultForm = "";
+  MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма
    */
   @Default
-  String auxiliaryForm = "";
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
 
   /**
    * Представление в списке
@@ -161,8 +161,11 @@ public class DocumentJournal implements MDObject, AttributeOwner, FormOwner, Com
   @Default
   String explanation = "";
 
+  /**
+   * Документы в составе
+   */
   @Default
-  List<String> registeredDocuments = Collections.emptyList();
+  List<MdoReference> registeredDocuments = Collections.emptyList();
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

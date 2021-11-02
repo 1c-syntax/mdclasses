@@ -22,7 +22,6 @@
 package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
-import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -41,8 +40,8 @@ public class MdoReferenceConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var node = reader.getNodeName();
-    return new CompatibilityMode(reader.getValue());
+    // todo надо обработать разные типы
+    return MdoReference.create(reader.getValue());
   }
 
   @Override

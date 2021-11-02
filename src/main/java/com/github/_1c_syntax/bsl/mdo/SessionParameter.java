@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -84,6 +85,10 @@ public class SessionParameter implements MDObject {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Тип значения
+   */
   @Default
-  String value_type = "";
+  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
+
 }

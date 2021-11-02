@@ -84,12 +84,31 @@ public class DocumentNumerator implements MDObject {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Тип номера
+   */
   @Default
   String numberType = "";
+
+  /**
+   * Длина номера
+   */
   int numberLength;
+
+  /**
+   * Разрешенная длина номера
+   */
   @Default
   String numberAllowedLength = "";
+
+  /**
+   * Периодичность номера
+   */
   @Default
   String numberPeriodicity = "";
+
+  /**
+   * Контролировать уникальность
+   */
   boolean checkUnique;
 }

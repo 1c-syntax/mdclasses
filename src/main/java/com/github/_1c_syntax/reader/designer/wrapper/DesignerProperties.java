@@ -221,7 +221,17 @@ public class DesignerProperties {
         value = context.convertAnother(reader, (Class<?>) ((ParameterizedType) methodType)
           .getActualTypeArguments()[0]);
 
-      } else if (methodType instanceof Class<?>) {
+      } else if (methodType instanceof ParameterizedType) {
+        List<Object> values = new ArrayList<>();
+        var clazz = (Class<?>) ((ParameterizedType) methodType)
+          .getActualTypeArguments()[0];
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          values.add(context.convertAnother(reader, clazz));
+          reader.moveUp();
+        }
+        value = values;
+      } else {
         value = context.convertAnother(reader, (Class<?>) methodType);
       }
     } catch (Exception e) {

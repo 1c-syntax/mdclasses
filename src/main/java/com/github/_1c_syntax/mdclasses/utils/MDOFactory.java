@@ -21,11 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
@@ -51,7 +49,7 @@ public class MDOFactory {
    */
   public Optional<AbstractMDObjectBase> readMDOConfiguration(ConfigurationSource configurationSource, Path rootPath) {
     return MDOPathUtils.getMDOPath(configurationSource, rootPath,
-      MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+        MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
       .flatMap(MDOFactory::readMDObject);
   }
 
@@ -139,19 +137,5 @@ public class MDOFactory {
 
     var value = (DesignerExchangePlanContent) XStreamFactory.fromXML(path.toFile());
     return value.getContent();
-  }
-
-  /**
-   * Создает объект языка если вдруг его не оказалось в данных конфигурации
-   *
-   * @param scriptVariant - вариант языка конфигурации
-   * @return - созданный и минимально заполненный объект языка
-   */
-  public MDLanguage fakeLanguage(ScriptVariant scriptVariant) {
-    if (scriptVariant == ScriptVariant.ENGLISH) {
-      return MDLanguage.ENGLISH;
-    } else {
-      return MDLanguage.RUSSIAN;
-    }
   }
 }

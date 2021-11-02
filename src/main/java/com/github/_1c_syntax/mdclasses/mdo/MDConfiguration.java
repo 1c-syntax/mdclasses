@@ -137,7 +137,8 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   /**
    * Язык приложения по умолчанию
    */
-  private Either<String, MDLanguage> defaultLanguage = Either.right(MDOFactory.fakeLanguage(scriptVariant));
+//  private Either<String, MDLanguage> defaultLanguage;
+  private Either<String, AbstractMDO> defaultLanguage;
 
   /**
    * Режим управления блокировками
@@ -205,7 +206,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     linkCommonAttributesAndUsing(localChildren);
     linkExchangePlanAndMDO(localChildren);
 
-    setDefaultConfigurationLanguage();
+//    setDefaultConfigurationLanguage();
   }
 
   private static List<LanguageContent> createLanguageContent(List<DesignerContentItem> designerContentItems) {
@@ -218,20 +219,20 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       .collect(Collectors.toList());
   }
 
-  private void setDefaultConfigurationLanguage() {
-    if (defaultLanguage.isLeft()) {
-      var defaultLang = defaultLanguage.getLeft();
-
-      children.stream()
-        .filter(Either::isRight)
-        .map(Either::get)
-        .filter(MDLanguage.class::isInstance)
-        .map(MDLanguage.class::cast)
-        .filter((MDLanguage mdo) -> defaultLang.equals(mdo.getMdoReference().getMdoRef()))
-        .findFirst()
-        .ifPresent((MDLanguage mdo) -> setDefaultLanguage(Either.right(mdo)));
-    }
-  }
+//  private void setDefaultConfigurationLanguage() {
+////    if (defaultLanguage.isLeft()) {
+////      var defaultLang = defaultLanguage.getLeft();
+//
+////      children.stream()
+////        .filter(Either::isRight)
+////        .map(Either::get)
+////        .filter(MDLanguage.class::isInstance)
+////        .map(MDLanguage.class::cast)
+////        .filter((MDLanguage mdo) -> defaultLang.equals(mdo.getMdoReference().getMdoRef()))
+////        .findFirst()
+////        .ifPresent((MDLanguage mdo) -> setDefaultLanguage(Either.right(mdo)));
+//    }
+//}
 
   private void computeAllMDObject(Path rootPath) {
     var localChildren =
@@ -322,7 +323,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
         .flatMap(mdoReferenceLanguage -> childrenMDO.stream()
           .filter(mdObject -> mdObject.getMdoReference().equals(mdoReferenceLanguage))
           .findFirst()).ifPresent(language ->
-        TransformationUtils.setValue(builder, "defaultLanguage", language));
+          TransformationUtils.setValue(builder, "defaultLanguage", language));
     }
 
     TransformationUtils.setValue(builder, "dataLockControlMode", dataLockControlMode);

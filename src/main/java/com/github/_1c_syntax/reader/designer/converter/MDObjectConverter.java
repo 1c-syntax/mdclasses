@@ -1,9 +1,11 @@
 package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.ScheduledJob;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
@@ -42,6 +44,11 @@ public class MDObjectConverter implements Converter {
 
     if (WebServiceOperation.class.isAssignableFrom(designerProperties.getRealClass())) {
       designerProperties.getProperties().put("handler", designerProperties.getUnknownProperties().get("ProcedureName"));
+    }
+
+    if (ScheduledJob.class.isAssignableFrom(designerProperties.getRealClass())) {
+      designerProperties.getProperties().put("handler",
+        new Handler((String) designerProperties.getUnknownProperties().get("MethodName")));
     }
 
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {

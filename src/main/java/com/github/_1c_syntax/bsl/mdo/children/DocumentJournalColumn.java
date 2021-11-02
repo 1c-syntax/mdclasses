@@ -34,6 +34,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
+import java.util.List;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid", "mdoReference"})
@@ -52,32 +55,26 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Builder.Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType mdoType;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Builder.Default
+  MDOType mdoType = MDOType.ATTRIBUTE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonym;
+  @Builder.Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Builder.Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
@@ -87,22 +84,30 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   /**
    * Вид атрибута
    */
-  AttributeKind kind;
+  @Builder.Default
+  AttributeKind kind = AttributeKind.CUSTOM;
 
   /**
    * Вариант индексирования реквизита
    */
-  IndexingType indexing;
+  @Builder.Default
+  IndexingType indexing = IndexingType.DONT_INDEX;
 
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Builder.Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Builder.Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
-  // todo ссылки надо положить? возможно в тип
+  /**
+   * Ссылки на реквизиты документов
+   */
+  @Builder.Default
+  List<MdoReference> references = Collections.emptyList();
 }

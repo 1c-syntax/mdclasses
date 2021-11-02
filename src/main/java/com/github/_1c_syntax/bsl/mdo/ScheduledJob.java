@@ -97,5 +97,39 @@ public class ScheduledJob implements MDObject {
   boolean use;
   boolean predefined;
   int restartCountOnFailure;
+=======
+  Handler handler = Handler.EMPTY;
+
+  /**
+   * Представление регламентного задания
+   */
+  @Default
+  String description = "";
+
+  /**
+   * Ключ уникальности
+   */
+  @Default
+  String key = "";
+
+  /**
+   * Использование по умолчанию
+   */
+  boolean use;
+
+  /**
+   * Предопределенный
+   */
+  boolean predefined;
+
+  /**
+   * Количество попыток перезапуска при ошибке
+   */
+  int restartCountOnFailure;
+
+  /**
+   * Интервал перезапуска при ошибке
+   */
+>>>>>>> 5ae33c50 (Первая порция изменений)
   int restartIntervalOnFailure;
 }

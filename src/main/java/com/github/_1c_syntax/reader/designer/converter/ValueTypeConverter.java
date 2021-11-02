@@ -73,8 +73,9 @@ public class ValueTypeConverter implements Converter {
 
     if (stringQualifier != ValueType.StringQualifier.EMPTY) {
       return new ValueType(stringQualifier);
+    } else {
+      return new ValueType(type);
     }
-    return new ValueType(null);
 
   }
 

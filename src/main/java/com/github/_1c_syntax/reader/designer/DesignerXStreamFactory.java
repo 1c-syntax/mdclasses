@@ -4,6 +4,7 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
+import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
@@ -160,6 +161,7 @@ public class DesignerXStreamFactory {
     xStream.alias("package", XdtoPackageData.class);
     xStream.alias("Operation", WebServiceOperation.class);
     xStream.alias("Parameter", WebServiceOperationParameter.class);
+    xStream.alias("Column", DocumentJournalColumn.class);
   }
 
   private void registerConverters(XStream xStream) {

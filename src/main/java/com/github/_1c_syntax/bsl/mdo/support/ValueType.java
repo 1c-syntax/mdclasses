@@ -6,6 +6,9 @@ import lombok.Value;
 
 @Value
 public class ValueType {
+
+  public static final ValueType EMPTY = new ValueType("UNKNOWN");
+
   /**
    * Строковое представление типа
    */
@@ -24,6 +27,16 @@ public class ValueType {
   public ValueType(@NonNull StringQualifier stringQualifier) {
     this.type = "xs:string";
     this.stringQualifier = stringQualifier;
+  }
+
+  /**
+   * Конструктор для типа без квалификаторов
+   *
+   * @param type Строковое представление типа
+   */
+  public ValueType(@NonNull String type) {
+    this.type = type;
+    this.stringQualifier = StringQualifier.EMPTY;
   }
 
   @Value

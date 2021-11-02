@@ -85,5 +85,5 @@ public class FunctionalOptionsParameter implements MDObject {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   @Default
-  String use = "";
+  String use = ""; // todo пока не читается
 }
