@@ -36,8 +36,7 @@ class WSReferenceTest extends AbstractMDObjectTest<WSReference> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, WSReference.WSСсылка1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, WSReference.WSСсылка1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

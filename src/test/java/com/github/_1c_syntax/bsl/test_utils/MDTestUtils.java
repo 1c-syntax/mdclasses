@@ -17,11 +17,16 @@ import java.beans.PropertyDescriptor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @UtilityClass
 public class MDTestUtils {
+
+  private static final Map<Path, MDClass> MDCLASSES = new HashMap<>();
+
   /**
    * Для загрузки фикстуры по пути к файлу
    *
@@ -54,7 +59,14 @@ public class MDTestUtils {
    * @return Прочитанный контейнер
    */
   public MDClass getMDClass(Path path) {
-    return MDClasses.createConfiguration(path);
+
+    var mdc = MDCLASSES.get(path);
+    if (mdc == null) {
+      mdc = MDClasses.createConfiguration(path);
+      MDCLASSES.put(path, mdc);
+    }
+
+    return mdc;
   }
 
   /**

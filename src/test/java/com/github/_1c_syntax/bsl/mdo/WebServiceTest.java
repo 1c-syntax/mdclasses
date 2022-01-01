@@ -21,14 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class WebServiceTest extends AbstractMDObjectTest<WebService> {
   WebServiceTest() {
@@ -38,18 +35,10 @@ class WebServiceTest extends AbstractMDObjectTest<WebService> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, WebService.WebСервис1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, WebService.Exchange"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
-    var value = (WebService) mdo;
-    assertThat(value.getChildren()).hasSize(2);
-    assertThat(value.getXdtoPackages()).isEmpty();
-
-    assertThat(((WebServiceOperation) value.getChildren().get(1)).getChildren()).hasSize(2);
-    assertThat(((WebServiceOperation) value.getChildren().get(0)).getHandler()).isNotBlank();
-
   }
 }

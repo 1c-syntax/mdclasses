@@ -36,7 +36,6 @@ class XdtoPackageTest extends AbstractMDObjectTest<XdtoPackage> {
   @CsvSource(
     {
       "designer/ssl_3_1, XDTOPackage.АдресныйКлассификатор"
-//      "EDT, AccumulationRegister.Бот1",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

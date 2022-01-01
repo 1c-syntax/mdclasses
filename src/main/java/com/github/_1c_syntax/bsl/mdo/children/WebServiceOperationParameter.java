@@ -44,7 +44,7 @@ public class WebServiceOperationParameter implements MDObject, MDChildObject {
    * Тип метаданных
    */
   @Default
-  MDOType mdoType = MDOType.UNKNOWN; // todo создать тип
+  MDOType mdoType = MDOType.WS_OPERATION_PARAMETER;
 
   /**
    * Синонимы объекта
