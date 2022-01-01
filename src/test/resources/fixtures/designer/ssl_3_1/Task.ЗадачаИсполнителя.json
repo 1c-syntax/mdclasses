@@ -1,60 +1,91 @@
 {
   "com.github._1c_syntax.bsl.mdo.Task": {
-    "name": "Задача1",
-    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "addressing": "InformationRegister.ИсполнителиЗадач",
+    "attributes": [],
+    "autonumbering": true,
+    "auxiliaryChoiceForm": "",
+    "auxiliaryListForm": "",
+    "auxiliaryObjectForm": "",
+    "basedOn": [],
+    "characteristics": [],
+    "checkUnique": true,
+    "choiceDataGetModeOnInputByString": "Directly",
+    "choiceHistoryOnInput": "Auto",
+    "commands": [],
     "comment": "",
-    "objectBelonging": "OWN",
-    "type": "TASK",
-    "synonym": {
-      "content": []
-    },
+    "createOnInput": "DontUse",
+    "currentPerformer": "SessionParameter.АвторизованныйПользователь",
+    "dataLockControlMode": "MANAGED",
+    "dataLockFields": [
+      "Task.ЗадачаИсполнителя.StandardAttribute.BusinessProcess"
+    ],
+    "defaultChoiceForm": "",
+    "defaultListForm": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
+    "defaultObjectForm": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
+    "defaultPresentation": "AsDescription",
+    "descriptionLength": 150,
+    "editType": "InDialog",
+    "explanation": "",
+    "extendedListPresentation": "",
+    "extendedObjectPresentation": "",
+    "forms": [],
+    "fullTextSearch": "USE",
+    "fullTextSearchOnInputByString": "DontUse",
+    "includeHelpInContents": true,
+    "inputByString": [
+      "Task.ЗадачаИсполнителя.StandardAttribute.Description",
+      "Task.ЗадачаИсполнителя.StandardAttribute.Number"
+    ],
+    "listPresentation": "\n\t\t\t\t",
+    "mainAddressingAttribute": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
     "mdoReference": {
       "type": "TASK",
-      "mdoRef": "Task.Задача1",
-      "mdoRefRu": "Задача.Задача1"
+      "mdoRef": "Task.ЗадачаИсполнителя",
+      "mdoRefRu": "Задача.ЗадачаИсполнителя"
     },
-    "attributes": [],
-    "forms": [],
-    "commands": [],
-    "templates": [],
-    "modules": [],
-    "tabularSections": [],
-    "supportVariant": "NONE",
-    "useStandardCommands": true,
-    "includeHelpInContents": false,
-    "defaultListForm": "",
-    "defaultObjectForm": "",
-    "defaultChoiceForm": "",
-    "auxiliaryObjectForm": "",
-    "auxiliaryListForm": "",
-    "auxiliaryChoiceForm": "",
-    "editType": "InDialog",
-    "inputByString": [],
-    "createOnInput": "DontUse",
-    "dataLockControlMode": "MANAGED",
-    "fullTextSearch": "USE",
-    "listPresentation": "",
-    "extendedListPresentation": "",
-    "objectPresentation": "",
-    "extendedObjectPresentation": "",
-    "explanation": "",
-    "checkUnique": true,
-    "autonumbering": true,
-    "defaultPresentation": "AsDescription",
-    "characteristics": [],
-    "searchStringModeOnInputByString": "Begin",
-    "fullTextSearchOnInputByString": "DontUse",
-    "choiceDataGetModeOnInputByString": "Directly",
-    "basedOn": [],
-    "dataLockFields": [],
-    "choiceHistoryOnInput": "Auto",
+    "mdoType": "TASK",
+    "modules": [
+      {
+        "moduleType": "ObjectModule",
+        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl",
+        "owner": {
+          "type": "TASK",
+          "mdoRef": "Task.ЗадачаИсполнителя",
+          "mdoRefRu": "Задача.ЗадачаИсполнителя"
+        },
+        "supportVariant": "NONE"
+      },
+      {
+        "moduleType": "ManagerModule",
+        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl",
+        "owner": {
+          "type": "TASK",
+          "mdoRef": "Task.ЗадачаИсполнителя",
+          "mdoRefRu": "Задача.ЗадачаИсполнителя"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
+    "name": "ЗадачаИсполнителя",
+    "numberAllowedLength": "Fixed",
+    "numberLength": 14,
     "numberType": "String",
-    "numberLength": 9,
-    "numberAllowedLength": "Variable",
-    "taskNumberAutoPrefix": "DontUse",
-    "descriptionLength": 25,
-    "addressing": "",
-    "mainAddressingAttribute": "",
-    "currentPerformer": ""
+    "objectBelonging": "OWN",
+    "objectPresentation": "",
+    "searchStringModeOnInputByString": "Begin",
+    "supportVariant": "NONE",
+    "synonym": {
+      "content": [
+        [
+          "ru",
+          "Задача"
+        ]
+      ]
+    },
+    "tabularSections": [],
+    "taskNumberAutoPrefix": "BusinessProcessNumber",
+    "templates": [],
+    "useStandardCommands": false,
+    "uuid": "3ad08f4a-6202-4099-b6cc-bc116e6731a0"
   }
 }
