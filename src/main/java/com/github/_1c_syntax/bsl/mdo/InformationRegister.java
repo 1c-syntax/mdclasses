@@ -137,25 +137,25 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма записи по умолчанию
    */
   @Default
-  String defaultRecordForm = "";
+  MdoReference defaultRecordForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма записи
    */
   @Default
-  String auxiliaryRecordForm = "";
+  MdoReference auxiliaryRecordForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Режим редактирования
@@ -179,44 +179,58 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление записи
    */
   @Default
-  String recordPresentation = "";
+  MultiLanguageString recordPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление записи
    */
   @Default
-  String extendedRecordPresentation = "";
+  MultiLanguageString extendedRecordPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Default
   String dataHistory = "";
 
   boolean updateDataHistoryImmediatelyAfterWrite;
+
   boolean executeAfterWriteDataHistoryVersionProcessing;
 
   @Default
   String informationRegisterPeriodicity = "";
+
   @Default
   String writeMode = "";
+
+  /**
+   * Основной отбор по периоду
+   */
   boolean mainFilterOnPeriod;
+
+  /**
+   * Использовать итоги срез первых
+   */
   boolean enableTotalsSliceFirst;
+
+  /**
+   * Использовать итоги срез последних
+   */
   boolean enableTotalsSliceLast;
 
   @Override

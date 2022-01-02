@@ -2,7 +2,9 @@ package com.github._1c_syntax.reader.designer;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.HttpService;
+import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Sequence;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
@@ -11,6 +13,8 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
+import com.github._1c_syntax.bsl.mdo.children.RegisterResource;
 import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
@@ -19,6 +23,7 @@ import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -169,7 +174,7 @@ public class DesignerXStreamFactory {
     xStream.alias("Parameter", WebServiceOperationParameter.class);
     xStream.alias("Column", DocumentJournalColumn.class);
     xStream.alias("Attribute", ObjectAttribute.class);
-    xStream.alias("Dimension", SequenceDimension.class);
+    xStream.alias("Resource", RegisterResource.class);
     xStream.alias("AddressingAttribute", TaskAddressingAttribute.class);
     xStream.alias("Command", ObjectCommand.class);
     xStream.alias("Template", ObjectTemplate.class);
@@ -177,6 +182,9 @@ public class DesignerXStreamFactory {
     xStream.alias("Form", ObjectForm.class);
     xStream.alias("Rights", RoleRight.class);
     xStream.alias("IntegrationServiceChannel", IntegrationServiceChannel.class);
+
+    xStream.alias("SequenceDimension", SequenceDimension.class);
+    xStream.alias("RegisterDimension", RegisterDimension.class);
   }
 
   private void registerConverters(XStream xStream) {
@@ -205,7 +213,7 @@ public class DesignerXStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
 //    xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
 //    xStream.registerConverter(new EnumConverter<>(FormType.class));
-//    xStream.registerConverter(new EnumConverter<>(IndexingType.class));
+    xStream.registerConverter(new EnumConverter<>(IndexingType.class));
 //    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
 //    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(ApplicationRunMode.class));

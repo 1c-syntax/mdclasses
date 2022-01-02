@@ -2,10 +2,13 @@ package com.github._1c_syntax.reader.designer.wrapper;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.Sequence;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
+import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -41,12 +44,13 @@ public class DesignerProperties {
 
   private static final String PROPERTIES_NODE_NAME = "Properties";
   private static final String CHILD_OBJECTS_NODE_NAME = "ChildObjects";
+  private static final String DIMENSION_NODE_NAME = "Dimension";
 
   private Map<String, Object> properties;
   private Map<String, Object> unknownProperties;
   private List<Object> children;
 
-  private String realClassName;
+  //  private String realClassName;
   private Class<?> realClass;
   private Object builder;
 
@@ -60,13 +64,25 @@ public class DesignerProperties {
 
   public DesignerProperties(@NonNull HierarchicalStreamReader reader, @NonNull UnmarshallingContext context) {
 
-    realClassName = reader.getNodeName();
-    realClass = DesignerXStreamFactory.getRealClass(realClassName);
+    currentPath = DesignerXStreamFactory.getCurrentPath(reader);
+    var realClassName = reader.getNodeName();
+    mdoType = getMdoType(reader);
+    if (DIMENSION_NODE_NAME.equals(realClassName)) {
+      var mdoTypeName = DesignerXStreamFactory.getCurrentPath(reader).getParent().getFileName().toString();
+      var parentMDOType = MDOType.fromValue(mdoTypeName);
+      if (parentMDOType.isPresent() && parentMDOType.get() == MDOType.SEQUENCE) {
+        realClass = SequenceDimension.class;
+        mdoType = MDOType.SEQUENCE_DIMENSION;
+      } else {
+        realClass = RegisterDimension.class;
+        mdoType = MDOType.REGISTER_DIMENSION;
+      }
+    } else {
+      realClass = DesignerXStreamFactory.getRealClass(realClassName);
+    }
+
     builder = TransformationUtils.builder(realClass);
     requireNonNull(builder);
-
-    mdoType = getMdoType(reader);
-    currentPath = DesignerXStreamFactory.getCurrentPath(reader);
 
     properties = new HashMap<>();
     properties.put("uuid", reader.getAttribute("uuid"));
@@ -158,7 +174,20 @@ public class DesignerProperties {
       reader.moveDown();
       var nodeName = reader.getNodeName();
       try {
-        Class<?> childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
+
+        Class<?> childRealClass;
+
+        if (DIMENSION_NODE_NAME.equals(nodeName)) {
+          if (Sequence.class.isAssignableFrom(realClass)) {
+            childRealClass = SequenceDimension.class;
+          } else {
+            childRealClass = RegisterDimension.class;
+          }
+
+        } else {
+          childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
+        }
+
         if (childRealClass == null) {
           throw new IllegalStateException("Unexpected type: " + nodeName);
         }
@@ -190,8 +219,7 @@ public class DesignerProperties {
           }
 
           child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());
-        } else
-          if (Subsystem.class.isAssignableFrom(childRealClass)) {
+        } else if (Subsystem.class.isAssignableFrom(childRealClass)) {
           var mdoFolderPath = MDOPathUtils.getChildrenFolder(
             FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), MDOType.SUBSYSTEM);
           if (mdoFolderPath.isEmpty()) {
