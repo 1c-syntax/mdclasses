@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -114,37 +115,41 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
    * Форма умолчанию
    */
   @Default
-  String defaultForm = "";
+  MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма
    */
   @Default
-  String auxiliaryForm = "";
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
 
   /**
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
-  // todo описание
-
+  /**
+   * Тип значения критерия
+   */
   @Default
-  String value_type = "";
+  ValueType type = ValueType.EMPTY;
 
+  /**
+   * Включенные в состав объекты
+   */
   @Default
-  List<String> content = Collections.emptyList();
+  List<MdoReference> content = Collections.emptyList();
 }
