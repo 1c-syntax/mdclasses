@@ -29,10 +29,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -53,45 +55,42 @@ public class ObjectCommand implements Command, MDChildObject {
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType mdoType;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType mdoType = MDOType.COMMAND;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonym;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 }

@@ -5,6 +5,12 @@ import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
@@ -17,11 +23,8 @@ import com.github._1c_syntax.mdclasses.unmarshal.ExtendReaderWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendStaxDriver;
 import com.github._1c_syntax.reader.common.converter.MethodHandlerConverter;
 import com.github._1c_syntax.reader.common.converter.XdtoPackageDataConverter;
-import com.github._1c_syntax.reader.designer.converter.ApplicationUsePurposeConverter;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
 import com.github._1c_syntax.reader.designer.converter.EnumConverter;
-import com.github._1c_syntax.reader.designer.converter.MdoReferenceConverter;
-import com.github._1c_syntax.reader.designer.converter.ValueTypeConverter;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerRootWrapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
@@ -162,6 +165,12 @@ public class DesignerXStreamFactory {
     xStream.alias("Operation", WebServiceOperation.class);
     xStream.alias("Parameter", WebServiceOperationParameter.class);
     xStream.alias("Column", DocumentJournalColumn.class);
+    xStream.alias("Attribute", ObjectAttribute.class);
+    xStream.alias("AddressingAttribute", TaskAddressingAttribute.class);
+    xStream.alias("Command", ObjectCommand.class);
+    xStream.alias("Template", ObjectTemplate.class);
+    xStream.alias("TabularSection", ObjectTabularSection.class);
+    xStream.alias("Form", ObjectForm.class);
   }
 
   private void registerConverters(XStream xStream) {
@@ -197,6 +206,7 @@ public class DesignerXStreamFactory {
 
     xStream.registerConverter(new MethodHandlerConverter());
     xStream.registerConverter(new XdtoPackageDataConverter());
+
   }
 
   private static Function<ClassInfo, Converter> getObjectsFromInfoClass() {

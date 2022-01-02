@@ -2,7 +2,9 @@ package com.github._1c_syntax.reader.designer.wrapper;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
+import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -18,6 +20,7 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Data;
 import lombok.NonNull;
+import org.apache.commons.io.FilenameUtils;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.ParameterizedType;
@@ -27,6 +30,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
@@ -158,7 +162,37 @@ public class DesignerProperties {
           throw new IllegalStateException("Unexpected type: " + nodeName);
         }
 
-        var child = context.convertAnother(reader, childRealClass);
+        Object child;
+        if (ObjectTemplate.class.isAssignableFrom(childRealClass)) {
+          var mdoFolderPath = MDOPathUtils.getChildrenFolder(
+            FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), MDOType.TEMPLATE);
+          if (mdoFolderPath.isEmpty()) {
+            throw new IllegalArgumentException("Missing template folder");
+          }
+
+          var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
+          if (templatePath.isEmpty()) {
+            throw new IllegalArgumentException("Missing template path");
+          }
+
+          child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());
+        } else if (ObjectForm.class.isAssignableFrom(childRealClass)) {
+          var mdoFolderPath = MDOPathUtils.getChildrenFolder(
+            FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), MDOType.FORM);
+          if (mdoFolderPath.isEmpty()) {
+            throw new IllegalArgumentException("Missing form folder");
+          }
+
+          var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
+          if (templatePath.isEmpty()) {
+            throw new IllegalArgumentException("Missing form path");
+          }
+
+          child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());
+        } else {
+          child = context.convertAnother(reader, childRealClass);
+        }
+
         if (child instanceof DesignerProperties) {
           // нужно обновить ссылки на родителя
           ((DesignerProperties) child).updateOwner(mdoReference);
@@ -175,12 +209,21 @@ public class DesignerProperties {
   }
 
   private void readModules() {
-    var mdoFolderPath = MDOPathUtils.getMDOTypeFolderByMDOPath(currentPath, mdoType);
+
+    Optional<Path> mdoFolderPath;
+    if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
+      mdoFolderPath = MDOPathUtils.getChildrenFolder(
+        FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), mdoType);
+    } else {
+      mdoFolderPath = MDOPathUtils.getMDOTypeFolderByMDOPath(currentPath, mdoType);
+    }
+
     if (mdoFolderPath.isEmpty()) {
       return;
     }
 
     var folder = mdoFolderPath.get();
+
     var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdoType, Collections.emptySet());
     if (moduleTypes.isEmpty()) {
       return;

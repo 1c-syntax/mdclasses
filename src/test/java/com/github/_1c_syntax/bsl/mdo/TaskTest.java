@@ -35,7 +35,8 @@ class TaskTest extends AbstractMDObjectTest<Task> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "designer/ssl_3_1, Task.ЗадачаИсполнителя"
+      "designer/ssl_3_1, Task.ЗадачаИсполнителя",
+      "designer/mdclasses, Task.Задача1",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

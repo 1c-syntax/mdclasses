@@ -88,16 +88,6 @@ public class ScheduledJob implements MDObject {
   /**
    * Полное имя метода, включающее имя общего модуля
    */
-  Handler handler; // todo fake handler
-
-  @Default
-  String description = "";
-  @Default
-  String key = "";
-  boolean use;
-  boolean predefined;
-  int restartCountOnFailure;
-=======
   Handler handler = Handler.EMPTY;
 
   /**
@@ -130,6 +120,5 @@ public class ScheduledJob implements MDObject {
   /**
    * Интервал перезапуска при ошибке
    */
->>>>>>> 5ae33c50 (Первая порция изменений)
   int restartIntervalOnFailure;
 }

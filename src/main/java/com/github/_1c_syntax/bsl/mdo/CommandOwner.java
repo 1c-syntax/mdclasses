@@ -31,4 +31,5 @@ public interface CommandOwner extends ChildrenOwner {
    * Список команд объекта
    */
   List<Command> getCommands();
+
 }

@@ -373,6 +373,7 @@ public class MDOPathUtils {
    */
   private Path getModulePathDesigner(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
+
     if (moduleType == ModuleType.FormModule) {
       subdirectory += FILE_SEPARATOR + "Form";
     }
