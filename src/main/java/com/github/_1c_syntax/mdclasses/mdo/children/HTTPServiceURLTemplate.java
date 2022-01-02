@@ -97,7 +97,7 @@ public class HTTPServiceURLTemplate extends AbstractMDObjectBase implements MDOH
       mdoReference.getMdoRef(), mdoReference.getMdoRefRu());
 
     ((HttpServiceUrlTemplate.HttpServiceUrlTemplateBuilder) builder)
-      .httpServiceMethods(httpServiceMethods.stream()
+      .children(httpServiceMethods.stream()
         .map(child -> child.buildMDObject(ref, ownerPath))
         .map(HttpServiceMethod.class::cast)
         .collect(Collectors.toList()))

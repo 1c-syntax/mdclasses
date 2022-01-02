@@ -1,0 +1,99 @@
+{
+  "com.github._1c_syntax.bsl.mdo.HttpService": {
+    "children": [
+      {
+        "name": "ШаблонURL1",
+        "uuid": "82b6ade4-b8c1-40ea-b9ee-d529b184c5dc",
+        "objectBelonging": "OWN",
+        "mdoType": "HTTP_SERVICE_URL_TEMPLATE",
+        "synonym": {
+          "content": []
+        },
+        "mdoReference": {
+          "type": "HTTP_SERVICE_URL_TEMPLATE",
+          "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1",
+          "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1"
+        },
+        "owner": {
+          "type": "HTTP_SERVICE",
+          "mdoRef": "HTTPService.HTTPСервис1",
+          "mdoRefRu": "HTTPСервис.HTTPСервис1"
+        },
+        "supportVariant": "NONE",
+        "children": [
+          {
+            "name": "Метод1",
+            "uuid": "6255c7e0-f3c8-4c1f-bc1a-4882647c0f35",
+            "objectBelonging": "OWN",
+            "mdoType": "HTTP_SERVICE_METHOD",
+            "synonym": {
+              "content": []
+            },
+            "mdoReference": {
+              "type": "HTTP_SERVICE_METHOD",
+              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1.Method.Метод1",
+              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1.Метод.Метод1"
+            },
+            "owner": {
+              "type": "HTTP_SERVICE_URL_TEMPLATE",
+              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1",
+              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1"
+            },
+            "supportVariant": "NONE",
+            "handler": "ШаблонURL1Метод1"
+          },
+          {
+            "name": "Метод2",
+            "uuid": "7b6bf2c8-eee3-461c-a062-be7815666274",
+            "objectBelonging": "OWN",
+            "mdoType": "HTTP_SERVICE_METHOD",
+            "synonym": {
+              "content": []
+            },
+            "mdoReference": {
+              "type": "HTTP_SERVICE_METHOD",
+              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1.Method.Метод2",
+              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1.Метод.Метод2"
+            },
+            "owner": {
+              "type": "HTTP_SERVICE_URL_TEMPLATE",
+              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1",
+              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1"
+            },
+            "supportVariant": "NONE",
+            "handler": "ШаблонURL1Метод2"
+          }
+        ]
+      }
+    ],
+    "comment": "",
+    "mdoReference": {
+      "type": "HTTP_SERVICE",
+      "mdoRef": "HTTPService.HTTPСервис1",
+      "mdoRefRu": "HTTPСервис.HTTPСервис1"
+    },
+    "mdoType": "HTTP_SERVICE",
+    "modules": [
+      {
+        "moduleType": "HTTPServiceModule",
+        "uri": "src/test/resources/ext/designer/mdclasses/src/cf/HTTPServices/HTTPСервис1/Ext/Module.bsl",
+        "owner": {
+          "type": "HTTP_SERVICE",
+          "mdoRef": "HTTPService.HTTPСервис1",
+          "mdoRefRu": "HTTPСервис.HTTPСервис1"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
+    "name": "HTTPСервис1",
+    "objectBelonging": "OWN",
+    "reuseSessions": "AutoUse",
+    "rootURL": "test.test",
+    "sessionMaxAge": 20,
+    "supportVariant": "NONE",
+    "synonym": {
+      "content": []
+    },
+    "uuid": "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe"
+  }
+}

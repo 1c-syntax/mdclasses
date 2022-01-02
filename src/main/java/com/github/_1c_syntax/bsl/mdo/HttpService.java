@@ -98,19 +98,29 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
    * Шаблоны URL HTTP-сервиса
    */
   @Default
-  List<HttpServiceUrlTemplate> urlTemplates = Collections.emptyList();
+  List<HttpServiceUrlTemplate> children = Collections.emptyList();
 
+  /**
+   * Корневой URL
+   */
   @Default
   String rootURL = "";
 
+  /**
+   * Повторное использование сеанса
+   */
   @Default
   String reuseSessions = "";
+
+  /**
+   * Время жизни сеанса
+   */
   int sessionMaxAge;
 
   @Override
   public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(urlTemplates);
-    return children;
+    var superChildren = ChildrenOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
   }
 }
