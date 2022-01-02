@@ -149,37 +149,37 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма объекта по умолчанию
    */
   @Default
-  String defaultObjectForm = "";
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма объекта
    */
   @Default
-  String auxiliaryObjectForm = "";
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Ввод по строке
@@ -209,78 +209,112 @@ public class Document implements MDObject, AttributeOwner, FormOwner, CommandOwn
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление объекта
    */
   @Default
-  String objectPresentation = "";
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление объекта
    */
   @Default
-  String extendedObjectPresentation = "";
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описание
 
   @Default
   String numerator = "";
+
   @Default
   String numberType = "";
+
   int numberLength;
+
   @Default
   String numberAllowedLength = "";
+
   @Default
   String numberPeriodicity = "";
+
   boolean checkUnique;
+
   boolean autonumbering;
 
   @Default
   List<String> characteristics = Collections.emptyList();
+
   @Default
   String searchStringModeOnInputByString = "";
+
   @Default
   String fullTextSearchOnInputByString = "";
+
   @Default
   String choiceDataGetModeOnInputByString = "";
 
+  /**
+   * Ввод на основании
+   */
   @Default
   List<String> basedOn = Collections.emptyList();
+
+  /**
+   * Поля блокировки данных
+   */
   @Default
   List<String> dataLockFields = Collections.emptyList();
+
   @Default
   String choiceHistoryOnInput = "";
+
   @Default
   String dataHistory = "";
 
   boolean updateDataHistoryImmediatelyAfterWrite;
+
   boolean executeAfterWriteDataHistoryVersionProcessing;
 
+  /**
+   * Проведение
+   */
   @Default
   String posting = "";
+
+  /**
+   * Оперативное проведение
+   */
   @Default
   String realTimePosting = "";
+
+  /**
+   * Удаление движений
+   */
   @Default
   String registerRecordsDeletion = "";
+
   @Default
   String registerRecordsWritingOnPost = "";
+
   @Default
   String sequenceFilling = "";
+
   boolean postInPrivilegedMode;
+
   boolean unpostInPrivilegedMode;
 
   @Override
