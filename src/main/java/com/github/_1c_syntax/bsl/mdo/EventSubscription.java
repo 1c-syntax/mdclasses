@@ -104,6 +104,6 @@ public class EventSubscription implements MDObject {
    * Список объектов для которых зарегистрированная данная подписка на событие
    */
   @Default
-  List<MdoReference> source = Collections.emptyList();
+  List<String> source = Collections.emptyList();
 
 }

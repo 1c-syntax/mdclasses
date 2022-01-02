@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.EnumValue;
+import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -121,49 +123,65 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Default
   List<String> characteristics = Collections.emptyList();
+
   boolean quickChoice;
+
   @Default
   String choiceMode = "";
+
   @Default
   String choiceHistoryOnInput = "";
+
+  /**
+   * Элементы перечисления
+   */
+  @Default
+  List<EnumValue> children = Collections.emptyList();
+
+  @Override
+  public List<MDObject> getChildren() {
+    var superChildren = FormOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
+  }
 }

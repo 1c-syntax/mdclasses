@@ -23,12 +23,9 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class EventSubscriptionTest extends AbstractMDObjectTest<EventSubscription> {
   EventSubscriptionTest() {
@@ -38,12 +35,10 @@ class EventSubscriptionTest extends AbstractMDObjectTest<EventSubscription> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, EventSubscription.ПодпискаНаСобытие1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, EventSubscription.АвтономнаяРаботаПроверитьВозможностьЗаписиОбщихДанных"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
-
 }

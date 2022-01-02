@@ -6,6 +6,7 @@ import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceUrlTemplate;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
@@ -185,6 +186,7 @@ public class DesignerXStreamFactory {
     xStream.alias("IntegrationServiceChannel", IntegrationServiceChannel.class);
     xStream.alias("URLTemplate", HttpServiceUrlTemplate.class);
     xStream.alias("Method", HttpServiceMethod.class);
+    xStream.alias("EnumValue", EnumValue.class);
 
     xStream.alias("Rights", RoleRight.class);
     xStream.alias("ExchangePlanContent", ExchangePlan.Item.class);
