@@ -35,8 +35,7 @@ class ExternalDataSourceTest extends AbstractMDObjectTest<ExternalDataSource> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, ExternalDataSource.ВнешнийИсточникДанных1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, ExternalDataSource.ВнешнийИсточникДанных1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

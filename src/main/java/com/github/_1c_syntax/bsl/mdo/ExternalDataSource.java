@@ -69,4 +69,6 @@ public class ExternalDataSource implements MDObject {
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  // todo реализовать чтение дочерних
 }
