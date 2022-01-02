@@ -28,6 +28,9 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Используется для преобразования типа значения
  */
@@ -41,13 +44,13 @@ public class ValueTypeConverter implements Converter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
-    String type = "";
+    List<String> types = new ArrayList<>();
     ValueType.StringQualifier stringQualifier = ValueType.StringQualifier.EMPTY;
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
       if (node.equals("Type")) {
-        type = reader.getValue();
+        types.add(reader.getValue());
       } else if (node.equals("StringQualifiers")) {
         int length = 0;
         String allowedLength = "";
@@ -74,7 +77,7 @@ public class ValueTypeConverter implements Converter {
     if (stringQualifier != ValueType.StringQualifier.EMPTY) {
       return new ValueType(stringQualifier);
     } else {
-      return new ValueType(type);
+      return new ValueType(types);
     }
 
   }

@@ -19,30 +19,28 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.Collections;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-
 @Value
 @Builder
-@ToString(of = {"name", "uuid"})
-@EqualsAndHashCode(of = {"name", "uuid"})
-public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
+@ToString(of = {"name", "uuid", "mdoReference"})
+@EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
+public class SequenceDimension implements Attribute, MDChildObject {
 
   /**
    * Имя
@@ -55,12 +53,6 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   String uuid;
 
   /**
-   * Комментарий
-   */
-  @Default
-  String comment = "";
-
-  /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
@@ -70,7 +62,7 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
    * Тип метаданных
    */
   @Default
-  MDOType mdoType = MDOType.SEQUENCE;
+  MDOType mdoType = MDOType.SEQUENCE_DIMENSION;
 
   /**
    * Синонимы объекта
@@ -85,16 +77,27 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список атрибутов
+   * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
-  @Default
-  List<Attribute> attributes = Collections.emptyList();
+  boolean passwordMode;
 
   /**
-   * Список модулей объекта
+   * Вид атрибута
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  AttributeKind kind = AttributeKind.CUSTOM;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  @Default
+  IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -103,31 +106,20 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Перемещение границы при проведении
+   * Тип значения измерения
    */
   @Default
-  String moveBoundaryOnPosting = "";
+  ValueType type = ValueType.EMPTY;
 
   /**
-   * Перечень документов, входящих в последовательность
+   * Соответствие реквизитам документа
    */
   @Default
-  List<MdoReference> documents = Collections.emptyList();
+  String documentMap = "";
 
   /**
-   * Движения, влияющие на последовательность
+   * Соответствие реквизитам движения
    */
   @Default
-  List<MdoReference> registerRecords = Collections.emptyList();
-
-  /**
-   * Режим управления блокировкой данных
-   */
-  @Default
-  String dataLockControlMode = "";
-
-  @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo не бывает такого
-  }
+  String registerRecordsMap = "";
 }

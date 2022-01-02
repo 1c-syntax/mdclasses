@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -36,8 +35,7 @@ class SessionParameterTest extends AbstractMDObjectTest<SessionParameter> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, SessionParameter.ПараметрСеанса1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, SessionParameter.АвторизованныйПользователь"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

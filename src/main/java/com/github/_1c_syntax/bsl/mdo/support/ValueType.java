@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 public class ValueType {
 
@@ -12,7 +14,7 @@ public class ValueType {
   /**
    * Строковое представление типа
    */
-  String type;
+  List<String> types;
 
   /**
    * Квалификатор строки
@@ -25,7 +27,7 @@ public class ValueType {
    * @param stringQualifier Квалификатор строки
    */
   public ValueType(@NonNull StringQualifier stringQualifier) {
-    this.type = "xs:string";
+    this.types = List.of("xs:string");
     this.stringQualifier = stringQualifier;
   }
 
@@ -35,7 +37,17 @@ public class ValueType {
    * @param type Строковое представление типа
    */
   public ValueType(@NonNull String type) {
-    this.type = type;
+    this.types = List.of(type);
+    this.stringQualifier = StringQualifier.EMPTY;
+  }
+
+  /**
+   * Конструктор для типа без квалификаторов
+   *
+   * @param types Список строковых представлений типов
+   */
+  public ValueType(@NonNull List<String> types) {
+    this.types = types;
     this.stringQualifier = StringQualifier.EMPTY;
   }
 

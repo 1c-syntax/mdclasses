@@ -10,6 +10,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
@@ -166,6 +167,7 @@ public class DesignerXStreamFactory {
     xStream.alias("Parameter", WebServiceOperationParameter.class);
     xStream.alias("Column", DocumentJournalColumn.class);
     xStream.alias("Attribute", ObjectAttribute.class);
+    xStream.alias("Dimension", SequenceDimension.class);
     xStream.alias("AddressingAttribute", TaskAddressingAttribute.class);
     xStream.alias("Command", ObjectCommand.class);
     xStream.alias("Template", ObjectTemplate.class);
