@@ -2,6 +2,7 @@ package com.github._1c_syntax.reader.designer.wrapper;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
@@ -186,6 +187,20 @@ public class DesignerProperties {
           var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
           if (templatePath.isEmpty()) {
             throw new IllegalArgumentException("Missing form path");
+          }
+
+          child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());
+        } else
+          if (Subsystem.class.isAssignableFrom(childRealClass)) {
+          var mdoFolderPath = MDOPathUtils.getChildrenFolder(
+            FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), MDOType.SUBSYSTEM);
+          if (mdoFolderPath.isEmpty()) {
+            throw new IllegalArgumentException("Missing subsystem folder");
+          }
+
+          var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
+          if (templatePath.isEmpty()) {
+            throw new IllegalArgumentException("Missing subsystem path");
           }
 
           child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());

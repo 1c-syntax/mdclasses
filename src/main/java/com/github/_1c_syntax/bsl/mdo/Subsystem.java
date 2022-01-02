@@ -96,7 +96,7 @@ public class Subsystem implements MDObject, ChildrenOwner {
    * Дочерние подсистемы
    */
   @Default
-  List<Subsystem> subsystems = Collections.emptyList();
+  List<Subsystem> children = Collections.emptyList();
 
   /**
    * Объекты, входящие в состав подсистемы
@@ -104,16 +104,27 @@ public class Subsystem implements MDObject, ChildrenOwner {
   @Default
   List<MdoReference> content = Collections.emptyList();
 
+  /**
+   * Включать в состав справки
+   */
   boolean includeHelpInContents;
+
+  /**
+   * Пояснение/Описание
+   */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Картинка подсистемы
+   */
   @Default
   String picture = "";
 
   @Override
   public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(subsystems);
-    return children;
+    var superChildren = ChildrenOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
   }
 }

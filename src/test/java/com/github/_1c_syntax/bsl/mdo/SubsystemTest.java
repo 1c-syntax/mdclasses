@@ -35,76 +35,13 @@ class SubsystemTest extends AbstractMDObjectTest<Subsystem> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, Subsystem.ПерваяПодсистема"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, Subsystem.ПерваяПодсистема",
+      "designer/ssl_3_1, Subsystem.СтандартныеПодсистемы",
+      "designer/ssl_3_1, Subsystem.Администрирование"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ПерваяПодсистема,3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293,,Первая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
-//    }
-//  )
-//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-//    var mdo = getMDObject("Subsystems/" + argumentsAccessor.getString(0));
-//    mdoTest(mdo, MDOType.SUBSYSTEM, argumentsAccessor);
-//    assertThat(mdo.isIncludeInCommandInterface()).isTrue();
-//    assertThat(mdo.getChildren())
-//      .hasSize(2)
-//      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема"))
-//      .anyMatch(child -> child.getName().equals("ПочиненнаяСистема2"));
-//  }
-//
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ПерваяПодсистема,3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293,,Первая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
-//    }
-//  )
-//  void testEDT(ArgumentsAccessor argumentsAccessor) {
-//    var name = argumentsAccessor.getString(0);
-//    var mdo = getMDObjectEDT("Subsystems/" + name + "/" + name);
-//    mdoTest(mdo, MDOType.SUBSYSTEM, argumentsAccessor);
-//    assertThat(mdo.isIncludeInCommandInterface()).isTrue();
-//    assertThat(mdo.getChildren())
-//      .hasSize(2)
-//      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема"))
-//      .anyMatch(child -> child.getName().equals("ПочиненнаяСистема2"));
-//    var childSubsystem = mdo.getChildren().stream()
-//      .filter(mdObject -> mdObject.getName().equals("ПочиненнаяСистема2")).findFirst().get();
-//    assertThat(((Subsystem) childSubsystem).getChildren())
-//      .hasSize(1)
-//      .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"));
-//    assertThat(mdo.getPlainChildren()).hasSize(3);
-//    assertThat(mdo.getSubsystems())
-//      .hasSize(2)
-//      .containsAll(mdo.getChildren().stream().map(Subsystem.class::cast).collect(Collectors.toList()));
-//  }
-//
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ВтораяПодсистема,c3abc915-b27d-4dfc-bfae-31b9c867492e,,Вторая подсистема,Subsystem,Подсистема,0,0,0,0,0,0"
-//    }
-//  )
-//  void testContent(ArgumentsAccessor argumentsAccessor) {
-//    var rootPath = Path.of("src/test/resources/metadata/edt");
-//    var mdc = MDClasses.createConfiguration(rootPath);
-//    assertThat(mdc)
-//      .isNotNull()
-//      .isInstanceOf(Configuration.class);
-//    var configuration = (Configuration) mdc;
-//    assertThat(configuration.getSubsystems()).hasSize(2);
-//    var subsystem = configuration.getSubsystems().get(1);
-//    mdoTest(subsystem, MDOType.SUBSYSTEM, argumentsAccessor);
-//    assertThat(subsystem.getContent())
-//      .hasSize(3)
-//      .contains(MdoReference.find("CalculationRegister.РегистрРасчета1").get())
-//      .contains(MdoReference.find("AccountingRegister.РегистрБухгалтерии1").get())
-//      .contains(MdoReference.find("Enum.Перечисление1").get());
-//  }
 }

@@ -36,7 +36,6 @@ import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDSubsystem;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
@@ -312,8 +311,7 @@ public class XStreamFactory {
   }
 
   private void registerSubsystemChildrenAliases(XStream xStream) {
-    xStream.aliasField("subsystems", MDSubsystem.class, CHILDREN_FIELD_NAME);
-    xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
+
   }
 
   private void registerExchangePlanItemMDOAliases(XStream xStream) {

@@ -261,12 +261,12 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   }
 
   private void linkChildAndSubsystem(Map<String, AbstractMDObjectBase> allMDO) {
-    children.stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
-      .map(MDSubsystem.class::cast)
-      .forEach(subsystem -> subsystem.linkToChildren(allMDO));
+//    children.stream()
+//      .filter(Either::isRight)
+//      .map(Either::get)
+//      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
+//      .map(MDSubsystem.class::cast)
+//      .forEach(subsystem -> subsystem.linkToChildren(allMDO));
   }
 
   private void linkCommonAttributesAndUsing(Map<String, AbstractMDObjectBase> allMDO) {
