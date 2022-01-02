@@ -83,4 +83,16 @@ public class StyleItem implements MDObject {
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Тип элемента стиля
+   */
+  @Default
+  String type = ""; // todo сделать перечислением
+
+  /**
+   * Значение элемента стиля
+   */
+  @Default
+  String value = ""; // todo разобрать значение стиля
 }

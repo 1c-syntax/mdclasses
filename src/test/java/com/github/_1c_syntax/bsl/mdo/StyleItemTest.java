@@ -35,8 +35,8 @@ class StyleItemTest extends AbstractMDObjectTest<StyleItem> {
   @ParameterizedTest
   @CsvSource(
     {
-      "original, StyleItem.ЭлементСтиля1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, StyleItem.ВажнаяНадписьШрифт",
+      "designer/ssl_3_1, StyleItem.ВидДняПроизводственногоКалендаряПредпраздничныйЦвет",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

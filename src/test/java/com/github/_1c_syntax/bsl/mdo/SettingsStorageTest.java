@@ -35,8 +35,7 @@ class SettingsStorageTest extends AbstractMDObjectTest<SettingsStorage> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, SettingsStorage.ХранилищеНастроек1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, SettingsStorage.ХранилищеВариантовОтчетов"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -105,13 +105,28 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Форма по умолчанию для сохранения
+   */
   @Default
-  String defaultSaveForm = "";
+  MdoReference defaultSaveForm = MdoReference.EMPTY;
+
+  /**
+   * Форма по умолчанию для загрузки
+   */
   @Default
-  String defaultLoadForm = "";
+  MdoReference defaultLoadForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма для сохранения
+   */
   @Default
-  String auxiliarySaveForm = "";
+  MdoReference auxiliarySaveForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма для загрузки
+   */
   @Default
-  String auxiliaryLoadForm = "";
+  MdoReference auxiliaryLoadForm = MdoReference.EMPTY;
 
 }

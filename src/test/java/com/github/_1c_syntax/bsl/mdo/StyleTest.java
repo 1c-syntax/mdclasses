@@ -35,8 +35,7 @@ class StyleTest extends AbstractMDObjectTest<Style> {
   @ParameterizedTest
   @CsvSource(
     {
-      "original, Style.Стиль1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, Style.Стиль1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

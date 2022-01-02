@@ -117,11 +117,19 @@ public class MdoReference {
   public static MdoReference create(@NonNull String fullName) {
     var nameParts = REF_SPLIT_PATTERN.split(fullName);
     if (nameParts.length > 1) {
-      var mdoType = MDOType.fromValue(nameParts[0]);
-      if (mdoType.isPresent()) {
-        var mdoName = nameParts[1]; // todo остальное пока отбрасываем
-        return create(mdoType.get(), mdoName);
+      MdoReference ref = null;
+      for (int i = 0; i < nameParts.length; i += 2) {
+        var mdoType = MDOType.fromValue(nameParts[i]);
+        if (mdoType.isPresent()) {
+          var mdoName = nameParts[i + 1];
+          if (ref == null) {
+            ref = create(mdoType.get(), mdoName);
+          } else {
+            ref = create(ref, mdoType.get(), mdoName);
+          }
+        }
       }
+      return ref;
     }
 
     throw new IllegalArgumentException(fullName);
