@@ -91,7 +91,7 @@ public class FunctionalOption implements MDObject {
    * Расположение (хранение)
    */
   @Default
-  String location = "";
+  MdoReference location = MdoReference.EMPTY;
 
   /**
    * Получение в привилегированном режиме
@@ -102,5 +102,5 @@ public class FunctionalOption implements MDObject {
    * Состав
    */
   @Default
-  List<String> content = Collections.emptyList(); // todo пока не читается
+  List<MdoReference> content = Collections.emptyList();
 }

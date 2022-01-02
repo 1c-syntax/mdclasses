@@ -35,8 +35,8 @@ class FunctionalOptionTest extends AbstractMDObjectTest<FunctionalOption> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, FunctionalOption.ФункциональнаяОпция1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, FunctionalOption.АктуальнаяДатаОбновленияПовторноИспользуемыхЗначенийМРО",
+      "designer/ssl_3_1, FunctionalOption.ИспользоватьАвтономнуюРаботуВЛокальномРежиме"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
