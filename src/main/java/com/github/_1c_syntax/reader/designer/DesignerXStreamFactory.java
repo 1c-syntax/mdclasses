@@ -1,10 +1,9 @@
 package com.github._1c_syntax.reader.designer;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.HttpService;
-import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.Sequence;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.HttpServiceMethod;
@@ -24,6 +23,7 @@ import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
@@ -182,10 +182,12 @@ public class DesignerXStreamFactory {
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Form", ObjectForm.class);
-    xStream.alias("Rights", RoleRight.class);
     xStream.alias("IntegrationServiceChannel", IntegrationServiceChannel.class);
     xStream.alias("URLTemplate", HttpServiceUrlTemplate.class);
     xStream.alias("Method", HttpServiceMethod.class);
+
+    xStream.alias("Rights", RoleRight.class);
+    xStream.alias("ExchangePlanContent", ExchangePlan.Item.class);
 
     xStream.alias("SequenceDimension", SequenceDimension.class);
     xStream.alias("RegisterDimension", RegisterDimension.class);
@@ -218,7 +220,7 @@ public class DesignerXStreamFactory {
 //    xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
 //    xStream.registerConverter(new EnumConverter<>(FormType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
-//    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
+    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
 //    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(ApplicationRunMode.class));
 

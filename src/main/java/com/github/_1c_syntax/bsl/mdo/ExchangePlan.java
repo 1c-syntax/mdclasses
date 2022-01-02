@@ -159,37 +159,37 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма объекта по умолчанию
    */
   @Default
-  String defaultObjectForm = "";
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма объекта
    */
   @Default
-  String auxiliaryObjectForm = "";
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Режим редактирования
@@ -225,61 +225,76 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление объекта
    */
   @Default
-  String objectPresentation = "";
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление объекта
    */
   @Default
-  String extendedObjectPresentation = "";
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описания
 
   int codeLength;
+
   int descriptionLength;
+
   @Default
   String codeAllowedLength = "";
+
   @Default
   String defaultPresentation = "";
+
   @Default
   List<String> characteristics = Collections.emptyList();
+
   boolean quickChoice;
+
   @Default
+
   String choiceMode = "";
+
   @Default
   String searchStringModeOnInputByString = "";
+
   @Default
   String fullTextSearchOnInputByString = "";
+
   @Default
   String choiceDataGetModeOnInputByString = "";
+
   @Default
   List<String> basedOn = Collections.emptyList();
+
   @Default
   List<String> dataLockFields = Collections.emptyList();
+
   @Default
   String choiceHistoryOnInput = "";
+
   @Default
   String dataHistory = "";
 
   boolean updateDataHistoryImmediatelyAfterWrite;
+
   boolean executeAfterWriteDataHistoryVersionProcessing;
 
   @Override

@@ -279,12 +279,12 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   }
 
   private void linkExchangePlanAndMDO(Map<String, AbstractMDObjectBase> allMDO) {
-    children.stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.EXCHANGE_PLAN)
-      .map(MDExchangePlan.class::cast)
-      .forEach(exchangePlan -> exchangePlan.linkToMDO(allMDO));
+//    children.stream()
+//      .filter(Either::isRight)
+//      .map(Either::get)
+//      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.EXCHANGE_PLAN)
+//      .map(MDExchangePlan.class::cast)
+//      .forEach(exchangePlan -> exchangePlan.linkToMDO(allMDO));
   }
 
   private Map<String, AbstractMDObjectBase> getAllMDO() {

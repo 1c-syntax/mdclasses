@@ -1,5 +1,6 @@
 package com.github._1c_syntax.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -59,6 +60,12 @@ public class MDObjectConverter implements Converter {
       readRoleRightsData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
     }
 
+    if (ExchangePlan.class.isAssignableFrom(designerProperties.getRealClass())) {
+      var dataPath = MDOPathUtils.getExchangePlanContentPath(designerProperties.getCurrentPath(),
+        designerProperties.getName());
+      readExchangePlanData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+    }
+
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {
       DesignerConverterCommon.computeBuilder(designerProperties.getBuilder(), designerProperties);
       return TransformationUtils.build(designerProperties.getBuilder());
@@ -81,6 +88,14 @@ public class MDObjectConverter implements Converter {
   }
 
   private Optional<Map> readRoleRightsData(Path path) {
+    if (Files.notExists(path)) {
+      return Optional.empty();
+    }
+
+    return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
+  }
+
+  private Optional<Map> readExchangePlanData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }

@@ -308,6 +308,19 @@ public class MDOPathUtils {
     return Paths.get(basePath, exchangePlan.getName(), "Ext", "Content.xml");
   }
 
+  /**
+   * Возвращает путь к файлу с составом плана обмена
+   * Внимание! Только для формата конфигуратора!
+   *
+   * @param path    Путь к MDO
+   * @param mdoName Имя плана обмена
+   * @return Путь к составу плана обмена
+   */
+  public static Path getExchangePlanContentPath(Path path, String mdoName) {
+    var basePath = path.getParent().toString();
+    return Paths.get(basePath, mdoName, "Ext", "Content.xml");
+  }
+
   // Формат EDT
 
   /**

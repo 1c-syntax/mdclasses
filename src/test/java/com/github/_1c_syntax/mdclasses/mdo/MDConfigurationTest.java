@@ -32,12 +32,6 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MDConfigurationTest extends AbstractMDOTest {
@@ -271,15 +265,15 @@ class MDConfigurationTest extends AbstractMDOTest {
 //  }
 
   private void checkExchangePlans(MDConfiguration configuration) {
-    var exchangePlans = configuration.getChildren().stream()
-      .filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.EXCHANGE_PLAN)
-      .map(MDExchangePlan.class::cast)
-      .collect(Collectors.toList());
-    assertThat(exchangePlans).hasSize(1);
-    exchangePlans.forEach(exchangePlan ->
-      assertThat(exchangePlan.getContent())
-        .anyMatch(exchangePlanItem -> exchangePlanItem.getMdObject().isRight()));
+//    var exchangePlans = configuration.getChildren().stream()
+//      .filter(Either::isRight).map(Either::get)
+//      .filter(mdo -> mdo.getType() == MDOType.EXCHANGE_PLAN)
+//      .map(MDExchangePlan.class::cast)
+//      .collect(Collectors.toList());
+//    assertThat(exchangePlans).hasSize(1);
+//    exchangePlans.forEach(exchangePlan ->
+//      assertThat(exchangePlan.getContent())
+//        .anyMatch(exchangePlanItem -> exchangePlanItem.getMdObject().isRight()));
   }
 
 }
