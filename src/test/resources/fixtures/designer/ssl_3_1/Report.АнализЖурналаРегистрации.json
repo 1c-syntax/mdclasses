@@ -1,0 +1,220 @@
+{
+  "com.github._1c_syntax.bsl.mdo.Report": {
+    "attributes": [],
+    "auxiliaryForm": {
+      "type": "UNKNOWN",
+      "mdoRef": "",
+      "mdoRefRu": ""
+    },
+    "auxiliarySettingsForm": {
+      "type": "UNKNOWN",
+      "mdoRef": "",
+      "mdoRefRu": ""
+    },
+    "commands": [],
+    "comment": "",
+    "defaultForm": {
+      "type": "COMMON_FORM",
+      "mdoRef": "CommonForm.ФормаОтчета",
+      "mdoRefRu": "ОбщаяФорма.ФормаОтчета"
+    },
+    "defaultSettingsForm": {
+      "type": "COMMON_FORM",
+      "mdoRef": "CommonForm.ФормаНастроекОтчета",
+      "mdoRefRu": "ОбщаяФорма.ФормаНастроекОтчета"
+    },
+    "defaultVariantForm": {
+      "type": "COMMON_FORM",
+      "mdoRef": "CommonForm.ФормаВариантаОтчета",
+      "mdoRefRu": "ОбщаяФорма.ФормаВариантаОтчета"
+    },
+    "explanation": {
+      "content": []
+    },
+    "extendedPresentation": {
+      "content": []
+    },
+    "forms": [
+      {
+        "name": "СведенияОРегламентномЗадании",
+        "uuid": "fec102ea-a3f6-49b5-b4b8-6884b0654129",
+        "mdoType": "FORM",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Сведения о регламентном задании"
+            ]
+          ]
+        },
+        "mdoReference": {
+          "type": "FORM",
+          "mdoRef": "Report.АнализЖурналаРегистрации.Form.СведенияОРегламентномЗадании",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Форма.СведенияОРегламентномЗадании"
+        },
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
+    "includeHelpInContents": true,
+    "mainDataCompositionSchema": {
+      "type": "TEMPLATE",
+      "mdoRef": "Report.АнализЖурналаРегистрации.Template.ОсновнаяСхемаКомпоновкиДанных",
+      "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ОсновнаяСхемаКомпоновкиДанных"
+    },
+    "mdoReference": {
+      "type": "REPORT",
+      "mdoRef": "Report.АнализЖурналаРегистрации",
+      "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+    },
+    "mdoType": "REPORT",
+    "modules": [
+      {
+        "moduleType": "ManagerModule",
+        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Ext/ManagerModule.bsl",
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      },
+      {
+        "moduleType": "ObjectModule",
+        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Ext/ObjectModule.bsl",
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
+    "name": "АнализЖурналаРегистрации",
+    "objectBelonging": "OWN",
+    "settingsStorage": {
+      "type": "UNKNOWN",
+      "mdoRef": "",
+      "mdoRefRu": ""
+    },
+    "supportVariant": "NONE",
+    "synonym": {
+      "content": [
+        [
+          "ru",
+          "Анализ журнала регистрации"
+        ]
+      ]
+    },
+    "tabularSections": [],
+    "templates": [
+      {
+        "name": "ОсновнаяСхемаКомпоновкиДанных",
+        "uuid": "246571fb-38c7-4da6-929d-d8b44bc3437c",
+        "mdoType": "TEMPLATE",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Основная схема компоновки данных"
+            ]
+          ]
+        },
+        "mdoReference": {
+          "type": "TEMPLATE",
+          "mdoRef": "Report.АнализЖурналаРегистрации.Template.ОсновнаяСхемаКомпоновкиДанных",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ОсновнаяСхемаКомпоновкиДанных"
+        },
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      },
+      {
+        "name": "МакетОтчетаПоОшибкамВЖурналеРегистрации",
+        "uuid": "047fd6d7-5e30-4184-a09a-6525de526cc7",
+        "mdoType": "TEMPLATE",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Макет отчета по ошибкам в журнале регистрации"
+            ]
+          ]
+        },
+        "mdoReference": {
+          "type": "TEMPLATE",
+          "mdoRef": "Report.АнализЖурналаРегистрации.Template.МакетОтчетаПоОшибкамВЖурналеРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.МакетОтчетаПоОшибкамВЖурналеРегистрации"
+        },
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      },
+      {
+        "name": "ПродолжительностьРаботыРегламентныхЗаданий",
+        "uuid": "beb44b02-5d5e-4127-aee7-e184a43a4210",
+        "mdoType": "TEMPLATE",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Продолжительность работы регламентных заданий"
+            ]
+          ]
+        },
+        "mdoReference": {
+          "type": "TEMPLATE",
+          "mdoRef": "Report.АнализЖурналаРегистрации.Template.ПродолжительностьРаботыРегламентныхЗаданий",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ПродолжительностьРаботыРегламентныхЗаданий"
+        },
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      },
+      {
+        "name": "РасшифровкаРегламентныхЗаданий",
+        "uuid": "1dedfbc2-9250-4229-a6ea-5e085f33e7c3",
+        "mdoType": "TEMPLATE",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Расшифровка регламентных заданий"
+            ]
+          ]
+        },
+        "mdoReference": {
+          "type": "TEMPLATE",
+          "mdoRef": "Report.АнализЖурналаРегистрации.Template.РасшифровкаРегламентныхЗаданий",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.РасшифровкаРегламентныхЗаданий"
+        },
+        "owner": {
+          "type": "REPORT",
+          "mdoRef": "Report.АнализЖурналаРегистрации",
+          "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+        },
+        "supportVariant": "NONE"
+      }
+    ],
+    "useStandardCommands": true,
+    "uuid": "bcd705ba-c9ac-4e73-94b1-7632c0f06c04",
+    "variantsStorage": {
+      "type": "SETTINGS_STORAGE",
+      "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов",
+      "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов"
+    }
+  }
+}

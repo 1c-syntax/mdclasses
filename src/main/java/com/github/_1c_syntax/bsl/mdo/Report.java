@@ -139,39 +139,61 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
    * Форма по умолчанию
    */
   @Default
-  String defaultForm = "";
+  MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма
    */
   @Default
-  String auxiliaryForm = "";
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
 
   /**
    * Форма настроек по умолчанию
    */
   @Default
-  String defaultSettingsForm = "";
+  MdoReference defaultSettingsForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма настроек
    */
   @Default
-  String auxiliarySettingsForm = "";
+  MdoReference auxiliarySettingsForm = MdoReference.EMPTY;
 
+  /**
+   * Форма выбора варианта по умолчанию
+   */
   @Default
-  String defaultVariantForm = "";
-  @Default
-  String mainDataCompositionSchema = "";
-  @Default
-  String variantsStorage = "";
-  @Default
-  String settingsStorage = "";
+  MdoReference defaultVariantForm = MdoReference.EMPTY;
 
+  /**
+   * Основная СКД
+   */
   @Default
-  String extendedPresentation = "";
+  MdoReference mainDataCompositionSchema = MdoReference.EMPTY;
+
+  /**
+   * Хранилище вариантов отчета
+   */
   @Default
-  String explanation = "";
+  MdoReference variantsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилище настроек
+   */
+  @Default
+  MdoReference settingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Описание/пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

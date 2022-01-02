@@ -104,12 +104,12 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
    * Каналы сервиса интеграции
    */
   @Default
-  List<IntegrationServiceChannel> integrationChannels = Collections.emptyList();
+  List<IntegrationServiceChannel> children = Collections.emptyList();
 
   @Override
   public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(integrationChannels);
-    return children;
+    var superChildren = ChildrenOwner.super.getChildren();
+    superChildren.addAll(children);
+    return superChildren;
   }
 }

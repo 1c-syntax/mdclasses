@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -51,55 +52,54 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType mdoType;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType mdoType = MDOType.INTEGRATION_SERVICE_CHANNEL;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonym;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Направление сообщения
    */
-  MessageDirection messageDirection;
+  @Default
+  MessageDirection messageDirection = MessageDirection.SEND;
 
   /**
    * Обработчик получения сообщения
    */
-  String handler;
+  @Default
+  String handler = "";
 
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Имя канала внешнего сервиса интеграции
    */
-  String externalIntegrationServiceChannelName;
+  @Default
+  String externalIntegrationServiceChannelName = "";
 }

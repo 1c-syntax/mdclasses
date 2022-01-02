@@ -35,8 +35,8 @@ class InterfaceTest extends AbstractMDObjectTest<Interface> {
   @ParameterizedTest
   @CsvSource(
     {
-      "original, Interface.Интерфейс1",
-      "original, Interface.Интерфейс2"
+      "designer/mdclasses, Interface.Интерфейс1",
+      "designer/mdclasses, Interface.Интерфейс2"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

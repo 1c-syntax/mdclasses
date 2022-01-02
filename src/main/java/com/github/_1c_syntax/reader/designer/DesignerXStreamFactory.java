@@ -5,6 +5,7 @@ import com.github._1c_syntax.bsl.mdo.HttpService;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
@@ -175,6 +176,7 @@ public class DesignerXStreamFactory {
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Form", ObjectForm.class);
     xStream.alias("Rights", RoleRight.class);
+    xStream.alias("IntegrationServiceChannel", IntegrationServiceChannel.class);
   }
 
   private void registerConverters(XStream xStream) {
