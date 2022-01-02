@@ -405,4 +405,24 @@ public class MDOPathUtils {
     return path;
   }
 
+  /**
+   * Получает путь к файлу прав роли для любого формата относительного описания роли
+   *
+   * @param path    - базовый каталог конфигурации
+   * @param mdoName - имя объекта метаданных, без расширения
+   * @return - путь к файлу прав конкретной роли
+   */
+  public static Path getRoleDataPath(Path path, String mdoName) {
+    var currentPath = path.getParent();
+    var basePath = currentPath.toString();
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+
+    if (configurationSource == ConfigurationSource.EDT) {
+      currentPath = Path.of(basePath, "Rights.rights");
+    } else {
+      currentPath = Path.of(basePath, mdoName, "Ext", "Rights.xml");
+    }
+
+    return currentPath;
+  }
 }

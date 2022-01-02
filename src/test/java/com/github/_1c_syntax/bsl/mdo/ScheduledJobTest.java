@@ -35,8 +35,7 @@ class ScheduledJobTest extends AbstractMDObjectTest<ScheduledJob> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, ScheduledJob.РегламентноеЗадание1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, ScheduledJob.ЗагрузкаКурсовВалют"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -88,6 +88,7 @@ public class ScheduledJob implements MDObject {
   /**
    * Полное имя метода, включающее имя общего модуля
    */
+  @Default
   Handler handler = Handler.EMPTY;
 
   /**

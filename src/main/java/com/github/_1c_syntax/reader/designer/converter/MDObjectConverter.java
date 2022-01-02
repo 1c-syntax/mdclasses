@@ -1,6 +1,7 @@
 package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.Optional;
 
 @DesignerConverter
@@ -51,6 +53,12 @@ public class MDObjectConverter implements Converter {
         new Handler((String) designerProperties.getUnknownProperties().get("MethodName")));
     }
 
+    if (Role.class.isAssignableFrom(designerProperties.getRealClass())) {
+      var dataPath = MDOPathUtils.getRoleDataPath(designerProperties.getCurrentPath(),
+        designerProperties.getName());
+      readRoleRightsData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+    }
+
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {
       DesignerConverterCommon.computeBuilder(designerProperties.getBuilder(), designerProperties);
       return TransformationUtils.build(designerProperties.getBuilder());
@@ -70,5 +78,13 @@ public class MDObjectConverter implements Converter {
     }
 
     return Optional.of((XdtoPackageData) DesignerXStreamFactory.fromXML(path.toFile()));
+  }
+
+  private Optional<Map> readRoleRightsData(Path path) {
+    if (Files.notExists(path)) {
+      return Optional.empty();
+    }
+
+    return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
   }
 }

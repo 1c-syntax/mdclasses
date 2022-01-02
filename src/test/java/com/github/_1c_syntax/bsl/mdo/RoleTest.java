@@ -35,45 +35,12 @@ class RoleTest extends AbstractMDObjectTest<Role> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, Role.Роль1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, Role.АдминистраторСистемы",
+      "designer/ssl_3_1, Role.ПолныеПрава"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-//  @ParameterizedTest(name = "DESIGNER {index}: {0}")
-//  @CsvSource(
-//    {
-//      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
-//    }
-//  )
-//  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-//    var mdo = getMDObject("Roles/" + argumentsAccessor.getString(0));
-//    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
-//    assertThat(mdo.isIndependentRightsOfChildObjects()).isFalse();
-//    assertThat(mdo.isSetForAttributesByDefault()).isTrue();
-//    assertThat(mdo.isSetForNewObjects()).isFalse();
-//  }
-//
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
-//    }
-//  )
-//  void testEdt(ArgumentsAccessor argumentsAccessor) {
-//    var name = argumentsAccessor.getString(0);
-//    var mdo = getMDObjectEDT("Roles/" + name + "/" + name);
-//    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
-//    assertThat(mdo.isIndependentRightsOfChildObjects()).isTrue();
-//    assertThat(mdo.isSetForAttributesByDefault()).isTrue();
-//    assertThat(mdo.isSetForNewObjects()).isTrue();
-//    assertThat(mdo.getRights())
-//      .hasSize(44)
-//      .anyMatch(roleRight -> roleRight.getName().equals("Subsystem.ВтораяПодсистема")
-//        && roleRight.getRights().containsKey("View")
-//        && roleRight.getRights().containsValue(false));
-//  }
 }

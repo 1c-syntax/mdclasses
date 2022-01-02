@@ -14,6 +14,7 @@ import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -173,6 +174,7 @@ public class DesignerXStreamFactory {
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Form", ObjectForm.class);
+    xStream.alias("Rights", RoleRight.class);
   }
 
   private void registerConverters(XStream xStream) {
