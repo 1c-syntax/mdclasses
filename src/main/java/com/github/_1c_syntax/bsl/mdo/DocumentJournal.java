@@ -147,30 +147,28 @@ public class DocumentJournal implements MDObject, AttributeOwner, FormOwner, Com
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Документы в составе
    */
   @Default
-  List<MdoReference> registeredDocuments = Collections.emptyList();
+  List<String> registeredDocuments = Collections.emptyList();
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
     // todo а такое бывает?
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
   }
 }

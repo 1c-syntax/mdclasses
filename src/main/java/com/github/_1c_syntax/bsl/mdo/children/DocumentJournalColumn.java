@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -55,25 +56,25 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  @Builder.Default
+  @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  @Builder.Default
-  MDOType mdoType = MDOType.ATTRIBUTE;
+  @Default
+  MDOType mdoType = MDOType.COLUMN;
 
   /**
    * Синонимы объекта
    */
-  @Builder.Default
+  @Default
   MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  @Builder.Default
+  @Default
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
@@ -84,30 +85,30 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   /**
    * Вид атрибута
    */
-  @Builder.Default
+  @Default
   AttributeKind kind = AttributeKind.CUSTOM;
 
   /**
    * Вариант индексирования реквизита
    */
-  @Builder.Default
+  @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
 
   /**
    * Родительский объект
    */
-  @Builder.Default
+  @Default
   MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  @Builder.Default
+  @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Ссылки на реквизиты документов
    */
-  @Builder.Default
+  @Default
   List<MdoReference> references = Collections.emptyList();
 }

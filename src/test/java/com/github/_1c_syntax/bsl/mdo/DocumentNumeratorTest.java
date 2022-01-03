@@ -35,8 +35,7 @@ class DocumentNumeratorTest extends AbstractMDObjectTest<DocumentNumerator> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, DocumentNumerator.НумераторДокументов1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, DocumentNumerator.НумераторДокументов1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
