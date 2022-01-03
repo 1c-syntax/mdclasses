@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.Type;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -85,6 +86,9 @@ public class DefinedType implements MDObject, Type {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Тип значения
+   */
   @Default
-  String value_type = "";
+  ValueType type = ValueType.EMPTY;
 }

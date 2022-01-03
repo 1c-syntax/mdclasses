@@ -139,25 +139,25 @@ public class DataProcessor implements MDObject, AttributeOwner, FormOwner, Comma
    * Форма по умолчанию
    */
   @Default
-  String defaultForm = "";
+  MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма
    */
   @Default
-  String auxiliaryForm = "";
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
 
   /**
    * Расширенное представление
    */
   @Default
-  String extendedPresentation = "";
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -36,12 +35,10 @@ class DefinedTypeTest extends AbstractMDObjectTest<DefinedType> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, DefinedType.ОпределяемыйТип1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, DefinedType.АдресатЗапретаИзменения"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
-
 }
