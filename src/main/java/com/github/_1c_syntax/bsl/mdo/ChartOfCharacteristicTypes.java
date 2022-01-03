@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -143,61 +144,61 @@ public class ChartOfCharacteristicTypes implements MDObject, AttributeOwner, For
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма объекта по умолчанию
    */
   @Default
-  String defaultObjectForm = "";
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
 
   /**
    * Форма группы по умолчанию
    */
   @Default
-  String defaultFolderForm = "";
+  MdoReference defaultFolderForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора группы по умолчанию
    */
   @Default
-  String defaultFolderChoiceForm = "";
+  MdoReference defaultFolderChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма объекта
    */
   @Default
-  String auxiliaryObjectForm = "";
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма группы
    */
   @Default
-  String auxiliaryFolderForm = "";
+  MdoReference auxiliaryFolderForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryFolderChoiceForm = "";
+  MdoReference auxiliaryFolderChoiceForm = MdoReference.EMPTY;
 
   /**
    * Режим редактирования
@@ -233,78 +234,101 @@ public class ChartOfCharacteristicTypes implements MDObject, AttributeOwner, For
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление объекта
    */
   @Default
-  String objectPresentation = "";
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление объекта
    */
   @Default
-  String extendedObjectPresentation = "";
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описания
 
   boolean hierarchical;
+
   boolean foldersOnTop;
+
   int codeLength;
+
   int descriptionLength;
+
   @Default
   String codeAllowedLength = "";
+
   @Default
   String codeSeries = "";
+
   boolean checkUnique;
+
   boolean autonumbering;
+
   @Default
   String defaultPresentation = "";
 
   @Default
   List<String> characteristics = Collections.emptyList();
+
   @Default
   String predefinedDataUpdate = "";
+
   boolean quickChoice;
+
   @Default
   String choiceMode = "";
+
   @Default
   String searchStringModeOnInputByString = "";
+
   @Default
   String fullTextSearchOnInputByString = "";
+
   @Default
   String choiceDataGetModeOnInputByString = "";
 
   @Default
   List<String> basedOn = Collections.emptyList();
+
   @Default
   List<String> dataLockFields = Collections.emptyList();
+
   @Default
   String choiceHistoryOnInput = "";
+
   @Default
   String dataHistory = "";
 
   boolean updateDataHistoryImmediatelyAfterWrite;
+
   boolean executeAfterWriteDataHistoryVersionProcessing;
 
   @Default
   List<String> characteristicExtValues = Collections.emptyList();
 
+  /**
+   * Типы значений характеристик
+   */
   @Default
-  String value_type = ""; // todo
+  ValueType type = ValueType.EMPTY;
+
+  // todo предопределенные прочитать
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

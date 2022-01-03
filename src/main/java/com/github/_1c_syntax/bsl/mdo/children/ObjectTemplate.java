@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Template;
+import com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -30,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -54,42 +56,38 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  ObjectBelonging objectBelonging;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Тип метаданных
    */
-  MDOType mdoType;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  @Default
+  MDOType mdoType = MDOType.TEMPLATE;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonym;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
    */
-  TemplateType templateType;
+  @Default
+  TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
 
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  TemplateData templateData;
+  @Default
+  TemplateData templateData = EmptyTemplateData.getEmpty();
 
   /**
    * Путь к самому файлу макета
@@ -99,10 +97,12 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 }

@@ -143,37 +143,37 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма объекта по умолчанию
    */
   @Default
-  String defaultObjectForm = "";
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма объекта
    */
   @Default
-  String auxiliaryObjectForm = "";
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Режим редактирования
@@ -209,71 +209,88 @@ public class ChartOfAccounts implements MDObject, AttributeOwner, FormOwner, Com
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление объекта
    */
   @Default
-  String objectPresentation = "";
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление объекта
    */
   @Default
-  String extendedObjectPresentation = "";
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описания
 
   int codeLength;
+
   int descriptionLength;
+
   @Default
   String codeSeries = "";
+
   boolean checkUnique;
+
   boolean autonumbering;
+
   @Default
   String defaultPresentation = "";
 
-
   @Default
   List<String> characteristics = Collections.emptyList();
+
   @Default
   String predefinedDataUpdate = "";
+
   boolean quickChoice;
+
   @Default
   String choiceMode = "";
+
   @Default
   String searchStringModeOnInputByString = "";
+
   @Default
   String fullTextSearchOnInputByString = "";
+
   @Default
   String choiceDataGetModeOnInputByString = "";
 
   @Default
+
   List<String> basedOn = Collections.emptyList();
+
   @Default
   List<String> dataLockFields = Collections.emptyList();
+
   @Default
   String choiceHistoryOnInput = "";
 
   @Default
   List<String> extDimensionTypes = Collections.emptyList();
+
   int maxExtDimensionCount;
+
   @Default
   String codeMask = "";
+
   boolean autoOrderByCode;
+
   int orderLength;
 
   @Override

@@ -1,0 +1,1596 @@
+{"com.github._1c_syntax.bsl.mdo.Catalog": {
+  "attributes": [
+    {
+      "name": "Автор",
+      "uuid": "68944d09-618e-4fa3-a7af-8c84218e0ac7",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Автор"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Автор",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Автор"
+      },
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.Файлы",
+        "mdoRefRu": "Справочник.Файлы"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВнешниеПользователи",
+          "cfg:CatalogRef.УчетныеЗаписиСинхронизацииФайлов",
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      }
+    },
+    {
+      "name": "ВладелецФайла",
+      "uuid": "91b12ce3-e8ba-4c9d-9daa-1d5532500314",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Размещение"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ВладелецФайла",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ВладелецФайла"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаЗаема",
+      "uuid": "733dc291-0bef-4fe8-ac9f-63440f0c2ad0",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата заема"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ДатаЗаема",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ДатаЗаема"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаМодификацииУниверсальная",
+      "uuid": "356a8091-4c0b-41d0-b8d2-963b3a807469",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата модификации универсальная"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ДатаМодификацииУниверсальная",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ДатаМодификацииУниверсальная"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаСоздания",
+      "uuid": "5b7b7dc3-dbef-4854-9395-30a3ae4d751c",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата создания"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ДатаСоздания",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ДатаСоздания"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Зашифрован",
+      "uuid": "cb57aabc-eeef-42b4-9bc2-873cebd9618c",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Зашифрован"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Зашифрован",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Зашифрован"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ИндексКартинки",
+      "uuid": "2fcd2c85-6778-42fa-9bdd-a6ba47497ec0",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Индекс значка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ИндексКартинки",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ИндексКартинки"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Описание",
+      "uuid": "52f30ed7-aa16-4ce2-9684-e50229ab0015",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Описание"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Описание",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Описание"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ПодписанЭП",
+      "uuid": "79c2e2bd-f923-42ec-8bdc-3e517e08ee7c",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Подписан электронно"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ПодписанЭП",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ПодписанЭП"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "УдалитьПолноеНаименование",
+      "uuid": "0526492c-be48-4c84-8d68-19fa1c7e9d6e",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Полное наименование"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.УдалитьПолноеНаименование",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.УдалитьПолноеНаименование"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 256,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Редактирует",
+      "uuid": "54ecaf7b-9bc5-483c-96e1-270bcd323590",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Редактирует"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Редактирует",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Редактирует"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВнешниеПользователи",
+          "cfg:CatalogRef.УчетныеЗаписиСинхронизацииФайлов",
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Служебный",
+      "uuid": "f00e93bf-6e3b-4819-a4e1-33471a6d0fff",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Служебный"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Служебный",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Служебный"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ТекстХранилище",
+      "uuid": "2a1f77ba-fa2e-4281-8e68-7ec4ca0261b7",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Текст"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ТекстХранилище",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ТекстХранилище"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "v8:ValueStorage"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ТекущаяВерсия",
+      "uuid": "58f6f8fa-7473-40f5-973a-6279335d8f33",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Активная версия"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ТекущаяВерсия",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ТекущаяВерсия"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВерсииФайлов"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Изменил",
+      "uuid": "ec0c3187-de61-4bc8-a52a-7617f47ffb6d",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Отредактировал"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Изменил",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Изменил"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВнешниеПользователи",
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "УдалитьТекущаяВерсияДатаМодификацииФайла",
+      "uuid": "1e71ec59-55a4-45e8-a8c9-f70c2cb56589",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Дата изменения (местное время)"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.УдалитьТекущаяВерсияДатаМодификацииФайла",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.УдалитьТекущаяВерсияДатаМодификацииФайла"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "УдалитьТекущаяВерсияДатаСоздания",
+      "uuid": "fa3632fe-185b-49aa-85ae-dfb721835d40",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Дата редактирования"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.УдалитьТекущаяВерсияДатаСоздания",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.УдалитьТекущаяВерсияДатаСоздания"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "УдалитьТекущаяВерсияКод",
+      "uuid": "a4f15108-477c-465e-aaea-cb495ef52cf5",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Код активной версии"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.УдалитьТекущаяВерсияКод",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.УдалитьТекущаяВерсияКод"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 11,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "УдалитьТекущаяВерсияНомерВерсии",
+      "uuid": "9cda5c2c-f401-4f63-b445-cef160296e48",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Номер активной версии"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.УдалитьТекущаяВерсияНомерВерсии",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.УдалитьТекущаяВерсияНомерВерсии"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ПутьКФайлу",
+      "uuid": "e8ae4a26-3127-43ae-af7a-c2e278d2611d",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Путь к файлу"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ПутьКФайлу",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ПутьКФайлу"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Размер",
+      "uuid": "b923c78f-d074-41b4-b832-086686258f19",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Размер (байт)"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Размер",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Размер"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Расширение",
+      "uuid": "8ff96413-6fdd-4b8d-a181-ea0d8633defc",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Расширение"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Расширение",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Расширение"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 10,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Том",
+      "uuid": "54604ed2-766b-4308-b99e-447817d82799",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Том"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.Том",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.Том"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ТомаХраненияФайлов"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ХранитьВерсии",
+      "uuid": "7abdb07b-edbc-4c3b-aa53-afaa92dc9071",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Хранить версии"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ХранитьВерсии",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ХранитьВерсии"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ТипХраненияФайла",
+      "uuid": "ee008096-1ae8-4a64-9d3d-14cb15c8be70",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Тип хранения файла"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ТипХраненияФайла",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ТипХраненияФайла"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.ТипыХраненияФайлов"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "СтатусИзвлеченияТекста",
+      "uuid": "a0a85b22-63ee-4a05-8b0d-1feb9ee07b0a",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Статус извлечения текста"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.СтатусИзвлеченияТекста",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.СтатусИзвлеченияТекста"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.СтатусыИзвлеченияТекстаФайлов"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ФайлХранилище",
+      "uuid": "a4754a7b-971f-4517-963e-b7cb9d57f86d",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Временное хранилище файла"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.Файлы.Attribute.ФайлХранилище",
+        "mdoRefRu": "Справочник.Файлы.Реквизит.ФайлХранилище"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "v8:ValueStorage"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    }
+  ],
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
+  "checkUnique": false,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 0,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "commands": [
+    {
+      "name": "Файлы",
+      "uuid": "5b952e35-1037-4447-8293-6d8889692c8b",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Файлы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.Файлы.Command.Файлы",
+        "mdoRefRu": "Справочник.Файлы.Команда.Файлы"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/Файлы/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.Файлы",
+            "mdoRefRu": "Команда.Файлы"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ВерсииФайла",
+      "uuid": "2bc2ca58-6cc0-4d4b-8672-f9328c86c2c1",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Версии файла"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.Файлы.Command.ВерсииФайла",
+        "mdoRefRu": "Справочник.Файлы.Команда.ВерсииФайла"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/ВерсииФайла/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.ВерсииФайла",
+            "mdoRefRu": "Команда.ВерсииФайла"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    }
+  ],
+  "comment": "Файлы в папках",
+  "createOnInput": "DontUse",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.Файлы.Form.ФормаВыбора",
+    "mdoRefRu": "Справочник.Файлы.Форма.ФормаВыбора"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.Файлы.Form.Файлы",
+    "mdoRefRu": "Справочник.Файлы.Форма.Файлы"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.Файлы.Form.ФормаЭлемента",
+    "mdoRefRu": "Справочник.Файлы.Форма.ФормаЭлемента"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "forms": [
+    {
+      "name": "Файлы",
+      "uuid": "7e32c295-a769-4cff-a3eb-992f7031475f",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Файлы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultListForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаВыбора",
+      "uuid": "5a398637-a06c-4442-9093-a864fa7f049f",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма выбора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultChoiceForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаНового",
+      "uuid": "fe4aa694-76c4-49c9-96ce-a2476f4ff58b",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма нового"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаНового",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаНового"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаПеретаскивания",
+      "uuid": "115a6019-ef87-4126-8ebf-070c1e882940",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма перетаскивания"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаПеретаскивания",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПеретаскивания"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаПодбора",
+      "uuid": "162ce023-b2e1-41dc-bcaf-b8e30caccce0",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма подбора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаПодбора",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПодбора"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаЭлемента",
+      "uuid": "526c688e-a4d4-45f7-8bba-b8ceff38fe27",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultObjectForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": false,
+  "hierarchyType": "HierarchyFoldersAndItems",
+  "includeHelpInContents": true,
+  "inputByString": [
+    "Catalog.Файлы.StandardAttribute.Description"
+  ],
+  "levelCount": 2,
+  "limitLevelCount": false,
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "Файлы",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Файл"
+      ]
+    ]
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Файлы"
+      ]
+    ]
+  },
+  "tabularSections": [
+    {
+      "name": "ДополнительныеРеквизиты",
+      "uuid": "f48b4475-2cd9-41df-962a-6529f84985ca",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительные реквизиты"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Catalog.Файлы.TabularSection.ДополнительныеРеквизиты",
+        "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.ДополнительныеРеквизиты"
+      },
+      "attributes": [
+        {
+          "name": "Свойство",
+          "uuid": "2fbfe405-48e6-4abf-99c2-7f1f66a62b48",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Свойство"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Свойство"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "Значение",
+          "uuid": "5e6637c7-19b5-4ac2-a8e9-d119e49f444e",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Значение"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.ДополнительныеРеквизиты.Attribute.Значение",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Значение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "ТекстоваяСтрока",
+          "uuid": "bf94feb9-edf7-4df8-b5f5-805613663a0a",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Текстовая строка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.ДополнительныеРеквизиты.Attribute.ТекстоваяСтрока",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.ТекстоваяСтрока"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": "Variable"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "УдалитьСертификатыШифрования",
+      "uuid": "6d852a13-c85e-4e84-8396-f91c1ed0596e",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Сертификаты шифрования"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Catalog.Файлы.TabularSection.УдалитьСертификатыШифрования",
+        "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.УдалитьСертификатыШифрования"
+      },
+      "attributes": [
+        {
+          "name": "Отпечаток",
+          "uuid": "9c2d5313-a4fd-417e-a340-ad4980d0028b",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Отпечаток"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.УдалитьСертификатыШифрования.Attribute.Отпечаток",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.УдалитьСертификатыШифрования.Реквизит.Отпечаток"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 28,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "Представление",
+          "uuid": "4fb4a280-9426-4c41-a9ba-11f9d01a0740",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Представление"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.УдалитьСертификатыШифрования.Attribute.Представление",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.УдалитьСертификатыШифрования.Реквизит.Представление"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "Сертификат",
+          "uuid": "1591ee7e-870c-4bf7-9450-be84f1b2506f",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Сертификат"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Файлы.TabularSection.УдалитьСертификатыШифрования.Attribute.Сертификат",
+            "mdoRefRu": "Справочник.Файлы.ТабличнаяЧасть.УдалитьСертификатыШифрования.Реквизит.Сертификат"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "v8:ValueStorage"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "templates": [
+    {
+      "name": "МакетОтчета",
+      "uuid": "67efa786-312f-4c9c-b970-0320e92069af",
+      "mdoType": "TEMPLATE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Макет отчета"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Catalog.Файлы.Template.МакетОтчета",
+        "mdoRefRu": "Справочник.Файлы.Макет.МакетОтчета"
+      },
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": false,
+  "uuid": "e7b0ae70-0192-456c-9dc5-e66049fa9df2"
+}}

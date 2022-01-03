@@ -1,0 +1,322 @@
+{"com.github._1c_syntax.bsl.mdo.Catalog": {
+  "attributes": [
+    {
+      "name": "Комментарий",
+      "uuid": "245162d8-6ae1-47e5-a0c9-0d5f2e5d8ea8",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Комментарий"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ГруппыПользователей.Attribute.Комментарий",
+        "mdoRefRu": "Справочник.ГруппыПользователей.Реквизит.Комментарий"
+      },
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.ГруппыПользователей",
+        "mdoRefRu": "Справочник.ГруппыПользователей"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    }
+  ],
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": false,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 0,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "commands": [
+    {
+      "name": "ГруппыПользователя",
+      "uuid": "715dc289-5b14-4ee0-8716-9c15958b9069",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.ГруппыПользователей.Command.ГруппыПользователя",
+        "mdoRefRu": "Справочник.ГруппыПользователей.Команда.ГруппыПользователя"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Commands/ГруппыПользователя/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.ГруппыПользователя",
+            "mdoRefRu": "Команда.ГруппыПользователя"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    }
+  ],
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "AUTOMATIC",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.ГруппыПользователей.Form.ФормаСписка",
+    "mdoRefRu": "Справочник.ГруппыПользователей.Форма.ФормаСписка"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../defaultChoiceForm"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.ГруппыПользователей.Form.ФормаЭлемента",
+    "mdoRefRu": "Справочник.ГруппыПользователей.Форма.ФормаЭлемента"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": [
+      [
+        "ru",
+        "Группы пользователей, имеющих одинаковый доступ к данным системы"
+      ]
+    ]
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "forms": [
+    {
+      "name": "ФормаЭлемента",
+      "uuid": "5d7a53fa-1a89-4e6e-868c-4077bd84c0ce",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultObjectForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаСписка",
+      "uuid": "3bf1281f-7570-4633-86b9-3e953a7e6647",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultChoiceForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": true,
+  "hierarchyType": "HierarchyOfItems",
+  "includeHelpInContents": true,
+  "inputByString": [
+    "Catalog.ГруппыПользователей.StandardAttribute.Description"
+  ],
+  "levelCount": 2,
+  "limitLevelCount": false,
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ГруппыПользователей",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Группа пользователей"
+      ]
+    ]
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Группы пользователей"
+      ]
+    ]
+  },
+  "tabularSections": [
+    {
+      "name": "Состав",
+      "uuid": "6581ac1f-11ef-42b8-9f3b-590bb7546e63",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Участники группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Catalog.ГруппыПользователей.TabularSection.Состав",
+        "mdoRefRu": "Справочник.ГруппыПользователей.ТабличнаяЧасть.Состав"
+      },
+      "attributes": [
+        {
+          "name": "Пользователь",
+          "uuid": "ce952e88-35b7-4506-81ac-d7081e50a650",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Пользователь"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.ГруппыПользователей.TabularSection.Состав.Attribute.Пользователь",
+            "mdoRefRu": "Справочник.ГруппыПользователей.ТабличнаяЧасть.Состав.Реквизит.Пользователь"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "type": {
+            "types": [
+              "cfg:CatalogRef.Пользователи"
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": ""
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "templates": [],
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": true,
+  "uuid": "a2782760-dd4c-44d2-a785-814d6f610455"
+}}
