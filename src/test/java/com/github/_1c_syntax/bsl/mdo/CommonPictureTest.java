@@ -35,8 +35,7 @@ class CommonPictureTest extends AbstractMDObjectTest<CommonPicture> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CommonPicture.ОбщаяКартинка1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, CommonPicture.АнимацияПодтверждения"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

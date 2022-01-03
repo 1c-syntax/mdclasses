@@ -1,5 +1,6 @@
 package com.github._1c_syntax.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Role;
@@ -10,7 +11,9 @@ import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
@@ -24,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -77,6 +81,11 @@ public class MDObjectConverter implements Converter {
       readExchangePlanData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
     }
 
+    if (CommonModule.class.isAssignableFrom(designerProperties.getRealClass())) {
+      readModule(designerProperties.getCurrentPath(),
+        designerProperties.getName()).ifPresent(designerProperties.getProperties()::putAll);
+    }
+
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {
       DesignerConverterCommon.computeBuilder(designerProperties.getBuilder(), designerProperties);
       return TransformationUtils.build(designerProperties.getBuilder());
@@ -120,5 +129,25 @@ public class MDObjectConverter implements Converter {
     }
 
     return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
+  }
+
+  private Optional<Map<String, Object>> readModule(Path currentPath, String name) {
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("moduleType", ModuleType.CommonModule);
+    Optional<Path> mdoFolderPath = MDOPathUtils.getMDOTypeFolderByMDOPath(currentPath, MDOType.COMMON_MODULE);
+
+    if (mdoFolderPath.isEmpty()) {
+      return Optional.empty();
+    }
+    var folder = mdoFolderPath.get();
+
+    MDOPathUtils.getModulePath(ConfigurationSource.DESIGNER, folder, name, ModuleType.CommonModule)
+      .ifPresent((Path modulePath) -> {
+        if (modulePath.toFile().exists()) {
+          properties.put("uri", modulePath.toUri());
+        }
+      });
+    return Optional.of(properties);
   }
 }

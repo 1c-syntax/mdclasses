@@ -46,7 +46,7 @@ public class MDTestUtils {
    */
   public String createJson(Object md) {
     XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    xstream.setMode(XStream.NO_REFERENCES);
+    xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);
     xstream.registerConverter(new TestURIConverter());
     xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
     return xstream.toXML(md);
