@@ -22,12 +22,16 @@
 package com.github._1c_syntax.bsl.mdo.data_storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -66,35 +70,42 @@ public class DataCompositionSchema implements TemplateData {
   @Value
   @ToString(of = {"name"})
   @EqualsAndHashCode(of = {"name"})
+  @Builder
   public static class DataSet {
     /**
      * Имя набора данных
      */
-    String name;
+    @Default
+    String name = "";
 
     /**
      * Тип набора данных
      */
-    DataSetType type;
+    @Default
+    DataSetType type = DataSetType.DATA_SET_QUERY;
 
     /**
      * Имя источника данных
      */
-    String dataSource;
+    @Default
+    String dataSource = "";
 
     /**
      * Подчиненные наборы данных
      */
+    @Singular
     List<DataSet> items;
 
     /**
      * Текста запроса (опционально)
      */
-    QuerySource querySource;
+    @Default
+    QuerySource querySource = QuerySource.empty();
 
     /**
      * Поля набора данных
      */
+    @Singular
     List<DataSetField> fields;
   }
 

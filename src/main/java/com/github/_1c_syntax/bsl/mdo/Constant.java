@@ -114,19 +114,19 @@ public class Constant implements Attribute, ModuleOwner {
    * Форма по умолчанию
    */
   @Default
-  String defaultForm = "";
+  MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
    * Расширенное представление
    */
   @Default
-  String extendedPresentation = "";
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Режим блокировки данных
@@ -142,38 +142,54 @@ public class Constant implements Attribute, ModuleOwner {
 
   // todo описание
 
-
   @Default
   String format = "";
+
   @Default
   String editFormat = "";
+
   @Default
   String toolTip = "";
+
   boolean markNegatives;
+
   @Default
   String mask = "";
+
   boolean multiLine;
+
   boolean extendedEdit;
+
   @Default
   String minValue = "";
+
   @Default
   String maxValue = "";
+
   @Default
   String fillChecking = "";
+
   @Default
   String choiceFoldersAndItems = "";
+
   @Default
   List<String> choiceParameterLinks = Collections.emptyList();
+
   @Default
   List<String> choiceParameters = Collections.emptyList();
+
   @Default
   String quickChoice = "";
+
   @Default
   String createOnInput = "";
+
   @Default
   String choiceForm = "";
+
   @Default
   String linkByType = "";
+
   @Default
   String choiceHistoryOnInput = "";
 

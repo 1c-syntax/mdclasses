@@ -266,24 +266,29 @@ public class MDOPathUtils {
     return currentPath;
   }
 
-  /**
-   * Возвращает путь к файлу с описанием xsd-схемы xdto пакета
-   *
-   * @param xdto - xdto пакет
-   * @return - путь к файлу схемы
-   */
-  public static Path getPackageDataPath(AbstractMDObjectBase xdto) {
-    var currentPath = xdto.getPath().getParent();
+  public Path getTemplateDataPath(Path path, String name, MDOType type) {
+    var currentPath = path.getParent();
     var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(xdto.getPath());
+    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
     if (configurationSource == ConfigurationSource.EDT) {
-      currentPath = Path.of(basePath, "Package.xdto");
+      if (type == MDOType.COMMON_TEMPLATE) {
+        currentPath = Path.of(basePath, "Template.dcs");
+      } else {
+        currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), name, "Template.dcs");
+      }
     } else {
-      currentPath = Paths.get(basePath, xdto.getName(), "Ext", "Package.bin");
+      currentPath = Paths.get(basePath, name, "Ext", "Template.xml");
     }
     return currentPath;
   }
 
+  /**
+   * Возвращает путь к файлу с описанием xsd-схемы xdto пакета
+   *
+   * @param path - Путь к MDO xdto пакета
+   * @param name - Имя xdto пакета
+   * @return - путь к файлу схемы
+   */
   public static Path getPackageDataPath(Path path, String name) {
     var currentPath = path.getParent();
     var basePath = currentPath.toString();

@@ -21,15 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonTemplateTest extends AbstractMDObjectTest<CommonTemplate> {
   CommonTemplateTest() {
@@ -39,27 +35,27 @@ class CommonTemplateTest extends AbstractMDObjectTest<CommonTemplate> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CommonTemplate.ГрафическаяСхема",
-      "original, CommonTemplate.Active",
-      "original, CommonTemplate.ГеографическаяСхема",
-      "original, CommonTemplate.ВнешняяКомпонента",
-      "original, CommonTemplate.ТекстовыйДокумент",
-      "original, CommonTemplate.СКД",
-      "original, CommonTemplate.МакетОформления",
-      "original, CommonTemplate.ДвоичныеДанные",
-      "original, CommonTemplate.HTML",
-      "original, CommonTemplate.ТабличныйДокумент",
-      "original_3_18, CommonTemplate.ГрафическаяСхема",
-      "original_3_18, CommonTemplate.Active",
-      "original_3_18, CommonTemplate.ГеографическаяСхема",
-      "original_3_18, CommonTemplate.ВнешняяКомпонента",
-      "original_3_18, CommonTemplate.ТекстовыйДокумент",
-      "original_3_18, CommonTemplate.СКД",
-      "original_3_18, CommonTemplate.МакетОформления",
-      "original_3_18, CommonTemplate.ДвоичныеДанные",
-      "original_3_18, CommonTemplate.HTML",
-      "original_3_18, CommonTemplate.ТабличныйДокумент"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, CommonTemplate.ГрафическаяСхема",
+      "designer/mdclasses, CommonTemplate.Active",
+      "designer/mdclasses, CommonTemplate.ГеографическаяСхема",
+      "designer/mdclasses, CommonTemplate.ВнешняяКомпонента",
+      "designer/mdclasses, CommonTemplate.ТекстовыйДокумент",
+      "designer/mdclasses, CommonTemplate.СКД",
+      "designer/mdclasses, CommonTemplate.МакетОформления",
+      "designer/mdclasses, CommonTemplate.ДвоичныеДанные",
+      "designer/mdclasses, CommonTemplate.HTML",
+      "designer/mdclasses, CommonTemplate.ТабличныйДокумент",
+      "designer/mdclasses_3_18, CommonTemplate.ГрафическаяСхема",
+      "designer/mdclasses_3_18, CommonTemplate.Active",
+      "designer/mdclasses_3_18, CommonTemplate.ГеографическаяСхема",
+      "designer/mdclasses_3_18, CommonTemplate.ВнешняяКомпонента",
+      "designer/mdclasses_3_18, CommonTemplate.ТекстовыйДокумент",
+      "designer/mdclasses_3_18, CommonTemplate.СКД",
+      "designer/mdclasses_3_18, CommonTemplate.МакетОформления",
+      "designer/mdclasses_3_18, CommonTemplate.ДвоичныеДанные",
+      "designer/mdclasses_3_18, CommonTemplate.HTML",
+      "designer/mdclasses_3_18, CommonTemplate.ТабличныйДокумент",
+      "designer/ssl_3_1, CommonTemplate.КомпонентаTWAIN"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

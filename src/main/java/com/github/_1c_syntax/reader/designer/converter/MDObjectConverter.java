@@ -4,10 +4,12 @@ import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
+import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
@@ -60,6 +62,15 @@ public class MDObjectConverter implements Converter {
       readRoleRightsData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
     }
 
+    if (Template.class.isAssignableFrom(designerProperties.getRealClass())) {
+      if (designerProperties.getProperties().get("TemplateType") == TemplateType.DATA_COMPOSITION_SCHEME) {
+        var dataPath = MDOPathUtils.getTemplateDataPath(designerProperties.getCurrentPath(),
+          designerProperties.getName(), designerProperties.getMdoType());
+        readTemplateData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+        designerProperties.getProperties().put("templateDataPath", dataPath);
+      }
+    }
+
     if (ExchangePlan.class.isAssignableFrom(designerProperties.getRealClass())) {
       var dataPath = MDOPathUtils.getExchangePlanContentPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
@@ -96,6 +107,14 @@ public class MDObjectConverter implements Converter {
   }
 
   private Optional<Map> readExchangePlanData(Path path) {
+    if (Files.notExists(path)) {
+      return Optional.empty();
+    }
+
+    return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
+  }
+
+  private Optional<Map> readTemplateData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }

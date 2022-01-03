@@ -85,13 +85,13 @@ public class DataSet {
         .map(DataSetField::buildMDObject)
         .collect(Collectors.toList());
 
-    return new DataCompositionSchema.DataSet(
-      name,
-      type,
-      dataSource,
-      dataSets,
-      querySource,
-      dataSetFields
-    );
+    return DataCompositionSchema.DataSet.builder()
+      .name(name)
+      .type(type)
+      .dataSource(dataSource)
+      .items(dataSets)
+      .querySource(querySource)
+      .fields(dataSetFields)
+      .build();
   }
 }

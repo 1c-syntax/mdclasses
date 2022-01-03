@@ -21,6 +21,7 @@ import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.data_storage.RoleRight;
 import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
@@ -29,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendReaderWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.ExtendStaxDriver;
@@ -193,6 +195,9 @@ public class DesignerXStreamFactory {
 
     xStream.alias("SequenceDimension", SequenceDimension.class);
     xStream.alias("RegisterDimension", RegisterDimension.class);
+
+    xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
+    xStream.alias("dataSet", DataCompositionSchema.DataSet.class);
   }
 
   private void registerConverters(XStream xStream) {
@@ -217,7 +222,7 @@ public class DesignerXStreamFactory {
 //    xStream.registerConverter(new EnumConverter<>(MessageDirection.class));
 //    xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
 //    xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
-//    xStream.registerConverter(new EnumConverter<>(TemplateType.class));
+    xStream.registerConverter(new EnumConverter<>(TemplateType.class));
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
 //    xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
 //    xStream.registerConverter(new EnumConverter<>(FormType.class));
