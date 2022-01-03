@@ -35,8 +35,7 @@ class CommonFormTest extends AbstractMDObjectTest<CommonForm> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CommonForm.Форма"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, CommonForm.ДополнительныеОтчетыИОбработки"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

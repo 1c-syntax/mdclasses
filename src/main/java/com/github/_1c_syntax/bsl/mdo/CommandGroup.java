@@ -88,10 +88,19 @@ public class CommandGroup implements MDObject {
 
   @Default
   String representation = "";
+
+  /**
+   * Всплывающая подсказка
+   */
   @Default
-  String toolTip = "";
+  MultiLanguageString toolTip = MultiLanguageString.EMPTY;
+
+  /**
+   * Картинка группы
+   */
   @Default
-  String picture = "";
+  String picture = ""; // TODO надо читать сложную ссылку
+
   @Default
   String category = "";
 }

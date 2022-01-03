@@ -33,6 +33,10 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  */
 @DesignerConverter
 public class MdoReferenceConverter implements Converter {
+
+  private static final String ITEM_NODE_NAME = "Item";
+  private static final String METADATA_NODE_NAME = "Metadata";
+
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -41,7 +45,21 @@ public class MdoReferenceConverter implements Converter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // todo надо обработать разные типы
-    return MdoReference.create(reader.getValue());
+    var nodeName = reader.getNodeName();
+    String value = "";
+    if (ITEM_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {
+      while (reader.hasMoreChildren()) {
+        reader.moveDown();
+        var propertyName = reader.getNodeName();
+        if (METADATA_NODE_NAME.equals(propertyName)) {
+          value = reader.getValue();
+        }
+        reader.moveUp();
+      }
+    } else {
+      value = reader.getValue();
+    }
+    return MdoReference.create(value);
   }
 
   @Override

@@ -270,12 +270,12 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   }
 
   private void linkCommonAttributesAndUsing(Map<String, AbstractMDObjectBase> allMDO) {
-    children.stream()
-      .filter(Either::isRight)
-      .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
-      .map(MDCommonAttribute.class::cast)
-      .forEach(commonAttribute -> commonAttribute.linkUsing(allMDO));
+//    children.stream()
+//      .filter(Either::isRight)
+//      .map(Either::get)
+//      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+//      .map(MDCommonAttribute.class::cast)
+//      .forEach(commonAttribute -> commonAttribute.linkUsing(allMDO));
   }
 
   private void linkExchangePlanAndMDO(Map<String, AbstractMDObjectBase> allMDO) {

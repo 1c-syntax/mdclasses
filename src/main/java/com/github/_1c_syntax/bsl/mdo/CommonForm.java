@@ -121,13 +121,13 @@ public class CommonForm implements Form {
    * Расширенное представление
    */
   @Default
-  String extendedPresentation = "";
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 }
 
 // todo реализовать

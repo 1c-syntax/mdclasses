@@ -97,18 +97,26 @@ public class CommonCommand implements Command {
 
   @Default
   String group = "";
+
   @Default
   String representation = "";
+
   @Default
   String toolTip = "";
+
   @Default
   String picture = "";
+
   @Default
   String shortcut = "";
+
   boolean includeHelpInContents;
+
   @Default
   String commandParameterType = "";
+
   @Default
   String parameterUseMode = "";
+
   boolean modifiesData;
 }

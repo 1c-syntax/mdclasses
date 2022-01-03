@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -114,7 +115,7 @@ public class CommonAttribute implements Attribute {
    * Объекты, использующие общий реквизит
    */
   @Default
-  List<MdoReference> using = Collections.emptyList();
+  List<MdoReference> content = Collections.emptyList();
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -130,60 +131,87 @@ public class CommonAttribute implements Attribute {
 
 // todo описания
 
+  /**
+   * Тип значения
+   */
   @Default
-  String value_type = "";
+  ValueType type = ValueType.EMPTY;
 
   @Default
   String format = "";
+
   @Default
   String editFormat = "";
+
   @Default
   String toolTip = "";
+
   boolean markNegatives;
+
   @Default
   String mask = "";
+
   boolean multiLine;
+
   boolean extendedEdit;
+
   @Default
   String minValue = "";
+
   @Default
+
   String maxValue = "";
+
   boolean fillFromFillingValue;
+
   @Default
   String fillValue = "";
+
   @Default
   String fillChecking = "";
+
   @Default
   String choiceFoldersAndItems = "";
+
   @Default
   List<String> choiceParameterLinks = Collections.emptyList();
+
   @Default
   List<String> choiceParameters = Collections.emptyList();
+
   @Default
   String quickChoice = "";
+
   @Default
   String createOnInput = "";
+
   @Default
   String choiceForm = "";
+
   @Default
   String linkByType = "";
+
   @Default
   String choiceHistoryOnInput = "";
 
-  // Content
-
   @Default
   String separatedDataUse = "";
+
   @Default
   String dataSeparationValue = "";
+
   @Default
   String dataSeparationUse = "";
+
   @Default
   String conditionalSeparation = "";
+
   @Default
   String usersSeparation = "";
+
   @Default
   String authenticationSeparation = "";
+
   @Default
   String configurationExtensionsSeparation = "";
 

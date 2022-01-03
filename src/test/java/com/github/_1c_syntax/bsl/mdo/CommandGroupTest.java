@@ -35,8 +35,7 @@ class CommandGroupTest extends AbstractMDObjectTest<CommandGroup> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CommandGroup.ГруппаКоманд1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, CommandGroup.Печать"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

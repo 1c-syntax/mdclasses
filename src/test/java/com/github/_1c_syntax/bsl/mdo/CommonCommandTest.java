@@ -35,24 +35,11 @@ class CommonCommandTest extends AbstractMDObjectTest<CommonCommand> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CommonCommand.ОбщаяКоманда1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/ssl_3_1, CommonCommand.ВсеФайлы"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
-
-
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "ОбщаяКоманда1,a608f796-f58e-4f8a-b63f-272342b32f35,,,CommonCommand,ОбщаяКоманда,0,0,0,0,0,1"
-//    }
-//  )
-//  void testEdt(ArgumentsAccessor argumentsAccessor) {
-//    var name = argumentsAccessor.getString(0);
-//    var mdo = getMDObjectEDT("CommonCommands/" + name + "/" + name);
-//    mdoTest(mdo, MDOType.COMMON_COMMAND, argumentsAccessor);
 
 }
