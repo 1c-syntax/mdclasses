@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +34,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Right {
+  @XStreamConverter(StringConverterIntern.class)
   private String name = "";
   private boolean value;
 }

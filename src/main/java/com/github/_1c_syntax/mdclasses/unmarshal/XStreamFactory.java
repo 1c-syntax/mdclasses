@@ -176,7 +176,7 @@ public class XStreamFactory {
         registerConverter(new ShortConverter(), PRIORITY_NORMAL);
         registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
         registerConverter(new ByteConverter(), PRIORITY_NORMAL);
-        registerConverter(new StringConverter(), PRIORITY_NORMAL);
+        registerConverter(new StringConverter(), PRIORITY_LOW);
         registerConverter(new DateConverter(), PRIORITY_NORMAL);
         registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
         registerConverter(reflectionConverter, PRIORITY_VERY_LOW);

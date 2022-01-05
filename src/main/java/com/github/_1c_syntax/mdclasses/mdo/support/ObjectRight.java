@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
+import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +39,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class ObjectRight {
+  @XStreamConverter(StringConverterIntern.class)
   private String name = "";
 
   @XStreamAlias("right")

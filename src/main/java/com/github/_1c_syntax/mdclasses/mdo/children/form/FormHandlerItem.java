@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
+import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerEvent;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,6 +33,7 @@ public class FormHandlerItem {
   /**
    * Имя события элемента формы (в том числе формы)
    */
+  @XStreamConverter(StringConverterIntern.class)
   private String event;
   /**
    * Назначенный метод, который обрабатывает событие элемента
