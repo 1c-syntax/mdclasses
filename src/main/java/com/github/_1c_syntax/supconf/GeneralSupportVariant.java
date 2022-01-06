@@ -19,29 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.support_configuration;
+package com.github._1c_syntax.supconf;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
-
-/**
- * Описание конфигурации поставщика
- */
-@Value
-@AllArgsConstructor
-public class SupportConfiguration {
-  /**
-   * Название
-   */
-  String name;
+public enum GeneralSupportVariant {
+  LOCKED, UNLOCKED;
 
   /**
-   * Поставщик
+   * Находит элемент по приоритету
+   *
+   * @param priority номер приоритета
+   * @return Найденное значение
    */
-  String provider;
-
-  /**
-   * Версия
-   */
-  String version;
+  public static GeneralSupportVariant valueOf(int priority) {
+    if (priority == 0) {
+      return UNLOCKED;
+    }
+    return LOCKED;
+  }
 }

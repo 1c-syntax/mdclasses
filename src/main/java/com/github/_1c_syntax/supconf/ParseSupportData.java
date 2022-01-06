@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.support_configuration;
+package com.github._1c_syntax.supconf;
 
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;

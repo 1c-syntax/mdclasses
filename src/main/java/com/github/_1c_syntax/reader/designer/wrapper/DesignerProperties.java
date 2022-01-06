@@ -21,7 +21,7 @@ import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverterCommon;
-import com.github._1c_syntax.support_configuration.ParseSupportData;
+import com.github._1c_syntax.supconf.ParseSupportData;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Data;

@@ -7,7 +7,7 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
-import com.github._1c_syntax.support_configuration.ParseSupportData;
+import com.github._1c_syntax.supconf.ParseSupportData;
 
 import java.nio.file.Path;
 import java.util.Optional;
