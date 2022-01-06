@@ -19,14 +19,40 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
+package com.github._1c_syntax.bsl.mdo.storages;
+
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+
 /**
- * В пакет выделены "хранилища" данных. Возможные варианты
- * - описания экранных форм
- * - описания интерфейсов/стилей
- * - описание содержимого макетов
- * - и т.д.
- * <p>
- * Общее для всех пакетов - их неотъемлемая связь с основными объектами метаданных для хранения
- * сложных по структуре данных
+ * Модель хранения информации о запросе СКД
  */
-package com.github._1c_syntax.bsl.mdo.data_storage;
+@Value
+@RequiredArgsConstructor
+public class QuerySource {
+
+  /**
+   * Пустой запрос
+   */
+  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
+
+  /**
+   * Позиция запроса в исходном файле
+   */
+  SourcePosition position;
+
+  /**
+   * Текст запроса
+   */
+  String textQuery;
+
+  /**
+   * Ссылка на пустой запрос
+   *
+   * @return Пустой запрос
+   */
+  public static QuerySource empty() {
+    return EMPTY;
+  }
+}

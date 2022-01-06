@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

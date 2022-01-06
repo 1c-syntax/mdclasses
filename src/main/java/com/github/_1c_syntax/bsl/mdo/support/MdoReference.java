@@ -40,6 +40,9 @@ import java.util.regex.Pattern;
 @EqualsAndHashCode(of = {"mdoRef"})
 @ToString(of = {"mdoRef"})
 public class MdoReference {
+  /**
+   * Ссылка на пустую ссылку
+   */
   public static final MdoReference EMPTY = new MdoReference(MDOType.UNKNOWN, "", "");
 
   private static final String REF_SPLIT_REGEX = "\\.";
@@ -99,6 +102,14 @@ public class MdoReference {
     return getOrCompute(mdoType, mdoRef, mdoRefRu);
   }
 
+  /**
+   * Создание дочерней ссылки
+   *
+   * @param mdoReferenceOwner Ссылка родитель
+   * @param mdoType           Тип дочерней ссылки
+   * @param name              Имя дочернего элемента
+   * @return Ссылка на элемент
+   */
   public static MdoReference create(@NonNull MdoReference mdoReferenceOwner,
                                     @NonNull MDOType mdoType,
                                     @NonNull String name) {

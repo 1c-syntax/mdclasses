@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData;
-import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
+import com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData;
+import com.github._1c_syntax.bsl.mdo.storages.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;

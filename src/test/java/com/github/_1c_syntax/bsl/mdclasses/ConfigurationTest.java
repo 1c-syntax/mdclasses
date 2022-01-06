@@ -100,16 +100,14 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, 62",
-      "original_3_18, 24",
-      "original_ordinary, 1"
-//      ,
-//      "edt", "edt2", "edt_3_18", "edt_en"
+      "designer/mdclasses, 62",
+      "designer/mdclasses_3_18, 24",
+      "designer/mdclasses_ordinary, 1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var pack = argumentsAccessor.getString(0);
-    var mdc = MDTestUtils.getMDClass("src/test/resources/metadata/" + pack, false);
+    var mdc = MDTestUtils.getMDClass("src/test/resources/ext/" + pack + "/src/cf", false);
     var current = MDTestUtils.createJson(mdc);
     var fixture = MDTestUtils.getFixture("src/test/resources/fixtures/" + pack + "/configuration.json");
     assertThat(current, true).isEqual(fixture);

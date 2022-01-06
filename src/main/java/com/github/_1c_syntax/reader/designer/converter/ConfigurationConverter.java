@@ -83,17 +83,6 @@ public class ConfigurationConverter implements Converter {
 //    TransformationUtils.setValue(builder, "plainChildren", allChildrenMDO);
     TransformationUtils.setValue(builder, "plainChildren", children);
 
-    var mdorefDefaultLanguage = MdoReference
-      .find((String) properties.get("undefinedProperties").get("DefaultLanguage"));
-    if (mdorefDefaultLanguage.isPresent()) {
-      var lang = children.stream()
-        .filter(child -> child.getMdoReference().equals(mdorefDefaultLanguage.get()))
-        .findFirst();
-      if (lang.isPresent()) {
-        TransformationUtils.setValue(builder, "DefaultLanguage", lang.get());
-      }
-    }
-
 
     var value = TransformationUtils.build(builder);
     return value;

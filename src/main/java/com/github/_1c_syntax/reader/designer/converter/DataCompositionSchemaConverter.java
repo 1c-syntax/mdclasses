@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storages.DataCompositionSchema;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

@@ -36,6 +36,9 @@ import java.util.regex.Pattern;
 @NoArgsConstructor
 public class Handler {
 
+  /**
+   * Ссылка на пустой обработчик
+   */
   public static final Handler EMPTY = new Handler();
 
   private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
@@ -60,6 +63,11 @@ public class Handler {
     }
   }
 
+  /**
+   * Возвращает признак пустого обработчика
+   *
+   * @return Признак пустоты
+   */
   public boolean isEmpty() {
     return methodPath.isBlank();
   }

@@ -8,7 +8,7 @@ import com.github._1c_syntax.bsl.mdo.ScheduledJob;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
-import com.github._1c_syntax.bsl.mdo.data_storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
