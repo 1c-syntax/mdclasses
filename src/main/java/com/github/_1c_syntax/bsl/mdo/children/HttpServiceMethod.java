@@ -39,9 +39,13 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class HttpServiceMethod implements MDObject, MDChildObject {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.HTTP_SERVICE_METHOD;
 
   /**
    * Уникальный идентификатор
@@ -49,16 +53,9 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.HTTP_SERVICE_METHOD;
+  String name;
 
   /**
    * Синонимы объекта
@@ -73,10 +70,10 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -85,10 +82,40 @@ public class HttpServiceMethod implements MDObject, MDChildObject {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
    * Обработчик метода http сервиса. Пока строкой
    * Формат имя метода
    * Пример ШаблонURLМетод1
    */
   @Default
   String handler = "";
+
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

@@ -35,7 +35,6 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -45,9 +44,13 @@ import java.util.List;
 public class CommonModule implements MDObject, Module, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_MODULE;
 
   /**
    * Уникальный идентификатор
@@ -55,22 +58,9 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMON_MODULE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -85,6 +75,28 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Module
+   */
+
+  /**
    * Тип модуля
    */
   @Default
@@ -94,6 +106,10 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
    * Ссылка на файл bsl модуля
    */
   URI uri; // todo fake uri
+
+  /**
+   * Custom
+   */
 
   /**
    * Признак Сервер
@@ -137,10 +153,17 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * MDObject
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Общий модуль сам является модулем

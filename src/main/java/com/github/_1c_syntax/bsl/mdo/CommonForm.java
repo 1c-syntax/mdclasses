@@ -44,9 +44,13 @@ import java.util.List;
 public class CommonForm implements Form {
 
   /**
-   * Имя
+   * Form
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_FORM;
 
   /**
    * Уникальный идентификатор
@@ -54,22 +58,9 @@ public class CommonForm implements Form {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMON_FORM;
+  String name;
 
   /**
    * Синонимы объекта
@@ -84,10 +75,32 @@ public class CommonForm implements Form {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Тип формы
    */
   @Default
   FormType formType = FormType.MANAGED;
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Список модулей объекта
@@ -96,10 +109,8 @@ public class CommonForm implements Form {
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Использование стандартных команд интерфейса
@@ -128,6 +139,15 @@ public class CommonForm implements Form {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Form
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }
 
 // todo реализовать

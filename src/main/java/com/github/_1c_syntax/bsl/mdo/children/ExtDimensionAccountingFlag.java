@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -41,12 +42,14 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
 
-  private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
+  /**
+   * Attribute
+   */
 
   /**
-   * Имя
+   * Тип метаданных
    */
-  String name;
+  static final MDOType mdoType = MDOType.EXT_DIMENSION_ACCOUNTING_FLAG;
 
   /**
    * Уникальный идентификатор
@@ -54,16 +57,9 @@ public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.EXT_DIMENSION_ACCOUNTING_FLAG;
+  String name;
 
   /**
    * Синонимы объекта
@@ -78,6 +74,24 @@ public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */
   boolean passwordMode;
@@ -89,20 +103,42 @@ public class ExtDimensionAccountingFlag implements Attribute, MDChildObject {
   AttributeKind kind = AttributeKind.CUSTOM;
 
   /**
+   * Вариант индексирования реквизита
+   */
+  static final IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * MDChildObject
+   */
+
+  /**
    * Родительский объект
    */
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 
   @Override
   public IndexingType getIndexing() {
-    return INDEXING;
+    return indexing;
   }
 
 }

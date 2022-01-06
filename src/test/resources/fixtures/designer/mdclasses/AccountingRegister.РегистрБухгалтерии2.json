@@ -1,10 +1,8 @@
 {"com.github._1c_syntax.bsl.mdo.AccountingRegister": {
   "attributes": [
     {
-      "name": "Измерение1",
       "uuid": "902c08a9-e457-436a-b0fb-b996f0d9bb00",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "Измерение1",
       "synonym": {
         "content": []
       },
@@ -13,9 +11,27 @@
         "mdoRef": "AccountingRegister.РегистрБухгалтерии2.Dimension.Измерение1",
         "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2.Измерение.Измерение1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 10,
+          "allowedLength": "Variable"
+        }
+      },
       "owner": {
         "type": "ACCOUNTING_REGISTER",
         "mdoRef": "AccountingRegister.РегистрБухгалтерии2",
@@ -23,14 +39,11 @@
       },
       "useInTotals": false,
       "denyIncompleteValues": false,
-      "master": false,
-      "supportVariant": "NONE"
+      "master": false
     },
     {
-      "name": "Ресурс1",
       "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
-      "objectBelonging": "OWN",
-      "mdoType": "RESOURCE",
+      "name": "Ресурс1",
       "synonym": {
         "content": []
       },
@@ -39,13 +52,24 @@
         "mdoRef": "AccountingRegister.РегистрБухгалтерии2.Resource.Ресурс1",
         "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2.Ресурс.Ресурс1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "auxiliaryListForm": {

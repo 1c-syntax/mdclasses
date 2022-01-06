@@ -32,14 +32,11 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -49,9 +46,13 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   ModuleOwner, TabularSectionOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.EXCHANGE_PLAN;
 
   /**
    * Уникальный идентификатор
@@ -59,22 +60,9 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.EXCHANGE_PLAN;
+  String name;
 
   /**
    * Синонимы объекта
@@ -89,10 +77,36 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * AttributeOwner
+   */
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * FormOwner
+   */
 
   /**
    * Список форм
@@ -101,10 +115,18 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   List<Form> forms = Collections.emptyList();
 
   /**
+   * CommandOwner
+   */
+
+  /**
    * Список команд
    */
   @Default
   List<Command> commands = Collections.emptyList();
+
+  /**
+   * TemplateOwner
+   */
 
   /**
    * Список макетов
@@ -113,10 +135,18 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   List<Template> templates = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
+
+  /**
+   * TabularSectionOwner
+   */
 
   /**
    * Список табличных частей
@@ -125,10 +155,8 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   List<TabularSection> tabularSections = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Признак распределенной базы
@@ -297,12 +325,6 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
 
   boolean executeAfterWriteDataHistoryVersionProcessing;
 
-  @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
-  }
-
   /**
    * Описание элемента состава плана обмена
    */
@@ -317,5 +339,14 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
      * Режим автоматической регистрации
      */
     AutoRecordType autoRecord;
+  }
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

@@ -31,6 +31,12 @@ import com.github._1c_syntax.bsl.types.MDOType;
  * Базовый интерфейс всех объектов метаданных
  */
 public interface MDObject {
+
+  /**
+   * Возвращает тип метаданных
+   */
+  MDOType getMdoType();
+
   /**
    * уникальный идентификатор объекта
    */
@@ -57,22 +63,12 @@ public interface MDObject {
   ObjectBelonging getObjectBelonging();
 
   /**
-   * Возвращает тип метаданных
-   */
-  MDOType getMdoType();
-
-//  /**
-//   * Возвращает имя метаданных объекта
-//   */
-//  String getMetadataName();
-//
-//  /**
-//   * Возвращает имя метаданных объекта на русском языке
-//   */
-//  String getMetadataNameRu();
-
-  /**
    * Вариант поддержки родительской конфигурации
    */
   SupportVariant getSupportVariant();
+
+  /**
+   * Комментарий
+   */
+  String getComment();
 }

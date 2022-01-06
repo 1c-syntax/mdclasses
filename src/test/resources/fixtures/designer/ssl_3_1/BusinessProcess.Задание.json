@@ -1,10 +1,8 @@
 {"com.github._1c_syntax.bsl.mdo.BusinessProcess": {
   "attributes": [
     {
-      "name": "Автор",
       "uuid": "a76b1fd1-ba00-40e6-8756-f17fee449818",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Автор",
       "synonym": {
         "content": [
           [
@@ -18,12 +16,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Автор",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Автор"
       },
-      "owner": {
-        "type": "BUSINESS_PROCESS",
-        "mdoRef": "BusinessProcess.Задание",
-        "mdoRefRu": "БизнесПроцесс.Задание"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -36,13 +31,16 @@
           "length": 0,
           "allowedLength": ""
         }
+      },
+      "owner": {
+        "type": "BUSINESS_PROCESS",
+        "mdoRef": "BusinessProcess.Задание",
+        "mdoRefRu": "БизнесПроцесс.Задание"
       }
     },
     {
-      "name": "Важность",
       "uuid": "5c913626-48d1-4e0a-a423-64078ce59c7b",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Важность",
       "synonym": {
         "content": [
           [
@@ -56,10 +54,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Важность",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Важность"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Важность задач точки действия Выполнить для исполнителя",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -70,13 +67,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Выполнено",
       "uuid": "0a4e6b7a-b380-4547-bc3c-5d6895a5d19a",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Выполнено",
       "synonym": {
         "content": [
           [
@@ -90,10 +88,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Выполнено",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Выполнено"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Результат выполнения задания после завершения бизнес-процесса.",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -104,13 +101,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ГлавнаяЗадача",
       "uuid": "7b0ec304-1904-413e-a9c6-ff62e87107dd",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ГлавнаяЗадача",
       "synonym": {
         "content": [
           [
@@ -124,10 +122,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ГлавнаяЗадача",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ГлавнаяЗадача"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -138,13 +135,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ДатаЗавершения",
       "uuid": "d4dd8c96-914d-496f-b735-ef85ec473605",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ДатаЗавершения",
       "synonym": {
         "content": [
           [
@@ -158,10 +156,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ДатаЗавершения",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ДатаЗавершения"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Фактическая дата завершения бизнес-процесса",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -172,13 +169,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Исполнитель",
       "uuid": "62517db4-59e6-4945-bcd6-b3f1845572bf",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Исполнитель",
       "synonym": {
         "content": [
           [
@@ -192,10 +190,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Исполнитель",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Исполнитель"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -208,13 +205,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Наименование",
       "uuid": "a6a9dd40-24cd-4d40-a12d-44f94f8c05a7",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Наименование",
       "synonym": {
         "content": [
           [
@@ -228,10 +226,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Наименование",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Наименование"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "АПК:58 - Описание задания",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -249,13 +246,14 @@
           "length": 250,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "НаПроверке",
       "uuid": "f0f72149-0e7f-441a-b70d-8f47d4977927",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "НаПроверке",
       "synonym": {
         "content": [
           [
@@ -269,10 +267,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.НаПроверке",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.НаПроверке"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Признак того, что указан проверяющий по задаче",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -283,13 +280,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "НомерИтерации",
       "uuid": "776efc3e-ac27-4550-bafd-6e91aa987af2",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "НомерИтерации",
       "synonym": {
         "content": [
           [
@@ -303,10 +301,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.НомерИтерации",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.НомерИтерации"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Количество циклов бизнес-процесса между исполнителем и проверяющим",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -317,13 +314,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Подтверждено",
       "uuid": "9f478c85-b72c-40ae-aa08-7ddf73b5b15c",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Подтверждено",
       "synonym": {
         "content": [
           [
@@ -337,10 +335,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Подтверждено",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Подтверждено"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Внутреннее состояние бизнес-процесса",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -351,13 +348,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Предмет",
       "uuid": "cc438366-85ea-48be-8b74-d05cddb1fc51",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Предмет",
       "synonym": {
         "content": [
           [
@@ -371,10 +369,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Предмет",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Предмет"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Объект системы, \"по поводу\" которого был создан бизнес-процесс.",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -383,13 +380,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Проверяющий",
       "uuid": "4688fd3b-4a92-4ed8-b111-0cf22a729b1c",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Проверяющий",
       "synonym": {
         "content": [
           [
@@ -403,10 +401,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Проверяющий",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Проверяющий"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -419,13 +416,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "РезультатВыполнения",
       "uuid": "92029d1f-0472-4aaa-8fd6-9fb3c3cf414e",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "РезультатВыполнения",
       "synonym": {
         "content": [
           [
@@ -439,10 +437,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.РезультатВыполнения",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.РезультатВыполнения"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "История переписки исполнителя и проверяющего",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -460,13 +457,14 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Содержание",
       "uuid": "3271b800-1825-422f-97bb-757baf403e90",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Содержание",
       "synonym": {
         "content": [
           [
@@ -480,10 +478,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Содержание",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Содержание"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -501,13 +498,14 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "Состояние",
       "uuid": "6fd6efc1-facc-4ece-a5b3-3dce6acca81d",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Состояние",
       "synonym": {
         "content": [
           [
@@ -521,10 +519,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.Состояние",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.Состояние"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -535,13 +532,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "СрокИсполнения",
       "uuid": "4ee82868-7a20-4c3a-91f9-42a6bf53ac37",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "СрокИсполнения",
       "synonym": {
         "content": [
           [
@@ -555,10 +553,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.СрокИсполнения",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.СрокИсполнения"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -569,13 +566,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "СрокПроверки",
       "uuid": "a040c756-4687-4bfd-a690-b122d3c490e5",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "СрокПроверки",
       "synonym": {
         "content": [
           [
@@ -589,10 +587,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.СрокПроверки",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.СрокПроверки"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -603,13 +600,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "АвторСтрокой",
       "uuid": "bd5940d5-13fd-4f59-bb6c-614f93f9c8e4",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "АвторСтрокой",
       "synonym": {
         "content": [
           [
@@ -623,10 +621,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.АвторСтрокой",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.АвторСтрокой"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -644,13 +641,14 @@
           "length": 150,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ВнешнееЗадание",
       "uuid": "961a9801-3956-4ea0-b0d3-908f09bf4929",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ВнешнееЗадание",
       "synonym": {
         "content": [
           [
@@ -664,10 +662,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ВнешнееЗадание",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ВнешнееЗадание"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -678,13 +675,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ЗадачаИсточник",
       "uuid": "6fac5c14-e126-4342-9078-edf1d0efcbf2",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ЗадачаИсточник",
       "synonym": {
         "content": [
           [
@@ -698,10 +696,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ЗадачаИсточник",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ЗадачаИсточник"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -712,13 +709,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "СодержаниеПредмета",
       "uuid": "0a3325a1-21c4-4997-882f-4ac2edc175f0",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "СодержаниеПредмета",
       "synonym": {
         "content": [
           [
@@ -732,10 +730,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.СодержаниеПредмета",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.СодержаниеПредмета"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -746,13 +743,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ОсновнойОбъектАдресации",
       "uuid": "71102d3f-f020-4d6f-9582-9a7eefb4e797",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ОсновнойОбъектАдресации",
       "synonym": {
         "content": [
           [
@@ -766,10 +764,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ОсновнойОбъектАдресации",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ОсновнойОбъектАдресации"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -778,13 +775,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ОсновнойОбъектАдресацииПроверяющий",
       "uuid": "53ef6849-a3f3-4171-9167-f349f2d6a736",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ОсновнойОбъектАдресацииПроверяющий",
       "synonym": {
         "content": [
           [
@@ -798,10 +796,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ОсновнойОбъектАдресацииПроверяющий",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ОсновнойОбъектАдресацииПроверяющий"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -810,13 +807,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ДополнительныйОбъектАдресации",
       "uuid": "3f588bd3-d461-42b7-8ab1-386af6399d56",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ДополнительныйОбъектАдресации",
       "synonym": {
         "content": [
           [
@@ -830,10 +828,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ДополнительныйОбъектАдресации",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ДополнительныйОбъектАдресации"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -842,13 +839,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ДополнительныйОбъектАдресацииПроверяющий",
       "uuid": "c04ff85e-b4af-4a9f-b0e9-c5c65e3d10a1",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ДополнительныйОбъектАдресацииПроверяющий",
       "synonym": {
         "content": [
           [
@@ -862,10 +860,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ДополнительныйОбъектАдресацииПроверяющий",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ДополнительныйОбъектАдресацииПроверяющий"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -874,13 +871,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ГруппаИсполнителейЗадач",
       "uuid": "8c576405-29c1-46b1-ab2e-40e52c21cab0",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ГруппаИсполнителейЗадач",
       "synonym": {
         "content": [
           [
@@ -894,10 +892,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ГруппаИсполнителейЗадач",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ГруппаИсполнителейЗадач"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -910,13 +907,14 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
-      "name": "ГруппаИсполнителейЗадачПроверяющий",
       "uuid": "b33a89da-8589-4902-83fa-6545e5fce23e",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ГруппаИсполнителейЗадачПроверяющий",
       "synonym": {
         "content": [
           [
@@ -930,10 +928,9 @@
         "mdoRef": "BusinessProcess.Задание.Attribute.ГруппаИсполнителейЗадачПроверяющий",
         "mdoRefRu": "БизнесПроцесс.Задание.Реквизит.ГруппаИсполнителейЗадачПроверяющий"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -946,6 +943,9 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
@@ -1009,9 +1009,8 @@
   },
   "forms": [
     {
-      "name": "ДействиеВыполнить",
       "uuid": "f0620d5a-e1fe-419f-af37-e0f462f97e8d",
-      "mdoType": "FORM",
+      "name": "ДействиеВыполнить",
       "synonym": {
         "content": [
           [
@@ -1025,15 +1024,18 @@
         "mdoRef": "BusinessProcess.Задание.Form.ДействиеВыполнить",
         "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеВыполнить"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ДействиеПроверить",
       "uuid": "3e2f2ae1-c809-43fc-8276-b0a16a92858c",
-      "mdoType": "FORM",
+      "name": "ДействиеПроверить",
       "synonym": {
         "content": [
           [
@@ -1047,15 +1049,18 @@
         "mdoRef": "BusinessProcess.Задание.Form.ДействиеПроверить",
         "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеПроверить"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ФормаБизнесПроцесса",
       "uuid": "b58942ca-1367-4e1d-b5b4-7d973d0fecd8",
-      "mdoType": "FORM",
+      "name": "ФормаБизнесПроцесса",
       "synonym": {
         "content": [
           [
@@ -1067,15 +1072,18 @@
       "mdoReference": {
         "@reference": "../../../defaultObjectForm"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ФормаСписка",
       "uuid": "1a7c7427-bead-4655-9dd6-df6e722663c5",
-      "mdoType": "FORM",
+      "name": "ФормаСписка",
       "synonym": {
         "content": [
           [
@@ -1087,10 +1095,14 @@
       "mdoReference": {
         "@reference": "../../../defaultListForm"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "fullTextSearch": "USE",
@@ -1113,16 +1125,16 @@
   "mdoType": "BUSINESS_PROCESS",
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },

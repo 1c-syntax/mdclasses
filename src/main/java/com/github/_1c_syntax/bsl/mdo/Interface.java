@@ -39,9 +39,13 @@ import lombok.Value;
 public class Interface implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.INTERFACE;
 
   /**
    * Уникальный идентификатор
@@ -49,22 +53,9 @@ public class Interface implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.INTERFACE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -79,13 +70,38 @@ public class Interface implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
+
+  /**
    * Переключаемый
    */
   boolean switchable;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

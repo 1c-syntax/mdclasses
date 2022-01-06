@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
@@ -44,9 +45,13 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class DocumentJournalColumn implements Attribute, MDChildObject {
   /**
-   * Имя
+   * Attribute
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COLUMN;
 
   /**
    * Уникальный идентификатор
@@ -54,16 +59,9 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COLUMN;
+  String name;
 
   /**
    * Синонимы объекта
@@ -76,6 +74,24 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
    */
   @Default
   MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
@@ -95,20 +111,37 @@ public class DocumentJournalColumn implements Attribute, MDChildObject {
   IndexingType indexing = IndexingType.DONT_INDEX;
 
   /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * MDChildObject
+   */
+
+  /**
    * Родительский объект
    */
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Ссылки на реквизиты документов
    */
   @Default
   List<MdoReference> references = Collections.emptyList();
+
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

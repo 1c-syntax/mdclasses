@@ -43,10 +43,15 @@ import java.nio.file.Path;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class ObjectTemplate implements Template, MDChildObject {
+
   /**
-   * Имя
+   * Template
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.TEMPLATE;
 
   /**
    * Уникальный идентификатор
@@ -54,16 +59,9 @@ public class ObjectTemplate implements Template, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.TEMPLATE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -76,6 +74,24 @@ public class ObjectTemplate implements Template, MDChildObject {
    */
   @Default
   MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
@@ -92,7 +108,11 @@ public class ObjectTemplate implements Template, MDChildObject {
   /**
    * Путь к самому файлу макета
    */
-  Path templateDataPath;
+  Path templateDataPath; // todo fake path
+
+  /**
+   * MDChildObject
+   */
 
   /**
    * Родительский объект
@@ -101,8 +121,16 @@ public class ObjectTemplate implements Template, MDChildObject {
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Template
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

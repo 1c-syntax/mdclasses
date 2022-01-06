@@ -43,9 +43,13 @@ public class Language implements MDObject {
   public static final Language DEFAULT = defaultLanguage();
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.LANGUAGE;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class Language implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.LANGUAGE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,10 +74,26 @@ public class Language implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Код языка
@@ -105,5 +112,14 @@ public class Language implements MDObject {
         MDOType.LANGUAGE.getGroupNameRu() + ".Русский"))
       .languageCode("ru")
       .build();
+  }
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

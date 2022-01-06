@@ -1,10 +1,8 @@
 {"com.github._1c_syntax.bsl.mdo.Catalog": {
   "attributes": [
     {
-      "name": "Комментарий",
       "uuid": "245162d8-6ae1-47e5-a0c9-0d5f2e5d8ea8",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Комментарий",
       "synonym": {
         "content": [
           [
@@ -18,12 +16,9 @@
         "mdoRef": "Catalog.ГруппыПользователей.Attribute.Комментарий",
         "mdoRefRu": "Справочник.ГруппыПользователей.Реквизит.Комментарий"
       },
-      "owner": {
-        "type": "CATALOG",
-        "mdoRef": "Catalog.ГруппыПользователей",
-        "mdoRefRu": "Справочник.ГруппыПользователей"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -41,6 +36,11 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.ГруппыПользователей",
+        "mdoRefRu": "Справочник.ГруппыПользователей"
       }
     }
   ],
@@ -74,10 +74,8 @@
   "codeType": "String",
   "commands": [
     {
-      "name": "ГруппыПользователя",
       "uuid": "715dc289-5b14-4ee0-8716-9c15958b9069",
-      "objectBelonging": "OWN",
-      "mdoType": "COMMAND",
+      "name": "ГруппыПользователя",
       "synonym": {
         "content": [
           [
@@ -91,9 +89,9 @@
         "mdoRef": "Catalog.ГруппыПользователей.Command.ГруппыПользователя",
         "mdoRefRu": "Справочник.ГруппыПользователей.Команда.ГруппыПользователя"
       },
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "modules": [
         {
           "moduleType": "CommandModule",
@@ -106,7 +104,9 @@
           "supportVariant": "NONE"
         }
       ],
-      "supportVariant": "NONE"
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
     }
   ],
   "comment": "",
@@ -154,9 +154,8 @@
   "foldersOnTop": true,
   "forms": [
     {
-      "name": "ФормаЭлемента",
       "uuid": "5d7a53fa-1a89-4e6e-868c-4077bd84c0ce",
-      "mdoType": "FORM",
+      "name": "ФормаЭлемента",
       "synonym": {
         "content": [
           [
@@ -168,15 +167,18 @@
       "mdoReference": {
         "@reference": "../../../defaultObjectForm"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ФормаСписка",
       "uuid": "3bf1281f-7570-4633-86b9-3e953a7e6647",
-      "mdoType": "FORM",
+      "name": "ФормаСписка",
       "synonym": {
         "content": [
           [
@@ -188,10 +190,14 @@
       "mdoReference": {
         "@reference": "../../../defaultChoiceForm"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "fullTextSearch": "USE",
@@ -213,16 +219,16 @@
   "mdoType": "CATALOG",
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ГруппыПользователей/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -255,10 +261,8 @@
   },
   "tabularSections": [
     {
-      "name": "Состав",
       "uuid": "6581ac1f-11ef-42b8-9f3b-590bb7546e63",
-      "objectBelonging": "OWN",
-      "mdoType": "TABULAR_SECTION",
+      "name": "Состав",
       "synonym": {
         "content": [
           [
@@ -272,12 +276,13 @@
         "mdoRef": "Catalog.ГруппыПользователей.TabularSection.Состав",
         "mdoRefRu": "Справочник.ГруппыПользователей.ТабличнаяЧасть.Состав"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "attributes": [
         {
-          "name": "Пользователь",
           "uuid": "ce952e88-35b7-4506-81ac-d7081e50a650",
-          "objectBelonging": "OWN",
-          "mdoType": "ATTRIBUTE",
+          "name": "Пользователь",
           "synonym": {
             "content": [
               [
@@ -291,10 +296,9 @@
             "mdoRef": "Catalog.ГруппыПользователей.TabularSection.Состав.Attribute.Пользователь",
             "mdoRefRu": "Справочник.ГруппыПользователей.ТабличнаяЧасть.Состав.Реквизит.Пользователь"
           },
-          "owner": {
-            "@reference": "../../../mdoReference"
-          },
+          "objectBelonging": "OWN",
           "supportVariant": "NONE",
+          "comment": "",
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "INDEX",
@@ -306,13 +310,15 @@
               "length": 0,
               "allowedLength": ""
             }
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
           }
         }
       ],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "templates": [],

@@ -43,9 +43,13 @@ import java.util.List;
 public class EventSubscription implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.EVENT_SUBSCRIPTION;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class EventSubscription implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.EVENT_SUBSCRIPTION;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,10 +74,26 @@ public class EventSubscription implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Обработчик подписки на событие
@@ -106,4 +113,12 @@ public class EventSubscription implements MDObject {
   @Default
   List<String> source = Collections.emptyList();
 
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

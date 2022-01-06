@@ -39,9 +39,13 @@ import lombok.Value;
 public class StyleItem implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.STYLE_ITEM;
 
   /**
    * Уникальный идентификатор
@@ -49,22 +53,9 @@ public class StyleItem implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.STYLE_ITEM;
+  String name;
 
   /**
    * Синонимы объекта
@@ -79,10 +70,26 @@ public class StyleItem implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Тип элемента стиля
@@ -95,4 +102,13 @@ public class StyleItem implements MDObject {
    */
   @Default
   String value = ""; // todo разобрать значение стиля
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

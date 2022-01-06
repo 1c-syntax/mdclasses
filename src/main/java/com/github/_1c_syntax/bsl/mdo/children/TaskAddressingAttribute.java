@@ -42,9 +42,13 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class TaskAddressingAttribute implements Attribute, MDChildObject {
   /**
-   * Имя
+   * Attribute
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.TASK_ADDRESSING_ATTRIBUTE;
 
   /**
    * Уникальный идентификатор
@@ -52,16 +56,9 @@ public class TaskAddressingAttribute implements Attribute, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.TASK_ADDRESSING_ATTRIBUTE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -74,6 +71,24 @@ public class TaskAddressingAttribute implements Attribute, MDChildObject {
    */
   @Default
   MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
@@ -93,20 +108,32 @@ public class TaskAddressingAttribute implements Attribute, MDChildObject {
   IndexingType indexing = IndexingType.DONT_INDEX;
 
   /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * MDChildObject
+   */
+
+  /**
    * Родительский объект
    */
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Тип значения
+   * Attribute
    */
-  @Default
-  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

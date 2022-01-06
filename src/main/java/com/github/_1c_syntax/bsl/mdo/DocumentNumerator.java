@@ -39,9 +39,13 @@ import lombok.Value;
 public class DocumentNumerator implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.DOCUMENT_NUMERATOR;
 
   /**
    * Уникальный идентификатор
@@ -49,22 +53,9 @@ public class DocumentNumerator implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.DOCUMENT_NUMERATOR;
+  String name;
 
   /**
    * Синонимы объекта
@@ -79,10 +70,26 @@ public class DocumentNumerator implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Тип номера
@@ -111,4 +118,13 @@ public class DocumentNumerator implements MDObject {
    * Контролировать уникальность
    */
   boolean checkUnique;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

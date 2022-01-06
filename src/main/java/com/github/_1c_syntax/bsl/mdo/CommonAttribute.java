@@ -46,12 +46,14 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CommonAttribute implements Attribute {
 
-  private static final AttributeKind KIND = AttributeKind.COMMON;
+  /**
+   * Attribute
+   */
 
   /**
-   * Имя
+   * Тип метаданных
    */
-  String name;
+  static final MDOType mdoType = MDOType.COMMON_ATTRIBUTE;
 
   /**
    * Уникальный идентификатор
@@ -59,22 +61,9 @@ public class CommonAttribute implements Attribute {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMON_ATTRIBUTE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -89,15 +78,47 @@ public class CommonAttribute implements Attribute {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Режим пароля. Только для констант с типом `Строка`
    */
   boolean passwordMode;
 
   /**
+   * Вид атрибута
+   */
+  static final AttributeKind kind = AttributeKind.COMMON;
+
+  /**
    * Вариант индексирования реквизита
    */
+  static final IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Тип значения
+   */
   @Default
-  IndexingType indexing = IndexingType.DONT_INDEX;
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * Custom
+   */
 
   /**
    * Признак автоиспользования общего реквизита
@@ -118,24 +139,12 @@ public class CommonAttribute implements Attribute {
   List<MdoReference> content = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
-   */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
-
-  /**
    * Использовать полнотекстовый поиск
    */
   @Default
   UseMode fullTextSearch = UseMode.DONT_USE;
 
-// todo описания
-
-  /**
-   * Тип значения
-   */
-  @Default
-  ValueType type = ValueType.EMPTY;
+  // todo описания
 
   @Default
   String format = "";
@@ -215,8 +224,23 @@ public class CommonAttribute implements Attribute {
   @Default
   String configurationExtensionsSeparation = "";
 
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
   @Override
   public AttributeKind getKind() {
-    return KIND;
+    return kind;
   }
+
+  @Override
+  public IndexingType getIndexing() {
+    return indexing;
+  }
+
 }

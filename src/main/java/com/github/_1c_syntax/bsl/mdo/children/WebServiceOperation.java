@@ -44,9 +44,13 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwner {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.WS_OPERATION;
 
   /**
    * Уникальный идентификатор
@@ -54,22 +58,9 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.WS_OPERATION;
+  String name;
 
   /**
    * Синонимы объекта
@@ -84,10 +75,10 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -96,18 +87,42 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * ChildrenOwner
+   */
+
+  /**
+   * Параметры операции веб-сервиса
+   */
+  @Default
+  List<WebServiceOperationParameter> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
    * Обработчик операции. Пока строкой
    * Формат имя метода
    * Пример Операция1
    */
   @Default
   String handler = "";
-
-  /**
-   * Операции веб-сервиса
-   */
-  @Default
-  List<WebServiceOperationParameter> children = Collections.emptyList();
 
   /**
    * Тип возвращаемого значения
@@ -130,6 +145,19 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ChildrenOwner
+   */
 
   @Override
   public List<MDObject> getChildren() {

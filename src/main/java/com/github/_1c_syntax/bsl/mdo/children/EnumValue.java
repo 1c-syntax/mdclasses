@@ -18,9 +18,13 @@ import lombok.Value;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class EnumValue implements MDObject, MDChildObject {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.ENUM_VALUE;
 
   /**
    * Уникальный идентификатор
@@ -28,16 +32,9 @@ public class EnumValue implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.ENUM_VALUE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -52,15 +49,44 @@ public class EnumValue implements MDObject, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 
 }

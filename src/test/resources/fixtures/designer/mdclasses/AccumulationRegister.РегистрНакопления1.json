@@ -1,10 +1,8 @@
 {"com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
   "attributes": [
     {
-      "name": "Ресурс1",
       "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
-      "objectBelonging": "OWN",
-      "mdoType": "RESOURCE",
+      "name": "Ресурс1",
       "synonym": {
         "content": []
       },
@@ -13,21 +11,30 @@
         "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
         "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      },
       "owner": {
         "type": "ACCUMULATION_REGISTER",
         "mdoRef": "AccumulationRegister.РегистрНакопления1",
         "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "Измерение1",
       "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "Измерение1",
       "synonym": {
         "content": []
       },
@@ -36,16 +43,33 @@
         "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
         "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 10,
+          "allowedLength": "Variable"
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "useInTotals": true,
       "denyIncompleteValues": true,
-      "master": false,
-      "supportVariant": "NONE"
+      "master": false
     }
   ],
   "auxiliaryListForm": {

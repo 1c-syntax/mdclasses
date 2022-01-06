@@ -2,10 +2,8 @@
   "actionPeriodUse": true,
   "attributes": [
     {
-      "name": "Реквизит",
       "uuid": "f1f5f5a9-e063-4ac7-acb8-f95dc089673f",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Реквизит",
       "synonym": {
         "content": [
           [
@@ -19,12 +17,9 @@
         "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.Attribute.Реквизит",
         "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.Реквизит.Реквизит"
       },
-      "owner": {
-        "type": "CHART_OF_CALCULATION_TYPES",
-        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1",
-        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -36,13 +31,16 @@
           "length": 0,
           "allowedLength": ""
         }
+      },
+      "owner": {
+        "type": "CHART_OF_CALCULATION_TYPES",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1"
       }
     },
     {
-      "name": "Реквизит1",
       "uuid": "6efb0da7-eb59-4461-b96b-b00a45b7c760",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Реквизит1",
       "synonym": {
         "content": [
           [
@@ -56,10 +54,9 @@
         "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.Attribute.Реквизит1",
         "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.Реквизит.Реквизит1"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -70,6 +67,9 @@
         "stringQualifier": {
           "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
@@ -155,10 +155,8 @@
   },
   "tabularSections": [
     {
-      "name": "ТабличнаяЧасть",
       "uuid": "78306247-ac7e-4bd3-bb71-29e78139ebc4",
-      "objectBelonging": "OWN",
-      "mdoType": "TABULAR_SECTION",
+      "name": "ТабличнаяЧасть",
       "synonym": {
         "content": [
           [
@@ -172,12 +170,13 @@
         "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть",
         "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.ТабличнаяЧасть.ТабличнаяЧасть"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "attributes": [
         {
-          "name": "Месяц",
           "uuid": "dfb18698-077e-47a6-ac63-6d98de0db138",
-          "objectBelonging": "OWN",
-          "mdoType": "ATTRIBUTE",
+          "name": "Месяц",
           "synonym": {
             "content": [
               [
@@ -191,10 +190,9 @@
             "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть.Attribute.Месяц",
             "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.ТабличнаяЧасть.ТабличнаяЧасть.Реквизит.Месяц"
           },
-          "owner": {
-            "@reference": "../../../mdoReference"
-          },
+          "objectBelonging": "OWN",
           "supportVariant": "NONE",
+          "comment": "",
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
@@ -205,13 +203,15 @@
             "stringQualifier": {
               "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
           }
         }
       ],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "templates": [],

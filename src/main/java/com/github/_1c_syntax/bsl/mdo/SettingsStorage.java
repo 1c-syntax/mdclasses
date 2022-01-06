@@ -42,9 +42,13 @@ import java.util.List;
 public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SETTINGS_STORAGE;
 
   /**
    * Уникальный идентификатор
@@ -52,22 +56,9 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.SETTINGS_STORAGE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -82,10 +73,36 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * FormOwner
+   */
+
+  /**
    * Список форм
    */
   @Default
   List<Form> forms = Collections.emptyList();
+
+  /**
+   * TemplateOwner
+   */
 
   /**
    * Список макетов
@@ -94,16 +111,18 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   List<Template> templates = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Форма по умолчанию для сохранения
@@ -129,4 +148,12 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   @Default
   MdoReference auxiliaryLoadForm = MdoReference.EMPTY;
 
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

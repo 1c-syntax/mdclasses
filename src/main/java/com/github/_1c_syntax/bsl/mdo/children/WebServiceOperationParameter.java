@@ -19,9 +19,13 @@ import lombok.Value;
 public class WebServiceOperationParameter implements MDObject, MDChildObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.WS_OPERATION_PARAMETER;
 
   /**
    * Уникальный идентификатор
@@ -29,22 +33,9 @@ public class WebServiceOperationParameter implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.WS_OPERATION_PARAMETER;
+  String name;
 
   /**
    * Синонимы объекта
@@ -59,16 +50,36 @@ public class WebServiceOperationParameter implements MDObject, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
 
   /**
    * Тип значения параметра
@@ -91,4 +102,14 @@ public class WebServiceOperationParameter implements MDObject, MDChildObject {
    */
   @Default
   String transferDirection = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

@@ -42,9 +42,13 @@ import java.util.List;
 public class CommonCommand implements Command {
 
   /**
-   * Имя
+   * Command
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_COMMAND;
 
   /**
    * Уникальный идентификатор
@@ -52,22 +56,9 @@ public class CommonCommand implements Command {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMON_COMMAND;
+  String name;
 
   /**
    * Синонимы объекта
@@ -82,16 +73,32 @@ public class CommonCommand implements Command {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список модулей объекта
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
 
   // todo описание
 
@@ -119,4 +126,13 @@ public class CommonCommand implements Command {
   String parameterUseMode = "";
 
   boolean modifiesData;
+
+  /**
+   * Command
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

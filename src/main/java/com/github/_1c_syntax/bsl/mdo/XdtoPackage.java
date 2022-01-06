@@ -40,9 +40,13 @@ import lombok.Value;
 public class XdtoPackage implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.XDTO_PACKAGE;
 
   /**
    * Уникальный идентификатор
@@ -50,22 +54,9 @@ public class XdtoPackage implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.XDTO_PACKAGE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -80,10 +71,26 @@ public class XdtoPackage implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Пространство имен xdto-пакета
@@ -97,4 +104,12 @@ public class XdtoPackage implements MDObject {
   @Default
   XdtoPackageData data = XdtoPackageData.EMPTY;
 
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

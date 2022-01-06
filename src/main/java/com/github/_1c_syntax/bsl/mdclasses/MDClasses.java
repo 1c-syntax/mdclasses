@@ -21,9 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.Language;
-import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
@@ -130,17 +128,17 @@ public class MDClasses {
    * @param mdc Конфигурация или расширение
    */
   private static void computeCommonAttributeLinks(MDClass mdc) {
-    if (mdc instanceof ConfigurationTree) {
-      var configuration = (ConfigurationTree) mdc;
-      configuration.getCommonAttributes()
-        .forEach(commonAttribute -> commonAttribute.getContent()
-          .forEach(mdoReference -> mdc.findChild(mdoReference)
-            .ifPresent((MDObject mdObject) -> {
-              if (mdObject instanceof AttributeOwner) {
-                ((AttributeOwner) mdObject).addCommonAttribute(commonAttribute);
-              }
-            }))
-        );
-    }
+//    if (mdc instanceof ConfigurationTree) {
+//      var configuration = (ConfigurationTree) mdc;
+//      configuration.getCommonAttributes()
+//        .forEach(commonAttribute -> commonAttribute.getContent()
+//          .forEach(mdoReference -> mdc.findChild(mdoReference)
+//            .ifPresent((MDObject mdObject) -> {
+//              if (mdObject instanceof AttributeOwner) {
+//                ((AttributeOwner) mdObject).addCommonAttribute(commonAttribute);
+//              }
+//            }))
+//        );
+//    }
   }
 }

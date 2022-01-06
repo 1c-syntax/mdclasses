@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
-import com.github._1c_syntax.bsl.mdo.CommonAttribute;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -32,7 +31,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
@@ -46,9 +44,13 @@ import java.util.List;
 public class ObjectTabularSection implements TabularSection, MDChildObject {
 
   /**
-   * Имя
+   * TabularSection
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.TABULAR_SECTION;
 
   /**
    * Уникальный идентификатор
@@ -56,16 +58,9 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.TABULAR_SECTION;
+  String name;
 
   /**
    * Синонимы объекта
@@ -80,10 +75,32 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * MDChildObject
+   */
 
   /**
    * Родительский объект
@@ -92,13 +109,15 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * TabularSection
+   */
 
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo общего реквизита не бывает
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

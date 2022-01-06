@@ -43,9 +43,13 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class HttpServiceUrlTemplate implements MDObject, MDChildObject, ChildrenOwner {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.HTTP_SERVICE_URL_TEMPLATE;
 
   /**
    * Уникальный идентификатор
@@ -53,16 +57,9 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.HTTP_SERVICE_URL_TEMPLATE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -77,16 +74,36 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * ChildrenOwner
+   */
 
   /**
    * Методы шаблона URL HTTP-сервиса
@@ -99,5 +116,18 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
     var superChildren = ChildrenOwner.super.getChildren();
     superChildren.addAll(children);
     return superChildren;
+  }
+
+  /**
+   * Custom
+   */
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

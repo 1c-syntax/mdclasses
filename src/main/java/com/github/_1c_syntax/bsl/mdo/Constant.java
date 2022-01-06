@@ -45,13 +45,14 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Constant implements Attribute, ModuleOwner {
 
-  private static final AttributeKind KIND = AttributeKind.STANDARD;
-  private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
+  /**
+   * Attribute
+   */
 
   /**
-   * Имя
+   * Тип метаданных
    */
-  String name;
+  static final MDOType mdoType = MDOType.CONSTANT;
 
   /**
    * Уникальный идентификатор
@@ -59,22 +60,9 @@ public class Constant implements Attribute, ModuleOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.CONSTANT;
+  String name;
 
   /**
    * Синонимы объекта
@@ -89,9 +77,47 @@ public class Constant implements Attribute, ModuleOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
    * Режим пароля. Только для констант с типом `Строка`
    */
   boolean passwordMode;
+
+  /**
+   * Вид атрибута
+   */
+  static final AttributeKind kind = AttributeKind.STANDARD;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  static final IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Список модулей объекта
@@ -100,10 +126,8 @@ public class Constant implements Attribute, ModuleOwner {
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Использование стандартных команд интерфейса
@@ -133,12 +157,6 @@ public class Constant implements Attribute, ModuleOwner {
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
-
-  /**
-   * Тип значения
-   */
-  @Default
-  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
 
   // todo описание
 
@@ -193,14 +211,22 @@ public class Constant implements Attribute, ModuleOwner {
   @Default
   String choiceHistoryOnInput = "";
 
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
   @Override
   public AttributeKind getKind() {
-    return KIND;
+    return kind;
   }
 
   @Override
   public IndexingType getIndexing() {
-    return INDEXING;
+    return indexing;
   }
-
 }

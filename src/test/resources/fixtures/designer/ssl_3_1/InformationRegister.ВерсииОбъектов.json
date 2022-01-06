@@ -1,10 +1,8 @@
 {"com.github._1c_syntax.bsl.mdo.InformationRegister": {
   "attributes": [
     {
-      "name": "ВерсияОбъекта",
       "uuid": "d0634a8e-676f-4f49-9a38-7cb80cfa9fdf",
-      "objectBelonging": "OWN",
-      "mdoType": "RESOURCE",
+      "name": "ВерсияОбъекта",
       "synonym": {
         "content": [
           [
@@ -18,21 +16,30 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Resource.ВерсияОбъекта",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Ресурс.ВерсияОбъекта"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "v8:ValueStorage"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      },
       "owner": {
         "type": "INFORMATION_REGISTER",
         "mdoRef": "InformationRegister.ВерсииОбъектов",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "АвторВерсии",
       "uuid": "59bb5271-4cc7-45aa-8e2a-f556a4afa2dc",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "АвторВерсии",
       "synonym": {
         "content": [
           [
@@ -46,10 +53,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.АвторВерсии",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.АвторВерсии"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -59,16 +65,16 @@
           "cfg:CatalogRef.Пользователи"
         ],
         "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ДатаВерсии",
       "uuid": "81dd61e5-fe02-4272-a525-affda9b606ca",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ДатаВерсии",
       "synonym": {
         "content": [
           [
@@ -82,10 +88,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ДатаВерсии",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ДатаВерсии"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -94,15 +99,16 @@
           "xs:dateTime"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "Комментарий",
       "uuid": "8de7b423-b7d1-46fe-b1dc-fb936736b864",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Комментарий",
       "synonym": {
         "content": [
           [
@@ -116,10 +122,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.Комментарий",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.Комментарий"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -137,13 +142,14 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ТипВерсииОбъекта",
       "uuid": "f565876c-0326-4b12-895e-c248b9e64115",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ТипВерсииОбъекта",
       "synonym": {
         "content": [
           [
@@ -157,10 +163,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ТипВерсииОбъекта",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ТипВерсииОбъекта"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -169,15 +174,16 @@
           "cfg:EnumRef.ТипыВерсийОбъекта"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ВерсияПроигнорирована",
       "uuid": "62f075c5-1ad0-4a29-9f40-567b9fa70cdf",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ВерсияПроигнорирована",
       "synonym": {
         "content": [
           [
@@ -191,10 +197,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ВерсияПроигнорирована",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ВерсияПроигнорирована"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -203,15 +208,16 @@
           "xs:boolean"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "РазмерДанных",
       "uuid": "88cefe4a-a6c5-4753-935e-f956d9de9f77",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "РазмерДанных",
       "synonym": {
         "content": [
           [
@@ -225,10 +231,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.РазмерДанных",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.РазмерДанных"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -237,15 +242,16 @@
           "xs:decimal"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "КонтрольнаяСумма",
       "uuid": "882e78b7-90bd-4b95-8852-146bdb51ec15",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "КонтрольнаяСумма",
       "synonym": {
         "content": [
           [
@@ -259,10 +265,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.КонтрольнаяСумма",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.КонтрольнаяСумма"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -280,13 +285,14 @@
           "length": 32,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ЕстьДанныеВерсии",
       "uuid": "ae4435c3-62c0-4f08-b526-7f9571eed8ae",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ЕстьДанныеВерсии",
       "synonym": {
         "content": [
           [
@@ -300,10 +306,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ЕстьДанныеВерсии",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ЕстьДанныеВерсии"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
@@ -312,15 +317,16 @@
           "xs:boolean"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ВерсияВладелец",
       "uuid": "91a1bd81-e6fa-476c-85e6-317a91f6c8bc",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ВерсияВладелец",
       "synonym": {
         "content": [
           [
@@ -334,10 +340,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ВерсияВладелец",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ВерсияВладелец"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -346,15 +351,16 @@
           "xs:decimal"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "Узел",
       "uuid": "f799e1d1-bb78-4a7a-bb1a-d79ba29acd0c",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Узел",
       "synonym": {
         "content": [
           [
@@ -368,10 +374,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.Узел",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.Узел"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Технический реквизит, используется при выгрузке данных в РИБ",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -389,13 +394,14 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "Синхронизируется",
       "uuid": "c7b46558-d688-4c42-ae52-f98de7923176",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Синхронизируется",
       "synonym": {
         "content": [
           [
@@ -409,10 +415,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.Синхронизируется",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.Синхронизируется"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Технический реквизит, используется при выгрузке данных в РИБ",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -421,15 +426,16 @@
           "xs:boolean"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "Смещение",
       "uuid": "31fdbb46-1df1-4b74-a54e-b922260dcca6",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "Смещение",
       "synonym": {
         "content": [
           [
@@ -443,10 +449,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.Смещение",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.Смещение"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "Технический реквизит, используется при выгрузке данных в РИБ",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -455,15 +460,16 @@
           "xs:decimal"
         ],
         "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "ПредупреждениеСинхронизации",
       "uuid": "ee494dc9-549b-4595-97d1-ca73bacff954",
-      "objectBelonging": "OWN",
-      "mdoType": "ATTRIBUTE",
+      "name": "ПредупреждениеСинхронизации",
       "synonym": {
         "content": [
           [
@@ -477,10 +483,9 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Attribute.ПредупреждениеСинхронизации",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Реквизит.ПредупреждениеСинхронизации"
       },
-      "owner": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
+      "objectBelonging": "OWN",
       "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
@@ -498,13 +503,14 @@
           "length": 0,
           "allowedLength": "Variable"
         }
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
-      "name": "Объект",
       "uuid": "0f6f8fd9-b3af-4d06-bc47-bdad238d15b7",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "Объект",
       "synonym": {
         "content": [
           [
@@ -518,22 +524,28 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Dimension.Объект",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Измерение.Объект"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "useInTotals": false,
       "denyIncompleteValues": true,
-      "master": true,
-      "supportVariant": "NONE"
+      "master": true
     },
     {
-      "name": "НомерВерсии",
       "uuid": "460e76d2-4ed6-464e-bf9c-a6bcf920aaf2",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "НомерВерсии",
       "synonym": {
         "content": [
           [
@@ -547,16 +559,26 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Dimension.НомерВерсии",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Измерение.НомерВерсии"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "useInTotals": false,
       "denyIncompleteValues": true,
-      "master": false,
-      "supportVariant": "NONE"
+      "master": false
     }
   ],
   "auxiliaryListForm": {
@@ -592,9 +614,8 @@
   },
   "forms": [
     {
-      "name": "ФормаСписка",
       "uuid": "80c23bf0-cef0-4d07-a017-d90635f8041d",
-      "mdoType": "FORM",
+      "name": "ФормаСписка",
       "synonym": {
         "content": [
           [
@@ -608,15 +629,18 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Form.ФормаСписка",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Форма.ФормаСписка"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ОтчетПоВерсиямОбъекта",
       "uuid": "47a24216-3299-470b-a18c-d8c1258fff24",
-      "mdoType": "FORM",
+      "name": "ОтчетПоВерсиямОбъекта",
       "synonym": {
         "content": [
           [
@@ -630,15 +654,18 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Form.ОтчетПоВерсиямОбъекта",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Форма.ОтчетПоВерсиямОбъекта"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ФормаЗаписи",
       "uuid": "72dcfd46-491e-4f88-a0ea-57919f8fbdea",
-      "mdoType": "FORM",
+      "name": "ФормаЗаписи",
       "synonym": {
         "content": [
           [
@@ -652,15 +679,18 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Form.ФормаЗаписи",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Форма.ФормаЗаписи"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ВыборХранимыхВерсий",
       "uuid": "fa7a11cc-7ee0-4550-8d0d-9c7464d57a37",
-      "mdoType": "FORM",
+      "name": "ВыборХранимыхВерсий",
       "synonym": {
         "content": [
           [
@@ -674,15 +704,18 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Form.ВыборХранимыхВерсий",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Форма.ВыборХранимыхВерсий"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ВыборРеквизитовОбъекта",
       "uuid": "8317ac49-890d-4921-8c0d-1bfc676f0b40",
-      "mdoType": "FORM",
+      "name": "ВыборРеквизитовОбъекта",
       "synonym": {
         "content": [
           [
@@ -696,10 +729,14 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Form.ВыборРеквизитовОбъекта",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Форма.ВыборРеквизитовОбъекта"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "fullTextSearch": "DONT_USE",
@@ -757,10 +794,8 @@
   },
   "templates": [
     {
-      "name": "СтандартныйМакетПредставленияОбъекта",
       "uuid": "f9161bc3-9a1c-4870-8681-8e97d8ce838a",
-      "objectBelonging": "OWN",
-      "mdoType": "TEMPLATE",
+      "name": "СтандартныйМакетПредставленияОбъекта",
       "synonym": {
         "content": [
           [
@@ -774,14 +809,16 @@
         "mdoRef": "InformationRegister.ВерсииОбъектов.Template.СтандартныйМакетПредставленияОбъекта",
         "mdoRefRu": "РегистрСведений.ВерсииОбъектов.Макет.СтандартныйМакетПредставленияОбъекта"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "templateType": "SPREADSHEET_DOCUMENT",
       "templateData": {
         "@class": "com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData"
       },
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "updateDataHistoryImmediatelyAfterWrite": false,

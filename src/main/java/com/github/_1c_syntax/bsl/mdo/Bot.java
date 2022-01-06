@@ -43,9 +43,13 @@ import static lombok.Builder.Default;
 public class Bot implements MDObject, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.BOT;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class Bot implements MDObject, ModuleOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.BOT;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,16 +74,36 @@ public class Bot implements MDObject, ModuleOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список модулей объекта
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
 
   /**
    * Признак предопределенности бота
@@ -104,4 +115,13 @@ public class Bot implements MDObject, ModuleOwner {
    */
   @Default
   String picture = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

@@ -43,9 +43,13 @@ import java.util.List;
 public class FilterCriterion implements MDObject, FormOwner, CommandOwner, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.FILTER_CRITERION;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.FILTER_CRITERION;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,10 +74,36 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * FormOwner
+   */
+
+  /**
    * Список форм
    */
   @Default
   List<Form> forms = Collections.emptyList();
+
+  /**
+   * CommandOwner
+   */
 
   /**
    * Список команд
@@ -95,16 +112,18 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
   List<Command> commands = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Использование стандартных команд интерфейса
@@ -152,4 +171,13 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
    */
   @Default
   List<MdoReference> content = Collections.emptyList();
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

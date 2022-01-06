@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
@@ -44,9 +43,13 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   ModuleOwner, TabularSectionOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.REPORT;
 
   /**
    * Уникальный идентификатор
@@ -54,22 +57,9 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.REPORT;
+  String name;
 
   /**
    * Синонимы объекта
@@ -84,10 +74,36 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * AttributeOwner
+   */
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * FormOwner
+   */
 
   /**
    * Список форм
@@ -96,10 +112,18 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   List<Form> forms = Collections.emptyList();
 
   /**
+   * CommandOwner
+   */
+
+  /**
    * Список команд
    */
   @Default
   List<Command> commands = Collections.emptyList();
+
+  /**
+   * TemplateOwner
+   */
 
   /**
    * Список макетов
@@ -108,10 +132,18 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   List<Template> templates = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
+
+  /**
+   * TabularSectionOwner
+   */
 
   /**
    * Список табличных частей
@@ -120,10 +152,8 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   List<TabularSection> tabularSections = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Использование стандартных команд интерфейса
@@ -195,8 +225,12 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
+  /**
+   * MDObject
+   */
+
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo общего реквизита не бывает
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

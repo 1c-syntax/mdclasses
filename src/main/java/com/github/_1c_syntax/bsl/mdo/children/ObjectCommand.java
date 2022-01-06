@@ -42,10 +42,15 @@ import java.util.List;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class ObjectCommand implements Command, MDChildObject {
+
   /**
-   * Имя
+   * Command
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMAND;
 
   /**
    * Уникальный идентификатор
@@ -53,16 +58,9 @@ public class ObjectCommand implements Command, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMAND;
+  String name;
 
   /**
    * Синонимы объекта
@@ -77,10 +75,22 @@ public class ObjectCommand implements Command, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Список модулей объекта
@@ -89,8 +99,25 @@ public class ObjectCommand implements Command, MDChildObject {
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
    */
   @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Command
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

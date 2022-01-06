@@ -7,10 +7,8 @@
   },
   "commands": [
     {
-      "name": "АктивныеПользователи",
       "uuid": "cd454738-62dd-4f95-af33-b52750678428",
-      "objectBelonging": "OWN",
-      "mdoType": "COMMAND",
+      "name": "АктивныеПользователи",
       "synonym": {
         "content": [
           [
@@ -24,11 +22,9 @@
         "mdoRef": "DataProcessor.АктивныеПользователи.Command.АктивныеПользователи",
         "mdoRefRu": "Обработка.АктивныеПользователи.Команда.АктивныеПользователи"
       },
-      "owner": {
-        "type": "DATA_PROCESSOR",
-        "mdoRef": "DataProcessor.АктивныеПользователи",
-        "mdoRefRu": "Обработка.АктивныеПользователи"
-      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "modules": [
         {
           "moduleType": "CommandModule",
@@ -41,7 +37,11 @@
           "supportVariant": "NONE"
         }
       ],
-      "supportVariant": "NONE"
+      "owner": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.АктивныеПользователи",
+        "mdoRefRu": "Обработка.АктивныеПользователи"
+      }
     }
   ],
   "comment": "",
@@ -58,9 +58,8 @@
   },
   "forms": [
     {
-      "name": "АктивныеПользователи",
       "uuid": "e5beda2c-f4e2-4a6b-a1d0-a877eb0c9f5b",
-      "mdoType": "FORM",
+      "name": "АктивныеПользователи",
       "synonym": {
         "content": [
           [
@@ -72,10 +71,14 @@
       "mdoReference": {
         "@reference": "../../../defaultForm"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "includeHelpInContents": true,

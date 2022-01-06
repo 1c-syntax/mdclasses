@@ -39,10 +39,15 @@ import lombok.Value;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class IntegrationServiceChannel implements MDObject, MDChildObject {
+
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.INTEGRATION_SERVICE_CHANNEL;
 
   /**
    * Уникальный идентификатор
@@ -50,16 +55,9 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.INTEGRATION_SERVICE_CHANNEL;
+  String name;
 
   /**
    * Синонимы объекта
@@ -74,6 +72,38 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
    * Направление сообщения
    */
   @Default
@@ -86,20 +116,17 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   String handler = "";
 
   /**
-   * Родительский объект
-   */
-  @Default
-  MdoReference owner = MdoReference.EMPTY;
-
-  /**
-   * Вариант поддержки родительской конфигурации
-   */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
-
-  /**
    * Имя канала внешнего сервиса интеграции
    */
   @Default
   String externalIntegrationServiceChannelName = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

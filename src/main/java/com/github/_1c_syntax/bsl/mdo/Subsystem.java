@@ -42,9 +42,13 @@ import java.util.List;
 public class Subsystem implements MDObject, ChildrenOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SUBSYSTEM;
 
   /**
    * Уникальный идентификатор
@@ -52,22 +56,9 @@ public class Subsystem implements MDObject, ChildrenOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.SUBSYSTEM;
+  String name;
 
   /**
    * Синонимы объекта
@@ -82,21 +73,41 @@ public class Subsystem implements MDObject, ChildrenOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Признак "Включать в командный интерфейс"
+   * Комментарий
    */
-  boolean includeInCommandInterface;
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
 
   /**
    * Дочерние подсистемы
    */
   @Default
   List<Subsystem> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Признак "Включать в командный интерфейс"
+   */
+  boolean includeInCommandInterface;
 
   /**
    * Объекты, входящие в состав подсистемы
@@ -120,6 +131,19 @@ public class Subsystem implements MDObject, ChildrenOwner {
    */
   @Default
   String picture = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ChildrenOwner
+   */
 
   @Override
   public List<MDObject> getChildren() {

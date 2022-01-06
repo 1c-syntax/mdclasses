@@ -31,14 +31,11 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -48,9 +45,13 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   ModuleOwner, TabularSectionOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.TASK;
 
   /**
    * Уникальный идентификатор
@@ -58,22 +59,9 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.TASK;
+  String name;
 
   /**
    * Синонимы объекта
@@ -88,10 +76,36 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * AttributeOwner
+   */
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * FormOwner
+   */
 
   /**
    * Список форм
@@ -100,10 +114,18 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   List<Form> forms = Collections.emptyList();
 
   /**
+   * CommandOwner
+   */
+
+  /**
    * Список команд
    */
   @Default
   List<Command> commands = Collections.emptyList();
+
+  /**
+   * TemplateOwner
+   */
 
   /**
    * Список макетов
@@ -112,10 +134,18 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   List<Template> templates = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
+
+  /**
+   * TabularSectionOwner
+   */
 
   /**
    * Список табличных частей
@@ -124,10 +154,8 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   List<TabularSection> tabularSections = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Использование стандартных команд интерфейса
@@ -273,10 +301,13 @@ public class Task implements MDObject, AttributeOwner, FormOwner, CommandOwner, 
   @Default
   String currentPerformer = "";
 
+  /**
+   * MDObject
+   */
+
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }
 

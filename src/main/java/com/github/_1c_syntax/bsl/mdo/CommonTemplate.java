@@ -44,9 +44,13 @@ import java.nio.file.Path;
 public class CommonTemplate implements Template {
 
   /**
-   * Имя
+   * Template
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_TEMPLATE;
 
   /**
    * Уникальный идентификатор
@@ -54,22 +58,9 @@ public class CommonTemplate implements Template {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.COMMON_TEMPLATE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -82,6 +73,24 @@ public class CommonTemplate implements Template {
    */
   @Default
   MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
@@ -101,8 +110,15 @@ public class CommonTemplate implements Template {
   Path templateDataPath; // todo fake path
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Template
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

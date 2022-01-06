@@ -40,9 +40,13 @@ import lombok.Value;
 public class ScheduledJob implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SCHEDULED_JOB;
 
   /**
    * Уникальный идентификатор
@@ -50,22 +54,9 @@ public class ScheduledJob implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.SCHEDULED_JOB;
+  String name;
 
   /**
    * Синонимы объекта
@@ -80,10 +71,26 @@ public class ScheduledJob implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Полное имя метода, включающее имя общего модуля
@@ -122,4 +129,13 @@ public class ScheduledJob implements MDObject {
    * Интервал перезапуска при ошибке
    */
   int restartIntervalOnFailure;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

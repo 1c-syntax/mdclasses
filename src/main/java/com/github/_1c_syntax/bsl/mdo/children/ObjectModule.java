@@ -38,10 +38,12 @@ import java.net.URI;
 @ToString(of = {"uri"})
 @EqualsAndHashCode(of = {"uri"})
 public class ObjectModule implements Module {
+
   /**
    * Тип модуля
    */
-  ModuleType moduleType;
+  @Default
+  ModuleType moduleType = ModuleType.UNKNOWN;
 
   /**
    * Ссылка на файл bsl модуля

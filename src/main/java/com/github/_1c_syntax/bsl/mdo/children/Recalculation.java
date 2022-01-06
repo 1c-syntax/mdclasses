@@ -42,11 +42,15 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
-public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
+public class Recalculation implements MDObject, MDChildObject, ModuleOwner {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.RECALCULATION;
 
   /**
    * Уникальный идентификатор
@@ -54,16 +58,9 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.RECALCULATION;
+  String name;
 
   /**
    * Синонимы объекта
@@ -78,10 +75,26 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список модулей объекта
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
 
   /**
    * Родительский объект
@@ -90,8 +103,26 @@ public class Recalculation implements MDObject, ModuleOwner, MDChildObject {
   MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
    */
   @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

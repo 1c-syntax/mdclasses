@@ -43,9 +43,13 @@ import java.util.List;
 public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.HTTP_SERVICE;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.HTTP_SERVICE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,10 +74,10 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список модулей объекта
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -95,10 +86,34 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * ChildrenOwner
+   */
+
+  /**
    * Шаблоны URL HTTP-сервиса
    */
   @Default
   List<HttpServiceUrlTemplate> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
 
   /**
    * Корневой URL
@@ -116,6 +131,19 @@ public class HttpService implements MDObject, ModuleOwner, ChildrenOwner {
    * Время жизни сеанса
    */
   int sessionMaxAge;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ChildrenOwner
+   */
 
   @Override
   public List<MDObject> getChildren() {

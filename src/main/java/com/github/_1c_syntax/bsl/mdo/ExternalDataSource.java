@@ -19,9 +19,13 @@ import lombok.Value;
 public class ExternalDataSource implements MDObject {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.EXTERNAL_DATA_SOURCE;
 
   /**
    * Уникальный идентификатор
@@ -29,22 +33,9 @@ public class ExternalDataSource implements MDObject {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.EXTERNAL_DATA_SOURCE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -59,10 +50,26 @@ public class ExternalDataSource implements MDObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Custom
+   */
 
   /**
    * Режим блокировки данных
@@ -71,4 +78,13 @@ public class ExternalDataSource implements MDObject {
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
   // todo реализовать чтение дочерних
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

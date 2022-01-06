@@ -29,14 +29,11 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -45,9 +42,13 @@ import static java.util.Objects.requireNonNull;
 public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SEQUENCE;
 
   /**
    * Уникальный идентификатор
@@ -55,22 +56,9 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.SEQUENCE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -85,10 +73,36 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * AttributeOwner
+   */
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Список модулей объекта
@@ -97,10 +111,8 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Перемещение границы при проведении
@@ -126,8 +138,13 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   @Default
   String dataLockControlMode = "";
 
+  /**
+   * MDObject
+   */
+
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo не бывает такого
+  public MDOType getMdoType() {
+    return mdoType;
   }
+
 }

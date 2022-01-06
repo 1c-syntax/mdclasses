@@ -32,14 +32,11 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -49,9 +46,13 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.CALCULATION_REGISTER;
 
   /**
    * Уникальный идентификатор
@@ -59,22 +60,9 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.CALCULATION_REGISTER;
+  String name;
 
   /**
    * Синонимы объекта
@@ -89,10 +77,36 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * AttributeOwner
+   */
+
+  /**
    * Список атрибутов
    */
   @Default
   List<Attribute> attributes = Collections.emptyList();
+
+  /**
+   * FormOwner
+   */
 
   /**
    * Список форм
@@ -101,10 +115,18 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   List<Form> forms = Collections.emptyList();
 
   /**
+   * CommandOwner
+   */
+
+  /**
    * Список команд
    */
   @Default
   List<Command> commands = Collections.emptyList();
+
+  /**
+   * TemplateOwner
+   */
 
   /**
    * Список макетов
@@ -113,16 +135,18 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   List<Template> templates = Collections.emptyList();
 
   /**
+   * ModuleOwner
+   */
+
+  /**
    * Список модулей объекта
    */
   @Default
   List<Module> modules = Collections.emptyList();
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  @Default
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Список перерасчетов
@@ -203,16 +227,23 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   @Default
   String chartOfCalculationTypes = "";
 
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * AttributeOwner
+   */
+
   @Override
   public List<MDObject> getChildren() {
     var children = AttributeOwner.super.getChildren();
     children.addAll(recalculations);
     return children;
-  }
-
-  @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
   }
 }

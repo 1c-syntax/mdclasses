@@ -33,9 +33,8 @@
   },
   "forms": [
     {
-      "name": "СведенияОРегламентномЗадании",
       "uuid": "fec102ea-a3f6-49b5-b4b8-6884b0654129",
-      "mdoType": "FORM",
+      "name": "СведенияОРегламентномЗадании",
       "synonym": {
         "content": [
           [
@@ -49,12 +48,16 @@
         "mdoRef": "Report.АнализЖурналаРегистрации.Form.СведенияОРегламентномЗадании",
         "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Форма.СведенияОРегламентномЗадании"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
       "owner": {
         "type": "REPORT",
         "mdoRef": "Report.АнализЖурналаРегистрации",
         "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "includeHelpInContents": true,
@@ -102,10 +105,8 @@
   "tabularSections": [],
   "templates": [
     {
-      "name": "ОсновнаяСхемаКомпоновкиДанных",
       "uuid": "246571fb-38c7-4da6-929d-d8b44bc3437c",
-      "objectBelonging": "OWN",
-      "mdoType": "TEMPLATE",
+      "name": "ОсновнаяСхемаКомпоновкиДанных",
       "synonym": {
         "content": [
           [
@@ -117,6 +118,9 @@
       "mdoReference": {
         "@reference": "../../../mainDataCompositionSchema"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "templateType": "DATA_COMPOSITION_SCHEME",
       "templateData": {
         "@class": "com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema",
@@ -246,14 +250,11 @@
       "templateDataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Templates/ОсновнаяСхемаКомпоновкиДанных/Ext/Template.xml",
       "owner": {
         "@reference": "../../../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "МакетОтчетаПоОшибкамВЖурналеРегистрации",
       "uuid": "047fd6d7-5e30-4184-a09a-6525de526cc7",
-      "objectBelonging": "OWN",
-      "mdoType": "TEMPLATE",
+      "name": "МакетОтчетаПоОшибкамВЖурналеРегистрации",
       "synonym": {
         "content": [
           [
@@ -267,20 +268,20 @@
         "mdoRef": "Report.АнализЖурналаРегистрации.Template.МакетОтчетаПоОшибкамВЖурналеРегистрации",
         "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.МакетОтчетаПоОшибкамВЖурналеРегистрации"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "templateType": "SPREADSHEET_DOCUMENT",
       "templateData": {
         "@class": "com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData"
       },
       "owner": {
         "@reference": "../../../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "ПродолжительностьРаботыРегламентныхЗаданий",
       "uuid": "beb44b02-5d5e-4127-aee7-e184a43a4210",
-      "objectBelonging": "OWN",
-      "mdoType": "TEMPLATE",
+      "name": "ПродолжительностьРаботыРегламентныхЗаданий",
       "synonym": {
         "content": [
           [
@@ -294,6 +295,9 @@
         "mdoRef": "Report.АнализЖурналаРегистрации.Template.ПродолжительностьРаботыРегламентныхЗаданий",
         "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ПродолжительностьРаботыРегламентныхЗаданий"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "templateType": "SPREADSHEET_DOCUMENT",
       "templateData": {
         "@class": "com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData",
@@ -301,14 +305,11 @@
       },
       "owner": {
         "@reference": "../../../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "РасшифровкаРегламентныхЗаданий",
       "uuid": "1dedfbc2-9250-4229-a6ea-5e085f33e7c3",
-      "objectBelonging": "OWN",
-      "mdoType": "TEMPLATE",
+      "name": "РасшифровкаРегламентныхЗаданий",
       "synonym": {
         "content": [
           [
@@ -322,6 +323,9 @@
         "mdoRef": "Report.АнализЖурналаРегистрации.Template.РасшифровкаРегламентныхЗаданий",
         "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.РасшифровкаРегламентныхЗаданий"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "templateType": "SPREADSHEET_DOCUMENT",
       "templateData": {
         "@class": "com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData",
@@ -329,8 +333,7 @@
       },
       "owner": {
         "@reference": "../../../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
-      },
-      "supportVariant": "NONE"
+      }
     }
   ],
   "useStandardCommands": true,

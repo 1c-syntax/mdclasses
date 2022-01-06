@@ -2,10 +2,8 @@
   "actionPeriod": true,
   "attributes": [
     {
-      "name": "Ресурс1",
       "uuid": "86f41061-e298-4da5-8d28-489a349d55fc",
-      "objectBelonging": "OWN",
-      "mdoType": "RESOURCE",
+      "name": "Ресурс1",
       "synonym": {
         "content": []
       },
@@ -14,21 +12,30 @@
         "mdoRef": "CalculationRegister.РегистрРасчета1.Resource.Ресурс1",
         "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Ресурс.Ресурс1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      },
       "owner": {
         "type": "CALCULATION_REGISTER",
         "mdoRef": "CalculationRegister.РегистрРасчета1",
         "mdoRefRu": "РегистрРасчета.РегистрРасчета1"
-      },
-      "supportVariant": "NONE"
+      }
     },
     {
-      "name": "Измерение1",
       "uuid": "f3e7cca5-4902-4ad5-96c7-db8336f52c6e",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "Измерение1",
       "synonym": {
         "content": []
       },
@@ -37,22 +44,30 @@
         "mdoRef": "CalculationRegister.РегистрРасчета1.Dimension.Измерение1",
         "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Измерение.Измерение1"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.Справочник1"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "useInTotals": false,
       "denyIncompleteValues": false,
-      "master": false,
-      "supportVariant": "NONE"
+      "master": false
     },
     {
-      "name": "Измерение",
       "uuid": "34832bba-43e0-4ca8-bbc1-25665b7f8fb4",
-      "objectBelonging": "OWN",
-      "mdoType": "REGISTER_DIMENSION",
+      "name": "Измерение",
       "synonym": {
         "content": [
           [
@@ -66,16 +81,26 @@
         "mdoRef": "CalculationRegister.РегистрРасчета1.Dimension.Измерение",
         "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Измерение.Измерение"
       },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.Справочник1"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
+        }
+      },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "useInTotals": false,
       "denyIncompleteValues": false,
-      "master": false,
-      "supportVariant": "NONE"
+      "master": false
     }
   ],
   "auxiliaryListForm": {
@@ -96,10 +121,8 @@
       "@reference": "../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterDimension[2]"
     },
     {
-      "name": "Перерасчет",
       "uuid": "ba7826fe-1684-407b-bc28-f897eac55317",
-      "objectBelonging": "OWN",
-      "mdoType": "RECALCULATION",
+      "name": "Перерасчет",
       "synonym": {
         "content": [
           [
@@ -113,11 +136,13 @@
         "mdoRef": "CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет",
         "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Перерасчет.Перерасчет"
       },
-      "modules": [],
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
       "owner": {
         "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
-      "supportVariant": "NONE"
+      "modules": []
     }
   ],
   "commands": [],

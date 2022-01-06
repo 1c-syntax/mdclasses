@@ -41,10 +41,15 @@ import lombok.Value;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class ObjectAttribute implements Attribute, MDChildObject {
+
   /**
-   * Имя
+   * Attribute
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.ATTRIBUTE;
 
   /**
    * Уникальный идентификатор
@@ -52,16 +57,9 @@ public class ObjectAttribute implements Attribute, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.ATTRIBUTE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -76,16 +74,22 @@ public class ObjectAttribute implements Attribute, MDChildObject {
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  MdoReference owner = MdoReference.EMPTY;
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
@@ -108,5 +112,29 @@ public class ObjectAttribute implements Attribute, MDChildObject {
    * Тип значения
    */
   @Default
-  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

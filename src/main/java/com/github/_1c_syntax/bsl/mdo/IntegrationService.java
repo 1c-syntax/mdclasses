@@ -43,9 +43,13 @@ import java.util.List;
 public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.INTEGRATION_SERVICE;
 
   /**
    * Уникальный идентификатор
@@ -53,22 +57,9 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   String uuid;
 
   /**
-   * Комментарий
+   * Имя
    */
-  @Default
-  String comment = "";
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  @Default
-  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
-
-  /**
-   * Тип метаданных
-   */
-  @Default
-  MDOType mdoType = MDOType.INTEGRATION_SERVICE;
+  String name;
 
   /**
    * Синонимы объекта
@@ -83,10 +74,10 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список модулей объекта
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
   @Default
-  List<Module> modules = Collections.emptyList();
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -95,16 +86,53 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Адрес внешнего сервиса интеграции
+   * Комментарий
    */
   @Default
-  String externalIntegrationServiceAddress = "";
+  String comment = "";
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * ChildrenOwner
+   */
 
   /**
    * Каналы сервиса интеграции
    */
   @Default
   List<IntegrationServiceChannel> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Адрес внешнего сервиса интеграции
+   */
+  @Default
+  String externalIntegrationServiceAddress = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * getChildren
+   */
 
   @Override
   public List<MDObject> getChildren() {
