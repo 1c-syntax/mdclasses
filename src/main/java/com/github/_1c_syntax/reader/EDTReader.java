@@ -12,6 +12,10 @@ public class EDTReader implements MDReader {
     configurationPath = path;
   }
 
+  public EDTReader(Path path, boolean skipSupport) {
+    configurationPath = path;
+  }
+
   @Override
   public MDClass readConfiguration() {
     return null;

@@ -38,7 +38,7 @@ class CatalogTest extends AbstractMDObjectTest<Catalog> {
       "designer/ssl_3_1, Catalog.ВидыКонтактнойИнформации",
       "designer/ssl_3_1, Catalog.ГруппыПользователей",
       "designer/ssl_3_1, Catalog.Файлы",
-      "designer/with_support, Catalog.ПервыйСправочник"
+      "designer/with_support, Catalog.ПервыйСправочник, false"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

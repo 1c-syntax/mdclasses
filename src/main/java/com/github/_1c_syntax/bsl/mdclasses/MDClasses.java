@@ -88,6 +88,10 @@ public class MDClasses {
 //    return createConfiguration();
   }
 
+  public MDClass createConfiguration(Path path, boolean skipSupport) {
+    return MDOReader.readConfiguration(path, skipSupport);
+  }
+
   /**
    * Создает пустую конфигурацию
    *

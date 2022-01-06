@@ -109,7 +109,7 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var pack = argumentsAccessor.getString(0);
-    var mdc = MDTestUtils.getMDClass("src/test/resources/metadata/" + pack);
+    var mdc = MDTestUtils.getMDClass("src/test/resources/metadata/" + pack, false);
     var current = MDTestUtils.createJson(mdc);
     var fixture = MDTestUtils.getFixture("src/test/resources/fixtures/" + pack + "/configuration.json");
     assertThat(current, true).isEqual(fixture);

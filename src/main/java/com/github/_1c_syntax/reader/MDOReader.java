@@ -18,24 +18,32 @@ public class MDOReader {
   private static ConcurrentHashMap<Path, MDReader> readers = new ConcurrentHashMap<>();
 
   public MDReader getReader(@NonNull Path rootPath) {
+    return getReader(rootPath, false);
+  }
+
+  public MDReader getReader(@NonNull Path rootPath, boolean skipSupport) {
     var reader = readers.get(rootPath);
     if (reader == null) {
       var configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
-      reader = getReader(configurationSource, rootPath);
+      reader = getReader(configurationSource, rootPath, skipSupport);
       readers.put(rootPath, reader);
     }
     return reader;
   }
 
   public MDClass readConfiguration(@NonNull Path rootPath) {
-    return getReader(rootPath).readConfiguration();
+    return getReader(rootPath, false).readConfiguration();
   }
 
-  private MDReader getReader(ConfigurationSource configurationSource, Path rootPath) {
+  public MDClass readConfiguration(@NonNull Path rootPath, boolean skipSupport) {
+    return getReader(rootPath, skipSupport).readConfiguration();
+  }
+
+  private MDReader getReader(ConfigurationSource configurationSource, Path rootPath, boolean skipSupport) {
     if (configurationSource == ConfigurationSource.DESIGNER) {
-      return new DesignerReader(rootPath);
+      return new DesignerReader(rootPath, skipSupport);
     } else if (configurationSource == ConfigurationSource.EDT) {
-      return new EDTReader(rootPath);
+      return new EDTReader(rootPath, skipSupport);
     } else {
       return new FakeReader();
     }

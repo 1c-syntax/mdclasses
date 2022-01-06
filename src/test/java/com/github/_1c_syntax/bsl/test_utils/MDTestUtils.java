@@ -58,11 +58,11 @@ public class MDTestUtils {
    * @param path Путь к корневому файлу
    * @return Прочитанный контейнер
    */
-  public MDClass getMDClass(Path path) {
+  public MDClass getMDClass(Path path, boolean skipSupport) {
 
     var mdc = MDCLASSES.get(path);
     if (mdc == null) {
-      mdc = MDClasses.createConfiguration(path);
+      mdc = MDClasses.createConfiguration(path, skipSupport);
       MDCLASSES.put(path, mdc);
     }
 
@@ -75,8 +75,8 @@ public class MDTestUtils {
    * @param path Строковый путь к файлу
    * @return Прочитанный контейнер
    */
-  public MDClass getMDClass(String path) {
-    return getMDClass(Paths.get(path));
+  public MDClass getMDClass(String path, boolean skipSupport) {
+    return getMDClass(Paths.get(path), skipSupport);
   }
 
   /**
@@ -87,7 +87,13 @@ public class MDTestUtils {
   public MDObject testAndGetMDO(ArgumentsAccessor argumentsAccessor) {
     var pack = argumentsAccessor.getString(0);
     var mdoRef = argumentsAccessor.getString(1);
-    var mdc = getMDClass("src/test/resources/ext/" + pack + "/src/cf");
+
+    var skipSupport = true;
+    if (argumentsAccessor.size() > 2) {
+      skipSupport = argumentsAccessor.getBoolean(2);
+    }
+
+    var mdc = getMDClass("src/test/resources/ext/" + pack + "/src/cf", skipSupport);
     assertThat(mdc).isNotNull();
     var mdoOptional = mdc.findChild(mdoRef);
     assertThat(mdoOptional).isPresent();

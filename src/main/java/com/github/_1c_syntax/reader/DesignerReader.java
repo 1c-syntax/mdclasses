@@ -16,9 +16,15 @@ public class DesignerReader implements MDReader {
   private final Path rootPath;
 
   public DesignerReader(Path path) {
+    this(path, false);
+  }
+
+  public DesignerReader(Path path, boolean skipSupport) {
     rootPath = path;
-    MDOPathUtils.getParentConfigurationsPath(ConfigurationSource.DESIGNER, rootPath)
-      .ifPresent(ParseSupportData::readSimple);
+    if (!skipSupport) {
+      MDOPathUtils.getParentConfigurationsPath(ConfigurationSource.DESIGNER, rootPath)
+        .ifPresent(ParseSupportData::readSimple);
+    }
   }
 
   @Override
