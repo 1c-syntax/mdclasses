@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.utils;
+package com.github._1c_syntax.reader;
 
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;

@@ -22,7 +22,7 @@
 package com.github._1c_syntax.supconf;
 
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.reader.MDOPathUtils;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 

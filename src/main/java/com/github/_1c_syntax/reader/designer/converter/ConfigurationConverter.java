@@ -2,13 +2,12 @@ package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
-import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.reader.MDOPathUtils;
+import com.github._1c_syntax.reader.TransformationUtils;
 import com.github._1c_syntax.reader.MDOReader;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;

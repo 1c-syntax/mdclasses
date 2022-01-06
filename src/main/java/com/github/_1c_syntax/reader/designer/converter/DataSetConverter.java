@@ -25,7 +25,7 @@ import com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.data_storage.QuerySource;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
-import com.github._1c_syntax.mdclasses.unmarshal.ExtendReaderWrapper;
+import com.github._1c_syntax.reader.xstream.ExtendReaderWrapper;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

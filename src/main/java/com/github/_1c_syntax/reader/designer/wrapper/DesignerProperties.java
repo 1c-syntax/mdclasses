@@ -16,9 +16,8 @@ import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
+import com.github._1c_syntax.reader.MDOPathUtils;
+import com.github._1c_syntax.reader.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverterCommon;
 import com.github._1c_syntax.supconf.ParseSupportData;
@@ -32,7 +31,6 @@ import javax.annotation.Nullable;
 import java.lang.reflect.ParameterizedType;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -284,7 +282,7 @@ public class DesignerProperties {
 
     var folder = mdoFolderPath.get();
 
-    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(mdoType, Collections.emptySet());
+    var moduleTypes = ModuleType.byMDOType(mdoType);
     if (moduleTypes.isEmpty()) {
       return;
     }

@@ -2,7 +2,7 @@ package com.github._1c_syntax.reader;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
@@ -24,7 +24,7 @@ public class MDOReader {
   public MDReader getReader(@NonNull Path rootPath, boolean skipSupport) {
     var reader = readers.get(rootPath);
     if (reader == null) {
-      var configurationSource = MDOUtils.getConfigurationSourceByPath(rootPath);
+      var configurationSource = MDOPathUtils.getConfigurationSourceByPath(rootPath);
       reader = getReader(configurationSource, rootPath, skipSupport);
       readers.put(rootPath, reader);
     }

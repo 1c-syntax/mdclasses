@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.utils;
+package com.github._1c_syntax.reader;
 
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FilenameUtils;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -95,7 +96,7 @@ public class MDOPathUtils {
    * Получает каталог проекта по файлу описания конфигурации
    */
   public Optional<Path> getRootPathByConfigurationMDO(Path mdoPath) {
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
+    var configurationSource = getConfigurationSourceByMDOPath(mdoPath);
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       value = Paths.get(FilenameUtils.getFullPathNoEndSeparator(
@@ -138,7 +139,7 @@ public class MDOPathUtils {
    * по описанию объекта метаданных
    */
   public Optional<Path> getMDOTypeFolderByMDOPath(Path mdoPath, MDOType type) {
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
+    var configurationSource = getConfigurationSourceByMDOPath(mdoPath);
     Optional<Path> result;
     if (type == MDOType.CONFIGURATION) {
       // для конфигурации один уровень, а не 2
@@ -181,7 +182,7 @@ public class MDOPathUtils {
   public Optional<Path> getModulePath(Path mdoPath,
                                       String name,
                                       ModuleType moduleType) {
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(mdoPath);
+    var configurationSource = getConfigurationSourceByMDOPath(mdoPath);
     Path value;
     if (configurationSource == ConfigurationSource.EDT) {
       var folder = mdoPath.getParent().getParent();
@@ -224,7 +225,7 @@ public class MDOPathUtils {
   public Path getTemplateDataPath(Path path, String name, MDOType type) {
     var currentPath = path.getParent();
     var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    var configurationSource = getConfigurationSourceByMDOPath(path);
     if (configurationSource == ConfigurationSource.EDT) {
       if (type == MDOType.COMMON_TEMPLATE) {
         currentPath = Path.of(basePath, "Template.dcs");
@@ -247,7 +248,7 @@ public class MDOPathUtils {
   public static Path getPackageDataPath(Path path, String name) {
     var currentPath = path.getParent();
     var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    var configurationSource = getConfigurationSourceByMDOPath(path);
     if (configurationSource == ConfigurationSource.EDT) {
       currentPath = Path.of(basePath, "Package.xdto");
     } else {
@@ -339,7 +340,7 @@ public class MDOPathUtils {
       subdirectory += FILE_SEPARATOR + "Form";
     }
 
-    if (!MDOUtils.getModuleTypesForMdoTypes().get(MDOType.CONFIGURATION).contains(moduleType)) {
+    if (!ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
       subdirectory = name + FILE_SEPARATOR + subdirectory;
     }
 
@@ -376,7 +377,7 @@ public class MDOPathUtils {
   public static Path getRoleDataPath(Path path, String mdoName) {
     var currentPath = path.getParent();
     var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    var configurationSource = getConfigurationSourceByMDOPath(path);
 
     if (configurationSource == ConfigurationSource.EDT) {
       currentPath = Path.of(basePath, "Rights.rights");
@@ -386,4 +387,38 @@ public class MDOPathUtils {
 
     return currentPath;
   }
+
+  /**
+   * Определяет тип исходников по корню проекта
+   */
+  public ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
+    var configurationSource = ConfigurationSource.EMPTY;
+    if (rootPath != null) {
+      var rootPathString = rootPath.toString();
+
+      var rootConfiguration = new File(rootPathString, "Configuration.xml");
+      if (rootConfiguration.exists()) {
+        configurationSource = ConfigurationSource.DESIGNER;
+      } else {
+        rootConfiguration = Paths.get(rootPathString, "src", MDOType.CONFIGURATION.getName(),
+          "Configuration.mdo").toFile();
+        if (rootConfiguration.exists()) {
+          configurationSource = ConfigurationSource.EDT;
+        }
+      }
+    }
+    return configurationSource;
+  }
+
+  /**
+   * Определяет тип исходников по MDO файлу
+   */
+  public ConfigurationSource getConfigurationSourceByMDOPath(Path path) {
+    if (path.toString().endsWith(MDOPathUtils.mdoExtension(ConfigurationSource.DESIGNER, true))) {
+      return ConfigurationSource.DESIGNER;
+    } else {
+      return ConfigurationSource.EDT;
+    }
+  }
+
 }
