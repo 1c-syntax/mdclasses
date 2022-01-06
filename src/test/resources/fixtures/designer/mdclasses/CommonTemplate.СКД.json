@@ -1,153 +1,74 @@
-{
-  "com.github._1c_syntax.bsl.mdo.CommonTemplate": {
-    "comment": "",
-    "mdoReference": {
-      "type": "COMMON_TEMPLATE",
-      "mdoRef": "CommonTemplate.СКД",
-      "mdoRefRu": "ОбщийМакет.СКД"
-    },
-    "mdoType": "COMMON_TEMPLATE",
-    "name": "СКД",
-    "objectBelonging": "OWN",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": [
-        [
-          "ru",
-          "СКД"
+{"com.github._1c_syntax.bsl.mdo.CommonTemplate": {
+  "comment": "",
+  "mdoReference": {
+    "type": "COMMON_TEMPLATE",
+    "mdoRef": "CommonTemplate.СКД",
+    "mdoRefRu": "ОбщийМакет.СКД"
+  },
+  "mdoType": "COMMON_TEMPLATE",
+  "name": "СКД",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "СКД"
+      ]
+    ]
+  },
+  "templateData": {
+    "@class": "com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema",
+    "dataSets": [
+      {
+        "name": "Согласия",
+        "type": "DATA_SET_QUERY",
+        "dataSource": "ИсточникДанных1",
+        "items": [],
+        "querySource": {
+          "position": {
+            "line": 42,
+            "column": 10
+          },
+          "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tСогласия.Период КАК ДатаПолучения,\n\tСогласия.Регистратор КАК ДокументОснование,\n\tСогласия.Организация,\n\tСогласия.Субъект,\n\tСогласия.СрокДействия\nИЗ\n\tРегистрСведений.СогласияНаОбработкуПерсональныхДанных.СрезПоследних({(&ДатаДействия)}, ) КАК Согласия\nГДЕ\n\tСогласия.Действует = ИСТИНА\n{ГДЕ\n\t(Согласия.СрокДействия = ДАТАВРЕМЯ(1, 1, 1)\n\t\t\tИЛИ Согласия.СрокДействия >= &ДатаДействия)}"
+        },
+        "fields": [
+          [
+            {
+              "dataPath": "Субъект",
+              "name": "Субъект"
+            },
+            {
+              "dataPath": "Организация",
+              "name": "Организация"
+            },
+            {
+              "dataPath": "ДатаПолучения",
+              "name": "ДатаПолучения"
+            },
+            {
+              "dataPath": "СрокДействия",
+              "name": "СрокДействия"
+            },
+            {
+              "dataPath": "ДокументОснование",
+              "name": "ДокументОснование"
+            }
+          ],
+          []
         ]
-      ]
-    },
-    "templateData": {
-      "@class": "com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema",
-      "dataSets": [
-        {
-          "name": "Согласия",
-          "type": "DATA_SET_QUERY",
-          "dataSource": "ИсточникДанных1",
-          "items": [],
-          "querySource": {
-            "position": {
-              "line": 42,
-              "column": 10
-            },
-            "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tСогласия.Период КАК ДатаПолучения,\n\tСогласия.Регистратор КАК ДокументОснование,\n\tСогласия.Организация,\n\tСогласия.Субъект,\n\tСогласия.СрокДействия\nИЗ\n\tРегистрСведений.СогласияНаОбработкуПерсональныхДанных.СрезПоследних({(&ДатаДействия)}, ) КАК Согласия\nГДЕ\n\tСогласия.Действует = ИСТИНА\n{ГДЕ\n\t(Согласия.СрокДействия = ДАТАВРЕМЯ(1, 1, 1)\n\t\t\tИЛИ Согласия.СрокДействия >= &ДатаДействия)}"
-          },
-          "fields": [
-            [
-              {
-                "dataPath": "Субъект",
-                "name": "Субъект"
-              },
-              {
-                "dataPath": "Организация",
-                "name": "Организация"
-              },
-              {
-                "dataPath": "ДатаПолучения",
-                "name": "ДатаПолучения"
-              },
-              {
-                "dataPath": "СрокДействия",
-                "name": "СрокДействия"
-              },
-              {
-                "dataPath": "ДокументОснование",
-                "name": "ДокументОснование"
-              }
-            ],
-            [
-              {
-                "dataPath": "Субъект",
-                "name": "Субъект"
-              },
-              {
-                "dataPath": "Организация",
-                "name": "Организация"
-              },
-              {
-                "dataPath": "ДатаПолучения",
-                "name": "ДатаПолучения"
-              },
-              {
-                "dataPath": "СрокДействия",
-                "name": "СрокДействия"
-              },
-              {
-                "dataPath": "ДокументОснование",
-                "name": "ДокументОснование"
-              }
-            ]
-          ]
-        }
-      ],
-      "plainDataSets": [
-        {
-          "name": "Согласия",
-          "type": "DATA_SET_QUERY",
-          "dataSource": "ИсточникДанных1",
-          "items": [],
-          "querySource": {
-            "position": {
-              "line": 42,
-              "column": 10
-            },
-            "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tСогласия.Период КАК ДатаПолучения,\n\tСогласия.Регистратор КАК ДокументОснование,\n\tСогласия.Организация,\n\tСогласия.Субъект,\n\tСогласия.СрокДействия\nИЗ\n\tРегистрСведений.СогласияНаОбработкуПерсональныхДанных.СрезПоследних({(&ДатаДействия)}, ) КАК Согласия\nГДЕ\n\tСогласия.Действует = ИСТИНА\n{ГДЕ\n\t(Согласия.СрокДействия = ДАТАВРЕМЯ(1, 1, 1)\n\t\t\tИЛИ Согласия.СрокДействия >= &ДатаДействия)}"
-          },
-          "fields": [
-            [
-              {
-                "dataPath": "Субъект",
-                "name": "Субъект"
-              },
-              {
-                "dataPath": "Организация",
-                "name": "Организация"
-              },
-              {
-                "dataPath": "ДатаПолучения",
-                "name": "ДатаПолучения"
-              },
-              {
-                "dataPath": "СрокДействия",
-                "name": "СрокДействия"
-              },
-              {
-                "dataPath": "ДокументОснование",
-                "name": "ДокументОснование"
-              }
-            ],
-            [
-              {
-                "dataPath": "Субъект",
-                "name": "Субъект"
-              },
-              {
-                "dataPath": "Организация",
-                "name": "Организация"
-              },
-              {
-                "dataPath": "ДатаПолучения",
-                "name": "ДатаПолучения"
-              },
-              {
-                "dataPath": "СрокДействия",
-                "name": "СрокДействия"
-              },
-              {
-                "dataPath": "ДокументОснование",
-                "name": "ДокументОснование"
-              }
-            ]
-          ]
-        }
-      ]
-    },
-    "templateDataPath": {
-      "@class": "path",
-      "$": "src/test/resources/ext/designer/mdclasses/src/cf/CommonTemplates/СКД/Ext/Template.xml"
-    },
-    "templateType": "DATA_COMPOSITION_SCHEME",
-    "uuid": "8ae95178-7f50-4a77-aaf8-f8ffb72c65d4"
-  }
-}
+      }
+    ],
+    "plainDataSets": [
+      {
+        "@reference": "../../dataSets/com.github._1c_syntax.bsl.mdo.data_storage.DataCompositionSchema$DataSet"
+      }
+    ]
+  },
+  "templateDataPath": {
+    "@class": "path",
+    "$": "src/test/resources/ext/designer/mdclasses/src/cf/CommonTemplates/СКД/Ext/Template.xml"
+  },
+  "templateType": "DATA_COMPOSITION_SCHEME",
+  "uuid": "8ae95178-7f50-4a77-aaf8-f8ffb72c65d4"
+}}

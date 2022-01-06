@@ -1,1357 +1,1259 @@
-{
-  "com.github._1c_syntax.bsl.mdo.Document": {
-    "attributes": [
-      {
-        "name": "Автор",
-        "uuid": "5d455d2a-910d-48c7-bc74-ba5ad7855110",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Автор"
-            ]
+{"com.github._1c_syntax.bsl.mdo.Document": {
+  "attributes": [
+    {
+      "name": "Автор",
+      "uuid": "5d455d2a-910d-48c7-bc74-ba5ad7855110",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Автор"
           ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Автор",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Автор"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:CatalogRef.Пользователи"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Важность",
-        "uuid": "7cf3feea-75e2-42cc-9c89-4a9182034910",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Важность"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Важность",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Важность"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:EnumRef.ВариантыВажностиВзаимодействия"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Ответственный",
-        "uuid": "930a0156-feb3-4e14-96a5-cd183a4891f4",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Ответственный"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Ответственный",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Ответственный"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:CatalogRef.Пользователи"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "СписокУчастников",
-        "uuid": "cd5c52d4-f832-4a3b-b4c7-b4f3e0c98222",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Список участников"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.СписокУчастников",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.СписокУчастников"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 1024,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ВзаимодействиеОснование",
-        "uuid": "e268a337-f576-4ec2-8a22-0500b79b2441",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Взаимодействие основание"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.ВзаимодействиеОснование",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ВзаимодействиеОснование"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:DocumentRef.ЭлектронноеПисьмоИсходящее",
-            "cfg:DocumentRef.ЗапланированноеВзаимодействие",
-            "cfg:DocumentRef.ЭлектронноеПисьмоВходящее",
-            "cfg:DocumentRef.ТелефонныйЗвонок",
-            "cfg:DocumentRef.Встреча",
-            "cfg:DocumentRef.СообщениеSMS"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Тема",
-        "uuid": "eb33a8fa-75a6-4926-a025-05bc0abe4374",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Тема"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Тема",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Тема"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 1024,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "Комментарий",
-        "uuid": "c352da94-ea64-44b1-b2df-2c4ed9e2efc5",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Комментарий"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Комментарий",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Комментарий"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ОтправлятьВТранслите",
-        "uuid": "6babd40a-8b8f-454b-b4a4-7cf2854f49a2",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Отправлять в транслите"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.ОтправлятьВТранслите",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ОтправлятьВТранслите"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "xs:boolean"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ТекстСообщения",
-        "uuid": "bf480259-6e72-4ad1-ac41-0b0d41a75387",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Текст сообщения"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.ТекстСообщения",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ТекстСообщения"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "Состояние",
-        "uuid": "a41f060a-f0f6-4940-960b-5056082b2c45",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Состояние"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.Состояние",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Состояние"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:EnumRef.СостоянияДокументаСообщениеSMS"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ДатаКогдаОтправить",
-        "uuid": "5d45a926-513f-4bbc-a002-54a2db94b297",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дата когда отправить"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.ДатаКогдаОтправить",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаКогдаОтправить"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "type": {
-          "types": [
-            "xs:dateTime"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ДатаАктуальностиОтправки",
-        "uuid": "73f5ce9e-d5a7-45c0-965a-8af1d776a98a",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дата актуальности отправки"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Document.СообщениеSMS.Attribute.ДатаАктуальностиОтправки",
-          "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаАктуальностиОтправки"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "type": {
-          "types": [
-            "xs:dateTime"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      }
-    ],
-    "autonumbering": true,
-    "auxiliaryChoiceForm": {
-      "type": "UNKNOWN",
-      "mdoRef": "",
-      "mdoRefRu": ""
-    },
-    "auxiliaryListForm": {
-      "type": "UNKNOWN",
-      "mdoRef": "",
-      "mdoRefRu": ""
-    },
-    "auxiliaryObjectForm": {
-      "type": "UNKNOWN",
-      "mdoRef": "",
-      "mdoRefRu": ""
-    },
-    "basedOn": [
-      "Document.Встреча",
-      "Document.ЗапланированноеВзаимодействие",
-      "Document.ТелефонныйЗвонок",
-      "Document.ЭлектронноеПисьмоВходящее",
-      "Document.ЭлектронноеПисьмоИсходящее",
-      "Document.СообщениеSMS"
-    ],
-    "characteristics": [
-      "\n\t\t\t\t\t",
-      "\n\t\t\t\t\t"
-    ],
-    "checkUnique": true,
-    "choiceDataGetModeOnInputByString": "Directly",
-    "choiceHistoryOnInput": "DontUse",
-    "commands": [],
-    "comment": "",
-    "createOnInput": "Use",
-    "dataHistory": "DontUse",
-    "dataLockControlMode": "AUTOMATIC",
-    "dataLockFields": [],
-    "defaultChoiceForm": {
-      "type": "FORM",
-      "mdoRef": "Document.СообщениеSMS.Form.ФормаВыбора",
-      "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаВыбора"
-    },
-    "defaultListForm": {
-      "type": "FORM",
-      "mdoRef": "Document.СообщениеSMS.Form.ФормаСписка",
-      "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаСписка"
-    },
-    "defaultObjectForm": {
-      "type": "FORM",
-      "mdoRef": "Document.СообщениеSMS.Form.ФормаДокумента",
-      "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаДокумента"
-    },
-    "executeAfterWriteDataHistoryVersionProcessing": false,
-    "explanation": {
-      "content": []
-    },
-    "extendedListPresentation": {
-      "content": []
-    },
-    "extendedObjectPresentation": {
-      "content": []
-    },
-    "forms": [
-      {
-        "name": "ФормаДокумента",
-        "uuid": "073e14d4-5d43-428b-a9a7-985d173e94c7",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма документа"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Document.СообщениеSMS.Form.ФормаДокумента",
-          "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаДокумента"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ФормаВыбора",
-        "uuid": "61dc318a-c17d-402e-bf64-a0c0a63a1c93",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма выбора"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Document.СообщениеSMS.Form.ФормаВыбора",
-          "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаВыбора"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ФормаСписка",
-        "uuid": "c4b0c101-8cd9-441c-b94c-9dfa1ad58d45",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма списка"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Document.СообщениеSMS.Form.ФормаСписка",
-          "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаСписка"
-        },
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "fullTextSearch": "USE",
-    "fullTextSearchOnInputByString": "DontUse",
-    "includeHelpInContents": false,
-    "inputByString": [
-      "Document.СообщениеSMS.StandardAttribute.Number"
-    ],
-    "listPresentation": {
-      "content": [
-        [
-          "ru",
-          "Сообщения SMS"
         ]
-      ]
-    },
-    "mdoReference": {
-      "type": "DOCUMENT",
-      "mdoRef": "Document.СообщениеSMS",
-      "mdoRefRu": "Документ.СообщениеSMS"
-    },
-    "mdoType": "DOCUMENT",
-    "modules": [
-      {
-        "moduleType": "ManagerModule",
-        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ManagerModule.bsl",
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
       },
-      {
-        "moduleType": "ObjectModule",
-        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ObjectModule.bsl",
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Автор",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Автор"
+      },
+      "owner": {
+        "type": "DOCUMENT",
+        "mdoRef": "Document.СообщениеSMS",
+        "mdoRefRu": "Документ.СообщениеSMS"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
       }
-    ],
-    "name": "СообщениеSMS",
-    "numberAllowedLength": "Fixed",
-    "numberLength": 11,
-    "numberPeriodicity": "Year",
-    "numberType": "String",
-    "numerator": "",
-    "objectBelonging": "OWN",
-    "objectPresentation": {
-      "content": []
     },
-    "postInPrivilegedMode": true,
-    "posting": "Deny",
-    "realTimePosting": "Allow",
-    "registerRecords": [],
-    "registerRecordsDeletion": "AutoDeleteOnUnpost",
-    "registerRecordsWritingOnPost": "WriteSelected",
-    "searchStringModeOnInputByString": "Begin",
-    "sequenceFilling": "AutoFill",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": [
-        [
-          "ru",
-          "Сообщение SMS"
+    {
+      "name": "Важность",
+      "uuid": "7cf3feea-75e2-42cc-9c89-4a9182034910",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Важность"
+          ]
         ]
-      ]
-    },
-    "tabularSections": [
-      {
-        "name": "Адресаты",
-        "uuid": "2394775b-8910-4667-9c74-e1606e0b13bc",
-        "objectBelonging": "OWN",
-        "mdoType": "TABULAR_SECTION",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Адресаты"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TABULAR_SECTION",
-          "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-          "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-        },
-        "attributes": [
-          {
-            "name": "Контакт",
-            "uuid": "43c88ffd-a036-4563-890b-bdc60180e841",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Контакт"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.Контакт",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.Контакт"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "INDEX",
-            "type": {
-              "types": [],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "ПредставлениеКонтакта",
-            "uuid": "af6e5e8e-6482-4820-a810-9e275ae039bf",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Представление контакта"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ПредставлениеКонтакта",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ПредставлениеКонтакта"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 100,
-                "allowedLength": "Variable"
-              }
-            }
-          },
-          {
-            "name": "КакСвязаться",
-            "uuid": "fe3ccb8b-fee7-4825-a7bc-4b0fd432d382",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Как связаться"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.КакСвязаться",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.КакСвязаться"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 100,
-                "allowedLength": "Variable"
-              }
-            }
-          },
-          {
-            "name": "НомерДляОтправки",
-            "uuid": "7690620b-21d9-463a-8c22-60844927b4a0",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Номер для отправки"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.НомерДляОтправки",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.НомерДляОтправки"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 30,
-                "allowedLength": "Variable"
-              }
-            }
-          },
-          {
-            "name": "ИдентификаторСообщения",
-            "uuid": "e7f96a15-9f62-4a7f-85f3-06ba5d30b130",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Идентификатор сообщения"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ИдентификаторСообщения",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ИдентификаторСообщения"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 20,
-                "allowedLength": "Variable"
-              }
-            }
-          },
-          {
-            "name": "ТекстОшибки",
-            "uuid": "b1db3255-38da-4684-b44e-4e2e9ee1dc35",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Текст ошибки"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ТекстОшибки",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ТекстОшибки"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 500,
-                "allowedLength": "Variable"
-              }
-            }
-          },
-          {
-            "name": "СостояниеСообщения",
-            "uuid": "4761f89b-7894-4dca-83b0-3be2d0828781",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Состояние сообщения"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.СостояниеСообщения",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.СостояниеСообщения"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "INDEX",
-            "type": {
-              "types": [
-                "cfg:EnumRef.СостоянияСообщенияSMS"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          }
-        ],
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
       },
-      {
-        "name": "НаборыЗначенийДоступа",
-        "uuid": "573ff1f2-0ef5-4962-a0f6-eb84d430fe03",
-        "objectBelonging": "OWN",
-        "mdoType": "TABULAR_SECTION",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Наборы значений доступа"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TABULAR_SECTION",
-          "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-          "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-        },
-        "attributes": [
-          {
-            "name": "НомерНабора",
-            "uuid": "7236d52f-9068-45ad-8b92-a7319e737e08",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Номер набора"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.НомерНабора",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.НомерНабора"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                "xs:decimal"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "ЗначениеДоступа",
-            "uuid": "3b0b708f-1b6c-4eb2-a2ad-86c088d9f1bf",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Значение доступа"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.ЗначениеДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.ЗначениеДоступа"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "Уточнение",
-            "uuid": "9db23e96-d13a-4847-941a-462f64d0619d",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Уточнение"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Уточнение",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Уточнение"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                "cfg:CatalogRef.ИдентификаторыОбъектовМетаданных"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "Чтение",
-            "uuid": "7575fd54-c91b-4220-a2ef-2cf533f60426",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Чтение использует номер набора"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Чтение",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Чтение"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                "xs:boolean"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "Изменение",
-            "uuid": "1b751f19-bb0c-40c2-a5d1-068544c36c6b",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Изменение использует номер набора"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Изменение",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Изменение"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                "xs:boolean"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          }
-        ],
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Важность",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Важность"
       },
-      {
-        "name": "ДополнительныеРеквизиты",
-        "uuid": "26e2c83b-8873-4ad3-9c50-e94421473a43",
-        "objectBelonging": "OWN",
-        "mdoType": "TABULAR_SECTION",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дополнительные реквизиты"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TABULAR_SECTION",
-          "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты",
-          "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты"
-        },
-        "attributes": [
-          {
-            "name": "Свойство",
-            "uuid": "f0b2ec05-8e01-4ccf-b927-671329a9013b",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Свойство"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Свойство"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "Значение",
-            "uuid": "ab442b11-2482-4f80-ac82-01966e0657ec",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Значение"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.Значение",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Значение"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "ТекстоваяСтрока",
-            "uuid": "14fe4d39-81a1-470e-9724-6642ce34ad89",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Текстовая строка"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.ТекстоваяСтрока",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.ТекстоваяСтрока"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 1
-                  },
-                  "int": 1,
-                  "string": "xs:string"
-                }
-              ],
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": "Variable"
-              }
-            }
-          }
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.ВариантыВажностиВзаимодействия"
         ],
-        "owner": {
-          "type": "DOCUMENT",
-          "mdoRef": "Document.СообщениеSMS",
-          "mdoRefRu": "Документ.СообщениеSMS"
-        },
-        "supportVariant": "NONE"
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
       }
-    ],
-    "templates": [],
-    "unpostInPrivilegedMode": true,
-    "updateDataHistoryImmediatelyAfterWrite": false,
-    "useStandardCommands": true,
-    "uuid": "67c1269a-79e6-44d9-9254-671c50fb3974"
-  }
-}
+    },
+    {
+      "name": "Ответственный",
+      "uuid": "930a0156-feb3-4e14-96a5-cd183a4891f4",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Ответственный"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Ответственный",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Ответственный"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "СписокУчастников",
+      "uuid": "cd5c52d4-f832-4a3b-b4c7-b4f3e0c98222",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Список участников"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.СписокУчастников",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.СписокУчастников"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 1024,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ВзаимодействиеОснование",
+      "uuid": "e268a337-f576-4ec2-8a22-0500b79b2441",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Взаимодействие основание"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.ВзаимодействиеОснование",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ВзаимодействиеОснование"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:DocumentRef.ЭлектронноеПисьмоИсходящее",
+          "cfg:DocumentRef.ЗапланированноеВзаимодействие",
+          "cfg:DocumentRef.ЭлектронноеПисьмоВходящее",
+          "cfg:DocumentRef.ТелефонныйЗвонок",
+          "cfg:DocumentRef.Встреча",
+          "cfg:DocumentRef.СообщениеSMS"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Тема",
+      "uuid": "eb33a8fa-75a6-4926-a025-05bc0abe4374",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Тема"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Тема",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Тема"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 1024,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Комментарий",
+      "uuid": "c352da94-ea64-44b1-b2df-2c4ed9e2efc5",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Комментарий"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Комментарий",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Комментарий"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ОтправлятьВТранслите",
+      "uuid": "6babd40a-8b8f-454b-b4a4-7cf2854f49a2",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Отправлять в транслите"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.ОтправлятьВТранслите",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ОтправлятьВТранслите"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ТекстСообщения",
+      "uuid": "bf480259-6e72-4ad1-ac41-0b0d41a75387",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Текст сообщения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.ТекстСообщения",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ТекстСообщения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Состояние",
+      "uuid": "a41f060a-f0f6-4940-960b-5056082b2c45",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Состояние"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.Состояние",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Состояние"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.СостоянияДокументаСообщениеSMS"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаКогдаОтправить",
+      "uuid": "5d45a926-513f-4bbc-a002-54a2db94b297",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата когда отправить"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.ДатаКогдаОтправить",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаКогдаОтправить"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаАктуальностиОтправки",
+      "uuid": "73f5ce9e-d5a7-45c0-965a-8af1d776a98a",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата актуальности отправки"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.СообщениеSMS.Attribute.ДатаАктуальностиОтправки",
+        "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаАктуальностиОтправки"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    }
+  ],
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [
+    "Document.Встреча",
+    "Document.ЗапланированноеВзаимодействие",
+    "Document.ТелефонныйЗвонок",
+    "Document.ЭлектронноеПисьмоВходящее",
+    "Document.ЭлектронноеПисьмоИсходящее",
+    "Document.СообщениеSMS"
+  ],
+  "characteristics": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
+  "checkUnique": true,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "DontUse",
+  "commands": [],
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "AUTOMATIC",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "type": "FORM",
+    "mdoRef": "Document.СообщениеSMS.Form.ФормаВыбора",
+    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаВыбора"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "Document.СообщениеSMS.Form.ФормаСписка",
+    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Document.СообщениеSMS.Form.ФормаДокумента",
+    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаДокумента"
+  },
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "forms": [
+    {
+      "name": "ФормаДокумента",
+      "uuid": "073e14d4-5d43-428b-a9a7-985d173e94c7",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма документа"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultObjectForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаВыбора",
+      "uuid": "61dc318a-c17d-402e-bf64-a0c0a63a1c93",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма выбора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultChoiceForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаСписка",
+      "uuid": "c4b0c101-8cd9-441c-b94c-9dfa1ad58d45",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultListForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Document.СообщениеSMS.StandardAttribute.Number"
+  ],
+  "listPresentation": {
+    "content": [
+      [
+        "ru",
+        "Сообщения SMS"
+      ]
+    ]
+  },
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DOCUMENT",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "СообщениеSMS",
+  "numberAllowedLength": "Fixed",
+  "numberLength": 11,
+  "numberPeriodicity": "Year",
+  "numberType": "String",
+  "numerator": "",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": []
+  },
+  "postInPrivilegedMode": true,
+  "posting": "Deny",
+  "realTimePosting": "Allow",
+  "registerRecords": [],
+  "registerRecordsDeletion": "AutoDeleteOnUnpost",
+  "registerRecordsWritingOnPost": "WriteSelected",
+  "searchStringModeOnInputByString": "Begin",
+  "sequenceFilling": "AutoFill",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Сообщение SMS"
+      ]
+    ]
+  },
+  "tabularSections": [
+    {
+      "name": "Адресаты",
+      "uuid": "2394775b-8910-4667-9c74-e1606e0b13bc",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Адресаты"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты",
+        "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты"
+      },
+      "attributes": [
+        {
+          "name": "Контакт",
+          "uuid": "43c88ffd-a036-4563-890b-bdc60180e841",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Контакт"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.Контакт",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.Контакт"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "type": {
+            "types": [],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "ПредставлениеКонтакта",
+          "uuid": "af6e5e8e-6482-4820-a810-9e275ae039bf",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Представление контакта"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ПредставлениеКонтакта",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ПредставлениеКонтакта"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 100,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "КакСвязаться",
+          "uuid": "fe3ccb8b-fee7-4825-a7bc-4b0fd432d382",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Как связаться"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.КакСвязаться",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.КакСвязаться"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 100,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "НомерДляОтправки",
+          "uuid": "7690620b-21d9-463a-8c22-60844927b4a0",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Номер для отправки"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.НомерДляОтправки",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.НомерДляОтправки"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 30,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "ИдентификаторСообщения",
+          "uuid": "e7f96a15-9f62-4a7f-85f3-06ba5d30b130",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Идентификатор сообщения"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ИдентификаторСообщения",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ИдентификаторСообщения"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 20,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "ТекстОшибки",
+          "uuid": "b1db3255-38da-4684-b44e-4e2e9ee1dc35",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Текст ошибки"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.ТекстОшибки",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.ТекстОшибки"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 500,
+              "allowedLength": "Variable"
+            }
+          }
+        },
+        {
+          "name": "СостояниеСообщения",
+          "uuid": "4761f89b-7894-4dca-83b0-3be2d0828781",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Состояние сообщения"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.Адресаты.Attribute.СостояниеСообщения",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.Адресаты.Реквизит.СостояниеСообщения"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "type": {
+            "types": [
+              "cfg:EnumRef.СостоянияСообщенияSMS"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "НаборыЗначенийДоступа",
+      "uuid": "573ff1f2-0ef5-4962-a0f6-eb84d430fe03",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Наборы значений доступа"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа",
+        "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа"
+      },
+      "attributes": [
+        {
+          "name": "НомерНабора",
+          "uuid": "7236d52f-9068-45ad-8b92-a7319e737e08",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Номер набора"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.НомерНабора",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.НомерНабора"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "xs:decimal"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "ЗначениеДоступа",
+          "uuid": "3b0b708f-1b6c-4eb2-a2ad-86c088d9f1bf",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Значение доступа"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.ЗначениеДоступа",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.ЗначениеДоступа"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "Уточнение",
+          "uuid": "9db23e96-d13a-4847-941a-462f64d0619d",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Уточнение"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Уточнение",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Уточнение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "cfg:CatalogRef.ИдентификаторыОбъектовМетаданных"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "Чтение",
+          "uuid": "7575fd54-c91b-4220-a2ef-2cf533f60426",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Чтение использует номер набора"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Чтение",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Чтение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "xs:boolean"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "Изменение",
+          "uuid": "1b751f19-bb0c-40c2-a5d1-068544c36c6b",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Изменение использует номер набора"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.НаборыЗначенийДоступа.Attribute.Изменение",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.НаборыЗначенийДоступа.Реквизит.Изменение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "xs:boolean"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ДополнительныеРеквизиты",
+      "uuid": "26e2c83b-8873-4ad3-9c50-e94421473a43",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительные реквизиты"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты",
+        "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты"
+      },
+      "attributes": [
+        {
+          "name": "Свойство",
+          "uuid": "f0b2ec05-8e01-4ccf-b927-671329a9013b",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Свойство"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Свойство"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+            ],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "Значение",
+          "uuid": "ab442b11-2482-4f80-ac82-01966e0657ec",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Значение"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.Значение",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Значение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [],
+            "stringQualifier": {
+              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
+        },
+        {
+          "name": "ТекстоваяСтрока",
+          "uuid": "14fe4d39-81a1-470e-9724-6642ce34ad89",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Текстовая строка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.СообщениеSMS.TabularSection.ДополнительныеРеквизиты.Attribute.ТекстоваяСтрока",
+            "mdoRefRu": "Документ.СообщениеSMS.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.ТекстоваяСтрока"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": "Variable"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "templates": [],
+  "unpostInPrivilegedMode": true,
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": true,
+  "uuid": "67c1269a-79e6-44d9-9254-671c50fb3974"
+}}

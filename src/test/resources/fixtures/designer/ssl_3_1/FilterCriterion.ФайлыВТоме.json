@@ -1,87 +1,81 @@
-{
-  "com.github._1c_syntax.bsl.mdo.FilterCriterion": {
-    "auxiliaryForm": {
-      "type": "UNKNOWN",
-      "mdoRef": "",
-      "mdoRefRu": ""
-    },
-    "commands": [],
-    "comment": "",
-    "content": [
-      {
-        "type": "ATTRIBUTE",
-        "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
-        "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
-      }
-    ],
-    "defaultForm": {
-      "type": "FORM",
-      "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
-      "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
-    },
-    "explanation": {
-      "content": []
-    },
-    "extendedListPresentation": {
-      "content": []
-    },
-    "forms": [
-      {
-        "name": "ФормаСписка",
-        "uuid": "bb29fa44-6772-4426-a0b8-422115e14288",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма списка"
-            ]
+{"com.github._1c_syntax.bsl.mdo.FilterCriterion": {
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "commands": [],
+  "comment": "",
+  "content": [
+    {
+      "type": "ATTRIBUTE",
+      "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
+      "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
+    }
+  ],
+  "defaultForm": {
+    "type": "FORM",
+    "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
+    "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "forms": [
+    {
+      "name": "ФормаСписка",
+      "uuid": "bb29fa44-6772-4426-a0b8-422115e14288",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
           ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
-          "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
-        },
-        "owner": {
-          "type": "FILTER_CRITERION",
-          "mdoRef": "FilterCriterion.ФайлыВТоме",
-          "mdoRefRu": "КритерийОтбора.ФайлыВТоме"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "listPresentation": {
-      "content": []
-    },
-    "mdoReference": {
-      "type": "FILTER_CRITERION",
-      "mdoRef": "FilterCriterion.ФайлыВТоме",
-      "mdoRefRu": "КритерийОтбора.ФайлыВТоме"
-    },
-    "mdoType": "FILTER_CRITERION",
-    "modules": [],
-    "name": "ФайлыВТоме",
-    "objectBelonging": "OWN",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": [
-        [
-          "ru",
-          "Файлы в томе"
         ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultForm"
+      },
+      "owner": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.ФайлыВТоме",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+  },
+  "mdoType": "FILTER_CRITERION",
+  "modules": [],
+  "name": "ФайлыВТоме",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Файлы в томе"
       ]
-    },
-    "type": {
-      "types": [
-        "cfg:CatalogRef.ТомаХраненияФайлов"
-      ],
-      "stringQualifier": {
-        "length": 0,
-        "allowedLength": ""
-      }
-    },
-    "useStandardCommands": false,
-    "uuid": "ebab97cf-5335-4648-9845-8ca41f79fb49"
-  }
-}
+    ]
+  },
+  "type": {
+    "types": [
+      "cfg:CatalogRef.ТомаХраненияФайлов"
+    ],
+    "stringQualifier": {
+      "length": 0,
+      "allowedLength": ""
+    }
+  },
+  "useStandardCommands": false,
+  "uuid": "ebab97cf-5335-4648-9845-8ca41f79fb49"
+}}

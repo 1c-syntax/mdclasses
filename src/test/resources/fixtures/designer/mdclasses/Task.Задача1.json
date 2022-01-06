@@ -1,252 +1,260 @@
-{
-  "com.github._1c_syntax.bsl.mdo.Task": {
-    "addressing": "",
-    "attributes": [
-      {
-        "name": "РеквизитАдресации",
-        "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
-        "objectBelonging": "OWN",
-        "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
-        "synonym": {
-          "content": []
-        },
-        "mdoReference": {
-          "type": "TASK_ADDRESSING_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.AddressingAttribute.РеквизитАдресации",
-          "mdoRefRu": "Задача.Задача1.РеквизитАдресации.РеквизитАдресации"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.Задача1",
-          "mdoRefRu": "Задача.Задача1"
-        },
-        "supportVariant": "NONE",
-        "type": {
-          "type": "xs:string",
-          "stringQualifier": {
-            "length": 10,
-            "allowedLength": "Variable"
-          }
-        }
-      }
-    ],
-    "autonumbering": true,
-    "auxiliaryChoiceForm": "",
-    "auxiliaryListForm": "",
-    "auxiliaryObjectForm": "",
-    "basedOn": [],
-    "characteristics": [],
-    "checkUnique": true,
-    "choiceDataGetModeOnInputByString": "Directly",
-    "choiceHistoryOnInput": "Auto",
-    "commands": [],
-    "comment": "",
-    "createOnInput": "DontUse",
-    "currentPerformer": "",
-    "dataLockControlMode": "MANAGED",
-    "dataLockFields": [],
-    "defaultChoiceForm": "",
-    "defaultListForm": "",
-    "defaultObjectForm": "",
-    "defaultPresentation": "AsDescription",
-    "descriptionLength": 25,
-    "editType": "InDialog",
-    "explanation": "",
-    "extendedListPresentation": "",
-    "extendedObjectPresentation": "",
-    "forms": [],
-    "fullTextSearch": "USE",
-    "fullTextSearchOnInputByString": "DontUse",
-    "includeHelpInContents": false,
-    "inputByString": [
-      "Task.Задача1.StandardAttribute.Description",
-      "Task.Задача1.StandardAttribute.Number"
-    ],
-    "listPresentation": "",
-    "mainAddressingAttribute": "",
-    "mdoReference": {
-      "type": "TASK",
-      "mdoRef": "Task.Задача1",
-      "mdoRefRu": "Задача.Задача1"
-    },
-    "mdoType": "TASK",
-    "modules": [],
-    "name": "Задача1",
-    "numberAllowedLength": "Variable",
-    "numberLength": 9,
-    "numberType": "String",
-    "objectBelonging": "OWN",
-    "objectPresentation": "",
-    "searchStringModeOnInputByString": "Begin",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": []
-    },
-    "tabularSections": [
-      {
-        "name": "ДополнительныеРеквизиты",
-        "uuid": "245f870e-a53a-4d86-aa0a-c0c7709b8acb",
-        "objectBelonging": "OWN",
-        "mdoType": "TABULAR_SECTION",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дополнительные реквизиты"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TABULAR_SECTION",
-          "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты",
-          "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты"
-        },
-        "attributes": [
+{"com.github._1c_syntax.bsl.mdo.Task": {
+  "addressing": "",
+  "attributes": [
+    {
+      "name": "РеквизитАдресации",
+      "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
+      "objectBelonging": "OWN",
+      "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "TASK_ADDRESSING_ATTRIBUTE",
+        "mdoRef": "Task.Задача1.AddressingAttribute.РеквизитАдресации",
+        "mdoRefRu": "Задача.Задача1.РеквизитАдресации.РеквизитАдресации"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "owner": {
+        "type": "TASK",
+        "mdoRef": "Task.Задача1",
+        "mdoRefRu": "Задача.Задача1"
+      },
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
           {
-            "name": "Свойство",
-            "uuid": "476f6bfa-b10c-4e0f-8499-23c652715b3f",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Свойство"
-                ]
-              ]
+            "default": {
+              "tag": 1
             },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Свойство"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "type": "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения",
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "Значение",
-            "uuid": "65c9754b-53f6-4616-a9d4-74826f7b0ced",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Значение"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.Значение",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Значение"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "type": "",
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": ""
-              }
-            }
-          },
-          {
-            "name": "ТекстоваяСтрока",
-            "uuid": "eca2b076-d218-4d1c-948b-7894edf9fa49",
-            "objectBelonging": "OWN",
-            "mdoType": "ATTRIBUTE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Текстовая строка"
-                ]
-              ]
-            },
-            "mdoReference": {
-              "type": "ATTRIBUTE",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.ТекстоваяСтрока",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.ТекстоваяСтрока"
-            },
-            "owner": {
-              "type": "TABULAR_SECTION",
-              "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты",
-              "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты"
-            },
-            "supportVariant": "NONE",
-            "passwordMode": false,
-            "kind": "CUSTOM",
-            "indexing": "DONT_INDEX",
-            "type": {
-              "type": "xs:string",
-              "stringQualifier": {
-                "length": 0,
-                "allowedLength": "Variable"
-              }
-            }
+            "int": 1,
+            "string": "xs:string"
           }
         ],
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.Задача1",
-          "mdoRefRu": "Задача.Задача1"
-        },
-        "supportVariant": "NONE"
+        "stringQualifier": {
+          "length": 10,
+          "allowedLength": "Variable"
+        }
       }
-    ],
-    "taskNumberAutoPrefix": "DontUse",
-    "templates": [
-      {
-        "name": "Описатель",
-        "uuid": "33e96bda-1708-4ee4-8d4d-3b919bda3e38",
-        "mdoType": "TEMPLATE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Описатель"
-            ]
+    }
+  ],
+  "autonumbering": true,
+  "auxiliaryChoiceForm": "",
+  "auxiliaryListForm": "",
+  "auxiliaryObjectForm": "",
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "commands": [],
+  "comment": "",
+  "createOnInput": "DontUse",
+  "currentPerformer": "",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": "",
+  "defaultListForm": "",
+  "defaultObjectForm": "",
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 25,
+  "editType": "InDialog",
+  "explanation": "",
+  "extendedListPresentation": "",
+  "extendedObjectPresentation": "",
+  "forms": [],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Task.Задача1.StandardAttribute.Description",
+    "Task.Задача1.StandardAttribute.Number"
+  ],
+  "listPresentation": "",
+  "mainAddressingAttribute": "",
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
+  },
+  "mdoType": "TASK",
+  "modules": [],
+  "name": "Задача1",
+  "numberAllowedLength": "Variable",
+  "numberLength": 9,
+  "numberType": "String",
+  "objectBelonging": "OWN",
+  "objectPresentation": "",
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": []
+  },
+  "tabularSections": [
+    {
+      "name": "ДополнительныеРеквизиты",
+      "uuid": "245f870e-a53a-4d86-aa0a-c0c7709b8acb",
+      "objectBelonging": "OWN",
+      "mdoType": "TABULAR_SECTION",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительные реквизиты"
           ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты",
+        "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты"
+      },
+      "attributes": [
+        {
+          "name": "Свойство",
+          "uuid": "476f6bfa-b10c-4e0f-8499-23c652715b3f",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Свойство"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство",
+            "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Свойство"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": ""
+            }
+          }
         },
-        "mdoReference": {
-          "type": "TEMPLATE",
-          "mdoRef": "Task.Задача1.Template.Описатель",
-          "mdoRefRu": "Задача.Задача1.Макет.Описатель"
+        {
+          "name": "Значение",
+          "uuid": "65c9754b-53f6-4616-a9d4-74826f7b0ced",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Значение"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.Значение",
+            "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.Значение"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [],
+            "stringQualifier": {
+              "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+            }
+          }
         },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.Задача1",
-          "mdoRefRu": "Задача.Задача1"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "useStandardCommands": true,
-    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea"
-  }
-}
+        {
+          "name": "ТекстоваяСтрока",
+          "uuid": "eca2b076-d218-4d1c-948b-7894edf9fa49",
+          "objectBelonging": "OWN",
+          "mdoType": "ATTRIBUTE",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Текстовая строка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Task.Задача1.TabularSection.ДополнительныеРеквизиты.Attribute.ТекстоваяСтрока",
+            "mdoRefRu": "Задача.Задача1.ТабличнаяЧасть.ДополнительныеРеквизиты.Реквизит.ТекстоваяСтрока"
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "supportVariant": "NONE",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "string": "xs:string"
+              }
+            ],
+            "stringQualifier": {
+              "length": 0,
+              "allowedLength": "Variable"
+            }
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "taskNumberAutoPrefix": "DontUse",
+  "templates": [
+    {
+      "name": "Описатель",
+      "uuid": "33e96bda-1708-4ee4-8d4d-3b919bda3e38",
+      "objectBelonging": "OWN",
+      "mdoType": "TEMPLATE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Описатель"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Task.Задача1.Template.Описатель",
+        "mdoRefRu": "Задача.Задача1.Макет.Описатель"
+      },
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.data_storage.EmptyTemplateData"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "useStandardCommands": true,
+  "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea"
+}}

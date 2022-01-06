@@ -1,318 +1,295 @@
-{
-  "com.github._1c_syntax.bsl.mdo.DataProcessor": {
-    "attributes": [
-      {
-        "name": "EMAILМаксимальныйДопустимыйРазмерСообщения",
-        "uuid": "ab178a93-8570-43b6-ae42-f34a7cc4f359",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Максимальный размер сообщения обмена, КБайт"
-            ]
+{"com.github._1c_syntax.bsl.mdo.DataProcessor": {
+  "attributes": [
+    {
+      "name": "EMAILМаксимальныйДопустимыйРазмерСообщения",
+      "uuid": "ab178a93-8570-43b6-ae42-f34a7cc4f359",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Максимальный размер сообщения обмена, КБайт"
           ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILМаксимальныйДопустимыйРазмерСообщения",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILМаксимальныйДопустимыйРазмерСообщения"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "xs:decimal"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "EMAILСжиматьФайлИсходящегоСообщения",
-        "uuid": "4c82f31d-7a98-47dd-89dc-1846cb15bf3b",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Сжимать файл исходящего сообщения"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILСжиматьФайлИсходящегоСообщения",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILСжиматьФайлИсходящегоСообщения"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "xs:boolean"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "EMAILУчетнаяЗапись",
-        "uuid": "168e3189-2676-4cdb-bc9d-78d85df51faf",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Учетная запись электронной почты"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILУчетнаяЗапись",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILУчетнаяЗапись"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "cfg:CatalogRef.УчетныеЗаписиЭлектроннойПочты"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ПарольАрхиваСообщенияОбмена",
-        "uuid": "ecf1a87f-4ca4-4efb-a84c-b2db1b0e8829",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Пароль архива сообщения обмена"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ПарольАрхиваСообщенияОбмена",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ПарольАрхиваСообщенияОбмена"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ШаблонИмениФайлаСообщения",
-        "uuid": "470bbff8-20d0-475c-a61a-1a09ac14c2db",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Шаблон имени файла сообщения"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ШаблонИмениФайлаСообщения",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ШаблонИмениФайлаСообщения"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 1
-              },
-              "int": 1,
-              "string": "xs:string"
-            }
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
-        "uuid": "6ea25680-c4db-4717-9498-62420ca16970",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Использовать временный каталог для отправки и приема сообщений"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            "xs:boolean"
-          ],
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      }
-    ],
-    "auxiliaryForm": {
-      "type": "UNKNOWN",
-      "mdoRef": "",
-      "mdoRefRu": ""
-    },
-    "commands": [],
-    "comment": "",
-    "defaultForm": {
-      "type": "FORM",
-      "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
-      "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
-    },
-    "explanation": {
-      "content": []
-    },
-    "extendedPresentation": {
-      "content": []
-    },
-    "forms": [
-      {
-        "name": "Форма",
-        "uuid": "14e20d48-635e-4c52-9099-e743323fc190",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "includeHelpInContents": false,
-    "mdoReference": {
-      "type": "DATA_PROCESSOR",
-      "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-      "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-    },
-    "mdoType": "DATA_PROCESSOR",
-    "modules": [
-      {
-        "moduleType": "ObjectModule",
-        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ТранспортСообщенийОбменаEMAIL/Ext/ObjectModule.bsl",
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
-          "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "name": "ТранспортСообщенийОбменаEMAIL",
-    "objectBelonging": "OWN",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": [
-        [
-          "ru",
-          "Транспорт сообщения обмена через E-mail"
         ]
-      ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILМаксимальныйДопустимыйРазмерСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILМаксимальныйДопустимыйРазмерСообщения"
+      },
+      "owner": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:decimal"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      }
     },
-    "tabularSections": [],
-    "templates": [],
-    "useStandardCommands": false,
-    "uuid": "1e7684f0-1b3b-4a32-8602-dd0672c5a800"
-  }
-}
+    {
+      "name": "EMAILСжиматьФайлИсходящегоСообщения",
+      "uuid": "4c82f31d-7a98-47dd-89dc-1846cb15bf3b",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Сжимать файл исходящего сообщения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILСжиматьФайлИсходящегоСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILСжиматьФайлИсходящегоСообщения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "EMAILУчетнаяЗапись",
+      "uuid": "168e3189-2676-4cdb-bc9d-78d85df51faf",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Учетная запись электронной почты"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILУчетнаяЗапись",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILУчетнаяЗапись"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.УчетныеЗаписиЭлектроннойПочты"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ПарольАрхиваСообщенияОбмена",
+      "uuid": "ecf1a87f-4ca4-4efb-a84c-b2db1b0e8829",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Пароль архива сообщения обмена"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ПарольАрхиваСообщенияОбмена",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ПарольАрхиваСообщенияОбмена"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ШаблонИмениФайлаСообщения",
+      "uuid": "470bbff8-20d0-475c-a61a-1a09ac14c2db",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Шаблон имени файла сообщения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ШаблонИмениФайлаСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ШаблонИмениФайлаСообщения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
+      "uuid": "6ea25680-c4db-4717-9498-62420ca16970",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Использовать временный каталог для отправки и приема сообщений"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    }
+  ],
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "commands": [],
+  "comment": "",
+  "defaultForm": {
+    "type": "FORM",
+    "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
+    "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedPresentation": {
+    "content": []
+  },
+  "forms": [
+    {
+      "name": "Форма",
+      "uuid": "14e20d48-635e-4c52-9099-e743323fc190",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultForm"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "includeHelpInContents": false,
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DATA_PROCESSOR",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ТранспортСообщенийОбменаEMAIL/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ТранспортСообщенийОбменаEMAIL",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Транспорт сообщения обмена через E-mail"
+      ]
+    ]
+  },
+  "tabularSections": [],
+  "templates": [],
+  "useStandardCommands": false,
+  "uuid": "1e7684f0-1b3b-4a32-8602-dd0672c5a800"
+}}

@@ -1,1064 +1,1041 @@
-{
-  "com.github._1c_syntax.bsl.mdo.Task": {
-    "addressing": "InformationRegister.ИсполнителиЗадач",
-    "attributes": [
-      {
-        "name": "Автор",
-        "uuid": "fd96c8ab-602a-4735-b168-52b501e80351",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Автор"
-            ]
+{"com.github._1c_syntax.bsl.mdo.Task": {
+  "addressing": "InformationRegister.ИсполнителиЗадач",
+  "attributes": [
+    {
+      "name": "Автор",
+      "uuid": "fd96c8ab-602a-4735-b168-52b501e80351",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Автор"
           ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Автор",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Автор"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "cfg:CatalogRef.Пользователи",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Важность",
-        "uuid": "b1dc619d-8d91-4f7a-aa50-1d07ff9aebdc",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Важность"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Важность",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Важность"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "cfg:EnumRef.ВариантыВажностиЗадачи",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ГруппаИсполнителейЗадач",
-        "uuid": "370f0c75-d2c5-4be5-a633-4bcc77998ece",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Группа исполнителей задач"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ГруппаИсполнителейЗадач",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ГруппаИсполнителейЗадач"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "cfg:CatalogRef.ГруппыИсполнителейЗадач",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ДатаИсполнения",
-        "uuid": "f80b505f-b4ff-45fb-bd88-74b274ae9d2b",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Выполнена"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаИсполнения",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаИсполнения"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:dateTime",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ДатаНачала",
-        "uuid": "2139532c-f6cb-4393-936e-cc912e5adca9",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дата начала"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаНачала",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаНачала"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:dateTime",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ДатаПринятияКИсполнению",
-        "uuid": "755c3eca-4956-4a44-9b38-c11dae00b87f",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дата принятия к исполнению"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаПринятияКИсполнению",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаПринятияКИсполнению"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:dateTime",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Описание",
-        "uuid": "f57c558c-2c94-4b9d-8697-448d0548ab1a",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Описание"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Описание",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Описание"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:string",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "Предмет",
-        "uuid": "a310c09f-4d3a-4d3a-9ad5-7a5735a33a1d",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Предмет"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Предмет",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Предмет"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ПредметСтрокой",
-        "uuid": "c32db021-eca1-4b67-aa85-3d6e28c51b53",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Предмет"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ПредметСтрокой",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ПредметСтрокой"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:string",
-          "stringQualifier": {
-            "length": 500,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ПринятаКИсполнению",
-        "uuid": "e9ed0ee4-3fbe-4093-9078-cb265ed6842c",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Принята к исполнению"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ПринятаКИсполнению",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ПринятаКИсполнению"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:boolean",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "РезультатВыполнения",
-        "uuid": "02466dcf-02a1-4853-814f-a913a9baba45",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Результат выполнения"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.РезультатВыполнения",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.РезультатВыполнения"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:string",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "СостояниеБизнесПроцесса",
-        "uuid": "c4a40dc9-b619-4219-9d9a-e11f49a14fb1",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Состояние бизнес процесса"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.СостояниеБизнесПроцесса",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.СостояниеБизнесПроцесса"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "cfg:EnumRef.СостоянияБизнесПроцессов",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "СрокИсполнения",
-        "uuid": "62b75eb2-42e1-4484-a77f-b676dd36f3d4",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Срок"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.СрокИсполнения",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.СрокИсполнения"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:dateTime",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "АвторСтрокой",
-        "uuid": "5e28e22a-dd6e-4703-92bd-13f5cb0dc023",
-        "objectBelonging": "OWN",
-        "mdoType": "ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Автор строкой"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.Attribute.АвторСтрокой",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.АвторСтрокой"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "type": "xs:string",
-          "stringQualifier": {
-            "length": 150,
-            "allowedLength": "Variable"
-          }
-        }
-      },
-      {
-        "name": "ДополнительныйОбъектАдресации",
-        "uuid": "0408002c-9255-43a2-8022-82f02ee0e8f4",
-        "objectBelonging": "OWN",
-        "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дополнительный объект адресации"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TASK_ADDRESSING_ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.ДополнительныйОбъектАдресации",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.ДополнительныйОбъектАдресации"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "type": {
-          "type": "",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "Исполнитель",
-        "uuid": "88f44c9b-216d-4d7e-bc88-1e6b253ed01e",
-        "objectBelonging": "OWN",
-        "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Исполнитель"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TASK_ADDRESSING_ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.Исполнитель"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "type": {
-          "type": "cfg:CatalogRef.Пользователи",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "ОсновнойОбъектАдресации",
-        "uuid": "1851afd4-5324-45c1-b754-54e65943f945",
-        "objectBelonging": "OWN",
-        "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Основной объект адресации"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TASK_ADDRESSING_ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.ОсновнойОбъектАдресации",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.ОсновнойОбъектАдресации"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "type": {
-          "type": "",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      },
-      {
-        "name": "РольИсполнителя",
-        "uuid": "bc5eca9b-32d8-44e0-a127-8ad1f47d7957",
-        "objectBelonging": "OWN",
-        "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Роль исполнителя"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "TASK_ADDRESSING_ATTRIBUTE",
-          "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.РольИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.РольИсполнителя"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE",
-        "type": {
-          "type": "cfg:CatalogRef.РолиИсполнителей",
-          "stringQualifier": {
-            "length": 0,
-            "allowedLength": ""
-          }
-        }
-      }
-    ],
-    "autonumbering": true,
-    "auxiliaryChoiceForm": "",
-    "auxiliaryListForm": "",
-    "auxiliaryObjectForm": "",
-    "basedOn": [],
-    "characteristics": [],
-    "checkUnique": true,
-    "choiceDataGetModeOnInputByString": "Directly",
-    "choiceHistoryOnInput": "Auto",
-    "commands": [
-      {
-        "name": "ВсеЗадачи",
-        "uuid": "6e5307ea-8fbf-4177-bcc8-f163a6ce1b40",
-        "objectBelonging": "OWN",
-        "mdoType": "COMMAND",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Все задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "COMMAND",
-          "mdoRef": "Task.ЗадачаИсполнителя.Command.ВсеЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.ВсеЗадачи"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "modules": [
-          {
-            "moduleType": "CommandModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/ВсеЗадачи/Ext/CommandModule.bsl",
-            "owner": {
-              "type": "COMMAND",
-              "mdoRef": "Command.ВсеЗадачи",
-              "mdoRefRu": "Команда.ВсеЗадачи"
-            },
-            "supportVariant": "NONE"
-          }
-        ],
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "Выполнено",
-        "uuid": "0fa77ef7-a836-4459-9bca-6010d0bdfc7f",
-        "objectBelonging": "OWN",
-        "mdoType": "COMMAND",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Выполнено"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "COMMAND",
-          "mdoRef": "Task.ЗадачаИсполнителя.Command.Выполнено",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.Выполнено"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "modules": [
-          {
-            "moduleType": "CommandModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/Выполнено/Ext/CommandModule.bsl",
-            "owner": {
-              "type": "COMMAND",
-              "mdoRef": "Command.Выполнено",
-              "mdoRefRu": "Команда.Выполнено"
-            },
-            "supportVariant": "NONE"
-          }
-        ],
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "МоиЗадачи",
-        "uuid": "c322dc4a-30f3-4d23-9824-4a01c496408d",
-        "objectBelonging": "OWN",
-        "mdoType": "COMMAND",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Мои задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "COMMAND",
-          "mdoRef": "Task.ЗадачаИсполнителя.Command.МоиЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.МоиЗадачи"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "modules": [
-          {
-            "moduleType": "CommandModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/МоиЗадачи/Ext/CommandModule.bsl",
-            "owner": {
-              "type": "COMMAND",
-              "mdoRef": "Command.МоиЗадачи",
-              "mdoRefRu": "Команда.МоиЗадачи"
-            },
-            "supportVariant": "NONE"
-          }
-        ],
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "Перенаправить",
-        "uuid": "dcff004c-1b61-4a19-b977-ea21bf688614",
-        "objectBelonging": "OWN",
-        "mdoType": "COMMAND",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Перенаправить..."
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "COMMAND",
-          "mdoRef": "Task.ЗадачаИсполнителя.Command.Перенаправить",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.Перенаправить"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "modules": [
-          {
-            "moduleType": "CommandModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/Перенаправить/Ext/CommandModule.bsl",
-            "owner": {
-              "type": "COMMAND",
-              "mdoRef": "Command.Перенаправить",
-              "mdoRefRu": "Команда.Перенаправить"
-            },
-            "supportVariant": "NONE"
-          }
-        ],
-        "supportVariant": "NONE"
-      }
-    ],
-    "comment": "",
-    "createOnInput": "DontUse",
-    "currentPerformer": "SessionParameter.АвторизованныйПользователь",
-    "dataLockControlMode": "MANAGED",
-    "dataLockFields": [
-      "Task.ЗадачаИсполнителя.StandardAttribute.BusinessProcess"
-    ],
-    "defaultChoiceForm": "",
-    "defaultListForm": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
-    "defaultObjectForm": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
-    "defaultPresentation": "AsDescription",
-    "descriptionLength": 150,
-    "editType": "InDialog",
-    "explanation": "",
-    "extendedListPresentation": "",
-    "extendedObjectPresentation": "",
-    "forms": [
-      {
-        "name": "Дополнительно",
-        "uuid": "856510ee-74f5-44e9-a3c0-1c60cfb7a787",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Дополнительно"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.Дополнительно",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.Дополнительно"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ЗадачиПоБизнесПроцессу",
-        "uuid": "28b761c6-c286-4125-a4ed-da602e49950f",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоБизнесПроцессу"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ЗадачиПоПредмету",
-        "uuid": "4ac66a22-c736-4e06-a8aa-ef4a71788c65",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Задачи по предмету"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоПредмету",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоПредмету"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "МоиЗадачи",
-        "uuid": "9cfe9281-8840-4077-824d-a2c9cbb0b730",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Мои задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачи"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "МоиЗадачиДляРабочегоСтола",
-        "uuid": "76389fa9-b9e0-492e-9c93-24b5f3bf094c",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Мои задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачиДляРабочегоСтола",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачиДляРабочегоСтола"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ПеренаправитьЗадачи",
-        "uuid": "23e3de37-9315-45e6-bbfd-60aae28c25ae",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Перенаправить задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ПеренаправитьЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ПеренаправитьЗадачи"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ФормаЗадачи",
-        "uuid": "a9957f43-8b6f-4d98-a2d8-77b78047494c",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма задачи"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "name": "ФормаСписка",
-        "uuid": "e470e15d-1b06-43cb-a9f9-ba489e2f596f",
-        "mdoType": "FORM",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма списка"
-            ]
-          ]
-        },
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
-        },
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "fullTextSearch": "USE",
-    "fullTextSearchOnInputByString": "DontUse",
-    "includeHelpInContents": true,
-    "inputByString": [
-      "Task.ЗадачаИсполнителя.StandardAttribute.Description",
-      "Task.ЗадачаИсполнителя.StandardAttribute.Number"
-    ],
-    "listPresentation": "\n\t\t\t\t",
-    "mainAddressingAttribute": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
-    "mdoReference": {
-      "type": "TASK",
-      "mdoRef": "Task.ЗадачаИсполнителя",
-      "mdoRefRu": "Задача.ЗадачаИсполнителя"
-    },
-    "mdoType": "TASK",
-    "modules": [
-      {
-        "moduleType": "ManagerModule",
-        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      },
-      {
-        "moduleType": "ObjectModule",
-        "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl",
-        "owner": {
-          "type": "TASK",
-          "mdoRef": "Task.ЗадачаИсполнителя",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "name": "ЗадачаИсполнителя",
-    "numberAllowedLength": "Fixed",
-    "numberLength": 14,
-    "numberType": "String",
-    "objectBelonging": "OWN",
-    "objectPresentation": "",
-    "searchStringModeOnInputByString": "Begin",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": [
-        [
-          "ru",
-          "Задача"
         ]
-      ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Автор",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Автор"
+      },
+      "owner": {
+        "type": "TASK",
+        "mdoRef": "Task.ЗадачаИсполнителя",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВнешниеПользователи",
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": ""
+        }
+      }
     },
-    "tabularSections": [],
-    "taskNumberAutoPrefix": "BusinessProcessNumber",
-    "templates": [],
-    "useStandardCommands": false,
-    "uuid": "3ad08f4a-6202-4099-b6cc-bc116e6731a0"
-  }
-}
+    {
+      "name": "Важность",
+      "uuid": "b1dc619d-8d91-4f7a-aa50-1d07ff9aebdc",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Важность"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Важность",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Важность"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.ВариантыВажностиЗадачи"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ГруппаИсполнителейЗадач",
+      "uuid": "370f0c75-d2c5-4be5-a633-4bcc77998ece",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Группа исполнителей задач"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ГруппаИсполнителейЗадач",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ГруппаИсполнителейЗадач"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ГруппыИсполнителейЗадач"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаИсполнения",
+      "uuid": "f80b505f-b4ff-45fb-bd88-74b274ae9d2b",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Выполнена"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаИсполнения",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаИсполнения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаНачала",
+      "uuid": "2139532c-f6cb-4393-936e-cc912e5adca9",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата начала"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаНачала",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаНачала"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ДатаПринятияКИсполнению",
+      "uuid": "755c3eca-4956-4a44-9b38-c11dae00b87f",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дата принятия к исполнению"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ДатаПринятияКИсполнению",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ДатаПринятияКИсполнению"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Описание",
+      "uuid": "f57c558c-2c94-4b9d-8697-448d0548ab1a",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Описание"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Описание",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Описание"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "Предмет",
+      "uuid": "a310c09f-4d3a-4d3a-9ad5-7a5735a33a1d",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Предмет"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.Предмет",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.Предмет"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ПредметСтрокой",
+      "uuid": "c32db021-eca1-4b67-aa85-3d6e28c51b53",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Предмет"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ПредметСтрокой",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ПредметСтрокой"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 500,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ПринятаКИсполнению",
+      "uuid": "e9ed0ee4-3fbe-4093-9078-cb265ed6842c",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Принята к исполнению"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.ПринятаКИсполнению",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.ПринятаКИсполнению"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "xs:boolean"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "РезультатВыполнения",
+      "uuid": "02466dcf-02a1-4853-814f-a913a9baba45",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Результат выполнения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.РезультатВыполнения",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.РезультатВыполнения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 0,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "СостояниеБизнесПроцесса",
+      "uuid": "c4a40dc9-b619-4219-9d9a-e11f49a14fb1",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Состояние бизнес процесса"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.СостояниеБизнесПроцесса",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.СостояниеБизнесПроцесса"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          "cfg:EnumRef.СостоянияБизнесПроцессов"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "СрокИсполнения",
+      "uuid": "62b75eb2-42e1-4484-a77f-b676dd36f3d4",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Срок"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.СрокИсполнения",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.СрокИсполнения"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          "xs:dateTime"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "АвторСтрокой",
+      "uuid": "5e28e22a-dd6e-4703-92bd-13f5cb0dc023",
+      "objectBelonging": "OWN",
+      "mdoType": "ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Автор строкой"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.Attribute.АвторСтрокой",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Реквизит.АвторСтрокой"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "string": "xs:string"
+          }
+        ],
+        "stringQualifier": {
+          "length": 150,
+          "allowedLength": "Variable"
+        }
+      }
+    },
+    {
+      "name": "ДополнительныйОбъектАдресации",
+      "uuid": "0408002c-9255-43a2-8022-82f02ee0e8f4",
+      "objectBelonging": "OWN",
+      "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительный объект адресации"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TASK_ADDRESSING_ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.ДополнительныйОбъектАдресации",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.ДополнительныйОбъектАдресации"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "type": {
+        "types": [],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "Исполнитель",
+      "uuid": "88f44c9b-216d-4d7e-bc88-1e6b253ed01e",
+      "objectBelonging": "OWN",
+      "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Исполнитель"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TASK_ADDRESSING_ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.Исполнитель"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.ВнешниеПользователи",
+          "cfg:CatalogRef.Пользователи"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "ОсновнойОбъектАдресации",
+      "uuid": "1851afd4-5324-45c1-b754-54e65943f945",
+      "objectBelonging": "OWN",
+      "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Основной объект адресации"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TASK_ADDRESSING_ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.ОсновнойОбъектАдресации",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.ОсновнойОбъектАдресации"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "type": {
+        "types": [],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    },
+    {
+      "name": "РольИсполнителя",
+      "uuid": "bc5eca9b-32d8-44e0-a127-8ad1f47d7957",
+      "objectBelonging": "OWN",
+      "mdoType": "TASK_ADDRESSING_ATTRIBUTE",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Роль исполнителя"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TASK_ADDRESSING_ATTRIBUTE",
+        "mdoRef": "Task.ЗадачаИсполнителя.AddressingAttribute.РольИсполнителя",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.РеквизитАдресации.РольИсполнителя"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          "cfg:CatalogRef.РолиИсполнителей"
+        ],
+        "stringQualifier": {
+          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+        }
+      }
+    }
+  ],
+  "autonumbering": true,
+  "auxiliaryChoiceForm": "",
+  "auxiliaryListForm": "",
+  "auxiliaryObjectForm": "",
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "commands": [
+    {
+      "name": "ВсеЗадачи",
+      "uuid": "6e5307ea-8fbf-4177-bcc8-f163a6ce1b40",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Все задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Task.ЗадачаИсполнителя.Command.ВсеЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.ВсеЗадачи"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/ВсеЗадачи/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.ВсеЗадачи",
+            "mdoRefRu": "Команда.ВсеЗадачи"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "Выполнено",
+      "uuid": "0fa77ef7-a836-4459-9bca-6010d0bdfc7f",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Выполнено"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Task.ЗадачаИсполнителя.Command.Выполнено",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.Выполнено"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/Выполнено/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.Выполнено",
+            "mdoRefRu": "Команда.Выполнено"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "МоиЗадачи",
+      "uuid": "c322dc4a-30f3-4d23-9824-4a01c496408d",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Мои задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Task.ЗадачаИсполнителя.Command.МоиЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.МоиЗадачи"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/МоиЗадачи/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.МоиЗадачи",
+            "mdoRefRu": "Команда.МоиЗадачи"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "Перенаправить",
+      "uuid": "dcff004c-1b61-4a19-b977-ea21bf688614",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Перенаправить..."
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Task.ЗадачаИсполнителя.Command.Перенаправить",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Команда.Перенаправить"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Commands/Перенаправить/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.Перенаправить",
+            "mdoRefRu": "Команда.Перенаправить"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "supportVariant": "NONE"
+    }
+  ],
+  "comment": "",
+  "createOnInput": "DontUse",
+  "currentPerformer": "SessionParameter.АвторизованныйПользователь",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [
+    "Task.ЗадачаИсполнителя.StandardAttribute.BusinessProcess"
+  ],
+  "defaultChoiceForm": "",
+  "defaultListForm": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
+  "defaultObjectForm": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InDialog",
+  "explanation": "",
+  "extendedListPresentation": "",
+  "extendedObjectPresentation": "",
+  "forms": [
+    {
+      "name": "Дополнительно",
+      "uuid": "856510ee-74f5-44e9-a3c0-1c60cfb7a787",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительно"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.Дополнительно",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.Дополнительно"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ЗадачиПоБизнесПроцессу",
+      "uuid": "28b761c6-c286-4125-a4ed-da602e49950f",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоБизнесПроцессу"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ЗадачиПоПредмету",
+      "uuid": "4ac66a22-c736-4e06-a8aa-ef4a71788c65",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Задачи по предмету"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоПредмету",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоПредмету"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "МоиЗадачи",
+      "uuid": "9cfe9281-8840-4077-824d-a2c9cbb0b730",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Мои задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачи"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "МоиЗадачиДляРабочегоСтола",
+      "uuid": "76389fa9-b9e0-492e-9c93-24b5f3bf094c",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Мои задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачиДляРабочегоСтола",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачиДляРабочегоСтола"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ПеренаправитьЗадачи",
+      "uuid": "23e3de37-9315-45e6-bbfd-60aae28c25ae",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Перенаправить задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ПеренаправитьЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ПеренаправитьЗадачи"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаЗадачи",
+      "uuid": "a9957f43-8b6f-4d98-a2d8-77b78047494c",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "name": "ФормаСписка",
+      "uuid": "e470e15d-1b06-43cb-a9f9-ba489e2f596f",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
+      },
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": true,
+  "inputByString": [
+    "Task.ЗадачаИсполнителя.StandardAttribute.Description",
+    "Task.ЗадачаИсполнителя.StandardAttribute.Number"
+  ],
+  "listPresentation": "\n\t\t\t\t",
+  "mainAddressingAttribute": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
+  "mdoReference": {
+    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "TASK",
+  "modules": [
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ЗадачаИсполнителя",
+  "numberAllowedLength": "Fixed",
+  "numberLength": 14,
+  "numberType": "String",
+  "objectBelonging": "OWN",
+  "objectPresentation": "",
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Задача"
+      ]
+    ]
+  },
+  "tabularSections": [],
+  "taskNumberAutoPrefix": "BusinessProcessNumber",
+  "templates": [],
+  "useStandardCommands": false,
+  "uuid": "3ad08f4a-6202-4099-b6cc-bc116e6731a0"
+}}

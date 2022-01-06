@@ -1,79 +1,71 @@
-{
-  "com.github._1c_syntax.bsl.mdo.IntegrationService": {
-    "children": [
-      {
-        "name": "КаналСервисаИнтеграции1",
-        "uuid": "fd0a0d02-c211-4985-ab9e-f0e7e63a6943",
-        "objectBelonging": "OWN",
-        "mdoType": "INTEGRATION_SERVICE_CHANNEL",
-        "synonym": {
-          "content": []
-        },
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции1"
-        },
-        "messageDirection": "SEND",
-        "handler": "",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "supportVariant": "NONE",
-        "externalIntegrationServiceChannelName": "Имя"
+{"com.github._1c_syntax.bsl.mdo.IntegrationService": {
+  "children": [
+    {
+      "name": "КаналСервисаИнтеграции1",
+      "uuid": "fd0a0d02-c211-4985-ab9e-f0e7e63a6943",
+      "objectBelonging": "OWN",
+      "mdoType": "INTEGRATION_SERVICE_CHANNEL",
+      "synonym": {
+        "content": []
       },
-      {
-        "name": "КаналСервисаИнтеграции2",
-        "uuid": "69b7fd46-77b8-465a-abcc-a59c1e2ae126",
-        "objectBelonging": "OWN",
-        "mdoType": "INTEGRATION_SERVICE_CHANNEL",
-        "synonym": {
-          "content": []
-        },
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции2",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции2"
-        },
-        "messageDirection": "SEND",
-        "handler": "",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "supportVariant": "NONE",
-        "externalIntegrationServiceChannelName": "Имя"
-      }
-    ],
-    "comment": "",
-    "externalIntegrationServiceAddress": "http://",
-    "mdoReference": {
-      "type": "INTEGRATION_SERVICE",
-      "mdoRef": "IntegrationService.СервисИнтеграции1",
-      "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
+      "mdoReference": {
+        "type": "INTEGRATION_SERVICE_CHANNEL",
+        "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1",
+        "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции1"
+      },
+      "messageDirection": "SEND",
+      "handler": "",
+      "owner": {
+        "type": "INTEGRATION_SERVICE",
+        "mdoRef": "IntegrationService.СервисИнтеграции1",
+        "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
+      },
+      "supportVariant": "NONE",
+      "externalIntegrationServiceChannelName": "Имя"
     },
-    "mdoType": "INTEGRATION_SERVICE",
-    "modules": [
-      {
-        "moduleType": "IntegrationServiceModule",
-        "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/IntegrationServices/СервисИнтеграции1/Ext/Module.bsl",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "supportVariant": "NONE"
-      }
-    ],
-    "name": "СервисИнтеграции1",
-    "objectBelonging": "OWN",
-    "supportVariant": "NONE",
-    "synonym": {
-      "content": []
-    },
-    "uuid": "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42"
-  }
-}
+    {
+      "name": "КаналСервисаИнтеграции2",
+      "uuid": "69b7fd46-77b8-465a-abcc-a59c1e2ae126",
+      "objectBelonging": "OWN",
+      "mdoType": "INTEGRATION_SERVICE_CHANNEL",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "INTEGRATION_SERVICE_CHANNEL",
+        "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции2",
+        "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции2"
+      },
+      "messageDirection": "SEND",
+      "handler": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+      },
+      "supportVariant": "NONE",
+      "externalIntegrationServiceChannelName": "Имя"
+    }
+  ],
+  "comment": "",
+  "externalIntegrationServiceAddress": "http://",
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+  },
+  "mdoType": "INTEGRATION_SERVICE",
+  "modules": [
+    {
+      "moduleType": "IntegrationServiceModule",
+      "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/IntegrationServices/СервисИнтеграции1/Ext/Module.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "СервисИнтеграции1",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": []
+  },
+  "uuid": "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42"
+}}

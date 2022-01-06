@@ -24,7 +24,6 @@ package com.github._1c_syntax.mdclasses.utils;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FilenameUtils;
 
@@ -222,50 +221,6 @@ public class MDOPathUtils {
     return Optional.empty();
   }
 
-  /**
-   * Возвращает путь к файлу описания данных формы
-   *
-   * @param form - Форма
-   * @return - путь к файлу описания
-   */
-  public Path getFormDataPath(AbstractMDObjectBase form) {
-    var currentPath = form.getPath().getParent();
-    var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(form.getPath());
-    if (configurationSource == ConfigurationSource.EDT) {
-      if (form.getType() == MDOType.COMMON_FORM) {
-        currentPath = Path.of(basePath, "Form.form");
-      } else {
-        currentPath = Path.of(basePath, MDOType.FORM.getGroupName(), form.getName(), "Form.form");
-      }
-    } else {
-      currentPath = Path.of(currentPath.toString(), form.getName(), "Ext", "Form.xml");
-    }
-    return currentPath;
-  }
-
-  /**
-   * Возвращает путь к файлу описания данных макета
-   *
-   * @param template - Макет
-   * @return - путь к файлу описания
-   */
-  public Path getTemplateDataPath(AbstractMDObjectBase template) {
-    var currentPath = template.getPath().getParent();
-    var basePath = currentPath.toString();
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(template.getPath());
-    if (configurationSource == ConfigurationSource.EDT) {
-      if (template.getType() == MDOType.COMMON_TEMPLATE) {
-        currentPath = Path.of(basePath, "Template.dcs");
-      } else {
-        currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), template.getName(), "Template.dcs");
-      }
-    } else {
-      currentPath = Paths.get(basePath, template.getName(), "Ext", "Template.xml");
-    }
-    return currentPath;
-  }
-
   public Path getTemplateDataPath(Path path, String name, MDOType type) {
     var currentPath = path.getParent();
     var basePath = currentPath.toString();
@@ -299,18 +254,6 @@ public class MDOPathUtils {
       currentPath = Paths.get(basePath, name, "Ext", "Package.bin");
     }
     return currentPath;
-  }
-
-  /**
-   * Возвращает путь к файлу с составом плана обмена
-   * Внимание! Только для формата конфигуратора!
-   *
-   * @param exchangePlan План обмена
-   * @return Путь к составу плана обмена
-   */
-  public static Path getExchangePlanContentPath(AbstractMDObjectBase exchangePlan) {
-    var basePath = exchangePlan.getPath().getParent().toString();
-    return Paths.get(basePath, exchangePlan.getName(), "Ext", "Content.xml");
   }
 
   /**
