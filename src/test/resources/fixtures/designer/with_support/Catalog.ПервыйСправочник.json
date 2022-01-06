@@ -1,0 +1,188 @@
+{"com.github._1c_syntax.bsl.mdo.Catalog": {
+  "attributes": [],
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 9,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "commands": [
+    {
+      "name": "ПерваяКоманда",
+      "uuid": "28777e74-89cf-4993-8a0a-a5d2b9a758b9",
+      "objectBelonging": "OWN",
+      "mdoType": "COMMAND",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Первая команда"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.ПервыйСправочник.Command.ПерваяКоманда",
+        "mdoRefRu": "Справочник.ПервыйСправочник.Команда.ПерваяКоманда"
+      },
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.ПервыйСправочник",
+        "mdoRefRu": "Справочник.ПервыйСправочник"
+      },
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Commands/ПерваяКоманда/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.ПерваяКоманда",
+            "mdoRefRu": "Команда.ПерваяКоманда"
+          },
+          "supportVariant": "NOT_EDITABLE"
+        }
+      ],
+      "supportVariant": "NOT_EDITABLE"
+    }
+  ],
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.ПервыйСправочник.Form.ФормаЭлемента",
+    "mdoRefRu": "Справочник.ПервыйСправочник.Форма.ФормаЭлемента"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 25,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "forms": [
+    {
+      "name": "ФормаЭлемента",
+      "uuid": "8d639442-519d-4428-9419-101221820694",
+      "mdoType": "FORM",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "@reference": "../../../defaultObjectForm"
+      },
+      "owner": {
+        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+      },
+      "supportVariant": "NOT_EDITABLE"
+    }
+  ],
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": false,
+  "hierarchyType": "HierarchyFoldersAndItems",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Catalog.ПервыйСправочник.StandardAttribute.Description",
+    "Catalog.ПервыйСправочник.StandardAttribute.Code"
+  ],
+  "levelCount": 2,
+  "limitLevelCount": false,
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+      },
+      "supportVariant": "NOT_EDITABLE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+      },
+      "supportVariant": "NOT_EDITABLE"
+    }
+  ],
+  "name": "ПервыйСправочник",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": []
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Первый справочник"
+      ]
+    ]
+  },
+  "tabularSections": [],
+  "templates": [],
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": true,
+  "uuid": "3c907782-1b24-440c-b0de-1d62cebde27b"
+}}

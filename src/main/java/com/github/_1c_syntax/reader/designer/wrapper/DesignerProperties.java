@@ -1,6 +1,5 @@
 package com.github._1c_syntax.reader.designer.wrapper;
 
-import com.github._1c_syntax.bsl.mdo.CalculationRegister;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Sequence;
@@ -22,6 +21,7 @@ import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.github._1c_syntax.mdclasses.utils.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverterCommon;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Data;
@@ -86,8 +86,11 @@ public class DesignerProperties {
     builder = TransformationUtils.builder(realClass);
     requireNonNull(builder);
 
+    var uuid = reader.getAttribute("uuid");
     properties = new HashMap<>();
-    properties.put("uuid", reader.getAttribute("uuid"));
+
+    properties.put("uuid", uuid);
+    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
 
     unknownProperties = new HashMap<>();
 
@@ -103,7 +106,6 @@ public class DesignerProperties {
 
           name = (String) properties.get("Name");
           mdoReference = MdoReference.create(mdoType, name);
-          supportVariant = SupportVariant.NONE;// todo Заглушка
 
           break;
         case CHILD_OBJECTS_NODE_NAME:

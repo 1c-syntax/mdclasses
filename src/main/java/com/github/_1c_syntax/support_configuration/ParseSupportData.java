@@ -107,32 +107,22 @@ public class ParseSupportData {
     return supportMap;
   }
 
-//  /**
-//   * Возвращает максимальный вариант поддержки для объекта
-//   *
-//   * @param mdo Объект, для которого определяется вариант поддержки
-//   * @return Вариант поддержки
-//   */
-//  public static SupportVariant getSupportVariantByMDO(AbstractMDObjectBase mdo) {
-//    return getSupportVariantByMDO(mdo, mdo.getPath());
-//  }
+  /**
+   * Возвращает максимальный вариант поддержки для объекта с явным указанием пути.
+   * Используется обычно для объектов, не имеющих собственного файла
+   *
+   * @param uuid Строка-идентификатор объекта, для которого определяется вариант поддержки
+   * @param path Путь к файлу MDO объекта / родительского объекта
+   * @return Вариант поддержки
+   */
+  public static SupportVariant getSupportVariantByMDO(String uuid, Path path) {
+    var key = SUPPORT_SIMPLE_MAPS.keySet().stream().filter(path::startsWith).findFirst();
+    if (key.isPresent()) {
+      return SUPPORT_SIMPLE_MAPS.get(key.get()).getOrDefault(uuid, SupportVariant.NONE);
+    }
 
-//  /**
-//   * Возвращает максимальный вариант поддержки для объекта с явным указанием пути.
-//   * Используется обычно для объектов, не имеющих собственного файла
-//   *
-//   * @param mdo       Объект, для которого определяется вариант поддержки
-//   * @param ownerPath Путь к родительскому объекту
-//   * @return Вариант поддержки
-//   */
-//  public static SupportVariant getSupportVariantByMDO(AbstractMDObjectBase mdo, Path ownerPath) {
-//    var key = SUPPORT_SIMPLE_MAPS.keySet().stream().filter(ownerPath::startsWith).findFirst();
-//    if (key.isPresent()) {
-//      return SUPPORT_SIMPLE_MAPS.get(key.get()).getOrDefault(mdo.getUuid(), SupportVariant.NONE);
-//    }
-//
-//    return SupportVariant.NONE;
-//  }
+    return SupportVariant.NONE;
+  }
 
   private void readFile(Path pathToBinFile, Path rootPath) {
     LOGGER.debug("Чтения файла поставки ParentConfigurations.bin");

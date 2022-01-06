@@ -24,10 +24,24 @@ package com.github._1c_syntax.support_configuration;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 
+/**
+ * Описание конфигурации поставщика
+ */
 @Value
 @AllArgsConstructor
 public class SupportConfiguration {
+  /**
+   * Название
+   */
   String name;
+
+  /**
+   * Поставщик
+   */
   String provider;
+
+  /**
+   * Версия
+   */
   String version;
 }

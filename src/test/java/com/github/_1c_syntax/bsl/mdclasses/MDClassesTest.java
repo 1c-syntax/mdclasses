@@ -39,9 +39,9 @@ class MDClassesTest {
 
   @Test
   void createConfigurationDesigner() {
-    File srcPath = new File("src/test/resources/metadata/original");
+    File srcPath = new File("src/test/resources/ext/designer/mdclasses/src/cf");
     var configuration = MDClasses.createConfiguration(srcPath.toPath());
 
-    assertThat(configuration.getChildren()).hasSize(61);
+    assertThat(configuration.getChildren()).hasSize(65);
   }
 }

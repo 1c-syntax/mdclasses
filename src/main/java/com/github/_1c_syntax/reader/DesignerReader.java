@@ -7,6 +7,7 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
+import com.github._1c_syntax.support_configuration.ParseSupportData;
 
 import java.nio.file.Path;
 import java.util.Optional;
@@ -16,6 +17,8 @@ public class DesignerReader implements MDReader {
 
   public DesignerReader(Path path) {
     rootPath = path;
+    MDOPathUtils.getParentConfigurationsPath(ConfigurationSource.DESIGNER, rootPath)
+      .ifPresent(ParseSupportData::readSimple);
   }
 
   @Override
