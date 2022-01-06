@@ -30,7 +30,7 @@ dependencies {
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.15")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.18")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
@@ -42,7 +42,7 @@ dependencies {
     implementation("com.github.1c-syntax", "bsl-common-library", "5e0240b")
 
     // быстрый поиск классов
-    implementation("io.github.classgraph:classgraph:4.8.110")
+    implementation("io.github.classgraph:classgraph:4.8.138")
 
     implementation("com.github.XDean:spring-annotation:5.0.4")
 
