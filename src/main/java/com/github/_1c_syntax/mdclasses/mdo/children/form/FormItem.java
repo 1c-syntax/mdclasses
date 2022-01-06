@@ -22,6 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,6 +51,7 @@ public class FormItem {
   /**
    * Тип элемента. Например Label или InputField. На текущий момент в виде строки
    */
+  @XStreamConverter(StringConverterIntern.class)
   private String type = "";
   /**
    * Признак видимости элемента

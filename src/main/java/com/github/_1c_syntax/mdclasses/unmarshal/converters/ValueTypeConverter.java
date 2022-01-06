@@ -29,6 +29,8 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+import java.util.stream.Collectors;
+
 public class ValueTypeConverter implements Converter {
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -39,7 +41,7 @@ public class ValueTypeConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var valueType = (ValueType) context.convertAnother(reader, ValueType.class,
       XStreamFactory.getReflectionConverter());
-    return valueType.getTypes();
+    return valueType.getTypes().stream().map(String::intern).collect(Collectors.toList());
   }
 
   @Override

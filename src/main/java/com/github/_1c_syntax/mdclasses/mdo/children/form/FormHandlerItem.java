@@ -47,6 +47,6 @@ public class FormHandlerItem {
    */
   public FormHandlerItem(DesignerEvent designerEvent) {
     setName(designerEvent.getValue());
-    setEvent(designerEvent.getName());
+    setEvent(designerEvent.getName().intern());
   }
 }
