@@ -17,6 +17,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
 import com.github._1c_syntax.bsl.mdo.children.RegisterResource;
 import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
@@ -193,6 +194,7 @@ public class DesignerXStreamFactory {
     xStream.alias("EnumValue", EnumValue.class);
     xStream.alias("AccountingFlag", AccountingFlag.class);
     xStream.alias("ExtDimensionAccountingFlag", ExtDimensionAccountingFlag.class);
+    xStream.alias("Recalculation", Recalculation.class);
 
     xStream.alias("Rights", RoleRight.class);
     xStream.alias("ExchangePlanContent", ExchangePlan.Item.class);

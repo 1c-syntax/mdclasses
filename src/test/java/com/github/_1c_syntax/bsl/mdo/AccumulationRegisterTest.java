@@ -35,8 +35,7 @@ class AccumulationRegisterTest extends AbstractMDObjectTest<AccumulationRegister
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, AccumulationRegister.РегистрНакопления1"
-//      "EDT, AccumulationRegister.РегистрБухгалтерии1",
+      "designer/mdclasses, AccumulationRegister.РегистрНакопления1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -35,8 +35,7 @@ class BotTest extends AbstractMDObjectTest<Bot> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original_3_18, Bot.Бот1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses_3_18, Bot.Бот1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

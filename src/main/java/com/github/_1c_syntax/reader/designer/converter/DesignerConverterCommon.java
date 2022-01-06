@@ -2,6 +2,7 @@ package com.github._1c_syntax.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
+import com.github._1c_syntax.bsl.mdo.CalculationRegister;
 import com.github._1c_syntax.bsl.mdo.Command;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -10,6 +11,7 @@ import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -115,13 +117,19 @@ public class DesignerConverterCommon {
         .stream().filter(TabularSection.class::isInstance).collect(Collectors.toList()));
     }
 
+    if (CalculationRegister.class.isAssignableFrom(properties.getRealClass())) {
+      TransformationUtils.setValue(builder, "recalculations", properties.getChildren()
+        .stream().filter(Recalculation.class::isInstance).collect(Collectors.toList()));
+    }
+
     // остальные дочерние
     TransformationUtils.setValue(builder, "children", properties.getChildren()
       .stream().filter(child -> !(child instanceof Command
         || child instanceof Template
         || child instanceof Form
         || child instanceof Attribute
-        || child instanceof TabularSection))
+        || child instanceof TabularSection
+        || child instanceof Recalculation))
       .collect(Collectors.toList()));
   }
 

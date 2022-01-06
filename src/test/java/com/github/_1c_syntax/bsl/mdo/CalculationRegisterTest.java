@@ -35,56 +35,11 @@ class CalculationRegisterTest extends AbstractMDObjectTest<CalculationRegister> 
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, CalculationRegister.РегистрРасчета1"
-//      "EDT, AccumulationRegister.Бот1",
+      "designer/mdclasses, CalculationRegister.РегистрРасчета1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-//  @ParameterizedTest(name = "EDT {index}: {0}")
-//  @CsvSource(
-//    {
-//      "РегистрРасчета1,90587c7d-b950-4476-ac14-426e4a83d9c4,,,CalculationRegister,РегистрРасчета,2,1,1,1,1,1"
-//    }
-//  )
-//  void testEdt(ArgumentsAccessor argumentsAccessor) {
-//    var name = argumentsAccessor.getString(0);
-//    var mdo = getMDObjectEDT("CalculationRegisters/" + name + "/" + name);
-//    mdoTest(mdo, MDOType.CALCULATION_REGISTER, argumentsAccessor);
-//
-//    checkAttributeField(mdo.getAttributes().get(0),
-//      "Ресурс1", "86f41061-e298-4da5-8d28-489a349d55fc",
-//      List.of("passwordMode") // бывает только для строк, а здесь строк быть не может
-//    );
-//
-//    checkChildField(mdo.getForms().get(0),
-//      "ФормаСписка", "eee0b9fc-95de-4cb0-bb73-c78ddade2be9");
-//
-//    checkChildField(mdo.getTemplates().get(0),
-//      "Макет", "1509af7a-aeee-4906-adcb-32d2df6b7e21");
-//
-//    checkChildField(mdo.getCommands().get(0),
-//      "Команда", "ecd63a0d-51c9-49f2-8df6-d8a1b14aee04");
-//
-//    checkChildField(mdo.getRecalculations().get(0),
-//      "Перерасчет", "16b54095-8711-4ef1-a38b-93d12f6f6e93");
-//
-//    assertThat(mdo.getAllModules()).hasSize(4);
-//
-//    assertThat(mdo.getRecalculations()).hasSize(1);
-//    var recalculation = mdo.getRecalculations().get(0);
-//    assertThat(recalculation).isInstanceOf(Recalculation.class);
-//    assertThat(recalculation.getName()).isEqualTo("Перерасчет");
-//    assertThat(recalculation.getType()).isEqualTo(MDOType.RECALCULATION);
-//    assertThat(recalculation.getUuid()).isEqualTo("16b54095-8711-4ef1-a38b-93d12f6f6e93");
-//    assertThat(recalculation.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
-//    assertThat(recalculation.getMetadataName()).isEqualTo("Recalculation");
-//    assertThat(recalculation.getSynonym().getContent())
-//      .hasSize(1)
-//      .contains(Map.entry("ru", "Перерасчет"));
-//    assertThat(recalculation.getMdoReference().getMdoRef())
-//      .isEqualTo("CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет");
-//  }
 }

@@ -144,13 +144,13 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Режим блокировки данных
@@ -168,19 +168,19 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описание
 
@@ -188,6 +188,7 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   String periodicity = "";
 
   boolean actionPeriod;
+
   boolean basePeriod;
 
   @Default

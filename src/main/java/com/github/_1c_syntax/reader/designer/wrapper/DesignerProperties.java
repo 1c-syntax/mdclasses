@@ -1,5 +1,6 @@
 package com.github._1c_syntax.reader.designer.wrapper;
 
+import com.github._1c_syntax.bsl.mdo.CalculationRegister;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Sequence;
@@ -7,6 +8,7 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.RegisterDimension;
 import com.github._1c_syntax.bsl.mdo.children.SequenceDimension;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
@@ -229,6 +231,19 @@ public class DesignerProperties {
           var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
           if (templatePath.isEmpty()) {
             throw new IllegalArgumentException("Missing subsystem path");
+          }
+
+          child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());
+        } else if (Recalculation.class.isAssignableFrom(childRealClass)) {
+          var mdoFolderPath = MDOPathUtils.getChildrenFolder(
+            FilenameUtils.getBaseName(currentPath.toString()), currentPath.getParent(), MDOType.RECALCULATION);
+          if (mdoFolderPath.isEmpty()) {
+            throw new IllegalArgumentException("Missing recalculation folder");
+          }
+
+          var templatePath = MDOPathUtils.getMDOPath(ConfigurationSource.DESIGNER, mdoFolderPath.get(), reader.getValue());
+          if (templatePath.isEmpty()) {
+            throw new IllegalArgumentException("Missing recalculation path");
           }
 
           child = DesignerXStreamFactory.fromXML(templatePath.get().toFile());

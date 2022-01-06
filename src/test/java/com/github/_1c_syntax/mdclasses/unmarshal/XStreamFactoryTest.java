@@ -21,16 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDAccountingRegister;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.converters.ConversionException;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class XStreamFactoryTest {
@@ -38,28 +34,6 @@ class XStreamFactoryTest {
   private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
 
-  @Test
-  void test() {
-    var mdo = MDOFactory.readMDObject(getMDOPathEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo"));
-    assertThat(mdo)
-      .isPresent()
-      .containsInstanceOf(MDAccountingRegister.class)
-      .map(AbstractMDObjectBase::getName)
-      .contains("РегистрБухгалтерии1");
-    assertThat(mdo)
-      .map(AbstractMDObjectBase::getUuid)
-      .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
-
-    var mdo2 = MDOFactory.readMDObject(getMDOPathDesigner("AccountingRegisters/РегистрБухгалтерии1.xml"));
-    assertThat(mdo2)
-      .isPresent()
-      .containsInstanceOf(MDAccountingRegister.class)
-      .map(AbstractMDObjectBase::getName)
-      .contains("РегистрБухгалтерии1");
-    assertThat(mdo2)
-      .map(AbstractMDObjectBase::getUuid)
-      .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
-  }
 
   @Test
   void testBrokenXml() {
@@ -70,14 +44,6 @@ class XStreamFactoryTest {
     } catch (ConversionException e) {
       // noop
     }
-  }
-
-  private Path getMDOPathEDT(String path) {
-    return Paths.get(SRC_EDT, path);
-  }
-
-  private Path getMDOPathDesigner(String path) {
-    return Paths.get(SRC_DESIGNER, path);
   }
 
 }

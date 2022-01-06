@@ -35,6 +35,7 @@ import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.sql.Ref;
 import java.util.Collections;
 import java.util.List;
 
@@ -143,37 +144,37 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Форма объекта по умолчанию
    */
   @Default
-  String defaultObjectForm = "";
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
 
   /**
    * Форма выбора по умолчанию
    */
   @Default
-  String defaultChoiceForm = "";
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма объекта
    */
   @Default
-  String auxiliaryObjectForm = "";
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма выбора
    */
   @Default
-  String auxiliaryChoiceForm = "";
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
 
   /**
    * Режим редактирования
@@ -209,31 +210,31 @@ public class BusinessProcess implements MDObject, AttributeOwner, FormOwner, Com
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Представление объекта
    */
   @Default
-  String objectPresentation = "";
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление объекта
    */
   @Default
-  String extendedObjectPresentation = "";
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   // todo описание
 

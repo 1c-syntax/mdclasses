@@ -137,7 +137,7 @@ public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, 
    * План счетов регистра бухгалтерии
    */
   @Default
-  String chartOfAccounts = ""; // todo mdoref, придумать пустой объект
+  MdoReference chartOfAccounts = MdoReference.EMPTY;
 
   /**
    * Корреспондирующий счет
@@ -153,13 +153,13 @@ public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, 
    * Форма списка по умолчанию
    */
   @Default
-  String defaultListForm = "";
+  MdoReference defaultListForm = MdoReference.EMPTY;
 
   /**
    * Дополнительная форма списка
    */
   @Default
-  String auxiliaryListForm = "";
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
 
   /**
    * Режим блокировки данных
@@ -182,19 +182,19 @@ public class AccountingRegister implements MDObject, AttributeOwner, FormOwner, 
    * Представление в списке
    */
   @Default
-  String listPresentation = "";
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Расширенное представление в списке
    */
   @Default
-  String extendedListPresentation = "";
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
 
   /**
    * Пояснение
    */
   @Default
-  String explanation = "";
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
   public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {

@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
-import com.github._1c_syntax.mdclasses.mdo.MDAccountingRegister;
-import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,23 +57,5 @@ class MetadataStorageTest {
     assertThat(meta.values().stream().map(AttributeMetadata::name).distinct()).hasSize(meta.size());
   }
 
-  @Test
-  void testMetadataStorageGet() {
-    var metadata = MetadataStorage.get(MDAccountingRegister.class);
-    assertThat(metadata).isNotNull();
-    assertThat(metadata.name()).isEqualTo("AccountingRegister");
-  }
-
-  @Test
-  void testClassGet() {
-    var mdo = new MDAccountingRegister();
-    assertThat(mdo.getMetadataName()).isEqualTo("AccountingRegister");
-
-//    var childMdo = new WEBServiceOperation();
-//    assertThat(childMdo.getMetadataName()).isEqualTo("Operation");
-
-    var attribute = new TabularSection();
-    assertThat(attribute.getMetadataName()).isEqualTo("TabularSection");
-  }
 
 }

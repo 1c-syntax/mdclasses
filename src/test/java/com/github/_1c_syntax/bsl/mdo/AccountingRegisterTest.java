@@ -35,10 +35,9 @@ class AccountingRegisterTest extends AbstractMDObjectTest<AccountingRegister> {
   @ParameterizedTest()
   @CsvSource(
     {
-      "original, AccountingRegister.РегистрБухгалтерии1",
-      "original, AccountingRegister.РегистрБухгалтерии2",
-      "original, AccountingRegister.РегистрБухгалтерии3",
-//      "EDT, AccountingRegister.РегистрБухгалтерии1",
+      "designer/mdclasses, AccountingRegister.РегистрБухгалтерии1",
+      "designer/mdclasses, AccountingRegister.РегистрБухгалтерии2",
+      "designer/mdclasses, AccountingRegister.РегистрБухгалтерии3"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
