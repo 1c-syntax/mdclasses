@@ -3,12 +3,11 @@ package com.github._1c_syntax.reader.designer.converter;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.reader.MDOPathUtils;
-import com.github._1c_syntax.reader.TransformationUtils;
 import com.github._1c_syntax.reader.MDOReader;
+import com.github._1c_syntax.reader.TransformationUtils;
+import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -89,18 +88,13 @@ public class ConfigurationConverter implements Converter {
   }
 
   private List<MDObject> readChildren(List<String> childrenNames, Path currentPath) {
-    var rootPath = MDOPathUtils.getRootPathByConfigurationMDO(currentPath);
-    List<MDObject> childrenBuilders = new ArrayList<>();
-    rootPath.ifPresent((Path path) -> {
-        var reader = MDOReader.getReader(path);
-        childrenBuilders.addAll(
-          childrenNames.parallelStream()
-            .map(reader::readMDObject)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList()));
-      }
-    );
-    return childrenBuilders;
+    var rootPath = DesignerPaths.rootPathByConfigurationMDO(currentPath);
+    var reader = MDOReader.getReader(rootPath);
+    return childrenNames.parallelStream()
+      .map(reader::readMDObject)
+      .filter(Objects::nonNull)
+      .map(MDObject.class::cast)
+      .collect(Collectors.toList());
   }
 
   @Override

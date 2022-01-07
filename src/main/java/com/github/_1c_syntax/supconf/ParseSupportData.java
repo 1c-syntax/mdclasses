@@ -22,14 +22,15 @@
 package com.github._1c_syntax.supconf;
 
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.reader.MDOPathUtils;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +73,7 @@ public class ParseSupportData {
    * @return Прочитанная информация
    */
   public static Map<String, SupportVariant> readSimple(Path path) {
-    var rootPath = MDOPathUtils.getRootPathByParentConfigurations(path);
+    var rootPath = getRootPathByParentConfigurations(path);
     var supportMap = SUPPORT_SIMPLE_MAPS.get(rootPath);
     if (supportMap == null) {
       readFile(path, rootPath);
@@ -93,7 +94,7 @@ public class ParseSupportData {
    * @return Прочитанная информация
    */
   public static Map<String, Map<SupportConfiguration, SupportVariant>> readFull(Path path) {
-    var rootPath = MDOPathUtils.getRootPathByParentConfigurations(path);
+    var rootPath = getRootPathByParentConfigurations(path);
     var supportMap = SUPPORT_MAPS.get(rootPath);
     if (supportMap == null) {
       readFile(path, rootPath);
@@ -199,5 +200,14 @@ public class ParseSupportData {
     }
 
     return supportMap;
+  }
+
+  /**
+   * Получает каталог проекта по файлу поддержки конфигурации
+   */
+  private Path getRootPathByParentConfigurations(Path mdoPath) {
+    return Paths.get(
+      FilenameUtils.getFullPathNoEndSeparator(
+        FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }
 }

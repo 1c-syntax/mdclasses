@@ -12,11 +12,9 @@ import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.reader.MDOPathUtils;
 import com.github._1c_syntax.reader.TransformationUtils;
+import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerProperties;
 import com.thoughtworks.xstream.converters.Converter;
@@ -28,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -47,7 +44,7 @@ public class MDObjectConverter implements Converter {
     var designerProperties = new DesignerProperties(reader, context);
 
     if (XdtoPackage.class.isAssignableFrom(designerProperties.getRealClass())) {
-      var packageDataPath = MDOPathUtils.getPackageDataPath(designerProperties.getCurrentPath(),
+      var packageDataPath = DesignerPaths.packageDataPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
       readXDTOPackageData(packageDataPath).ifPresent(xdtoPackageData ->
         designerProperties.getProperties().put("data", xdtoPackageData));
@@ -63,22 +60,22 @@ public class MDObjectConverter implements Converter {
     }
 
     if (Role.class.isAssignableFrom(designerProperties.getRealClass())) {
-      var dataPath = MDOPathUtils.getRoleDataPath(designerProperties.getCurrentPath(),
+      var dataPath = DesignerPaths.roleDataPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
       readRoleRightsData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
     }
 
     if (Template.class.isAssignableFrom(designerProperties.getRealClass())) {
       if (designerProperties.getProperties().get("TemplateType") == TemplateType.DATA_COMPOSITION_SCHEME) {
-        var dataPath = MDOPathUtils.getTemplateDataPath(designerProperties.getCurrentPath(),
-          designerProperties.getName(), designerProperties.getMdoType());
+        var dataPath = DesignerPaths.templateDataPath(designerProperties.getCurrentPath(),
+          designerProperties.getName());
         readTemplateData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
         designerProperties.getProperties().put("templateDataPath", dataPath);
       }
     }
 
     if (ExchangePlan.class.isAssignableFrom(designerProperties.getRealClass())) {
-      var dataPath = MDOPathUtils.getExchangePlanContentPath(designerProperties.getCurrentPath(),
+      var dataPath = DesignerPaths.exchangePlanContentPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
       readExchangePlanData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
     }
@@ -136,23 +133,4 @@ public class MDObjectConverter implements Converter {
     return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
   }
 
-  private Optional<Map<String, Object>> readModule(Path currentPath, String name) {
-
-    Map<String, Object> properties = new HashMap<>();
-    properties.put("moduleType", ModuleType.CommonModule);
-    Optional<Path> mdoFolderPath = MDOPathUtils.getMDOTypeFolderByMDOPath(currentPath, MDOType.COMMON_MODULE);
-
-    if (mdoFolderPath.isEmpty()) {
-      return Optional.empty();
-    }
-    var folder = mdoFolderPath.get();
-
-    MDOPathUtils.getModulePath(ConfigurationSource.DESIGNER, folder, name, ModuleType.CommonModule)
-      .ifPresent((Path modulePath) -> {
-        if (modulePath.toFile().exists()) {
-          properties.put("uri", modulePath.toUri());
-        }
-      });
-    return Optional.of(properties);
-  }
 }
