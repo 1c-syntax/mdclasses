@@ -1,5 +1,20 @@
 {"com.github._1c_syntax.bsl.mdo.Document": {
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "children": [
     {
       "uuid": "acf15b79-a6c4-4c46-8013-50d3b223baf6",
       "name": "Опрос",
@@ -284,55 +299,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [],
-  "characteristics": [],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "DontUse",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "Use",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "Document.Анкета.Form.ФормаСписка",
-    "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Document.Анкета.Form.ФормаДокумента",
-    "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
-  },
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "f829e2a9-5bdb-4171-8b32-8d10d5968813",
       "name": "ФормаДокумента",
@@ -345,7 +312,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
+        "type": "FORM",
+        "mdoRef": "Document.Анкета.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -353,7 +322,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -368,7 +337,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultListForm"
+        "type": "FORM",
+        "mdoRef": "Document.Анкета.Form.ФормаСписка",
+        "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -376,76 +347,9 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "Document.Анкета.StandardAttribute.Number"
-  ],
-  "listPresentation": {
-    "content": [
-      [
-        "ru",
-        "Анкеты"
-      ]
-    ]
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "DOCUMENT",
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
     },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "Анкета",
-  "numberAllowedLength": "Variable",
-  "numberLength": 11,
-  "numberPeriodicity": "Nonperiodical",
-  "numberType": "String",
-  "numerator": "",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": []
-  },
-  "postInPrivilegedMode": true,
-  "posting": "Allow",
-  "realTimePosting": "Allow",
-  "registerRecords": [
-    "InformationRegister.ОтветыНаВопросыАнкет"
-  ],
-  "registerRecordsDeletion": "AutoDeleteOnUnpost",
-  "registerRecordsWritingOnPost": "WriteSelected",
-  "searchStringModeOnInputByString": "Begin",
-  "sequenceFilling": "AutoFill",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Анкета"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "39062cb3-4ae8-4c0d-889b-038a55179946",
       "name": "Состав",
@@ -465,7 +369,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "c62d4212-36ca-4afb-bac9-269b6f64ca51",
           "name": "Вопрос",
@@ -493,7 +397,7 @@
               "cfg:CatalogRef.ВопросыШаблонаАнкеты"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -527,7 +431,7 @@
               "cfg:ChartOfCharacteristicTypesRef.ВопросыДляАнкетирования"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -561,7 +465,7 @@
               "xs:decimal"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -593,7 +497,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -643,11 +547,101 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "DontUse",
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Document.Анкета.StandardAttribute.Number"
+  ],
+  "listPresentation": {
+    "content": [
+      [
+        "ru",
+        "Анкеты"
+      ]
+    ]
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DOCUMENT",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "Анкета",
+  "numberAllowedLength": "Variable",
+  "numberLength": 11,
+  "numberPeriodicity": "Nonperiodical",
+  "numberType": "String",
+  "numerator": "",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": []
+  },
+  "postInPrivilegedMode": true,
+  "posting": "Allow",
+  "realTimePosting": "Allow",
+  "registerRecords": [
+    "InformationRegister.ОтветыНаВопросыАнкет"
+  ],
+  "registerRecordsDeletion": "AutoDeleteOnUnpost",
+  "registerRecordsWritingOnPost": "WriteSelected",
+  "searchStringModeOnInputByString": "Begin",
+  "sequenceFilling": "AutoFill",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Анкета"
+      ]
+    ]
+  },
   "unpostInPrivilegedMode": true,
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,

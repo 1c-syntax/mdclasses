@@ -35,6 +35,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -93,34 +94,11 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
   String comment = "";
 
   /**
-   * FormOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список форм
-   */
   @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * CommandOwner
-   */
-
-  /**
-   * Список команд
-   */
-  @Default
-  List<Command> commands = Collections.emptyList();
-
-  /**
-   * TemplateOwner
-   */
-
-  /**
-   * Список макетов
-   */
-  @Default
-  List<Template> templates = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner
@@ -195,12 +173,6 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
   String choiceHistoryOnInput = "";
 
   /**
-   * Элементы перечисления
-   */
-  @Default
-  List<EnumValue> children = Collections.emptyList();
-
-  /**
    * MDObject
    */
 
@@ -210,13 +182,16 @@ public class Enum implements MDObject, FormOwner, CommandOwner, TemplateOwner,
   }
 
   /**
-   * FormOwner
+   * Custom
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = FormOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Возвращает перечень элементов перечисления
+   */
+  public List<EnumValue> getEnumValues() {
+    return getChildren().stream()
+      .filter(EnumValue.class::isInstance)
+      .map(EnumValue.class::cast)
+      .collect(Collectors.toList());
   }
 }

@@ -36,6 +36,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -105,17 +106,21 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
    * ChildrenOwner
    */
 
-  /**
-   * Методы шаблона URL HTTP-сервиса
-   */
   @Default
-  List<HttpServiceMethod> children = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = ChildrenOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Custom
+   */
+
+  /**
+   * Возвращает список методов шаблона URL
+   */
+  public List<HttpServiceMethod> getHttpServiceMethods() {
+    return getChildren().stream()
+      .filter(HttpServiceMethod.class::isInstance)
+      .map(HttpServiceMethod.class::cast)
+      .collect(Collectors.toList());
   }
 
   /**

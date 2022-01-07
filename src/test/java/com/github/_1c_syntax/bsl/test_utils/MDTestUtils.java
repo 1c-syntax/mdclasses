@@ -53,6 +53,24 @@ public class MDTestUtils {
   }
 
   /**
+   * Генерация Json представления объекта
+   *
+   * @param md Контейнер или объект метаданных
+   * @return Сериализованное в Json представление объекта
+   */
+  public String createJson(Object md, boolean useRefs) {
+    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+    if (useRefs) {
+      xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);
+    } else {
+      xstream.setMode(XStream.NO_REFERENCES);
+    }
+    xstream.registerConverter(new TestURIConverter());
+    xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
+    return xstream.toXML(md);
+  }
+
+  /**
    * Читает контейнер MD из файла
    *
    * @param path Путь к корневому файлу

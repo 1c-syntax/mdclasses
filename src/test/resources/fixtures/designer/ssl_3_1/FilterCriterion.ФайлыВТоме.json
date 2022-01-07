@@ -4,27 +4,7 @@
     "mdoRef": "",
     "mdoRefRu": ""
   },
-  "commands": [],
-  "comment": "",
-  "content": [
-    {
-      "type": "ATTRIBUTE",
-      "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
-      "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
-    }
-  ],
-  "defaultForm": {
-    "type": "FORM",
-    "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
-    "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
-  },
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "forms": [
+  "children": [
     {
       "uuid": "bb29fa44-6772-4426-a0b8-422115e14288",
       "name": "ФормаСписка",
@@ -37,7 +17,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultForm"
+        "type": "FORM",
+        "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -51,11 +33,28 @@
       }
     }
   ],
+  "comment": "",
+  "content": [
+    {
+      "type": "ATTRIBUTE",
+      "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
+      "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
+    }
+  ],
+  "defaultForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
   "listPresentation": {
     "content": []
   },
   "mdoReference": {
-    "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
   },
   "mdoType": "FILTER_CRITERION",
   "modules": [],

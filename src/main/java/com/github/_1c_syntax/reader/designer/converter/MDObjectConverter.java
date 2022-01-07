@@ -3,6 +3,7 @@ package com.github._1c_syntax.reader.designer.converter;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
 import com.github._1c_syntax.bsl.mdo.Template;
@@ -28,6 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -82,8 +84,11 @@ public class MDObjectConverter implements Converter {
     }
 
     if (CommonModule.class.isAssignableFrom(designerProperties.getRealClass())) {
-      readModule(designerProperties.getCurrentPath(),
-        designerProperties.getName()).ifPresent(designerProperties.getProperties()::putAll);
+      var modules = designerProperties.getProperties().get("modules");
+      if (modules instanceof List && !((List<?>) modules).isEmpty()) {
+        var module = (Module) ((List<?>) modules).get(0);
+        designerProperties.getProperties().put("uri", module.getUri());
+      }
     }
 
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {

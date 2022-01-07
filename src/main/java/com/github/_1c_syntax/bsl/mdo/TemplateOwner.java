@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец дочерних макетов
@@ -30,5 +31,10 @@ public interface TemplateOwner extends ChildrenOwner {
   /**
    * Список макетов объекта
    */
-  List<Template> getTemplates();
+  default List<Template> getTemplates() {
+    return getChildren().stream()
+      .filter(Template.class::isInstance)
+      .map(Template.class::cast)
+      .collect(Collectors.toList());
+  }
 }

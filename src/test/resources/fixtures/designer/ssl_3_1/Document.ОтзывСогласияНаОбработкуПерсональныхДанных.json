@@ -1,5 +1,25 @@
 {"com.github._1c_syntax.bsl.mdo.Document": {
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [
+    "Document.СогласиеНаОбработкуПерсональныхДанных"
+  ],
+  "characteristics": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
+  "checkUnique": true,
+  "children": [
     {
       "uuid": "d754ed75-2a32-4b86-a153-7b50c39f9836",
       "name": "Организация",
@@ -291,65 +311,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [
-    "Document.СогласиеНаОбработкуПерсональныхДанных"
-  ],
-  "characteristics": [
-    "\n\t\t\t\t\t",
-    "\n\t\t\t\t\t"
-  ],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "DontUse",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "Use",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.Form.ФормаСписка",
-    "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.Form.ФормаДокумента",
-    "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных.Форма.ФормаДокумента"
-  },
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": [
-      [
-        "ru",
-        "Отзывы согласий на обработку персональных данных"
-      ]
-    ]
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "4ecd85c4-5be7-4e6b-8c53-7dd32bd4d707",
       "name": "ФормаДокумента",
@@ -362,7 +324,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
+        "type": "FORM",
+        "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных.Форма.ФормаДокумента"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -370,7 +334,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -385,7 +349,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultListForm"
+        "type": "FORM",
+        "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.Form.ФормаСписка",
+        "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных.Форма.ФормаСписка"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -393,81 +359,9 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.StandardAttribute.Number"
-  ],
-  "listPresentation": {
-    "content": [
-      [
-        "ru",
-        "Отзывы согласий на обработку ПДн"
-      ]
-    ]
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "DOCUMENT",
-  "modules": [
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/ОтзывСогласияНаОбработкуПерсональныхДанных/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
     },
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/ОтзывСогласияНаОбработкуПерсональныхДанных/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "ОтзывСогласияНаОбработкуПерсональныхДанных",
-  "numberAllowedLength": "Variable",
-  "numberLength": 11,
-  "numberPeriodicity": "Nonperiodical",
-  "numberType": "String",
-  "numerator": "",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": [
-      [
-        "ru",
-        "Отзыв согласия на обработку ПДн"
-      ]
-    ]
-  },
-  "postInPrivilegedMode": true,
-  "posting": "Allow",
-  "realTimePosting": "Deny",
-  "registerRecords": [
-    "InformationRegister.СогласияНаОбработкуПерсональныхДанных"
-  ],
-  "registerRecordsDeletion": "AutoDeleteOnUnpost",
-  "registerRecordsWritingOnPost": "WriteSelected",
-  "searchStringModeOnInputByString": "Begin",
-  "sequenceFilling": "AutoFill",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Отзыв согласия на обработку персональных данных"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "a5f5bc90-e670-4ee7-95fe-067fe1b129f7",
       "name": "ДополнительныеРеквизиты",
@@ -487,7 +381,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "f790f620-2247-4a04-b0ad-8aa591655948",
           "name": "Свойство",
@@ -515,7 +409,7 @@
               "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -547,7 +441,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -597,11 +491,111 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "DontUse",
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": [
+      [
+        "ru",
+        "Отзывы согласий на обработку персональных данных"
+      ]
+    ]
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Document.ОтзывСогласияНаОбработкуПерсональныхДанных.StandardAttribute.Number"
+  ],
+  "listPresentation": {
+    "content": [
+      [
+        "ru",
+        "Отзывы согласий на обработку ПДн"
+      ]
+    ]
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DOCUMENT",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/ОтзывСогласияНаОбработкуПерсональныхДанных/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/ОтзывСогласияНаОбработкуПерсональныхДанных/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ОтзывСогласияНаОбработкуПерсональныхДанных",
+  "numberAllowedLength": "Variable",
+  "numberLength": 11,
+  "numberPeriodicity": "Nonperiodical",
+  "numberType": "String",
+  "numerator": "",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Отзыв согласия на обработку ПДн"
+      ]
+    ]
+  },
+  "postInPrivilegedMode": true,
+  "posting": "Allow",
+  "realTimePosting": "Deny",
+  "registerRecords": [
+    "InformationRegister.СогласияНаОбработкуПерсональныхДанных"
+  ],
+  "registerRecordsDeletion": "AutoDeleteOnUnpost",
+  "registerRecordsWritingOnPost": "WriteSelected",
+  "searchStringModeOnInputByString": "Begin",
+  "sequenceFilling": "AutoFill",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Отзыв согласия на обработку персональных данных"
+      ]
+    ]
+  },
   "unpostInPrivilegedMode": true,
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,

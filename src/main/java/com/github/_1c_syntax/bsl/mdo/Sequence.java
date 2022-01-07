@@ -92,14 +92,11 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
   String comment = "";
 
   /**
-   * AttributeOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список атрибутов
-   */
   @Default
-  List<Attribute> attributes = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner

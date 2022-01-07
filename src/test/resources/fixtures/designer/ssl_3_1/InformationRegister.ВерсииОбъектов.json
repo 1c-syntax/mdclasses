@@ -1,5 +1,13 @@
 {"com.github._1c_syntax.bsl.mdo.InformationRegister": {
-  "attributes": [
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryRecordForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "children": [
     {
       "uuid": "d0634a8e-676f-4f49-9a38-7cb80cfa9fdf",
       "name": "ВерсияОбъекта",
@@ -579,40 +587,7 @@
       "useInTotals": false,
       "denyIncompleteValues": true,
       "master": false
-    }
-  ],
-  "auxiliaryListForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryRecordForm": {
-    "@reference": "../auxiliaryListForm"
-  },
-  "commands": [],
-  "comment": "",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "defaultListForm": {
-    "@reference": "../auxiliaryListForm"
-  },
-  "defaultRecordForm": {
-    "@reference": "../auxiliaryListForm"
-  },
-  "editType": "InList",
-  "enableTotalsSliceFirst": false,
-  "enableTotalsSliceLast": false,
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedRecordPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "80c23bf0-cef0-4d07-a017-d90635f8041d",
       "name": "ФормаСписка",
@@ -635,7 +610,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
@@ -660,7 +635,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
@@ -685,7 +660,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
@@ -710,7 +685,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     },
     {
@@ -735,64 +710,9 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
-    }
-  ],
-  "fullTextSearch": "DONT_USE",
-  "includeHelpInContents": false,
-  "informationRegisterPeriodicity": "Nonperiodical",
-  "listPresentation": {
-    "content": [
-      [
-        "ru",
-        "Записи о версиях объектов"
-      ]
-    ]
-  },
-  "mainFilterOnPeriod": false,
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-  },
-  "mdoType": "INFORMATION_REGISTER",
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
     },
-    {
-      "moduleType": "RecordSetModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/RecordSetModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "ВерсииОбъектов",
-  "objectBelonging": "OWN",
-  "recordPresentation": {
-    "content": [
-      [
-        "ru",
-        "Версия объекта"
-      ]
-    ]
-  },
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Версии объектов"
-      ]
-    ]
-  },
-  "templates": [
     {
       "uuid": "f9161bc3-9a1c-4870-8681-8e97d8ce838a",
       "name": "СтандартныйМакетПредставленияОбъекта",
@@ -817,10 +737,85 @@
         "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       },
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       }
     }
   ],
+  "comment": "",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "defaultListForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "defaultRecordForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "editType": "InList",
+  "enableTotalsSliceFirst": false,
+  "enableTotalsSliceLast": false,
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedRecordPresentation": {
+    "content": []
+  },
+  "fullTextSearch": "DONT_USE",
+  "includeHelpInContents": false,
+  "informationRegisterPeriodicity": "Nonperiodical",
+  "listPresentation": {
+    "content": [
+      [
+        "ru",
+        "Записи о версиях объектов"
+      ]
+    ]
+  },
+  "mainFilterOnPeriod": false,
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+  },
+  "mdoType": "INFORMATION_REGISTER",
+  "modules": [
+    {
+      "moduleType": "RecordSetModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/RecordSetModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ВерсииОбъектов",
+  "objectBelonging": "OWN",
+  "recordPresentation": {
+    "content": [
+      [
+        "ru",
+        "Версия объекта"
+      ]
+    ]
+  },
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Версии объектов"
+      ]
+    ]
+  },
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": false,
   "uuid": "0b13cad5-91ae-4cd1-a620-9a315ae8024c",

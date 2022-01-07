@@ -105,7 +105,8 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   /**
    * Ссылка на файл bsl модуля
    */
-  URI uri; // todo fake uri
+  @Default
+  URI uri = URI.create("");
 
   /**
    * Custom

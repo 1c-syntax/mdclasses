@@ -35,6 +35,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -105,11 +106,8 @@ public class WebService implements MDObject, ModuleOwner, ChildrenOwner {
    * ChildrenOwner
    */
 
-  /**
-   * Операции веб-сервиса
-   */
   @Default
-  List<WebServiceOperation> children = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * Custom
@@ -154,13 +152,16 @@ public class WebService implements MDObject, ModuleOwner, ChildrenOwner {
   }
 
   /**
-   * ChildrenOwner
+   * Custom
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = ChildrenOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Возвращает список операций вебсервиса
+   */
+  public List<WebServiceOperation> getWebServiceOperations() {
+    return getChildren().stream()
+      .filter(WebServiceOperation.class::isInstance)
+      .map(WebServiceOperation.class::cast)
+      .collect(Collectors.toList());
   }
 }

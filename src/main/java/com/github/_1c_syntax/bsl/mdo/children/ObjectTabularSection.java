@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -93,10 +94,11 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   String comment = "";
 
   /**
-   * Список атрибутов
+   * ChildrenOwner
    */
+
   @Default
-  List<Attribute> attributes = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * MDChildObject

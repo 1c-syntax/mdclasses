@@ -7,18 +7,7 @@
   "auxiliarySaveForm": {
     "@reference": "../auxiliaryLoadForm"
   },
-  "comment": "",
-  "defaultLoadForm": {
-    "type": "FORM",
-    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборВариантаОтчета",
-    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборВариантаОтчета"
-  },
-  "defaultSaveForm": {
-    "type": "FORM",
-    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчета",
-    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчета"
-  },
-  "forms": [
+  "children": [
     {
       "uuid": "077e2c42-bc3b-48bf-bbc2-41effe20f613",
       "name": "БыстрыеНастройкиОтчета",
@@ -58,7 +47,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultLoadForm"
+        "type": "FORM",
+        "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборВариантаОтчета",
+        "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборВариантаОтчета"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -281,7 +272,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultSaveForm"
+        "type": "FORM",
+        "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчета",
+        "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчета"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -368,8 +361,15 @@
       }
     }
   ],
+  "comment": "",
+  "defaultLoadForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultSaveForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[11]/mdoReference"
+  },
   "mdoReference": {
-    "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
   },
   "mdoType": "SETTINGS_STORAGE",
   "modules": [
@@ -377,7 +377,7 @@
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "../../../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       },
       "supportVariant": "NONE"
     }
@@ -393,6 +393,5 @@
       ]
     ]
   },
-  "templates": [],
   "uuid": "14512818-58b0-44cc-b00d-d37913c57aad"
 }}

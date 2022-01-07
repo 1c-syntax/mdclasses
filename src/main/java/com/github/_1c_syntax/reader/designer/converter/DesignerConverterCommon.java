@@ -1,17 +1,5 @@
 package com.github._1c_syntax.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdo.Attribute;
-import com.github._1c_syntax.bsl.mdo.AttributeOwner;
-import com.github._1c_syntax.bsl.mdo.CalculationRegister;
-import com.github._1c_syntax.bsl.mdo.Command;
-import com.github._1c_syntax.bsl.mdo.CommandOwner;
-import com.github._1c_syntax.bsl.mdo.Form;
-import com.github._1c_syntax.bsl.mdo.FormOwner;
-import com.github._1c_syntax.bsl.mdo.TabularSection;
-import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
-import com.github._1c_syntax.bsl.mdo.Template;
-import com.github._1c_syntax.bsl.mdo.TemplateOwner;
-import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -26,7 +14,6 @@ import lombok.experimental.UtilityClass;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @UtilityClass
 public class DesignerConverterCommon {
@@ -92,45 +79,7 @@ public class DesignerConverterCommon {
     TransformationUtils.setValue(builder, "mdoType", properties.getMdoType());
     TransformationUtils.setValue(builder, "supportVariant", properties.getSupportVariant());
 
-    if (CommandOwner.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "commands", properties.getChildren()
-        .stream().filter(Command.class::isInstance).collect(Collectors.toList()));
-    }
-
-    if (TemplateOwner.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "templates", properties.getChildren()
-        .stream().filter(Template.class::isInstance).collect(Collectors.toList()));
-    }
-
-    if (FormOwner.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "forms", properties.getChildren()
-        .stream().filter(Form.class::isInstance).collect(Collectors.toList()));
-    }
-
-    if (AttributeOwner.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "attributes", properties.getChildren()
-        .stream().filter(Attribute.class::isInstance).collect(Collectors.toList()));
-    }
-
-    if (TabularSectionOwner.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "tabularSections", properties.getChildren()
-        .stream().filter(TabularSection.class::isInstance).collect(Collectors.toList()));
-    }
-
-    if (CalculationRegister.class.isAssignableFrom(properties.getRealClass())) {
-      TransformationUtils.setValue(builder, "recalculations", properties.getChildren()
-        .stream().filter(Recalculation.class::isInstance).collect(Collectors.toList()));
-    }
-
-    // остальные дочерние
-    TransformationUtils.setValue(builder, "children", properties.getChildren()
-      .stream().filter(child -> !(child instanceof Command
-        || child instanceof Template
-        || child instanceof Form
-        || child instanceof Attribute
-        || child instanceof TabularSection
-        || child instanceof Recalculation))
-      .collect(Collectors.toList()));
+    TransformationUtils.setValue(builder, "children", properties.getChildren());
   }
 
   public void computeBuilder(@NonNull Object builder, @NonNull Map<String, Map<String, Object>> properties) {

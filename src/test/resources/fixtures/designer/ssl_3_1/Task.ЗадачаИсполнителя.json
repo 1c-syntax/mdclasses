@@ -1,6 +1,13 @@
 {"com.github._1c_syntax.bsl.mdo.Task": {
   "addressing": "InformationRegister.ИсполнителиЗадач",
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": "",
+  "auxiliaryListForm": "",
+  "auxiliaryObjectForm": "",
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "children": [
     {
       "uuid": "fd96c8ab-602a-4735-b168-52b501e80351",
       "name": "Автор",
@@ -508,6 +515,206 @@
       }
     },
     {
+      "uuid": "856510ee-74f5-44e9-a3c0-1c60cfb7a787",
+      "name": "Дополнительно",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Дополнительно"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.Дополнительно",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.Дополнительно"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "28b761c6-c286-4125-a4ed-da602e49950f",
+      "name": "ЗадачиПоБизнесПроцессу",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоБизнесПроцессу"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "4ac66a22-c736-4e06-a8aa-ef4a71788c65",
+      "name": "ЗадачиПоПредмету",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Задачи по предмету"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоПредмету",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоПредмету"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "9cfe9281-8840-4077-824d-a2c9cbb0b730",
+      "name": "МоиЗадачи",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Мои задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачи"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "76389fa9-b9e0-492e-9c93-24b5f3bf094c",
+      "name": "МоиЗадачиДляРабочегоСтола",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Мои задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачиДляРабочегоСтола",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачиДляРабочегоСтола"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "23e3de37-9315-45e6-bbfd-60aae28c25ae",
+      "name": "ПеренаправитьЗадачи",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Перенаправить задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ПеренаправитьЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ПеренаправитьЗадачи"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "a9957f43-8b6f-4d98-a2d8-77b78047494c",
+      "name": "ФормаЗадачи",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма задачи"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Форма выполнения задачи по умолчанию",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "e470e15d-1b06-43cb-a9f9-ba489e2f596f",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
+        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
       "uuid": "0408002c-9255-43a2-8022-82f02ee0e8f4",
       "name": "ДополнительныйОбъектАдресации",
       "synonym": {
@@ -639,18 +846,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": "",
-  "auxiliaryListForm": "",
-  "auxiliaryObjectForm": "",
-  "basedOn": [],
-  "characteristics": [],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "commands": [
+    },
     {
       "uuid": "6e5307ea-8fbf-4177-bcc8-f163a6ce1b40",
       "name": "ВсеЗадачи",
@@ -683,7 +879,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -718,7 +914,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -753,7 +949,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -788,10 +984,12 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
   "comment": "",
   "createOnInput": "DontUse",
   "currentPerformer": "SessionParameter.АвторизованныйПользователь",
@@ -808,208 +1006,6 @@
   "explanation": "",
   "extendedListPresentation": "",
   "extendedObjectPresentation": "",
-  "forms": [
-    {
-      "uuid": "856510ee-74f5-44e9-a3c0-1c60cfb7a787",
-      "name": "Дополнительно",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Дополнительно"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.Дополнительно",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.Дополнительно"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "28b761c6-c286-4125-a4ed-da602e49950f",
-      "name": "ЗадачиПоБизнесПроцессу",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Задачи"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоБизнесПроцессу"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "4ac66a22-c736-4e06-a8aa-ef4a71788c65",
-      "name": "ЗадачиПоПредмету",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Задачи по предмету"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.ЗадачиПоПредмету",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ЗадачиПоПредмету"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "9cfe9281-8840-4077-824d-a2c9cbb0b730",
-      "name": "МоиЗадачи",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Мои задачи"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачи",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачи"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "76389fa9-b9e0-492e-9c93-24b5f3bf094c",
-      "name": "МоиЗадачиДляРабочегоСтола",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Мои задачи"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.МоиЗадачиДляРабочегоСтола",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.МоиЗадачиДляРабочегоСтола"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "23e3de37-9315-45e6-bbfd-60aae28c25ae",
-      "name": "ПеренаправитьЗадачи",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Перенаправить задачи"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.ПеренаправитьЗадачи",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ПеренаправитьЗадачи"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "a9957f43-8b6f-4d98-a2d8-77b78047494c",
-      "name": "ФормаЗадачи",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма задачи"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "Форма выполнения задачи по умолчанию",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "e470e15d-1b06-43cb-a9f9-ba489e2f596f",
-      "name": "ФормаСписка",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма списка"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
-        "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",
   "includeHelpInContents": true,
@@ -1020,23 +1016,23 @@
   "listPresentation": "\n\t\t\t\t",
   "mainAddressingAttribute": "Task.ЗадачаИсполнителя.AddressingAttribute.Исполнитель",
   "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
   },
   "mdoType": "TASK",
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     }
@@ -1057,9 +1053,7 @@
       ]
     ]
   },
-  "tabularSections": [],
   "taskNumberAutoPrefix": "BusinessProcessNumber",
-  "templates": [],
   "useStandardCommands": false,
   "uuid": "3ad08f4a-6202-4099-b6cc-bc116e6731a0"
 }}

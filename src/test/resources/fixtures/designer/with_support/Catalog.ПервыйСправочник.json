@@ -1,5 +1,4 @@
 {"com.github._1c_syntax.bsl.mdo.Catalog": {
-  "attributes": [],
   "autonumbering": true,
   "auxiliaryChoiceForm": {
     "type": "UNKNOWN",
@@ -21,14 +20,34 @@
   "basedOn": [],
   "characteristics": [],
   "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "choiceMode": "BothWays",
-  "codeAllowedLength": "Variable",
-  "codeLength": 9,
-  "codeSeries": "WholeCatalog",
-  "codeType": "String",
-  "commands": [
+  "children": [
+    {
+      "uuid": "8d639442-519d-4428-9419-101221820694",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ПервыйСправочник.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.ПервыйСправочник.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NOT_EDITABLE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.ПервыйСправочник",
+        "mdoRefRu": "Справочник.ПервыйСправочник"
+      }
+    },
     {
       "uuid": "28777e74-89cf-4993-8a0a-a5d2b9a758b9",
       "name": "ПерваяКоманда",
@@ -61,12 +80,17 @@
         }
       ],
       "owner": {
-        "type": "CATALOG",
-        "mdoRef": "Catalog.ПервыйСправочник",
-        "mdoRefRu": "Справочник.ПервыйСправочник"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       }
     }
   ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 9,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
   "comment": "",
   "createOnInput": "Use",
   "dataHistory": "DontUse",
@@ -85,9 +109,7 @@
     "@reference": "../auxiliaryChoiceForm"
   },
   "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.ПервыйСправочник.Form.ФормаЭлемента",
-    "mdoRefRu": "Справочник.ПервыйСправочник.Форма.ФормаЭлемента"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
   },
   "defaultPresentation": "AsDescription",
   "descriptionLength": 25,
@@ -103,31 +125,6 @@
     "content": []
   },
   "foldersOnTop": true,
-  "forms": [
-    {
-      "uuid": "8d639442-519d-4428-9419-101221820694",
-      "name": "ФормаЭлемента",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма элемента"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NOT_EDITABLE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
-      }
-    }
-  ],
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",
   "hierarchical": false,
@@ -143,23 +140,23 @@
     "content": []
   },
   "mdoReference": {
-    "@reference": "../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
   },
   "mdoType": "CATALOG",
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       },
       "supportVariant": "NOT_EDITABLE"
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/with_support/src/cf/Catalogs/ПервыйСправочник/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "../../../commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       },
       "supportVariant": "NOT_EDITABLE"
     }
@@ -183,8 +180,6 @@
       ]
     ]
   },
-  "tabularSections": [],
-  "templates": [],
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,
   "uuid": "3c907782-1b24-440c-b0de-1d62cebde27b"

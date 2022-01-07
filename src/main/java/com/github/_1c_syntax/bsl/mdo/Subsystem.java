@@ -34,6 +34,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -94,11 +95,8 @@ public class Subsystem implements MDObject, ChildrenOwner {
    * ChildrenOwner
    */
 
-  /**
-   * Дочерние подсистемы
-   */
   @Default
-  List<Subsystem> children = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * Custom
@@ -145,10 +143,13 @@ public class Subsystem implements MDObject, ChildrenOwner {
    * ChildrenOwner
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = ChildrenOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Возвращает список дочерних подсистем
+   */
+  public List<Subsystem> getSubsystems() {
+    return getChildren().stream()
+      .filter(Subsystem.class::isInstance)
+      .map(Subsystem.class::cast)
+      .collect(Collectors.toList());
   }
 }

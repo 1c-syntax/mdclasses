@@ -37,6 +37,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -106,11 +107,8 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
    * ChildrenOwner
    */
 
-  /**
-   * Параметры операции веб-сервиса
-   */
   @Default
-  List<WebServiceOperationParameter> children = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * Custom
@@ -156,13 +154,16 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
   }
 
   /**
-   * ChildrenOwner
+   * Custom
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = ChildrenOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Возвращает перечень параметров операции вебсервиса
+   */
+  public List<WebServiceOperationParameter> getWebServiceOperationParameters() {
+    return getChildren().stream()
+      .filter(WebServiceOperationParameter.class::isInstance)
+      .map(WebServiceOperationParameter.class::cast)
+      .collect(Collectors.toList());
   }
 }

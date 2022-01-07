@@ -1,6 +1,13 @@
 {"com.github._1c_syntax.bsl.mdo.CalculationRegister": {
   "actionPeriod": true,
-  "attributes": [
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "basePeriod": true,
+  "chartOfCalculationTypes": "ChartOfCalculationTypes.ПланВидовРасчета1",
+  "children": [
     {
       "uuid": "86f41061-e298-4da5-8d28-489a349d55fc",
       "name": "Ресурс1",
@@ -101,24 +108,6 @@
       "useInTotals": false,
       "denyIncompleteValues": false,
       "master": false
-    }
-  ],
-  "auxiliaryListForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "basePeriod": true,
-  "chartOfCalculationTypes": "ChartOfCalculationTypes.ПланВидовРасчета1",
-  "children": [
-    {
-      "@reference": "../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource"
-    },
-    {
-      "@reference": "../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterDimension"
-    },
-    {
-      "@reference": "../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterDimension[2]"
     },
     {
       "uuid": "ba7826fe-1684-407b-bc28-f897eac55317",
@@ -140,12 +129,11 @@
       "supportVariant": "NONE",
       "comment": "",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "modules": []
     }
   ],
-  "commands": [],
   "comment": "",
   "dataLockControlMode": "MANAGED",
   "defaultListForm": {
@@ -157,14 +145,13 @@
   "extendedListPresentation": {
     "content": []
   },
-  "forms": [],
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "listPresentation": {
     "content": []
   },
   "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
   },
   "mdoType": "CALCULATION_REGISTER",
   "modules": [],
@@ -183,7 +170,6 @@
   "synonym": {
     "content": []
   },
-  "templates": [],
   "useStandardCommands": true,
   "uuid": "90587c7d-b950-4476-ac14-426e4a83d9c4"
 }}

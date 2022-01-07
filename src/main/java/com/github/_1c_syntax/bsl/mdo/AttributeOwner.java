@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец реквизитов реквизиты
@@ -30,7 +31,12 @@ public interface AttributeOwner extends ChildrenOwner {
   /**
    * Список реквизитов объекта
    */
-  List<Attribute> getAttributes();
+  default List<Attribute> getAttributes() {
+    return getChildren().stream()
+      .filter(Attribute.class::isInstance)
+      .map(Attribute.class::cast)
+      .collect(Collectors.toList());
+  }
 
 //  /**
 //   * Метод для добавления общего реквизита к списку атрибутов

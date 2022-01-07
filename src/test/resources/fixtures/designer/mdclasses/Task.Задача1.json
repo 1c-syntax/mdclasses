@@ -1,6 +1,42 @@
 {"com.github._1c_syntax.bsl.mdo.Task": {
   "addressing": "",
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": "",
+  "auxiliaryListForm": "",
+  "auxiliaryObjectForm": "",
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": true,
+  "children": [
+    {
+      "uuid": "33e96bda-1708-4ee4-8d4d-3b919bda3e38",
+      "name": "Описатель",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Описатель"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Task.Задача1.Template.Описатель",
+        "mdoRefRu": "Задача.Задача1.Макет.Описатель"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+      },
+      "owner": {
+        "type": "TASK",
+        "mdoRef": "Task.Задача1",
+        "mdoRefRu": "Задача.Задача1"
+      }
+    },
     {
       "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
       "name": "РеквизитАдресации",
@@ -34,63 +70,9 @@
         }
       },
       "owner": {
-        "type": "TASK",
-        "mdoRef": "Task.Задача1",
-        "mdoRefRu": "Задача.Задача1"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": "",
-  "auxiliaryListForm": "",
-  "auxiliaryObjectForm": "",
-  "basedOn": [],
-  "characteristics": [],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "DontUse",
-  "currentPerformer": "",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": "",
-  "defaultListForm": "",
-  "defaultObjectForm": "",
-  "defaultPresentation": "AsDescription",
-  "descriptionLength": 25,
-  "editType": "InDialog",
-  "explanation": "",
-  "extendedListPresentation": "",
-  "extendedObjectPresentation": "",
-  "forms": [],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "Task.Задача1.StandardAttribute.Description",
-    "Task.Задача1.StandardAttribute.Number"
-  ],
-  "listPresentation": "",
-  "mainAddressingAttribute": "",
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-  },
-  "mdoType": "TASK",
-  "modules": [],
-  "name": "Задача1",
-  "numberAllowedLength": "Variable",
-  "numberLength": 9,
-  "numberType": "String",
-  "objectBelonging": "OWN",
-  "objectPresentation": "",
-  "searchStringModeOnInputByString": "Begin",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": []
-  },
-  "tabularSections": [
+    },
     {
       "uuid": "245f870e-a53a-4d86-aa0a-c0c7709b8acb",
       "name": "ДополнительныеРеквизиты",
@@ -110,7 +92,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "476f6bfa-b10c-4e0f-8499-23c652715b3f",
           "name": "Свойство",
@@ -221,40 +203,52 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/owner"
       }
     }
   ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "currentPerformer": "",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": "",
+  "defaultListForm": "",
+  "defaultObjectForm": "",
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 25,
+  "editType": "InDialog",
+  "explanation": "",
+  "extendedListPresentation": "",
+  "extendedObjectPresentation": "",
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Task.Задача1.StandardAttribute.Description",
+    "Task.Задача1.StandardAttribute.Number"
+  ],
+  "listPresentation": "",
+  "mainAddressingAttribute": "",
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/owner"
+  },
+  "mdoType": "TASK",
+  "modules": [],
+  "name": "Задача1",
+  "numberAllowedLength": "Variable",
+  "numberLength": 9,
+  "numberType": "String",
+  "objectBelonging": "OWN",
+  "objectPresentation": "",
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": []
+  },
   "taskNumberAutoPrefix": "DontUse",
-  "templates": [
-    {
-      "uuid": "33e96bda-1708-4ee4-8d4d-3b919bda3e38",
-      "name": "Описатель",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Описатель"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "TEMPLATE",
-        "mdoRef": "Task.Задача1.Template.Описатель",
-        "mdoRefRu": "Задача.Задача1.Макет.Описатель"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "templateType": "SPREADSHEET_DOCUMENT",
-      "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
-      },
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-      }
-    }
-  ],
   "useStandardCommands": true,
   "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea"
 }}

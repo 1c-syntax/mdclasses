@@ -35,6 +35,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -105,11 +106,8 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
    * ChildrenOwner
    */
 
-  /**
-   * Каналы сервиса интеграции
-   */
   @Default
-  List<IntegrationServiceChannel> children = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * Custom
@@ -134,10 +132,13 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
    * getChildren
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var superChildren = ChildrenOwner.super.getChildren();
-    superChildren.addAll(children);
-    return superChildren;
+  /**
+   * Возвращает список каналов интеграции
+   */
+  public List<IntegrationServiceChannel> getIntegrationServiceChannels() {
+    return getChildren().stream()
+      .filter(IntegrationServiceChannel.class::isInstance)
+      .map(IntegrationServiceChannel.class::cast)
+      .collect(Collectors.toList());
   }
 }

@@ -1,5 +1,24 @@
 {"com.github._1c_syntax.bsl.mdo.BusinessProcess": {
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [
+    "Catalog.Файлы",
+    "Catalog.Пользователи",
+    "Task.ЗадачаИсполнителя"
+  ],
+  "characteristics": [],
+  "checkUnique": true,
+  "children": [
     {
       "uuid": "a76b1fd1-ba00-40e6-8756-f17fee449818",
       "name": "Автор",
@@ -947,67 +966,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [
-    "Catalog.Файлы",
-    "Catalog.Пользователи",
-    "Task.ЗадачаИсполнителя"
-  ],
-  "characteristics": [],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "DontUse",
-  "createTaskInPrivilegedMode": true,
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [
-    "BusinessProcess.Задание.Attribute.ГлавнаяЗадача",
-    "BusinessProcess.Задание.StandardAttribute.HeadTask"
-  ],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
-    "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
-    "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
-  },
-  "editType": "InDialog",
-  "explanation": {
-    "content": [
-      [
-        "ru",
-        "Задание для исполнителя"
-      ]
-    ]
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "f0620d5a-e1fe-419f-af37-e0f462f97e8d",
       "name": "ДействиеВыполнить",
@@ -1030,7 +989,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1055,7 +1014,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1070,7 +1029,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
+        "type": "FORM",
+        "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
+        "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -1078,7 +1039,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1093,7 +1054,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultListForm"
+        "type": "FORM",
+        "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
+        "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -1101,10 +1064,44 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "createTaskInPrivilegedMode": true,
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [
+    "BusinessProcess.Задание.Attribute.ГлавнаяЗадача",
+    "BusinessProcess.Задание.StandardAttribute.HeadTask"
+  ],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+  },
+  "editType": "InDialog",
+  "explanation": {
+    "content": [
+      [
+        "ru",
+        "Задание для исполнителя"
+      ]
+    ]
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",
   "includeHelpInContents": true,
@@ -1120,23 +1117,23 @@
     ]
   },
   "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
   },
   "mdoType": "BUSINESS_PROCESS",
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/BusinessProcesses/Задание/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     }
@@ -1160,9 +1157,7 @@
       ]
     ]
   },
-  "tabularSections": [],
   "task": "Task.ЗадачаИсполнителя",
-  "templates": [],
   "useStandardCommands": true,
   "uuid": "dad11c2e-08fc-4a6b-8829-8be6c64c15fc"
 }}

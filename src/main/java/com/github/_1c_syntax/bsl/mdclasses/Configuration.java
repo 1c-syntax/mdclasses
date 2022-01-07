@@ -21,13 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.mdo.Role;
-import com.github._1c_syntax.bsl.mdo.Style;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -61,6 +58,11 @@ import static lombok.Builder.Default;
 @EqualsAndHashCode(of = {"name", "uuid"})
 @NonNull
 public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
+
+  /**
+   * Пустая конфигурация
+   */
+  public static final Configuration EMPTY = createEmptyConfiguration();
 
   /**
    * Имя конфигурации
@@ -124,13 +126,13 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
    * Язык приложения по умолчанию
    */
   @Default
-  Language defaultLanguage = Language.DEFAULT;
+  MdoReference defaultLanguage = MdoReference.EMPTY;
 
   /**
    * Роли по умолчанию
    */
   @Default
-  List<Role> defaultRoles = Collections.emptyList();
+  List<MdoReference> defaultRoles = Collections.emptyList();
 
   /**
    * Режим управления блокировкой данных
@@ -191,12 +193,6 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
   List<MDObject> children = Collections.emptyList();
 
   /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  @Default
-  List<MDObject> plainChildren = Collections.emptyList();
-
-  /**
    * Список модулей конфигурации
    */
   @Default
@@ -214,39 +210,97 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
   @Default
   MdoReference mdoReference = MdoReference.EMPTY;
 
+  /**
+   * Интерфейс по умолчанию (устарело)
+   */
   @Default
-  String commonSettingsStorage = ""; // todo mdoref?
+  MdoReference defaultInterface = MdoReference.EMPTY;
+
+  /**
+   * Стиль по умолчанию
+   */
   @Default
-  String reportsUserSettingsStorage = ""; // todo mdoref?
+  MdoReference defaultStyle = MdoReference.EMPTY;
+
+  /**
+   * Общее хранилище настроек
+   */
   @Default
-  String reportsVariantsStorage = ""; // todo mdoref?
+  MdoReference commonSettingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилище настроек пользователей отчетов
+   */
   @Default
-  String formDataSettingsStorage = ""; // todo mdoref?
+  MdoReference reportsUserSettingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилише вариантов настроек отчетов
+   */
   @Default
-  String dynamicListsUserSettingsStorage = ""; // todo mdoref?
+  MdoReference reportsVariantsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилище настроек форм
+   */
   @Default
-  String defaultReportForm = ""; // todo mdoref?
+  MdoReference formDataSettingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилище настроек динамических списков
+   */
   @Default
-  String defaultReportVariantForm = ""; // todo mdoref?
+  MdoReference dynamicListsUserSettingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Форма отчета по умолчанию
+   */
   @Default
-  String defaultReportSettingsForm = ""; // todo mdoref?
+  MdoReference defaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Форма выбора вариантов отчета по умолчанию
+   */
   @Default
-  String defaultDynamicListSettingsForm = ""; // todo mdoref?
+  MdoReference defaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Форма настроек отчета по умолчанию
+   */
   @Default
-  String defaultSearchForm = ""; // todo mdoref?
+  MdoReference defaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Форма настроек динамического списка по умолчанию
+   */
   @Default
-  String defaultConstantsForm = ""; // todo mdoref?
+  MdoReference defaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Форма поиска по умолчанию
+   */
+  @Default
+  MdoReference defaultSearchForm = MdoReference.EMPTY;
+
+  /**
+   * Форма констант по умолчанию
+   */
+  @Default
+  MdoReference defaultConstantsForm = MdoReference.EMPTY;
+
+
   @Default
   String mainClientApplicationWindowMode = ""; // todo enum?
-  Interface defaultInterface;
-  Style defaultStyle;
+
   @Default
-  String interfaceCompatibilityMode= ""; // todo enum?
+  String interfaceCompatibilityMode = ""; // todo enum?
 
   @Default
   String vendor = "";
+
   @Default
   String version = "";
+
   @Default
   String updateCatalogAddress = "";
 
@@ -254,6 +308,7 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
 
   @Default
   List<String> additionalFullTextSearchDictionaries = Collections.emptyList();
+
   @Default
   String content = "";
 
@@ -267,14 +322,35 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
   String configurationInformationAddress = "";
 
 
-
   /**
    * Возвращает соответствие ссылок на файлы модулей их вариантам поддержки
    *
    * @return Соответствие ссылок на файлы и вариантов поддержки
    */
   public Map<URI, SupportVariant> getModulesBySupport() {
-    return getAllModules().stream().collect(Collectors.toMap(Module::getUri, Module::getSupportVariant));
+    return getAllModules().stream()
+      .filter(module -> !module.getUri().toString().isEmpty())
+      .collect(Collectors.toMap(Module::getUri, Module::getSupportVariant));
+  }
+
+  public Language getDefaultLanguage() {
+    if (!MdoReference.EMPTY.equals(defaultLanguage)) {
+      var lang = findChild(defaultLanguage);
+      if (lang.isPresent()) {
+        return (Language) lang.get();
+      }
+    }
+    return Language.DEFAULT;
+  }
+
+  private static Configuration createEmptyConfiguration() {
+    final String emptyString = "empty";
+
+    return Configuration.builder()
+      .configurationSource(ConfigurationSource.EMPTY)
+      .name(emptyString)
+      .uuid(emptyString)
+      .build();
   }
 }
 

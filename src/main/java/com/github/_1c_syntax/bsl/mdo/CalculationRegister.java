@@ -37,6 +37,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -95,44 +96,11 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   String comment = "";
 
   /**
-   * AttributeOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список атрибутов
-   */
   @Default
-  List<Attribute> attributes = Collections.emptyList();
-
-  /**
-   * FormOwner
-   */
-
-  /**
-   * Список форм
-   */
-  @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * CommandOwner
-   */
-
-  /**
-   * Список команд
-   */
-  @Default
-  List<Command> commands = Collections.emptyList();
-
-  /**
-   * TemplateOwner
-   */
-
-  /**
-   * Список макетов
-   */
-  @Default
-  List<Template> templates = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner
@@ -147,12 +115,6 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
   /**
    * Custom
    */
-
-  /**
-   * Список перерасчетов
-   */
-  @Default
-  List<Recalculation> recalculations = Collections.emptyList();
 
   /**
    * Использование стандартных команд интерфейса
@@ -240,10 +202,13 @@ public class CalculationRegister implements MDObject, AttributeOwner, FormOwner,
    * AttributeOwner
    */
 
-  @Override
-  public List<MDObject> getChildren() {
-    var children = AttributeOwner.super.getChildren();
-    children.addAll(recalculations);
-    return children;
+  /**
+   * Возвращает список перерасчетов
+   */
+  public List<Recalculation> getRecalculations() {
+    return getChildren().stream()
+      .filter(Recalculation.class::isInstance)
+      .map(Recalculation.class::cast)
+      .collect(Collectors.toList());
   }
 }

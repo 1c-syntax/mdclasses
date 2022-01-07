@@ -1,5 +1,10 @@
 {"com.github._1c_syntax.bsl.mdo.DataProcessor": {
-  "attributes": [
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "children": [
     {
       "uuid": "ab178a93-8570-43b6-ae42-f34a7cc4f359",
       "name": "EMAILМаксимальныйДопустимыйРазмерСообщения",
@@ -220,27 +225,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "auxiliaryForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "commands": [],
-  "comment": "",
-  "defaultForm": {
-    "type": "FORM",
-    "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
-    "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
-  },
-  "explanation": {
-    "content": []
-  },
-  "extendedPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "14e20d48-635e-4c52-9099-e743323fc190",
       "name": "Форма",
@@ -253,7 +238,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultForm"
+        "type": "FORM",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -261,13 +248,23 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
+  "comment": "",
+  "defaultForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedPresentation": {
+    "content": []
+  },
   "includeHelpInContents": false,
   "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
   },
   "mdoType": "DATA_PROCESSOR",
   "modules": [
@@ -275,7 +272,7 @@
       "moduleType": "ObjectModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ТранспортСообщенийОбменаEMAIL/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     }
@@ -291,8 +288,6 @@
       ]
     ]
   },
-  "tabularSections": [],
-  "templates": [],
   "useStandardCommands": false,
   "uuid": "1e7684f0-1b3b-4a32-8602-dd0672c5a800"
 }}

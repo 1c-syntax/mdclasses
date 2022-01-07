@@ -1,5 +1,30 @@
 {"com.github._1c_syntax.bsl.mdo.Document": {
-  "attributes": [
+  "autonumbering": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [
+    "Document.Встреча",
+    "Document.ЗапланированноеВзаимодействие",
+    "Document.ТелефонныйЗвонок",
+    "Document.ЭлектронноеПисьмоВходящее",
+    "Document.ЭлектронноеПисьмоИсходящее",
+    "Document.СообщениеSMS"
+  ],
+  "characteristics": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
+  "checkUnique": true,
+  "children": [
     {
       "uuid": "5d455d2a-910d-48c7-bc74-ba5ad7855110",
       "name": "Автор",
@@ -443,67 +468,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": true,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [
-    "Document.Встреча",
-    "Document.ЗапланированноеВзаимодействие",
-    "Document.ТелефонныйЗвонок",
-    "Document.ЭлектронноеПисьмоВходящее",
-    "Document.ЭлектронноеПисьмоИсходящее",
-    "Document.СообщениеSMS"
-  ],
-  "characteristics": [
-    "\n\t\t\t\t\t",
-    "\n\t\t\t\t\t"
-  ],
-  "checkUnique": true,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "DontUse",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "Use",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "AUTOMATIC",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "type": "FORM",
-    "mdoRef": "Document.СообщениеSMS.Form.ФормаВыбора",
-    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаВыбора"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "Document.СообщениеSMS.Form.ФормаСписка",
-    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Document.СообщениеSMS.Form.ФормаДокумента",
-    "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаДокумента"
-  },
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "forms": [
+    },
     {
       "uuid": "073e14d4-5d43-428b-a9a7-985d173e94c7",
       "name": "ФормаДокумента",
@@ -516,7 +481,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
+        "type": "FORM",
+        "mdoRef": "Document.СообщениеSMS.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаДокумента"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -524,7 +491,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -539,7 +506,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultChoiceForm"
+        "type": "FORM",
+        "mdoRef": "Document.СообщениеSMS.Form.ФормаВыбора",
+        "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаВыбора"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -547,7 +516,7 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -562,7 +531,9 @@
         ]
       },
       "mdoReference": {
-        "@reference": "../../../defaultListForm"
+        "type": "FORM",
+        "mdoRef": "Document.СообщениеSMS.Form.ФормаСписка",
+        "mdoRefRu": "Документ.СообщениеSMS.Форма.ФормаСписка"
       },
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
@@ -570,74 +541,9 @@
       "formType": "MANAGED",
       "modules": [],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "Document.СообщениеSMS.StandardAttribute.Number"
-  ],
-  "listPresentation": {
-    "content": [
-      [
-        "ru",
-        "Сообщения SMS"
-      ]
-    ]
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "DOCUMENT",
-  "modules": [
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
     },
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "СообщениеSMS",
-  "numberAllowedLength": "Fixed",
-  "numberLength": 11,
-  "numberPeriodicity": "Year",
-  "numberType": "String",
-  "numerator": "",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": []
-  },
-  "postInPrivilegedMode": true,
-  "posting": "Deny",
-  "realTimePosting": "Allow",
-  "registerRecords": [],
-  "registerRecordsDeletion": "AutoDeleteOnUnpost",
-  "registerRecordsWritingOnPost": "WriteSelected",
-  "searchStringModeOnInputByString": "Begin",
-  "sequenceFilling": "AutoFill",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Сообщение SMS"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "2394775b-8910-4667-9c74-e1606e0b13bc",
       "name": "Адресаты",
@@ -657,7 +563,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "43c88ffd-a036-4563-890b-bdc60180e841",
           "name": "Контакт",
@@ -683,7 +589,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -922,7 +828,7 @@
               "cfg:EnumRef.СостоянияСообщенияSMS"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -931,7 +837,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -953,7 +859,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "7236d52f-9068-45ad-8b92-a7319e737e08",
           "name": "НомерНабора",
@@ -981,7 +887,7 @@
               "xs:decimal"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1013,7 +919,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1047,7 +953,7 @@
               "cfg:CatalogRef.ИдентификаторыОбъектовМетаданных"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1081,7 +987,7 @@
               "xs:boolean"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1115,7 +1021,7 @@
               "xs:boolean"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1124,7 +1030,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1146,7 +1052,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "f0b2ec05-8e01-4ccf-b927-671329a9013b",
           "name": "Свойство",
@@ -1174,7 +1080,7 @@
               "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1206,7 +1112,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1256,11 +1162,99 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "DontUse",
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "AUTOMATIC",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Document.СообщениеSMS.StandardAttribute.Number"
+  ],
+  "listPresentation": {
+    "content": [
+      [
+        "ru",
+        "Сообщения SMS"
+      ]
+    ]
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DOCUMENT",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/СообщениеSMS/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "СообщениеSMS",
+  "numberAllowedLength": "Fixed",
+  "numberLength": 11,
+  "numberPeriodicity": "Year",
+  "numberType": "String",
+  "numerator": "",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": []
+  },
+  "postInPrivilegedMode": true,
+  "posting": "Deny",
+  "realTimePosting": "Allow",
+  "registerRecords": [],
+  "registerRecordsDeletion": "AutoDeleteOnUnpost",
+  "registerRecordsWritingOnPost": "WriteSelected",
+  "searchStringModeOnInputByString": "Begin",
+  "sequenceFilling": "AutoFill",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Сообщение SMS"
+      ]
+    ]
+  },
   "unpostInPrivilegedMode": true,
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,

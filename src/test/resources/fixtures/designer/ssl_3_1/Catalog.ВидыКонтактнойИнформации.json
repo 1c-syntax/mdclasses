@@ -1,5 +1,26 @@
 {"com.github._1c_syntax.bsl.mdo.Catalog": {
-  "attributes": [
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": false,
+  "children": [
     {
       "uuid": "0eea37cc-47f8-4819-85da-d4991f4e58ed",
       "name": "ТолькоНациональныйАдрес",
@@ -894,258 +915,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": false,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryFolderForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [],
-  "characteristics": [],
-  "checkUnique": false,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "choiceMode": "BothWays",
-  "codeAllowedLength": "Fixed",
-  "codeLength": 0,
-  "codeSeries": "WholeCatalog",
-  "codeType": "String",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "Use",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultFolderChoiceForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаВыбораГруппы",
-    "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаВыбораГруппы"
-  },
-  "defaultFolderForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаГруппы",
-    "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаГруппы"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаСписка",
-    "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаЭлемента",
-    "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаЭлемента"
-  },
-  "defaultPresentation": "AsDescription",
-  "descriptionLength": 150,
-  "editType": "InList",
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "foldersOnTop": true,
-  "forms": [
-    {
-      "uuid": "f5ef3f75-7d12-4284-844f-54d19d1f7e2f",
-      "name": "ФормаСписка",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма списка"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultListForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
     },
-    {
-      "uuid": "7974e41d-5af3-4636-b405-c9405d89fb53",
-      "name": "ФормаЭлемента",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма элемента"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "21fad9b6-44df-417c-ba18-de4b8af98a34",
-      "name": "ФормаГруппы",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма группы"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultFolderForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "11c086b0-c646-4701-983d-c38758286354",
-      "name": "ФормаВыбораГруппы",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма выбора группы"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultFolderChoiceForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "826c2821-147d-4aaf-910c-acfbdb58a29f",
-      "name": "ИсправлениеВидовКонтактнойИнформации",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Исправление видов контактной информации"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ИсправлениеВидовКонтактнойИнформации",
-        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ИсправлениеВидовКонтактнойИнформации"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "hierarchical": true,
-  "hierarchyType": "HierarchyFoldersAndItems",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "Catalog.ВидыКонтактнойИнформации.StandardAttribute.Description"
-  ],
-  "levelCount": 3,
-  "limitLevelCount": true,
-  "listPresentation": {
-    "content": []
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "CATALOG",
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "ВидыКонтактнойИнформации",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": [
-      [
-        "ru",
-        "Вид контактной информации"
-      ]
-    ]
-  },
-  "owners": [],
-  "predefinedDataUpdate": "Auto",
-  "quickChoice": false,
-  "searchStringModeOnInputByString": "Begin",
-  "subordinationUse": "ToItems",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Виды контактной информации"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "99387869-f8b1-4269-bd26-e39380d17b69",
       "name": "Представления",
@@ -1165,7 +935,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "4b2acdb9-fefd-4735-9dfd-d7d141967f3c",
           "name": "КодЯзыка",
@@ -1250,11 +1020,235 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "f5ef3f75-7d12-4284-844f-54d19d1f7e2f",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаСписка",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "7974e41d-5af3-4636-b405-c9405d89fb53",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "21fad9b6-44df-417c-ba18-de4b8af98a34",
+      "name": "ФормаГруппы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаГруппы",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаГруппы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "11c086b0-c646-4701-983d-c38758286354",
+      "name": "ФормаВыбораГруппы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма выбора группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаВыбораГруппы",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаВыбораГруппы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "826c2821-147d-4aaf-910c-acfbdb58a29f",
+      "name": "ИсправлениеВидовКонтактнойИнформации",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Исправление видов контактной информации"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ИсправлениеВидовКонтактнойИнформации",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ИсправлениеВидовКонтактнойИнформации"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Fixed",
+  "codeLength": 0,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
+  },
+  "defaultFolderForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InList",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": true,
+  "hierarchyType": "HierarchyFoldersAndItems",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Catalog.ВидыКонтактнойИнформации.StandardAttribute.Description"
+  ],
+  "levelCount": 3,
+  "limitLevelCount": true,
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ВидыКонтактнойИнформации",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Вид контактной информации"
+      ]
+    ]
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Виды контактной информации"
+      ]
+    ]
+  },
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,
   "uuid": "782cb93d-36e6-4923-b2b6-75caa3459cd6"

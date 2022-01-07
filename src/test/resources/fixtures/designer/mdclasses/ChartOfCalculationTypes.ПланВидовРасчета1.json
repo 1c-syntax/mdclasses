@@ -1,6 +1,25 @@
 {"com.github._1c_syntax.bsl.mdo.ChartOfCalculationTypes": {
   "actionPeriodUse": true,
-  "attributes": [
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "baseCalculationTypes": [
+    "ChartOfCalculationTypes.ПланВидовРасчета1"
+  ],
+  "basedOn": [],
+  "characteristics": [],
+  "children": [
     {
       "uuid": "f1f5f5a9-e063-4ac7-acb8-f95dc089673f",
       "name": "Реквизит",
@@ -71,89 +90,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "baseCalculationTypes": [
-    "ChartOfCalculationTypes.ПланВидовРасчета1"
-  ],
-  "basedOn": [],
-  "characteristics": [],
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "choiceMode": "BothWays",
-  "codeAllowedLength": "Variable",
-  "codeLength": 9,
-  "codeType": "String",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultPresentation": "AsDescription",
-  "descriptionLength": 40,
-  "editType": "InDialog",
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "forms": [],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "includeHelpInContents": false,
-  "inputByString": [
-    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Description",
-    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Code"
-  ],
-  "listPresentation": {
-    "content": []
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "CHART_OF_CALCULATION_TYPES",
-  "modules": [],
-  "name": "ПланВидовРасчета1",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": []
-  },
-  "onActionPeriod": "",
-  "predefinedDataUpdate": "Auto",
-  "quickChoice": false,
-  "searchStringModeOnInputByString": "Begin",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": []
-  },
-  "tabularSections": [
+    },
     {
       "uuid": "78306247-ac7e-4bd3-bb71-29e78139ebc4",
       "name": "ТабличнаяЧасть",
@@ -173,7 +110,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "dfb18698-077e-47a6-ac63-6d98de0db138",
           "name": "Месяц",
@@ -201,7 +138,7 @@
               "xs:dateTime"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -210,11 +147,69 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 9,
+  "codeType": "String",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 40,
+  "editType": "InDialog",
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Description",
+    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Code"
+  ],
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CHART_OF_CALCULATION_TYPES",
+  "modules": [],
+  "name": "ПланВидовРасчета1",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": []
+  },
+  "onActionPeriod": "",
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": []
+  },
   "useStandardCommands": true,
   "uuid": "1755c534-9ccd-49c4-9f8b-2aa066424aaa"
 }}

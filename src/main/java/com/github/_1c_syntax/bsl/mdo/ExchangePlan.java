@@ -95,44 +95,11 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   String comment = "";
 
   /**
-   * AttributeOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список атрибутов
-   */
   @Default
-  List<Attribute> attributes = Collections.emptyList();
-
-  /**
-   * FormOwner
-   */
-
-  /**
-   * Список форм
-   */
-  @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * CommandOwner
-   */
-
-  /**
-   * Список команд
-   */
-  @Default
-  List<Command> commands = Collections.emptyList();
-
-  /**
-   * TemplateOwner
-   */
-
-  /**
-   * Список макетов
-   */
-  @Default
-  List<Template> templates = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner
@@ -143,16 +110,6 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
    */
   @Default
   List<Module> modules = Collections.emptyList();
-
-  /**
-   * TabularSectionOwner
-   */
-
-  /**
-   * Список табличных частей
-   */
-  @Default
-  List<TabularSection> tabularSections = Collections.emptyList();
 
   /**
    * Custom

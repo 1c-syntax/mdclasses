@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец дочерних команды
@@ -30,6 +31,10 @@ public interface CommandOwner extends ChildrenOwner {
   /**
    * Список команд объекта
    */
-  List<Command> getCommands();
-
+  default List<Command> getCommands() {
+    return getChildren().stream()
+      .filter(Command.class::isInstance)
+      .map(Command.class::cast)
+      .collect(Collectors.toList());
+  }
 }

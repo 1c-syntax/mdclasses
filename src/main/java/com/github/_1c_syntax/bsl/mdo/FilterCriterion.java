@@ -92,24 +92,11 @@ public class FilterCriterion implements MDObject, FormOwner, CommandOwner, Modul
   String comment = "";
 
   /**
-   * FormOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список форм
-   */
   @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * CommandOwner
-   */
-
-  /**
-   * Список команд
-   */
-  @Default
-  List<Command> commands = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner

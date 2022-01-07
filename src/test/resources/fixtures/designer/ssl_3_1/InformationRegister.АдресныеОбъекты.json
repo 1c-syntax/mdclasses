@@ -1,5 +1,13 @@
 {"com.github._1c_syntax.bsl.mdo.InformationRegister": {
-  "attributes": [
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryRecordForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "children": [
     {
       "uuid": "0d7c3192-b15b-4d40-83f9-b76c6f8e654f",
       "name": "РодительскийИдентификатор",
@@ -328,17 +336,162 @@
       "useInTotals": false,
       "denyIncompleteValues": false,
       "master": false
-    }
-  ],
-  "auxiliaryListForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryRecordForm": {
-    "@reference": "../auxiliaryListForm"
-  },
-  "commands": [
+    },
+    {
+      "uuid": "0bcabdf4-3348-405d-ba75-7bcc106f9e7f",
+      "name": "АктуализацияУстаревшегоКлассификатора",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Актуализация устаревшего классификатора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.АктуализацияУстаревшегоКлассификатора",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.АктуализацияУстаревшегоКлассификатора"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "5f2980ca-3f1c-4680-a6e9-477825442782",
+      "name": "ЗагрузкаАдресногоКлассификатора",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Загрузка адресного классификатора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.ЗагрузкаАдресногоКлассификатора",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.ЗагрузкаАдресногоКлассификатора"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "40fd6b4a-2180-4403-b7e6-48b42d8285b7",
+      "name": "ОчисткаАдресногоКлассификатора",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Очистка адресного классификатора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.ОчисткаАдресногоКлассификатора",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.ОчисткаАдресногоКлассификатора"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "ef098c52-fcfa-4f0f-85b0-aba0d5aa46b2",
+      "name": "СведенияОбАдресномКлассификаторе",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Сведения об адресном классификаторе"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.СведенияОбАдресномКлассификаторе",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.СведенияОбАдресномКлассификаторе"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "a671cb1e-b27a-44bb-a8ca-1388f099de2e",
+      "name": "КлассификаторСубъектовРФ",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Классификатор субъектов РФ"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Template.КлассификаторСубъектовРФ",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Макет.КлассификаторСубъектовРФ"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "TEXT_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "6cff6b09-91b5-4f2b-89aa-23d2f83f9d89",
+      "name": "АдресныеСокращения",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Адресные сокращения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "InformationRegister.АдресныеОбъекты.Template.АдресныеСокращения",
+        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Макет.АдресныеСокращения"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "TEXT_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/templateData"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
     {
       "uuid": "a4b6920e-3e25-4798-809a-27d7bfae4ee7",
       "name": "ЗагрузитьАдресныйКлассификатор",
@@ -371,7 +524,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -406,7 +559,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -441,7 +594,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
@@ -467,108 +620,6 @@
   "extendedRecordPresentation": {
     "content": []
   },
-  "forms": [
-    {
-      "uuid": "0bcabdf4-3348-405d-ba75-7bcc106f9e7f",
-      "name": "АктуализацияУстаревшегоКлассификатора",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Актуализация устаревшего классификатора"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.АктуализацияУстаревшегоКлассификатора",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.АктуализацияУстаревшегоКлассификатора"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "5f2980ca-3f1c-4680-a6e9-477825442782",
-      "name": "ЗагрузкаАдресногоКлассификатора",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Загрузка адресного классификатора"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.ЗагрузкаАдресногоКлассификатора",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.ЗагрузкаАдресногоКлассификатора"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "40fd6b4a-2180-4403-b7e6-48b42d8285b7",
-      "name": "ОчисткаАдресногоКлассификатора",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Очистка адресного классификатора"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.ОчисткаАдресногоКлассификатора",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.ОчисткаАдресногоКлассификатора"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "ef098c52-fcfa-4f0f-85b0-aba0d5aa46b2",
-      "name": "СведенияОбАдресномКлассификаторе",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Сведения об адресном классификаторе"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Form.СведенияОбАдресномКлассификаторе",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Форма.СведенияОбАдресномКлассификаторе"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "informationRegisterPeriodicity": "Nonperiodical",
@@ -577,7 +628,7 @@
   },
   "mainFilterOnPeriod": false,
   "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
   },
   "mdoType": "INFORMATION_REGISTER",
   "modules": [
@@ -585,7 +636,7 @@
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/АдресныеОбъекты/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "supportVariant": "NONE"
     }
@@ -604,63 +655,6 @@
       ]
     ]
   },
-  "templates": [
-    {
-      "uuid": "a671cb1e-b27a-44bb-a8ca-1388f099de2e",
-      "name": "КлассификаторСубъектовРФ",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Классификатор субъектов РФ"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "TEMPLATE",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Template.КлассификаторСубъектовРФ",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Макет.КлассификаторСубъектовРФ"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "templateType": "TEXT_DOCUMENT",
-      "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
-      },
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "6cff6b09-91b5-4f2b-89aa-23d2f83f9d89",
-      "name": "АдресныеСокращения",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Адресные сокращения"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "TEMPLATE",
-        "mdoRef": "InformationRegister.АдресныеОбъекты.Template.АдресныеСокращения",
-        "mdoRefRu": "РегистрСведений.АдресныеОбъекты.Макет.АдресныеСокращения"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "templateType": "TEXT_DOCUMENT",
-      "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/templateData"
-      },
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,
   "uuid": "afe79ef0-7830-43ce-85f3-c4c97831aa67",

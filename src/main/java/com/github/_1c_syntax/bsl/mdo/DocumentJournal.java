@@ -92,44 +92,11 @@ public class DocumentJournal implements MDObject, AttributeOwner, FormOwner, Com
   String comment = "";
 
   /**
-   * AttributeOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список атрибутов
-   */
   @Default
-  List<Attribute> attributes = Collections.emptyList();
-
-  /**
-   * FormOwner
-   */
-
-  /**
-   * Список форм
-   */
-  @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * CommandOwner
-   */
-
-  /**
-   * Список команд
-   */
-  @Default
-  List<Command> commands = Collections.emptyList();
-
-  /**
-   * TemplateOwner
-   */
-
-  /**
-   * Список макетов
-   */
-  @Default
-  List<Template> templates = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner

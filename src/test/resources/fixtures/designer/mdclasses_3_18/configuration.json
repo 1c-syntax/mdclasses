@@ -284,8 +284,7 @@
       "comment": "",
       "templateType": "TEXT_DOCUMENT",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -309,8 +308,7 @@
       "comment": "",
       "templateType": "BINARY_DATA",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -334,8 +332,7 @@
       "comment": "",
       "templateType": "ACTIVE_DOCUMENT",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -359,8 +356,7 @@
       "comment": "",
       "templateType": "HTML_DOCUMENT",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -384,8 +380,7 @@
       "comment": "",
       "templateType": "GEOGRAPHICAL_SCHEMA",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -409,8 +404,7 @@
       "comment": "",
       "templateType": "GRAPHICAL_SCHEME",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -461,8 +455,7 @@
       "comment": "",
       "templateType": "DATA_COMPOSITION_APPEARANCE_TEMPLATE",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -486,8 +479,7 @@
       "comment": "",
       "templateType": "ADD_IN",
       "templateData": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.CommonTemplate/templateData"
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       }
     },
     {
@@ -529,12 +521,8 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [],
-      "forms": [],
-      "commands": [],
-      "templates": [],
+      "children": [],
       "modules": [],
-      "tabularSections": [],
       "distributedInfoBase": false,
       "includeConfigurationExtensions": false,
       "content": [],
@@ -546,19 +534,29 @@
         "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "editType": "InDialog",
       "inputByString": [
@@ -645,7 +643,9 @@
           "moduleType": "BotModule",
           "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/Bots/Бот1/Ext/Module.bsl",
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "BOT",
+            "mdoRef": "Bot.Бот1",
+            "mdoRefRu": "Бот.Бот1"
           },
           "supportVariant": "NONE"
         }
@@ -667,7 +667,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "414be912-18b3-4501-82ab-8a2d7ee3c5b4",
           "name": "Реквизит1",
@@ -701,11 +701,11 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
           }
-        }
-      ],
-      "forms": [
+        },
         {
           "uuid": "c51fb26c-ab8b-461d-b887-0205465f7bd0",
           "name": "ФормаЭлемента",
@@ -728,54 +728,75 @@
           "formType": "MANAGED",
           "modules": [],
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
           }
         }
       ],
-      "commands": [],
-      "templates": [],
       "modules": [
         {
           "moduleType": "ObjectModule",
           "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/Catalogs/Справочник1/Ext/ObjectModule.bsl",
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
           },
           "supportVariant": "NONE"
         }
       ],
-      "tabularSections": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.Справочник1.Форма.ФормаЭлемента"
       },
       "defaultFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "editType": "InDialog",
       "inputByString": [
@@ -783,7 +804,7 @@
         "Catalog.Справочник1.StandardAttribute.Code"
       ],
       "createOnInput": "Use",
-      "dataLockControlMode": "AUTOMATIC",
+      "dataLockControlMode": "MANAGED",
       "fullTextSearch": "USE",
       "listPresentation": {
         "content": []
@@ -843,8 +864,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [],
-      "forms": [
+      "children": [
         {
           "uuid": "17d8dadd-6892-4644-955c-020f3bf8490e",
           "name": "ФормаЭлемента",
@@ -867,45 +887,64 @@
           "formType": "MANAGED",
           "modules": [],
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "CATALOG",
+            "mdoRef": "Catalog.СправочникБезСинонима",
+            "mdoRefRu": "Справочник.СправочникБезСинонима"
           }
         }
       ],
-      "commands": [],
-      "templates": [],
       "modules": [],
-      "tabularSections": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+        "type": "FORM",
+        "mdoRef": "Catalog.СправочникБезСинонима.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.СправочникБезСинонима.Форма.ФормаЭлемента"
       },
       "defaultFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "editType": "InDialog",
       "inputByString": [
@@ -982,7 +1021,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "446eb478-5c22-4841-ae62-e7c0fa7ad70d",
           "name": "Реквизит1",
@@ -1016,11 +1055,11 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
           }
-        }
-      ],
-      "forms": [
+        },
         {
           "uuid": "61eb6a8f-8e42-42ef-9c4b-e0922137860a",
           "name": "ФормаДокумента",
@@ -1043,23 +1082,11 @@
           "formType": "MANAGED",
           "modules": [],
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
           }
-        }
-      ],
-      "commands": [],
-      "templates": [],
-      "modules": [
-        {
-          "moduleType": "ObjectModule",
-          "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/Documents/Документ1/Ext/ObjectModule.bsl",
-          "owner": {
-            "@reference": "../../../mdoReference"
-          },
-          "supportVariant": "NONE"
-        }
-      ],
-      "tabularSections": [
+        },
         {
           "uuid": "7d350b9a-5874-464e-81ce-2e058b361a40",
           "name": "ТабличнаяЧасть1",
@@ -1074,7 +1101,7 @@
           "objectBelonging": "OWN",
           "supportVariant": "NONE",
           "comment": "",
-          "attributes": [
+          "children": [
             {
               "uuid": "bfc15ba8-4dfc-4680-b4e6-86754baf51ce",
               "name": "Реквизит1",
@@ -1102,35 +1129,63 @@
                 }
               },
               "owner": {
-                "@reference": "../../../mdoReference"
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1"
               }
             }
           ],
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
           }
+        }
+      ],
+      "modules": [
+        {
+          "moduleType": "ObjectModule",
+          "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/Documents/Документ1/Ext/ObjectModule.bsl",
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          },
+          "supportVariant": "NONE"
         }
       ],
       "registerRecords": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+        "type": "FORM",
+        "mdoRef": "Document.Документ1.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.Документ1.Форма.ФормаДокумента"
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "inputByString": [
         "Document.Документ1.StandardAttribute.Number"
@@ -1197,32 +1252,40 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [],
-      "forms": [],
-      "commands": [],
-      "templates": [],
+      "children": [],
       "modules": [],
-      "tabularSections": [],
       "registerRecords": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "inputByString": [
         "Document.ЗаказКлиента.StandardAttribute.Number"
@@ -1289,7 +1352,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "758e169f-1aef-4a16-a78b-efd3c78e4071",
           "name": "ЗаказКлиента",
@@ -1328,7 +1391,9 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "DOCUMENT",
+            "mdoRef": "Document.РеализацияТоваровУслуг",
+            "mdoRefRu": "Документ.РеализацияТоваровУслуг"
           }
         },
         {
@@ -1369,35 +1434,45 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "DOCUMENT",
+            "mdoRef": "Document.РеализацияТоваровУслуг",
+            "mdoRefRu": "Документ.РеализацияТоваровУслуг"
           }
         }
       ],
-      "forms": [],
-      "commands": [],
-      "templates": [],
       "modules": [],
-      "tabularSections": [],
       "registerRecords": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "inputByString": [
         "Document.РеализацияТоваровУслуг.StandardAttribute.Number"
@@ -1459,7 +1534,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "bdf4a4cb-24dc-4223-a79d-4702b1adaa5c",
           "name": "Ресурс1",
@@ -1493,7 +1568,9 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений1"
           }
         },
         {
@@ -1529,7 +1606,9 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений1"
           },
           "useInTotals": false,
           "denyIncompleteValues": false,
@@ -1568,30 +1647,37 @@
             }
           },
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений1"
           },
           "useInTotals": false,
           "denyIncompleteValues": false,
           "master": false
         }
       ],
-      "forms": [],
-      "commands": [],
-      "templates": [],
       "modules": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultRecordForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryRecordForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "editType": "InDialog",
       "dataLockControlMode": "AUTOMATIC",
@@ -1634,43 +1720,59 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [],
-      "forms": [],
-      "commands": [],
-      "templates": [],
+      "children": [],
       "modules": [],
-      "tabularSections": [],
       "useStandardCommands": true,
       "includeHelpInContents": false,
       "defaultListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "defaultFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryObjectForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryListForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "auxiliaryFolderChoiceForm": {
-        "@reference": "../../com.github._1c_syntax.bsl.mdo.ExchangePlan/defaultListForm"
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       },
       "editType": "InDialog",
       "inputByString": [
@@ -1753,7 +1855,9 @@
           "moduleType": "IntegrationServiceModule",
           "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/IntegrationServices/СервисИнтеграции1/Ext/Module.bsl",
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INTEGRATION_SERVICE",
+            "mdoRef": "IntegrationService.СервисИнтеграции1",
+            "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
           },
           "supportVariant": "NONE"
         }
@@ -1774,7 +1878,9 @@
           "supportVariant": "NONE",
           "comment": "",
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INTEGRATION_SERVICE",
+            "mdoRef": "IntegrationService.СервисИнтеграции1",
+            "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
           },
           "messageDirection": "SEND",
           "handler": "",
@@ -1795,7 +1901,9 @@
           "supportVariant": "NONE",
           "comment": "",
           "owner": {
-            "@reference": "../../../mdoReference"
+            "type": "INTEGRATION_SERVICE",
+            "mdoRef": "IntegrationService.СервисИнтеграции1",
+            "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
           },
           "messageDirection": "SEND",
           "handler": "",
@@ -1806,7 +1914,11 @@
     }
   ],
   "comment": "",
-  "commonSettingsStorage": "",
+  "commonSettingsStorage": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "compatibilityMode": {
     "minor": 3,
     "version": 18
@@ -1822,28 +1934,82 @@
     "content": []
   },
   "dataLockControlMode": "AUTOMATIC_AND_MANAGED",
-  "defaultConstantsForm": "",
-  "defaultDynamicListSettingsForm": "",
+  "defaultConstantsForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "defaultDynamicListSettingsForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "defaultInterface": {
-    "@class": "null"
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
   },
   "defaultLanguage": {
-    "@reference": "../children/com.github._1c_syntax.bsl.mdo.Language"
+    "uuid": "6aff9aa7-4406-45ee-bf4f-24960d0cfa22",
+    "name": "Русский",
+    "synonym": {
+      "content": [
+        [
+          "ru",
+          "Русский"
+        ]
+      ]
+    },
+    "mdoReference": {
+      "type": "LANGUAGE",
+      "mdoRef": "Language.Русский",
+      "mdoRefRu": "Язык.Русский"
+    },
+    "objectBelonging": "OWN",
+    "supportVariant": "NONE",
+    "comment": "",
+    "languageCode": "ru"
   },
-  "defaultReportForm": "",
-  "defaultReportSettingsForm": "",
-  "defaultReportVariantForm": "",
+  "defaultReportForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "defaultReportSettingsForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "defaultReportVariantForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "defaultRoles": [],
   "defaultRunMode": "MANAGED_APPLICATION",
-  "defaultSearchForm": "",
+  "defaultSearchForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "defaultStyle": {
-    "@class": "null"
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
   },
   "detailedInformation": {
     "content": []
   },
-  "dynamicListsUserSettingsStorage": "",
-  "formDataSettingsStorage": "",
+  "dynamicListsUserSettingsStorage": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "formDataSettingsStorage": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "includeHelpInContents": false,
   "interfaceCompatibilityMode": "Taxi",
   "mainClientApplicationWindowMode": "Normal",
@@ -1878,9 +2044,16 @@
   ],
   "name": "Конфигурация",
   "objectAutonumerationMode": "NotAutoFree",
-  "plainChildren": [],
-  "reportsUserSettingsStorage": "",
-  "reportsVariantsStorage": "",
+  "reportsUserSettingsStorage": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "reportsVariantsStorage": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "requiredMobileApplicationPermissions": [],
   "scriptVariant": "RUSSIAN",
   "supportVariant": "NONE",

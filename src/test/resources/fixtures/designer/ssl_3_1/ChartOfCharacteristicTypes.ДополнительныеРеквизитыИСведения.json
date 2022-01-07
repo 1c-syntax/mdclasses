@@ -1,5 +1,27 @@
 {"com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
-  "attributes": [
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristicExtValues": [],
+  "characteristics": [],
+  "checkUnique": false,
+  "children": [
     {
       "uuid": "8064eb3a-d56c-4517-9db0-b7300149c7c4",
       "name": "Виден",
@@ -670,278 +692,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": false,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryFolderForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [],
-  "characteristicExtValues": [],
-  "characteristics": [],
-  "checkUnique": false,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "choiceMode": "BothWays",
-  "codeAllowedLength": "Fixed",
-  "codeLength": 0,
-  "codeSeries": "WholeCharacteristicKind",
-  "commands": [],
-  "comment": "",
-  "createOnInput": "DontUse",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultFolderForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаСписка",
-    "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаСписка"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаЭлемента",
-    "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаЭлемента"
-  },
-  "defaultPresentation": "AsDescription",
-  "descriptionLength": 150,
-  "editType": "InDialog",
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "foldersOnTop": true,
-  "forms": [
-    {
-      "uuid": "f82d5bd6-4c74-4c23-978c-565aae3d752a",
-      "name": "ФормаЭлемента",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма элемента"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
     },
-    {
-      "uuid": "7fba41a5-4faa-412b-b367-b30ced0314c0",
-      "name": "ФормаСписка",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма списка"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultListForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "37333d0b-3589-4b8b-bf6c-e605e0287b66",
-      "name": "РазблокированиеРеквизитов",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Разблокирование реквизитов"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.РазблокированиеРеквизитов",
-        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.РазблокированиеРеквизитов"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "1813c469-da20-46a6-8947-6815b66f64c1",
-      "name": "ИзменениеНастройкиСвойства",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Изменение настройки свойства"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ИзменениеНастройкиСвойства",
-        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ИзменениеНастройкиСвойства"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "64e702e9-8934-4356-a1b2-be0e8b390630",
-      "name": "ЗависимостьРеквизитов",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Зависимость реквизитов"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ЗависимостьРеквизитов",
-        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ЗависимостьРеквизитов"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "74880ac4-bdd3-48e6-82a0-a2103da42723",
-      "name": "ВыборРеквизита",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Выбор реквизита"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ВыборРеквизита",
-        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ВыборРеквизита"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "hierarchical": false,
-  "includeHelpInContents": true,
-  "inputByString": [
-    "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Description"
-  ],
-  "listPresentation": {
-    "content": []
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "ДополнительныеРеквизитыИСведения",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": [
-      [
-        "ru",
-        "Дополнительный реквизит / сведение"
-      ]
-    ]
-  },
-  "predefinedDataUpdate": "Auto",
-  "quickChoice": false,
-  "searchStringModeOnInputByString": "Begin",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Дополнительные реквизиты и сведения"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "d6b72e00-018a-4fdc-b6a4-06dcecf89809",
       "name": "ЗависимостиДополнительныхРеквизитов",
@@ -961,7 +712,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "9f816562-57f0-473f-8c85-14f7521ffd7f",
           "name": "ЗависимоеСвойство",
@@ -1030,7 +781,7 @@
               "cfg:CatalogRef.НаборыДополнительныхРеквизитовИСведений"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1162,7 +913,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1184,7 +935,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "0f0f5b42-2407-44e6-85d7-26ace96b2cd9",
           "name": "КодЯзыка",
@@ -1392,11 +1143,254 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "f82d5bd6-4c74-4c23-978c-565aae3d752a",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаЭлемента",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "7fba41a5-4faa-412b-b367-b30ced0314c0",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаСписка",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "37333d0b-3589-4b8b-bf6c-e605e0287b66",
+      "name": "РазблокированиеРеквизитов",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Разблокирование реквизитов"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.РазблокированиеРеквизитов",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.РазблокированиеРеквизитов"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "1813c469-da20-46a6-8947-6815b66f64c1",
+      "name": "ИзменениеНастройкиСвойства",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Изменение настройки свойства"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ИзменениеНастройкиСвойства",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ИзменениеНастройкиСвойства"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "64e702e9-8934-4356-a1b2-be0e8b390630",
+      "name": "ЗависимостьРеквизитов",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Зависимость реквизитов"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ЗависимостьРеквизитов",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ЗависимостьРеквизитов"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "74880ac4-bdd3-48e6-82a0-a2103da42723",
+      "name": "ВыборРеквизита",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Выбор реквизита"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ВыборРеквизита",
+        "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ВыборРеквизита"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
-  "templates": [],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Fixed",
+  "codeLength": 0,
+  "codeSeries": "WholeCharacteristicKind",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": false,
+  "includeHelpInContents": true,
+  "inputByString": [
+    "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Description"
+  ],
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ДополнительныеРеквизитыИСведения",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Дополнительный реквизит / сведение"
+      ]
+    ]
+  },
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Дополнительные реквизиты и сведения"
+      ]
+    ]
+  },
   "type": {
     "types": [
       {

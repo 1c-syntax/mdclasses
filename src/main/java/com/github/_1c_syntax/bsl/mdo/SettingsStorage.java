@@ -91,24 +91,11 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   String comment = "";
 
   /**
-   * FormOwner
+   * ChildrenOwner
    */
 
-  /**
-   * Список форм
-   */
   @Default
-  List<Form> forms = Collections.emptyList();
-
-  /**
-   * TemplateOwner
-   */
-
-  /**
-   * Список макетов
-   */
-  @Default
-  List<Template> templates = Collections.emptyList();
+  List<MDObject> children = Collections.emptyList();
 
   /**
    * ModuleOwner

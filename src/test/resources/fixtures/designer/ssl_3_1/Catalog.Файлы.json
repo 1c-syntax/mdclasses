@@ -1,5 +1,29 @@
 {"com.github._1c_syntax.bsl.mdo.Catalog": {
-  "attributes": [
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
+  "checkUnique": false,
+  "children": [
     {
       "uuid": "68944d09-618e-4fa3-a7af-8c84218e0ac7",
       "name": "Автор",
@@ -958,357 +982,7 @@
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "autonumbering": false,
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryFolderForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryListForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "basedOn": [],
-  "characteristics": [
-    "\n\t\t\t\t\t",
-    "\n\t\t\t\t\t"
-  ],
-  "checkUnique": false,
-  "choiceDataGetModeOnInputByString": "Directly",
-  "choiceHistoryOnInput": "Auto",
-  "choiceMode": "BothWays",
-  "codeAllowedLength": "Variable",
-  "codeLength": 0,
-  "codeSeries": "WholeCatalog",
-  "codeType": "String",
-  "commands": [
-    {
-      "uuid": "5b952e35-1037-4447-8293-6d8889692c8b",
-      "name": "Файлы",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Файлы"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "COMMAND",
-        "mdoRef": "Catalog.Файлы.Command.Файлы",
-        "mdoRefRu": "Справочник.Файлы.Команда.Файлы"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "Открывает список файлов в папках",
-      "modules": [
-        {
-          "moduleType": "CommandModule",
-          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/Файлы/Ext/CommandModule.bsl",
-          "owner": {
-            "type": "COMMAND",
-            "mdoRef": "Command.Файлы",
-            "mdoRefRu": "Команда.Файлы"
-          },
-          "supportVariant": "NONE"
-        }
-      ],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
     },
-    {
-      "uuid": "2bc2ca58-6cc0-4d4b-8672-f9328c86c2c1",
-      "name": "ВерсииФайла",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Версии файла"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "COMMAND",
-        "mdoRef": "Catalog.Файлы.Command.ВерсииФайла",
-        "mdoRefRu": "Справочник.Файлы.Команда.ВерсииФайла"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "modules": [
-        {
-          "moduleType": "CommandModule",
-          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/ВерсииФайла/Ext/CommandModule.bsl",
-          "owner": {
-            "type": "COMMAND",
-            "mdoRef": "Command.ВерсииФайла",
-            "mdoRefRu": "Команда.ВерсииФайла"
-          },
-          "supportVariant": "NONE"
-        }
-      ],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
-  "comment": "Файлы в папках",
-  "createOnInput": "DontUse",
-  "dataHistory": "DontUse",
-  "dataLockControlMode": "MANAGED",
-  "dataLockFields": [],
-  "defaultChoiceForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.Файлы.Form.ФормаВыбора",
-    "mdoRefRu": "Справочник.Файлы.Форма.ФормаВыбора"
-  },
-  "defaultFolderChoiceForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultFolderForm": {
-    "@reference": "../auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.Файлы.Form.Файлы",
-    "mdoRefRu": "Справочник.Файлы.Форма.Файлы"
-  },
-  "defaultObjectForm": {
-    "type": "FORM",
-    "mdoRef": "Catalog.Файлы.Form.ФормаЭлемента",
-    "mdoRefRu": "Справочник.Файлы.Форма.ФормаЭлемента"
-  },
-  "defaultPresentation": "AsDescription",
-  "descriptionLength": 150,
-  "editType": "InDialog",
-  "executeAfterWriteDataHistoryVersionProcessing": false,
-  "explanation": {
-    "content": []
-  },
-  "extendedListPresentation": {
-    "content": []
-  },
-  "extendedObjectPresentation": {
-    "content": []
-  },
-  "foldersOnTop": true,
-  "forms": [
-    {
-      "uuid": "7e32c295-a769-4cff-a3eb-992f7031475f",
-      "name": "Файлы",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Файлы"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultListForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "5a398637-a06c-4442-9093-a864fa7f049f",
-      "name": "ФормаВыбора",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма выбора"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultChoiceForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "fe4aa694-76c4-49c9-96ce-a2476f4ff58b",
-      "name": "ФормаНового",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма нового"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Catalog.Файлы.Form.ФормаНового",
-        "mdoRefRu": "Справочник.Файлы.Форма.ФормаНового"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "115a6019-ef87-4126-8ebf-070c1e882940",
-      "name": "ФормаПеретаскивания",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма перетаскивания"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Catalog.Файлы.Form.ФормаПеретаскивания",
-        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПеретаскивания"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "162ce023-b2e1-41dc-bcaf-b8e30caccce0",
-      "name": "ФормаПодбора",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма подбора"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "Catalog.Файлы.Form.ФормаПодбора",
-        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПодбора"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    },
-    {
-      "uuid": "526c688e-a4d4-45f7-8bba-b8ceff38fe27",
-      "name": "ФормаЭлемента",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Форма элемента"
-          ]
-        ]
-      },
-      "mdoReference": {
-        "@reference": "../../../defaultObjectForm"
-      },
-      "objectBelonging": "OWN",
-      "supportVariant": "NONE",
-      "comment": "",
-      "formType": "MANAGED",
-      "modules": [],
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
-  "fullTextSearch": "USE",
-  "fullTextSearchOnInputByString": "DontUse",
-  "hierarchical": false,
-  "hierarchyType": "HierarchyFoldersAndItems",
-  "includeHelpInContents": true,
-  "inputByString": [
-    "Catalog.Файлы.StandardAttribute.Description"
-  ],
-  "levelCount": 2,
-  "limitLevelCount": false,
-  "listPresentation": {
-    "content": []
-  },
-  "mdoReference": {
-    "@reference": "../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
-  "mdoType": "CATALOG",
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE"
-    }
-  ],
-  "name": "Файлы",
-  "objectBelonging": "OWN",
-  "objectPresentation": {
-    "content": [
-      [
-        "ru",
-        "Файл"
-      ]
-    ]
-  },
-  "owners": [],
-  "predefinedDataUpdate": "Auto",
-  "quickChoice": false,
-  "searchStringModeOnInputByString": "Begin",
-  "subordinationUse": "ToItems",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Файлы"
-      ]
-    ]
-  },
-  "tabularSections": [
     {
       "uuid": "f48b4475-2cd9-41df-962a-6529f84985ca",
       "name": "ДополнительныеРеквизиты",
@@ -1328,7 +1002,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "2fbfe405-48e6-4abf-99c2-7f1f66a62b48",
           "name": "Свойство",
@@ -1356,7 +1030,7 @@
               "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1388,7 +1062,7 @@
           "type": {
             "types": [],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1438,7 +1112,7 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     },
     {
@@ -1460,7 +1134,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "attributes": [
+      "children": [
         {
           "uuid": "9c2d5313-a4fd-417e-a340-ad4980d0028b",
           "name": "Отпечаток",
@@ -1570,7 +1244,7 @@
               "v8:ValueStorage"
             ],
             "stringQualifier": {
-              "@reference": "../../../../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
+              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
             }
           },
           "owner": {
@@ -1579,11 +1253,159 @@
         }
       ],
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
-    }
-  ],
-  "templates": [
+    },
+    {
+      "uuid": "7e32c295-a769-4cff-a3eb-992f7031475f",
+      "name": "Файлы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Файлы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.Файлы",
+        "mdoRefRu": "Справочник.Файлы.Форма.Файлы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "5a398637-a06c-4442-9093-a864fa7f049f",
+      "name": "ФормаВыбора",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма выбора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаВыбора",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаВыбора"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "fe4aa694-76c4-49c9-96ce-a2476f4ff58b",
+      "name": "ФормаНового",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма нового"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаНового",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаНового"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "115a6019-ef87-4126-8ebf-070c1e882940",
+      "name": "ФормаПеретаскивания",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма перетаскивания"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаПеретаскивания",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПеретаскивания"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "162ce023-b2e1-41dc-bcaf-b8e30caccce0",
+      "name": "ФормаПодбора",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма подбора"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаПодбора",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаПодбора"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "526c688e-a4d4-45f7-8bba-b8ceff38fe27",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Файлы.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.Файлы.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
     {
       "uuid": "67efa786-312f-4c9c-b970-0320e92069af",
       "name": "МакетОтчета",
@@ -1608,10 +1430,180 @@
         "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
       },
       "owner": {
-        "@reference": "../../../attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "5b952e35-1037-4447-8293-6d8889692c8b",
+      "name": "Файлы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Файлы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.Файлы.Command.Файлы",
+        "mdoRefRu": "Справочник.Файлы.Команда.Файлы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Открывает список файлов в папках",
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/Файлы/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.Файлы",
+            "mdoRefRu": "Команда.Файлы"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "2bc2ca58-6cc0-4d4b-8672-f9328c86c2c1",
+      "name": "ВерсииФайла",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Версии файла"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMAND",
+        "mdoRef": "Catalog.Файлы.Command.ВерсииФайла",
+        "mdoRefRu": "Справочник.Файлы.Команда.ВерсииФайла"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Commands/ВерсииФайла/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMAND",
+            "mdoRef": "Command.ВерсииФайла",
+            "mdoRefRu": "Команда.ВерсииФайла"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       }
     }
   ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 0,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "comment": "Файлы в папках",
+  "createOnInput": "DontUse",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/mdoReference"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "content": []
+  },
+  "extendedObjectPresentation": {
+    "content": []
+  },
+  "foldersOnTop": true,
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": false,
+  "hierarchyType": "HierarchyFoldersAndItems",
+  "includeHelpInContents": true,
+  "inputByString": [
+    "Catalog.Файлы.StandardAttribute.Description"
+  ],
+  "levelCount": 2,
+  "limitLevelCount": false,
+  "listPresentation": {
+    "content": []
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Файлы/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "Файлы",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Файл"
+      ]
+    ]
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Файлы"
+      ]
+    ]
+  },
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": false,
   "uuid": "e7b0ae70-0192-456c-9dc5-e66049fa9df2"
