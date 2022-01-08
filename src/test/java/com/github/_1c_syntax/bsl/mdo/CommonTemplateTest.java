@@ -21,16 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class CommonTemplateTest extends AbstractMDObjectTest<CommonTemplate> {
-  CommonTemplateTest() {
-    super(CommonTemplate.class);
-  }
+class CommonTemplateTest {
 
   @ParameterizedTest()
   @CsvSource(

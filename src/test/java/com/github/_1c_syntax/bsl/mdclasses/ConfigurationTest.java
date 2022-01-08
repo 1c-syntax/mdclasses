@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDClassTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -29,10 +28,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static com.github._1c_syntax.bsl.test_utils.Assertions.assertThat;
 
-class ConfigurationTest extends AbstractMDClassTest<Configuration> {
-  ConfigurationTest() {
-    super(Configuration.class);
-  }
+class ConfigurationTest {
 
   @ParameterizedTest()
   @CsvSource(

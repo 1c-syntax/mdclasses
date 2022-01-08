@@ -30,5 +30,5 @@ package com.github._1c_syntax.bsl.mdo.support;
 public enum AttributeKind {
   CUSTOM,
   COMMON,
-  STANDARD;
+  STANDARD
 }

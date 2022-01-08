@@ -63,7 +63,6 @@ public class RoleRightConverter implements Converter {
       } else {
         properties.put(nodeName, Boolean.parseBoolean(reader.getValue()));
       }
-
       reader.moveUp();
     }
 

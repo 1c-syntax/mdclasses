@@ -44,65 +44,18 @@ public class MDClasses {
    * @param path Путь к корню проекта
    * @return Конфигурация или расширение
    */
-//  @SneakyThrows
-//  public MDClass createConfiguration(Path path) {
-//    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
-//    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
-//    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-//      ParseSupportData.readSimple(fileParentConfiguration.get());
-//    }
-//
-//    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
-//    if (mdo.isPresent()) {
-//      var configuration = (MDClass) mdo.get().buildMDObject();
-//      computeCommonAttributeLinks(configuration);
-//      return configuration;
-//    }
-//
-//    return createConfiguration();
-//  }
   public MDClass createConfiguration(Path path) {
-    return MDOReader.readConfiguration(path);
-//
-//    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
-//    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
-//    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-//      ParseSupportData.readSimple(fileParentConfiguration.get());
-//    }
-//
-//    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
-//    if (mdo.isPresent()) {
-//      var configuration = (MDClass) mdo.get().buildMDObject();
-//      computeCommonAttributeLinks(configuration);
-//      return configuration;
-//    }
-//
-//    return createConfiguration();
+    return createConfiguration(path, false);
   }
-
-  public MDClass createConfiguration(Path path, boolean skipSupport) {
-    return MDOReader.readConfiguration(path, skipSupport);
-  }
-
-
 
   /**
-   * Выполняет связь общего реквизита с объектами из его состава
+   * Создает конфигурацию или расширение по указанному пути
    *
-   * @param mdc Конфигурация или расширение
+   * @param path        Путь к корню проекта
+   * @param skipSupport Флаг управления чтением информации о поддержке
+   * @return Конфигурация или расширение
    */
-  private static void computeCommonAttributeLinks(MDClass mdc) {
-//    if (mdc instanceof ConfigurationTree) {
-//      var configuration = (ConfigurationTree) mdc;
-//      configuration.getCommonAttributes()
-//        .forEach(commonAttribute -> commonAttribute.getContent()
-//          .forEach(mdoReference -> mdc.findChild(mdoReference)
-//            .ifPresent((MDObject mdObject) -> {
-//              if (mdObject instanceof AttributeOwner) {
-//                ((AttributeOwner) mdObject).addCommonAttribute(commonAttribute);
-//              }
-//            }))
-//        );
-//    }
+  public MDClass createConfiguration(Path path, boolean skipSupport) {
+    return MDOReader.readConfiguration(path, skipSupport);
   }
 }

@@ -22,15 +22,14 @@
 package com.github._1c_syntax.bsl.mdo.storages;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.CommonTemplate;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,18 +37,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TemplateDataTest {
 
-  @ParameterizedTest(name = "{index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "DESIGNER,src/test/resources/metadata/skd/original",
-      "EDT,src/test/resources/metadata/skd/edt",
+      "designer/mdclasses_skd",
+//      "EDT,src/test/resources/metadata/skd/edt",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    final var src = Path.of(argumentsAccessor.getString(1));
-    var mdc = MDClasses.createConfiguration(src);
-//    assertThat(mdc).isInstanceOf(Configuration.class);
-//    checkTemplates((Configuration) mdc);
+    var pack = argumentsAccessor.getString(0);
+    var mdc = MDTestUtils.getMDClass("src/test/resources/ext/" + pack + "/src/cf", false);
+
+    assertThat(mdc).isInstanceOf(Configuration.class);
+    checkTemplates((Configuration) mdc);
   }
 
   private void checkTemplates(Configuration configuration) {

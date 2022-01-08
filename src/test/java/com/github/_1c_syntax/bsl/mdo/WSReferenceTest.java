@@ -21,17 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class WSReferenceTest extends AbstractMDObjectTest<WSReference> {
-  WSReferenceTest() {
-    super(WSReference.class);
-  }
+class WSReferenceTest {
 
   @ParameterizedTest()
   @CsvSource(

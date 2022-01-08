@@ -123,13 +123,18 @@ public interface ConfigurationTree {
     return getSessionParameters().stream().filter(predicate).findFirst();
   }
 
-  //todo дописать для остальных
-
   /**
    * Роли
    */
   default List<Role> getRoles() {
     return getChildrenByType(Role.class);
+  }
+
+  /**
+   * Поиск Роли по условию
+   */
+  default Optional<Role> findRole(Predicate<? super Role> predicate) {
+    return getRoles().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -140,10 +145,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск общего реквизита по условию
+   */
+  default Optional<CommonAttribute> findCommonAttribute(Predicate<? super CommonAttribute> predicate) {
+    return getCommonAttributes().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Планы обмена
    */
   default List<ExchangePlan> getExchangePlans() {
     return getChildrenByType(ExchangePlan.class);
+  }
+
+  /**
+   * Поиск плана обмена по условию
+   */
+  default Optional<ExchangePlan> findExchangePlan(Predicate<? super ExchangePlan> predicate) {
+    return getExchangePlans().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -154,10 +173,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск критерия отбора по условию
+   */
+  default Optional<FilterCriterion> findFilterCriterion(Predicate<? super FilterCriterion> predicate) {
+    return getFilterCriteria().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Подписки на события
    */
   default List<EventSubscription> getEventSubscriptions() {
     return getChildrenByType(EventSubscription.class);
+  }
+
+  /**
+   * Поиск подписки на событие по условию
+   */
+  default Optional<EventSubscription> findEventSubscription(Predicate<? super EventSubscription> predicate) {
+    return getEventSubscriptions().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -168,10 +201,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск регламентного задания по условию
+   */
+  default Optional<ScheduledJob> findScheduledJob(Predicate<? super ScheduledJob> predicate) {
+    return getScheduledJobs().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Боты
    */
   default List<Bot> getBots() {
     return getChildrenByType(Bot.class);
+  }
+
+  /**
+   * Поиск бота по условию
+   */
+  default Optional<Bot> findBot(Predicate<? super Bot> predicate) {
+    return getBots().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -182,10 +229,25 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск функциональной опции по условию
+   */
+  default Optional<FunctionalOption> findFunctionalOption(Predicate<? super FunctionalOption> predicate) {
+    return getFunctionalOptions().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Параметры функциональных опций
    */
   default List<FunctionalOptionsParameter> getFunctionalOptionsParameters() {
     return getChildrenByType(FunctionalOptionsParameter.class);
+  }
+
+  /**
+   * Поиск параметра функциональной опции по условию
+   */
+  default Optional<FunctionalOptionsParameter> findFunctionalOptionsParameter(
+    Predicate<? super FunctionalOptionsParameter> predicate) {
+    return getFunctionalOptionsParameters().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -196,10 +258,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск определяемого типа по условию
+   */
+  default Optional<DefinedType> findDefinedType(Predicate<? super DefinedType> predicate) {
+    return getDefinedTypes().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Хранилища настроек
    */
   default List<SettingsStorage> getSettingsStorages() {
     return getChildrenByType(SettingsStorage.class);
+  }
+
+  /**
+   * Поиск хранилища настроек по условию
+   */
+  default Optional<SettingsStorage> findSettingsStorage(Predicate<? super SettingsStorage> predicate) {
+    return getSettingsStorages().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -210,10 +286,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск общей формы по условию
+   */
+  default Optional<CommonForm> findCommonForm(Predicate<? super CommonForm> predicate) {
+    return getCommonForms().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Общие команды
    */
   default List<CommonCommand> getCommonCommands() {
     return getChildrenByType(CommonCommand.class);
+  }
+
+  /**
+   * Поиск общей команды по условию
+   */
+  default Optional<CommonCommand> findCommonCommand(Predicate<? super CommonCommand> predicate) {
+    return getCommonCommands().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -224,10 +314,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск группы команд по условию
+   */
+  default Optional<CommandGroup> findCommandGroup(Predicate<? super CommandGroup> predicate) {
+    return getCommandGroups().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Общие макеты
    */
   default List<CommonTemplate> getCommonTemplates() {
     return getChildrenByType(CommonTemplate.class);
+  }
+
+  /**
+   * Поиск общего макета по условию
+   */
+  default Optional<CommonTemplate> findCommonTemplate(Predicate<? super CommonTemplate> predicate) {
+    return getCommonTemplates().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -238,10 +342,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск общей картинки по условию
+   */
+  default Optional<CommonPicture> findCommonPicture(Predicate<? super CommonPicture> predicate) {
+    return getCommonPictures().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Интерфейсы
    */
   default List<Interface> getInterfaces() {
     return getChildrenByType(Interface.class);
+  }
+
+  /**
+   * Поиск интерфейса по условию
+   */
+  default Optional<Interface> findInterface(Predicate<? super Interface> predicate) {
+    return getInterfaces().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -252,10 +370,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск XDTO пакета по условию
+   */
+  default Optional<XdtoPackage> findXdtoPackage(Predicate<? super XdtoPackage> predicate) {
+    return getXdtoPackages().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Web-сервисы
    */
   default List<WebService> getWebServices() {
     return getChildrenByType(WebService.class);
+  }
+
+  /**
+   * Поиск веб-сервиса по условию
+   */
+  default Optional<WebService> findWebService(Predicate<? super WebService> predicate) {
+    return getWebServices().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -266,10 +398,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск http-сервиса по условию
+   */
+  default Optional<HttpService> findHttpService(Predicate<? super HttpService> predicate) {
+    return getHttpServices().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * WS-ссылки
    */
   default List<WSReference> getWsReferences() {
     return getChildrenByType(WSReference.class);
+  }
+
+  /**
+   * Поиск ws-ссылки по условию
+   */
+  default Optional<WSReference> findWsReference(Predicate<? super WSReference> predicate) {
+    return getWsReferences().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -280,10 +426,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск сервиса интеграции по условию
+   */
+  default Optional<IntegrationService> findIntegrationService(Predicate<? super IntegrationService> predicate) {
+    return getIntegrationServices().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Элементы стиля
    */
   default List<StyleItem> getStyleItems() {
     return getChildrenByType(StyleItem.class);
+  }
+
+  /**
+   * Поиск элемента стиля по условию
+   */
+  default Optional<StyleItem> findStyleItem(Predicate<? super StyleItem> predicate) {
+    return getStyleItems().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -294,10 +454,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск стиля по условию
+   */
+  default Optional<Style> findStyle(Predicate<? super Style> predicate) {
+    return getStyles().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Языки
    */
   default List<Language> getLanguages() {
     return getChildrenByType(Language.class);
+  }
+
+  /**
+   * Поиск языка по условию
+   */
+  default Optional<Language> findLanguage(Predicate<? super Language> predicate) {
+    return getLanguages().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -308,10 +482,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск константы по условию
+   */
+  default Optional<Constant> findConstant(Predicate<? super Constant> predicate) {
+    return getConstants().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Справочники
    */
   default List<Catalog> getCatalogs() {
     return getChildrenByType(Catalog.class);
+  }
+
+  /**
+   * Поиск справочника по условию
+   */
+  default Optional<Catalog> findCatalog(Predicate<? super Catalog> predicate) {
+    return getCatalogs().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -322,10 +510,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск документа по условию
+   */
+  default Optional<Document> findDocument(Predicate<? super Document> predicate) {
+    return getDocuments().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Нумераторы
    */
   default List<DocumentNumerator> getDocumentNumerators() {
     return getChildrenByType(DocumentNumerator.class);
+  }
+
+  /**
+   * Поиск нумератора по условию
+   */
+  default Optional<DocumentNumerator> findDocumentNumerator(Predicate<? super DocumentNumerator> predicate) {
+    return getDocumentNumerators().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -336,10 +538,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск Последовательности по условию
+   */
+  default Optional<Sequence> findSequence(Predicate<? super Sequence> predicate) {
+    return getSequences().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Журналы документов
    */
   default List<DocumentJournal> getDocumentJournals() {
     return getChildrenByType(DocumentJournal.class);
+  }
+
+  /**
+   * Поиск журнала документов по условию
+   */
+  default Optional<DocumentJournal> findDocumentJournal(Predicate<? super DocumentJournal> predicate) {
+    return getDocumentJournals().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -350,10 +566,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск Перечисления по условию
+   */
+  default Optional<Enum> findEnum(Predicate<? super Enum> predicate) {
+    return getEnums().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Отчеты
    */
   default List<Report> getReports() {
     return getChildrenByType(Report.class);
+  }
+
+  /**
+   * Поиск отчета по условию
+   */
+  default Optional<Report> findReport(Predicate<? super Report> predicate) {
+    return getReports().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -364,10 +594,25 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск обработки по условию
+   */
+  default Optional<DataProcessor> findDataProcessor(Predicate<? super DataProcessor> predicate) {
+    return getDataProcessors().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Планы видов характеристик
    */
   default List<ChartOfCharacteristicTypes> getChartOfCharacteristicTypes() {
     return getChildrenByType(ChartOfCharacteristicTypes.class);
+  }
+
+  /**
+   * Поиск ПВХ по условию
+   */
+  default Optional<ChartOfCharacteristicTypes> findChartOfCharacteristicTypes(
+    Predicate<? super ChartOfCharacteristicTypes> predicate) {
+    return getChartOfCharacteristicTypes().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -378,10 +623,25 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск плана счетов по условию
+   */
+  default Optional<ChartOfAccounts> findChartOfAccounts(Predicate<? super ChartOfAccounts> predicate) {
+    return getChartOfAccounts().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Планы видов расчета
    */
   default List<ChartOfCalculationTypes> getChartOfCalculationTypes() {
     return getChildrenByType(ChartOfCalculationTypes.class);
+  }
+
+  /**
+   * Поиск ПВР по условию
+   */
+  default Optional<ChartOfCalculationTypes> findChartOfCalculationTypes(
+    Predicate<? super ChartOfCalculationTypes> predicate) {
+    return getChartOfCalculationTypes().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -392,10 +652,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск регистра сведений по условию
+   */
+  default Optional<InformationRegister> findInformationRegister(Predicate<? super InformationRegister> predicate) {
+    return getInformationRegisters().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Регистры накопления
    */
   default List<AccumulationRegister> getAccumulationRegisters() {
     return getChildrenByType(AccumulationRegister.class);
+  }
+
+  /**
+   * Поиск регистра накопления по условию
+   */
+  default Optional<AccumulationRegister> findAccumulationRegister(Predicate<? super AccumulationRegister> predicate) {
+    return getAccumulationRegisters().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -406,10 +680,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск регистра бухгалтерии по условию
+   */
+  default Optional<AccountingRegister> findAccountingRegister(Predicate<? super AccountingRegister> predicate) {
+    return getAccountingRegisters().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Регистры расчета
    */
   default List<CalculationRegister> getCalculationRegisters() {
     return getChildrenByType(CalculationRegister.class);
+  }
+
+  /**
+   * Поиск регистра расчетов по условию
+   */
+  default Optional<CalculationRegister> findCalculationRegister(Predicate<? super CalculationRegister> predicate) {
+    return getCalculationRegisters().stream().filter(predicate).findFirst();
   }
 
   /**
@@ -420,10 +708,24 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Поиск бизнес-процесса по условию
+   */
+  default Optional<BusinessProcess> findBusinessProcess(Predicate<? super BusinessProcess> predicate) {
+    return getBusinessProcesses().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Задачи
    */
   default List<Task> getTasks() {
     return getChildrenByType(Task.class);
+  }
+
+  /**
+   * Поиск задачи по условию
+   */
+  default Optional<Task> findTask(Predicate<? super Task> predicate) {
+    return getTasks().stream().filter(predicate).findFirst();
   }
 
   /**

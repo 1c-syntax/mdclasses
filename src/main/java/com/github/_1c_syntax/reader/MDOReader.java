@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @UtilityClass
 public class MDOReader {
 
-  private static ConcurrentHashMap<Path, MDReader> readers = new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<Path, MDReader> readers = new ConcurrentHashMap<>();
 
   public MDReader getReader(@NonNull Path rootPath) {
     return getReader(rootPath, false);

@@ -23,7 +23,6 @@ package com.github._1c_syntax.reader.xstream;
 
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.StreamException;
-import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import javax.xml.stream.XMLStreamException;

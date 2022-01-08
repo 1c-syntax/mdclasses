@@ -19,6 +19,7 @@ import lombok.SneakyThrows;
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -51,7 +52,8 @@ public class ConfigurationConverter implements Converter {
     }
 
     var designerProperties = new DesignerProperties(reader, context, realClass, mdoType);
-    designerProperties.setChildren(readChildren((List<String>) designerProperties.getProperties().get("childrenNames"),
+    designerProperties.setChildren(readChildren((List<String>) designerProperties.getProperties()
+        .getOrDefault("childrenNames", Collections.emptyList()),
       designerProperties.getCurrentPath()));
     designerProperties.getProperties().put("configurationSource", ConfigurationSource.DESIGNER);
 
