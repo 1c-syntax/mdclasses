@@ -37,11 +37,4 @@ public interface AttributeOwner extends ChildrenOwner {
       .map(Attribute.class::cast)
       .collect(Collectors.toList());
   }
-
-//  /**
-//   * Метод для добавления общего реквизита к списку атрибутов
-//   *
-//   * @param commonAttribute Добавляемый Общий реквизит
-//   */
-//  void addCommonAttribute(@NonNull CommonAttribute commonAttribute);
 }

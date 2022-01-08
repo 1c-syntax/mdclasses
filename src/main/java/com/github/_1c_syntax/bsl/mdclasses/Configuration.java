@@ -344,7 +344,7 @@ public class Configuration implements MDClass, ConfigurationTree, ModuleOwner {
   }
 
   private static Configuration createEmptyConfiguration() {
-    final String emptyString = "empty";
+    var emptyString = "empty";
 
     return Configuration.builder()
       .configurationSource(ConfigurationSource.EMPTY)

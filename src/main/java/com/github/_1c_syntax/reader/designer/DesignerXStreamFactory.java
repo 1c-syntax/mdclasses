@@ -129,9 +129,7 @@ public class DesignerXStreamFactory {
     xStream.ignoreUnknownElements();
     // настройки безопасности доступа к данным
     xStream.setMode(XStream.NO_REFERENCES);
-//    xStream.addPermission(NoTypePermission.NONE);
     xStream.addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
-//    xStream.addPermission(new ExplicitTypePermission(new String[]{"java.time.Period"}));
 
     // необходимо зарегистрировать все используемые классы
     registerClasses(xStream);
@@ -223,12 +221,12 @@ public class DesignerXStreamFactory {
   }
 
   private static Function<ClassInfo, Converter> getObjectsFromInfoClass() {
-    return classInfo -> {
+    return (ClassInfo classInfo) -> {
       try {
         var clazz = Class.forName(classInfo.getName());
-        return (Converter) clazz.getDeclaredConstructors()[0].newInstance(null);
+        return (Converter) clazz.getDeclaredConstructors()[0].newInstance();
       } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
-        LOGGER.error("Cannot resolve class: " + classInfo.getName());
+        LOGGER.error("Cannot resolve class {}\n " + classInfo.getName(), e);
         return null;
       }
     };
@@ -238,7 +236,7 @@ public class DesignerXStreamFactory {
     try {
       return Class.forName(classInfo.getName());
     } catch (ClassNotFoundException e) {
-      LOGGER.error("Cannot resolve class: " + classInfo.getName());
+      LOGGER.error("Cannot resolve class {}\n " + classInfo.getName(), e);
       return null;
     }
   }

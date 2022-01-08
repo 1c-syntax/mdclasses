@@ -56,6 +56,7 @@ public class ConfigurationConverter implements Converter {
 
   @SneakyThrows
   @Override
+  @SuppressWarnings("unchecked")
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
     int count;
@@ -81,7 +82,7 @@ public class ConfigurationConverter implements Converter {
     return designerProperties.computeAndBuild();
   }
 
-  private List<Object> readChildren(List<String> childrenNames, Path currentPath) {
+  private static List<Object> readChildren(List<String> childrenNames, Path currentPath) {
     var rootPath = DesignerPaths.rootPathByConfigurationMDO(currentPath);
     var reader = MDOReader.getReader(rootPath);
     return childrenNames.parallelStream()

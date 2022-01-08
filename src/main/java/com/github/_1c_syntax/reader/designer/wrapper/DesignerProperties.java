@@ -41,8 +41,10 @@ import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.supconf.ParseSupportData;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -162,11 +164,12 @@ public class DesignerProperties {
         case CHILD_OBJECTS_NODE_NAME:
           if (MDClass.class.isAssignableFrom(realClass)) {
             readChildrenMDC(reader);
-          } else {
-            readChildren(reader, context);
-            if (MDOType.valuesWithoutChildren().contains(mdoType)) {
-              buildWithChildren();
-            }
+            break;
+          }
+
+          readChildren(reader, context);
+          if (MDOType.valuesWithoutChildren().contains(mdoType)) {
+            buildWithChildren();
           }
           break;
         default:
@@ -233,20 +236,20 @@ public class DesignerProperties {
       reader.moveDown();
       var nodeName = reader.getNodeName();
 
-      try {
-        var childRealClass = getChildRealClass(nodeName);
-        var child = readChild(reader, context, childRealClass);
+      var childRealClass = getChildRealClass(nodeName);
+      if (childRealClass == null) {
+        // для неизвестных типов делаем пропуск, они останутся в логах
+        reader.moveUp();
+        break;
+      }
+      var child = readChild(reader, context, childRealClass);
 
-        if (child instanceof DesignerProperties) {
-          // нужно обновить ссылки на родителя
-          ((DesignerProperties) child).updateOwner(mdoReference);
-        }
-
-        children.add(child);
-      } catch (Exception e) {
-        LOGGER.error("Cannot find class for `{}`\n", nodeName, e);
+      if (child instanceof DesignerProperties) {
+        // нужно обновить ссылки на родителя
+        ((DesignerProperties) child).updateOwner(mdoReference);
       }
 
+      children.add(child);
       reader.moveUp();
     }
   }
@@ -272,11 +275,12 @@ public class DesignerProperties {
         childRealClass = RegisterDimension.class;
       }
     } else {
-      childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
-    }
-
-    if (childRealClass == null) {
-      throw new IllegalStateException("Unexpected type: " + nodeName);
+      try {
+        childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
+      } catch (CannotResolveClassException e) {
+        LOGGER.error("Cannot resolve class {}, file {}:\n", nodeName, currentPath, e);
+        childRealClass = null;
+      }
     }
     return childRealClass;
   }
@@ -348,38 +352,38 @@ public class DesignerProperties {
       return null;
     }
 
-    Object value = null;
+    Object value;
 
-    try {
-      if (methodType instanceof ParameterizedType
-        && ApplicationUsePurpose.class
-        .isAssignableFrom((Class<?>) ((ParameterizedType) methodType)
-          .getActualTypeArguments()[0])) {
+    if (methodType instanceof ParameterizedType
+      && ApplicationUsePurpose.class
+      .isAssignableFrom((Class<?>) ((ParameterizedType) methodType)
+        .getActualTypeArguments()[0])) {
 
-        value = context.convertAnother(reader, (Class<?>) ((ParameterizedType) methodType)
-          .getActualTypeArguments()[0]);
+      value = context.convertAnother(reader, (Class<?>) ((ParameterizedType) methodType)
+        .getActualTypeArguments()[0]);
 
-      } else if (methodType instanceof ParameterizedType) {
-        List<Object> values = new ArrayList<>();
-        var clazz = (Class<?>) ((ParameterizedType) methodType)
-          .getActualTypeArguments()[0];
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
+    } else if (methodType instanceof ParameterizedType) {
+      List<Object> values = new ArrayList<>();
+      var clazz = (Class<?>) ((ParameterizedType) methodType)
+        .getActualTypeArguments()[0];
+      while (reader.hasMoreChildren()) {
+        reader.moveDown();
+        try {
           values.add(context.convertAnother(reader, clazz));
-          reader.moveUp();
+        } catch (ConversionException e) {
+          LOGGER.error("Parsing error, file {}:\n", currentPath, e);
         }
-        value = values;
-      } else {
-        value = context.convertAnother(reader, (Class<?>) methodType);
+        reader.moveUp();
       }
-    } catch (Exception e) {
-      LOGGER.error("Cannot convert `{}` to type `{}`\n", propertyName, methodType, e);
+      value = values;
+    } else {
+      value = context.convertAnother(reader, (Class<?>) methodType);
     }
 
     return value;
   }
 
-  private MDOType getMdoType(HierarchicalStreamReader reader) {
+  private static MDOType getMdoType(HierarchicalStreamReader reader) {
     var type = MDOType.UNKNOWN;
     var computedMdoType = MDOType.fromValue(reader.getNodeName());
     if (computedMdoType.isPresent()) {

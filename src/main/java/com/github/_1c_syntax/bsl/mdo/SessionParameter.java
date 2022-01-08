@@ -96,7 +96,7 @@ public class SessionParameter implements MDObject {
    * Тип значения
    */
   @Default
-  ValueType type = ValueType.EMPTY; //todo добавить в состав атрибута
+  ValueType type = ValueType.EMPTY;
 
   /**
    * MDObject

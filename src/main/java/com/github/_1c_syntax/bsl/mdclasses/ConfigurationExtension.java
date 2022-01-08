@@ -92,7 +92,7 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   /**
    * Язык приложения по умолчанию
    */
-  Language defaultLanguage;
+  MdoReference defaultLanguage;
 
   /**
    * Режим управления блокировкой данных
@@ -158,4 +158,14 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  public Language getDefaultLanguage() {
+    if (!MdoReference.EMPTY.equals(defaultLanguage)) {
+      var lang = findChild(defaultLanguage);
+      if (lang.isPresent()) {
+        return (Language) lang.get();
+      }
+    }
+    return Language.DEFAULT;
+  }
 }

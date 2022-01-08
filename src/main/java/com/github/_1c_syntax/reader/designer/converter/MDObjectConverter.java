@@ -56,6 +56,7 @@ public class MDObjectConverter implements Converter {
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var designerProperties = new DesignerProperties(reader, context);
 
@@ -84,6 +85,8 @@ public class MDObjectConverter implements Converter {
         var module = (Module) ((List<?>) modules).get(0);
         designerProperties.getProperties().put("uri", module.getUri());
       }
+    } else {
+      // no-op
     }
 
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {
@@ -98,7 +101,7 @@ public class MDObjectConverter implements Converter {
     return MDObject.class.isAssignableFrom(type);
   }
 
-  private Optional<Map> readXDTOPackageData(Path path) {
+  private static Optional<Map> readXDTOPackageData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }
@@ -106,7 +109,7 @@ public class MDObjectConverter implements Converter {
     return Optional.of(Map.of("data", DesignerXStreamFactory.fromXML(path.toFile())));
   }
 
-  private Optional<Map> readData(Path path) {
+  private static Optional<Map> readData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }

@@ -67,7 +67,7 @@ public class ParseSupportData {
     = new ConcurrentHashMap<>();
 
   /**
-   * Выполняет чтение информации о поддержке и возвращает упрощенный вариант: UUID->MAX(SupportVariant)
+   * Выполняет чтение информации о поддержке и возвращает упрощенный вариант: UUID / MAX(SupportVariant)
    *
    * @param path Путь к файлу описания поддержки
    * @return Прочитанная информация
@@ -75,7 +75,7 @@ public class ParseSupportData {
   public static Map<String, SupportVariant> readSimple(Path path) {
     var rootPath = getRootPathByParentConfigurations(path);
     var supportMap = SUPPORT_SIMPLE_MAPS.get(rootPath);
-    if (supportMap == null) {
+    if (supportMap == null && path.toFile().exists()) {
       readFile(path, rootPath);
       supportMap = SUPPORT_SIMPLE_MAPS.get(rootPath);
     }

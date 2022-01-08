@@ -74,7 +74,7 @@ public class ExchangePlanContentConverter implements Converter {
     return ExchangePlan.Item.class.isAssignableFrom(type);
   }
 
-  private ExchangePlan.Item readItem(HierarchicalStreamReader reader, UnmarshallingContext context) {
+  private static ExchangePlan.Item readItem(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
     MdoReference metadata = MdoReference.EMPTY;
     AutoRecordType value = AutoRecordType.ALLOW;

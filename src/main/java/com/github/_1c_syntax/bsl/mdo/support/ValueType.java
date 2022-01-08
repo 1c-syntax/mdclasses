@@ -105,15 +105,15 @@ public class ValueType {
 
   @Value
   public static class Type {
-    String name;
-    TypeKind kind;
-
     private static final Map<String, Type> TYPES = new ConcurrentHashMap<>(baseTypes());
     private static final List<String> primitiveTypes = List.of("");
     private static final Pattern TYPE_KIND_PATTERN = CaseInsensitivePattern
-      .compile("(?:cfg)\\:([A-Za-z]+)(Object|Ref|ValueManager|RecordSet|Type|haracteristic)(\\.(?:.*)|$)");
+      .compile("(?:cfg)\\:(?:[A-Za-z]+)(Object|Ref|ValueManager|RecordSet|Type|haracteristic)(\\.(?:.*)|$)");
     private static final Pattern OBJECT_KIND_PATTERN = CaseInsensitivePattern
       .compile("Object|ValueManager|RecordSet");
+
+    String name;
+    TypeKind kind;
 
     private Type(String name, TypeKind kind) {
       this.name = name.intern();
@@ -127,7 +127,7 @@ public class ValueType {
         var matcher = TYPE_KIND_PATTERN.matcher(name);
         if (matcher.find()) {
           kind = TypeKind.REFERENCE;
-          var group = matcher.group(2);
+          var group = matcher.group(1);
           if (OBJECT_KIND_PATTERN.matcher(group).find()) {
             kind = TypeKind.OBJECT;
           }

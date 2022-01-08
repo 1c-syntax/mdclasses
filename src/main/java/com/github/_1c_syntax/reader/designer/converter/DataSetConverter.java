@@ -64,28 +64,36 @@ public class DataSetConverter implements Converter {
         dataSet.item((DataCompositionSchema.DataSet)
           context.convertAnother(reader, DataCompositionSchema.DataSet.class));
       } else if (FIELD_NODE_NAME.equals(nodeName)) {
-        var dataPath = "";
-        var field = "";
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          var fieldNodeName = reader.getNodeName();
-          if (FIELD_NODE_NAME.equals(fieldNodeName)) {
-            field = reader.getValue();
-          } else if (DATA_PATH_NODE_NAME.equals(fieldNodeName)) {
-            dataPath = reader.getValue();
-          }
-          reader.moveUp();
-        }
-        dataSet.field(new DataCompositionSchema.DataSetField(dataPath, field));
+        dataSet.field(readField(reader));
       } else if (QUERY_SOURCE_NODE_NAME.equals(nodeName)) {
         var location = ((ExtendReaderWrapper) reader).getXMLStreamReader().getLocation();
         var query = reader.getValue();
         var position = new SourcePosition(location.getLineNumber(), location.getColumnNumber());
         dataSet.querySource(new QuerySource(position, query));
+      } else {
+        // no-op
       }
       reader.moveUp();
     }
     return dataSet.build();
+  }
+
+  private DataCompositionSchema.DataSetField readField(HierarchicalStreamReader reader) {
+    var dataPath = "";
+    var field = "";
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var fieldNodeName = reader.getNodeName();
+      if (FIELD_NODE_NAME.equals(fieldNodeName)) {
+        field = reader.getValue();
+      } else if (DATA_PATH_NODE_NAME.equals(fieldNodeName)) {
+        dataPath = reader.getValue();
+      } else {
+        // no-op
+      }
+      reader.moveUp();
+    }
+    return new DataCompositionSchema.DataSetField(dataPath, field);
   }
 
   @Override

@@ -127,23 +127,30 @@ public class MdoReference {
    */
   public static MdoReference create(@NonNull String fullName) {
     var nameParts = REF_SPLIT_PATTERN.split(fullName);
-    if (nameParts.length > 1) {
-      MdoReference ref = null;
-      for (int i = 0; i < nameParts.length; i += 2) {
-        var mdoType = MDOType.fromValue(nameParts[i]);
-        if (mdoType.isPresent()) {
-          var mdoName = nameParts[i + 1];
-          if (ref == null) {
-            ref = create(mdoType.get(), mdoName);
-          } else {
-            ref = create(ref, mdoType.get(), mdoName);
-          }
-        }
-      }
-      return ref;
+    if (nameParts.length <= 1) {
+      throw new IllegalArgumentException("Incorrect full name " + fullName);
     }
 
-    throw new IllegalArgumentException(fullName);
+    MdoReference ref = null;
+    var step = 2;
+    for (var i = 0; i < nameParts.length; i += step) {
+      var mdoType = MDOType.fromValue(nameParts[i]);
+      if (mdoType.isEmpty()) {
+        continue;
+      }
+      var mdoName = nameParts[i + 1];
+      if (ref == null) {
+        ref = create(mdoType.get(), mdoName);
+      } else {
+        ref = create(ref, mdoType.get(), mdoName);
+      }
+    }
+
+    if (ref == null) {
+      throw new IllegalArgumentException("Incorrect full name " + fullName);
+    }
+
+    return ref;
   }
 
   /**

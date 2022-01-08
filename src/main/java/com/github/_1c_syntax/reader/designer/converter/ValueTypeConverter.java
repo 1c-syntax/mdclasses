@@ -70,6 +70,8 @@ public class ValueTypeConverter implements Converter {
         qualifiers.add(readNumberQualifier(reader));
       } else if (STRING_QUALIFIERS_NODE_NAME.equals(node)) {
         qualifiers.add(readStringQualifier(reader));
+      } else {
+        // no-op
       }
       reader.moveUp();
     }
@@ -83,9 +85,9 @@ public class ValueTypeConverter implements Converter {
     return ValueType.class.isAssignableFrom(type);
   }
 
-  private ValueType.StringQualifier readStringQualifier(HierarchicalStreamReader reader) {
-    int length = 0;
-    ValueType.AllowedLength allowedLength = ValueType.AllowedLength.VARIABLE;
+  private static ValueType.StringQualifier readStringQualifier(HierarchicalStreamReader reader) {
+    var length = 0;
+    var allowedLength = ValueType.AllowedLength.VARIABLE;
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (LENGTH_NODE_NAME.equals(reader.getNodeName())) {
@@ -98,8 +100,8 @@ public class ValueTypeConverter implements Converter {
     return new ValueType.StringQualifier(length, allowedLength);
   }
 
-  private ValueType.DateQualifier readDateQualifier(HierarchicalStreamReader reader) {
-    ValueType.DateFraction dateFraction = ValueType.DateFraction.DATE;
+  private static ValueType.DateQualifier readDateQualifier(HierarchicalStreamReader reader) {
+    var dateFraction = ValueType.DateFraction.DATE;
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (DATE_FRACTIONS_NODE_NAME.equals(reader.getNodeName())) {
@@ -110,10 +112,10 @@ public class ValueTypeConverter implements Converter {
     return new ValueType.DateQualifier(dateFraction);
   }
 
-  private ValueType.NumberQualifier readNumberQualifier(HierarchicalStreamReader reader) {
-    int digits = 0;
-    int fractionDigits = 0;
-    ValueType.AllowedSign allowedSign = ValueType.AllowedSign.ANY;
+  private static ValueType.NumberQualifier readNumberQualifier(HierarchicalStreamReader reader) {
+    var digits = 0;
+    var fractionDigits = 0;
+    var allowedSign = ValueType.AllowedSign.ANY;
 
     var nodeName = "";
     while (reader.hasMoreChildren()) {

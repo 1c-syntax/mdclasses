@@ -64,9 +64,7 @@ public class DataCompositionSchemaConverter implements Converter {
       reader.moveUp();
     }
 
-    DataCompositionSchema dataCompositionSchema = new DataCompositionSchema(dataSets);
-
-    return Map.of("templateData", dataCompositionSchema);
+    return Map.of("templateData", new DataCompositionSchema(dataSets));
   }
 
   @Override

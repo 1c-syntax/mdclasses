@@ -46,7 +46,7 @@ public class MdoReferenceConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // todo надо обработать разные типы
     var nodeName = reader.getNodeName();
-    String value = "";
+    var value = "";
     if (ITEM_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {
       while (reader.hasMoreChildren()) {
         reader.moveDown();

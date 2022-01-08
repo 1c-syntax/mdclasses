@@ -105,7 +105,7 @@ public class XdtoPackageDataConverter implements Converter {
     return builder.build();
   }
 
-  private XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
+  private static XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ValueType.builder()
       .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
     TransformationUtils.setValue(builder, BASE_ATTRIBUTE_NAME, reader.getAttribute(BASE_ATTRIBUTE_NAME));
@@ -122,7 +122,7 @@ public class XdtoPackageDataConverter implements Converter {
     return builder.build();
   }
 
-  private XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
+  private static XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.Property.builder()
       .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
     TransformationUtils.setValue(builder, TYPE_ATTRIBUTE_NAME, reader.getAttribute(TYPE_ATTRIBUTE_NAME));
@@ -143,6 +143,12 @@ public class XdtoPackageDataConverter implements Converter {
       builder.nillable(Boolean.parseBoolean(value));
     }
 
+    readTypeDef(reader, builder);
+
+    return builder.build();
+  }
+
+  private static void readTypeDef(HierarchicalStreamReader reader, XdtoPackageData.Property.PropertyBuilder builder) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
@@ -158,8 +164,6 @@ public class XdtoPackageDataConverter implements Converter {
       }
       reader.moveUp();
     }
-
-    return builder.build();
   }
 
   @Override

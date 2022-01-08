@@ -75,7 +75,7 @@ public class RoleRightConverter implements Converter {
     return RoleRight.class.isAssignableFrom(type);
   }
 
-  private RoleRight readRight(HierarchicalStreamReader reader) {
+  private static RoleRight readRight(HierarchicalStreamReader reader) {
     Map<String, Boolean> rights = new HashMap<>();
     var name = "";
 
@@ -85,8 +85,8 @@ public class RoleRightConverter implements Converter {
       if (NAME_NODE_NAME.equals(nodeName)) {
         name = reader.getValue();
       } else {
-        String key = "";
-        boolean value = false;
+        var key = "";
+        var value = false;
         while (reader.hasMoreChildren()) {
           reader.moveDown();
           if (NAME_NODE_NAME.equals(reader.getNodeName())) {

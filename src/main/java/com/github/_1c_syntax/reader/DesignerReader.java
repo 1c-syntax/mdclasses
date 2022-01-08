@@ -29,6 +29,7 @@ import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.supconf.ParseSupportData;
 
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -55,6 +56,7 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
+  @Nullable
   public MDObject readMDObject(String fullName) {
     var dotPosition = fullName.indexOf('.');
     var type = MDOType.fromValue(fullName.substring(0, dotPosition));
@@ -62,14 +64,12 @@ public class DesignerReader implements MDReader {
 
     if (type.isPresent()) {
       var path = DesignerPaths.mdoPath(rootPath, type.get(), name);
-      var mdo = (MDObject) DesignerXStreamFactory.fromXML(path.toFile());
-      return mdo;
-
+      return (MDObject) DesignerXStreamFactory.fromXML(path.toFile());
     }
     return null;
   }
 
-  private Optional<MDClass> readConfiguration(Path path) {
+  private static Optional<MDClass> readConfiguration(Path path) {
     return Optional.ofNullable((MDClass) DesignerXStreamFactory.fromXML(path.toFile()));
   }
 }
