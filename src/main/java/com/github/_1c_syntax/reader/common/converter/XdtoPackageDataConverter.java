@@ -22,6 +22,7 @@
 package com.github._1c_syntax.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
+import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -34,6 +35,25 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  */
 @DesignerConverter
 public class XdtoPackageDataConverter implements Converter {
+
+  private static final String PROPERTY_NODE_NAME = "property";
+  private static final String IMPORT_NODE_NAME = "import";
+  private static final String VALUE_TYPE_NODE_NAME = "valueType";
+  private static final String OBJECT_TYPE_NODE_NAME = "objectType";
+  private static final String TYPE_DEF_NODE_NAME = "typeDef";
+
+  private static final String TARGET_NAMESPACE_ATTRIBUTE_NAME = "targetNamespace";
+  private static final String NAME_ATTRIBUTE_NAME = "name";
+  private static final String NAMESPACE_ATTRIBUTE_NAME = "namespace";
+  private static final String BASE_ATTRIBUTE_NAME = "base";
+  private static final String VARIETY_ATTRIBUTE_NAME = "variety";
+  private static final String ENUMERATION_ATTRIBUTE_NAME = "enumeration";
+  private static final String TYPE_ATTRIBUTE_NAME = "type";
+  private static final String FORM_ATTRIBUTE_NAME = "form";
+  private static final String LOWER_BOUND_ATTRIBUTE_NAME = "lowerBound";
+  private static final String UPPER_BOUND_ATTRIBUTE_NAME = "upperBound";
+  private static final String NILLABLE_ATTRIBUTE_NAME = "nillable";
+
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     // noop
@@ -43,22 +63,22 @@ public class XdtoPackageDataConverter implements Converter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
     var builder = XdtoPackageData.builder();
-    builder.targetNamespace(reader.getAttribute("targetNamespace"));
+    builder.targetNamespace(reader.getAttribute(TARGET_NAMESPACE_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
       switch (node) {
-        case "import":
-          builder.oneImport(reader.getAttribute("namespace"));
+        case IMPORT_NODE_NAME:
+          builder.oneImport(reader.getAttribute(NAMESPACE_ATTRIBUTE_NAME));
           break;
-        case "property":
+        case PROPERTY_NODE_NAME:
           builder.property(readProperty(reader));
           break;
-        case "valueType":
+        case VALUE_TYPE_NODE_NAME:
           builder.valueType(readValueType(reader));
           break;
-        case "objectType":
+        case OBJECT_TYPE_NODE_NAME:
           builder.objectType(readObjectType(reader));
           break;
         default:
@@ -73,11 +93,8 @@ public class XdtoPackageDataConverter implements Converter {
 
   private XdtoPackageData.ObjectType readObjectType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ObjectType.builder()
-      .name(reader.getAttribute("name"));
-    var baseType = reader.getAttribute("base");
-    if (baseType != null) {
-      builder.base(baseType);
-    }
+      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+    TransformationUtils.setValue(builder, BASE_ATTRIBUTE_NAME, reader.getAttribute(BASE_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
@@ -90,20 +107,13 @@ public class XdtoPackageDataConverter implements Converter {
 
   private XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ValueType.builder()
-      .name(reader.getAttribute("name"));
-    var value = reader.getAttribute("base");
-    if (value != null) {
-      builder.base(value);
-    }
-
-    value = reader.getAttribute("variety");
-    if (value != null) {
-      builder.variety(value);
-    }
+      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+    TransformationUtils.setValue(builder, BASE_ATTRIBUTE_NAME, reader.getAttribute(BASE_ATTRIBUTE_NAME));
+    TransformationUtils.setValue(builder, VARIETY_ATTRIBUTE_NAME, reader.getAttribute(VARIETY_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      if ("enumeration".equals(reader.getNodeName())) {
+      if (ENUMERATION_ATTRIBUTE_NAME.equals(reader.getNodeName())) {
         builder.enumeration(reader.getValue());
       }
       reader.moveUp();
@@ -114,28 +124,21 @@ public class XdtoPackageDataConverter implements Converter {
 
   private XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.Property.builder()
-      .name(reader.getAttribute("name"));
-    var value = reader.getAttribute("type");
-    if (value != null) {
-      builder.type(value);
-    }
+      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+    TransformationUtils.setValue(builder, TYPE_ATTRIBUTE_NAME, reader.getAttribute(TYPE_ATTRIBUTE_NAME));
+    TransformationUtils.setValue(builder, FORM_ATTRIBUTE_NAME, reader.getAttribute(FORM_ATTRIBUTE_NAME));
 
-    value = reader.getAttribute("form");
-    if (value != null) {
-      builder.form(value);
-    }
-
-    value = reader.getAttribute("lowerBound");
+    var value = reader.getAttribute(LOWER_BOUND_ATTRIBUTE_NAME);
     if (value != null) {
       builder.lowerBound(Integer.parseInt(value));
     }
 
-    value = reader.getAttribute("upperBound");
+    value = reader.getAttribute(UPPER_BOUND_ATTRIBUTE_NAME);
     if (value != null) {
       builder.upperBound(Integer.parseInt(value));
     }
 
-    value = reader.getAttribute("nillable");
+    value = reader.getAttribute(NILLABLE_ATTRIBUTE_NAME);
     if (value != null) {
       builder.nillable(Boolean.parseBoolean(value));
     }
@@ -143,11 +146,11 @@ public class XdtoPackageDataConverter implements Converter {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
-      if ("typeDef".equals(node)) {
+      if (TYPE_DEF_NODE_NAME.equals(node)) {
         while (reader.hasMoreChildren()) {
           reader.moveDown();
           node = reader.getNodeName();
-          if ("property".equals(node)) {
+          if (PROPERTY_NODE_NAME.equals(node)) {
             builder.property(readProperty(reader));
           }
           reader.moveUp();

@@ -39,7 +39,8 @@ class ConfigurationTest extends AbstractMDClassTest<Configuration> {
     {
       "designer/mdclasses, 65, 128",
       "designer/mdclasses_3_18, 24, 38",
-      "designer/mdclasses_ordinary, 1, 1"
+      "designer/mdclasses_ordinary, 1, 1",
+//      "designer/ssl_3_1, 1, 1" // очень большой для фикстуры
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

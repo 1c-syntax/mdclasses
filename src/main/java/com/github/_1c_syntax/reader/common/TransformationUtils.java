@@ -19,12 +19,13 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.reader;
+package com.github._1c_syntax.reader.common;
 
-import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -35,25 +36,25 @@ import java.util.concurrent.ConcurrentHashMap;
  * Вспомогательный класс для конвертирования значений между моделями
  */
 @UtilityClass
+@Slf4j
 public class TransformationUtils {
 
   private static final Map<Class<?>, Map<String, Method>> methods = new ConcurrentHashMap<>();
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
+  private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
 
-  @SneakyThrows
   public void setValue(Object source, String methodName, Object value) {
     var method = getMethod(source.getClass(), methodName);
-    if (method != null) {
+    if (method != null && value != null) {
       try {
         method.invoke(source, value);
-      } catch (IllegalArgumentException e) {
-        System.out.println("Class " + source.getClass() + ", method " + methodName);
+      } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, source.getClass(), methodName, e);
       }
     }
   }
 
-  @SneakyThrows
   public Type fieldType(Object source, String methodName) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null) {
@@ -62,20 +63,26 @@ public class TransformationUtils {
     return null;
   }
 
-  @SneakyThrows
-  public static Object builder(Class<?> clazz) {
+  public Object builder(Class<?> clazz) {
     var method = getMethod(clazz, BUILDER_METHOD_NAME);
     if (method != null) {
-      return method.invoke(clazz);
+      try {
+        return method.invoke(clazz);
+      } catch (IllegalAccessException | InvocationTargetException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, clazz, BUILDER_METHOD_NAME, e);
+      }
     }
     return null;
   }
 
-  @SneakyThrows
   public Object build(Object builder) {
     var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
     if (method != null) {
-      return method.invoke(builder);
+      try {
+        return method.invoke(builder);
+      } catch (IllegalAccessException | InvocationTargetException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, builder.getClass(), BUILD_METHOD_NAME, e);
+      }
     }
     return null;
   }

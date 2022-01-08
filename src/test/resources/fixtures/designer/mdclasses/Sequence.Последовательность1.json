@@ -19,12 +19,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:DocumentRef.Документ1"
+          {
+            "name": "cfg:DocumentRef.Документ1",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "owner": {
         "type": "SEQUENCE",
@@ -55,7 +55,7 @@
   "registerRecords": [],
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.SequenceDimension/synonym"
   },
   "uuid": "514bbcf4-7fc4-4a3e-9245-598fad397eec"
 }}

@@ -55,19 +55,13 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [
+        "types": [],
+        "qualifiers": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "length": 10,
+            "allowedLength": "VARIABLE"
           }
-        ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/owner"
@@ -117,12 +111,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+              {
+                "name": "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -151,10 +145,13 @@
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
           "type": {
-            "types": [],
-            "stringQualifier": {
-              "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "types": [
+              {
+                "name": "cfg:Characteristic.ДополнительныеРеквизитыИСведения",
+                "kind": "REFERENCE"
+              }
+            ],
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -185,17 +182,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -246,7 +242,7 @@
   "searchStringModeOnInputByString": "Begin",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/synonym"
   },
   "taskNumberAutoPrefix": "DontUse",
   "useStandardCommands": true,

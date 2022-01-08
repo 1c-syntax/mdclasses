@@ -39,8 +39,8 @@ import java.io.InputStream;
  */
 public class ExtendStaxDriver extends StaxDriver {
 
-  public ExtendStaxDriver(QNameMap qNameMap) {
-    super(qNameMap);
+  public ExtendStaxDriver() {
+    super();
     // Do not delete. Implementation via XMLInputFactoryImpl
     System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
   }

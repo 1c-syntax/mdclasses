@@ -37,12 +37,18 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
       },
       "owner": {
         "type": "EXCHANGE_PLAN",
@@ -2875,10 +2881,10 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",

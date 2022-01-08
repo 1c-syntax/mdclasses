@@ -137,7 +137,23 @@
           "comment": "",
           "children": [],
           "includeInCommandInterface": true,
-          "content": [],
+          "content": [
+            {
+              "type": "CATALOG",
+              "mdoRef": "Catalog.Справочник1",
+              "mdoRefRu": "Справочник.Справочник1"
+            },
+            {
+              "type": "DATA_PROCESSOR",
+              "mdoRef": "DataProcessor.Обработка1",
+              "mdoRefRu": "Обработка.Обработка1"
+            },
+            {
+              "type": "UNKNOWN",
+              "mdoRef": "",
+              "mdoRefRu": ""
+            }
+          ],
           "includeHelpInContents": true,
           "explanation": {
             "content": []
@@ -313,12 +329,12 @@
       "comment": "",
       "type": {
         "types": [
-          "xs:boolean"
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       }
     },
     {
@@ -965,10 +981,7 @@
       },
       "type": {
         "types": [],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "content": []
     },
@@ -1170,17 +1183,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "autoUse": "USE",
       "dataSeparation": "DONT_USE",
@@ -2435,17 +2447,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       }
     },
     {
@@ -2523,17 +2534,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "modules": [
         {
@@ -2659,17 +2669,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "CATALOG",
@@ -2696,12 +2705,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "CATALOG",
@@ -2728,12 +2743,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:boolean"
+              {
+                "name": "xs:boolean",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CATALOG",
@@ -2776,17 +2791,16 @@
               "type": {
                 "types": [
                   {
-                    "default": {
-                      "tag": 1
-                    },
-                    "int": 1,
-                    "string": "xs:string"
+                    "name": "xs:string",
+                    "kind": "PRIMITIVE"
                   }
                 ],
-                "stringQualifier": {
-                  "length": 10,
-                  "allowedLength": "Variable"
-                }
+                "qualifiers": [
+                  {
+                    "length": 10,
+                    "allowedLength": "VARIABLE"
+                  }
+                ]
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -2813,12 +2827,18 @@
               "indexing": "DONT_INDEX",
               "type": {
                 "types": [
-                  "xs:decimal"
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -2879,7 +2899,7 @@
           "objectBelonging": "OWN",
           "supportVariant": "NONE",
           "comment": "",
-          "formType": "MANAGED",
+          "formType": "ORDINARY",
           "modules": [],
           "owner": {
             "type": "CATALOG",
@@ -3172,17 +3192,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "DOCUMENT",
@@ -3209,12 +3228,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "DOCUMENT",
@@ -3241,12 +3266,16 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:dateTime"
+              {
+                "name": "xs:dateTime",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
           },
           "owner": {
             "type": "DOCUMENT",
@@ -3369,12 +3398,12 @@
               "indexing": "DONT_INDEX",
               "type": {
                 "types": [
-                  "cfg:CatalogRef.Справочник1"
+                  {
+                    "name": "cfg:CatalogRef.Справочник1",
+                    "kind": "REFERENCE"
+                  }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "qualifiers": []
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -3401,12 +3430,18 @@
               "indexing": "DONT_INDEX",
               "type": {
                 "types": [
-                  "xs:decimal"
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -3561,12 +3596,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:DocumentRef.Документ1"
+              {
+                "name": "cfg:DocumentRef.Документ1",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "SEQUENCE",
@@ -3627,19 +3662,8 @@
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
           "type": {
-            "types": [
-              {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "UNKNOWN"
-              }
-            ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "types": [],
+            "qualifiers": []
           },
           "owner": {
             "type": "DOCUMENT_JOURNAL",
@@ -3920,12 +3944,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "INFORMATION_REGISTER",
@@ -3953,17 +3983,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "INFORMATION_REGISTER",
@@ -3998,12 +4027,16 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:dateTime"
+              {
+                "name": "xs:dateTime",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
           },
           "owner": {
             "type": "INFORMATION_REGISTER",
@@ -4100,17 +4133,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "INFORMATION_REGISTER",
@@ -4206,12 +4238,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "ACCUMULATION_REGISTER",
@@ -4239,17 +4277,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "ACCUMULATION_REGISTER",
@@ -4405,17 +4442,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       }
     },
     {
@@ -4451,10 +4487,7 @@
           "kind": "CUSTOM",
           "type": {
             "types": [],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CHART_OF_ACCOUNTS",
@@ -4480,10 +4513,7 @@
           "kind": "CUSTOM",
           "type": {
             "types": [],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CHART_OF_ACCOUNTS",
@@ -4614,17 +4644,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4654,12 +4683,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4741,17 +4776,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4781,12 +4815,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4863,17 +4903,16 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
               }
             ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4903,12 +4942,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "ACCOUNTING_REGISTER",
@@ -4989,12 +5034,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:EnumRef.Перечисление1"
+              {
+                "name": "cfg:EnumRef.Перечисление1",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CHART_OF_CALCULATION_TYPES",
@@ -5026,12 +5071,16 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:dateTime"
+              {
+                "name": "xs:dateTime",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
           },
           "owner": {
             "type": "CHART_OF_CALCULATION_TYPES",
@@ -5083,12 +5132,16 @@
               "indexing": "DONT_INDEX",
               "type": {
                 "types": [
-                  "xs:dateTime"
+                  {
+                    "name": "xs:dateTime",
+                    "kind": "PRIMITIVE"
+                  }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "qualifiers": [
+                  {
+                    "dateFraction": "DATE"
+                  }
+                ]
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -5220,12 +5273,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
           },
           "owner": {
             "type": "CALCULATION_REGISTER",
@@ -5252,12 +5311,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:CatalogRef.Справочник1"
+              {
+                "name": "cfg:CatalogRef.Справочник1",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CALCULATION_REGISTER",
@@ -5292,12 +5351,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:CatalogRef.Справочник1"
+              {
+                "name": "cfg:CatalogRef.Справочник1",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "type": "CALCULATION_REGISTER",
@@ -5515,19 +5574,13 @@
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
           "type": {
-            "types": [
+            "types": [],
+            "qualifiers": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "length": 10,
+                "allowedLength": "VARIABLE"
               }
-            ],
-            "stringQualifier": {
-              "length": 10,
-              "allowedLength": "Variable"
-            }
+            ]
           },
           "owner": {
             "type": "TASK",
@@ -5579,12 +5632,12 @@
               "indexing": "DONT_INDEX",
               "type": {
                 "types": [
-                  "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+                  {
+                    "name": "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения",
+                    "kind": "REFERENCE"
+                  }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "qualifiers": []
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -5615,11 +5668,13 @@
               "kind": "CUSTOM",
               "indexing": "DONT_INDEX",
               "type": {
-                "types": [],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": ""
-                }
+                "types": [
+                  {
+                    "name": "cfg:Characteristic.ДополнительныеРеквизитыИСведения",
+                    "kind": "REFERENCE"
+                  }
+                ],
+                "qualifiers": []
               },
               "owner": {
                 "type": "TABULAR_SECTION",
@@ -5652,17 +5707,16 @@
               "type": {
                 "types": [
                   {
-                    "default": {
-                      "tag": 1
-                    },
-                    "int": 1,
-                    "string": "xs:string"
+                    "name": "xs:string",
+                    "kind": "PRIMITIVE"
                   }
                 ],
-                "stringQualifier": {
-                  "length": 0,
-                  "allowedLength": "Variable"
-                }
+                "qualifiers": [
+                  {
+                    "length": 0,
+                    "allowedLength": "VARIABLE"
+                  }
+                ]
               },
               "owner": {
                 "type": "TABULAR_SECTION",

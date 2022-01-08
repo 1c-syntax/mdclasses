@@ -32,12 +32,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "v8:ValueStorage"
+          {
+            "name": "v8:ValueStorage",
+            "kind": "V8"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "owner": {
         "type": "INFORMATION_REGISTER",
@@ -69,12 +69,20 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.ВнешниеПользователи",
-          "cfg:CatalogRef.Пользователи"
+          {
+            "name": "cfg:CatalogRef.ВнешниеПользователи",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:CatalogRef.Пользователи",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:ExchangePlanRef",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -104,11 +112,16 @@
       "indexing": "INDEX",
       "type": {
         "types": [
-          "xs:dateTime"
+          {
+            "name": "xs:dateTime",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "dateFraction": "DATETIME"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -139,17 +152,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -179,11 +191,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:EnumRef.ТипыВерсийОбъекта"
+          {
+            "name": "cfg:EnumRef.ТипыВерсийОбъекта",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -213,11 +226,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:boolean"
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -247,11 +261,18 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "digits": 15,
+            "fractionDigits": 0,
+            "allowedSign": "NONNEGATIVE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -282,17 +303,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
           }
         ],
-        "stringQualifier": {
-          "length": 32,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 32,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -322,11 +341,11 @@
       "indexing": "INDEX",
       "type": {
         "types": [
-          "xs:boolean"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -356,11 +375,17 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "NONNEGATIVE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -391,17 +416,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -431,11 +454,11 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:boolean"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -465,11 +488,17 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "NONNEGATIVE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -500,17 +529,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -539,10 +566,37 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "types": [
+          {
+            "name": "cfg:BusinessProcessRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:DocumentRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:ChartOfCalculationTypesRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:TaskRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:ChartOfCharacteristicTypesRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:ChartOfAccountsRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:CatalogRef",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -575,11 +629,17 @@
       "indexing": "INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "NONNEGATIVE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -758,10 +818,10 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedRecordPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
@@ -781,16 +841,16 @@
   "mdoType": "INFORMATION_REGISTER",
   "modules": [
     {
-      "moduleType": "RecordSetModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/RecordSetModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/ManagerModule.bsl",
+      "moduleType": "RecordSetModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ВерсииОбъектов/Ext/RecordSetModule.bsl",
       "owner": {
         "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
       },

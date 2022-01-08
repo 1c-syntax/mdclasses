@@ -53,13 +53,20 @@ public class MdoReferenceConverter implements Converter {
         var propertyName = reader.getNodeName();
         if (METADATA_NODE_NAME.equals(propertyName)) {
           value = reader.getValue();
+          reader.moveUp();
+          break;
         }
         reader.moveUp();
       }
     } else {
       value = reader.getValue();
     }
-    return MdoReference.create(value);
+
+    if (value.isEmpty()) {
+      return MdoReference.EMPTY;
+    } else {
+      return MdoReference.create(value);
+    }
   }
 
   @Override

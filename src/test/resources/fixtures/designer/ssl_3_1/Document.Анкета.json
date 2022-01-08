@@ -39,12 +39,12 @@
       "indexing": "INDEX",
       "type": {
         "types": [
-          "cfg:DocumentRef.НазначениеОпросов"
+          {
+            "name": "cfg:DocumentRef.НазначениеОпросов",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "owner": {
         "type": "DOCUMENT",
@@ -75,10 +75,13 @@
       "kind": "CUSTOM",
       "indexing": "INDEX",
       "type": {
-        "types": [],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "types": [
+          {
+            "name": "cfg:DefinedType.Респондент",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -108,11 +111,16 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:dateTime"
+          {
+            "name": "xs:dateTime",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "dateFraction": "DATETIME"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -143,17 +151,20 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "cfg:CatalogRef.ВопросыШаблонаАнкеты",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -184,17 +195,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type[2]"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -223,10 +232,13 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "types": [
+          {
+            "name": "cfg:DefinedType.Интервьюер",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -256,11 +268,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.ШаблоныАнкет"
+          {
+            "name": "cfg:CatalogRef.ШаблоныАнкет",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -290,11 +303,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:EnumRef.РежимыАнкетирования"
+          {
+            "name": "cfg:EnumRef.РежимыАнкетирования",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -394,11 +408,11 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:CatalogRef.ВопросыШаблонаАнкеты"
+              {
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+              }
             ],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -428,11 +442,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:ChartOfCharacteristicTypesRef.ВопросыДляАнкетирования"
+              {
+                "name": "cfg:ChartOfCharacteristicTypesRef.ВопросыДляАнкетирования",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -462,11 +477,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:decimal"
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
             ],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "NONNEGATIVE"
+              }
+            ]
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -495,10 +517,13 @@
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
           "type": {
-            "types": [],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "types": [
+              {
+                "name": "cfg:Characteristic.ВопросыДляАнкетирования",
+                "kind": "REFERENCE"
+              }
+            ],
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -529,17 +554,15 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type[2]"
               }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -572,10 +595,10 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",
@@ -621,7 +644,7 @@
   "numerator": "",
   "objectBelonging": "OWN",
   "objectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "postInPrivilegedMode": true,
   "posting": "Allow",

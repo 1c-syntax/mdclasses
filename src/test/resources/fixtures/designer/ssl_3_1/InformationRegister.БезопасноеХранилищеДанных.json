@@ -32,12 +32,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "v8:ValueStorage"
+          {
+            "name": "v8:ValueStorage",
+            "kind": "V8"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "owner": {
         "type": "INFORMATION_REGISTER",
@@ -70,17 +70,24 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          },
+          {
+            "name": "cfg:ExchangePlanRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:CatalogRef",
+            "kind": "REFERENCE"
           }
         ],
-        "stringQualifier": {
-          "length": 128,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 128,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -107,16 +114,16 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedRecordPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "informationRegisterPeriodicity": "Nonperiodical",
   "listPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "mainFilterOnPeriod": false,
   "mdoReference": {
@@ -127,7 +134,7 @@
   "name": "БезопасноеХранилищеДанных",
   "objectBelonging": "OWN",
   "recordPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "supportVariant": "NONE",
   "synonym": {

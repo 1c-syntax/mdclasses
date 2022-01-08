@@ -30,17 +30,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "type": "ACCOUNTING_REGISTER",
@@ -55,7 +54,7 @@
       "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
       "name": "Ресурс1",
       "synonym": {
-        "content": []
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
       },
       "mdoReference": {
         "type": "RESOURCE",
@@ -70,12 +69,18 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/owner"
@@ -90,15 +95,15 @@
   },
   "enableTotalsSplitting": true,
   "explanation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
   },
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "listPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/owner"

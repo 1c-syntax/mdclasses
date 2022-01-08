@@ -6,7 +6,7 @@ import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.reader.MDOReader;
-import com.github._1c_syntax.reader.TransformationUtils;
+import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;

@@ -27,7 +27,6 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -50,7 +49,6 @@ public class RoleRightConverter implements Converter {
     // no-op
   }
 
-  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     Map<String, Object> properties = new HashMap<>();

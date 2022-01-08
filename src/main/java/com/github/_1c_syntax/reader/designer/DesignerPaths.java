@@ -51,7 +51,7 @@ public class DesignerPaths {
    * @param name Имя плана обмена
    * @return Путь к составу плана обмена
    */
-  public static Path exchangePlanContentPath(@NonNull Path path, @NonNull String name) {
+  public Path exchangePlanContentPath(@NonNull Path path, @NonNull String name) {
     return dataPath(name, path, "Content.xml");
   }
 
@@ -62,7 +62,7 @@ public class DesignerPaths {
    * @param name - имя объекта метаданных, без расширения
    * @return - путь к файлу прав конкретной роли
    */
-  public static Path roleDataPath(@NonNull Path path, @NonNull String name) {
+  public Path roleDataPath(@NonNull Path path, @NonNull String name) {
     return dataPath(name, path, "Rights.xml");
   }
 

@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.HashMap;
 
 /**
- * Конвертер для синонимов
+ * Конвертер для строк на нескольких языках
  */
 @DesignerConverter
 @Slf4j
@@ -27,25 +27,29 @@ public class MultiLanguageStringConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (!reader.hasMoreChildren()) {
+      return MultiLanguageString.EMPTY;
+    }
     HashMap<String, String> langContent = new HashMap<>();
-    if (reader.hasMoreChildren()) {
-      while (reader.hasMoreChildren()) { // v8:item
+
+    while (reader.hasMoreChildren()) { // v8:item
+      reader.moveDown();
+      var lang = "";
+      var content = "";
+      while (reader.hasMoreChildren()) {
         reader.moveDown();
-        var lang = "";
-        var content = "";
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          var node = reader.getNodeName();
-          if (LANG_NODE_NAME.equals(node)) {
-            lang = reader.getValue();
-          } else if (CONTENT_NODE_NAME.equals(node)) {
-            content = reader.getValue();
-          }
-          reader.moveUp();
+        var node = reader.getNodeName();
+        if (LANG_NODE_NAME.equals(node)) {
+          lang = reader.getValue();
+        } else if (CONTENT_NODE_NAME.equals(node)) {
+          content = reader.getValue();
+        } else {
+          // no-op
         }
         reader.moveUp();
-        langContent.put(lang, content);
       }
+      reader.moveUp();
+      langContent.put(lang, content);
     }
     return new MultiLanguageString(langContent);
   }

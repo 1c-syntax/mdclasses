@@ -24,12 +24,18 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
       },
       "owner": {
         "type": "ACCUMULATION_REGISTER",
@@ -41,7 +47,7 @@
       "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
       "name": "Измерение1",
       "synonym": {
-        "content": []
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
       },
       "mdoReference": {
         "type": "REGISTER_DIMENSION",
@@ -57,17 +63,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 10,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -84,15 +89,15 @@
   },
   "enableTotalsSplitting": true,
   "explanation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "listPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -104,7 +109,7 @@
   "registerType": "Balance",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "useStandardCommands": true,
   "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f"

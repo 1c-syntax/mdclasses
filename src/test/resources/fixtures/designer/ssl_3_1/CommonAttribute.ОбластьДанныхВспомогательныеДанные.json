@@ -82,7 +82,7 @@
     }
   ],
   "createOnInput": "Auto",
-  "dataSeparation": "DONT_USE",
+  "dataSeparation": "SEPARATE",
   "dataSeparationUse": "SessionParameter.ОбластьДанныхИспользование",
   "dataSeparationValue": "SessionParameter.ОбластьДанныхЗначение",
   "editFormat": "",
@@ -123,12 +123,18 @@
   "toolTip": "",
   "type": {
     "types": [
-      "xs:decimal"
+      {
+        "name": "xs:decimal",
+        "kind": "PRIMITIVE"
+      }
     ],
-    "stringQualifier": {
-      "length": 0,
-      "allowedLength": ""
-    }
+    "qualifiers": [
+      {
+        "digits": 7,
+        "fractionDigits": 0,
+        "allowedSign": "NONNEGATIVE"
+      }
+    ]
   },
   "usersSeparation": "DontUse",
   "uuid": "530a3164-4ef1-4b3b-8269-13764ef4bf15"

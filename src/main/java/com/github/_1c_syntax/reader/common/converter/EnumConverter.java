@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.reader.designer.converter;
+package com.github._1c_syntax.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
 import com.thoughtworks.xstream.converters.Converter;
@@ -32,7 +32,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  * Класс-конвертер из строкового значения в элемент перечисления.
  * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от EnumWithValues.
  * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
- * XStreamFactory.
+ * *XStreamFactory.
  */
 public class EnumConverter<T extends Enum<T> & EnumWithValue> implements Converter {
 

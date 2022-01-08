@@ -15,7 +15,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.reader.TransformationUtils;
+import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverterCommon;

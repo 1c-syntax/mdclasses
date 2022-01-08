@@ -46,17 +46,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "type": "CATALOG",
@@ -108,12 +107,12 @@
           "indexing": "INDEX",
           "type": {
             "types": [
-              "cfg:CatalogRef.Пользователи"
+              {
+                "name": "cfg:CatalogRef.Пользователи",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": ""
-            }
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -253,7 +252,7 @@
     "content": []
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../extendedListPresentation"
   },
   "foldersOnTop": true,
   "fullTextSearch": "USE",
@@ -267,7 +266,7 @@
   "levelCount": 2,
   "limitLevelCount": false,
   "listPresentation": {
-    "content": []
+    "@reference": "../extendedListPresentation"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"

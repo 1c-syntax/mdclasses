@@ -43,11 +43,13 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "types": [
+          {
+            "name": "cfg:DefinedType.Организация",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
       },
       "owner": {
         "type": "DOCUMENT",
@@ -80,17 +82,16 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
           }
         ],
-        "stringQualifier": {
-          "length": 150,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -120,11 +121,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.Пользователи"
+          {
+            "name": "cfg:CatalogRef.Пользователи",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -155,17 +157,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
           }
         ],
-        "stringQualifier": {
-          "length": 150,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -194,10 +194,13 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "types": [
+          {
+            "name": "cfg:DefinedType.СубъектПерсональныхДанных",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -227,11 +230,16 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:dateTime"
+          {
+            "name": "xs:dateTime",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "dateFraction": "DATE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -261,11 +269,11 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.Пользователи"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -296,17 +304,15 @@
       "type": {
         "types": [
           {
-            "default": {
-              "tag": 1
-            },
-            "int": 1,
-            "string": "xs:string"
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
           }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": "Variable"
-        }
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -406,11 +412,12 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+              {
+                "name": "cfg:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения",
+                "kind": "REFERENCE"
+              }
             ],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -439,10 +446,13 @@
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
           "type": {
-            "types": [],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "types": [
+              {
+                "name": "cfg:Characteristic.ДополнительныеРеквизитыИСведения",
+                "kind": "REFERENCE"
+              }
+            ],
+            "qualifiers": []
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -473,17 +483,15 @@
           "type": {
             "types": [
               {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "string": "xs:string"
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
               }
             ],
-            "stringQualifier": {
-              "length": 0,
-              "allowedLength": "Variable"
-            }
+            "qualifiers": [
+              {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            ]
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -524,7 +532,7 @@
     ]
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",

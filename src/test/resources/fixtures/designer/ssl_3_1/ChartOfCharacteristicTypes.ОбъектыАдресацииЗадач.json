@@ -109,10 +109,10 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "foldersOnTop": true,
   "fullTextSearch": "USE",
@@ -123,7 +123,7 @@
     "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.StandardAttribute.Description"
   ],
   "listPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
@@ -131,16 +131,16 @@
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       },
       "supportVariant": "NONE"
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
       },
@@ -172,17 +172,16 @@
   "type": {
     "types": [
       {
-        "default": {
-          "tag": 1
-        },
-        "int": 1,
-        "string": "xs:string"
+        "name": "xs:string",
+        "kind": "PRIMITIVE"
       }
     ],
-    "stringQualifier": {
-      "length": 10,
-      "allowedLength": "Variable"
-    }
+    "qualifiers": [
+      {
+        "length": 10,
+        "allowedLength": "VARIABLE"
+      }
+    ]
   },
   "updateDataHistoryImmediatelyAfterWrite": false,
   "useStandardCommands": true,

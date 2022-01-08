@@ -13,7 +13,7 @@ import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.reader.TransformationUtils;
+import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerProperties;

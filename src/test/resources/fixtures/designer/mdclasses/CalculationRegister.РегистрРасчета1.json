@@ -27,12 +27,18 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:decimal"
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
       },
       "owner": {
         "type": "CALCULATION_REGISTER",
@@ -44,7 +50,7 @@
       "uuid": "f3e7cca5-4902-4ad5-96c7-db8336f52c6e",
       "name": "Измерение1",
       "synonym": {
-        "content": []
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
       },
       "mdoReference": {
         "type": "REGISTER_DIMENSION",
@@ -59,11 +65,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.Справочник1"
+          {
+            "name": "cfg:CatalogRef.Справочник1",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -96,11 +103,11 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:CatalogRef.Справочник1"
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/type/stringQualifier"
-        }
+        "qualifiers": []
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -140,15 +147,15 @@
     "@reference": "../auxiliaryListForm"
   },
   "explanation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "fullTextSearch": "DONT_USE",
   "includeHelpInContents": false,
   "listPresentation": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
@@ -168,7 +175,7 @@
   "scheduleValue": "InformationRegister.РегистрСведений1.Resource.Ресурсц",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
   },
   "useStandardCommands": true,
   "uuid": "90587c7d-b950-4476-ac14-426e4a83d9c4"

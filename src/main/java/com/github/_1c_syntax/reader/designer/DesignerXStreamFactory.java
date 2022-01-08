@@ -29,39 +29,30 @@ import com.github._1c_syntax.bsl.mdo.storages.RoleRight;
 import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.reader.xstream.ExtendReaderWrapper;
-import com.github._1c_syntax.reader.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.reader.common.converter.MethodHandlerConverter;
 import com.github._1c_syntax.reader.common.converter.XdtoPackageDataConverter;
 import com.github._1c_syntax.reader.designer.converter.DesignerConverter;
-import com.github._1c_syntax.reader.designer.converter.EnumConverter;
+import com.github._1c_syntax.reader.common.converter.EnumConverter;
 import com.github._1c_syntax.reader.designer.wrapper.DesignerRootWrapper;
+import com.github._1c_syntax.reader.xstream.ExtendReaderWrapper;
+import com.github._1c_syntax.reader.xstream.ExtendStaxDriver;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.DataHolder;
-import com.thoughtworks.xstream.converters.basic.BooleanConverter;
-import com.thoughtworks.xstream.converters.basic.ByteConverter;
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-import com.thoughtworks.xstream.converters.basic.DoubleConverter;
-import com.thoughtworks.xstream.converters.basic.FloatConverter;
-import com.thoughtworks.xstream.converters.basic.IntConverter;
-import com.thoughtworks.xstream.converters.basic.LongConverter;
-import com.thoughtworks.xstream.converters.basic.NullConverter;
-import com.thoughtworks.xstream.converters.basic.ShortConverter;
-import com.thoughtworks.xstream.converters.basic.StringConverter;
-import com.thoughtworks.xstream.converters.collections.CollectionConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.xml.QNameMap;
-import com.thoughtworks.xstream.security.ExplicitTypePermission;
-import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
@@ -108,38 +99,8 @@ public class DesignerXStreamFactory {
   }
 
   private XStream createXMLMapper() {
-    // данный провайдер необходим для корректной обработки значений по умолчанию, чтобы не было null
-    var qNameMap = new QNameMap();
-//    qNameMap.registerMapping(new QName("http://g5.1c.ru/v8/dt/form", "Form", "form"), FormData.class);
-//    qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), DesignerFormWrapper.class);
+    var xStream = new XStream(new PureJavaReflectionProvider(), new ExtendStaxDriver());
 
-    var xStream = new XStream(new PureJavaReflectionProvider(), new ExtendStaxDriver(qNameMap)) {
-
-      // TODO как починят https://github.com/x-stream/xstream/issues/101
-      // После исправления бага (с 2017 года) убрать этот код
-
-      /**
-       * Переопределение списка регистрируемых конвертеров. Оставлены только те, что нужны, особенно исключены те,
-       * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
-       */
-      @Override
-      protected void setupConverters() {
-//        reflectionConverter = new ReflectionConverter(getMapper(), getReflectionProvider());
-
-        registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
-        registerConverter(new IntConverter(), PRIORITY_NORMAL);
-        registerConverter(new FloatConverter(), PRIORITY_NORMAL);
-        registerConverter(new DoubleConverter(), PRIORITY_NORMAL);
-        registerConverter(new LongConverter(), PRIORITY_NORMAL);
-        registerConverter(new ShortConverter(), PRIORITY_NORMAL);
-        registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
-        registerConverter(new ByteConverter(), PRIORITY_NORMAL);
-        registerConverter(new StringConverter(), PRIORITY_NORMAL);
-        registerConverter(new DateConverter(), PRIORITY_NORMAL);
-        registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
-//        registerConverter(reflectionConverter, PRIORITY_VERY_LOW);
-      }
-    };
     // автоопределение аннотаций
     xStream.autodetectAnnotations(false);
 
@@ -147,10 +108,9 @@ public class DesignerXStreamFactory {
     xStream.ignoreUnknownElements();
     // настройки безопасности доступа к данным
     xStream.setMode(XStream.NO_REFERENCES);
-    XStream.setupDefaultSecurity(xStream);
-    xStream.addPermission(NoTypePermission.NONE);
+//    xStream.addPermission(NoTypePermission.NONE);
     xStream.addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
-    xStream.addPermission(new ExplicitTypePermission(new String[]{"java.time.Period"}));
+//    xStream.addPermission(new ExplicitTypePermission(new String[]{"java.time.Period"}));
 
     // необходимо зарегистрировать все используемые классы
     registerClasses(xStream);
@@ -168,8 +128,7 @@ public class DesignerXStreamFactory {
       .rejectPackages("com.github._1c_syntax.bsl.mdo.children")
       .scan()) {
 
-      var classes = scanResult.getClassesImplementing(MDObject.class.getName());
-      classes
+      scanResult.getClassesImplementing(MDObject.class.getName())
         .filter(classInfo -> !classInfo.isInterface())
         .forEach(clazzInfo -> xStream.alias(clazzInfo.getSimpleName(), getClassFromClassInfo(clazzInfo)));
     }
@@ -204,6 +163,7 @@ public class DesignerXStreamFactory {
 
     xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
     xStream.alias("dataSet", DataCompositionSchema.DataSet.class);
+
   }
 
   private void registerConverters(XStream xStream) {
@@ -225,16 +185,15 @@ public class DesignerXStreamFactory {
     xStream.registerConverter(new EnumConverter<>(ReturnValueReuse.class));
     xStream.registerConverter(new EnumConverter<>(UseMode.class));
     xStream.registerConverter(new EnumConverter<>(ScriptVariant.class));
-//    xStream.registerConverter(new EnumConverter<>(MessageDirection.class));
-//    xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
-//    xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
+    xStream.registerConverter(new EnumConverter<>(MessageDirection.class));
+    xStream.registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
+    xStream.registerConverter(new EnumConverter<>(ObjectBelonging.class));
     xStream.registerConverter(new EnumConverter<>(TemplateType.class));
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
-//    xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
-//    xStream.registerConverter(new EnumConverter<>(FormType.class));
+    xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
+    xStream.registerConverter(new EnumConverter<>(FormType.class));
     xStream.registerConverter(new EnumConverter<>(IndexingType.class));
     xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
-//    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new EnumConverter<>(ApplicationRunMode.class));
 
     xStream.registerConverter(new MethodHandlerConverter());

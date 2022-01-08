@@ -44,12 +44,12 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "cfg:EnumRef.Перечисление1"
+          {
+            "name": "cfg:EnumRef.Перечисление1",
+            "kind": "REFERENCE"
+          }
         ],
-        "stringQualifier": {
-          "length": 0,
-          "allowedLength": ""
-        }
+        "qualifiers": []
       },
       "owner": {
         "type": "CHART_OF_CALCULATION_TYPES",
@@ -81,11 +81,16 @@
       "indexing": "DONT_INDEX",
       "type": {
         "types": [
-          "xs:dateTime"
+          {
+            "name": "xs:dateTime",
+            "kind": "PRIMITIVE"
+          }
         ],
-        "stringQualifier": {
-          "@reference": "../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-        }
+        "qualifiers": [
+          {
+            "dateFraction": "DATE"
+          }
+        ]
       },
       "owner": {
         "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -135,11 +140,15 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              "xs:dateTime"
+              {
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+              }
             ],
-            "stringQualifier": {
-              "@reference": "../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/stringQualifier"
-            }
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
           },
           "owner": {
             "@reference": "../../../mdoReference"
@@ -177,10 +186,10 @@
     "content": []
   },
   "extendedListPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "extendedObjectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "fullTextSearch": "USE",
   "fullTextSearchOnInputByString": "DontUse",
@@ -190,7 +199,7 @@
     "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Code"
   ],
   "listPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "mdoReference": {
     "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
@@ -200,7 +209,7 @@
   "name": "ПланВидовРасчета1",
   "objectBelonging": "OWN",
   "objectPresentation": {
-    "content": []
+    "@reference": "../explanation"
   },
   "onActionPeriod": "",
   "predefinedDataUpdate": "Auto",
@@ -208,7 +217,7 @@
   "searchStringModeOnInputByString": "Begin",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "../explanation"
   },
   "useStandardCommands": true,
   "uuid": "1755c534-9ccd-49c4-9f8b-2aa066424aaa"
