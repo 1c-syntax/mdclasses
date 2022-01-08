@@ -21,68 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Map;
+class WebServiceTest {
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-class WebServiceTest extends AbstractMDObjectTest<WebService> {
-  WebServiceTest() {
-    super(WebService.class);
-  }
-
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "WebСервис1,d7f9b06b-0799-486e-adff-c45a2d5b8101,,,WebService,WebСервис,0,0,0,0,0,0"
+      "designer/ssl_3_1, WebService.Exchange"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("WebServices/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.WEB_SERVICE, argumentsAccessor);
-    assertThat(mdo.getOperations()).hasSize(2);
-    var operation = mdo.getOperations().get(0);
-    assertThat(operation.getName()).isEqualTo("Операция1");
-    assertThat(operation.getType()).isEqualTo(MDOType.WS_OPERATION);
-    assertThat(operation.getHandler()).isEqualTo("Операция1");
-    assertThat(operation.getUuid()).isEqualTo("cd562f7f-8321-4e95-a845-e93bc5924c2a");
-    assertThat(operation.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
-    assertThat(operation.getMetadataName()).isEqualTo("Operation");
-    assertThat(operation.getMetadataNameRu()).isEqualTo("Операция");
-    assertThat(operation.getSynonyms().getContent()).isEmpty();
-    assertThat(operation.getMdoReference().getMdoRef()).isEqualTo("WebService.WebСервис1.Operation.Операция1");
-    assertThat(operation.getMdoReference().getMdoRefRu()).isEqualTo("WebСервис.WebСервис1.Операция.Операция1");
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "WebСервис1,d7f9b06b-0799-486e-adff-c45a2d5b8101,,,WebService,WebСервис,0,0,0,0,0,1"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("WebServices/" + name + "/" + name);
-    mdoTest(mdo, MDOType.WEB_SERVICE, argumentsAccessor);
-    assertThat(mdo.getOperations()).hasSize(2);
-    var operation = mdo.getOperations().get(0);
-    assertThat(operation.getName()).isEqualTo("Операция");
-    assertThat(operation.getType()).isEqualTo(MDOType.WS_OPERATION);
-    assertThat(operation.getHandler()).isEqualTo("Операция1");
-    assertThat(operation.getUuid()).isEqualTo("21c0c4a9-5f3b-4147-be1e-500ed834fae4");
-    assertThat(operation.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
-    assertThat(operation.getMetadataName()).isEqualTo("Operation");
-    assertThat(operation.getMetadataNameRu()).isEqualTo("Операция");
-    assertThat(operation.getSynonyms().getContent())
-      .hasSize(1)
-      .contains(Map.entry("ru", "Операция"));
-    assertThat(operation.getMdoReference().getMdoRef()).isEqualTo("WebService.WebСервис1.Operation.Операция");
-    assertThat(operation.getMdoReference().getMdoRefRu()).isEqualTo("WebСервис.WebСервис1.Операция.Операция");
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

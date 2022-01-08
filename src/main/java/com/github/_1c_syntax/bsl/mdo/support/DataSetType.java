@@ -40,6 +40,7 @@ public enum DataSetType implements EnumWithValue {
 
   /**
    * Выполняет преобразование из строкового представления в значение
+   *
    * @param value Строковое представление
    * @return Найденный тип
    */

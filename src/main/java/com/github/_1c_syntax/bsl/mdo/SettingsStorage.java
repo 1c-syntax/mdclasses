@@ -27,10 +27,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -40,9 +42,13 @@ import java.util.List;
 public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SETTINGS_STORAGE;
 
   /**
    * Уникальный идентификатор
@@ -50,52 +56,91 @@ public class SettingsStorage implements MDObject, FormOwner, TemplateOwner, Modu
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список форм
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  List<Form> forms;
-
-  /**
-   * Список макетов
-   */
-  List<Template> templates;
-
-  /**
-   * Список модулей объекта
-   */
-  List<Module> modules;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Форма по умолчанию для сохранения
+   */
+  @Default
+  MdoReference defaultSaveForm = MdoReference.EMPTY;
+
+  /**
+   * Форма по умолчанию для загрузки
+   */
+  @Default
+  MdoReference defaultLoadForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма для сохранения
+   */
+  @Default
+  MdoReference auxiliarySaveForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма для загрузки
+   */
+  @Default
+  MdoReference auxiliaryLoadForm = MdoReference.EMPTY;
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

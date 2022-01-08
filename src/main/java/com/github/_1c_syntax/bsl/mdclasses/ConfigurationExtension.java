@@ -60,6 +60,11 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   String uuid;
 
   /**
+   * Синонимы объекта
+   */
+  MultiLanguageString synonym;
+
+  /**
    * Вариант исходников конфигурации
    */
   ConfigurationSource configurationSource;
@@ -133,11 +138,6 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
    * Дочерние объекты конфигурации
    */
   List<MDObject> children;
-
-  /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  List<MDObject> plainChildren;
 
   /**
    * Назначение расширения конфигурации

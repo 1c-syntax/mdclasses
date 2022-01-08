@@ -21,43 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.List;
+class SequenceTest {
 
-class SequenceTest extends AbstractMDObjectTest<Sequence> {
-  SequenceTest() {
-    super(Sequence.class);
-  }
-
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Последовательность1,514bbcf4-7fc4-4a3e-9245-598fad397eec,,,Sequence,Последовательность,1,0,0,0,0,0"
+      "designer/mdclasses, Sequence.Последовательность1"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Sequences/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.SEQUENCE, argumentsAccessor);
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "Последовательность1,514bbcf4-7fc4-4a3e-9245-598fad397eec,,,Sequence,Последовательность,1,0,0,0,0,1"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("Sequences/" + name + "/" + name);
-    mdoTest(mdo, MDOType.SEQUENCE, argumentsAccessor);
-
-    checkAttributeField(mdo.getAttributes().get(0),
-      "Измерение1", "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
-      List.of("passwordMode", "denyIncompleteValues", "master"));
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

@@ -22,30 +22,37 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.Collections;
+import java.util.List;
 
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Constant implements Attribute {
-
-  private static final AttributeKind KIND = AttributeKind.STANDARD;
-  private static final IndexingType INDEXING = IndexingType.DONT_INDEX;
+public class Constant implements Attribute, ModuleOwner {
 
   /**
-   * Имя
+   * Attribute
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.CONSTANT;
 
   /**
    * Уникальный идентификатор
@@ -53,34 +60,39 @@ public class Constant implements Attribute {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Режим пароля. Только для констант с типом `Строка`
@@ -88,17 +100,133 @@ public class Constant implements Attribute {
   boolean passwordMode;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Вид атрибута
    */
-  SupportVariant supportVariant;
+  static final AttributeKind kind = AttributeKind.STANDARD;
+
+  /**
+   * Вариант индексирования реквизита
+   */
+  static final IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Форма по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  // todo описание
+
+  @Default
+  String format = "";
+
+  @Default
+  String editFormat = "";
+
+  @Default
+  String toolTip = "";
+
+  boolean markNegatives;
+
+  @Default
+  String mask = "";
+
+  boolean multiLine;
+
+  boolean extendedEdit;
+
+  @Default
+  String minValue = "";
+
+  @Default
+  String maxValue = "";
+
+  @Default
+  String fillChecking = "";
+
+  @Default
+  String choiceFoldersAndItems = "";
+
+  @Default
+  List<String> choiceParameterLinks = Collections.emptyList();
+
+  @Default
+  List<String> choiceParameters = Collections.emptyList();
+
+  @Default
+  String quickChoice = "";
+
+  @Default
+  String createOnInput = "";
+
+  @Default
+  String choiceForm = "";
+
+  @Default
+  String linkByType = "";
+
+  @Default
+  String choiceHistoryOnInput = "";
+
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 
   @Override
   public AttributeKind getKind() {
-    return KIND;
+    return kind;
   }
 
   @Override
   public IndexingType getIndexing() {
-    return INDEXING;
+    return indexing;
   }
 }

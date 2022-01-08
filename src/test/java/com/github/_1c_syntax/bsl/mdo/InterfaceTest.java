@@ -21,25 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class InterfaceTest extends AbstractMDObjectTest<Interface> {
-  InterfaceTest() {
-    super(Interface.class);
-  }
+class InterfaceTest {
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest
   @CsvSource(
     {
-      "Интерфейс1,874d641c-12f7-4db7-bde2-dd72c3d5b522,,,Interface,Интерфейс,0,0,0,0,0,0"
+      "designer/mdclasses, Interface.Интерфейс1",
+      "designer/mdclasses, Interface.Интерфейс2"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Interfaces/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.INTERFACE, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

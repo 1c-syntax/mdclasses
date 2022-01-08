@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -30,5 +31,14 @@ import java.util.Map;
  */
 @Value
 public class MultiLanguageString {
+
+  /**
+   * Ссылка на пустой элемент
+   */
+  public static final MultiLanguageString EMPTY = new MultiLanguageString(Collections.emptyMap());
+
+  /**
+   * Содержимое описания для каждого языка
+   */
   Map<String, String> content;
 }

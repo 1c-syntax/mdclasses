@@ -21,26 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class CommonPictureTest extends AbstractMDObjectTest<CommonPicture> {
-  CommonPictureTest() {
-    super(CommonPicture.class);
-  }
+class CommonPictureTest {
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ОбщаяКартинка1,db84513d-2535-494b-843e-6d8931cb2f82,,,CommonPicture,ОбщаяКартинка,0,0,0,0,0,0"
+      "designer/ssl_3_1, CommonPicture.АнимацияПодтверждения"
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("CommonPictures/" + name + "/" + name);
-    mdoTest(mdo, MDOType.COMMON_PICTURE, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
 }

@@ -25,6 +25,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
+/**
+ * Направление работы канала сервиса интеграции
+ */
 @AllArgsConstructor
 public enum MessageDirection implements EnumWithValue {
   SEND("Send"),

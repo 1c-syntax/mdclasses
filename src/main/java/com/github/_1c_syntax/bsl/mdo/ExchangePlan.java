@@ -22,20 +22,21 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -45,9 +46,13 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   ModuleOwner, TabularSectionOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.EXCHANGE_PLAN;
 
   /**
    * Уникальный идентификатор
@@ -55,64 +60,60 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список атрибутов
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  List<Attribute> attributes;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
-   * Список форм
+   * Вариант поддержки родительской конфигурации
    */
-  List<Form> forms;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Список команд
+   * Комментарий
    */
-  List<Command> commands;
+  @Default
+  String comment = "";
 
   /**
-   * Список макетов
+   * ChildrenOwner
    */
-  List<Template> templates;
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Список модулей объекта
    */
-  List<Module> modules;
+  @Default
+  List<Module> modules = Collections.emptyList();
 
   /**
-   * Список табличных частей
+   * Custom
    */
-  List<TabularSection> tabularSections;
 
   /**
    * Признак распределенной базы
@@ -124,20 +125,162 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
   boolean includeConfigurationExtensions;
 
   /**
-   * Вариант поддержки родительской конфигурации
-   */
-  SupportVariant supportVariant;
-
-  /**
    * Элементы, входящие в состав плана обмена
    */
-  List<Item> content;
+  @Default
+  List<Item> content = Collections.emptyList();
 
-  @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
-  }
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Форма списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Форма объекта по умолчанию
+   */
+  @Default
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Форма выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма объекта
+   */
+  @Default
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма выбора
+   */
+  @Default
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Режим редактирования
+   */
+  @Default
+  String editType = "";
+
+  /**
+   * Ввод по строке
+   */
+  @Default
+  List<String> inputByString = Collections.emptyList();
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  String createOnInput = "";
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Использовать полнотекстовый поиск
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+  /**
+   * Представление в списке
+   */
+  @Default
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Расширенное представление в списке
+   */
+  @Default
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Представление объекта
+   */
+  @Default
+  MultiLanguageString objectPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Расширенное представление объекта
+   */
+  @Default
+  MultiLanguageString extendedObjectPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  // todo описания
+
+  int codeLength;
+
+  int descriptionLength;
+
+  @Default
+  String codeAllowedLength = "";
+
+  @Default
+  String defaultPresentation = "";
+
+  @Default
+  List<String> characteristics = Collections.emptyList();
+
+  boolean quickChoice;
+
+  @Default
+
+  String choiceMode = "";
+
+  @Default
+  String searchStringModeOnInputByString = "";
+
+  @Default
+  String fullTextSearchOnInputByString = "";
+
+  @Default
+  String choiceDataGetModeOnInputByString = "";
+
+  @Default
+  List<String> basedOn = Collections.emptyList();
+
+  @Default
+  List<String> dataLockFields = Collections.emptyList();
+
+  @Default
+  String choiceHistoryOnInput = "";
+
+  @Default
+  String dataHistory = "";
+
+  boolean updateDataHistoryImmediatelyAfterWrite;
+
+  boolean executeAfterWriteDataHistoryVersionProcessing;
 
   /**
    * Описание элемента состава плана обмена
@@ -153,5 +296,14 @@ public class ExchangePlan implements MDObject, AttributeOwner, FormOwner, Comman
      * Режим автоматической регистрации
      */
     AutoRecordType autoRecord;
+  }
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

@@ -27,9 +27,11 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ValueType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -39,10 +41,15 @@ import lombok.Value;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class RegisterResource implements Attribute, MDChildObject {
+
   /**
-   * Имя
+   * Attribute
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.RESOURCE;
 
   /**
    * Уникальный идентификатор
@@ -50,34 +57,39 @@ public class RegisterResource implements Attribute, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
 
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
@@ -87,20 +99,42 @@ public class RegisterResource implements Attribute, MDChildObject {
   /**
    * Вид атрибута
    */
-  AttributeKind kind;
+  @Default
+  AttributeKind kind = AttributeKind.CUSTOM;
 
   /**
    * Вариант индексирования реквизита
    */
-  IndexingType indexing;
+  @Default
+  IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Тип значения
+   */
+  @Default
+  ValueType type = ValueType.EMPTY;
+
+  /**
+   * MDChildObject
+   */
 
   /**
    * Родительский объект
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * Custom
    */
-  SupportVariant supportVariant;
+
+  /**
+   * Attribute
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
 }

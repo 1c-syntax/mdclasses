@@ -1,0 +1,122 @@
+{"com.github._1c_syntax.bsl.mdo.AccountingRegister": {
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "chartOfAccounts": {
+    "type": "CHART_OF_ACCOUNTS",
+    "mdoRef": "ChartOfAccounts.ПланСчетов1",
+    "mdoRefRu": "ПланСчетов.ПланСчетов1"
+  },
+  "children": [
+    {
+      "uuid": "902c08a9-e457-436a-b0fb-b996f0d9bb00",
+      "name": "Измерение1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "REGISTER_DIMENSION",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии3.Dimension.Измерение1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии3.Измерение.Измерение1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "type": "ACCOUNTING_REGISTER",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии3",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии3"
+      },
+      "useInTotals": false,
+      "denyIncompleteValues": false,
+      "master": false
+    },
+    {
+      "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
+      "name": "Ресурс1",
+      "synonym": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
+      },
+      "mdoReference": {
+        "type": "RESOURCE",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии3.Resource.Ресурс1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии3.Ресурс.Ресурс1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterDimension/owner"
+      }
+    }
+  ],
+  "comment": "",
+  "correspondence": false,
+  "dataLockControlMode": "MANAGED",
+  "defaultListForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "enableTotalsSplitting": true,
+  "explanation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
+  },
+  "extendedListPresentation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
+  },
+  "fullTextSearch": "DONT_USE",
+  "includeHelpInContents": false,
+  "listPresentation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/owner"
+  },
+  "mdoType": "ACCOUNTING_REGISTER",
+  "modules": [],
+  "name": "РегистрБухгалтерии3",
+  "objectBelonging": "OWN",
+  "periodAdjustmentLength": 0,
+  "supportVariant": "NONE",
+  "synonym": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterDimension/synonym"
+  },
+  "useStandardCommands": true,
+  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a"
+}}

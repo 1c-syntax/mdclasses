@@ -1,0 +1,152 @@
+{"com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryRecordForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "children": [
+    {
+      "uuid": "bb7cf0f8-56b0-4c0d-b206-79051ba83f6d",
+      "name": "Данные",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Данные"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "RESOURCE",
+        "mdoRef": "InformationRegister.БезопасноеХранилищеДанных.Resource.Данные",
+        "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанных.Ресурс.Данные"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "v8:ValueStorage",
+            "kind": "V8"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "type": "INFORMATION_REGISTER",
+        "mdoRef": "InformationRegister.БезопасноеХранилищеДанных",
+        "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанных"
+      }
+    },
+    {
+      "uuid": "ab057ce4-ac51-4465-8aad-eadc9088c62d",
+      "name": "Владелец",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Владелец"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "REGISTER_DIMENSION",
+        "mdoRef": "InformationRegister.БезопасноеХранилищеДанных.Dimension.Владелец",
+        "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанных.Измерение.Владелец"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          },
+          {
+            "name": "cfg:ExchangePlanRef",
+            "kind": "REFERENCE"
+          },
+          {
+            "name": "cfg:CatalogRef",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 128,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+      },
+      "useInTotals": false,
+      "denyIncompleteValues": false,
+      "master": false
+    }
+  ],
+  "comment": "",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "defaultListForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "defaultRecordForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "editType": "InDialog",
+  "enableTotalsSliceFirst": false,
+  "enableTotalsSliceLast": false,
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "@reference": "../explanation"
+  },
+  "extendedRecordPresentation": {
+    "@reference": "../explanation"
+  },
+  "fullTextSearch": "DONT_USE",
+  "includeHelpInContents": false,
+  "informationRegisterPeriodicity": "Nonperiodical",
+  "listPresentation": {
+    "@reference": "../explanation"
+  },
+  "mainFilterOnPeriod": false,
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+  },
+  "mdoType": "INFORMATION_REGISTER",
+  "modules": [],
+  "name": "БезопасноеХранилищеДанных",
+  "objectBelonging": "OWN",
+  "recordPresentation": {
+    "@reference": "../explanation"
+  },
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Безопасное хранилище данных"
+      ]
+    ]
+  },
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": false,
+  "uuid": "f9f021ca-8b3e-4d10-9538-1bce7e851fdd",
+  "writeMode": "Independent"
+}}

@@ -30,10 +30,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MDClassesTest {
 
   @Test
-  void createConfiguration() {
-    File srcPath = new File("src/test/resources/metadata/edt");
+  void createConfigurationEDT() {
+//    File srcPath = new File("src/test/resources/metadata/edt");
+//    var configuration = MDClasses.createConfiguration(srcPath.toPath());
+//
+//    assertThat(configuration.getChildren()).hasSize(61);
+  }
+
+  @Test
+  void createConfigurationDesigner() {
+    File srcPath = new File("src/test/resources/ext/designer/mdclasses/src/cf");
     var configuration = MDClasses.createConfiguration(srcPath.toPath());
 
-    assertThat(configuration.getChildren()).hasSize(61);
+    assertThat(configuration.getChildren()).hasSize(65);
   }
 }

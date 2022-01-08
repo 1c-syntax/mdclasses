@@ -1,0 +1,341 @@
+{"com.github._1c_syntax.bsl.mdo.Report": {
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliarySettingsForm": {
+    "@reference": "../auxiliaryForm"
+  },
+  "children": [
+    {
+      "uuid": "fec102ea-a3f6-49b5-b4b8-6884b0654129",
+      "name": "СведенияОРегламентномЗадании",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Сведения о регламентном задании"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Report.АнализЖурналаРегистрации.Form.СведенияОРегламентномЗадании",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Форма.СведенияОРегламентномЗадании"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "type": "REPORT",
+        "mdoRef": "Report.АнализЖурналаРегистрации",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
+      }
+    },
+    {
+      "uuid": "246571fb-38c7-4da6-929d-d8b44bc3437c",
+      "name": "ОсновнаяСхемаКомпоновкиДанных",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Основная схема компоновки данных"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Report.АнализЖурналаРегистрации.Template.ОсновнаяСхемаКомпоновкиДанных",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ОсновнаяСхемаКомпоновкиДанных"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "DATA_COMPOSITION_SCHEME",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.DataCompositionSchema",
+        "dataSets": [
+          {
+            "name": "АнализАктивностиПользователей",
+            "type": "DATA_SET_OBJECT",
+            "dataSource": "ИсточникДанных1",
+            "items": [],
+            "querySource": {
+              "position": {
+                "line": 0,
+                "column": 0
+              },
+              "textQuery": ""
+            },
+            "fields": [
+              [
+                {
+                  "dataPath": "Дата",
+                  "name": "Дата"
+                },
+                {
+                  "dataPath": "Пользователь",
+                  "name": "Пользователь"
+                },
+                {
+                  "dataPath": "ЧасовРаботы",
+                  "name": "ЧасовРаботы"
+                },
+                {
+                  "dataPath": "КоличествоЗапусков",
+                  "name": "КоличествоЗапусков"
+                },
+                {
+                  "dataPath": "СозданоДокументов",
+                  "name": "СозданоДокументов"
+                },
+                {
+                  "dataPath": "СозданоСправочников",
+                  "name": "СозданоСправочников"
+                },
+                {
+                  "dataPath": "ИзмененоДокументов",
+                  "name": "ИзмененоДокументов"
+                },
+                {
+                  "dataPath": "ИзмененоСправочников",
+                  "name": "ИзмененоСправочников"
+                },
+                {
+                  "dataPath": "ОбъектСправочникДокумент",
+                  "name": "ОбъектСправочникДокумент"
+                },
+                {
+                  "dataPath": "ВидОбъекта",
+                  "name": "ВидОбъекта"
+                },
+                {
+                  "dataPath": "Ошибок",
+                  "name": "Ошибок"
+                },
+                {
+                  "dataPath": "Неделя",
+                  "name": "Неделя"
+                },
+                {
+                  "dataPath": "Предупреждений",
+                  "name": "Предупреждений"
+                },
+                {
+                  "dataPath": "СозданоБизнесПроцессов",
+                  "name": "СозданоБизнесПроцессов"
+                },
+                {
+                  "dataPath": "СозданоЗадач",
+                  "name": "СозданоЗадач"
+                },
+                {
+                  "dataPath": "ИзмененоБизнесПроцессов",
+                  "name": "ИзмененоБизнесПроцессов"
+                },
+                {
+                  "dataPath": "ИзмененоЗадач",
+                  "name": "ИзмененоЗадач"
+                }
+              ],
+              []
+            ]
+          },
+          {
+            "name": "ОдновременноСессий",
+            "type": "DATA_SET_OBJECT",
+            "dataSource": "ИсточникДанных1",
+            "items": [],
+            "querySource": {
+              "@reference": "../../com.github._1c_syntax.bsl.mdo.storages.DataCompositionSchema$DataSet/querySource"
+            },
+            "fields": [
+              [
+                {
+                  "dataPath": "ДатаОдновременноРаботавшихПользователей",
+                  "name": "ДатаОдновременноРаботавшихПользователей"
+                },
+                {
+                  "dataPath": "ОдновременноРаботавшихПользователей",
+                  "name": "ОдновременноРаботавшихПользователей"
+                },
+                {
+                  "dataPath": "СписокОдновременноРаботавшихПользователей",
+                  "name": "СписокОдновременноРаботавшихПользователей"
+                }
+              ],
+              []
+            ]
+          }
+        ],
+        "plainDataSets": [
+          {
+            "@reference": "../../dataSets/com.github._1c_syntax.bsl.mdo.storages.DataCompositionSchema$DataSet"
+          },
+          {
+            "@reference": "../../dataSets/com.github._1c_syntax.bsl.mdo.storages.DataCompositionSchema$DataSet[2]"
+          }
+        ]
+      },
+      "templateDataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Templates/ОсновнаяСхемаКомпоновкиДанных/Ext/Template.xml",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      }
+    },
+    {
+      "uuid": "047fd6d7-5e30-4184-a09a-6525de526cc7",
+      "name": "МакетОтчетаПоОшибкамВЖурналеРегистрации",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Макет отчета по ошибкам в журнале регистрации"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Report.АнализЖурналаРегистрации.Template.МакетОтчетаПоОшибкамВЖурналеРегистрации",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.МакетОтчетаПоОшибкамВЖурналеРегистрации"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      }
+    },
+    {
+      "uuid": "beb44b02-5d5e-4127-aee7-e184a43a4210",
+      "name": "ПродолжительностьРаботыРегламентныхЗаданий",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Продолжительность работы регламентных заданий"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Report.АнализЖурналаРегистрации.Template.ПродолжительностьРаботыРегламентныхЗаданий",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.ПродолжительностьРаботыРегламентныхЗаданий"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[2]/templateData"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      }
+    },
+    {
+      "uuid": "1dedfbc2-9250-4229-a6ea-5e085f33e7c3",
+      "name": "РасшифровкаРегламентныхЗаданий",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Расшифровка регламентных заданий"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Report.АнализЖурналаРегистрации.Template.РасшифровкаРегламентныхЗаданий",
+        "mdoRefRu": "Отчет.АнализЖурналаРегистрации.Макет.РасшифровкаРегламентныхЗаданий"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData",
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[2]/templateData"
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      }
+    }
+  ],
+  "comment": "",
+  "defaultForm": {
+    "type": "COMMON_FORM",
+    "mdoRef": "CommonForm.ФормаОтчета",
+    "mdoRefRu": "ОбщаяФорма.ФормаОтчета"
+  },
+  "defaultSettingsForm": {
+    "type": "COMMON_FORM",
+    "mdoRef": "CommonForm.ФормаНастроекОтчета",
+    "mdoRefRu": "ОбщаяФорма.ФормаНастроекОтчета"
+  },
+  "defaultVariantForm": {
+    "type": "COMMON_FORM",
+    "mdoRef": "CommonForm.ФормаВариантаОтчета",
+    "mdoRefRu": "ОбщаяФорма.ФормаВариантаОтчета"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedPresentation": {
+    "@reference": "../explanation"
+  },
+  "includeHelpInContents": true,
+  "mainDataCompositionSchema": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/mdoReference"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+  },
+  "mdoType": "REPORT",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализЖурналаРегистрации/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "АнализЖурналаРегистрации",
+  "objectBelonging": "OWN",
+  "settingsStorage": {
+    "@reference": "../auxiliaryForm"
+  },
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Анализ журнала регистрации"
+      ]
+    ]
+  },
+  "useStandardCommands": true,
+  "uuid": "bcd705ba-c9ac-4e73-94b1-7632c0f06c04",
+  "variantsStorage": {
+    "type": "SETTINGS_STORAGE",
+    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов",
+    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов"
+  }
+}}

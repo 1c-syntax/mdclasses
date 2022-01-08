@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -37,10 +38,12 @@ import java.net.URI;
 @ToString(of = {"uri"})
 @EqualsAndHashCode(of = {"uri"})
 public class ObjectModule implements Module {
+
   /**
    * Тип модуля
    */
-  ModuleType moduleType;
+  @Default
+  ModuleType moduleType = ModuleType.UNKNOWN;
 
   /**
    * Ссылка на файл bsl модуля
@@ -50,10 +53,12 @@ public class ObjectModule implements Module {
   /**
    * Ссылка на объект метаданных которому принадлежит модуль
    */
-  MdoReference owner;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 }

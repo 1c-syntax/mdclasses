@@ -22,11 +22,16 @@
 package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.test_utils.assertions.FieldAssert;
+import com.github._1c_syntax.bsl.test_utils.assertions.JsonAssert;
 
 import java.lang.reflect.Field;
 
 public class Assertions extends org.assertj.core.api.Assertions {
   public static FieldAssert assertThat(Field actual, Object ignored) {
     return new FieldAssert(actual);
+  }
+
+  public static JsonAssert assertThat(String actual, boolean ignored) {
+    return new JsonAssert(actual);
   }
 }

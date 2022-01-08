@@ -21,20 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 @Value
 @Builder
@@ -44,9 +45,13 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
   ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.INFORMATION_REGISTER;
 
   /**
    * Уникальный идентификатор
@@ -54,68 +59,177 @@ public class InformationRegister implements MDObject, AttributeOwner, FormOwner,
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список атрибутов
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  List<Attribute> attributes;
-
-  /**
-   * Список форм
-   */
-  List<Form> forms;
-
-  /**
-   * Список команд
-   */
-  List<Command> commands;
-
-  /**
-   * Список макетов
-   */
-  List<Template> templates;
-
-  /**
-   * Список модулей объекта
-   */
-  List<Module> modules;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Форма списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Форма записи по умолчанию
+   */
+  @Default
+  MdoReference defaultRecordForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма записи
+   */
+  @Default
+  MdoReference auxiliaryRecordForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Режим редактирования
+   */
+  @Default
+  String editType = "";
+
+  /**
+   * Режим блокировки данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Использовать полнотекстовый поиск
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+  /**
+   * Представление в списке
+   */
+  @Default
+  MultiLanguageString listPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Расширенное представление в списке
+   */
+  @Default
+  MultiLanguageString extendedListPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Представление записи
+   */
+  @Default
+  MultiLanguageString recordPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Расширенное представление записи
+   */
+  @Default
+  MultiLanguageString extendedRecordPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  @Default
+  String dataHistory = "";
+
+  boolean updateDataHistoryImmediatelyAfterWrite;
+
+  boolean executeAfterWriteDataHistoryVersionProcessing;
+
+  @Default
+  String informationRegisterPeriodicity = "";
+
+  @Default
+  String writeMode = "";
+
+  /**
+   * Основной отбор по периоду
+   */
+  boolean mainFilterOnPeriod;
+
+  /**
+   * Использовать итоги срез первых
+   */
+  boolean enableTotalsSliceFirst;
+
+  /**
+   * Использовать итоги срез последних
+   */
+  boolean enableTotalsSliceLast;
+
+  /**
+   * MDObject
+   */
 
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    requireNonNull(attributes);
-    attributes.add(commonAttribute);
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

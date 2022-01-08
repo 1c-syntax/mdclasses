@@ -21,52 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class ChartOfCalculationTypesTest extends AbstractMDObjectTest<ChartOfCalculationTypes> {
-  ChartOfCalculationTypesTest() {
-    super(ChartOfCalculationTypes.class);
-  }
+class ChartOfCalculationTypesTest {
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ПланВидовРасчета1,1755c534-9ccd-49c4-9f8b-2aa066424aaa,,,ChartOfCalculationTypes,ПланВидовРасчета,2,1,0,0,0,0"
+      "designer/mdclasses, ChartOfCalculationTypes.ПланВидовРасчета1"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("ChartsOfCalculationTypes/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.CHART_OF_CALCULATION_TYPES, argumentsAccessor);
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "ПланВидовРасчета1,1755c534-9ccd-49c4-9f8b-2aa066424aaa,,,ChartOfCalculationTypes,ПланВидовРасчета,1,1,1,1,1,1"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("ChartsOfCalculationTypes/" + name + "/" + name);
-    mdoTest(mdo, MDOType.CHART_OF_CALCULATION_TYPES, argumentsAccessor);
-
-    checkAttributeField(mdo.getAttributes().get(0),
-      "Реквизит", "3ef419e4-1b25-41e4-af8f-98b26c7f3287");
-
-    checkChildField(mdo.getForms().get(0),
-      "ФормаЭлемента", "580cd87b-3194-4e6b-9930-480c64aabef7");
-
-    checkChildField(mdo.getTemplates().get(0),
-      "Макет", "d3f68ce9-9ad3-4a69-9715-337aeca62f14");
-
-    checkChildField(mdo.getCommands().get(0),
-      "Команда", "0f28da06-421e-4ba1-8e6c-56ec5b933d32");
-
-    checkChildField(mdo.getTabularSections().get(0),
-      "ТабличнаяЧасть", "30f1cedf-4d10-455f-8091-d08880e21987");
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

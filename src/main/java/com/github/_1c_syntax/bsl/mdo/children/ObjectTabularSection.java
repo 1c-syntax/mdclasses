@@ -21,8 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
-import com.github._1c_syntax.bsl.mdo.Attribute;
-import com.github._1c_syntax.bsl.mdo.CommonAttribute;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -30,11 +29,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -44,9 +44,13 @@ import java.util.List;
 public class ObjectTabularSection implements TabularSection, MDChildObject {
 
   /**
-   * Имя
+   * TabularSection
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.TABULAR_SECTION;
 
   /**
    * Уникальный идентификатор
@@ -54,52 +58,67 @@ public class ObjectTabularSection implements TabularSection, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список атрибутов
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  List<Attribute> attributes;
-
-  /**
-   * Родительский объект
-   */
-  MdoReference owner;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
+   * TabularSection
+   */
 
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo общего реквизита не бывает
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

@@ -21,58 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.AttributeOwner;
-import com.github._1c_syntax.bsl.mdo.Language;
-import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
-import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.MdoReference;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
-import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.bsl.support.CompatibilityMode;
-import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
-import com.github._1c_syntax.support_configuration.ParseSupportData;
-import lombok.SneakyThrows;
+import com.github._1c_syntax.reader.MDOReader;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Map;
 
 @UtilityClass
 public class MDClasses {
-
-  private static final String EMPTY_STRING = "empty";
-
-  /**
-   * Создает конфигурацию или расширение по указанному пути
-   *
-   * @param path Путь к корню проекта
-   * @return Конфигурация или расширение
-   */
-  @SneakyThrows
-  public MDClass createConfiguration(Path path) {
-    var configurationSource = MDOUtils.getConfigurationSourceByPath(path);
-    var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, path);
-    if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-      ParseSupportData.readSimple(fileParentConfiguration.get());
-    }
-
-    var mdo = MDOFactory.readMDOConfiguration(configurationSource, path);
-    if (mdo.isPresent()) {
-      var configuration = (MDClass) mdo.get().buildMDObject();
-      computeCommonAttributeLinks(configuration);
-      return configuration;
-    }
-
-    return createConfiguration();
-  }
 
   /**
    * Создает пустую конфигурацию
@@ -80,50 +35,27 @@ public class MDClasses {
    * @return Пустая конфигурация
    */
   public MDClass createConfiguration() {
-    var emptyBuilder = Configuration.builder();
-    emptyBuilder.configurationSource(ConfigurationSource.EMPTY)
-      .name(EMPTY_STRING)
-      .uuid(EMPTY_STRING)
-      .compatibilityMode(new CompatibilityMode())
-      .configurationExtensionCompatibilityMode(new CompatibilityMode())
-      .scriptVariant(ScriptVariant.RUSSIAN)
-      .defaultRunMode(ApplicationRunMode.AUTO)
-      .defaultLanguage(Language.DEFAULT)
-      .dataLockControlMode(DataLockControlMode.AUTOMATIC)
-      .objectAutonumerationMode("")
-      .modalityUseMode(UseMode.DONT_USE)
-      .synchronousExtensionAndAddInCallUseMode(UseMode.DONT_USE)
-      .synchronousPlatformExtensionAndAddInCallUseMode(UseMode.DONT_USE)
-      .copyrights(new MultiLanguageString(Map.of("", "")))
-      .detailedInformation(new MultiLanguageString(Map.of("", "")))
-      .briefInformation(new MultiLanguageString(Map.of("", "")))
-      .children(Collections.emptyList())
-      .plainChildren(Collections.emptyList())
-      .modules(Collections.emptyList())
-      .supportVariant(SupportVariant.NONE)
-      .mdoReference(MdoReference.create(MDOType.CONFIGURATION, EMPTY_STRING, EMPTY_STRING))
-    ;
-
-    return emptyBuilder.build();
+    return Configuration.EMPTY;
   }
 
   /**
-   * Выполняет связь общего реквизита с объектами из его состава
+   * Создает конфигурацию или расширение по указанному пути
    *
-   * @param mdc Конфигурация или расширение
+   * @param path Путь к корню проекта
+   * @return Конфигурация или расширение
    */
-  private static void computeCommonAttributeLinks(MDClass mdc) {
-    if (mdc instanceof ConfigurationTree) {
-      var configuration = (ConfigurationTree) mdc;
-      configuration.getCommonAttributes()
-        .forEach(commonAttribute -> commonAttribute.getUsing()
-          .forEach(mdoReference -> mdc.findChild(mdoReference)
-            .ifPresent((MDObject mdObject) -> {
-              if (mdObject instanceof AttributeOwner) {
-                ((AttributeOwner) mdObject).addCommonAttribute(commonAttribute);
-              }
-            }))
-        );
-    }
+  public MDClass createConfiguration(Path path) {
+    return createConfiguration(path, false);
+  }
+
+  /**
+   * Создает конфигурацию или расширение по указанному пути
+   *
+   * @param path        Путь к корню проекта
+   * @param skipSupport Флаг управления чтением информации о поддержке
+   * @return Конфигурация или расширение
+   */
+  public MDClass createConfiguration(Path path, boolean skipSupport) {
+    return MDOReader.readConfiguration(path, skipSupport);
   }
 }

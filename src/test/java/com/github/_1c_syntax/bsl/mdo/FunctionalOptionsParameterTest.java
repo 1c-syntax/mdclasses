@@ -21,26 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class FunctionalOptionsParameterTest extends AbstractMDObjectTest<FunctionalOptionsParameter> {
-  FunctionalOptionsParameterTest() {
-    super(FunctionalOptionsParameter.class);
-  }
+class FunctionalOptionsParameterTest {
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ПараметрФункциональныхОпций,9fae7345-6220-4e5b-b4c1-84bb921a58b7,,Параметр функциональных опций,FunctionalOptionsParameter,ПараметрФункциональныхОпций,0,0,0,0,0,0"
+      "designer/ssl_3_1, FunctionalOptionsParameter.ДополнительныеОтчетыИОбработкиОбъектНазначения"
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("FunctionalOptionsParameters/" + name + "/" + name);
-    mdoTest(mdo, MDOType.FUNCTIONAL_OPTIONS_PARAMETER, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

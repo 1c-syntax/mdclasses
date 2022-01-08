@@ -25,4 +25,8 @@ package com.github._1c_syntax.bsl.mdo.support;
  * Интерфейс для объектов, имеющих тип значения (например атрибуты или определяемый тип)
  */
 public interface Type {
+  /**
+   * Тип значения
+   */
+  ValueType getType();
 }
