@@ -120,7 +120,7 @@ public class WebServiceOperation implements MDObject, MDChildObject, ChildrenOwn
    * Пример Операция1
    */
   @Default
-  String handler = "";
+  String procedureName = "";
 
   /**
    * Тип возвращаемого значения

@@ -37,6 +37,7 @@ public class DataSetConverter implements Converter {
 
   private static final String NAME_NODE_NAME = "name";
   private static final String FIELD_NODE_NAME = "field";
+  private static final String TYPE_ATTRIBUTE_NAME = "type";
   private static final String DATA_SOURCE_NODE_NAME = "dataSource";
   private static final String QUERY_SOURCE_NODE_NAME = "query";
   private static final String ITEM_SOURCE_NODE_NAME = "item";
@@ -50,7 +51,7 @@ public class DataSetConverter implements Converter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var dataSet = DataCompositionSchema.DataSet.builder();
-    dataSet.type(DataSetType.fromValue(reader.getAttribute("type")));
+    dataSet.type(DataSetType.fromValue(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();

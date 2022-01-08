@@ -50,6 +50,7 @@ public class MetaDataObjectConverter implements Converter {
     var nodeName = reader.getNodeName();
     Class<?> realClass = DesignerXStreamFactory.getRealClass(nodeName);
     if (realClass == null) {
+      LOGGER.error("Unexpected type `{}`, path: `{}`", nodeName, DesignerXStreamFactory.getCurrentPath(reader));
       throw new IllegalStateException("Unexpected type: " + nodeName);
     }
 

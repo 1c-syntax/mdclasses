@@ -140,11 +140,6 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   List<MDObject> children;
 
   /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  List<MDObject> plainChildren;
-
-  /**
    * Назначение расширения конфигурации
    */
   ConfigurationExtensionPurpose configurationExtensionPurpose;

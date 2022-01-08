@@ -1,5 +1,6 @@
 package com.github._1c_syntax.reader.designer.wrapper;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Sequence;
@@ -18,12 +19,12 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.reader.common.TransformationUtils;
 import com.github._1c_syntax.reader.designer.DesignerPaths;
 import com.github._1c_syntax.reader.designer.DesignerXStreamFactory;
-import com.github._1c_syntax.reader.designer.converter.DesignerConverterCommon;
 import com.github._1c_syntax.supconf.ParseSupportData;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.ParameterizedType;
@@ -37,17 +38,21 @@ import java.util.stream.Collectors;
 import static java.util.Objects.requireNonNull;
 
 @Data
+@Slf4j
 public class DesignerProperties {
 
   private static final String PROPERTIES_NODE_NAME = "Properties";
   private static final String CHILD_OBJECTS_NODE_NAME = "ChildObjects";
   private static final String DIMENSION_NODE_NAME = "Dimension";
+  private static final String NAME_PROPERTY = "Name";
+  private static final String UUID_PROPERTY = "uuid";
+  private static final String OWNER_PROPERTY = "owner";
+  private static final String MODULES_PROPERTY = "modules";
 
   private Map<String, Object> properties;
   private Map<String, Object> unknownProperties;
   private List<Object> children;
 
-  //  private String realClassName;
   private Class<?> realClass;
   private Object builder;
 
@@ -60,37 +65,67 @@ public class DesignerProperties {
   private MdoReference mdoReference;
 
   public DesignerProperties(@NonNull HierarchicalStreamReader reader, @NonNull UnmarshallingContext context) {
+    this(reader, context, null, null);
+  }
+
+  public DesignerProperties(@NonNull HierarchicalStreamReader reader,
+                            @NonNull UnmarshallingContext context,
+                            @Nullable Class<?> clazz,
+                            @Nullable MDOType type) {
+
+    properties = new HashMap<>();
+    unknownProperties = new HashMap<>();
+    children = new ArrayList<>();
 
     currentPath = DesignerXStreamFactory.getCurrentPath(reader);
-    var realClassName = reader.getNodeName();
-    mdoType = getMdoType(reader);
-    if (DIMENSION_NODE_NAME.equals(realClassName)) {
-      var mdoTypeName = DesignerXStreamFactory.getCurrentPath(reader).getParent().getFileName().toString();
-      var parentMDOType = MDOType.fromValue(mdoTypeName);
-      if (parentMDOType.isPresent() && parentMDOType.get() == MDOType.SEQUENCE) {
-        realClass = SequenceDimension.class;
-        mdoType = MDOType.SEQUENCE_DIMENSION;
+
+    if (clazz == null) {
+      mdoType = getMdoType(reader);
+      var realClassName = reader.getNodeName();
+      if (DIMENSION_NODE_NAME.equals(realClassName)) {
+        var mdoTypeName = DesignerXStreamFactory.getCurrentPath(reader).getParent().getFileName().toString();
+        var parentMDOType = MDOType.fromValue(mdoTypeName);
+        if (parentMDOType.isPresent() && parentMDOType.get() == MDOType.SEQUENCE) {
+          realClass = SequenceDimension.class;
+          mdoType = MDOType.SEQUENCE_DIMENSION;
+        } else {
+          realClass = RegisterDimension.class;
+          mdoType = MDOType.REGISTER_DIMENSION;
+        }
       } else {
-        realClass = RegisterDimension.class;
-        mdoType = MDOType.REGISTER_DIMENSION;
+        realClass = DesignerXStreamFactory.getRealClass(realClassName);
       }
     } else {
-      realClass = DesignerXStreamFactory.getRealClass(realClassName);
+      realClass = clazz;
+      requireNonNull(type);
+      mdoType = type;
     }
 
     builder = TransformationUtils.builder(realClass);
     requireNonNull(builder);
 
-    var uuid = reader.getAttribute("uuid");
-    properties = new HashMap<>();
+    var uuid = reader.getAttribute(UUID_PROPERTY);
 
-    properties.put("uuid", uuid);
+    properties.put(UUID_PROPERTY, uuid);
     supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
 
-    unknownProperties = new HashMap<>();
+    readFile(reader, context);
 
-    children = new ArrayList<>();
+    readModules();
+  }
 
+
+  public Object computeAndBuild() {
+    properties.forEach((key, value) -> TransformationUtils.setValue(builder, key, value));
+    TransformationUtils.setValue(builder, "mdoReference", mdoReference);
+    TransformationUtils.setValue(builder, "mdoType", mdoType);
+    TransformationUtils.setValue(builder, "supportVariant", supportVariant);
+    TransformationUtils.setValue(builder, "children", children);
+
+    return TransformationUtils.build(builder);
+  }
+
+  private void readFile(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // линейно читаем файл
     while (reader.hasMoreChildren()) {
       reader.moveDown();
@@ -99,14 +134,18 @@ public class DesignerProperties {
         case PROPERTIES_NODE_NAME:
           readProperties(reader, context);
 
-          name = (String) properties.get("Name");
+          name = (String) properties.get(NAME_PROPERTY);
           mdoReference = MdoReference.create(mdoType, name);
 
           break;
         case CHILD_OBJECTS_NODE_NAME:
-          readChildren(reader, context);
-          if (MDOType.valuesWithoutChildren().contains(mdoType)) {
-            buildWithChildren();
+          if (MDClass.class.isAssignableFrom(realClass)) {
+            readChildrenMDC(reader);
+          } else {
+            readChildren(reader, context);
+            if (MDOType.valuesWithoutChildren().contains(mdoType)) {
+              buildWithChildren();
+            }
           }
           break;
         default:
@@ -116,20 +155,18 @@ public class DesignerProperties {
 
       reader.moveUp();
     }
-
-    readModules();
   }
 
-  public void updateOwner(MdoReference owner) {
+  private void updateOwner(MdoReference owner) {
     setMdoReference(MdoReference.create(owner, mdoType, name));
-    properties.put("owner", owner);
+    properties.put(OWNER_PROPERTY, owner);
 
     // если есть дочерние, им тоже стоит обновиться
     children.stream().filter(DesignerProperties.class::isInstance)
       .forEach(child -> ((DesignerProperties) child).updateOwner(mdoReference));
   }
 
-  public Object buildWithChildren() {
+  private Object buildWithChildren() {
     if (!children.isEmpty()) {
       var correctChildren = children.stream()
         .filter(MDObject.class::isInstance)
@@ -147,21 +184,23 @@ public class DesignerProperties {
     }
 
     if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
-      DesignerConverterCommon.computeBuilder(builder, this);
-      return TransformationUtils.build(builder);
-    } else {
-      // эти билдятся отдельно
-      return this;
+      return computeAndBuild();
     }
+
+    // эти билдятся отдельно
+    return this;
   }
 
   private void readProperties(HierarchicalStreamReader reader, UnmarshallingContext context) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var propertyName = reader.getNodeName();
+      var propertyValue = reader.getValue();
       var value = readValue(reader, context, propertyName);
       if (value != null) {
         properties.put(propertyName, value);
+      } else {
+        unknownProperties.put(propertyName, propertyValue);
       }
       reader.moveUp();
     }
@@ -172,63 +211,10 @@ public class DesignerProperties {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var nodeName = reader.getNodeName();
+
       try {
-
-        Class<?> childRealClass;
-
-        if (DIMENSION_NODE_NAME.equals(nodeName)) {
-          if (Sequence.class.isAssignableFrom(realClass)) {
-            childRealClass = SequenceDimension.class;
-          } else {
-            childRealClass = RegisterDimension.class;
-          }
-
-        } else {
-          childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
-        }
-
-        if (childRealClass == null) {
-          throw new IllegalStateException("Unexpected type: " + nodeName);
-        }
-
-        Object child;
-        if (ObjectTemplate.class.isAssignableFrom(childRealClass)) {
-          var mdoFolderPath = DesignerPaths.childrenFolder(currentPath, MDOType.TEMPLATE);
-          if (!mdoFolderPath.toFile().exists()) {
-            throw new IllegalArgumentException("Missing template folder");
-          }
-
-          var templatePath = DesignerPaths.mdoPath(mdoFolderPath, reader.getValue());
-          child = DesignerXStreamFactory.fromXML(templatePath.toFile());
-        } else if (ObjectForm.class.isAssignableFrom(childRealClass)) {
-          var mdoFolderPath = DesignerPaths.childrenFolder(currentPath, MDOType.FORM);
-          if (!mdoFolderPath.toFile().exists()) {
-            throw new IllegalArgumentException("Missing form folder");
-          }
-
-          var templatePath = DesignerPaths.mdoPath(mdoFolderPath, reader.getValue());
-
-          child = DesignerXStreamFactory.fromXML(templatePath.toFile());
-        } else if (Subsystem.class.isAssignableFrom(childRealClass)) {
-          var mdoFolderPath = DesignerPaths.childrenFolder(currentPath, MDOType.SUBSYSTEM);
-          if (!mdoFolderPath.toFile().exists()) {
-            throw new IllegalArgumentException("Missing subsystem folder");
-          }
-
-          var templatePath = DesignerPaths.mdoPath(mdoFolderPath, reader.getValue());
-
-          child = DesignerXStreamFactory.fromXML(templatePath.toFile());
-        } else if (Recalculation.class.isAssignableFrom(childRealClass)) {
-          var mdoFolderPath = DesignerPaths.childrenFolder(currentPath, MDOType.RECALCULATION);
-          if (!mdoFolderPath.toFile().exists()) {
-            throw new IllegalArgumentException("Missing recalculation folder");
-          }
-
-          var templatePath = DesignerPaths.mdoPath(mdoFolderPath, reader.getValue());
-          child = DesignerXStreamFactory.fromXML(templatePath.toFile());
-        } else {
-          child = context.convertAnother(reader, childRealClass);
-        }
+        var childRealClass = getChildRealClass(nodeName);
+        var child = readChild(reader, context, childRealClass);
 
         if (child instanceof DesignerProperties) {
           // нужно обновить ссылки на родителя
@@ -236,17 +222,71 @@ public class DesignerProperties {
         }
 
         children.add(child);
-
       } catch (Exception e) {
-//        System.out.println("Cannot find class for " + nodeName + "\n" + e);
+        LOGGER.error("Cannot find class for `{}`\n", nodeName, e);
       }
 
       reader.moveUp();
     }
   }
 
-  private void readModules() {
+  private void readChildrenMDC(HierarchicalStreamReader reader) {
+    List<String> childrenNames = new ArrayList<>();
 
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      childrenNames.add(reader.getNodeName() + "." + reader.getValue());
+      reader.moveUp();
+    }
+
+    properties.put("childrenNames", childrenNames);
+  }
+
+  private Class<?> getChildRealClass(String nodeName) {
+    Class<?> childRealClass;
+    if (DIMENSION_NODE_NAME.equals(nodeName)) {
+      if (Sequence.class.isAssignableFrom(realClass)) {
+        childRealClass = SequenceDimension.class;
+      } else {
+        childRealClass = RegisterDimension.class;
+      }
+    } else {
+      childRealClass = DesignerXStreamFactory.getRealClass(nodeName);
+    }
+
+    if (childRealClass == null) {
+      throw new IllegalStateException("Unexpected type: " + nodeName);
+    }
+    return childRealClass;
+  }
+
+  private Object readChild(HierarchicalStreamReader reader, UnmarshallingContext context, Class<?> childRealClass) {
+    Object child;
+    if (ObjectTemplate.class.isAssignableFrom(childRealClass)) {
+      child = readChild(reader, MDOType.TEMPLATE);
+    } else if (ObjectForm.class.isAssignableFrom(childRealClass)) {
+      child = readChild(reader, MDOType.FORM);
+    } else if (Subsystem.class.isAssignableFrom(childRealClass)) {
+      child = readChild(reader, MDOType.SUBSYSTEM);
+    } else if (Recalculation.class.isAssignableFrom(childRealClass)) {
+      child = readChild(reader, MDOType.RECALCULATION);
+    } else {
+      child = context.convertAnother(reader, childRealClass);
+    }
+    return child;
+  }
+
+  private Object readChild(HierarchicalStreamReader reader, MDOType type) {
+    var mdoFolderPath = DesignerPaths.childrenFolder(currentPath, type);
+    if (!mdoFolderPath.toFile().exists()) {
+      throw new IllegalArgumentException("Missing folder " + type.getGroupName());
+    }
+
+    var childPath = DesignerPaths.mdoPath(mdoFolderPath, reader.getValue());
+    return DesignerXStreamFactory.fromXML(childPath.toFile());
+  }
+
+  private void readModules() {
     Path folder;
     if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
       folder = DesignerPaths.childrenFolder(currentPath, mdoType);
@@ -277,14 +317,13 @@ public class DesignerProperties {
         }
       }
     );
-    properties.put("modules", modules);
+    properties.put(MODULES_PROPERTY, modules);
   }
 
   @Nullable
   private Object readValue(HierarchicalStreamReader reader, UnmarshallingContext context, String propertyName) {
     var methodType = TransformationUtils.fieldType(builder, propertyName);
     if (methodType == null) {
-      unknownProperties.put(propertyName, reader.getValue());
       return null;
     }
 
@@ -313,12 +352,8 @@ public class DesignerProperties {
         value = context.convertAnother(reader, (Class<?>) methodType);
       }
     } catch (Exception e) {
-//        System.out.println("Cannot convert " + propertyName + " to type " + methodType + "\n" + e);
-//          undefinedProperties.put(propertyName, reader.getValue());
+      LOGGER.error("Cannot convert `{}` to type `{}`\n", propertyName, methodType, e);
     }
-//    } else {
-//      System.out.println("Undefined node " + propertyName);
-//        undefinedProperties.put(propertyName, reader.getValue());
 
     return value;
   }

@@ -5,12 +5,8 @@ import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Role;
-import com.github._1c_syntax.bsl.mdo.ScheduledJob;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.XdtoPackage;
-import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
-import com.github._1c_syntax.bsl.mdo.storages.XdtoPackageData;
-import com.github._1c_syntax.bsl.mdo.support.Handler;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.reader.common.TransformationUtils;
@@ -44,43 +40,25 @@ public class MDObjectConverter implements Converter {
     var designerProperties = new DesignerProperties(reader, context);
 
     if (XdtoPackage.class.isAssignableFrom(designerProperties.getRealClass())) {
-      var packageDataPath = DesignerPaths.packageDataPath(designerProperties.getCurrentPath(),
+      var dataPath = DesignerPaths.packageDataPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
-      readXDTOPackageData(packageDataPath).ifPresent(xdtoPackageData ->
-        designerProperties.getProperties().put("data", xdtoPackageData));
-    }
-
-    if (WebServiceOperation.class.isAssignableFrom(designerProperties.getRealClass())) {
-      designerProperties.getProperties().put("handler", designerProperties.getUnknownProperties().get("ProcedureName"));
-    }
-
-    if (ScheduledJob.class.isAssignableFrom(designerProperties.getRealClass())) {
-      designerProperties.getProperties().put("handler",
-        new Handler((String) designerProperties.getUnknownProperties().get("MethodName")));
-    }
-
-    if (Role.class.isAssignableFrom(designerProperties.getRealClass())) {
+      readXDTOPackageData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+    } else if (Role.class.isAssignableFrom(designerProperties.getRealClass())) {
       var dataPath = DesignerPaths.roleDataPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
-      readRoleRightsData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
-    }
-
-    if (Template.class.isAssignableFrom(designerProperties.getRealClass())) {
+      readData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+    } else if (Template.class.isAssignableFrom(designerProperties.getRealClass())) {
       if (designerProperties.getProperties().get("TemplateType") == TemplateType.DATA_COMPOSITION_SCHEME) {
         var dataPath = DesignerPaths.templateDataPath(designerProperties.getCurrentPath(),
           designerProperties.getName());
-        readTemplateData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+        readData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
         designerProperties.getProperties().put("templateDataPath", dataPath);
       }
-    }
-
-    if (ExchangePlan.class.isAssignableFrom(designerProperties.getRealClass())) {
+    } else if (ExchangePlan.class.isAssignableFrom(designerProperties.getRealClass())) {
       var dataPath = DesignerPaths.exchangePlanContentPath(designerProperties.getCurrentPath(),
         designerProperties.getName());
-      readExchangePlanData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
-    }
-
-    if (CommonModule.class.isAssignableFrom(designerProperties.getRealClass())) {
+      readData(dataPath).ifPresent(designerProperties.getProperties()::putAll);
+    } else if (CommonModule.class.isAssignableFrom(designerProperties.getRealClass())) {
       var modules = designerProperties.getProperties().get("modules");
       if (modules instanceof List && !((List<?>) modules).isEmpty()) {
         var module = (Module) ((List<?>) modules).get(0);
@@ -89,8 +67,7 @@ public class MDObjectConverter implements Converter {
     }
 
     if (MDOType.valuesWithoutChildren().contains(designerProperties.getMdoType())) {
-      DesignerConverterCommon.computeBuilder(designerProperties.getBuilder(), designerProperties);
-      return TransformationUtils.build(designerProperties.getBuilder());
+      return designerProperties.computeAndBuild();
     } else {
       return designerProperties;
     }
@@ -101,36 +78,19 @@ public class MDObjectConverter implements Converter {
     return MDObject.class.isAssignableFrom(type);
   }
 
-  private Optional<XdtoPackageData> readXDTOPackageData(Path path) {
+  private Optional<Map> readXDTOPackageData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }
 
-    return Optional.of((XdtoPackageData) DesignerXStreamFactory.fromXML(path.toFile()));
+    return Optional.of(Map.of("data", DesignerXStreamFactory.fromXML(path.toFile())));
   }
 
-  private Optional<Map> readRoleRightsData(Path path) {
-    if (Files.notExists(path)) {
-      return Optional.empty();
-    }
-
-    return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
-  }
-
-  private Optional<Map> readExchangePlanData(Path path) {
+  private Optional<Map> readData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }
 
     return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
   }
-
-  private Optional<Map> readTemplateData(Path path) {
-    if (Files.notExists(path)) {
-      return Optional.empty();
-    }
-
-    return Optional.of((Map) DesignerXStreamFactory.fromXML(path.toFile()));
-  }
-
 }

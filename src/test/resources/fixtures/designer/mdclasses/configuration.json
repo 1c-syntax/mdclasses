@@ -2081,7 +2081,7 @@
             "mdoRefRu": "WebСервис.WebСервис1"
           },
           "children": [],
-          "handler": "Операция1",
+          "procedureName": "Операция1",
           "xdtoReturningValueType": "xs:string",
           "nillable": false,
           "transactioned": false,
@@ -2166,7 +2166,7 @@
               "transferDirection": "Out"
             }
           ],
-          "handler": "Операция2",
+          "procedureName": "Операция2",
           "xdtoReturningValueType": "xs:string",
           "nillable": true,
           "transactioned": true,
@@ -2332,7 +2332,7 @@
       "objectBelonging": "OWN",
       "supportVariant": "NONE",
       "comment": "",
-      "handler": {
+      "methodName": {
         "methodPath": "CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1",
         "moduleName": "ПростойОбщийМодуль",
         "methodName": "РегламентноеЗадание1"
@@ -5922,8 +5922,43 @@
     "mdoRefRu": "Конфигурация.Конфигурация"
   },
   "modalityUseMode": "DONT_USE",
-  "modules": [],
+  "modules": [
+    {
+      "moduleType": "SessionModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Ext/SessionModule.bsl",
+      "owner": {
+        "type": "CONFIGURATION",
+        "mdoRef": "Configuration.Конфигурация",
+        "mdoRefRu": "Конфигурация.Конфигурация"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ExternalConnectionModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ExternalConnectionModule.bsl",
+      "owner": {
+        "type": "CONFIGURATION",
+        "mdoRef": "Configuration.Конфигурация",
+        "mdoRefRu": "Конфигурация.Конфигурация"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagedApplicationModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ManagedApplicationModule.bsl",
+      "owner": {
+        "type": "CONFIGURATION",
+        "mdoRef": "Configuration.Конфигурация",
+        "mdoRefRu": "Конфигурация.Конфигурация"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
   "modulesBySupport": [
+    [
+      "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ManagedApplicationModule.bsl",
+      "NONE"
+    ],
     [
       "src/test/resources/ext/designer/mdclasses/src/cf/CommonModules/ГлобальныйОбщийМодуль/Ext/Module.bsl",
       "NONE"
@@ -5945,11 +5980,19 @@
       "NONE"
     ],
     [
+      "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ExternalConnectionModule.bsl",
+      "NONE"
+    ],
+    [
       "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Commands/Команда1/Ext/CommandModule.bsl",
       "NONE"
     ],
     [
       "src/test/resources/ext/designer/mdclasses/src/cf/CommonModules/ПростойОбщийМодуль/Ext/Module.bsl",
+      "NONE"
+    ],
+    [
+      "src/test/resources/ext/designer/mdclasses/src/cf/Ext/SessionModule.bsl",
       "NONE"
     ],
     [
@@ -5973,7 +6016,18 @@
     "mdoRef": "",
     "mdoRefRu": ""
   },
-  "requiredMobileApplicationPermissions": [],
+  "requiredMobileApplicationPermissions": [
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t",
+    "\n\t\t\t\t\t"
+  ],
   "scriptVariant": "RUSSIAN",
   "supportVariant": "NONE",
   "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",

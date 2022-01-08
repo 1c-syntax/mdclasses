@@ -59,7 +59,7 @@ public class RoleRightConverter implements Converter {
       reader.moveDown();
       var nodeName = reader.getNodeName();
       if (OBJECT_NODE_NAME.equals(nodeName)) {
-        rights.add(readRight(reader, context));
+        rights.add(readRight(reader));
       } else {
         properties.put(nodeName, Boolean.parseBoolean(reader.getValue()));
       }
@@ -76,7 +76,7 @@ public class RoleRightConverter implements Converter {
     return RoleRight.class.isAssignableFrom(type);
   }
 
-  private RoleRight readRight(HierarchicalStreamReader reader, UnmarshallingContext context) {
+  private RoleRight readRight(HierarchicalStreamReader reader) {
     Map<String, Boolean> rights = new HashMap<>();
     var name = "";
 
