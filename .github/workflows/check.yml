@@ -12,6 +12,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
     - uses: actions/checkout@v2.3.4
+      with:
+        submodules: true
     - name: Set up JDK ${{ matrix.java_version }}
       uses: actions/setup-java@v2
       with:
