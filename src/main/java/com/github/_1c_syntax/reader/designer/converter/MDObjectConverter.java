@@ -101,7 +101,7 @@ public class MDObjectConverter implements Converter {
     return MDObject.class.isAssignableFrom(type);
   }
 
-  private static Optional<Map> readXDTOPackageData(Path path) {
+  private static Optional<Map<String, Object>> readXDTOPackageData(Path path) {
     if (Files.notExists(path)) {
       return Optional.empty();
     }

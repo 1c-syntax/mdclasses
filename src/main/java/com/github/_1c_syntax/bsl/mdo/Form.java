@@ -32,12 +32,5 @@ public interface Form extends MDObject, ModuleOwner {
    */
   FormType getFormType();
 
-  // todo нужна нормальная модель
-  //  /**
-  //  * Данные формы:
-  //  * + список элементов формы
-  //  * + список обработчиков формы
-  //  * + список реквизитов формы
-  //  */
-  //  FormData getData();
+  // todo нужна нормальная модель форм
 }
