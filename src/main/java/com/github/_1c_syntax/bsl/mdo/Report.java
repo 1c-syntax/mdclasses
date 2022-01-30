@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,11 +27,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -42,9 +43,13 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   ModuleOwner, TabularSectionOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.REPORT;
 
   /**
    * Уникальный идентификатор
@@ -52,72 +57,137 @@ public class Report implements MDObject, AttributeOwner, FormOwner, CommandOwner
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Список атрибутов
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  List<Attribute> attributes;
-
-  /**
-   * Список форм
-   */
-  List<Form> forms;
-
-  /**
-   * Список команд
-   */
-  List<Command> commands;
-
-  /**
-   * Список макетов
-   */
-  List<Template> templates;
-
-  /**
-   * Список модулей объекта
-   */
-  List<Module> modules;
-
-  /**
-   * Список табличных частей
-   */
-  List<TabularSection> tabularSections;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Форма по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма
+   */
+  @Default
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
+
+  /**
+   * Форма настроек по умолчанию
+   */
+  @Default
+  MdoReference defaultSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Дополнительная форма настроек
+   */
+  @Default
+  MdoReference auxiliarySettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Форма выбора варианта по умолчанию
+   */
+  @Default
+  MdoReference defaultVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Основная СКД
+   */
+  @Default
+  MdoReference mainDataCompositionSchema = MdoReference.EMPTY;
+
+  /**
+   * Хранилище вариантов отчета
+   */
+  @Default
+  MdoReference variantsStorage = MdoReference.EMPTY;
+
+  /**
+   * Хранилище настроек
+   */
+  @Default
+  MdoReference settingsStorage = MdoReference.EMPTY;
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Описание/пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * MDObject
+   */
 
   @Override
-  public void addCommonAttribute(@NonNull CommonAttribute commonAttribute) {
-    // todo общего реквизита не бывает
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

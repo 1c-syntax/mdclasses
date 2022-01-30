@@ -1,0 +1,1896 @@
+{"com.github._1c_syntax.bsl.mdo.XdtoPackage": {
+  "comment": "",
+  "data": {
+    "targetNamespace": "http://www.v8.1c.ru/ssl/AddressSystem",
+    "imports": [
+      "http://v8.1c.ru/8.1/data/core"
+    ],
+    "valueTypes": [
+      [
+        {
+          "name": "SortDirection",
+          "base": "xs:string",
+          "variety": "Atomic",
+          "enumerations": [
+            [
+              "ASC",
+              "DESC"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "StringBlob",
+          "base": "",
+          "variety": "Union",
+          "enumerations": []
+        },
+        {
+          "name": "UUID",
+          "base": "",
+          "variety": "Union",
+          "enumerations": []
+        },
+        {
+          "name": "Levels",
+          "base": "",
+          "variety": "List",
+          "enumerations": []
+        }
+      ],
+      []
+    ],
+    "objectTypes": [
+      [
+        {
+          "name": "Object",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AUTOCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AREACODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CITYCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CTARCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "PLACECODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "STREETCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "SEXTCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOLEVEL",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "FORMALNAME",
+                "type": "xs:string",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "SHORTNAME",
+                "type": "xs:string",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "POSTALCODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRAGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CURRSTATUS",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "ArchiveObject",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AUTOCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AREACODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CITYCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CTARCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "PLACECODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "STREETCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "SEXTCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOLEVEL",
+                "type": "xs:int",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "FORMALNAME",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "SHORTNAME",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "POSTALCODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRAGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "CODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "STARTDATE",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "ENDDATE",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "OPERSTATUS",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "House",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "POSTALCODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "BUILDINGS",
+                "type": "d3p1:StringBlob",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "AdditionalAddressInfo",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRAGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "OKATO",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "OKTMO",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "IFNSFL",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "IFNSUL",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "TERRIFNSFL",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "TERRIFNSUL",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "RegulatoryDoc",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "DOCID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "OBJID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "ISDESCR",
+                "type": "xs:boolean",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "DESCR",
+                "type": "d3p1:StringBlob",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Landmark",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "LANDGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "EXTRAGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "LOCATION",
+                "type": "d3p1:StringBlob",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "POSTALCODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "AddressStatus",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "TYPE",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "ID",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "KEY",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "VALUE",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Publications",
+          "base": "",
+          "properties": [
+            {
+              "name": "Publication",
+              "type": "",
+              "lowerBound": 0,
+              "upperBound": -1,
+              "nillable": false,
+              "form": "",
+              "typeDef": [
+                [
+                  {
+                    "name": "Url",
+                    "type": "xs:string",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "Attribute",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "Version",
+                    "type": "xs:int",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "Attribute",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "Title",
+                    "type": "xs:string",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "Attribute",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "UpdateDate",
+                    "type": "xs:dateTime",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "Attribute",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "Region",
+                    "type": "",
+                    "lowerBound": 0,
+                    "upperBound": -1,
+                    "nillable": true,
+                    "form": "",
+                    "typeDef": [
+                      [
+                        {
+                          "name": "REGIONCODE",
+                          "type": "xs:int",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "FORMALNAME",
+                          "type": "xs:string",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "SHORTNAME",
+                          "type": "xs:string",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "POSTALCODE",
+                          "type": "xs:int",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "AOGUID",
+                          "type": "d7p1:UUID",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "Url",
+                          "type": "xs:string",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        }
+                      ],
+                      []
+                    ]
+                  }
+                ],
+                []
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AddressAnalysisResult",
+          "base": "",
+          "properties": [
+            {
+              "name": "Item",
+              "type": "",
+              "lowerBound": 0,
+              "upperBound": -1,
+              "nillable": false,
+              "form": "",
+              "typeDef": [
+                [
+                  {
+                    "name": "Error",
+                    "type": "",
+                    "lowerBound": 0,
+                    "upperBound": -1,
+                    "nillable": false,
+                    "form": "",
+                    "typeDef": [
+                      [
+                        {
+                          "name": "Key",
+                          "type": "xs:string",
+                          "lowerBound": 1,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "Text",
+                          "type": "xs:string",
+                          "lowerBound": 1,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "Suggestion",
+                          "type": "xs:string",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        }
+                      ],
+                      []
+                    ]
+                  },
+                  {
+                    "name": "Variant",
+                    "type": "",
+                    "lowerBound": 0,
+                    "upperBound": -1,
+                    "nillable": false,
+                    "form": "",
+                    "typeDef": [
+                      [
+                        {
+                          "name": "ID",
+                          "type": "d7p1:UUID",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": false,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "PostalCode",
+                          "type": "xs:int",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "KLADRCode",
+                          "type": "xs:long",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "OKATO",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "OKTMO",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "IFNSFL",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "IFNSUL",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "TERRIFNSFL",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        },
+                        {
+                          "name": "TERRIFNSUL",
+                          "type": "xs:decimal",
+                          "lowerBound": 0,
+                          "upperBound": 0,
+                          "nillable": true,
+                          "form": "Attribute",
+                          "typeDef": []
+                        }
+                      ],
+                      []
+                    ]
+                  }
+                ],
+                []
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AddressList",
+          "base": "",
+          "properties": [
+            {
+              "name": "Item",
+              "type": "",
+              "lowerBound": 0,
+              "upperBound": -1,
+              "nillable": false,
+              "form": "",
+              "typeDef": [
+                [
+                  {
+                    "name": "Address",
+                    "type": "d5p1:АдресРФ",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "Levels",
+                    "type": "d5p1:Levels",
+                    "lowerBound": 0,
+                    "upperBound": 1,
+                    "nillable": true,
+                    "form": "Attribute",
+                    "typeDef": []
+                  },
+                  {
+                    "name": "ID",
+                    "type": "d5p1:UUID",
+                    "lowerBound": 0,
+                    "upperBound": 0,
+                    "nillable": false,
+                    "form": "Attribute",
+                    "typeDef": []
+                  }
+                ],
+                []
+              ]
+            }
+          ]
+        },
+        {
+          "name": "StringList",
+          "base": "",
+          "properties": [
+            {
+              "name": "Item",
+              "type": "xs:string",
+              "lowerBound": 0,
+              "upperBound": -1,
+              "nillable": false,
+              "form": "",
+              "typeDef": []
+            }
+          ]
+        },
+        {
+          "name": "PresentationList",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Item",
+                "type": "",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": [
+                  [
+                    {
+                      "name": "ID",
+                      "type": "d5p1:UUID",
+                      "lowerBound": 1,
+                      "upperBound": 0,
+                      "nillable": false,
+                      "form": "Attribute",
+                      "typeDef": []
+                    },
+                    {
+                      "name": "Presentation",
+                      "type": "xs:string",
+                      "lowerBound": 1,
+                      "upperBound": 0,
+                      "nillable": false,
+                      "form": "Attribute",
+                      "typeDef": []
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "ExtraInfo",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "OKATO",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "OKTMO",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "IFNSFL",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "IFNSUL",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "TERRIFNSFL",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "TERRIFNSUL",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "АдресРФ",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "СубъектРФ",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Округ",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "СвРайМО",
+                "type": "",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": [
+                  [
+                    {
+                      "name": "Район",
+                      "type": "xs:string",
+                      "lowerBound": 0,
+                      "upperBound": 0,
+                      "nillable": true,
+                      "form": "",
+                      "typeDef": []
+                    },
+                    {
+                      "name": "СвМО",
+                      "type": "",
+                      "lowerBound": 0,
+                      "upperBound": 0,
+                      "nillable": true,
+                      "form": "Element",
+                      "typeDef": [
+                        [
+                          {
+                            "name": "МунОбр1",
+                            "type": "xs:string",
+                            "lowerBound": 0,
+                            "upperBound": 0,
+                            "nillable": true,
+                            "form": "Attribute",
+                            "typeDef": []
+                          },
+                          {
+                            "name": "МунОбр2",
+                            "type": "xs:string",
+                            "lowerBound": 0,
+                            "upperBound": 0,
+                            "nillable": true,
+                            "form": "Attribute",
+                            "typeDef": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "name": "Город",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "ВнутригРайон",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "НаселПункт",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Улица",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "ОКТМО",
+                "type": "xs:integer",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "ОКАТО",
+                "type": "xs:integer",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "ДопАдрЭл",
+                "type": "",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": true,
+                "form": "",
+                "typeDef": [
+                  [
+                    {
+                      "name": "ТипАдрЭл",
+                      "type": "xs:string",
+                      "lowerBound": 0,
+                      "upperBound": 0,
+                      "nillable": true,
+                      "form": "Attribute",
+                      "typeDef": []
+                    },
+                    {
+                      "name": "Значение",
+                      "type": "xs:string",
+                      "lowerBound": 0,
+                      "upperBound": 0,
+                      "nillable": true,
+                      "form": "Attribute",
+                      "typeDef": []
+                    },
+                    {
+                      "name": "Номер",
+                      "type": "",
+                      "lowerBound": 0,
+                      "upperBound": 1,
+                      "nillable": true,
+                      "form": "",
+                      "typeDef": [
+                        [
+                          {
+                            "name": "Тип",
+                            "type": "xs:string",
+                            "lowerBound": 0,
+                            "upperBound": 0,
+                            "nillable": true,
+                            "form": "Attribute",
+                            "typeDef": []
+                          },
+                          {
+                            "name": "Значение",
+                            "type": "xs:string",
+                            "lowerBound": 0,
+                            "upperBound": 0,
+                            "nillable": true,
+                            "form": "Attribute",
+                            "typeDef": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "name": "Адрес_по_документу",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Местоположение",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Stead",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "POSTALCODE",
+                "type": "xs:decimal",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": true,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "NUMBERS",
+                "type": "d3p1:StringBlob",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Link",
+          "base": "",
+          "properties": [
+            [
+              {
+                "name": "REGIONCODE",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "AOGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "MUNPARENTGUID",
+                "type": "d3p1:UUID",
+                "lowerBound": 1,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        }
+      ],
+      []
+    ],
+    "properties": [
+      [
+        {
+          "name": "AddressObjects",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "Object",
+                "type": "d4p1:Object",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Houses",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "House",
+                "type": "d4p1:House",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "AdditionalAddressInfo",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "AdditionalAddressInfo",
+                "type": "d4p1:AdditionalAddressInfo",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "ArchiveObjects",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "ArchiveObject",
+                "type": "d4p1:ArchiveObject",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "AddressStatuses",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "AddressStatus",
+                "type": "d4p1:AddressStatus",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "RegulatoryDocs",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "RegulatoryDoc",
+                "type": "d4p1:RegulatoryDoc",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Landmarks",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "Landmark",
+                "type": "d4p1:Landmark",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Steads",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "Stead",
+                "type": "d4p1:Stead",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        },
+        {
+          "name": "Links",
+          "type": "",
+          "lowerBound": 0,
+          "upperBound": 0,
+          "nillable": false,
+          "form": "",
+          "typeDef": [
+            [
+              {
+                "name": "Link",
+                "type": "d4p1:Link",
+                "lowerBound": 0,
+                "upperBound": -1,
+                "nillable": false,
+                "form": "",
+                "typeDef": []
+              },
+              {
+                "name": "Version",
+                "type": "xs:int",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "Title",
+                "type": "xs:string",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              },
+              {
+                "name": "UpdateDate",
+                "type": "xs:dateTime",
+                "lowerBound": 0,
+                "upperBound": 0,
+                "nillable": false,
+                "form": "Attribute",
+                "typeDef": []
+              }
+            ],
+            []
+          ]
+        }
+      ],
+      []
+    ]
+  },
+  "mdoReference": {
+    "type": "XDTO_PACKAGE",
+    "mdoRef": "XDTOPackage.АдресныйКлассификатор",
+    "mdoRefRu": "ПакетXDTO.АдресныйКлассификатор"
+  },
+  "mdoType": "XDTO_PACKAGE",
+  "name": "АдресныйКлассификатор",
+  "namespace": "http://www.v8.1c.ru/ssl/AddressSystem",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Адресный классификатор"
+      ]
+    ]
+  },
+  "uuid": "3b78a9d0-7382-4115-a7dc-d06c9a1962d1"
+}}

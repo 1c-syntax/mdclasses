@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,45 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+class ConstantTest {
 
-class ConstantTest extends AbstractMDObjectTest<Constant> {
-  ConstantTest() {
-    super(Constant.class);
-  }
-
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Константа1,61e6a6f2-7057-4e93-96c3-7bd2559217f4,,,Constant,Константа,0,0,0,0,0,0"
+      "designer/ssl_3_1, Constant.АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Constants/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.CONSTANT, argumentsAccessor);
-    assertThat(mdo.isPasswordMode()).isTrue();
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "Константа1,61e6a6f2-7057-4e93-96c3-7bd2559217f4,,,Constant,Константа,0,0,0,0,0,0"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("Constants/" + name + "/" + name);
-    mdoTest(mdo, MDOType.CONSTANT, argumentsAccessor);
-    assertThat(mdo.isPasswordMode()).isFalse();
-    assertThat(mdo.getKind()).isEqualTo(AttributeKind.STANDARD);
-    assertThat(mdo.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,11 +27,14 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -40,9 +43,13 @@ import java.util.List;
 public class Subsystem implements MDObject, ChildrenOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.SUBSYSTEM;
 
   /**
    * Уникальный идентификатор
@@ -50,34 +57,50 @@ public class Subsystem implements MDObject, ChildrenOwner {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
 
   /**
    * Признак "Включать в командный интерфейс"
@@ -85,24 +108,48 @@ public class Subsystem implements MDObject, ChildrenOwner {
   boolean includeInCommandInterface;
 
   /**
-   * Вариант поддержки родительской конфигурации
-   */
-  SupportVariant supportVariant;
-
-  /**
-   * Дочерние подсистемы
-   */
-  List<Subsystem> subsystems;
-
-  /**
    * Объекты, входящие в состав подсистемы
    */
-  List<MdoReference> content;
+  @Default
+  List<MdoReference> content = Collections.emptyList();
+
+  /**
+   * Включать в состав справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Пояснение/Описание
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Картинка подсистемы
+   */
+  @Default
+  String picture = "";
+
+  /**
+   * MDObject
+   */
 
   @Override
-  public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(subsystems);
-    return children;
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ChildrenOwner
+   */
+
+  /**
+   * Возвращает список дочерних подсистем
+   */
+  public List<Subsystem> getSubsystems() {
+    return getChildren().stream()
+      .filter(Subsystem.class::isInstance)
+      .map(Subsystem.class::cast)
+      .collect(Collectors.toList());
   }
 }

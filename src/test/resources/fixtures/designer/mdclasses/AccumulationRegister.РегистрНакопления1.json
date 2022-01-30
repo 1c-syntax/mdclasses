@@ -1,0 +1,116 @@
+{"com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "children": [
+    {
+      "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
+      "name": "Ресурс1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "RESOURCE",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
+      },
+      "owner": {
+        "type": "ACCUMULATION_REGISTER",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+      }
+    },
+    {
+      "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
+      "name": "Измерение1",
+      "synonym": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
+      },
+      "mdoReference": {
+        "type": "REGISTER_DIMENSION",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+      },
+      "useInTotals": true,
+      "denyIncompleteValues": true,
+      "master": false
+    }
+  ],
+  "comment": "",
+  "dataLockControlMode": "MANAGED",
+  "defaultListForm": {
+    "@reference": "../auxiliaryListForm"
+  },
+  "enableTotalsSplitting": true,
+  "explanation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
+  },
+  "extendedListPresentation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
+  },
+  "fullTextSearch": "DONT_USE",
+  "includeHelpInContents": false,
+  "listPresentation": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/owner"
+  },
+  "mdoType": "ACCUMULATION_REGISTER",
+  "modules": [],
+  "name": "РегистрНакопления1",
+  "objectBelonging": "OWN",
+  "registerType": "Balance",
+  "supportVariant": "NONE",
+  "synonym": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.RegisterResource/synonym"
+  },
+  "useStandardCommands": true,
+  "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f"
+}}

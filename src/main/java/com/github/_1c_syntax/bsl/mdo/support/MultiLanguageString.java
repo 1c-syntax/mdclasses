@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -30,5 +31,14 @@ import java.util.Map;
  */
 @Value
 public class MultiLanguageString {
+
+  /**
+   * Ссылка на пустой элемент
+   */
+  public static final MultiLanguageString EMPTY = new MultiLanguageString(Collections.emptyMap());
+
+  /**
+   * Содержимое описания для каждого языка
+   */
   Map<String, String> content;
 }

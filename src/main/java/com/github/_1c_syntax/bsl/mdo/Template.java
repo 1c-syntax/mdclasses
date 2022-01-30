@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.data_storage.TemplateData;
+import com.github._1c_syntax.bsl.mdo.storages.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 
 import java.nio.file.Path;

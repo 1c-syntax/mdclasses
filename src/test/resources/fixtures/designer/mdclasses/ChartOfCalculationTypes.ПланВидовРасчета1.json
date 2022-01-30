@@ -1,0 +1,224 @@
+{"com.github._1c_syntax.bsl.mdo.ChartOfCalculationTypes": {
+  "actionPeriodUse": true,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "baseCalculationTypes": [
+    "ChartOfCalculationTypes.ПланВидовРасчета1"
+  ],
+  "basedOn": [],
+  "characteristics": [],
+  "children": [
+    {
+      "uuid": "f1f5f5a9-e063-4ac7-acb8-f95dc089673f",
+      "name": "Реквизит",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Реквизит"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.Attribute.Реквизит",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.Реквизит.Реквизит"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "cfg:EnumRef.Перечисление1",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "type": "CHART_OF_CALCULATION_TYPES",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1"
+      }
+    },
+    {
+      "uuid": "6efb0da7-eb59-4461-b96b-b00a45b7c760",
+      "name": "Реквизит1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Реквизит1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.Attribute.Реквизит1",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.Реквизит.Реквизит1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:dateTime",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "dateFraction": "DATE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "78306247-ac7e-4bd3-bb71-29e78139ebc4",
+      "name": "ТабличнаяЧасть",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Табличная часть"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.ТабличнаяЧасть.ТабличнаяЧасть"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "dfb18698-077e-47a6-ac63-6d98de0db138",
+          "name": "Месяц",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Месяц"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1.TabularSection.ТабличнаяЧасть.Attribute.Месяц",
+            "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1.ТабличнаяЧасть.ТабличнаяЧасть.Реквизит.Месяц"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+              }
+            ],
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    }
+  ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Variable",
+  "codeLength": 9,
+  "codeType": "String",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 40,
+  "editType": "InDialog",
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "@reference": "../explanation"
+  },
+  "extendedObjectPresentation": {
+    "@reference": "../explanation"
+  },
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Description",
+    "ChartOfCalculationTypes.ПланВидовРасчета1.StandardAttribute.Code"
+  ],
+  "listPresentation": {
+    "@reference": "../explanation"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CHART_OF_CALCULATION_TYPES",
+  "modules": [],
+  "name": "ПланВидовРасчета1",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "@reference": "../explanation"
+  },
+  "onActionPeriod": "",
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "@reference": "../explanation"
+  },
+  "useStandardCommands": true,
+  "uuid": "1755c534-9ccd-49c4-9f8b-2aa066424aaa"
+}}

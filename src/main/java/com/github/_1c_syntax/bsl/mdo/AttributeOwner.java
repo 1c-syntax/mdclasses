@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import lombok.NonNull;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец реквизитов реквизиты
@@ -32,12 +31,10 @@ public interface AttributeOwner extends ChildrenOwner {
   /**
    * Список реквизитов объекта
    */
-  List<Attribute> getAttributes();
-
-  /**
-   * Метод для добавления общего реквизита к списку атрибутов
-   *
-   * @param commonAttribute Добавляемый Общий реквизит
-   */
-  void addCommonAttribute(@NonNull CommonAttribute commonAttribute);
+  default List<Attribute> getAttributes() {
+    return getChildren().stream()
+      .filter(Attribute.class::isInstance)
+      .map(Attribute.class::cast)
+      .collect(Collectors.toList());
+  }
 }

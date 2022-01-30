@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,50 +21,22 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+class RoleTest {
 
-class RoleTest extends AbstractMDObjectTest<Role> {
-  RoleTest() {
-    super(Role.class);
-  }
-
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
+      "designer/ssl_3_1, Role.АдминистраторСистемы",
+      "designer/ssl_3_1, Role.ПолныеПрава"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("Roles/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
-    assertThat(mdo.isIndependentRightsOfChildObjects()).isFalse();
-    assertThat(mdo.isSetForAttributesByDefault()).isTrue();
-    assertThat(mdo.isSetForNewObjects()).isFalse();
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "Роль1,ecad0539-4f9f-491b-b0f2-f8f42d9a7c41,,,Role,Роль,0,0,0,0,0,0"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("Roles/" + name + "/" + name);
-    mdoTest(mdo, MDOType.ROLE, argumentsAccessor);
-    assertThat(mdo.isIndependentRightsOfChildObjects()).isTrue();
-    assertThat(mdo.isSetForAttributesByDefault()).isTrue();
-    assertThat(mdo.isSetForNewObjects()).isTrue();
-    assertThat(mdo.getRights())
-      .hasSize(44)
-      .anyMatch(roleRight -> roleRight.getName().equals("Subsystem.ВтораяПодсистема")
-        && roleRight.getRights().containsKey("View")
-        && roleRight.getRights().containsValue(false));
-  }
 }

@@ -1,0 +1,189 @@
+{"com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristicExtValues": [],
+  "characteristics": [],
+  "checkUnique": false,
+  "children": [
+    {
+      "uuid": "5ce39370-f918-493f-bb24-53346b6fd836",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.Form.ФормаСписка",
+        "mdoRefRu": "ПланВидовХарактеристик.ОбъектыАдресацииЗадач.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "type": "CHART_OF_CHARACTERISTIC_TYPES",
+        "mdoRef": "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач",
+        "mdoRefRu": "ПланВидовХарактеристик.ОбъектыАдресацииЗадач"
+      }
+    },
+    {
+      "uuid": "84f22fd2-e0d0-42ce-8628-1b13c021a4cb",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.Form.ФормаЭлемента",
+        "mdoRefRu": "ПланВидовХарактеристик.ОбъектыАдресацииЗадач.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      }
+    }
+  ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "DontUse",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Fixed",
+  "codeLength": 0,
+  "codeSeries": "WholeCharacteristicKind",
+  "comment": "",
+  "createOnInput": "DontUse",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 100,
+  "editType": "InDialog",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "@reference": "../explanation"
+  },
+  "extendedObjectPresentation": {
+    "@reference": "../explanation"
+  },
+  "foldersOnTop": true,
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": false,
+  "includeHelpInContents": true,
+  "inputByString": [
+    "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.StandardAttribute.Description"
+  ],
+  "listPresentation": {
+    "@reference": "../explanation"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+  },
+  "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
+  "modules": [
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ОбъектыАдресацииЗадач/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ОбъектыАдресацииЗадач",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Объект адресации задач"
+      ]
+    ]
+  },
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Объекты адресации задач"
+      ]
+    ]
+  },
+  "type": {
+    "types": [
+      {
+        "name": "xs:string",
+        "kind": "PRIMITIVE"
+      }
+    ],
+    "qualifiers": [
+      {
+        "length": 10,
+        "allowedLength": "VARIABLE"
+      }
+    ]
+  },
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": true,
+  "uuid": "ad083c26-7461-4e94-b524-0174242fbd91"
+}}

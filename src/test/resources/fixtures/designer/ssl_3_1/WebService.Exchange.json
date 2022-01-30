@@ -1,0 +1,2326 @@
+{"com.github._1c_syntax.bsl.mdo.WebService": {
+  "children": [
+    {
+      "uuid": "339c9220-fd5b-45d3-b300-cdcc8788f87e",
+      "name": "Upload",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Upload"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.Upload",
+        "mdoRefRu": "WebСервис.Exchange.Операция.Upload"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Выполняет выгрузку данных",
+      "owner": {
+        "type": "WEB_SERVICE",
+        "mdoRef": "WebService.Exchange",
+        "mdoRefRu": "WebСервис.Exchange"
+      },
+      "children": [
+        {
+          "uuid": "02d7d401-3c0c-4fd0-b096-1f73b6ec14c3",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Upload.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Upload.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "9042a6de-5048-432d-a448-7e21f2d1d24a",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Upload.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Upload.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "350d46bf-114e-48e7-90c6-6708d949f20d",
+          "name": "Data",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Data"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Upload.Parameter.Data",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Upload.Параметр.Data"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:ValueStorage",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "ВыполнитьВыгрузку",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "d047caa8-7bcf-41ac-a18e-97877d6e0a2a",
+      "name": "Download",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Download"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.Download",
+        "mdoRefRu": "WebСервис.Exchange.Операция.Download"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Выполняет загрузку данных",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "aac20ff3-5873-432e-b763-14411e623d41",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Download.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Download.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "fbc4df3e-c235-4197-8c1f-a5e39ac63a8c",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Download.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Download.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "6df44466-8750-481a-9baf-c924f0d45353",
+          "name": "Data",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Data"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.Download.Parameter.Data",
+            "mdoRefRu": "WebСервис.Exchange.Операция.Download.Параметр.Data"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:ValueStorage",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ВыполнитьЗагрузку",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "110121eb-a0eb-4662-8911-3dcc3d341a73",
+      "name": "UploadData",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Upload data"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.UploadData",
+        "mdoRefRu": "WebСервис.Exchange.Операция.UploadData"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Выполняет выгрузку данных",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "f8980c18-6b9c-4e45-919a-22e976d2a846",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "c946efb7-c67e-49c1-bf56-d3c2d7220acd",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "7ed6bd83-b61d-4db4-8549-acacbdda6ca2",
+          "name": "FileID",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File ID"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.FileID",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.FileID"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "6b7c9f74-f2b6-463e-acb9-9f82901986cf",
+          "name": "ContinuousOperation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.ContinuousOperation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.ContinuousOperation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "fc4c1d64-132b-4687-a37d-05000fdb4ba5",
+          "name": "Operation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.Operation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.Operation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "528777cd-090b-4b70-82f5-56def98c5893",
+          "name": "ContinuousOperationAllowed",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation allowed"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UploadData.Parameter.ContinuousOperationAllowed",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UploadData.Параметр.ContinuousOperationAllowed"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ВыполнитьВыгрузкуДанных",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "49dbe467-8832-4ede-9a05-494248619aeb",
+      "name": "DownloadData",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Download data"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.DownloadData",
+        "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Выполняет загрузку данных",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "460ed9ca-10c2-491c-a641-b92ffc2a8e7c",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "bd5fadd3-9264-4c3b-9bd5-51e91847a6fb",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "09c73108-8528-4970-9b7f-fff9eda7816a",
+          "name": "FileID",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File ID"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.FileID",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.FileID"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "40aa936e-cb1c-4ae9-85f1-6d930a5815cc",
+          "name": "ContinuousOperation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.ContinuousOperation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.ContinuousOperation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "f568245a-d158-45dc-af92-2d411f12db7b",
+          "name": "Operation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.Operation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.Operation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "0f17cdac-aa17-45e6-b3d0-220b13345390",
+          "name": "ContinuousOperationAllowed",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation allowed"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.DownloadData.Parameter.ContinuousOperationAllowed",
+            "mdoRefRu": "WebСервис.Exchange.Операция.DownloadData.Параметр.ContinuousOperationAllowed"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ВыполнитьЗагрузкуДанных",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "c675db75-d0c3-4026-b97c-6b23ecbb336a",
+      "name": "GetIBParameters",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get IBParameters"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetIBParameters",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetIBParameters"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "469f67fa-98b0-44b0-abd4-cae136c02834",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetIBParameters.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetIBParameters.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "16a18458-999c-420e-80df-8fc10855746c",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetIBParameters.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetIBParameters.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "b794f222-0fde-439f-97a3-0da74075b415",
+          "name": "ResultMessage",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Result message"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetIBParameters.Parameter.ResultMessage",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetIBParameters.Параметр.ResultMessage"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        }
+      ],
+      "procedureName": "ПолучитьПараметрыИнформационнойБазы",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "3a716aad-9b2c-48a7-b802-80732066391b",
+      "name": "GetIBData",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get IBData"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetIBData",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetIBData"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "480d959f-aac8-4241-875f-78e1c1f32621",
+          "name": "TableName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Table name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetIBData.Parameter.TableName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetIBData.Параметр.TableName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ПолучитьДанныеИнформационнойБазы",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "496e5de8-d75c-4536-9993-75374f070b40",
+      "name": "GetCommonNodsData",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get common nods data"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetCommonNodsData",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetCommonNodsData"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "b4e610ba-c9c8-4b25-903b-e567dcbc2556",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetCommonNodsData.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetCommonNodsData.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ПолучитьОбщиеДанныеУзлов",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "48febdbd-a085-4113-8511-ed7ff6be7d3c",
+      "name": "CreateExchange",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Create exchange"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.CreateExchange",
+        "mdoRefRu": "WebСервис.Exchange.Операция.CreateExchange"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "49413232-c0c3-4983-9d10-291a0399281b",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.CreateExchange.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.CreateExchange.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "032bb782-96a7-4c1b-8b8f-eb4e18b555b7",
+          "name": "Parameters",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Parameters"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.CreateExchange.Parameter.Parameters",
+            "mdoRefRu": "WebСервис.Exchange.Операция.CreateExchange.Параметр.Parameters"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "b9b076bb-38ab-4a94-8226-41a4d4d7432c",
+          "name": "FilterSettings",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Filter settings"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.CreateExchange.Parameter.FilterSettings",
+            "mdoRefRu": "WebСервис.Exchange.Операция.CreateExchange.Параметр.FilterSettings"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "e12da8db-4037-473e-ba2b-d0ceb4534dcb",
+          "name": "AdditionalSettings",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Additional settings"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.CreateExchange.Parameter.AdditionalSettings",
+            "mdoRefRu": "WebСервис.Exchange.Операция.CreateExchange.Параметр.AdditionalSettings"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "СоздатьОбменДанными",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "789514e5-8ea3-4a5e-88c5-ed89c4135866",
+      "name": "UpdateExchange",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Update exchange"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.UpdateExchange",
+        "mdoRefRu": "WebСервис.Exchange.Операция.UpdateExchange"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "a16768ff-6137-43d8-8784-4805ed83632a",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UpdateExchange.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UpdateExchange.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "61971286-9f94-4a27-aa34-e10848adb70a",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UpdateExchange.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UpdateExchange.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "1e75d143-3452-496e-a137-6d7f4c4ed019",
+          "name": "AdditionalSettings",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Additional settings"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.UpdateExchange.Parameter.AdditionalSettings",
+            "mdoRefRu": "WebСервис.Exchange.Операция.UpdateExchange.Параметр.AdditionalSettings"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ОбновитьНастройкиОбменаДанными",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "e0619d14-c658-4eb5-841a-3a029de28be4",
+      "name": "RegisterOnlyCatalogData",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Register only catalog data"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.RegisterOnlyCatalogData",
+        "mdoRefRu": "WebСервис.Exchange.Операция.RegisterOnlyCatalogData"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "99a3b660-7875-47f7-9c6c-c552e5673deb",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterOnlyCatalogData.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterOnlyCatalogData.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "2bdcf3a5-c8e1-492c-afee-f9db68e2fbb6",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterOnlyCatalogData.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterOnlyCatalogData.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "41cbf934-ea54-41df-abf0-09f319d2e67a",
+          "name": "ContinuousOperation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterOnlyCatalogData.Parameter.ContinuousOperation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterOnlyCatalogData.Параметр.ContinuousOperation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "47246084-a5f8-4d0f-b4e2-204c1b97483a",
+          "name": "Operation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterOnlyCatalogData.Parameter.Operation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterOnlyCatalogData.Параметр.Operation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "ЗарегистрироватьИзмененияТолькоСправочников",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "e58233ec-6cfc-4a8b-9929-689fa69cdb07",
+      "name": "RegisterAllDataExceptCatalogs",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Register all data except catalogs"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.RegisterAllDataExceptCatalogs",
+        "mdoRefRu": "WebСервис.Exchange.Операция.RegisterAllDataExceptCatalogs"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "3291a891-a47c-43ca-b088-aecd3867d38c",
+          "name": "ExchangePlanName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Exchange plan name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterAllDataExceptCatalogs.Parameter.ExchangePlanName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterAllDataExceptCatalogs.Параметр.ExchangePlanName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "56cde2b4-00f2-49ba-b407-16e241c17fd2",
+          "name": "NodeCode",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Node code"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterAllDataExceptCatalogs.Parameter.NodeCode",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterAllDataExceptCatalogs.Параметр.NodeCode"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "bd84fb2b-4c52-4e2f-a8c5-f289b8336145",
+          "name": "ContinuousOperation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Continuous operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterAllDataExceptCatalogs.Parameter.ContinuousOperation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterAllDataExceptCatalogs.Параметр.ContinuousOperation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:boolean",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "InOut"
+        },
+        {
+          "uuid": "219ed110-f2a0-41c1-ac5a-02301b248c54",
+          "name": "Operation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.RegisterAllDataExceptCatalogs.Parameter.Operation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.RegisterAllDataExceptCatalogs.Параметр.Operation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "ЗарегистрироватьИзмененияВсехДанныхКромеСправочников",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "1c722dfd-2b07-4985-9188-17353de24771",
+      "name": "GetContinuousOperationStatus",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get continuous operation status"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetContinuousOperationStatus",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetContinuousOperationStatus"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "1a630496-2cdd-4c89-a1aa-ed20545ad133",
+          "name": "Operation",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Operation"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetContinuousOperationStatus.Parameter.Operation",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetContinuousOperationStatus.Параметр.Operation"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "b0dd02ee-ea6a-43f2-baa2-abac0a1ab4bb",
+          "name": "ResultMessage",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Result message"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetContinuousOperationStatus.Parameter.ResultMessage",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetContinuousOperationStatus.Параметр.ResultMessage"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "ПолучитьСостояниеДлительнойОперации",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "b19cea0e-e57a-4969-8daf-f48d3d16705f",
+      "name": "GetFunctionalOption",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get functional option"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetFunctionalOption",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetFunctionalOption"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "d4059340-3361-4baa-ae48-ecbfb9800a2e",
+          "name": "Name",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetFunctionalOption.Parameter.Name",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetFunctionalOption.Параметр.Name"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ПолучитьЗначениеФункциональнойОпции",
+      "xdtoReturningValueType": "xs:boolean",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "f78f6c43-dd90-4117-acf7-ed5b951cb964",
+      "name": "PrepareGetFile",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Prepare get file"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.PrepareGetFile",
+        "mdoRefRu": "WebСервис.Exchange.Операция.PrepareGetFile"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "8eebd519-4989-4784-82b8-39d77eebfb17",
+          "name": "FileId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PrepareGetFile.Parameter.FileId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PrepareGetFile.Параметр.FileId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "0a2cb6e3-d9fa-4881-b136-7b6db9efca07",
+          "name": "BlockSize",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Block size"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PrepareGetFile.Parameter.BlockSize",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PrepareGetFile.Параметр.BlockSize"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "В КБ, 0 не разделять",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:decimal",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "c1561ed9-2fbf-4c12-a484-07f8adbe8fa3",
+          "name": "TransferId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Transfer id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PrepareGetFile.Parameter.TransferId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PrepareGetFile.Параметр.TransferId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "Out"
+        },
+        {
+          "uuid": "4527877b-5723-4aa5-8705-98174ac9c337",
+          "name": "PartQuantity",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part quantity"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PrepareGetFile.Parameter.PartQuantity",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PrepareGetFile.Параметр.PartQuantity"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:int",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "PrepareGetFile",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "d6b21e7b-df57-4280-8c95-c269b5316018",
+      "name": "GetFilePart",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get file part"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetFilePart",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetFilePart"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "808c468b-6322-428d-ac6a-ccf2228b05b6",
+          "name": "TransferId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Transfer id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetFilePart.Parameter.TransferId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetFilePart.Параметр.TransferId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "13664bb2-738f-4d18-b382-a7bcf8105a5a",
+          "name": "PartNumber",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part number"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetFilePart.Parameter.PartNumber",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetFilePart.Параметр.PartNumber"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:int",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "f3f56abe-9248-4555-bf99-29560eb4f9ee",
+          "name": "PartData",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part data"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetFilePart.Parameter.PartData",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetFilePart.Параметр.PartData"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:base64Binary",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "GetFilePart",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "0dbd5d55-a85f-4c7e-ac31-7ba4ab7cc371",
+      "name": "ReleaseFile",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Release file"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.ReleaseFile",
+        "mdoRefRu": "WebСервис.Exchange.Операция.ReleaseFile"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "dd9d09ef-3b4b-4bb5-9408-9c4080049bb3",
+          "name": "TransferId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Transfer id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.ReleaseFile.Parameter.TransferId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.ReleaseFile.Параметр.TransferId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "ReleaseFile",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "3eb43a06-b32d-4904-8489-6264d0207623",
+      "name": "PutFilePart",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Put file part"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.PutFilePart",
+        "mdoRefRu": "WebСервис.Exchange.Операция.PutFilePart"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "a18098cf-5a61-46b5-bd55-cc61d15aa6bc",
+          "name": "TransferId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Transfer id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PutFilePart.Parameter.TransferId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PutFilePart.Параметр.TransferId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "18615fe1-cfee-4888-9c09-88d1c5db39eb",
+          "name": "PartNumber",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part number"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PutFilePart.Parameter.PartNumber",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PutFilePart.Параметр.PartNumber"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:int",
+          "nillable": true,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "63e363fa-8b0c-4d48-ab1b-9c953c5ed4c0",
+          "name": "PartData",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part data"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PutFilePart.Parameter.PartData",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PutFilePart.Параметр.PartData"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:base64Binary",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "PutFilePart",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "087c83c0-75e7-476b-b7c6-5be55498a190",
+      "name": "SaveFileFromParts",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Save file from parts"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.SaveFileFromParts",
+        "mdoRefRu": "WebСервис.Exchange.Операция.SaveFileFromParts"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "ec5e5413-9e77-4929-83b8-6fee70688b28",
+          "name": "TransferId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Transfer id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.SaveFileFromParts.Parameter.TransferId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.SaveFileFromParts.Параметр.TransferId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "59cd8e3f-ecf3-4e1d-bd98-41551d5d6f68",
+          "name": "PartQuantity",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Part quantity"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.SaveFileFromParts.Parameter.PartQuantity",
+            "mdoRefRu": "WebСервис.Exchange.Операция.SaveFileFromParts.Параметр.PartQuantity"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:int",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "8390c864-2b84-4c45-8583-cb4a4ab49168",
+          "name": "FileId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.SaveFileFromParts.Parameter.FileId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.SaveFileFromParts.Параметр.FileId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "SaveFileFromParts",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "1b2fefca-fef5-4319-90cc-325444cb63a6",
+      "name": "PutFileIntoStorage",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Put file into storage"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.PutFileIntoStorage",
+        "mdoRefRu": "WebСервис.Exchange.Операция.PutFileIntoStorage"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "34a128be-8fbb-4dd8-ac23-9f35041feb63",
+          "name": "FileName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PutFileIntoStorage.Parameter.FileName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PutFileIntoStorage.Параметр.FileName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        },
+        {
+          "uuid": "baa31006-e0d6-496e-a60e-27b3dfd19397",
+          "name": "FileId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.PutFileIntoStorage.Parameter.FileId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.PutFileIntoStorage.Параметр.FileId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "Out"
+        }
+      ],
+      "procedureName": "PutFileIntoStorage",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": true,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "3007d8ff-3942-45ed-bac5-8a6c40ca060c",
+      "name": "GetFileFromStorage",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Get file from storage"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.GetFileFromStorage",
+        "mdoRefRu": "WebСервис.Exchange.Операция.GetFileFromStorage"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "8bfe1474-fd12-4744-a9ab-3383bfe766b3",
+          "name": "FileId",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File id"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.GetFileFromStorage.Parameter.FileId",
+            "mdoRefRu": "WebСервис.Exchange.Операция.GetFileFromStorage.Параметр.FileId"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "v8:UUID",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "GetFileFromStorage",
+      "xdtoReturningValueType": "xs:string",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    },
+    {
+      "uuid": "3af97375-f776-4129-9521-b8d65d795db6",
+      "name": "FileExists",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "File exists"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "WS_OPERATION",
+        "mdoRef": "WebService.Exchange.Operation.FileExists",
+        "mdoRefRu": "WebСервис.Exchange.Операция.FileExists"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "children": [
+        {
+          "uuid": "0e98801b-a45b-44cb-a341-7e43d723f6ed",
+          "name": "FileName",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "File name"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "WS_OPERATION_PARAMETER",
+            "mdoRef": "WebService.Exchange.Operation.FileExists.Parameter.FileName",
+            "mdoRefRu": "WebСервис.Exchange.Операция.FileExists.Параметр.FileName"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "@reference": "../../../mdoReference"
+          },
+          "xdtoValueType": "xs:string",
+          "nillable": false,
+          "transactioned": false,
+          "transferDirection": "In"
+        }
+      ],
+      "procedureName": "FileExists",
+      "xdtoReturningValueType": "xs:boolean",
+      "nillable": false,
+      "transactioned": false,
+      "dataLockControlMode": "MANAGED"
+    }
+  ],
+  "comment": "",
+  "descriptorFileName": "exchange.1cws",
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+  },
+  "mdoType": "WEB_SERVICE",
+  "modules": [
+    {
+      "moduleType": "WEBServiceModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/WebServices/Exchange/Ext/Module.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "Exchange",
+  "namespace": "http://www.1c.ru/SSL/Exchange",
+  "objectBelonging": "OWN",
+  "reuseSessions": "DontUse",
+  "sessionMaxAge": 20,
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Exchange"
+      ]
+    ]
+  },
+  "uuid": "a4e56049-4de9-40a3-8197-a5c84a11f516",
+  "webServiceOperations": [
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[10]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[11]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[12]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[13]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[14]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[15]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[16]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[17]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[18]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[19]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[20]"
+    },
+    {
+      "@reference": "../../children/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[21]"
+    }
+  ],
+  "xdtoPackages": []
+}}

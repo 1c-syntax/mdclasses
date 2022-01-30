@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,4 +25,8 @@ package com.github._1c_syntax.bsl.mdo.support;
  * Интерфейс для объектов, имеющих тип значения (например атрибуты или определяемый тип)
  */
 public interface Type {
+  /**
+   * Тип значения
+   */
+  ValueType getType();
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,30 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.FormType;
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+class CommonFormTest {
 
-class CommonFormTest extends AbstractMDObjectTest<CommonForm> {
-  CommonFormTest() {
-    super(CommonForm.class);
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "Форма,5ac59104-28a5-40b1-ab5b-2857fb41991a,,Форма,CommonForm,ОбщаяФорма,0,0,0,0,0,1"
+      "designer/ssl_3_1, CommonForm.ДополнительныеОтчетыИОбработки"
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("CommonForms/" + name + "/" + name);
-    mdoTest(mdo, MDOType.COMMON_FORM, argumentsAccessor);
-    assertThat(mdo.getFormType()).isEqualTo(FormType.MANAGED);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
 }

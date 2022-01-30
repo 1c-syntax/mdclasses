@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,25 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class DocumentNumeratorTest extends AbstractMDObjectTest<DocumentNumerator> {
-  DocumentNumeratorTest() {
-    super(DocumentNumerator.class);
-  }
+class DocumentNumeratorTest {
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "НумераторДокументов1,e401f835-6bfc-4cd4-8d87-5e6b6332a3f6,,,DocumentNumerator,Нумератор,1,0,0,0,0,0"
+      "designer/mdclasses, DocumentNumerator.НумераторДокументов1"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("DocumentNumerators/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.DOCUMENT_NUMERATOR, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
+
 }

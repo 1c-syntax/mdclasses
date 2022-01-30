@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -43,9 +44,13 @@ import java.util.List;
 public class CommonModule implements MDObject, Module, ModuleOwner {
 
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_MODULE;
 
   /**
    * Уникальный идентификатор
@@ -53,44 +58,59 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Module
+   */
 
   /**
    * Тип модуля
    */
-  ModuleType moduleType;
+  @Default
+  ModuleType moduleType = ModuleType.CommonModule;
 
   /**
    * Ссылка на файл bsl модуля
    */
-  URI uri;
+  @Default
+  URI uri = URI.create("");
+
+  /**
+   * Custom
+   */
 
   /**
    * Признак Сервер
@@ -130,15 +150,25 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   /**
    * Режим повторного использования значений
    */
-  ReturnValueReuse returnValuesReuse;
+  @Default
+  ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
   /**
-   * Вариант поддержки родительской конфигурации
+   * MDObject
    */
-  SupportVariant supportVariant;
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
+
+  /**
+   * ModuleOwner
+   */
 
   /**
    * Общий модуль сам является модулем
+   *
    * @return Список модулей
    */
   @Override

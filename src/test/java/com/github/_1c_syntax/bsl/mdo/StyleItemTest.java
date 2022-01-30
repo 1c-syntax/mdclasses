@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,25 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class StyleItemTest extends AbstractMDObjectTest<StyleItem> {
-  StyleItemTest() {
-    super(StyleItem.class);
-  }
+class StyleItemTest {
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest
   @CsvSource(
     {
-      "ЭлементСтиля1,68047ae8-62aa-4696-9780-d364feb3cc10,,,StyleItem,ЭлементСтиля,0,0,0,0,0,0"
+      "designer/ssl_3_1, StyleItem.ВажнаяНадписьШрифт",
+      "designer/ssl_3_1, StyleItem.ВидДняПроизводственногоКалендаряПредпраздничныйЦвет",
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("StyleItems/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.STYLE_ITEM, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

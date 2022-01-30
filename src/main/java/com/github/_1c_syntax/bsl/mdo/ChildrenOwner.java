@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -32,36 +32,11 @@ import java.util.Optional;
  * Расширение - владелец дочерних объектов
  */
 public interface ChildrenOwner {
+
   /**
-   * Возвращает дочерние элементы объекта.
-   * Реализация по умолчанию подходит для большинства случаев, но для объектов, имеющих иные дочерние
-   * элементы необходимо переопределение
+   * Возвращает все дочерние элементы объекта
    */
-  default List<MDObject> getChildren() {
-    List<MDObject> children = new ArrayList<>();
-
-    if (this instanceof AttributeOwner) {
-      children.addAll(((AttributeOwner) this).getAttributes());
-    }
-
-    if (this instanceof TabularSectionOwner) {
-      children.addAll(((TabularSectionOwner) this).getTabularSections());
-    }
-
-    if (this instanceof FormOwner) {
-      children.addAll(((FormOwner) this).getForms());
-    }
-
-    if (this instanceof CommandOwner) {
-      children.addAll(((CommandOwner) this).getCommands());
-    }
-
-    if (this instanceof TemplateOwner) {
-      children.addAll(((TemplateOwner) this).getTemplates());
-    }
-
-    return children;
-  }
+  List<MDObject> getChildren();
 
   /**
    * Возвращает дочерние элементы объекта плоским списком.

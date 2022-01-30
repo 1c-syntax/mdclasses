@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ApplicationUsePurpose;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MdoReference;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -28,10 +29,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -41,9 +44,13 @@ import java.util.List;
 public class CommonForm implements Form {
 
   /**
-   * Имя
+   * Form
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.COMMON_FORM;
 
   /**
    * Уникальный идентификатор
@@ -51,58 +58,97 @@ public class CommonForm implements Form {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Тип формы
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  FormType formType;
-
-  /**
-   * Список модулей объекта
-   */
-  List<Module> modules;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Тип формы
+   */
+  @Default
+  FormType formType = FormType.MANAGED;
+
+  /**
+   * ModuleOwner
+   */
+
+  /**
+   * Список модулей объекта
+   */
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Использование стандартных команд интерфейса
+   */
+  boolean useStandardCommands;
+
+  /**
+   * Включать в описании справки
+   */
+  boolean includeHelpInContents;
+
+  /**
+   * Вариант применения
+   */
+  @Default
+  List<ApplicationUsePurpose> usePurposes = Collections.emptyList();
+
+  /**
+   * Расширенное представление
+   */
+  @Default
+  MultiLanguageString extendedPresentation = MultiLanguageString.EMPTY;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Form
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }
 
 // todo реализовать
 //  - хранение информации о данных формы
-//  /**
-//   * Данные формы:
-//   * + список элементов формы
-//   * + список обработчиков формы
-//   * + список реквизитов формы
-//   */
-//  FormData data;

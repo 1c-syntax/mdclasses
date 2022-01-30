@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,11 +29,14 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -41,9 +44,13 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class HttpServiceUrlTemplate implements MDObject, MDChildObject, ChildrenOwner {
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.HTTP_SERVICE_URL_TEMPLATE;
 
   /**
    * Уникальный идентификатор
@@ -51,54 +58,81 @@ public class HttpServiceUrlTemplate implements MDObject, MDChildObject, Children
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Родительский объект
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  MdoReference owner;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
-   * Методы шаблона URL HTTP-сервиса
+   * Комментарий
    */
-  List<HttpServiceMethod> httpServiceMethods;
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * ChildrenOwner
+   */
+
+  @Default
+  List<MDObject> children = Collections.emptyList();
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Возвращает список методов шаблона URL
+   */
+  public List<HttpServiceMethod> getHttpServiceMethods() {
+    return getChildren().stream()
+      .filter(HttpServiceMethod.class::isInstance)
+      .map(HttpServiceMethod.class::cast)
+      .collect(Collectors.toList());
+  }
+
+  /**
+   * Custom
+   */
+
+  /**
+   * MDObject
+   */
 
   @Override
-  public List<MDObject> getChildren() {
-    var children = ChildrenOwner.super.getChildren();
-    children.addAll(httpServiceMethods);
-    return children;
+  public MDOType getMdoType() {
+    return mdoType;
   }
 }

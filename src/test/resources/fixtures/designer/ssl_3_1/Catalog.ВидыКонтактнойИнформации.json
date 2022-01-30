@@ -1,0 +1,1248 @@
+{"com.github._1c_syntax.bsl.mdo.Catalog": {
+  "autonumbering": false,
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "basedOn": [],
+  "characteristics": [],
+  "checkUnique": false,
+  "children": [
+    {
+      "uuid": "0eea37cc-47f8-4819-85da-d4991f4e58ed",
+      "name": "ТолькоНациональныйАдрес",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Только национальный адрес"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ТолькоНациональныйАдрес",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ТолькоНациональныйАдрес"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации"
+      }
+    },
+    {
+      "uuid": "322645d4-e3fb-467b-a55d-d8e74cff2ea3",
+      "name": "ВидРедактирования",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Вид редактирования"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ВидРедактирования",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ВидРедактирования"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 20,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "0f314b6b-5ed1-46ed-bdfd-cf53330c2783",
+      "name": "ВидПоляДругое",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Вид поля другое"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ВидПоляДругое",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ВидПоляДругое"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 20,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "b51eaf45-baa1-4d1c-bcb7-a89bb8bcc26a",
+      "name": "ВключатьСтрануВПредставление",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Включать страну в представление"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ВключатьСтрануВПредставление",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ВключатьСтрануВПредставление"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "5ea29362-0ab7-4ca3-865e-bf93db5ca24b",
+      "name": "ЗапретитьРедактированиеПользователем",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Запретить редактирование пользователем"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ЗапретитьРедактированиеПользователем",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ЗапретитьРедактированиеПользователем"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "64ff6058-c6f3-4682-b9a1-11ec438fa447",
+      "name": "Используется",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Используется"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.Используется",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.Используется"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "ced01234-9417-49ce-adf0-8cdd15e6dd7d",
+      "name": "МожноИзменятьСпособРедактирования",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Можно изменять способ редактирования"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.МожноИзменятьСпособРедактирования",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.МожноИзменятьСпособРедактирования"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "c1272bfc-196a-4f99-935f-e2516bc138d2",
+      "name": "ОбязательноеЗаполнение",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Обязательное заполнение"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ОбязательноеЗаполнение",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ОбязательноеЗаполнение"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "313e0688-745a-4385-b040-7ef8317a0eb7",
+      "name": "ПроверятьКорректность",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Запрещать ввод некорректного адреса"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ПроверятьКорректность",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ПроверятьКорректность"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "7fe61c5d-30bc-440d-9e40-12ff3b296616",
+      "name": "ПроверятьПоФИАС",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Проверять по ФИАС"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ПроверятьПоФИАС",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ПроверятьПоФИАС"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "37c37f15-f84b-456b-aab6-729562dc0908",
+      "name": "РазрешитьВводНесколькихЗначений",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Разрешить ввод нескольких значений"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.РазрешитьВводНесколькихЗначений",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.РазрешитьВводНесколькихЗначений"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "45a2569e-820c-4d7d-ba74-4a781d26bb2b",
+      "name": "УдалитьРедактированиеТолькоВДиалоге",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "(не используется) Редактирование только в диалоге"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.УдалитьРедактированиеТолькоВДиалоге",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.УдалитьРедактированиеТолькоВДиалоге"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "996c7873-1cc9-44f6-915b-5c6ed7ef2370",
+      "name": "РеквизитДопУпорядочивания",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Порядок"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.РеквизитДопУпорядочивания",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.РеквизитДопУпорядочивания"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+      "type": {
+        "types": [
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "digits": 5,
+            "fractionDigits": 0,
+            "allowedSign": "ANY"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "8dc08932-0988-4e82-8a5f-385c0694f9ff",
+      "name": "СкрыватьНеактуальныеАдреса",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Скрывать неактуальные адреса"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.СкрыватьНеактуальныеАдреса",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.СкрыватьНеактуальныеАдреса"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "13dee5d8-f165-48de-9ccb-3ef0239f4b27",
+      "name": "ТелефонCДобавочнымНомером",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Телефон c добавочным номером"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ТелефонCДобавочнымНомером",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ТелефонCДобавочнымНомером"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "2767473e-79fb-4c7c-a7d1-a83a8f2df71d",
+      "name": "Тип",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Тип"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.Тип",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.Тип"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "cfg:EnumRef.ТипыКонтактнойИнформации",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "8a13c899-1659-48cf-9aa2-07ca99547b7b",
+      "name": "УказыватьОКТМО",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Указывать ОКТМО"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.УказыватьОКТМО",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.УказыватьОКТМО"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "eb3f959c-94a4-4e77-b9f9-e81954254079",
+      "name": "ХранитьИсториюИзменений",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Хранить историю изменений"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ХранитьИсториюИзменений",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ХранитьИсториюИзменений"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "71dfde27-3762-4dd0-9252-6e703ce1b101",
+      "name": "МеждународныйФорматАдреса",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Международный формат адреса"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.МеждународныйФорматАдреса",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.МеждународныйФорматАдреса"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "d8fc4644-5351-443c-8b5d-5de2c4b855d1",
+      "name": "ИмяПредопределенногоВида",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Имя предопределенного вида"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ИмяПредопределенногоВида",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ИмяПредопределенногоВида"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "0f039952-09d3-49c8-b909-e8333a3fc8f9",
+      "name": "ИмяГруппы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Имя группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ИмяГруппы",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ИмяГруппы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "9cd2fc77-a4b0-457e-a6b0-63dbf521bf90",
+      "name": "ИсправлятьУстаревшиеАдреса",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Исправлять устаревшие адреса"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ИсправлятьУстаревшиеАдреса",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ИсправлятьУстаревшиеАдреса"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "8363bd46-1ea5-44f0-858a-05bc03f6020e",
+      "name": "ИдентификаторДляФормул",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Идентификатор для формул"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ИдентификаторДляФормул",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ИдентификаторДляФормул"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "a321b6db-391b-4c65-8d27-ce486d10055e",
+      "name": "МаскаНомераТелефона",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Маска номера телефона"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.МаскаНомераТелефона",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.МаскаНомераТелефона"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 150,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "800ef5f0-fdd1-4f8b-8c0b-9744952bfb5b",
+      "name": "ВводитьНомерПоМаске",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Вводить номер по маске"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Attribute.ВводитьНомерПоМаске",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Реквизит.ВводитьНомерПоМаске"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "99387869-f8b1-4269-bd26-e39380d17b69",
+      "name": "Представления",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Представления"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.TabularSection.Представления",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.ТабличнаяЧасть.Представления"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "4b2acdb9-fefd-4735-9dfd-d7d141967f3c",
+          "name": "КодЯзыка",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Код языка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.ВидыКонтактнойИнформации.TabularSection.Представления.Attribute.КодЯзыка",
+            "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.ТабличнаяЧасть.Представления.Реквизит.КодЯзыка"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "type": {
+            "types": [
+              {
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          }
+        },
+        {
+          "uuid": "bc07d643-a044-4882-b95b-2173a197fd0e",
+          "name": "Наименование",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Наименование"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.ВидыКонтактнойИнформации.TabularSection.Представления.Attribute.Наименование",
+            "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.ТабличнаяЧасть.Представления.Реквизит.Наименование"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "type": {
+            "types": [
+              {
+                "@reference": "../../../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 150,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "@reference": "../../../mdoReference"
+          }
+        }
+      ],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "f5ef3f75-7d12-4284-844f-54d19d1f7e2f",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаСписка",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "7974e41d-5af3-4636-b405-c9405d89fb53",
+      "name": "ФормаЭлемента",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма элемента"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаЭлемента"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "21fad9b6-44df-417c-ba18-de4b8af98a34",
+      "name": "ФормаГруппы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаГруппы",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаГруппы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "11c086b0-c646-4701-983d-c38758286354",
+      "name": "ФормаВыбораГруппы",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма выбора группы"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ФормаВыбораГруппы",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ФормаВыбораГруппы"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "826c2821-147d-4aaf-910c-acfbdb58a29f",
+      "name": "ИсправлениеВидовКонтактнойИнформации",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Исправление видов контактной информации"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "Catalog.ВидыКонтактнойИнформации.Form.ИсправлениеВидовКонтактнойИнформации",
+        "mdoRefRu": "Справочник.ВидыКонтактнойИнформации.Форма.ИсправлениеВидовКонтактнойИнформации"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    }
+  ],
+  "choiceDataGetModeOnInputByString": "Directly",
+  "choiceHistoryOnInput": "Auto",
+  "choiceMode": "BothWays",
+  "codeAllowedLength": "Fixed",
+  "codeLength": 0,
+  "codeSeries": "WholeCatalog",
+  "codeType": "String",
+  "comment": "",
+  "createOnInput": "Use",
+  "dataHistory": "DontUse",
+  "dataLockControlMode": "MANAGED",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+    "@reference": "../auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
+  },
+  "defaultFolderForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+  },
+  "defaultListForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "defaultObjectForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+  },
+  "defaultPresentation": "AsDescription",
+  "descriptionLength": 150,
+  "editType": "InList",
+  "executeAfterWriteDataHistoryVersionProcessing": false,
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "@reference": "../explanation"
+  },
+  "extendedObjectPresentation": {
+    "@reference": "../explanation"
+  },
+  "foldersOnTop": true,
+  "fullTextSearch": "USE",
+  "fullTextSearchOnInputByString": "DontUse",
+  "hierarchical": true,
+  "hierarchyType": "HierarchyFoldersAndItems",
+  "includeHelpInContents": false,
+  "inputByString": [
+    "Catalog.ВидыКонтактнойИнформации.StandardAttribute.Description"
+  ],
+  "levelCount": 3,
+  "limitLevelCount": true,
+  "listPresentation": {
+    "@reference": "../explanation"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "CATALOG",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/ВидыКонтактнойИнформации/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ВидыКонтактнойИнформации",
+  "objectBelonging": "OWN",
+  "objectPresentation": {
+    "content": [
+      [
+        "ru",
+        "Вид контактной информации"
+      ]
+    ]
+  },
+  "owners": [],
+  "predefinedDataUpdate": "Auto",
+  "quickChoice": false,
+  "searchStringModeOnInputByString": "Begin",
+  "subordinationUse": "ToItems",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Виды контактной информации"
+      ]
+    ]
+  },
+  "updateDataHistoryImmediatelyAfterWrite": false,
+  "useStandardCommands": true,
+  "uuid": "782cb93d-36e6-4923-b2b6-75caa3459cd6"
+}}

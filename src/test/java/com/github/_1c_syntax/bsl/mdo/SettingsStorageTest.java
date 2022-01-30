@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,43 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class SettingsStorageTest extends AbstractMDObjectTest<SettingsStorage> {
-  SettingsStorageTest() {
-    super(SettingsStorage.class);
-  }
+class SettingsStorageTest {
 
-  @ParameterizedTest(name = "DESIGNER {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ХранилищеНастроек1,e7a9947d-7565-4681-b75c-c9a229b45042,,,SettingsStorage,ХранилищеНастроек,0,0,0,0,0,0"
+      "designer/ssl_3_1, SettingsStorage.ХранилищеВариантовОтчетов"
     }
   )
-  void testDesigner(ArgumentsAccessor argumentsAccessor) {
-    var mdo = getMDObject("SettingsStorages/" + argumentsAccessor.getString(0));
-    mdoTest(mdo, MDOType.SETTINGS_STORAGE, argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 
-  @ParameterizedTest(name = "EDT {index}: {0}")
-  @CsvSource(
-    {
-      "ХранилищеНастроек1,e7a9947d-7565-4681-b75c-c9a229b45042,,,SettingsStorage,ХранилищеНастроек,0,0,1,0,1,1"
-    }
-  )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("SettingsStorages/" + name + "/" + name);
-    mdoTest(mdo, MDOType.SETTINGS_STORAGE, argumentsAccessor);
-
-    checkChildField(mdo.getForms().get(0),
-      "ФормаСохраненияНастроек", "d4f043bf-0ebb-4666-aac5-e7172071b5cd");
-
-    checkChildField(mdo.getTemplates().get(0),
-      "Макет", "76d7af6c-0f2e-4ebf-a051-7df236802ef9");
-  }
 }

@@ -1,0 +1,298 @@
+{"com.github._1c_syntax.bsl.mdo.DataProcessor": {
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "children": [
+    {
+      "uuid": "ab178a93-8570-43b6-ae42-f34a7cc4f359",
+      "name": "EMAILМаксимальныйДопустимыйРазмерСообщения",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Максимальный размер сообщения обмена, КБайт"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILМаксимальныйДопустимыйРазмерСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILМаксимальныйДопустимыйРазмерСообщения"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:decimal",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "digits": 10,
+            "fractionDigits": 0,
+            "allowedSign": "NONNEGATIVE"
+          }
+        ]
+      },
+      "owner": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL"
+      }
+    },
+    {
+      "uuid": "4c82f31d-7a98-47dd-89dc-1846cb15bf3b",
+      "name": "EMAILСжиматьФайлИсходящегоСообщения",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Сжимать файл исходящего сообщения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILСжиматьФайлИсходящегоСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILСжиматьФайлИсходящегоСообщения"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "168e3189-2676-4cdb-bc9d-78d85df51faf",
+      "name": "EMAILУчетнаяЗапись",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Учетная запись электронной почты"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.EMAILУчетнаяЗапись",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.EMAILУчетнаяЗапись"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "cfg:CatalogRef.УчетныеЗаписиЭлектроннойПочты",
+            "kind": "REFERENCE"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "ecf1a87f-4ca4-4efb-a84c-b2db1b0e8829",
+      "name": "ПарольАрхиваСообщенияОбмена",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Пароль архива сообщения обмена"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ПарольАрхиваСообщенияОбмена",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ПарольАрхиваСообщенияОбмена"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "470bbff8-20d0-475c-a61a-1a09ac14c2db",
+      "name": "ШаблонИмениФайлаСообщения",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Шаблон имени файла сообщения"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ШаблонИмениФайлаСообщения",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ШаблонИмениФайлаСообщения"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 0,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "6ea25680-c4db-4717-9498-62420ca16970",
+      "name": "ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Использовать временный каталог для отправки и приема сообщений"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "ATTRIBUTE",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Attribute.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Реквизит.ИспользоватьВременныйКаталогДляОтправкиИПриемаСообщений"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "Истина - Отправка и получение сообщений обмена будет выполняться через временный каталог; Ложь – отправка и получение будет выполняться напрямую через каталог обмена",
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "../../../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.ValueType$Type"
+          }
+        ],
+        "qualifiers": []
+      },
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    },
+    {
+      "uuid": "14e20d48-635e-4c52-9099-e743323fc190",
+      "name": "Форма",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "DataProcessor.ТранспортСообщенийОбменаEMAIL.Form.Форма",
+        "mdoRefRu": "Обработка.ТранспортСообщенийОбменаEMAIL.Форма.Форма"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "@reference": "../../com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    }
+  ],
+  "comment": "",
+  "defaultForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedPresentation": {
+    "@reference": "../explanation"
+  },
+  "includeHelpInContents": false,
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "mdoType": "DATA_PROCESSOR",
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ТранспортСообщенийОбменаEMAIL/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "../../../children/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "name": "ТранспортСообщенийОбменаEMAIL",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Транспорт сообщения обмена через E-mail"
+      ]
+    ]
+  },
+  "useStandardCommands": false,
+  "uuid": "1e7684f0-1b3b-4a32-8602-dd0672c5a800"
+}}

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,30 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.AbstractMDObjectTest;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+class EventSubscriptionTest {
 
-class EventSubscriptionTest extends AbstractMDObjectTest<EventSubscription> {
-  EventSubscriptionTest() {
-    super(EventSubscription.class);
-  }
-
-  @ParameterizedTest(name = "EDT {index}: {0}")
+  @ParameterizedTest()
   @CsvSource(
     {
-      "ПодпискаНаСобытие1,4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd,,,EventSubscription,ПодпискаНаСобытие,0,0,0,0,0,0"
+      "designer/ssl_3_1, EventSubscription.АвтономнаяРаботаПроверитьВозможностьЗаписиОбщихДанных"
     }
   )
-  void testEdt(ArgumentsAccessor argumentsAccessor) {
-    var name = argumentsAccessor.getString(0);
-    var mdo = getMDObjectEDT("EventSubscriptions/" + name + "/" + name);
-    mdoTest(mdo, MDOType.EVENT_SUBSCRIPTION, argumentsAccessor);
-    assertThat(mdo.getHandler().isEmpty()).isFalse();
-    assertThat(mdo.getHandler().getMethodName()).isEqualTo("ПодпискаНаСобытие1ПередЗаписью");
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.testAndGetMDO(argumentsAccessor);
   }
 }

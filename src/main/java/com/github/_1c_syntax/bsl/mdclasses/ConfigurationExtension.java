@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -60,6 +60,11 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   String uuid;
 
   /**
+   * Синонимы объекта
+   */
+  MultiLanguageString synonym;
+
+  /**
    * Вариант исходников конфигурации
    */
   ConfigurationSource configurationSource;
@@ -87,7 +92,7 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   /**
    * Язык приложения по умолчанию
    */
-  Language defaultLanguage;
+  MdoReference defaultLanguage;
 
   /**
    * Режим управления блокировкой данных
@@ -135,11 +140,6 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
   List<MDObject> children;
 
   /**
-   * Дочерние объекты конфигурации (все, включая дочерние)
-   */
-  List<MDObject> plainChildren;
-
-  /**
    * Назначение расширения конфигурации
    */
   ConfigurationExtensionPurpose configurationExtensionPurpose;
@@ -158,4 +158,14 @@ public class ConfigurationExtension implements MDClass, ConfigurationTree, Modul
    * MDO-Ссылка на объект
    */
   MdoReference mdoReference;
+
+  public Language getDefaultLanguage() {
+    if (!MdoReference.EMPTY.equals(defaultLanguage)) {
+      var lang = findChild(defaultLanguage);
+      if (lang.isPresent()) {
+        return (Language) lang.get();
+      }
+    }
+    return Language.DEFAULT;
+  }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -38,10 +39,15 @@ import lombok.Value;
 @ToString(of = {"name", "uuid", "mdoReference"})
 @EqualsAndHashCode(of = {"name", "uuid", "mdoReference"})
 public class IntegrationServiceChannel implements MDObject, MDChildObject {
+
   /**
-   * Имя
+   * MDObject
    */
-  String name;
+
+  /**
+   * Тип метаданных
+   */
+  static final MDOType mdoType = MDOType.INTEGRATION_SERVICE_CHANNEL;
 
   /**
    * Уникальный идентификатор
@@ -49,57 +55,78 @@ public class IntegrationServiceChannel implements MDObject, MDChildObject {
   String uuid;
 
   /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   * Имя
    */
-  ObjectBelonging objectBelonging;
-
-  /**
-   * Тип метаданных
-   */
-  MDOType type;
-
-  /**
-   * Имя метаданных объекта
-   */
-  String metadataName;
-
-  /**
-   * Имя метаданных объекта на русском языке
-   */
-  String metadataNameRu;
+  String name;
 
   /**
    * Синонимы объекта
    */
-  MultiLanguageString synonyms;
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
 
   /**
    * MDO-Ссылка на объект
    */
-  MdoReference mdoReference;
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
-   * Направление сообщения
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
    */
-  MessageDirection messageDirection;
-
-  /**
-   * Обработчик получения сообщения
-   */
-  String handler;
-
-  /**
-   * Родительский объект
-   */
-  MdoReference owner;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Вариант поддержки родительской конфигурации
    */
-  SupportVariant supportVariant;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * MDChildObject
+   */
+
+  /**
+   * Родительский объект
+   */
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Custom
+   */
+
+  /**
+   * Направление сообщения
+   */
+  @Default
+  MessageDirection messageDirection = MessageDirection.SEND;
+
+  /**
+   * Обработчик получения сообщения
+   */
+  @Default
+  String handler = "";
 
   /**
    * Имя канала внешнего сервиса интеграции
    */
-  String externalIntegrationServiceChannelName;
+  @Default
+  String externalIntegrationServiceChannelName = "";
+
+  /**
+   * MDObject
+   */
+
+  @Override
+  public MDOType getMdoType() {
+    return mdoType;
+  }
 }

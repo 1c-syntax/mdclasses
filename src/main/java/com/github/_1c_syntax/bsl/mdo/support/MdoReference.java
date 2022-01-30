@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2021
+ * Copyright © 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -31,6 +31,7 @@ import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.regex.Pattern;
 
 /**
  * Ссылка на объект в формате ВидОбъектаМетаданных.ИмяОбъекта
@@ -39,6 +40,14 @@ import java.util.concurrent.locks.ReentrantLock;
 @EqualsAndHashCode(of = {"mdoRef"})
 @ToString(of = {"mdoRef"})
 public class MdoReference {
+  /**
+   * Ссылка на пустую ссылку
+   */
+  public static final MdoReference EMPTY = new MdoReference(MDOType.UNKNOWN, "", "");
+
+  private static final String REF_SPLIT_REGEX = "\\.";
+  private static final Pattern REF_SPLIT_PATTERN = Pattern.compile(REF_SPLIT_REGEX);
+
   /**
    * Кэш всех ссылок
    */
@@ -70,13 +79,78 @@ public class MdoReference {
   /**
    * Создает ссылку, сохраняя ее в кэш
    *
-   * @param type     Тип метаданных
+   * @param mdoType  Тип метаданных
    * @param mdoRef   Строковая ссылка
    * @param mdoRefRu Строковая ссылка на русском языке
    * @return Ссылка на объект
    */
-  public static MdoReference create(MDOType type, String mdoRef, String mdoRefRu) {
-    return getOrCompute(type, mdoRef, mdoRefRu);
+  public static MdoReference create(@NonNull MDOType mdoType, @NonNull String mdoRef, @NonNull String mdoRefRu) {
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
+  }
+
+  /**
+   * Создает ссылку, сохраняя ее в кэш
+   *
+   * @param mdoType Тип метаданных
+   * @param name    Имя объекта метаданных
+   * @return Ссылка на объект
+   */
+  public static MdoReference create(@NonNull MDOType mdoType, @NonNull String name) {
+    var mdoRef = mdoType.getName() + "." + name;
+    var mdoRefRu = mdoType.getNameRu() + "." + name;
+
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
+  }
+
+  /**
+   * Создание дочерней ссылки
+   *
+   * @param mdoReferenceOwner Ссылка родитель
+   * @param mdoType           Тип дочерней ссылки
+   * @param name              Имя дочернего элемента
+   * @return Ссылка на элемент
+   */
+  public static MdoReference create(@NonNull MdoReference mdoReferenceOwner,
+                                    @NonNull MDOType mdoType,
+                                    @NonNull String name) {
+    var mdoRef = mdoReferenceOwner.getMdoRef() + "." + mdoType.getName() + "." + name;
+    var mdoRefRu = mdoReferenceOwner.getMdoRefRu() + "." + mdoType.getNameRu() + "." + name;
+
+    return getOrCompute(mdoType, mdoRef, mdoRefRu);
+  }
+
+  /**
+   * Создает ссылку, сохраняя ее в кэш
+   *
+   * @param fullName Строковая ссылка на объект метаданных
+   * @return Ссылка на объект
+   */
+  public static MdoReference create(@NonNull String fullName) {
+    var nameParts = REF_SPLIT_PATTERN.split(fullName);
+    if (nameParts.length <= 1) {
+      throw new IllegalArgumentException("Incorrect full name " + fullName);
+    }
+
+    MdoReference ref = null;
+    var step = 2;
+    for (var i = 0; i < nameParts.length; i += step) {
+      var mdoType = MDOType.fromValue(nameParts[i]);
+      if (mdoType.isEmpty()) {
+        continue;
+      }
+      var mdoName = nameParts[i + 1];
+      if (ref == null) {
+        ref = create(mdoType.get(), mdoName);
+      } else {
+        ref = create(ref, mdoType.get(), mdoName);
+      }
+    }
+
+    if (ref == null) {
+      throw new IllegalArgumentException("Incorrect full name " + fullName);
+    }
+
+    return ref;
   }
 
   /**
@@ -95,13 +169,13 @@ public class MdoReference {
     return result;
   }
 
-  private static MdoReference getOrCompute(MDOType type, String mdoRef, String mdoRefRu) {
+  private static MdoReference getOrCompute(@NonNull MDOType mdoType, @NonNull String mdoRef, @NonNull String mdoRefRu) {
     referenceLock.lock();
     if (REFERENCES.containsKey(mdoRef)) {
       referenceLock.unlock();
       return REFERENCES.get(mdoRef);
     }
-    var newMdoReference = new MdoReference(type, mdoRef, mdoRefRu);
+    var newMdoReference = new MdoReference(mdoType, mdoRef, mdoRefRu);
     REFERENCES.put(mdoRef, newMdoReference);
     referenceLock.unlock();
     return newMdoReference;

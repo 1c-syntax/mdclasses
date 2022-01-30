@@ -1,0 +1,5996 @@
+{"com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension": {
+  "briefInformation": {
+    "content": []
+  },
+  "children": [
+    {
+      "uuid": "2739e06e-cb93-4617-bc73-ca2fa2db8d0e",
+      "name": "Русский",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "LANGUAGE",
+        "mdoRef": "Language.Русский",
+        "mdoRefRu": "Язык.Русский"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "languageCode": "ru"
+    },
+    {
+      "uuid": "25669d2f-e792-4521-a9db-8933fe7cde61",
+      "name": "ПерваяПодсистема",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SUBSYSTEM",
+        "mdoRef": "Subsystem.ПерваяПодсистема",
+        "mdoRefRu": "Подсистема.ПерваяПодсистема"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "30ee1188-7650-4f8b-ba73-62ed47e6eb27",
+          "name": "ПодчиненнаяПодсистема",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "SUBSYSTEM",
+            "mdoRef": "Subsystem.ПодчиненнаяПодсистема",
+            "mdoRefRu": "Подсистема.ПодчиненнаяПодсистема"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [],
+          "includeInCommandInterface": false,
+          "content": [],
+          "includeHelpInContents": false,
+          "explanation": {
+            "content": []
+          },
+          "picture": ""
+        },
+        {
+          "uuid": "313ced36-8b82-40ae-bcea-f194c28a4ae9",
+          "name": "ПочиненнаяСистема2",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "SUBSYSTEM",
+            "mdoRef": "Subsystem.ПочиненнаяСистема2",
+            "mdoRefRu": "Подсистема.ПочиненнаяСистема2"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [],
+          "includeInCommandInterface": false,
+          "content": [],
+          "includeHelpInContents": false,
+          "explanation": {
+            "content": []
+          },
+          "picture": ""
+        }
+      ],
+      "includeInCommandInterface": false,
+      "content": [],
+      "includeHelpInContents": false,
+      "explanation": {
+        "content": []
+      },
+      "picture": ""
+    },
+    {
+      "uuid": "cb2ebbfc-9099-4267-baea-d0ef8cfd3962",
+      "name": "ПерваяПодсистема1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Первая подсистема1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "SUBSYSTEM",
+        "mdoRef": "Subsystem.ПерваяПодсистема1",
+        "mdoRefRu": "Подсистема.ПерваяПодсистема1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "78079dc2-cd39-4c5b-8d0d-8ddd5235073a",
+          "name": "ПодчиненнаяПодсистема",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Подчиненная подсистема"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "SUBSYSTEM",
+            "mdoRef": "Subsystem.ПодчиненнаяПодсистема",
+            "mdoRefRu": "Подсистема.ПодчиненнаяПодсистема"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [],
+          "includeInCommandInterface": true,
+          "content": [
+            {
+              "type": "CATALOG",
+              "mdoRef": "Catalog.Справочник1",
+              "mdoRefRu": "Справочник.Справочник1"
+            },
+            {
+              "type": "DATA_PROCESSOR",
+              "mdoRef": "DataProcessor.Обработка1",
+              "mdoRefRu": "Обработка.Обработка1"
+            }
+          ],
+          "includeHelpInContents": true,
+          "explanation": {
+            "content": []
+          },
+          "picture": ""
+        },
+        {
+          "uuid": "7c2de4bb-98ab-40f5-b101-a576b92af756",
+          "name": "ПочиненнаяСистема2",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Починенная система2"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "SUBSYSTEM",
+            "mdoRef": "Subsystem.ПочиненнаяСистема2",
+            "mdoRefRu": "Подсистема.ПочиненнаяСистема2"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [],
+          "includeInCommandInterface": true,
+          "content": [
+            {
+              "type": "CHART_OF_ACCOUNTS",
+              "mdoRef": "ChartOfAccounts.ПланСчетов1",
+              "mdoRefRu": "ПланСчетов.ПланСчетов1"
+            },
+            {
+              "type": "BUSINESS_PROCESS",
+              "mdoRef": "BusinessProcess.БизнесПроцесс1",
+              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
+            }
+          ],
+          "includeHelpInContents": true,
+          "explanation": {
+            "content": []
+          },
+          "picture": ""
+        }
+      ],
+      "includeInCommandInterface": true,
+      "content": [],
+      "includeHelpInContents": true,
+      "explanation": {
+        "content": []
+      },
+      "picture": ""
+    },
+    {
+      "uuid": "f9071d69-3e30-4d2c-b670-188c58a61072",
+      "name": "ЭлементСтиля1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "STYLE_ITEM",
+        "mdoRef": "StyleItem.ЭлементСтиля1",
+        "mdoRefRu": "ЭлементСтиля.ЭлементСтиля1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "type": "Color",
+      "value": ""
+    },
+    {
+      "uuid": "22eb166e-500f-4d87-bd14-33f7ba033857",
+      "name": "ЭлементСтиля2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "STYLE_ITEM",
+        "mdoRef": "StyleItem.ЭлементСтиля2",
+        "mdoRefRu": "ЭлементСтиля.ЭлементСтиля2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "type": "Color",
+      "value": "#000000"
+    },
+    {
+      "uuid": "9c8c5d45-d08e-41bb-b0c6-a327475837b7",
+      "name": "Стиль1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "STYLE",
+        "mdoRef": "Style.Стиль1",
+        "mdoRefRu": "Стиль.Стиль1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": ""
+    },
+    {
+      "uuid": "370755d5-e7d4-4735-a080-d15380d86067",
+      "name": "Стиль2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "STYLE",
+        "mdoRef": "Style.Стиль2",
+        "mdoRefRu": "Стиль.Стиль2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": ""
+    },
+    {
+      "uuid": "17d5237b-da06-43bc-9d93-fd20616b3579",
+      "name": "ОбщаяКартинка1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_PICTURE",
+        "mdoRef": "CommonPicture.ОбщаяКартинка1",
+        "mdoRefRu": "ОбщаяКартинка.ОбщаяКартинка1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": ""
+    },
+    {
+      "uuid": "7b211200-2136-480b-b210-b9223f683084",
+      "name": "ОбщаяКартинка2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_PICTURE",
+        "mdoRef": "CommonPicture.ОбщаяКартинка2",
+        "mdoRefRu": "ОбщаяКартинка.ОбщаяКартинка2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": ""
+    },
+    {
+      "uuid": "5da63fa2-4501-4841-9144-11dd4510867c",
+      "name": "ПараметрСеанса1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SESSION_PARAMETER",
+        "mdoRef": "SessionParameter.ПараметрСеанса1",
+        "mdoRefRu": "ПараметрСеанса.ПараметрСеанса1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "type": {
+        "types": [
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": []
+      }
+    },
+    {
+      "uuid": "3e18732b-ce70-4eaa-812a-186ed5359aaa",
+      "name": "ПараметрСеанса2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SESSION_PARAMETER",
+        "mdoRef": "SessionParameter.ПараметрСеанса2",
+        "mdoRefRu": "ПараметрСеанса.ПараметрСеанса2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "type": {
+        "types": [
+          {
+            "name": "xs:boolean",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": []
+      }
+    },
+    {
+      "uuid": "d97d5467-a333-4453-9da7-6d5472b9c148",
+      "name": "Роль1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ROLE",
+        "mdoRef": "Role.Роль1",
+        "mdoRefRu": "Роль.Роль1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "setForNewObjects": false,
+      "setForAttributesByDefault": false,
+      "independentRightsOfChildObjects": false,
+      "rights": []
+    },
+    {
+      "uuid": "b54d0a82-2a9d-4f8e-9fc7-7048d0a9dcf8",
+      "name": "Роль2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ROLE",
+        "mdoRef": "Role.Роль2",
+        "mdoRefRu": "Роль.Роль2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "setForNewObjects": false,
+      "setForAttributesByDefault": true,
+      "independentRightsOfChildObjects": false,
+      "rights": [
+        {
+          "name": "Document.Документ1",
+          "rights": [
+            [
+              "Delete",
+              true
+            ],
+            [
+              "InteractivePostingRegular",
+              true
+            ],
+            [
+              "InteractiveChangeOfPosted",
+              true
+            ],
+            [
+              "Posting",
+              true
+            ],
+            [
+              "InteractiveDelete",
+              true
+            ],
+            [
+              "InteractivePosting",
+              true
+            ],
+            [
+              "InteractiveInsert",
+              true
+            ],
+            [
+              "Edit",
+              true
+            ],
+            [
+              "InteractiveDeleteMarked",
+              true
+            ],
+            [
+              "Insert",
+              true
+            ],
+            [
+              "Update",
+              true
+            ],
+            [
+              "View",
+              true
+            ],
+            [
+              "InteractiveSetDeletionMark",
+              true
+            ],
+            [
+              "Read",
+              true
+            ],
+            [
+              "InteractiveUndoPosting",
+              true
+            ],
+            [
+              "InteractiveClearDeletionMark",
+              true
+            ],
+            [
+              "UndoPosting",
+              true
+            ],
+            [
+              "InputByString",
+              true
+            ]
+          ]
+        },
+        {
+          "name": "Configuration.Расширение",
+          "rights": [
+            [
+              "UpdateDataBaseConfiguration",
+              true
+            ],
+            [
+              "Administration",
+              true
+            ],
+            [
+              "MainWindowModeWorkplace",
+              true
+            ],
+            [
+              "ThinClient",
+              true
+            ],
+            [
+              "Automation",
+              true
+            ],
+            [
+              "ExternalConnection",
+              true
+            ],
+            [
+              "CollaborationSystemInfoBaseRegistration",
+              true
+            ],
+            [
+              "MainWindowModeKiosk",
+              true
+            ],
+            [
+              "EventLog",
+              true
+            ],
+            [
+              "AllFunctionsMode",
+              true
+            ],
+            [
+              "MainWindowModeEmbeddedWorkplace",
+              true
+            ],
+            [
+              "WebClient",
+              true
+            ],
+            [
+              "ExclusiveMode",
+              true
+            ],
+            [
+              "MainWindowModeFullscreenWorkplace",
+              true
+            ],
+            [
+              "DataAdministration",
+              true
+            ],
+            [
+              "ActiveUsers",
+              true
+            ],
+            [
+              "ThickClient",
+              true
+            ],
+            [
+              "Output",
+              true
+            ],
+            [
+              "MainWindowModeNormal",
+              true
+            ],
+            [
+              "InteractiveOpenExtDataProcessors",
+              true
+            ],
+            [
+              "InteractiveOpenExtReports",
+              true
+            ],
+            [
+              "SaveUserData",
+              true
+            ],
+            [
+              "ConfigurationExtensionsAdministration",
+              true
+            ]
+          ]
+        },
+        {
+          "name": "Catalog.Справочник1",
+          "rights": [
+            [
+              "Delete",
+              true
+            ],
+            [
+              "InteractiveDelete",
+              true
+            ],
+            [
+              "InteractiveInsert",
+              true
+            ],
+            [
+              "Edit",
+              true
+            ],
+            [
+              "InteractiveDeleteMarked",
+              true
+            ],
+            [
+              "Insert",
+              true
+            ],
+            [
+              "Update",
+              true
+            ],
+            [
+              "View",
+              true
+            ],
+            [
+              "InteractiveSetDeletionMark",
+              true
+            ],
+            [
+              "InteractiveClearDeletionMarkPredefinedData",
+              true
+            ],
+            [
+              "Read",
+              true
+            ],
+            [
+              "InteractiveDeletePredefinedData",
+              true
+            ],
+            [
+              "InteractiveDeleteMarkedPredefinedData",
+              true
+            ],
+            [
+              "InteractiveClearDeletionMark",
+              true
+            ],
+            [
+              "InteractiveSetDeletionMarkPredefinedData",
+              true
+            ],
+            [
+              "InputByString",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "d9f5a94f-8853-4940-aec8-4cc918dff1e5",
+      "name": "Макет",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_TEMPLATE",
+        "mdoRef": "CommonTemplate.Макет",
+        "mdoRefRu": "ОбщийМакет.Макет"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+      }
+    },
+    {
+      "uuid": "1a8c69e1-1c56-48f3-8918-c2664e0a8d4c",
+      "name": "Макет1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Макет1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_TEMPLATE",
+        "mdoRef": "CommonTemplate.Макет1",
+        "mdoRefRu": "ОбщийМакет.Макет1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "templateType": "SPREADSHEET_DOCUMENT",
+      "templateData": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+      }
+    },
+    {
+      "uuid": "7bd186bc-e128-4614-bad4-10e676f2dc40",
+      "name": "КритерийОтбора1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.КритерийОтбора1",
+        "mdoRefRu": "КритерийОтбора.КритерийОтбора1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "type": {
+        "types": [],
+        "qualifiers": []
+      },
+      "content": []
+    },
+    {
+      "uuid": "eec1de6c-de3d-4d6b-9e63-6fc812ce0d23",
+      "name": "КритерийОтбора2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.КритерийОтбора2",
+        "mdoRefRu": "КритерийОтбора.КритерийОтбора2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "type": {
+        "types": [],
+        "qualifiers": []
+      },
+      "content": []
+    },
+    {
+      "uuid": "a2ccb16e-65fb-47c3-892c-61254433a6ca",
+      "name": "ПростойОбщийМодуль",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ПростойОбщийМодуль",
+        "mdoRefRu": "ОбщийМодуль.ПростойОбщийМодуль"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "77acefc7-1a11-4b74-8d59-04cea2195c4c",
+      "name": "ОбщийМодульВызовСервера",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульВызовСервера",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульВызовСервера"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": true,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "12776789-b866-4625-af97-d245956d813e",
+      "name": "ОбщийМодульПовтИспВызов",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульПовтИспВызов",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульПовтИспВызов"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "02d8a30e-2b9c-4738-90ca-28b39963e172",
+      "name": "ОбщийМодульПовтИспСеанс",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульПовтИспСеанс",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульПовтИспСеанс"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "db3b98f3-5318-42a4-9668-b1f983eba936",
+      "name": "ОбщийМодульПолныйеПрава",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульПолныйеПрава",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульПолныйеПрава"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "a7458861-2baf-467c-b323-ac951ba8be2f",
+      "name": "ПростойОбщийМодуль1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Простой общий модуль1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ПростойОбщийМодуль1",
+        "mdoRefRu": "ОбщийМодуль.ПростойОбщийМодуль1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "src/test/resources/ext/designer/mdclasses_ext/src/cf/CommonModules/ПростойОбщийМодуль1/Ext/Module.bsl",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "3234a449-37ff-4105-a348-031645bedaea",
+      "name": "ОбщийМодульВызовСервера1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Общий модуль вызов сервера1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульВызовСервера1",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульВызовСервера1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": true,
+      "privileged": false,
+      "returnValuesReuse": "DONT_USE"
+    },
+    {
+      "uuid": "10617366-6b5c-4c16-8534-f2e2851011b3",
+      "name": "ОбщийМодульПовтИспВызов1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Общий модуль повт исп вызов1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульПовтИспВызов1",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульПовтИспВызов1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DURING_REQUEST"
+    },
+    {
+      "uuid": "3389f2b3-6552-4ac1-9522-f60de558d27a",
+      "name": "ОбщийМодульПовтИспСеанс1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Общий модуль повт исп сеанс1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_MODULE",
+        "mdoRef": "CommonModule.ОбщийМодульПовтИспСеанс1",
+        "mdoRefRu": "ОбщийМодуль.ОбщийМодульПовтИспСеанс1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "moduleType": "CommonModule",
+      "uri": "src/test/resources/ext/designer/mdclasses_ext/src/cf/CommonModules/ОбщийМодульПовтИспСеанс1/Ext/Module.bsl",
+      "server": true,
+      "global": false,
+      "clientManagedApplication": false,
+      "externalConnection": false,
+      "clientOrdinaryApplication": false,
+      "serverCall": false,
+      "privileged": false,
+      "returnValuesReuse": "DURING_SESSION"
+    },
+    {
+      "uuid": "88200555-c4e7-4a2d-9e76-434838f0015f",
+      "name": "ОбщийРеквизит1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_ATTRIBUTE",
+        "mdoRef": "CommonAttribute.ОбщийРеквизит1",
+        "mdoRefRu": "ОбщийРеквизит.ОбщийРеквизит1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "autoUse": "DONT_USE",
+      "dataSeparation": "DONT_USE",
+      "content": [],
+      "fullTextSearch": "DONT_USE",
+      "format": "",
+      "editFormat": "",
+      "toolTip": "",
+      "markNegatives": false,
+      "mask": "",
+      "multiLine": false,
+      "extendedEdit": false,
+      "minValue": "",
+      "maxValue": "",
+      "fillFromFillingValue": false,
+      "fillValue": "",
+      "fillChecking": "",
+      "choiceFoldersAndItems": "",
+      "choiceParameterLinks": [],
+      "choiceParameters": [],
+      "quickChoice": "",
+      "createOnInput": "",
+      "choiceForm": "",
+      "linkByType": "",
+      "choiceHistoryOnInput": "",
+      "separatedDataUse": "",
+      "dataSeparationValue": "",
+      "dataSeparationUse": "",
+      "conditionalSeparation": "",
+      "usersSeparation": "",
+      "authenticationSeparation": "",
+      "configurationExtensionsSeparation": ""
+    },
+    {
+      "uuid": "400b85fd-66a9-4e09-9660-b1c0bd62e14b",
+      "name": "ПланОбмена1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "EXCHANGE_PLAN",
+        "mdoRef": "ExchangePlan.ПланОбмена1",
+        "mdoRefRu": "ПланОбмена.ПланОбмена1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "distributedInfoBase": false,
+      "includeConfigurationExtensions": false,
+      "content": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 0,
+      "descriptionLength": 0,
+      "codeAllowedLength": "",
+      "defaultPresentation": "",
+      "characteristics": [],
+      "quickChoice": false,
+      "choiceMode": "",
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false
+    },
+    {
+      "uuid": "b6c6555f-0dc4-4aed-b246-cc7c099c8024",
+      "name": "ПланОбмена2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "EXCHANGE_PLAN",
+        "mdoRef": "ExchangePlan.ПланОбмена2",
+        "mdoRefRu": "ПланОбмена.ПланОбмена2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "distributedInfoBase": false,
+      "includeConfigurationExtensions": false,
+      "content": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "inputByString": [
+        "ExchangePlan.ПланОбмена2.StandardAttribute.Description",
+        "ExchangePlan.ПланОбмена2.StandardAttribute.Code"
+      ],
+      "createOnInput": "DontUse",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 9,
+      "descriptionLength": 25,
+      "codeAllowedLength": "Variable",
+      "defaultPresentation": "AsDescription",
+      "characteristics": [],
+      "quickChoice": false,
+      "choiceMode": "BothWays",
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false
+    },
+    {
+      "uuid": "4f75cba8-a0f3-4fb3-af5b-42a16bc96c85",
+      "name": "ПакетXDTO1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "XDTO_PACKAGE",
+        "mdoRef": "XDTOPackage.ПакетXDTO1",
+        "mdoRefRu": "ПакетXDTO.ПакетXDTO1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "namespace": "http://www.sample-package.org",
+      "data": {
+        "targetNamespace": "",
+        "imports": [],
+        "valueTypes": [],
+        "objectTypes": [],
+        "properties": []
+      }
+    },
+    {
+      "uuid": "89b7ab84-8421-4e87-8edb-689fbebb4958",
+      "name": "ПакетXDTO2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "XDTO_PACKAGE",
+        "mdoRef": "XDTOPackage.ПакетXDTO2",
+        "mdoRefRu": "ПакетXDTO.ПакетXDTO2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "namespace": "http://www.sample-package.org",
+      "data": {
+        "targetNamespace": "",
+        "imports": [],
+        "valueTypes": [],
+        "objectTypes": [],
+        "properties": []
+      }
+    },
+    {
+      "uuid": "5c8988e4-e9cd-4fad-96fd-790a2d5c6984",
+      "name": "WebСервис1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "WEB_SERVICE",
+        "mdoRef": "WebService.WebСервис1",
+        "mdoRefRu": "WebСервис.WebСервис1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [],
+      "children": [],
+      "namespace": "",
+      "xdtoPackages": [],
+      "descriptorFileName": "",
+      "reuseSessions": "",
+      "sessionMaxAge": 0
+    },
+    {
+      "uuid": "af78498e-a5d9-4fe1-8079-36e3704fd049",
+      "name": "WebСервис2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "WEB_SERVICE",
+        "mdoRef": "WebService.WebСервис2",
+        "mdoRefRu": "WebСервис.WebСервис2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [],
+      "children": [],
+      "namespace": "http://test.test.test",
+      "xdtoPackages": [],
+      "descriptorFileName": "ws2.1cws",
+      "reuseSessions": "AutoUse",
+      "sessionMaxAge": 20
+    },
+    {
+      "uuid": "9d3ebea7-7150-4ecc-8cd4-6e6c85f86bf7",
+      "name": "HTTPСервис1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "HTTP_SERVICE",
+        "mdoRef": "HTTPService.HTTPСервис1",
+        "mdoRefRu": "HTTPСервис.HTTPСервис1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [],
+      "children": [],
+      "rootURL": "",
+      "reuseSessions": "",
+      "sessionMaxAge": 0
+    },
+    {
+      "uuid": "c4584e00-24fb-4816-96db-1da4f5e67ad4",
+      "name": "HTTPСервис2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "HTTP_SERVICE",
+        "mdoRef": "HTTPService.HTTPСервис2",
+        "mdoRefRu": "HTTPСервис.HTTPСервис2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [],
+      "children": [],
+      "rootURL": "test.test.test",
+      "reuseSessions": "AutoUse",
+      "sessionMaxAge": 20
+    },
+    {
+      "uuid": "c4b005c0-70f7-4178-8c42-ae1b80c68416",
+      "name": "WSСсылка1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "WS_REFERENCE",
+        "mdoRef": "WSReference.WSСсылка1",
+        "mdoRefRu": "WSСсылка.WSСсылка1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "locationURL": ""
+    },
+    {
+      "uuid": "76b51108-5ed7-40f3-888c-8a4a528c5759",
+      "name": "WSСсылка2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "WS_REFERENCE",
+        "mdoRef": "WSReference.WSСсылка2",
+        "mdoRefRu": "WSСсылка.WSСсылка2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "locationURL": "https://www.w3schools.com/xml/tempconvert.asmx?WSDL"
+    },
+    {
+      "uuid": "99733189-8e92-4db0-ac1a-c989896543e5",
+      "name": "ПодпискаНаСобытие1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "EVENT_SUBSCRIPTION",
+        "mdoRef": "EventSubscription.ПодпискаНаСобытие1",
+        "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "handler": {
+        "methodPath": "",
+        "moduleName": "",
+        "methodName": ""
+      },
+      "event": "",
+      "source": []
+    },
+    {
+      "uuid": "78e14b08-6c57-430f-978b-0af7468ecc49",
+      "name": "РегламентноеЗадание1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SCHEDULED_JOB",
+        "mdoRef": "ScheduledJob.РегламентноеЗадание1",
+        "mdoRefRu": "РегламентноеЗадание.РегламентноеЗадание1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "methodName": {
+        "methodPath": "",
+        "moduleName": "",
+        "methodName": ""
+      },
+      "description": "",
+      "key": "",
+      "use": false,
+      "predefined": false,
+      "restartCountOnFailure": 0,
+      "restartIntervalOnFailure": 0
+    },
+    {
+      "uuid": "a8db75af-8205-4b92-bbbe-94a76b2b6317",
+      "name": "ХранилищеНастроек1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SETTINGS_STORAGE",
+        "mdoRef": "SettingsStorage.ХранилищеНастроек1",
+        "mdoRefRu": "ХранилищеНастроек.ХранилищеНастроек1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "defaultSaveForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultLoadForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliarySaveForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryLoadForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      }
+    },
+    {
+      "uuid": "37e7dbf3-b507-477f-a452-1624bc165de6",
+      "name": "ФункциональнаяОпция1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTION",
+        "mdoRef": "FunctionalOption.ФункциональнаяОпция1",
+        "mdoRefRu": "ФункциональнаяОпция.ФункциональнаяОпция1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "location": {
+        "type": "CONSTANT",
+        "mdoRef": "Constant.Константа1",
+        "mdoRefRu": "Константа.Константа1"
+      },
+      "privilegedGetMode": false,
+      "content": []
+    },
+    {
+      "uuid": "7f499fb7-33b6-4f6f-8f73-7db3470b8801",
+      "name": "ФункциональнаяОпция2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTION",
+        "mdoRef": "FunctionalOption.ФункциональнаяОпция2",
+        "mdoRefRu": "ФункциональнаяОпция.ФункциональнаяОпция2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "location": {
+        "type": "CONSTANT",
+        "mdoRef": "Constant.Константа1",
+        "mdoRefRu": "Константа.Константа1"
+      },
+      "privilegedGetMode": true,
+      "content": []
+    },
+    {
+      "uuid": "55ca0e37-6ab8-4e69-9774-536c530ef534",
+      "name": "ПараметрФункциональныхОпций1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTIONS_PARAMETER",
+        "mdoRef": "FunctionalOptionsParameter.ПараметрФункциональныхОпций1",
+        "mdoRefRu": "ПараметрФункциональныхОпций.ПараметрФункциональныхОпций1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "use": ""
+    },
+    {
+      "uuid": "63e10db0-4ef0-4652-9a7b-bd2a04dd08d8",
+      "name": "ПараметрФункциональныхОпций2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTIONS_PARAMETER",
+        "mdoRef": "FunctionalOptionsParameter.ПараметрФункциональныхОпций2",
+        "mdoRefRu": "ПараметрФункциональныхОпций.ПараметрФункциональныхОпций2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "use": "\n\t\t\t\t"
+    },
+    {
+      "uuid": "b6f5ff2a-0e1f-4660-b3a3-6e982cfd1be5",
+      "name": "ОпределяемыйТип1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DEFINED_TYPE",
+        "mdoRef": "DefinedType.ОпределяемыйТип1",
+        "mdoRefRu": "ОпределяемыйТип.ОпределяемыйТип1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      }
+    },
+    {
+      "uuid": "43bdb970-c86c-4127-ba35-d9c718b073a6",
+      "name": "ОбщаяКоманда1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_COMMAND",
+        "mdoRef": "CommonCommand.ОбщаяКоманда1",
+        "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [],
+      "group": "NavigationPanelOrdinary",
+      "representation": "",
+      "toolTip": "",
+      "picture": "",
+      "shortcut": "",
+      "includeHelpInContents": false,
+      "commandParameterType": "",
+      "parameterUseMode": "",
+      "modifiesData": false
+    },
+    {
+      "uuid": "5d2e2fa0-90f7-4900-8033-b855e3e16246",
+      "name": "ОбщаяКоманда2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_COMMAND",
+        "mdoRef": "CommonCommand.ОбщаяКоманда2",
+        "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "modules": [
+        {
+          "moduleType": "CommandModule",
+          "uri": "src/test/resources/ext/designer/mdclasses_ext/src/cf/CommonCommands/ОбщаяКоманда2/Ext/CommandModule.bsl",
+          "owner": {
+            "type": "COMMON_COMMAND",
+            "mdoRef": "CommonCommand.ОбщаяКоманда2",
+            "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда2"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "group": "NavigationPanelOrdinary",
+      "representation": "Auto",
+      "toolTip": "",
+      "picture": "",
+      "shortcut": "",
+      "includeHelpInContents": false,
+      "commandParameterType": "",
+      "parameterUseMode": "Single",
+      "modifiesData": false
+    },
+    {
+      "uuid": "1305aaf0-c845-498f-b047-771e6878e96a",
+      "name": "ГруппаКоманд1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMAND_GROUP",
+        "mdoRef": "CommandGroup.ГруппаКоманд1",
+        "mdoRefRu": "ГруппаКоманд.ГруппаКоманд1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "representation": "",
+      "toolTip": {
+        "content": []
+      },
+      "picture": "",
+      "category": "NavigationPanel"
+    },
+    {
+      "uuid": "ecd1b6d2-2f82-45ab-a73b-0d5e89eade24",
+      "name": "ГруппаКоманд2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMAND_GROUP",
+        "mdoRef": "CommandGroup.ГруппаКоманд2",
+        "mdoRefRu": "ГруппаКоманд.ГруппаКоманд2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "representation": "Auto",
+      "toolTip": {
+        "content": []
+      },
+      "picture": "",
+      "category": "NavigationPanel"
+    },
+    {
+      "uuid": "75dc05b0-753e-4056-941c-a912a3f039e0",
+      "name": "Константа1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CONSTANT",
+        "mdoRef": "Constant.Константа1",
+        "mdoRefRu": "Константа.Константа1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "modules": [],
+      "useStandardCommands": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataLockControlMode": "AUTOMATIC",
+      "format": "",
+      "editFormat": "",
+      "toolTip": "",
+      "markNegatives": false,
+      "mask": "",
+      "multiLine": false,
+      "extendedEdit": false,
+      "minValue": "",
+      "maxValue": "",
+      "fillChecking": "",
+      "choiceFoldersAndItems": "",
+      "choiceParameterLinks": [],
+      "choiceParameters": [],
+      "quickChoice": "",
+      "createOnInput": "",
+      "choiceForm": "",
+      "linkByType": "",
+      "choiceHistoryOnInput": ""
+    },
+    {
+      "uuid": "abf911ac-8b46-4974-8d23-46bb8722fe90",
+      "name": "Константа2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CONSTANT",
+        "mdoRef": "Constant.Константа2",
+        "mdoRefRu": "Константа.Константа2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "passwordMode": false,
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      },
+      "modules": [],
+      "useStandardCommands": true,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataLockControlMode": "MANAGED",
+      "format": "",
+      "editFormat": "",
+      "toolTip": "",
+      "markNegatives": false,
+      "mask": "",
+      "multiLine": false,
+      "extendedEdit": false,
+      "minValue": "",
+      "maxValue": "",
+      "fillChecking": "DontCheck",
+      "choiceFoldersAndItems": "Items",
+      "choiceParameterLinks": [],
+      "choiceParameters": [],
+      "quickChoice": "Auto",
+      "createOnInput": "",
+      "choiceForm": "",
+      "linkByType": "",
+      "choiceHistoryOnInput": "Auto"
+    },
+    {
+      "uuid": "fd4d58dd-e891-4e52-8e72-0015d241d0cf",
+      "name": "Форма",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "COMMON_FORM",
+        "mdoRef": "CommonForm.Форма",
+        "mdoRefRu": "ОбщаяФорма.Форма"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "usePurposes": [],
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "50230e7f-15f9-4138-b614-6b4a41bb0c1a",
+      "name": "Форма1",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма1"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "COMMON_FORM",
+        "mdoRef": "CommonForm.Форма1",
+        "mdoRefRu": "ОбщаяФорма.Форма1"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [
+        {
+          "moduleType": "FormModule",
+          "uri": "src/test/resources/ext/designer/mdclasses_ext/src/cf/CommonForms/Форма1/Ext/Form/Module.bsl",
+          "owner": {
+            "type": "COMMON_FORM",
+            "mdoRef": "CommonForm.Форма1",
+            "mdoRefRu": "ОбщаяФорма.Форма1"
+          },
+          "supportVariant": "NONE"
+        }
+      ],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "usePurposes": [
+        "PERSONAL_COMPUTER",
+        "MOBILE_DEVICE"
+      ],
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "b44b9b53-0b78-4cc2-ae35-b6e9c92b3675",
+      "name": "Справочник1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.Справочник1",
+        "mdoRefRu": "Справочник.Справочник1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "3d9083e0-ec15-4758-8a00-4e6391dbab33",
+          "name": "Реквизит1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник1.Attribute.Реквизит1",
+            "mdoRefRu": "Справочник.Справочник1.Реквизит.Реквизит1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "7e7cb901-559b-41ad-8de3-059a02b0ea05",
+          "name": "Реквизит2",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник1.Attribute.Реквизит2",
+            "mdoRefRu": "Справочник.Справочник1.Реквизит.Реквизит2"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "a20ec92d-fdcf-43e8-88af-d45ac395c01d",
+          "name": "Реквизит3",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник1.Attribute.Реквизит3",
+            "mdoRefRu": "Справочник.Справочник1.Реквизит.Реквизит3"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:boolean",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": []
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "5f4e85ad-972e-4c09-8126-f3de0affe027",
+          "name": "ТабличнаяЧасть1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [
+            {
+              "uuid": "6571a031-b4c9-4518-b0d1-b253d0e5c626",
+              "name": "Реквизит1",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит1",
+                "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит1"
+              },
+              "objectBelonging": "ADOPTED",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:string",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "length": 10,
+                    "allowedLength": "VARIABLE"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            },
+            {
+              "uuid": "4f4113d5-7431-4afa-8dd6-0fe51426c5c5",
+              "name": "Реквизит2",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит2",
+                "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит2"
+              },
+              "objectBelonging": "ADOPTED",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            }
+          ],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "827a4af4-bc7a-4948-9dd6-ba5fcdf3ca85",
+          "name": "ФормаЭлемента",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента",
+            "mdoRefRu": "Справочник.Справочник1.Форма.ФормаЭлемента"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "6b035fb9-608d-4cc2-b9e4-648a1d1b1e95",
+          "name": "ФормаСписка",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник1.Form.ФормаСписка",
+            "mdoRefRu": "Справочник.Справочник1.Форма.ФормаСписка"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "f36b0fdc-63c9-4180-ae37-4d01cb602d21",
+          "name": "ФормаВыбора",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора",
+            "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "07f5c341-1b4b-4295-8a99-0afce57668f7",
+          "name": "Макет",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "TEMPLATE",
+            "mdoRef": "Catalog.Справочник1.Template.Макет",
+            "mdoRefRu": "Справочник.Справочник1.Макет.Макет"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "templateType": "SPREADSHEET_DOCUMENT",
+          "templateData": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        },
+        {
+          "uuid": "4b04a514-734b-492d-8ac1-2e536db41264",
+          "name": "Команда1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "COMMAND",
+            "mdoRef": "Catalog.Справочник1.Command.Команда1",
+            "mdoRefRu": "Справочник.Справочник1.Команда.Команда1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник1",
+            "mdoRefRu": "Справочник.Справочник1"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "hierarchical": false,
+      "hierarchyType": "",
+      "limitLevelCount": false,
+      "levelCount": 0,
+      "foldersOnTop": false,
+      "owners": [],
+      "subordinationUse": "",
+      "codeLength": 0,
+      "descriptionLength": 0,
+      "codeType": "",
+      "codeAllowedLength": "",
+      "codeSeries": "",
+      "checkUnique": false,
+      "autonumbering": false,
+      "defaultPresentation": "",
+      "characteristics": [],
+      "predefinedDataUpdate": "",
+      "quickChoice": false,
+      "choiceMode": "",
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false
+    },
+    {
+      "uuid": "12391a19-fd69-4acf-8336-7e4e5008d3e8",
+      "name": "Справочник2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.Справочник2",
+        "mdoRefRu": "Справочник.Справочник2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "cb4a151f-5b34-4820-99eb-f4bb2ec55bd0",
+          "name": "Реквизит1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник2.Attribute.Реквизит1",
+            "mdoRefRu": "Справочник.Справочник2.Реквизит.Реквизит1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "a3e3719a-f7f4-4503-8b42-35bff6e2a978",
+          "name": "Реквизит2",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник2.Attribute.Реквизит2",
+            "mdoRefRu": "Справочник.Справочник2.Реквизит.Реквизит2"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "d0cf9502-2a0c-4970-9827-4e9ebb7fcb09",
+          "name": "Реквизит3",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Catalog.Справочник2.Attribute.Реквизит3",
+            "mdoRefRu": "Справочник.Справочник2.Реквизит.Реквизит3"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:boolean",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": []
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "ba633efb-d906-48bb-a17c-8436b7155aa6",
+          "name": "ТабличнаяЧасть1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Catalog.Справочник2.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Справочник.Справочник2.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [
+            {
+              "uuid": "bdfd9366-fc94-47f9-8abe-439d9b9da8dc",
+              "name": "Реквизит1",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Catalog.Справочник2.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит1",
+                "mdoRefRu": "Справочник.Справочник2.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит1"
+              },
+              "objectBelonging": "OWN",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:string",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "length": 10,
+                    "allowedLength": "VARIABLE"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Catalog.Справочник2.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Справочник.Справочник2.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            },
+            {
+              "uuid": "ae14552e-2b97-43e5-9454-7de99f14fa1b",
+              "name": "Реквизит2",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Catalog.Справочник2.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит2",
+                "mdoRefRu": "Справочник.Справочник2.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит2"
+              },
+              "objectBelonging": "OWN",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Catalog.Справочник2.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Справочник.Справочник2.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            }
+          ],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "85a7818f-08b1-46a5-89bf-bcebbf187602",
+          "name": "ФормаЭлемента",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма элемента"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник2.Form.ФормаЭлемента",
+            "mdoRefRu": "Справочник.Справочник2.Форма.ФормаЭлемента"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "084c5489-5896-4018-878f-bb59768755c8",
+          "name": "ФормаСписка",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма списка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник2.Form.ФормаСписка",
+            "mdoRefRu": "Справочник.Справочник2.Форма.ФормаСписка"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "ad026d1f-e283-4a98-ac71-01d790a64c28",
+          "name": "ФормаВыбора",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма выбора"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Catalog.Справочник2.Form.ФормаВыбора",
+            "mdoRefRu": "Справочник.Справочник2.Форма.ФормаВыбора"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "1fded8f0-4a86-4fdf-aa84-b9729840cb15",
+          "name": "Макет",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Макет"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "TEMPLATE",
+            "mdoRef": "Catalog.Справочник2.Template.Макет",
+            "mdoRefRu": "Справочник.Справочник2.Макет.Макет"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "templateType": "SPREADSHEET_DOCUMENT",
+          "templateData": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storages.EmptyTemplateData"
+          },
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        },
+        {
+          "uuid": "f90d247f-2fee-4ff4-a4d3-ddc13023773e",
+          "name": "Команда1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "COMMAND",
+            "mdoRef": "Catalog.Справочник2.Command.Команда1",
+            "mdoRefRu": "Справочник.Справочник2.Команда.Команда1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "modules": [
+            {
+              "moduleType": "CommandModule",
+              "uri": "src/test/resources/ext/designer/mdclasses_ext/src/cf/Catalogs/Справочник2/Commands/Команда1/Ext/CommandModule.bsl",
+              "owner": {
+                "type": "COMMAND",
+                "mdoRef": "Command.Команда1",
+                "mdoRefRu": "Команда.Команда1"
+              },
+              "supportVariant": "NONE"
+            }
+          ],
+          "owner": {
+            "type": "CATALOG",
+            "mdoRef": "Catalog.Справочник2",
+            "mdoRefRu": "Справочник.Справочник2"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник2.Form.ФормаСписка",
+        "mdoRefRu": "Справочник.Справочник2.Форма.ФормаСписка"
+      },
+      "defaultObjectForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник2.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.Справочник2.Форма.ФормаЭлемента"
+      },
+      "defaultFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник2.Form.ФормаВыбора",
+        "mdoRefRu": "Справочник.Справочник2.Форма.ФормаВыбора"
+      },
+      "defaultFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "inputByString": [
+        "Catalog.Справочник2.StandardAttribute.Description",
+        "Catalog.Справочник2.StandardAttribute.Code"
+      ],
+      "createOnInput": "Use",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "hierarchical": false,
+      "hierarchyType": "HierarchyFoldersAndItems",
+      "limitLevelCount": false,
+      "levelCount": 2,
+      "foldersOnTop": true,
+      "owners": [],
+      "subordinationUse": "ToItems",
+      "codeLength": 9,
+      "descriptionLength": 25,
+      "codeType": "String",
+      "codeAllowedLength": "Variable",
+      "codeSeries": "WholeCatalog",
+      "checkUnique": true,
+      "autonumbering": true,
+      "defaultPresentation": "AsDescription",
+      "characteristics": [],
+      "predefinedDataUpdate": "Auto",
+      "quickChoice": false,
+      "choiceMode": "BothWays",
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false
+    },
+    {
+      "uuid": "4ac0c9d8-7ef6-4804-bdf8-15219fa4e6da",
+      "name": "Документ1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DOCUMENT",
+        "mdoRef": "Document.Документ1",
+        "mdoRefRu": "Документ.Документ1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "a65beab2-02d0-45f6-9949-b1f65ca3ee34",
+          "name": "Реквизит1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ1.Attribute.Реквизит1",
+            "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "dcfa8e98-0e49-4aef-9d73-38f76146143a",
+          "name": "Реквизит2",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ1.Attribute.Реквизит2",
+            "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит2"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "4dc44f3c-d5a6-4e10-ab84-542705ca7ad0",
+          "name": "Реквизит3",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ1.Attribute.Реквизит3",
+            "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит3"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:dateTime",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "cc23cda8-23ae-46d8-b1e9-92a0aad42a60",
+          "name": "ФормаДокумента",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ1.Form.ФормаДокумента",
+            "mdoRefRu": "Документ.Документ1.Форма.ФормаДокумента"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "6148b88d-603d-4dad-930a-9c641cd5a076",
+          "name": "ФормаСписка",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ1.Form.ФормаСписка",
+            "mdoRefRu": "Документ.Документ1.Форма.ФормаСписка"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "bad961fe-958e-427a-8966-0828c3b62cbc",
+          "name": "ФормаВыбора",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ1.Form.ФормаВыбора",
+            "mdoRefRu": "Документ.Документ1.Форма.ФормаВыбора"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        },
+        {
+          "uuid": "e2581b9c-6bf0-4500-963b-1fb6377034b9",
+          "name": "ТабличнаяЧасть1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [
+            {
+              "uuid": "f5fa6ecd-0ad1-4f8e-b6d6-b3ac6fbd2d61",
+              "name": "Реквизит1",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит1",
+                "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит1"
+              },
+              "objectBelonging": "ADOPTED",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "cfg:CatalogRef.Справочник1",
+                    "kind": "REFERENCE"
+                  }
+                ],
+                "qualifiers": []
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            },
+            {
+              "uuid": "05d894be-afb7-4857-95a8-69bf212c9b9d",
+              "name": "Реквизит2",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит2",
+                "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит2"
+              },
+              "objectBelonging": "ADOPTED",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            }
+          ],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ1",
+            "mdoRefRu": "Документ.Документ1"
+          }
+        }
+      ],
+      "modules": [],
+      "registerRecords": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "numerator": "",
+      "numberType": "",
+      "numberLength": 0,
+      "numberAllowedLength": "",
+      "numberPeriodicity": "",
+      "checkUnique": false,
+      "autonumbering": false,
+      "characteristics": [],
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "posting": "",
+      "realTimePosting": "",
+      "registerRecordsDeletion": "",
+      "registerRecordsWritingOnPost": "",
+      "sequenceFilling": "",
+      "postInPrivilegedMode": false,
+      "unpostInPrivilegedMode": false
+    },
+    {
+      "uuid": "dead28df-1d1b-4ec8-81a9-2ec546a5b639",
+      "name": "Документ2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DOCUMENT",
+        "mdoRef": "Document.Документ2",
+        "mdoRefRu": "Документ.Документ2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "8cea009d-be64-431d-820d-ceb456f41d9e",
+          "name": "Реквизит1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ2.Attribute.Реквизит1",
+            "mdoRefRu": "Документ.Документ2.Реквизит.Реквизит1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "0049f6c9-07ff-4982-ae44-0491c123fe71",
+          "name": "Реквизит2",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ2.Attribute.Реквизит2",
+            "mdoRefRu": "Документ.Документ2.Реквизит.Реквизит2"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "33e54378-6b5e-4fd2-8516-369143d33efb",
+          "name": "Реквизит3",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.Документ2.Attribute.Реквизит3",
+            "mdoRefRu": "Документ.Документ2.Реквизит.Реквизит3"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:dateTime",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "dateFraction": "DATE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "96904918-a83b-4c41-8972-07aac99b7a2d",
+          "name": "ФормаДокумента",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма документа"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ2.Form.ФормаДокумента",
+            "mdoRefRu": "Документ.Документ2.Форма.ФормаДокумента"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "d528b6e7-57df-458c-b21f-b1d72e8ed947",
+          "name": "ФормаСписка",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма списка"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ2.Form.ФормаСписка",
+            "mdoRefRu": "Документ.Документ2.Форма.ФормаСписка"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "7a0a14df-dd69-461b-b917-d6983adc3cc4",
+          "name": "ФормаВыбора",
+          "synonym": {
+            "content": [
+              [
+                "ru",
+                "Форма выбора"
+              ]
+            ]
+          },
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "Document.Документ2.Form.ФормаВыбора",
+            "mdoRefRu": "Документ.Документ2.Форма.ФормаВыбора"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "formType": "MANAGED",
+          "modules": [],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        },
+        {
+          "uuid": "06053a79-d9cc-442f-94f7-87e14ec48a5d",
+          "name": "ТабличнаяЧасть1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Document.Документ2.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Документ.Документ2.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "children": [
+            {
+              "uuid": "f7ae8924-cd5f-4de0-aaff-32d93aaccd27",
+              "name": "Реквизит1",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Document.Документ2.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит1",
+                "mdoRefRu": "Документ.Документ2.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит1"
+              },
+              "objectBelonging": "OWN",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "cfg:CatalogRef.Справочник1",
+                    "kind": "REFERENCE"
+                  }
+                ],
+                "qualifiers": []
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Document.Документ2.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Документ.Документ2.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            },
+            {
+              "uuid": "3baca657-ef89-446e-b2f1-ba6daa558a3d",
+              "name": "Реквизит2",
+              "synonym": {
+                "content": []
+              },
+              "mdoReference": {
+                "type": "ATTRIBUTE",
+                "mdoRef": "Document.Документ2.TabularSection.ТабличнаяЧасть1.Attribute.Реквизит2",
+                "mdoRefRu": "Документ.Документ2.ТабличнаяЧасть.ТабличнаяЧасть1.Реквизит.Реквизит2"
+              },
+              "objectBelonging": "OWN",
+              "supportVariant": "NONE",
+              "comment": "",
+              "passwordMode": false,
+              "kind": "CUSTOM",
+              "indexing": "DONT_INDEX",
+              "type": {
+                "types": [
+                  {
+                    "name": "xs:decimal",
+                    "kind": "PRIMITIVE"
+                  }
+                ],
+                "qualifiers": [
+                  {
+                    "digits": 10,
+                    "fractionDigits": 0,
+                    "allowedSign": "ANY"
+                  }
+                ]
+              },
+              "owner": {
+                "type": "TABULAR_SECTION",
+                "mdoRef": "Document.Документ2.TabularSection.ТабличнаяЧасть1",
+                "mdoRefRu": "Документ.Документ2.ТабличнаяЧасть.ТабличнаяЧасть1"
+              }
+            }
+          ],
+          "owner": {
+            "type": "DOCUMENT",
+            "mdoRef": "Document.Документ2",
+            "mdoRefRu": "Документ.Документ2"
+          }
+        }
+      ],
+      "modules": [],
+      "registerRecords": [
+        "AccumulationRegister.РегистрНакопления1",
+        "CalculationRegister.РегистрРасчета1",
+        "InformationRegister.РегистрСведений2",
+        "AccountingRegister.РегистрБухгалтерии1",
+        "CalculationRegister.РегистрРасчета2",
+        "AccumulationRegister.РегистрНакопления2",
+        "InformationRegister.РегистрСведений4",
+        "AccountingRegister.РегистрБухгалтерии2"
+      ],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ2.Form.ФормаСписка",
+        "mdoRefRu": "Документ.Документ2.Форма.ФормаСписка"
+      },
+      "defaultObjectForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ2.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.Документ2.Форма.ФормаДокумента"
+      },
+      "defaultChoiceForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ2.Form.ФормаВыбора",
+        "mdoRefRu": "Документ.Документ2.Форма.ФормаВыбора"
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "inputByString": [
+        "Document.Документ2.StandardAttribute.Number"
+      ],
+      "createOnInput": "Use",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "numerator": "",
+      "numberType": "String",
+      "numberLength": 9,
+      "numberAllowedLength": "Variable",
+      "numberPeriodicity": "Nonperiodical",
+      "checkUnique": true,
+      "autonumbering": true,
+      "characteristics": [],
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "posting": "Allow",
+      "realTimePosting": "Allow",
+      "registerRecordsDeletion": "AutoDeleteOnUnpost",
+      "registerRecordsWritingOnPost": "WriteSelected",
+      "sequenceFilling": "AutoFill",
+      "postInPrivilegedMode": true,
+      "unpostInPrivilegedMode": true
+    },
+    {
+      "uuid": "780a7504-61e5-4d50-8481-4031f01db4ca",
+      "name": "НумераторДокументов1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DOCUMENT_NUMERATOR",
+        "mdoRef": "DocumentNumerator.НумераторДокументов1",
+        "mdoRefRu": "Нумератор.НумераторДокументов1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "numberType": "",
+      "numberLength": 0,
+      "numberAllowedLength": "",
+      "numberPeriodicity": "",
+      "checkUnique": false
+    },
+    {
+      "uuid": "323e7c7d-14d7-4a93-8ae8-674278078a73",
+      "name": "Последовательность1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "SEQUENCE",
+        "mdoRef": "Sequence.Последовательность1",
+        "mdoRefRu": "Последовательность.Последовательность1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "6ac31292-b44c-42fd-a5e3-a73ddde64e27",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "SEQUENCE_DIMENSION",
+            "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
+            "mdoRefRu": "Последовательность.Последовательность1.ИзмерениеПоследовательности.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "cfg:DocumentRef.Документ1",
+                "kind": "REFERENCE"
+              }
+            ],
+            "qualifiers": []
+          },
+          "owner": {
+            "type": "SEQUENCE",
+            "mdoRef": "Sequence.Последовательность1",
+            "mdoRefRu": "Последовательность.Последовательность1"
+          },
+          "documentMap": "",
+          "registerRecordsMap": ""
+        }
+      ],
+      "modules": [],
+      "moveBoundaryOnPosting": "",
+      "documents": [],
+      "registerRecords": [],
+      "dataLockControlMode": "AUTOMATIC"
+    },
+    {
+      "uuid": "40b7b7e1-6986-4602-82d4-753480f20e3b",
+      "name": "ЖурналДокументов1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DOCUMENT_JOURNAL",
+        "mdoRef": "DocumentJournal.ЖурналДокументов1",
+        "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "registeredDocuments": []
+    },
+    {
+      "uuid": "5a1e3881-1c24-4c00-8489-353171622a48",
+      "name": "Перечисление1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ENUM",
+        "mdoRef": "Enum.Перечисление1",
+        "mdoRefRu": "Перечисление.Перечисление1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "76ff6e27-c543-4279-bc30-bd92253764e2",
+          "name": "ЗначениеПеречисления1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ENUM_VALUE",
+            "mdoRef": "Enum.Перечисление1.EnumValue.ЗначениеПеречисления1",
+            "mdoRefRu": "Перечисление.Перечисление1.ЗначениеПеречисления.ЗначениеПеречисления1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "type": "ENUM",
+            "mdoRef": "Enum.Перечисление1",
+            "mdoRefRu": "Перечисление.Перечисление1"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "characteristics": [],
+      "quickChoice": false,
+      "choiceMode": "",
+      "choiceHistoryOnInput": ""
+    },
+    {
+      "uuid": "fca5a4b8-2dbb-4e98-85bb-c2a1c71bf643",
+      "name": "Перечисление2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ENUM",
+        "mdoRef": "Enum.Перечисление2",
+        "mdoRefRu": "Перечисление.Перечисление2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "36122ed8-470f-44a9-907a-660c1e5190b1",
+          "name": "ЗначениеПеречисления1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "ENUM_VALUE",
+            "mdoRef": "Enum.Перечисление2.EnumValue.ЗначениеПеречисления1",
+            "mdoRefRu": "Перечисление.Перечисление2.ЗначениеПеречисления.ЗначениеПеречисления1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "owner": {
+            "type": "ENUM",
+            "mdoRef": "Enum.Перечисление2",
+            "mdoRefRu": "Перечисление.Перечисление2"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "characteristics": [],
+      "quickChoice": true,
+      "choiceMode": "BothWays",
+      "choiceHistoryOnInput": "Auto"
+    },
+    {
+      "uuid": "6cb5a15d-6072-454b-8dc8-7a0e34bb3858",
+      "name": "Отчет1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "REPORT",
+        "mdoRef": "Report.Отчет1",
+        "mdoRefRu": "Отчет.Отчет1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultSettingsForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliarySettingsForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultVariantForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "mainDataCompositionSchema": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "variantsStorage": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "settingsStorage": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "a504e970-4074-42cf-9ade-348688126765",
+      "name": "Отчет2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "REPORT",
+        "mdoRef": "Report.Отчет2",
+        "mdoRefRu": "Отчет.Отчет2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultSettingsForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliarySettingsForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultVariantForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "mainDataCompositionSchema": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "variantsStorage": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "settingsStorage": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "64c46d42-7613-4597-8168-8b15d2e16a9b",
+      "name": "Обработка1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.Обработка1",
+        "mdoRefRu": "Обработка.Обработка1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "dbab144e-d49a-4a25-8bfc-433949b55ce2",
+      "name": "Обработка2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.Обработка2",
+        "mdoRefRu": "Обработка.Обработка2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "extendedPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "306d9276-cfc1-4012-8d5a-64ebdc21ee47",
+      "name": "РегистрСведений1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "INFORMATION_REGISTER",
+        "mdoRef": "InformationRegister.РегистрСведений1",
+        "mdoRefRu": "РегистрСведений.РегистрСведений1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "4eb886d6-0044-4c6f-a660-7e57f8080f13",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "InformationRegister.РегистрСведений1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений1.Измерение.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений1"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "recordPresentation": {
+        "content": []
+      },
+      "extendedRecordPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "informationRegisterPeriodicity": "Nonperiodical",
+      "writeMode": "Independent",
+      "mainFilterOnPeriod": false,
+      "enableTotalsSliceFirst": false,
+      "enableTotalsSliceLast": false
+    },
+    {
+      "uuid": "5b968277-9752-4ecd-b804-303a1d31b1f8",
+      "name": "РегистрСведений2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "INFORMATION_REGISTER",
+        "mdoRef": "InformationRegister.РегистрСведений2",
+        "mdoRefRu": "РегистрСведений.РегистрСведений2"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "548bc4bf-4034-4bf5-989f-8c30e14f3b74",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "InformationRegister.РегистрСведений2.Dimension.Измерение1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений2.Измерение.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений2",
+            "mdoRefRu": "РегистрСведений.РегистрСведений2"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "recordPresentation": {
+        "content": []
+      },
+      "extendedRecordPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "informationRegisterPeriodicity": "Nonperiodical",
+      "writeMode": "RecorderSubordinate",
+      "mainFilterOnPeriod": false,
+      "enableTotalsSliceFirst": false,
+      "enableTotalsSliceLast": false
+    },
+    {
+      "uuid": "89a4ece8-9fe9-47e6-bf80-ffd2f33fbb50",
+      "name": "РегистрСведений3",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "INFORMATION_REGISTER",
+        "mdoRef": "InformationRegister.РегистрСведений3",
+        "mdoRefRu": "РегистрСведений.РегистрСведений3"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "320df284-a40a-47dc-9edd-29a2ba0e3340",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "InformationRegister.РегистрСведений3.Dimension.Измерение1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений3.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений3",
+            "mdoRefRu": "РегистрСведений.РегистрСведений3"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "recordPresentation": {
+        "content": []
+      },
+      "extendedRecordPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "informationRegisterPeriodicity": "Nonperiodical",
+      "writeMode": "Independent",
+      "mainFilterOnPeriod": false,
+      "enableTotalsSliceFirst": false,
+      "enableTotalsSliceLast": false
+    },
+    {
+      "uuid": "5c137a3d-5047-47c2-9b27-ec2b5650c81b",
+      "name": "РегистрСведений4",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "INFORMATION_REGISTER",
+        "mdoRef": "InformationRegister.РегистрСведений4",
+        "mdoRefRu": "РегистрСведений.РегистрСведений4"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "73b1e655-bf19-4db3-b612-27acb44ec588",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "InformationRegister.РегистрСведений4.Dimension.Измерение1",
+            "mdoRefRu": "РегистрСведений.РегистрСведений4.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "INFORMATION_REGISTER",
+            "mdoRef": "InformationRegister.РегистрСведений4",
+            "mdoRefRu": "РегистрСведений.РегистрСведений4"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryRecordForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "recordPresentation": {
+        "content": []
+      },
+      "extendedRecordPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "informationRegisterPeriodicity": "Nonperiodical",
+      "writeMode": "RecorderSubordinate",
+      "mainFilterOnPeriod": false,
+      "enableTotalsSliceFirst": false,
+      "enableTotalsSliceLast": false
+    },
+    {
+      "uuid": "12881534-1e26-4791-9def-0926cd47dff7",
+      "name": "РегистрНакопления1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ACCUMULATION_REGISTER",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "615c62f8-f84d-4da3-bf37-b5bdc4017793",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCUMULATION_REGISTER",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+          }
+        },
+        {
+          "uuid": "af959d8d-13a2-4f74-9854-c418b11f1c46",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCUMULATION_REGISTER",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "AUTOMATIC",
+      "enableTotalsSplitting": false,
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "registerType": "Balance"
+    },
+    {
+      "uuid": "234d2567-f989-49b4-baab-e648873eeed1",
+      "name": "РегистрНакопления2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ACCUMULATION_REGISTER",
+        "mdoRef": "AccumulationRegister.РегистрНакопления2",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "1daeb713-98bf-4af1-890d-0b8141afc290",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccumulationRegister.РегистрНакопления2.Resource.Ресурс1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления2.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCUMULATION_REGISTER",
+            "mdoRef": "AccumulationRegister.РегистрНакопления2",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления2"
+          }
+        },
+        {
+          "uuid": "afdeb33f-9164-4983-bf2a-81242d1a35c4",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "AccumulationRegister.РегистрНакопления2.Dimension.Измерение1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления2.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCUMULATION_REGISTER",
+            "mdoRef": "AccumulationRegister.РегистрНакопления2",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления2"
+          },
+          "useInTotals": true,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "MANAGED",
+      "enableTotalsSplitting": true,
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "registerType": "Balance"
+    },
+    {
+      "uuid": "9b3bf95b-815b-4b71-ac3d-ecb18ca3db75",
+      "name": "ПланВидовХарактеристик1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_CHARACTERISTIC_TYPES",
+        "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+        "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "hierarchical": false,
+      "foldersOnTop": false,
+      "codeLength": 0,
+      "descriptionLength": 0,
+      "codeAllowedLength": "",
+      "codeSeries": "",
+      "checkUnique": false,
+      "autonumbering": false,
+      "defaultPresentation": "",
+      "characteristics": [],
+      "predefinedDataUpdate": "",
+      "quickChoice": false,
+      "choiceMode": "",
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "dataHistory": "",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "characteristicExtValues": [],
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      }
+    },
+    {
+      "uuid": "b0da6be7-e0a1-45d0-84ed-16f91cf54f41",
+      "name": "ПланВидовХарактеристик2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_CHARACTERISTIC_TYPES",
+        "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик2",
+        "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "inputByString": [
+        "ChartOfCharacteristicTypes.ПланВидовХарактеристик2.StandardAttribute.Description",
+        "ChartOfCharacteristicTypes.ПланВидовХарактеристик2.StandardAttribute.Code"
+      ],
+      "createOnInput": "DontUse",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "hierarchical": false,
+      "foldersOnTop": true,
+      "codeLength": 9,
+      "descriptionLength": 25,
+      "codeAllowedLength": "Variable",
+      "codeSeries": "WholeCharacteristicKind",
+      "checkUnique": true,
+      "autonumbering": true,
+      "defaultPresentation": "AsDescription",
+      "characteristics": [],
+      "predefinedDataUpdate": "Auto",
+      "quickChoice": false,
+      "choiceMode": "BothWays",
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "dataHistory": "DontUse",
+      "updateDataHistoryImmediatelyAfterWrite": false,
+      "executeAfterWriteDataHistoryVersionProcessing": false,
+      "characteristicExtValues": [],
+      "type": {
+        "types": [
+          {
+            "name": "xs:string",
+            "kind": "PRIMITIVE"
+          }
+        ],
+        "qualifiers": [
+          {
+            "length": 10,
+            "allowedLength": "VARIABLE"
+          }
+        ]
+      }
+    },
+    {
+      "uuid": "e0394170-daa7-42e6-a79f-6bb9c02beebd",
+      "name": "ПланСчетов1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_ACCOUNTS",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 0,
+      "descriptionLength": 0,
+      "codeSeries": "",
+      "checkUnique": false,
+      "autonumbering": false,
+      "defaultPresentation": "",
+      "characteristics": [],
+      "predefinedDataUpdate": "",
+      "quickChoice": false,
+      "choiceMode": "",
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "extDimensionTypes": [],
+      "maxExtDimensionCount": 0,
+      "codeMask": "",
+      "autoOrderByCode": false,
+      "orderLength": 0
+    },
+    {
+      "uuid": "b7cb8a04-a0fb-4498-8099-29e3f90654e3",
+      "name": "ПланСчетов2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_ACCOUNTS",
+        "mdoRef": "ChartOfAccounts.ПланСчетов2",
+        "mdoRefRu": "ПланСчетов.ПланСчетов2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "inputByString": [
+        "ChartOfAccounts.ПланСчетов2.StandardAttribute.Description",
+        "ChartOfAccounts.ПланСчетов2.StandardAttribute.Code"
+      ],
+      "createOnInput": "DontUse",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 9,
+      "descriptionLength": 25,
+      "codeSeries": "WholeChartOfAccounts",
+      "checkUnique": true,
+      "autonumbering": false,
+      "defaultPresentation": "AsCode",
+      "characteristics": [],
+      "predefinedDataUpdate": "Auto",
+      "quickChoice": false,
+      "choiceMode": "BothWays",
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "extDimensionTypes": [],
+      "maxExtDimensionCount": 0,
+      "codeMask": "",
+      "autoOrderByCode": false,
+      "orderLength": 0
+    },
+    {
+      "uuid": "dfd497a0-0505-4248-b3b4-e8163a7ac24f",
+      "name": "РегистрБухгалтерии1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ACCOUNTING_REGISTER",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "f9aae55d-e62d-4de7-b7b2-e40239622206",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Измерение.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCOUNTING_REGISTER",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        },
+        {
+          "uuid": "dc6f5492-ecfe-48aa-8358-54093a960395",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCOUNTING_REGISTER",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "chartOfAccounts": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "correspondence": false,
+      "periodAdjustmentLength": 0,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "AUTOMATIC",
+      "enableTotalsSplitting": false,
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "d7ea3686-4a65-4520-8582-3366fbc9f33b",
+      "name": "РегистрБухгалтерии2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "ACCOUNTING_REGISTER",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии2",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "6fc506a0-b7cb-43b4-9d42-41ec0b57178f",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии2.Dimension.Измерение1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCOUNTING_REGISTER",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии2",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        },
+        {
+          "uuid": "2d626135-5d67-4df7-9129-17f6725758a0",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии2.Resource.Ресурс1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "ACCOUNTING_REGISTER",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии2",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии2"
+          }
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "chartOfAccounts": {
+        "type": "CHART_OF_ACCOUNTS",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1"
+      },
+      "correspondence": false,
+      "periodAdjustmentLength": 0,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "MANAGED",
+      "enableTotalsSplitting": true,
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      }
+    },
+    {
+      "uuid": "aeb5b8be-4525-4b66-a905-59ba85769a8a",
+      "name": "ПланВидовРасчета1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_CALCULATION_TYPES",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 0,
+      "descriptionLength": 0,
+      "codeType": "",
+      "codeAllowedLength": "",
+      "defaultPresentation": "",
+      "characteristics": [],
+      "predefinedDataUpdate": "",
+      "quickChoice": false,
+      "choiceMode": "",
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "onActionPeriod": "",
+      "baseCalculationTypes": [],
+      "actionPeriodUse": false
+    },
+    {
+      "uuid": "d9d51804-20fd-4a9d-9a09-47e096c609a8",
+      "name": "ПланВидовРасчета2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CHART_OF_CALCULATION_TYPES",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета2",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryFolderChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "InDialog",
+      "inputByString": [
+        "ChartOfCalculationTypes.ПланВидовРасчета2.StandardAttribute.Description",
+        "ChartOfCalculationTypes.ПланВидовРасчета2.StandardAttribute.Code"
+      ],
+      "createOnInput": "DontUse",
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "codeLength": 9,
+      "descriptionLength": 40,
+      "codeType": "String",
+      "codeAllowedLength": "Variable",
+      "defaultPresentation": "AsDescription",
+      "characteristics": [],
+      "predefinedDataUpdate": "Auto",
+      "quickChoice": false,
+      "choiceMode": "BothWays",
+      "searchStringModeOnInputByString": "Begin",
+      "fullTextSearchOnInputByString": "DontUse",
+      "choiceDataGetModeOnInputByString": "Directly",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "Auto",
+      "onActionPeriod": "",
+      "baseCalculationTypes": [],
+      "actionPeriodUse": false
+    },
+    {
+      "uuid": "c4f65eca-351f-44ce-b81c-b082a1292e65",
+      "name": "РегистрРасчета1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CALCULATION_REGISTER",
+        "mdoRef": "CalculationRegister.РегистрРасчета1",
+        "mdoRefRu": "РегистрРасчета.РегистрРасчета1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "a54fa770-de18-4602-91cd-a7a993a87cd1",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "CalculationRegister.РегистрРасчета1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CALCULATION_REGISTER",
+            "mdoRef": "CalculationRegister.РегистрРасчета1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1"
+          }
+        },
+        {
+          "uuid": "f8728e56-7b95-428a-b92e-a857b9cd2938",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "CalculationRegister.РегистрРасчета1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Измерение.Измерение1"
+          },
+          "objectBelonging": "ADOPTED",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CALCULATION_REGISTER",
+            "mdoRef": "CalculationRegister.РегистрРасчета1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "periodicity": "",
+      "actionPeriod": false,
+      "basePeriod": false,
+      "schedule": "",
+      "scheduleValue": "",
+      "scheduleDate": "",
+      "chartOfCalculationTypes": ""
+    },
+    {
+      "uuid": "f187a33e-a3d5-4788-8053-5928b2eb6a9a",
+      "name": "РегистрРасчета2",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "CALCULATION_REGISTER",
+        "mdoRef": "CalculationRegister.РегистрРасчета2",
+        "mdoRefRu": "РегистрРасчета.РегистрРасчета2"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [
+        {
+          "uuid": "c37c0b16-c3d5-4308-884e-402650daa4e1",
+          "name": "Ресурс1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "CalculationRegister.РегистрРасчета2.Resource.Ресурс1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета2.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:decimal",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "digits": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CALCULATION_REGISTER",
+            "mdoRef": "CalculationRegister.РегистрРасчета2",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета2"
+          }
+        },
+        {
+          "uuid": "6b3e5dc0-6dce-4ebc-b3ef-85323f28cadb",
+          "name": "Измерение1",
+          "synonym": {
+            "content": []
+          },
+          "mdoReference": {
+            "type": "REGISTER_DIMENSION",
+            "mdoRef": "CalculationRegister.РегистрРасчета2.Dimension.Измерение1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета2.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "supportVariant": "NONE",
+          "comment": "",
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "name": "xs:string",
+                "kind": "PRIMITIVE"
+              }
+            ],
+            "qualifiers": [
+              {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            ]
+          },
+          "owner": {
+            "type": "CALCULATION_REGISTER",
+            "mdoRef": "CalculationRegister.РегистрРасчета2",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета2"
+          },
+          "useInTotals": false,
+          "denyIncompleteValues": false,
+          "master": false
+        }
+      ],
+      "modules": [],
+      "useStandardCommands": true,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataLockControlMode": "MANAGED",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "periodicity": "Month",
+      "actionPeriod": false,
+      "basePeriod": false,
+      "schedule": "",
+      "scheduleValue": "",
+      "scheduleDate": "",
+      "chartOfCalculationTypes": "ChartOfCalculationTypes.ПланВидовРасчета1"
+    },
+    {
+      "uuid": "bb0c9b9f-58d0-4180-b5c8-211ade79fe6a",
+      "name": "БизнесПроцесс1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "BUSINESS_PROCESS",
+        "mdoRef": "BusinessProcess.БизнесПроцесс1",
+        "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "defaultChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryObjectForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryChoiceForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": {
+        "content": []
+      },
+      "extendedListPresentation": {
+        "content": []
+      },
+      "objectPresentation": {
+        "content": []
+      },
+      "extendedObjectPresentation": {
+        "content": []
+      },
+      "explanation": {
+        "content": []
+      },
+      "searchStringModeOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceHistoryOnInput": "",
+      "numberType": "",
+      "numberLength": 0,
+      "numberAllowedLength": "",
+      "checkUnique": false,
+      "characteristics": [],
+      "autonumbering": false,
+      "basedOn": [],
+      "numberPeriodicity": "",
+      "task": "",
+      "createTaskInPrivilegedMode": false,
+      "dataLockFields": []
+    },
+    {
+      "uuid": "c79b6c18-53d2-436b-94f9-fa032a7de44a",
+      "name": "Задача1",
+      "synonym": {
+        "content": []
+      },
+      "mdoReference": {
+        "type": "TASK",
+        "mdoRef": "Task.Задача1",
+        "mdoRefRu": "Задача.Задача1"
+      },
+      "objectBelonging": "ADOPTED",
+      "supportVariant": "NONE",
+      "comment": "",
+      "children": [],
+      "modules": [],
+      "useStandardCommands": false,
+      "includeHelpInContents": false,
+      "defaultListForm": "",
+      "defaultObjectForm": "",
+      "defaultChoiceForm": "",
+      "auxiliaryObjectForm": "",
+      "auxiliaryListForm": "",
+      "auxiliaryChoiceForm": "",
+      "editType": "",
+      "inputByString": [],
+      "createOnInput": "",
+      "dataLockControlMode": "AUTOMATIC",
+      "fullTextSearch": "DONT_USE",
+      "listPresentation": "",
+      "extendedListPresentation": "",
+      "objectPresentation": "",
+      "extendedObjectPresentation": "",
+      "explanation": "",
+      "checkUnique": false,
+      "autonumbering": false,
+      "defaultPresentation": "",
+      "characteristics": [],
+      "searchStringModeOnInputByString": "",
+      "fullTextSearchOnInputByString": "",
+      "choiceDataGetModeOnInputByString": "",
+      "basedOn": [],
+      "dataLockFields": [],
+      "choiceHistoryOnInput": "",
+      "numberType": "",
+      "numberLength": 0,
+      "numberAllowedLength": "",
+      "taskNumberAutoPrefix": "",
+      "descriptionLength": 0,
+      "addressing": "",
+      "mainAddressingAttribute": "",
+      "currentPerformer": ""
+    }
+  ],
+  "compatibilityMode": {
+    "@class": "null"
+  },
+  "configurationExtensionCompatibilityMode": {
+    "minor": 3,
+    "version": 16
+  },
+  "configurationExtensionPurpose": "CUSTOMIZATION",
+  "configurationSource": "DESIGNER",
+  "copyrights": {
+    "@class": "null"
+  },
+  "dataLockControlMode": {
+    "@class": "null"
+  },
+  "defaultLanguage": {
+    "uuid": "2739e06e-cb93-4617-bc73-ca2fa2db8d0e",
+    "name": "Русский",
+    "synonym": {
+      "content": []
+    },
+    "mdoReference": {
+      "type": "LANGUAGE",
+      "mdoRef": "Language.Русский",
+      "mdoRefRu": "Язык.Русский"
+    },
+    "objectBelonging": "ADOPTED",
+    "supportVariant": "NONE",
+    "comment": "",
+    "languageCode": "ru"
+  },
+  "defaultRunMode": "MANAGED_APPLICATION",
+  "detailedInformation": {
+    "content": []
+  },
+  "mdoReference": {
+    "type": "CONFIGURATION",
+    "mdoRef": "Configuration.Расширение",
+    "mdoRefRu": "Конфигурация.Расширение"
+  },
+  "modalityUseMode": {
+    "@class": "null"
+  },
+  "modules": [],
+  "name": "Расширение",
+  "namePrefix": "Расш_",
+  "objectAutonumerationMode": {
+    "@class": "null"
+  },
+  "scriptVariant": "RUSSIAN",
+  "synchronousExtensionAndAddInCallUseMode": {
+    "@class": "null"
+  },
+  "synchronousPlatformExtensionAndAddInCallUseMode": {
+    "@class": "null"
+  },
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Расширение"
+      ]
+    ]
+  },
+  "uuid": "6e50eb82-8de4-4aff-ba5b-6b441963a56a"
+}}

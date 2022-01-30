@@ -1,0 +1,83 @@
+{"com.github._1c_syntax.bsl.mdo.FilterCriterion": {
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "children": [
+    {
+      "uuid": "bb29fa44-6772-4426-a0b8-422115e14288",
+      "name": "ФормаСписка",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "supportVariant": "NONE",
+      "comment": "",
+      "formType": "MANAGED",
+      "modules": [],
+      "owner": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.ФайлыВТоме",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме"
+      }
+    }
+  ],
+  "comment": "",
+  "content": [
+    {
+      "type": "ATTRIBUTE",
+      "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
+      "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
+    }
+  ],
+  "defaultForm": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+  },
+  "explanation": {
+    "content": []
+  },
+  "extendedListPresentation": {
+    "@reference": "../explanation"
+  },
+  "listPresentation": {
+    "@reference": "../explanation"
+  },
+  "mdoReference": {
+    "@reference": "../children/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+  },
+  "mdoType": "FILTER_CRITERION",
+  "modules": [],
+  "name": "ФайлыВТоме",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Файлы в томе"
+      ]
+    ]
+  },
+  "type": {
+    "types": [
+      {
+        "name": "cfg:CatalogRef.ТомаХраненияФайлов",
+        "kind": "REFERENCE"
+      }
+    ],
+    "qualifiers": []
+  },
+  "useStandardCommands": false,
+  "uuid": "ebab97cf-5335-4648-9845-8ca41f79fb49"
+}}
