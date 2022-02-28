@@ -41,7 +41,7 @@ dependencies {
     implementation("com.github.1c-syntax", "utils", "0.2.1")
 
     // быстрый поиск классов
-    implementation("io.github.classgraph:classgraph:4.8.138")
+    implementation("io.github.classgraph:classgraph:4.8.141")
 
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
