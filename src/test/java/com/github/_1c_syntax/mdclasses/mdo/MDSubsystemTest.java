@@ -143,4 +143,21 @@ class MDSubsystemTest extends AbstractMDOTest {
     assertThat(subsystem.getMdoReference().getMdoRefRu())
       .isEqualTo("Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2");
   }
+
+  @Test
+  void testEDTCommonForm() {
+    var mdo = getMDObjectEDT("Subsystems/ВтораяПодсистема/ВтораяПодсистема.mdo");
+
+    var children = ((MDSubsystem) mdo).getChildren();
+    assertThat(children).hasSize(4);
+    assertThat(children)
+      .allMatch(Either::isLeft)
+      .extracting(Either::getLeft)
+      .anyMatch(child -> child.equals("CalculationRegister.РегистрРасчета1"))
+      .anyMatch(child -> child.equals("AccountingRegister.РегистрБухгалтерии1"))
+      .anyMatch(child -> child.equals("Enum.Перечисление1"))
+      .anyMatch(child -> child.equals("CommonForm.Форма"))
+    ;
+  }
 }
+

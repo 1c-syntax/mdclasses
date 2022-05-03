@@ -97,17 +97,12 @@ public class MDSubsystem extends AbstractMDObjectBase {
       if (mdoPair.isLeft()) {
         var mdo = allMDO.get(mdoPair.getLeft());
         if (mdo != null) {
-          localChildren.add(Either.right(mdo));
-          setSubsystemForChild(allMDO, mdo);
+          addChildMDO(allMDO, localChildren, mdo);
         } else {
           localChildren.add(mdoPair);
         }
       } else {
-        var mdo = mdoPair.get();
-        if (!mdo.getIncludedSubsystems().contains(this)) {
-          localChildren.add(mdoPair);
-          setSubsystemForChild(allMDO, mdo);
-        }
+        addChildMDO(allMDO, localChildren, mdoPair.get());
       }
     });
 
@@ -163,10 +158,22 @@ public class MDSubsystem extends AbstractMDObjectBase {
     setChildren(newChildren);
   }
 
-  private void setSubsystemForChild(Map<String, AbstractMDObjectBase> allMDO, AbstractMDObjectBase mdo) {
-    mdo.addIncludedSubsystem(this);
-    if (mdo instanceof MDSubsystem) {
-      ((MDSubsystem) mdo).linkToChildren(allMDO);
+
+  private void addChildMDO(Map<String, AbstractMDObjectBase> allMDO,
+                           List<Either<String, AbstractMDObjectBase>> localChildren,
+                           AbstractMDObjectBase mdo) {
+
+    if (!mdo.getIncludedSubsystems().contains(this)) {
+      localChildren.add(Either.right(mdo));
+      mdo.addIncludedSubsystem(this);
+
+      if (mdo instanceof MDSubsystem) {
+        ((MDSubsystem) mdo).linkToChildren(allMDO);
+      } else if (mdo instanceof AbstractMDObjectComplex
+        && ((AbstractMDObjectComplex) mdo).getChildren() != null) {
+
+        ((AbstractMDObjectComplex) mdo).getChildren().forEach(child -> addChildMDO(allMDO, localChildren, child));
+      }
     }
   }
 }
