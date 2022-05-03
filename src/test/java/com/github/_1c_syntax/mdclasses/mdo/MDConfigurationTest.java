@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2021
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -35,6 +35,7 @@ import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -259,6 +260,16 @@ class MDConfigurationTest extends AbstractMDOTest {
         .extracting(Either::get)
         .containsAll(mdoList);
       assertThat(mdoList).allMatch(mdo -> mdo.getIncludedSubsystems().contains(subsystem));
+
+      var onlyChildren = mdoList.stream()
+        .filter(AbstractMDObjectComplex.class::isInstance)
+        .map(mdo -> ((AbstractMDObjectComplex) mdo).getChildren())
+        .flatMap(Collection::stream)
+        .collect(Collectors.toList());
+
+      // в состав подсистемы входят дочерние элементы
+      assertThat(mdoList).containsAll(onlyChildren);
+      onlyChildren.forEach(child -> assertThat(child.getIncludedSubsystems()).contains(subsystem));
     });
   }
 
