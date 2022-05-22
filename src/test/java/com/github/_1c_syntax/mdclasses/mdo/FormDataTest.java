@@ -39,6 +39,13 @@ class FormDataTest {
     var formDataEDT = MDOFactory.readFormData(path).get();
     checkFormData(formDataEDT);
   }
+  
+  @Test
+  void testMultiLanguageDataPathEDT() {
+    var path = Path.of("src/test/resources/metadata/formdata/edt/multiDataPath/Form.form");
+    var formDataEDT = MDOFactory.readFormData(path).get();
+    assertThat(formDataEDT.getChildren().size()).isEqualTo(5);
+  }
 
   @Test
   void testDesigner() {
