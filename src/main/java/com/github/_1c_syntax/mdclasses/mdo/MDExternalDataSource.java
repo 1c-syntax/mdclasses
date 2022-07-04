@@ -34,18 +34,15 @@ import lombok.ToString;
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Metadata(
-  type = MDOType.BOT,
-  name = "Bot",
-  nameRu = "Бот",
-  groupName = "Bots",
-  groupNameRu = "Боты"
+  type = MDOType.EXTERNAL_DATA_SOURCE,
+  name = "ExternalDataSource",
+  nameRu = "ВнешнийИсточникДанных",
+  groupName = "ExternalDataSources",
+  groupNameRu = "ВнешниеИсточникиДанных"
 )
-public class MDBot extends AbstractMDObjectBSL {
-
-  private boolean predefined;
-
-  public MDBot(DesignerMDO designerMDO) {
+public class MDExternalDataSource extends AbstractMDObjectBase {
+  // simple impl
+  public MDExternalDataSource(DesignerMDO designerMDO) {
     super(designerMDO);
-    predefined = designerMDO.getProperties().isPredefined();
   }
 }

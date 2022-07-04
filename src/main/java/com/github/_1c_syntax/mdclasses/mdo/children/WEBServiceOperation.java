@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
@@ -39,8 +39,8 @@ import lombok.ToString;
   type = MDOType.WS_OPERATION,
   name = "Operation",
   nameRu = "Операция",
-  groupName = "",
-  groupNameRu = ""
+  groupName = "Operations",
+  groupNameRu = "Операции"
 )
 public class WEBServiceOperation extends AbstractMDObjectBase {
 
