@@ -45,6 +45,7 @@ import java.util.Set;
 @AttributeMetadata(
   type = AttributeType.TABULAR_SECTION,
   name = "TabularSection",
+  nameRu = "ТабличнаяЧасть",
   fieldNameEDT = "tabularSections"
 )
 public class TabularSection extends AbstractMDOAttribute implements MDOHasChildren {

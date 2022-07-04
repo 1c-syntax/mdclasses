@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses;
 
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
@@ -35,7 +36,6 @@ import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
@@ -176,7 +176,7 @@ public class Configuration {
   /**
    * Дочерние объекты конфигурации с MDO ссылками на них
    */
-  private Map<MDOReference, AbstractMDObjectBase> childrenByMdoRef;
+  private Map<MdoReference, AbstractMDObjectBase> childrenByMdoRef;
   /**
    * Дочерние общие модули
    */
@@ -392,7 +392,7 @@ public class Configuration {
    * @param mdoRef Ссылка на объект
    * @return Соответствие ссылки на файл и его тип
    */
-  public Map<ModuleType, URI> getModulesByMDORef(MDOReference mdoRef) {
+  public Map<ModuleType, URI> getModulesByMDORef(MdoReference mdoRef) {
     return getModulesByMDORef(mdoRef.getMdoRef());
   }
 

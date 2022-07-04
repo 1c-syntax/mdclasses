@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.ADDRESSING_ATTRIBUTE,
   name = "AddressingAttribute",
+  nameRu = "РеквизитАдресации",
   fieldNameEDT = "addressingAttributes"
 )
 public class AddressingAttribute extends AbstractMDOAttribute {

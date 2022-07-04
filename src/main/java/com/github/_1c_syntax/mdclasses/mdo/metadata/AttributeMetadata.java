@@ -41,6 +41,11 @@ public @interface AttributeMetadata {
   String name();
 
   /**
+   * Имя типа на русском
+   */
+  String nameRu();
+
+  /**
    * Имя поля в формате EDT
    */
   String fieldNameEDT();

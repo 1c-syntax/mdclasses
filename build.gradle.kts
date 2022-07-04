@@ -17,8 +17,9 @@ group = "com.github.1c-syntax"
 version = gitVersionCalculator.calculateVersion("v")
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    maven { url = URI("https://jitpack.io") }
+    maven(url = "https://jitpack.io")
 }
 
 val junitVersion = "5.7.0"
@@ -39,7 +40,7 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.3.4")
-    implementation("com.github.1c-syntax", "bsl-common-library", "34d925d4")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.2.0+23")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.147")

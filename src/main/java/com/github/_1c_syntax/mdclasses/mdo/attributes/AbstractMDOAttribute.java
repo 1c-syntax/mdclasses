@@ -52,7 +52,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   @Override
   public MDOType getType() {
-    return MDOType.ATTRIBUTE;
+    return getAttributeType().getMdoType();
   }
 
   @Override
@@ -62,7 +62,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   @Override
   public String getMetadataNameRu() {
-    return getMetadataName();
+    return MetadataStorage.getAttribute(getClass()).nameRu();
   }
 
   public AttributeType getAttributeType() {

@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.COLUMN,
   name = "Column",
+  nameRu = "Колонка",
   fieldNameEDT = "columns"
 )
 public class Column extends AbstractMDOAttribute {

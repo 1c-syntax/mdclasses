@@ -22,8 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -71,7 +71,7 @@ public abstract class AbstractMDO {
   /**
    * MDO-Ссылка на объект
    */
-  protected MDOReference mdoReference;
+  protected MdoReference mdoReference;
 
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
