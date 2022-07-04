@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.RECALCULATION,
   name = "Recalculation",
+  nameRu = "Перерасчет",
   fieldNameEDT = "recalculations"
 )
 public class Recalculation extends AbstractMDOAttribute {

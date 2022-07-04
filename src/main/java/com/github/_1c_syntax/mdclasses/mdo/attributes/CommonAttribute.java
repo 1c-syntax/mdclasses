@@ -35,6 +35,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.COMMON_ATTRIBUTE,
   name = "",
+  nameRu = "",
   fieldNameEDT = ""
 )
 public class CommonAttribute extends AbstractMDOAttribute {

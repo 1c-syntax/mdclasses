@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.RESOURCE,
   name = "Resource",
+  nameRu = "Ресурс",
   fieldNameEDT = "resources"
 )
 public class Resource extends AbstractMDOAttribute {

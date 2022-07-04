@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import org.junit.jupiter.api.Test;
 

@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.ATTRIBUTE,
   name = "Attribute",
+  nameRu = "Реквизит",
   fieldNameEDT = "attributes"
 )
 public class Attribute extends AbstractMDOAttribute {

@@ -21,13 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
@@ -190,7 +190,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(61)
+    assertThat(configuration.getChildren()).hasSize(62)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);

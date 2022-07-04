@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.DIMENSION,
   name = "Dimension",
+  nameRu = "Измерение",
   fieldNameEDT = "dimensions"
 )
 public class Dimension extends AbstractMDOAttribute {

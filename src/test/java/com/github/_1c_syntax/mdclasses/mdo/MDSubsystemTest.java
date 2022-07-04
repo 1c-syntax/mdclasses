@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
@@ -59,7 +59,7 @@ class MDSubsystemTest extends AbstractMDOTest {
       .allMatch(Either::isLeft);
     assertThat(subsystem.getMdoReference())
       .isNotNull()
-      .extracting(MDOReference::getType)
+      .extracting(MdoReference::getType)
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
@@ -78,7 +78,7 @@ class MDSubsystemTest extends AbstractMDOTest {
       .anyMatch(child -> child instanceof MDSubsystem);
     assertThat(subsystem.getMdoReference())
       .isNotNull()
-      .extracting(MDOReference::getType)
+      .extracting(MdoReference::getType)
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");
@@ -122,7 +122,7 @@ class MDSubsystemTest extends AbstractMDOTest {
       .allMatch(Either::isLeft);
     assertThat(subsystem.getMdoReference())
       .isNotNull()
-      .extracting(MDOReference::getType)
+      .extracting(MdoReference::getType)
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема");
@@ -136,7 +136,7 @@ class MDSubsystemTest extends AbstractMDOTest {
     assertThat(subsystem.getChildren()).filteredOn(Either::isLeft).hasSize(3);
     assertThat(subsystem.getMdoReference())
       .isNotNull()
-      .extracting(MDOReference::getType)
+      .extracting(MdoReference::getType)
       .isEqualTo(MDOType.SUBSYSTEM);
     assertThat(subsystem.getMdoReference().getMdoRef())
       .isEqualTo("Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2");

@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG,
   name = "ExtDimensionAccountingFlag",
+  nameRu = "ПризнакУчетаСубконто",
   fieldNameEDT = "extDimensionAccountingFlags"
 )
 public class ExtDimensionAccountingFlag extends AbstractMDOAttribute {

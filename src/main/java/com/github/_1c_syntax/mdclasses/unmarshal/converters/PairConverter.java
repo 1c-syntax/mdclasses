@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -47,7 +47,7 @@ public class PairConverter implements Converter {
       var uuid = reader.getAttribute("uuid");
       var language = (MDLanguage) context.convertAnother(new MDLanguage(), MDLanguage.class);
       language.setUuid(uuid);
-      language.setMdoReference(new MDOReference(language));
+      language.setMdoReference(MdoReference.create(MDOType.LANGUAGE, language.getName()));
       return Either.right(language);
     } else if (reader.getValue().contains(".")) { // уже лежит имя
       return Either.left(reader.getValue());

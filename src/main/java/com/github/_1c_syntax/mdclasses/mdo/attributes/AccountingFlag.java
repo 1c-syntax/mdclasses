@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.ACCOUNTING_FLAG,
   name = "AccountingFlag",
+  nameRu = "ПризнакУчета",
   fieldNameEDT = "accountingFlags"
 )
 public class AccountingFlag extends AbstractMDOAttribute {

@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -52,7 +52,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   @Override
   public MDOType getType() {
-    return MDOType.ATTRIBUTE;
+    return getAttributeType().getMdoType();
   }
 
   @Override
@@ -62,7 +62,7 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   @Override
   public String getMetadataNameRu() {
-    return getMetadataName();
+    return MetadataStorage.getAttribute(getClass()).nameRu();
   }
 
   public AttributeType getAttributeType() {
