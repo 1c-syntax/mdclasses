@@ -21,7 +21,7 @@ repositories {
     maven { url = URI("https://jitpack.io") }
 }
 
-val junitVersion = "5.6.1"
+val junitVersion = "5.7.0"
 dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
@@ -30,7 +30,7 @@ dependencies {
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.15")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.18")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
@@ -38,7 +38,8 @@ dependencies {
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
-    implementation("com.github.1c-syntax", "utils", "0.2.1")
+    implementation("com.github.1c-syntax", "utils", "0.3.4")
+    implementation("com.github.1c-syntax", "bsl-common-library", "34d925d4")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.147")
@@ -46,8 +47,11 @@ dependencies {
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
     testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
     testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
+    testImplementation("org.skyscreamer", "jsonassert", "1.5.0")
+    testImplementation("org.objenesis", "objenesis", "3.2")
 
     // логирование
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
@@ -182,4 +186,9 @@ tasks.register("precommit") {
     group = "Developer tools"
     dependsOn(":test")
     dependsOn(":licenseFormat")
+}
+
+tasks.withType<Javadoc> {
+    (options as StandardJavadocDocletOptions)
+        .addStringOption("Xdoclint:none", "-quiet")
 }
