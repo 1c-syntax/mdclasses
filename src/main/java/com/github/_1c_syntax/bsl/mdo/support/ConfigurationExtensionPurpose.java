@@ -19,20 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
-@Value
-@RequiredArgsConstructor
-public class QuerySource {
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-  SourcePosition position;
-  String textQuery;
+/**
+ * Возможные виды расширений
+ */
+@AllArgsConstructor
+public enum ConfigurationExtensionPurpose implements EnumWithValue {
+  CUSTOMIZATION("Customization"),
+  ADD_ON("AddOn"),
+  PATCH("Patch"),
+  UNDEFINED("Undefined");
 
-  public static QuerySource empty() {
-    return EMPTY;
-  }
+  @Getter
+  @Accessors(fluent = true)
+  private final String value;
 }

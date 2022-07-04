@@ -19,24 +19,28 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-/**
- * Признак принадлежности объекта к конфигурации
- */
-public enum ObjectBelonging implements EnumWithValue {
-  ADOPTED("Adopted"),
-  OWN("Own");
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
+import java.util.Arrays;
+
+@AllArgsConstructor
+public enum ApplicationRunMode implements EnumWithValue {
+  AUTO("Auto"),
+  MANAGED_APPLICATION("ManagedApplication"),
+  ORDINARY_APPLICATION("OrdinaryApplication");
+
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
 
-  ObjectBelonging(String value) {
-    this.value = value;
+  public static ApplicationRunMode getByName(String value) {
+    return Arrays.stream(values())
+      .filter(defaultApplicationRunMode -> defaultApplicationRunMode.value().equalsIgnoreCase(value))
+      .findAny()
+      .orElse(ApplicationRunMode.MANAGED_APPLICATION);
   }
-
-  @Override
-  public String value() {
-    return value;
-  }
-
 }

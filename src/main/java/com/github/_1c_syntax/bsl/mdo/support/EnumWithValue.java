@@ -19,14 +19,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.common;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
-@Value
-@RequiredArgsConstructor
-public class SourcePosition {
-  int line;
-  int column;
+/**
+ * Расширение для перечислений, необходимое для использования в анмаршалинге
+ * автор идеи: alkoleft (https://github.com/alkoleft)
+ */
+public interface EnumWithValue {
+  /**
+   * Возвращает значение перечисления
+   *
+   * @return Строковое значение перечисления
+   */
+  String value();
 }

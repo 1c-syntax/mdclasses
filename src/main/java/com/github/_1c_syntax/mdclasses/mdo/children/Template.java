@@ -25,7 +25,7 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
 import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;

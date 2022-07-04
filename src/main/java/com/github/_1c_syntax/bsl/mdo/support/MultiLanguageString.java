@@ -19,25 +19,26 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.Value;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
- * Возможные варианты повторного использования значений модулей
+ * Используется для хранения текстовой строки на разных языках
  */
-public enum ReturnValueReuse implements EnumWithValue {
+@Value
+public class MultiLanguageString {
 
-  DONT_USE("DontUse"),
-  DURING_REQUEST("DuringRequest"),
-  DURING_SESSION("DuringSession");
+  /**
+   * Ссылка на пустой элемент
+   */
+  public static final MultiLanguageString EMPTY = new MultiLanguageString(Collections.emptyMap());
 
-  private final String value;
-
-  ReturnValueReuse(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
-  }
+  /**
+   * Содержимое описания для каждого языка
+   */
+  Map<String, String> content;
 }

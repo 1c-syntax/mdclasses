@@ -19,16 +19,26 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-/**
- * Вид атрибута
- * - CUSTOM - пользовательский (все созданные пользователями)
- * - COMMON - общий реквизит
- * - STANDARD - стандартный реквизит
- */
-public enum AttributeKind {
-  CUSTOM,
-  COMMON,
-  STANDARD;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
+@AllArgsConstructor
+public enum TemplateType implements EnumWithValue {
+  ADD_IN("AddIn"),
+  BINARY_DATA("BinaryData"),
+  DATA_COMPOSITION_SCHEME("DataCompositionSchema"),
+  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate"),
+  GRAPHICAL_SCHEME("GraphicalSchema"),
+  HTML_DOCUMENT("HTMLDocument"),
+  SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
+  ACTIVE_DOCUMENT("ActiveDocument"),
+  GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
+  TEXT_DOCUMENT("TextDocument");
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String value;
 }

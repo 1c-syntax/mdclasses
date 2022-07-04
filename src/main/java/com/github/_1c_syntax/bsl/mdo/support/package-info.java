@@ -19,26 +19,9 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-import java.util.Arrays;
-
-@Getter
-@AllArgsConstructor
-public enum ApplicationRunMode {
-  AUTO("Auto"),
-  MANAGED_APPLICATION("ManagedApplication"),
-  ORDINARY_APPLICATION("OrdinaryApplication");
-
-  private final String name;
-
-  public static ApplicationRunMode getByName(String value) {
-    return Arrays.stream(values())
-      .filter(defaultApplicationRunMode -> defaultApplicationRunMode.getName().equalsIgnoreCase(value))
-      .findAny()
-      .orElse(ApplicationRunMode.MANAGED_APPLICATION);
-  }
-}
+/**
+ * Пакет содержит различные вспомогательные данные, не имеющие самостоятельной роли:
+ * - типы
+ * - контейнеры данных (для хранения сложной информации)
+ */
+package com.github._1c_syntax.bsl.mdo.support;

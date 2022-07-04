@@ -19,23 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.List;
 
 /**
- * Возможные варианты языков, на которых разрабатывается код
+ * Назначения применения
  */
-public enum ScriptVariant implements EnumWithValue {
-  ENGLISH("English"),
-  RUSSIAN("Russian");
+@AllArgsConstructor
+public enum ApplicationUsePurpose {
+  PERSONAL_COMPUTER(List.of("PersonalComputer", "PlatformApplication")),
+  MOBILE_DEVICE(List.of("MobileDevice", "MobilePlatformApplication"));
 
-  private final String value;
-
-  ScriptVariant(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return value;
-  }
+  @Getter
+  private final List<String> values;
 }

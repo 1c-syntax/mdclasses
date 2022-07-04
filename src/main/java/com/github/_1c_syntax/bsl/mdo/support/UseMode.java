@@ -19,24 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
  * Возможные варианты "использования"
  */
+@AllArgsConstructor
 public enum UseMode implements EnumWithValue {
   DONT_USE("DontUse"),
   USE("Use"),
   USE_WITH_WARNINGS("UseWithWarnings");
 
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
 
-  UseMode(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
-  }
 }

@@ -19,17 +19,22 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
- * Расширение для перечислений, необходимое для использования в анмаршалинге
- * автор идеи: alkoleft (https://github.com/alkoleft)
+ * Возможные варианты режима блокировки
  */
-public interface EnumWithValue {
-  /**
-   * Возвращает значение перечисления
-   *
-   * @return Строковое значение перечисления
-   */
-  String value();
+@AllArgsConstructor
+public enum DataLockControlMode implements EnumWithValue {
+  AUTOMATIC("Automatic"),
+  MANAGED("Managed"),
+  AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String value;
 }

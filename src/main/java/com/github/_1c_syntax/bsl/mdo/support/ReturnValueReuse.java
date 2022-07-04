@@ -19,30 +19,23 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.children.template;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import com.github._1c_syntax.mdclasses.mdo.support.EnumWithValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
-public enum TemplateType implements EnumWithValue {
-  ADD_IN("AddIn"),
-  BINARY_DATA("BinaryData"),
-  DATA_COMPOSITION_SCHEME("DataCompositionSchema"),
-  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate"),
-  GRAPHICAL_SCHEME("GraphicalSchema"),
-  HTML_DOCUMENT("HTMLDocument"),
-  SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
-  ACTIVE_DOCUMENT("ActiveDocument"),
-  GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
-  TEXT_DOCUMENT("TextDocument");
+/**
+ * Возможные варианты повторного использования значений модулей
+ */
+@AllArgsConstructor
+public enum ReturnValueReuse implements EnumWithValue {
 
+  DONT_USE("DontUse"),
+  DURING_REQUEST("DuringRequest"),
+  DURING_SESSION("DuringSession");
+
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
-
-  TemplateType(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return value;
-  }
 }

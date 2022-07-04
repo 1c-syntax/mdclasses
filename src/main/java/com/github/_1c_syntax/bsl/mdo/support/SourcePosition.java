@@ -19,23 +19,24 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 
 /**
- * Тип формы (обычная или управляемая)
+ * Хранение позиции в исходном файле
  */
-public enum FormType implements EnumWithValue {
-  ORDINARY("Ordinary"),
-  MANAGED("Managed");
+@Value
+@RequiredArgsConstructor
+public class SourcePosition {
+  /**
+   * Номер строки
+   */
+  int line;
 
-  private final String value;
-
-  FormType(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
-  }
+  /**
+   * Номер первого символа
+   */
+  int column;
 }

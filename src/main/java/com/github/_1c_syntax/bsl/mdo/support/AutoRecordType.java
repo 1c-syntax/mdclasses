@@ -19,33 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
- * Возможные варианты режима блокировки
+ * Типы авторегистрации в плане обмена
  */
-public enum DataLockControlMode implements EnumWithValue {
-  AUTOMATIC("Automatic"),
-  MANAGED("Managed"),
-  AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
+@AllArgsConstructor
+public enum AutoRecordType implements EnumWithValue {
+  ALLOW("Allow"),
+  DENY("Deny");
 
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
-
-  DataLockControlMode(String value) {
-    this.value = value;
-  }
-
-  public static DataLockControlMode fromValue(String value) {
-    for (DataLockControlMode dataLockControlMode : DataLockControlMode.values()) {
-      if (dataLockControlMode.value.equals(value)) {
-        return dataLockControlMode;
-      }
-    }
-    throw new IllegalArgumentException(value);
-  }
-
-  public String value() {
-    return this.value;
-  }
-
 }

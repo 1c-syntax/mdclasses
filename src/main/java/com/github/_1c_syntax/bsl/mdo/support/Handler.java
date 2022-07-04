@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +36,11 @@ import java.util.regex.Pattern;
 @NoArgsConstructor
 public class Handler {
 
+  /**
+   * Ссылка на пустой обработчик
+   */
+  public static final Handler EMPTY = new Handler();
+
   private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
   private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
   private static final int METHOD_NAME_POSITION = 2;
@@ -50,12 +55,19 @@ public class Handler {
 
     this.methodPath = methodPath;
     String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
-    if (data.length > 1) {
-      this.methodName = data[METHOD_NAME_POSITION];
+    if (data.length > MODULE_NAME_POSITION) {
       this.moduleName = data[MODULE_NAME_POSITION];
+    }
+    if (data.length > METHOD_NAME_POSITION) {
+      this.methodName = data[METHOD_NAME_POSITION];
     }
   }
 
+  /**
+   * Возвращает признак пустого обработчика
+   *
+   * @return Признак пустоты
+   */
   public boolean isEmpty() {
     return methodPath.isBlank();
   }

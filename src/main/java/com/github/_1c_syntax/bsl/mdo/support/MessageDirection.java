@@ -19,26 +19,21 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
- * Возможные виды расширений
+ * Направление работы канала сервиса интеграции
  */
-public enum ConfigurationExtensionPurpose implements EnumWithValue {
-  CUSTOMIZATION("Customization"),
-  ADD_ON("AddOn"),
-  PATCH("Patch"),
-  UNDEFINED("Undefined");
+@AllArgsConstructor
+public enum MessageDirection implements EnumWithValue {
+  SEND("Send"),
+  RECEIVE("Receive");
 
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
-
-  ConfigurationExtensionPurpose(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return value;
-  }
-
 }

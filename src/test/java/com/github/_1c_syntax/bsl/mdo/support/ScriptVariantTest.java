@@ -19,26 +19,27 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.utils;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MDOFactoryTest {
-
-  @Test
-  void fakeLanguageTest() {
-    var lang = MDOFactory.fakeLanguage(ScriptVariant.ENGLISH);
-    assertThat(lang.getName()).isEqualTo("English");
-    assertThat(lang.getUuid()).isEmpty();
-    assertThat(lang.getLanguageCode()).isEqualTo("en");
-
-    lang = MDOFactory.fakeLanguage(ScriptVariant.RUSSIAN);
-    assertThat(lang.getName()).isEqualTo("Русский");
-    assertThat(lang.getUuid()).isEmpty();
-    assertThat(lang.getLanguageCode()).isEqualTo("ru");
+class ScriptVariantTest {
+  @ParameterizedTest(name = "{index}: {0}")
+  @CsvSource(
+    {
+      "RUSSIAN,русский,ru,RussIan",
+      "ENGLISH,английский,en,engLish",
+      "RUSSIAN,ру,рус,eng"
+    }
+  )
+  void testValueByString(ArgumentsAccessor argumentsAccessor) {
+    var element = ScriptVariant.valueOf(argumentsAccessor.getString(0));
+    assertThat(ScriptVariant.valueByString(argumentsAccessor.getString(1))).isEqualTo(element);
+    assertThat(ScriptVariant.valueByString(argumentsAccessor.getString(2))).isEqualTo(element);
+    assertThat(ScriptVariant.valueByString(argumentsAccessor.getString(3))).isEqualTo(element);
   }
-
 }

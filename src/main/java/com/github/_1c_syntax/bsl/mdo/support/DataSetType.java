@@ -19,20 +19,34 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.support;
+package com.github._1c_syntax.bsl.mdo.support;
 
-public enum MessageDirection implements EnumWithValue {
-  SEND("Send"),
-  RECEIVE("Receive");
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
+@AllArgsConstructor
+public enum DataSetType implements EnumWithValue {
+  DATA_SET_QUERY("DataSetQuery"),
+  DATA_SET_UNION("DataSetUnion"),
+  DATA_SET_OBJECT("DataSetObject");
+
+  @Getter
+  @Accessors(fluent = true)
   private final String value;
 
-  MessageDirection(String value) {
-    this.value = value;
-  }
-
-  @Override
-  public String value() {
-    return this.value;
+  /**
+   * Выполняет преобразование из строкового представления в значение
+   *
+   * @param value Строковое представление
+   * @return Найденный тип
+   */
+  public static DataSetType fromValue(String value) {
+    for (DataSetType dataSetType : DataSetType.values()) {
+      if (dataSetType.value.equals(value)) {
+        return dataSetType;
+      }
+    }
+    throw new IllegalArgumentException(value);
   }
 }
