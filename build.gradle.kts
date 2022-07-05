@@ -5,11 +5,11 @@ plugins {
     `java-library`
     `maven-publish`
     jacoco
-    id("net.kyori.indra.license-header") version "1.3.1"
+    id("org.cadixdev.licenser") version "0.6.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.freefair.lombok") version "6.0.0-m2"
-    id("io.freefair.javadoc-links") version "6.0.0-m2"
-    id("io.freefair.javadoc-utf-8") version "6.0.0-m2"
+    id("io.freefair.lombok") version "6.5.0.2"
+    id("io.freefair.javadoc-links") version "6.5.0.2"
+    id("io.freefair.javadoc-utf-8") version "6.5.0.2"
     id("org.sonarqube") version "3.4.0.2513"
 }
 
@@ -22,7 +22,6 @@ repositories {
     maven(url = "https://jitpack.io")
 }
 
-val junitVersion = "5.7.0"
 dependencies {
 
     // https://mvnrepository.com/artifact/io.vavr/vavr
@@ -31,7 +30,7 @@ dependencies {
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.18")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.19")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
@@ -39,17 +38,17 @@ dependencies {
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
-    implementation("com.github.1c-syntax", "utils", "0.3.4")
+    implementation("com.github.1c-syntax", "utils", "0.4.0")
     implementation("io.github.1c-syntax", "bsl-common-library", "904b9172")
     implementation("io.github.1c-syntax", "supportconf", "66b626c2")
 
     // быстрый поиск классов
-    implementation("io.github.classgraph:classgraph:4.8.147")
+    implementation("io.github.classgraph", "classgraph", "4.8.147")
 
     // тестирование
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
-    testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine", junitVersion)
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.0")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.0")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.0")
     testImplementation("org.assertj", "assertj-core", "3.18.1")
     testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
     testImplementation("org.skyscreamer", "jsonassert", "1.5.0")
@@ -58,10 +57,6 @@ dependencies {
     // логирование
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
     testImplementation("org.slf4j", "slf4j-log4j12", "1.7.30")
-}
-
-configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_11
 }
 
 java {
@@ -85,7 +80,7 @@ tasks.test {
         events("passed", "skipped", "failed")
     }
     reports {
-        html.isEnabled = true
+        html.required.set(true)
     }
 }
 
@@ -95,8 +90,8 @@ tasks.check {
 
 tasks.jacocoTestReport {
     reports {
-        xml.isEnabled = true
-        xml.destination = File("$buildDir/reports/jacoco/test/jacoco.xml")
+        xml.required.set(true)
+        xml.outputLocation.set(File("$buildDir/reports/jacoco/test/jacoco.xml"))
     }
 }
 
@@ -125,7 +120,8 @@ artifacts {
 }
 
 license {
-    header = rootProject.file("license/HEADER.txt")
+    header(rootProject.file("license/HEADER.txt"))
+    newLine(false)
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
@@ -188,9 +184,4 @@ tasks.register("precommit") {
     group = "Developer tools"
     dependsOn(":test")
     dependsOn(":licenseFormat")
-}
-
-tasks.withType<Javadoc> {
-    (options as StandardJavadocDocletOptions)
-        .addStringOption("Xdoclint:none", "-quiet")
 }
