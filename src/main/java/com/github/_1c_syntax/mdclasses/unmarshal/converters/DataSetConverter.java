@@ -22,7 +22,7 @@
 package com.github._1c_syntax.mdclasses.unmarshal.converters;
 
 import com.github._1c_syntax.mdclasses.mdo.children.template.DataSet;
-import com.github._1c_syntax.mdclasses.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;

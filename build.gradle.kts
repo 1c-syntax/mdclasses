@@ -41,6 +41,7 @@ dependencies {
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.3.4")
     implementation("io.github.1c-syntax", "bsl-common-library", "904b9172")
+    implementation("io.github.1c-syntax", "supportconf", "66b626c2")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.147")

@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.support;
 
-import com.github._1c_syntax.mdclasses.common.SourcePosition;
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 

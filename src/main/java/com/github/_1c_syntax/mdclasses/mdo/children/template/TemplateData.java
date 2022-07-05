@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import lombok.RequiredArgsConstructor;
 
