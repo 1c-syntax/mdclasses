@@ -84,7 +84,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="description">
 <hr>
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Dimension</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Dimension</span>
 <span class="extends-implements">extends <a href="AbstractMDOAttribute.html" title="class in com.github._1c_syntax.mdclasses.mdo.attributes">AbstractMDOAttribute</a></span></div>
 </section>
 <section class="summary">
@@ -136,6 +136,38 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#hashCode()">hashCode</a></span>()</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isDenyIncompleteValues()">isDenyIncompleteValues</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак запрета незаполненного значения</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isMaster()">isMaster</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак ведущее</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isUseInTotals()">isUseInTotals</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак использования в итогах
+ TODO: Для регистра сведений не применимо, но не противоречит логике</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setDenyIncompleteValues(boolean)">setDenyIncompleteValues</a></span>&#8203;(boolean&nbsp;denyIncompleteValues)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак запрета незаполненного значения</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setMaster(boolean)">setMaster</a></span>&#8203;(boolean&nbsp;master)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак ведущее</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setUseInTotals(boolean)">setUseInTotals</a></span>&#8203;(boolean&nbsp;useInTotals)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак использования в итогах
+ TODO: Для регистра сведений не применимо, но не противоречит логике</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#toString()">toString</a></span>()</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
@@ -144,7 +176,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.attributes.<a href="AbstractMDOAttribute.html" title="class in com.github._1c_syntax.mdclasses.mdo.attributes">AbstractMDOAttribute</a></h3>
-<code><a href="AbstractMDOAttribute.html#getAttributeType()">getAttributeType</a>, <a href="AbstractMDOAttribute.html#getKind()">getKind</a>, <a href="AbstractMDOAttribute.html#getMetadataName()">getMetadataName</a>, <a href="AbstractMDOAttribute.html#getMetadataNameRu()">getMetadataNameRu</a>, <a href="AbstractMDOAttribute.html#getType()">getType</a>, <a href="AbstractMDOAttribute.html#setKind(com.github._1c_syntax.bsl.mdo.support.AttributeKind)">setKind</a></code></div>
+<code><a href="AbstractMDOAttribute.html#getAttributeType()">getAttributeType</a>, <a href="AbstractMDOAttribute.html#getIndexing()">getIndexing</a>, <a href="AbstractMDOAttribute.html#getKind()">getKind</a>, <a href="AbstractMDOAttribute.html#getMetadataName()">getMetadataName</a>, <a href="AbstractMDOAttribute.html#getMetadataNameRu()">getMetadataNameRu</a>, <a href="AbstractMDOAttribute.html#getType()">getType</a>, <a href="AbstractMDOAttribute.html#isPasswordMode()">isPasswordMode</a>, <a href="AbstractMDOAttribute.html#setIndexing(com.github._1c_syntax.bsl.mdo.support.IndexingType)">setIndexing</a>, <a href="AbstractMDOAttribute.html#setKind(com.github._1c_syntax.bsl.mdo.support.AttributeKind)">setKind</a>, <a href="AbstractMDOAttribute.html#setPasswordMode(boolean)">setPasswordMode</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="../AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></h3>
 <code><a href="../AbstractMDObjectBase.html#addIncludedSubsystem(com.github._1c_syntax.mdclasses.mdo.MDSubsystem)">addIncludedSubsystem</a>, <a href="../AbstractMDObjectBase.html#getIncludedSubsystems()">getIncludedSubsystems</a>, <a href="../AbstractMDObjectBase.html#getPath()">getPath</a>, <a href="../AbstractMDObjectBase.html#setIncludedSubsystems(java.util.List)">setIncludedSubsystems</a>, <a href="../AbstractMDObjectBase.html#setPath(java.nio.file.Path)">setPath</a>, <a href="../AbstractMDObjectBase.html#supplement()">supplement</a>, <a href="../AbstractMDObjectBase.html#supplement(com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase)">supplement</a></code></div>
@@ -185,6 +217,50 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method.detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="isUseInTotals()">
+<h3>isUseInTotals</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isUseInTotals</span>()</div>
+<div class="block">Признак использования в итогах
+ TODO: Для регистра сведений не применимо, но не противоречит логике</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isDenyIncompleteValues()">
+<h3>isDenyIncompleteValues</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isDenyIncompleteValues</span>()</div>
+<div class="block">Признак запрета незаполненного значения</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isMaster()">
+<h3>isMaster</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMaster</span>()</div>
+<div class="block">Признак ведущее</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setUseInTotals(boolean)">
+<h3>setUseInTotals</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUseInTotals</span>&#8203;<span class="parameters">(boolean&nbsp;useInTotals)</span></div>
+<div class="block">Признак использования в итогах
+ TODO: Для регистра сведений не применимо, но не противоречит логике</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setDenyIncompleteValues(boolean)">
+<h3>setDenyIncompleteValues</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDenyIncompleteValues</span>&#8203;<span class="parameters">(boolean&nbsp;denyIncompleteValues)</span></div>
+<div class="block">Признак запрета незаполненного значения</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setMaster(boolean)">
+<h3>setMaster</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setMaster</span>&#8203;<span class="parameters">(boolean&nbsp;master)</span></div>
+<div class="block">Признак ведущее</div>
+</section>
+</li>
 <li>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>

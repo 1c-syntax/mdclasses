@@ -90,7 +90,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="MDOHasChildren.html" title="interface in com.github._1c_syntax.mdclasses.mdo">MDOHasChildren</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">MDExchangePlan</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MDExchangePlan</span>
 <span class="extends-implements">extends <a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a></span></div>
 </section>
 <section class="summary">
@@ -139,9 +139,49 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#hashCode()">hashCode</a></span>()</code></div>
-<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="children/ExchangePlanItem.html" title="class in com.github._1c_syntax.mdclasses.mdo.children">ExchangePlanItem</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getContent()">getContent</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Состав плана обмена.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#hashCode()">hashCode</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isDistributedInfoBase()">isDistributedInfoBase</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак распределенной базы</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#isIncludeConfigurationExtensions()">isIncludeConfigurationExtensions</a></span>()</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак распространения в распределенной базе расширений</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#linkToMDO(java.util.Map)">linkToMDO</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,&#8203;<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a>&gt;&nbsp;allMDO)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Выполняет преобразование mdoRef объекта в составе на сам объект</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setContent(java.util.List)">setContent</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="children/ExchangePlanItem.html" title="class in com.github._1c_syntax.mdclasses.mdo.children">ExchangePlanItem</a>&gt;&nbsp;content)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Состав плана обмена.</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setDistributedInfoBase(boolean)">setDistributedInfoBase</a></span>&#8203;(boolean&nbsp;distributedInfoBase)</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак распределенной базы</div>
+</div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setIncludeConfigurationExtensions(boolean)">setIncludeConfigurationExtensions</a></span>&#8203;(boolean&nbsp;includeConfigurationExtensions)</code></div>
+<div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Признак распространения в распределенной базе расширений</div>
+</div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#supplement()">supplement</a></span>()</code></div>
+<div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
+<div class="block">Метод должен вызываться в конце чтения объекта для его дозаполнения.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#toString()">toString</a></span>()</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
@@ -150,7 +190,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a></h3>
-<code><a href="AbstractMDObjectComplex.html#addAttribute(com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute)">addAttribute</a>, <a href="AbstractMDObjectComplex.html#getAttributes()">getAttributes</a>, <a href="AbstractMDObjectComplex.html#getChildren()">getChildren</a>, <a href="AbstractMDObjectComplex.html#getCommands()">getCommands</a>, <a href="AbstractMDObjectComplex.html#getForms()">getForms</a>, <a href="AbstractMDObjectComplex.html#getTemplates()">getTemplates</a>, <a href="AbstractMDObjectComplex.html#setAttributes(java.util.List)">setAttributes</a>, <a href="AbstractMDObjectComplex.html#setChildren(java.util.Set)">setChildren</a>, <a href="AbstractMDObjectComplex.html#setCommands(java.util.List)">setCommands</a>, <a href="AbstractMDObjectComplex.html#setForms(java.util.List)">setForms</a>, <a href="AbstractMDObjectComplex.html#setTemplates(java.util.List)">setTemplates</a>, <a href="AbstractMDObjectComplex.html#supplement()">supplement</a></code></div>
+<code><a href="AbstractMDObjectComplex.html#addAttribute(com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute)">addAttribute</a>, <a href="AbstractMDObjectComplex.html#getAttributes()">getAttributes</a>, <a href="AbstractMDObjectComplex.html#getChildren()">getChildren</a>, <a href="AbstractMDObjectComplex.html#getCommands()">getCommands</a>, <a href="AbstractMDObjectComplex.html#getForms()">getForms</a>, <a href="AbstractMDObjectComplex.html#getTemplates()">getTemplates</a>, <a href="AbstractMDObjectComplex.html#setAttributes(java.util.List)">setAttributes</a>, <a href="AbstractMDObjectComplex.html#setChildren(java.util.Set)">setChildren</a>, <a href="AbstractMDObjectComplex.html#setCommands(java.util.List)">setCommands</a>, <a href="AbstractMDObjectComplex.html#setForms(java.util.List)">setForms</a>, <a href="AbstractMDObjectComplex.html#setTemplates(java.util.List)">setTemplates</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDObjectBSL.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBSL</a></h3>
 <code><a href="AbstractMDObjectBSL.html#getModules()">getModules</a>, <a href="AbstractMDObjectBSL.html#setModules(java.util.List)">setModules</a>, <a href="AbstractMDObjectBSL.html#supplement(com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase)">supplement</a></code></div>
@@ -194,6 +234,74 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method.detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="supplement()">
+<h3>supplement</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">supplement</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="AbstractMDObjectBase.html#supplement()">AbstractMDObjectBase</a></code></span></div>
+<div class="block">Метод должен вызываться в конце чтения объекта для его дозаполнения.
+ При необходимости, можно переопределить в дочерних объектах для персональной дообработки</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code><a href="AbstractMDObjectComplex.html#supplement()">supplement</a></code>&nbsp;in class&nbsp;<code><a href="AbstractMDObjectComplex.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectComplex</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="linkToMDO(java.util.Map)">
+<h3>linkToMDO</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">linkToMDO</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,&#8203;<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a>&gt;&nbsp;allMDO)</span></div>
+<div class="block">Выполняет преобразование mdoRef объекта в составе на сам объект</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>allMDO</code> - Все объекты конфигурации</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isDistributedInfoBase()">
+<h3>isDistributedInfoBase</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isDistributedInfoBase</span>()</div>
+<div class="block">Признак распределенной базы</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isIncludeConfigurationExtensions()">
+<h3>isIncludeConfigurationExtensions</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isIncludeConfigurationExtensions</span>()</div>
+<div class="block">Признак распространения в распределенной базе расширений</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getContent()">
+<h3>getContent</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="children/ExchangePlanItem.html" title="class in com.github._1c_syntax.mdclasses.mdo.children">ExchangePlanItem</a>&gt;</span>&nbsp;<span class="element-name">getContent</span>()</div>
+<div class="block">Состав плана обмена.
+ Для формата EDT хранится в самом MDO файле, для формата конфигуратора - в отдельном</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setDistributedInfoBase(boolean)">
+<h3>setDistributedInfoBase</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDistributedInfoBase</span>&#8203;<span class="parameters">(boolean&nbsp;distributedInfoBase)</span></div>
+<div class="block">Признак распределенной базы</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setIncludeConfigurationExtensions(boolean)">
+<h3>setIncludeConfigurationExtensions</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setIncludeConfigurationExtensions</span>&#8203;<span class="parameters">(boolean&nbsp;includeConfigurationExtensions)</span></div>
+<div class="block">Признак распространения в распределенной базе расширений</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setContent(java.util.List)">
+<h3>setContent</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setContent</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="children/ExchangePlanItem.html" title="class in com.github._1c_syntax.mdclasses.mdo.children">ExchangePlanItem</a>&gt;&nbsp;content)</span></div>
+<div class="block">Состав плана обмена.
+ Для формата EDT хранится в самом MDO файле, для формата конфигуратора - в отдельном</div>
+</section>
+</li>
 <li>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>
