@@ -36,7 +36,7 @@ import java.util.Set;
 
 @UtilityClass
 public class MDOUtils {
-
+  public final String TYPE_INPUT_FIELD = "InputField";
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
 
   /**

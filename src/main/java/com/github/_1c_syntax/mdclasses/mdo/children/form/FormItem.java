@@ -23,6 +23,7 @@ package com.github._1c_syntax.mdclasses.mdo.children.form;
 
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
+import com.github._1c_syntax.mdclasses.unmarshal.converters.ExtInfoConverter;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -76,4 +77,11 @@ public class FormItem {
    */
   @XStreamImplicit
   private List<FormHandlerItem> handlers = Collections.emptyList();
+
+  /**
+   * Расширение элемента формы
+   */
+  @XStreamConverter(ExtInfoConverter.class)
+  private ExtInfo extInfo;
+
 }

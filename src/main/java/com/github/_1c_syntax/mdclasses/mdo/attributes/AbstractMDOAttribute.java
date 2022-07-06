@@ -21,11 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,8 +47,20 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
    */
   private AttributeKind kind = AttributeKind.CUSTOM;
 
+  /**
+   * Вариант индексирования реквизита
+   */
+  private IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Режим пароля. Только для аттрибутов с типом `Строка`
+   */
+  private boolean passwordMode;
+
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
+    indexing = designerMDO.getProperties().getIndexing();
+    passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
   @Override

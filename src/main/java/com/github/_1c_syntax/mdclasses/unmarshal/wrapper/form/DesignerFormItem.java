@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper.form;
 
+import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
@@ -52,4 +53,6 @@ public class DesignerFormItem {
   private DesignerFormItem viewStatusAddition;
   @XStreamAlias("Events")
   private DesignerEvents events;
+  @XStreamAlias("PasswordMode")
+  private BWAValue passwordMode = BWAValue.AUTO;
 }
