@@ -41,7 +41,7 @@ import lombok.ToString;
   groupName = "Commands",
   groupNameRu = "Команды"
 )
-public class Command extends AbstractMDObjectBSL {
+public class Command extends AbstractMDObjectBSL implements com.github._1c_syntax.bsl.mdo.Command {
   public Command(DesignerMDO designerMDO) {
     super(designerMDO);
   }

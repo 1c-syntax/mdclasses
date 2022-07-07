@@ -19,25 +19,19 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal.converters;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.Handler;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
-import com.thoughtworks.xstream.converters.UnmarshallingContext;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 
-public class MethodHandlerConverter implements Converter {
-
-  @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // noop
-  }
+/**
+ * Для преобразования строки в обработчик
+ */
+public class MethodHandlerConverter extends AbstractSingleValueConverter {
 
   @Override
-  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    return new Handler(reader.getValue());
+  public Object fromString(String str) {
+    return new Handler(str);
   }
 
   @Override

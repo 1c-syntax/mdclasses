@@ -191,8 +191,8 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   }
 
   private static <T extends AbstractMDObjectBase> List<T> readDesignerMDOChildren(Path childrenFolder,
-                                                                         Class<T> childClass,
-                                                                         List<String> childNames) {
+                                                                                  Class<T> childClass,
+                                                                                  List<String> childNames) {
     List<T> children = new ArrayList<>();
     getMDOFilesInFolder(childrenFolder, childNames)
       .forEach((Path mdoFile) -> {

@@ -20,6 +20,6 @@
  * License along with MDClasses.
  */
 /**
- * Вспомогательные классы для представления модели XDTO пакета
+ * Общая функциональность читателей
  */
-package com.github._1c_syntax.mdclasses.mdo.children.xdtopackage;
+package com.github._1c_syntax.bsl.reader.common;

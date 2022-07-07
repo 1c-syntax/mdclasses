@@ -19,21 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.children.xdtopackage;
-
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
- * Вспомогательный класс для хранения импорта XDTO пакета
+ * Содержит конверторы, понимающие оба формата
  */
-@Data
-@NoArgsConstructor
-public class XdtoImport {
-  /**
-   * Импортируемое пространство имен
-   */
-  @XStreamAsAttribute
-  private String namespace = "";
-}
+package com.github._1c_syntax.bsl.reader.common.converter;
