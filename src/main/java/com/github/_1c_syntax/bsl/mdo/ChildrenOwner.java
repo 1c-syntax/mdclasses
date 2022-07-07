@@ -36,13 +36,13 @@ public interface ChildrenOwner {
   /**
    * Возвращает все дочерние элементы объекта
    */
-  List<MDObject> getChildren();
+  List<MD> getChildren();
 
   /**
    * Возвращает дочерние элементы объекта плоским списком.
    */
-  default List<MDObject> getPlainChildren() {
-    List<MDObject> children = new ArrayList<>(getChildren());
+  default List<MD> getPlainChildren() {
+    List<MD> children = new ArrayList<>(getChildren());
     getChildren().stream()
       .filter(ChildrenOwner.class::isInstance)
       .map(ChildrenOwner.class::cast)
@@ -59,7 +59,7 @@ public interface ChildrenOwner {
    * @param ref Ссылка MdoReference на искомый объект
    * @return Контейнер с найденным значением (может быть пустым)
    */
-  default Optional<MDObject> findChild(MdoReference ref) {
+  default Optional<MD> findChild(MdoReference ref) {
     return getPlainChildren().stream()
       .filter(mdObject -> mdObject.getMdoReference().equals(ref))
       .findFirst();
@@ -71,7 +71,7 @@ public interface ChildrenOwner {
    * @param mdoRef Строковое представление ссылки MdoReference на искомый объект
    * @return Контейнер с найденным значением (может быть пустым)
    */
-  default Optional<MDObject> findChild(String mdoRef) {
+  default Optional<MD> findChild(String mdoRef) {
     return getPlainChildren().stream()
       .filter(mdObject -> mdObject.getMdoReference().getMdoRef().equalsIgnoreCase(mdoRef)
         || mdObject.getMdoReference().getMdoRefRu().equalsIgnoreCase(mdoRef))
@@ -84,7 +84,7 @@ public interface ChildrenOwner {
    * @param uri Ссылка на модуль исходного объекта
    * @return Контейнер с найденным значением (может быть пустым)
    */
-  default Optional<MDObject> findChild(URI uri) {
+  default Optional<MD> findChild(URI uri) {
     return getPlainChildren().stream()
       .filter(ModuleOwner.class::isInstance)
       .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())

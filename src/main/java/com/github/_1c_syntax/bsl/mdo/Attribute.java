@@ -28,7 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
  * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящие данные
  * это могут быть реквизиты, колонки, измерения, а также общие реквизиты и константы
  */
-public interface Attribute extends MDObject
+public interface Attribute extends MD
   //todo, Type
 {
   /**

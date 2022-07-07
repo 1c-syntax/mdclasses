@@ -24,6 +24,6 @@ package com.github._1c_syntax.bsl.mdo;
 /**
  * Интерфейс табличных частей объектов (включая стандартные ТЧ)
  */
-public interface TabularSection extends MDObject, AttributeOwner {
+public interface TabularSection extends MD, AttributeOwner {
 
 }

@@ -21,70 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-
 /**
- * Базовый интерфейс всех объектов метаданных
+ * Базовый интерфейс всех самостоятельных объектов метаданных (первый уровень)
  */
-public interface MDObject {
-
-  /**
-   * Возвращает тип метаданных
-   */
-  default MDOType getMdoType() {
-    return MetadataStorage.get(getClass()).type();
-  }
-
-  /**
-   * уникальный идентификатор объекта
-   */
-  String getUuid();
-
-  /**
-   * Имя объекта
-   */
-  String getName();
-
-//  /**
-//   * Синонимы объекта
-//   */
-//  MultiLanguageString getSynonym();
-
-  /**
-   * MDO-Ссылка на объект
-   */
-  MdoReference getMdoReference();
-
-  /**
-   * Принадлежность объекта конфигурации (собственный или заимствованный)
-   */
-  ObjectBelonging getObjectBelonging();
-
-//  /**
-//   * Вариант поддержки родительской конфигурации
-//   */
-//  SupportVariant getSupportVariant();
-
-  /**
-   * Комментарий
-   */
-  String getComment();
-
-  /**
-   * Возвращает представление типа метаданных
-   */
-  default String getMetadataName() {
-    return getMdoType().getName();
-  }
-
-  /**
-   * Возвращает представление типа метаданных на русском
-   */
-  default String getMetadataNameRu() {
-    return getMdoType().getNameRu();
-  }
-
+public interface MDObject extends MD {
 }

@@ -19,12 +19,13 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses;
+/**
+ * В пакете находятся самостоятельные объекты метаданных и интерфейсы-расширения их дополнительными возможностями
+ */
+@ParametersAreNonnullByDefault
+@ReturnValuesAreNonnullByDefault
+package com.github._1c_syntax.bsl.mdo;
 
-public class Main {
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 
-  public static void main(String[] args) {
-
-  }
-
-}
+import javax.annotation.ParametersAreNonnullByDefault;

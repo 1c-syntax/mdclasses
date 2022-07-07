@@ -28,7 +28,7 @@ import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 /**
  * Интерфейс всех дочерних объектов
  */
-public interface MDChildObject extends MDObject {
+public interface MDChild extends MD {
   /**
    * Ссылка на родительский объект
    */

@@ -28,7 +28,7 @@ import java.nio.file.Path;
 /**
  * Интерфейс макетов объектов и общих макетов
  */
-public interface Template extends MDObject {
+public interface Template extends MD {
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
    */
