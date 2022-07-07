@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 
 import java.nio.file.Path;
@@ -34,10 +35,10 @@ public interface Template extends MD {
    */
   TemplateType getTemplateType();
 
-//  /**
-//   * Содержимое макета. Например, Схема компоновки данных
-//   */
-//  TemplateData getTemplateData();
+  /**
+   * Содержимое макета. Например, Схема компоновки данных
+   */
+  TemplateData getTemplateData();
 
   /**
    * Путь к самому файлу макета

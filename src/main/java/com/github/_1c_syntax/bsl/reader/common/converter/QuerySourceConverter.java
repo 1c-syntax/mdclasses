@@ -19,18 +19,18 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal.converters;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataSet;
-import com.github._1c_syntax.bsl.mdo.support.DataSetType;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-public class DataSetConverter implements Converter {
+public class QuerySourceConverter implements Converter {
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -39,15 +39,16 @@ public class DataSetConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var type = reader.getAttribute("type");
-    var dataSet = (DataSet) context.convertAnother(reader, DataSet.class,
-      XStreamFactory.getReflectionConverter());
-    dataSet.setType(DataSetType.fromValue(type));
-    return dataSet;
+    var location = ((ExtendReaderWrapper) reader).getXMLStreamReader().getLocation();
+    var query = reader.getValue();
+    var position = new SourcePosition(location.getLineNumber(), location.getColumnNumber());
+
+    return new QuerySource(position, query);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return type == DataSet.class;
+    return type == QuerySource.class;
   }
+
 }

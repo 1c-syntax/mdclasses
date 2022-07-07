@@ -21,11 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.QuerySourceConverter;
+import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttributeSetting;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -44,7 +42,6 @@ public class DynamicListExtInfo extends ExtInfo {
   private boolean getInvisibleFieldPresentations = true;
   private boolean customQuery;
   @XStreamAlias("queryText")
-  @XStreamConverter(QuerySourceConverter.class)
   private QuerySource query;
 
   public DynamicListExtInfo(DesignerAttributeSetting setting) {

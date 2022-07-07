@@ -19,24 +19,14 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo.children.template;
+package com.github._1c_syntax.bsl.mdo.storage;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-@Data
-@ToString(onlyExplicitlyIncluded = true)
-@NoArgsConstructor
-public class DataSetField {
+/**
+ * Интерфейс содержимого макетов
+ */
+public interface TemplateData {
   /**
-   * Путь к данным поля
+   * Признак пустого содержимого
    */
-  private String dataPath;
-  /**
-   * Имя поля
-   */
-  @XStreamAlias("field")
-  private String name;
+  boolean isEmpty();
 }

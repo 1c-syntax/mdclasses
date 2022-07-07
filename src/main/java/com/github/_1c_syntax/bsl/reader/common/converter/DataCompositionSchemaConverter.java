@@ -19,35 +19,55 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal.converters;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
-public class QuerySourceConverter implements Converter {
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Конвертор для объектов в формате конфигуратора, минуя класс враппер
+ */
+@Slf4j
+public class DataCompositionSchemaConverter implements Converter {
+
+  private static final String DATASET_NODE_NAME = "dataSet";
 
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // noop
+    // no-op
   }
 
+  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var location = XStreamFactory.getXMLStreamReader(reader).getLocation();
-    var query = reader.getValue();
-    var position = new SourcePosition(location.getLineNumber(), location.getColumnNumber());
-    return new QuerySource(position, query);
+    List<DataCompositionSchema.DataSet> dataSets = new ArrayList<>();
+
+    // линейно читаем файл
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var nodeName = reader.getNodeName();
+      if (DATASET_NODE_NAME.equals(nodeName)) {
+        dataSets.add((DataCompositionSchema.DataSet)
+          context.convertAnother(reader, DataCompositionSchema.DataSet.class));
+      }
+      reader.moveUp();
+    }
+
+// todo    return Map.of("templateData", new DataCompositionSchema(dataSets));
+    return new DataCompositionSchema(dataSets);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return type == QuerySource.class;
+    return DataCompositionSchema.class.isAssignableFrom(type);
   }
-
 }

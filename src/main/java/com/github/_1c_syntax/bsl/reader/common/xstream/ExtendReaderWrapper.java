@@ -19,17 +19,33 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.mdo;
+package com.github._1c_syntax.bsl.reader.common.xstream;
 
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
-import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.ReaderWrapper;
 
+import javax.xml.stream.XMLStreamReader;
+import java.io.File;
 import java.nio.file.Path;
 
-public interface MDOTemplate {
-  TemplateType getTemplateType();
+/**
+ * Реализация враппера ридера, позволяющего читать в прикладном коде путь к файлу
+ */
+public class ExtendReaderWrapper extends ReaderWrapper {
+  private final File file;
+  private final XMLStreamReader xmlStreamReader;
 
-  TemplateData<?> getTemplateData();
+  public ExtendReaderWrapper(HierarchicalStreamReader reader, File in, XMLStreamReader xmlStreamReader) {
+    super(reader);
+    this.file = in;
+    this.xmlStreamReader = xmlStreamReader;
+  }
 
-  Path getTemplateDataPath();
+  public Path getPath() {
+    return file.toPath();
+  }
+
+  public XMLStreamReader getXMLStreamReader() {
+    return xmlStreamReader;
+  }
 }

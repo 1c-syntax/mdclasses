@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
+import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDOTemplate;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -70,7 +70,7 @@ class TemplateDataTest {
   }
 
   private void checkCommonTemplate(List<AbstractMDObjectBase> commonTemplates) {
-    var template = (MDOTemplate) commonTemplates.stream()
+    var template = (Template) commonTemplates.stream()
       .filter(mdObjectBase -> mdObjectBase.getName().equals("МакетСКД"))
       .findAny()
       .get();
@@ -78,13 +78,13 @@ class TemplateDataTest {
     assertThat(template.getTemplateType()).isEqualTo(TemplateType.DATA_COMPOSITION_SCHEME);
     assertThat(template.getTemplateData()).isNotNull();
 
-    var templateData = template.getTemplateData().getData();
-    assertThat(templateData).isPresent();
-    assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
+    var templateData = template.getTemplateData();
+    assertThat(templateData).isNotNull();
+    assertThat(templateData.isEmpty()).isFalse();
   }
 
   private void checkTemplate(List<AbstractMDObjectBase> templates) {
-    var template = (MDOTemplate) templates.stream()
+    var template = (Template) templates.stream()
       .filter(mdObjectBase -> mdObjectBase.getName().equals("СКД"))
       .findAny()
       .get();
@@ -92,9 +92,9 @@ class TemplateDataTest {
     assertThat(template.getTemplateType()).isEqualTo(TemplateType.DATA_COMPOSITION_SCHEME);
     assertThat(template.getTemplateData()).isNotNull();
 
-    var templateData = template.getTemplateData().getData();
-    assertThat(templateData).isPresent();
-    assertThat(templateData.get()).isNotEqualTo(TemplateData.empty());
+    var templateData = template.getTemplateData();
+    assertThat(templateData).isNotNull();
+    assertThat(templateData.isEmpty()).isFalse();
   }
 
 }

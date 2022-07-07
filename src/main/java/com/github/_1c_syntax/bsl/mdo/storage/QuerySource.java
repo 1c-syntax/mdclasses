@@ -19,14 +19,40 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
+package com.github._1c_syntax.bsl.mdo.storage;
+
+import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+
 /**
- * Пакет содержит дочерние объекты метаданных, т.е. те, что могут существовать только в подчинении основным.
- * Примеры: Реквизиты, операции сервисов, формы и т.д.
+ * Модель хранения информации о запросе СКД
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
-package com.github._1c_syntax.bsl.mdo.children;
+@Value
+@RequiredArgsConstructor
+public class QuerySource {
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
+  /**
+   * Пустой запрос
+   */
+  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
 
-import javax.annotation.ParametersAreNonnullByDefault;
+  /**
+   * Позиция запроса в исходном файле
+   */
+  SourcePosition position;
+
+  /**
+   * Текст запроса
+   */
+  String textQuery;
+
+  /**
+   * Ссылка на пустой запрос
+   *
+   * @return Пустой запрос
+   */
+  public static QuerySource empty() {
+    return EMPTY;
+  }
+}

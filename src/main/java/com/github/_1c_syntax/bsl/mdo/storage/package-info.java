@@ -20,13 +20,13 @@
  * License along with MDClasses.
  */
 /**
- * Пакет содержит дочерние объекты метаданных, т.е. те, что могут существовать только в подчинении основным.
- * Примеры: Реквизиты, операции сервисов, формы и т.д.
+ * В пакет выделены "хранилища" данных. Возможные варианты
+ * - описания экранных форм
+ * - описания интерфейсов/стилей
+ * - описание содержимого макетов
+ * - и т.д.
+ * <p>
+ * Общее для всех пакетов - их неотъемлемая связь с основными объектами метаданных для хранения
+ * сложных по структуре данных
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
-package com.github._1c_syntax.bsl.mdo.children;
-
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+package com.github._1c_syntax.bsl.mdo.storage;

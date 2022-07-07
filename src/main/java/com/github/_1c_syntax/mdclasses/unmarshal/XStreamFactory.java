@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
+import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -34,6 +36,11 @@ import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.reader.common.converter.DataCompositionSchemaConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.DataSetConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.QuerySourceConverter;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
@@ -47,7 +54,6 @@ import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
@@ -59,7 +65,6 @@ import com.github._1c_syntax.mdclasses.mdo.support.ValueType;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.AttributeConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.CompatibilityModeConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DataPathConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.DataSetConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerMDOConverter;
@@ -219,7 +224,6 @@ public class XStreamFactory {
     xStream.processAnnotations(ValueType.class);
     xStream.processAnnotations(DynamicListExtInfo.class);
     xStream.processAnnotations(InputFieldExtInfo.class);
-    xStream.processAnnotations(DataCompositionSchema.class);
     xStream.processAnnotations(Recalculation.class);
     xStream.processAnnotations(TabularSection.class);
     xStream.processAnnotations(DesignerChildObjects.class);
@@ -237,6 +241,10 @@ public class XStreamFactory {
     xStream.alias("package", XDTOPackageData.class);
     xStream.alias("MetaDataObject", DesignerRootWrapper.class);
     xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
+    xStream.alias("dataSet", DataCompositionSchema.DataSet.class);
+    xStream.alias("queryText", QuerySource.class);
+    xStream.alias("QueryText", QuerySource.class);
+
 
     registerDesignerFormItemAliases(xStream);
     registerAbstractMDOAttributeAliases(xStream);
@@ -388,10 +396,13 @@ public class XStreamFactory {
     xStream.registerConverter(new FormEventConverter());
     xStream.registerConverter(new DesignerFormItemConverter());
     xStream.registerConverter(new FormItemConverter());
-    xStream.registerConverter(new DataSetConverter());
+//    xStream.registerConverter(new DataSetConverter());
     xStream.registerConverter(new DesignerMDOConverter());
     xStream.registerConverter(new DesignerFormConverter());
     xStream.registerConverter(new DesignerXRItemConverter());
+    xStream.registerConverter(new DataCompositionSchemaConverter());
+    xStream.registerConverter(new DataSetConverter());
+    xStream.registerConverter(new QuerySourceConverter());
   }
 
 }

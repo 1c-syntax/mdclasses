@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.mdclasses.unmarshal;
+package com.github._1c_syntax.bsl.reader.common.xstream;
 
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.StreamException;
@@ -39,8 +39,17 @@ import java.io.InputStream;
  */
 public class ExtendStaxDriver extends StaxDriver {
 
+  @Deprecated(since = "0.12")
   public ExtendStaxDriver(QNameMap qNameMap) {
     super(qNameMap);
+
+    // Do not delete. Implementation via XMLInputFactoryImpl
+    System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
+  }
+
+  public ExtendStaxDriver() {
+    super();
+
     // Do not delete. Implementation via XMLInputFactoryImpl
     System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
   }

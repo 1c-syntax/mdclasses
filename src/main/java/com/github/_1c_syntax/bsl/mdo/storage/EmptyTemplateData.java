@@ -19,7 +19,28 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
+package com.github._1c_syntax.bsl.mdo.storage;
+
+import lombok.Value;
+
 /**
- * Вспомогательные классы для чтения информации по макетам
+ * Реализация пустого содержимого макета
  */
-package com.github._1c_syntax.mdclasses.mdo.children.template;
+@Value
+public class EmptyTemplateData implements TemplateData {
+  private static final EmptyTemplateData EMPTY = new EmptyTemplateData();
+
+  /**
+   * Возвращает ссылку на пустое содержимое макета
+   *
+   * @return Пустое содержимое макета
+   */
+  public static EmptyTemplateData getEmpty() {
+    return EMPTY;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return true;
+  }
+}

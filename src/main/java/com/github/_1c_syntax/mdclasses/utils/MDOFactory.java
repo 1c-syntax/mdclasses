@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
@@ -28,9 +29,7 @@ import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import lombok.experimental.UtilityClass;
@@ -52,7 +51,7 @@ public class MDOFactory {
    */
   public Optional<AbstractMDObjectBase> readMDOConfiguration(ConfigurationSource configurationSource, Path rootPath) {
     return MDOPathUtils.getMDOPath(configurationSource, rootPath,
-      MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+        MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
       .flatMap(MDOFactory::readMDObject);
   }
 
@@ -118,21 +117,6 @@ public class MDOFactory {
     }
 
     return Optional.ofNullable((RoleData) XStreamFactory.fromXML(path.toFile()));
-  }
-
-  /**
-   * Читает макет со схемой компоновки данных
-   *
-   * @param path - путь к файлу макета
-   * @return {@code Optional} POJO представление данных макета
-   */
-  public Optional<DataCompositionSchema> readDataCompositionSchema(Path path) {
-    if (Files.notExists(path)) {
-      return Optional.empty();
-    }
-    var value = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
-    value.fillPlainDataSets();
-    return Optional.of(value);
   }
 
   /**
