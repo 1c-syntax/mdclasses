@@ -102,7 +102,7 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     super(designerMDO);
 
     // формирование mdo ссылки, которая будет использована в дочерних объектах
-    mdoReference = MdoReference.create(getType(), getName());
+    mdoReference = MdoReference.create(getMdoType(), getName());
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
@@ -190,7 +190,7 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     setAttributes(computedAttributes);
   }
 
-  private static <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
+  private static <T extends AbstractMDObjectBase> List<T> readDesignerMDOChildren(Path childrenFolder,
                                                                          Class<T> childClass,
                                                                          List<String> childNames) {
     List<T> children = new ArrayList<>();

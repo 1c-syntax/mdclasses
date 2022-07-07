@@ -700,7 +700,7 @@ class ConfigurationTest {
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {
     assertThat(configuration.getChildren())
-      .filteredOn(mdObjectBase -> mdObjectBase.getType() == type).hasSize(count);
+      .filteredOn(mdObjectBase -> mdObjectBase.getMdoType() == type).hasSize(count);
   }
 
   private static void checkOrderedCommonModules(Configuration configuration) {

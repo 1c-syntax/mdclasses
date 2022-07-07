@@ -250,7 +250,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.SUBSYSTEM)
       .map(MDSubsystem.class::cast)
       .forEach(subsystem -> subsystem.linkToChildren(allMDO));
   }
@@ -259,7 +259,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.COMMON_ATTRIBUTE)
       .map(MDCommonAttribute.class::cast)
       .forEach(commonAttribute -> commonAttribute.linkUsing(allMDO));
   }
@@ -268,7 +268,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.EXCHANGE_PLAN)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.EXCHANGE_PLAN)
       .map(MDExchangePlan.class::cast)
       .forEach(exchangePlan -> exchangePlan.linkToMDO(allMDO));
   }

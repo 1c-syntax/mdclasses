@@ -454,7 +454,7 @@ public class Configuration {
   private static Map<MDOType, List<AbstractMDObjectBase>> getOrderedTopObjectsByChildren(
     List<AbstractMDObjectBase> children) {
 
-    return children.stream().collect(Collectors.groupingBy(AbstractMDObjectBase::getType));
+    return children.stream().collect(Collectors.groupingBy(AbstractMDObjectBase::getMdoType));
 
   }
 

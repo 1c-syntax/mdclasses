@@ -53,7 +53,7 @@ class TemplateDataTest {
 
   private void checkTemplates(Configuration configuration) {
     var commonTemplates = configuration.getChildren().stream()
-      .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.COMMON_TEMPLATE)
+      .filter(mdObjectBase -> mdObjectBase.getMdoType() == MDOType.COMMON_TEMPLATE)
       .collect(Collectors.toList());
     assertThat(commonTemplates).hasSize(8)
       .extracting(AbstractMDObjectBase.class::cast)
@@ -62,7 +62,7 @@ class TemplateDataTest {
     checkCommonTemplate(commonTemplates);
 
     var templates = configuration.getChildren().stream()
-      .filter(mdObjectBase -> mdObjectBase.getType() == MDOType.TEMPLATE)
+      .filter(mdObjectBase -> mdObjectBase.getMdoType() == MDOType.TEMPLATE)
       .collect(Collectors.toList());
     assertThat(templates).hasSize(4);
 

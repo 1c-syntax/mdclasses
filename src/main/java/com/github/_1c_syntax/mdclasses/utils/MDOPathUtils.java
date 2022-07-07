@@ -204,7 +204,7 @@ public class MDOPathUtils {
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(form.getPath());
     if (configurationSource == ConfigurationSource.EDT) {
-      if (form.getType() == MDOType.COMMON_FORM) {
+      if (form.getMdoType() == MDOType.COMMON_FORM) {
         currentPath = Path.of(basePath, "Form.form");
       } else {
         currentPath = Path.of(basePath, MDOType.FORM.getGroupName(), form.getName(), "Form.form");
@@ -226,7 +226,7 @@ public class MDOPathUtils {
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(template.getPath());
     if (configurationSource == ConfigurationSource.EDT) {
-      if (template.getType() == MDOType.COMMON_TEMPLATE) {
+      if (template.getMdoType() == MDOType.COMMON_TEMPLATE) {
         currentPath = Path.of(basePath, "Template.dcs");
       } else {
         currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), template.getName(), "Template.dcs");

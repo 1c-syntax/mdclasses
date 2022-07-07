@@ -58,25 +58,25 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase {
   @Override
   public void supplement() {
     super.supplement();
-    MDOPathUtils.getMDOTypeFolderByMDOPath(path, getType()).ifPresent(this::computeAndSetModules);
+    MDOPathUtils.getMDOTypeFolderByMDOPath(path, getMdoType()).ifPresent(this::computeAndSetModules);
   }
 
   @Override
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
-    MDOPathUtils.getMDOTypeFolderByMDOPath(parent.getPath(), parent.getType())
-      .flatMap(folder -> MDOPathUtils.getChildrenFolder(parent.getName(), folder, getType()))
+    MDOPathUtils.getMDOTypeFolderByMDOPath(parent.getPath(), parent.getMdoType())
+      .flatMap(folder -> MDOPathUtils.getChildrenFolder(parent.getName(), folder, getMdoType()))
       .ifPresent(this::computeAndSetModules);
   }
 
   private void computeAndSetModules(Path folder) {
-    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getType(), Collections.emptySet());
+    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getMdoType(), Collections.emptySet());
     if (moduleTypes.isEmpty()) {
       return;
     }
 
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
-    var mdoName = (getType() == MDOType.CONFIGURATION) ? "" : getName();
+    var mdoName = (getMdoType() == MDOType.CONFIGURATION) ? "" : getName();
     List<MDOModule> mdoModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->
       MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)

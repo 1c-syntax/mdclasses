@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
+import lombok.NonNull;
 import lombok.Value;
 
 import java.util.Collections;
@@ -41,4 +42,14 @@ public class MultiLanguageString {
    * Содержимое описания для каждого языка
    */
   Map<String, String> content;
+
+  /**
+   * Возвращает содержимое для указанного языка
+   *
+   * @param lang Требуемый язык
+   * @return Содержимое для указанного языка
+   */
+  public @NonNull String get(@NonNull String lang) {
+    return content.getOrDefault(lang, "");
+  }
 }

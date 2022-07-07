@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
@@ -40,7 +42,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
+public abstract class AbstractMDOAttribute extends AbstractMDObjectBase implements MDChildObject {
 
   /**
    * Вид атрибута
@@ -64,7 +66,13 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
   }
 
   @Override
+  @Deprecated(since = "0.11.0", forRemoval = true)
   public MDOType getType() {
+    return getAttributeType().getMdoType();
+  }
+
+  @Override
+  public MDOType getMdoType() {
     return getAttributeType().getMdoType();
   }
 
@@ -80,5 +88,10 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
 
   public AttributeType getAttributeType() {
     return MetadataStorage.getAttribute(getClass()).type();
+  }
+
+  @Override
+  public MdoReference getOwner() {
+    return MdoReference.EMPTY;
   }
 }
