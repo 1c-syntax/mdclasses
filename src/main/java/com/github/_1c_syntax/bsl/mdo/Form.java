@@ -19,17 +19,18 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.children;
+package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.MDObject;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
 
 /**
- * Интерфейс всех дочерних объектов
+ * Интерфейс форм объектов и общих форм
  */
-public interface MDChildObject extends MDObject {
+public interface Form extends MDObject, ModuleOwner {
   /**
-   * Ссылка на родительский объект
+   * Тип формы
    */
-  MdoReference getOwner();
+  FormType getFormType();
+
+  // todo нужна нормальная модель форм
 }

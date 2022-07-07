@@ -21,11 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 
 /**
  * Базовый интерфейс всех объектов метаданных
@@ -35,7 +34,9 @@ public interface MDObject {
   /**
    * Возвращает тип метаданных
    */
-  MDOType getMdoType();
+  default MDOType getMdoType() {
+    return MetadataStorage.get(getClass()).type();
+  }
 
   /**
    * уникальный идентификатор объекта
@@ -71,4 +72,19 @@ public interface MDObject {
    * Комментарий
    */
   String getComment();
+
+  /**
+   * Возвращает представление типа метаданных
+   */
+  default String getMetadataName() {
+    return getMdoType().getName();
+  }
+
+  /**
+   * Возвращает представление типа метаданных на русском
+   */
+  default String getMetadataNameRu() {
+    return getMdoType().getNameRu();
+  }
+
 }

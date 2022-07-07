@@ -108,24 +108,6 @@ public abstract class AbstractMDObjectBase implements MDObject {
       .collect(Collectors.toList());
   }
 
-  @Deprecated(since = "0.11.0", forRemoval = true)
-  public MDOType getType() {
-    return MetadataStorage.get(getClass()).type();
-  }
-
-  @Override
-  public MDOType getMdoType() {
-    return MetadataStorage.get(getClass()).type();
-  }
-
-  public String getMetadataName() {
-    return MetadataStorage.get(getClass()).name();
-  }
-
-  public String getMetadataNameRu() {
-    return MetadataStorage.get(getClass()).nameRu();
-  }
-
   /**
    * Метод должен вызываться в конце чтения объекта для его дозаполнения.
    * При необходимости, можно переопределить в дочерних объектах для персональной дообработки
@@ -156,5 +138,10 @@ public abstract class AbstractMDObjectBase implements MDObject {
       includedSubsystems = new ArrayList<>();
     }
     includedSubsystems.add(subsystem);
+  }
+
+  @Deprecated(since = "0.11.0", forRemoval = true)
+  public MDOType getType() {
+    return getMdoType();
   }
 }

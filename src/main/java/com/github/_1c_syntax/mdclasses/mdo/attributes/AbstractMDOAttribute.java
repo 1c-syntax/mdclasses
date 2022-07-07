@@ -21,10 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.mdo.children.MDChildObject;
+import com.github._1c_syntax.bsl.mdo.MDChildObject;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
@@ -63,27 +62,6 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase implemen
     super(designerMDO);
     indexing = designerMDO.getProperties().getIndexing();
     passwordMode = designerMDO.getProperties().isPasswordMode();
-  }
-
-  @Override
-  @Deprecated(since = "0.11.0", forRemoval = true)
-  public MDOType getType() {
-    return getAttributeType().getMdoType();
-  }
-
-  @Override
-  public MDOType getMdoType() {
-    return getAttributeType().getMdoType();
-  }
-
-  @Override
-  public String getMetadataName() {
-    return MetadataStorage.getAttribute(getClass()).name();
-  }
-
-  @Override
-  public String getMetadataNameRu() {
-    return MetadataStorage.getAttribute(getClass()).nameRu();
   }
 
   public AttributeType getAttributeType() {
