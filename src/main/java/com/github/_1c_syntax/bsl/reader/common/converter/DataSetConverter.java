@@ -73,7 +73,7 @@ public class DataSetConverter implements Converter {
     return dataSet.build();
   }
 
-  private DataCompositionSchema.DataSetField readField(HierarchicalStreamReader reader) {
+  private static DataCompositionSchema.DataSetField readField(HierarchicalStreamReader reader) {
     var dataPath = "";
     var field = "";
     while (reader.hasMoreChildren()) {

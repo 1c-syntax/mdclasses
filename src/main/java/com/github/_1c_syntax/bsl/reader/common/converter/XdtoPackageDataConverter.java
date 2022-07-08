@@ -89,7 +89,7 @@ public class XdtoPackageDataConverter implements Converter {
     return builder.build();
   }
 
-  private XdtoPackageData.ObjectType readObjectType(HierarchicalStreamReader reader) {
+  private static XdtoPackageData.ObjectType readObjectType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ObjectType.builder()
       .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
     builder.base(getAttribute(reader, BASE_ATTRIBUTE_NAME));

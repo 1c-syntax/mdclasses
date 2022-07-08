@@ -139,6 +139,9 @@ public abstract class AbstractMDObjectBase implements MDObject {
     includedSubsystems.add(subsystem);
   }
 
+  /**
+   * @deprecated Оставлен для совместимости со старой версией для пользователей библиотеки.
+   */
   @Deprecated(since = "0.11.0", forRemoval = true)
   public MDOType getType() {
     return getMdoType();
