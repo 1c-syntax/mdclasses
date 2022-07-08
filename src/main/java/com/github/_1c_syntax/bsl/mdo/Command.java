@@ -25,6 +25,6 @@ package com.github._1c_syntax.bsl.mdo;
  * Интерфейс объектов команд объектов и общих команд
  */
 public interface Command extends MD
-//  , ModuleOwner
+//  todo: , ModuleOwner
 {
 }
