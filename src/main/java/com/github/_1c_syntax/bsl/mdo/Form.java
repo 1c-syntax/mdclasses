@@ -27,7 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.FormType;
  * Интерфейс форм объектов и общих форм
  */
 public interface Form extends MD
-// todo  , ModuleOwner
+// todo:  , ModuleOwner
 {
   /**
    * Тип формы
