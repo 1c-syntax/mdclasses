@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.MDExchangePlan;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FilenameUtils;
 
@@ -203,7 +204,7 @@ public class MDOPathUtils {
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(form.getPath());
     if (configurationSource == ConfigurationSource.EDT) {
-      if (form.getType() == MDOType.COMMON_FORM) {
+      if (form.getMdoType() == MDOType.COMMON_FORM) {
         currentPath = Path.of(basePath, "Form.form");
       } else {
         currentPath = Path.of(basePath, MDOType.FORM.getGroupName(), form.getName(), "Form.form");
@@ -225,7 +226,7 @@ public class MDOPathUtils {
     var basePath = currentPath.toString();
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(template.getPath());
     if (configurationSource == ConfigurationSource.EDT) {
-      if (template.getType() == MDOType.COMMON_TEMPLATE) {
+      if (template.getMdoType() == MDOType.COMMON_TEMPLATE) {
         currentPath = Path.of(basePath, "Template.dcs");
       } else {
         currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), template.getName(), "Template.dcs");
@@ -252,6 +253,18 @@ public class MDOPathUtils {
       currentPath = Paths.get(basePath, xdto.getName(), "Ext", "Package.bin");
     }
     return currentPath;
+  }
+
+  /**
+   * Возвращает путь к файлу с составом плана обмена
+   * Внимание! Только для формата конфигуратора!
+   *
+   * @param exchangePlan План обмена
+   * @return Путь к составу плана обмена
+   */
+  public static Path getExchangePlanContentPath(MDExchangePlan exchangePlan) {
+    var basePath = exchangePlan.getPath().getParent().toString();
+    return Paths.get(basePath, exchangePlan.getName(), "Ext", "Content.xml");
   }
 
   // Формат EDT

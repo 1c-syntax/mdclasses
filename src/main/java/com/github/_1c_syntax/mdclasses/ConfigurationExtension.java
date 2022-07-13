@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;

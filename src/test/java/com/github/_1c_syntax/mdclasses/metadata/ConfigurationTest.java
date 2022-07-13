@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,29 +21,30 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.Configuration;
 import com.github._1c_syntax.mdclasses.ConfigurationExtension;
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
-import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -107,7 +108,17 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.COMMAND, 3);
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 27);
+
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 10);
+    checkChildCount(configuration, MDOType.DIMENSION, 6);
+    checkChildCount(configuration, MDOType.RESOURCE, 3);
+    checkChildCount(configuration, MDOType.TABULAR_SECTION, 2);
+    checkChildCount(configuration, MDOType.RECALCULATION, 1);
+    checkChildCount(configuration, MDOType.ACCOUNTING_FLAG, 1);
+    checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 1);
+    checkChildCount(configuration, MDOType.COLUMN, 1);
+    checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 1);
+
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
@@ -121,7 +132,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -172,6 +183,7 @@ class ConfigurationTest {
     modulesByType = configuration.getModulesByMDORef("WSReference.WSСсылка");
     assertThat(modulesByType).isEmpty();
 
+    checkOrderedCommonModules(configuration);
   }
 
   @Test
@@ -251,7 +263,16 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.COMMAND, 2);
     checkChildCount(configuration, MDOType.FORM, 13);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 42);
+
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 21);
+    checkChildCount(configuration, MDOType.DIMENSION, 11);
+    checkChildCount(configuration, MDOType.RESOURCE, 6);
+    checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
+    checkChildCount(configuration, MDOType.RECALCULATION, 0);
+    checkChildCount(configuration, MDOType.ACCOUNTING_FLAG, 0);
+    checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 0);
+    checkChildCount(configuration, MDOType.COLUMN, 0);
+    checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 0);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 2);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 2);
@@ -362,12 +383,22 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(112);
+    assertThat(configuration.getChildren()).hasSize(113);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
     checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 34);
+
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 13);
+    checkChildCount(configuration, MDOType.DIMENSION, 8);
+    checkChildCount(configuration, MDOType.RESOURCE, 4);
+    checkChildCount(configuration, MDOType.TABULAR_SECTION, 3);
+    checkChildCount(configuration, MDOType.RECALCULATION, 1);
+    checkChildCount(configuration, MDOType.ACCOUNTING_FLAG, 1);
+    checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 1);
+    checkChildCount(configuration, MDOType.COLUMN, 1);
+    checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 1);
+
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_METHOD, 2);
@@ -381,7 +412,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -417,7 +448,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(111);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(112);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
@@ -436,6 +467,8 @@ class ConfigurationTest {
       .get().getMdoReference());
     assertThat(modulesByType).hasSize(1)
       .containsKey(ModuleType.CommonModule);
+
+    checkOrderedCommonModules(configuration);
   }
 
   @Test
@@ -473,7 +506,16 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.COMMAND, 2);
     checkChildCount(configuration, MDOType.FORM, 12);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 41);
+
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 20);
+    checkChildCount(configuration, MDOType.DIMENSION, 11);
+    checkChildCount(configuration, MDOType.RESOURCE, 6);
+    checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
+    checkChildCount(configuration, MDOType.RECALCULATION, 0);
+    checkChildCount(configuration, MDOType.ACCOUNTING_FLAG, 0);
+    checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 0);
+    checkChildCount(configuration, MDOType.COLUMN, 0);
+    checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 0);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 2);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 2);
@@ -658,7 +700,22 @@ class ConfigurationTest {
 
   private void checkChildCount(Configuration configuration, MDOType type, int count) {
     assertThat(configuration.getChildren())
-      .filteredOn(mdObjectBase -> mdObjectBase.getType() == type).hasSize(count);
+      .filteredOn(mdObjectBase -> mdObjectBase.getMdoType() == type).hasSize(count);
+  }
+
+  private static void checkOrderedCommonModules(Configuration configuration) {
+    var orderedCommonModules = configuration.getOrderedTopMDObjects().get(MDOType.COMMON_MODULE);
+    checkPosition(orderedCommonModules, "ПростойОбщийМодуль", 0);
+    checkPosition(orderedCommonModules, "ГлобальныйОбщийМодуль", 1);
+    checkPosition(orderedCommonModules, "ОбщийМодульВызовСервера", 2);
+    checkPosition(orderedCommonModules, "ОбщийМодульПовтИспВызов", 3);
+    checkPosition(orderedCommonModules, "ОбщийМодульПовтИспСеанс", 4);
+    checkPosition(orderedCommonModules, "ОбщийМодульПолныйеПрава", 5);
+  }
+
+  private static void checkPosition(List<AbstractMDObjectBase> children, String name, int position) {
+    var child = children.get(position);
+    assertThat(child.getName()).isEqualTo(name);
   }
 
 }

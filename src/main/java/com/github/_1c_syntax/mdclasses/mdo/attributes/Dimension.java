@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,22 +24,43 @@ package com.github._1c_syntax.mdclasses.mdo.attributes;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
-@Value
+@Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AttributeMetadata(
   type = AttributeType.DIMENSION,
   name = "Dimension",
+  nameRu = "Измерение",
   fieldNameEDT = "dimensions"
 )
 public class Dimension extends AbstractMDOAttribute {
+
+  /**
+   * Признак использования в итогах
+   * TODO: Для регистра сведений не применимо, но не противоречит логике
+   */
+  private boolean useInTotals = true;
+
+  /**
+   * Признак запрета незаполненного значения
+   */
+  private boolean denyIncompleteValues;
+
+  /**
+   * Признак ведущее
+   */
+  private boolean master;
+
   public Dimension(DesignerMDO designerMDO) {
     super(designerMDO);
+    useInTotals = designerMDO.getProperties().isUseInTotals();
+    denyIncompleteValues = designerMDO.getProperties().isDenyIncompleteValues();
+    master = designerMDO.getProperties().isMaster();
   }
 }

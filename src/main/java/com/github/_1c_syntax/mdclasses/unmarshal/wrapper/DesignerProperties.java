@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,17 +21,18 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
-import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -153,4 +154,22 @@ public class DesignerProperties {
   private UseMode autoUse = UseMode.DONT_USE;
   @XStreamAlias("DataSeparation")
   private DataSeparation dataSeparation = DataSeparation.DONT_USE;
+  @XStreamAlias("Indexing")
+  private IndexingType indexing = IndexingType.DONT_INDEX;
+
+  @XStreamAlias("DistributedInfoBase")
+  private boolean distributedInfoBase;
+
+  @XStreamAlias("IncludeConfigurationExtensions")
+  private boolean includeConfigurationExtensions;
+
+  @XStreamAlias("PasswordMode")
+  private boolean passwordMode;
+
+  @XStreamAlias("UseInTotals")
+  private boolean useInTotals = true;
+  @XStreamAlias("DenyIncompleteValues")
+  private boolean denyIncompleteValues;
+  @XStreamAlias("Master")
+  private boolean master;
 }

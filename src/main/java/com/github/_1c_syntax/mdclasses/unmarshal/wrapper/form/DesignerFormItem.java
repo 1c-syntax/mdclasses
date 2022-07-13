@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper.form;
 
+import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import lombok.Data;
@@ -52,4 +53,6 @@ public class DesignerFormItem {
   private DesignerFormItem viewStatusAddition;
   @XStreamAlias("Events")
   private DesignerEvents events;
+  @XStreamAlias("PasswordMode")
+  private BWAValue passwordMode = BWAValue.AUTO;
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,12 +21,12 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.AccessLevel;
@@ -83,6 +83,11 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
   @Setter(AccessLevel.NONE)
   private CommonAttribute commonAttribute;
 
+  /**
+   * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
+   */
+  private boolean passwordMode;
+
   public MDCommonAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
     autoUse = designerMDO.getProperties().getAutoUse();
@@ -92,6 +97,7 @@ public class MDCommonAttribute extends AbstractMDObjectBase {
       metadataItem -> designerContent.add(new UseContent(metadataItem.getMetadata(), metadataItem.getUse()))
     );
     setContent(designerContent);
+    setPasswordMode(designerMDO.getProperties().isPasswordMode());
   }
 
   protected void linkUsing(Map<String, AbstractMDObjectBase> allMDO) {

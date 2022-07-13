@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,49 +21,62 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
+import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
+import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.reader.common.converter.CompatibilityModeConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.DataCompositionSchemaConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.DataSetConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.QuerySourceConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.XdtoPackageDataConverter;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectComplex;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDSubsystem;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
-import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
+import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormItem;
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
+import com.github._1c_syntax.mdclasses.mdo.children.form.InputFieldExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
-import com.github._1c_syntax.mdclasses.mdo.support.DataSeparation;
-import com.github._1c_syntax.mdclasses.mdo.support.FormType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.MessageDirection;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.mdo.support.ValueType;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.AttributeConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.CompatibilityModeConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DataPathConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.DataSetConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerFormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerMDOConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.DesignerXRItemConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.EnumConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormEventConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.FormItemConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.converters.PairConverter;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerFormWrapper;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerRootWrapper;
@@ -211,7 +224,7 @@ public class XStreamFactory {
     xStream.processAnnotations(MDOModule.class);
     xStream.processAnnotations(ValueType.class);
     xStream.processAnnotations(DynamicListExtInfo.class);
-    xStream.processAnnotations(DataCompositionSchema.class);
+    xStream.processAnnotations(InputFieldExtInfo.class);
     xStream.processAnnotations(Recalculation.class);
     xStream.processAnnotations(TabularSection.class);
     xStream.processAnnotations(DesignerChildObjects.class);
@@ -223,17 +236,22 @@ public class XStreamFactory {
     xStream.processAnnotations(DesignerFormCommand.class);
     xStream.processAnnotations(DesignerFormCommands.class);
     xStream.processAnnotations(DesignerContentItem.class);
+    xStream.processAnnotations(DesignerExchangePlanContent.class);
 
     xStream.alias("Rights", RoleData.class);
-    xStream.alias("package", XDTOPackageData.class);
     xStream.alias("MetaDataObject", DesignerRootWrapper.class);
     xStream.alias("DataCompositionSchema", DataCompositionSchema.class);
+    xStream.alias("dataSet", DataCompositionSchema.DataSet.class);
+    xStream.alias("queryText", QuerySource.class);
+    xStream.alias("QueryText", QuerySource.class);
+    xStream.alias("package", XdtoPackageData.class);
 
     registerDesignerFormItemAliases(xStream);
     registerAbstractMDOAttributeAliases(xStream);
     registerSubsystemChildrenAliases(xStream);
     registerFormsChildrenAliases(xStream);
     registerSimpleTypeAliases(xStream);
+    registerExchangePlanItemMDOAliases(xStream);
   }
 
   private void registerClassesByMetadata(XStream xStream) {
@@ -309,6 +327,11 @@ public class XStreamFactory {
     xStream.aliasField("content", MDSubsystem.class, CHILDREN_FIELD_NAME);
   }
 
+  private void registerExchangePlanItemMDOAliases(XStream xStream) {
+    xStream.aliasField("Metadata", ExchangePlanItem.class, "mdObject");
+    xStream.aliasField("mdObject", ExchangePlanItem.class, "mdObject");
+  }
+
   private void registerFormsChildrenAliases(XStream xStream) {
     List<Class<?>> formClasses = new ArrayList<>();
     formClasses.add(FormData.class);
@@ -362,6 +385,10 @@ public class XStreamFactory {
     xStream.registerConverter(new EnumConverter<>(DataLockControlMode.class));
     xStream.registerConverter(new EnumConverter<>(DataSeparation.class));
     xStream.registerConverter(new EnumConverter<>(FormType.class));
+    xStream.registerConverter(new EnumConverter<>(DataSetType.class));
+    xStream.registerConverter(new EnumConverter<>(IndexingType.class));
+    xStream.registerConverter(new EnumConverter<>(AutoRecordType.class));
+    xStream.registerConverter(new EnumConverter<>(BWAValue.class));
     xStream.registerConverter(new AttributeConverter());
     xStream.registerConverter(new CompatibilityModeConverter());
     xStream.registerConverter(new PairConverter());
@@ -369,10 +396,13 @@ public class XStreamFactory {
     xStream.registerConverter(new FormEventConverter());
     xStream.registerConverter(new DesignerFormItemConverter());
     xStream.registerConverter(new FormItemConverter());
-    xStream.registerConverter(new DataSetConverter());
     xStream.registerConverter(new DesignerMDOConverter());
     xStream.registerConverter(new DesignerFormConverter());
     xStream.registerConverter(new DesignerXRItemConverter());
+    xStream.registerConverter(new DataCompositionSchemaConverter());
+    xStream.registerConverter(new DataSetConverter());
+    xStream.registerConverter(new QuerySourceConverter());
+    xStream.registerConverter(new XdtoPackageDataConverter());
   }
 
 }

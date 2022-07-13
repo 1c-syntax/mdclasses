@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,16 +21,16 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 
@@ -126,6 +126,7 @@ class MDConfigurationTest extends AbstractMDOTest {
 
     checkSubsystems(configuration, 5);
     checkCommonAttributes(configuration);
+    checkExchangePlans(configuration);
   }
 
   @Test
@@ -190,7 +191,7 @@ class MDConfigurationTest extends AbstractMDOTest {
     assertThat(configuration.getObjectBelonging()).isEqualTo(ObjectBelonging.OWN);
     assertThat(configuration.getNamePrefix()).isEmpty();
 
-    assertThat(configuration.getChildren()).hasSize(61)
+    assertThat(configuration.getChildren()).hasSize(62)
       .allMatch(Either::isRight);
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 1);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 1);
@@ -237,18 +238,19 @@ class MDConfigurationTest extends AbstractMDOTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
     checkCommonAttributes(configuration);
+    checkExchangePlans(configuration);
   }
 
   private void checkChildCount(MDConfiguration configuration, MDOType type, int count) {
     assertThat(configuration.getChildren())
       .extracting(Either::get)
-      .filteredOn(mdObjectBase -> mdObjectBase.getType() == type).hasSize(count);
+      .filteredOn(mdObjectBase -> mdObjectBase.getMdoType() == type).hasSize(count);
   }
 
   private void checkSubsystems(MDConfiguration configuration, int count) {
     Map<MDSubsystem, List<AbstractMDObjectBase>> subsystems = new HashMap<>();
     configuration.getChildren().stream().filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.SUBSYSTEM)
+      .filter(mdo -> mdo.getMdoType() == MDOType.SUBSYSTEM)
       .forEach(subsystem -> getAllSubsystems((MDSubsystem) subsystem, subsystems));
 
     assertThat(subsystems).hasSize(count);
@@ -287,7 +289,7 @@ class MDConfigurationTest extends AbstractMDOTest {
   private void checkCommonAttributes(MDConfiguration configuration) {
     var commonAttributes = configuration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .filter(mdo -> mdo.getMdoType() == MDOType.COMMON_ATTRIBUTE)
       .map(MDCommonAttribute.class::cast)
       .collect(Collectors.toList());
 
@@ -301,4 +303,17 @@ class MDConfigurationTest extends AbstractMDOTest {
             && attribute.equals(commonAttribute.getCommonAttribute())));
     });
   }
+
+  private void checkExchangePlans(MDConfiguration configuration) {
+    var exchangePlans = configuration.getChildren().stream()
+      .filter(Either::isRight).map(Either::get)
+      .filter(mdo -> mdo.getMdoType() == MDOType.EXCHANGE_PLAN)
+      .map(MDExchangePlan.class::cast)
+      .collect(Collectors.toList());
+    assertThat(exchangePlans).hasSize(1);
+    exchangePlans.forEach(exchangePlan ->
+      assertThat(exchangePlan.getContent())
+        .anyMatch(exchangePlanItem -> exchangePlanItem.getMdObject().isRight()));
+  }
+
 }

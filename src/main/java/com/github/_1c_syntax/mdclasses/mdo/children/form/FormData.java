@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,6 +25,7 @@ import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerChildItems;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerForm;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormItem;
+import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -122,6 +123,14 @@ public class FormData {
       formItem.setDataPath(dataPath);
     }
     formItem.setType(designerFormItem.getType());
+
+    if (designerFormItem.getType().equals(MDOUtils.TYPE_INPUT_FIELD)) {
+      var extInfo = new InputFieldExtInfo();
+      extInfo.setPasswordMode(designerFormItem.getPasswordMode());
+      formItem.setExtInfo(extInfo);
+    } else {
+      formItem.setExtInfo(new ExtInfo());
+    }
 
     addDesignerFormItem(designerFormItem.getContextMenu(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());

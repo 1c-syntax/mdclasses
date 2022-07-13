@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,14 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
@@ -169,11 +169,11 @@ abstract class AbstractMDOTest {
       .isInstanceOf(clazz).extracting(AbstractMDObjectBase::getName)
       .isEqualTo(name);
 
-    assertThat(mdo.getType()).isEqualTo(mdoType);
+    assertThat(mdo.getMdoType()).isEqualTo(mdoType);
 
     assertThat(mdo.getUuid()).isEqualTo(uuid);
     assertThat(mdo.getMdoReference())
-      .isNotNull().extracting(MDOReference::getType)
+      .isNotNull().extracting(MdoReference::getType)
       .isEqualTo(mdoType);
     assertThat(mdo.getMdoReference().getMdoRef())
       .isEqualTo(mdoType.getName() + "." + name);
@@ -260,7 +260,7 @@ abstract class AbstractMDOTest {
    */
   protected void checkAttributes(List<AbstractMDOAttribute> children,
                                  int count,
-                                 MDOReference parentMdoReference,
+                                 MdoReference parentMdoReference,
                                  AttributeType... types) {
     assertThat(children).hasSize(count);
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
@@ -271,10 +271,6 @@ abstract class AbstractMDOTest {
     assertThat(children).allMatch(mdoAttribute -> mdoAttribute.getKind() == AttributeKind.CUSTOM);
 
     children.forEach(attribute -> {
-      assertThat(attribute.getMdoReference())
-        .isNotNull()
-        .extracting(MDOReference::getType)
-        .isEqualTo(MDOType.ATTRIBUTE);
       assertThat(attribute.getMdoReference().getMdoRef())
         .startsWith(parentMdoReference.getMdoRef())
         .endsWith("." + attribute.getMetadataName() + "." + attribute.getName());
@@ -312,14 +308,14 @@ abstract class AbstractMDOTest {
   /**
    * Проверка корректности заполнения дочерних элементов
    */
-  protected void checkChild(MDOReference parentMdoReference,
+  protected void checkChild(MdoReference parentMdoReference,
                             MDOType type,
                             ModuleType moduleType,
                             AbstractMDObjectBase child) {
     checkNoChildren(child);
     assertThat(child.getMdoReference())
       .isNotNull()
-      .extracting(MDOReference::getType)
+      .extracting(MdoReference::getType)
       .isEqualTo(type);
     assertThat(child.getMdoReference().getMdoRef())
       .startsWith(parentMdoReference.getMdoRef())

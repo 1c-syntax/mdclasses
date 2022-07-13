@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,10 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateData;
-import com.github._1c_syntax.mdclasses.mdo.children.template.TemplateType;
+import com.github._1c_syntax.bsl.mdo.Template;
+import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
+import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
+import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -33,6 +37,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Data
@@ -46,16 +51,17 @@ import java.nio.file.Path;
   groupName = "CommonTemplates",
   groupNameRu = "ОбщиеМакеты"
 )
-public class MDCommonTemplate extends AbstractMDObjectBase implements MDOTemplate {
+public class MDCommonTemplate extends AbstractMDObjectBase implements Template {
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
    */
   @XStreamAlias("templateType")
   private TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
+
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  private TemplateData<?> templateData;
+  private TemplateData templateData = EmptyTemplateData.getEmpty();
 
   /**
    * Путь к самому файлу макета
@@ -71,6 +77,8 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements MDOTemplat
   public void supplement() {
     super.supplement();
     templateDataPath = MDOPathUtils.getTemplateDataPath(this);
-    templateData = TemplateData.create(templateType, templateDataPath);
+    if (templateType == TemplateType.DATA_COMPOSITION_SCHEME && Files.exists(templateDataPath)) {
+      templateData = (DataCompositionSchema) XStreamFactory.fromXML(templateDataPath.toFile());
+    }
   }
 }

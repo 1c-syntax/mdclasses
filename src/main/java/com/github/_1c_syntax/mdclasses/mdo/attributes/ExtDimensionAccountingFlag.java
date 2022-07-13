@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -36,6 +36,7 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.EXT_DIMENSION_ACCOUNTING_FLAG,
   name = "ExtDimensionAccountingFlag",
+  nameRu = "ПризнакУчетаСубконто",
   fieldNameEDT = "extDimensionAccountingFlags"
 )
 public class ExtDimensionAccountingFlag extends AbstractMDOAttribute {

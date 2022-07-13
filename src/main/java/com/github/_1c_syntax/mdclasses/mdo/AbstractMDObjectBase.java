@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,10 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -34,15 +38,48 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Базовый класс всех типов и дочерних объектов 1С
  */
 @Data
-@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
-@ToString(callSuper = true, onlyExplicitlyIncluded = true)
+@ToString(of = {"name", "uuid"})
+@EqualsAndHashCode(of = {"name", "uuid"})
 @NoArgsConstructor
-public abstract class AbstractMDObjectBase extends AbstractMDO {
+public abstract class AbstractMDObjectBase implements MDObject {
+
+  /**
+   * уникальный идентификатор объекта
+   */
+  @XStreamAsAttribute
+  protected String uuid = "";
+
+  /**
+   * Имя объекта
+   */
+  protected String name = "";
+
+  /**
+   * Синонимы объекта
+   */
+  @XStreamImplicit(itemFieldName = "synonym")
+  protected List<LanguageContent> synonyms = Collections.emptyList();
+
+  /**
+   * Строка с комментарием объекта
+   */
+  protected String comment = "";
+
+  /**
+   * MDO-Ссылка на объект
+   */
+  protected MdoReference mdoReference;
+
+  /**
+   * Принадлежность объекта конфигурации (собственный или заимствованный)
+   */
+  protected ObjectBelonging objectBelonging = ObjectBelonging.OWN;
 
   /**
    * Путь к файлу объекта
@@ -60,22 +97,14 @@ public abstract class AbstractMDObjectBase extends AbstractMDO {
    * @param designerMDO - Служебный объект, содержащий данные в формате конфигуратора.
    */
   protected AbstractMDObjectBase(DesignerMDO designerMDO) {
-    super(designerMDO);
-  }
+    uuid = designerMDO.getUuid();
+    name = designerMDO.getProperties().getName();
+    comment = designerMDO.getProperties().getComment();
+    objectBelonging = designerMDO.getProperties().getObjectBelonging();
 
-  @Override
-  public MDOType getType() {
-    return MetadataStorage.get(getClass()).type();
-  }
-
-  @Override
-  public String getMetadataName() {
-    return MetadataStorage.get(getClass()).name();
-  }
-
-  @Override
-  public String getMetadataNameRu() {
-    return MetadataStorage.get(getClass()).nameRu();
+    synonyms = designerMDO.getProperties().getSynonyms().stream()
+      .map(synonym -> new LanguageContent(synonym.getLanguage(), synonym.getContent()))
+      .collect(Collectors.toList());
   }
 
   /**
@@ -84,7 +113,7 @@ public abstract class AbstractMDObjectBase extends AbstractMDO {
    */
   public void supplement() {
     if (getMdoReference() == null) {
-      setMdoReference(new MDOReference(this));
+      setMdoReference(MdoReference.create(getMdoType(), getName()));
     }
   }
 
@@ -94,7 +123,7 @@ public abstract class AbstractMDObjectBase extends AbstractMDO {
    */
   public void supplement(AbstractMDObjectBase parent) {
     if (getMdoReference() == null) {
-      setMdoReference(new MDOReference(this, parent));
+      setMdoReference(MdoReference.create(parent.getMdoReference(), getMdoType(), getName()));
     }
   }
 
@@ -108,5 +137,13 @@ public abstract class AbstractMDObjectBase extends AbstractMDO {
       includedSubsystems = new ArrayList<>();
     }
     includedSubsystems.add(subsystem);
+  }
+
+  /**
+   * @deprecated Оставлен для совместимости со старой версией для пользователей библиотеки.
+   */
+  @Deprecated(since = "0.11.0", forRemoval = true)
+  public MDOType getType() {
+    return getMdoType();
   }
 }

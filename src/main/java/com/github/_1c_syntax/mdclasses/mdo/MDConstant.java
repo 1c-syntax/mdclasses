@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,7 +41,13 @@ import lombok.ToString;
   groupNameRu = "Константы"
 )
 public class MDConstant extends AbstractMDObjectBSL {
+  /**
+   * Режим пароля. Только для констант с типом `Строка`
+   */
+  private boolean passwordMode;
+
   public MDConstant(DesignerMDO designerMDO) {
     super(designerMDO);
+    setPasswordMode(designerMDO.getProperties().isPasswordMode());
   }
 }

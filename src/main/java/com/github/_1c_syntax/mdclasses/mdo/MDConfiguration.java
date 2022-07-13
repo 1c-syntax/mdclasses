@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,15 +21,15 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
@@ -190,6 +190,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     var localChildren = getAllMDO();
     linkChildAndSubsystem(localChildren);
     linkCommonAttributesAndUsing(localChildren);
+    linkExchangePlanAndMDO(localChildren);
 
     setDefaultConfigurationLanguage();
   }
@@ -249,7 +250,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.SUBSYSTEM)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.SUBSYSTEM)
       .map(MDSubsystem.class::cast)
       .forEach(subsystem -> subsystem.linkToChildren(allMDO));
   }
@@ -258,9 +259,18 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     children.stream()
       .filter(Either::isRight)
       .map(Either::get)
-      .filter((AbstractMDObjectBase mdo) -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.COMMON_ATTRIBUTE)
       .map(MDCommonAttribute.class::cast)
       .forEach(commonAttribute -> commonAttribute.linkUsing(allMDO));
+  }
+
+  private void linkExchangePlanAndMDO(Map<String, AbstractMDObjectBase> allMDO) {
+    children.stream()
+      .filter(Either::isRight)
+      .map(Either::get)
+      .filter((AbstractMDObjectBase mdo) -> mdo.getMdoType() == MDOType.EXCHANGE_PLAN)
+      .map(MDExchangePlan.class::cast)
+      .forEach(exchangePlan -> exchangePlan.linkToMDO(allMDO));
   }
 
   private Map<String, AbstractMDObjectBase> getAllMDO() {

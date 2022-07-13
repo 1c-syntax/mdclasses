@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
@@ -35,8 +37,6 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.Command;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.children.Template;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
@@ -100,9 +100,6 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
 
   protected AbstractMDObjectComplex(DesignerMDO designerMDO) {
     super(designerMDO);
-
-    // формирование mdo ссылки, которая будет использована в дочерних объектах
-    mdoReference = new MDOReference(this);
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
     MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
@@ -190,9 +187,9 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     setAttributes(computedAttributes);
   }
 
-  private static <T extends AbstractMDO> List<T> readDesignerMDOChildren(Path childrenFolder,
-                                                                         Class<T> childClass,
-                                                                         List<String> childNames) {
+  private static <T extends AbstractMDObjectBase> List<T> readDesignerMDOChildren(Path childrenFolder,
+                                                                                  Class<T> childClass,
+                                                                                  List<String> childNames) {
     List<T> children = new ArrayList<>();
     getMDOFilesInFolder(childrenFolder, childNames)
       .forEach((Path mdoFile) -> {

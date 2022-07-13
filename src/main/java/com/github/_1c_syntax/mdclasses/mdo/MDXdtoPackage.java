@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,17 +21,18 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
+import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Data
@@ -60,7 +61,7 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
   /**
    * Содержимое xsd-схемы пакета
    */
-  private XDTOPackageData data;
+  private XdtoPackageData data;
 
   public MDXdtoPackage(DesignerMDO designerMDO) {
     super(designerMDO);
@@ -71,6 +72,8 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
   public void supplement() {
     super.supplement();
     packageDataPath = MDOPathUtils.getPackageDataPath(this);
-    MDOFactory.readXDTOPackageData(packageDataPath).ifPresent(this::setData);
+    if (Files.exists(packageDataPath)) {
+      data = (XdtoPackageData) XStreamFactory.fromXML(packageDataPath.toFile());
+    }
   }
 }

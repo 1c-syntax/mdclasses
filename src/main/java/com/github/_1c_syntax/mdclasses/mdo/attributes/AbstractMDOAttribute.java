@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,11 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDChild;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
-import com.github._1c_syntax.mdclasses.mdo.support.AttributeKind;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,33 +42,35 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
+public abstract class AbstractMDOAttribute extends AbstractMDObjectBase implements Attribute, MDChild {
 
   /**
    * Вид атрибута
    */
   private AttributeKind kind = AttributeKind.CUSTOM;
 
+  /**
+   * Вариант индексирования реквизита
+   */
+  private IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /**
+   * Режим пароля. Только для аттрибутов с типом `Строка`
+   */
+  private boolean passwordMode;
+
   protected AbstractMDOAttribute(DesignerMDO designerMDO) {
     super(designerMDO);
-  }
-
-  @Override
-  public MDOType getType() {
-    return MDOType.ATTRIBUTE;
-  }
-
-  @Override
-  public String getMetadataName() {
-    return MetadataStorage.getAttribute(getClass()).name();
-  }
-
-  @Override
-  public String getMetadataNameRu() {
-    return getMetadataName();
+    indexing = designerMDO.getProperties().getIndexing();
+    passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
   public AttributeType getAttributeType() {
     return MetadataStorage.getAttribute(getClass()).type();
+  }
+
+  @Override
+  public MdoReference getOwner() {
+    return MdoReference.EMPTY;
   }
 }

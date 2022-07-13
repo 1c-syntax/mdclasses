@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,6 +46,11 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
 
+
+	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    assertThat(dimension.isDenyIncompleteValues()).isTrue();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
   }
 
   @Override
@@ -59,6 +65,12 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+
+	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    assertThat(dimension.isDenyIncompleteValues()).isFalse();
+    assertThat(dimension.isMaster()).isFalse();
+    assertThat(dimension.isUseInTotals()).isTrue();
+
   }
 
 }

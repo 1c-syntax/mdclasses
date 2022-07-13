@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.mdclasses.common.CompatibilityMode;
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.supconf.ParseSupportData;
+import com.github._1c_syntax.bsl.supconf.SupportConfiguration;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
@@ -30,18 +41,8 @@ import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
 import com.github._1c_syntax.mdclasses.mdo.MDRole;
-import com.github._1c_syntax.mdclasses.mdo.support.ApplicationRunMode;
-import com.github._1c_syntax.mdclasses.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOReference;
-import com.github._1c_syntax.mdclasses.mdo.support.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
-import com.github._1c_syntax.mdclasses.mdo.support.UseMode;
-import com.github._1c_syntax.mdclasses.supportconf.ParseSupportData;
-import com.github._1c_syntax.mdclasses.supportconf.SupportConfiguration;
-import com.github._1c_syntax.mdclasses.supportconf.SupportVariant;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
@@ -57,6 +58,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -176,7 +178,11 @@ public class Configuration {
   /**
    * Дочерние объекты конфигурации с MDO ссылками на них
    */
-  private Map<MDOReference, AbstractMDObjectBase> childrenByMdoRef;
+  private Map<MdoReference, AbstractMDObjectBase> childrenByMdoRef;
+  /**
+   * Упорядоченный список объектов метаданных верхнего уровня в разрезе типов метаданных
+   */
+  private Map<MDOType, List<AbstractMDObjectBase>> orderedTopMDObjects;
   /**
    * Дочерние общие модули
    */
@@ -205,6 +211,7 @@ public class Configuration {
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
+    orderedTopMDObjects = Collections.emptyMap();
     roles = Collections.emptyList();
     copyrights = Collections.emptyList();
     detailedInformation = Collections.emptyList();
@@ -228,9 +235,12 @@ public class Configuration {
   }
 
   protected Configuration(MDConfiguration mdoConfiguration, ConfigurationSource source, Path path) {
+    var allChildren = getAllChildren(mdoConfiguration);
+
     configurationSource = source;
-    children = getAllChildren(mdoConfiguration);
+    children = new HashSet<>(allChildren);
     childrenByMdoRef = new HashMap<>();
+    orderedTopMDObjects = getOrderedTopObjectsByChildren(allChildren);
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
     roles = new ArrayList<>();
@@ -392,15 +402,14 @@ public class Configuration {
    * @param mdoRef Ссылка на объект
    * @return Соответствие ссылки на файл и его тип
    */
-  public Map<ModuleType, URI> getModulesByMDORef(MDOReference mdoRef) {
+  public Map<ModuleType, URI> getModulesByMDORef(MdoReference mdoRef) {
     return getModulesByMDORef(mdoRef.getMdoRef());
   }
 
   private Map<String, Map<SupportConfiguration, SupportVariant>> getSupportMap() {
     var fileParentConfiguration = MDOPathUtils.getParentConfigurationsPath(configurationSource, rootPath);
     if (fileParentConfiguration.isPresent() && fileParentConfiguration.get().toFile().exists()) {
-      var supportData = new ParseSupportData(fileParentConfiguration.get());
-      return supportData.getSupportMap();
+      return ParseSupportData.readFull(fileParentConfiguration.get());
     }
     return Collections.emptyMap();
   }
@@ -426,20 +435,27 @@ public class Configuration {
     modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
-  private static Set<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
-    Set<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
+  private static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
+    List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
-      .collect(Collectors.toSet());
+      .collect(Collectors.toList());
 
     allChildren.addAll(allChildren.stream()
       .filter(MDOHasChildren.class::isInstance)
       .map(MDOHasChildren.class::cast)
       .map(MDOHasChildren::getChildren)
       .flatMap(Collection::stream)
-      .collect(Collectors.toSet()));
+      .collect(Collectors.toList()));
 
     allChildren.add(mdoConfiguration);
     return allChildren;
+  }
+
+  private static Map<MDOType, List<AbstractMDObjectBase>> getOrderedTopObjectsByChildren(
+    List<AbstractMDObjectBase> children) {
+
+    return children.stream().collect(Collectors.groupingBy(AbstractMDObjectBase::getMdoType));
+
   }
 
 }

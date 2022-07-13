@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,20 +21,22 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
-import com.github._1c_syntax.mdclasses.common.ConfigurationSource;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.children.XDTOPackageData;
+import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
-import com.github._1c_syntax.mdclasses.mdo.children.template.DataCompositionSchema;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
-import com.github._1c_syntax.mdclasses.mdo.support.ScriptVariant;
 import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerExchangePlanContent;
 import lombok.experimental.UtilityClass;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -48,7 +50,7 @@ public class MDOFactory {
    */
   public Optional<AbstractMDObjectBase> readMDOConfiguration(ConfigurationSource configurationSource, Path rootPath) {
     return MDOPathUtils.getMDOPath(configurationSource, rootPath,
-      MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+        MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
       .flatMap(MDOFactory::readMDObject);
   }
 
@@ -94,14 +96,6 @@ public class MDOFactory {
     return Optional.of(value);
   }
 
-  public Optional<XDTOPackageData> readXDTOPackageData(Path path) {
-    if (Files.notExists(path)) {
-      return Optional.empty();
-    }
-
-    return Optional.of((XDTOPackageData) XStreamFactory.fromXML(path.toFile()));
-  }
-
   /**
    * Читает данные роли из файла Rights
    *
@@ -117,18 +111,18 @@ public class MDOFactory {
   }
 
   /**
-   * Читает макет со схемой компоновки данных
+   * Читает состав плана обмена для формата конфигуратора
    *
-   * @param path - путь к файлу макета
-   * @return {@code Optional} POJO представление данных макета
+   * @param path Путь к файлу с составом плана обмена
+   * @return Состав плана обмена
    */
-  public Optional<DataCompositionSchema> readDataCompositionSchema(Path path) {
+  public List<ExchangePlanItem> readExchangeContext(Path path) {
     if (Files.notExists(path)) {
-      return Optional.empty();
+      return Collections.emptyList();
     }
-    var value = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
-    value.fillPlainDataSets();
-    return Optional.of(value);
+
+    var value = (DesignerExchangePlanContent) XStreamFactory.fromXML(path.toFile());
+    return value.getContent();
   }
 
   /**

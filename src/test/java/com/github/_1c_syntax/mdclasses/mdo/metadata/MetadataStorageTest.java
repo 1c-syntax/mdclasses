@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -35,15 +35,15 @@ class MetadataStorageTest {
     var meta = MetadataStorage.getStorage();
     assertThat(meta)
       .isNotEmpty()
-      .hasSize(54);
+      .hasSize(55);
 
     // проверка на ошибки и дубли
     assertThat(meta.values().stream().map(Metadata::type).distinct()).hasSize(meta.size());
     assertThat(meta.values().stream().map(Metadata::name).distinct()).hasSize(meta.size());
     assertThat(meta.values().stream().map(Metadata::nameRu).distinct()).hasSize(meta.size());
-    assertThat(meta.values().stream().map(Metadata::groupName).distinct()).hasSize(50);
-    assertThat(meta.values().stream().map(Metadata::groupNameRu).distinct()).hasSize(50);
-    assertThat(meta.values().stream().map(Metadata::xmlScope).filter(XMLScope.ALL::equals)).hasSize(53);
+    assertThat(meta.values().stream().map(Metadata::groupName).distinct()).hasSize(55);
+    assertThat(meta.values().stream().map(Metadata::groupNameRu).distinct()).hasSize(55);
+    assertThat(meta.values().stream().map(Metadata::xmlScope).filter(XMLScope.ALL::equals)).hasSize(54);
     assertThat(meta.values().stream().map(Metadata::xmlScope).filter(XMLScope.DESIGNER::equals)).hasSize(1);
     assertThat(meta.values().stream().map(Metadata::xmlScope).filter(XMLScope.EDT::equals)).isEmpty();
   }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,20 +21,28 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.metadata;
 
+import com.github._1c_syntax.bsl.types.MDOType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Типы атрибутов (реквизитов)
  */
+@AllArgsConstructor
 public enum AttributeType {
-  ATTRIBUTE,
-  DIMENSION,
-  RESOURCE,
-  TABULAR_SECTION,
-  RECALCULATION,
-  ACCOUNTING_FLAG,
-  EXT_DIMENSION_ACCOUNTING_FLAG,
-  COLUMN,
-  ADDRESSING_ATTRIBUTE,
-  UNKNOWN,
-  COMMON_ATTRIBUTE
+  ATTRIBUTE(MDOType.ATTRIBUTE),
+  DIMENSION(MDOType.DIMENSION),
+  RESOURCE(MDOType.RESOURCE),
+  TABULAR_SECTION(MDOType.TABULAR_SECTION),
+  RECALCULATION(MDOType.RECALCULATION),
+  ACCOUNTING_FLAG(MDOType.ACCOUNTING_FLAG),
+  EXT_DIMENSION_ACCOUNTING_FLAG(MDOType.EXT_DIMENSION_ACCOUNTING_FLAG),
+  COLUMN(MDOType.COLUMN),
+  ADDRESSING_ATTRIBUTE(MDOType.TASK_ADDRESSING_ATTRIBUTE),
+  UNKNOWN(MDOType.UNKNOWN),
+  COMMON_ATTRIBUTE(MDOType.COMMON_ATTRIBUTE);
+
+  @Getter
+  private final MDOType mdoType;
 }
 

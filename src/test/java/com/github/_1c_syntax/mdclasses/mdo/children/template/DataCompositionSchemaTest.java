@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright © 2019 - 2022
+ * Copyright (c) 2019 - 2022
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
-import com.github._1c_syntax.mdclasses.mdo.support.DataSetType;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
+import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -39,17 +40,14 @@ class DataCompositionSchemaTest {
   @Test
   void testEdt() {
     var path = Path.of("src/test/resources/metadata/skd/edt/src/Reports/Отчет1/Templates/СКД/Template.dcs");
-    var dataCompositionSchema =
-      MDOFactory.readDataCompositionSchema(path).get();
+    var dataCompositionSchema = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
     checkDataCompositionSchema(dataCompositionSchema);
   }
 
   @Test
   void testOriginal() {
     var path = Path.of("src/test/resources/metadata/skd/original/Reports/Отчет1/Templates/СКД/Ext/Template.xml");
-    var dataCompositionSchema =
-      MDOFactory.readDataCompositionSchema(path).get();
-    assertThat(dataCompositionSchema).isNotNull();
+    var dataCompositionSchema = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
     checkDataCompositionSchema(dataCompositionSchema);
   }
 
