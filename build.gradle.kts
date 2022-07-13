@@ -39,7 +39,7 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.4.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "904b9172")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.3.0")
     implementation("io.github.1c-syntax", "supportconf", "0.1.1")
 
     // быстрый поиск классов
