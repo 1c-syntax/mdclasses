@@ -169,7 +169,7 @@ abstract class AbstractMDOTest {
       .isInstanceOf(clazz).extracting(AbstractMDObjectBase::getName)
       .isEqualTo(name);
 
-    assertThat(mdo.getType()).isEqualTo(mdoType);
+    assertThat(mdo.getMdoType()).isEqualTo(mdoType);
 
     assertThat(mdo.getUuid()).isEqualTo(uuid);
     assertThat(mdo.getMdoReference())

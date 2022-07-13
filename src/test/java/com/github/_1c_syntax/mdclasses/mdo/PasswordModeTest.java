@@ -62,7 +62,7 @@ class PasswordModeTest {
 
   private void checkInformationRegister(Configuration configuration) {
     var optionalInformationRegister = configuration.getChildren().stream()
-      .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.INFORMATION_REGISTER
+      .filter(abstractMDObjectBase -> abstractMDObjectBase.getMdoType() == MDOType.INFORMATION_REGISTER
         && abstractMDObjectBase.getName().equals("КакойТоРегистр"))
       .findAny();
     assertThat(optionalInformationRegister).isPresent();
@@ -94,7 +94,7 @@ class PasswordModeTest {
 
   private void checkConstant(Configuration configuration) {
     var optionalConstant = configuration.getChildren().stream()
-      .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.CONSTANT
+      .filter(abstractMDObjectBase -> abstractMDObjectBase.getMdoType() == MDOType.CONSTANT
         && abstractMDObjectBase.getName().equals("Пароль"))
       .findAny();
     assertThat(optionalConstant).isPresent();
@@ -105,7 +105,7 @@ class PasswordModeTest {
 
   private void checkCommonAttribute(Configuration configuration) {
     var optionalCommonAttribute = configuration.getChildren().stream()
-      .filter(abstractMDObjectBase -> abstractMDObjectBase.getType() == MDOType.COMMON_ATTRIBUTE
+      .filter(abstractMDObjectBase -> abstractMDObjectBase.getMdoType() == MDOType.COMMON_ATTRIBUTE
         && abstractMDObjectBase.getName().equals("ОбщийРеквизит1"))
       .findAny();
     assertThat(optionalCommonAttribute).isPresent();

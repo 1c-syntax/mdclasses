@@ -45,8 +45,8 @@ class MDXdtoPackageTest extends AbstractMDOTest {
     assertThat(xdto.getData()).isNotNull();
     assertThat(xdto.getData().getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
     assertThat(xdto.getData().getImports()).hasSize(2)
-      .anyMatch(xdtoImport -> "http://www.1c.ru/SSL/Exchange/Message".equals(xdtoImport.getNamespace()))
-      .anyMatch(xdtoImport -> "http://www.1c.ru/SSL/Exchange/Message2".equals(xdtoImport.getNamespace()));
+      .anyMatch("http://www.1c.ru/SSL/Exchange/Message"::equals)
+      .anyMatch("http://www.1c.ru/SSL/Exchange/Message2"::equals);
 
     assertThat(xdto.getData().getValueTypes()).hasSize(278)
       .anyMatch(xdtoValueType -> xdtoValueType.getName().equals("ТипКоличество"))
@@ -94,7 +94,7 @@ class MDXdtoPackageTest extends AbstractMDOTest {
     assertThat(xdto.getData()).isNotNull();
     assertThat(xdto.getData().getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
     assertThat(xdto.getData().getImports()).hasSize(1)
-      .anyMatch(xdtoImport -> "http://www.1c.ru/SSL/Exchange/Message".equals(xdtoImport.getNamespace()));
+      .anyMatch("http://www.1c.ru/SSL/Exchange/Message"::equals);
 
     assertThat(xdto.getData().getValueTypes()).hasSize(278)
       .anyMatch(xdtoValueType -> xdtoValueType.getName().equals("ТипКоличество"))

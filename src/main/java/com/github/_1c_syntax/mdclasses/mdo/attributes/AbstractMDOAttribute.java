@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
@@ -40,7 +42,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
+public abstract class AbstractMDOAttribute extends AbstractMDObjectBase implements Attribute, MDChild {
 
   /**
    * Вид атрибута
@@ -63,22 +65,12 @@ public abstract class AbstractMDOAttribute extends AbstractMDObjectBase {
     passwordMode = designerMDO.getProperties().isPasswordMode();
   }
 
-  @Override
-  public MDOType getType() {
-    return getAttributeType().getMdoType();
-  }
-
-  @Override
-  public String getMetadataName() {
-    return MetadataStorage.getAttribute(getClass()).name();
-  }
-
-  @Override
-  public String getMetadataNameRu() {
-    return MetadataStorage.getAttribute(getClass()).nameRu();
-  }
-
   public AttributeType getAttributeType() {
     return MetadataStorage.getAttribute(getClass()).type();
+  }
+
+  @Override
+  public MdoReference getOwner() {
+    return MdoReference.EMPTY;
   }
 }

@@ -244,13 +244,13 @@ class MDConfigurationTest extends AbstractMDOTest {
   private void checkChildCount(MDConfiguration configuration, MDOType type, int count) {
     assertThat(configuration.getChildren())
       .extracting(Either::get)
-      .filteredOn(mdObjectBase -> mdObjectBase.getType() == type).hasSize(count);
+      .filteredOn(mdObjectBase -> mdObjectBase.getMdoType() == type).hasSize(count);
   }
 
   private void checkSubsystems(MDConfiguration configuration, int count) {
     Map<MDSubsystem, List<AbstractMDObjectBase>> subsystems = new HashMap<>();
     configuration.getChildren().stream().filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.SUBSYSTEM)
+      .filter(mdo -> mdo.getMdoType() == MDOType.SUBSYSTEM)
       .forEach(subsystem -> getAllSubsystems((MDSubsystem) subsystem, subsystems));
 
     assertThat(subsystems).hasSize(count);
@@ -289,7 +289,7 @@ class MDConfigurationTest extends AbstractMDOTest {
   private void checkCommonAttributes(MDConfiguration configuration) {
     var commonAttributes = configuration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.COMMON_ATTRIBUTE)
+      .filter(mdo -> mdo.getMdoType() == MDOType.COMMON_ATTRIBUTE)
       .map(MDCommonAttribute.class::cast)
       .collect(Collectors.toList());
 
@@ -307,7 +307,7 @@ class MDConfigurationTest extends AbstractMDOTest {
   private void checkExchangePlans(MDConfiguration configuration) {
     var exchangePlans = configuration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
-      .filter(mdo -> mdo.getType() == MDOType.EXCHANGE_PLAN)
+      .filter(mdo -> mdo.getMdoType() == MDOType.EXCHANGE_PLAN)
       .map(MDExchangePlan.class::cast)
       .collect(Collectors.toList());
     assertThat(exchangePlans).hasSize(1);

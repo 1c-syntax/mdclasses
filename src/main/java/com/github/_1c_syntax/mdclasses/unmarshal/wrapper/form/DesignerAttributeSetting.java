@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal.wrapper.form;
 
-import com.github._1c_syntax.mdclasses.mdo.support.QuerySource;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.QuerySourceConverter;
+import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -45,6 +43,5 @@ public class DesignerAttributeSetting {
   @XStreamAlias("ManualQuery")
   private boolean customQuery;
   @XStreamAlias("QueryText")
-  @XStreamConverter(QuerySourceConverter.class)
   private QuerySource query;
 }
