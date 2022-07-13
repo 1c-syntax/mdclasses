@@ -36,6 +36,7 @@ loadScripts(document, 'script');</script>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
@@ -74,13 +75,15 @@ loadScripts(document, 'script');</script>
 <h1 title="Class MDLanguage" class="title">Class MDLanguage</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="AbstractMDO.html" title="class in com.github._1c_syntax.mdclasses.mdo">com.github._1c_syntax.mdclasses.mdo.AbstractMDO</a>
 <div class="inheritance"><a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase</a>
 <div class="inheritance">com.github._1c_syntax.mdclasses.mdo.MDLanguage</div>
 </div>
 </div>
-</div>
 <section class="description">
+<dl class="notes">
+<dt>All Implemented Interfaces:</dt>
+<dd><code><a href="../../bsl/mdo/MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a></code>, <code><a href="../../bsl/mdo/MDObject.html" title="interface in com.github._1c_syntax.bsl.mdo">MDObject</a></code></dd>
+</dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MDLanguage</span>
 <span class="extends-implements">extends <a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></span></div>
@@ -107,10 +110,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="fields.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase">Fields inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></h3>
-<code><a href="AbstractMDObjectBase.html#includedSubsystems">includedSubsystems</a>, <a href="AbstractMDObjectBase.html#path">path</a></code></div>
-<div class="inherited-list">
-<h3 id="fields.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDO">Fields inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDO.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDO</a></h3>
-<code><a href="AbstractMDO.html#comment">comment</a>, <a href="AbstractMDO.html#mdoReference">mdoReference</a>, <a href="AbstractMDO.html#name">name</a>, <a href="AbstractMDO.html#objectBelonging">objectBelonging</a>, <a href="AbstractMDO.html#synonyms">synonyms</a>, <a href="AbstractMDO.html#uuid">uuid</a></code></div>
+<code><a href="AbstractMDObjectBase.html#comment">comment</a>, <a href="AbstractMDObjectBase.html#includedSubsystems">includedSubsystems</a>, <a href="AbstractMDObjectBase.html#mdoReference">mdoReference</a>, <a href="AbstractMDObjectBase.html#name">name</a>, <a href="AbstractMDObjectBase.html#objectBelonging">objectBelonging</a>, <a href="AbstractMDObjectBase.html#path">path</a>, <a href="AbstractMDObjectBase.html#synonyms">synonyms</a>, <a href="AbstractMDObjectBase.html#uuid">uuid</a></code></div>
 </section>
 </li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -166,13 +166,13 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDObjectBase.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDObjectBase</a></h3>
-<code><a href="AbstractMDObjectBase.html#addIncludedSubsystem(com.github._1c_syntax.mdclasses.mdo.MDSubsystem)">addIncludedSubsystem</a>, <a href="AbstractMDObjectBase.html#getIncludedSubsystems()">getIncludedSubsystems</a>, <a href="AbstractMDObjectBase.html#getMetadataName()">getMetadataName</a>, <a href="AbstractMDObjectBase.html#getMetadataNameRu()">getMetadataNameRu</a>, <a href="AbstractMDObjectBase.html#getPath()">getPath</a>, <a href="AbstractMDObjectBase.html#getType()">getType</a>, <a href="AbstractMDObjectBase.html#setIncludedSubsystems(java.util.List)">setIncludedSubsystems</a>, <a href="AbstractMDObjectBase.html#setPath(java.nio.file.Path)">setPath</a>, <a href="AbstractMDObjectBase.html#supplement()">supplement</a>, <a href="AbstractMDObjectBase.html#supplement(com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase)">supplement</a></code></div>
-<div class="inherited-list">
-<h3 id="methods.inherited.from.class.com.github._1c_syntax.mdclasses.mdo.AbstractMDO">Methods inherited from class&nbsp;com.github._1c_syntax.mdclasses.mdo.<a href="AbstractMDO.html" title="class in com.github._1c_syntax.mdclasses.mdo">AbstractMDO</a></h3>
-<code><a href="AbstractMDO.html#getComment()">getComment</a>, <a href="AbstractMDO.html#getMdoReference()">getMdoReference</a>, <a href="AbstractMDO.html#getName()">getName</a>, <a href="AbstractMDO.html#getObjectBelonging()">getObjectBelonging</a>, <a href="AbstractMDO.html#getSynonyms()">getSynonyms</a>, <a href="AbstractMDO.html#getUuid()">getUuid</a>, <a href="AbstractMDO.html#setComment(java.lang.String)">setComment</a>, <a href="AbstractMDO.html#setMdoReference(com.github._1c_syntax.mdclasses.mdo.support.MDOReference)">setMdoReference</a>, <a href="AbstractMDO.html#setName(java.lang.String)">setName</a>, <a href="AbstractMDO.html#setObjectBelonging(com.github._1c_syntax.mdclasses.mdo.support.ObjectBelonging)">setObjectBelonging</a>, <a href="AbstractMDO.html#setSynonyms(java.util.List)">setSynonyms</a>, <a href="AbstractMDO.html#setUuid(java.lang.String)">setUuid</a></code></div>
+<code><a href="AbstractMDObjectBase.html#addIncludedSubsystem(com.github._1c_syntax.mdclasses.mdo.MDSubsystem)">addIncludedSubsystem</a>, <a href="AbstractMDObjectBase.html#getComment()">getComment</a>, <a href="AbstractMDObjectBase.html#getIncludedSubsystems()">getIncludedSubsystems</a>, <a href="AbstractMDObjectBase.html#getMdoReference()">getMdoReference</a>, <a href="AbstractMDObjectBase.html#getName()">getName</a>, <a href="AbstractMDObjectBase.html#getObjectBelonging()">getObjectBelonging</a>, <a href="AbstractMDObjectBase.html#getPath()">getPath</a>, <a href="AbstractMDObjectBase.html#getSynonyms()">getSynonyms</a>, <a href="AbstractMDObjectBase.html#getType()">getType</a>, <a href="AbstractMDObjectBase.html#getUuid()">getUuid</a>, <a href="AbstractMDObjectBase.html#setComment(java.lang.String)">setComment</a>, <a href="AbstractMDObjectBase.html#setIncludedSubsystems(java.util.List)">setIncludedSubsystems</a>, <a href="AbstractMDObjectBase.html#setMdoReference(com.github._1c_syntax.bsl.types.MdoReference)">setMdoReference</a>, <a href="AbstractMDObjectBase.html#setName(java.lang.String)">setName</a>, <a href="AbstractMDObjectBase.html#setObjectBelonging(com.github._1c_syntax.bsl.mdo.support.ObjectBelonging)">setObjectBelonging</a>, <a href="AbstractMDObjectBase.html#setPath(java.nio.file.Path)">setPath</a>, <a href="AbstractMDObjectBase.html#setSynonyms(java.util.List)">setSynonyms</a>, <a href="AbstractMDObjectBase.html#setUuid(java.lang.String)">setUuid</a>, <a href="AbstractMDObjectBase.html#supplement()">supplement</a>, <a href="AbstractMDObjectBase.html#supplement(com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase)">supplement</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
+<div class="inherited-list">
+<h3 id="methods.inherited.from.class.com.github._1c_syntax.bsl.mdo.MD">Methods inherited from interface&nbsp;com.github._1c_syntax.bsl.mdo.<a href="../../bsl/mdo/MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a></h3>
+<code><a href="../../bsl/mdo/MD.html#getMdoType()">getMdoType</a>, <a href="../../bsl/mdo/MD.html#getMetadataName()">getMetadataName</a>, <a href="../../bsl/mdo/MD.html#getMetadataNameRu()">getMetadataNameRu</a></code></div>
 </section>
 </li>
 </ul>
