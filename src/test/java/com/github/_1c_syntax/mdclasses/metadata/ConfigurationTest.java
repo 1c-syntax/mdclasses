@@ -109,7 +109,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.FORM, 7);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 10); //28
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 10);
     checkChildCount(configuration, MDOType.DIMENSION, 6);
     checkChildCount(configuration, MDOType.RESOURCE, 3);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 2);
@@ -118,6 +118,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 1);
     checkChildCount(configuration, MDOType.COLUMN, 1);
     checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.ENUM_VALUE, 1);
 
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
@@ -132,7 +133,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -264,7 +265,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.FORM, 13);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 21); //44
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 21);
     checkChildCount(configuration, MDOType.DIMENSION, 11);
     checkChildCount(configuration, MDOType.RESOURCE, 6);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
@@ -273,6 +274,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 0);
     checkChildCount(configuration, MDOType.COLUMN, 0);
     checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 0);
+    checkChildCount(configuration, MDOType.ENUM_VALUE, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 2);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 2);
@@ -383,13 +385,13 @@ class ConfigurationTest {
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(113);
+    assertThat(configuration.getChildren()).hasSize(114);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
     checkChildCount(configuration, MDOType.FORM, 8);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 13); //34 -> 35
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 13);
     checkChildCount(configuration, MDOType.DIMENSION, 8);
     checkChildCount(configuration, MDOType.RESOURCE, 4);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 3);
@@ -398,6 +400,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 1);
     checkChildCount(configuration, MDOType.COLUMN, 1);
     checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.ENUM_VALUE, 1);
 
     checkChildCount(configuration, MDOType.WS_OPERATION, 2);
     checkChildCount(configuration, MDOType.HTTP_SERVICE_URL_TEMPLATE, 1);
@@ -412,7 +415,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.CHART_OF_CALCULATION_TYPES, 1);
     checkChildCount(configuration, MDOType.CHART_OF_CHARACTERISTIC_TYPES, 1);
     checkChildCount(configuration, MDOType.COMMAND_GROUP, 1);
-    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 1);
+    checkChildCount(configuration, MDOType.COMMON_ATTRIBUTE, 2);
     checkChildCount(configuration, MDOType.COMMON_COMMAND, 1);
     checkChildCount(configuration, MDOType.COMMON_FORM, 1);
     checkChildCount(configuration, MDOType.COMMON_MODULE, 6);
@@ -448,7 +451,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(112);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(113);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
@@ -507,7 +510,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.FORM, 12);
     checkChildCount(configuration, MDOType.TEMPLATE, 2);
 
-    checkChildCount(configuration, MDOType.ATTRIBUTE, 20); //41 -> 43
+    checkChildCount(configuration, MDOType.ATTRIBUTE, 20);
     checkChildCount(configuration, MDOType.DIMENSION, 11);
     checkChildCount(configuration, MDOType.RESOURCE, 6);
     checkChildCount(configuration, MDOType.TABULAR_SECTION, 4);
@@ -516,6 +519,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.EXT_DIMENSION_ACCOUNTING_FLAG, 0);
     checkChildCount(configuration, MDOType.COLUMN, 0);
     checkChildCount(configuration, MDOType.TASK_ADDRESSING_ATTRIBUTE, 0);
+    checkChildCount(configuration, MDOType.ENUM_VALUE, 2);
 
     checkChildCount(configuration, MDOType.ACCOUNTING_REGISTER, 2);
     checkChildCount(configuration, MDOType.ACCUMULATION_REGISTER, 2);

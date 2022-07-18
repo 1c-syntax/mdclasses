@@ -34,7 +34,8 @@ import lombok.Value;
 @AttributeMetadata(
   type = AttributeType.ENUM_VALUE,
   name = "EnumValue",
-  fieldNameEDT = "enumValues"
+  fieldNameEDT = "enumValues",
+  nameRu = "Значение перечисления"
 )
 public class EnumValue extends AbstractMDOAttribute {
   public EnumValue(DesignerMDO designerMDO) {
