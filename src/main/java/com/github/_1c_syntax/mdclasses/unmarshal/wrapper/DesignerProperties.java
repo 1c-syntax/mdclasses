@@ -110,6 +110,8 @@ public class DesignerProperties {
   private String defaultRunMode = "";
   @XStreamAlias("DefaultLanguage")
   private String defaultLanguage = "";
+  @XStreamAlias("DefaultRoles")
+  private DesignerXRItems defaultRoles = new DesignerXRItems();
   @XStreamAlias("DataLockControlMode")
   private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
   @XStreamAlias("ObjectAutonumerationMode")

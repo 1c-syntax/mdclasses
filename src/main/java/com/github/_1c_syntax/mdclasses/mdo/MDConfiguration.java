@@ -32,6 +32,7 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
+import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerXRItem;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.github._1c_syntax.mdclasses.utils.MDOUtils;
@@ -130,6 +131,12 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   private Either<String, MDLanguage> defaultLanguage = Either.right(MDOFactory.fakeLanguage(scriptVariant));
 
   /**
+   * Основные роли
+   */
+  @XStreamImplicit
+  private List<String> defaultRoles = Collections.emptyList();
+
+  /**
    * Режим управления блокировками
    */
   private DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
@@ -180,6 +187,11 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     detailedInformation = createLanguageContent(designerProperties.getDetailedInformation());
 
     children = designerMDO.getChildObjects().getChildren();
+
+    defaultRoles = designerProperties.getDefaultRoles()
+        .getItems().stream()
+        .map(DesignerXRItem::getValue)
+        .collect(Collectors.toList());
   }
 
   @Override

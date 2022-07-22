@@ -200,6 +200,11 @@ public class Configuration {
    */
   private List<MDRole> roles;
 
+  /**
+   * Основные роли
+   */
+  private List<MDRole> defaultRoles;
+
   protected Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
     children = Collections.emptySet();
@@ -213,6 +218,7 @@ public class Configuration {
     modulesByMDORef = Collections.emptyMap();
     orderedTopMDObjects = Collections.emptyMap();
     roles = Collections.emptyList();
+    defaultRoles = Collections.emptyList();
     copyrights = Collections.emptyList();
     detailedInformation = Collections.emptyList();
     briefInformation = Collections.emptyList();
@@ -244,6 +250,7 @@ public class Configuration {
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
     roles = new ArrayList<>();
+    defaultRoles = new ArrayList<>();
     children.forEach((AbstractMDObjectBase mdo) -> {
       this.childrenByMdoRef.put(mdo.getMdoReference(), mdo);
       if (mdo instanceof MDCommonModule) {
@@ -252,6 +259,9 @@ public class Configuration {
         this.languages.put(((MDLanguage) mdo).getLanguageCode(), (MDLanguage) mdo);
       } else if (mdo instanceof MDRole) {
         this.roles.add((MDRole) mdo);
+        if (mdoConfiguration.getDefaultRoles().contains("Role." + mdo.getName())) {
+          this.defaultRoles.add((MDRole) mdo);
+        }
       }
     });
 
