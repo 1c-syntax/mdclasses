@@ -45,6 +45,13 @@ class MDScheduledJobAttributesTest extends AbstractMDOTest {
     assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
     assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
     assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
+
+    assertThat(mdo.getDescription()).isEqualTo("Описание Регламентное задание 1");
+    assertThat(mdo.getKey()).isEqualTo("ПроверкаАктивностиСеансаУдаленияОбъектов");
+    assertThat(mdo.isUse()).isTrue();
+    assertThat(mdo.isPredefined()).isTrue();
+    assertThat(mdo.getRestartCountOnFailure()).isEqualTo(3);
+    assertThat(mdo.getRestartIntervalOnFailure()).isEqualTo(10);
   }
 
   @Override
@@ -58,5 +65,12 @@ class MDScheduledJobAttributesTest extends AbstractMDOTest {
     assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
     assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
     assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
+
+    assertThat(mdo.getDescription()).isEqualTo("Описание Регламентное задание 1");
+    assertThat(mdo.getKey()).isEqualTo("ПроверкаАктивностиСеансаУдаленияОбъектов");
+    assertThat(mdo.isUse()).isTrue();
+    assertThat(mdo.isPredefined()).isTrue();
+    assertThat(mdo.getRestartCountOnFailure()).isEqualTo(3);
+    assertThat(mdo.getRestartIntervalOnFailure()).isEqualTo(10);
   }
 }
