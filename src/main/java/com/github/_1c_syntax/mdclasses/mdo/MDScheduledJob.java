@@ -53,6 +53,19 @@ public class MDScheduledJob extends AbstractMDObjectBase {
   @XStreamAlias("methodName")
   private Handler handler;
 
+  @XStreamAlias("Description")
+  private String description;
+  @XStreamAlias("Key")
+  private String key;
+  @XStreamAlias("Use")
+  private boolean use;
+  @XStreamAlias("Predefined")
+  private boolean predefined;
+  @XStreamAlias("RestartCountOnFailure")
+  private int restartCountOnFailure;
+  @XStreamAlias("RestartIntervalOnFailure")
+  private int restartIntervalOnFailure;
+
   public MDScheduledJob(DesignerMDO designerMDO) {
     super(designerMDO);
     this.handler = new Handler(designerMDO.getProperties().getMethodName());
