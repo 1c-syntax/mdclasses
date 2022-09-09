@@ -174,4 +174,15 @@ public class DesignerProperties {
   private boolean denyIncompleteValues;
   @XStreamAlias("Master")
   private boolean master;
+
+  @XStreamAlias("Description")
+  private String description;
+  @XStreamAlias("Key")
+  private String key;
+  @XStreamAlias("Use")
+  private boolean use;
+  @XStreamAlias("RestartCountOnFailure")
+  private int restartCountOnFailure;
+  @XStreamAlias("RestartIntervalOnFailure")
+  private int restartIntervalOnFailure;
 }
