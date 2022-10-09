@@ -70,12 +70,12 @@ public enum ScriptVariant implements EnumWithValue {
   }
 
   private static Map<String, ScriptVariant> computeKeys() {
-    Map<String, ScriptVariant> keys = new CaseInsensitiveMap<>();
-    for (var element : ScriptVariant.values()) {
-      keys.put(element.value(), element);
-      keys.put(element.valueRu(), element);
-      keys.put(element.shortName(), element);
+    Map<String, ScriptVariant> keysMap = new CaseInsensitiveMap<>();
+    for (var element : values()) {
+      keysMap.put(element.value(), element);
+      keysMap.put(element.valueRu(), element);
+      keysMap.put(element.shortName(), element);
     }
-    return keys;
+    return keysMap;
   }
 }

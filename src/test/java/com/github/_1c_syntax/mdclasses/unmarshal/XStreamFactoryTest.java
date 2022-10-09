@@ -21,13 +21,14 @@
  */
 package com.github._1c_syntax.mdclasses.unmarshal;
 
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.mdclasses.mdo.MDAccountingRegister;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.thoughtworks.xstream.converters.ConversionException;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,47 +36,40 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class XStreamFactoryTest {
 
-  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
+  private static final String SRC_EDT = "src/test/resources/metadata/edt";
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
 
   @Test
   void test() {
-    var mdo = MDOFactory.readMDObject(getMDOPathEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo"));
+    var mdo = MDClasses.readMDObject(SRC_EDT, "AccountingRegisters.РегистрБухгалтерии1");
     assertThat(mdo)
       .isPresent()
       .containsInstanceOf(MDAccountingRegister.class)
-      .map(AbstractMDObjectBase::getName)
+      .map(MDObject::getName)
       .contains("РегистрБухгалтерии1");
     assertThat(mdo)
-      .map(AbstractMDObjectBase::getUuid)
+      .map(MDObject::getUuid)
       .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
 
-    var mdo2 = MDOFactory.readMDObject(getMDOPathDesigner("AccountingRegisters/РегистрБухгалтерии1.xml"));
+    var mdo2 = MDClasses.readMDObject(SRC_DESIGNER, "AccountingRegisters.РегистрБухгалтерии1");
     assertThat(mdo2)
       .isPresent()
       .containsInstanceOf(MDAccountingRegister.class)
-      .map(AbstractMDObjectBase::getName)
+      .map(MDObject::getName)
       .contains("РегистрБухгалтерии1");
     assertThat(mdo2)
-      .map(AbstractMDObjectBase::getUuid)
+      .map(MDObject::getUuid)
       .contains("e5930f2f-15d9-48a1-ac69-379ad990b02a");
 
-    assertThat(mdo).isEqualTo(mdo2);
+    var jsonMdo1 = MDTestUtils.createJsonWithEmptyPath(mdo.get());
+    var jsonMdo2 = MDTestUtils.createJsonWithEmptyPath(mdo2.get());
+    Assertions.assertThat(jsonMdo1, true).isEqual(jsonMdo2);
+
   }
 
   @Test
   void testBrokenXml() {
-    assertThrows(ConversionException.class, () -> {
-      MDOFactory.readMDObject(Paths.get("src/test/resources/metadata/original_broken/Configuration.xml"));
-    });
+    assertThrows(ConversionException.class,
+      () -> MDClasses.readMDObject(Paths.get("src/test/resources/metadata/original_broken"), "Configuration.Configuration"));
   }
-
-  private Path getMDOPathEDT(String path) {
-    return Paths.get(SRC_EDT, path);
-  }
-
-  private Path getMDOPathDesigner(String path) {
-    return Paths.get(SRC_DESIGNER, path);
-  }
-
 }

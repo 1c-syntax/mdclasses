@@ -35,27 +35,33 @@ class MDOSynonymTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo");
-    performTwoLanguagesCheck(mdo);
+    var mdo = getMDObjectEDT("AccountingRegisters.РегистрБухгалтерии1");
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    performTwoLanguagesCheck((AbstractMDObjectBase) mdo);
 
-    var secondMdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии2/РегистрБухгалтерии2.mdo");
-    performOneLanguageCheck(secondMdo);
+    var secondMdo = getMDObjectEDT("AccountingRegisters.РегистрБухгалтерии2");
+    assertThat(secondMdo).isInstanceOf(AbstractMDObjectBase.class);
+    performOneLanguageCheck((AbstractMDObjectBase) secondMdo);
 
-    var thirdMdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии3/РегистрБухгалтерии3.mdo");
-    performEmptyLanguageCheck(thirdMdo);
+    var thirdMdo = getMDObjectEDT("AccountingRegisters.РегистрБухгалтерии3");
+    assertThat(thirdMdo).isInstanceOf(AbstractMDObjectBase.class);
+    performEmptyLanguageCheck((AbstractMDObjectBase) thirdMdo);
   }
 
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("AccountingRegisters/РегистрБухгалтерии1.xml");
-    performTwoLanguagesCheck(mdo);
+    var mdo = getMDObjectDesigner("AccountingRegisters.РегистрБухгалтерии1");
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    performTwoLanguagesCheck((AbstractMDObjectBase) mdo);
 
-    var secondMdo = getMDObjectDesigner("AccountingRegisters/РегистрБухгалтерии2.xml");
-    performOneLanguageCheck(secondMdo);
+    var secondMdo = getMDObjectDesigner("AccountingRegisters.РегистрБухгалтерии2");
+    assertThat(secondMdo).isInstanceOf(AbstractMDObjectBase.class);
+    performOneLanguageCheck((AbstractMDObjectBase) secondMdo);
 
-    var thirdMdo = getMDObjectDesigner("AccountingRegisters/РегистрБухгалтерии3.xml");
-    performEmptyLanguageCheck(thirdMdo);
+    var thirdMdo = getMDObjectDesigner("AccountingRegisters.РегистрБухгалтерии3");
+    assertThat(thirdMdo).isInstanceOf(AbstractMDObjectBase.class);
+    performEmptyLanguageCheck((AbstractMDObjectBase) thirdMdo);
   }
 
   private void performEmptyLanguageCheck(AbstractMDObjectBase mdo) {

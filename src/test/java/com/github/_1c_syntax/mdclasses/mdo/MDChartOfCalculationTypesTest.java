@@ -36,7 +36,7 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("ChartsOfCalculationTypes/ПланВидовРасчета1/ПланВидовРасчета1.mdo");
+    var mdo = getMDObjectEDT("ChartsOfCalculationTypes.ПланВидовРасчета1");
     checkBaseField(mdo, MDChartOfCalculationTypes.class, "ПланВидовРасчета1",
       "1755c534-9ccd-49c4-9f8b-2aa066424aaa");
     checkForms(mdo);
@@ -50,7 +50,7 @@ class MDChartOfCalculationTypesTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("ChartsOfCalculationTypes/ПланВидовРасчета1.xml");
+    var mdo = getMDObjectDesigner("ChartsOfCalculationTypes.ПланВидовРасчета1");
     checkBaseField(mdo, MDChartOfCalculationTypes.class, "ПланВидовРасчета1",
       "1755c534-9ccd-49c4-9f8b-2aa066424aaa");
     checkForms(mdo);

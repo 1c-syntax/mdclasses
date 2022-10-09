@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +37,7 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo");
+    var mdo = getMDObjectEDT("AccountingRegisters.РегистрБухгалтерии1");
     checkBaseField(mdo, MDAccountingRegister.class, "РегистрБухгалтерии1",
       "e5930f2f-15d9-48a1-ac69-379ad990b02a");
     checkForms(mdo);
@@ -47,7 +47,7 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
       mdo.getMdoReference(), AttributeType.DIMENSION, AttributeType.RESOURCE);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
     var attribute = ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
-    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.DONT_INDEX);
+    assertThat(attribute.getIndexing()).isEqualTo(IndexingType.INDEX);
     var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(0);
     assertThat(dimension.isDenyIncompleteValues()).isFalse();
     assertThat(dimension.isMaster()).isFalse();
@@ -57,7 +57,7 @@ class MDAccountingRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("AccountingRegisters/РегистрБухгалтерии1.xml");
+    var mdo = getMDObjectDesigner("AccountingRegisters.РегистрБухгалтерии1");
     checkBaseField(mdo, MDAccountingRegister.class, "РегистрБухгалтерии1",
       "e5930f2f-15d9-48a1-ac69-379ad990b02a");
     checkForms(mdo);

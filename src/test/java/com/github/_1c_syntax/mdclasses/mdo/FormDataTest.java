@@ -21,13 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.mdclasses.mdo.children.form.DynamicListExtInfo;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormAttribute;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,49 +35,54 @@ class FormDataTest {
 
   @Test
   void testEDT() {
-    var path = Path.of("src/test/resources/metadata/formdata/edt/ЖурналРегистрации/Form.form");
-    var formDataEDT = MDOFactory.readFormData(path).get();
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/edt"), "DataProcessors.Обработка1");
+    assertThat(mdoOpt).isPresent();
+
+    var mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDDataProcessor.class);
+    assertThat(((MDDataProcessor) mdo).getForms()).hasSize(2);
+
+    var formDataEDT = ((MDDataProcessor) mdo).getForms().stream()
+      .filter(form -> form.getName().equals("ЖурналРегистрации")).findFirst().get().getData();
     checkFormData(formDataEDT);
-  }
-  
-  @Test
-  void testMultiLanguageDataPathEDT() {
-    var path = Path.of("src/test/resources/metadata/formdata/edt/multiDataPath/Form.form");
-    var formDataEDT = MDOFactory.readFormData(path).get();
-    assertThat(formDataEDT.getChildren().size()).isEqualTo(5);
+    assertThat(formDataEDT.getChildren()).hasSize(3);
   }
 
   @Test
   void testDesigner() {
-    var path = Path.of("src/test/resources/metadata/formdata/original/ЖурналРегистрации/Ext/Form.xml");
-    var formDataOrigin = MDOFactory.readFormData(path).get();
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/original"), "DataProcessors.Обработка1");
+    assertThat(mdoOpt).isPresent();
+
+    var mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDDataProcessor.class);
+    assertThat(((MDDataProcessor) mdo).getForms()).hasSize(2);
+
+    var formDataOrigin = ((MDDataProcessor) mdo).getForms().stream()
+      .filter(form -> form.getName().equals("ЖурналРегистрации")).findFirst().get().getData();
+
     checkFormData(formDataOrigin);
   }
 
   @Test
-  void testBrokenForm() {
-    var path = Path.of("src/test/resources/metadata/original_broken/Form/Form.xml");
-    var dataOptional = MDOFactory.readFormData(path);
-    assertThat(dataOptional).isPresent();
-
-    var formData = dataOptional.get();
-    var command = formData.getCommands().stream()
-      .filter(formCommand -> formCommand.getId() == 800)
-      .findAny();
-
-    assertThat(command).isPresent();
-    assertThat(command.get().getAction()).isEqualTo("ЗаявкиНаСогласованиеУправленческойОтсрочкиПосле");
-
-  }
-
-  @Test
   void testDynamicList() {
-    var path = Path.of("src/test/resources/metadata/formdata/dynamic_list/edt/Form.form");
-    var formData = MDOFactory.readFormData(path).get();
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/edt"), "Catalogs.Справочник1");
+    assertThat(mdoOpt).isPresent();
+
+    var mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDCatalog.class);
+    var formData = ((MDCatalog) mdo).getForms().stream()
+      .filter(form -> form.getName().equals("ФормаСписка")).findFirst().get().getData();
     checkExtInfo(formData);
 
-    path = Path.of("src/test/resources/metadata/formdata/dynamic_list/original/Form.xml");
-    formData = MDOFactory.readFormData(path).get();
+    mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/original"), "Catalogs.Справочник1");
+    mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDCatalog.class);
+    formData = ((MDCatalog) mdo).getForms().stream()
+      .filter(form -> form.getName().equals("ФормаСписка")).findFirst().get().getData();
     checkExtInfo(formData);
   }
 
@@ -93,7 +98,7 @@ class FormDataTest {
 
   private void checkFormData(FormData formData) {
     assertThat(formData.getPlainChildren())
-      .hasSize(133)
+      .hasSize(136)
       .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора") && formItem.getId() == 103);
 
     var item = formData.getPlainChildren().stream()

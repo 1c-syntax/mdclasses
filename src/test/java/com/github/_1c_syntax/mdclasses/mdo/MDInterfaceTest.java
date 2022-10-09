@@ -41,11 +41,10 @@ class MDInterfaceTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Interfaces/Интерфейс1.xml");
+    var mdo = getMDObjectDesigner("Interfaces.Интерфейс1");
     checkBaseField(mdo, MDInterface.class, "Интерфейс1",
       "874d641c-12f7-4db7-bde2-dd72c3d5b522");
     checkNoChildren(mdo);
     checkNoModules(mdo);
   }
-
 }

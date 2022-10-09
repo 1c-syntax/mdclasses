@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
@@ -38,7 +37,7 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("CalculationRegisters/РегистрРасчета1/РегистрРасчета1.mdo");
+    var mdo = getMDObjectEDT("CalculationRegisters.РегистрРасчета1");
     checkBaseField(mdo, MDCalculationRegister.class, "РегистрРасчета1",
       "90587c7d-b950-4476-ac14-426e4a83d9c4");
     checkForms(mdo);
@@ -47,10 +46,11 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
-    assertThat(((Recalculation) ((MDCalculationRegister) mdo).getAttributes().get(2)).getModules()).isNotEmpty();
+    var recalc = ((MDCalculationRegister) mdo).getAttributes().get(2);
+    assertThat(recalc).isInstanceOf(Recalculation.class);
+    assertThat(((Recalculation) recalc).getModules()).isNotEmpty();
 
-
-	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
     assertThat(dimension.isDenyIncompleteValues()).isTrue();
     assertThat(dimension.isMaster()).isFalse();
     assertThat(dimension.isUseInTotals()).isTrue();
@@ -59,7 +59,7 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("CalculationRegisters/РегистрРасчета1.xml");
+    var mdo = getMDObjectDesigner("CalculationRegisters.РегистрРасчета1");
     checkBaseField(mdo, MDCalculationRegister.class, "РегистрРасчета1",
       "90587c7d-b950-4476-ac14-426e4a83d9c4");
     checkForms(mdo);
@@ -68,9 +68,11 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
-    assertThat(((Recalculation) ((MDCalculationRegister) mdo).getAttributes().get(0)).getModules()).isNotEmpty();
+    var recalc = ((MDCalculationRegister) mdo).getAttributes().get(0);
+    assertThat(recalc).isInstanceOf(Recalculation.class);
+    assertThat(((Recalculation) recalc).getModules()).isNotEmpty();
 
-	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
+    var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
     assertThat(dimension.isDenyIncompleteValues()).isFalse();
     assertThat(dimension.isMaster()).isFalse();
     assertThat(dimension.isUseInTotals()).isTrue();

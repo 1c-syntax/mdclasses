@@ -33,7 +33,7 @@ public class DataPath {
   public static final DataPath EMPTY = new DataPath();
   private String segment = "";
 
-  public DataPath(String segment) {
-    this.setSegment(segment);
+  public DataPath(String pathSegment) {
+    segment = pathSegment;
   }
 }

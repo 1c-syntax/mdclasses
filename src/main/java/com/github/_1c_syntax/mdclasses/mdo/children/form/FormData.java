@@ -21,17 +21,17 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
+import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerChildItems;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerForm;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerFormItem;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerChildItems;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerForm;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormItem;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,6 +42,9 @@ import java.util.stream.Collectors;
 @ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class FormData {
+
+  private static final String TYPE_INPUT_FIELD = "InputField";
+
   /**
    * "Плоский" список элементов
    */
@@ -73,6 +76,11 @@ public class FormData {
   private List<FormCommand> commands = Collections.emptyList();
 
   // TODO: реализовать командный интерфейс
+
+  /**
+   * Путь к файлу с данными
+   */
+  Path dataPath;
 
   /**
    * Конструктор для создания данных формы на основании модели конфигуратора
@@ -124,7 +132,7 @@ public class FormData {
     }
     formItem.setType(designerFormItem.getType());
 
-    if (designerFormItem.getType().equals(MDOUtils.TYPE_INPUT_FIELD)) {
+    if (designerFormItem.getType().equals(TYPE_INPUT_FIELD)) {
       var extInfo = new InputFieldExtInfo();
       extInfo.setPasswordMode(designerFormItem.getPasswordMode());
       formItem.setExtInfo(extInfo);
@@ -136,6 +144,7 @@ public class FormData {
     addDesignerFormItem(designerFormItem.getExtendedTooltip(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getAutoCommandBar(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getSearchStringAddition(), formItem.getChildren());
+    addDesignerFormItem(designerFormItem.getSearchControlAddition(), formItem.getChildren());
     addDesignerFormItem(designerFormItem.getViewStatusAddition(), formItem.getChildren());
     if (designerFormItem.getChildItems() != null) {
       fillChildrenItems(designerFormItem.getChildItems(), formItem.getChildren());

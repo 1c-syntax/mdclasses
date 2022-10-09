@@ -22,12 +22,12 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -71,12 +71,12 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
   }
 
   private void computeAndSetModules(Path folder) {
-    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getMdoType(), Collections.emptySet());
+    var moduleTypes = ModuleType.byMDOType(getMdoType());
     if (moduleTypes.isEmpty()) {
       return;
     }
 
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    var configurationSource = MDOReader.getConfigurationSourceByMDOPath(path);
     var mdoName = (getMdoType() == MDOType.CONFIGURATION) ? "" : getName();
     List<MDOModule> mdoModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->

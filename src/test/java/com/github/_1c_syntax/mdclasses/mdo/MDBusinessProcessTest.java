@@ -35,7 +35,7 @@ class MDBusinessProcessTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("BusinessProcesses/БизнесПроцесс1/БизнесПроцесс1.mdo");
+    var mdo = getMDObjectEDT("BusinessProcesses.БизнесПроцесс1");
     checkBaseField(mdo, MDBusinessProcess.class, "БизнесПроцесс1",
       "560a32ca-028d-4b88-b6f2-6b7212bf31f8");
     checkForms(mdo);
@@ -50,7 +50,7 @@ class MDBusinessProcessTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("BusinessProcesses/БизнесПроцесс1.xml");
+    var mdo = getMDObjectDesigner("BusinessProcesses.БизнесПроцесс1");
     checkBaseField(mdo, MDBusinessProcess.class, "БизнесПроцесс1",
       "560a32ca-028d-4b88-b6f2-6b7212bf31f8");
     checkForms(mdo);

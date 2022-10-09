@@ -21,31 +21,26 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//@Value
 @Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
@@ -73,16 +68,15 @@ public class Recalculation extends AbstractMDOAttribute implements ModuleOwner {
   }
 
   private void computeAndSetModules(Path folder) {
-    var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getMdoType(), Collections.emptySet());
+    var moduleTypes = ModuleType.byMDOType(getMdoType());
     if (moduleTypes.isEmpty()) {
       return;
     }
 
-    if (path == null) { // для формата EDT отдельного файла нет
-      path = folder;
-    }
-
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+    // для формата EDT отдельного файла нет
+    var configurationSource = (path == null) ?
+      ConfigurationSource.EDT
+      : MDOReader.getConfigurationSourceByMDOPath(path);
 
     List<MDOModule> mdoModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->

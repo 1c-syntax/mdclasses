@@ -21,18 +21,21 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 @Data
@@ -46,14 +49,10 @@ import java.nio.file.Path;
   groupName = "Roles",
   groupNameRu = "Роли"
 )
+@Slf4j
 public class MDRole extends AbstractMDObjectBase {
 
   private RoleData roleData;
-
-  /**
-   * Путь к файлу с данными
-   */
-  private Path roleDataPath;
 
   public MDRole(DesignerMDO designerMDO) {
     super(designerMDO);
@@ -62,8 +61,38 @@ public class MDRole extends AbstractMDObjectBase {
   @Override
   public void supplement() {
     super.supplement();
-    roleDataPath = MDOPathUtils.getRoleDataPath(MDOUtils.getConfigurationSourceByMDOPath(path),
-      path.getParent().toString(), name);
-    MDOFactory.readRoleData(roleDataPath).ifPresent(this::setRoleData);
+    roleData = readRoleData(path, name);
   }
+
+  @Nullable
+  public Path getRoleDataPath() {
+    if (roleData != null) {
+      return roleData.getDataPath();
+    }
+    return null;
+  }
+
+  private static RoleData readRoleData(@NonNull Path mdoPath,
+                                       @NonNull String mdoName) {
+    var path = getRoleDataPath(mdoPath, mdoName);
+    var data = MDOReader.read(path);
+    if (data instanceof RoleData) {
+      ((RoleData) data).setDataPath(path);
+      return (RoleData) data;
+    } else if (data == null) {
+      LOGGER.warn("Missing file " + path);
+      return null;
+    } else {
+      throw new IllegalArgumentException("Wrong role data file " + path);
+    }
+  }
+
+  private static Path getRoleDataPath(Path mdoPath, String mdoName) {
+    if (mdoPath.toString().endsWith(".xml")) {
+      return DesignerPaths.roleDataPath(mdoPath, mdoName);
+    } else {
+      return EDTPaths.roleDataPath(mdoPath);
+    }
+  }
+
 }

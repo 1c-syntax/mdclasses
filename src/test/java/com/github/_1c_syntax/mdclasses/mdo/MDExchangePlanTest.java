@@ -35,7 +35,7 @@ class MDExchangePlanTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("ExchangePlans/ПланОбмена1/ПланОбмена1.mdo");
+    var mdo = getMDObjectEDT("ExchangePlans.ПланОбмена1");
     checkBaseField(mdo, MDExchangePlan.class, "ПланОбмена1",
       "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
     checkForms(mdo);
@@ -53,7 +53,7 @@ class MDExchangePlanTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("ExchangePlans/ПланОбмена1.xml");
+    var mdo = getMDObjectDesigner("ExchangePlans.ПланОбмена1");
     checkBaseField(mdo, MDExchangePlan.class, "ПланОбмена1",
       "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
     checkForms(mdo);

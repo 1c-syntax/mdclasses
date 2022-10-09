@@ -39,7 +39,7 @@ class MDCatalogTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Catalogs/Справочник1/Справочник1.mdo");
+    var mdo = getMDObjectEDT("Catalogs.Справочник1");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
     checkForms(mdo, 3, "ФормаЭлемента", "ФормаСписка", "ФормаВыбора");
@@ -62,7 +62,7 @@ class MDCatalogTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Catalogs/Справочник1.xml");
+    var mdo = getMDObjectDesigner("Catalogs.Справочник1");
     checkBaseField(mdo, MDCatalog.class, "Справочник1",
       "eeef463d-d5e7-42f2-ae53-10279661f59d");
     checkForms(mdo, 4, "ФормаЭлемента", "ФормаСписка", "ФормаВыбора",

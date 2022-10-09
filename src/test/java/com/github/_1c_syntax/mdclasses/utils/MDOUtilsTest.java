@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import org.junit.jupiter.api.Test;
 
@@ -32,13 +33,13 @@ class MDOUtilsTest {
 
   @Test
   void getConfigurationSourceByPath() {
-    var source = MDOUtils.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata/edt").toAbsolutePath());
+    var source = MDOReader.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata/edt").toAbsolutePath());
     assertThat(source).isEqualTo(ConfigurationSource.EDT);
 
-    source = MDOUtils.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata/original").toAbsolutePath());
+    source = MDOReader.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata/original").toAbsolutePath());
     assertThat(source).isEqualTo(ConfigurationSource.DESIGNER);
 
-    source = MDOUtils.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata").toAbsolutePath());
+    source = MDOReader.getConfigurationSourceByPath(Paths.get("src/test/resources/metadata").toAbsolutePath());
     assertThat(source).isEqualTo(ConfigurationSource.EMPTY);
   }
 }

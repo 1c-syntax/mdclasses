@@ -35,11 +35,11 @@ class MDReportTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Reports/Отчет1/Отчет1.mdo");
+    var mdo = getMDObjectEDT("Reports.Отчет1");
     checkBaseField(mdo, MDReport.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");
     checkForms(mdo);
-    checkTemplates(mdo, 1, "МакетОтчета");
+    checkTemplates(mdo, 3, "МакетОтчета", "СКД", "ТекстовыйДокумент");
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     checkModules(((AbstractMDObjectBSL) mdo).getModules(), 2, "Reports/Отчет1",
@@ -49,11 +49,11 @@ class MDReportTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Reports/Отчет1.xml");
+    var mdo = getMDObjectDesigner("Report.Отчет1");
     checkBaseField(mdo, MDReport.class, "Отчет1",
       "34d3754d-298c-4786-92f6-a487db249fc7");
     checkForms(mdo);
-    checkTemplates(mdo);
+    checkTemplates(mdo, 4, "ТабличныйДокумент", "СКД", "ТекстовыйДокумент", "ДвоичныеДанные");
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();

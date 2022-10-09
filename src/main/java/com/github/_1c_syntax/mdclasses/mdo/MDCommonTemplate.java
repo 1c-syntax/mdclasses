@@ -22,22 +22,24 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.Template;
-import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
-import java.nio.file.Files;
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 @Data
@@ -51,6 +53,7 @@ import java.nio.file.Path;
   groupName = "CommonTemplates",
   groupNameRu = "ОбщиеМакеты"
 )
+@Slf4j
 public class MDCommonTemplate extends AbstractMDObjectBase implements Template {
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
@@ -63,11 +66,6 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements Template {
    */
   private TemplateData templateData = EmptyTemplateData.getEmpty();
 
-  /**
-   * Путь к самому файлу макета
-   */
-  private Path templateDataPath;
-
   public MDCommonTemplate(DesignerMDO designerMDO) {
     super(designerMDO);
     setTemplateType(designerMDO.getProperties().getTemplateType());
@@ -76,9 +74,40 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements Template {
   @Override
   public void supplement() {
     super.supplement();
-    templateDataPath = MDOPathUtils.getTemplateDataPath(this);
-    if (templateType == TemplateType.DATA_COMPOSITION_SCHEME && Files.exists(templateDataPath)) {
-      templateData = (DataCompositionSchema) XStreamFactory.fromXML(templateDataPath.toFile());
+    templateData = readTemplateData(path, name, getMdoType(), templateType);
+  }
+
+  @Nullable
+  public Path getTemplateDataPath() {
+    return templateData.getDataPath();
+  }
+
+  // TODO убрать копипасту
+  private static TemplateData readTemplateData(@NonNull Path mdoPath,
+                                               @NonNull String mdoName,
+                                               @NonNull MDOType mdoType,
+                                               @NonNull TemplateType templateType) {
+    if (templateType == TemplateType.DATA_COMPOSITION_SCHEME) {
+      var path = getTemplateDataPath(mdoPath, mdoName, mdoType);
+      var data = MDOReader.read(path);
+      if (data instanceof TemplateData) {
+        return (TemplateData) data;
+      } else if (data == null) {
+        LOGGER.warn("Missing file " + path);
+        return EmptyTemplateData.getEmpty();
+      } else {
+        throw new IllegalArgumentException("Wrong template data file " + path);
+      }
+    }
+    return EmptyTemplateData.getEmpty();
+  }
+
+  private static Path getTemplateDataPath(Path mdoPath, String mdoName, MDOType mdoType) {
+    if (mdoPath.toString().endsWith(".xml")) {
+      return DesignerPaths.templateDataPath(mdoPath, mdoName);
+    } else {
+      return EDTPaths.templateDataPath(mdoPath, mdoName, mdoType);
     }
   }
+
 }

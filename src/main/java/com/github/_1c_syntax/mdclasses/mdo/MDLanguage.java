@@ -21,9 +21,10 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -59,8 +60,22 @@ public class MDLanguage extends AbstractMDObjectBase {
     languageCode = designerMDO.getProperties().getLanguageCode();
   }
 
-  private MDLanguage(String name, String languageCode) {
-    this.name = name;
-    this.languageCode = languageCode;
+  private MDLanguage(String langName, String langCode) {
+    name = langName;
+    languageCode = langCode;
+  }
+
+  /**
+   * Создает объект языка если вдруг его не оказалось в данных конфигурации
+   *
+   * @param scriptVariant - вариант языка конфигурации
+   * @return - созданный и минимально заполненный объект языка
+   */
+  public static MDLanguage fakeLanguage(ScriptVariant scriptVariant) {
+    if (scriptVariant == ScriptVariant.ENGLISH) {
+      return ENGLISH;
+    } else {
+      return RUSSIAN;
+    }
   }
 }

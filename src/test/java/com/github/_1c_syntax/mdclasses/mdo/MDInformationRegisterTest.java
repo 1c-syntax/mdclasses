@@ -22,8 +22,8 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +37,7 @@ class MDInformationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("InformationRegisters/РегистрСведений1/РегистрСведений1.mdo");
+    var mdo = getMDObjectEDT("InformationRegisters.РегистрСведений1");
     checkBaseField(mdo, MDInformationRegister.class, "РегистрСведений1",
       "184d9d78-9523-4cfa-9542-a7ba72efe4dd");
     checkForms(mdo);
@@ -56,7 +56,7 @@ class MDInformationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("InformationRegisters/РегистрСведений1.xml");
+    var mdo = getMDObjectDesigner("InformationRegisters.РегистрСведений1");
     checkBaseField(mdo, MDInformationRegister.class, "РегистрСведений1",
       "184d9d78-9523-4cfa-9542-a7ba72efe4dd");
     checkForms(mdo);
@@ -70,5 +70,4 @@ class MDInformationRegisterTest extends AbstractMDOTest {
     assertThat(dimension.isMaster()).isTrue();
     assertThat(dimension.isUseInTotals()).isTrue();
   }
-
 }

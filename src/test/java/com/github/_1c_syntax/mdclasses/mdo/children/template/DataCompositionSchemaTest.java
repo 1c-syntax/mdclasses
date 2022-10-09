@@ -21,12 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.template;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
+import com.github._1c_syntax.mdclasses.mdo.MDReport;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,16 +40,36 @@ class DataCompositionSchemaTest {
 
   @Test
   void testEdt() {
-    var path = Path.of("src/test/resources/metadata/skd/edt/src/Reports/Отчет1/Templates/СКД/Template.dcs");
-    var dataCompositionSchema = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
-    checkDataCompositionSchema(dataCompositionSchema);
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/edt"), "Reports.Отчет1");
+    assertThat(mdoOpt).isPresent();
+
+    var mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDReport.class);
+    assertThat(((MDReport) mdo).getTemplates()).hasSize(3);
+
+    var templateData = ((MDReport) mdo).getTemplates().stream()
+      .filter(template -> template.getName().equals("СКД")).findFirst().get().getTemplateData();
+
+    assertThat(templateData).isInstanceOf(DataCompositionSchema.class);
+    checkDataCompositionSchema((DataCompositionSchema) templateData);
   }
 
   @Test
   void testOriginal() {
-    var path = Path.of("src/test/resources/metadata/skd/original/Reports/Отчет1/Templates/СКД/Ext/Template.xml");
-    var dataCompositionSchema = (DataCompositionSchema) XStreamFactory.fromXML(path.toFile());
-    checkDataCompositionSchema(dataCompositionSchema);
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/original"), "Reports.Отчет1");
+    assertThat(mdoOpt).isPresent();
+
+    var mdo = mdoOpt.get();
+    assertThat(mdo).isInstanceOf(MDReport.class);
+    assertThat(((MDReport) mdo).getTemplates()).hasSize(4);
+
+    var templateData = ((MDReport) mdo).getTemplates().stream()
+      .filter(template -> template.getName().equals("СКД")).findFirst().get().getTemplateData();
+
+    assertThat(templateData).isInstanceOf(DataCompositionSchema.class);
+    checkDataCompositionSchema((DataCompositionSchema) templateData);
   }
 
   private void checkDataCompositionSchema(DataCompositionSchema dataCompositionSchema) {

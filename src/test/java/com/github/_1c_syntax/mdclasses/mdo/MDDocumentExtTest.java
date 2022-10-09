@@ -39,7 +39,7 @@ class MDDocumentExtTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDTExt("Documents/Документ1/Документ1.mdo");
+    var mdo = getMDObjectEDTExt("Documents.Документ1");
     checkBaseField(mdo, MDDocument.class, "Документ1",
       "4ac0c9d8-7ef6-4804-bdf8-15219fa4e6da");
     checkForms(mdo, 3, "ФормаДокумента", "ФормаСписка", "ФормаВыбора");
@@ -63,7 +63,7 @@ class MDDocumentExtTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesignerExt("Documents/Документ1.xml");
+    var mdo = getMDObjectDesignerExt("Documents.Документ1");
     checkBaseField(mdo, MDDocument.class, "Документ1",
       "4ac0c9d8-7ef6-4804-bdf8-15219fa4e6da");
     checkForms(mdo, 3, "ФормаДокумента", "ФормаСписка", "ФормаВыбора");

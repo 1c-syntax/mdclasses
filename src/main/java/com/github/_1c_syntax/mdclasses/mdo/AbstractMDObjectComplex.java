@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerChildObjects;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AccountingFlag;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AddressingAttribute;
@@ -37,10 +39,6 @@ import com.github._1c_syntax.mdclasses.mdo.attributes.TabularSection;
 import com.github._1c_syntax.mdclasses.mdo.children.Command;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
 import com.github._1c_syntax.mdclasses.mdo.children.Template;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerChildObjects;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -102,12 +100,10 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     super(designerMDO);
 
     // для конфигуратора необходимо прочитать дочерние из каталога рядом
-    MDOPathUtils.getMDOTypeFolderByMDOPath(ConfigurationSource.DESIGNER, designerMDO.getMdoPath())
-      .ifPresent((Path mdoFolder) -> {
-        computeForms(mdoFolder, designerMDO.getChildObjects().getForms());
-        computeTemplates(mdoFolder, designerMDO.getChildObjects().getTemplates());
-        computeRecalculations(mdoFolder, designerMDO.getChildObjects().getRecalculations());
-      });
+    setPath(designerMDO.getMdoPath());
+    computeForms(designerMDO.getChildObjects().getForms());
+    computeTemplates(designerMDO.getChildObjects().getTemplates());
+    computeRecalculations(designerMDO.getChildObjects().getRecalculations());
 
     // эти данные лежат сразу в файле описания,
     computeCommands(designerMDO.getChildObjects().getCommands());
@@ -130,16 +126,14 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     return Collections.unmodifiableSet(children);
   }
 
-  private void computeForms(Path folder, List<String> formNames) {
-    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.FORM)
-      .ifPresent((Path childrenFolder) ->
-        setForms(readDesignerMDOChildren(childrenFolder, Form.class, formNames)));
+  private void computeForms(List<String> formNames) {
+    var childrenFolder = DesignerPaths.childrenFolder(path, MDOType.FORM);
+    setForms(readDesignerMDOChildren(childrenFolder, Form.class, formNames));
   }
 
-  private void computeTemplates(Path folder, List<String> templateNames) {
-    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.TEMPLATE)
-      .ifPresent((Path childrenFolder) ->
-        setTemplates(readDesignerMDOChildren(childrenFolder, Template.class, templateNames)));
+  private void computeTemplates(List<String> templateNames) {
+    var childrenFolder = DesignerPaths.childrenFolder(path, MDOType.TEMPLATE);
+    setTemplates(readDesignerMDOChildren(childrenFolder, Template.class, templateNames));
   }
 
   private void computeCommands(List<DesignerMDO> commandsDesigner) {
@@ -148,13 +142,10 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
     setCommands(computedCommands);
   }
 
-  private void computeRecalculations(Path folder, List<String> recalculationNames) {
-    MDOPathUtils.getChildrenFolder(getName(), folder, MDOType.RECALCULATION)
-      .ifPresent((Path childrenFolder) -> {
-        var recalculations = readDesignerMDOChildren(childrenFolder, Recalculation.class, recalculationNames);
-        setAttributes(recalculations.stream().map(AbstractMDOAttribute.class::cast).collect(Collectors.toList()));
-      });
-
+  private void computeRecalculations(List<String> recalculationNames) {
+    var childrenFolder = DesignerPaths.childrenFolder(path, MDOType.RECALCULATION);
+    var recalculations = readDesignerMDOChildren(childrenFolder, Recalculation.class, recalculationNames);
+    setAttributes(recalculations.stream().map(AbstractMDOAttribute.class::cast).collect(Collectors.toList()));
   }
 
   private void computeChildren(DesignerChildObjects childObjects) {
@@ -191,13 +182,15 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
                                                                                   Class<T> childClass,
                                                                                   List<String> childNames) {
     List<T> children = new ArrayList<>();
-    getMDOFilesInFolder(childrenFolder, childNames)
-      .forEach((Path mdoFile) -> {
-        var child = MDOFactory.readMDO(mdoFile);
-        if (child != null) {
-          children.add(childClass.cast(child));
-        }
-      });
+    if (childrenFolder.toFile().exists()) {
+      getMDOFilesInFolder(childrenFolder, childNames)
+        .forEach((Path mdoFile) -> {
+          var child = MDOReader.readMDObject(mdoFile);
+          if (child != null) {
+            children.add(childClass.cast(child));
+          }
+        });
+    }
     return children;
   }
 
@@ -221,8 +214,7 @@ public abstract class AbstractMDObjectComplex extends AbstractMDObjectBSL implem
   private static List<Path> getMDOFilesInFolder(Path folder, List<String> childNames) {
     List<Path> childrenNames;
     var maxDepth = 1;
-    AtomicReference<String> extension = new AtomicReference<>(MDOPathUtils.mdoExtension(
-      ConfigurationSource.DESIGNER, true));
+    AtomicReference<String> extension = new AtomicReference<>(DesignerPaths.EXTENSION_DOT);
     try (Stream<Path> files = Files.walk(folder, maxDepth)) {
       childrenNames = files
         .parallel()

@@ -27,6 +27,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 
@@ -60,4 +61,9 @@ public class RoleData {
   @XStreamAlias("object")
   @XStreamImplicit
   private List<ObjectRight> objectRights = Collections.emptyList();
+
+  /**
+   * Путь к файлу с содержимым
+   */
+  Path dataPath;
 }

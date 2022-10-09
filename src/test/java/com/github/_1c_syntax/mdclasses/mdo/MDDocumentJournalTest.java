@@ -36,7 +36,7 @@ class MDDocumentJournalTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("DocumentJournals/ЖурналДокументов1/ЖурналДокументов1.mdo");
+    var mdo = getMDObjectEDT("DocumentJournals.ЖурналДокументов1");
     checkBaseField(mdo, MDDocumentJournal.class, "ЖурналДокументов1",
       "c6743657-4787-40de-9a45-2493c630f626");
     checkForms(mdo);
@@ -52,7 +52,7 @@ class MDDocumentJournalTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("DocumentJournals/ЖурналДокументов1.xml");
+    var mdo = getMDObjectDesigner("DocumentJournals.ЖурналДокументов1");
     checkBaseField(mdo, MDDocumentJournal.class, "ЖурналДокументов1",
       "c6743657-4787-40de-9a45-2493c630f626");
     checkForms(mdo);

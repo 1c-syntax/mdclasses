@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.mdo.support.Handler;
+import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,7 +36,7 @@ class MDScheduledJobAttributesTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = (MDScheduledJob) getMDObjectEDT("ScheduledJobs/РегламентноеЗадание1/РегламентноеЗадание1.mdo");
+    var mdo = (MDScheduledJob) getMDObjectEDT("ScheduledJobs.РегламентноеЗадание1");
     Handler handler = mdo.getHandler();
     assertThat(handler.getMethodName()).isNotBlank();
     assertThat(handler.getMethodPath()).isNotBlank();
@@ -55,8 +55,9 @@ class MDScheduledJobAttributesTest extends AbstractMDOTest {
   }
 
   @Override
+  @Test
   void testDesigner() {
-    var mdo = (MDScheduledJob) getMDObjectDesigner("ScheduledJobs/РегламентноеЗадание1.xml");
+    var mdo = (MDScheduledJob) getMDObjectDesigner("ScheduledJobs.РегламентноеЗадание1");
     Handler handler = mdo.getHandler();
     assertThat(handler.getMethodName()).isNotBlank();
     assertThat(handler.getMethodPath()).isNotBlank();

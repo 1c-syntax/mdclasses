@@ -22,9 +22,9 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.Command;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

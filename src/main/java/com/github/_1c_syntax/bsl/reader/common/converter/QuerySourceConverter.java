@@ -30,6 +30,10 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * Конвертор информации о запросе в СКД и динамических списках
+ */
+@CommonConverter
 public class QuerySourceConverter implements Converter {
 
   @Override

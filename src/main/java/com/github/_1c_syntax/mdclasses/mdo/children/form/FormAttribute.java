@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
-import com.github._1c_syntax.mdclasses.unmarshal.converters.ExtInfoConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.ValueTypeConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttribute;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerColumn;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerAttribute;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerColumn;
+import com.github._1c_syntax.bsl.reader.edt.converter.ExtInfoConverter;
+import com.github._1c_syntax.bsl.reader.edt.converter.StringConverterIntern;
+import com.github._1c_syntax.bsl.reader.edt.converter.ValueTypeConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;

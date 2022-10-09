@@ -36,7 +36,7 @@ class MDChartOfAccountsTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("ChartsOfAccounts/ПланСчетов1/ПланСчетов1.mdo");
+    var mdo = getMDObjectEDT("ChartsOfAccounts.ПланСчетов1");
     checkBaseField(mdo, MDChartOfAccounts.class, "ПланСчетов1",
       "2766f353-abd2-4e7f-9a95-53f05c83f5d4");
     checkForms(mdo);
@@ -52,7 +52,7 @@ class MDChartOfAccountsTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("ChartsOfAccounts/ПланСчетов1.xml");
+    var mdo = getMDObjectDesigner("ChartsOfAccounts.ПланСчетов1");
     checkBaseField(mdo, MDChartOfAccounts.class, "ПланСчетов1",
       "2766f353-abd2-4e7f-9a95-53f05c83f5d4");
     checkForms(mdo);

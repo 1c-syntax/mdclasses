@@ -21,6 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.metadata;
 
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -31,13 +38,6 @@ import com.github._1c_syntax.mdclasses.mdo.AbstractMDOForm;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonForm;
 import com.github._1c_syntax.mdclasses.mdo.children.Form;
-import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
-import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.FormType;
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
-import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.utils.Absolute;
 import org.junit.jupiter.api.Test;
 
@@ -95,19 +95,19 @@ class ConfigurationTest {
             .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
                     && briefInfo.getContent().equals("Detailed info"));
 
-    assertThat(configuration.getModulesByType()).hasSize(39);
+    assertThat(configuration.getModulesByType()).hasSize(40);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(39);
-    assertThat(configuration.getModules()).hasSize(39);
+    assertThat(configuration.getModulesByObject()).hasSize(40);
+    assertThat(configuration.getModules()).hasSize(40);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(106);
+    assertThat(configuration.getChildren()).hasSize(109);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 3);
-    checkChildCount(configuration, MDOType.FORM, 7);
-    checkChildCount(configuration, MDOType.TEMPLATE, 2);
+    checkChildCount(configuration, MDOType.FORM, 8);
+    checkChildCount(configuration, MDOType.TEMPLATE, 4);
 
     checkChildCount(configuration, MDOType.ATTRIBUTE, 10);
     checkChildCount(configuration, MDOType.DIMENSION, 6);
@@ -167,7 +167,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(105);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(108);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("НесуществующийМодуль")).isNotPresent();
@@ -357,7 +357,7 @@ class ConfigurationTest {
     assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
     assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
-    assertThat(configuration.getModulesByType()).hasSize(19);
+    assertThat(configuration.getModulesByType()).hasSize(20);
     assertThat(configuration.getCopyrights()).hasSize(2)
       .anyMatch(copyright -> copyright.getContent().equals("Моя Программа")
         && copyright.getLanguage().equals("ru"))
@@ -377,17 +377,17 @@ class ConfigurationTest {
                     && briefInfo.getContent().equals("Detailed info"));
 
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(19);
-    assertThat(configuration.getModules()).hasSize(19);
+    assertThat(configuration.getModulesByObject()).hasSize(20);
+    assertThat(configuration.getModules()).hasSize(20);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
 
-    assertThat(configuration.getChildren()).hasSize(113);
+    assertThat(configuration.getChildren()).hasSize(118);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);
     checkChildCount(configuration, MDOType.COMMAND, 1);
-    checkChildCount(configuration, MDOType.FORM, 8);
-    checkChildCount(configuration, MDOType.TEMPLATE, 2);
+    checkChildCount(configuration, MDOType.FORM, 9);
+    checkChildCount(configuration, MDOType.TEMPLATE, 6);
 
     checkChildCount(configuration, MDOType.ATTRIBUTE, 13);
     checkChildCount(configuration, MDOType.DIMENSION, 8);
@@ -448,7 +448,7 @@ class ConfigurationTest {
     checkChildCount(configuration, MDOType.WS_REFERENCE, 1);
     checkChildCount(configuration, MDOType.XDTO_PACKAGE, 1);
 
-    assertThat(configuration.getChildrenByMdoRef()).hasSize(112);
+    assertThat(configuration.getChildrenByMdoRef()).hasSize(117);
 
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль")).isPresent();
     assertThat(configuration.getCommonModule("ГлобальныйОбщийМодуль3")).isNotPresent();
@@ -671,12 +671,6 @@ class ConfigurationTest {
     File srcPath = new File("src/test/resources/metadata/original_ordinary");
     Configuration configuration = Configuration.create(srcPath.toPath());
     assertThat(configuration.getDefaultRunMode()).isEqualTo(ApplicationRunMode.ORDINARY_APPLICATION);
-  }
-
-  @Test
-  void testBrokenLanguageIntoExtension() {
-    var srcPath = new File("src/test/resources/metadata/edt_ext_broken");
-    var configuration = Configuration.create(srcPath.toPath());
   }
 
   private void checkFillPath(Set<AbstractMDObjectBase> child) {

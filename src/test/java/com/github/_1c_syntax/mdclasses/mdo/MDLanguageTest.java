@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +42,7 @@ class MDLanguageTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Languages/Русский.xml");
+    var mdo = getMDObjectDesigner("Languages.Русский");
     checkBaseField(mdo, MDLanguage.class, "Русский",
       "1b5f5cd6-14b2-422e-ab6c-1103fd375982");
     checkNoChildren(mdo);
@@ -49,4 +50,16 @@ class MDLanguageTest extends AbstractMDOTest {
     assertThat(((MDLanguage) mdo).getLanguageCode()).isEqualTo("ru");
   }
 
+  @Test
+  void fakeLanguageTest() {
+    var lang = MDLanguage.fakeLanguage(ScriptVariant.ENGLISH);
+    assertThat(lang.getName()).isEqualTo("English");
+    assertThat(lang.getUuid()).isEmpty();
+    assertThat(lang.getLanguageCode()).isEqualTo("en");
+
+    lang = MDLanguage.fakeLanguage(ScriptVariant.RUSSIAN);
+    assertThat(lang.getName()).isEqualTo("Русский");
+    assertThat(lang.getUuid()).isEmpty();
+    assertThat(lang.getLanguageCode()).isEqualTo("ru");
+  }
 }

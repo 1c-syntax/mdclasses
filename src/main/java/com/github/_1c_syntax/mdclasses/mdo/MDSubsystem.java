@@ -21,12 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -34,7 +33,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +54,7 @@ import java.util.stream.Collectors;
 public class MDSubsystem extends AbstractMDObjectBase {
 
   /**
-   * Дочерние объекты подсистемы, включает в себя как дочерние подсистемы, так и и другие объекты,
+   * Дочерние объекты подсистемы, включает в себя как дочерние подсистемы, так и другие объекты,
    * включенные в подсистему
    * Для объектов, которые не удалось прочитать (при загрузке конфигурации) хранит только строки
    */
@@ -114,7 +112,7 @@ public class MDSubsystem extends AbstractMDObjectBase {
       return;
     }
 
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(getPath());
+    var configurationSource = MDOReader.getConfigurationSourceByMDOPath(getPath());
     var rootFolder = MDOPathUtils.getMDOTypeFolderByMDOPath(configurationSource, getPath());
     if (rootFolder.isEmpty()) {
       return;
@@ -134,20 +132,17 @@ public class MDSubsystem extends AbstractMDObjectBase {
         var subsystemObjectLastPosition = child.getLeft().lastIndexOf(startName);
         var subsystemName = child.getLeft().substring(subsystemObjectLastPosition + startName.length());
 
-        MDOPathUtils.getMDOPath(configurationSource, folder, subsystemName)
-          .ifPresent((Path mdoPath) -> {
-            var childSubsystem = MDOFactory.readMDO(mdoPath);
-            if (childSubsystem != null) {
-              childSubsystem.supplement(this);
-              newChildren.add(Either.right(childSubsystem));
-            } else {
-              if (!child.getLeft().equals(getMdoReference().getMdoRef())) {
-                // ссылку на самого себя исключаем
-                // вернем несуществующий объект обратно в набор
-                newChildren.add(child);
-              }
-            }
-          });
+        var childSubsystem = MDOReader.readMDObject(folder, startName + subsystemName);
+        if (childSubsystem instanceof MDSubsystem) {
+          ((MDSubsystem) childSubsystem).supplement(this);
+          newChildren.add(Either.right((MDSubsystem) childSubsystem));
+        } else {
+          if (!child.getLeft().equals(getMdoReference().getMdoRef())) {
+            // ссылку на самого себя исключаем
+            // вернем несуществующий объект обратно в набор
+            newChildren.add(child);
+          }
+        }
       });
 
     newChildren.addAll(children.stream()

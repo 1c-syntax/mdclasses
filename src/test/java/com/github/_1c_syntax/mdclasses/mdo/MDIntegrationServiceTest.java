@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.children.IntegrationServiceChannel;
-import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
@@ -41,9 +41,9 @@ class MDIntegrationServiceTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdoOpt = MDOFactory.readMDObject(
-      Paths.get("src/test/resources/metadata/edt_3_18/src",
-        "IntegrationServices/СервисИнтеграции1/СервисИнтеграции1.mdo"));
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/edt_3_18"),
+      "IntegrationServices.СервисИнтеграции1");
 
     assertThat(mdoOpt).isPresent();
 
@@ -71,9 +71,9 @@ class MDIntegrationServiceTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdoOpt = MDOFactory.readMDObject(
-      Paths.get("src/test/resources/metadata/original_3_18",
-        "IntegrationServices/СервисИнтеграции1.xml"));
+    var mdoOpt = MDClasses.readMDObject(
+      Paths.get("src/test/resources/metadata/original_3_18"),
+      "IntegrationServices.СервисИнтеграции1");
 
     assertThat(mdoOpt).isPresent();
 
@@ -96,4 +96,5 @@ class MDIntegrationServiceTest extends AbstractMDOTest {
       assertThat(channel.getMessageDirection()).isBetween(MessageDirection.SEND, MessageDirection.RECEIVE);
     });
   }
+
 }

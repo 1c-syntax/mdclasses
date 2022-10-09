@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -34,9 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Конвертор для объектов в формате конфигуратора, минуя класс враппер
+ * Конвертор схемы компоновки данных. Для форматов ЕДТ и Конфигуратора одинаков
  */
 @Slf4j
+@CommonConverter
 public class DataCompositionSchemaConverter implements Converter {
 
   private static final String DATASET_NODE_NAME = "dataSet";
@@ -63,7 +65,7 @@ public class DataCompositionSchemaConverter implements Converter {
     }
 
 // todo    return Map.of("templateData", new DataCompositionSchema(dataSets));
-    return new DataCompositionSchema(dataSets);
+    return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath());
   }
 
   @Override

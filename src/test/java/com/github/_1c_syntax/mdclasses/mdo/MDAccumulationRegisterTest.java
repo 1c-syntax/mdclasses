@@ -36,7 +36,7 @@ class MDAccumulationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("AccumulationRegisters/РегистрНакопления1/РегистрНакопления1.mdo");
+    var mdo = getMDObjectEDT("AccumulationRegisters.РегистрНакопления1");
     checkBaseField(mdo, MDAccumulationRegister.class, "РегистрНакопления1",
       "8ea07f36-d671-4649-bc7a-94daa939e77f");
     checkForms(mdo);
@@ -55,7 +55,7 @@ class MDAccumulationRegisterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("AccumulationRegisters/РегистрНакопления1.xml");
+    var mdo = getMDObjectDesigner("AccumulationRegisters.РегистрНакопления1");
     checkBaseField(mdo, MDAccumulationRegister.class, "РегистрНакопления1",
       "8ea07f36-d671-4649-bc7a-94daa939e77f");
     checkForms(mdo);

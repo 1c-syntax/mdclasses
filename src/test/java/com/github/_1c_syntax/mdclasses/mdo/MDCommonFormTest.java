@@ -36,7 +36,7 @@ class MDCommonFormTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("CommonForms/Форма/Форма.mdo");
+    var mdo = getMDObjectEDT("CommonForms.Форма");
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
     assertThat(((AbstractMDOForm) mdo).getFormType()).isEqualTo(FormType.MANAGED);
@@ -48,7 +48,7 @@ class MDCommonFormTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("CommonForms/Форма.xml");
+    var mdo = getMDObjectDesigner("CommonForms.Форма");
     checkBaseField(mdo, MDCommonForm.class, "Форма",
       "5ac59104-28a5-40b1-ab5b-2857fb41991a");
     assertThat(((AbstractMDOForm) mdo).getFormType()).isEqualTo(FormType.MANAGED);

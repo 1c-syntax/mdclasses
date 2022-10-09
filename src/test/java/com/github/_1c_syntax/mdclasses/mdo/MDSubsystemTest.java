@@ -36,7 +36,7 @@ class MDSubsystemTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Subsystems/ПерваяПодсистема/ПерваяПодсистема.mdo");
+    var mdo = getMDObjectEDT("Subsystems.ПерваяПодсистема");
     checkBaseField(mdo, MDSubsystem.class, "ПерваяПодсистема",
       "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
     checkNoChildren(mdo);
@@ -98,7 +98,7 @@ class MDSubsystemTest extends AbstractMDOTest {
   @Test
   void testDesigner() {
 
-    var mdo = getMDObjectDesigner("Subsystems/ПерваяПодсистема.xml");
+    var mdo = getMDObjectDesigner("Subsystems.ПерваяПодсистема");
     checkBaseField(mdo, MDSubsystem.class, "ПерваяПодсистема",
       "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293");
     checkNoChildren(mdo);
@@ -146,7 +146,7 @@ class MDSubsystemTest extends AbstractMDOTest {
 
   @Test
   void testEDTCommonForm() {
-    var mdo = getMDObjectEDT("Subsystems/ВтораяПодсистема/ВтораяПодсистема.mdo");
+    var mdo = getMDObjectEDT("Subsystems.ВтораяПодсистема");
 
     var children = ((MDSubsystem) mdo).getChildren();
     assertThat(children).hasSize(4);

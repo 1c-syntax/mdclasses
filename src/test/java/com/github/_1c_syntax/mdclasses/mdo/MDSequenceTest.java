@@ -36,7 +36,7 @@ class MDSequenceTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Sequences/Последовательность1/Последовательность1.mdo");
+    var mdo = getMDObjectEDT("Sequences.Последовательность1");
     checkBaseField(mdo, MDSequence.class, "Последовательность1",
       "514bbcf4-7fc4-4a3e-9245-598fad397eec");
     checkForms(mdo);
@@ -52,7 +52,7 @@ class MDSequenceTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Sequences/Последовательность1.xml");
+    var mdo = getMDObjectDesigner("Sequences.Последовательность1");
     checkBaseField(mdo, MDSequence.class, "Последовательность1",
       "514bbcf4-7fc4-4a3e-9245-598fad397eec");
     checkForms(mdo);

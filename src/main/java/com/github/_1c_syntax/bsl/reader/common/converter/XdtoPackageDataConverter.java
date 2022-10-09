@@ -32,6 +32,7 @@ import lombok.NonNull;
 /**
  * Используется для преобразования содержимого пакета XDTO
  */
+@CommonConverter
 public class XdtoPackageDataConverter implements Converter {
 
   private static final String PROPERTY_NODE_NAME = "property";
