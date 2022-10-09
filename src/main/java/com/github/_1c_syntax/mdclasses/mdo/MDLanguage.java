@@ -51,20 +51,6 @@ public class MDLanguage extends AbstractMDObjectBase {
   public static final MDLanguage RUSSIAN = new MDLanguage("Русский", "ru");
 
   /**
-   * Создает объект языка если вдруг его не оказалось в данных конфигурации
-   *
-   * @param scriptVariant - вариант языка конфигурации
-   * @return - созданный и минимально заполненный объект языка
-   */
-  public static MDLanguage fakeLanguage(ScriptVariant scriptVariant) {
-    if (scriptVariant == ScriptVariant.ENGLISH) {
-      return ENGLISH;
-    } else {
-      return RUSSIAN;
-    }
-  }
-
-  /**
    * Код языка
    */
   private String languageCode = "";
@@ -79,4 +65,17 @@ public class MDLanguage extends AbstractMDObjectBase {
     languageCode = langCode;
   }
 
+  /**
+   * Создает объект языка если вдруг его не оказалось в данных конфигурации
+   *
+   * @param scriptVariant - вариант языка конфигурации
+   * @return - созданный и минимально заполненный объект языка
+   */
+  public static MDLanguage fakeLanguage(ScriptVariant scriptVariant) {
+    if (scriptVariant == ScriptVariant.ENGLISH) {
+      return ENGLISH;
+    } else {
+      return RUSSIAN;
+    }
+  }
 }

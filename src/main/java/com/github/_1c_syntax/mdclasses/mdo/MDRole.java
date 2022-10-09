@@ -82,8 +82,9 @@ public class MDRole extends AbstractMDObjectBase {
     } else if (data == null) {
       LOGGER.warn("Missing file " + path);
       return null;
+    } else {
+      throw new IllegalArgumentException("Wrong role data file " + path);
     }
-    throw new IllegalArgumentException("Wrong role data file " + path);
   }
 
   private static Path getRoleDataPath(Path mdoPath, String mdoName) {

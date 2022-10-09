@@ -113,8 +113,9 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
       } else if (data == null) {
         LOGGER.warn("Missing file " + path);
         return Collections.emptyList();
+      } else {
+        throw new IllegalArgumentException("Wrong exchange plan data file " + path);
       }
-      throw new IllegalArgumentException("Wrong exchange plan data file " + path);
     }
     return Collections.emptyList();
   }

@@ -100,8 +100,9 @@ public class Template extends AbstractMDObjectBase implements com.github._1c_syn
       } else if (data == null) {
         LOGGER.warn("Missing file " + path);
         return EmptyTemplateData.getEmpty();
+      } else {
+        throw new IllegalArgumentException("Wrong template data file " + path);
       }
-      throw new IllegalArgumentException("Wrong template data file " + path);
     }
     return EmptyTemplateData.getEmpty();
   }

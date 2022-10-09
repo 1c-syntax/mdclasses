@@ -83,6 +83,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
 import io.github.classgraph.HasName;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -257,7 +258,7 @@ public class ExtendXStream extends XStream {
 
       scanResult.getClassesImplementing(MDObject.class.getName())
         .filter(classInfo -> !classInfo.isInterface())
-        .forEach(clazzInfo -> {
+        .forEach((ClassInfo clazzInfo) -> {
           var clazz = getClassFromClassInfo(clazzInfo);
           var simpleName = clazzInfo.getSimpleName();
 

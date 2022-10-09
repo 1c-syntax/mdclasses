@@ -20,11 +20,6 @@
  * License along with MDClasses.
  */
 /**
- * Данных пакет предназначен для данных контейнеров метаданных (Конфигурация, Расширение,
- * Внешние обработки и отчеты), и предоставления точек входа в библиотеку
+ * Реализация ридеров для разных форматов
  */
-
-@ParametersAreNonnullByDefault
-package com.github._1c_syntax.bsl.mdclasses;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+package com.github._1c_syntax.bsl.reader;

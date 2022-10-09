@@ -126,8 +126,9 @@ public class MDOReader {
     } else if (data == null) {
       LOGGER.warn("Missing file " + fullMdoPath);
       return null;
+    } else {
+      throw new IllegalArgumentException("Wrong mdo file " + fullMdoPath);
     }
-    throw new IllegalArgumentException("Wrong mdo file " + fullMdoPath);
   }
 
   /**

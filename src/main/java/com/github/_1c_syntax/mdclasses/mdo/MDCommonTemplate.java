@@ -95,8 +95,9 @@ public class MDCommonTemplate extends AbstractMDObjectBase implements Template {
       } else if (data == null) {
         LOGGER.warn("Missing file " + path);
         return EmptyTemplateData.getEmpty();
+      } else {
+        throw new IllegalArgumentException("Wrong template data file " + path);
       }
-      throw new IllegalArgumentException("Wrong template data file " + path);
     }
     return EmptyTemplateData.getEmpty();
   }

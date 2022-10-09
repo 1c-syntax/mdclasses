@@ -101,8 +101,9 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL implements For
     } else if (data == null) {
       LOGGER.warn("Missing file " + path);
       return null;
+    } else {
+      throw new IllegalArgumentException("Wrong form data file " + path);
     }
-    throw new IllegalArgumentException("Wrong form data file " + path);
   }
 
   private static Path getFormDataPath(Path mdoPath, String mdoName, MDOType mdoType) {

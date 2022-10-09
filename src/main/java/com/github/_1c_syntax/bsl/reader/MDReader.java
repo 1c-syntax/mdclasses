@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.reader;
 
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.thoughtworks.xstream.converters.Converter;

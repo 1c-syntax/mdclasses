@@ -80,8 +80,9 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
     } else if (data == null) {
       LOGGER.warn("Missing file " + path);
       return null;
+    } else {
+      throw new IllegalArgumentException("Wrong XDTO package data file " + path);
     }
-    throw new IllegalArgumentException("Wrong XDTO package data file " + path);
   }
 
   private static Path getPackageDataPath(Path mdoPath, String mdoName) {
