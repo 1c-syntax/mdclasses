@@ -37,7 +37,7 @@ class MDHttpServiceTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("HTTPServices/HTTPСервис1/HTTPСервис1.mdo");
+    var mdo = getMDObjectEDT("HTTPServices.HTTPСервис1");
     checkBaseField(mdo, MDHttpService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
@@ -62,7 +62,7 @@ class MDHttpServiceTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("HTTPServices/HTTPСервис1.xml");
+    var mdo = getMDObjectDesigner("HTTPServices.HTTPСервис1");
     checkBaseField(mdo, MDHttpService.class, "HTTPСервис1",
       "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe");
     checkNoChildren(mdo);
@@ -83,4 +83,5 @@ class MDHttpServiceTest extends AbstractMDOTest {
       .anyMatch("ШаблонURL1Метод2"::equals)
       .anyMatch("ШаблонURL1Метод1"::equals);
   }
+
 }

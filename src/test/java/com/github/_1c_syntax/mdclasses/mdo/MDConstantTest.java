@@ -35,7 +35,7 @@ class MDConstantTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Constants/Константа1/Константа1.mdo");
+    var mdo = getMDObjectEDT("Constants.Константа1");
     checkBaseField(mdo, MDConstant.class, "Константа1",
       "61e6a6f2-7057-4e93-96c3-7bd2559217f4");
     checkNoChildren(mdo);
@@ -46,7 +46,7 @@ class MDConstantTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Constants/Константа1.xml");
+    var mdo = getMDObjectDesigner("Constants.Константа1");
     checkBaseField(mdo, MDConstant.class, "Константа1",
       "61e6a6f2-7057-4e93-96c3-7bd2559217f4");
     checkNoChildren(mdo);

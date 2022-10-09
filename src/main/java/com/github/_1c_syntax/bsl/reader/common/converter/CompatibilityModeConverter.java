@@ -27,6 +27,7 @@ import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 /**
  * Используется для преобразования режима совместимости из строкового вида в объектный вид
  */
+@CommonConverter
 public class CompatibilityModeConverter extends AbstractSingleValueConverter {
 
   @Override

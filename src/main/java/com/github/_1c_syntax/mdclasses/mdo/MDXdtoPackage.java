@@ -22,17 +22,19 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.XStreamFactory;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Data
@@ -46,17 +48,13 @@ import java.nio.file.Path;
   groupName = "XDTOPackages",
   groupNameRu = "ПакетыXDTO"
 )
+@Slf4j
 public class MDXdtoPackage extends AbstractMDObjectBase {
 
   /**
    * Пространство имен xdto-пакета
    */
   private String namespace = "";
-
-  /**
-   * Путь к файлу с данными xsd-схемы
-   */
-  private Path packageDataPath;
 
   /**
    * Содержимое xsd-схемы пакета
@@ -71,9 +69,27 @@ public class MDXdtoPackage extends AbstractMDObjectBase {
   @Override
   public void supplement() {
     super.supplement();
-    packageDataPath = MDOPathUtils.getPackageDataPath(this);
-    if (Files.exists(packageDataPath)) {
-      data = (XdtoPackageData) XStreamFactory.fromXML(packageDataPath.toFile());
+    data = readXdtoPackageData(path, name);
+  }
+
+  private static XdtoPackageData readXdtoPackageData(@NonNull Path mdoPath, @NonNull String mdoName) {
+    var path = getPackageDataPath(mdoPath, mdoName);
+    var data = MDOReader.read(path);
+    if (data instanceof XdtoPackageData) {
+      return (XdtoPackageData) data;
+    } else if (data == null) {
+      LOGGER.warn("Missing file " + path);
+      return null;
+    }
+    throw new IllegalArgumentException("Wrong XDTO package data file " + path);
+  }
+
+  private static Path getPackageDataPath(Path mdoPath, String mdoName) {
+    if (mdoPath.toString().endsWith(".xml")) {
+      return DesignerPaths.packageDataPath(mdoPath, mdoName);
+    } else {
+      return EDTPaths.packageDataPath(mdoPath);
     }
   }
+
 }

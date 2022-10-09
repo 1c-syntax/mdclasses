@@ -21,19 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -45,19 +45,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 abstract class AbstractMDOTest {
 
   /**
-   * Каталог исходников конфигурации в формате EDT
+   * Каталог исходников конфигурации в формате EDT (без src)
    */
-  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
+  private static final String SRC_EDT = "src/test/resources/metadata/edt";
 
   /**
    * Каталог исходников расширения конфигурации в формате EDT
    */
-  private static final String SRC_EXT_EDT = "src/test/resources/metadata/edt_ext/src";
+  private static final String SRC_EXT_EDT = "src/test/resources/metadata/edt_ext";
 
   /**
    * Каталог исходников конфигурации в формате EDT для англоязычной конфигурации
    */
-  private static final String SRC_EDT_EN = "src/test/resources/metadata/edt_en/src";
+  private static final String SRC_EDT_EN = "src/test/resources/metadata/edt_en";
 
   /**
    * Каталог исходников конфигурации в формате Конфигуратора
@@ -75,7 +75,7 @@ abstract class AbstractMDOTest {
   private final MDOType mdoType;
 
   /**
-   * Ппинадлженость объектов по умолчанию
+   * Принадлежность объектов по умолчанию
    */
   private final ObjectBelonging objectBelonging;
 
@@ -104,11 +104,11 @@ abstract class AbstractMDOTest {
   /**
    * Возвращает объект метаданных по файлу описания в формате EDT
    *
-   * @param partPath путь к файлу описания объекта
+   * @param fullName полное имя объекта
    * @return прочитанный объект
    */
-  protected AbstractMDObjectBase getMDObjectEDT(String partPath) {
-    var mdo = MDOFactory.readMDObject(Paths.get(SRC_EDT, partPath));
+  protected MDObject getMDObjectEDT(String fullName) {
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_EDT), fullName);
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -116,11 +116,11 @@ abstract class AbstractMDOTest {
   /**
    * Возвращает объект метаданных по файлу описания в формате EDT для расширения
    *
-   * @param partPath путь к файлу описания объекта
+   * @param fullName полное имя объекта
    * @return прочитанный объект
    */
-  protected AbstractMDObjectBase getMDObjectEDTExt(String partPath) {
-    var mdo = MDOFactory.readMDObject(Paths.get(SRC_EXT_EDT, partPath));
+  protected MDObject getMDObjectEDTExt(String fullName) {
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_EXT_EDT), fullName);
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -128,11 +128,11 @@ abstract class AbstractMDOTest {
   /**
    * Возвращает объект метаданных по файлу описания в формате EDT для англоязычной конфигурации
    *
-   * @param partPath путь к файлу описания объекта
+   * @param fullName полное имя объекта
    * @return прочитанный объект
    */
-  protected AbstractMDObjectBase getMDObjectEDTEn(String partPath) {
-    var mdo = MDOFactory.readMDObject(Paths.get(SRC_EDT_EN, partPath));
+  protected MDObject getMDObjectEDTEn(String fullName) {
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_EDT_EN), fullName);
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -140,11 +140,11 @@ abstract class AbstractMDOTest {
   /**
    * Возвращает объект метаданных по файлу описания в формате Конфигуратора
    *
-   * @param partPath путь к файлу описания объекта
+   * @param fullName поле имя объекта
    * @return прочитанный объект
    */
-  protected AbstractMDObjectBase getMDObjectDesigner(String partPath) {
-    var mdo = MDOFactory.readMDObject(getMDOPathDesigner(partPath));
+  protected MDObject getMDObjectDesigner(String fullName) {
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_DESIGNER), fullName);
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -152,11 +152,11 @@ abstract class AbstractMDOTest {
   /**
    * Возвращает объект метаданных по файлу описания в формате Конфигуратора
    *
-   * @param partPath путь к файлу описания объекта
+   * @param fullName поле имя объекта
    * @return прочитанный объект
    */
-  protected AbstractMDObjectBase getMDObjectDesignerExt(String partPath) {
-    var mdo = MDOFactory.readMDObject(Paths.get(SRC_EXT_DESIGNER, partPath));
+  protected MDObject getMDObjectDesignerExt(String fullName) {
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_EXT_DESIGNER), fullName);
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -184,6 +184,11 @@ abstract class AbstractMDOTest {
 
   }
 
+  protected void checkBaseField(MDObject mdo, Class<?> clazz, String name, String uuid) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkBaseField((AbstractMDObjectBase) mdo, clazz, name, uuid);
+  }
+
   /**
    * Выполнение проверки дочерних форм - пусто
    */
@@ -191,6 +196,14 @@ abstract class AbstractMDOTest {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getForms()).isEmpty();
+  }
+
+  /**
+   * Выполнение проверки дочерних форм - пусто
+   */
+  protected void checkForms(MDObject mdo) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkForms((AbstractMDObjectBase) mdo);
   }
 
   /**
@@ -210,12 +223,28 @@ abstract class AbstractMDOTest {
   }
 
   /**
+   * Выполнение проверки дочерних форм
+   */
+  protected void checkForms(MDObject mdo, int count, String... names) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkForms((AbstractMDObjectBase) mdo, count, names);
+  }
+
+  /**
    * Выполнение проверки дочерних макетов - пусто
    */
   protected void checkTemplates(AbstractMDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getTemplates()).isEmpty();
+  }
+
+  /**
+   * Выполнение проверки дочерних макетов - пусто
+   */
+  protected void checkTemplates(MDObject mdo) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkTemplates((AbstractMDObjectBase) mdo);
   }
 
   /**
@@ -233,12 +262,28 @@ abstract class AbstractMDOTest {
   }
 
   /**
+   * Выполнение проверки дочерних макетов
+   */
+  protected void checkTemplates(MDObject mdo, int count, String... names) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkTemplates((AbstractMDObjectBase) mdo, count, names);
+  }
+
+  /**
    * Выполнение проверки дочерних команд - пусто
    */
   protected void checkCommands(AbstractMDObjectBase mdo) {
     assertThat(mdo).isInstanceOf(AbstractMDObjectComplex.class);
     var mdoComplex = (AbstractMDObjectComplex) mdo;
     assertThat(mdoComplex.getCommands()).isEmpty();
+  }
+
+  /**
+   * Выполнение проверки дочерних команд - пусто
+   */
+  protected void checkCommands(MDObject mdo) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkCommands((AbstractMDObjectBase) mdo);
   }
 
   /**
@@ -253,6 +298,14 @@ abstract class AbstractMDOTest {
     assertThat(children).allMatch(AbstractMDObjectBase.class::isInstance);
     assertThat(children).allMatch(child -> List.of(names).contains(child.getName()));
     children.forEach(child -> checkChild(mdo.getMdoReference(), MDOType.COMMAND, ModuleType.CommandModule, child));
+  }
+
+  /**
+   * Выполнение проверки дочерних команд
+   */
+  protected void checkCommands(MDObject mdo, int count, String... names) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkCommands((AbstractMDObjectBase) mdo, count, names);
   }
 
   /**
@@ -299,10 +352,23 @@ abstract class AbstractMDOTest {
   }
 
   /**
+   * Проверка на невозможность наличия модулей
+   */
+  protected void checkNoModules(MDObject mdo) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkNoModules((AbstractMDObjectBase) mdo);
+  }
+
+  /**
    * Проверка на невозможность наличия дочерних объектов
    */
   protected void checkNoChildren(AbstractMDObjectBase mdo) {
     assertThat(mdo).isNotInstanceOf(AbstractMDObjectComplex.class);
+  }
+
+  protected void checkNoChildren(MDObject mdo) {
+    assertThat(mdo).isInstanceOf(AbstractMDObjectBase.class);
+    checkNoChildren((AbstractMDObjectBase) mdo);
   }
 
   /**
@@ -331,9 +397,4 @@ abstract class AbstractMDOTest {
         type.getGroupName() + "/" + child.getName(), moduleType);
     }
   }
-
-  protected static Path getMDOPathDesigner(String path) {
-    return Paths.get(SRC_DESIGNER, path);
-  }
-
 }

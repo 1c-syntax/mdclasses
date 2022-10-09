@@ -32,7 +32,7 @@ class MDFunctionalOptionsParameterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("FunctionalOptionsParameters/ПараметрФункциональныхОпций/ПараметрФункциональныхОпций.mdo");
+    var mdo = getMDObjectEDT("FunctionalOptionsParameters.ПараметрФункциональныхОпций");
     checkBaseField(mdo, MDFunctionalOptionsParameter.class, "ПараметрФункциональныхОпций",
       "9fae7345-6220-4e5b-b4c1-84bb921a58b7");
     checkNoChildren(mdo);
@@ -42,7 +42,7 @@ class MDFunctionalOptionsParameterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("FunctionalOptionsParameters/ПараметрФункциональныхОпций1.xml");
+    var mdo = getMDObjectDesigner("FunctionalOptionsParameters.ПараметрФункциональныхОпций1");
     checkBaseField(mdo, MDFunctionalOptionsParameter.class, "ПараметрФункциональныхОпций1",
       "8e2f9f0c-8727-4ffc-a6ea-f510b37814eb");
     checkNoChildren(mdo);

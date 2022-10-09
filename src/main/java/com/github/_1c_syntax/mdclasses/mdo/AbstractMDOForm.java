@@ -23,15 +23,20 @@ package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.form.FormData;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 /**
@@ -41,6 +46,7 @@ import java.nio.file.Path;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@Slf4j
 public abstract class AbstractMDOForm extends AbstractMDObjectBSL implements Form {
 
   /**
@@ -57,11 +63,6 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL implements For
    */
   private FormData data;
 
-  /**
-   * Путь к файлу с данными формы
-   */
-  private Path formDataPath;
-
   protected AbstractMDOForm(DesignerMDO designerMDO) {
     super(designerMDO);
     formType = designerMDO.getProperties().getFormType();
@@ -70,17 +71,46 @@ public abstract class AbstractMDOForm extends AbstractMDObjectBSL implements For
   @Override
   public void supplement() {
     super.supplement();
-    computeFormData();
+    data = readFormData(path, name, getMdoType());
   }
 
   @Override
   public void supplement(AbstractMDObjectBase parent) {
     super.supplement(parent);
-    computeFormData();
+    data = readFormData(path, name, getMdoType());
   }
 
-  private void computeFormData() {
-    formDataPath = MDOPathUtils.getFormDataPath(this);
-    MDOFactory.readFormData(formDataPath).ifPresent(this::setData);
+  @Nullable
+  public Path getFormDataPath() {
+    return data.getDataPath();
   }
+
+  private static FormData readFormData(@NonNull Path mdoPath,
+                                       @NonNull String mdoName,
+                                       @NonNull MDOType mdoType) {
+    var path = getFormDataPath(mdoPath, mdoName, mdoType);
+    return readFormData(path);
+  }
+
+  public static FormData readFormData(Path path) {
+    var data = MDOReader.read(path);
+    if (data instanceof FormData) {
+      ((FormData) data).setDataPath(path);
+      ((FormData) data).fillPlainChildren(((FormData) data).getChildren());
+      return (FormData) data;
+    } else if (data == null) {
+      LOGGER.warn("Missing file " + path);
+      return null;
+    }
+    throw new IllegalArgumentException("Wrong form data file " + path);
+  }
+
+  private static Path getFormDataPath(Path mdoPath, String mdoName, MDOType mdoType) {
+    if (mdoPath.toString().endsWith(".xml")) {
+      return DesignerPaths.formDataPath(mdoPath, mdoName);
+    } else {
+      return EDTPaths.formDataPath(mdoPath, mdoType, mdoName);
+    }
+  }
+
 }

@@ -32,7 +32,7 @@ class MDSessionParameterTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("SessionParameters/ПараметрСеанса1/ПараметрСеанса1.mdo");
+    var mdo = getMDObjectEDT("SessionParameters.ПараметрСеанса1");
     checkBaseField(mdo, MDSessionParameter.class, "ПараметрСеанса1",
       "66844df5-823b-40f1-ab8a-b07c1cb7462f");
     checkNoChildren(mdo);
@@ -42,10 +42,11 @@ class MDSessionParameterTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("SessionParameters/ПараметрСеанса1.xml");
+    var mdo = getMDObjectDesigner("SessionParameters.ПараметрСеанса1");
     checkBaseField(mdo, MDSessionParameter.class, "ПараметрСеанса1",
       "66844df5-823b-40f1-ab8a-b07c1cb7462f");
     checkNoChildren(mdo);
     checkNoModules(mdo);
   }
+
 }

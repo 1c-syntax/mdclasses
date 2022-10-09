@@ -38,7 +38,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
   @Test
   void testEDT() {
 
-    var mdo = getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
+    var mdo = getMDObjectEDT("CommonModules.ГлобальныйОбщийМодуль");
     checkBaseField(mdo, MDCommonModule.class, "ГлобальныйОбщийМодуль",
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
@@ -55,7 +55,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
     assertThat(commonModule.isServerCall()).isFalse();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
 
-    commonModule = (MDCommonModule) getMDObjectEDT("CommonModules/ПростойОбщийМодуль/ПростойОбщийМодуль.mdo");
+    commonModule = (MDCommonModule) getMDObjectEDT("CommonModules.ПростойОбщийМодуль");
     assertThat(commonModule.isClientManagedApplication()).isFalse();
     assertThat(commonModule.isClientOrdinaryApplication()).isFalse();
     assertThat(commonModule.isExternalConnection()).isFalse();
@@ -65,7 +65,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
     assertThat(commonModule.isServerCall()).isFalse();
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
 
-    commonModule = (MDCommonModule) getMDObjectEDT("CommonModules/ОбщийМодульПовтИспСеанс/ОбщийМодульПовтИспСеанс.mdo");
+    commonModule = (MDCommonModule) getMDObjectEDT("CommonModules.ОбщийМодульПовтИспСеанс");
     assertThat(commonModule.isClientManagedApplication()).isFalse();
     assertThat(commonModule.isClientOrdinaryApplication()).isFalse();
     assertThat(commonModule.isExternalConnection()).isFalse();
@@ -81,7 +81,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
   @Test
   void testDesigner() {
 
-    var mdo = getMDObjectDesigner("CommonModules/ГлобальныйОбщийМодуль.xml");
+    var mdo = getMDObjectDesigner("CommonModules.ГлобальныйОбщийМодуль");
     checkBaseField(mdo, MDCommonModule.class, "ГлобальныйОбщийМодуль",
       "9e9c021c-bdbd-4804-a53a-9442ba9eb18c");
     checkNoChildren(mdo);
@@ -98,7 +98,7 @@ class MDCommonModuleTest extends AbstractMDOTest {
     assertThat(commonModule.isServer()).isTrue();
     assertThat(commonModule.isServerCall()).isFalse();
 
-    commonModule = (MDCommonModule) getMDObjectDesigner("CommonModules/ПростойОбщийМодуль.xml");
+    commonModule = (MDCommonModule) getMDObjectDesigner("CommonModules.ПростойОбщийМодуль");
     assertThat(commonModule.getReturnValuesReuse()).isEqualTo(ReturnValueReuse.DONT_USE);
     assertThat(commonModule.isClientManagedApplication()).isFalse();
     assertThat(commonModule.isClientOrdinaryApplication()).isFalse();

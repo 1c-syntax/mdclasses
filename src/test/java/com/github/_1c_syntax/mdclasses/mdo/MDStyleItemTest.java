@@ -32,7 +32,7 @@ class MDStyleItemTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("StyleItems/ЭлементСтиля1/ЭлементСтиля1.mdo");
+    var mdo = getMDObjectEDT("StyleItems.ЭлементСтиля1");
     checkBaseField(mdo, MDStyleItem.class, "ЭлементСтиля1",
       "68047ae8-62aa-4696-9780-d364feb3cc10");
     checkNoChildren(mdo);
@@ -42,7 +42,7 @@ class MDStyleItemTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("StyleItems/ЭлементСтиля1.xml");
+    var mdo = getMDObjectDesigner("StyleItems.ЭлементСтиля1");
     checkBaseField(mdo, MDStyleItem.class, "ЭлементСтиля1",
       "68047ae8-62aa-4696-9780-d364feb3cc10");
     checkNoChildren(mdo);

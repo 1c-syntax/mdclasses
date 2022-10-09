@@ -21,13 +21,13 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.CommonAttribute;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
-import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

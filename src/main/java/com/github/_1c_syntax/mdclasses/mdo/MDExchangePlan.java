@@ -21,21 +21,23 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerExchangePlanContent;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.mdo.children.ExchangePlanItem;
 import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +53,7 @@ import java.util.Map;
   groupName = "ExchangePlans",
   groupNameRu = "ПланыОбмена"
 )
+@Slf4j
 public class MDExchangePlan extends AbstractMDObjectComplex {
 
   /**
@@ -78,9 +81,9 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
   @Override
   public void supplement() {
     super.supplement();
-    if (MDOUtils.getConfigurationSourceByMDOPath(path) == ConfigurationSource.DESIGNER) {
-      var contentPath = MDOPathUtils.getExchangePlanContentPath(this);
-      content = MDOFactory.readExchangeContext(contentPath);
+    var exchangeContext = readExchangeContext(path, name);
+    if (!exchangeContext.isEmpty()) {
+      content = exchangeContext;
     }
   }
 
@@ -98,5 +101,21 @@ public class MDExchangePlan extends AbstractMDObjectComplex {
         }
       }
     });
+  }
+
+  private static List<ExchangePlanItem> readExchangeContext(@NonNull Path mdoPath,
+                                                            @NonNull String mdoName) {
+    if (mdoPath.toString().endsWith(".xml")) {
+      var path = DesignerPaths.exchangePlanContentPath(mdoPath, mdoName);
+      var data = MDOReader.read(path);
+      if (data instanceof DesignerExchangePlanContent) {
+        return ((DesignerExchangePlanContent) data).getContent();
+      } else if (data == null) {
+        LOGGER.warn("Missing file " + path);
+        return Collections.emptyList();
+      }
+      throw new IllegalArgumentException("Wrong exchange plan data file " + path);
+    }
+    return Collections.emptyList();
   }
 }

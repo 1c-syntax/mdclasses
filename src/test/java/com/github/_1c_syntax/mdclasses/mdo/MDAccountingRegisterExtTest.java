@@ -36,7 +36,7 @@ class MDAccountingRegisterExtTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDTExt("AccountingRegisters/РегистрБухгалтерии1/РегистрБухгалтерии1.mdo");
+    var mdo = getMDObjectEDTExt("AccountingRegisters.РегистрБухгалтерии1");
     checkBaseField(mdo, MDAccountingRegister.class, "РегистрБухгалтерии1",
       "dfd497a0-0505-4248-b3b4-e8163a7ac24f");
     checkForms(mdo);
@@ -50,7 +50,7 @@ class MDAccountingRegisterExtTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesignerExt("AccountingRegisters/РегистрБухгалтерии1.xml");
+    var mdo = getMDObjectDesignerExt("AccountingRegisters.РегистрБухгалтерии1");
     checkBaseField(mdo, MDAccountingRegister.class, "РегистрБухгалтерии1",
       "dfd497a0-0505-4248-b3b4-e8163a7ac24f");
     checkForms(mdo);

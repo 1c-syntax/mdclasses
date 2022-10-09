@@ -35,7 +35,7 @@ class MDChartOfCharacteristicTypesTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/ПланВидовХарактеристик1.mdo");
+    var mdo = getMDObjectEDT("ChartsOfCharacteristicTypes.ПланВидовХарактеристик1");
     checkBaseField(mdo, MDChartOfCharacteristicTypes.class, "ПланВидовХарактеристик1",
       "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452");
     checkForms(mdo);
@@ -50,7 +50,7 @@ class MDChartOfCharacteristicTypesTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("ChartsOfCharacteristicTypes/ПланВидовХарактеристик1.xml");
+    var mdo = getMDObjectDesigner("ChartsOfCharacteristicTypes.ПланВидовХарактеристик1");
     checkBaseField(mdo, MDChartOfCharacteristicTypes.class, "ПланВидовХарактеристик1",
       "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452");
     checkForms(mdo);

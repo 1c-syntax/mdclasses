@@ -34,10 +34,10 @@ class MDDataProcessorTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("DataProcessors/Обработка1/Обработка1.mdo");
+    var mdo = getMDObjectEDT("DataProcessors.Обработка1");
     checkBaseField(mdo, MDDataProcessor.class, "Обработка1",
       "a7c57ba0-75d8-487d-b8ea-ae5083d8a503");
-    checkForms(mdo, 1, "Форма");
+    checkForms(mdo, 2, "Форма", "ЖурналРегистрации");
     checkTemplates(mdo);
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
@@ -47,10 +47,10 @@ class MDDataProcessorTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("DataProcessors/Обработка1.xml");
+    var mdo = getMDObjectDesigner("DataProcessors.Обработка1");
     checkBaseField(mdo, MDDataProcessor.class, "Обработка1",
       "a7c57ba0-75d8-487d-b8ea-ae5083d8a503");
-    checkForms(mdo, 1, "Форма");
+    checkForms(mdo, 2, "Форма", "ЖурналРегистрации");
     checkTemplates(mdo);
     checkCommands(mdo);
     assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();

@@ -34,7 +34,7 @@ class MDXdtoPackageTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("XDTOPackages/ПакетXDTO1/ПакетXDTO1.mdo");
+    var mdo = getMDObjectEDT("XDTOPackages.ПакетXDTO1");
     checkBaseField(mdo, MDXdtoPackage.class, "ПакетXDTO1",
       "b8a93cce-56e4-4507-b281-5c525a466a0f");
     checkNoChildren(mdo);
@@ -84,7 +84,7 @@ class MDXdtoPackageTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("XDTOPackages/ПакетXDTO1.xml");
+    var mdo = getMDObjectDesigner("XDTOPackages.ПакетXDTO1");
     checkBaseField(mdo, MDXdtoPackage.class, "ПакетXDTO1",
       "b8a93cce-56e4-4507-b281-5c525a466a0f");
     checkNoChildren(mdo);
@@ -124,4 +124,5 @@ class MDXdtoPackageTest extends AbstractMDOTest {
     assertThat(exampleProperty.getForm()).isEmpty();
     assertThat(exampleProperty.isNillable()).isFalse();
   }
+
 }

@@ -21,20 +21,17 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
-import com.github._1c_syntax.bsl.support.CompatibilityMode;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerContentItem;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
-import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
-import com.github._1c_syntax.mdclasses.utils.MDOUtils;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerContentItem;
+import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
+import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
+import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import io.vavr.control.Either;
 import lombok.Data;
@@ -127,7 +124,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   /**
    * Язык приложения по умолчанию
    */
-  private Either<String, MDLanguage> defaultLanguage = Either.right(MDOFactory.fakeLanguage(scriptVariant));
+  private Either<String, MDLanguage> defaultLanguage = Either.right(MDLanguage.fakeLanguage(scriptVariant));
 
   /**
    * Режим управления блокировками
@@ -185,7 +182,7 @@ public class MDConfiguration extends AbstractMDObjectBSL {
   @Override
   public void supplement() {
     super.supplement();
-    MDOPathUtils.getRootPathByConfigurationMDO(path).ifPresent(this::computeAllMDObject);
+    computeAllMDObject();
 
     var localChildren = getAllMDO();
     linkChildAndSubsystem(localChildren);
@@ -219,17 +216,15 @@ public class MDConfiguration extends AbstractMDObjectBSL {
     }
   }
 
-  private void computeAllMDObject(Path rootPath) {
-    var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
+  private void computeAllMDObject() {
     var localChildren =
       children.parallelStream()
-        .map(child -> readChildMDO(configurationSource, rootPath, child))
+        .map(child -> readChildMDO(path, child))
         .collect(Collectors.toList());
     setChildren(localChildren);
   }
 
-  private static Either<String, AbstractMDObjectBase> readChildMDO(ConfigurationSource configurationSource,
-                                                                   Path rootPath,
+  private static Either<String, AbstractMDObjectBase> readChildMDO(Path path,
                                                                    Either<String, AbstractMDObjectBase> child) {
     if (!child.isRight()) {
       var value = child.getLeft();
@@ -238,9 +233,11 @@ public class MDConfiguration extends AbstractMDObjectBSL {
       var name = value.substring(dotPosition + 1);
 
       if (type.isPresent()) {
-        var mdo = MDOPathUtils.getMDOPath(configurationSource, rootPath, type.get(), name)
-          .flatMap(MDOFactory::readMDObject);
-        return mdo.<Either<String, AbstractMDObjectBase>>map(Either::right).orElse(child);
+        var mdo = MDClasses.readMDObject(path, type.get().getGroupName() + "." + name);
+        if (mdo.isPresent() && mdo.get() instanceof AbstractMDObjectBase) {
+          return Either.right((AbstractMDObjectBase) mdo.get());
+        }
+        return child;
       }
     }
     return child;

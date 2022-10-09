@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.mdclasses.mdo.support.ObjectRight;
 import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
-import com.github._1c_syntax.mdclasses.utils.MDOFactory;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
@@ -33,27 +33,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RoleDataTest {
 
-  private static final String SRC_EDT = "src/test/resources/metadata/edt/src";
+  private static final String SRC_EDT = "src/test/resources/metadata/edt";
   private static final String SRC_DESIGNER = "src/test/resources/metadata/original";
 
   @Test
   void testRoleDataEdt() {
-    var mdo = MDOFactory.readMDObject(
-      Paths.get(SRC_EDT, "Roles/Роль1/Роль1.mdo"));
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_EDT), "Roles.Роль1");
     assertThat(mdo).isPresent();
-    MDRole role = (MDRole) mdo.get();
+    var role = (MDRole) mdo.get();
     testRole(role);
   }
 
   @Test
   void testRoleDataDesigner() {
-    var mdo = MDOFactory.readMDObject(
-      Paths.get(SRC_DESIGNER, "Roles/Роль1.xml"));
+    var mdo = MDClasses.readMDObject(Paths.get(SRC_DESIGNER), "Roles.Роль1");
     assertThat(mdo).isPresent();
     MDRole role = (MDRole) mdo.get();
     testRole(role);
   }
-
 
   private void testRole(MDRole role) {
 

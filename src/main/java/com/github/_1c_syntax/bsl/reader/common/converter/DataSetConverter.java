@@ -30,6 +30,10 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+/**
+ * Конвертор данных типа DataSet, применяемый в формах и СКД
+ */
+@CommonConverter
 public class DataSetConverter implements Converter {
 
   private static final String NAME_NODE_NAME = "name";

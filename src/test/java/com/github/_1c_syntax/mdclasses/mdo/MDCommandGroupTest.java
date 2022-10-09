@@ -32,7 +32,7 @@ class MDCommandGroupTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("CommandGroups/ГруппаКоманд1/ГруппаКоманд1.mdo");
+    var mdo = getMDObjectEDT("CommandGroups.ГруппаКоманд1");
     checkBaseField(mdo, MDCommandGroup.class, "ГруппаКоманд1",
       "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");
     checkNoChildren(mdo);
@@ -42,7 +42,7 @@ class MDCommandGroupTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("CommandGroups/ГруппаКоманд1.xml");
+    var mdo = getMDObjectDesigner("CommandGroups.ГруппаКоманд1");
     checkBaseField(mdo, MDCommandGroup.class, "ГруппаКоманд1",
       "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c");
     checkNoChildren(mdo);

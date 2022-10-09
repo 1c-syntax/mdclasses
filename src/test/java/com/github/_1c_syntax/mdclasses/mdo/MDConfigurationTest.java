@@ -51,7 +51,7 @@ class MDConfigurationTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdo = getMDObjectEDT("Configuration/Configuration.mdo");
+    var mdo = getMDObjectEDT("Configuration.Configuration");
     checkBaseField(mdo, MDConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     checkNoChildren(mdo);
@@ -131,7 +131,7 @@ class MDConfigurationTest extends AbstractMDOTest {
 
   @Test
   void testEDTEng() {
-    var mdo = getMDObjectEDTEn("Configuration/Configuration.mdo");
+    var mdo = getMDObjectEDTEn("Configuration.Configuration");
     checkBaseField(mdo, MDConfiguration.class, "Configuration",
       "04c0322d-92da-49ab-87e5-82c8dcd50888");
     checkNoChildren(mdo);
@@ -164,7 +164,7 @@ class MDConfigurationTest extends AbstractMDOTest {
   @Override
   @Test
   void testDesigner() {
-    var mdo = getMDObjectDesigner("Configuration.xml");
+    var mdo = getMDObjectDesigner("Configuration.Configuration");
     checkBaseField(mdo, MDConfiguration.class, "Конфигурация",
       "46c7c1d0-b04d-4295-9b04-ae3207c18d29");
     checkNoChildren(mdo);
