@@ -22,7 +22,9 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.mdclasses.mdo.attributes.AbstractMDOAttribute;
 import com.github._1c_syntax.mdclasses.mdo.attributes.Dimension;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +47,7 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 3, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((Recalculation) ((MDCalculationRegister) mdo).getAttributes().get(2)).getModules()).isNotEmpty();
 
 
 	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
@@ -65,6 +68,7 @@ class MDCalculationRegisterTest extends AbstractMDOTest {
     checkAttributes(((AbstractMDObjectComplex) mdo).getAttributes(), 4, mdo.getMdoReference(),
       AttributeType.DIMENSION, AttributeType.RESOURCE, AttributeType.RECALCULATION);
     assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
+    assertThat(((Recalculation) ((MDCalculationRegister) mdo).getAttributes().get(0)).getModules()).isNotEmpty();
 
 	var dimension = (Dimension) ((AbstractMDObjectComplex) mdo).getAttributes().get(1);
     assertThat(dimension.isDenyIncompleteValues()).isFalse();

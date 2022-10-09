@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +32,16 @@ import java.util.stream.Collectors;
 /**
  * Расширение - владелец модулей с исходным кодом
  */
-public interface ModuleOwner {
+public interface ModuleOwner extends MD {
   /**
    * Список модулей объекта
    */
-  List<Module> getModules();
+  List<MDOModule> getModules();
 
   /**
    * Список модулей объекта, включая дочерние
    */
-  default List<Module> getAllModules() {
+  default List<MDOModule> getAllModules() {
     var modules = new ArrayList<>(getModules());
     if (this instanceof ChildrenOwner) {
       modules.addAll(((ChildrenOwner) this).getPlainChildren().stream()
@@ -59,7 +61,7 @@ public interface ModuleOwner {
    * @param uri Адрес файла модуля
    * @return Контейнер с найденным файлом
    */
-  default Optional<Module> getModuleByUri(URI uri) {
+  default Optional<MDOModule> getModuleByUri(URI uri) {
     return getAllModules().stream().filter(module -> module.getUri().equals(uri)).findFirst();
   }
 }

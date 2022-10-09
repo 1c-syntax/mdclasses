@@ -161,6 +161,9 @@ public class MDOUtils {
         case SEQUENCE:
           types.add(ModuleType.RecordSetModule);
           break;
+        case RECALCULATION:
+          types.add(ModuleType.RecalculationModule);
+          break;
         case WEB_SERVICE:
           types.add(ModuleType.WEBServiceModule);
           break;
