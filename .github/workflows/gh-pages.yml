@@ -16,7 +16,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v3.1.0
 
     - name: Setup JDK
       uses: actions/setup-java@v3
@@ -28,7 +28,7 @@ jobs:
       run: ./gradlew --no-daemon javadoc
 
     - name: Set up Python
-      uses: actions/setup-python@v4.1.0
+      uses: actions/setup-python@v4.2.0
       with:
         python-version: '3.6'
         architecture: 'x64'

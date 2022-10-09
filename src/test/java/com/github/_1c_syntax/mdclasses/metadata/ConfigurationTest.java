@@ -95,10 +95,10 @@ class ConfigurationTest {
             .anyMatch(briefInfo -> briefInfo.getLanguage().equals("en")
                     && briefInfo.getContent().equals("Detailed info"));
 
-    assertThat(configuration.getModulesByType()).hasSize(38);
+    assertThat(configuration.getModulesByType()).hasSize(39);
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(38);
-    assertThat(configuration.getModules()).hasSize(38);
+    assertThat(configuration.getModulesByObject()).hasSize(39);
+    assertThat(configuration.getModules()).hasSize(39);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);
@@ -357,7 +357,7 @@ class ConfigurationTest {
     assertThat(configuration.isUseManagedFormInOrdinaryApplication()).isTrue();
     assertThat(configuration.isUseOrdinaryFormInManagedApplication()).isFalse();
 
-    assertThat(configuration.getModulesByType()).hasSize(18);
+    assertThat(configuration.getModulesByType()).hasSize(19);
     assertThat(configuration.getCopyrights()).hasSize(2)
       .anyMatch(copyright -> copyright.getContent().equals("Моя Программа")
         && copyright.getLanguage().equals("ru"))
@@ -377,8 +377,8 @@ class ConfigurationTest {
                     && briefInfo.getContent().equals("Detailed info"));
 
     assertThat(configuration.getModulesBySupport()).isEmpty();
-    assertThat(configuration.getModulesByObject()).hasSize(18);
-    assertThat(configuration.getModules()).hasSize(18);
+    assertThat(configuration.getModulesByObject()).hasSize(19);
+    assertThat(configuration.getModules()).hasSize(19);
     assertThat(configuration.getCommonModules()).hasSize(6);
     assertThat(configuration.getLanguages()).hasSize(3);
     assertThat(configuration.getRoles()).hasSize(1);

@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -44,7 +45,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase {
+public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implements ModuleOwner {
 
   /**
    * Список модулей объекта
