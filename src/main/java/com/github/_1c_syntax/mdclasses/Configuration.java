@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -34,7 +35,6 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
@@ -162,7 +162,7 @@ public class Configuration {
   /**
    * Объекты конфигурации в связке со ссылкой на файлы
    */
-  private Map<URI, AbstractMDObjectBSL> modulesByObject;
+  private Map<URI, ModuleOwner> modulesByObject;
   /**
    * Модули конфигурации
    */
@@ -304,7 +304,7 @@ public class Configuration {
 
     Map<URI, ModuleType> modulesType = new HashMap<>();
     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, AbstractMDObjectBSL> modulesObject = new HashMap<>();
+    Map<URI, ModuleOwner> modulesObject = new HashMap<>();
     Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
@@ -312,13 +312,13 @@ public class Configuration {
     children.forEach((AbstractMDObjectBase mdo) -> {
 
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
-      if (mdo instanceof AbstractMDObjectBSL) {
+      if (mdo instanceof ModuleOwner) {
         computeModules(modulesType,
           modulesSupport,
           modulesObject,
           modulesList,
           modulesMDORef,
-          (AbstractMDObjectBSL) mdo,
+          (ModuleOwner) mdo,
           supports);
       }
     });
@@ -427,9 +427,9 @@ public class Configuration {
   // todo надо рефакторить!!!!
   private static void computeModules(Map<URI, ModuleType> modulesType,
                                      Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, AbstractMDObjectBSL> modulesObject,
+                                     Map<URI, ModuleOwner> modulesObject,
                                      List<MDOModule> modulesList,
-                                     Map<String, Map<ModuleType, URI>> modulesMDORef, AbstractMDObjectBSL mdo,
+                                     Map<String, Map<ModuleType, URI>> modulesMDORef, ModuleOwner mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
