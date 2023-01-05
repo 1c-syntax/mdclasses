@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,12 +24,11 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 
-import java.nio.file.Path;
-
 /**
  * Интерфейс макетов объектов и общих макетов
  */
 public interface Template extends MD {
+
   /**
    * Тип макета. Например, `ТабличныйДокумент`.
    */
@@ -38,10 +37,5 @@ public interface Template extends MD {
   /**
    * Содержимое макета. Например, Схема компоновки данных
    */
-  TemplateData getTemplateData();
-
-  /**
-   * Путь к самому файлу макета
-   */
-  Path getTemplateDataPath();
+  TemplateData getData();
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,18 +21,17 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 
 /**
  * Интерфейс форм объектов и общих форм
  */
-public interface Form extends MD
-// todo:  , ModuleOwner
-{
+public interface Form extends MD, ModuleOwner {
   /**
    * Тип формы
    */
   FormType getFormType();
 
-  // todo нужна нормальная модель форм
+  FormData getData();
 }

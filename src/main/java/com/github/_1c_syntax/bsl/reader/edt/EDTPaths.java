@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @UtilityClass
+// todo убрать public
 public class EDTPaths {
 
   /**
@@ -110,6 +111,16 @@ public class EDTPaths {
     return Paths.get(folder.toString(), name, moduleType.getFileName());
   }
 
+  public Path moduleFolder(Path mdoPath, MDOType mdoType) {
+    if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
+      return mdoPath.getParent().getParent();
+    } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
+      return childrenFolder(mdoPath, mdoType);
+    } else {
+      return mdoTypeFolderPathByMDOPath(mdoPath);
+    }
+  }
+
   /**
    * Возвращает путь к файлу описания поддержки
    */
@@ -129,7 +140,7 @@ public class EDTPaths {
     return Paths.get(rootPath.toString(), SRC_DIR_NAME, type.getGroupName());
   }
 
-  private Path mdoTypeFolderPathByMDOPath(Path mdoPath) {
+  public Path mdoTypeFolderPathByMDOPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
       FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }

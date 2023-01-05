@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,11 +22,12 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
+import com.github._1c_syntax.mdclasses.wrapper.DesignerMDO;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -89,7 +90,7 @@ public abstract class AbstractMDObjectBase implements MDObject {
   /**
    * Список подсистем, в состав которых входит объект
    */
-  protected List<MDSubsystem> includedSubsystems = Collections.emptyList();
+  protected List<Subsystem> includedSubsystems = Collections.emptyList();
 
   /**
    * Используется для заполнения объекта на основании информации формата конфигуратора
@@ -132,7 +133,7 @@ public abstract class AbstractMDObjectBase implements MDObject {
    *
    * @param subsystem - Подсистема, в которую включен объект
    */
-  public void addIncludedSubsystem(MDSubsystem subsystem) {
+  public void addIncludedSubsystem(Subsystem subsystem) {
     if (includedSubsystems.equals(Collections.emptyList())) {
       includedSubsystems = new ArrayList<>();
     }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,22 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import lombok.NonNull;
+
+import java.util.List;
+
 /**
  * Интерфейс табличных частей объектов (включая стандартные ТЧ)
  */
-public interface TabularSection extends MD, AttributeOwner {
+public interface TabularSection extends MDChild, AttributeOwner {
+  /**
+   * Список реквизитов табличной части
+   */
+  List<Attribute> getAttributes();
 
+  @Override
+  @NonNull
+  default List<Attribute> getAllAttributes() {
+    return getAttributes();
+  }
 }

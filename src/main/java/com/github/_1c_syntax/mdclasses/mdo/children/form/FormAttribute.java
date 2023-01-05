@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,11 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
-import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerAttribute;
-import com.github._1c_syntax.bsl.reader.designer.wrapper.form.DesignerColumn;
-import com.github._1c_syntax.bsl.reader.edt.converter.ExtInfoConverter;
-import com.github._1c_syntax.bsl.reader.edt.converter.StringConverterIntern;
-import com.github._1c_syntax.bsl.reader.edt.converter.ValueTypeConverter;
+import com.github._1c_syntax.mdclasses.ExtInfoConverter;
+import com.github._1c_syntax.mdclasses.StringConverterIntern;
+import com.github._1c_syntax.mdclasses.ValueTypeConverter;
+import com.github._1c_syntax.mdclasses.wrapper.form.DesignerAttribute;
+import com.github._1c_syntax.mdclasses.wrapper.form.DesignerColumn;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;

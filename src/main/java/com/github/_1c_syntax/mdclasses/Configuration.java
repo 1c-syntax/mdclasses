@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,14 +21,15 @@
  */
 package com.github._1c_syntax.mdclasses;
 
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.CommonModule;
+import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.supconf.SupportConfiguration;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
@@ -37,12 +38,8 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
 import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
 import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
-import com.github._1c_syntax.mdclasses.mdo.MDRole;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -105,7 +102,7 @@ public class Configuration {
   /**
    * Язык приложения по умолчанию
    */
-  private MDLanguage defaultLanguage;
+  private Language defaultLanguage;
   /**
    * Режим управления блокировкой данных
    */
@@ -174,23 +171,23 @@ public class Configuration {
   /**
    * Дочерние объекты конфигурации (все, включая дочерние)
    */
-  private Set<AbstractMDObjectBase> children;
+  private Set<MDObject> children;
   /**
    * Дочерние объекты конфигурации с MDO ссылками на них
    */
-  private Map<MdoReference, AbstractMDObjectBase> childrenByMdoRef;
+  private Map<MdoReference, MDObject> childrenByMdoRef;
   /**
    * Упорядоченный список объектов метаданных верхнего уровня в разрезе типов метаданных
    */
-  private Map<MDOType, List<AbstractMDObjectBase>> orderedTopMDObjects;
+  private Map<MDOType, List<MDObject>> orderedTopMDObjects;
   /**
    * Дочерние общие модули
    */
-  private Map<String, MDCommonModule> commonModules;
+  private Map<String, CommonModule> commonModules;
   /**
    * Доступные языки конфигурации, ключ - код языка
    */
-  private Map<String, MDLanguage> languages;
+  private Map<String, Language> languages;
   /**
    * Корневой каталог конфигурации
    */
@@ -198,7 +195,7 @@ public class Configuration {
   /**
    * Роли
    */
-  private List<MDRole> roles;
+  private List<Role> roles;
 
   protected Configuration() {
     configurationSource = ConfigurationSource.EMPTY;
@@ -225,7 +222,7 @@ public class Configuration {
     scriptVariant = ScriptVariant.ENGLISH;
 
     defaultRunMode = ApplicationRunMode.MANAGED_APPLICATION;
-    defaultLanguage = MDLanguage.fakeLanguage(scriptVariant);
+    defaultLanguage = Language.defaultLanguage(scriptVariant);
     dataLockControlMode = DataLockControlMode.AUTOMATIC;
     objectAutonumerationMode = "";
     modalityUseMode = UseMode.USE;
@@ -243,14 +240,14 @@ public class Configuration {
     commonModules = new CaseInsensitiveMap<>();
     languages = new HashMap<>();
     roles = new ArrayList<>();
-    children.forEach((AbstractMDObjectBase mdo) -> {
+    children.forEach((MDObject mdo) -> {
       childrenByMdoRef.put(mdo.getMdoReference(), mdo);
-      if (mdo instanceof MDCommonModule) {
-        commonModules.put(mdo.getName(), (MDCommonModule) mdo);
-      } else if (mdo instanceof MDLanguage) {
-        languages.put(((MDLanguage) mdo).getLanguageCode(), (MDLanguage) mdo);
-      } else if (mdo instanceof MDRole) {
-        roles.add((MDRole) mdo);
+      if (mdo instanceof CommonModule) {
+        commonModules.put(mdo.getName(), (CommonModule) mdo);
+      } else if (mdo instanceof Language) {
+        languages.put(((Language) mdo).getLanguageCode(), (Language) mdo);
+      } else if (mdo instanceof Role) {
+        roles.add((Role) mdo);
       }
     });
 
@@ -273,7 +270,7 @@ public class Configuration {
     if (mdoConfiguration.getDefaultLanguage().isRight()) {
       defaultLanguage = mdoConfiguration.getDefaultLanguage().get();
     } else {
-      defaultLanguage = MDLanguage.fakeLanguage(scriptVariant);
+      defaultLanguage = Language.defaultLanguage(scriptVariant);
     }
 
     dataLockControlMode = mdoConfiguration.getDataLockControlMode();
@@ -298,7 +295,7 @@ public class Configuration {
     List<MDOModule> modulesList = new ArrayList<>();
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
-    children.forEach((AbstractMDObjectBase mdo) -> {
+    children.forEach((MDObject mdo) -> {
 
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
       if (mdo instanceof ModuleOwner) {
@@ -339,18 +336,18 @@ public class Configuration {
    * @param rootPath - Адрес корневого каталога конфигурации
    */
   public static Configuration create(Path rootPath) {
-    var configurationSource = MDOReader.getConfigurationSourceByPath(rootPath);
-    if (configurationSource != ConfigurationSource.EMPTY) {
-      var configurationMDO = readMDOConfiguration(rootPath);
-      if (configurationMDO.isPresent()) {
-        var mdoConfiguration = (MDConfiguration) configurationMDO.get();
-        if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
-          return new ConfigurationExtension(mdoConfiguration, configurationSource, rootPath);
-        } else {
-          return new Configuration(mdoConfiguration, configurationSource, rootPath);
-        }
-      }
-    }
+//    var configurationSource = MDOReader.getConfigurationSourceByPath(rootPath);
+//    if (configurationSource != ConfigurationSource.EMPTY) {
+//      var configurationMDO = readMDOConfiguration(rootPath);
+//      if (configurationMDO.isPresent()) {
+//        var mdoConfiguration = (MDConfiguration) configurationMDO.get();
+//        if (mdoConfiguration.getObjectBelonging() == ObjectBelonging.ADOPTED) {
+//          return new ConfigurationExtension(mdoConfiguration, configurationSource, rootPath);
+//        } else {
+//          return new Configuration(mdoConfiguration, configurationSource, rootPath);
+//        }
+//      }
+//    }
 
     return create();
   }
@@ -381,7 +378,7 @@ public class Configuration {
    *
    * @param moduleName - Имя модуля
    */
-  public Optional<MDCommonModule> getCommonModule(String moduleName) {
+  public Optional<CommonModule> getCommonModule(String moduleName) {
     return Optional.ofNullable(commonModules.get(moduleName));
   }
 
@@ -421,21 +418,21 @@ public class Configuration {
                                      Map<String, Map<ModuleType, URI>> modulesMDORef, ModuleOwner mdo,
                                      Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
-    mdo.getModules().forEach((MDOModule module) -> {
-      var uri = module.getUri();
-      modulesType.put(uri, module.getModuleType());
-      modulesTypesAndURIs.put(module.getModuleType(), uri);
-      modulesObject.put(uri, mdo);
-      if (!supports.isEmpty()) {
-        modulesSupport.put(uri, supports);
-      }
-      modulesList.add(module);
-    });
+//    mdo.getModules().forEach((MDOModule module) -> {
+//      var uri = module.getUri();
+//      modulesType.put(uri, module.getModuleType());
+//      modulesTypesAndURIs.put(module.getModuleType(), uri);
+//      modulesObject.put(uri, mdo);
+//      if (!supports.isEmpty()) {
+//        modulesSupport.put(uri, supports);
+//      }
+//      modulesList.add(module);
+//    });
     modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
-  private static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {
-    List<AbstractMDObjectBase> allChildren = mdoConfiguration.getChildren().stream()
+  private static List<MDObject> getAllChildren(MDConfiguration mdoConfiguration) {
+    List<MDObject> allChildren = mdoConfiguration.getChildren().stream()
       .filter(Either::isRight).map(Either::get)
       .collect(Collectors.toList());
 
@@ -450,20 +447,11 @@ public class Configuration {
     return allChildren;
   }
 
-  private static Map<MDOType, List<AbstractMDObjectBase>> getOrderedTopObjectsByChildren(
-    List<AbstractMDObjectBase> children) {
+  private static Map<MDOType, List<MDObject>> getOrderedTopObjectsByChildren(
+    List<MDObject> children) {
 
-    return children.stream().collect(Collectors.groupingBy(AbstractMDObjectBase::getMdoType));
+    return children.stream().collect(Collectors.groupingBy(MDObject::getMdoType));
 
-  }
-
-  private static Optional<AbstractMDObjectBase> readMDOConfiguration(Path rootPath) {
-    var mdo = MDClasses.readMDObject(rootPath,
-      MDOType.CONFIGURATION.getGroupName() + "." + MDOType.CONFIGURATION.getName());
-    if (mdo.isPresent() && mdo.get() instanceof AbstractMDObjectBase) {
-      return Optional.of((AbstractMDObjectBase) mdo.get());
-    }
-    return Optional.empty();
   }
 
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 
 /**
  * Интерфейс всех дочерних объектов
@@ -33,9 +31,4 @@ public interface MDChild extends MD {
    * Ссылка на родительский объект
    */
   MdoReference getOwner();
-
-  @Override
-  default MDOType getMdoType() {
-    return MetadataStorage.getAttribute(getClass()).type().getMdoType();
-  }
 }

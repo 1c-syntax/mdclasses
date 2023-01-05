@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -28,9 +28,7 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
  * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящие данные
  * это могут быть реквизиты, колонки, измерения, а также общие реквизиты и константы
  */
-public interface Attribute extends MD
-  //todo, Type
-{
+public interface Attribute extends MDChild {
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */

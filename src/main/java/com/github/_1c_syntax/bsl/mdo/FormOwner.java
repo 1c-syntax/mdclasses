@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец дочерних форм
@@ -31,10 +32,5 @@ public interface FormOwner extends ChildrenOwner {
   /**
    * Список форм объекта
    */
-  default List<Form> getForms() {
-    return getChildren().stream()
-      .filter(Form.class::isInstance)
-      .map(Form.class::cast)
-      .collect(Collectors.toList());
-  }
+  List<ObjectForm> getForms();
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,11 +23,9 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,14 +37,9 @@ import java.util.List;
  */
 @Slf4j
 @CommonConverter
-public class DataCompositionSchemaConverter implements Converter {
+public class DataCompositionSchemaConverter implements ReadConverter {
 
   private static final String DATASET_NODE_NAME = "dataSet";
-
-  @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // no-op
-  }
 
   @SneakyThrows
   @Override
@@ -64,7 +57,6 @@ public class DataCompositionSchemaConverter implements Converter {
       reader.moveUp();
     }
 
-// todo    return Map.of("templateData", new DataCompositionSchema(dataSets));
     return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath());
   }
 

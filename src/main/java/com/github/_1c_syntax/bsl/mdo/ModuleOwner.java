@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +34,12 @@ public interface ModuleOwner extends MD {
   /**
    * Список модулей объекта
    */
-  List<MDOModule> getModules();
+  List<Module> getModules();
 
   /**
    * Список модулей объекта, включая дочерние
    */
-  default List<MDOModule> getAllModules() {
+  default List<Module> getAllModules() {
     var modules = new ArrayList<>(getModules());
     if (this instanceof ChildrenOwner) {
       modules.addAll(((ChildrenOwner) this).getPlainChildren().stream()
@@ -61,7 +59,7 @@ public interface ModuleOwner extends MD {
    * @param uri Адрес файла модуля
    * @return Контейнер с найденным файлом
    */
-  default Optional<MDOModule> getModuleByUri(URI uri) {
+  default Optional<Module> getModuleByUri(URI uri) {
     return getAllModules().stream().filter(module -> module.getUri().equals(uri)).findFirst();
   }
 }

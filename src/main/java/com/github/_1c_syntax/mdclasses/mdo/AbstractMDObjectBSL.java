@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,20 +21,19 @@
  */
 package com.github._1c_syntax.mdclasses.mdo;
 
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerMDO;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
+import com.github._1c_syntax.mdclasses.wrapper.DesignerMDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +49,7 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
   /**
    * Список модулей объекта
    */
-  private List<MDOModule> modules = Collections.emptyList();
+  private List<Module> modules = Collections.emptyList();
 
   protected AbstractMDObjectBSL(DesignerMDO designerMDO) {
     super(designerMDO);
@@ -78,14 +77,14 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
 
     var configurationSource = MDOReader.getConfigurationSourceByMDOPath(path);
     var mdoName = (getMdoType() == MDOType.CONFIGURATION) ? "" : getName();
-    List<MDOModule> mdoModules = new ArrayList<>();
+//    List<MDOModule> mdoModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->
       MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
         .ifPresent((Path modulePath) -> {
           if (modulePath.toFile().exists()) {
-            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this));
+//            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this));
           }
         }));
-    setModules(mdoModules);
+//    setModules(mdoModules);
   }
 }

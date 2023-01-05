@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,17 +24,15 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 /**
  * Конвертор данных типа DataSet, применяемый в формах и СКД
  */
 @CommonConverter
-public class DataSetConverter implements Converter {
+public class DataSetConverter implements ReadConverter {
 
   private static final String NAME_NODE_NAME = "name";
   private static final String FIELD_NODE_NAME = "field";
@@ -43,11 +41,6 @@ public class DataSetConverter implements Converter {
   private static final String QUERY_SOURCE_NODE_NAME = "query";
   private static final String ITEM_SOURCE_NODE_NAME = "item";
   private static final String DATA_PATH_NODE_NAME = "dataPath";
-
-  @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // noop
-  }
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {

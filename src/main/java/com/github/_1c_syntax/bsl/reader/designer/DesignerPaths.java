@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -34,6 +34,7 @@ import java.nio.file.Paths;
  * Класс-хелпер для работы с файловыми путями конфигурации в формате конфигуратора
  */
 @UtilityClass
+// todo убрать public
 public class DesignerPaths {
 
   /**
@@ -161,6 +162,16 @@ public class DesignerPaths {
     }
 
     return Paths.get(folder.toString(), subdirectory, moduleType.getFileName());
+  }
+
+  public Path moduleFolder(Path mdoPath, MDOType mdoType) {
+    if (mdoType == MDOType.COMMAND) {
+      return childrenFolder(mdoPath, mdoType);
+    } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
+      return mdoPath.getParent();
+    } else {
+      return mdoTypeFolderPathByMDOPath(mdoPath);
+    }
   }
 
   /**
