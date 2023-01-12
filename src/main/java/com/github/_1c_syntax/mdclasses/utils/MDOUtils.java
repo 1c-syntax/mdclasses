@@ -148,6 +148,7 @@ public class MDOUtils {
           break;
         case CONSTANT:
           types.add(ModuleType.ValueManagerModule);
+          types.add(ModuleType.ManagerModule);
           break;
         case DOCUMENT_JOURNAL:
         case ENUM:
