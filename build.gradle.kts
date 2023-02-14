@@ -9,7 +9,7 @@ plugins {
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("io.freefair.lombok") version "6.6.1"
     id("io.freefair.javadoc-links") version "6.6.1"
-    id("io.freefair.javadoc-utf-8") version "6.6.1"
+    id("io.freefair.javadoc-utf-8") version "6.6.2"
     id("org.sonarqube") version "3.5.0.2730"
 }
 
