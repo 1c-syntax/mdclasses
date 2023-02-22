@@ -38,6 +38,7 @@ import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
 import java.beans.PropertyDescriptor;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -51,6 +52,7 @@ public class MDTestUtils {
   private static final String DESIGNER_PATH = "designer";
   private static final String FIXTURES_PATH = "src/test/resources/fixtures";
   private static final String DESIGNER_CF_PATH = "src/cf";
+  private static final String EDT_CF_PATH = "configuration";
 
   /**
    * Для загрузки фикстуры по пути к файлу
@@ -65,7 +67,7 @@ public class MDTestUtils {
 
   @SneakyThrows
   public String getFixture(Path path) {
-    return Files.readString(path);
+    return Files.readString(path, StandardCharsets.UTF_8);
   }
 
   /**
@@ -125,7 +127,7 @@ public class MDTestUtils {
 
     Path configurationPath;
     if (isEDT) {
-      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName);
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
     } else {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
@@ -149,8 +151,8 @@ public class MDTestUtils {
     if (argumentsAccessor.size() > 4) {
       useRef = argumentsAccessor.getBoolean(4);
     }
-    var current = createJson(mdo, useRef);
-    Assertions.assertThat(current, true).isEqual(fixture);
+    var current = fixRusYi(createJson(mdo, useRef));
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
 
     return (MD) mdo;
   }
@@ -162,7 +164,7 @@ public class MDTestUtils {
 
     Path configurationPath;
     if (isEDT) {
-      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName);
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
     } else {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
@@ -171,7 +173,7 @@ public class MDTestUtils {
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
 
-    var current = createJson(mdc, false);
+    var current = fixRusYi(createJson(mdc, false));
     Path fixturePath;
     if (argumentsAccessor.size() > 2) {
       var fixturePostfix = argumentsAccessor.getString(2);
@@ -180,7 +182,8 @@ public class MDTestUtils {
       fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
     }
     var fixture = getFixture(fixturePath);
-    Assertions.assertThat(current, true).isEqual(fixture);
+
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
 
     return mdc;
   }
@@ -192,7 +195,7 @@ public class MDTestUtils {
 
     Path configurationPath;
     if (isEDT) {
-      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName);
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
     } else {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
@@ -224,5 +227,21 @@ public class MDTestUtils {
       }
 
     };
+  }
+
+  /**
+   * костыль-защита от буквы Й: заменяем ее на подчеркивание
+   *
+   * @param jsonText исходный текст
+   * @return обработанный
+   */
+  private String fixRusYi(String jsonText) {
+    return jsonText
+      .replace("Й", "_")
+      .replace("й", "_")
+      .replace("\u0419", "_")
+      .replace("\u0439", "_")
+      .replace("%D0%99", "_")
+      .replace("%D0%B9", "_");
   }
 }

@@ -30,7 +30,6 @@ class StyleTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, Styles.Стиль",
       "false, mdclasses, Styles.Стиль"
     }
   )

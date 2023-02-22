@@ -278,7 +278,8 @@ public class ExtendXStream extends XStream {
       try {
         var clazz = Class.forName(classInfo.getName());
         return clazz.getDeclaredConstructors()[0].newInstance();
-      } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+      } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException |
+               InstantiationException e) {
         LOGGER.error("Cannot resolve class {}\n{}", classInfo.getName(), e);
         throw new IllegalArgumentException("Cannot resolve class");
       }

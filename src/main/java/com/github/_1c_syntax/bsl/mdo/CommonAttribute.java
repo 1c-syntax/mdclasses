@@ -70,7 +70,7 @@ public class CommonAttribute implements MDObject {
    * Автоиспользование
    */
   @Default
-  UseMode autoUse = UseMode.DONT_USE;
+  UseMode autoUse = UseMode.USE;
 
   /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`

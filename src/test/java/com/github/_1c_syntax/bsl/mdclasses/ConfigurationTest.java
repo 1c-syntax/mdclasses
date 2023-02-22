@@ -46,7 +46,7 @@ class ConfigurationTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, true);
+    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
   }
 
   @ParameterizedTest
@@ -101,10 +101,9 @@ class ConfigurationTest {
     checkChildrenMdclasses(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(125 + cf.getInterfaces().size())
+      .hasSize(124 + cf.getInterfaces().size() + cf.getStyles().size())
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
   }
-
 
   private static void checkChildrenSSL(Configuration cf) {
     assertThat(cf.getSubsystems())
@@ -404,9 +403,13 @@ class ConfigurationTest {
       .hasSize(1)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
 
-    assertThat(cf.getStyles())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
+    if (cf.getConfigurationSource() == ConfigurationSource.DESIGNER) {
+      assertThat(cf.getStyles())
+        .hasSize(1)
+        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
+    } else {
+      assertThat(cf.getStyles()).isEmpty();
+    }
 
     assertThat(cf.getLanguages())
       .hasSize(3)

@@ -10,18 +10,32 @@ jobs:
       matrix:
         java_version: ['11', '17']
         os: [ubuntu-latest, windows-latest, macOS-latest]
+        include:
+          - os: windows-latest
+            prefix: win
+          - os: ubuntu-latest
+            prefix: nix
+          - os: macOS-latest
+            prefix: mac
     steps:
     - uses: actions/checkout@v3.3.0
+      with:
+        submodules: true
+        lfs: true
     - name: Set up JDK ${{ matrix.java_version }}
       uses: actions/setup-java@v3
       with:
         java-version: ${{ matrix.java_version }}
-        distribution: 'adopt'
+        distribution: 'liberica'
     - name: Build with Gradle
       run: ./gradlew check --stacktrace
     - name: Archive test results
-      if: failure()
-      uses: actions/upload-artifact@v3.1.2
+      if: always() && matrix.prefix == 'nix'
+      uses: EnricoMi/publish-unit-test-result-action@v2
       with:
-        name: junit_report_${{ matrix.os }}_${{ matrix.java_version }}
-        path: build/reports/tests/test
+        junit_files: "**/test-results/test/**/*.xml"
+    - name: Archive test results
+      if: always() && matrix.prefix != 'nix'
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      with:
+        junit_files: "**/test-results/test/**/*.xml"
