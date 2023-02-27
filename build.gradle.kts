@@ -110,7 +110,7 @@ sonarqube {
         property("sonar.organization", "1c-syntax")
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
-        property("sonar.exclusions", "**/gen/**/*.*")
+        property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
 }
