@@ -76,6 +76,12 @@ public class HTTPServiceURLTemplate implements MDChild, ChildrenOwner {
   @Singular
   List<HTTPServiceMethod> methods;
 
+  /**
+   * Шаблон
+   */
+  @Default
+  String template = "";
+
   @Override
   @NonNull
   public List<MD> getChildren() {
