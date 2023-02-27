@@ -22,11 +22,13 @@
 package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.mdclasses.CF;
+import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.javabean.BeanProvider;
 import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
@@ -53,6 +55,9 @@ public class MDTestUtils {
   private static final String FIXTURES_PATH = "src/test/resources/fixtures";
   private static final String DESIGNER_CF_PATH = "src/cf";
   private static final String EDT_CF_PATH = "configuration";
+  private static final String EXTERNAL_SOURCE_PATH = "external/src";
+
+  private static final String EXTERNAL_PATH = "external";
 
   /**
    * Для загрузки фикстуры по пути к файлу
@@ -191,7 +196,6 @@ public class MDTestUtils {
   public CF readConfiguration(ArgumentsAccessor argumentsAccessor, boolean skipSupport) {
     var isEDT = argumentsAccessor.getBoolean(0);
     var examplePackName = argumentsAccessor.getString(1);
-    var mdoRef = "Configuration";
 
     Path configurationPath;
     if (isEDT) {
@@ -206,6 +210,66 @@ public class MDTestUtils {
     assertThat(mdc).isInstanceOf(CF.class);
 
     return (CF) mdc;
+  }
+
+  public ExternalSource readExternalSource(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var name = argumentsAccessor.getString(1);
+    var isReport = argumentsAccessor.getBoolean(2);
+
+    Path externalSourcePath;
+    if (isEDT) {
+      var sourceTypeName = (isReport)
+        ? MDOType.EXTERNAL_REPORT.getGroupName()
+        : MDOType.EXTERNAL_DATA_PROCESSOR.getGroupName();
+      externalSourcePath = Path.of(EXAMPLES_PATH, EDT_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name, name + ".mdo");
+    } else {
+      var sourceTypeName = (isReport) ? "erf" : "epf";
+      externalSourcePath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name + ".xml");
+    }
+
+    var mdc = MDClasses.createExternalSource(externalSourcePath);
+    assertThat(mdc).isNotNull();
+    assertThat(mdc).isInstanceOf(MDClass.class);
+    assertThat(mdc).isInstanceOf(ExternalSource.class);
+
+    return (ExternalSource) mdc;
+  }
+
+  public ExternalSource readExternalSourceWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var name = argumentsAccessor.getString(1);
+    var isReport = argumentsAccessor.getBoolean(2);
+
+    Path externalSourcePath;
+    if (isEDT) {
+      var sourceTypeName = (isReport)
+        ? MDOType.EXTERNAL_REPORT.getGroupName()
+        : MDOType.EXTERNAL_DATA_PROCESSOR.getGroupName();
+      externalSourcePath = Path.of(EXAMPLES_PATH, EDT_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name, name + ".mdo");
+    } else {
+      var sourceTypeName = (isReport) ? "erf" : "epf";
+      externalSourcePath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name + ".xml");
+    }
+
+    var mdc = MDClasses.createExternalSource(externalSourcePath);
+    assertThat(mdc).isNotNull();
+    assertThat(mdc).isInstanceOf(MDClass.class);
+    assertThat(mdc).isInstanceOf(ExternalSource.class);
+
+    var current = createJson(mdc, false);
+    Path fixturePath;
+    if (argumentsAccessor.size() > 3) {
+      var fixturePostfix = argumentsAccessor.getString(3);
+      fixturePath = Path.of(FIXTURES_PATH, EXTERNAL_PATH, name + fixturePostfix + ".json");
+    } else {
+      fixturePath = Path.of(FIXTURES_PATH, EXTERNAL_PATH, name + ".json");
+    }
+    var fixture = getFixture(fixturePath);
+
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
+
+    return (ExternalSource) mdc;
   }
 
   private BeanProvider getBeanProvider() {

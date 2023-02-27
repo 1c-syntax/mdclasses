@@ -22,6 +22,8 @@
 package com.github._1c_syntax.bsl.reader.common.xstream;
 
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
+import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
+import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
@@ -261,6 +263,8 @@ public class ExtendXStream extends XStream {
     alias("package", XdtoPackageData.class);
     alias("DataCompositionSchema", DataCompositionSchema.class);
     alias("Configuration", ConfigurationTree.class);
+    alias("ExternalDataProcessor", ExternalDataProcessor.class);
+    alias("ExternalReport", ExternalReport.class);
   }
 
   @Nullable

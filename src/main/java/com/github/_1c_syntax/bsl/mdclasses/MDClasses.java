@@ -39,6 +39,15 @@ public class MDClasses {
   }
 
   /**
+   * Создает пустой внешний отчет
+   *
+   * @return Пустой внешний отчет
+   */
+  public MDClass createExternalReport() {
+    return ExternalReport.EMPTY;
+  }
+
+  /**
    * Создает конфигурацию или расширение по указанному пути
    *
    * @param path Путь к корню проекта
@@ -57,5 +66,15 @@ public class MDClasses {
    */
   public MDClass createConfiguration(Path path, boolean skipSupport) {
     return MDOReader.readConfiguration(path, skipSupport);
+  }
+
+  /**
+   * Создает внешнюю обработку или внешний отчет по указанному пути
+   *
+   * @param mdoPath Путь к файлу описания обработки или отчета
+   * @return Конфигурация или расширение
+   */
+  public MDClass createExternalSource(Path mdoPath) {
+    return MDOReader.readExternalSource(mdoPath);
   }
 }

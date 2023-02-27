@@ -48,6 +48,7 @@ import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.XStream;
 import lombok.Getter;
@@ -65,6 +66,11 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
+  @Override
+  public ConfigurationSource getConfigurationSource() {
+    return ConfigurationSource.EDT;
+  }
+
   public EDTReader(Path path, boolean skipSupport) {
     rootPath = path;
     if (!skipSupport) {
@@ -78,6 +84,12 @@ public class EDTReader implements MDReader {
       EDTPaths.mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
     ));
     return mdc.orElse(MDClasses.createConfiguration());
+  }
+
+  @Override
+  public MDClass readExternalSource() {
+    var mdc = Optional.of((MDClass) read(rootPath));
+    return mdc.orElse(MDClasses.createExternalReport());
   }
 
   @Override
