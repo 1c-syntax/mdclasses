@@ -151,7 +151,7 @@ public class MDTestUtils {
     if (argumentsAccessor.size() > 4) {
       useRef = argumentsAccessor.getBoolean(4);
     }
-    var current = fixRusYi(createJson(mdo, useRef));
+    var current = createJson(mdo, useRef);
     Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
 
     return (MD) mdo;
@@ -173,7 +173,7 @@ public class MDTestUtils {
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
 
-    var current = fixRusYi(createJson(mdc, false));
+    var current = createJson(mdc, false);
     Path fixturePath;
     if (argumentsAccessor.size() > 2) {
       var fixturePostfix = argumentsAccessor.getString(2);
