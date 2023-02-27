@@ -24,21 +24,22 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.utils.Absolute;
 import com.thoughtworks.xstream.converters.basic.URIConverter;
 
-import java.io.File;
-import java.net.URI;
 import java.nio.file.Path;
 
 /**
  * Для возможности сохранять в фикстурах пути относительно рабочего каталога
  */
 public class TestURIConverter extends URIConverter {
-  private final static String WORKDIR = new File(Path.of("").toUri()).getPath();
+  private final static String WORKDIR = Path.of("").toUri().getPath();
 
   @Override
   public String toString(Object obj) {
-    var file = new File((URI) obj);
-    return file.getPath().replace(WORKDIR, "")
-      .replace("\\", "/") // for windows
-      .substring(1);
+    return Absolute.uri(obj.toString()
+        .replace("%D0%99", "_")
+        .replace("%D0%B9", "_")
+        .replace("%D0%98%CC%86", "_")
+        .replace("%D0%B8%CC%86", "_"))
+      .getPath()
+      .replace(WORKDIR, "");
   }
 }

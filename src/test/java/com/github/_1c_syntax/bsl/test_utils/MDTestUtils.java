@@ -242,6 +242,8 @@ public class MDTestUtils {
       .replace("\u0419", "_")
       .replace("\u0439", "_")
       .replace("%D0%99", "_")
-      .replace("%D0%B9", "_");
+      .replace("%D0%B9", "_")
+      .replace("%D0%98%CC%86", "_")
+      .replace("%D0%B8%CC%86", "_");
   }
 }
