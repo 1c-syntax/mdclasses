@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец реквизитов реквизиты
@@ -31,10 +30,5 @@ public interface AttributeOwner extends ChildrenOwner {
   /**
    * Список реквизитов объекта
    */
-  default List<Attribute> getAttributes() {
-    return getChildren().stream()
-      .filter(Attribute.class::isInstance)
-      .map(Attribute.class::cast)
-      .collect(Collectors.toList());
-  }
+  List<Attribute> getAllAttributes();
 }

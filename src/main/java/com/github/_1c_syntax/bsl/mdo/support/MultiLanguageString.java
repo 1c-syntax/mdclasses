@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,16 +21,19 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.Value;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Используется для хранения текстовой строки на разных языках
  */
 @Value
+@AllArgsConstructor
 public class MultiLanguageString {
 
   /**
@@ -42,6 +45,12 @@ public class MultiLanguageString {
    * Содержимое описания для каждого языка
    */
   Map<String, String> content;
+
+  public MultiLanguageString(MultiLanguageString first, MultiLanguageString second) {
+    var fullContent = new HashMap<>(first.getContent());
+    fullContent.putAll(second.getContent());
+    content = fullContent;
+  }
 
   /**
    * Возвращает содержимое для указанного языка

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.bsl.reader;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.thoughtworks.xstream.converters.Converter;
 
 import javax.annotation.Nullable;
@@ -37,16 +37,16 @@ public interface MDReader {
   @Nullable
   Object read(String fullName);
 
+  default Object read(Path fullMdoName) {
+    return fromXml(fullMdoName.toFile());
+  }
+
   @Nullable
   Object read(Path folder, String fullName);
 
-  default Object read(Path fullMdoName) {
-    var result = fromXml(fullMdoName.toFile());
-    // todo времянка
-    if (result instanceof AbstractMDObjectBase) {
-      ((AbstractMDObjectBase) result).setPath(fullMdoName);
-    }
-    return result;
+  @Nullable
+  default Path getRootPath() {
+    return null;
   }
 
   default Object fromXml(File file) {
@@ -58,4 +58,7 @@ public interface MDReader {
   }
 
   ExtendXStream getEXStream();
+
+  MDClass readConfiguration();
+
 }

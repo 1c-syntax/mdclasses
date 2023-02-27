@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,23 +21,38 @@
  */
 package com.github._1c_syntax.bsl.test_utils;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
+import com.github._1c_syntax.bsl.mdclasses.MDClass;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.javabean.BeanProvider;
 import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
 import java.beans.PropertyDescriptor;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @UtilityClass
 public class MDTestUtils {
-
-//  private static final Map<Path, MDClass> MDCLASSES = new HashMap<>();
+  private static final String EXAMPLES_PATH = "src/test/resources/ext";
+  private static final String EDT_PATH = "edt";
+  private static final String DESIGNER_PATH = "designer";
+  private static final String FIXTURES_PATH = "src/test/resources/fixtures";
+  private static final String DESIGNER_CF_PATH = "src/cf";
+  private static final String EDT_CF_PATH = "configuration";
 
   /**
    * Для загрузки фикстуры по пути к файлу
@@ -47,7 +62,12 @@ public class MDTestUtils {
    */
   @SneakyThrows
   public String getFixture(String path) {
-    return Files.readString(Paths.get(path));
+    return getFixture(Paths.get(path));
+  }
+
+  @SneakyThrows
+  public String getFixture(Path path) {
+    return Files.readString(path, StandardCharsets.UTF_8);
   }
 
   /**
@@ -94,72 +114,99 @@ public class MDTestUtils {
     }
     xstream.registerConverter(new TestURIConverter());
     xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
+    if (md instanceof MDClass) {
+      xstream.registerConverter(new TestCollectionConverter(xstream.getMapper()));
+    }
     return xstream.toXML(md);
   }
 
-//  /**
-//   * Читает контейнер MD из файла
-//   *
-//   * @param path Путь к корневому файлу
-//   * @return Прочитанный контейнер
-//   */
-//  public MDClass getMDClass(Path path, boolean skipSupport) {
-//
-//    var mdc = MDCLASSES.get(path);
-//    if (mdc == null) {
-//      mdc = MDClasses.createConfiguration(path, skipSupport);
-//      MDCLASSES.put(path, mdc);
-//    }
-//
-//    return mdc;
-//  }
+  public MD getMDWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+    var mdoRef = argumentsAccessor.getString(2);
 
-//  /**
-//   * Читает контейнер MD по строковому пути
-//   *
-//   * @param path Строковый путь к файлу
-//   * @return Прочитанный контейнер
-//   */
-//  public MDClass getMDClass(String path, boolean skipSupport) {
-//    return getMDClass(Paths.get(path), skipSupport);
-//  }
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
+    } else {
+      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
+    }
 
-//  /**
-//   * Возвращает ссылку на объект метаданных конфигурации (расширения), предварительно сверяя с эталоном
-//   *
-//   * @param argumentsAccessor Параметры теста
-//   */
-//  public MDObject testAndGetMDO(ArgumentsAccessor argumentsAccessor) {
-//    var pack = argumentsAccessor.getString(0);
-//    var mdoRef = argumentsAccessor.getString(1);
-//
-//    var skipSupport = true;
-//    if (argumentsAccessor.size() > 2) {
-//      skipSupport = argumentsAccessor.getBoolean(2);
-//    }
-//
-//    var sourcePath = "";
-//    var fixturePath = "src/test/resources/fixtures/" + pack + "/" + mdoRef + ".json";
-//    if (pack.startsWith("edt")) {
-//      if (!new File(fixturePath).exists()) {
-//        fixturePath = "src/test/resources/fixtures/"
-//          + pack.replace("edt", "designer") + "/" + mdoRef + ".json";
-//      }
-//      sourcePath = "src/test/resources/ext/" + pack;
-//    } else {
-//      sourcePath = "src/test/resources/ext/" + pack + "/src/cf";
-//    }
-//
-//    var mdc = getMDClass(sourcePath, skipSupport);
-//    assertThat(mdc).isNotNull();
-//    var mdoOptional = mdc.findChild(mdoRef);
-//    assertThat(mdoOptional).isPresent();
-//    var mdo = mdoOptional.get();
-//    var current = createJson(mdo);
-//    var fixture = getFixture(fixturePath);
-//    Assertions.assertThat(current, true).isEqual(fixture);
-//    return mdo;
-//  }
+    var mdo = MDOReader.readMDObject(configurationPath, mdoRef);
+    assertThat(mdo).isInstanceOf(MD.class);
+
+    Path fixturePath;
+    if (argumentsAccessor.size() > 3) {
+      var fixturePostfix = argumentsAccessor.getString(3);
+      if (fixturePostfix == null) {
+        fixturePostfix = "";
+      }
+      fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + fixturePostfix + ".json");
+    } else {
+      fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
+    }
+    var fixture = getFixture(fixturePath);
+
+    var useRef = false;
+    if (argumentsAccessor.size() > 4) {
+      useRef = argumentsAccessor.getBoolean(4);
+    }
+    var current = fixRusYi(createJson(mdo, useRef));
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
+
+    return (MD) mdo;
+  }
+
+  public MDClass getMDCWithSimpleTest(ArgumentsAccessor argumentsAccessor, boolean skipSupport) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+    var mdoRef = "Configuration";
+
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
+    } else {
+      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
+    }
+
+    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    assertThat(mdc).isNotNull();
+    assertThat(mdc).isInstanceOf(MDClass.class);
+
+    var current = fixRusYi(createJson(mdc, false));
+    Path fixturePath;
+    if (argumentsAccessor.size() > 2) {
+      var fixturePostfix = argumentsAccessor.getString(2);
+      fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + fixturePostfix + ".json");
+    } else {
+      fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
+    }
+    var fixture = getFixture(fixturePath);
+
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
+
+    return mdc;
+  }
+
+  public CF readConfiguration(ArgumentsAccessor argumentsAccessor, boolean skipSupport) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+    var mdoRef = "Configuration";
+
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
+    } else {
+      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
+    }
+
+    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    assertThat(mdc).isNotNull();
+    assertThat(mdc).isInstanceOf(MDClass.class);
+    assertThat(mdc).isInstanceOf(CF.class);
+
+    return (CF) mdc;
+  }
 
   private BeanProvider getBeanProvider() {
     return new BeanProvider() {
@@ -180,5 +227,23 @@ public class MDTestUtils {
       }
 
     };
+  }
+
+  /**
+   * костыль-защита от буквы Й: заменяем ее на подчеркивание
+   *
+   * @param jsonText исходный текст
+   * @return обработанный
+   */
+  private String fixRusYi(String jsonText) {
+    return jsonText
+      .replace("Й", "_")
+      .replace("й", "_")
+      .replace("\u0419", "_")
+      .replace("\u0439", "_")
+      .replace("%D0%99", "_")
+      .replace("%D0%B9", "_")
+      .replace("%D0%98%CC%86", "_")
+      .replace("%D0%B8%CC%86", "_");
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,37 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.Dimension;
+import com.github._1c_syntax.bsl.mdo.children.Resource;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Базовый интерфейс для всех регистров (Сведений, Накопления...)
  */
-public interface Register extends MDObject, AttributeOwner, CommandOwner, FormOwner, ModuleOwner, TemplateOwner {
+public interface Register extends MDObject, AttributeOwner, CommandOwner, ModuleOwner, FormOwner, TemplateOwner {
+
+  /**
+   * Список реквизитов регистра
+   */
+  List<Attribute> getAttributes();
+
+  /**
+   * Список ресурсов регистра
+   */
+  List<Resource> getResources();
+
+  /**
+   * Список измерений регистра
+   */
+  List<Dimension> getDimensions();
+
+  @Override
+  default List<Attribute> getAllAttributes() {
+    var attributes = new ArrayList<>(getAttributes());
+    attributes.addAll(getResources());
+    attributes.addAll(getDimensions());
+    return attributes;
+  }
 }

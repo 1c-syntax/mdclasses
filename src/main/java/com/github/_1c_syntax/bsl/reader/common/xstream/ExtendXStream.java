@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,12 @@
  */
 package com.github._1c_syntax.bsl.reader.common.xstream;
 
-import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
+import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
@@ -33,52 +36,29 @@ import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
+import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
-import com.github._1c_syntax.bsl.reader.designer.wrapper.DesignerChildObjects;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.support.BWAValue;
-import com.github._1c_syntax.mdclasses.mdo.support.RoleData;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
-import com.thoughtworks.xstream.converters.basic.ByteConverter;
-import com.thoughtworks.xstream.converters.basic.CharConverter;
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-import com.thoughtworks.xstream.converters.basic.DoubleConverter;
-import com.thoughtworks.xstream.converters.basic.FloatConverter;
 import com.thoughtworks.xstream.converters.basic.IntConverter;
-import com.thoughtworks.xstream.converters.basic.LongConverter;
 import com.thoughtworks.xstream.converters.basic.NullConverter;
-import com.thoughtworks.xstream.converters.basic.ShortConverter;
-import com.thoughtworks.xstream.converters.basic.StringBufferConverter;
 import com.thoughtworks.xstream.converters.basic.StringConverter;
-import com.thoughtworks.xstream.converters.basic.URIConverter;
-import com.thoughtworks.xstream.converters.basic.URLConverter;
 import com.thoughtworks.xstream.converters.collections.ArrayConverter;
-import com.thoughtworks.xstream.converters.collections.CharArrayConverter;
 import com.thoughtworks.xstream.converters.collections.CollectionConverter;
 import com.thoughtworks.xstream.converters.collections.MapConverter;
-import com.thoughtworks.xstream.converters.collections.PropertiesConverter;
 import com.thoughtworks.xstream.converters.collections.SingletonCollectionConverter;
 import com.thoughtworks.xstream.converters.collections.SingletonMapConverter;
-import com.thoughtworks.xstream.converters.collections.TreeMapConverter;
-import com.thoughtworks.xstream.converters.collections.TreeSetConverter;
-import com.thoughtworks.xstream.converters.extended.EncodedByteArrayConverter;
-import com.thoughtworks.xstream.converters.extended.FileConverter;
-import com.thoughtworks.xstream.converters.extended.GregorianCalendarConverter;
-import com.thoughtworks.xstream.converters.extended.JavaClassConverter;
-import com.thoughtworks.xstream.converters.extended.LocaleConverter;
-import com.thoughtworks.xstream.converters.reflection.ExternalizableConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
-import com.thoughtworks.xstream.converters.reflection.SerializableConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
@@ -90,8 +70,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Nullable;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
-import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Расширение функциональности XStream
@@ -99,13 +81,14 @@ import java.util.Locale;
 @Slf4j
 public class ExtendXStream extends XStream {
 
-  private static final String CHILDREN_FIELD_NAME = "children";
-
   /**
    * Используется для чтения элементов формы (см. FormEventConverter, DesignerFormItemConverter)
    */
   @Getter
   private Converter reflectionConverter;
+
+  @Getter
+  private Converter collectionConverter;
 
   public ExtendXStream() {
     super(new PureJavaReflectionProvider(), new ExtendStaxDriver());
@@ -121,54 +104,11 @@ public class ExtendXStream extends XStream {
   }
 
   /**
-   * Переопределение списка регистрируемых конвертеров. Оставлены только те, что нужны, особенно исключены те,
-   * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
+   * Читает объект из файла
+   *
+   * @param file Читаемый файл. Если нечитаемые или ошибочный, то будет ошибка
+   * @return Прочитанный объект
    */
-  @Override
-  protected void setupConverters() {
-    reflectionConverter = new ReflectionConverter(getMapper(), getReflectionProvider());
-
-    registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
-    registerConverter(new IntConverter(), PRIORITY_NORMAL);
-    registerConverter(new FloatConverter(), PRIORITY_NORMAL);
-    registerConverter(new DoubleConverter(), PRIORITY_NORMAL);
-    registerConverter(new LongConverter(), PRIORITY_NORMAL);
-    registerConverter(new ShortConverter(), PRIORITY_NORMAL);
-    registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
-    registerConverter(new ByteConverter(), PRIORITY_NORMAL);
-    registerConverter(new StringConverter(), PRIORITY_LOW);
-    registerConverter(new DateConverter(), PRIORITY_NORMAL);
-    registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(reflectionConverter, PRIORITY_VERY_LOW);
-
-    registerConverter(new SerializableConverter(getMapper(), getReflectionProvider(), getClassLoaderReference()),
-      PRIORITY_LOW);
-    registerConverter(new ExternalizableConverter(getMapper(), getClassLoaderReference()), PRIORITY_LOW);
-
-    registerConverter((Converter) new CharConverter(), PRIORITY_NORMAL);
-
-    registerConverter(new StringBufferConverter(), PRIORITY_NORMAL);
-    registerConverter(new URIConverter(), PRIORITY_NORMAL);
-    registerConverter(new URLConverter(), PRIORITY_NORMAL);
-
-    registerConverter(new ArrayConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new CharArrayConverter(), PRIORITY_NORMAL);
-    registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new MapConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new TreeMapConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new TreeSetConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new SingletonCollectionConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new SingletonMapConverter(getMapper()), PRIORITY_NORMAL);
-    registerConverter(new PropertiesConverter(), PRIORITY_NORMAL);
-    registerConverter((Converter) new EncodedByteArrayConverter(), PRIORITY_NORMAL);
-
-    registerConverter(new FileConverter(), PRIORITY_NORMAL);
-    registerConverter(new JavaClassConverter(getClassLoaderReference()), PRIORITY_NORMAL);
-
-    registerConverter(new LocaleConverter(), PRIORITY_NORMAL);
-    registerConverter(new GregorianCalendarConverter(), PRIORITY_NORMAL);
-  }
-
   @Override
   public Object fromXML(File file) {
     Object result = null;
@@ -183,12 +123,90 @@ public class ExtendXStream extends XStream {
     return result;
   }
 
+  /**
+   * Возвращает класс реализации объекта по имени поля / строковому краткому имени
+   *
+   * @param className Имя искомого класса
+   * @return Найденный класс
+   */
   public Class<?> getRealClass(String className) {
     return getMapper().realClass(className);
   }
 
+  /**
+   * Возвращает путь текущего читаемого файла
+   *
+   * @param reader Текущий ридер
+   * @return Путь к читаемому файлу
+   */
   public static Path getCurrentPath(HierarchicalStreamReader reader) {
     return ((ExtendReaderWrapper) reader).getPath();
+  }
+
+  /**
+   * Регистрирует конверторы нужного типа, фильтруя по пакету и аннотации
+   *
+   * @param xStream               объект xStream
+   * @param convertersPackageName полное имя пакета, где расположены конверторы
+   * @param annotation            аннотация, которой помечены конверторы
+   */
+  public static void registerConverters(ExtendXStream xStream, String convertersPackageName, Class<?> annotation) {
+    try (var scanResult = new ClassGraph()
+      .enableClassInfo()
+      .enableAnnotationInfo()
+      .acceptPackages(convertersPackageName)
+      .scan()) {
+
+      var classes = scanResult.getClassesWithAnnotation(annotation.getName());
+      classes.stream()
+        .map(getObjectsFromInfoClass())
+        .filter(Objects::nonNull)
+        .forEach(xStream::registerMDCConverter);
+    }
+  }
+
+  /**
+   * Переопределение списка регистрируемых конвертеров. Оставлены только те, что нужны, особенно исключены те,
+   * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
+   */
+  @Override
+  protected void setupConverters() {
+    reflectionConverter = new ReflectionConverter(getMapper(), getReflectionProvider());
+    collectionConverter = new CollectionConverter(getMapper());
+
+    registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
+    registerConverter(new IntConverter(), PRIORITY_NORMAL);
+    registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
+    registerConverter(new StringConverter(), PRIORITY_LOW);
+
+    registerConverter(collectionConverter);
+    registerConverter(new ArrayConverter(getMapper()), PRIORITY_NORMAL);
+    registerConverter(new MapConverter(getMapper()), PRIORITY_NORMAL);
+    registerConverter(new SingletonCollectionConverter(getMapper()), PRIORITY_NORMAL);
+    registerConverter(new SingletonMapConverter(getMapper()), PRIORITY_NORMAL);
+
+    registerConverter(reflectionConverter, PRIORITY_VERY_LOW);
+
+    registerConverters(this,
+      "com.github._1c_syntax.bsl.reader.common.converter",
+      CommonConverter.class);
+
+    registerConverter(new EnumConverter<>(ApplicationRunMode.class));
+    registerConverter(new EnumConverter<>(AutoRecordType.class));
+    registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
+    registerConverter(new EnumConverter<>(DataLockControlMode.class));
+    registerConverter(new EnumConverter<>(DataSeparation.class));
+    registerConverter(new EnumConverter<>(FormType.class));
+    registerConverter(new EnumConverter<>(IndexingType.class));
+    registerConverter(new EnumConverter<>(MessageDirection.class));
+    registerConverter(new EnumConverter<>(ObjectBelonging.class));
+    registerConverter(new EnumConverter<>(ReturnValueReuse.class));
+    registerConverter(new EnumConverter<>(ReuseSessions.class));
+    registerConverter(new EnumConverter<>(RoleRight.class));
+    registerConverter(new EnumConverter<>(ScriptVariant.class));
+    registerConverter(new EnumConverter<>(TemplateType.class));
+    registerConverter(new EnumConverter<>(TransferDirection.class));
+    registerConverter(new EnumConverter<>(UseMode.class));
   }
 
   private void init() {
@@ -202,9 +220,6 @@ public class ExtendXStream extends XStream {
     setMode(XStream.NO_REFERENCES);
     addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
 
-    // регистрируем общие конверторы
-    registerCommonConverters();
-
     registerClasses();
   }
 
@@ -213,7 +228,7 @@ public class ExtendXStream extends XStream {
    *
    * @param converter один из поддерживаемых конвертеров
    */
-  protected void registerConverter(Object converter, boolean nonuse) {
+  protected void registerMDCConverter(Object converter) {
     if (converter instanceof Converter) {
       registerConverter((Converter) converter);
     } else if (converter instanceof SingleValueConverter) {
@@ -223,84 +238,29 @@ public class ExtendXStream extends XStream {
     }
   }
 
-  private void registerCommonConverters() {
-    XStreamUtils.registerConverters(this,
-      "com.github._1c_syntax.bsl.reader.common.converter",
-      CommonConverter.class);
-
-    registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
-    registerConverter(new EnumConverter<>(DataLockControlMode.class));
-    registerConverter(new EnumConverter<>(DataSeparation.class));
-    registerConverter(new EnumConverter<>(IndexingType.class));
-    registerConverter(new EnumConverter<>(ReturnValueReuse.class));
-    registerConverter(new EnumConverter<>(TemplateType.class));
-    registerConverter(new EnumConverter<>(UseMode.class));
-    registerConverter(new EnumConverter<>(BWAValue.class));
-    registerConverter(new EnumConverter<>(FormType.class));
-    registerConverter(new EnumConverter<>(ScriptVariant.class));
-    registerConverter(new EnumConverter<>(ObjectBelonging.class));
-    registerConverter(new EnumConverter<>(AutoRecordType.class));
-    registerConverter(new EnumConverter<>(MessageDirection.class));
-
-  }
-
   private void registerClasses() {
-    alias("DataCompositionSchema", DataCompositionSchema.class);
-    alias("Rights", RoleData.class);
-    alias("package", XdtoPackageData.class);
 
+    // регистрация основных классов
     try (var scanResult = new ClassGraph()
       .enableClassInfo()
       .acceptPackages("com.github._1c_syntax.bsl.mdo")
-      .acceptPackages("com.github._1c_syntax.mdclasses.mdo") // todo времянка
       .rejectPackages("com.github._1c_syntax.bsl.mdo.children")
       .scan()) {
 
-      scanResult.getClassesImplementing(MDObject.class.getName())
+      scanResult.getClassesImplementing(MD.class.getName())
         .filter(classInfo -> !classInfo.isInterface())
         .forEach((ClassInfo clazzInfo) -> {
           var clazz = getClassFromClassInfo(clazzInfo);
           var simpleName = clazzInfo.getSimpleName();
-
-          // todo временное решение для старой модели
-          //  процессинг и имена буду изменены
-          if (simpleName.equals("MDHttpService")) {
-            alias("HTTPService", clazz);
-          } else if (simpleName.equals("MDXdtoPackage")) {
-            alias("XDTOPackage", clazz);
-          } else if (simpleName.startsWith("MD")) {
-            alias(simpleName.substring(2), clazz);
-          } else if (!simpleName.equals("CommonAttribute")) {
-            alias(simpleName, clazz);
-          }
-          processAnnotations(clazz);
+          alias(simpleName, clazz);
         });
     }
 
-    MDOType.valuesWithoutChildren().forEach((MDOType type) -> {
-      aliasField(type.getName(), DesignerChildObjects.class, CHILDREN_FIELD_NAME);
-
-      if (type.getGroupName().isEmpty()) {
-        return;
-      }
-      String fieldName;
-      switch (type) {
-        case WS_REFERENCE:
-          fieldName = "wsReferences";
-          break;
-        case XDTO_PACKAGE:
-          fieldName = "xDTOPackages";
-          break;
-        case HTTP_SERVICE:
-          fieldName = "httpServices";
-          break;
-        default:
-          var groupName = type.getGroupName();
-          fieldName = groupName.substring(0, 1).toLowerCase(Locale.ENGLISH) + groupName.substring(1);
-      }
-      aliasField(fieldName, MDConfiguration.class, CHILDREN_FIELD_NAME);
-    });
-
+    // регистрация дочерних
+    alias("Rights", RoleData.class);
+    alias("package", XdtoPackageData.class);
+    alias("DataCompositionSchema", DataCompositionSchema.class);
+    alias("Configuration", ConfigurationTree.class);
   }
 
   @Nullable
@@ -311,5 +271,18 @@ public class ExtendXStream extends XStream {
       LOGGER.error("Cannot resolve class {}\n {}", classInfo.getName(), e);
       return null;
     }
+  }
+
+  private static Function<ClassInfo, Object> getObjectsFromInfoClass() {
+    return (ClassInfo classInfo) -> {
+      try {
+        var clazz = Class.forName(classInfo.getName());
+        return clazz.getDeclaredConstructors()[0].newInstance();
+      } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException |
+               InstantiationException e) {
+        LOGGER.error("Cannot resolve class {}\n{}", classInfo.getName(), e);
+        throw new IllegalArgumentException("Cannot resolve class");
+      }
+    };
   }
 }

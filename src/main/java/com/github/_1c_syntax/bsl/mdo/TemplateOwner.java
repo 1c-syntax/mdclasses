@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец дочерних макетов
@@ -31,10 +32,5 @@ public interface TemplateOwner extends ChildrenOwner {
   /**
    * Список макетов объекта
    */
-  default List<Template> getTemplates() {
-    return getChildren().stream()
-      .filter(Template.class::isInstance)
-      .map(Template.class::cast)
-      .collect(Collectors.toList());
-  }
+  List<ObjectTemplate> getTemplates();
 }

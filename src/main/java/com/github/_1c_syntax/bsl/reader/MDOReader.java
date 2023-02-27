@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader;
 
+import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
@@ -86,15 +87,26 @@ public class MDOReader {
     return reader;
   }
 
-//  /**
-//   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
-//   *
-//   * @param rootPath Каталог исходников
-//   * @return Прочитанный контейнер метаданных (конфигурация)
-//   */
-//  public MDClass readConfiguration(@NonNull Path rootPath) {
-//    return getReader(rootPath, false).readConfiguration();
-//  }
+  /**
+   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
+   *
+   * @param rootPath Каталог исходников
+   * @return Прочитанный контейнер метаданных (конфигурация)
+   */
+  public MDClass readConfiguration(@NonNull Path rootPath) {
+    return readConfiguration(rootPath, false);
+  }
+
+  /**
+   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
+   *
+   * @param rootPath    Каталог исходников
+   * @param skipSupport Флаг управления необходимостью читать информацию о поддержке
+   * @return Прочитанный контейнер метаданных (конфигурация)
+   */
+  public MDClass readConfiguration(@NonNull Path rootPath, boolean skipSupport) {
+    return getReader(rootPath, skipSupport).readConfiguration();
+  }
 
   /**
    * Производит чтение указанного объекта метаданных по каталогу исходников и полному имени
@@ -102,14 +114,24 @@ public class MDOReader {
    * @param folder Каталог исходников
    * @return Прочитанный объект метаданных
    */
-  public MDObject readMDObject(@NonNull Path folder, @NonNull String fullName) {
-    var reader = getReader(folder, false);
-    if (folder.toFile().isFile()) {
-      return (MDObject) reader.read(fullName);
-    } else {
-      return (MDObject) reader.read(folder, fullName);
-    }
+  public Object readMDObject(@NonNull Path folder, @NonNull String fullName) {
+    return readMDObject(folder, fullName, false);
+  }
 
+  /**
+   * Производит чтение указанного объекта метаданных по каталогу исходников и полному имени
+   *
+   * @param folder      Каталог исходников
+   * @param skipSupport Управление чтением поддержки
+   * @return Прочитанный объект метаданных
+   */
+  public Object readMDObject(@NonNull Path folder, @NonNull String fullName, boolean skipSupport) {
+    var reader = getReader(folder, skipSupport);
+    if (folder.toFile().isFile()) {
+      return reader.read(fullName);
+    } else {
+      return reader.read(folder, fullName);
+    }
   }
 
   /**
@@ -197,17 +219,6 @@ public class MDOReader {
   public Converter getReflectionConverter(HierarchicalStreamReader reader) {
     return getReader(((ExtendReaderWrapper) reader).getPath()).getReflectionConverter();
   }
-
-//  /**
-//   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
-//   *
-//   * @param rootPath    Каталог исходников
-//   * @param skipSupport Флаг управления необходимостью читать информацию о поддержке
-//   * @return Прочитанный контейнер метаданных (конфигурация)
-//   */
-//  public MDClass readConfiguration(@NonNull Path rootPath, boolean skipSupport) {
-//    return getReader(rootPath, skipSupport).readConfiguration();
-//  }
 
   private MDReader createReader(Path rootPath, boolean skipSupport) {
     var configurationSource = getConfigurationSourceByPath(rootPath);

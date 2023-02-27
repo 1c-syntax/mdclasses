@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -36,19 +36,40 @@ public interface ChildrenOwner {
   /**
    * Возвращает все дочерние элементы объекта
    */
-  List<MD> getChildren();
+  default List<MD> getChildren() {
+    List<MD> children = new ArrayList<>();
+
+    if (this instanceof AttributeOwner) {
+      children.addAll(((AttributeOwner) this).getAllAttributes());
+    }
+
+    if (this instanceof TabularSectionOwner) {
+      children.addAll(((TabularSectionOwner) this).getTabularSections());
+    }
+
+    if (this instanceof CommandOwner) {
+      children.addAll(((CommandOwner) this).getCommands());
+    }
+
+    if (this instanceof TemplateOwner) {
+      children.addAll(((TemplateOwner) this).getTemplates());
+    }
+
+    if (this instanceof FormOwner) {
+      children.addAll(((FormOwner) this).getForms());
+    }
+
+    return children;
+  }
 
   /**
    * Возвращает дочерние элементы объекта плоским списком.
    */
   default List<MD> getPlainChildren() {
     List<MD> children = new ArrayList<>(getChildren());
-    getChildren().stream()
-      .filter(ChildrenOwner.class::isInstance)
+    getChildren().stream().filter(ChildrenOwner.class::isInstance)
       .map(ChildrenOwner.class::cast)
-      .forEach(mdObject ->
-        children.addAll(mdObject.getPlainChildren())
-      );
+      .forEach(mdObject -> children.addAll(mdObject.getPlainChildren()));
 
     return children;
   }

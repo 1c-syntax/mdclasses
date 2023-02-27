@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2022
+ * Copyright (c) 2019 - 2023
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.bsl.test_utils;
 
+import com.github._1c_syntax.utils.Absolute;
 import com.thoughtworks.xstream.converters.basic.URIConverter;
 
-import java.net.URI;
 import java.nio.file.Path;
 
 /**
@@ -34,6 +34,12 @@ public class TestURIConverter extends URIConverter {
 
   @Override
   public String toString(Object obj) {
-    return ((URI) obj).getPath().replace(WORKDIR, "");
+    return Absolute.uri(obj.toString()
+        .replace("%D0%99", "_")
+        .replace("%D0%B9", "_")
+        .replace("%D0%98%CC%86", "_")
+        .replace("%D0%B8%CC%86", "_"))
+      .getPath()
+      .replace(WORKDIR, "");
   }
 }
