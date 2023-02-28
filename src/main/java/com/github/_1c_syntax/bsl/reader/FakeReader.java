@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.converters.Converter;
 
 import javax.annotation.Nullable;
@@ -34,6 +35,11 @@ import java.nio.file.Path;
  * Класс-читатель-заглушка
  */
 public class FakeReader implements MDReader {
+
+  @Override
+  public ConfigurationSource getConfigurationSource() {
+    return ConfigurationSource.EMPTY;
+  }
 
   @Nullable
   @Override
@@ -73,6 +79,11 @@ public class FakeReader implements MDReader {
 
   @Override
   public MDClass readConfiguration() {
+    return null;
+  }
+
+  @Override
+  public MDClass readExternalSource() {
     return null;
   }
 }

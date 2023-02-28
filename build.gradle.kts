@@ -10,7 +10,7 @@ plugins {
     id("io.freefair.lombok") version "6.6.3"
     id("io.freefair.javadoc-links") version "6.6.3"
     id("io.freefair.javadoc-utf-8") version "6.6.3"
-    id("org.sonarqube") version "3.5.0.2730"
+    id("org.sonarqube") version "4.0.0.2929"
 }
 
 group = "com.github.1c-syntax"
@@ -39,7 +39,7 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.4.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "develop-SNAPSHOT")
+    implementation("io.github.1c-syntax", "bsl-common-library", "f6714e4e")
     implementation("io.github.1c-syntax", "supportconf", "0.1.1") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
@@ -110,7 +110,7 @@ sonarqube {
         property("sonar.organization", "1c-syntax")
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
-        property("sonar.exclusions", "**/gen/**/*.*")
+        property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
 }

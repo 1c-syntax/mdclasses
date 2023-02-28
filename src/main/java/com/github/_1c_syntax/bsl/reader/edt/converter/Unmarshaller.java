@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
@@ -67,7 +68,7 @@ class Unmarshaller {
     readerContext.setValue(SUPPORT_VALIANT_FIELD, supportVariant);
     readerContext.setSupportVariant(supportVariant);
 
-    if (MDClass.class.isAssignableFrom(readerContext.getRealClass())) {
+    if (CF.class.isAssignableFrom(readerContext.getRealClass())) {
       unmarshalMDC(reader, context, readerContext);
     } else {
       unmarshalMD(reader, context, readerContext);

@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.converters.Converter;
 
 import javax.annotation.Nullable;
@@ -33,6 +34,8 @@ import java.nio.file.Path;
  * Интерфейс для ридеров исходников
  */
 public interface MDReader {
+
+  ConfigurationSource getConfigurationSource();
 
   @Nullable
   Object read(String fullName);
@@ -60,5 +63,7 @@ public interface MDReader {
   ExtendXStream getEXStream();
 
   MDClass readConfiguration();
+
+  MDClass readExternalSource();
 
 }

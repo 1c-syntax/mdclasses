@@ -29,11 +29,13 @@ import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.reader.edt.EDTReader;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FilenameUtils;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -67,23 +69,23 @@ public class MDOReader {
   /**
    * Возвращает читатель исходников по каталогу проекта
    *
-   * @param rootPath    Каталог проекта
+   * @param path        Каталог проекта
    * @param skipSupport Флаг управления необходимостью читать информацию о поддержке
    * @return Читатель
    */
-  public MDReader getReader(@NonNull Path rootPath, boolean skipSupport) {
+  public MDReader getReader(@NonNull Path path, boolean skipSupport) {
     for (Map.Entry<Path, MDReader> reader : READERS.entrySet()) {
-      if (rootPath.startsWith(reader.getKey())) {
+      if (path.startsWith(reader.getKey())) {
         return reader.getValue();
       }
     }
-    var rootPathFile = rootPath.toFile();
+    var rootPathFile = path.toFile();
     if (rootPathFile.isFile() && rootPathFile.exists()) {
-      return getReader(rootPathByFile(rootPath), skipSupport);
+      return getReader(rootPathByFile(path), skipSupport);
     }
 
-    var reader = createReader(rootPath, skipSupport);
-    READERS.put(rootPath, reader);
+    var reader = createReader(path, skipSupport, MDOType.CONFIGURATION);
+    READERS.put(path, reader);
     return reader;
   }
 
@@ -154,6 +156,22 @@ public class MDOReader {
   }
 
   /**
+   * Производит чтение внешнего контейнера метаданных (внешней обработки или отчета) по файлу описания
+   *
+   * @param mdoPath Путь к файлу описания
+   * @return Прочитанный контейнер метаданных (внешний отчет или обработка)
+   */
+  public MDClass readExternalSource(@NonNull Path mdoPath) {
+    var reader = createReader(mdoPath, true, MDOType.EXTERNAL_REPORT);
+    if (reader.getConfigurationSource() == ConfigurationSource.EDT) {
+      READERS.put(mdoPath.getParent().getParent(), reader);
+    } else if (reader.getConfigurationSource() == ConfigurationSource.DESIGNER) {
+      READERS.put(mdoPath.getParent(), reader);
+    }
+    return reader.readExternalSource();
+  }
+
+  /**
    * Производит чтение файла
    *
    * @param fullMdoPath Путь к файлу
@@ -192,6 +210,27 @@ public class MDOReader {
   }
 
   /**
+   * Определяет тип исходников по расширению файла
+   *
+   * @param mdoPath - Путь к файлу
+   * @return Тип исходников конфигурации
+   */
+  public ConfigurationSource getConfigurationSourceByPathSimple(Path mdoPath) {
+    var configurationSource = ConfigurationSource.EMPTY;
+    if (mdoPath != null) {
+      var mdoFile = mdoPath.toFile();
+      if (mdoFile.exists()) {
+        if (FilenameUtils.isExtension(mdoPath.toString(), EDTPaths.EXTENSION)) {
+          configurationSource = ConfigurationSource.EDT;
+        } else if (FilenameUtils.isExtension(mdoPath.toString(), DesignerPaths.EXTENSION)) {
+          configurationSource = ConfigurationSource.DESIGNER;
+        }
+      }
+    }
+    return configurationSource;
+  }
+
+  /**
    * Определяет тип исходников по корню проекта
    *
    * @param path - Путь к корню проекта
@@ -220,8 +259,14 @@ public class MDOReader {
     return getReader(((ExtendReaderWrapper) reader).getPath()).getReflectionConverter();
   }
 
-  private MDReader createReader(Path rootPath, boolean skipSupport) {
-    var configurationSource = getConfigurationSourceByPath(rootPath);
+  private MDReader createReader(Path rootPath, boolean skipSupport, MDOType mdoType) {
+    ConfigurationSource configurationSource;
+    if (mdoType == MDOType.CONFIGURATION) {
+      configurationSource = getConfigurationSourceByPath(rootPath);
+    } else {
+      configurationSource = getConfigurationSourceByPathSimple(rootPath);
+    }
+
     if (configurationSource == ConfigurationSource.DESIGNER) {
       return new DesignerReader(rootPath, skipSupport);
     } else if (configurationSource == ConfigurationSource.EDT) {
@@ -232,6 +277,8 @@ public class MDOReader {
   }
 
   private Path rootPathByFile(Path configurationMDOPath) {
+    // todo переписать все нафиг
+
     if (configurationMDOPath.toString().endsWith(".form")) {
       // todo костыль
       if (configurationMDOPath.toString().contains("/CommonForms/")) {
