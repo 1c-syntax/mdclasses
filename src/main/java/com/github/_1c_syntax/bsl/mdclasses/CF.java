@@ -28,11 +28,13 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -72,6 +74,11 @@ public interface CF extends MDClass, ConfigurationTree {
    * Версия
    */
   String getVersion();
+
+  /**
+   * Назначения использования форм
+   */
+  List<UsePurposes> getUsePurposes();
 
   /**
    * Возвращает соответствие пути к модулю его типу

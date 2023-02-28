@@ -29,11 +29,13 @@ import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
@@ -79,4 +81,14 @@ public class ObjectForm implements Form, MDChild {
 
   @Default
   MdoReference owner = MdoReference.EMPTY;
+
+  /*
+   * Свое
+   */
+
+  /**
+   * Назначения использования форм
+   */
+  @Singular("addUsePurposes")
+  List<UsePurposes> usePurposes;
 }
