@@ -51,18 +51,13 @@ class CatalogTest {
     assertThat(catalog.getModules()).hasSize(2);
     assertThat(catalog.getAllModules()).hasSize(6);
 
-    var formData = catalog.getForms().stream()
-      .filter(form -> form.getName().equals("ФормаСписка")).findFirst().get().getData();
+//    var formData = catalog.getForms().stream().filter(form -> form.getName().equals("ФормаСписка"))
+//      .findFirst().get().getData();
 //    checkExtInfo(formData);
   }
 
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, Catalogs.Заметки, _edt",
-      "false, ssl_3_1, Catalogs.Заметки"
-    }
-  )
+  @CsvSource({"true, ssl_3_1, Catalogs.Заметки, _edt", "false, ssl_3_1, Catalogs.Заметки"})
   void testSSL(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
   }

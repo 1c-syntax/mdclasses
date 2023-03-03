@@ -19,15 +19,31 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdclasses;
+package com.github._1c_syntax.bsl.mdo.support;
 
-import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 
-public interface MDClass extends ModuleOwner, ChildrenOwner {
-  /**
-   * Вариант исходников
-   */
-  ConfigurationSource getConfigurationSource();
+/**
+ * Назначения использования приложения и форм
+ */
+@AllArgsConstructor
+public enum UsePurposes {
+  PLATFORM_APPLICATION("PersonalComputer", "PlatformApplication",
+    "Приложение для платформы"),
+  MOBILE_PLATFORM_APPLICATION("MobileDevice", "MobilePlatformApplication",
+    "Приложение для мобильной платформы");
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String valueVar1;
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String valueVar2;
+
+  @Getter
+  @Accessors(fluent = true)
+  private final String valueRu;
 }

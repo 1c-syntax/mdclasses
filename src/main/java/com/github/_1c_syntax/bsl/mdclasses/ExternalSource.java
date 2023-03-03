@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import lombok.Builder;
 import lombok.NonNull;
 
 import java.util.List;

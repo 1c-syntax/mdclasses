@@ -19,11 +19,30 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
+package com.github._1c_syntax.bsl.reader.common.converter;
+
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 
 /**
- * Интерфейс объектов команд объектов и общих команд
+ * Используется для преобразования назначения использования
  */
-public interface Command extends ModuleOwner {
+@CommonConverter
+public class UsePurposesConverter extends AbstractSingleValueConverter {
 
+  @Override
+  public Object fromString(String sourceString) {
+    for (UsePurposes item : UsePurposes.class.getEnumConstants()) {
+      if (item.valueVar1().equals(sourceString)
+        || item.valueVar2().equals(sourceString)) {
+        return item;
+      }
+    }
+    throw new IllegalArgumentException(sourceString);
+  }
+
+  @Override
+  public boolean canConvert(Class type) {
+    return UsePurposes.class.isAssignableFrom(type);
+  }
 }

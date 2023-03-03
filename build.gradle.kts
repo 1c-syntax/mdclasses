@@ -30,7 +30,7 @@ dependencies {
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.19")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
@@ -101,6 +101,10 @@ tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("-Xlint:unchecked")
     options.compilerArgs.add("-parameters")
+}
+
+tasks.test {
+    jvmArgs("--add-opens=java.base/java.util=ALL-UNNAMED")
 }
 
 sonarqube {

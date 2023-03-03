@@ -76,6 +76,7 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
@@ -142,6 +143,8 @@ public class Configuration implements CF {
   String vendor = "";
   @Default
   String version = "";
+  @Singular("addUsePurposes")
+  List<UsePurposes> usePurposes;
 
   @Singular
   List<Subsystem> subsystems;
@@ -306,6 +309,10 @@ public class Configuration implements CF {
   private static Configuration createEmptyConfiguration() {
     var emptyString = "empty";
 
-    return Configuration.builder().configurationSource(ConfigurationSource.EMPTY).name(emptyString).uuid(emptyString).build();
+    return Configuration.builder()
+      .configurationSource(ConfigurationSource.EMPTY)
+      .name(emptyString)
+      .uuid(emptyString)
+      .build();
   }
 }

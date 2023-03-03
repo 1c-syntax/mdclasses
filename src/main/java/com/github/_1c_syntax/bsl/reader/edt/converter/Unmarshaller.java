@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdclasses.CF;
-import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
@@ -79,7 +78,6 @@ class Unmarshaller {
                           UnmarshallingContext context,
                           TransformationUtils.Context readerContext) {
 
-    // todo костыль для списков
     Object lastValue = null;
     var lastName = "";
     while (reader.hasMoreChildren()) {
@@ -94,6 +92,8 @@ class Unmarshaller {
       } else if (fieldClass == null) {
         reader.moveUp();
         continue;
+      } else {
+        // no-op
       }
 
       var value = context.convertAnother(fieldClass, fieldClass);
@@ -103,16 +103,10 @@ class Unmarshaller {
         lastValue = null;
         lastName = "";
       } else {
-        if (name.equals(NAME_NODE) && value instanceof String) {
-          readerContext.setName((String) value);
-        } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType) {
-          readerContext.setTemplateType((TemplateType) value);
-        }
+        readExtra(readerContext, name, value);
 
-        if (lastName.equals(name) && lastValue instanceof MultiLanguageString && value instanceof MultiLanguageString) {
-          var newValue = new MultiLanguageString((MultiLanguageString) lastValue, (MultiLanguageString) value);
-          readerContext.setValue(name, newValue);
-          lastValue = newValue;
+        if (isMultiLanguageString(lastValue, lastName, name, value)) {
+          lastValue = readMultiLanguageString(readerContext, lastValue, name, value);
         } else {
           readerContext.setValue(name, value);
           lastValue = value;
@@ -127,7 +121,6 @@ class Unmarshaller {
                            UnmarshallingContext context,
                            TransformationUtils.Context readerContext) {
 
-    // todo костыль для списков
     Object lastValue = null;
     var lastName = "";
     while (reader.hasMoreChildren()) {
@@ -139,14 +132,12 @@ class Unmarshaller {
       var mdoType = MDOType.fromValue(name);
       if (mdoType.isEmpty()) {
         fieldClass = readerContext.fieldType(name);
+      } else if (LANGUAGE_NODE.equals(name)) {
+        fieldClass = Language.class;
+        name = LANGUAGE_METHOD_NAME;
       } else {
-        if (LANGUAGE_NODE.equals(name)) {
-          fieldClass = Language.class;
-          name = LANGUAGE_METHOD_NAME;
-        } else {
-          fieldClass = String.class;
-          isChild = true;
-        }
+        fieldClass = String.class;
+        isChild = true;
       }
 
       // не стоит тратить время
@@ -162,32 +153,70 @@ class Unmarshaller {
         lastValue = null;
         lastName = "";
       } else {
+        readExtra(readerContext, name, value);
 
-        if (name.equals(NAME_NODE) && value instanceof String) {
-          readerContext.setName((String) value);
-        } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode) {
-          readerContext.setCompatibilityMode((CompatibilityMode) value);
-        } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode) {
-          readerContext.setConfigurationExtensionCompatibilityMode((CompatibilityMode) value);
-        }
-
-        if (lastName.equals(name) && lastValue instanceof MultiLanguageString && value instanceof MultiLanguageString) {
-          var newValue = new MultiLanguageString((MultiLanguageString) lastValue, (MultiLanguageString) value);
-          readerContext.setValue(name, newValue);
-          lastValue = newValue;
-        } else if (isChild && value instanceof String) {
+        if (isMultiLanguageString(lastValue, lastName, name, value)) {
+          lastValue = readMultiLanguageString(readerContext, lastValue, name, value);
+        } else if (isChildMD(isChild, value)) {
           readerContext.addChildMetadata((String) value);
           lastValue = value;
         } else {
           readerContext.setValue(name, value);
-          if (value instanceof Language) {
-            readerContext.setValue(CHILD_FILED, value);
-          }
           lastValue = value;
         }
         lastName = name;
       }
       reader.moveUp();
+    }
+  }
+
+  private static boolean isChildMD(boolean isChild, Object value) {
+    return isChild && value instanceof String;
+  }
+
+  private static boolean isCPExtModeNode(String name, Object value) {
+    return name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode;
+  }
+
+  private static boolean isCPModeNode(String name, Object value) {
+    return name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode;
+  }
+
+  private static boolean isTemplateNode(String name, Object value) {
+    return name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType;
+  }
+
+  private static boolean isNameNode(String name, Object value) {
+    return isChildMD(name.equals(NAME_NODE), value);
+  }
+
+  private static boolean isMultiLanguageString(Object lastValue, String lastName, String name, Object value) {
+    return lastName.equals(name) && lastValue instanceof MultiLanguageString && value instanceof MultiLanguageString;
+  }
+
+  private static MultiLanguageString readMultiLanguageString(TransformationUtils.Context readerContext,
+                                                             Object lastValue,
+                                                             String name,
+                                                             Object value) {
+    var newValue = new MultiLanguageString((MultiLanguageString) lastValue, (MultiLanguageString) value);
+    readerContext.setValue(name, newValue);
+    return newValue;
+  }
+
+
+  private static void readExtra(TransformationUtils.Context readerContext, String name, Object value) {
+    if (isNameNode(name, value)) {
+      readerContext.setName((String) value);
+    } else if (isTemplateNode(name, value)) {
+      readerContext.setTemplateType((TemplateType) value);
+    } else if (isCPModeNode(name, value)) {
+      readerContext.setCompatibilityMode((CompatibilityMode) value);
+    } else if (isCPExtModeNode(name, value)) {
+      readerContext.setConfigurationExtensionCompatibilityMode((CompatibilityMode) value);
+    } else if (value instanceof Language) {
+      readerContext.setValue(CHILD_FILED, value);
+    } else {
+      // no-op
     }
   }
 }

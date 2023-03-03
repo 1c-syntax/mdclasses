@@ -66,16 +66,16 @@ public class DesignerReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  @Override
-  public ConfigurationSource getConfigurationSource() {
-    return ConfigurationSource.DESIGNER;
-  }
-
   public DesignerReader(Path path, boolean skipSupport) {
     rootPath = path;
     if (!skipSupport) {
       ParseSupportData.readSimple(DesignerPaths.parentConfigurationsPath(rootPath));
     }
+  }
+
+  @Override
+  public ConfigurationSource getConfigurationSource() {
+    return ConfigurationSource.DESIGNER;
   }
 
   @Override

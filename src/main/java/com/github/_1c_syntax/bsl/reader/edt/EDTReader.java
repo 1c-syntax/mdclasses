@@ -66,16 +66,16 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  @Override
-  public ConfigurationSource getConfigurationSource() {
-    return ConfigurationSource.EDT;
-  }
-
   public EDTReader(Path path, boolean skipSupport) {
     rootPath = path;
     if (!skipSupport) {
       ParseSupportData.readSimple(EDTPaths.parentConfigurationsPath(rootPath));
     }
+  }
+
+  @Override
+  public ConfigurationSource getConfigurationSource() {
+    return ConfigurationSource.EDT;
   }
 
   @Override

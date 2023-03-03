@@ -49,7 +49,8 @@ import java.util.stream.Collectors;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner, TemplateOwner {
+public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
+  TemplateOwner {
 
   /*
    * Для MDChild
