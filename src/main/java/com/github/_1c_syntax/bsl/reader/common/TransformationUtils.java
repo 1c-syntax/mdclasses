@@ -307,7 +307,7 @@ public class TransformationUtils {
       }
 
       if (ChildrenOwner.class.isAssignableFrom(realClass)) {
-        children.forEach((collectionName, collectionSource) -> {
+        children.forEach((String collectionName, List<Context> collectionSource) -> {
           if (collectionName.endsWith("s")) {
             var collection = collectionSource.parallelStream().map((Context childContext) -> {
               childContext.setOwner(mdoReference);

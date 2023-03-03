@@ -22,11 +22,10 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
-import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 
-public interface MDClass extends MD, ModuleOwner, ChildrenOwner {
+public interface MDClass extends ModuleOwner, ChildrenOwner {
   /**
    * Вариант исходников
    */

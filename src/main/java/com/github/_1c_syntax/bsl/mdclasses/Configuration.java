@@ -309,6 +309,10 @@ public class Configuration implements CF {
   private static Configuration createEmptyConfiguration() {
     var emptyString = "empty";
 
-    return Configuration.builder().configurationSource(ConfigurationSource.EMPTY).name(emptyString).uuid(emptyString).build();
+    return Configuration.builder()
+      .configurationSource(ConfigurationSource.EMPTY)
+      .name(emptyString)
+      .uuid(emptyString)
+      .build();
   }
 }

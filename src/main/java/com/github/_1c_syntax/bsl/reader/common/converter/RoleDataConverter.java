@@ -78,7 +78,7 @@ public class RoleDataConverter implements ReadConverter {
     return builder.build();
   }
 
-  private RoleData.Right readRight(HierarchicalStreamReader reader, UnmarshallingContext context) {
+  private static RoleData.Right readRight(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var builder = RoleData.Right.builder();
 
     while (reader.hasMoreChildren()) {

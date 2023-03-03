@@ -71,15 +71,6 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   URI uri;
 
   /*
-   * ModuleOwner
-   */
-
-  @Override
-  public List<Module> getModules() {
-    return List.of(this);
-  }
-
-  /*
    * Свое
    */
 
@@ -123,4 +114,13 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
    */
   @Default
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
+
+  /*
+   * ModuleOwner
+   */
+
+  @Override
+  public List<Module> getModules() {
+    return List.of(this);
+  }
 }
