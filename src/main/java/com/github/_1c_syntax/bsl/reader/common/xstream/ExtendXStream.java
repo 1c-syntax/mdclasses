@@ -183,7 +183,6 @@ public class ExtendXStream extends XStream {
 
     registerConverter(collectionConverter);
     registerConverter(new ArrayConverter(getMapper()), PRIORITY_NORMAL);
-//    registerConverter(new CollectionConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new MapConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new SingletonCollectionConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new SingletonMapConverter(getMapper()), PRIORITY_NORMAL);
