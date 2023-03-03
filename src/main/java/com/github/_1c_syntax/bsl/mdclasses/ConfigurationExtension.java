@@ -177,7 +177,7 @@ public class ConfigurationExtension implements CF {
   List<CommonTemplate> commonTemplates;
   @Singular
   List<CommonPicture> commonPictures;
-  @Singular
+  @Singular("Interface")
   List<Interface> interfaces;
   @Singular
   List<XDTOPackage> xDTOPackages;
@@ -207,7 +207,7 @@ public class ConfigurationExtension implements CF {
   List<Sequence> sequences;
   @Singular
   List<DocumentJournal> documentJournals;
-  @Singular
+  @Singular("Enum")
   List<Enum> enums;
   @Singular
   List<Report> reports;

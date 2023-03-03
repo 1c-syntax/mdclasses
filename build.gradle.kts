@@ -107,6 +107,13 @@ tasks.test {
     jvmArgs("--add-opens=java.base/java.util=ALL-UNNAMED")
 }
 
+tasks.javadoc {
+    options {
+        this as StandardJavadocDocletOptions
+        noComment(false)
+    }
+}
+
 sonarqube {
     properties {
         property("sonar.sourceEncoding", "UTF-8")
