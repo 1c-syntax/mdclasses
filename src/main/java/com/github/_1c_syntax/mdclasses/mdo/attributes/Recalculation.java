@@ -21,15 +21,11 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.attributes;
 
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBSL;
 import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeMetadata;
 import com.github._1c_syntax.mdclasses.mdo.metadata.AttributeType;
-import com.github._1c_syntax.mdclasses.mdo.metadata.Metadata;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.unmarshal.wrapper.DesignerMDO;
 import com.github._1c_syntax.mdclasses.utils.MDOPathUtils;
@@ -38,7 +34,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.Value;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -89,7 +84,8 @@ public class Recalculation extends AbstractMDOAttribute implements ModuleOwner {
       MDOPathUtils.getModulePath(configurationSource, folder, getName(), moduleType)
         .ifPresent((Path modulePath) -> {
           if (modulePath.toFile().exists()) {
-            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this));
+            // TODO добавить код для защищенных файлов
+            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this, false));
           }
         }));
     setModules(mdoModules);

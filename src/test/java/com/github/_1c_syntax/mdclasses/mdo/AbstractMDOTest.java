@@ -114,6 +114,18 @@ abstract class AbstractMDOTest {
   }
 
   /**
+   * Возвращает объект метаданных по файлу описания в формате EDT
+   *
+   * @param partPath путь к файлу описания объекта
+   * @return прочитанный объект
+   */
+  protected AbstractMDObjectBase getMDObjectEDT(String partPath, String rootPath) {
+    var mdo = MDOFactory.readMDObject(Paths.get(rootPath, partPath));
+    assertThat(mdo).isPresent();
+    return mdo.get();
+  }
+
+  /**
    * Возвращает объект метаданных по файлу описания в формате EDT для расширения
    *
    * @param partPath путь к файлу описания объекта
@@ -145,6 +157,19 @@ abstract class AbstractMDOTest {
    */
   protected AbstractMDObjectBase getMDObjectDesigner(String partPath) {
     var mdo = MDOFactory.readMDObject(getMDOPathDesigner(partPath));
+    assertThat(mdo).isPresent();
+    return mdo.get();
+  }
+
+  /**
+   * Возвращает объект метаданных по файлу описания в формате Конфигуратора
+   *
+   * @param partPath путь к файлу описания объекта
+   * @param rootPath путь к корневой строке исходников
+   * @return прочитанный объект
+   */
+  protected AbstractMDObjectBase getMDObjectDesigner(String partPath, String rootPath) {
+    var mdo = MDOFactory.readMDObject(getMDOPathDesigner(partPath, rootPath));
     assertThat(mdo).isPresent();
     return mdo.get();
   }
@@ -334,6 +359,9 @@ abstract class AbstractMDOTest {
 
   protected static Path getMDOPathDesigner(String path) {
     return Paths.get(SRC_DESIGNER, path);
+  }
+  protected static Path getMDOPathDesigner(String path, String rootPath) {
+    return Paths.get(rootPath, path);
   }
 
 }

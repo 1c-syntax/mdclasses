@@ -35,12 +35,7 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.mdclasses.mdo.AbstractMDObjectBase;
-import com.github._1c_syntax.mdclasses.mdo.MDCommonModule;
-import com.github._1c_syntax.mdclasses.mdo.MDConfiguration;
-import com.github._1c_syntax.mdclasses.mdo.MDLanguage;
-import com.github._1c_syntax.mdclasses.mdo.MDOHasChildren;
-import com.github._1c_syntax.mdclasses.mdo.MDRole;
+import com.github._1c_syntax.mdclasses.mdo.*;
 import com.github._1c_syntax.mdclasses.mdo.support.LanguageContent;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import com.github._1c_syntax.mdclasses.utils.MDOFactory;
@@ -168,6 +163,10 @@ public class Configuration {
    */
   private List<MDOModule> modules;
   /**
+   * Защищенные модули конфигурации
+   */
+  private List<MDOModule> protectedModules;
+  /**
    * Режимы поддержки в связке со ссылкой на файлы
    */
   private Map<URI, Map<SupportConfiguration, SupportVariant>> modulesBySupport;
@@ -208,6 +207,7 @@ public class Configuration {
     modulesBySupport = Collections.emptyMap();
     modulesByObject = Collections.emptyMap();
     modules = Collections.emptyList();
+    protectedModules = Collections.emptyList();
     commonModules = Collections.emptyMap();
     languages = Collections.emptyMap();
     modulesByMDORef = Collections.emptyMap();
@@ -292,32 +292,23 @@ public class Configuration {
     briefInformation = mdoConfiguration.getBriefInformation();
     detailedInformation = mdoConfiguration.getDetailedInformation();
 
-    Map<URI, ModuleType> modulesType = new HashMap<>();
-    Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport = new HashMap<>();
-    Map<URI, ModuleOwner> modulesObject = new HashMap<>();
-    Map<String, Map<ModuleType, URI>> modulesMDORef = new CaseInsensitiveMap<>();
-    List<MDOModule> modulesList = new ArrayList<>();
+    modulesBySupport = new HashMap<>();
+    modulesByType = new HashMap<>();
+    modulesByObject = new HashMap<>();
+    modules = new ArrayList<>();
+    protectedModules = new ArrayList<>();
+    modulesByMDORef = new CaseInsensitiveMap<>();
+
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
     children.forEach((AbstractMDObjectBase mdo) -> {
 
       var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
       if (mdo instanceof ModuleOwner) {
-        computeModules(modulesType,
-          modulesSupport,
-          modulesObject,
-          modulesList,
-          modulesMDORef,
-          (ModuleOwner) mdo,
-          supports);
+        computeModules((ModuleOwner) mdo,
+            supports);
       }
     });
-
-    modulesBySupport = modulesSupport;
-    modulesByType = modulesType;
-    modulesByObject = modulesObject;
-    modules = modulesList;
-    modulesByMDORef = modulesMDORef;
   }
 
   /**
@@ -415,24 +406,24 @@ public class Configuration {
   }
 
   // todo надо рефакторить!!!!
-  private static void computeModules(Map<URI, ModuleType> modulesType,
-                                     Map<URI, Map<SupportConfiguration, SupportVariant>> modulesSupport,
-                                     Map<URI, ModuleOwner> modulesObject,
-                                     List<MDOModule> modulesList,
-                                     Map<String, Map<ModuleType, URI>> modulesMDORef, ModuleOwner mdo,
-                                     Map<SupportConfiguration, SupportVariant> supports) {
+  private void computeModules(ModuleOwner mdo,
+                              Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
-      var uri = module.getUri();
-      modulesType.put(uri, module.getModuleType());
-      modulesTypesAndURIs.put(module.getModuleType(), uri);
-      modulesObject.put(uri, mdo);
-      if (!supports.isEmpty()) {
-        modulesSupport.put(uri, supports);
+      if (module.isProtected()) {
+        protectedModules.add(module);
+      } else {
+        var uri = module.getUri();
+        modulesByType.put(uri, module.getModuleType());
+        modulesTypesAndURIs.put(module.getModuleType(), uri);
+        modulesByObject.put(uri, mdo);
+        if (!supports.isEmpty()) {
+          modulesBySupport.put(uri, supports);
+        }
+        modules.add(module);
       }
-      modulesList.add(module);
     });
-    modulesMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
+    modulesByMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
   private static List<AbstractMDObjectBase> getAllChildren(MDConfiguration mdoConfiguration) {

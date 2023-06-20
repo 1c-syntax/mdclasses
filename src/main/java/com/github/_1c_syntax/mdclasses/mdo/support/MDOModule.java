@@ -51,4 +51,9 @@ public class MDOModule {
    * Ссылка на объект метаданных которому принадлежит модуль
    */
   ModuleOwner owner;
+
+  /**
+   * Запаролен модуль объекта или нет
+   */
+  boolean isProtected;
 }
