@@ -42,23 +42,23 @@ class ProtectedModuleTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdoCommonModule = (MDCommonModule)getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
+    var mdoCommonModule = (MDCommonModule) getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
     checkModules(mdoCommonModule.getModules(), 1,
-        "CommonModules/Глобальны", ModuleType.CommonModule);
+      "CommonModules/Глобальны", ModuleType.CommonModule);
     assertThat(mdoCommonModule.getModules()).hasSize(1);
     assertThat(mdoCommonModule.getModules().get(0).isProtected())
-        .isFalse();
+      .isFalse();
 
-    var mdCatalog = (MDCatalog)getMDObjectEDT("Catalogs/ПервыйСправочник/ПервыйСправочник.mdo", SRC_EDT);
+    var mdCatalog = (MDCatalog) getMDObjectEDT("Catalogs/ПервыйСправочник/ПервыйСправочник.mdo", SRC_EDT);
     checkModules(mdCatalog.getProtectedModules(), 1,
-        "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
+      "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
     assertThat(mdCatalog.getProtectedModules()).hasSize(1);
     assertThat(mdCatalog.getProtectedModules().get(0).isProtected())
-        .isTrue();
+      .isTrue();
 
     File srcPath = new File(SRC_EDT);
     Configuration configuration = Configuration.create(srcPath.toPath());
-//    assertThat(configuration.getProtectedModules()).hasSize(1);
+    assertThat(configuration.getProtectedModules()).hasSize(1);
   }
 
   @Override
@@ -79,6 +79,6 @@ class ProtectedModuleTest extends AbstractMDOTest {
 
     File srcPath = new File(SRC_DESIGNER);
     Configuration configuration = Configuration.create(srcPath.toPath());
-//    assertThat(configuration.getProtectedModules()).hasSize(1);
+    assertThat(configuration.getProtectedModules()).hasSize(1);
   }
 }
