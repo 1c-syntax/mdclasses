@@ -68,6 +68,7 @@ public class Recalculation extends AbstractMDOAttribute implements ModuleOwner {
       .ifPresent(this::computeAndSetModules);
   }
 
+  // TODO отрефакторить метод почти полностью совпадает с методом AbstractMDObjectBSL::computeAndSetModules
   private void computeAndSetModules(Path folder) {
     var moduleTypes = MDOUtils.getModuleTypesForMdoTypes().getOrDefault(getMdoType(), Collections.emptySet());
     if (moduleTypes.isEmpty()) {
@@ -81,15 +82,19 @@ public class Recalculation extends AbstractMDOAttribute implements ModuleOwner {
     var configurationSource = MDOUtils.getConfigurationSourceByMDOPath(path);
 
     List<MDOModule> mdoModules = new ArrayList<>();
+    List<MDOModule> mdoProtectedModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->
       MDOPathUtils.getModulePath(configurationSource, folder, getName(), moduleType)
-        .ifPresent((Path modulePath) -> {
-          if (modulePath.toFile().exists()) {
-            // TODO добавить код для защищенных файлов
-            mdoModules.add(new MDOModule(moduleType, modulePath.toUri(), this, false));
-          }
-        }));
+        .flatMap(modulePath -> MDOUtils.getMdoModule(this, configurationSource, moduleType, modulePath))
+        .ifPresent((MDOModule module) -> {
+        if (module.isProtected()) {
+          mdoProtectedModules.add(module);
+        } else {
+          mdoModules.add(module);
+        }
+      }));
     setModules(mdoModules);
+    setProtectedModules(mdoProtectedModules);
   }
 
 }

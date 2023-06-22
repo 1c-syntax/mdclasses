@@ -21,21 +21,29 @@
  */
 package com.github._1c_syntax.mdclasses.utils;
 
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
 import lombok.experimental.UtilityClass;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @UtilityClass
 public class MDOUtils {
+  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
   public final String TYPE_INPUT_FIELD = "InputField";
   private final Map<MDOType, Set<ModuleType>> MODULE_TYPES_FOR_MDO_TYPES = moduleTypesForMDOTypes();
 
@@ -177,4 +185,56 @@ public class MDOUtils {
     return result;
   }
 
+  public static Optional<MDOModule> getMdoModule(ModuleOwner mdo, ConfigurationSource configurationSource,
+                                                 ModuleType moduleType, Path modulePath) {
+    final var modulePathExists = modulePath.toFile().exists();
+    var protectedModulePath = computeIsProtected(modulePath, modulePathExists, configurationSource);
+    var isProtected = protectedModulePath.isPresent();
+    if (modulePathExists) {
+      return Optional.of(new MDOModule(moduleType, modulePath.toUri(), mdo, isProtected));
+    } else if (isProtected) {
+      return Optional.of(new MDOModule(moduleType, protectedModulePath.get().toUri(), mdo, true));
+    }
+    return Optional.empty();
+  }
+
+  public static Optional<Path> computeIsProtected(Path modulePath, boolean modulePathExists,
+                                                  ConfigurationSource configurationSource) {
+    switch (configurationSource) {
+      case EDT:
+        return computeIsProtectedForEDT(modulePath, modulePathExists);
+      case DESIGNER:
+        return computeIsProtectedForDesigner(modulePath, modulePathExists);
+      default:
+        break;
+    }
+    return Optional.empty();
+  }
+
+  public static Optional<Path> computeIsProtectedForEDT(Path modulePath, boolean modulePathExists) {
+    if (modulePathExists) {
+      var bytes = new byte[PROTECTED_FILE_HEADER.length];
+
+      try (var fis = new FileInputStream(modulePath.toFile())) {
+        var count = fis.read(bytes);
+        if (count == PROTECTED_FILE_HEADER.length && Arrays.equals(bytes, PROTECTED_FILE_HEADER)) {
+          return Optional.of(modulePath);
+        }
+      } catch (IOException e) {
+        // ошибка чтения в данном случае неважна
+      }
+    }
+    return Optional.empty();
+  }
+
+  public static Optional<Path> computeIsProtectedForDesigner(Path modulePath, boolean modulePathExists) {
+    if (!modulePathExists) {
+      final var filePath = modulePath.toFile().getPath();
+      final var protectedPath = Paths.get(FilenameUtils.removeExtension(filePath) + ".bin");
+      if (protectedPath.toFile().exists()) {
+        return Optional.of(protectedPath);
+      }
+    }
+    return Optional.empty();
+  }
 }

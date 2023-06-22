@@ -24,6 +24,7 @@ package com.github._1c_syntax.mdclasses.mdo;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.Configuration;
+import com.github._1c_syntax.mdclasses.mdo.attributes.Recalculation;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -32,8 +33,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ProtectedModuleTest extends AbstractMDOTest {
 
-  private static final String SRC_EDT = "src/test/resources/metadata/skd/edt/src";
-  private static final String SRC_DESIGNER = "src/test/resources/metadata/skd/original";
+  private static final String EDT_PROJECT = "src/test/resources/metadata/protected_modules/edt";
+  private static final String SRC_EDT = EDT_PROJECT + "/src";
+  private static final String SRC_DESIGNER = "src/test/resources/metadata/protected_modules/original";
 
   ProtectedModuleTest() {
     super(MDOType.CATALOG);
@@ -42,43 +44,80 @@ class ProtectedModuleTest extends AbstractMDOTest {
   @Override
   @Test
   void testEDT() {
-    var mdoCommonModule = (MDCommonModule) getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
-    checkModules(mdoCommonModule.getModules(), 1,
-      "CommonModules/Глобальны", ModuleType.CommonModule);
-    assertThat(mdoCommonModule.getModules()).hasSize(1);
-    assertThat(mdoCommonModule.getModules().get(0).isProtected())
-      .isFalse();
 
-    var mdCatalog = (MDCatalog) getMDObjectEDT("Catalogs/ПервыйСправочник/ПервыйСправочник.mdo", SRC_EDT);
-    checkModules(mdCatalog.getProtectedModules(), 1,
-      "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
+    File srcPath = new File(EDT_PROJECT);
+    Configuration configuration = Configuration.create(srcPath.toPath());
+    assertThat(configuration.getProtectedModules()).hasSize(2);
+
+    var mdCatalog = (MDCatalog) getMDObjectEDT("Catalogs/ПервыйСправочник/ПервыйСправочник.mdo",
+      SRC_EDT);
+    assertThat(mdCatalog.getModules()).isEmpty();
     assertThat(mdCatalog.getProtectedModules()).hasSize(1);
     assertThat(mdCatalog.getProtectedModules().get(0).isProtected())
       .isTrue();
+    checkModules(mdCatalog.getProtectedModules(), 1,
+      "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
 
-    File srcPath = new File(SRC_EDT);
-    Configuration configuration = Configuration.create(srcPath.toPath());
-    assertThat(configuration.getProtectedModules()).hasSize(1);
+    final String partPath = "CalculationRegisters/РегистрРасчета1/РегистрРасчета1.mdo";
+    var mdCalculationRegister = (MDCalculationRegister) getMDObjectEDT(partPath, SRC_EDT);
+    var mdRecalculation = getRecalculation(mdCalculationRegister);
+    assertThat(mdRecalculation.getModules()).isEmpty();
+    assertThat(mdRecalculation.getProtectedModules()).hasSize(1);
+    assertThat(mdRecalculation.getProtectedModules().get(0).isProtected())
+      .isTrue();
+    checkModules(mdRecalculation.getProtectedModules(), 1,
+      "CalculationRegisters/РегистрРасчета1", ModuleType.RecalculationModule);
+
+    var mdoCommonModule = (MDCommonModule) getMDObjectEDT("CommonModules/ГлобальныйОбщийМодуль/ГлобальныйОбщийМодуль.mdo");
+    assertThat(mdoCommonModule.getModules()).hasSize(1);
+    assertThat(mdoCommonModule.getProtectedModules()).isEmpty();
+    assertThat(mdoCommonModule.getModules().get(0).isProtected())
+      .isFalse();
+    checkModules(mdoCommonModule.getModules(), 1,
+      "CommonModules/Глобальны", ModuleType.CommonModule);
   }
 
   @Override
   @Test
   void testDesigner() {
-    var mdoCommonModule = (MDCommonModule)getMDObjectDesigner("CommonModules/ГлобальныйОбщийМодуль.xml");
-    checkModules(mdoCommonModule.getModules(), 1,
-        "CommonModules/ГлобальныйОбщийМ", ModuleType.CommonModule);
-    final var mdoModule = mdoCommonModule.getModules().get(0);
-    assertThat(mdoModule.isProtected()).isFalse();
-
-    var mdCatalog = (MDCatalog)getMDObjectDesigner("Catalogs/ПервыйСправочник.xml", SRC_DESIGNER);
-    checkModules(mdCatalog.getProtectedModules(), 1,
-      "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
-    assertThat(mdCatalog.getProtectedModules()).hasSize(1);
-    assertThat(mdCatalog.getProtectedModules().get(0).isProtected())
-        .isTrue();
 
     File srcPath = new File(SRC_DESIGNER);
     Configuration configuration = Configuration.create(srcPath.toPath());
-    assertThat(configuration.getProtectedModules()).hasSize(1);
+    assertThat(configuration.getProtectedModules()).hasSize(2);
+
+    var mdCatalog = (MDCatalog)getMDObjectDesigner("Catalogs/ПервыйСправочник.xml",
+      SRC_DESIGNER);
+    assertThat(mdCatalog.getModules()).isEmpty();
+    assertThat(mdCatalog.getProtectedModules()).hasSize(1);
+    assertThat(mdCatalog.getProtectedModules().get(0).isProtected())
+      .isTrue();
+    checkModules(mdCatalog.getProtectedModules(), 1,
+      "Catalogs/ПервыйСправочн", ModuleType.ObjectModule);
+
+    final String partPath = "CalculationRegisters/РегистрРасчета1.xml";
+    var mdCalculationRegister = (MDCalculationRegister) getMDObjectDesigner(partPath, SRC_DESIGNER);
+    var mdRecalculation = getRecalculation(mdCalculationRegister);
+    assertThat(mdRecalculation.getModules()).isEmpty();
+    assertThat(mdRecalculation.getProtectedModules()).hasSize(1);
+    assertThat(mdRecalculation.getProtectedModules().get(0).isProtected())
+      .isTrue();
+    checkModules(mdRecalculation.getProtectedModules(), 1,
+      "CalculationRegisters/РегистрРасчета1", ModuleType.RecalculationModule);
+
+    var mdoCommonModule = (MDCommonModule)getMDObjectDesigner("CommonModules/ГлобальныйОбщийМодуль.xml");
+    assertThat(mdoCommonModule.getProtectedModules()).isEmpty();
+    assertThat(mdoCommonModule.getModules()).hasSize(1);
+    final var mdoModule = mdoCommonModule.getModules().get(0);
+    assertThat(mdoModule.isProtected()).isFalse();
+    checkModules(mdoCommonModule.getModules(), 1,
+        "CommonModules/ГлобальныйОбщийМ", ModuleType.CommonModule);
+  }
+
+  private static Recalculation getRecalculation(MDCalculationRegister mdCalculationRegister) {
+    return mdCalculationRegister
+    .getChildren().stream()
+    .filter(Recalculation.class::isInstance)
+    .map(Recalculation.class::cast)
+    .findFirst().orElseThrow();
   }
 }

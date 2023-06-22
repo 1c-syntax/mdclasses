@@ -22,7 +22,6 @@
 package com.github._1c_syntax.mdclasses.mdo;
 
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
@@ -33,13 +32,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.apache.commons.io.FilenameUtils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Базовый класс объектов метаданных, имеющих модули с исходным кодом
@@ -50,7 +47,6 @@ import java.util.*;
 @NoArgsConstructor
 public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implements ModuleOwner {
 
-  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
   /**
    * Список модулей объекта
    */
@@ -87,68 +83,16 @@ public abstract class AbstractMDObjectBSL extends AbstractMDObjectBase implement
     List<MDOModule> mdoProtectedModules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) ->
       MDOPathUtils.getModulePath(configurationSource, folder, mdoName, moduleType)
-        .ifPresent((Path modulePath) -> {
-          var mdoModule = getMdoModule(configurationSource, moduleType, modulePath);
-          mdoModule.ifPresent((MDOModule module) -> {
-            if (module.isProtected()){
-              mdoProtectedModules.add(module);
-            } else {
-              mdoModules.add(module);
-            }
-          });
+        .flatMap(modulePath -> MDOUtils.getMdoModule(this, configurationSource, moduleType, modulePath))
+        .ifPresent((MDOModule module) -> {
+          if (module.isProtected()) {
+            mdoProtectedModules.add(module);
+          } else {
+            mdoModules.add(module);
+          }
         }));
     setModules(mdoModules);
     setProtectedModules(mdoProtectedModules);
   }
 
-  private Optional<MDOModule> getMdoModule(ConfigurationSource configurationSource, ModuleType moduleType, Path modulePath) {
-    final var modulePathExists = modulePath.toFile().exists();
-    var protectedModulePath = computeIsProtected(modulePath, modulePathExists, configurationSource);
-    var isProtected = protectedModulePath.isPresent();
-    if (modulePathExists) {
-      return Optional.of(new MDOModule(moduleType, modulePath.toUri(), this, isProtected));
-    } else if (isProtected) {
-      return Optional.of(new MDOModule(moduleType, protectedModulePath.get().toUri(), this, true));
-    }
-    return Optional.empty();
-  }
-
-  private static Optional<Path> computeIsProtected(Path modulePath, boolean modulePathExists, ConfigurationSource configurationSource) {
-    switch (configurationSource) {
-      case EDT:
-        return computeIsProtectedForEDT(modulePath, modulePathExists);
-      case DESIGNER:
-        return computeIsProtectedForDesigner(modulePath, modulePathExists);
-      default:
-        break;
-    }
-    return Optional.empty();
-  }
-
-  private static Optional<Path> computeIsProtectedForEDT(Path modulePath, boolean modulePathExists) {
-    if (modulePathExists) {
-      var bytes = new byte[PROTECTED_FILE_HEADER.length];
-
-      try (var fis = new FileInputStream(modulePath.toFile())) {
-        var count = fis.read(bytes);
-        if (count == PROTECTED_FILE_HEADER.length && Arrays.equals(bytes, PROTECTED_FILE_HEADER)) {
-          return Optional.of(modulePath);
-        }
-      } catch (IOException e) {
-        // ошибка чтения в данном случае неважна
-      }
-    }
-    return Optional.empty();
-  }
-
-  private static Optional<Path> computeIsProtectedForDesigner(Path modulePath, boolean modulePathExists) {
-    if (!modulePathExists) {
-      final var filePath = modulePath.toFile().getPath();
-      final var protectedPath = Paths.get(FilenameUtils.removeExtension(filePath) + ".bin");
-      if (protectedPath.toFile().exists()) {
-        return Optional.of(protectedPath);
-      }
-    }
-    return Optional.empty();
-  }
 }
