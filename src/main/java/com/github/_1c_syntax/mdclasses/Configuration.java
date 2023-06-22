@@ -301,14 +301,13 @@ public class Configuration {
 
     final Map<String, Map<SupportConfiguration, SupportVariant>> supportMap = getSupportMap();
 
-    children.forEach((AbstractMDObjectBase mdo) -> {
-
-      var supports = supportMap.getOrDefault(mdo.getUuid(), Collections.emptyMap());
-      if (mdo instanceof ModuleOwner) {
-        computeModules((ModuleOwner) mdo,
-            supports);
-      }
-    });
+    children.stream()
+      .filter(ModuleOwner.class::isInstance)
+      .map(ModuleOwner.class::cast)
+      .forEach(moduleOwner -> {
+        var supports = supportMap.getOrDefault(moduleOwner.getUuid(), Collections.emptyMap());
+        computeModules(moduleOwner, supports);
+      });
   }
 
   /**
@@ -405,24 +404,20 @@ public class Configuration {
     return Collections.emptyMap();
   }
 
-  // todo надо рефакторить!!!!
   private void computeModules(ModuleOwner mdo,
                               Map<SupportConfiguration, SupportVariant> supports) {
     Map<ModuleType, URI> modulesTypesAndURIs = new EnumMap<>(ModuleType.class);
     mdo.getModules().forEach((MDOModule module) -> {
-      if (module.isProtected()) {
-        protectedModules.add(module);
-      } else {
-        var uri = module.getUri();
-        modulesByType.put(uri, module.getModuleType());
-        modulesTypesAndURIs.put(module.getModuleType(), uri);
-        modulesByObject.put(uri, mdo);
-        if (!supports.isEmpty()) {
-          modulesBySupport.put(uri, supports);
-        }
-        modules.add(module);
+      var uri = module.getUri();
+      modulesByType.put(uri, module.getModuleType());
+      modulesTypesAndURIs.put(module.getModuleType(), uri);
+      modulesByObject.put(uri, mdo);
+      if (!supports.isEmpty()) {
+        modulesBySupport.put(uri, supports);
       }
+      modules.add(module);
     });
+    protectedModules.addAll(mdo.getProtectedModules());
     modulesByMDORef.put(mdo.getMdoReference().getMdoRef(), modulesTypesAndURIs);
   }
 
