@@ -39,6 +39,11 @@ public interface ModuleOwner extends MD {
   List<MDOModule> getModules();
 
   /**
+   * Список защищенных, запароленных модулей объекта
+   */
+  List<MDOModule> getProtectedModules();
+
+  /**
    * Список модулей объекта, включая дочерние
    */
   default List<MDOModule> getAllModules() {

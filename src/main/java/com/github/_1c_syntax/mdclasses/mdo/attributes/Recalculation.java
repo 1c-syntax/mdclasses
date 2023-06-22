@@ -54,6 +54,7 @@ import java.util.List;
 public class Recalculation extends AbstractMDOAttribute implements ModuleOwner {
 
   List<MDOModule> modules = Collections.emptyList();
+  List<MDOModule> protectedModules = Collections.emptyList();
 
   public Recalculation(DesignerMDO designerMDO) {
     super(designerMDO);
