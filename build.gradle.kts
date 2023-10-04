@@ -123,7 +123,7 @@ sonarqube {
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
-        property("sonar.gradle.skipCompile", true)
+        property("sonar.gradle.skipCompile", "true")
     }
 }
 
