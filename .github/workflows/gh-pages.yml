@@ -16,7 +16,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.3.0
+    - uses: actions/checkout@v4.1.0
       with:
         submodules: true
         lfs: true
@@ -30,7 +30,7 @@ jobs:
       run: ./gradlew --no-daemon javadoc
 
     - name: Set up Python
-      uses: actions/setup-python@v4.5.0
+      uses: actions/setup-python@v4.7.1
       with:
         python-version: '3.10'
         architecture: 'x64'
@@ -124,7 +124,7 @@ jobs:
         cp -R temp/site/. public/dev/en
         
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3.9.2
+      uses: peaceiris/actions-gh-pages@v3.9.3
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages
