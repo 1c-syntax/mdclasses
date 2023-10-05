@@ -7,10 +7,10 @@ plugins {
     jacoco
     id("org.cadixdev.licenser") version "0.6.1"
     id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.freefair.lombok") version "6.5.1"
-    id("io.freefair.javadoc-links") version "6.5.1"
-    id("io.freefair.javadoc-utf-8") version "6.5.1"
-    id("org.sonarqube") version "3.4.0.2513"
+    id("io.freefair.lombok") version "8.3"
+    id("io.freefair.javadoc-links") version "8.3"
+    id("io.freefair.javadoc-utf-8") version "8.3"
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "com.github.1c-syntax"
@@ -40,7 +40,7 @@ dependencies {
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.4.0")
     implementation("io.github.1c-syntax", "bsl-common-library", "0.3.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.1.1")
+    implementation("io.github.1c-syntax", "supportconf", "0.12.1")
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.147")
@@ -135,6 +135,7 @@ license {
     exclude("**/*.os")
     exclude("**/*.bsl")
     exclude("**/*.orig")
+    exclude("**/*.yml")
 }
 
 publishing {
