@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.types.ModuleType;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,5 +63,12 @@ public interface ModuleOwner extends MD {
    */
   default Optional<Module> getModuleByUri(URI uri) {
     return getAllModules().stream().filter(module -> module.getUri().equals(uri)).findFirst();
+  }
+
+  /**
+   * Возвращает тип модуля по URI
+   */
+  default ModuleType getModuleTypeByURI(URI uri) {
+    return getModuleByUri(uri).map(Module::getModuleType).orElse(ModuleType.UNKNOWN);
   }
 }

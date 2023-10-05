@@ -27,6 +27,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Расширение - владелец дочерних объектов
@@ -110,5 +111,15 @@ public interface ChildrenOwner {
       .filter(ModuleOwner.class::isInstance)
       .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())
       .findFirst();
+  }
+
+  /**
+   * Выполняет поиск дочернего (включая все уровни) объекта по произвольному предикату
+   *
+   * @param predicate Произвольный предикат для поиска объекта
+   * @return Контейнер с найденным значением (может быть пустым)
+   */
+  default Optional<MD> findChild(Predicate<? super MD> predicate) {
+    return getPlainChildren().stream().filter(predicate).findFirst();
   }
 }

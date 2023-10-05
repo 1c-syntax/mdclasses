@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
@@ -113,5 +114,27 @@ public interface CF extends MDClass, ConfigurationTree {
         return ((CommonModule) module).getMdoReference();
       }
     }));
+  }
+
+  /**
+   * Возвращает список подсистем, в состав которых входит объект метаданных
+   *
+   * @param md объект метаданных
+   * @return список подсистем
+   */
+  default List<Subsystem> includedSubsystems(MD md) {
+    return includedSubsystems(md.getMdoReference());
+  }
+
+  /**
+   * Возвращает список подсистем, в состав которых входит ссылка
+   *
+   * @param mdoReference ссылка на объект метаданных
+   * @return список подсистем
+   */
+  default List<Subsystem> includedSubsystems(MdoReference mdoReference) {
+    return getSubsystems().parallelStream()
+      .filter(subsystem -> subsystem.getContent().contains(mdoReference))
+      .collect(Collectors.toList());
   }
 }
