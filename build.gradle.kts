@@ -40,7 +40,7 @@ dependencies {
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.4.0")
     implementation("io.github.1c-syntax", "bsl-common-library", "f6714e4e")
-    implementation("io.github.1c-syntax", "supportconf", "0.1.1") {
+    implementation("io.github.1c-syntax", "supportconf", "0.12.1") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
 
