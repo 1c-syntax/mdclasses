@@ -35,6 +35,7 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -104,6 +105,25 @@ public interface CF extends MDClass, ConfigurationTree {
   }
 
   /**
+   * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
+   */
+  default Map<ModuleType, URI> mdoModuleTypes(MdoReference mdoReference) {
+    var child = findChild(mdoReference);
+    if (child.isPresent() && child.get() instanceof ModuleOwner) {
+      return ((ModuleOwner) child.get()).getModuleTypes();
+    } else {
+      return Collections.emptyMap();
+    }
+  }
+
+  /**
+   * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
+   */
+  default Map<ModuleType, URI> mdoModuleTypes(String mdoRef) {
+    return mdoModuleTypes(MdoReference.create(mdoRef));
+  }
+
+  /**
    * Возвращает соответствие пути файла модуля ссылке его владельца
    */
   default Map<URI, MdoReference> modulesByObject() {
@@ -119,22 +139,30 @@ public interface CF extends MDClass, ConfigurationTree {
   /**
    * Возвращает список подсистем, в состав которых входит объект метаданных
    *
-   * @param md объект метаданных
+   * @param md                 объект метаданных
+   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
+   *                           если объект присутствует в дочерних.
+   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
+   *                           тоже относится
    * @return список подсистем
    */
-  default List<Subsystem> includedSubsystems(MD md) {
-    return includedSubsystems(md.getMdoReference());
+  default List<Subsystem> includedSubsystems(MD md, boolean addParentSubsystem) {
+    return includedSubsystems(md.getMdoReference(), addParentSubsystem);
   }
 
   /**
    * Возвращает список подсистем, в состав которых входит ссылка
    *
-   * @param mdoReference ссылка на объект метаданных
+   * @param mdoReference       ссылка на объект метаданных
+   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
+   *                           если объект присутствует в дочерних.
+   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
+   *                           тоже относится
    * @return список подсистем
    */
-  default List<Subsystem> includedSubsystems(MdoReference mdoReference) {
+  default List<Subsystem> includedSubsystems(MdoReference mdoReference, boolean addParentSubsystem) {
     return getSubsystems().parallelStream()
-      .filter(subsystem -> subsystem.getContent().contains(mdoReference))
+      .flatMap(subsystem -> subsystem.included(mdoReference, addParentSubsystem).stream())
       .collect(Collectors.toList());
   }
 }

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Расширение - владелец дочерних объектов
@@ -64,13 +65,42 @@ public interface ChildrenOwner {
   }
 
   /**
-   * Возвращает дочерние элементы объекта плоским списком.
+   * Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ
+   */
+  default List<MD> getMDOChildren() {
+    List<MD> children = new ArrayList<>();
+
+    if (this instanceof AttributeOwner) {
+      children.addAll(((AttributeOwner) this).getAllAttributes());
+    }
+
+    if (this instanceof TabularSectionOwner) {
+      children.addAll(((TabularSectionOwner) this).getTabularSections());
+    }
+
+    return children;
+  }
+
+  /**
+   * Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.
    */
   default List<MD> getPlainChildren() {
     List<MD> children = new ArrayList<>(getChildren());
     getChildren().stream().filter(ChildrenOwner.class::isInstance)
       .map(ChildrenOwner.class::cast)
       .forEach(mdObject -> children.addAll(mdObject.getPlainChildren()));
+
+    return children;
+  }
+
+  /**
+   * Возвращает дочерние элементы объекта плоским списком.
+   */
+  default List<MD> getMDOPlainChildren() {
+    List<MD> children = new ArrayList<>(getMDOChildren());
+    getChildren().stream().filter(ChildrenOwner.class::isInstance)
+      .map(ChildrenOwner.class::cast)
+      .forEach(mdObject -> children.addAll(mdObject.getMDOPlainChildren()));
 
     return children;
   }
@@ -107,10 +137,18 @@ public interface ChildrenOwner {
    * @return Контейнер с найденным значением (может быть пустым)
    */
   default Optional<MD> findChild(URI uri) {
-    return getPlainChildren().stream()
+    var collection = getPlainChildren().stream()
       .filter(ModuleOwner.class::isInstance)
       .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())
-      .findFirst();
+      .collect(Collectors.toList());
+
+    if (collection.size() > 1) {
+      var result = collection.stream().filter(md -> !(md instanceof MDObject)).findFirst();
+      if (result.isPresent()) {
+        return result;
+      }
+    }
+    return collection.stream().findFirst();
   }
 
   /**

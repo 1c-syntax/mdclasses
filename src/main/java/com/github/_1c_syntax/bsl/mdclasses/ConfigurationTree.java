@@ -97,6 +97,14 @@ public interface ConfigurationTree {
   List<CommonModule> getCommonModules();
 
   /**
+   * Поиск общего модуля по имени
+   */
+  default Optional<CommonModule> findCommonModule(String name) {
+    return getCommonModules().stream().filter(commonModule -> commonModule.getName().equalsIgnoreCase(name))
+      .findFirst();
+  }
+
+  /**
    * Поиск общего модуля по условию
    */
   default Optional<CommonModule> findCommonModule(Predicate<? super CommonModule> predicate) {
