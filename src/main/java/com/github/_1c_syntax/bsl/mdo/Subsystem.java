@@ -127,7 +127,7 @@ public class Subsystem implements MDObject, ChildrenOwner {
       .flatMap(child -> child.included(mdoRef, addParentSubsystem).stream())
       .collect(Collectors.toList());
 
-    if (!includedSubsystems.isEmpty() && addParentSubsystem || content.contains(mdoRef)) {
+    if ((!includedSubsystems.isEmpty() && addParentSubsystem) || content.contains(mdoRef)) {
       includedSubsystems.add(this);
     }
 
