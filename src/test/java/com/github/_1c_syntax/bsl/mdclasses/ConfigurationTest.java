@@ -21,11 +21,15 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.BusinessProcess;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -75,6 +79,82 @@ class ConfigurationTest {
     assertThat(cf.getPlainChildren())
       .hasSize(6458)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+
+    assertThat(cf.getModulesByType())
+      .hasSize(1792)
+      .containsValue(ModuleType.FormModule)
+    ;
+
+    assertThat(cf.modulesByMDORef())
+      .hasSize(1912)
+      .containsKey("BusinessProcess.Задание")
+      .containsKey("BusinessProcess.Задание.Form.ДействиеВыполнить")
+    ;
+
+    assertThat(cf.mdoModuleTypes("BusinessProcess.Задание.Form.ДействиеВыполнить"))
+      .isNotEmpty()
+      .hasSize(1)
+    ;
+
+    assertThat(cf.mdoModuleTypes(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить")))
+      .isNotEmpty()
+      .hasSize(1)
+    ;
+
+    assertThat(cf.mdoModuleTypes("BusinessProcess.Задание.Form.ДействиеВыполнить2"))
+      .isEmpty()
+    ;
+
+    assertThat(cf.modulesByObject())
+      .hasSize(1792)
+      .containsValue(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить"))
+    ;
+
+    var mdoRef = MdoReference.create("BusinessProcess.Задание");
+    var mdo = cf.findChild(mdoRef).get();
+
+    assertThat(cf.includedSubsystems(mdoRef, false))
+      .hasSize(1)
+      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
+    ;
+    assertThat(cf.includedSubsystems(mdoRef, true))
+      .hasSize(2)
+      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
+      .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
+    ;
+    assertThat(cf.includedSubsystems(mdo, true))
+      .hasSize(2)
+      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
+      .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
+    ;
+
+    assertThat(((BusinessProcess) mdo).getModules())
+      .hasSize(2)
+      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule);
+    assertThat(((BusinessProcess) mdo).getAllModules())
+      .hasSize(6)
+      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule)
+      .anyMatch(module -> module.getModuleType() == ModuleType.FormModule);
+
+    var module = ((BusinessProcess) mdo).getAllModules().stream()
+      .filter(module1 -> module1.getModuleType() == ModuleType.FormModule)
+      .findFirst().get();
+
+    assertThat(cf.findChild(module.getUri()).get())
+      .isNotEqualTo(mdo)
+      .isInstanceOf(ObjectForm.class);
+
+    var commonModule = cf.findCommonModule("АвтономнаяРабота").get();
+    assertThat(cf.getModuleByUri(commonModule.getUri()))
+      .isPresent()
+    ;
+
+    assertThat(cf.getModuleTypeByURI(commonModule.getUri()))
+      .isNotNull()
+      .isEqualTo(ModuleType.CommonModule)
+    ;
+    assertThat(cf.findChild(commonModule.getUri()))
+      .contains(commonModule);
   }
 
   @ParameterizedTest
@@ -94,7 +174,7 @@ class ConfigurationTest {
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules())
-      .hasSize(42 + cf.getCommonModules().size())
+      .hasSize(43 + cf.getCommonModules().size())
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     // проверка состава дочерних

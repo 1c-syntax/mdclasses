@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
@@ -34,6 +35,7 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -103,6 +105,25 @@ public interface CF extends MDClass, ConfigurationTree {
   }
 
   /**
+   * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
+   */
+  default Map<ModuleType, URI> mdoModuleTypes(MdoReference mdoReference) {
+    var child = findChild(mdoReference);
+    if (child.isPresent() && child.get() instanceof ModuleOwner) {
+      return ((ModuleOwner) child.get()).getModuleTypes();
+    } else {
+      return Collections.emptyMap();
+    }
+  }
+
+  /**
+   * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
+   */
+  default Map<ModuleType, URI> mdoModuleTypes(String mdoRef) {
+    return mdoModuleTypes(MdoReference.create(mdoRef));
+  }
+
+  /**
    * Возвращает соответствие пути файла модуля ссылке его владельца
    */
   default Map<URI, MdoReference> modulesByObject() {
@@ -113,5 +134,35 @@ public interface CF extends MDClass, ConfigurationTree {
         return ((CommonModule) module).getMdoReference();
       }
     }));
+  }
+
+  /**
+   * Возвращает список подсистем, в состав которых входит объект метаданных
+   *
+   * @param md                 объект метаданных
+   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
+   *                           если объект присутствует в дочерних.
+   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
+   *                           тоже относится
+   * @return список подсистем
+   */
+  default List<Subsystem> includedSubsystems(MD md, boolean addParentSubsystem) {
+    return includedSubsystems(md.getMdoReference(), addParentSubsystem);
+  }
+
+  /**
+   * Возвращает список подсистем, в состав которых входит ссылка
+   *
+   * @param mdoReference       ссылка на объект метаданных
+   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
+   *                           если объект присутствует в дочерних.
+   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
+   *                           тоже относится
+   * @return список подсистем
+   */
+  default List<Subsystem> includedSubsystems(MdoReference mdoReference, boolean addParentSubsystem) {
+    return getSubsystems().parallelStream()
+      .flatMap(subsystem -> subsystem.included(mdoReference, addParentSubsystem).stream())
+      .collect(Collectors.toList());
   }
 }

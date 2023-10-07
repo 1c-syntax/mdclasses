@@ -107,4 +107,30 @@ public class Subsystem implements MDObject, ChildrenOwner {
       .map(MD.class::cast)
       .collect(Collectors.toList());
   }
+
+  /*
+   * свое
+   */
+
+  /**
+   * Возвращает список подсистем, в которые входит указанная ссылка на объект
+   *
+   * @param mdoRef             - ссылка на искомый объект
+   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
+   *                           если объект присутствует в дочерних.
+   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
+   *                           тоже относится
+   * @return Список подсистем, в состав которых включена ссылка
+   */
+  public List<Subsystem> included(MdoReference mdoRef, boolean addParentSubsystem) {
+    List<Subsystem> includedSubsystems = getSubsystems().stream()
+      .flatMap(child -> child.included(mdoRef, addParentSubsystem).stream())
+      .collect(Collectors.toList());
+
+    if ((!includedSubsystems.isEmpty() && addParentSubsystem) || content.contains(mdoRef)) {
+      includedSubsystems.add(this);
+    }
+
+    return includedSubsystems;
+  }
 }

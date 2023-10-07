@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader;
 
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
@@ -79,7 +80,7 @@ public class FakeReader implements MDReader {
 
   @Override
   public MDClass readConfiguration() {
-    return null;
+    return MDClasses.createConfiguration();
   }
 
   @Override
