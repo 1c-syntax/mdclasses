@@ -174,7 +174,7 @@ class ConfigurationTest {
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules())
-      .hasSize(42 + cf.getCommonModules().size())
+      .hasSize(43 + cf.getCommonModules().size())
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     // проверка состава дочерних
