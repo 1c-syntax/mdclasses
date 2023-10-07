@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.BusinessProcess;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -115,18 +117,32 @@ class ConfigurationTest {
       .hasSize(1)
       .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
     ;
-
     assertThat(cf.includedSubsystems(mdoRef, true))
       .hasSize(2)
       .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
       .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
     ;
-
     assertThat(cf.includedSubsystems(mdo, true))
       .hasSize(2)
       .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
       .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
     ;
+
+    assertThat(((BusinessProcess) mdo).getModules())
+      .hasSize(2)
+      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule);
+    assertThat(((BusinessProcess) mdo).getAllModules())
+      .hasSize(6)
+      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule)
+      .anyMatch(module -> module.getModuleType() == ModuleType.FormModule);
+
+    var module = ((BusinessProcess) mdo).getAllModules().stream()
+      .filter(module1 -> module1.getModuleType() == ModuleType.FormModule)
+      .findFirst().get();
+
+    assertThat(cf.findChild(module.getUri()).get())
+      .isNotEqualTo(mdo)
+      .isInstanceOf(ObjectForm.class);
 
     var commonModule = cf.findCommonModule("АвтономнаяРабота").get();
     assertThat(cf.getModuleByUri(commonModule.getUri()))
@@ -137,6 +153,8 @@ class ConfigurationTest {
       .isNotNull()
       .isEqualTo(ModuleType.CommonModule)
     ;
+    assertThat(cf.findChild(commonModule.getUri()))
+      .contains(commonModule);
   }
 
   @ParameterizedTest

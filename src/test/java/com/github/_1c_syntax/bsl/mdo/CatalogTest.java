@@ -21,6 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -41,7 +45,13 @@ class CatalogTest {
     assertThat(mdo).isInstanceOf(Catalog.class);
     var catalog = (Catalog) mdo;
     assertThat(catalog.getAllAttributes()).hasSize(3);
-    assertThat(catalog.getChildren()).hasSize(9);
+    assertThat(catalog.getChildren())
+      .hasSize(9)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .anyMatch(child -> child instanceof ObjectCommand)
+      .anyMatch(child -> child instanceof ObjectForm)
+      .anyMatch(child -> child instanceof TabularSection)
+    ;
     assertThat(catalog.getPlainChildren()).hasSize(11);
     assertThat(catalog.getAttributes()).hasSize(3);
     assertThat(catalog.getTabularSections()).hasSize(1);
@@ -50,6 +60,20 @@ class CatalogTest {
     assertThat(catalog.getCommands()).hasSize(1);
     assertThat(catalog.getModules()).hasSize(2);
     assertThat(catalog.getAllModules()).hasSize(6);
+    assertThat(catalog.getMDOChildren())
+      .hasSize(4)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .anyMatch(child -> child instanceof TabularSection)
+      .noneMatch(child -> child instanceof ObjectCommand)
+      .noneMatch(child -> child instanceof ObjectForm)
+    ;
+    assertThat(catalog.getMDOPlainChildren())
+      .hasSize(6)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .anyMatch(child -> child instanceof TabularSection)
+      .noneMatch(child -> child instanceof ObjectCommand)
+      .noneMatch(child -> child instanceof ObjectForm)
+    ;
 
 //    var formData = catalog.getForms().stream().filter(form -> form.getName().equals("ФормаСписка"))
 //      .findFirst().get().getData();
@@ -57,9 +81,34 @@ class CatalogTest {
   }
 
   @ParameterizedTest
-  @CsvSource({"true, ssl_3_1, Catalogs.Заметки, _edt", "false, ssl_3_1, Catalogs.Заметки"})
+  @CsvSource({
+    "true, ssl_3_1, Catalogs.Заметки, _edt",
+    "false, ssl_3_1, Catalogs.Заметки"
+  })
   void testSSL(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo)
+      .isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog.getChildren())
+      .hasSize(14)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .anyMatch(child -> child instanceof ObjectCommand)
+      .anyMatch(child -> child instanceof ObjectForm)
+    ;
+    assertThat(catalog.getMDOChildren())
+      .hasSize(8)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .noneMatch(child -> child instanceof ObjectCommand)
+      .noneMatch(child -> child instanceof ObjectForm)
+    ;
+    assertThat(catalog.getMDOPlainChildren())
+      .hasSize(8)
+      .anyMatch(child -> child instanceof ObjectAttribute)
+      .noneMatch(child -> child instanceof ObjectCommand)
+      .noneMatch(child -> child instanceof ObjectForm)
+    ;
   }
 
 //  private void checkExtInfo(FormDataOLD formData) {
