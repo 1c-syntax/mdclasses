@@ -99,20 +99,43 @@ class ConfigurationTest {
       .hasSize(1)
     ;
 
+    assertThat(cf.mdoModuleTypes("BusinessProcess.Задание.Form.ДействиеВыполнить2"))
+      .isEmpty()
+    ;
+
     assertThat(cf.modulesByObject())
       .hasSize(1792)
       .containsValue(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить"))
     ;
 
-    assertThat(cf.includedSubsystems(MdoReference.create("BusinessProcess.Задание"), false))
+    var mdoRef = MdoReference.create("BusinessProcess.Задание");
+    var mdo = cf.findChild(mdoRef).get();
+
+    assertThat(cf.includedSubsystems(mdoRef, false))
       .hasSize(1)
       .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
     ;
 
-    assertThat(cf.includedSubsystems(MdoReference.create("BusinessProcess.Задание"), true))
+    assertThat(cf.includedSubsystems(mdoRef, true))
       .hasSize(2)
       .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
       .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
+    ;
+
+    assertThat(cf.includedSubsystems(mdo, true))
+      .hasSize(2)
+      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
+      .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
+    ;
+
+    var commonModule = cf.findCommonModule("АвтономнаяРабота").get();
+    assertThat(cf.getModuleByUri(commonModule.getUri()))
+      .isPresent()
+    ;
+
+    assertThat(cf.getModuleTypeByURI(commonModule.getUri()))
+      .isNotNull()
+      .isEqualTo(ModuleType.CommonModule)
     ;
   }
 
