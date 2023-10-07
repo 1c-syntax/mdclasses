@@ -39,7 +39,7 @@ dependencies {
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.5.1")
-    implementation("io.github.1c-syntax", "bsl-common-library", "f6714e4e")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.5.0")
     implementation("io.github.1c-syntax", "supportconf", "0.12.1") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
@@ -112,7 +112,6 @@ tasks.javadoc {
         this as StandardJavadocDocletOptions
         noComment(false)
     }
-    enabled = false
 }
 
 sonarqube {
