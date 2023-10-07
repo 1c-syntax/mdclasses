@@ -2902,6 +2902,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Выполняет поиск дочернего (включая все уровни) объекта по ссылке на его модуль</div>
 </dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html#findChild(java.util.function.Predicate)" class="member-name-link">findChild(Predicate&lt;? super MD&gt;)</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ChildrenOwner</a></dt>
+<dd>
+<div class="block">Выполняет поиск дочернего (включая все уровни) объекта по произвольному предикату</div>
+</dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html#findCommandGroup(java.util.function.Predicate)" class="member-name-link">findCommandGroup(Predicate&lt;? super CommandGroup&gt;)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html" title="interface in com.github._1c_syntax.bsl.mdclasses">ConfigurationTree</a></dt>
 <dd>
 <div class="block">Поиск группы команд по условию</div>
@@ -2917,6 +2921,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html#findCommonForm(java.util.function.Predicate)" class="member-name-link">findCommonForm(Predicate&lt;? super CommonForm&gt;)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html" title="interface in com.github._1c_syntax.bsl.mdclasses">ConfigurationTree</a></dt>
 <dd>
 <div class="block">Поиск общей формы по условию</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html#findCommonModule(java.lang.String)" class="member-name-link">findCommonModule(String)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html" title="interface in com.github._1c_syntax.bsl.mdclasses">ConfigurationTree</a></dt>
+<dd>
+<div class="block">Поиск общего модуля по имени</div>
 </dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html#findCommonModule(java.util.function.Predicate)" class="member-name-link">findCommonModule(Predicate&lt;? super CommonModule&gt;)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationTree.html" title="interface in com.github._1c_syntax.bsl.mdclasses">ConfigurationTree</a></dt>
 <dd>
@@ -4485,6 +4493,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Маска</div>
 </dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html#getMDOChildren()" class="member-name-link">getMDOChildren()</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ChildrenOwner</a></dt>
+<dd>
+<div class="block">Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html#getMDOPlainChildren()" class="member-name-link">getMDOPlainChildren()</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ChildrenOwner</a></dt>
+<dd>
+<div class="block">Возвращает дочерние элементы объекта плоским списком.</div>
+</dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/Configuration.html#getMdoReference()" class="member-name-link">getMdoReference()</a> - Method in class com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/Configuration.html" title="class in com.github._1c_syntax.bsl.mdclasses">Configuration</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationExtension.html#getMdoReference()" class="member-name-link">getMdoReference()</a> - Method in class com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/ConfigurationExtension.html" title="class in com.github._1c_syntax.bsl.mdclasses">ConfigurationExtension</a></dt>
@@ -4764,6 +4780,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/github/_1c_syntax/bsl/mdo/Module.html#getModuleType()" class="member-name-link">getModuleType()</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/Module.html" title="interface in com.github._1c_syntax.bsl.mdo">Module</a></dt>
 <dd>
 <div class="block">Тип модуля</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/ModuleOwner.html#getModuleTypeByURI(java.net.URI)" class="member-name-link">getModuleTypeByURI(URI)</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ModuleOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ModuleOwner</a></dt>
+<dd>
+<div class="block">Возвращает тип модуля по URI</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/ModuleOwner.html#getModuleTypes()" class="member-name-link">getModuleTypes()</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ModuleOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ModuleOwner</a></dt>
+<dd>
+<div class="block">Возвращает соответствие типов модулей их путям к файлам</div>
 </dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdclasses/Configuration.html#getName()" class="member-name-link">getName()</a> - Method in class com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/Configuration.html" title="class in com.github._1c_syntax.bsl.mdclasses">Configuration</a></dt>
 <dd>&nbsp;</dd>
@@ -5207,7 +5231,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html#getPlainChildren()" class="member-name-link">getPlainChildren()</a> - Method in interface com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/ChildrenOwner.html" title="interface in com.github._1c_syntax.bsl.mdo">ChildrenOwner</a></dt>
 <dd>
-<div class="block">Возвращает дочерние элементы объекта плоским списком.</div>
+<div class="block">Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.</div>
 </dd>
 <dt><a href="com/github/_1c_syntax/mdclasses/mdo/children/form/FormDataOLD.html#getPlainChildren()" class="member-name-link">getPlainChildren()</a> - Method in class com.github._1c_syntax.mdclasses.mdo.children.form.<a href="com/github/_1c_syntax/mdclasses/mdo/children/form/FormDataOLD.html" title="class in com.github._1c_syntax.mdclasses.mdo.children.form">FormDataOLD</a></dt>
 <dd>
@@ -6424,6 +6448,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Включать расширения информационной базы</div>
 </dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdo/Subsystem.html#included(com.github._1c_syntax.bsl.types.MdoReference,boolean)" class="member-name-link">included(MdoReference, boolean)</a> - Method in class com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/Subsystem.html" title="class in com.github._1c_syntax.bsl.mdo">Subsystem</a></dt>
+<dd>
+<div class="block">Возвращает список подсистем, в которые входит указанная ссылка на объект</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdclasses/CF.html#includedSubsystems(com.github._1c_syntax.bsl.mdo.MD,boolean)" class="member-name-link">includedSubsystems(MD, boolean)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/CF.html" title="interface in com.github._1c_syntax.bsl.mdclasses">CF</a></dt>
+<dd>
+<div class="block">Возвращает список подсистем, в состав которых входит объект метаданных</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdclasses/CF.html#includedSubsystems(com.github._1c_syntax.bsl.types.MdoReference,boolean)" class="member-name-link">includedSubsystems(MdoReference, boolean)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/CF.html" title="interface in com.github._1c_syntax.bsl.mdclasses">CF</a></dt>
+<dd>
+<div class="block">Возвращает список подсистем, в состав которых входит ссылка</div>
+</dd>
 <dt><a href="com/github/_1c_syntax/bsl/mdo/Subsystem.SubsystemBuilder.html#includeHelpInContents(boolean)" class="member-name-link">includeHelpInContents(boolean)</a> - Method in class com.github._1c_syntax.bsl.mdo.<a href="com/github/_1c_syntax/bsl/mdo/Subsystem.SubsystemBuilder.html" title="class in com.github._1c_syntax.bsl.mdo">Subsystem.SubsystemBuilder</a></dt>
 <dd>
 <div class="block">Включать в состав справки</div>
@@ -6969,6 +7005,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/github/_1c_syntax/bsl/mdo/MDObject.html" class="type-name-link" title="interface in com.github._1c_syntax.bsl.mdo">MDObject</a> - Interface in <a href="com/github/_1c_syntax/bsl/mdo/package-summary.html">com.github._1c_syntax.bsl.mdo</a></dt>
 <dd>
 <div class="block">Базовый интерфейс всех самостоятельных объектов метаданных (первый уровень)</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdclasses/CF.html#mdoModuleTypes(com.github._1c_syntax.bsl.types.MdoReference)" class="member-name-link">mdoModuleTypes(MdoReference)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/CF.html" title="interface in com.github._1c_syntax.bsl.mdclasses">CF</a></dt>
+<dd>
+<div class="block">Возвращает соответствие типов модулей их путям к файлам для дочернего объекта</div>
+</dd>
+<dt><a href="com/github/_1c_syntax/bsl/mdclasses/CF.html#mdoModuleTypes(java.lang.String)" class="member-name-link">mdoModuleTypes(String)</a> - Method in interface com.github._1c_syntax.bsl.mdclasses.<a href="com/github/_1c_syntax/bsl/mdclasses/CF.html" title="interface in com.github._1c_syntax.bsl.mdclasses">CF</a></dt>
+<dd>
+<div class="block">Возвращает соответствие типов модулей их путям к файлам для дочернего объекта</div>
 </dd>
 <dt><a href="com/github/_1c_syntax/bsl/reader/designer/DesignerPaths.html#mdoPath(java.nio.file.Path,com.github._1c_syntax.bsl.types.MDOType,java.lang.String)" class="member-name-link">mdoPath(Path, MDOType, String)</a> - Static method in class com.github._1c_syntax.bsl.reader.designer.<a href="com/github/_1c_syntax/bsl/reader/designer/DesignerPaths.html" title="class in com.github._1c_syntax.bsl.reader.designer">DesignerPaths</a></dt>
 <dd>

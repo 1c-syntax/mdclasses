@@ -111,15 +111,30 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Выполняет поиск дочернего (включая все уровни) объекта по ссылке на его модуль</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getChildren()" class="member-name-link">getChildren</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#findChild(java.util.function.Predicate)" class="member-name-link">findChild</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;? super <a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;&nbsp;predicate)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Возвращает все дочерние элементы объекта</div>
+<div class="block">Выполняет поиск дочернего (включая все уровни) объекта по произвольному предикату</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getPlainChildren()" class="member-name-link">getPlainChildren</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getChildren()" class="member-name-link">getChildren</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Возвращает все дочерние элементы объекта</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getMDOChildren()" class="member-name-link">getMDOChildren</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getMDOPlainChildren()" class="member-name-link">getMDOPlainChildren</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Возвращает дочерние элементы объекта плоским списком.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getPlainChildren()" class="member-name-link">getPlainChildren</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.</div>
 </div>
 </div>
 </div>
@@ -143,9 +158,23 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="getMDOChildren()">
+<h3>getMDOChildren</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</span>&nbsp;<span class="element-name">getMDOChildren</span>()</div>
+<div class="block">Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ</div>
+</section>
+</li>
+<li>
 <section class="detail" id="getPlainChildren()">
 <h3>getPlainChildren</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</span>&nbsp;<span class="element-name">getPlainChildren</span>()</div>
+<div class="block">Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getMDOPlainChildren()">
+<h3>getMDOPlainChildren</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</span>&nbsp;<span class="element-name">getMDOPlainChildren</span>()</div>
 <div class="block">Возвращает дочерние элементы объекта плоским списком.</div>
 </section>
 </li>
@@ -183,6 +212,19 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>uri</code> - Ссылка на модуль исходного объекта</dd>
+<dt>Returns:</dt>
+<dd>Контейнер с найденным значением (может быть пустым)</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="findChild(java.util.function.Predicate)">
+<h3>findChild</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;</span>&nbsp;<span class="element-name">findChild</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;? super <a href="MD.html" title="interface in com.github._1c_syntax.bsl.mdo">MD</a>&gt;&nbsp;predicate)</span></div>
+<div class="block">Выполняет поиск дочернего (включая все уровни) объекта по произвольному предикату</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>predicate</code> - Произвольный предикат для поиска объекта</dd>
 <dt>Returns:</dt>
 <dd>Контейнер с найденным значением (может быть пустым)</dd>
 </dl>
