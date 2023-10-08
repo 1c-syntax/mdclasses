@@ -1,5 +1,4 @@
 import me.qoomon.gitversioning.commons.GitRefType
-import java.net.URI
 import java.util.*
 
 plugins {
@@ -39,6 +38,7 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven(url = "https://jitpack.io")
+    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
