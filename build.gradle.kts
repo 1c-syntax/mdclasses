@@ -9,7 +9,7 @@ plugins {
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.2"
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
-    id("io.freefair.lombok") version "8.3"
+    id("io.freefair.lombok") version "8.4"
     id("io.freefair.javadoc-links") version "8.3"
     id("io.freefair.javadoc-utf-8") version "8.3"
     id("org.sonarqube") version "4.4.1.3373"
