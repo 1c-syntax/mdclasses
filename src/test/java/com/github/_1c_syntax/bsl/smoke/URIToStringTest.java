@@ -33,6 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class URIToStringTest {
 
   private static final String OS = System.getProperty("os.name").toLowerCase();
+  private static final String JDKVersion = System.getProperty("java.version").toLowerCase();
 
   @ParameterizedTest
   @CsvSource(
@@ -63,7 +64,7 @@ class URIToStringTest {
     }
     sb.append("]");
 
-    if (isMac()) {
+    if (isMac() && !isJDKOv20()) {
       assertThat(sb)
         .hasToString("[ 0x73 0x72 0x63 0x2F 0xD0 0x98 0xCC 0x86 0xD0 0xB8 0xCC 0x86 0x2E 0x66 0x69 0x6C 0x65 ]");
     } else {
@@ -74,5 +75,9 @@ class URIToStringTest {
 
   private static boolean isMac() {
     return OS.contains("mac");
+  }
+
+  private static boolean isJDKOv20() {
+    return JDKVersion.compareTo("20") > 0;
   }
 }
