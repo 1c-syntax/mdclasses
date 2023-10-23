@@ -9,9 +9,9 @@ plugins {
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.2"
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
-    id("io.freefair.lombok") version "8.3"
-    id("io.freefair.javadoc-links") version "8.3"
-    id("io.freefair.javadoc-utf-8") version "8.3"
+    id("io.freefair.lombok") version "8.4"
+    id("io.freefair.javadoc-links") version "8.4"
+    id("io.freefair.javadoc-utf-8") version "8.4"
     id("org.sonarqube") version "4.4.1.3373"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
@@ -129,7 +129,7 @@ tasks.javadoc {
     }
 }
 
-sonarqube {
+sonar {
     properties {
         property("sonar.sourceEncoding", "UTF-8")
         property("sonar.host.url", "https://sonarcloud.io")
@@ -138,7 +138,6 @@ sonarqube {
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
-        property("sonar.gradle.skipCompile", "true")
     }
 }
 
