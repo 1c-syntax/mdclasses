@@ -37,7 +37,6 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -110,6 +109,6 @@ public class WebService implements MDObject, ChildrenOwner, ModuleOwner {
   public List<MD> getChildren() {
     return operations.stream()
       .map(MD.class::cast)
-      .collect(Collectors.toList());
+      .toList();
   }
 }

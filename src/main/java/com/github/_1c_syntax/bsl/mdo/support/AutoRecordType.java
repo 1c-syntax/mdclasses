@@ -29,11 +29,11 @@ import lombok.experimental.Accessors;
  * Типы авторегистрации в плане обмена
  */
 @AllArgsConstructor
+@Getter
 public enum AutoRecordType implements EnumWithValue {
   ALLOW("Allow"),
   DENY("Deny");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

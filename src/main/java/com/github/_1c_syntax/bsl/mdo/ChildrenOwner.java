@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - владелец дочерних объектов
@@ -41,24 +40,24 @@ public interface ChildrenOwner {
   default List<MD> getChildren() {
     List<MD> children = new ArrayList<>();
 
-    if (this instanceof AttributeOwner) {
-      children.addAll(((AttributeOwner) this).getAllAttributes());
+    if (this instanceof AttributeOwner attributeOwner) {
+      children.addAll(attributeOwner.getAllAttributes());
     }
 
-    if (this instanceof TabularSectionOwner) {
-      children.addAll(((TabularSectionOwner) this).getTabularSections());
+    if (this instanceof TabularSectionOwner tabularSectionOwner) {
+      children.addAll(tabularSectionOwner.getTabularSections());
     }
 
-    if (this instanceof CommandOwner) {
-      children.addAll(((CommandOwner) this).getCommands());
+    if (this instanceof CommandOwner commandOwner) {
+      children.addAll(commandOwner.getCommands());
     }
 
-    if (this instanceof TemplateOwner) {
-      children.addAll(((TemplateOwner) this).getTemplates());
+    if (this instanceof TemplateOwner templateOwner) {
+      children.addAll(templateOwner.getTemplates());
     }
 
-    if (this instanceof FormOwner) {
-      children.addAll(((FormOwner) this).getForms());
+    if (this instanceof FormOwner formOwner) {
+      children.addAll(formOwner.getForms());
     }
 
     return children;
@@ -70,12 +69,12 @@ public interface ChildrenOwner {
   default List<MD> getMDOChildren() {
     List<MD> children = new ArrayList<>();
 
-    if (this instanceof AttributeOwner) {
-      children.addAll(((AttributeOwner) this).getAllAttributes());
+    if (this instanceof AttributeOwner attributeOwner) {
+      children.addAll(attributeOwner.getAllAttributes());
     }
 
-    if (this instanceof TabularSectionOwner) {
-      children.addAll(((TabularSectionOwner) this).getTabularSections());
+    if (this instanceof TabularSectionOwner tabularSectionOwner) {
+      children.addAll(tabularSectionOwner.getTabularSections());
     }
 
     return children;
@@ -140,7 +139,7 @@ public interface ChildrenOwner {
     var collection = getPlainChildren().stream()
       .filter(ModuleOwner.class::isInstance)
       .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())
-      .collect(Collectors.toList());
+      .toList();
 
     if (collection.size() > 1) {
       var result = collection.stream().filter(md -> !(md instanceof MDObject)).findFirst();

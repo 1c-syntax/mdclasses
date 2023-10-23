@@ -29,13 +29,13 @@ import lombok.experimental.Accessors;
  * Возможные варианты повторного использования значений модулей
  */
 @AllArgsConstructor
+@Getter
 public enum ReturnValueReuse implements EnumWithValue {
 
   DONT_USE("DontUse"),
   DURING_REQUEST("DuringRequest"),
   DURING_SESSION("DuringSession");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

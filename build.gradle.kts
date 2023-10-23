@@ -9,9 +9,9 @@ plugins {
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.2"
     id("com.gorylenko.gradle-git-properties") version "2.4.1"
-    id("io.freefair.lombok") version "8.3"
-    id("io.freefair.javadoc-links") version "8.3"
-    id("io.freefair.javadoc-utf-8") version "8.3"
+    id("io.freefair.lombok") version "8.4"
+    id("io.freefair.javadoc-links") version "8.4"
+    id("io.freefair.javadoc-utf-8") version "8.4"
     id("org.sonarqube") version "4.4.1.3373"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
@@ -43,9 +43,6 @@ repositories {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/io.vavr/vavr
-    implementation("io.vavr", "vavr", "0.10.2")
-
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
@@ -56,7 +53,6 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
-    implementation("org.apache.commons", "commons-lang3", "3.11")
     implementation("com.github.1c-syntax", "utils", "0.5.1")
     implementation("io.github.1c-syntax", "bsl-common-library", "0.5.0")
     implementation("io.github.1c-syntax", "supportconf", "0.12.1") {
@@ -81,8 +77,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
 }
@@ -133,7 +129,7 @@ tasks.javadoc {
     }
 }
 
-sonarqube {
+sonar {
     properties {
         property("sonar.sourceEncoding", "UTF-8")
         property("sonar.host.url", "https://sonarcloud.io")
@@ -142,7 +138,6 @@ sonarqube {
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
-        property("sonar.gradle.skipCompile", "true")
     }
 }
 

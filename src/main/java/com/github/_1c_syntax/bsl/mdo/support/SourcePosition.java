@@ -21,22 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
 /**
  * Хранение позиции в исходном файле
+ *
+ * @param line   Номер строки
+ * @param column Номер первого символа
  */
-@Value
-@RequiredArgsConstructor
-public class SourcePosition {
-  /**
-   * Номер строки
-   */
-  int line;
-
-  /**
-   * Номер первого символа
-   */
-  int column;
+public record SourcePosition(int line, int column) {
 }

@@ -105,7 +105,7 @@ public class Subsystem implements MDObject, ChildrenOwner {
   public List<MD> getChildren() {
     return subsystems.stream()
       .map(MD.class::cast)
-      .collect(Collectors.toList());
+      .toList();
   }
 
   /*

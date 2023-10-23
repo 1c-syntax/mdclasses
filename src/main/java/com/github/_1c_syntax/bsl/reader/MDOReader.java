@@ -145,8 +145,8 @@ public class MDOReader {
   @Nullable
   public MDObject readMDObject(@NonNull Path fullMdoPath) {
     var data = read(fullMdoPath);
-    if (data instanceof MDObject) {
-      return (MDObject) data;
+    if (data instanceof MDObject mdObject) {
+      return mdObject;
     } else if (data == null) {
       LOGGER.warn("Missing file " + fullMdoPath);
       return null;

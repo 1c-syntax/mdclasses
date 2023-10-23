@@ -20,6 +20,6 @@
  * License along with MDClasses.
  */
 /**
- * содержит расширения для xStream
+ * Содержит расширения для xStream
  */
 package com.github._1c_syntax.bsl.reader.common.xstream;

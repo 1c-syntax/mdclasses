@@ -65,11 +65,12 @@ class ReportTest {
 
   private void checkDataCompositionSchema(DataCompositionSchema dataCompositionSchema) {
 
-    final var QUERY_TEXT = "ВЫБРАТЬ\n" +
-      "\tПервыйСправочник.Ссылка КАК Ссылка,\n" +
-      "\tПервыйСправочник.Код КАК Код1\n" +
-      "ИЗ\n" +
-      "\tСправочник.ПервыйСправочник КАК ПервыйСправочник";
+    final var QUERY_TEXT = """
+      ВЫБРАТЬ
+      \tПервыйСправочник.Ссылка КАК Ссылка,
+      \tПервыйСправочник.Код КАК Код1
+      ИЗ
+      \tСправочник.ПервыйСправочник КАК ПервыйСправочник""";
 
     assertThat(dataCompositionSchema).isNotNull();
     assertThat(dataCompositionSchema.getDataSets())
@@ -85,7 +86,7 @@ class ReportTest {
       .hasSize(8)
       .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных1")
         && dataSet.getType() == DataSetType.DATA_SET_QUERY
-        && dataSet.getQuerySource().getTextQuery().equals(QUERY_TEXT)
-        && dataSet.getQuerySource().getPosition().getLine() == 24);
+        && dataSet.getQuerySource().textQuery().equals(QUERY_TEXT)
+        && dataSet.getQuerySource().position().line() == 24);
   }
 }

@@ -29,13 +29,13 @@ import lombok.experimental.Accessors;
  * Возможные варианты направлений передачи для параметров WS
  */
 @AllArgsConstructor
+@Getter
 public enum TransferDirection implements EnumWithValue {
 
   OUT("Out"),
   IN_OUT("InOut"),
   IN("In");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

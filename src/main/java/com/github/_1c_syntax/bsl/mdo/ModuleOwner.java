@@ -44,13 +44,13 @@ public interface ModuleOwner extends MD {
    */
   default List<Module> getAllModules() {
     var modules = new ArrayList<>(getModules());
-    if (this instanceof ChildrenOwner) {
-      modules.addAll(((ChildrenOwner) this).getPlainChildren().stream()
+    if (this instanceof ChildrenOwner childrenOwner) {
+      modules.addAll(childrenOwner.getPlainChildren().stream()
         .filter(ModuleOwner.class::isInstance)
         .map(ModuleOwner.class::cast)
         .map(ModuleOwner::getModules)
         .flatMap(List::stream)
-        .collect(Collectors.toList()));
+        .toList());
     }
 
     return modules;

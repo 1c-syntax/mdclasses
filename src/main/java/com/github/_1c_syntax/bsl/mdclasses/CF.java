@@ -109,8 +109,8 @@ public interface CF extends MDClass, ConfigurationTree {
    */
   default Map<ModuleType, URI> mdoModuleTypes(MdoReference mdoReference) {
     var child = findChild(mdoReference);
-    if (child.isPresent() && child.get() instanceof ModuleOwner) {
-      return ((ModuleOwner) child.get()).getModuleTypes();
+    if (child.isPresent() && child.get() instanceof ModuleOwner moduleOwner) {
+      return moduleOwner.getModuleTypes();
     } else {
       return Collections.emptyMap();
     }
@@ -128,8 +128,8 @@ public interface CF extends MDClass, ConfigurationTree {
    */
   default Map<URI, MdoReference> modulesByObject() {
     return getAllModules().stream().collect(Collectors.toMap(Module::getUri, (Module module) -> {
-      if (module instanceof ObjectModule) {
-        return ((ObjectModule) module).getOwner();
+      if (module instanceof ObjectModule objectModule) {
+        return objectModule.getOwner();
       } else {
         return ((CommonModule) module).getMdoReference();
       }
@@ -163,6 +163,6 @@ public interface CF extends MDClass, ConfigurationTree {
   default List<Subsystem> includedSubsystems(MdoReference mdoReference, boolean addParentSubsystem) {
     return getSubsystems().parallelStream()
       .flatMap(subsystem -> subsystem.included(mdoReference, addParentSubsystem).stream())
-      .collect(Collectors.toList());
+      .toList();
   }
 }

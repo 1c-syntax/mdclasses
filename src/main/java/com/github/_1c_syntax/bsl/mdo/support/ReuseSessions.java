@@ -29,13 +29,13 @@ import lombok.experimental.Accessors;
  * Возможные варианты повторного использования сеансов WS
  */
 @AllArgsConstructor
+@Getter
 public enum ReuseSessions implements EnumWithValue {
 
   USE("Use"),
   AUTO_USE("AutoUse"),
   DONT_USE("DontUse");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

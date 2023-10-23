@@ -30,12 +30,12 @@ import java.util.Arrays;
 
 @AllArgsConstructor
 @ToString
+@Getter
 public enum ApplicationRunMode implements EnumWithValue {
   AUTO("Auto"),
   MANAGED_APPLICATION("ManagedApplication"),
   ORDINARY_APPLICATION("OrdinaryApplication");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 

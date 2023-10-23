@@ -29,11 +29,11 @@ import lombok.experimental.Accessors;
  * Направление работы канала сервиса интеграции
  */
 @AllArgsConstructor
+@Getter
 public enum MessageDirection implements EnumWithValue {
   SEND("Send"),
   RECEIVE("Receive");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

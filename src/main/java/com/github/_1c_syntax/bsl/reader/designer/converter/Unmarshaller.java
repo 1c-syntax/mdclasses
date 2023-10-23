@@ -99,22 +99,22 @@ class Unmarshaller {
         value = context.convertAnother(fieldClass, (Class<?>) fieldClass);
       }
 
-      if (value instanceof TransformationUtils.Context) {
-        readerContext.addChild(name, (TransformationUtils.Context) value);
+      if (value instanceof TransformationUtils.Context trContext) {
+        readerContext.addChild(name, trContext);
       } else if (value instanceof List
         && !((List<?>) value).isEmpty()
         && ((List<?>) value).get(0) instanceof TransformationUtils.Context) {
 
         ((List<?>) value).forEach(child -> readerContext.addChild(name, (TransformationUtils.Context) child));
 
-      } else if (name.equals(NAME_NODE) && value instanceof String) {
-        readerContext.setName((String) value);
-      } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType) {
-        readerContext.setTemplateType((TemplateType) value);
-      } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode) {
-        readerContext.setCompatibilityMode((CompatibilityMode) value);
-      } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode) {
-        readerContext.setConfigurationExtensionCompatibilityMode((CompatibilityMode) value);
+      } else if (name.equals(NAME_NODE) && value instanceof String string) {
+        readerContext.setName(string);
+      } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
+        readerContext.setTemplateType(templateType);
+      } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        readerContext.setCompatibilityMode(compatibilityMode);
+      } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        readerContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
       }
 
       readerContext.setValue(name, value);

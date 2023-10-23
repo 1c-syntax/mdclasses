@@ -26,12 +26,12 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 
 @AllArgsConstructor
+@Getter
 public enum DataSetType implements EnumWithValue {
   DATA_SET_QUERY("DataSetQuery"),
   DATA_SET_UNION("DataSetUnion"),
   DATA_SET_OBJECT("DataSetObject");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 
