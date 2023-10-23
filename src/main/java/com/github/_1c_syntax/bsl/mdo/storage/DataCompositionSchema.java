@@ -118,18 +118,10 @@ public class DataCompositionSchema implements TemplateData {
     List<DataSetField> fields;
   }
 
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
-  public static class DataSetField {
-    /**
-     * Путь к данным поля
-     */
-    String dataPath;
-
-    /**
-     * Имя поля
-     */
-    String name;
+  /**
+   * @param dataPath Путь к данным поля
+   * @param name     Имя поля
+   */
+  public record DataSetField(String dataPath, String name) {
   }
 }

@@ -32,6 +32,7 @@ import java.util.Map;
  * Возможные варианты языков, на которых разрабатывается код
  */
 @AllArgsConstructor
+@Getter
 public enum ScriptVariant implements EnumWithValue {
   ENGLISH("English", "Английский", "en"),
   RUSSIAN("Russian", "Русский", "ru");
@@ -41,21 +42,18 @@ public enum ScriptVariant implements EnumWithValue {
   /**
    * Английское имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 
   /**
    * Русское имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String valueRu;
 
   /**
    * Сокращенное имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String shortName;
 

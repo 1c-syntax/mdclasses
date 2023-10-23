@@ -29,11 +29,11 @@ import lombok.experimental.Accessors;
  * Признак принадлежности объекта к конфигурации
  */
 @AllArgsConstructor
+@Getter
 public enum ObjectBelonging implements EnumWithValue {
   ADOPTED("Adopted"),
   OWN("Own");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

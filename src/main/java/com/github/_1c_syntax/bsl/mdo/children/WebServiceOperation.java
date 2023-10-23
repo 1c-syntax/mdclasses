@@ -38,7 +38,6 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -106,6 +105,6 @@ public class WebServiceOperation implements MDChild, ChildrenOwner {
   @Override
   @NonNull
   public List<MD> getChildren() {
-    return parameters.stream().map(MD.class::cast).collect(Collectors.toList());
+    return parameters.stream().map(MD.class::cast).toList();
   }
 }

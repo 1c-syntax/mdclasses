@@ -1,140 +1,146 @@
 {"com.github._1c_syntax.bsl.mdo.HTTPService": {
   "children": [
     {
-      "uuid": "4d97db36-cfbf-4f11-9647-d95677380b8f",
-      "name": "ШаблонURL",
-      "mdoReference": {
-        "type": "HTTP_SERVICE_URL_TEMPLATE",
-        "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
-        "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+      "default": {
+        "tag": 4
       },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Шаблон URL"
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.children.HTTPServiceURLTemplate": {
+        "uuid": "4d97db36-cfbf-4f11-9647-d95677380b8f",
+        "name": "ШаблонURL",
+        "mdoReference": {
+          "type": "HTTP_SERVICE_URL_TEMPLATE",
+          "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+          "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Шаблон URL"
+            ]
           ]
-        ]
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "HTTP_SERVICE",
-        "mdoRef": "HTTPService.HTTPСервис1",
-        "mdoRefRu": "HTTPСервис.HTTPСервис1"
-      },
-      "methods": [
-        [
-          {
-            "uuid": "c2b0e62c-9d2e-4bd8-8bee-3213ee460ffa",
-            "name": "Метод",
-            "mdoReference": {
-              "type": "HTTP_SERVICE_METHOD",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод"
-            },
-            "objectBelonging": "OWN",
-            "comment": "",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Метод"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "type": "HTTP_SERVICE",
+          "mdoRef": "HTTPService.HTTPСервис1",
+          "mdoRefRu": "HTTPСервис.HTTPСервис1"
+        },
+        "methods": [
+          [
+            {
+              "uuid": "c2b0e62c-9d2e-4bd8-8bee-3213ee460ffa",
+              "name": "Метод",
+              "mdoReference": {
+                "type": "HTTP_SERVICE_METHOD",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    "ru",
+                    "Метод"
+                  ]
                 ]
-              ]
+              },
+              "supportVariant": "NONE",
+              "owner": {
+                "type": "HTTP_SERVICE_URL_TEMPLATE",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+              },
+              "handler": "ШаблонURLМетод"
             },
-            "supportVariant": "NONE",
-            "owner": {
-              "type": "HTTP_SERVICE_URL_TEMPLATE",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
-            },
-            "handler": "ШаблонURLМетод"
-          },
-          {
-            "uuid": "b1993b83-8943-4603-a60a-c948b2ee9290",
-            "name": "Метод1",
-            "mdoReference": {
-              "type": "HTTP_SERVICE_METHOD",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод1",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод1"
-            },
-            "objectBelonging": "OWN",
-            "comment": "",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Метод1"
+            {
+              "uuid": "b1993b83-8943-4603-a60a-c948b2ee9290",
+              "name": "Метод1",
+              "mdoReference": {
+                "type": "HTTP_SERVICE_METHOD",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод1",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод1"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    "ru",
+                    "Метод1"
+                  ]
                 ]
-              ]
+              },
+              "supportVariant": "NONE",
+              "owner": {
+                "type": "HTTP_SERVICE_URL_TEMPLATE",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+              },
+              "handler": "ШаблонURLМетод1"
+            }
+          ],
+          [
+            {
+              "uuid": "c2b0e62c-9d2e-4bd8-8bee-3213ee460ffa",
+              "name": "Метод",
+              "mdoReference": {
+                "type": "HTTP_SERVICE_METHOD",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    "ru",
+                    "Метод"
+                  ]
+                ]
+              },
+              "supportVariant": "NONE",
+              "owner": {
+                "type": "HTTP_SERVICE_URL_TEMPLATE",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+              },
+              "handler": "ШаблонURLМетод"
             },
-            "supportVariant": "NONE",
-            "owner": {
-              "type": "HTTP_SERVICE_URL_TEMPLATE",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
-            },
-            "handler": "ШаблонURLМетод1"
-          }
+            {
+              "uuid": "b1993b83-8943-4603-a60a-c948b2ee9290",
+              "name": "Метод1",
+              "mdoReference": {
+                "type": "HTTP_SERVICE_METHOD",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод1",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод1"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    "ru",
+                    "Метод1"
+                  ]
+                ]
+              },
+              "supportVariant": "NONE",
+              "owner": {
+                "type": "HTTP_SERVICE_URL_TEMPLATE",
+                "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+                "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+              },
+              "handler": "ШаблонURLМетод1"
+            }
+          ]
         ],
-        [
-          {
-            "uuid": "c2b0e62c-9d2e-4bd8-8bee-3213ee460ffa",
-            "name": "Метод",
-            "mdoReference": {
-              "type": "HTTP_SERVICE_METHOD",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод"
-            },
-            "objectBelonging": "OWN",
-            "comment": "",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Метод"
-                ]
-              ]
-            },
-            "supportVariant": "NONE",
-            "owner": {
-              "type": "HTTP_SERVICE_URL_TEMPLATE",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
-            },
-            "handler": "ШаблонURLМетод"
-          },
-          {
-            "uuid": "b1993b83-8943-4603-a60a-c948b2ee9290",
-            "name": "Метод1",
-            "mdoReference": {
-              "type": "HTTP_SERVICE_METHOD",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL.Method.Метод1",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL.Метод.Метод1"
-            },
-            "objectBelonging": "OWN",
-            "comment": "",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Метод1"
-                ]
-              ]
-            },
-            "supportVariant": "NONE",
-            "owner": {
-              "type": "HTTP_SERVICE_URL_TEMPLATE",
-              "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
-              "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
-            },
-            "handler": "ШаблонURLМетод1"
-          }
-        ]
-      ],
-      "template": "/*"
+        "template": "/*"
+      }
     }
   ],
   "comment": "",

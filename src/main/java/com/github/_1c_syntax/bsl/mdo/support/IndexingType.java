@@ -29,12 +29,12 @@ import lombok.experimental.Accessors;
  * Варианты индексирования реквизитов
  */
 @AllArgsConstructor
+@Getter
 public enum IndexingType implements EnumWithValue {
   DONT_INDEX("DontIndex"),                                  // не индексировать
   INDEX("Index"),                                           // индексировать
   INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder");  // индексировать с доп упорядочиванием
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

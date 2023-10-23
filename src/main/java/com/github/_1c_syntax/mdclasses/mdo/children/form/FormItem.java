@@ -50,7 +50,7 @@ public class FormItem {
    */
   private int id = -1;
   /**
-   * Тип элемента. Например Label или InputField. На текущий момент в виде строки
+   * Тип элемента. Например, Label или InputField. На текущий момент в виде строки
    */
   @XStreamConverter(StringConverterIntern.class)
   private String type = "";

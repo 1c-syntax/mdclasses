@@ -98,8 +98,8 @@ class Unmarshaller {
 
       var value = context.convertAnother(fieldClass, fieldClass);
 
-      if (value instanceof TransformationUtils.Context) {
-        readerContext.addChild(name, (TransformationUtils.Context) value);
+      if (value instanceof TransformationUtils.Context trContext) {
+        readerContext.addChild(name, trContext);
         lastValue = null;
         lastName = "";
       } else {
@@ -148,8 +148,8 @@ class Unmarshaller {
 
       var value = context.convertAnother(fieldClass, fieldClass);
 
-      if (value instanceof TransformationUtils.Context) {
-        readerContext.addChild(name, (TransformationUtils.Context) value);
+      if (value instanceof TransformationUtils.Context trContext) {
+        readerContext.addChild(name, trContext);
         lastValue = null;
         lastName = "";
       } else {

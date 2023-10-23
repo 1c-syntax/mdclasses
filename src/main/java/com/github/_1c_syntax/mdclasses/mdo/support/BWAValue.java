@@ -30,6 +30,7 @@ import lombok.experimental.Accessors;
  * Используется в свойствах объектов, где может быть значение булево или неопределено (авто)
  */
 @AllArgsConstructor
+@Getter
 public enum BWAValue implements EnumWithValue {
   TRUE("true"),
   FALSE("false"),
@@ -38,7 +39,6 @@ public enum BWAValue implements EnumWithValue {
    */
   AUTO("auto");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

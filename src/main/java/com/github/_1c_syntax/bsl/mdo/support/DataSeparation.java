@@ -29,11 +29,11 @@ import lombok.experimental.Accessors;
  * Возможные варианты свойства `Разделение данных`
  */
 @AllArgsConstructor
+@Getter
 public enum DataSeparation implements EnumWithValue {
   DONT_USE("DontUse"),
   SEPARATE("Separate");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

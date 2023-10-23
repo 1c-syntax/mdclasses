@@ -57,7 +57,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
 
@@ -266,8 +265,8 @@ public class TransformationUtils {
 
     public Class<?> fieldType(String methodName) {
       var fieldClass = TransformationUtils.fieldType(builder, methodName);
-      if (fieldClass instanceof ParameterizedType) {
-        fieldClass = TransformationUtils.computeType((ParameterizedType) fieldClass);
+      if (fieldClass instanceof ParameterizedType parameterizedType) {
+        fieldClass = TransformationUtils.computeType(parameterizedType);
       }
       return (Class<?>) fieldClass;
     }
@@ -312,7 +311,7 @@ public class TransformationUtils {
             var collection = collectionSource.parallelStream().map((Context childContext) -> {
               childContext.setOwner(mdoReference);
               return childContext.build();
-            }).collect(Collectors.toList());
+            }).toList();
             setValue(collectionName, collection);
           } else {
             collectionSource.stream()
@@ -375,7 +374,5 @@ public class TransformationUtils {
       );
       setValue("modules", modules);
     }
-
-
   }
 }

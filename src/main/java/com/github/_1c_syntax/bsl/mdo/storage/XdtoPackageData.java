@@ -79,8 +79,8 @@ public class XdtoPackageData {
   // todo переделать на конвертер
   public static XdtoPackageData create(@NonNull Path path) {
     var data = MDOReader.read(path);
-    if (data instanceof XdtoPackageData) {
-      return (XdtoPackageData) data;
+    if (data instanceof XdtoPackageData xdtoPackageData) {
+      return xdtoPackageData;
     } else if (data == null) {
       LOGGER.warn("Missing file " + path);
       return null;

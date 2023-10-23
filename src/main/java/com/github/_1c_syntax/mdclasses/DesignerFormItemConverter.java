@@ -41,7 +41,7 @@ public class DesignerFormItemConverter implements Converter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    // тип элемента = имя узла. Например ButtonGroup
+    // Тип элемента = имя узла. Например, ButtonGroup
     var nodeName = reader.getNodeName();
     var item = (DesignerFormItem) context.convertAnother(reader, DesignerFormItem.class,
       MDOReader.getReflectionConverter(reader));

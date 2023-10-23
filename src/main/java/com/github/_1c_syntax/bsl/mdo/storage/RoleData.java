@@ -68,8 +68,8 @@ public class RoleData {
   // todo переделать на конвертер
   public static RoleData create(@NonNull Path path) {
     var data = MDOReader.read(path);
-    if (data instanceof RoleData) {
-      return (RoleData) data;
+    if (data instanceof RoleData roleData) {
+      return roleData;
     } else if (data == null) {
       LOGGER.warn("Missing file " + path);
       return null;

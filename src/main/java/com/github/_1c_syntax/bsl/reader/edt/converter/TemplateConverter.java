@@ -43,8 +43,8 @@ public class TemplateConverter extends AbstractReadConverter {
     TemplateData templateData = EmptyTemplateData.getEmpty();
     var path = EDTPaths.templateDataPath(currentPath, readerContext.getName(), readerContext.getMdoType());
     var data = MDOReader.read(path);
-    if (data instanceof TemplateData) {
-      templateData = (TemplateData) data;
+    if (data instanceof TemplateData templData) {
+      templateData = templData;
     }
     readerContext.setValue(DATA_FIELD, templateData);
     if (realClass.isAssignableFrom(CommonTemplate.class)) {

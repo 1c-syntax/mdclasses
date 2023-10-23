@@ -75,9 +75,8 @@ public class MdoReferenceConverter implements ReadConverter {
 
     if (value.isEmpty() || value.contains("-")) {
       return null;
-    } else {
-      return MdoReference.create(value);
     }
+    return MdoReference.create(value);
   }
 
   @Override

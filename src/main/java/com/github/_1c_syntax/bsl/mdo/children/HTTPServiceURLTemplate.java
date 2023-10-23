@@ -37,7 +37,6 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -87,6 +86,6 @@ public class HTTPServiceURLTemplate implements MDChild, ChildrenOwner {
   public List<MD> getChildren() {
     return methods.stream()
       .map(MD.class::cast)
-      .collect(Collectors.toList());
+      .toList();
   }
 }

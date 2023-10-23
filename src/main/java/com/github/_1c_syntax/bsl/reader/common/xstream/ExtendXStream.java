@@ -81,15 +81,13 @@ import java.util.function.Function;
  * Расширение функциональности XStream
  */
 @Slf4j
+@Getter
 public class ExtendXStream extends XStream {
 
   /**
    * Используется для чтения элементов формы (см. FormEventConverter, DesignerFormItemConverter)
    */
-  @Getter
   private Converter reflectionConverter;
-
-  @Getter
   private Converter collectionConverter;
 
   public ExtendXStream() {
@@ -231,10 +229,10 @@ public class ExtendXStream extends XStream {
    * @param converter один из поддерживаемых конвертеров
    */
   protected void registerMDCConverter(Object converter) {
-    if (converter instanceof Converter) {
-      registerConverter((Converter) converter);
-    } else if (converter instanceof SingleValueConverter) {
-      registerConverter((SingleValueConverter) converter);
+    if (converter instanceof Converter simpleConverter) {
+      registerConverter(simpleConverter);
+    } else if (converter instanceof SingleValueConverter singleValueConverter) {
+      registerConverter(singleValueConverter);
     } else {
       throw new IllegalArgumentException("Unknown converter type " + converter);
     }

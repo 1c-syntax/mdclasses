@@ -68,8 +68,8 @@ public class TemplateConverter extends AbstractReadConverter {
     if (readerContext.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
       var path = DesignerPaths.templateDataPath(currentPath, readerContext.getName());
       var data = MDOReader.read(path);
-      if (data instanceof TemplateData) {
-        templateData = (TemplateData) data;
+      if (data instanceof TemplateData templData) {
+        templateData = templData;
       }
     }
 

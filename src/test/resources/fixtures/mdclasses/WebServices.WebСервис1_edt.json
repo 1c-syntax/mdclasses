@@ -1,64 +1,70 @@
 {"com.github._1c_syntax.bsl.mdo.WebService": {
   "children": [
     {
-      "uuid": "21c0c4a9-5f3b-4147-be1e-500ed834fae4",
-      "name": "Операция",
-      "mdoReference": {
-        "type": "WS_OPERATION",
-        "mdoRef": "WebService.WebСервис1.Operation.Операция",
-        "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция"
+      "default": {
+        "tag": 4
       },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Операция"
+      "int": 2,
+      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+        "uuid": "21c0c4a9-5f3b-4147-be1e-500ed834fae4",
+        "name": "Операция",
+        "mdoReference": {
+          "type": "WS_OPERATION",
+          "mdoRef": "WebService.WebСервис1.Operation.Операция",
+          "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Операция"
+            ]
           ]
-        ]
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "type": "WEB_SERVICE",
+          "mdoRef": "WebService.WebСервис1",
+          "mdoRefRu": "WebСервис.WebСервис1"
+        },
+        "procedureName": "Операция1",
+        "nillable": false,
+        "transactioned": false,
+        "dataLockControlMode": "MANAGED",
+        "parameters": []
       },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "WEB_SERVICE",
-        "mdoRef": "WebService.WebСервис1",
-        "mdoRefRu": "WebСервис.WebСервис1"
-      },
-      "procedureName": "Операция1",
-      "nillable": false,
-      "transactioned": false,
-      "dataLockControlMode": "MANAGED",
-      "parameters": []
-    },
-    {
-      "uuid": "7de4ce76-1b08-4853-81fc-0c8756321f78",
-      "name": "Операция1",
-      "mdoReference": {
-        "type": "WS_OPERATION",
-        "mdoRef": "WebService.WebСервис1.Operation.Операция1",
-        "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция1"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          [
-            "ru",
-            "Операция1"
+      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+        "uuid": "7de4ce76-1b08-4853-81fc-0c8756321f78",
+        "name": "Операция1",
+        "mdoReference": {
+          "type": "WS_OPERATION",
+          "mdoRef": "WebService.WebСервис1.Operation.Операция1",
+          "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция1"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Операция1"
+            ]
           ]
-        ]
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "WEB_SERVICE",
-        "mdoRef": "WebService.WebСервис1",
-        "mdoRefRu": "WebСервис.WebСервис1"
-      },
-      "procedureName": "Операция11",
-      "nillable": false,
-      "transactioned": false,
-      "dataLockControlMode": "MANAGED",
-      "parameters": []
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "type": "WEB_SERVICE",
+          "mdoRef": "WebService.WebСервис1",
+          "mdoRefRu": "WebСервис.WebСервис1"
+        },
+        "procedureName": "Операция11",
+        "nillable": false,
+        "transactioned": false,
+        "dataLockControlMode": "MANAGED",
+        "parameters": []
+      }
     }
   ],
   "comment": "",

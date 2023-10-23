@@ -26,6 +26,7 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 
 @AllArgsConstructor
+@Getter
 public enum TemplateType implements EnumWithValue {
   ADD_IN("AddIn"),
   BINARY_DATA("BinaryData"),
@@ -38,7 +39,6 @@ public enum TemplateType implements EnumWithValue {
   GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
   TEXT_DOCUMENT("TextDocument");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

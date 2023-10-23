@@ -29,6 +29,7 @@ import lombok.experimental.Accessors;
  * Возможные права роли
  */
 @AllArgsConstructor
+@Getter
 public enum RoleRight implements EnumWithValue {
   VIEW("View"),
   EDIT("Edit"),
@@ -97,7 +98,6 @@ public enum RoleRight implements EnumWithValue {
   INTERACTIVE_START("InteractiveStart"),
   START("Start");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }
