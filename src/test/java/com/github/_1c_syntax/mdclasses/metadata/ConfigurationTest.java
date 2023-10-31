@@ -499,7 +499,14 @@ class ConfigurationTest {
     assertThat(configuration.getModulesByType()).hasSize(9);
     assertThat(configuration.getModulesBySupport()).isEmpty();
     assertThat(configuration.getModules()).hasSize(9);
+
+    // в расширениях могут быть роли без данных (они хранятся в основной конфигурации)
     assertThat(configuration.getRoles()).hasSize(2);
+    var role1 = configuration.getRoles().stream()
+            .filter(mdRole -> mdRole.getName().equals("Роль1"))
+            .findAny();
+    assertThat(role1).isPresent();
+    assertThat(role1.get().getRoleData()).isNull();
 
     assertThat(configuration.getChildren()).hasSize(142);
     checkChildCount(configuration, MDOType.CONFIGURATION, 1);

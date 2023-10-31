@@ -51,7 +51,9 @@ import java.nio.file.Path;
 )
 @Slf4j
 public class MDRole extends AbstractMDObjectBase {
-
+  /**
+   * Данные роли, может быть `null`.
+   */
   private RoleData roleData;
 
   public MDRole(DesignerMDO designerMDO) {
@@ -62,6 +64,11 @@ public class MDRole extends AbstractMDObjectBase {
   public void supplement() {
     super.supplement();
     roleData = readRoleData(path, name);
+  }
+
+  @Nullable
+  public RoleData getRoleData() {
+    return roleData;
   }
 
   @Nullable
