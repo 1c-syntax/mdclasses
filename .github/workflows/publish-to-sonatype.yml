@@ -19,7 +19,7 @@ jobs:
           java-version: 17
           distribution: 'liberica'
       - name: Publish to Sonatype
-        run: ./gradlew getStagingProfile | ./gradlew publishMavenPublicationToSonatypeRepository -PsimplifyVersion
+        run: ./gradlew publishMavenPublicationToSonatypeRepository -PsimplifyVersion
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
