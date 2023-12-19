@@ -63,6 +63,7 @@ import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
+import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
@@ -118,6 +119,8 @@ public class ExtendXStream extends XStream {
       } catch (ConversionException e) {
         LOGGER.error("Can't read file '{}' - it's broken \n: ", file, e);
         throw e;
+      } catch (CannotResolveClassException e) {
+        LOGGER.debug("Can't read file '{}' - unknown class \n: ", file, e);
       }
     }
     return result;
