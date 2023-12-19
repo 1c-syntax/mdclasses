@@ -28,19 +28,39 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
+
 @EDTConverter
 public class CommonModuleConverter extends AbstractReadConverter {
 
   private static final String URI_FIELD = "uri";
+  private static final String IS_PROTECTED_FIELD = "isProtected";
+
+  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-
     var folder = EDTPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
     var modulePath = EDTPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
-    readerContext.setValue(URI_FIELD, modulePath.toUri());
 
+    var isProtected = false;
+    if (modulePath.toFile().exists()) {
+      // возможно модуль защищен
+      var bytes = new byte[PROTECTED_FILE_HEADER.length];
+
+      try (var fis = new FileInputStream(modulePath.toFile())) {
+        isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length
+          && Arrays.equals(bytes, PROTECTED_FILE_HEADER));
+      } catch (IOException e) {
+        // ошибка чтения в данном случае неважна
+      }
+    }
+
+    readerContext.setValue(URI_FIELD, modulePath.toUri());
+    readerContext.setValue(IS_PROTECTED_FIELD, isProtected);
     return readerContext.build();
   }
 

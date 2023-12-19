@@ -233,7 +233,8 @@
             "mdoRef": "Catalog.Справочник1.Command.Команда1",
             "mdoRefRu": "Справочник.Справочник1.Команда.Команда1"
           },
-          "supportVariant": "NONE"
+          "supportVariant": "NONE",
+          "isProtected": false
         }
       ],
       "owner": {
@@ -274,7 +275,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаЭлемента"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -325,7 +327,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаСписка",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаСписка"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -376,7 +379,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -429,7 +433,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаЭлемента"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -480,7 +485,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаСписка",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаСписка"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -531,7 +537,8 @@
               "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора",
               "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора"
             },
-            "supportVariant": "NONE"
+            "supportVariant": "NONE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -563,6 +570,17 @@
   },
   "modules": [
     {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ObjectModule.bin",
+      "owner": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.Справочник1",
+        "mdoRefRu": "Справочник.Справочник1"
+      },
+      "supportVariant": "NONE",
+      "isProtected": true
+    },
+    {
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ManagerModule.bsl",
       "owner": {
@@ -570,17 +588,8 @@
         "mdoRef": "Catalog.Справочник1",
         "mdoRefRu": "Справочник.Справочник1"
       },
-      "supportVariant": "NONE"
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ObjectModule.bsl",
-      "owner": {
-        "type": "CATALOG",
-        "mdoRef": "Catalog.Справочник1",
-        "mdoRefRu": "Справочник.Справочник1"
-      },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "isProtected": false
     }
   ],
   "name": "Справочник1",

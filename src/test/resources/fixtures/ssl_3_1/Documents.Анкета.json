@@ -661,7 +661,8 @@
               "mdoRef": "Document.Анкета.Form.ФормаДокумента",
               "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -712,7 +713,8 @@
               "mdoRef": "Document.Анкета.Form.ФормаСписка",
               "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -765,7 +767,8 @@
               "mdoRef": "Document.Анкета.Form.ФормаДокумента",
               "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -816,7 +819,8 @@
               "mdoRef": "Document.Анкета.Form.ФормаСписка",
               "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -848,16 +852,6 @@
   },
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ObjectModule.bsl",
-      "owner": {
-        "type": "DOCUMENT",
-        "mdoRef": "Document.Анкета",
-        "mdoRefRu": "Документ.Анкета"
-      },
-      "supportVariant": "NOT_EDITABLE"
-    },
-    {
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ManagerModule.bsl",
       "owner": {
@@ -865,7 +859,19 @@
         "mdoRef": "Document.Анкета",
         "mdoRefRu": "Документ.Анкета"
       },
-      "supportVariant": "NOT_EDITABLE"
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    },
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ObjectModule.bsl",
+      "owner": {
+        "type": "DOCUMENT",
+        "mdoRef": "Document.Анкета",
+        "mdoRefRu": "Документ.Анкета"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
     }
   ],
   "name": "Анкета",
