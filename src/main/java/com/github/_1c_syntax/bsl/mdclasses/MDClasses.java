@@ -34,7 +34,9 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @UtilityClass
@@ -154,7 +156,7 @@ public class MDClasses {
 
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
     List<Path> listPath = new ArrayList<>();
-    var excludeFolders = new ArrayList<>(mdoTypeGroupNames());
+    var excludeFolders = mdoTypeGroupNames();
     excludeFolders.add("Ext");
     try (Stream<Path> stream = Files.find(sourcePath, Integer.MAX_VALUE,
       (Path path, BasicFileAttributes basicFileAttributes) -> {
@@ -163,7 +165,10 @@ public class MDClasses {
         }
 
         var parentName = path.getParent().getFileName().toString();
-        var parentParentName = path.getParent().getParent().getFileName().toString();
+        var parentParentName = "";
+        if (path.getParent().getParent() != null) {
+          parentParentName = path.getParent().getParent().getFileName().toString();
+        }
 
         if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
           return false;
@@ -185,14 +190,13 @@ public class MDClasses {
     return listPath;
   }
 
-  private List<String> mdoTypeGroupNames() {
+  private Set<String> mdoTypeGroupNames() {
     return Arrays.stream(MDOType.values())
       .filter(type -> type != MDOType.EXTERNAL_REPORT
         && type != MDOType.EXTERNAL_DATA_PROCESSOR
         && type != MDOType.UNKNOWN
       )
       .map(MDOType::getGroupName)
-      .toList();
+      .collect(Collectors.toSet());
   }
 }
-
