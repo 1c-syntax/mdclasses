@@ -57,7 +57,10 @@ class CatalogTest {
     assertThat(catalog.getForms()).hasSize(3);
     assertThat(catalog.getTemplates()).hasSize(1);
     assertThat(catalog.getCommands()).hasSize(1);
-    assertThat(catalog.getModules()).hasSize(2);
+    assertThat(catalog.getModules())
+      .hasSize(2)
+      .anyMatch(Module::isProtected)
+    ;
     assertThat(catalog.getAllModules()).hasSize(6);
     assertThat(catalog.getMDOChildren())
       .hasSize(4)

@@ -46,4 +46,6 @@ public class ObjectModule implements Module {
   MdoReference owner = MdoReference.EMPTY;
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  boolean isProtected;
 }

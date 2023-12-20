@@ -44,4 +44,9 @@ public interface Module {
    * Вариант поддержки родительской конфигурации
    */
   SupportVariant getSupportVariant();
+
+  /**
+   * Признак "защищенности" модуля, т.е. наличия пароля и отсутствие исходного кода
+   */
+  boolean isProtected();
 }

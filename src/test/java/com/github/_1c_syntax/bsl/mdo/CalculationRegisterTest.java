@@ -46,5 +46,10 @@ class CalculationRegisterTest {
     assertThat(calculationRegister.getDimensions()).hasSize(1);
     assertThat(calculationRegister.getAttributes()).isEmpty();
     assertThat(calculationRegister.getRecalculations()).hasSize(1);
+    var recalc = calculationRegister.getRecalculations().get(0);
+    assertThat(recalc.getModules())
+      .hasSize(1)
+      .allMatch(Module::isProtected)
+    ;
   }
 }

@@ -39,5 +39,4 @@ class DocumentTest {
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
   }
-
 }

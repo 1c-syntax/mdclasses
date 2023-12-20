@@ -70,6 +70,8 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
 
   URI uri;
 
+  boolean isProtected;
+
   /*
    * Свое
    */

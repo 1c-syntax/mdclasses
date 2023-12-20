@@ -27,19 +27,34 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.apache.commons.io.FilenameUtils;
+
+import java.nio.file.Paths;
 
 @DesignerConverter
 public class CommonModuleConverter extends AbstractReadConverter {
 
   private static final String URI_FIELD = "uri";
+  private static final String IS_PROTECTED_FIELD = "isProtected";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-
     var folder = DesignerPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
     var modulePath = DesignerPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
+
+    var isProtected = false;
+    if (!modulePath.toFile().exists()) {
+      // возможно модуль защищен
+      var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
+      if (prtModulePath.toFile().exists()) {
+        isProtected = true;
+        modulePath = prtModulePath;
+      }
+    }
+
     readerContext.setValue(URI_FIELD, modulePath.toUri());
+    readerContext.setValue(IS_PROTECTED_FIELD, isProtected);
 
     return readerContext.build();
   }

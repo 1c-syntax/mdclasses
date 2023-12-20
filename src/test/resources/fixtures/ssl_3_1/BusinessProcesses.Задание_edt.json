@@ -2143,7 +2143,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ДействиеВыполнить",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеВыполнить"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2194,7 +2195,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ДействиеПроверить",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеПроверить"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2245,7 +2247,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2296,7 +2299,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2349,7 +2353,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ДействиеВыполнить",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеВыполнить"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2400,7 +2405,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ДействиеПроверить",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеПроверить"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2451,7 +2457,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2502,7 +2509,8 @@
               "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
               "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
             },
-            "supportVariant": "NOT_EDITABLE"
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
           }
         ],
         "formType": "MANAGED",
@@ -2534,16 +2542,6 @@
   },
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ManagerModule.bsl",
-      "owner": {
-        "type": "BUSINESS_PROCESS",
-        "mdoRef": "BusinessProcess.Задание",
-        "mdoRefRu": "БизнесПроцесс.Задание"
-      },
-      "supportVariant": "NOT_EDITABLE"
-    },
-    {
       "moduleType": "ObjectModule",
       "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ObjectModule.bsl",
       "owner": {
@@ -2551,7 +2549,19 @@
         "mdoRef": "BusinessProcess.Задание",
         "mdoRefRu": "БизнесПроцесс.Задание"
       },
-      "supportVariant": "NOT_EDITABLE"
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ManagerModule.bsl",
+      "owner": {
+        "type": "BUSINESS_PROCESS",
+        "mdoRef": "BusinessProcess.Задание",
+        "mdoRefRu": "БизнесПроцесс.Задание"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
     }
   ],
   "name": "Задание",

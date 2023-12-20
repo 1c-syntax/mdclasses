@@ -362,12 +362,14 @@ public class TransformationUtils {
             modulePath = EDTPaths.modulePath(folder, name, moduleType);
           }
 
-          if (modulePath.toFile().exists()) {
+          var protectedModuleInfo = ReaderUtils.readProtectedModuleInfo(modulePath);
+          if (protectedModuleInfo.getModulePath().toFile().exists()) {
             modules.add(ObjectModule.builder()
               .moduleType(moduleType)
-              .uri(modulePath.toUri())
+              .uri(protectedModuleInfo.getModulePath().toUri())
               .owner(mdoReference)
               .supportVariant(supportVariant)
+              .isProtected(protectedModuleInfo.isProtected())
               .build());
           }
         }
