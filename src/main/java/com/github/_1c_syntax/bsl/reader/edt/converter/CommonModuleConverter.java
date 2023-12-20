@@ -22,15 +22,12 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.CommonModule;
+import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Arrays;
 
 @EDTConverter
 public class CommonModuleConverter extends AbstractReadConverter {
@@ -46,21 +43,9 @@ public class CommonModuleConverter extends AbstractReadConverter {
     var folder = EDTPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
     var modulePath = EDTPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
 
-    var isProtected = false;
-    if (modulePath.toFile().exists()) {
-      // возможно модуль защищен
-      var bytes = new byte[PROTECTED_FILE_HEADER.length];
-
-      try (var fis = new FileInputStream(modulePath.toFile())) {
-        isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length
-          && Arrays.equals(bytes, PROTECTED_FILE_HEADER));
-      } catch (IOException e) {
-        // ошибка чтения в данном случае неважна
-      }
-    }
-
-    readerContext.setValue(URI_FIELD, modulePath.toUri());
-    readerContext.setValue(IS_PROTECTED_FIELD, isProtected);
+    var protectedModuleInfo = ReaderUtils.readProtectedModuleInfo(modulePath);
+    readerContext.setValue(URI_FIELD, protectedModuleInfo.getModulePath().toUri());
+    readerContext.setValue(IS_PROTECTED_FIELD, protectedModuleInfo.isProtected());
     return readerContext.build();
   }
 

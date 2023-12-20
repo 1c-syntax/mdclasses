@@ -43,17 +43,13 @@ import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
-import org.apache.commons.io.FilenameUtils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -75,8 +71,6 @@ public class TransformationUtils {
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
-
-  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
 
   public void setValue(Object source, String methodName, Object value) {
     var method = getMethod(source.getClass(), methodName);
@@ -368,31 +362,14 @@ public class TransformationUtils {
             modulePath = EDTPaths.modulePath(folder, name, moduleType);
           }
 
-          var isProtected = false;
-          // возможно модуль защищен
-          if (!modulePath.toFile().exists()) {
-            var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
-            if (prtModulePath.toFile().exists()) {
-              isProtected = true;
-              modulePath = prtModulePath;
-            }
-          } else {
-            var bytes = new byte[PROTECTED_FILE_HEADER.length];
-            try (var fis = new FileInputStream(modulePath.toFile())) {
-              isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length
-                && Arrays.equals(bytes, PROTECTED_FILE_HEADER));
-            } catch (IOException e) {
-              // ошибка чтения в данном случае неважна
-            }
-          }
-
-          if (modulePath.toFile().exists()) {
+          var protectedModuleInfo = ReaderUtils.readProtectedModuleInfo(modulePath);
+          if (protectedModuleInfo.getModulePath().toFile().exists()) {
             modules.add(ObjectModule.builder()
               .moduleType(moduleType)
-              .uri(modulePath.toUri())
+              .uri(protectedModuleInfo.getModulePath().toUri())
               .owner(mdoReference)
               .supportVariant(supportVariant)
-              .isProtected(isProtected)
+              .isProtected(protectedModuleInfo.isProtected())
               .build());
           }
         }
