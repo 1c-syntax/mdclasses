@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -39,5 +41,29 @@ class ExternalDataProcessorTest {
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdc = MDTestUtils.readExternalSourceWithSimpleTest(argumentsAccessor);
     assertThat(mdc).isInstanceOf(ExternalDataProcessor.class);
+
+    var epf = (ExternalDataProcessor) mdc;
+
+    assertThat(epf.getModules())
+      .hasSize(1)
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+    assertThat(epf.getModules().stream().filter(Module::isProtected)).isEmpty();
+
+    assertThat(epf.getAllModules())
+      .hasSize(2)
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+    assertThat(epf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
+
+    assertThat(epf.getChildren())
+      .hasSize(5)
+      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(epf.getPlainChildren())
+      .hasSize(6)
+      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(epf.getForms()).hasSize(2);
+    assertThat(epf.getForms().stream().filter(form -> !form.getData().isEmpty())).hasSize(1);
+    assertThat(epf.getForms().stream().filter(form -> form.getData().isEmpty())).hasSize(1);
   }
 }

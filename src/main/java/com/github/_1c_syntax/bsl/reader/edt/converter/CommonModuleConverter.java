@@ -35,8 +35,6 @@ public class CommonModuleConverter extends AbstractReadConverter {
   private static final String URI_FIELD = "uri";
   private static final String IS_PROTECTED_FIELD = "isProtected";
 
-  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
-
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);

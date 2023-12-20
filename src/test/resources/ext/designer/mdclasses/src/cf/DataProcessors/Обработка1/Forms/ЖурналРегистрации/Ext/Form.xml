@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.10">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -57,8 +57,6 @@
 						</v8:item>
 					</ToolTip>
 					<HorizontalAlign>Right</HorizontalAlign>
-					<ContextMenu name="КоличествоПоказываемыхСобытийКонтекстноеМеню" id="102"/>
-					<ExtendedTooltip name="КоличествоПоказываемыхСобытийExtendedTooltip" id="136"/>
 					<Width>8</Width>
 					<Wrap>false</Wrap>
 					<DropListButton>true</DropListButton>
@@ -127,14 +125,14 @@
 						</xr:Item>
 					</ChoiceList>
 					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="КоличествоПоказываемыхСобытийКонтекстноеМеню" id="102"/>
+					<ExtendedTooltip name="КоличествоПоказываемыхСобытийExtendedTooltip" id="136"/>
 					<Events>
 						<Event name="OnChange">КоличествоПоказываемыхСобытийПриИзменении</Event>
 					</Events>
 				</InputField>
 				<InputField name="Критичность" id="170">
 					<DataPath>Критичность</DataPath>
-					<ContextMenu name="КритичностьКонтекстноеМеню" id="171"/>
-					<ExtendedTooltip name="КритичностьРасширеннаяПодсказка" id="172"/>
 					<Width>15</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<DropListButton>true</DropListButton>
@@ -207,6 +205,8 @@
 							</xr:Value>
 						</xr:Item>
 					</ChoiceList>
+					<ContextMenu name="КритичностьКонтекстноеМеню" id="171"/>
+					<ExtendedTooltip name="КритичностьРасширеннаяПодсказка" id="172"/>
 					<Events>
 						<Event name="OnChange">КритичностьПриИзменении</Event>
 						<Event name="Clearing">КритичностьОчистка</Event>
@@ -221,9 +221,9 @@
 						</v8:item>
 					</Title>
 					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Hiperlink>true</Hiperlink>
 					<ContextMenu name="ПредставлениеОтбораКонтекстноеМеню" id="36"/>
 					<ExtendedTooltip name="ПредставлениеОтбораExtendedTooltip" id="137"/>
-					<Hiperlink>true</Hiperlink>
 					<Events>
 						<Event name="Click">ПредставлениеОтбораНажатие</Event>
 					</Events>
@@ -258,6 +258,7 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<InitialListView>End</InitialListView>
 							<Output>Enable</Output>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Журнал</DataPath>
 							<RowPictureDataPath>Журнал.НомерРисунка</RowPictureDataPath>
 							<RowsPicture>
@@ -334,6 +335,7 @@
 									<Button name="ЖурналВыгрузитьЖурналДляПередачиВТехподдержку" id="209">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.ВыгрузитьЖурналДляПередачиВТехподдержку</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ЖурналВыгрузитьЖурналДляПередачиВТехподдержкуРасширеннаяПодсказка" id="210"/>
 									</Button>
 									<Button name="ПросмотрТекущегоСобытияВОтдельномОкне" id="38">
@@ -445,6 +447,7 @@
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
 										<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="133"/>
 									</Button>
 									<Button name="ВывестиСписок" id="82">
@@ -506,11 +509,11 @@
 											<v8:content>Дата события в часовом поясе программы.</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ContextMenu name="ДатаКонтекстноеМеню" id="52"/>
-									<ExtendedTooltip name="ДатаExtendedTooltip" id="146"/>
 									<Width>5</Width>
 									<Wrap>false</Wrap>
 									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="52"/>
+									<ExtendedTooltip name="ДатаExtendedTooltip" id="146"/>
 								</InputField>
 								<InputField name="ПредставлениеРазделенияДанныхСеанса" id="119">
 									<DataPath>Журнал.ПредставлениеРазделенияДанныхСеанса</DataPath>
@@ -538,11 +541,11 @@
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="ИмяПользователяКонтекстноеМеню" id="55"/>
-											<ExtendedTooltip name="ИмяПользователяExtendedTooltip" id="149"/>
 											<Width>15</Width>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ИмяПользователяКонтекстноеМеню" id="55"/>
+											<ExtendedTooltip name="ИмяПользователяExtendedTooltip" id="149"/>
 										</InputField>
 										<InputField name="Компьютер" id="56">
 											<DataPath>Журнал.Компьютер</DataPath>
@@ -553,11 +556,11 @@
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="КомпьютерКонтекстноеМеню" id="57"/>
-											<ExtendedTooltip name="КомпьютерExtendedTooltip" id="150"/>
 											<Width>15</Width>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="КомпьютерКонтекстноеМеню" id="57"/>
+											<ExtendedTooltip name="КомпьютерExtendedTooltip" id="150"/>
 										</InputField>
 										<ColumnGroup name="ГруппаПриложениеСеанс" id="204">
 											<Title>
@@ -579,19 +582,19 @@
 														</v8:item>
 													</Title>
 													<ShowInHeader>false</ShowInHeader>
-													<ContextMenu name="ПредставлениеПриложенияКонтекстноеМеню" id="60"/>
-													<ExtendedTooltip name="ПредставлениеПриложенияExtendedTooltip" id="152"/>
 													<Wrap>false</Wrap>
 													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="ПредставлениеПриложенияКонтекстноеМеню" id="60"/>
+													<ExtendedTooltip name="ПредставлениеПриложенияExtendedTooltip" id="152"/>
 												</InputField>
 												<InputField name="Сеанс" id="80">
 													<DataPath>Журнал.Сеанс</DataPath>
 													<HorizontalAlign>Left</HorizontalAlign>
 													<ShowInHeader>false</ShowInHeader>
-													<ContextMenu name="СеансКонтекстноеМеню" id="81"/>
-													<ExtendedTooltip name="СеансExtendedTooltip" id="153"/>
 													<Wrap>false</Wrap>
 													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="СеансКонтекстноеМеню" id="81"/>
+													<ExtendedTooltip name="СеансExtendedTooltip" id="153"/>
 												</InputField>
 											</ChildItems>
 										</ColumnGroup>
@@ -616,10 +619,10 @@
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="ПредставлениеСобытияКонтекстноеМеню" id="65"/>
-											<ExtendedTooltip name="ПредставлениеСобытияExtendedTooltip" id="159"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ПредставлениеСобытияКонтекстноеМеню" id="65"/>
+											<ExtendedTooltip name="ПредставлениеСобытияExtendedTooltip" id="159"/>
 										</InputField>
 										<ColumnGroup name="ГруппаДанныеМетаданные" id="202">
 											<Title>
@@ -634,10 +637,10 @@
 												<InputField name="Данные" id="76">
 													<DataPath>Журнал.Данные</DataPath>
 													<ShowInHeader>false</ShowInHeader>
-													<ContextMenu name="ДанныеКонтекстноеМеню" id="77"/>
-													<ExtendedTooltip name="ДанныеExtendedTooltip" id="166"/>
 													<Wrap>false</Wrap>
 													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="ДанныеКонтекстноеМеню" id="77"/>
+													<ExtendedTooltip name="ДанныеExtendedTooltip" id="166"/>
 												</InputField>
 												<InputField name="ПредставлениеМетаданных" id="74">
 													<DataPath>Журнал.ПредставлениеМетаданных</DataPath>
@@ -648,10 +651,10 @@
 														</v8:item>
 													</Title>
 													<ShowInHeader>false</ShowInHeader>
-													<ContextMenu name="ПредставлениеМетаданныхКонтекстноеМеню" id="75"/>
-													<ExtendedTooltip name="ПредставлениеМетаданныхExtendedTooltip" id="165"/>
 													<Wrap>false</Wrap>
 													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="ПредставлениеМетаданныхКонтекстноеМеню" id="75"/>
+													<ExtendedTooltip name="ПредставлениеМетаданныхExtendedTooltip" id="165"/>
 												</InputField>
 											</ChildItems>
 										</ColumnGroup>
@@ -664,11 +667,11 @@
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="КомментарийКонтекстноеМеню" id="67"/>
-											<ExtendedTooltip name="КомментарийExtendedTooltip" id="160"/>
 											<HorizontalStretch>true</HorizontalStretch>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="КомментарийКонтекстноеМеню" id="67"/>
+											<ExtendedTooltip name="КомментарийExtendedTooltip" id="160"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -688,18 +691,18 @@
 										<InputField name="РабочийСервер" id="85">
 											<DataPath>Журнал.РабочийСервер</DataPath>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="РабочийСерверКонтекстноеМеню" id="86"/>
-											<ExtendedTooltip name="РабочийСерверExtendedTooltip" id="155"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="РабочийСерверКонтекстноеМеню" id="86"/>
+											<ExtendedTooltip name="РабочийСерверExtendedTooltip" id="155"/>
 										</InputField>
 										<InputField name="ОсновнойIPПорт" id="89">
 											<DataPath>Журнал.ОсновнойIPПорт</DataPath>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="ОсновнойIPПортКонтекстноеМеню" id="90"/>
-											<ExtendedTooltip name="ОсновнойIPПортExtendedTooltip" id="156"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ОсновнойIPПортКонтекстноеМеню" id="90"/>
+											<ExtendedTooltip name="ОсновнойIPПортExtendedTooltip" id="156"/>
 										</InputField>
 										<InputField name="ВспомогательныйIPПорт" id="91">
 											<DataPath>Журнал.ВспомогательныйIPПорт</DataPath>
@@ -710,10 +713,10 @@
 												</v8:item>
 											</ToolTip>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="ВспомогательныйIPПортКонтекстноеМеню" id="92"/>
-											<ExtendedTooltip name="ВспомогательныйIPПортExtendedTooltip" id="157"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ВспомогательныйIPПортКонтекстноеМеню" id="92"/>
+											<ExtendedTooltip name="ВспомогательныйIPПортExtendedTooltip" id="157"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -739,18 +742,18 @@
 												</v8:item>
 											</Title>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="СтатусТранзакцииКонтекстноеМеню" id="70"/>
-											<ExtendedTooltip name="СтатусТранзакцииExtendedTooltip" id="162"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="СтатусТранзакцииКонтекстноеМеню" id="70"/>
+											<ExtendedTooltip name="СтатусТранзакцииExtendedTooltip" id="162"/>
 										</InputField>
 										<InputField name="Транзакция" id="71">
 											<DataPath>Журнал.Транзакция</DataPath>
 											<ShowInHeader>false</ShowInHeader>
-											<ContextMenu name="ТранзакцияКонтекстноеМеню" id="72"/>
-											<ExtendedTooltip name="ТранзакцияExtendedTooltip" id="163"/>
 											<Wrap>false</Wrap>
 											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ТранзакцияКонтекстноеМеню" id="72"/>
+											<ExtendedTooltip name="ТранзакцияExtendedTooltip" id="163"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -766,9 +769,9 @@
 										</v8:item>
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>5</Width>
 									<ContextMenu name="ДатаНаСервереКонтекстноеМеню" id="207"/>
 									<ExtendedTooltip name="ДатаНаСервереРасширеннаяПодсказка" id="208"/>
-									<Width>5</Width>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -786,10 +789,10 @@
 						<SpreadSheetDocumentField name="ПолеИндикаторДлительныхОпераций" id="114">
 							<DataPath>ПолеИндикаторДлительныхОпераций</DataPath>
 							<TitleLocation>None</TitleLocation>
-							<ContextMenu name="ПолеИндикаторДлительныхОперацийКонтекстноеМеню" id="115"/>
-							<ExtendedTooltip name="ПолеИндикаторДлительныхОперацийExtendedTooltip" id="169"/>
 							<VerticalScrollBar>true</VerticalScrollBar>
 							<HorizontalScrollBar>true</HorizontalScrollBar>
+							<ContextMenu name="ПолеИндикаторДлительныхОперацийКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="ПолеИндикаторДлительныхОперацийExtendedTooltip" id="169"/>
 						</SpreadSheetDocumentField>
 					</ChildItems>
 				</Page>
@@ -1205,4 +1208,258 @@
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
 			</Type>
-			<
+			<Settings xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet" xsi:type="mxl:SpreadsheetDocument">
+				<mxl:columns>
+					<mxl:size>0</mxl:size>
+				</mxl:columns>
+				<mxl:rowsItem>
+					<mxl:index>0</mxl:index>
+					<mxl:row>
+						<mxl:empty>true</mxl:empty>
+					</mxl:row>
+				</mxl:rowsItem>
+				<mxl:vgRows>0</mxl:vgRows>
+			</Settings>
+		</Attribute>
+		<Attribute name="АдресХранилища" id="9">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборЖурналаРегистрацииПоУмолчанию" id="11">
+			<Type/>
+		</Attribute>
+		<Attribute name="Критичность" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Критичность</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапускатьНеВФоне" id="14">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторЗадания" id="8">
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ХранилищеДанных" id="10">
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПросмотрТекущегоСобытияВОтдельномОкне" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотр текущего события в отдельном окне</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Properties</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПросмотрТекущегоСобытияВОтдельномОкне</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьДанныеДляПросмотра" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть данные для просмотра</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть данные для просмотра</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ShowData</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьДанныеДляПросмотра</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьИнтервалДатДляПросмотра" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Интервал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить интервал дат для просмотра</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SetDateInterval</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьИнтервалДатДляПросмотра</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьОтбор" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.FilterCriterion</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьОтбор</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьОтборПоЗначениюВТекущейКолонке" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор по значению в текущей колонке</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить отбор по значению в текущей колонке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.FilterByCurrentValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьОтборПоЗначениюВТекущейКолонке</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтключитьОтбор" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить отбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить отбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ClearFilter</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтключитьОтбор</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьТекущийСписок" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить текущий список</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить текущий список</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьТекущийСписок</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыгрузитьЖурналДляПередачиВТехподдержку" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в файл...</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыгрузитьЖурналДляПередачиВТехподдержку</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Пользователь">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СобытиеЖурналаРегистрации">
+			<Type/>
+		</Parameter>
+		<Parameter name="ЗапускатьНеВФоне">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаНачала">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ДатаОкончания">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Данные">
+			<Type/>
+		</Parameter>
+		<Parameter name="Сеанс">
+			<Type/>
+		</Parameter>
+		<Parameter name="Уровень">
+			<Type/>
+		</Parameter>
+		<Parameter name="ИмяПриложения">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

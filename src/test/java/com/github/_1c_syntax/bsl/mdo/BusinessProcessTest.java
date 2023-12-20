@@ -39,5 +39,4 @@ class BusinessProcessTest {
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
   }
-
 }

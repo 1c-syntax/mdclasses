@@ -29,9 +29,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/Форма/Module.bsl",
             "owner": {
-              "type": "FORM",
-              "mdoRef": "DataProcessor.Обработка1.Form.Форма",
-              "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
             },
             "supportVariant": "NONE",
             "isProtected": false
@@ -39,7 +37,116 @@
         ],
         "formType": "MANAGED",
         "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyFormData"
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/Форма/Form.form",
+          "title": {
+            "content": []
+          },
+          "handlers": [],
+          "items": [
+            [
+              {
+                "type": "HTMLDocumentField",
+                "id": 1,
+                "name": "Реквизит1",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "dataPath": {
+                  "segments": "Реквизит1",
+                  "empty": false
+                },
+                "items": []
+              },
+              {
+                "type": "InputField",
+                "id": 4,
+                "name": "Реквизит3",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "dataPath": {
+                  "segments": "Реквизит3",
+                  "empty": false
+                },
+                "items": []
+              },
+              {
+                "type": "LabelField",
+                "id": 7,
+                "name": "Реквизит2",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "dataPath": {
+                  "segments": "Реквизит2",
+                  "empty": false
+                },
+                "items": []
+              },
+              {
+                "type": "SpreadsheetDocumentField",
+                "id": 10,
+                "name": "Реквизит4",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "dataPath": {
+                  "segments": "Реквизит4",
+                  "empty": false
+                },
+                "items": []
+              }
+            ],
+            []
+          ],
+          "attributes": [
+            [
+              {
+                "id": 1,
+                "name": "Объект",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 2,
+                "name": "Реквизит1",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 3,
+                "name": "Реквизит2",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 4,
+                "name": "Реквизит3",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 5,
+                "name": "Реквизит4",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 6,
+                "name": "Реквизит5",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              }
+            ],
+            []
+          ]
         },
         "owner": {
           "type": "DATA_PROCESSOR",
@@ -51,10 +158,7 @@
             "PLATFORM_APPLICATION",
             "MOBILE_PLATFORM_APPLICATION"
           ],
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ]
+          []
         ]
       },
       {
@@ -81,9 +185,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/ЖурналРегистрации/Module.bsl",
             "owner": {
-              "type": "FORM",
-              "mdoRef": "DataProcessor.Обработка1.Form.ЖурналРегистрации",
-              "mdoRefRu": "Обработка.Обработка1.Форма.ЖурналРегистрации"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
             },
             "supportVariant": "NONE",
             "isProtected": false
@@ -91,143 +193,720 @@
         ],
         "formType": "MANAGED",
         "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyFormData"
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/ЖурналРегистрации/Form.form",
+          "title": {
+            "content": [
+              [
+                "ru",
+                "Журнал регистрации"
+              ]
+            ]
+          },
+          "handlers": [
+            [
+              {
+                "event": "ChoiceProcessing",
+                "name": "ОбработкаВыбора"
+              },
+              {
+                "event": "OnOpen",
+                "name": "ПриОткрытии"
+              },
+              {
+                "event": "OnCreateAtServer",
+                "name": "ПриСозданииНаСервере"
+              }
+            ],
+            []
+          ],
+          "items": [
+            [
+              {
+                "type": "UsualGroup",
+                "id": 103,
+                "name": "ГруппаОтбора",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Отбора"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "segments": "",
+                  "empty": true
+                },
+                "items": [
+                  [
+                    {
+                      "type": "InputField",
+                      "id": 101,
+                      "name": "КоличествоПоказываемыхСобытий",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Показывать"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "КоличествоПоказываемыхСобытий",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 170,
+                      "name": "Критичность",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                      },
+                      "dataPath": {
+                        "segments": "Критичность",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "LabelField",
+                      "id": 35,
+                      "name": "ПредставлениеОтбора",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Отбор"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "ПредставлениеОтбора",
+                        "empty": false
+                      },
+                      "items": []
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "type": "Pages",
+                "id": 116,
+                "name": "Страницы",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Страницы"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                },
+                "items": [
+                  [
+                    {
+                      "type": "Page",
+                      "id": 117,
+                      "name": "ЖурналРегистрации",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Журнал регистрации"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        {
+                          "type": "",
+                          "id": 48,
+                          "name": "Журнал",
+                          "title": {
+                            "content": [
+                              [
+                                "ru",
+                                "Журнал"
+                              ]
+                            ]
+                          },
+                          "dataPath": {
+                            "segments": "Журнал",
+                            "empty": false
+                          },
+                          "items": [
+                            [
+                              {
+                                "type": "InputField",
+                                "id": 51,
+                                "name": "Дата",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Дата, время"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "segments": "Журнал.Дата",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "InputField",
+                                "id": 119,
+                                "name": "ПредставлениеРазделенияДанныхСеанса",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                },
+                                "dataPath": {
+                                  "segments": "Журнал.ПредставлениеРазделенияДанныхСеанса",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "ColumnGroup",
+                                "id": 53,
+                                "name": "ГруппаПользовательКомпьютерПриложение",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Пользователь, компьютер, приложение, сеанс"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                },
+                                "items": [
+                                  [
+                                    {
+                                      "type": "InputField",
+                                      "id": 54,
+                                      "name": "ИмяПользователя",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Пользователь"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.ИмяПользователя",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "InputField",
+                                      "id": 56,
+                                      "name": "Компьютер",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Компьютер"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.Компьютер",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "ColumnGroup",
+                                      "id": 204,
+                                      "name": "ГруппаПриложениеСеанс",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Приложение сеанс"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                      },
+                                      "items": [
+                                        [
+                                          {
+                                            "type": "InputField",
+                                            "id": 59,
+                                            "name": "ПредставлениеПриложения",
+                                            "title": {
+                                              "content": [
+                                                [
+                                                  "ru",
+                                                  "Приложение"
+                                                ]
+                                              ]
+                                            },
+                                            "dataPath": {
+                                              "segments": "Журнал.ПредставлениеПриложения",
+                                              "empty": false
+                                            },
+                                            "items": []
+                                          },
+                                          {
+                                            "type": "InputField",
+                                            "id": 80,
+                                            "name": "Сеанс",
+                                            "title": {
+                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                            },
+                                            "dataPath": {
+                                              "segments": "Журнал.Сеанс",
+                                              "empty": false
+                                            },
+                                            "items": []
+                                          }
+                                        ],
+                                        []
+                                      ]
+                                    }
+                                  ],
+                                  []
+                                ]
+                              },
+                              {
+                                "type": "ColumnGroup",
+                                "id": 175,
+                                "name": "ГруппаСобытиеИДанные",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Событие, данные и метаданные, комментарий"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                },
+                                "items": [
+                                  [
+                                    {
+                                      "type": "InputField",
+                                      "id": 64,
+                                      "name": "ПредставлениеСобытия",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Событие"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.ПредставлениеСобытия",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "ColumnGroup",
+                                      "id": 202,
+                                      "name": "ГруппаДанныеМетаданные",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Данные метаданные"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                      },
+                                      "items": [
+                                        [
+                                          {
+                                            "type": "InputField",
+                                            "id": 76,
+                                            "name": "Данные",
+                                            "title": {
+                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                            },
+                                            "dataPath": {
+                                              "segments": "Журнал.Данные",
+                                              "empty": false
+                                            },
+                                            "items": []
+                                          },
+                                          {
+                                            "type": "InputField",
+                                            "id": 74,
+                                            "name": "ПредставлениеМетаданных",
+                                            "title": {
+                                              "content": [
+                                                [
+                                                  "ru",
+                                                  "Метаданные"
+                                                ]
+                                              ]
+                                            },
+                                            "dataPath": {
+                                              "segments": "Журнал.ПредставлениеМетаданных",
+                                              "empty": false
+                                            },
+                                            "items": []
+                                          }
+                                        ],
+                                        []
+                                      ]
+                                    },
+                                    {
+                                      "type": "InputField",
+                                      "id": 66,
+                                      "name": "Комментарий",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Комментарий"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.Комментарий",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    }
+                                  ],
+                                  []
+                                ]
+                              },
+                              {
+                                "type": "ColumnGroup",
+                                "id": 84,
+                                "name": "ГруппаСервер",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Рабочий сервер, IP порты"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                },
+                                "items": [
+                                  [
+                                    {
+                                      "type": "InputField",
+                                      "id": 85,
+                                      "name": "РабочийСервер",
+                                      "title": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.РабочийСервер",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "InputField",
+                                      "id": 89,
+                                      "name": "ОсновнойIPПорт",
+                                      "title": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.ОсновнойIPПорт",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "InputField",
+                                      "id": 91,
+                                      "name": "ВспомогательныйIPПорт",
+                                      "title": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.ВспомогательныйIPПорт",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    }
+                                  ],
+                                  []
+                                ]
+                              },
+                              {
+                                "type": "ColumnGroup",
+                                "id": 68,
+                                "name": "ГруппаТранзакция",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Транзакция"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                                },
+                                "items": [
+                                  [
+                                    {
+                                      "type": "InputField",
+                                      "id": 69,
+                                      "name": "СтатусТранзакции",
+                                      "title": {
+                                        "content": [
+                                          [
+                                            "ru",
+                                            "Статус транзакции"
+                                          ]
+                                        ]
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.СтатусТранзакции",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    },
+                                    {
+                                      "type": "InputField",
+                                      "id": 71,
+                                      "name": "Транзакция",
+                                      "title": {
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                      },
+                                      "dataPath": {
+                                        "segments": "Журнал.Транзакция",
+                                        "empty": false
+                                      },
+                                      "items": []
+                                    }
+                                  ],
+                                  []
+                                ]
+                              },
+                              {
+                                "type": "InputField",
+                                "id": 206,
+                                "name": "ДатаНаСервере",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                                },
+                                "dataPath": {
+                                  "segments": "Журнал.ДатаНаСервере",
+                                  "empty": false
+                                },
+                                "items": []
+                              }
+                            ],
+                            []
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Page",
+                      "id": 118,
+                      "name": "ИндикаторДлительныхОпераций",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Индикатор длительных операций"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        {
+                          "type": "SpreadsheetDocumentField",
+                          "id": 114,
+                          "name": "ПолеИндикаторДлительныхОпераций",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                          },
+                          "dataPath": {
+                            "segments": "ПолеИндикаторДлительныхОпераций",
+                            "empty": false
+                          },
+                          "items": []
+                        }
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
+          ],
+          "attributes": [
+            [
+              {
+                "id": 1,
+                "name": "Объект",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 3,
+                "name": "ПредставлениеОтбора",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Представление отбора"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 4,
+                "name": "Журнал",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Журнал"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 5,
+                "name": "ОтборЖурналаРегистрации",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 7,
+                "name": "КоличествоПоказываемыхСобытий",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Количество показываемых событий"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 2,
+                "name": "ИнтервалДат",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 6,
+                "name": "ПолеИндикаторДлительныхОпераций",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Поле индикатор длительных операций"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 9,
+                "name": "АдресХранилища",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 11,
+                "name": "ОтборЖурналаРегистрацииПоУмолчанию",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 13,
+                "name": "Критичность",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Критичность"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 14,
+                "name": "ЗапускатьНеВФоне",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 8,
+                "name": "ИдентификаторЗадания",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              },
+              {
+                "id": 10,
+                "name": "ХранилищеДанных",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                }
+              }
+            ],
+            []
+          ]
         },
         "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.Обработка1",
-          "mdoRefRu": "Обработка.Обработка1"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
         },
         "usePurposes": [
           [
             "PLATFORM_APPLICATION",
             "MOBILE_PLATFORM_APPLICATION"
           ],
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ]
+          []
         ]
       }
     ],
-    [
-      {
-        "uuid": "5a32de80-b66f-4d6d-be8b-a117f5f71480",
-        "name": "Форма",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "DataProcessor.Обработка1.Form.Форма",
-          "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Форма"
-            ]
-          ]
-        },
-        "supportVariant": "NONE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/Форма/Module.bsl",
-            "owner": {
-              "type": "FORM",
-              "mdoRef": "DataProcessor.Обработка1.Form.Форма",
-              "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
-            },
-            "supportVariant": "NONE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyFormData"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.Обработка1",
-          "mdoRefRu": "Обработка.Обработка1"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ]
-        ]
-      },
-      {
-        "uuid": "5a32de80-f66f-4d6d-be8b-a117f5f71481",
-        "name": "ЖурналРегистрации",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "DataProcessor.Обработка1.Form.ЖурналРегистрации",
-          "mdoRefRu": "Обработка.Обработка1.Форма.ЖурналРегистрации"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "ЖурналРегистрации"
-            ]
-          ]
-        },
-        "supportVariant": "NONE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/DataProcessors/Обработка1/Forms/ЖурналРегистрации/Module.bsl",
-            "owner": {
-              "type": "FORM",
-              "mdoRef": "DataProcessor.Обработка1.Form.ЖурналРегистрации",
-              "mdoRefRu": "Обработка.Обработка1.Форма.ЖурналРегистрации"
-            },
-            "supportVariant": "NONE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyFormData"
-        },
-        "owner": {
-          "type": "DATA_PROCESSOR",
-          "mdoRef": "DataProcessor.Обработка1",
-          "mdoRefRu": "Обработка.Обработка1"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ]
-        ]
-      }
-    ]
+    []
   ],
   "mdoReference": {
-    "type": "DATA_PROCESSOR",
-    "mdoRef": "DataProcessor.Обработка1",
-    "mdoRefRu": "Обработка.Обработка1"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
   },
   "modules": [],
   "name": "Обработка1",
   "objectBelonging": "OWN",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
   },
   "tabularSections": [],
   "templates": [],
