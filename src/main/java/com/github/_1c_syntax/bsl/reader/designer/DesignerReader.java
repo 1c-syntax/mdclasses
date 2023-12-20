@@ -88,8 +88,12 @@ public class DesignerReader implements MDReader {
 
   @Override
   public MDClass readExternalSource() {
-    var mdc = Optional.of((MDClass) read(rootPath));
-    return mdc.orElse(MDClasses.createExternalReport());
+    var value = read(rootPath);
+    if (value instanceof MDClass mdc) {
+      return mdc;
+    } else {
+      return MDClasses.createExternalReport();
+    }
   }
 
   @Override
