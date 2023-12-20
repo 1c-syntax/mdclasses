@@ -44,6 +44,7 @@ import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.converter.DesignerConverter;
@@ -52,9 +53,11 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.mdclasses.wrapper.DesignerRootWrapper;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.xml.namespace.QName;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -125,7 +128,10 @@ public class DesignerReader implements MDReader {
   }
 
   private static ExtendXStream createXMLMapper() {
-    var xStream = new ExtendXStream();
+    var qNameMap = new QNameMap();
+    qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), ManagedFormData.class);
+
+    var xStream = new ExtendXStream(qNameMap);
 
     // необходимо зарегистрировать все используемые классы
     registerClasses(xStream);
@@ -139,7 +145,6 @@ public class DesignerReader implements MDReader {
 
   private static void registerClasses(XStream xStream) {
     xStream.alias("MetaDataObject", DesignerRootWrapper.class);
-
     xStream.alias("AccountingFlag", AccountingFlag.class);
     xStream.alias("AddressingAttribute", TaskAddressingAttribute.class);
     xStream.alias("Attribute", ObjectAttribute.class);

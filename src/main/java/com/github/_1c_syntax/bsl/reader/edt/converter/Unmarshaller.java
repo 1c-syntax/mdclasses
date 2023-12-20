@@ -74,6 +74,34 @@ class Unmarshaller {
     }
   }
 
+  public void unmarshalFormElement(HierarchicalStreamReader reader,
+                                   UnmarshallingContext context,
+                                   TransformationUtils.Context readerContext) {
+    Object lastValue = null;
+    var lastName = "";
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      var fieldClass = readerContext.fieldType(name);
+
+      // не стоит тратить время
+      if (fieldClass == null) {
+        reader.moveUp();
+        continue;
+      }
+
+      var value = context.convertAnother(fieldClass, fieldClass);
+      if (isMultiLanguageString(lastValue, lastName, name, value)) {
+        lastValue = readMultiLanguageString(readerContext, lastValue, name, value);
+      } else {
+        readerContext.setValue(name, value);
+        lastValue = value;
+      }
+      lastName = name;
+      reader.moveUp();
+    }
+  }
+
   public void unmarshalMD(HierarchicalStreamReader reader,
                           UnmarshallingContext context,
                           TransformationUtils.Context readerContext) {

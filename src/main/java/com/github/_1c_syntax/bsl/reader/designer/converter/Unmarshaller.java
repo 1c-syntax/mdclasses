@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
@@ -71,6 +72,38 @@ class Unmarshaller {
         readChildObjectsConfiguration(reader, readerContext);
       } else if (CHILD_OBJECTS_NODE.equals(name)) {
         readChildObjects(reader, context, readerContext);
+      }
+      reader.moveUp();
+    }
+  }
+
+  public void unmarshalFormElement(HierarchicalStreamReader reader,
+                                   UnmarshallingContext context,
+                                   TransformationUtils.Context readerContext) {
+    readerContext.setValue("type", reader.getNodeName());
+    readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
+    readerContext.setValue("name", reader.getAttribute("name"));
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      if ("ChildItems".equals(name)) {
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          var value = (FormItem) context.convertAnother(FormItem.class, FormItem.class);
+          if (value != null) {
+            readerContext.setValue("items", value);
+          }
+          reader.moveUp();
+        }
+      } else {
+        var fieldClass = readerContext.fieldType(name);
+        // не стоит тратить время
+        if (fieldClass == null) {
+          reader.moveUp();
+          continue;
+        }
+        var value = context.convertAnother(fieldClass, fieldClass);
+        readerContext.setValue(name, value);
       }
       reader.moveUp();
     }

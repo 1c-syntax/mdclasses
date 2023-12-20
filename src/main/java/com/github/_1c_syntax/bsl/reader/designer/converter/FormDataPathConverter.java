@@ -19,37 +19,24 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import lombok.Value;
-
-import javax.annotation.Nullable;
-import java.nio.file.Path;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDataPath;
+import com.thoughtworks.xstream.converters.basic.StringConverter;
 
 /**
- * Реализация содержимого пустой формы
+ * Конвертор пути элемента формы в формате конфигуратора
  */
-@Value
-public class EmptyFormData implements FormData {
-  private static final EmptyFormData EMPTY = new EmptyFormData();
+@DesignerConverter
+public class FormDataPathConverter extends StringConverter {
 
-  /**
-   * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
-   */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
+  @Override
+  public Object fromString(String string) {
+    return new FormDataPath(string);
   }
 
   @Override
-  public boolean isEmpty() {
-    return true;
-  }
-
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
+  public boolean canConvert(Class type) {
+    return type == FormDataPath.class;
   }
 }

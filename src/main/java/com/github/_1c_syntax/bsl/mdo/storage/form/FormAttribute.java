@@ -19,37 +19,35 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
+package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Value;
 
-import javax.annotation.Nullable;
-import java.nio.file.Path;
-
 /**
- * Реализация содержимого пустой формы
+ * Хранит описание атрибута формы
  */
 @Value
-public class EmptyFormData implements FormData {
-  private static final EmptyFormData EMPTY = new EmptyFormData();
+@Builder
+public class FormAttribute {
 
   /**
-   * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
+   * Идентификатор
    */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
-  }
+  @Default
+  int id = -1;
 
-  @Override
-  public boolean isEmpty() {
-    return true;
-  }
+  /**
+   * Имя
+   */
+  @Default
+  String name = "";
 
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
-  }
+  /**
+   * Синоним
+   */
+  @Default
+  MultiLanguageString title = MultiLanguageString.EMPTY;
 }

@@ -44,6 +44,7 @@ import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
@@ -138,7 +139,6 @@ public class EDTReader implements MDReader {
   }
 
   private static void registerClasses(XStream xStream) {
-
     xStream.alias("accountingFlags", AccountingFlag.class);
     xStream.alias("addressingAttributes", TaskAddressingAttribute.class);
     xStream.alias("attributes", ObjectAttribute.class);
@@ -161,5 +161,6 @@ public class EDTReader implements MDReader {
     xStream.alias("tabularSections", ObjectTabularSection.class);
     xStream.alias("templates", ObjectTemplate.class);
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
+    xStream.alias("Form", ManagedFormData.class);
   }
 }

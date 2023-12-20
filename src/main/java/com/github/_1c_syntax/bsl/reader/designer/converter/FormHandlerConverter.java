@@ -19,37 +19,27 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import lombok.Value;
-
-import javax.annotation.Nullable;
-import java.nio.file.Path;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 /**
- * Реализация содержимого пустой формы
+ * Конвертор обработчика события формы в формате конфигуратора
  */
-@Value
-public class EmptyFormData implements FormData {
-  private static final EmptyFormData EMPTY = new EmptyFormData();
-
-  /**
-   * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
-   */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
+@DesignerConverter
+public class FormHandlerConverter implements ReadConverter {
+  @Override
+  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    var event = reader.getAttribute("name");
+    var name = reader.getValue();
+    return new FormHandler(event, name);
   }
 
   @Override
-  public boolean isEmpty() {
-    return true;
-  }
-
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
+  public boolean canConvert(Class type) {
+    return type == FormHandler.class;
   }
 }

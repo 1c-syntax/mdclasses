@@ -19,37 +19,13 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
-
-import lombok.Value;
-
-import javax.annotation.Nullable;
-import java.nio.file.Path;
+package com.github._1c_syntax.bsl.mdo.storage.form;
 
 /**
- * Реализация содержимого пустой формы
+ * Обработчик события формы
+ *
+ * @param event Имя события
+ * @param name  Имя обработчика (метода) формы
  */
-@Value
-public class EmptyFormData implements FormData {
-  private static final EmptyFormData EMPTY = new EmptyFormData();
-
-  /**
-   * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
-   */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return true;
-  }
-
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
-  }
+public record FormHandler(String event, String name) {
 }

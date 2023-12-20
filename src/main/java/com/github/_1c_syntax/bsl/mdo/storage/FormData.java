@@ -21,8 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+
 import javax.annotation.Nullable;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Интерфейс содержимого форм
@@ -37,7 +45,42 @@ public interface FormData {
    * Путь к файлу с содержимым. Может быть незаполнен
    */
   @Nullable
-  default Path getDataPath() {
-    return null;
+  Path getDataPath();
+
+  /**
+   * Заголовок формы
+   */
+  default MultiLanguageString getTitle() {
+    return MultiLanguageString.EMPTY;
+  }
+
+  /**
+   * Обработчики событий формы
+   */
+  default List<FormHandler> getHandlers() {
+    return Collections.emptyList();
+  }
+
+  /**
+   * Список визуальных элементов формы первого уровня (т.е. с родителем - форма)
+   */
+  default List<FormItem> getItems() {
+    return Collections.emptyList();
+  }
+
+  /**
+   * Список всех визуальных элементов формы
+   */
+  default List<FormItem> getPlainItems() {
+    List<FormItem> allItems = new ArrayList<>(getItems());
+    getItems().forEach(formItem -> allItems.addAll(formItem.getPlainItems()));
+    return allItems;
+  }
+
+  /**
+   * Список реквизитов формы
+   */
+  default List<FormAttribute> getAttributes() {
+    return Collections.emptyList();
   }
 }

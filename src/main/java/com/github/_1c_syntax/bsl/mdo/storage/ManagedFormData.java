@@ -21,35 +21,41 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.Getter;
+import lombok.Singular;
 import lombok.Value;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
+import java.util.List;
 
 /**
- * Реализация содержимого пустой формы
+ * Реализация содержимого управляемой формы
  */
 @Value
-public class EmptyFormData implements FormData {
-  private static final EmptyFormData EMPTY = new EmptyFormData();
-
+@Builder
+public class ManagedFormData implements FormData {
   /**
-   * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
+   * адрес основного файла формы (Form.form или Form.xml)
    */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
-  }
+  @Getter
+  Path dataPath;
+  @Default
+  MultiLanguageString title = MultiLanguageString.EMPTY;
+  @Singular
+  List<FormHandler> handlers;
+  @Singular
+  List<FormItem> items;
+  @Singular
+  List<FormAttribute> attributes;
 
   @Override
   public boolean isEmpty() {
-    return true;
-  }
-
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
+    return false;
   }
 }

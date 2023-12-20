@@ -22,12 +22,14 @@
 package com.github._1c_syntax.bsl.reader.common;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
+import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
@@ -249,6 +251,11 @@ public class TransformationUtils {
      */
     List<String> childrenMetadata = new ArrayList<>();
 
+    /**
+     * Вариант исходников в формате конфигуратора
+     */
+    boolean isDesigner;
+
     public Context(@NonNull String name, @NonNull Class<?> clazz, @NonNull Path path) {
       realClassName = name;
       realClass = clazz;
@@ -257,6 +264,8 @@ public class TransformationUtils {
       mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
       children = new HashMap<>();
       currentPath = path;
+
+      isDesigner = MDOReader.getConfigurationSourceByMDOPath(currentPath) == ConfigurationSource.DESIGNER;
     }
 
     public void setValue(String methodName, Object value) {
@@ -328,6 +337,10 @@ public class TransformationUtils {
         addModules();
       }
 
+      if (Form.class.isAssignableFrom(realClass)) {
+        addFormData();
+      }
+
       return (MD) TransformationUtils.build(builder);
     }
 
@@ -339,7 +352,6 @@ public class TransformationUtils {
 
       // todo переделать
       Path folder;
-      boolean isDesigner = MDOReader.getConfigurationSourceByMDOPath(currentPath) == ConfigurationSource.DESIGNER;
       if (isDesigner) {
         folder = DesignerPaths.moduleFolder(currentPath, mdoType);
       } else {
@@ -375,6 +387,21 @@ public class TransformationUtils {
         }
       );
       setValue("modules", modules);
+    }
+
+    private void addFormData() {
+      Path formDataPath;
+      if (isDesigner) {
+        formDataPath = DesignerPaths.formDataPath(currentPath, name);
+      } else {
+        formDataPath = EDTPaths.formDataPath(currentPath, mdoType, name);
+      }
+
+      if (!formDataPath.toFile().exists()) {
+        return;
+      }
+
+      setValue("data", MDOReader.getReader(currentPath).read(formDataPath));
     }
   }
 }
