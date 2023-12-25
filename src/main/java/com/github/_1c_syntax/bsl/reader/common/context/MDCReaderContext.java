@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.reader.common.context;
 
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
@@ -55,8 +54,12 @@ import static java.util.Objects.requireNonNull;
 public class MDCReaderContext implements ReaderContext {
 
   private static final String UUID_FIELD_NAME = "uuid";
+  private static final String MDO_REFERENCE_FIELD_NAME = "mdoReference";
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String CHILD_FILED_NAME = "child";
+  private static final String COMPATIBILITY_MODE_FILED_NAME = "compatibilityMode";
+  private static final String CONFIGURATION_SOURCE_MODE_FILED_NAME = "configurationSource";
+  private static final String MODULES_FIELD_NAME = "modules";
 
   /**
    * Класс будущего объекта
@@ -131,22 +134,19 @@ public class MDCReaderContext implements ReaderContext {
   @Override
   public Object build() {
     var mdoReference = MdoReference.create(mdoType, name);
-    setValue("mdoReference", mdoReference);
+    setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
 
     if (compatibilityMode == null) {
-      setValue("compatibilityMode", configurationExtensionCompatibilityMode);
+      setValue(COMPATIBILITY_MODE_FILED_NAME, configurationExtensionCompatibilityMode);
     }
 
     if (isDesignerFormat) {
-      setValue("configurationSource", ConfigurationSource.DESIGNER);
+      setValue(CONFIGURATION_SOURCE_MODE_FILED_NAME, ConfigurationSource.DESIGNER);
     } else {
-      setValue("configurationSource", ConfigurationSource.EDT);
+      setValue(CONFIGURATION_SOURCE_MODE_FILED_NAME, ConfigurationSource.EDT);
     }
 
-    if (ModuleOwner.class.isAssignableFrom(realClass)) {
-      setValueModules(mdoReference);
-    }
-
+    setValueModules(mdoReference);
     setValueChildren();
 
     return TransformationUtils.build(builder);
@@ -175,36 +175,19 @@ public class MDCReaderContext implements ReaderContext {
   }
 
   private void setValueModules(MdoReference mdoReference) {
+    var folder = getModuleFolder();
+    if (!folder.toFile().exists()) {
+      return;
+    }
+
     var moduleTypes = ModuleType.byMDOType(mdoType);
     if (moduleTypes.isEmpty()) {
       return;
     }
 
-    // todo переделать
-    Path folder;
-    if (isDesignerFormat) {
-      folder = DesignerPaths.moduleFolder(currentPath, mdoType);
-    } else {
-      folder = EDTPaths.moduleFolder(currentPath, mdoType);
-    }
-
-    if (!folder.toFile().exists()) {
-      return;
-    }
-
     List<Module> modules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) -> {
-        Path modulePath;
-        // todo переделать
-        if (isDesignerFormat) {
-          modulePath = DesignerPaths.modulePath(folder, name, moduleType);
-        } else if (mdoType == MDOType.CONFIGURATION) {
-          modulePath = EDTPaths.modulePath(folder, MDOType.CONFIGURATION.getName(), moduleType);
-        } else {
-          modulePath = EDTPaths.modulePath(folder, name, moduleType);
-        }
-
-        var protectedModuleInfo = new ProtectedModuleInfo(modulePath);
+        var protectedModuleInfo = getModuleInfo(folder, moduleType);
         if (protectedModuleInfo.getModulePath().toFile().exists()) {
           modules.add(ObjectModule.builder()
             .moduleType(moduleType)
@@ -216,7 +199,24 @@ public class MDCReaderContext implements ReaderContext {
         }
       }
     );
-    setValue("modules", modules);
+    setValue(MODULES_FIELD_NAME, modules);
   }
 
+  private Path getModuleFolder() {
+    if (isDesignerFormat) {
+      return DesignerPaths.moduleFolder(currentPath, mdoType);
+    } else {
+      return EDTPaths.moduleFolder(currentPath, mdoType);
+    }
+  }
+
+  private ProtectedModuleInfo getModuleInfo(Path folder, ModuleType moduleType) {
+    Path modulePath;
+    if (isDesignerFormat) {
+      modulePath = DesignerPaths.modulePath(folder, name, moduleType);
+    } else {
+      modulePath = EDTPaths.modulePath(folder, MDOType.CONFIGURATION.getName(), moduleType);
+    }
+    return new ProtectedModuleInfo(modulePath);
+  }
 }

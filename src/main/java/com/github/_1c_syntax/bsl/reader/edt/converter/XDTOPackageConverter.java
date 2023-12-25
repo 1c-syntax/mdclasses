@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;

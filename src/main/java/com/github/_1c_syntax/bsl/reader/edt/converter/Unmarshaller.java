@@ -114,8 +114,9 @@ public class Unmarshaller {
   private Object transformMultiLanguageString(ReaderContext readerContext, String name, Object value) {
     var newVal = value;
     if (readerContext.getLastName().equals(name)
-      && readerContext.getLastValue() instanceof MultiLanguageString && value instanceof MultiLanguageString) {
-      newVal = new MultiLanguageString((MultiLanguageString) readerContext.getLastValue(), (MultiLanguageString) value);
+      && readerContext.getLastValue() instanceof MultiLanguageString lastValue
+      && value instanceof MultiLanguageString newValue) {
+      newVal = new MultiLanguageString(lastValue, newValue);
     }
     readerContext.setLastName(name);
     readerContext.setLastValue(newVal);
