@@ -27,11 +27,9 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Getter;
 import lombok.Singular;
 import lombok.Value;
 
-import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -40,18 +38,13 @@ import java.util.List;
 @Value
 @Builder
 public class ManagedFormData implements FormData {
-  /**
-   * адрес основного файла формы (Form.form или Form.xml)
-   */
-  @Getter
-  Path dataPath;
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
-  @Singular
+  @Singular("addHandlers")
   List<FormHandler> handlers;
-  @Singular
+  @Singular("addItems")
   List<FormItem> items;
-  @Singular
+  @Singular("addAttributes")
   List<FormAttribute> attributes;
 
   @Override

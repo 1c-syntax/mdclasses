@@ -19,43 +19,44 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.designer.converter;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import org.apache.commons.io.FilenameUtils;
 
-import java.nio.file.Paths;
+import java.nio.file.Path;
 
-@DesignerConverter
+@CommonConverter
 public class CommonModuleConverter extends AbstractReadConverter {
 
-  private static final String URI_FIELD = "uri";
-  private static final String IS_PROTECTED_FIELD = "isProtected";
+  private static final String URI_FIELD_NAME = "uri";
+  private static final String IS_PROTECTED_FIELD_NAME = "isProtected";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    var folder = DesignerPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
-    var modulePath = DesignerPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
-
-    var isProtected = false;
-    if (!modulePath.toFile().exists()) {
-      // возможно модуль защищен
-      var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
-      if (prtModulePath.toFile().exists()) {
-        isProtected = true;
-        modulePath = prtModulePath;
-      }
+    Path modulePath;
+    if (readerContext.isDesignerFormat()) {
+      modulePath = DesignerPaths.modulePath(
+        DesignerPaths.moduleFolder(readerContext.getCurrentPath(), MDOType.COMMON_MODULE),
+        readerContext.getName(),
+        ModuleType.CommonModule
+      );
+    } else {
+      modulePath = EDTPaths.modulePath(
+        EDTPaths.moduleFolder(readerContext.getCurrentPath(), MDOType.COMMON_MODULE),
+        readerContext.getName(),
+        ModuleType.CommonModule
+      );
     }
-
-    readerContext.setValue(URI_FIELD, modulePath.toUri());
-    readerContext.setValue(IS_PROTECTED_FIELD, isProtected);
-
+    var protectedModuleInfo = new ProtectedModuleInfo(modulePath);
+    readerContext.setValue(URI_FIELD_NAME, protectedModuleInfo.getModulePath().toUri());
+    readerContext.setValue(IS_PROTECTED_FIELD_NAME, protectedModuleInfo.isProtected());
     return readerContext.build();
   }
 

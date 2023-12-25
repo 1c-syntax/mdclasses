@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -30,11 +31,13 @@ import lombok.SneakyThrows;
 @EDTConverter
 public class ExternalSourceConverter extends AbstractReadConverter {
 
+  private static final String CONFIGURATION_SOURCE_FIELD_NAME = "configurationSource";
+
   @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    readerContext.setValue("configurationSource", ConfigurationSource.EDT);
+    readerContext.setValue(CONFIGURATION_SOURCE_FIELD_NAME, ConfigurationSource.EDT);
     return readerContext.build();
   }
 

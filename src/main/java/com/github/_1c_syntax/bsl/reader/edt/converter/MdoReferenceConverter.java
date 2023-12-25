@@ -36,7 +36,6 @@ public class MdoReferenceConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    // todo надо обработать разные типы
     var nodeName = reader.getNodeName();
     var value = "";
     if (PICTURE_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {

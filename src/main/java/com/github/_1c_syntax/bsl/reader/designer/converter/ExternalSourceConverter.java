@@ -21,27 +21,26 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
+import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import lombok.SneakyThrows;
 
-import java.nio.file.Path;
+@DesignerConverter
+public class ExternalSourceConverter extends AbstractReadConverter {
 
-public abstract class AbstractReadConverter implements ReadConverter {
+  @SneakyThrows
+  @Override
+  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    var readerContext = super.read(reader, context);
+    readerContext.setValue("configurationSource", ConfigurationSource.DESIGNER);
+    return readerContext.build();
+  }
 
-  protected String name;
-  protected Class<?> realClass;
-  protected Path currentPath;
-
-  protected TransformationUtils.Context read(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    name = reader.getNodeName();
-    realClass = DesignerReader.getXstream().getRealClass(name);
-    currentPath = ExtendXStream.getCurrentPath(reader);
-    var readerContext = new TransformationUtils.Context(reader.getNodeName(), realClass, currentPath);
-    Unmarshaller.unmarshal(reader, context, readerContext);
-    return readerContext;
+  @Override
+  public boolean canConvert(Class type) {
+    return ExternalSource.class.isAssignableFrom(type);
   }
 }

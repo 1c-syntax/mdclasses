@@ -22,9 +22,8 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
-import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.reader.common.converter.ConverterParts;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
@@ -47,23 +46,11 @@ public class ExchangePlanAutoRecordConverter implements ReadConverter {
     }
 
     List<ExchangePlan.RecordContent> content = new ArrayList<>();
-
     while (reader.hasMoreChildren()) { // root
       reader.moveDown();
-      var builder = ExchangePlan.RecordContent.builder();
-      while (reader.hasMoreChildren()) { // item
-        reader.moveDown();
-        var node = reader.getNodeName();
-        if (METADATA_NODE_NAME.equals(node)) {
-          builder.metadata(MdoReference.create(reader.getValue()));
-        } else if (AUTO_RECORD_NODE_NAME.equals(node)) {
-          builder.autoRecord((AutoRecordType) context.convertAnother(reader.getValue(), AutoRecordType.class));
-        } else {
-          // no-op
-        }
-        reader.moveUp();
-      }
-      content.add(builder.build());
+      content.add(
+        ConverterParts.exchangePlanAutoRecord(reader, context, METADATA_NODE_NAME, AUTO_RECORD_NODE_NAME)
+      );
       reader.moveUp();
     }
     return content;

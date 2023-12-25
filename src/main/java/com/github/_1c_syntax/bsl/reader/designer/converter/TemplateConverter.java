@@ -27,7 +27,8 @@ import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
 import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
@@ -45,28 +46,23 @@ public class TemplateConverter extends AbstractReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
-    TransformationUtils.Context readerContext;
-    name = reader.getNodeName();
+    var name = reader.getNodeName();
 
     var realClass = DesignerReader.getXstream().getRealClass(name);
-    if (realClass.isAssignableFrom(CommonTemplate.class)) {
-      readerContext = super.read(reader, context);
-    } else {
-      currentPath = ExtendXStream.getCurrentPath(reader);
+    if (!realClass.isAssignableFrom(CommonTemplate.class)) {
+      var currentPath = ExtendXStream.getCurrentPath(reader);
       if (reader.getAttributeCount() == 0) {
         var childrenFolder = DesignerPaths.childrenFolder(currentPath, MDOType.TEMPLATE);
-        var childName = context.convertAnother(String.class, String.class);
+        var childName = ReaderUtils.readValue(context, String.class);
         var childPath = Paths.get(childrenFolder.toString(), childName + DesignerPaths.EXTENSION_DOT);
         return MDOReader.read(childPath);
       }
-
-      readerContext = new TransformationUtils.Context(name, realClass, currentPath);
-      Unmarshaller.unmarshal(reader, context, readerContext);
     }
+    var readerContext = super.read(reader, context);
 
     TemplateData templateData = EmptyTemplateData.getEmpty();
     if (readerContext.getTemplateType() == TemplateType.DATA_COMPOSITION_SCHEME) {
-      var path = DesignerPaths.templateDataPath(currentPath, readerContext.getName());
+      var path = DesignerPaths.templateDataPath(readerContext.getCurrentPath(), readerContext.getName());
       var data = MDOReader.read(path);
       if (data instanceof TemplateData templData) {
         templateData = templData;

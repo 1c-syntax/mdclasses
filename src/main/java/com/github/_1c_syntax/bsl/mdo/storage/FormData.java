@@ -26,8 +26,6 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 
-import javax.annotation.Nullable;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,12 +38,6 @@ public interface FormData {
    * Признак пустого содержимого
    */
   boolean isEmpty();
-
-  /**
-   * Путь к файлу с содержимым. Может быть незаполнен
-   */
-  @Nullable
-  Path getDataPath();
 
   /**
    * Заголовок формы

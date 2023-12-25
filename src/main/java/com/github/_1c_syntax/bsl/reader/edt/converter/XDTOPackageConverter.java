@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -36,10 +37,8 @@ public class XDTOPackageConverter extends AbstractReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-
-    TransformationUtils.setValue(readerContext.getBuilder(),
-      DATA_FIELD, XdtoPackageData.create(EDTPaths.packageDataPath(currentPath)));
-
+    readerContext.setValue(DATA_FIELD,
+      XdtoPackageData.create(EDTPaths.packageDataPath(readerContext.getCurrentPath())));
     return readerContext.build();
   }
 

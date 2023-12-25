@@ -22,48 +22,26 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
-import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
-import com.github._1c_syntax.bsl.types.MdoReference;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.github._1c_syntax.bsl.reader.common.converter.ConverterParts;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 /**
  * Конвертер для состава плана обмена
  */
 @EDTConverter
-public class ExchangePlanAutoRecordConverter implements Converter {
+public class ExchangePlanAutoRecordConverter implements ReadConverter {
 
   private static final String MD_OBJECT_NODE_NAME = "mdObject";
   private static final String AUTO_RECORD_NODE_NAME = "autoRecord";
-
-  @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // no-op
-  }
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (!reader.hasMoreChildren()) {
       return null;
     }
-
-    var builder = ExchangePlan.RecordContent.builder();
-    while (reader.hasMoreChildren()) {
-      reader.moveDown();
-      var node = reader.getNodeName();
-      if (MD_OBJECT_NODE_NAME.equals(node)) {
-        builder.metadata(MdoReference.create(reader.getValue()));
-      } else if (AUTO_RECORD_NODE_NAME.equals(node)) {
-        builder.autoRecord((AutoRecordType) context.convertAnother(reader.getValue(), AutoRecordType.class));
-      } else {
-        // no-op
-      }
-      reader.moveUp();
-    }
-    return builder.build();
+    return ConverterParts.exchangePlanAutoRecord(reader, context, MD_OBJECT_NODE_NAME, AUTO_RECORD_NODE_NAME);
   }
 
   @Override

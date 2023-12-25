@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
@@ -36,8 +37,7 @@ public class MDConverter extends AbstractReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var readerContext = super.read(reader, context);
-    return readerContext.build();
+    return super.read(reader, context).build();
   }
 
   @Override

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.reader.common.converter.ConverterParts;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -45,22 +46,8 @@ public class MultiLanguageStringConverter implements ReadConverter {
       return MultiLanguageString.EMPTY;
     }
     HashMap<String, String> langContent = new HashMap<>();
-
-    var lang = "";
-    var content = "";
-    while (reader.hasMoreChildren()) {
-      reader.moveDown();
-      var node = reader.getNodeName();
-      if (LANG_NODE_NAME.equals(node)) {
-        lang = reader.getValue();
-      } else if (CONTENT_NODE_NAME.equals(node)) {
-        content = reader.getValue();
-      } else {
-        // no-op
-      }
-      reader.moveUp();
-    }
-    langContent.put(lang, content);
+    var result = ConverterParts.multiLanguageString(reader, LANG_NODE_NAME, CONTENT_NODE_NAME);
+    langContent.put(result.getKey(), result.getValue());
     return new MultiLanguageString(langContent);
   }
 

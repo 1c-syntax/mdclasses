@@ -21,43 +21,25 @@
  */
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
-import com.github._1c_syntax.bsl.mdo.CommonTemplate;
-import com.github._1c_syntax.bsl.mdo.Template;
-import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
-import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
-import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
+import com.github._1c_syntax.bsl.mdo.CommonAttribute;
+import com.github._1c_syntax.bsl.reader.common.converter.ConverterParts;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
+/**
+ * Конвертер для состава общего реквизита
+ */
 @EDTConverter
-public class TemplateConverter extends AbstractReadConverter {
-
-  private static final String DATA_FIELD = "data";
+public class CommonAttributeUseContentConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-
-    var readerContext = super.read(reader, context);
-    TemplateData templateData = EmptyTemplateData.getEmpty();
-    var path = EDTPaths.templateDataPath(
-      readerContext.getCurrentPath(), readerContext.getName(), readerContext.getMdoType());
-    var data = MDOReader.read(path);
-    if (data instanceof TemplateData templData) {
-      templateData = templData;
-    }
-
-    readerContext.setValue(DATA_FIELD, templateData);
-    if (readerContext.getRealClass().isAssignableFrom(CommonTemplate.class)) {
-      return readerContext.build();
-    } else {
-      return readerContext;
-    }
+    return ConverterParts.commonAttributeUseContent(reader, context);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return Template.class.isAssignableFrom(type);
+    return CommonAttribute.UseContent.class.isAssignableFrom(type);
   }
 }

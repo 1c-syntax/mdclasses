@@ -22,11 +22,7 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
+import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -37,55 +33,11 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 @DesignerConverter
 public class ManagedFormDataConverter implements ReadConverter {
 
-  private static final String TITLE_NODE_NAME = "Title";
-  private static final String EVENTS_NODE_NAME = "Events";
-  private static final String CHILD_ITEMS_NODE_NAME = "ChildItems";
-  private static final String ATTRIBUTES_NODE_NAME = "Attributes";
-
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var currentPath = ExtendXStream.getCurrentPath(reader);
-    var builder = ManagedFormData.builder().dataPath(currentPath);
-
-    while (reader.hasMoreChildren()) {
-      reader.moveDown();
-      var node = reader.getNodeName();
-      if (TITLE_NODE_NAME.equals(node)) {
-        var title = (MultiLanguageString) context.convertAnother(MultiLanguageString.class, MultiLanguageString.class);
-        if (title != null) {
-          builder.title(title);
-        }
-      } else if (EVENTS_NODE_NAME.equals(node)) {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          var handler = (FormHandler) context.convertAnother(FormHandler.class, FormHandler.class);
-          if (handler != null) {
-            builder.handler(handler);
-          }
-          reader.moveUp();
-        }
-      } else if (CHILD_ITEMS_NODE_NAME.equals(node)) {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          var item = (FormItem) context.convertAnother(FormItem.class, FormItem.class);
-          if (item != null) {
-            builder.item(item);
-          }
-          reader.moveUp();
-        }
-      } else if (ATTRIBUTES_NODE_NAME.equals(node)) {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          var attribute = (FormAttribute) context.convertAnother(FormAttribute.class, FormAttribute.class);
-          if (attribute != null) {
-            builder.attribute(attribute);
-          }
-          reader.moveUp();
-        }
-      }
-      reader.moveUp();
-    }
-    return builder.build();
+    var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
+    Unmarshaller.unmarshal(reader, context, readerContext);
+    return readerContext.build();
   }
 
   @Override

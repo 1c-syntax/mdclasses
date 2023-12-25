@@ -21,16 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import lombok.Value;
-
-import javax.annotation.Nullable;
-import java.nio.file.Path;
-
 /**
  * Реализация содержимого пустой формы
  */
-@Value
 public class EmptyFormData implements FormData {
+
   private static final EmptyFormData EMPTY = new EmptyFormData();
 
   /**
@@ -45,11 +40,5 @@ public class EmptyFormData implements FormData {
   @Override
   public boolean isEmpty() {
     return true;
-  }
-
-  @Nullable
-  @Override
-  public Path getDataPath() {
-    return null;
   }
 }

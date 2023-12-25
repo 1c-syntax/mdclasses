@@ -21,61 +21,32 @@
  */
 package com.github._1c_syntax.bsl.reader.common;
 
-import lombok.Getter;
+import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.experimental.UtilityClass;
-import org.apache.commons.io.FilenameUtils;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 
 /**
  * Набор вспомогательных методов, используемых при чтении данных
  */
 @UtilityClass
 public class ReaderUtils {
-  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
-
-  /**
-   * Читает информацию о "защищенности" модуля
-   *
-   * @param modulePath Путь к файлу модуля
-   * @return Параметы "защищенности"
-   */
-  public ProtectedModuleInfo readProtectedModuleInfo(Path modulePath) {
-    return new ProtectedModuleInfo(modulePath);
+  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, MDReaderContext readerContext) {
+    if (readerContext.isDesignerFormat()) {
+      com.github._1c_syntax.bsl.reader.designer.converter.Unmarshaller.unmarshal(reader, context, readerContext);
+    } else {
+      com.github._1c_syntax.bsl.reader.edt.converter.Unmarshaller.unmarshal(reader, context, readerContext);
+    }
   }
 
   /**
-   * Описание "защищенности" модуля
+   * Читает значение из файла
+   *
+   * @param context Контекст чтения файла
+   * @param clazz   Класс для преобразования
+   * @return Прочитанное значение
    */
-  public static class ProtectedModuleInfo {
-    @Getter
-    private boolean isProtected;
-    @Getter
-    private Path modulePath;
-
-    private ProtectedModuleInfo(Path path) {
-      modulePath = path;
-      isProtected = false;
-
-      if (!modulePath.toFile().exists()) {
-        var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
-        if (prtModulePath.toFile().exists()) {
-          isProtected = true;
-          modulePath = prtModulePath;
-        }
-      } else {
-        var bytes = new byte[PROTECTED_FILE_HEADER.length];
-        try (var fis = new FileInputStream(modulePath.toFile())) {
-          isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length
-            && Arrays.equals(bytes, PROTECTED_FILE_HEADER));
-        } catch (IOException e) {
-          // ошибка чтения в данном случае неважна
-        }
-      }
-    }
+  public <T> T readValue(UnmarshallingContext context, Class<T> clazz) {
+    return (T) context.convertAnother(clazz, clazz);
   }
 }

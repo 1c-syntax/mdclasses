@@ -19,27 +19,18 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.designer.converter;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.SneakyThrows;
 
-@DesignerConverter
-public class ExternalDataSourceConverter extends AbstractReadConverter {
-
-  @SneakyThrows
-  @Override
-  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var readerContext = super.read(reader, context);
-    readerContext.setValue("configurationSource", ConfigurationSource.DESIGNER);
-    return readerContext.build();
-  }
-
-  @Override
-  public boolean canConvert(Class type) {
-    return ExternalSource.class.isAssignableFrom(type);
+public abstract class AbstractReadConverter implements ReadConverter {
+  protected MDReaderContext read(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    var readerContext = new MDReaderContext(reader);
+    ReaderUtils.unmarshal(reader, context, readerContext);
+    return readerContext;
   }
 }
