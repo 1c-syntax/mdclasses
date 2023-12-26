@@ -21,44 +21,22 @@
  */
 package com.github._1c_syntax.bsl.reader.common;
 
-import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
-import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
-import com.github._1c_syntax.bsl.mdo.Subsystem;
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
-import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
-import com.github._1c_syntax.bsl.support.CompatibilityMode;
-import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.bsl.types.ModuleType;
-import lombok.Data;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Вспомогательный класс для конвертирования значений между моделями
@@ -72,7 +50,14 @@ public class TransformationUtils {
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
 
-  public void setValue(Object source, String methodName, Object value) {
+  /**
+   * Устанавливает значение в билдере объекта. Не устанавливаются значения равные null
+   *
+   * @param source     Билдер-источник
+   * @param methodName Метод\свойство билдера
+   * @param value      Устанавливаемое значение
+   */
+  public void setValue(@NonNull Object source, @NonNull String methodName, Object value) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null && value != null) {
       try {
@@ -89,6 +74,14 @@ public class TransformationUtils {
     }
   }
 
+  /**
+   * Определяет тип значения поля\метода
+   *
+   * @param source     Билдер-источник
+   * @param methodName Имя метода\поля
+   * @return Тип значения
+   */
+  @Nullable
   public Type fieldType(Object source, String methodName) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null) {
@@ -97,7 +90,14 @@ public class TransformationUtils {
     return null;
   }
 
-  public Object builder(Class<?> clazz) {
+  /**
+   * Возвращает объект-билдер для выбранного класса
+   *
+   * @param clazz Класс, для которого ищется билдер
+   * @return Найденный билдер
+   */
+  @Nullable
+  public Object builder(@NonNull Class<?> clazz) {
     var method = getMethod(clazz, BUILDER_METHOD_NAME);
     if (method != null) {
       try {
@@ -109,7 +109,14 @@ public class TransformationUtils {
     return null;
   }
 
-  public Object build(Object builder) {
+  /**
+   * Вызывает метод сборки билдера
+   *
+   * @param builder Собираемый билдер
+   * @return Собранный билдером объект
+   */
+  @Nullable
+  public Object build(@NonNull Object builder) {
     var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
     if (method != null) {
       try {
@@ -127,7 +134,7 @@ public class TransformationUtils {
    * @param fieldClass Тип поля-коллекции
    * @return тип класса
    */
-  public Class<?> computeType(ParameterizedType fieldClass) {
+  public Class<?> computeType(@NonNull ParameterizedType fieldClass) {
     var type = (fieldClass).getActualTypeArguments()[0];
     if (type instanceof WildcardType) {
       return (Class<?>) ((WildcardType) type).getUpperBounds()[0];
@@ -136,7 +143,8 @@ public class TransformationUtils {
     }
   }
 
-  private Method getMethod(Class<?> clazz, String methodName) {
+  @Nullable
+  private Method getMethod(@NonNull Class<?> clazz, @NonNull String methodName) {
     var classMethods = methods.get(clazz);
     if (classMethods == null) {
       classMethods = new CaseInsensitiveMap<>();
@@ -160,221 +168,11 @@ public class TransformationUtils {
     return method;
   }
 
-  private static void saveMethod(Class<?> builderClass,
-                                 Map<String, Method> classMethods,
-                                 Method method,
-                                 String builderMethodName) {
+  private static void saveMethod(@NonNull Class<?> builderClass,
+                                 @NonNull Map<String, Method> classMethods,
+                                 @NonNull Method method,
+                                 @NonNull String builderMethodName) {
     classMethods.put(builderMethodName, method);
     methods.put(builderClass, classMethods);
-  }
-
-  /**
-   * Хранит вспомогательные данные, необходимые для дозаполнения моделей
-   */
-  @Data
-  public static class Context {
-
-    /**
-     * Имя прочитанного объекта
-     */
-    String name;
-
-    /**
-     * Список подсистем
-     */
-    List<String> subsystems = new ArrayList<>();
-
-    /**
-     * Ссылка на текущий объект
-     */
-    MdoReference mdoReference = MdoReference.EMPTY;
-
-    /**
-     * Ссылка на родительский объект
-     */
-    MdoReference owner = MdoReference.EMPTY;
-
-    /**
-     * Класс будущего объекта
-     */
-    Class<?> realClass;
-
-    /**
-     * Строковое имя объекта
-     */
-    String realClassName;
-
-    /**
-     * Билдер объекта
-     */
-    Object builder;
-
-    /**
-     * Тип объекта ссылки
-     */
-    MDOType mdoType;
-
-    /**
-     * Коллекция билдеров для дочерних объектов, которые надо доделать
-     */
-    Map<String, List<TransformationUtils.Context>> children;
-
-    /**
-     * Режим поддержки
-     */
-    SupportVariant supportVariant = SupportVariant.NONE;
-
-    /**
-     * Путь к текущему, читаемому файлу
-     */
-    Path currentPath;
-
-    /**
-     * Тип макета
-     */
-    TemplateType templateType;
-
-    /**
-     * Режим совместимости
-     */
-    CompatibilityMode compatibilityMode;
-
-    /**
-     * Режим совместимости расширения
-     */
-    CompatibilityMode configurationExtensionCompatibilityMode;
-
-    /**
-     * Дочерние метаданные
-     */
-    List<String> childrenMetadata = new ArrayList<>();
-
-    public Context(@NonNull String name, @NonNull Class<?> clazz, @NonNull Path path) {
-      realClassName = name;
-      realClass = clazz;
-      builder = TransformationUtils.builder(realClass);
-      requireNonNull(builder);
-      mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
-      children = new HashMap<>();
-      currentPath = path;
-    }
-
-    public void setValue(String methodName, Object value) {
-      TransformationUtils.setValue(builder, methodName, value);
-    }
-
-    public Class<?> fieldType(String methodName) {
-      var fieldClass = TransformationUtils.fieldType(builder, methodName);
-      if (fieldClass instanceof ParameterizedType parameterizedType) {
-        fieldClass = TransformationUtils.computeType(parameterizedType);
-      }
-      return (Class<?>) fieldClass;
-    }
-
-    public void addChild(String collectionName, TransformationUtils.Context child) {
-      var collection = children.get(collectionName);
-      if (collection == null) {
-        collection = new ArrayList<>();
-      }
-      collection.add(child);
-      children.put(collectionName, collection);
-    }
-
-    public void addChildMetadata(String groupName, String childName) {
-      childrenMetadata.add(groupName + "." + childName);
-    }
-
-    public void addChildMetadata(String fullName) {
-      childrenMetadata.add(fullName);
-    }
-
-    public MD build() {
-
-      if (owner != MdoReference.EMPTY) {
-        mdoReference = MdoReference.create(owner, mdoType, name);
-      } else {
-        mdoReference = MdoReference.create(mdoType, name);
-      }
-      setValue("mdoReference", mdoReference);
-
-      if (MDChild.class.isAssignableFrom(realClass)) {
-        setValue("owner", owner);
-      }
-
-      if (Subsystem.class.isAssignableFrom(realClass)) {
-        setValue("parentSubsystem", owner);
-      }
-
-      if (ChildrenOwner.class.isAssignableFrom(realClass)) {
-        children.forEach((String collectionName, List<Context> collectionSource) -> {
-          if (collectionName.endsWith("s")) {
-            var collection = collectionSource.parallelStream().map((Context childContext) -> {
-              childContext.setOwner(mdoReference);
-              return childContext.build();
-            }).toList();
-            setValue(collectionName, collection);
-          } else {
-            collectionSource.stream()
-              .filter(Objects::nonNull) // исключаем не прочитанное
-              .forEach((Context childContext) -> {
-                childContext.setOwner(mdoReference);
-                setValue(collectionName, childContext.build());
-              });
-          }
-        });
-      }
-
-      if (ModuleOwner.class.isAssignableFrom(realClass)) {
-        addModules();
-      }
-
-      return (MD) TransformationUtils.build(builder);
-    }
-
-    private void addModules() {
-      var moduleTypes = ModuleType.byMDOType(mdoType);
-      if (moduleTypes.isEmpty()) {
-        return;
-      }
-
-      // todo переделать
-      Path folder;
-      boolean isDesigner = MDOReader.getConfigurationSourceByMDOPath(currentPath) == ConfigurationSource.DESIGNER;
-      if (isDesigner) {
-        folder = DesignerPaths.moduleFolder(currentPath, mdoType);
-      } else {
-        folder = EDTPaths.moduleFolder(currentPath, mdoType);
-      }
-
-      if (!folder.toFile().exists()) {
-        return;
-      }
-
-      List<Module> modules = new ArrayList<>();
-      moduleTypes.forEach((ModuleType moduleType) -> {
-          Path modulePath;
-          // todo переделать
-          if (isDesigner) {
-            modulePath = DesignerPaths.modulePath(folder, name, moduleType);
-          } else if (mdoType == MDOType.CONFIGURATION) {
-            modulePath = EDTPaths.modulePath(folder, MDOType.CONFIGURATION.getName(), moduleType);
-          } else {
-            modulePath = EDTPaths.modulePath(folder, name, moduleType);
-          }
-
-          var protectedModuleInfo = ReaderUtils.readProtectedModuleInfo(modulePath);
-          if (protectedModuleInfo.getModulePath().toFile().exists()) {
-            modules.add(ObjectModule.builder()
-              .moduleType(moduleType)
-              .uri(protectedModuleInfo.getModulePath().toUri())
-              .owner(mdoReference)
-              .supportVariant(supportVariant)
-              .isProtected(protectedModuleInfo.isProtected())
-              .build());
-          }
-        }
-      );
-      setValue("modules", modules);
-    }
   }
 }

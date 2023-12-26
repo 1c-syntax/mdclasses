@@ -1,0 +1,236 @@
+{"com.github._1c_syntax.bsl.mdo.FilterCriterion": {
+  "commands": [],
+  "comment": "",
+  "forms": [
+    {
+      "uuid": "bb29fa44-6772-4426-a0b8-422115e14288",
+      "name": "ФормаСписка",
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "FilterCriterion.ФайлыВТоме.Form.ФормаСписка",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме.Форма.ФормаСписка"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Форма списка"
+          ]
+        ]
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "modules": [],
+      "formType": "MANAGED",
+      "data": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+        "dataPath": "src/test/resources/ext/edt/ssl_3_1/configuration/src/FilterCriteria/ФайлыВТоме/Forms/ФормаСписка/Form.form",
+        "title": {
+          "content": []
+        },
+        "handlers": [],
+        "items": [
+          [
+            {
+              "type": "UsualGroup",
+              "id": 23,
+              "name": "ГруппаПользовательскихНастроек",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Группа пользовательских настроек"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "segments": "",
+                "empty": true
+              },
+              "items": []
+            },
+            {
+              "type": "CommandBar",
+              "id": 21,
+              "name": "КоманднаяПанель",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Командная панель"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+              },
+              "items": [
+                [
+                  {
+                    "type": "",
+                    "id": 27,
+                    "name": "ФормаИзменить",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                    },
+                    "dataPath": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "",
+                    "id": 25,
+                    "name": "ФормаОбновить",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                    },
+                    "dataPath": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                    },
+                    "items": []
+                  }
+                ],
+                []
+              ]
+            },
+            {
+              "type": "",
+              "id": 1,
+              "name": "Список",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Список"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "segments": "Список",
+                "empty": false
+              },
+              "items": [
+                [
+                  {
+                    "type": "ColumnGroup",
+                    "id": 14,
+                    "name": "КартинкаИНаименование",
+                    "title": {
+                      "content": [
+                        [
+                          "ru",
+                          "Картинка и наименование"
+                        ]
+                      ]
+                    },
+                    "dataPath": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                    },
+                    "items": [
+                      [
+                        {
+                          "type": "PictureField",
+                          "id": 6,
+                          "name": "СсылкаИндексКартинки",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                          },
+                          "dataPath": {
+                            "segments": "Список.Ref.ИндексКартинки",
+                            "empty": false
+                          },
+                          "items": []
+                        },
+                        {
+                          "type": "LabelField",
+                          "id": 8,
+                          "name": "СсылкаПутьКФайлу",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                          },
+                          "dataPath": {
+                            "segments": "Список.Ref.ПутьКФайлу",
+                            "empty": false
+                          },
+                          "items": []
+                        }
+                      ],
+                      []
+                    ]
+                  },
+                  {
+                    "type": "LabelField",
+                    "id": 10,
+                    "name": "СсылкаРазмер",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                    },
+                    "dataPath": {
+                      "segments": "Список.Ref.Размер",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "LabelField",
+                    "id": 12,
+                    "name": "СсылкаАвтор",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                    },
+                    "dataPath": {
+                      "segments": "Список.Ref.Автор",
+                      "empty": false
+                    },
+                    "items": []
+                  }
+                ],
+                []
+              ]
+            }
+          ],
+          []
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "name": "Список",
+            "title": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+            }
+          }
+        ]
+      },
+      "owner": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.ФайлыВТоме",
+        "mdoRefRu": "КритерийОтбора.ФайлыВТоме"
+      },
+      "usePurposes": [
+        [
+          "PLATFORM_APPLICATION",
+          "MOBILE_PLATFORM_APPLICATION"
+        ],
+        []
+      ]
+    }
+  ],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/owner"
+  },
+  "modules": [],
+  "name": "ФайлыВТоме",
+  "objectBelonging": "OWN",
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Файлы в томе"
+      ]
+    ]
+  },
+  "uuid": "ebab97cf-5335-4648-9845-8ca41f79fb49"
+}}

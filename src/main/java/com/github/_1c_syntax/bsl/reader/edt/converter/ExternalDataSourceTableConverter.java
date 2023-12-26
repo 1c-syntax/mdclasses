@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -37,11 +38,13 @@ import java.nio.file.Paths;
 @EDTConverter
 public class ExternalDataSourceTableConverter extends AbstractReadConverter {
 
+  private static final int POSITION_CHILD_NAME = 3;
+
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (reader.getAttributeCount() == 0) {
       // здесь только имя после третьей точки
-      var childName = reader.getValue().split("\\.")[3];
+      var childName = reader.getValue().split("\\.")[POSITION_CHILD_NAME];
       var childrenFolder = EDTPaths.childrenFolder(ExtendXStream.getCurrentPath(reader),
         MDOType.EXTERNAL_DATA_SOURCE_TABLE);
       var childPath = Paths.get(childrenFolder.toString(), childName, childName + EDTPaths.EXTENSION_DOT);

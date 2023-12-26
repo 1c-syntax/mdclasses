@@ -21,25 +21,32 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.SneakyThrows;
 
+/**
+ * Конвертор элемента формы в формате конфигуратора
+ */
 @DesignerConverter
-public class ExternalDataSourceConverter extends AbstractReadConverter {
+public class FormElementConverter implements ReadConverter {
 
-  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var readerContext = super.read(reader, context);
-    readerContext.setValue("configurationSource", ConfigurationSource.DESIGNER);
+    var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
+    readerContext.setValue("type", reader.getNodeName());
+    readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
+    readerContext.setValue("name", reader.getAttribute("name"));
+    Unmarshaller.unmarshal(reader, context, readerContext);
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return ExternalSource.class.isAssignableFrom(type);
+    return FormItem.class.isAssignableFrom(type)
+      || type == FormAttribute.class;
   }
 }

@@ -24,10 +24,9 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 /**
  * Конвертер для дочерних элементов (атрибуты, операции и т.д.)
@@ -36,13 +35,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 public class MDChildConverter extends AbstractReadConverter {
 
   @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // noop
-  }
-
-  @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    return super.read(reader, context);
+    return super.read(reader, context); // внимание! возвращается контекст, а не объект!
   }
 
   @Override

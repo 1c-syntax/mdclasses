@@ -21,46 +21,26 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdo.CommonModule;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
-import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import org.apache.commons.io.FilenameUtils;
-
-import java.nio.file.Paths;
+import lombok.SneakyThrows;
 
 @DesignerConverter
-public class CommonModuleConverter extends AbstractReadConverter {
+public class ExternalSourceConverter extends AbstractReadConverter {
 
-  private static final String URI_FIELD = "uri";
-  private static final String IS_PROTECTED_FIELD = "isProtected";
-
+  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    var folder = DesignerPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
-    var modulePath = DesignerPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
-
-    var isProtected = false;
-    if (!modulePath.toFile().exists()) {
-      // возможно модуль защищен
-      var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
-      if (prtModulePath.toFile().exists()) {
-        isProtected = true;
-        modulePath = prtModulePath;
-      }
-    }
-
-    readerContext.setValue(URI_FIELD, modulePath.toUri());
-    readerContext.setValue(IS_PROTECTED_FIELD, isProtected);
-
+    readerContext.setValue("configurationSource", ConfigurationSource.DESIGNER);
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return CommonModule.class.isAssignableFrom(type);
+    return ExternalSource.class.isAssignableFrom(type);
   }
 }

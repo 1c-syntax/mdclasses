@@ -43,7 +43,6 @@ import java.beans.PropertyDescriptor;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -66,11 +65,6 @@ public class MDTestUtils {
    * @return Содержимое файла
    */
   @SneakyThrows
-  public String getFixture(String path) {
-    return getFixture(Paths.get(path));
-  }
-
-  @SneakyThrows
   public String getFixture(Path path) {
     return Files.readString(path, StandardCharsets.UTF_8);
   }
@@ -78,51 +72,18 @@ public class MDTestUtils {
   /**
    * Генерация Json представления объекта
    *
-   * @param md Контейнер или объект метаданных
+   * @param obj сериализуемое значение
    * @return Сериализованное в Json представление объекта
    */
-  public String createJson(Object md) {
+  public String createJson(Object obj) {
     XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);
+    xstream.setMode(XStream.XPATH_ABSOLUTE_REFERENCES);
     xstream.registerConverter(new TestURIConverter());
-    xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
-    return xstream.toXML(md);
-  }
-
-  /**
-   * Генерация Json представления объекта со стертыми путями к файлу
-   *
-   * @param md Контейнер или объект метаданных
-   * @return Сериализованное в Json представление объекта
-   */
-  public String createJsonWithEmptyPath(Object md) {
-    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);
-    xstream.registerConverter(new TestURIConverter());
-    xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
-    xstream.registerConverter(new TestMDOPathConverter());
-    return xstream.toXML(md);
-  }
-
-  /**
-   * Генерация Json представления объекта
-   *
-   * @param md Контейнер или объект метаданных
-   * @return Сериализованное в Json представление объекта
-   */
-  public String createJson(Object md, boolean useRefs) {
-    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
-    if (useRefs) {
-      xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);
-    } else {
-      xstream.setMode(XStream.NO_REFERENCES);
-    }
-    xstream.registerConverter(new TestURIConverter());
-    xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), md.getClass()), -20);
-    if (md instanceof MDClass) {
+    xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), obj.getClass()), -20);
+    if (obj instanceof MDClass) {
       xstream.registerConverter(new TestCollectionConverter(xstream.getMapper()));
     }
-    return xstream.toXML(md);
+    return xstream.toXML(obj);
   }
 
   public MD getMDWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
@@ -150,15 +111,7 @@ public class MDTestUtils {
     } else {
       fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
     }
-    var fixture = getFixture(fixturePath);
-
-    var useRef = false;
-    if (argumentsAccessor.size() > 4) {
-      useRef = argumentsAccessor.getBoolean(4);
-    }
-    var current = createJson(mdo, useRef);
-    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
-
+    objectEqualJson(mdo, fixturePath);
     return (MD) mdo;
   }
 
@@ -178,7 +131,6 @@ public class MDTestUtils {
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
 
-    var current = createJson(mdc, false);
     Path fixturePath;
     if (argumentsAccessor.size() > 2) {
       var fixturePostfix = argumentsAccessor.getString(2);
@@ -186,10 +138,8 @@ public class MDTestUtils {
     } else {
       fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
     }
-    var fixture = getFixture(fixturePath);
 
-    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
-
+    objectEqualJson(mdc, fixturePath);
     return mdc;
   }
 
@@ -210,30 +160,6 @@ public class MDTestUtils {
     assertThat(mdc).isInstanceOf(CF.class);
 
     return (CF) mdc;
-  }
-
-  public ExternalSource readExternalSource(ArgumentsAccessor argumentsAccessor) {
-    var isEDT = argumentsAccessor.getBoolean(0);
-    var name = argumentsAccessor.getString(1);
-    var isReport = argumentsAccessor.getBoolean(2);
-
-    Path externalSourcePath;
-    if (isEDT) {
-      var sourceTypeName = (isReport)
-        ? MDOType.EXTERNAL_REPORT.getGroupName()
-        : MDOType.EXTERNAL_DATA_PROCESSOR.getGroupName();
-      externalSourcePath = Path.of(EXAMPLES_PATH, EDT_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name, name + ".mdo");
-    } else {
-      var sourceTypeName = (isReport) ? "erf" : "epf";
-      externalSourcePath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name + ".xml");
-    }
-
-    var mdc = MDClasses.createExternalSource(externalSourcePath);
-    assertThat(mdc).isNotNull();
-    assertThat(mdc).isInstanceOf(MDClass.class);
-    assertThat(mdc).isInstanceOf(ExternalSource.class);
-
-    return (ExternalSource) mdc;
   }
 
   public ExternalSource readExternalSourceWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
@@ -257,7 +183,6 @@ public class MDTestUtils {
     assertThat(mdc).isInstanceOf(MDClass.class);
     assertThat(mdc).isInstanceOf(ExternalSource.class);
 
-    var current = createJson(mdc, false);
     Path fixturePath;
     if (argumentsAccessor.size() > 3) {
       var fixturePostfix = argumentsAccessor.getString(3);
@@ -265,11 +190,15 @@ public class MDTestUtils {
     } else {
       fixturePath = Path.of(FIXTURES_PATH, EXTERNAL_PATH, name + ".json");
     }
-    var fixture = getFixture(fixturePath);
 
-    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
-
+    objectEqualJson(mdc, fixturePath);
     return (ExternalSource) mdc;
+  }
+
+  private void objectEqualJson(Object obj, Path fixturePath) {
+    var fixture = getFixture(fixturePath);
+    var current = createJson(obj);
+    Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
   }
 
   private BeanProvider getBeanProvider() {

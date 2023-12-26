@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -39,15 +40,16 @@ public class TemplateConverter extends AbstractReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
     var readerContext = super.read(reader, context);
-
     TemplateData templateData = EmptyTemplateData.getEmpty();
-    var path = EDTPaths.templateDataPath(currentPath, readerContext.getName(), readerContext.getMdoType());
+    var path = EDTPaths.templateDataPath(
+      readerContext.getCurrentPath(), readerContext.getName(), readerContext.getMdoType());
     var data = MDOReader.read(path);
     if (data instanceof TemplateData templData) {
       templateData = templData;
     }
+
     readerContext.setValue(DATA_FIELD, templateData);
-    if (realClass.isAssignableFrom(CommonTemplate.class)) {
+    if (readerContext.getRealClass().isAssignableFrom(CommonTemplate.class)) {
       return readerContext.build();
     } else {
       return readerContext;

@@ -21,13 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import lombok.Value;
-
 /**
- * Реализация пустого содержимого макета
+ * Реализация содержимого пустой формы
  */
-@Value
 public class EmptyFormData implements FormData {
+
   private static final EmptyFormData EMPTY = new EmptyFormData();
 
   /**

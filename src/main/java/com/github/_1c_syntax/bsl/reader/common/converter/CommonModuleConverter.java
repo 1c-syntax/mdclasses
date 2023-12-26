@@ -19,33 +19,44 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.edt.converter;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.CommonModule;
-import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
 import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
-@EDTConverter
+import java.nio.file.Path;
+
+@CommonConverter
 public class CommonModuleConverter extends AbstractReadConverter {
 
-  private static final String URI_FIELD = "uri";
-  private static final String IS_PROTECTED_FIELD = "isProtected";
-
-  private static final byte[] PROTECTED_FILE_HEADER = new byte[]{-1, -1, -1, 127};
+  private static final String URI_FIELD_NAME = "uri";
+  private static final String IS_PROTECTED_FIELD_NAME = "isProtected";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    var folder = EDTPaths.moduleFolder(currentPath, MDOType.COMMON_MODULE);
-    var modulePath = EDTPaths.modulePath(folder, readerContext.getName(), ModuleType.CommonModule);
-
-    var protectedModuleInfo = ReaderUtils.readProtectedModuleInfo(modulePath);
-    readerContext.setValue(URI_FIELD, protectedModuleInfo.getModulePath().toUri());
-    readerContext.setValue(IS_PROTECTED_FIELD, protectedModuleInfo.isProtected());
+    Path modulePath;
+    if (readerContext.isDesignerFormat()) {
+      modulePath = DesignerPaths.modulePath(
+        DesignerPaths.moduleFolder(readerContext.getCurrentPath(), MDOType.COMMON_MODULE),
+        readerContext.getName(),
+        ModuleType.CommonModule
+      );
+    } else {
+      modulePath = EDTPaths.modulePath(
+        EDTPaths.moduleFolder(readerContext.getCurrentPath(), MDOType.COMMON_MODULE),
+        readerContext.getName(),
+        ModuleType.CommonModule
+      );
+    }
+    var protectedModuleInfo = new ProtectedModuleInfo(modulePath);
+    readerContext.setValue(URI_FIELD_NAME, protectedModuleInfo.getModulePath().toUri());
+    readerContext.setValue(IS_PROTECTED_FIELD_NAME, protectedModuleInfo.isProtected());
     return readerContext.build();
   }
 

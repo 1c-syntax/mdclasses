@@ -22,15 +22,17 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.supconf.ParseSupportData;
+import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.ReaderContext;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
-import com.github._1c_syntax.bsl.types.MDOType;
+import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.experimental.UtilityClass;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,138 +40,159 @@ import java.util.List;
  * Выполняет базовое чтение файлов
  */
 @UtilityClass
-class Unmarshaller {
+public class Unmarshaller {
 
   private static final String PROPERTIES_NODE = "Properties";
   private static final String CHILD_OBJECTS_NODE = "ChildObjects";
+  private static final String CHILD_ITEMS_NODE = "ChildItems";
+  private static final String ITEMS_NODE = "items";
+
+  private static final String EVENTS_NODE = "Events";
+  private static final String HANDLES_NODE = "Handlers";
+  private static final String ATTRIBUTES_NODE = "Attributes";
+
   private static final String NAME_NODE = "Name";
   private static final String TEMPLATE_TYPE_NODE = "TemplateType";
   private static final String CP_MODE_NODE = "CompatibilityMode";
   private static final String CP_EXT_MODE_NODE = "ConfigurationExtensionCompatibilityMode";
-  private static final String UUID_FIELD = "uuid";
-  private static final String SUPPORT_VALIANT_FIELD = "SupportVariant";
 
   /**
-   * Читает общую информацию из файла
+   * Читает информацию из файлов форм
    */
   public void unmarshal(HierarchicalStreamReader reader,
                         UnmarshallingContext context,
-                        TransformationUtils.Context readerContext) {
-    var uuid = reader.getAttribute(UUID_FIELD);
-    readerContext.setValue(UUID_FIELD, uuid);
-
-    var supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, readerContext.getCurrentPath());
-    readerContext.setValue(SUPPORT_VALIANT_FIELD, supportVariant);
-    readerContext.setSupportVariant(supportVariant);
-
+                        FormElementReaderContext readerContext) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (PROPERTIES_NODE.equals(name)) {
-        readProperties(reader, context, readerContext);
-      } else if (CHILD_OBJECTS_NODE.equals(name) && readerContext.getMdoType() == MDOType.CONFIGURATION) {
-        readChildObjectsConfiguration(reader, readerContext);
-      } else if (CHILD_OBJECTS_NODE.equals(name)) {
-        readChildObjects(reader, context, readerContext);
+      if (CHILD_ITEMS_NODE.equals(name)) {
+        readItemNode(reader, context, readerContext, ITEMS_NODE);
+      } else if (ATTRIBUTES_NODE.equals(name)) {
+        readItemNode(reader, context, readerContext, ATTRIBUTES_NODE);
+      } else if (EVENTS_NODE.equals(name)) {
+        readItemNode(reader, context, readerContext, HANDLES_NODE);
+      } else {
+        readNode(reader.getNodeName(), context, readerContext);
       }
       reader.moveUp();
     }
   }
 
-  private void readProperties(HierarchicalStreamReader reader,
-                              UnmarshallingContext context,
-                              TransformationUtils.Context readerContext) {
+  /**
+   * Читает информацию из файлов объектов метаданных и внешних отчетов и обработок
+   */
+  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, MDReaderContext readerContext) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      Object value = null;
-      var fieldClass = TransformationUtils.fieldType(readerContext.getBuilder(), name);
+      if (PROPERTIES_NODE.equals(name) || CHILD_OBJECTS_NODE.equals(name)) {
+        readPropertiesNode(reader, context, readerContext);
+      }
+      reader.moveUp();
+    }
+  }
 
-      // не стоит тратить время
+  /**
+   * Читает информацию из файлов контейнеров конфигурации и расширений
+   */
+  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, MDCReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      if (PROPERTIES_NODE.equals(name)) {
+        readPropertiesNode(reader, context, readerContext);
+      } else if (CHILD_OBJECTS_NODE.equals(name)) {
+        readChildrenNames(reader, readerContext);
+      }
+      reader.moveUp();
+    }
+  }
+
+  private void readItemNode(HierarchicalStreamReader reader,
+                            UnmarshallingContext context,
+                            FormElementReaderContext readerContext,
+                            String nodeName) {
+    var fieldClass = readerContext.fieldType(nodeName);
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      readerContext.setValue(nodeName, ReaderUtils.readValue(context, fieldClass));
+      reader.moveUp();
+    }
+  }
+
+  private void readNode(String name, UnmarshallingContext context, FormElementReaderContext readerContext) {
+    var fieldClass = readerContext.fieldType(name);
+    if (fieldClass == null) {
+      return;
+    }
+    readerContext.setValue(name, ReaderUtils.readValue(context, fieldClass));
+  }
+
+  private void readPropertiesNode(HierarchicalStreamReader reader,
+                                  UnmarshallingContext context,
+                                  ReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      var fieldClass = readerContext.fieldType(name);
       if (fieldClass == null) {
         reader.moveUp();
         continue;
       }
 
-      if (fieldClass instanceof ParameterizedType) {
-        if (reader.hasMoreChildren()) {
-          value = readCollection(reader, context, readerContext, name);
-        }
-      } else {
-        value = context.convertAnother(fieldClass, (Class<?>) fieldClass);
+      var value = readValue(reader, context, fieldClass);
+
+      if (readerContext instanceof MDReaderContext mdReaderContext) {
+        saveExtra(mdReaderContext, name, value);
+      } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
+        saveExtra(mdcReaderContext, name, value);
       }
-
-      if (value instanceof TransformationUtils.Context trContext) {
-        readerContext.addChild(name, trContext);
-      } else if (value instanceof List
-        && !((List<?>) value).isEmpty()
-        && ((List<?>) value).get(0) instanceof TransformationUtils.Context) {
-
-        ((List<?>) value).forEach(child -> readerContext.addChild(name, (TransformationUtils.Context) child));
-
-      } else if (name.equals(NAME_NODE) && value instanceof String string) {
-        readerContext.setName(string);
-      } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
-        readerContext.setTemplateType(templateType);
-      } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-        readerContext.setCompatibilityMode(compatibilityMode);
-      } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-        readerContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
-      }
-
       readerContext.setValue(name, value);
       reader.moveUp();
     }
   }
 
-  private void readChildObjects(HierarchicalStreamReader reader,
-                                UnmarshallingContext context,
-                                TransformationUtils.Context readerContext) {
+  private void saveExtra(MDReaderContext mdReaderContext, String name, Object value) {
+    if (name.equals(NAME_NODE) && value instanceof String string) {
+      mdReaderContext.setName(string);
+    } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
+      mdReaderContext.setTemplateType(templateType);
+    }
+  }
+
+  private void saveExtra(MDCReaderContext mdcReaderContext, String name, Object value) {
+    if (name.equals(NAME_NODE) && value instanceof String string) {
+      mdcReaderContext.setName(string);
+    } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+      mdcReaderContext.setCompatibilityMode(compatibilityMode);
+    } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+      mdcReaderContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+    }
+  }
+
+  private void readChildrenNames(HierarchicalStreamReader reader, ReaderContext readerContext) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      var fieldClass = readerContext.fieldType(name);
+      var value = name + "." + reader.getValue();
+      readerContext.setValue(name, value);
+      reader.moveUp();
+    }
+  }
 
-      // не стоит тратить время
-      if (fieldClass == null) {
+  private Object readValue(HierarchicalStreamReader reader,
+                           UnmarshallingContext context,
+                           Class<?> fieldClass) {
+    try {
+      return ReaderUtils.readValue(context, fieldClass);
+    } catch (ConversionException e) {
+      List<Object> result = new ArrayList<>();
+      while (reader.hasMoreChildren()) {
+        reader.moveDown();
+        result.add(ReaderUtils.readValue(context, fieldClass));
         reader.moveUp();
-        continue;
       }
-
-      var value = (TransformationUtils.Context) context.convertAnother(fieldClass, fieldClass);
-      readerContext.addChild(name, value);
-      reader.moveUp();
-    }
-  }
-
-  private void readChildObjectsConfiguration(HierarchicalStreamReader reader,
-                                             TransformationUtils.Context readerContext) {
-    while (reader.hasMoreChildren()) {
-      reader.moveDown();
-      var name = reader.getNodeName();
-      readerContext.addChildMetadata(name, reader.getValue());
-      reader.moveUp();
-    }
-  }
-
-  private List<Object> readCollection(HierarchicalStreamReader reader,
-                                      UnmarshallingContext context,
-                                      TransformationUtils.Context readerContext,
-                                      String fieldName) {
-    List<Object> result = new ArrayList<>();
-    var valueClass = readerContext.fieldType(fieldName);
-
-    // не стоит тратить время
-    if (valueClass == null) {
       return result;
     }
-
-    while (reader.hasMoreChildren()) {
-      reader.moveDown();
-      var value = context.convertAnother(valueClass, valueClass);
-      result.add(value);
-      reader.moveUp();
-    }
-    return result;
   }
 }

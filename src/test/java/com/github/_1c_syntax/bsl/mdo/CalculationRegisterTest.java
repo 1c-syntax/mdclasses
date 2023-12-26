@@ -51,5 +51,8 @@ class CalculationRegisterTest {
       .hasSize(1)
       .allMatch(Module::isProtected)
     ;
+
+    assertThat(calculationRegister.getModules().stream().filter(Module::isProtected)).isEmpty();
+    assertThat(calculationRegister.getAllModules().stream().filter(Module::isProtected)).hasSize(1);
   }
 }

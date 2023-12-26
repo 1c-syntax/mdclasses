@@ -55,5 +55,4 @@ public class MetaDataObjectConverter implements ReadConverter {
   public boolean canConvert(Class type) {
     return DesignerRootWrapper.class.isAssignableFrom(type);
   }
-
 }

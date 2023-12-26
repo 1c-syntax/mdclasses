@@ -39,13 +39,11 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "content": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
         },
         "supportVariant": "NONE",
         "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
         },
         "messageDirection": "SEND",
         "receiveMessageProcessing": "",
@@ -58,114 +56,23 @@
   "integrationServiceChannels": [
     [
       {
-        "uuid": "fd0a0d02-c211-4985-ab9e-f0e7e63a6943",
-        "name": "КаналСервисаИнтеграции1",
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции1"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "messageDirection": "RECEIVE",
-        "receiveMessageProcessing": "КаналСервисаИнтеграции1ОбработкаПолученияСообщения",
-        "externalIntegrationServiceChannelName": "Имя"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel"
       },
       {
-        "uuid": "69b7fd46-77b8-465a-abcc-a59c1e2ae126",
-        "name": "КаналСервисаИнтеграции2",
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции2",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции2"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "messageDirection": "SEND",
-        "receiveMessageProcessing": "",
-        "externalIntegrationServiceChannelName": "Имя"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel[2]"
       }
     ],
-    [
-      {
-        "uuid": "fd0a0d02-c211-4985-ab9e-f0e7e63a6943",
-        "name": "КаналСервисаИнтеграции1",
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции1"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "messageDirection": "RECEIVE",
-        "receiveMessageProcessing": "КаналСервисаИнтеграции1ОбработкаПолученияСообщения",
-        "externalIntegrationServiceChannelName": "Имя"
-      },
-      {
-        "uuid": "69b7fd46-77b8-465a-abcc-a59c1e2ae126",
-        "name": "КаналСервисаИнтеграции2",
-        "mdoReference": {
-          "type": "INTEGRATION_SERVICE_CHANNEL",
-          "mdoRef": "IntegrationService.СервисИнтеграции1.IntegrationServiceChannel.КаналСервисаИнтеграции2",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1.КаналСервисаИнтеграции.КаналСервисаИнтеграции2"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "INTEGRATION_SERVICE",
-          "mdoRef": "IntegrationService.СервисИнтеграции1",
-          "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
-        },
-        "messageDirection": "SEND",
-        "receiveMessageProcessing": "",
-        "externalIntegrationServiceChannelName": "Имя"
-      }
-    ]
+    []
   ],
   "mdoReference": {
-    "type": "INTEGRATION_SERVICE",
-    "mdoRef": "IntegrationService.СервисИнтеграции1",
-    "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
   },
   "modules": [
     {
       "moduleType": "IntegrationServiceModule",
       "uri": "src/test/resources/ext/edt/mdclasses_3_18/configuration/src/IntegrationServices/СервисИнтеграции1/Module.bsl",
       "owner": {
-        "type": "INTEGRATION_SERVICE",
-        "mdoRef": "IntegrationService.СервисИнтеграции1",
-        "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
       },
       "supportVariant": "NONE",
       "isProtected": false
@@ -175,7 +82,7 @@
   "objectBelonging": "OWN",
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
   },
   "uuid": "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42"
 }}

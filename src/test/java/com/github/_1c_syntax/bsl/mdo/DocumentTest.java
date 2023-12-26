@@ -26,17 +26,54 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class DocumentTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, Documents.Документ1, _edt",
-      "false, mdclasses, Documents.Документ1",
       "true, ssl_3_1, Documents.Анкета, _edt",
       "false, ssl_3_1, Documents.Анкета"
     }
   )
+  void testSSL(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses, Documents.Документ1, _edt",
+      "false, mdclasses, Documents.Документ1"
+    }
+  )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+
+    var doc = (Document) mdo;
+    assertThat(doc.getModules().stream().filter(Module::isProtected)).isEmpty();
+    assertThat(doc.getAllModules().stream().filter(Module::isProtected)).isEmpty();
+
+    assertThat(doc.getForms().stream().filter(form -> !form.getData().isEmpty())).hasSize(3);
+
+    var formData = doc.getForms().stream().filter(form -> form.getName().equals("ФормаДокумента"))
+      .findFirst().get().getData();
+
+    assertThat(formData.getAttributes()).hasSize(1);
+    assertThat(formData.getItems())
+      .hasSize(6)
+      .anyMatch(item -> item.getName().equals("Реквизит1"))
+      .anyMatch(item -> item.getId() == 13);
+
+    assertThat(formData.getHandlers())
+      .hasSize(1)
+      .allMatch(formHandler -> formHandler.event().equals("NewWriteProcessing"));
+
+    assertThat(formData.getPlainItems())
+      .hasSize(9)
+      .anyMatch(item -> item.getName().equals("ТабличнаяЧасть1НомерСтроки"))
+      .anyMatch(item -> item.getId() == 35)
+      .anyMatch(item -> item.getType().equals("InputField"))
+      .anyMatch(item -> item.getDataPath().getSegments().startsWith("~"));
   }
 }

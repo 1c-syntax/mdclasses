@@ -19,48 +19,48 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.common.converter;
+package com.github._1c_syntax.bsl.reader.edt.converter;
 
-import com.github._1c_syntax.bsl.mdo.CommonAttribute;
-import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 /**
- * Конвертер для состава общего реквизита
+ * Конвертор обработчика события формы в формате ЕДТ
  */
-@CommonConverter
-public class CommonAttributeUseContentConverter implements ReadConverter {
+@EDTConverter
+public class FormHandlerConverter implements ReadConverter {
 
-  private static final String METADATA_NODE_NAME = "Metadata";
-  private static final String USE_NODE_NAME = "Use";
+  private static final String NAME_NODE_NAME = "name";
+  private static final String EVENT_NODE_NAME = "event";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if (!reader.hasMoreChildren()) {
-      return null;
-    }
-
-    var builder = CommonAttribute.UseContent.builder();
+    var event = "";
+    var name = "";
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
-      if (METADATA_NODE_NAME.equalsIgnoreCase(node)) {
-        builder.metadata(MdoReference.create(reader.getValue()));
-      } else if (USE_NODE_NAME.equalsIgnoreCase(node)) {
-        builder.use((UseMode) context.convertAnother(reader.getValue(), UseMode.class));
+      if (NAME_NODE_NAME.equals(node)) {
+        name = reader.getValue().intern();
+      } else if (EVENT_NODE_NAME.equals(node)) {
+        event = reader.getValue().intern();
       } else {
         // no-op
       }
       reader.moveUp();
     }
-    return builder.build();
+
+    if (event.isEmpty() && name.isEmpty()) {
+      return null;
+    }
+
+    return new FormHandler(event, name);
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return CommonAttribute.UseContent.class.isAssignableFrom(type);
+    return type == FormHandler.class;
   }
 }

@@ -74,74 +74,19 @@
                   "name": "ТипОбъекта"
                 }
               ],
-              [
-                {
-                  "dataPath": "Количество",
-                  "name": "Количество"
-                },
-                {
-                  "dataPath": "РазмерДанных",
-                  "name": "РазмерДанных"
-                },
-                {
-                  "dataPath": "ТипОбъекта",
-                  "name": "ТипОбъекта"
-                }
-              ]
+              []
             ]
           }
         ],
         "plainDataSets": [
           {
-            "name": "НаборДанных1",
-            "type": "DATA_SET_QUERY",
-            "dataSource": "ИсточникДанных1",
-            "items": [],
-            "querySource": {
-              "position": {
-                "line": 46,
-                "column": 10
-              },
-              "textQuery": "ВЫБРАТЬ\n\tТИПЗНАЧЕНИЯ(ВерсииОбъектов.Объект) КАК ТипОбъекта,\n\tСУММА(ВерсииОбъектов.РазмерДанных / 1024 / 1024) КАК РазмерДанных,\n\tСУММА(1) КАК Количество\nИЗ\n\tРегистрСведений.ВерсииОбъектов КАК ВерсииОбъектов\nГДЕ\n\tВерсииОбъектов.РазмерДанных > 0\n\nСГРУППИРОВАТЬ ПО\n\tТИПЗНАЧЕНИЯ(ВерсииОбъектов.Объект)\n\nУПОРЯДОЧИТЬ ПО\n\tРазмерДанных УБЫВ,\n\tКоличество УБЫВ"
-            },
-            "fields": [
-              [
-                {
-                  "dataPath": "Количество",
-                  "name": "Количество"
-                },
-                {
-                  "dataPath": "РазмерДанных",
-                  "name": "РазмерДанных"
-                },
-                {
-                  "dataPath": "ТипОбъекта",
-                  "name": "ТипОбъекта"
-                }
-              ],
-              [
-                {
-                  "dataPath": "Количество",
-                  "name": "Количество"
-                },
-                {
-                  "dataPath": "РазмерДанных",
-                  "name": "РазмерДанных"
-                },
-                {
-                  "dataPath": "ТипОбъекта",
-                  "name": "ТипОбъекта"
-                }
-              ]
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/data/dataSets/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet"
           }
         ],
         "dataPath": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Reports/АнализВерсийОбъектов/Templates/ОсновнаяСхемаКомпоновкиДанных/Template.dcs"
       },
       "owner": {
-        "type": "REPORT",
-        "mdoRef": "Report.АнализВерсийОбъектов",
-        "mdoRefRu": "Отчет.АнализВерсийОбъектов"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
       }
     }
   ],

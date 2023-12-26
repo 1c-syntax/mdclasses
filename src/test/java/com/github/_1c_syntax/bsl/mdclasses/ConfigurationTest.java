@@ -22,6 +22,8 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
+import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -155,6 +157,16 @@ class ConfigurationTest {
     ;
     assertThat(cf.findChild(commonModule.getUri()))
       .contains(commonModule);
+
+    assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
+    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
+
+    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .hasSize(cf.getCommonForms().size());
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .hasSize(726);
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
+      .isEmpty();
   }
 
   @ParameterizedTest
@@ -183,6 +195,16 @@ class ConfigurationTest {
     assertThat(cf.getPlainChildren())
       .hasSize(124 + cf.getInterfaces().size() + cf.getStyles().size())
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
+    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).hasSize(2);
+
+    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .hasSize(cf.getCommonForms().size());
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .hasSize(11);
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
+      .isEmpty();
   }
 
   private static void checkChildrenSSL(Configuration cf) {

@@ -21,27 +21,34 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
+import com.github._1c_syntax.bsl.mdo.CommonAttribute;
+import com.github._1c_syntax.bsl.reader.common.converter.ConverterParts;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class AbstractReadConverter implements ReadConverter {
+/**
+ * Конвертер для состава общего реквизита
+ */
+@DesignerConverter
+public class CommonAttributeUseContentConverter implements ReadConverter {
 
-  protected String name;
-  protected Class<?> realClass;
-  protected Path currentPath;
+  @Override
+  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    List<CommonAttribute.UseContent> contents = new ArrayList<>();
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      contents.add(ConverterParts.commonAttributeUseContent(reader, context));
+      reader.moveUp();
+    }
+    return contents;
+  }
 
-  protected TransformationUtils.Context read(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    name = reader.getNodeName();
-    realClass = DesignerReader.getXstream().getRealClass(name);
-    currentPath = ExtendXStream.getCurrentPath(reader);
-    var readerContext = new TransformationUtils.Context(reader.getNodeName(), realClass, currentPath);
-    Unmarshaller.unmarshal(reader, context, readerContext);
-    return readerContext;
+  @Override
+  public boolean canConvert(Class type) {
+    return CommonAttribute.UseContent.class.isAssignableFrom(type);
   }
 }

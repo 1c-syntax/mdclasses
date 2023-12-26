@@ -21,75 +21,14 @@
  */
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
-import com.github._1c_syntax.bsl.mdclasses.Configuration;
-import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
-import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
-import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.thoughtworks.xstream.converters.UnmarshallingContext;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.SneakyThrows;
-
-import java.io.FileInputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractMDCReadConverter;
 
 @EDTConverter
-public class ConfigurationConverter implements ReadConverter {
+public class ConfigurationConverter extends AbstractMDCReadConverter {
 
-  private static final String CHILD_FILED = "child";
+  private static final String CONFIGURATION_EXTENSION_FILTER = "(<objectBelonging>)";
 
-  @SneakyThrows
-  @Override
-  public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    int count;
-    var fileInputStream = new FileInputStream(ExtendXStream.getCurrentPath(reader).toFile());
-    try (var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8)) {
-      count = (int) scanner.findAll("(<objectBelonging>)").count();
-    }
-
-    Class<?> realClass = Configuration.class;
-
-    if (count > 0) {
-      realClass = ConfigurationExtension.class;
-    }
-
-    var currentPath = ExtendXStream.getCurrentPath(reader);
-    var readerContext = new TransformationUtils.Context(reader.getNodeName(), realClass, currentPath);
-    Unmarshaller.unmarshal(reader, context, readerContext);
-
-    if (readerContext.getCompatibilityMode() == null) {
-      readerContext.setValue("compatibilityMode",
-        readerContext.getConfigurationExtensionCompatibilityMode());
-    }
-
-    readChildren(readerContext);
-
-    readerContext.setValue("configurationSource", ConfigurationSource.EDT);
-    return readerContext.build();
-  }
-
-  @Override
-  public boolean canConvert(Class type) {
-    return ConfigurationTree.class.isAssignableFrom(type);
-  }
-
-  private static void readChildren(TransformationUtils.Context readerContext) {
-    var rootPath = EDTPaths.rootPathByConfigurationMDO(readerContext.getCurrentPath());
-    var reader = MDOReader.getReader(rootPath);
-    readerContext.getChildrenMetadata()
-      .forEach((String fullName) -> {
-        MD child = (MD) reader.read(fullName);
-        if (child != null) {
-          var fieldName = child.getMdoType().getName();
-          readerContext.setValue(fieldName, child);
-          readerContext.setValue(CHILD_FILED, child);
-        }
-      });
+  public ConfigurationConverter() {
+    super(CONFIGURATION_EXTENSION_FILTER);
   }
 }

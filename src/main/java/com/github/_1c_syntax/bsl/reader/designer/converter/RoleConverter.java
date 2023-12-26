@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -35,10 +36,8 @@ public class RoleConverter extends AbstractReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-
     readerContext.setValue(DATA_FIELD,
-      RoleData.create(DesignerPaths.roleDataPath(currentPath, readerContext.getName())));
-
+      RoleData.create(DesignerPaths.roleDataPath(readerContext.getCurrentPath(), readerContext.getName())));
     return readerContext.build();
   }
 

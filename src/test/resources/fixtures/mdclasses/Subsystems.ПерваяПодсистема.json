@@ -28,18 +28,7 @@
               "mdoRefRu": "Обработка.Обработка1"
             }
           ],
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ]
+          []
         ],
         "explanation": {
           "content": []
@@ -78,14 +67,7 @@
             },
             "int": 1,
             "com.github._1c_syntax.bsl.mdo.Subsystem": {
-              "children": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 0
-                }
-              ],
+              "children": [],
               "comment": "",
               "content": [
                 [
@@ -105,26 +87,10 @@
                     "mdoRefRu": "Нумератор.НумераторДокументов1"
                   }
                 ],
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ]
+                []
               ],
               "explanation": {
-                "content": []
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
               },
               "includeHelpInContents": true,
               "includeInCommandInterface": true,
@@ -168,111 +134,24 @@
               "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
             }
           ],
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ]
+          []
         ],
         "explanation": {
-          "content": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
         },
         "includeHelpInContents": true,
         "includeInCommandInterface": true,
         "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
         },
         "name": "ПочиненнаяСистема2",
         "objectBelonging": "OWN",
         "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
         },
         "subsystems": [
           {
-            "children": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 0
-              }
-            ],
-            "comment": "",
-            "content": [
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ],
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ]
-            ],
-            "explanation": {
-              "content": []
-            },
-            "includeHelpInContents": true,
-            "includeInCommandInterface": true,
-            "mdoReference": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-            },
-            "name": "ПодчиненнаяПодсистема3Уровня",
-            "objectBelonging": "OWN",
-            "parentSubsystem": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-            },
-            "subsystems": [],
-            "supportVariant": "NONE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Подчиненная подсистема3 уровня"
-                ]
-              ]
-            },
-            "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem"
           }
         ],
         "supportVariant": "NONE",
@@ -291,14 +170,12 @@
   "comment": "",
   "content": [],
   "explanation": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
   },
   "includeHelpInContents": true,
   "includeInCommandInterface": true,
   "mdoReference": {
-    "type": "SUBSYSTEM",
-    "mdoRef": "Subsystem.ПерваяПодсистема",
-    "mdoRefRu": "Подсистема.ПерваяПодсистема"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
   },
   "name": "ПерваяПодсистема",
   "objectBelonging": "OWN",
@@ -310,570 +187,13 @@
   "subsystems": [
     [
       {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 0
-          }
-        ],
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ],
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ]
-        ],
-        "explanation": {
-          "content": []
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема"
-        },
-        "name": "ПодчиненнаяПодсистема",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
-        },
-        "subsystems": [],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Подчиненная подсистема"
-            ]
-          ]
-        },
-        "uuid": "0fbc4f99-ef89-4d98-9b8f-d26c216c8e31"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem"
       },
       {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.mdo.Subsystem": {
-              "children": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 0
-                }
-              ],
-              "comment": "",
-              "content": [
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ],
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ]
-              ],
-              "explanation": {
-                "content": []
-              },
-              "includeHelpInContents": true,
-              "includeInCommandInterface": true,
-              "mdoReference": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-              },
-              "name": "ПодчиненнаяПодсистема3Уровня",
-              "objectBelonging": "OWN",
-              "parentSubsystem": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-              },
-              "subsystems": [],
-              "supportVariant": "NONE",
-              "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Подчиненная подсистема3 уровня"
-                  ]
-                ]
-              },
-              "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-            }
-          }
-        ],
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ],
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ]
-        ],
-        "explanation": {
-          "content": []
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-        },
-        "name": "ПочиненнаяСистема2",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
-        },
-        "subsystems": [
-          {
-            "children": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 0
-              }
-            ],
-            "comment": "",
-            "content": [
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ],
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ]
-            ],
-            "explanation": {
-              "content": []
-            },
-            "includeHelpInContents": true,
-            "includeInCommandInterface": true,
-            "mdoReference": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-            },
-            "name": "ПодчиненнаяПодсистема3Уровня",
-            "objectBelonging": "OWN",
-            "parentSubsystem": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-            },
-            "subsystems": [],
-            "supportVariant": "NONE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Подчиненная подсистема3 уровня"
-                ]
-              ]
-            },
-            "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-          }
-        ],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Починенная система2"
-            ]
-          ]
-        },
-        "uuid": "c2e12fa5-e679-4932-8c37-db175f268b3d"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]"
       }
     ],
-    [
-      {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 0
-          }
-        ],
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ],
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ]
-        ],
-        "explanation": {
-          "content": []
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема"
-        },
-        "name": "ПодчиненнаяПодсистема",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
-        },
-        "subsystems": [],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Подчиненная подсистема"
-            ]
-          ]
-        },
-        "uuid": "0fbc4f99-ef89-4d98-9b8f-d26c216c8e31"
-      },
-      {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.mdo.Subsystem": {
-              "children": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 0
-                }
-              ],
-              "comment": "",
-              "content": [
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ],
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ]
-              ],
-              "explanation": {
-                "content": []
-              },
-              "includeHelpInContents": true,
-              "includeInCommandInterface": true,
-              "mdoReference": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-              },
-              "name": "ПодчиненнаяПодсистема3Уровня",
-              "objectBelonging": "OWN",
-              "parentSubsystem": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-              },
-              "subsystems": [],
-              "supportVariant": "NONE",
-              "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Подчиненная подсистема3 уровня"
-                  ]
-                ]
-              },
-              "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-            }
-          }
-        ],
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ],
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ]
-        ],
-        "explanation": {
-          "content": []
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-        },
-        "name": "ПочиненнаяСистема2",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
-        },
-        "subsystems": [
-          {
-            "children": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 0
-              }
-            ],
-            "comment": "",
-            "content": [
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ],
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "Нумератор.НумераторДокументов1"
-                }
-              ]
-            ],
-            "explanation": {
-              "content": []
-            },
-            "includeHelpInContents": true,
-            "includeInCommandInterface": true,
-            "mdoReference": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-            },
-            "name": "ПодчиненнаяПодсистема3Уровня",
-            "objectBelonging": "OWN",
-            "parentSubsystem": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-            },
-            "subsystems": [],
-            "supportVariant": "NONE",
-            "synonym": {
-              "content": [
-                [
-                  "ru",
-                  "Подчиненная подсистема3 уровня"
-                ]
-              ]
-            },
-            "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-          }
-        ],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            [
-              "ru",
-              "Починенная система2"
-            ]
-          ]
-        },
-        "uuid": "c2e12fa5-e679-4932-8c37-db175f268b3d"
-      }
-    ]
+    []
   ],
   "supportVariant": "NONE",
   "synonym": {

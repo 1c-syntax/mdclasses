@@ -27,11 +27,10 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
-import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -44,27 +43,25 @@ import java.util.Map;
  * Конвертер для дочерних элементов (атрибуты, операции и т.д.)
  */
 @DesignerConverter
-public class MDChildConverter implements ReadConverter {
+public class MDChildConverter extends AbstractReadConverter {
 
   private static final Map<Class<?>, MDOType> TYPES_BY_CLASSES = computeTypes();
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var name = reader.getNodeName();
-    var realClass = DesignerReader.getXstream().getRealClass(name);
     var currentPath = ExtendXStream.getCurrentPath(reader);
+    var realClassName = reader.getNodeName();
+    var realClass = MDOReader.getReader(currentPath).getEXStream().getRealClass(realClassName);
 
     if (TYPES_BY_CLASSES.containsKey(realClass) && reader.getAttributeCount() == 0) {
       var mdoType = TYPES_BY_CLASSES.get(realClass);
       var childrenFolder = DesignerPaths.childrenFolder(currentPath, mdoType);
-      var childName = context.convertAnother(String.class, String.class);
+      var childName = ReaderUtils.readValue(context, String.class);
       var childPath = Paths.get(childrenFolder.toString(), childName + DesignerPaths.EXTENSION_DOT);
       return MDOReader.read(childPath);
+    } else {
+      return super.read(reader, context);
     }
-
-    var readerContext = new TransformationUtils.Context(name, realClass, currentPath);
-    Unmarshaller.unmarshal(reader, context, readerContext);
-    return readerContext;
   }
 
   @Override
