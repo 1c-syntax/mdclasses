@@ -27,6 +27,7 @@ import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 /**
  * Для преобразования строки в обработчик
  */
+@CommonConverter
 public class MethodHandlerConverter extends AbstractSingleValueConverter {
 
   @Override

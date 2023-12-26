@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец табличных частей
@@ -31,10 +30,5 @@ public interface TabularSectionOwner extends ChildrenOwner {
   /**
    * Список табличных частей
    */
-  default List<TabularSection> getTabularSections() {
-    return getChildren().stream()
-      .filter(TabularSection.class::isInstance)
-      .map(TabularSection.class::cast)
-      .collect(Collectors.toList());
-  }
+  List<TabularSection> getTabularSections();
 }

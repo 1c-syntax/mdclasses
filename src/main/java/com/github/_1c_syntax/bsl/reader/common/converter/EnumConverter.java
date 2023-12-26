@@ -34,8 +34,8 @@ public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSi
 
   private final Class<T> enumClazz;
 
-  public EnumConverter(Class<T> enumClazz) {
-    this.enumClazz = enumClazz;
+  public EnumConverter(Class<T> clazz) {
+    enumClazz = clazz;
   }
 
   @Override

@@ -22,7 +22,7 @@
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
 import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerAttributeSetting;
+import com.github._1c_syntax.mdclasses.wrapper.form.DesignerAttributeSetting;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

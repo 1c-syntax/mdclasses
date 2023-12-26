@@ -35,10 +35,10 @@ public class ExtendReaderWrapper extends ReaderWrapper {
   private final File file;
   private final XMLStreamReader xmlStreamReader;
 
-  public ExtendReaderWrapper(HierarchicalStreamReader reader, File in, XMLStreamReader xmlStreamReader) {
+  public ExtendReaderWrapper(HierarchicalStreamReader reader, File in, XMLStreamReader streamReader) {
     super(reader);
-    this.file = in;
-    this.xmlStreamReader = xmlStreamReader;
+    file = in;
+    xmlStreamReader = streamReader;
   }
 
   public Path getPath() {

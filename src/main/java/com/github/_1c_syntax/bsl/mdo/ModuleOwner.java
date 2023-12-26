@@ -21,11 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.mdclasses.mdo.support.MDOModule;
+import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -36,20 +37,20 @@ public interface ModuleOwner extends MD {
   /**
    * Список модулей объекта
    */
-  List<MDOModule> getModules();
+  List<Module> getModules();
 
   /**
    * Список модулей объекта, включая дочерние
    */
-  default List<MDOModule> getAllModules() {
+  default List<Module> getAllModules() {
     var modules = new ArrayList<>(getModules());
-    if (this instanceof ChildrenOwner) {
-      modules.addAll(((ChildrenOwner) this).getPlainChildren().stream()
+    if (this instanceof ChildrenOwner childrenOwner) {
+      modules.addAll(childrenOwner.getPlainChildren().stream()
         .filter(ModuleOwner.class::isInstance)
         .map(ModuleOwner.class::cast)
         .map(ModuleOwner::getModules)
         .flatMap(List::stream)
-        .collect(Collectors.toList()));
+        .toList());
     }
 
     return modules;
@@ -61,7 +62,21 @@ public interface ModuleOwner extends MD {
    * @param uri Адрес файла модуля
    * @return Контейнер с найденным файлом
    */
-  default Optional<MDOModule> getModuleByUri(URI uri) {
+  default Optional<Module> getModuleByUri(URI uri) {
     return getAllModules().stream().filter(module -> module.getUri().equals(uri)).findFirst();
+  }
+
+  /**
+   * Возвращает тип модуля по URI
+   */
+  default ModuleType getModuleTypeByURI(URI uri) {
+    return getModuleByUri(uri).map(Module::getModuleType).orElse(ModuleType.UNKNOWN);
+  }
+
+  /**
+   * Возвращает соответствие типов модулей их путям к файлам
+   */
+  default Map<ModuleType, URI> getModuleTypes() {
+    return getModules().stream().collect(Collectors.toMap(Module::getModuleType, Module::getUri));
   }
 }

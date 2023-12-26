@@ -1,0 +1,192 @@
+{"com.github._1c_syntax.bsl.mdo.CommonForm": {
+  "comment": "",
+  "data": {
+    "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+    "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonForms/Вопрос/Ext/Form.xml",
+    "title": {
+      "content": []
+    },
+    "handlers": [
+      [
+        {
+          "event": "OnOpen",
+          "name": "ПриОткрытии"
+        },
+        {
+          "event": "OnCreateAtServer",
+          "name": "ПриСозданииНаСервере"
+        }
+      ],
+      []
+    ],
+    "items": [
+      {
+        "type": "UsualGroup",
+        "id": 15,
+        "name": "Колонки",
+        "title": {
+          "content": [
+            [
+              "ru",
+              "Колонки"
+            ]
+          ]
+        },
+        "dataPath": {
+          "segments": "",
+          "empty": true
+        },
+        "items": [
+          [
+            {
+              "type": "PictureDecoration",
+              "id": 5,
+              "name": "Предупреждение",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Предупреждение"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+              },
+              "items": []
+            },
+            {
+              "type": "UsualGroup",
+              "id": 16,
+              "name": "Строки",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Строки"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+              },
+              "items": [
+                [
+                  {
+                    "type": "InputField",
+                    "id": 10,
+                    "name": "МногострочныйТекстСообщения",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                    },
+                    "dataPath": {
+                      "segments": "ТекстСообщения",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "CheckBoxField",
+                    "id": 3,
+                    "name": "БольшеНеЗадаватьЭтотВопрос",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                    },
+                    "dataPath": {
+                      "segments": "БольшеНеЗадаватьЭтотВопрос",
+                      "empty": false
+                    },
+                    "items": []
+                  }
+                ],
+                []
+              ]
+            }
+          ],
+          []
+        ]
+      }
+    ],
+    "attributes": [
+      [
+        {
+          "id": 1,
+          "name": "СоответствиеКнопокИВозвращаемыхЗначений",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          }
+        },
+        {
+          "id": 3,
+          "name": "БольшеНеЗадаватьЭтотВопрос",
+          "title": {
+            "content": [
+              [
+                "ru",
+                "Больше не задавать этот вопрос"
+              ]
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "ОжиданиеСчетчик",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          }
+        },
+        {
+          "id": 5,
+          "name": "ОжиданиеИмяКнопки",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          }
+        },
+        {
+          "id": 6,
+          "name": "ОжиданиеЗаголовокКнопки",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          }
+        },
+        {
+          "id": 2,
+          "name": "ТекстСообщения",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          }
+        }
+      ],
+      []
+    ]
+  },
+  "formType": "MANAGED",
+  "mdoReference": {
+    "type": "COMMON_FORM",
+    "mdoRef": "CommonForm.Вопрос",
+    "mdoRefRu": "ОбщаяФорма.Вопрос"
+  },
+  "modules": [
+    {
+      "moduleType": "FormModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonForms/Вопрос/Ext/Form/Module.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/mdoReference"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "Вопрос",
+  "objectBelonging": "OWN",
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Вопрос"
+      ]
+    ]
+  },
+  "uuid": "573f1753-9194-4aaf-9217-5cac70ff108f"
+}}

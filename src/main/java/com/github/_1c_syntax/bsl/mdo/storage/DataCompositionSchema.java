@@ -25,11 +25,13 @@ import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +51,17 @@ public class DataCompositionSchema implements TemplateData {
    */
   List<DataSet> plainDataSets;
 
-  public DataCompositionSchema(@NonNull List<DataSet> dataSets) {
-    this.dataSets = dataSets;
+  /**
+   * Путь к файлу с данными макета
+   */
+  @Getter
+  Path dataPath;
+
+  public DataCompositionSchema(@NonNull List<DataSet> dataSetsTree, @NonNull Path path) {
+    dataSets = dataSetsTree;
     plainDataSets = new ArrayList<>();
-    fillPlaintDataSetByList(dataSets);
+    fillPlaintDataSetByList(dataSetsTree);
+    dataPath = path;
   }
 
   @Override
@@ -109,18 +118,10 @@ public class DataCompositionSchema implements TemplateData {
     List<DataSetField> fields;
   }
 
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
-  public static class DataSetField {
-    /**
-     * Путь к данным поля
-     */
-    String dataPath;
-
-    /**
-     * Имя поля
-     */
-    String name;
+  /**
+   * @param dataPath Путь к данным поля
+   * @param name     Имя поля
+   */
+  public record DataSetField(String dataPath, String name) {
   }
 }

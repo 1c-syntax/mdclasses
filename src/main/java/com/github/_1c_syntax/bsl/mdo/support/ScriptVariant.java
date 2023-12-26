@@ -32,6 +32,7 @@ import java.util.Map;
  * Возможные варианты языков, на которых разрабатывается код
  */
 @AllArgsConstructor
+@Getter
 public enum ScriptVariant implements EnumWithValue {
   ENGLISH("English", "Английский", "en"),
   RUSSIAN("Russian", "Русский", "ru");
@@ -41,21 +42,18 @@ public enum ScriptVariant implements EnumWithValue {
   /**
    * Английское имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 
   /**
    * Русское имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String valueRu;
 
   /**
    * Сокращенное имя
    */
-  @Getter
   @Accessors(fluent = true)
   private final String shortName;
 
@@ -70,12 +68,12 @@ public enum ScriptVariant implements EnumWithValue {
   }
 
   private static Map<String, ScriptVariant> computeKeys() {
-    Map<String, ScriptVariant> keys = new CaseInsensitiveMap<>();
-    for (var element : ScriptVariant.values()) {
-      keys.put(element.value(), element);
-      keys.put(element.valueRu(), element);
-      keys.put(element.shortName(), element);
+    Map<String, ScriptVariant> keysMap = new CaseInsensitiveMap<>();
+    for (var element : values()) {
+      keysMap.put(element.value(), element);
+      keysMap.put(element.valueRu(), element);
+      keysMap.put(element.shortName(), element);
     }
-    return keys;
+    return keysMap;
   }
 }

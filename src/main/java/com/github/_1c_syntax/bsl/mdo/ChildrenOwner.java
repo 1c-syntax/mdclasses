@@ -27,6 +27,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Расширение - владелец дочерних объектов
@@ -36,19 +37,69 @@ public interface ChildrenOwner {
   /**
    * Возвращает все дочерние элементы объекта
    */
-  List<MD> getChildren();
+  default List<MD> getChildren() {
+    List<MD> children = new ArrayList<>();
+
+    if (this instanceof AttributeOwner attributeOwner) {
+      children.addAll(attributeOwner.getAllAttributes());
+    }
+
+    if (this instanceof TabularSectionOwner tabularSectionOwner) {
+      children.addAll(tabularSectionOwner.getTabularSections());
+    }
+
+    if (this instanceof CommandOwner commandOwner) {
+      children.addAll(commandOwner.getCommands());
+    }
+
+    if (this instanceof TemplateOwner templateOwner) {
+      children.addAll(templateOwner.getTemplates());
+    }
+
+    if (this instanceof FormOwner formOwner) {
+      children.addAll(formOwner.getForms());
+    }
+
+    return children;
+  }
+
+  /**
+   * Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ
+   */
+  default List<MD> getMDOChildren() {
+    List<MD> children = new ArrayList<>();
+
+    if (this instanceof AttributeOwner attributeOwner) {
+      children.addAll(attributeOwner.getAllAttributes());
+    }
+
+    if (this instanceof TabularSectionOwner tabularSectionOwner) {
+      children.addAll(tabularSectionOwner.getTabularSections());
+    }
+
+    return children;
+  }
+
+  /**
+   * Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.
+   */
+  default List<MD> getPlainChildren() {
+    List<MD> children = new ArrayList<>(getChildren());
+    getChildren().stream().filter(ChildrenOwner.class::isInstance)
+      .map(ChildrenOwner.class::cast)
+      .forEach(mdObject -> children.addAll(mdObject.getPlainChildren()));
+
+    return children;
+  }
 
   /**
    * Возвращает дочерние элементы объекта плоским списком.
    */
-  default List<MD> getPlainChildren() {
-    List<MD> children = new ArrayList<>(getChildren());
-    getChildren().stream()
-      .filter(ChildrenOwner.class::isInstance)
+  default List<MD> getMDOPlainChildren() {
+    List<MD> children = new ArrayList<>(getMDOChildren());
+    getChildren().stream().filter(ChildrenOwner.class::isInstance)
       .map(ChildrenOwner.class::cast)
-      .forEach(mdObject ->
-        children.addAll(mdObject.getPlainChildren())
-      );
+      .forEach(mdObject -> children.addAll(mdObject.getMDOPlainChildren()));
 
     return children;
   }
@@ -85,9 +136,27 @@ public interface ChildrenOwner {
    * @return Контейнер с найденным значением (может быть пустым)
    */
   default Optional<MD> findChild(URI uri) {
-    return getPlainChildren().stream()
+    var collection = getPlainChildren().stream()
       .filter(ModuleOwner.class::isInstance)
       .filter(mdObject -> ((ModuleOwner) mdObject).getModuleByUri(uri).isPresent())
-      .findFirst();
+      .toList();
+
+    if (collection.size() > 1) {
+      var result = collection.stream().filter(md -> !(md instanceof MDObject)).findFirst();
+      if (result.isPresent()) {
+        return result;
+      }
+    }
+    return collection.stream().findFirst();
+  }
+
+  /**
+   * Выполняет поиск дочернего (включая все уровни) объекта по произвольному предикату
+   *
+   * @param predicate Произвольный предикат для поиска объекта
+   * @return Контейнер с найденным значением (может быть пустым)
+   */
+  default Optional<MD> findChild(Predicate<? super MD> predicate) {
+    return getPlainChildren().stream().filter(predicate).findFirst();
   }
 }

@@ -21,13 +21,17 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
+import com.github._1c_syntax.bsl.reader.MDOReader;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -37,6 +41,7 @@ import java.util.List;
 @ToString(of = {"targetNamespace"})
 @EqualsAndHashCode(of = {"targetNamespace"})
 @Builder
+@Slf4j
 public class XdtoPackageData {
 
   public static final XdtoPackageData EMPTY = XdtoPackageData.builder().build();
@@ -70,6 +75,19 @@ public class XdtoPackageData {
    */
   @Singular
   List<Property> properties;
+
+  // todo переделать на конвертер
+  public static XdtoPackageData create(@NonNull Path path) {
+    var data = MDOReader.read(path);
+    if (data instanceof XdtoPackageData xdtoPackageData) {
+      return xdtoPackageData;
+    } else if (data == null) {
+      LOGGER.warn("Missing file " + path);
+      return null;
+    } else {
+      throw new IllegalArgumentException("Wrong XDTO package data file " + path);
+    }
+  }
 
   @Value
   @ToString(of = {"name"})

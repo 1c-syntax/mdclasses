@@ -40,9 +40,8 @@ import java.io.InputStream;
 public class ExtendStaxDriver extends StaxDriver {
 
   /**
-   * @deprecated Оставлен для совместимости со старой версией читателя. При разделении читателей не требуется
+   * Оставлен для совместимости со старой версией читателя. При разделении читателей не потребуется
    */
-  @Deprecated(since = "0.12")
   public ExtendStaxDriver(QNameMap qNameMap) {
     super(qNameMap);
 

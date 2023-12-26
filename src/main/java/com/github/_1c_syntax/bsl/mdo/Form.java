@@ -21,18 +21,17 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 
 /**
  * Интерфейс форм объектов и общих форм
  */
-public interface Form extends MD
-// todo:  , ModuleOwner
-{
+public interface Form extends ModuleOwner {
   /**
    * Тип формы
    */
   FormType getFormType();
 
-  // todo нужна нормальная модель форм
+  FormData getData();
 }

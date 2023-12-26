@@ -22,17 +22,16 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import lombok.NonNull;
 
 /**
  * Используется для преобразования содержимого пакета XDTO
  */
-public class XdtoPackageDataConverter implements Converter {
+@CommonConverter
+public class XdtoPackageDataConverter implements ReadConverter {
 
   private static final String PROPERTY_NODE_NAME = "property";
   private static final String IMPORT_NODE_NAME = "import";
@@ -51,11 +50,6 @@ public class XdtoPackageDataConverter implements Converter {
   private static final String LOWER_BOUND_ATTRIBUTE_NAME = "lowerBound";
   private static final String UPPER_BOUND_ATTRIBUTE_NAME = "upperBound";
   private static final String NILLABLE_ATTRIBUTE_NAME = "nillable";
-
-  @Override
-  public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-    // noop
-  }
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {

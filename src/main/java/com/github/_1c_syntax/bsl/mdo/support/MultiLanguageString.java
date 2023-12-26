@@ -21,16 +21,20 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.Value;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Используется для хранения текстовой строки на разных языках
  */
 @Value
+@AllArgsConstructor
 public class MultiLanguageString {
 
   /**
@@ -42,6 +46,32 @@ public class MultiLanguageString {
    * Содержимое описания для каждого языка
    */
   Map<String, String> content;
+
+  public MultiLanguageString(@NonNull MultiLanguageString first, @NonNull MultiLanguageString second) {
+    var fullContent = new HashMap<>(first.getContent());
+    fullContent.putAll(second.getContent());
+    content = fullContent;
+  }
+
+  /**
+   * Создание мультиязычной строки из списка (объединение).
+   * Если передан пустой список, то вернет ссылку на пустой объект.
+   * Если в параметрах передан список из одного элемента, то он и будет возвращен как результат.
+   *
+   * @param strings Список мультиязычных строк
+   * @return Объединенное значение
+   */
+  public static MultiLanguageString of(@NonNull List<MultiLanguageString> strings) {
+    if (strings.isEmpty()) {
+      return EMPTY;
+    } else if (strings.size() == 1) {
+      return strings.get(0);
+    } else {
+      Map<String, String> content = new HashMap<>();
+      strings.forEach(string -> content.putAll(string.getContent()));
+      return new MultiLanguageString(content);
+    }
+  }
 
   /**
    * Возвращает содержимое для указанного языка

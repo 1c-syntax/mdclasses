@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
-import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerEvent;
+import com.github._1c_syntax.mdclasses.StringConverterIntern;
+import com.github._1c_syntax.mdclasses.wrapper.form.DesignerEvent;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;

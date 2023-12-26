@@ -23,17 +23,19 @@ package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.Arrays;
 
 @AllArgsConstructor
+@ToString
+@Getter
 public enum ApplicationRunMode implements EnumWithValue {
   AUTO("Auto"),
   MANAGED_APPLICATION("ManagedApplication"),
   ORDINARY_APPLICATION("OrdinaryApplication");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 
@@ -41,6 +43,6 @@ public enum ApplicationRunMode implements EnumWithValue {
     return Arrays.stream(values())
       .filter(defaultApplicationRunMode -> defaultApplicationRunMode.value().equalsIgnoreCase(value))
       .findAny()
-      .orElse(ApplicationRunMode.MANAGED_APPLICATION);
+      .orElse(MANAGED_APPLICATION);
   }
 }

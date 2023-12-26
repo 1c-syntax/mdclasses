@@ -1,0 +1,363 @@
+{"com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "dimensions": [
+    [
+      {
+        "uuid": "f6dae699-06eb-41ef-878b-3fdfe1b1f213",
+        "name": "ПодписанныйОбъект",
+        "mdoReference": {
+          "type": "DIMENSION",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Dimension.ПодписанныйОбъект",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Измерение.ПодписанныйОбъект"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Подписанный объект"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "master": true,
+        "denyIncompleteValues": false,
+        "useInTotals": true
+      },
+      {
+        "uuid": "fe6de86a-54c9-4ae2-9f17-cfce38b7b560",
+        "name": "ПорядковыйНомер",
+        "mdoReference": {
+          "type": "DIMENSION",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Dimension.ПорядковыйНомер",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Измерение.ПорядковыйНомер"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Порядковый номер"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "master": false,
+        "denyIncompleteValues": false,
+        "useInTotals": true
+      }
+    ],
+    []
+  ],
+  "forms": [],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+  },
+  "modules": [
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ЭлектронныеПодписи/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "ЭлектронныеПодписи",
+  "objectBelonging": "OWN",
+  "resources": [
+    [
+      {
+        "uuid": "19858faf-2bc5-4cfb-b258-cb101ab66e87",
+        "name": "ДатаПроверкиПодписи",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ДатаПроверкиПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.ДатаПроверкиПодписи"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Дата проверки подписи"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "f779f4a1-1fab-46d4-8043-ac25c247d361",
+        "name": "ИмяФайлаПодписи",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ИмяФайлаПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.ИмяФайлаПодписи"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Имя файла подписи"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "308358bc-773a-43fa-adff-dcc5884a2bd4",
+        "name": "Комментарий",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Комментарий",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.Комментарий"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Комментарий"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "ed541a1c-a842-40a9-b357-612db71ec32c",
+        "name": "КомуВыданСертификат",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.КомуВыданСертификат",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.КомуВыданСертификат"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Кому выдан сертификат"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "b0e37495-7d9e-41d0-8225-652f9ac328cf",
+        "name": "Отпечаток",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Отпечаток",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.Отпечаток"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Отпечаток"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "3bd2e1c8-9ef3-449b-acf6-397b90669c49",
+        "name": "Подпись",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Подпись",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.Подпись"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Подпись"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "cb334191-2ff3-439e-bdaf-4b8fe6561c3b",
+        "name": "ПодписьВерна",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ПодписьВерна",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.ПодписьВерна"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Подпись верна"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "f9865a2a-50e3-4f9c-a509-319be62dc468",
+        "name": "Сертификат",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Сертификат",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.Сертификат"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Сертификат"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "5f3a30b0-1ba8-423c-9bc2-f9a87cafe818",
+        "name": "ДатаПодписи",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ДатаПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.ДатаПодписи"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Дата подписи"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      },
+      {
+        "uuid": "766d8852-3bb4-4a6c-81c0-911722af4e8e",
+        "name": "УстановившийПодпись",
+        "mdoReference": {
+          "type": "RESOURCE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.УстановившийПодпись",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.Ресурс.УстановившийПодпись"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Установивший подпись"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX"
+      }
+    ],
+    []
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Электронные подписи"
+      ]
+    ]
+  },
+  "templates": [],
+  "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824"
+}}

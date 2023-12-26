@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
-import com.github._1c_syntax.mdclasses.unmarshal.converters.CommandActionConverter;
-import com.github._1c_syntax.mdclasses.unmarshal.wrapper.form.DesignerFormCommand;
+import com.github._1c_syntax.mdclasses.CommandActionConverter;
+import com.github._1c_syntax.mdclasses.wrapper.form.DesignerFormCommand;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -21,10 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.mdclasses.mdo.metadata.MetadataStorage;
 
 /**
  * Базовый интерфейс всех объектов метаданных, как самостоятельных, так и дочерних
@@ -35,11 +36,12 @@ public interface MD {
    * Возвращает тип метаданных
    */
   default MDOType getMdoType() {
-    return MetadataStorage.get(getClass()).type();
+    var mdoType = MDOType.fromValue(getClass().getSimpleName());
+    return mdoType.orElse(MDOType.UNKNOWN);
   }
 
   /**
-   * уникальный идентификатор объекта
+   * Уникальный идентификатор объекта
    */
   String getUuid();
 
@@ -48,10 +50,10 @@ public interface MD {
    */
   String getName();
 
-//  /**
-//   * Синонимы объекта
-//   */
-//  MultiLanguageString getSynonym();
+  /**
+   * Синонимы объекта
+   */
+  MultiLanguageString getSynonym();
 
   /**
    * MDO-Ссылка на объект
@@ -63,28 +65,14 @@ public interface MD {
    */
   ObjectBelonging getObjectBelonging();
 
-//  /**
-//   * Вариант поддержки родительской конфигурации
-//   */
-//  SupportVariant getSupportVariant();
+  /**
+   * Вариант поддержки родительской конфигурации
+   */
+  SupportVariant getSupportVariant();
 
   /**
    * Комментарий
    */
   String getComment();
-
-  /**
-   * Возвращает представление типа метаданных
-   */
-  default String getMetadataName() {
-    return getMdoType().getName();
-  }
-
-  /**
-   * Возвращает представление типа метаданных на русском
-   */
-  default String getMetadataNameRu() {
-    return getMdoType().getNameRu();
-  }
 
 }

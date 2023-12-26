@@ -1,0 +1,1703 @@
+{"com.github._1c_syntax.bsl.mdo.DataProcessor": {
+  "allAttributes": [
+    [
+      {
+        "uuid": "62f97480-7d4a-48f3-9d1d-612909b242c9",
+        "name": "НачалоПериодаЗагрузки",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Attribute.НачалоПериодаЗагрузки",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Реквизит.НачалоПериодаЗагрузки"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Начало периода загрузки"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "DATA_PROCESSOR",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "format": {
+          "content": []
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2b4f6e2f-6cc4-4c7c-98a6-786f3793366b",
+        "name": "ОкончаниеПериодаЗагрузки",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Attribute.ОкончаниеПериодаЗагрузки",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Реквизит.ОкончаниеПериодаЗагрузки"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Окончание периода загрузки"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "forms": [
+    [
+      {
+        "uuid": "6fcd2a3a-4d66-40e3-bde0-5c274b43783f",
+        "name": "Форма",
+        "mdoReference": {
+          "type": "FORM",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.Форма",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.Форма"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Форма"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "modules": [
+          {
+            "moduleType": "FormModule",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/Форма/Ext/Form/Module.bsl",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
+          }
+        ],
+        "formType": "MANAGED",
+        "data": {
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/Форма/Ext/Form.xml",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          },
+          "handlers": [
+            [
+              {
+                "event": "OnOpen",
+                "name": "ПриОткрытии"
+              },
+              {
+                "event": "OnCreateAtServer",
+                "name": "ПриСозданииНаСервере"
+              }
+            ],
+            []
+          ],
+          "items": [
+            [
+              {
+                "type": "UsualGroup",
+                "id": 43,
+                "name": "КоманднаяПанель",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Командная панель"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "segments": "",
+                  "empty": true
+                },
+                "items": [
+                  [
+                    {
+                      "type": "UsualButton",
+                      "id": 32,
+                      "name": "ФормаЗагрузитьКурсыВалют",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "CommandBar",
+                      "id": 42,
+                      "name": "КоманднаяПанельЛевая",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Командная панель левая"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 2,
+                      "name": "НачалоПериода",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "С"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "Объект.НачалоПериодаЗагрузки",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 3,
+                      "name": "ОкончаниеПериода",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "По"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "Объект.ОкончаниеПериодаЗагрузки",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "CommandBar",
+                      "id": 44,
+                      "name": "КоманднаяПанельПравая",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Командная панель правая"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        [
+                          {
+                            "type": "CommandBarButton",
+                            "id": 35,
+                            "name": "ФормаВыбратьВсеВалюты",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            },
+                            "dataPath": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                            },
+                            "items": []
+                          },
+                          {
+                            "type": "CommandBarButton",
+                            "id": 36,
+                            "name": "ФормаСнятьВыбор",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            },
+                            "dataPath": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                            },
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "type": "Pages",
+                "id": 63,
+                "name": "Страницы",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Страницы"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                },
+                "items": [
+                  [
+                    {
+                      "type": "Page",
+                      "id": 65,
+                      "name": "СтраницаСписокВалют",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Страница список валют"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        {
+                          "type": "Table",
+                          "id": 7,
+                          "name": "СписокВалют",
+                          "title": {
+                            "content": [
+                              [
+                                "ru",
+                                "Валют"
+                              ]
+                            ]
+                          },
+                          "dataPath": {
+                            "segments": "Объект.СписокВалют",
+                            "empty": false
+                          },
+                          "items": [
+                            [
+                              {
+                                "type": "CheckBoxField",
+                                "id": 33,
+                                "name": "Загружать",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.Загружать",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "LabelField",
+                                "id": 9,
+                                "name": "КодВалюты",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Цифр. код"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.КодВалюты",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "LabelField",
+                                "id": 40,
+                                "name": "СписокВалютСимвольныйКод",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Симв. код"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.СимвольныйКод",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "InputField",
+                                "id": 38,
+                                "name": "СписокВалютПредставление",
+                                "title": {
+                                  "content": [
+                                    [
+                                      "ru",
+                                      "Валюта"
+                                    ]
+                                  ]
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.Представление",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "LabelField",
+                                "id": 11,
+                                "name": "ДатаКурса",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.ДатаКурса",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "LabelField",
+                                "id": 12,
+                                "name": "Курс",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.Курс",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "LabelField",
+                                "id": 13,
+                                "name": "Кратность",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.Кратность",
+                                  "empty": false
+                                },
+                                "items": []
+                              },
+                              {
+                                "type": "InputField",
+                                "id": 84,
+                                "name": "СписокВалютОтступ",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                },
+                                "dataPath": {
+                                  "segments": "Объект.СписокВалют.Отступ",
+                                  "empty": false
+                                },
+                                "items": []
+                              }
+                            ],
+                            []
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Page",
+                      "id": 67,
+                      "name": "СтраницаВыполняетсяЗагрузкаКурсов",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Страница выполняется загрузка курсов"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        [
+                          {
+                            "type": "PictureDecoration",
+                            "id": 69,
+                            "name": "КартинкаДлительнаяОперация",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Картинка длительная операция"
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                            },
+                            "items": []
+                          },
+                          {
+                            "type": "LabelDecoration",
+                            "id": 72,
+                            "name": "НадписьВыполняетсяЗагрузкаКурсовВалют",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Выполняется загрузка курсов валют..."
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                            },
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
+          ],
+          "attributes": [
+            [
+              {
+                "id": 1,
+                "name": "Объект",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                }
+              },
+              {
+                "id": 2,
+                "name": "СообщитьЧтоКурсыАктуальны",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                }
+              }
+            ],
+            []
+          ]
+        },
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        },
+        "usePurposes": [
+          [
+            "PLATFORM_APPLICATION",
+            "MOBILE_PLATFORM_APPLICATION"
+          ],
+          []
+        ]
+      },
+      {
+        "uuid": "569047c2-0879-4fba-a814-44812d21043b",
+        "name": "СообщенияОбОшибках",
+        "mdoReference": {
+          "type": "FORM",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.СообщенияОбОшибках",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.СообщенияОбОшибках"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Сообщения об ошибках"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "modules": [
+          {
+            "moduleType": "FormModule",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/СообщенияОбОшибках/Ext/Form/Module.bsl",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
+          }
+        ],
+        "formType": "MANAGED",
+        "data": {
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/СообщенияОбОшибках/Ext/Form.xml",
+          "title": {
+            "content": [
+              [
+                "ru",
+                "Подробнее"
+              ]
+            ]
+          },
+          "handlers": [
+            {
+              "event": "OnCreateAtServer",
+              "name": "ПриСозданииНаСервере"
+            }
+          ],
+          "items": [
+            {
+              "type": "InputField",
+              "id": 1,
+              "name": "Текст",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+              },
+              "dataPath": {
+                "segments": "Текст",
+                "empty": false
+              },
+              "items": []
+            }
+          ],
+          "attributes": [
+            [
+              {
+                "id": 1,
+                "name": "Объект",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                }
+              },
+              {
+                "id": 2,
+                "name": "Текст",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Текст"
+                    ]
+                  ]
+                }
+              }
+            ],
+            []
+          ]
+        },
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        },
+        "usePurposes": [
+          [
+            "PLATFORM_APPLICATION",
+            "MOBILE_PLATFORM_APPLICATION"
+          ],
+          []
+        ]
+      },
+      {
+        "uuid": "0c3c4494-c037-431e-9eeb-9b6cfd7372c3",
+        "name": "ПараметрыПрописиВалюты_ru",
+        "mdoReference": {
+          "type": "FORM",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.ПараметрыПрописиВалюты_ru",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.ПараметрыПрописиВалюты_ru"
+        },
+        "objectBelonging": "OWN",
+        "comment": "АПК:58",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Параметры прописи валюты на русском языке"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "modules": [
+          {
+            "moduleType": "FormModule",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/ПараметрыПрописиВалюты_ru/Ext/Form/Module.bsl",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
+          }
+        ],
+        "formType": "MANAGED",
+        "data": {
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/ПараметрыПрописиВалюты_ru/Ext/Form.xml",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          },
+          "handlers": [
+            [
+              {
+                "event": "OnOpen",
+                "name": "ПриОткрытии"
+              },
+              {
+                "event": "OnCreateAtServer",
+                "name": "ПриСозданииНаСервере"
+              }
+            ],
+            []
+          ],
+          "items": [
+            [
+              {
+                "type": "UsualGroup",
+                "id": 9,
+                "name": "СклонениеЦелойЧасти",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Целая часть"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                },
+                "items": [
+                  [
+                    {
+                      "type": "InputField",
+                      "id": 13,
+                      "name": "ЦелаяЧастьРод",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Род"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "ЦелаяЧастьРод",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 10,
+                      "name": "ЦелаяЧастьОдин",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Один"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "ЦелаяЧастьОдин",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 11,
+                      "name": "ЦелаяЧатьДва",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Два"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "ЦелаяЧатьДва",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 12,
+                      "name": "ПолеПрописи3наРусском",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Пять"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "ЦелаяЧастьПять",
+                        "empty": false
+                      },
+                      "items": []
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "type": "UsualGroup",
+                "id": 55,
+                "name": "ГруппаПараметрыДробнойЧасти",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Дробная часть"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                },
+                "items": [
+                  [
+                    {
+                      "type": "UsualGroup",
+                      "id": 14,
+                      "name": "СклонениеДробнойЧасти",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Склонение дробной части"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        [
+                          {
+                            "type": "InputField",
+                            "id": 18,
+                            "name": "ДробнаяЧастьРод",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Род"
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "segments": "ДробнаяЧастьРод",
+                              "empty": false
+                            },
+                            "items": []
+                          },
+                          {
+                            "type": "InputField",
+                            "id": 17,
+                            "name": "ДробнаяЧастьОдин",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Один"
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "segments": "ДробнаяЧастьОдин",
+                              "empty": false
+                            },
+                            "items": []
+                          },
+                          {
+                            "type": "InputField",
+                            "id": 16,
+                            "name": "ДробнаяЧастьДва",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Два"
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "segments": "ДробнаяЧастьДва",
+                              "empty": false
+                            },
+                            "items": []
+                          },
+                          {
+                            "type": "InputField",
+                            "id": 15,
+                            "name": "ДробнаяЧастьПять",
+                            "title": {
+                              "content": [
+                                [
+                                  "ru",
+                                  "Пять"
+                                ]
+                              ]
+                            },
+                            "dataPath": {
+                              "segments": "ДробнаяЧастьПять",
+                              "empty": false
+                            },
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    },
+                    {
+                      "type": "UsualGroup",
+                      "id": 56,
+                      "name": "ГруппаЧислоРазрядовДробнойЧасти",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Число разрядов дробной части"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                      },
+                      "items": [
+                        {
+                          "type": "InputField",
+                          "id": 20,
+                          "name": "ДлинаДробнойЧасти",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                          },
+                          "dataPath": {
+                            "segments": "ДлинаДробнойЧасти",
+                            "empty": false
+                          },
+                          "items": []
+                        }
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "type": "UsualGroup",
+                "id": 61,
+                "name": "ГруппаПримерПрописи",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Пример прописи суммы"
+                    ]
+                  ]
+                },
+                "dataPath": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                },
+                "items": [
+                  [
+                    {
+                      "type": "InputField",
+                      "id": 59,
+                      "name": "СуммаЧисло",
+                      "title": {
+                        "content": [
+                          [
+                            "ru",
+                            "Сумма"
+                          ]
+                        ]
+                      },
+                      "dataPath": {
+                        "segments": "СуммаЧисло",
+                        "empty": false
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "InputField",
+                      "id": 62,
+                      "name": "СуммаПрописью",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      },
+                      "dataPath": {
+                        "segments": "СуммаПрописью",
+                        "empty": false
+                      },
+                      "items": []
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
+          ],
+          "attributes": [
+            [
+              {
+                "id": 2,
+                "name": "ЦелаяЧастьОдин",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Целая часть один"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 3,
+                "name": "ЦелаяЧатьДва",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Целая чать два"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 4,
+                "name": "ЦелаяЧастьПять",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Целая часть пять"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 5,
+                "name": "ЦелаяЧастьРод",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Целая часть род"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 6,
+                "name": "ДробнаяЧастьОдин",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Дробная часть один"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 7,
+                "name": "ДробнаяЧастьДва",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Дробная часть два"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 8,
+                "name": "ДробнаяЧастьПять",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Дробная часть пять"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 9,
+                "name": "ДробнаяЧастьРод",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Дробная часть род"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 11,
+                "name": "ДлинаДробнойЧасти",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Число разрядов дробной части"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 10,
+                "name": "ЗависимыйКурсВалют",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                }
+              },
+              {
+                "id": 12,
+                "name": "СуммаЧисло",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Сумма число"
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": 13,
+                "name": "СуммаПрописью",
+                "title": {
+                  "content": [
+                    [
+                      "ru",
+                      "Сумма прописью"
+                    ]
+                  ]
+                }
+              }
+            ],
+            []
+          ]
+        },
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        },
+        "usePurposes": [
+          [
+            "PLATFORM_APPLICATION",
+            "MOBILE_PLATFORM_APPLICATION"
+          ],
+          []
+        ]
+      },
+      {
+        "uuid": "80512d95-5458-4934-98ae-a7b58099196b",
+        "name": "ПодборВалютИзКлассификатора",
+        "mdoReference": {
+          "type": "FORM",
+          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.ПодборВалютИзКлассификатора",
+          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.ПодборВалютИзКлассификатора"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            [
+              "ru",
+              "Подбор валют из классификатора"
+            ]
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "modules": [
+          {
+            "moduleType": "FormModule",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/ПодборВалютИзКлассификатора/Ext/Form/Module.bsl",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "isProtected": false
+          }
+        ],
+        "formType": "MANAGED",
+        "data": {
+          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/ПодборВалютИзКлассификатора/Ext/Form.xml",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          },
+          "handlers": [
+            {
+              "event": "OnCreateAtServer",
+              "name": "ПриСозданииНаСервере"
+            }
+          ],
+          "items": [
+            {
+              "type": "Table",
+              "id": 1,
+              "name": "СписокВалют",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Валют"
+                  ]
+                ]
+              },
+              "dataPath": {
+                "segments": "Валюты",
+                "empty": false
+              },
+              "items": [
+                [
+                  {
+                    "type": "InputField",
+                    "id": 4,
+                    "name": "КодВалюты",
+                    "title": {
+                      "content": [
+                        [
+                          "ru",
+                          "Цифр. код"
+                        ]
+                      ]
+                    },
+                    "dataPath": {
+                      "segments": "Валюты.КодВалютыЦифровой",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "InputField",
+                    "id": 6,
+                    "name": "КраткоеНаименование",
+                    "title": {
+                      "content": [
+                        [
+                          "ru",
+                          "Симв. код"
+                        ]
+                      ]
+                    },
+                    "dataPath": {
+                      "segments": "Валюты.КодВалютыБуквенный",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "InputField",
+                    "id": 8,
+                    "name": "Наименование",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                    },
+                    "dataPath": {
+                      "segments": "Валюты.Наименование",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "InputField",
+                    "id": 10,
+                    "name": "СтраныИТерритории",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                    },
+                    "dataPath": {
+                      "segments": "Валюты.СтраныИТерритории",
+                      "empty": false
+                    },
+                    "items": []
+                  },
+                  {
+                    "type": "CheckBoxField",
+                    "id": 15,
+                    "name": "Загружается",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                    },
+                    "dataPath": {
+                      "segments": "Валюты.Загружается",
+                      "empty": false
+                    },
+                    "items": []
+                  }
+                ],
+                []
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "id": 1,
+              "name": "Валюты",
+              "title": {
+                "content": [
+                  [
+                    "ru",
+                    "Валюты"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        },
+        "usePurposes": [
+          [
+            "PLATFORM_APPLICATION",
+            "MOBILE_PLATFORM_APPLICATION"
+          ],
+          []
+        ]
+      }
+    ],
+    []
+  ],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  },
+  "modules": [
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    },
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "ЗагрузкаКурсовВалют",
+  "objectBelonging": "OWN",
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Загрузка курсов валют"
+      ]
+    ]
+  },
+  "tabularSections": [
+    {
+      "uuid": "3068be84-a401-4701-8ac9-411fae130f84",
+      "name": "СписокВалют",
+      "mdoReference": {
+        "type": "TABULAR_SECTION",
+        "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют",
+        "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Список валют"
+          ]
+        ]
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "attributes": [
+        [
+          {
+            "uuid": "957394a7-e5b8-47fc-8680-1e71efe2be7d",
+            "name": "КодВалюты",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.КодВалюты",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.КодВалюты"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Код валюты"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "ba49a9e4-6ec1-43ff-92cd-9dbf221bbf09",
+            "name": "Валюта",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.Валюта",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.Валюта"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Валюта"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "4f25ef45-c8d9-401d-b0e8-2217ac310f04",
+            "name": "ДатаКурса",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.ДатаКурса",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.ДатаКурса"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Дата курса"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "504ca240-b5ae-433e-ae5f-d818263eea23",
+            "name": "Курс",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.Курс",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.Курс"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Курс"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "32461819-9437-417d-8d1e-851c9a2dcee2",
+            "name": "Кратность",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.Кратность",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.Кратность"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Кратность"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "74228950-8a4b-4dd6-a053-8650de202521",
+            "name": "Загружать",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.Загружать",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.Загружать"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Загружать"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "6b9ce91e-08b9-4972-9878-1724c67b68ec",
+            "name": "Представление",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.Представление",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.Представление"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Представление"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "640814f2-6082-475e-8006-25fd5b24afdb",
+            "name": "СимвольныйКод",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.Attribute.СимвольныйКод",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.Реквизит.СимвольныйКод"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                [
+                  "ru",
+                  "Символьный код"
+                ]
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          }
+        ],
+        []
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "uuid": "6f2354cd-4a34-4921-96bb-b786486f85cf",
+      "name": "ОбщероссийскийКлассификаторВалют",
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Template.ОбщероссийскийКлассификаторВалют",
+        "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Макет.ОбщероссийскийКлассификаторВалют"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Общероссийский классификатор валют"
+          ]
+        ]
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "modules": [],
+      "templateType": "TEXT_DOCUMENT",
+      "data": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
+      },
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/allAttributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      }
+    }
+  ],
+  "uuid": "f36150de-33af-4410-8a4c-8c9f4b545793"
+}}

@@ -21,9 +21,22 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import lombok.NonNull;
+
+import java.util.List;
+
 /**
  * Интерфейс табличных частей объектов (включая стандартные ТЧ)
  */
-public interface TabularSection extends MD, AttributeOwner {
+public interface TabularSection extends MDChild, AttributeOwner {
+  /**
+   * Список реквизитов табличной части
+   */
+  List<Attribute> getAttributes();
 
+  @Override
+  @NonNull
+  default List<Attribute> getAllAttributes() {
+    return getAttributes();
+  }
 }

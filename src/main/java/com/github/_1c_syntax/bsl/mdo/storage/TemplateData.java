@@ -21,6 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
+import javax.annotation.Nullable;
+import java.nio.file.Path;
+
 /**
  * Интерфейс содержимого макетов
  */
@@ -29,4 +32,12 @@ public interface TemplateData {
    * Признак пустого содержимого
    */
   boolean isEmpty();
+
+  /**
+   * Путь к файлу с содержимым. Может быть незаполнен
+   */
+  @Nullable
+  default Path getDataPath() {
+    return null;
+  }
 }

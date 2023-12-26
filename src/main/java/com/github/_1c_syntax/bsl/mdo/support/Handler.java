@@ -50,16 +50,16 @@ public class Handler {
   private String moduleName = "";
   private String methodName = "";
 
-  public Handler(String methodPath) {
-    methodPath = methodPath == null ? "" : methodPath;
+  public Handler(String path) {
+    path = path == null ? "" : path;
 
-    this.methodPath = methodPath;
-    String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(methodPath);
+    methodPath = path;
+    String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(path);
     if (data.length > MODULE_NAME_POSITION) {
-      this.moduleName = data[MODULE_NAME_POSITION];
+      moduleName = data[MODULE_NAME_POSITION];
     }
     if (data.length > METHOD_NAME_POSITION) {
-      this.methodName = data[METHOD_NAME_POSITION];
+      methodName = data[METHOD_NAME_POSITION];
     }
   }
 

@@ -6,3 +6,4 @@
 
 - [Примеры использования](examples.md)
 - [Системные требования](systemRequirements.md)
+- [Возможности](features.md)

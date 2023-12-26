@@ -29,13 +29,13 @@ import lombok.experimental.Accessors;
  * Возможные виды расширений
  */
 @AllArgsConstructor
+@Getter
 public enum ConfigurationExtensionPurpose implements EnumWithValue {
   CUSTOMIZATION("Customization"),
   ADD_ON("AddOn"),
   PATCH("Patch"),
   UNDEFINED("Undefined");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

@@ -16,21 +16,23 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.1.0
+    - uses: actions/checkout@v4.1.0
+      with:
+        submodules: true
+        lfs: true
 
     - name: Setup JDK
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: 17
-        distribution: 'adopt'
-
+        distribution: 'liberica'
     - name: Build javadoc
       run: ./gradlew --no-daemon javadoc
 
     - name: Set up Python
-      uses: actions/setup-python@v4.2.0
+      uses: actions/setup-python@v5.0.0
       with:
-        python-version: '3.6'
+        python-version: '3.10'
         architecture: 'x64'
 
     - name: Install dependencies
@@ -122,7 +124,7 @@ jobs:
         cp -R temp/site/. public/dev/en
         
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3.8.0
+      uses: peaceiris/actions-gh-pages@v3.9.3
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_branch: gh-pages

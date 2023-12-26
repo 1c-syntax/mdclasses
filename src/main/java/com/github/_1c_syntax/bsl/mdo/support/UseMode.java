@@ -29,13 +29,12 @@ import lombok.experimental.Accessors;
  * Возможные варианты "использования"
  */
 @AllArgsConstructor
+@Getter
 public enum UseMode implements EnumWithValue {
   DONT_USE("DontUse"),
   USE("Use"),
   USE_WITH_WARNINGS("UseWithWarnings");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
-
 }

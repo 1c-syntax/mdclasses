@@ -21,9 +21,24 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import lombok.NonNull;
+
+import java.util.List;
+
 /**
  * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ и т.д.)
  */
-public interface ReferenceObject extends MDObject, AttributeOwner, CommandOwner, FormOwner, ModuleOwner,
-  TabularSectionOwner, TemplateOwner {
+public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
+  FormOwner, TemplateOwner {
+
+  /**
+   * Список реквизитов объекта
+   */
+  List<Attribute> getAttributes();
+
+  @Override
+  @NonNull
+  default List<Attribute> getAllAttributes() {
+    return getAttributes();
+  }
 }

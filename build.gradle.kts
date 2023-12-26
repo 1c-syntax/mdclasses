@@ -1,46 +1,65 @@
-import java.net.URI
+import me.qoomon.gitversioning.commons.GitRefType
 import java.util.*
 
 plugins {
     `java-library`
     `maven-publish`
     jacoco
+    signing
     id("org.cadixdev.licenser") version "0.6.1"
-    id("com.github.gradle-git-version-calculator") version "1.1.0"
-    id("io.freefair.lombok") version "8.3"
-    id("io.freefair.javadoc-links") version "8.3"
-    id("io.freefair.javadoc-utf-8") version "8.3"
+    id("me.qoomon.git-versioning") version "6.4.3"
+    id("com.gorylenko.gradle-git-properties") version "2.4.1"
+    id("io.freefair.lombok") version "8.4"
+    id("io.freefair.javadoc-links") version "8.4"
+    id("io.freefair.javadoc-utf-8") version "8.4"
+    id("io.freefair.maven-central.validate-poms") version "8.4"
+    id("ru.vyarus.pom") version "2.2.2"
     id("org.sonarqube") version "4.4.1.3373"
+    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
-group = "com.github.1c-syntax"
-version = gitVersionCalculator.calculateVersion("v")
+group = "io.github.1c-syntax"
+gitVersioning.apply {
+    refs {
+        considerTagsOnBranches = true
+        tag("v(?<tagVersion>[0-9].*)") {
+            version = "\${ref.tagVersion}\${dirty}"
+        }
+        branch(".+") {
+            version = "\${ref}-\${commit.short}\${dirty}"
+        }
+    }
+
+    rev {
+        version = "\${commit.short}\${dirty}"
+    }
+}
+val isSnapshot = gitVersioning.gitVersionDetails.refType != GitRefType.TAG
 
 repositories {
     mavenLocal()
     mavenCentral()
     maven(url = "https://jitpack.io")
+    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/io.vavr/vavr
-    implementation("io.vavr", "vavr", "0.10.2")
-
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.19")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "1.7.30")
 
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
-    implementation("org.apache.commons", "commons-lang3", "3.11")
-    implementation("com.github.1c-syntax", "utils", "0.4.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.3.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.12.1")
+    implementation("com.github.1c-syntax", "utils", "0.5.1")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.5.0")
+    implementation("io.github.1c-syntax", "supportconf", "0.12.1") {
+        exclude("io.github.1c-syntax", "bsl-common-library")
+    }
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.147")
@@ -60,8 +79,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
 }
@@ -101,14 +120,25 @@ tasks.withType<JavaCompile> {
     options.compilerArgs.add("-parameters")
 }
 
-sonarqube {
+tasks.test {
+    jvmArgs("--add-opens=java.base/java.util=ALL-UNNAMED")
+}
+
+tasks.javadoc {
+    options {
+        this as StandardJavadocDocletOptions
+        noComment(false)
+    }
+}
+
+sonar {
     properties {
         property("sonar.sourceEncoding", "UTF-8")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.organization", "1c-syntax")
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
-        property("sonar.exclusions", "**/gen/**/*.*")
+        property("sonar.exclusions", "**/resources/**/*.*")
         property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
     }
 }
@@ -125,8 +155,7 @@ license {
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
-    exclude("**/edt*/**")
-    exclude("**/origin*/**")
+    exclude("**/*.yml")
     exclude("**/*.bin")
     exclude("**/*.html")
     exclude("**/*.properties")
@@ -135,13 +164,43 @@ license {
     exclude("**/*.os")
     exclude("**/*.bsl")
     exclude("**/*.orig")
-    exclude("**/*.yml")
+}
+
+signing {
+    val signingInMemoryKey: String? by project      // env.ORG_GRADLE_PROJECT_signingInMemoryKey
+    val signingInMemoryPassword: String? by project // env.ORG_GRADLE_PROJECT_signingInMemoryPassword
+    if (signingInMemoryKey != null) {
+        useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryPassword)
+        sign(publishing.publications)
+    }
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "sonatype"
+            url = if (isSnapshot)
+                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            else
+                uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+
+            val sonatypeUsername: String? by project
+            val sonatypePassword: String? by project
+
+            credentials {
+                username = sonatypeUsername // ORG_GRADLE_PROJECT_sonatypeUsername
+                password = sonatypePassword // ORG_GRADLE_PROJECT_sonatypePassword
+            }
+        }
+    }
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
+
+            if (isSnapshot && project.hasProperty("simplifyVersion")) {
+                version = findProperty("git.ref.slug") as String + "-SNAPSHOT"
+            }
+
             pom {
                 description.set("Metadata read/write library for Language 1C (BSL)")
                 url.set("https://github.com/1c-syntax/mdclasses")
@@ -178,6 +237,11 @@ publishing {
             }
         }
     }
+}
+
+nexusStaging {
+    serverUrl = "https://s01.oss.sonatype.org/service/local/"
+    stagingProfileId = "15bd88b4d17915" // ./gradlew getStagingProfile
 }
 
 tasks.register("precommit") {

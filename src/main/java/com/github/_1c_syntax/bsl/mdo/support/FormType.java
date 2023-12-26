@@ -29,11 +29,11 @@ import lombok.experimental.Accessors;
  * Тип формы (обычная или управляемая)
  */
 @AllArgsConstructor
+@Getter
 public enum FormType implements EnumWithValue {
   ORDINARY("Ordinary"),
   MANAGED("Managed");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Расширение - Владелец дочерних форм
@@ -31,10 +32,5 @@ public interface FormOwner extends ChildrenOwner {
   /**
    * Список форм объекта
    */
-  default List<Form> getForms() {
-    return getChildren().stream()
-      .filter(Form.class::isInstance)
-      .map(Form.class::cast)
-      .collect(Collectors.toList());
-  }
+  List<ObjectForm> getForms();
 }

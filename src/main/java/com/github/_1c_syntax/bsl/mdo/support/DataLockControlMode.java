@@ -29,12 +29,12 @@ import lombok.experimental.Accessors;
  * Возможные варианты режима блокировки
  */
 @AllArgsConstructor
+@Getter
 public enum DataLockControlMode implements EnumWithValue {
   AUTOMATIC("Automatic"),
   MANAGED("Managed"),
   AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
 
-  @Getter
   @Accessors(fluent = true)
   private final String value;
 }

@@ -1,0 +1,95 @@
+{"com.github._1c_syntax.bsl.mdo.ChartOfAccounts": {
+  "accountingFlags": [
+    {
+      "uuid": "957a5154-1e63-49e1-8e99-3893490da6f6",
+      "name": "ПризнакУчета",
+      "mdoReference": {
+        "type": "ACCOUNTING_FLAG",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1.AccountingFlag.ПризнакУчета",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1.ПризнакУчета.ПризнакУчета"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Признак учета"
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "type": "CHART_OF_ACCOUNTS",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX"
+    }
+  ],
+  "allAttributes": [
+    {
+      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag"
+    },
+    {
+      "uuid": "4f04d72a-e3e9-4e9b-96da-7d0e1ad989e6",
+      "name": "ПризнакУчета",
+      "mdoReference": {
+        "type": "EXT_DIMENSION_ACCOUNTING_FLAG",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1.ExtDimensionAccountingFlag.ПризнакУчета",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1.ПризнакУчетаСубконто.ПризнакУчета"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Признак учета"
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX"
+    }
+  ],
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "extDimensionAccountingFlags": [
+    {
+      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/allAttributes/com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag"
+    }
+  ],
+  "forms": [],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+  },
+  "modules": [
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfAccounts/ПланСчетов1/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+      },
+      "supportVariant": "NONE",
+      "isProtected": false
+    }
+  ],
+  "name": "ПланСчетов1",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": []
+  },
+  "tabularSections": [],
+  "templates": [],
+  "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4"
+}}

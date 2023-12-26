@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.mdclasses.mdo.children.form;
 
+import com.github._1c_syntax.mdclasses.ExtInfoConverter;
+import com.github._1c_syntax.mdclasses.StringConverterIntern;
 import com.github._1c_syntax.mdclasses.mdo.support.DataPath;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.StringConverterIntern;
-import com.github._1c_syntax.mdclasses.unmarshal.converters.ExtInfoConverter;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
@@ -50,7 +50,7 @@ public class FormItem {
    */
   private int id = -1;
   /**
-   * Тип элемента. Например Label или InputField. На текущий момент в виде строки
+   * Тип элемента. Например, Label или InputField. На текущий момент в виде строки
    */
   @XStreamConverter(StringConverterIntern.class)
   private String type = "";

@@ -1,0 +1,94 @@
+{"com.github._1c_syntax.bsl.mdo.Report": {
+  "allAttributes": [],
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "forms": [],
+  "mdoReference": {
+    "type": "REPORT",
+    "mdoRef": "Report.АнализВерсийОбъектов",
+    "mdoRefRu": "Отчет.АнализВерсийОбъектов"
+  },
+  "modules": [],
+  "name": "АнализВерсийОбъектов",
+  "objectBelonging": "OWN",
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      [
+        "ru",
+        "Анализ версий объектов"
+      ]
+    ]
+  },
+  "tabularSections": [],
+  "templates": [
+    {
+      "uuid": "9111e28e-c1c7-414b-9288-61bd06a04d04",
+      "name": "ОсновнаяСхемаКомпоновкиДанных",
+      "mdoReference": {
+        "type": "TEMPLATE",
+        "mdoRef": "Report.АнализВерсийОбъектов.Template.ОсновнаяСхемаКомпоновкиДанных",
+        "mdoRefRu": "Отчет.АнализВерсийОбъектов.Макет.ОсновнаяСхемаКомпоновкиДанных"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            "ru",
+            "Основная схема компоновки данных"
+          ]
+        ]
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "modules": [],
+      "templateType": "DATA_COMPOSITION_SCHEME",
+      "data": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+        "dataSets": [
+          {
+            "name": "НаборДанных1",
+            "type": "DATA_SET_QUERY",
+            "dataSource": "ИсточникДанных1",
+            "items": [],
+            "querySource": {
+              "position": {
+                "line": 46,
+                "column": 10
+              },
+              "textQuery": "ВЫБРАТЬ\n\tТИПЗНАЧЕНИЯ(ВерсииОбъектов.Объект) КАК ТипОбъекта,\n\tСУММА(ВерсииОбъектов.РазмерДанных / 1024 / 1024) КАК РазмерДанных,\n\tСУММА(1) КАК Количество\nИЗ\n\tРегистрСведений.ВерсииОбъектов КАК ВерсииОбъектов\nГДЕ\n\tВерсииОбъектов.РазмерДанных > 0\n\nСГРУППИРОВАТЬ ПО\n\tТИПЗНАЧЕНИЯ(ВерсииОбъектов.Объект)\n\nУПОРЯДОЧИТЬ ПО\n\tРазмерДанных УБЫВ,\n\tКоличество УБЫВ"
+            },
+            "fields": [
+              [
+                {
+                  "dataPath": "Количество",
+                  "name": "Количество"
+                },
+                {
+                  "dataPath": "РазмерДанных",
+                  "name": "РазмерДанных"
+                },
+                {
+                  "dataPath": "ТипОбъекта",
+                  "name": "ТипОбъекта"
+                }
+              ],
+              []
+            ]
+          }
+        ],
+        "plainDataSets": [
+          {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/data/dataSets/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet"
+          }
+        ],
+        "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/Reports/АнализВерсийОбъектов/Templates/ОсновнаяСхемаКомпоновкиДанных/Ext/Template.xml"
+      },
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
+      }
+    }
+  ],
+  "uuid": "b3f7f763-bea9-4f59-9450-df95e5c3d89d"
+}}
