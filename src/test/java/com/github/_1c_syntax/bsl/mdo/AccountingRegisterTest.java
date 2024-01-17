@@ -26,6 +26,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class AccountingRegisterTest {
   @ParameterizedTest
   @CsvSource(
@@ -36,5 +38,17 @@ class AccountingRegisterTest {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+
+    var accountingRegister = (AccountingRegister) mdo;
+
+    assertThat(accountingRegister.getSynonym().isEmpty()).isFalse();
+    assertThat(accountingRegister.getSynonym().get("ru")).isEqualTo("Регистр бухгалтерии");
+    assertThat(accountingRegister.getSynonym().get("en")).isEqualTo("Accounting register");
+    assertThat(accountingRegister.getSynonym().get("by")).isEmpty();
+
+    assertThat(accountingRegister.getDescription()).isEqualTo("Регистр бухгалтерии");
+    assertThat(accountingRegister.getDescription("ru")).isEqualTo("Регистр бухгалтерии");
+    assertThat(accountingRegister.getDescription("en")).isEqualTo("Accounting register");
+    assertThat(accountingRegister.getDescription("by")).isNotEmpty().isNotEqualTo("РегистрБухгалтерии1");
   }
 }
