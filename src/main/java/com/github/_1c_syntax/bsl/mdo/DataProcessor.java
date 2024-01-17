@@ -111,6 +111,13 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+
   @Override
   @NonNull
   public List<Attribute> getAllAttributes() {

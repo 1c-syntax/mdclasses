@@ -82,12 +82,6 @@ public class Subsystem implements MDObject, ChildrenOwner {
   List<MdoReference> content;
 
   /**
-   * Пояснение/Описание
-   */
-  @Default
-  MultiLanguageString explanation = MultiLanguageString.EMPTY;
-
-  /**
    * Родительская подсистема
    */
   @Default
@@ -111,6 +105,12 @@ public class Subsystem implements MDObject, ChildrenOwner {
   /*
    * свое
    */
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Возвращает список подсистем, в которые входит указанная ссылка на объект

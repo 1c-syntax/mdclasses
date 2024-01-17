@@ -72,6 +72,12 @@ public class ExternalDataSource implements MDObject, ChildrenOwner {
   @Singular
   List<ExternalDataSourceTable> tables;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   // todo сделать функции и кубы
 
   @Override

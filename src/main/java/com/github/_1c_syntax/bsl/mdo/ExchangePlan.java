@@ -103,6 +103,12 @@ public class ExchangePlan implements ReferenceObject {
   List<RecordContent> content;
 
   /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
    * Проверяет наличие объекта в составе плана обмена (вне зависимости от режима авторегистрации)
    *
    * @param mdoReference Ссылка на искомый объект

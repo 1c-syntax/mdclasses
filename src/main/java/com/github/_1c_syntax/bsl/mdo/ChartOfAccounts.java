@@ -101,6 +101,12 @@ public class ChartOfAccounts implements ReferenceObject {
   @Singular
   List<ExtDimensionAccountingFlag> extDimensionAccountingFlags;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
   public @NonNull List<Attribute> getAllAttributes() {
     var allAttributes = new ArrayList<>(ReferenceObject.super.getAllAttributes());

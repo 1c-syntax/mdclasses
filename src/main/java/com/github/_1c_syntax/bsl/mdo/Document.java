@@ -90,4 +90,11 @@ public class Document implements ReferenceObject {
    */
   @Singular("addRegisterRecords")
   List<MdoReference> registerRecords;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

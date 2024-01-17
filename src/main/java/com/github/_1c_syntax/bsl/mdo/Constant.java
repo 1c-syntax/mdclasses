@@ -76,4 +76,10 @@ public class Constant implements MDObject, ModuleOwner {
    */
   boolean passwordMode;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

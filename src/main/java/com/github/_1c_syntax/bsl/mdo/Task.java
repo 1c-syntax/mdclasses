@@ -94,6 +94,12 @@ public class Task implements ReferenceObject {
   @Singular
   List<TaskAddressingAttribute> addressingAttributes;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
   @NonNull
   public List<MD> getChildren() {
