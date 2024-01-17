@@ -87,4 +87,10 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

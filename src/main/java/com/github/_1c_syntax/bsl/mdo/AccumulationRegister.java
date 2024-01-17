@@ -88,6 +88,12 @@ public class AccumulationRegister implements Register {
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }
 
 

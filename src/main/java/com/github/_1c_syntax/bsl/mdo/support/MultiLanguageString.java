@@ -82,4 +82,25 @@ public class MultiLanguageString {
   public @NonNull String get(@NonNull String lang) {
     return content.getOrDefault(lang, "");
   }
+
+  /**
+   * Возвращает первое попавшееся содержимое мультиязычной строки
+   *
+   * @return Одно из значений мультиязычной строки
+   */
+  public @NonNull String getAny() {
+    if (content.isEmpty()) {
+      return "";
+    }
+    return content.entrySet().iterator().next().getValue();
+  }
+
+  /**
+   * Возвращает признак пустоты мультиязычной строки
+   *
+   * @return Если пустая, тогда true
+   */
+  public boolean isEmpty() {
+    return this == EMPTY;
+  }
 }

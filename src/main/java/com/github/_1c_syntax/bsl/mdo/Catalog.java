@@ -84,4 +84,11 @@ public class Catalog implements ReferenceObject {
   /*
    * Свое
    */
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

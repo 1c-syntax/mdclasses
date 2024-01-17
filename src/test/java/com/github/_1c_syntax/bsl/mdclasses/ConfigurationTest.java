@@ -167,6 +167,12 @@ class ConfigurationTest {
       .hasSize(726);
     assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
       .isEmpty();
+
+    assertThat(cf.getSynonym().isEmpty()).isFalse();
+    assertThat(cf.getSynonym().get("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
+    assertThat(cf.getDescription()).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
+    assertThat(cf.getDescription("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
+    assertThat(cf.getDescription("en")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
   }
 
   @ParameterizedTest
@@ -398,6 +404,7 @@ class ConfigurationTest {
         cf.getAccountingRegisters().size() + cf.getCalculationRegisters().size() +
         cf.getBusinessProcesses().size() + cf.getTasks().size() +
         cf.getExternalDataSources().size());
+
   }
 
   private static void checkChildrenMdclasses(Configuration cf) {

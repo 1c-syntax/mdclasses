@@ -87,4 +87,11 @@ public class InformationRegister implements Register {
   /*
    * Свое
    */
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

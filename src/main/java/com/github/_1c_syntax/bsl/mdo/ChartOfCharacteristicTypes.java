@@ -85,4 +85,10 @@ public class ChartOfCharacteristicTypes implements ReferenceObject {
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }

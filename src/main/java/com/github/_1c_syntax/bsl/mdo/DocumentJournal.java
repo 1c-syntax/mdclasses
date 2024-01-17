@@ -111,6 +111,12 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   @Singular("addRegisteredDocuments")
   List<MdoReference> registeredDocuments;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
   @NonNull
   public List<Attribute> getAllAttributes() {

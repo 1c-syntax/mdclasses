@@ -111,6 +111,12 @@ public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwn
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
   @NonNull
   public List<Attribute> getAllAttributes() {

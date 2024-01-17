@@ -93,6 +93,12 @@ public class CalculationRegister implements Register {
   @Singular
   List<Recalculation> recalculations;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
   @NonNull
   public List<MD> getChildren() {

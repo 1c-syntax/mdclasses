@@ -98,12 +98,17 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
    * Свое
    */
 
-
   /**
    * Элементы перечисления
    */
   @Singular
   List<EnumValue> enumValues;
+
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
   @NonNull

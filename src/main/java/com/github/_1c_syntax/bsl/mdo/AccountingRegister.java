@@ -88,4 +88,10 @@ public class AccountingRegister implements Register {
    * Свое
    */
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
 }
