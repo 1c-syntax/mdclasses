@@ -65,5 +65,4 @@ public interface MDReader {
   MDClass readConfiguration();
 
   MDClass readExternalSource();
-
 }
