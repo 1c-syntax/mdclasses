@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -46,6 +47,7 @@ import java.util.List;
 public class RoleData {
 
   public static final RoleData EMPTY = RoleData.builder().build();
+  public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
 
   /**
    * Устанавливать права для новых объектов
@@ -97,8 +99,8 @@ public class RoleData {
   }
 
   @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
+  @ToString(of = {"name", "value"})
+  @EqualsAndHashCode(of = {"name", "value"})
   @Builder
   public static class Right {
     /**

@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.utils.StringInterner;
 import lombok.NonNull;
 import lombok.Value;
 
@@ -34,7 +34,6 @@ import java.util.Map;
  * Используется для хранения текстовой строки на разных языках
  */
 @Value
-@AllArgsConstructor
 public class MultiLanguageString {
 
   /**
@@ -42,14 +41,23 @@ public class MultiLanguageString {
    */
   public static final MultiLanguageString EMPTY = new MultiLanguageString(Collections.emptyMap());
 
+  private static final StringInterner stringInterner = new StringInterner();
+
   /**
    * Содержимое описания для каждого языка
    */
   Map<String, String> content;
 
+  public MultiLanguageString(Map<String, String> source) {
+    Map<String, String> newContent = new HashMap<>();
+    source.forEach(
+      (langKey, text) -> newContent.put(stringInterner.intern(langKey), text));
+    content = newContent;
+  }
+
   public MultiLanguageString(@NonNull MultiLanguageString first, @NonNull MultiLanguageString second) {
     var fullContent = new HashMap<>(first.getContent());
-    fullContent.putAll(second.getContent());
+    putContent(fullContent, second);
     content = fullContent;
   }
 
@@ -68,7 +76,7 @@ public class MultiLanguageString {
       return strings.get(0);
     } else {
       Map<String, String> content = new HashMap<>();
-      strings.forEach(string -> content.putAll(string.getContent()));
+      strings.forEach(string -> putContent(content, string));
       return new MultiLanguageString(content);
     }
   }
@@ -102,5 +110,10 @@ public class MultiLanguageString {
    */
   public boolean isEmpty() {
     return this == EMPTY;
+  }
+
+  private static void putContent(Map<String, String> destination, MultiLanguageString source) {
+    source.getContent().forEach(
+      (langKey, text) -> destination.put(stringInterner.intern(langKey), text));
   }
 }

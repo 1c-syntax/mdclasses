@@ -49,7 +49,7 @@ public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSi
         return item;
       }
     }
-    throw new IllegalArgumentException(value);
+    throw new IllegalArgumentException(clazz.getName() + " " + value);
   }
 
   @Override

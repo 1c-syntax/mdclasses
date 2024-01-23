@@ -96,7 +96,11 @@ public enum RoleRight implements EnumWithValue {
   INTERACTIVE_EXECUTE("InteractiveExecute"),
   TECHNICAL_SPECIALIST_MODE("TechnicalSpecialistMode"),
   INTERACTIVE_START("InteractiveStart"),
-  START("Start");
+  START("Start"),
+  STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange"),
+  SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange"),
+  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange")
+  ;
 
   @Accessors(fluent = true)
   private final String value;
