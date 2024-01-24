@@ -217,6 +217,6 @@ public class MDCReaderContext implements ReaderContext {
     } else {
       modulePath = EDTPaths.modulePath(folder, MDOType.CONFIGURATION.getName(), moduleType);
     }
-    return new ProtectedModuleInfo(modulePath);
+    return new ProtectedModuleInfo(modulePath, isDesignerFormat);
   }
 }

@@ -54,7 +54,7 @@ public class CommonModuleConverter extends AbstractReadConverter {
         ModuleType.CommonModule
       );
     }
-    var protectedModuleInfo = new ProtectedModuleInfo(modulePath);
+    var protectedModuleInfo = new ProtectedModuleInfo(modulePath, readerContext.isDesignerFormat());
     readerContext.setValue(URI_FIELD_NAME, protectedModuleInfo.getModulePath().toUri());
     readerContext.setValue(IS_PROTECTED_FIELD_NAME, protectedModuleInfo.isProtected());
     return readerContext.build();

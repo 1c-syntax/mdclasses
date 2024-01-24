@@ -278,6 +278,6 @@ public class MDReaderContext implements ReaderContext {
     } else {
       modulePath = EDTPaths.modulePath(folder, name, moduleType);
     }
-    return new ProtectedModuleInfo(modulePath);
+    return new ProtectedModuleInfo(modulePath, isDesignerFormat);
   }
 }
