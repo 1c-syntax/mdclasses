@@ -65,5 +65,4 @@ public class ObjectTabularSection implements TabularSection {
 
   @Singular
   List<Attribute> attributes;
-
 }

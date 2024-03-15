@@ -27,19 +27,19 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -66,12 +66,15 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+
   /*
    * ModuleOwner
    */
 
   @Default
   List<Module> modules = Collections.emptyList();
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
 
   /*
    * CommandOwner
@@ -118,8 +121,26 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
-  @NonNull
   public List<Attribute> getAllAttributes() {
-    return getColumns().stream().map(Attribute.class::cast).collect(Collectors.toList());
+    return Collections.unmodifiableList(columns);
   }
+
+  @Override
+  public List<MD> getChildren() {
+    return children.getOrCompute();
+  }
+
+  @Override
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  private List<MD> computeChildren() {
+    return LazyLoader.computeChildren(this);
+  }
+
+  private List<Module> computeAllModules() {
+    return LazyLoader.computeAllModules(this);
+  }
+
 }

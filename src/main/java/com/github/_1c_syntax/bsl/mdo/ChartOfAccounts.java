@@ -28,17 +28,17 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,21 +69,29 @@ public class ChartOfAccounts implements ReferenceObject {
 
   @Default
   List<Module> modules = Collections.emptyList();
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
 
   @Singular
   List<ObjectCommand> commands;
 
   @Singular
   List<Attribute> attributes;
+  Lazy<List<Attribute>> allAttributes = new Lazy<>(this::computeAllAttributes);
 
   @Singular
   List<TabularSection> tabularSections;
+
+  Lazy<List<MD>> storageFields = new Lazy<>(this::computeStorageFields);
+  Lazy<List<MD>> plainStorageFields = new Lazy<>(this::computePlainStorageFields);
 
   @Singular
   List<ObjectForm> forms;
 
   @Singular
   List<ObjectTemplate> templates;
+
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
 
   /*
    * Свое
@@ -108,10 +116,57 @@ public class ChartOfAccounts implements ReferenceObject {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   @Override
-  public @NonNull List<Attribute> getAllAttributes() {
-    var allAttributes = new ArrayList<>(ReferenceObject.super.getAllAttributes());
-    allAttributes.addAll(accountingFlags);
-    allAttributes.addAll(extDimensionAccountingFlags);
-    return allAttributes;
+  public List<MD> getChildren() {
+    return children.getOrCompute();
   }
+
+  @Override
+  public List<Attribute> getAllAttributes() {
+    return allAttributes.getOrCompute();
+  }
+
+  @Override
+  public List<MD> getPlainChildren() {
+    return plainChildren.getOrCompute();
+  }
+
+  @Override
+  public List<MD> getStorageFields() {
+    return storageFields.getOrCompute();
+  }
+
+  @Override
+  public List<MD> getPlainStorageFields() {
+    return plainStorageFields.getOrCompute();
+  }
+
+  @Override
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  private List<MD> computeChildren() {
+    return LazyLoader.computeChildren(this);
+  }
+
+  private List<MD> computePlainChildren() {
+    return LazyLoader.computePlainChildren(this);
+  }
+
+  private List<MD> computeStorageFields() {
+    return LazyLoader.computeStorageFields(this);
+  }
+
+  private List<MD> computePlainStorageFields() {
+    return LazyLoader.computePlainStorageFields(this);
+  }
+
+  private List<Attribute> computeAllAttributes() {
+    return LazyLoader.computeAllAttributes(this);
+  }
+
+  private List<Module> computeAllModules() {
+    return LazyLoader.computeAllModules(this);
+  }
+
 }

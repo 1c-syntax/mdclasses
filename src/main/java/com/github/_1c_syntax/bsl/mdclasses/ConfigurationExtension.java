@@ -76,10 +76,13 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -87,8 +90,10 @@ import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Класс расширения конфигурации 1с
@@ -132,6 +137,7 @@ public class ConfigurationExtension implements CF {
   ApplicationRunMode defaultRunMode = ApplicationRunMode.AUTO;
   @Default
   List<Module> modules = Collections.emptyList();
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
   @Default
   String vendor = "";
   @Default
@@ -236,6 +242,11 @@ public class ConfigurationExtension implements CF {
 
   @Singular
   List<MD> children;
+  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+
+  Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
+  Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
+  Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
 
   /*
    * Свое
@@ -252,5 +263,51 @@ public class ConfigurationExtension implements CF {
    */
   @Default
   String namePrefix = "";
+
+  @Override
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  @Override
+  public List<MD> getPlainChildren() {
+    return plainChildren.getOrCompute();
+  }
+
+  @Override
+  public Map<URI, ModuleType> getModulesByType() {
+    return modulesByType.getOrCompute();
+  }
+
+  @Override
+  public Map<URI, MD> getModulesByObject() {
+    return modulesByObject.getOrCompute();
+  }
+
+  @Override
+  public Map<URI, Module> getModulesByURI() {
+    return modulesByURI.getOrCompute();
+  }
+
+  private List<MD> computePlainChildren() {
+    return LazyLoader.computePlainChildren(this);
+  }
+
+  private Map<URI, ModuleType> computeModulesByType() {
+    return LazyLoader.computeModulesByType(this);
+  }
+
+  private Map<URI, MD> computeModulesByObject() {
+    return LazyLoader.computeModulesByObject(this);
+  }
+
+
+  private List<Module> computeAllModules() {
+    return LazyLoader.computeAllModules(this);
+  }
+
+  private Map<URI, Module> computeModulesByURI() {
+    return LazyLoader.computeModulesByURI(this);
+  }
 
 }

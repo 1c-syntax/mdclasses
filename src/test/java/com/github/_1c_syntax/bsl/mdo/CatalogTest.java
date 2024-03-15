@@ -63,14 +63,14 @@ class CatalogTest {
       .anyMatch(Module::isProtected)
     ;
     assertThat(catalog.getAllModules()).hasSize(6);
-    assertThat(catalog.getMDOChildren())
+    assertThat(catalog.getStorageFields())
       .hasSize(4)
       .anyMatch(child -> child instanceof ObjectAttribute)
       .anyMatch(child -> child instanceof TabularSection)
       .noneMatch(child -> child instanceof ObjectCommand)
       .noneMatch(child -> child instanceof ObjectForm)
     ;
-    assertThat(catalog.getMDOPlainChildren())
+    assertThat(catalog.getPlainStorageFields())
       .hasSize(6)
       .anyMatch(child -> child instanceof ObjectAttribute)
       .anyMatch(child -> child instanceof TabularSection)
@@ -100,13 +100,13 @@ class CatalogTest {
       .anyMatch(child -> child instanceof ObjectCommand)
       .anyMatch(child -> child instanceof ObjectForm)
     ;
-    assertThat(catalog.getMDOChildren())
+    assertThat(catalog.getStorageFields())
       .hasSize(8)
       .anyMatch(child -> child instanceof ObjectAttribute)
       .noneMatch(child -> child instanceof ObjectCommand)
       .noneMatch(child -> child instanceof ObjectForm)
     ;
-    assertThat(catalog.getMDOPlainChildren())
+    assertThat(catalog.getPlainStorageFields())
       .hasSize(8)
       .anyMatch(child -> child instanceof ObjectAttribute)
       .noneMatch(child -> child instanceof ObjectCommand)

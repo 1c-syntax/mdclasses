@@ -87,12 +87,6 @@ class ConfigurationTest {
       .containsValue(ModuleType.FormModule)
     ;
 
-    assertThat(cf.modulesByMDORef())
-      .hasSize(1912)
-      .containsKey("BusinessProcess.Задание")
-      .containsKey("BusinessProcess.Задание.Form.ДействиеВыполнить")
-    ;
-
     assertThat(cf.mdoModuleTypes("BusinessProcess.Задание.Form.ДействиеВыполнить"))
       .isNotEmpty()
       .hasSize(1)
@@ -107,9 +101,9 @@ class ConfigurationTest {
       .isEmpty()
     ;
 
-    assertThat(cf.modulesByObject())
+    assertThat(cf.getModulesByObject())
       .hasSize(1792)
-      .containsValue(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить"))
+      .containsValue(cf.findChild(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить")).get())
     ;
 
     var mdoRef = MdoReference.create("BusinessProcess.Задание");
