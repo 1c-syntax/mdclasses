@@ -99,7 +99,7 @@ public class LazyLoader {
   }
 
   /**
-   * Производит расчет списка дочерних объектов исходя из типа объекта. Список включает дочерних дочерних
+   * Производит расчет списка дочерних объектов исходя из типа объекта. Список включает все дочерних по иерархии вниз
    *
    * @param mdo Объект, у которого есть дочерние элементы
    * @return Немодифицируемый список дочерних объектов
@@ -244,7 +244,7 @@ public class LazyLoader {
       return Collections.unmodifiableList(source);
     } else if (source.isEmpty()) {
       return result;
-    } else if (result.getClass().getSimpleName().equals("UnmodifiableRandomAccessList")) {
+    } else if ("UnmodifiableRandomAccessList".equals(result.getClass().getSimpleName())) {
       // todo надо придумать как красиво тип определить
       List<T> newList = new ArrayList<>(result);
       newList.addAll(source);

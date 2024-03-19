@@ -182,12 +182,13 @@ public class MultiLanguageString implements Comparable<MultiLanguageString> {
 
   @EqualsAndHashCode
   public static class Entry implements Comparable<Entry> {
+    private static final StringInterner stringInterner = new StringInterner();
+    private static final GenericInterner<Entry> interner = new GenericInterner<>();
+
     @Getter
     private final String langKey;
     @Getter
     private final String value;
-    private static final StringInterner stringInterner = new StringInterner();
-    private static final GenericInterner<Entry> interner = new GenericInterner<>();
 
     private Entry(String langKey, String value) {
       this.langKey = stringInterner.intern(langKey);
