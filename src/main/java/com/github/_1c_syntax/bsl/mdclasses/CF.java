@@ -21,12 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
@@ -38,7 +36,7 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public interface CF extends MDClass, ConfigurationTree {
 
@@ -85,24 +83,12 @@ public interface CF extends MDClass, ConfigurationTree {
   /**
    * Возвращает соответствие пути к модулю его типу
    */
-  default Map<URI, ModuleType> getModulesByType() {
-    return getAllModules().stream().collect(Collectors.toMap(Module::getUri, Module::getModuleType));
-  }
+  Map<URI, ModuleType> getModulesByType();
 
   /**
-   * Возвращает соответствие типов модулей их путям к файлам сгруппированные по представлению ссылки объекта-владельца
+   * Возвращает соответствие пути к модулю к нему самому
    */
-  default Map<String, Map<ModuleType, URI>> modulesByMDORef() {
-    return getPlainChildren().stream()
-      .filter(ModuleOwner.class::isInstance)
-      .map(ModuleOwner.class::cast)
-      .collect(Collectors.toMap(
-          (MD md) -> md.getMdoReference().getMdoRef(),
-          md -> md.getModules().stream()
-            .collect(Collectors.toMap(Module::getModuleType, Module::getUri))
-        )
-      );
-  }
+  Map<URI, Module> getModulesByURI();
 
   /**
    * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
@@ -126,15 +112,7 @@ public interface CF extends MDClass, ConfigurationTree {
   /**
    * Возвращает соответствие пути файла модуля ссылке его владельца
    */
-  default Map<URI, MdoReference> modulesByObject() {
-    return getAllModules().stream().collect(Collectors.toMap(Module::getUri, (Module module) -> {
-      if (module instanceof ObjectModule objectModule) {
-        return objectModule.getOwner();
-      } else {
-        return ((CommonModule) module).getMdoReference();
-      }
-    }));
-  }
+  Map<URI, MD> getModulesByObject();
 
   /**
    * Возвращает список подсистем, в состав которых входит объект метаданных
@@ -164,5 +142,20 @@ public interface CF extends MDClass, ConfigurationTree {
     return getSubsystems().parallelStream()
       .flatMap(subsystem -> subsystem.included(mdoReference, addParentSubsystem).stream())
       .toList();
+  }
+
+  @Override
+  default ModuleType getModuleTypeByURI(URI uri) {
+    return getModulesByType().getOrDefault(uri, ModuleType.UNKNOWN);
+  }
+
+  @Override
+  default Optional<Module> getModuleByUri(URI uri) {
+    return Optional.ofNullable(getModulesByURI().get(uri));
+  }
+
+  @Override
+  default Optional<MD> findChild(URI uri) {
+    return Optional.ofNullable(getModulesByObject().get(uri));
   }
 }

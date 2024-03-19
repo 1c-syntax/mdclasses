@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -85,10 +84,7 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   List<IntegrationServiceChannel> integrationServiceChannels;
 
   @Override
-  @NonNull
   public List<MD> getChildren() {
-    return integrationServiceChannels.stream()
-      .map(MD.class::cast)
-      .toList();
+    return Collections.unmodifiableList(integrationServiceChannels);
   }
 }

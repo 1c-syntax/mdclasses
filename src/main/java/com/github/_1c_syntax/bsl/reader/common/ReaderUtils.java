@@ -46,6 +46,7 @@ public class ReaderUtils {
    * @param clazz   Класс для преобразования
    * @return Прочитанное значение
    */
+  @SuppressWarnings("unchecked")
   public <T> T readValue(UnmarshallingContext context, Class<T> clazz) {
     return (T) context.convertAnother(clazz, clazz);
   }

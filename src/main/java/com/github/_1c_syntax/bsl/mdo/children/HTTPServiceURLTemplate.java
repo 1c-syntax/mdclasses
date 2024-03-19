@@ -31,11 +31,11 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
 
 @Value
@@ -82,10 +82,7 @@ public class HTTPServiceURLTemplate implements MDChild, ChildrenOwner {
   String template = "";
 
   @Override
-  @NonNull
   public List<MD> getChildren() {
-    return methods.stream()
-      .map(MD.class::cast)
-      .toList();
+    return Collections.unmodifiableList(methods);
   }
 }

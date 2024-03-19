@@ -24,18 +24,19 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -62,6 +63,8 @@ public class ExternalDataSource implements MDObject, ChildrenOwner {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+
   /*
    * Свое
    */
@@ -81,8 +84,17 @@ public class ExternalDataSource implements MDObject, ChildrenOwner {
   // todo сделать функции и кубы
 
   @Override
-  @NonNull
   public List<MD> getChildren() {
-    return getTables().stream().map(MD.class::cast).collect(Collectors.toList());
+    return Collections.unmodifiableList(tables);
   }
+
+  @Override
+  public List<MD> getPlainChildren() {
+    return plainChildren.getOrCompute();
+  }
+
+  private List<MD> computePlainChildren() {
+    return LazyLoader.computePlainChildren(this);
+  }
+
 }

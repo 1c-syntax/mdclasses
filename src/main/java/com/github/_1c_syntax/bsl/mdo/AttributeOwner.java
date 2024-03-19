@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,4 +32,18 @@ public interface AttributeOwner extends ChildrenOwner {
    * Список реквизитов объекта
    */
   List<Attribute> getAllAttributes();
+
+  /**
+   * Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ
+   */
+  default List<MD> getStorageFields() {
+    return Collections.unmodifiableList(getAllAttributes());
+  }
+
+  /**
+   * Возвращает дочерние элементы объекта плоским списком.
+   */
+  default List<MD> getPlainStorageFields() {
+    return getStorageFields();
+  }
 }

@@ -19,23 +19,13 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo;
-
-import java.util.List;
-
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ и т.д.)
+ * Набор внутренних инструментов
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
-  FormOwner, TemplateOwner {
+@ParametersAreNonnullByDefault
+@ReturnValuesAreNonnullByDefault
+package com.github._1c_syntax.bsl.mdo.utils;
 
-  /**
-   * Список реквизитов объекта
-   */
-  List<Attribute> getAttributes();
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
-  }
-}
+import javax.annotation.ParametersAreNonnullByDefault;

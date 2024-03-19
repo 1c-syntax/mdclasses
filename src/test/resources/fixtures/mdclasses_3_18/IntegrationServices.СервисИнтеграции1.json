@@ -1,11 +1,9 @@
 {"com.github._1c_syntax.bsl.mdo.IntegrationService": {
-  "children": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 2,
-      "com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel": {
+  "comment": "",
+  "externalIntegrationServiceAddress": "",
+  "integrationServiceChannels": [
+    [
+      {
         "uuid": "fd0a0d02-c211-4985-ab9e-f0e7e63a6943",
         "name": "КаналСервисаИнтеграции1",
         "mdoReference": {
@@ -16,7 +14,9 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "content": []
+          "content": [
+            []
+          ]
         },
         "supportVariant": "NONE",
         "owner": {
@@ -28,7 +28,7 @@
         "receiveMessageProcessing": "КаналСервисаИнтеграции1ОбработкаПолученияСообщения",
         "externalIntegrationServiceChannelName": "Имя"
       },
-      "com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel": {
+      {
         "uuid": "69b7fd46-77b8-465a-abcc-a59c1e2ae126",
         "name": "КаналСервисаИнтеграции2",
         "mdoReference": {
@@ -39,40 +39,28 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/integrationServiceChannels/c/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
         },
         "supportVariant": "NONE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/integrationServiceChannels/c/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
         },
         "messageDirection": "SEND",
         "receiveMessageProcessing": "",
         "externalIntegrationServiceChannelName": "Имя"
       }
-    }
-  ],
-  "comment": "",
-  "externalIntegrationServiceAddress": "",
-  "integrationServiceChannels": [
-    [
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel[2]"
-      }
     ],
     []
   ],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/integrationServiceChannels/c/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
   },
   "modules": [
     {
       "moduleType": "IntegrationServiceModule",
       "uri": "src/test/resources/ext/designer/mdclasses_3_18/src/cf/IntegrationServices/СервисИнтеграции1/Ext/Module.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/integrationServiceChannels/c/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/owner"
       },
       "supportVariant": "NONE",
       "isProtected": false
@@ -82,7 +70,7 @@
   "objectBelonging": "OWN",
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.IntegrationService/integrationServiceChannels/c/com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel/synonym"
   },
   "uuid": "94ed2401-fd3c-4e92-b34d-1cdad2d8ee42"
 }}

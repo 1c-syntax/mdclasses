@@ -33,8 +33,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.Map;
-
 /**
  * ВНИМАНИЕ!
  * Для формата EDT хранится в файле Configuration.mdo, т.е. отдельного файла нет
@@ -101,7 +99,7 @@ public class Language implements MDObject {
     return Language.builder()
       .name(name)
       .uuid("")
-      .synonym(new MultiLanguageString(Map.of(code, name)))
+      .synonym(MultiLanguageString.create(code, name))
       .mdoReference(MdoReference.create(
         MDOType.LANGUAGE,
         MDOType.LANGUAGE.getGroupName() + "." + name,

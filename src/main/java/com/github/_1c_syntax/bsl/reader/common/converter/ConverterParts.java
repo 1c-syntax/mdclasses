@@ -24,14 +24,13 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 import com.github._1c_syntax.bsl.mdo.CommonAttribute;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.experimental.UtilityClass;
-
-import java.util.AbstractMap;
 
 /**
  * Содержит методы с общими частями методов конвертирования
@@ -87,9 +86,9 @@ public class ConverterParts {
     return builder.build();
   }
 
-  public AbstractMap.SimpleEntry<String, String> multiLanguageString(HierarchicalStreamReader reader,
-                                                                     String langNodeName,
-                                                                     String contentNodeName) {
+  public MultiLanguageString.Entry multiLanguageString(HierarchicalStreamReader reader,
+                                                       String langNodeName,
+                                                       String contentNodeName) {
     var lang = "";
     var content = "";
     while (reader.hasMoreChildren()) {
@@ -104,6 +103,6 @@ public class ConverterParts {
       }
       reader.moveUp();
     }
-    return new AbstractMap.SimpleEntry<>(lang, content);
+    return MultiLanguageString.Entry.create(lang, content);
   }
 }

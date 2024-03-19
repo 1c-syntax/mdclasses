@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -81,10 +80,13 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
    */
 
   @Override
-  @NonNull
   public List<Attribute> getAllAttributes() {
-    return dimensions.stream()
-      .map(Attribute.class::cast)
-      .toList();
+    return Collections.unmodifiableList(dimensions);
   }
+
+  @Override
+  public List<MD> getChildren() {
+    return Collections.unmodifiableList(dimensions);
+  }
+
 }

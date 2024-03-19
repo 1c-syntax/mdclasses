@@ -1,19 +1,28 @@
 {"com.github._1c_syntax.bsl.mdo.Subsystem": {
-  "children": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 2,
-      "com.github._1c_syntax.bsl.mdo.Subsystem": {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 0
-          }
-        ],
+  "comment": "",
+  "content": [],
+  "explanation": {
+    "content": [
+      []
+    ]
+  },
+  "includeHelpInContents": true,
+  "includeInCommandInterface": true,
+  "mdoReference": {
+    "type": "SUBSYSTEM",
+    "mdoRef": "Subsystem.ПерваяПодсистема",
+    "mdoRefRu": "Подсистема.ПерваяПодсистема"
+  },
+  "name": "ПерваяПодсистема",
+  "objectBelonging": "OWN",
+  "parentSubsystem": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "subsystems": [
+    [
+      {
         "comment": "",
         "content": [
           [
@@ -31,7 +40,7 @@
           []
         ],
         "explanation": {
-          "content": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
         },
         "includeHelpInContents": true,
         "includeInCommandInterface": true,
@@ -43,83 +52,23 @@
         "name": "ПодчиненнаяПодсистема",
         "objectBelonging": "OWN",
         "parentSubsystem": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
         },
         "subsystems": [],
         "supportVariant": "NONE",
         "synonym": {
           "content": [
             [
-              "ru",
-              "Подчиненная подсистема"
+              {
+                "langKey": "ru",
+                "value": "Подчиненная подсистема"
+              }
             ]
           ]
         },
         "uuid": "0fbc4f99-ef89-4d98-9b8f-d26c216c8e31"
       },
-      "com.github._1c_syntax.bsl.mdo.Subsystem": {
-        "children": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.mdo.Subsystem": {
-              "children": [],
-              "comment": "",
-              "content": [
-                [
-                  {
-                    "type": "TASK",
-                    "mdoRef": "Task.Задача1",
-                    "mdoRefRu": "Задача.Задача1"
-                  },
-                  {
-                    "type": "ENUM",
-                    "mdoRef": "Enum.Перечисление1",
-                    "mdoRefRu": "Перечисление.Перечисление1"
-                  },
-                  {
-                    "type": "DOCUMENT_NUMERATOR",
-                    "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                    "mdoRefRu": "Нумератор.НумераторДокументов1"
-                  }
-                ],
-                []
-              ],
-              "explanation": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
-              },
-              "includeHelpInContents": true,
-              "includeInCommandInterface": true,
-              "mdoReference": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-              },
-              "name": "ПодчиненнаяПодсистема3Уровня",
-              "objectBelonging": "OWN",
-              "parentSubsystem": {
-                "type": "SUBSYSTEM",
-                "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-                "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-              },
-              "subsystems": [],
-              "supportVariant": "NONE",
-              "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Подчиненная подсистема3 уровня"
-                  ]
-                ]
-              },
-              "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-            }
-          }
-        ],
+      {
         "comment": "",
         "content": [
           [
@@ -137,60 +86,85 @@
           []
         ],
         "explanation": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
         },
         "includeHelpInContents": true,
         "includeInCommandInterface": true,
         "mdoReference": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
+          "type": "SUBSYSTEM",
+          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
+          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
         },
         "name": "ПочиненнаяСистема2",
         "objectBelonging": "OWN",
         "parentSubsystem": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
         },
         "subsystems": [
           {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem"
+            "comment": "",
+            "content": [
+              [
+                {
+                  "type": "TASK",
+                  "mdoRef": "Task.Задача1",
+                  "mdoRefRu": "Задача.Задача1"
+                },
+                {
+                  "type": "ENUM",
+                  "mdoRef": "Enum.Перечисление1",
+                  "mdoRefRu": "Перечисление.Перечисление1"
+                },
+                {
+                  "type": "DOCUMENT_NUMERATOR",
+                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
+                  "mdoRefRu": "Нумератор.НумераторДокументов1"
+                }
+              ],
+              []
+            ],
+            "explanation": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
+            },
+            "includeHelpInContents": true,
+            "includeInCommandInterface": true,
+            "mdoReference": {
+              "type": "SUBSYSTEM",
+              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
+              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
+            },
+            "name": "ПодчиненнаяПодсистема3Уровня",
+            "objectBelonging": "OWN",
+            "parentSubsystem": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/subsystems/c/com.github._1c_syntax.bsl.mdo.Subsystem[2]/mdoReference"
+            },
+            "subsystems": [],
+            "supportVariant": "NONE",
+            "synonym": {
+              "content": [
+                [
+                  {
+                    "langKey": "ru",
+                    "value": "Подчиненная подсистема3 уровня"
+                  }
+                ]
+              ]
+            },
+            "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
           }
         ],
         "supportVariant": "NONE",
         "synonym": {
           "content": [
             [
-              "ru",
-              "Починенная система2"
+              {
+                "langKey": "ru",
+                "value": "Починенная система2"
+              }
             ]
           ]
         },
         "uuid": "c2e12fa5-e679-4932-8c37-db175f268b3d"
-      }
-    }
-  ],
-  "comment": "",
-  "content": [],
-  "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
-  },
-  "includeHelpInContents": true,
-  "includeInCommandInterface": true,
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem/parentSubsystem"
-  },
-  "name": "ПерваяПодсистема",
-  "objectBelonging": "OWN",
-  "parentSubsystem": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "subsystems": [
-    [
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.Subsystem[2]"
       }
     ],
     []
@@ -199,8 +173,10 @@
   "synonym": {
     "content": [
       [
-        "ru",
-        "Первая подсистема"
+        {
+          "langKey": "ru",
+          "value": "Первая подсистема"
+        }
       ]
     ]
   },

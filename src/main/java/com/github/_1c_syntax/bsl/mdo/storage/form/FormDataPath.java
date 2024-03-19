@@ -31,7 +31,7 @@ import lombok.Value;
 public class FormDataPath {
 
   /**
-   * ссылка на пустой элемент
+   * Ссылка на пустой элемент
    */
   public static final FormDataPath EMPTY = new FormDataPath();
 

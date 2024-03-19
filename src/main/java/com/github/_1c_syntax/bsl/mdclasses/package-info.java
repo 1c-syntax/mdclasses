@@ -25,6 +25,9 @@
  */
 
 @ParametersAreNonnullByDefault
+@ReturnValuesAreNonnullByDefault
 package com.github._1c_syntax.bsl.mdclasses;
+
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;

@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.github._1c_syntax.utils.GenericInterner;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 

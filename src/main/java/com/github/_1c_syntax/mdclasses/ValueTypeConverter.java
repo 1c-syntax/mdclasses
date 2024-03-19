@@ -27,15 +27,13 @@ import com.github._1c_syntax.mdclasses.mdo.support.ValueType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
-import java.util.stream.Collectors;
-
 public class ValueTypeConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var valueType = (ValueType) context.convertAnother(reader, ValueType.class,
       MDOReader.getReflectionConverter(reader));
-    return valueType.getTypes().stream().map(String::intern).collect(Collectors.toList());
+    return valueType.getTypes().stream().map(String::intern).toList();
   }
 
   @Override

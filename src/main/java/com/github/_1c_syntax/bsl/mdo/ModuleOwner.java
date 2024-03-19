@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -43,17 +42,7 @@ public interface ModuleOwner extends MD {
    * Список модулей объекта, включая дочерние
    */
   default List<Module> getAllModules() {
-    var modules = new ArrayList<>(getModules());
-    if (this instanceof ChildrenOwner childrenOwner) {
-      modules.addAll(childrenOwner.getPlainChildren().stream()
-        .filter(ModuleOwner.class::isInstance)
-        .map(ModuleOwner.class::cast)
-        .map(ModuleOwner::getModules)
-        .flatMap(List::stream)
-        .toList());
-    }
-
-    return modules;
+    return getModules();
   }
 
   /**

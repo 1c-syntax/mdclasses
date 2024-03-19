@@ -1,5 +1,29 @@
 {"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
-  "children": [
+  "comment": "",
+  "explanation": {
+    "content": [
+      []
+    ]
+  },
+  "mdoReference": {
+    "type": "EXTERNAL_DATA_SOURCE",
+    "mdoRef": "ExternalDataSource.ТекущаяСУБД",
+    "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД"
+  },
+  "name": "ТекущаяСУБД",
+  "objectBelonging": "OWN",
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        {
+          "langKey": "ru",
+          "value": "Текущая СУБД"
+        }
+      ]
+    ]
+  },
+  "tables": [
     {
       "uuid": "318e517a-2dd6-4cdf-a502-c8cd6e429ff6",
       "name": "ИнформацияОбОшибках",
@@ -13,23 +37,23 @@
       "synonym": {
         "content": [
           [
-            "ru",
-            "Информация об ошибках"
+            {
+              "langKey": "ru",
+              "value": "Информация об ошибках"
+            }
           ]
         ]
       },
       "supportVariant": "NONE",
       "owner": {
-        "type": "EXTERNAL_DATA_SOURCE",
-        "mdoRef": "ExternalDataSource.ТекущаяСУБД",
-        "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/mdoReference"
       },
       "modules": [
         {
           "moduleType": "ManagerModule",
           "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/Ext/ManagerModule.bsl",
           "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
           "supportVariant": "NONE",
           "isProtected": false
@@ -38,7 +62,7 @@
           "moduleType": "RecordSetModule",
           "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/Ext/RecordSetModule.bsl",
           "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
           "supportVariant": "NONE",
           "isProtected": false
@@ -58,8 +82,10 @@
           "synonym": {
             "content": [
               [
-                "ru",
-                "Command"
+                {
+                  "langKey": "ru",
+                  "value": "Command"
+                }
               ]
             ]
           },
@@ -69,14 +95,14 @@
               "moduleType": "CommandModule",
               "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/Commands/Command/Ext/CommandModule.bsl",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/mdoReference"
               },
               "supportVariant": "NONE",
               "isProtected": false
             }
           ],
           "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           }
         }
       ],
@@ -95,14 +121,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Период"
+                  {
+                    "langKey": "ru",
+                    "value": "Период"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -121,14 +149,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Идентификатор ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Идентификатор ошибки"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -147,14 +177,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Уровень ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Уровень ошибки"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -173,14 +205,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Категория"
+                  {
+                    "langKey": "ru",
+                    "value": "Категория"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -199,14 +233,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Номер сеанса"
+                  {
+                    "langKey": "ru",
+                    "value": "Номер сеанса"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -225,14 +261,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Пользователь"
+                  {
+                    "langKey": "ru",
+                    "value": "Пользователь"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -251,14 +289,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Дата уведомления"
+                  {
+                    "langKey": "ru",
+                    "value": "Дата уведомления"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -277,14 +317,16 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Описание ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Описание ошибки"
+                  }
                 ]
               ]
             },
             "supportVariant": "NONE",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "passwordMode": false,
             "kind": "CUSTOM",
@@ -308,8 +350,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Record form"
+                  {
+                    "langKey": "ru",
+                    "value": "Record form"
+                  }
                 ]
               ]
             },
@@ -319,7 +363,7 @@
                 "moduleType": "FormModule",
                 "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/Forms/RecordForm/Ext/Form/Module.bsl",
                 "owner": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
                 },
                 "supportVariant": "NONE",
                 "isProtected": false
@@ -329,7 +373,7 @@
             "data": {
               "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
               "title": {
-                "content": []
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/explanation"
               },
               "handlers": [
                 {
@@ -345,8 +389,10 @@
                   "title": {
                     "content": [
                       [
-                        "ru",
-                        "User settings group"
+                        {
+                          "langKey": "ru",
+                          "value": "User settings group"
+                        }
                       ]
                     ]
                   },
@@ -360,7 +406,7 @@
               "attributes": []
             },
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "usePurposes": [
               [
@@ -383,8 +429,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "List form"
+                  {
+                    "langKey": "ru",
+                    "value": "List form"
+                  }
                 ]
               ]
             },
@@ -394,7 +442,7 @@
                 "moduleType": "FormModule",
                 "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/Forms/ListForm/Ext/Form/Module.bsl",
                 "owner": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
                 },
                 "supportVariant": "NONE",
                 "isProtected": false
@@ -404,12 +452,11 @@
             "data": {
               "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
               "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/explanation"
               },
               "handlers": [
                 {
-                  "event": "OnClose",
-                  "name": "ПриЗакрытии"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
                 }
               ],
               "items": [
@@ -418,15 +465,10 @@
                   "id": 1,
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {
-                    "content": [
-                      [
-                        "ru",
-                        "User settings group"
-                      ]
-                    ]
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                   },
                   "dataPath": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
                   },
                   "items": []
                 }
@@ -434,7 +476,7 @@
               "attributes": []
             },
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
             },
             "usePurposes": [
               [
@@ -461,8 +503,10 @@
           "synonym": {
             "content": [
               [
-                "ru",
-                "Template"
+                {
+                  "langKey": "ru",
+                  "value": "Template"
+                }
               ]
             ]
           },
@@ -473,34 +517,11 @@
             "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
           },
           "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           }
         }
       ],
       "dataLockControlMode": "MANAGED"
-    }
-  ],
-  "comment": "",
-  "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
-  },
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/owner"
-  },
-  "name": "ТекущаяСУБД",
-  "objectBelonging": "OWN",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      [
-        "ru",
-        "Текущая СУБД"
-      ]
-    ]
-  },
-  "tables": [
-    {
-      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/children/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable"
     }
   ],
   "uuid": "2ceefe90-5a06-41ce-aac5-a3293a85946f"

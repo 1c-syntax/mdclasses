@@ -56,7 +56,7 @@ public class FormHandlerConverter implements ReadConverter {
       return null;
     }
 
-    return new FormHandler(event, name);
+    return FormHandler.create(event, name);
   }
 
   @Override
