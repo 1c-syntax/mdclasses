@@ -28,7 +28,8 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Конвертер для строк на нескольких языках
@@ -45,15 +46,14 @@ public class MultiLanguageStringConverter implements ReadConverter {
     if (!reader.hasMoreChildren()) {
       return MultiLanguageString.EMPTY;
     }
-    HashMap<String, String> langContent = new HashMap<>();
+    Set<MultiLanguageString.Entry> langContent = new HashSet<>();
 
     while (reader.hasMoreChildren()) { // v8:item
       reader.moveDown();
-      var result = ConverterParts.multiLanguageString(reader, LANG_NODE_NAME, CONTENT_NODE_NAME);
-      langContent.put(result.getKey(), result.getValue());
+      langContent.add(ConverterParts.multiLanguageString(reader, LANG_NODE_NAME, CONTENT_NODE_NAME));
       reader.moveUp();
     }
-    return new MultiLanguageString(langContent);
+    return MultiLanguageString.create(langContent);
   }
 
   @Override

@@ -1,7 +1,9 @@
 {"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
   "comment": "",
   "explanation": {
-    "content": []
+    "content": [
+      []
+    ]
   },
   "mdoReference": {
     "type": "EXTERNAL_DATA_SOURCE",
@@ -14,8 +16,10 @@
   "synonym": {
     "content": [
       [
-        "ru",
-        "Текущая СУБД"
+        {
+          "langKey": "ru",
+          "value": "Текущая СУБД"
+        }
       ]
     ]
   },
@@ -33,8 +37,10 @@
       "synonym": {
         "content": [
           [
-            "ru",
-            "Информация об ошибках"
+            {
+              "langKey": "ru",
+              "value": "Информация об ошибках"
+            }
           ]
         ]
       },
@@ -44,8 +50,8 @@
       },
       "modules": [
         {
-          "moduleType": "RecordSetModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
+          "moduleType": "ManagerModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -53,8 +59,8 @@
           "isProtected": false
         },
         {
-          "moduleType": "ManagerModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
+          "moduleType": "RecordSetModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -76,8 +82,10 @@
           "synonym": {
             "content": [
               [
-                "ru",
-                "Command"
+                {
+                  "langKey": "ru",
+                  "value": "Command"
+                }
               ]
             ]
           },
@@ -113,8 +121,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Период"
+                  {
+                    "langKey": "ru",
+                    "value": "Период"
+                  }
                 ]
               ]
             },
@@ -139,8 +149,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Идентификатор ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Идентификатор ошибки"
+                  }
                 ]
               ]
             },
@@ -165,8 +177,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Уровень ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Уровень ошибки"
+                  }
                 ]
               ]
             },
@@ -191,8 +205,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Категория"
+                  {
+                    "langKey": "ru",
+                    "value": "Категория"
+                  }
                 ]
               ]
             },
@@ -217,8 +233,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Номер сеанса"
+                  {
+                    "langKey": "ru",
+                    "value": "Номер сеанса"
+                  }
                 ]
               ]
             },
@@ -243,8 +261,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Пользователь"
+                  {
+                    "langKey": "ru",
+                    "value": "Пользователь"
+                  }
                 ]
               ]
             },
@@ -269,8 +289,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Дата уведомления"
+                  {
+                    "langKey": "ru",
+                    "value": "Дата уведомления"
+                  }
                 ]
               ]
             },
@@ -295,8 +317,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Описание ошибки"
+                  {
+                    "langKey": "ru",
+                    "value": "Описание ошибки"
+                  }
                 ]
               ]
             },
@@ -326,8 +350,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "Record form"
+                  {
+                    "langKey": "ru",
+                    "value": "Record form"
+                  }
                 ]
               ]
             },
@@ -363,8 +389,10 @@
                   "title": {
                     "content": [
                       [
-                        "ru",
-                        "User settings group"
+                        {
+                          "langKey": "ru",
+                          "value": "User settings group"
+                        }
                       ]
                     ]
                   },
@@ -401,8 +429,10 @@
             "synonym": {
               "content": [
                 [
-                  "ru",
-                  "List form"
+                  {
+                    "langKey": "ru",
+                    "value": "List form"
+                  }
                 ]
               ]
             },
@@ -426,8 +456,7 @@
               },
               "handlers": [
                 {
-                  "event": "OnClose",
-                  "name": "ПриЗакрытии"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
                 }
               ],
               "items": [
@@ -436,12 +465,7 @@
                   "id": 1,
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {
-                    "content": [
-                      [
-                        "ru",
-                        "User settings group"
-                      ]
-                    ]
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                   },
                   "dataPath": {
                     "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -479,8 +503,10 @@
           "synonym": {
             "content": [
               [
-                "ru",
-                "Template"
+                {
+                  "langKey": "ru",
+                  "value": "Template"
+                }
               ]
             ]
           },

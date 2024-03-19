@@ -116,7 +116,7 @@ public class Unmarshaller {
     if (readerContext.getLastName().equals(name)
       && readerContext.getLastValue() instanceof MultiLanguageString lastValue
       && value instanceof MultiLanguageString newValue) {
-      newVal = new MultiLanguageString(lastValue, newValue);
+      newVal = MultiLanguageString.create(lastValue, newValue);
     }
     readerContext.setLastName(name);
     readerContext.setLastValue(newVal);

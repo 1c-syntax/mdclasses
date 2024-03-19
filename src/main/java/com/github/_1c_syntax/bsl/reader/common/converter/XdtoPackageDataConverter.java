@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
+import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.NonNull;
@@ -50,6 +51,8 @@ public class XdtoPackageDataConverter implements ReadConverter {
   private static final String LOWER_BOUND_ATTRIBUTE_NAME = "lowerBound";
   private static final String UPPER_BOUND_ATTRIBUTE_NAME = "upperBound";
   private static final String NILLABLE_ATTRIBUTE_NAME = "nillable";
+
+  private static final StringInterner stringInterner = new StringInterner();
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -85,7 +88,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   private static XdtoPackageData.ObjectType readObjectType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ObjectType.builder()
-      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
     builder.base(getAttribute(reader, BASE_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
@@ -99,14 +102,14 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   private static XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ValueType.builder()
-      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
     builder.base(getAttribute(reader, BASE_ATTRIBUTE_NAME));
     builder.variety(getAttribute(reader, VARIETY_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (ENUMERATION_ATTRIBUTE_NAME.equals(reader.getNodeName())) {
-        builder.enumeration(reader.getValue());
+        builder.enumeration(stringInterner.intern(reader.getValue()));
       }
       reader.moveUp();
     }
@@ -116,7 +119,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   private static XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.Property.builder()
-      .name(reader.getAttribute(NAME_ATTRIBUTE_NAME));
+      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
     builder.type(getAttribute(reader, TYPE_ATTRIBUTE_NAME));
     builder.form(getAttribute(reader, FORM_ATTRIBUTE_NAME));
 
@@ -168,6 +171,6 @@ public class XdtoPackageDataConverter implements ReadConverter {
     if (value == null) {
       value = "";
     }
-    return value;
+    return stringInterner.intern(value);
   }
 }

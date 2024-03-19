@@ -21,11 +21,61 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.utils.GenericInterner;
+import com.github._1c_syntax.utils.StringInterner;
+import edu.umd.cs.findbugs.annotations.Nullable;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import lombok.experimental.Accessors;
+
 /**
  * Обработчик события формы
- *
- * @param event Имя события
- * @param name  Имя обработчика (метода) формы
  */
-public record FormHandler(String event, String name) {
+@Value
+@EqualsAndHashCode
+public class FormHandler implements Comparable<FormHandler> {
+
+  private static final GenericInterner<FormHandler> interner = new GenericInterner<>();
+  private static final StringInterner stringInterner = new StringInterner();
+
+  @Accessors(fluent = true)
+  String event;
+  @Accessors(fluent = true)
+  String name;
+
+  private FormHandler(String event, String name) {
+    this.event = stringInterner.intern(event);
+    this.name = stringInterner.intern(name);
+  }
+
+  /**
+   * @param event Имя события
+   * @param name  Имя обработчика (метода) формы
+   */
+
+  public static FormHandler create(String event, String name) {
+    return new FormHandler(event, name).intern();
+  }
+
+  @Override
+  public int compareTo(@Nullable FormHandler formHandler) {
+    if (formHandler == null) {
+      return 1;
+    }
+
+    if (this.equals(formHandler)) {
+      return 0;
+    }
+
+    int compareResult = event.compareTo(formHandler.event);
+    if (compareResult != 0) {
+      return compareResult;
+    }
+
+    return name.compareTo(formHandler.name);
+  }
+
+  private FormHandler intern() {
+    return interner.intern(this);
+  }
 }

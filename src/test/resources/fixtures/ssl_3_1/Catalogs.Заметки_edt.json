@@ -14,8 +14,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Автор"
+              {
+                "langKey": "ru",
+                "value": "Автор"
+              }
             ]
           ]
         },
@@ -29,7 +31,9 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "format": {
-          "content": []
+          "content": [
+            []
+          ]
         },
         "editFormat": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -53,8 +57,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Предмет"
+              {
+                "langKey": "ru",
+                "value": "Предмет"
+              }
             ]
           ]
         },
@@ -90,8 +96,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Содержание"
+              {
+                "langKey": "ru",
+                "value": "Содержание"
+              }
             ]
           ]
         },
@@ -125,12 +133,7 @@
         "objectBelonging": "OWN",
         "comment": "Реквизит для полнотекстового поиска",
         "synonym": {
-          "content": [
-            [
-              "ru",
-              "Содержание"
-            ]
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
@@ -164,8 +167,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Для рабочего стола"
+              {
+                "langKey": "ru",
+                "value": "Для рабочего стола"
+              }
             ]
           ]
         },
@@ -201,8 +206,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Пометка"
+              {
+                "langKey": "ru",
+                "value": "Пометка"
+              }
             ]
           ]
         },
@@ -238,8 +245,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Дата изменения"
+              {
+                "langKey": "ru",
+                "value": "Дата изменения"
+              }
             ]
           ]
         },
@@ -273,12 +282,7 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "content": [
-            [
-              "ru",
-              "Предмет"
-            ]
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
@@ -316,8 +320,10 @@
       "synonym": {
         "content": [
           [
-            "ru",
-            "Все заметки"
+            {
+              "langKey": "ru",
+              "value": "Все заметки"
+            }
           ]
         ]
       },
@@ -357,8 +363,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Форма элемента"
+              {
+                "langKey": "ru",
+                "value": "Форма элемента"
+              }
             ]
           ]
         },
@@ -395,8 +403,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Содержание заметки"
+                      {
+                        "langKey": "ru",
+                        "value": "Содержание заметки"
+                      }
                     ]
                   ]
                 },
@@ -410,12 +420,7 @@
                     "id": 102,
                     "name": "ГруппаПредмет",
                     "title": {
-                      "content": [
-                        [
-                          "ru",
-                          "Предмет"
-                        ]
-                      ]
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
                     },
                     "dataPath": {
                       "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -429,8 +434,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Предмет:"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Предмет:"
+                                }
                               ]
                             ]
                           },
@@ -444,12 +451,7 @@
                           "id": 63,
                           "name": "Предмет",
                           "title": {
-                            "content": [
-                              [
-                                "ru",
-                                "Предмет"
-                              ]
-                            ]
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
                           },
                           "dataPath": {
                             "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -467,12 +469,7 @@
                 "id": 9,
                 "name": "Содержание",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Содержание"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
                 },
                 "dataPath": {
                   "segments": "ФорматированныйТекст",
@@ -487,8 +484,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Параметры отображения"
+                      {
+                        "langKey": "ru",
+                        "value": "Параметры отображения"
+                      }
                     ]
                   ]
                 },
@@ -504,8 +503,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Отображать на рабочем столе"
+                            {
+                              "langKey": "ru",
+                              "value": "Отображать на рабочем столе"
+                            }
                           ]
                         ]
                       },
@@ -522,8 +523,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Цвет"
+                            {
+                              "langKey": "ru",
+                              "value": "Цвет"
+                            }
                           ]
                         ]
                       },
@@ -557,8 +560,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Информация об авторе"
+                      {
+                        "langKey": "ru",
+                        "value": "Информация об авторе"
+                      }
                     ]
                   ]
                 },
@@ -574,8 +579,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Автор:"
+                            {
+                              "langKey": "ru",
+                              "value": "Автор:"
+                            }
                           ]
                         ]
                       },
@@ -589,12 +596,7 @@
                       "id": 94,
                       "name": "Автор",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Автор"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -612,8 +614,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Записана: 25 ноября 2011 г."
+                      {
+                        "langKey": "ru",
+                        "value": "Записана: 25 ноября 2011 г."
+                      }
                     ]
                   ]
                 },
@@ -640,8 +644,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Форматированный текст"
+                      {
+                        "langKey": "ru",
+                        "value": "Форматированный текст"
+                      }
                     ]
                   ]
                 }
@@ -672,12 +678,7 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "content": [
-            [
-              "ru",
-              "Все заметки"
-            ]
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/synonym"
         },
         "supportVariant": "NOT_EDITABLE",
         "modules": [
@@ -695,12 +696,7 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "content": [
-              [
-                "ru",
-                "Все заметки"
-              ]
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/synonym"
           },
           "handlers": [
             [
@@ -713,8 +709,7 @@
                 "name": "ПриЗагрузкеДанныхИзНастроекНаСервере"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               }
             ],
             []
@@ -728,8 +723,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Фильтры"
+                      {
+                        "langKey": "ru",
+                        "value": "Фильтры"
+                      }
                     ]
                   ]
                 },
@@ -743,12 +740,7 @@
                       "id": 28,
                       "name": "ФильтрПоЦвету",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Цвет"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "segments": "ВыбранныйЦвет",
@@ -761,12 +753,7 @@
                       "id": 26,
                       "name": "ФильтрПоПредмету",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Предмет"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
                       },
                       "dataPath": {
                         "segments": "ВыбранныйПредмет",
@@ -798,8 +785,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Группа пользовательских настроек"
+                      {
+                        "langKey": "ru",
+                        "value": "Группа пользовательских настроек"
+                      }
                     ]
                   ]
                 },
@@ -815,8 +804,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Командная панель"
+                      {
+                        "langKey": "ru",
+                        "value": "Командная панель"
+                      }
                     ]
                   ]
                 },
@@ -832,8 +823,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Список"
+                      {
+                        "langKey": "ru",
+                        "value": "Список"
+                      }
                     ]
                   ]
                 },
@@ -850,8 +843,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Тема"
+                            {
+                              "langKey": "ru",
+                              "value": "Тема"
+                            }
                           ]
                         ]
                       },
@@ -922,8 +917,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Выбранный предмет"
+                      {
+                        "langKey": "ru",
+                        "value": "Выбранный предмет"
+                      }
                     ]
                   ]
                 }
@@ -934,8 +931,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Выбранный цвет"
+                      {
+                        "langKey": "ru",
+                        "value": "Выбранный цвет"
+                      }
                     ]
                   ]
                 }
@@ -946,8 +945,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Показывать удаленные"
+                      {
+                        "langKey": "ru",
+                        "value": "Показывать удаленные"
+                      }
                     ]
                   ]
                 }
@@ -980,8 +981,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Заметки"
+              {
+                "langKey": "ru",
+                "value": "Заметки"
+              }
             ]
           ]
         },
@@ -1003,20 +1006,20 @@
           "title": {
             "content": [
               [
-                "ru",
-                "Мои заметки"
+                {
+                  "langKey": "ru",
+                  "value": "Мои заметки"
+                }
               ]
             ]
           },
           "handlers": [
             [
               {
-                "event": "OnLoadDataFromSettingsAtServer",
-                "name": "ПриЗагрузкеДанныхИзНастроекНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               }
             ],
             []
@@ -1028,12 +1031,7 @@
                 "id": 43,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Группа пользовательских настроек"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1045,12 +1043,7 @@
                 "id": 41,
                 "name": "КоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1062,12 +1055,7 @@
                 "id": 1,
                 "name": "Список",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Список"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
                 },
                 "dataPath": {
                   "segments": "Список",
@@ -1123,12 +1111,7 @@
                 "id": 30,
                 "name": "Фильтры",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Фильтры"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1190,8 +1173,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Показывать заметки других пользователей"
+                      {
+                        "langKey": "ru",
+                        "value": "Показывать заметки других пользователей"
+                      }
                     ]
                   ]
                 }
@@ -1200,12 +1185,7 @@
                 "id": 4,
                 "name": "ПоказыватьУдаленные",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Показывать удаленные"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/title"
                 }
               }
             ],
@@ -1234,12 +1214,7 @@
         "objectBelonging": "OWN",
         "comment": "Для рабочего стола",
         "synonym": {
-          "content": [
-            [
-              "ru",
-              "Мои заметки"
-            ]
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/title"
         },
         "supportVariant": "NOT_EDITABLE",
         "modules": [
@@ -1257,17 +1232,11 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "content": [
-              [
-                "ru",
-                "Мои заметки"
-              ]
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/title"
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
             }
           ],
           "items": [
@@ -1276,12 +1245,7 @@
               "id": 1,
               "name": "Список",
               "title": {
-                "content": [
-                  [
-                    "ru",
-                    "Список"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
               },
               "dataPath": {
                 "segments": "Список",
@@ -1294,12 +1258,7 @@
                     "id": 8,
                     "name": "Содержание",
                     "title": {
-                      "content": [
-                        [
-                          "ru",
-                          "Содержание"
-                        ]
-                      ]
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
                     },
                     "dataPath": {
                       "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1388,8 +1347,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Форма группы"
+              {
+                "langKey": "ru",
+                "value": "Форма группы"
+              }
             ]
           ]
         },
@@ -1413,8 +1374,7 @@
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
             }
           ],
           "items": [
@@ -1524,12 +1484,7 @@
   "objectBelonging": "OWN",
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
-    "content": [
-      [
-        "ru",
-        "Заметки"
-      ]
-    ]
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/synonym"
   },
   "tabularSections": [],
   "templates": [],

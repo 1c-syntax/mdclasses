@@ -33,9 +33,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 public class FormHandlerConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var event = reader.getAttribute("name");
-    var name = reader.getValue();
-    return new FormHandler(event, name);
+    return FormHandler.create(reader.getAttribute("name"), reader.getValue());
   }
 
   @Override

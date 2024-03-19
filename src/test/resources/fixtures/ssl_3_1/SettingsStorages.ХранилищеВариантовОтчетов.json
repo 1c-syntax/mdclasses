@@ -15,8 +15,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Быстрые настройки"
+              {
+                "langKey": "ru",
+                "value": "Быстрые настройки"
+              }
             ]
           ]
         },
@@ -24,7 +26,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/БыстрыеНастройкиОтчета/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/БыстрыеНастро_киОтчета/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
             },
@@ -35,9 +37,10 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/БыстрыеНастройкиОтчета/Ext/Form.xml",
           "title": {
-            "content": []
+            "content": [
+              []
+            ]
           },
           "handlers": [
             [
@@ -59,12 +62,7 @@
                 "id": 1,
                 "name": "БыстрыеНастройки",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Быстрые настройки"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/synonym"
                 },
                 "dataPath": {
                   "segments": "БыстрыеНастройки",
@@ -79,8 +77,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Настройка"
+                            {
+                              "langKey": "ru",
+                              "value": "Настройка"
+                            }
                           ]
                         ]
                       },
@@ -121,12 +121,7 @@
                             "id": 20,
                             "name": "БыстрыеНастройкиЗаголовок",
                             "title": {
-                              "content": [
-                                [
-                                  "ru",
-                                  "Настройка"
-                                ]
-                              ]
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                             },
                             "dataPath": {
                               "segments": "БыстрыеНастройки.Заголовок",
@@ -162,8 +157,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Командная панель"
+                      {
+                        "langKey": "ru",
+                        "value": "Командная панель"
+                      }
                     ]
                   ]
                 },
@@ -191,8 +188,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Команды основные"
+                            {
+                              "langKey": "ru",
+                              "value": "Команды основные"
+                            }
                           ]
                         ]
                       },
@@ -242,12 +241,7 @@
                 "id": 1,
                 "name": "БыстрыеНастройки",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Быстрые настройки"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/synonym"
                 }
               },
               {
@@ -308,8 +302,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Выбор варианта отчета"
+              {
+                "langKey": "ru",
+                "value": "Выбор варианта отчета"
+              }
             ]
           ]
         },
@@ -328,7 +324,6 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ВыборВариантаОтчета/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
@@ -339,8 +334,7 @@
                 "name": "ОбработкаОповещения"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               },
               {
                 "event": "BeforeLoadDataFromSettingsAtServer",
@@ -358,8 +352,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Быстрые фильтры"
+                      {
+                        "langKey": "ru",
+                        "value": "Быстрые фильтры"
+                      }
                     ]
                   ]
                 },
@@ -389,8 +385,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Основная командная панель"
+                      {
+                        "langKey": "ru",
+                        "value": "Основная командная панель"
+                      }
                     ]
                   ]
                 },
@@ -430,8 +428,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Пометить на удаление / Снять пометку"
+                            {
+                              "langKey": "ru",
+                              "value": "Пометить на удаление / Снять пометку"
+                            }
                           ]
                         ]
                       },
@@ -471,8 +471,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Командная панель дерева"
+                            {
+                              "langKey": "ru",
+                              "value": "Командная панель дерева"
+                            }
                           ]
                         ]
                       },
@@ -492,8 +494,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Дерево вариантов отчета"
+                      {
+                        "langKey": "ru",
+                        "value": "Дерево вариантов отчета"
+                      }
                     ]
                   ]
                 },
@@ -568,12 +572,7 @@
                 "id": 1,
                 "name": "ДеревоВариантовОтчета",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Дерево вариантов отчета"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 }
               },
               {
@@ -603,8 +602,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Описание"
+                      {
+                        "langKey": "ru",
+                        "value": "Описание"
+                      }
                     ]
                   ]
                 }
@@ -629,8 +630,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Автор"
+                      {
+                        "langKey": "ru",
+                        "value": "Автор"
+                      }
                     ]
                   ]
                 }
@@ -663,8 +666,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Выбор поля отчета"
+              {
+                "langKey": "ru",
+                "value": "Выбор поля отчета"
+              }
             ]
           ]
         },
@@ -683,19 +688,12 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ВыборПоляОтчета/Ext/Form.xml",
           "title": {
-            "content": [
-              [
-                "ru",
-                "Выбор поля отчета"
-              ]
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/synonym"
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -706,8 +704,10 @@
               "title": {
                 "content": [
                   [
-                    "ru",
-                    "Доступные поля"
+                    {
+                      "langKey": "ru",
+                      "value": "Доступные поля"
+                    }
                   ]
                 ]
               },
@@ -782,8 +782,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Выбор финансового периода"
+              {
+                "langKey": "ru",
+                "value": "Выбор финансового периода"
+              }
             ]
           ]
         },
@@ -802,19 +804,19 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ВыборФинансовогоПериода/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Выбор периода"
+                {
+                  "langKey": "ru",
+                  "value": "Выбор периода"
+                }
               ]
             ]
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -826,8 +828,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Выбор года"
+                      {
+                        "langKey": "ru",
+                        "value": "Выбор года"
+                      }
                     ]
                   ]
                 },
@@ -843,8 +847,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Перейти на год назад (варианты)"
+                            {
+                              "langKey": "ru",
+                              "value": "Перейти на год назад (варианты)"
+                            }
                           ]
                         ]
                       },
@@ -915,12 +921,7 @@
                 "id": 176,
                 "name": "ГруппаВыборПериода",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Выбор периода"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -934,8 +935,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Месяцы"
+                            {
+                              "langKey": "ru",
+                              "value": "Месяцы"
+                            }
                           ]
                         ]
                       },
@@ -951,8 +954,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Квартал 1"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Квартал 1"
+                                  }
                                 ]
                               ]
                             },
@@ -1008,8 +1013,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Квартал 2"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Квартал 2"
+                                  }
                                 ]
                               ]
                             },
@@ -1065,8 +1072,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Квартал 3"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Квартал 3"
+                                  }
                                 ]
                               ]
                             },
@@ -1122,8 +1131,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Квартал 4"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Квартал 4"
+                                  }
                                 ]
                               ]
                             },
@@ -1183,8 +1194,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Кварталы"
+                            {
+                              "langKey": "ru",
+                              "value": "Кварталы"
+                            }
                           ]
                         ]
                       },
@@ -1252,8 +1265,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Нарастающим итогом"
+                            {
+                              "langKey": "ru",
+                              "value": "Нарастающим итогом"
+                            }
                           ]
                         ]
                       },
@@ -1281,8 +1296,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "полугодие"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "полугодие"
+                                  }
                                 ]
                               ]
                             },
@@ -1330,8 +1347,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Очистить период"
+                      {
+                        "langKey": "ru",
+                        "value": "Очистить период"
+                      }
                     ]
                   ]
                 },
@@ -1393,8 +1412,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Дата начала года"
+                      {
+                        "langKey": "ru",
+                        "value": "Дата начала года"
+                      }
                     ]
                   ]
                 }
@@ -1458,8 +1479,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Выбор финансового периода день"
+              {
+                "langKey": "ru",
+                "value": "Выбор финансового периода день"
+              }
             ]
           ]
         },
@@ -1478,19 +1501,19 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ВыборФинансовогоПериодаДень/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Выбор дня"
+                {
+                  "langKey": "ru",
+                  "value": "Выбор дня"
+                }
               ]
             ]
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -1515,8 +1538,10 @@
               "title": {
                 "content": [
                   [
-                    "ru",
-                    "День"
+                    {
+                      "langKey": "ru",
+                      "value": "День"
+                    }
                   ]
                 ]
               }
@@ -1547,8 +1572,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Группа выбранных полей"
+              {
+                "langKey": "ru",
+                "value": "Группа выбранных полей"
+              }
             ]
           ]
         },
@@ -1556,7 +1583,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ГруппаВыбранныхПолей/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ГруппаВыбранныхПоле_/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/mdoReference"
             },
@@ -1567,14 +1594,12 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ГруппаВыбранныхПолей/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -1616,8 +1641,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Заголовок"
+                      {
+                        "langKey": "ru",
+                        "value": "Заголовок"
+                      }
                     ]
                   ]
                 }
@@ -1628,8 +1655,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Расположение"
+                      {
+                        "langKey": "ru",
+                        "value": "Расположение"
+                      }
                     ]
                   ]
                 }
@@ -1662,8 +1691,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Контекстная настройка отчета"
+              {
+                "langKey": "ru",
+                "value": "Контекстная настройка отчета"
+              }
             ]
           ]
         },
@@ -1671,7 +1702,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/КонтекстнаяНастройкаОтчета/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/КонтекстнаяНастро_каОтчета/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/mdoReference"
             },
@@ -1682,19 +1713,16 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/КонтекстнаяНастройкаОтчета/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
           "handlers": [
             [
               {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -1708,8 +1736,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Сортировка"
+                      {
+                        "langKey": "ru",
+                        "value": "Сортировка"
+                      }
                     ]
                   ]
                 },
@@ -1753,8 +1783,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Фильтр по значению"
+                      {
+                        "langKey": "ru",
+                        "value": "Фильтр по значению"
+                      }
                     ]
                   ]
                 },
@@ -1767,12 +1799,7 @@
                     "id": 404,
                     "name": "ФильтрПоЗначениюСтраницы",
                     "title": {
-                      "content": [
-                        [
-                          "ru",
-                          "Фильтр по значению"
-                        ]
-                      ]
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                     },
                     "dataPath": {
                       "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1786,8 +1813,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Значения"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Значения"
+                                }
                               ]
                             ]
                           },
@@ -1801,12 +1830,7 @@
                                 "id": 18,
                                 "name": "Значения",
                                 "title": {
-                                  "content": [
-                                    [
-                                      "ru",
-                                      "Значения"
-                                    ]
-                                  ]
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                 },
                                 "dataPath": {
                                   "segments": "Значения",
@@ -1821,8 +1845,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Пометка"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Пометка"
+                                            }
                                           ]
                                         ]
                                       },
@@ -1839,8 +1865,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Значение"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Значение"
+                                            }
                                           ]
                                         ]
                                       },
@@ -1861,8 +1889,10 @@
                                 "title": {
                                   "content": [
                                     [
-                                      "ru",
-                                      "Опции заполнения фильтра по значению"
+                                      {
+                                        "langKey": "ru",
+                                        "value": "Опции заполнения фильтра по значению"
+                                      }
                                     ]
                                   ]
                                 },
@@ -1890,8 +1920,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Вывести все"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Вывести все"
+                                            }
                                           ]
                                         ]
                                       },
@@ -1915,8 +1947,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Ожидание"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Ожидание"
+                                }
                               ]
                             ]
                           },
@@ -1931,8 +1965,10 @@
                               "title": {
                                 "content": [
                                   [
-                                    "ru",
-                                    "Статусы ожидания"
+                                    {
+                                      "langKey": "ru",
+                                      "value": "Статусы ожидания"
+                                    }
                                   ]
                                 ]
                               },
@@ -1948,8 +1984,10 @@
                                     "title": {
                                       "content": [
                                         [
-                                          "ru",
-                                          "Ожидание заполнения"
+                                          {
+                                            "langKey": "ru",
+                                            "value": "Ожидание заполнения"
+                                          }
                                         ]
                                       ]
                                     },
@@ -1965,8 +2003,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Индикатор длительной операции"
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Индикатор длительной операции"
+                                                }
                                               ]
                                             ]
                                           },
@@ -1982,8 +2022,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Выполняется чтение строк поля"
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Выполняется чтение строк поля"
+                                                }
                                               ]
                                             ]
                                           },
@@ -2003,8 +2045,10 @@
                                     "title": {
                                       "content": [
                                         [
-                                          "ru",
-                                          "Ошибка заполнения"
+                                          {
+                                            "langKey": "ru",
+                                            "value": "Ошибка заполнения"
+                                          }
                                         ]
                                       ]
                                     },
@@ -2020,8 +2064,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Индикатор ошибки"
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Индикатор ошибки"
+                                                }
                                               ]
                                             ]
                                           },
@@ -2065,8 +2111,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Фильтр по условию"
+                      {
+                        "langKey": "ru",
+                        "value": "Фильтр по условию"
+                      }
                     ]
                   ]
                 },
@@ -2082,8 +2130,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Свойства фильтра по условию слева"
+                            {
+                              "langKey": "ru",
+                              "value": "Свойства фильтра по условию слева"
+                            }
                           ]
                         ]
                       },
@@ -2113,8 +2163,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Свойства фильтра по условию справа"
+                            {
+                              "langKey": "ru",
+                              "value": "Свойства фильтра по условию справа"
+                            }
                           ]
                         ]
                       },
@@ -2162,12 +2214,7 @@
                 "id": 299,
                 "name": "КоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2181,8 +2228,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Еще"
+                            {
+                              "langKey": "ru",
+                              "value": "Еще"
+                            }
                           ]
                         ]
                       },
@@ -2210,8 +2259,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Команды дополнительных возможностей"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Команды дополнительных возможностей"
+                                  }
                                 ]
                               ]
                             },
@@ -2251,8 +2302,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Поле"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Поле"
+                                        }
                                       ]
                                     ]
                                   },
@@ -2268,8 +2321,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Вставка"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Вставка"
+                                              }
                                             ]
                                           ]
                                         },
@@ -2349,8 +2404,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Перемещение"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Перемещение"
+                                              }
                                             ]
                                           ]
                                         },
@@ -2430,8 +2487,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Скрытие, переименование"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Скрытие, переименование"
+                                              }
                                             ]
                                           ]
                                         },
@@ -2459,8 +2518,10 @@
                                               "title": {
                                                 "content": [
                                                   [
-                                                    "ru",
-                                                    "Переименование"
+                                                    {
+                                                      "langKey": "ru",
+                                                      "value": "Переименование"
+                                                    }
                                                   ]
                                                 ]
                                               },
@@ -2537,8 +2598,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Оформление"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Оформление"
+                                        }
                                       ]
                                     ]
                                   },
@@ -2554,8 +2617,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Установка цвета"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Установка цвета"
+                                              }
                                             ]
                                           ]
                                         },
@@ -2611,8 +2676,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Ширина высота"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Ширина высота"
+                                              }
                                             ]
                                           ]
                                         },
@@ -2628,8 +2695,10 @@
                                               "title": {
                                                 "content": [
                                                   [
-                                                    "ru",
-                                                    "Установка ширины, высоты"
+                                                    {
+                                                      "langKey": "ru",
+                                                      "value": "Установка ширины, высоты"
+                                                    }
                                                   ]
                                                 ]
                                               },
@@ -2645,8 +2714,10 @@
                                                     "title": {
                                                       "content": [
                                                         [
-                                                          "ru",
-                                                          "Установка высоты строки"
+                                                          {
+                                                            "langKey": "ru",
+                                                            "value": "Установка высоты строки"
+                                                          }
                                                         ]
                                                       ]
                                                     },
@@ -2703,8 +2774,10 @@
                                                     "title": {
                                                       "content": [
                                                         [
-                                                          "ru",
-                                                          "Установка ширины колонки"
+                                                          {
+                                                            "langKey": "ru",
+                                                            "value": "Установка ширины колонки"
+                                                          }
                                                         ]
                                                       ]
                                                     },
@@ -2815,12 +2888,7 @@
                       "id": 301,
                       "name": "КомандыОсновные",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Команды основные"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2882,8 +2950,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Вид сравнения"
+                      {
+                        "langKey": "ru",
+                        "value": "Вид сравнения"
+                      }
                     ]
                   ]
                 }
@@ -2894,8 +2964,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Правое значение"
+                      {
+                        "langKey": "ru",
+                        "value": "Правое значение"
+                      }
                     ]
                   ]
                 }
@@ -2904,12 +2976,7 @@
                 "id": 3,
                 "name": "Значения",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Значения"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 }
               },
               {
@@ -2918,8 +2985,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Использование"
+                      {
+                        "langKey": "ru",
+                        "value": "Использование"
+                      }
                     ]
                   ]
                 }
@@ -2937,8 +3006,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Представление поля"
+                      {
+                        "langKey": "ru",
+                        "value": "Представление поля"
+                      }
                     ]
                   ]
                 }
@@ -2949,8 +3020,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Высота строки"
+                      {
+                        "langKey": "ru",
+                        "value": "Высота строки"
+                      }
                     ]
                   ]
                 }
@@ -2961,8 +3034,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Ширина колонки"
+                      {
+                        "langKey": "ru",
+                        "value": "Ширина колонки"
+                      }
                     ]
                   ]
                 }
@@ -3072,8 +3147,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Описание новой возможности по выводу описаний"
+              {
+                "langKey": "ru",
+                "value": "Описание новой возможности по выводу описаний"
+              }
             ]
           ]
         },
@@ -3081,7 +3158,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ОписаниеНовойВозможностиПоВыводуОписаний/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ОписаниеНово_ВозможностиПоВыводуОписани_/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[8]/mdoReference"
             },
@@ -3092,12 +3169,13 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ОписаниеНовойВозможностиПоВыводуОписаний/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Вывод описаний к отчетам"
+                {
+                  "langKey": "ru",
+                  "value": "Вывод описаний к отчетам"
+                }
               ]
             ]
           },
@@ -3108,8 +3186,7 @@
                 "name": "ПередЗакрытием"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -3123,8 +3200,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Теперь к отчетам выводятся их <b>подробные описания</>.\n\nДля того чтобы включить или отключить эту возможность позже\nвыберите <b>Настроить</> - <b>Показывать описания к отчетам</>."
+                      {
+                        "langKey": "ru",
+                        "value": "Теперь к отчетам выводятся их <b>подробные описания</>.\n\nДля того чтобы включить или отключить эту возможность позже\nвыберите <b>Настроить</> - <b>Показывать описания к отчетам</>."
+                      }
                     ]
                   ]
                 },
@@ -3182,8 +3261,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Панель других отчетов"
+              {
+                "langKey": "ru",
+                "value": "Панель других отчетов"
+              }
             ]
           ]
         },
@@ -3202,19 +3283,19 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ПанельДругихОтчетов/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Другие отчеты"
+                {
+                  "langKey": "ru",
+                  "value": "Другие отчеты"
+                }
               ]
             ]
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -3226,8 +3307,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Страница другие отчеты"
+                      {
+                        "langKey": "ru",
+                        "value": "Страница другие отчеты"
+                      }
                     ]
                   ]
                 },
@@ -3242,8 +3325,10 @@
                     "title": {
                       "content": [
                         [
-                          "ru",
-                          "Варианты отчета"
+                          {
+                            "langKey": "ru",
+                            "value": "Варианты отчета"
+                          }
                         ]
                       ]
                     },
@@ -3261,8 +3346,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Подвал"
+                      {
+                        "langKey": "ru",
+                        "value": "Подвал"
+                      }
                     ]
                   ]
                 },
@@ -3289,12 +3376,7 @@
                       "id": 10,
                       "name": "ГруппаКоманднаяПанель",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Командная панель"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3400,8 +3482,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Закрывать это окно после перехода к отчету"
+                      {
+                        "langKey": "ru",
+                        "value": "Закрывать это окно после перехода к отчету"
+                      }
                     ]
                   ]
                 }
@@ -3441,8 +3525,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Расширенная настройка фильтра отчета"
+              {
+                "langKey": "ru",
+                "value": "Расширенная настройка фильтра отчета"
+              }
             ]
           ]
         },
@@ -3450,7 +3536,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/РасширеннаяНастройкаФильтраОтчета/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/РасширеннаяНастро_каФильтраОтчета/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]/mdoReference"
             },
@@ -3461,24 +3547,23 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/РасширеннаяНастройкаФильтраОтчета/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Фильтровать по"
+                {
+                  "langKey": "ru",
+                  "value": "Фильтровать по"
+                }
               ]
             ]
           },
           "handlers": [
             [
               {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -3492,8 +3577,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Элемент отбора 1"
+                      {
+                        "langKey": "ru",
+                        "value": "Элемент отбора 1"
+                      }
                     ]
                   ]
                 },
@@ -3522,8 +3609,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Левое значение 1"
+                            {
+                              "langKey": "ru",
+                              "value": "Левое значение 1"
+                            }
                           ]
                         ]
                       },
@@ -3597,12 +3686,7 @@
                 "id": 30,
                 "name": "Дополнительно",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Еще"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3629,8 +3713,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Условие"
+                            {
+                              "langKey": "ru",
+                              "value": "Условие"
+                            }
                           ]
                         ]
                       },
@@ -3651,8 +3737,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Элемент отбора 2"
+                      {
+                        "langKey": "ru",
+                        "value": "Элемент отбора 2"
+                      }
                     ]
                   ]
                 },
@@ -3668,8 +3756,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Левое значение 2"
+                            {
+                              "langKey": "ru",
+                              "value": "Левое значение 2"
+                            }
                           ]
                         ]
                       },
@@ -3743,12 +3833,7 @@
                 "id": 68,
                 "name": "КоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3772,12 +3857,7 @@
                       "id": 70,
                       "name": "КомандыОсновные",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Команды основные"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3839,8 +3919,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Вид сравнения 1"
+                      {
+                        "langKey": "ru",
+                        "value": "Вид сравнения 1"
+                      }
                     ]
                   ]
                 }
@@ -3851,8 +3933,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Правое значение 1"
+                      {
+                        "langKey": "ru",
+                        "value": "Правое значение 1"
+                      }
                     ]
                   ]
                 }
@@ -3863,8 +3947,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Вид сравнения 2"
+                      {
+                        "langKey": "ru",
+                        "value": "Вид сравнения 2"
+                      }
                     ]
                   ]
                 }
@@ -3875,8 +3961,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Правое значение 2"
+                      {
+                        "langKey": "ru",
+                        "value": "Правое значение 2"
+                      }
                     ]
                   ]
                 }
@@ -3887,8 +3975,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Тип группы элементов фильтра"
+                      {
+                        "langKey": "ru",
+                        "value": "Тип группы элементов фильтра"
+                      }
                     ]
                   ]
                 }
@@ -3897,24 +3987,14 @@
                 "id": 6,
                 "name": "ЛевоеЗначение1",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Левое значение 1"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 }
               },
               {
                 "id": 7,
                 "name": "ЛевоеЗначение2",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Левое значение 2"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 }
               },
               {
@@ -3923,8 +4003,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Использование 1"
+                      {
+                        "langKey": "ru",
+                        "value": "Использование 1"
+                      }
                     ]
                   ]
                 }
@@ -3956,8 +4038,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Представление левого значения 1"
+                      {
+                        "langKey": "ru",
+                        "value": "Представление левого значения 1"
+                      }
                     ]
                   ]
                 }
@@ -3968,8 +4052,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Представление левого значения 2"
+                      {
+                        "langKey": "ru",
+                        "value": "Представление левого значения 2"
+                      }
                     ]
                   ]
                 }
@@ -4008,8 +4094,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Использование группы"
+                      {
+                        "langKey": "ru",
+                        "value": "Использование группы"
+                      }
                     ]
                   ]
                 }
@@ -4042,8 +4130,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Сохранение варианта отчета"
+              {
+                "langKey": "ru",
+                "value": "Сохранение варианта отчета"
+              }
             ]
           ]
         },
@@ -4062,23 +4152,19 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/СохранениеВариантаОтчета/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
           "handlers": [
             [
               {
-                "event": "NotificationProcessing",
-                "name": "ОбработкаОповещения"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               },
               {
                 "event": "FillCheckProcessingAtServer",
@@ -4096,8 +4182,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Страницы"
+                      {
+                        "langKey": "ru",
+                        "value": "Страницы"
+                      }
                     ]
                   ]
                 },
@@ -4113,8 +4201,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Основное"
+                            {
+                              "langKey": "ru",
+                              "value": "Основное"
+                            }
                           ]
                         ]
                       },
@@ -4156,8 +4246,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Пользователи варианта"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Пользователи варианта"
+                                  }
                                 ]
                               ]
                             },
@@ -4172,12 +4264,7 @@
                                   "id": 236,
                                   "name": "ПользователиВариантаПометка",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Пометка"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                   },
                                   "dataPath": {
                                     "segments": "ПользователиВарианта.Check",
@@ -4190,12 +4277,7 @@
                                   "id": 219,
                                   "name": "ПользователиВариантаЗначение",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Значение"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                   },
                                   "dataPath": {
                                     "segments": "ПользователиВарианта.Value",
@@ -4225,12 +4307,7 @@
                             "id": 250,
                             "name": "ГруппаОписание",
                             "title": {
-                              "content": [
-                                [
-                                  "ru",
-                                  "Описание"
-                                ]
-                              ]
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/title"
                             },
                             "dataPath": {
                               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -4258,8 +4335,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Страница 1 подвал"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Страница 1 подвал"
+                                  }
                                 ]
                               ]
                             },
@@ -4274,8 +4353,10 @@
                                 "title": {
                                   "content": [
                                     [
-                                      "ru",
-                                      "Что будет дальше"
+                                      {
+                                        "langKey": "ru",
+                                        "value": "Что будет дальше"
+                                      }
                                     ]
                                   ]
                                 },
@@ -4291,8 +4372,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Новый"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Новый"
+                                            }
                                           ]
                                         ]
                                       },
@@ -4307,8 +4390,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Будет сохранен новый вариант отчета.\nНажмите \"Далее\" для размещения варианта отчета в разделах программы."
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Будет сохранен новый вариант отчета.\nНажмите \"Далее\" для размещения варианта отчета в разделах программы."
+                                                }
                                               ]
                                             ]
                                           },
@@ -4326,8 +4411,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Перезапись"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Перезапись"
+                                            }
                                           ]
                                         ]
                                       },
@@ -4342,8 +4429,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Будет перезаписан существующий вариант отчета.\nНажмите \"Далее\" для размещения варианта отчета в разделах программы."
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Будет перезаписан существующий вариант отчета.\nНажмите \"Далее\" для размещения варианта отчета в разделах программы."
+                                                }
                                               ]
                                             ]
                                           },
@@ -4361,8 +4450,10 @@
                                       "title": {
                                         "content": [
                                           [
-                                            "ru",
-                                            "Перезапись невозможна"
+                                            {
+                                              "langKey": "ru",
+                                              "value": "Перезапись невозможна"
+                                            }
                                           ]
                                         ]
                                       },
@@ -4377,8 +4468,10 @@
                                           "title": {
                                             "content": [
                                               [
-                                                "ru",
-                                                "Наименование занято другим вариантом отчета.\nВведите другое наименование или выберите вариант из списка."
+                                                {
+                                                  "langKey": "ru",
+                                                  "value": "Наименование занято другим вариантом отчета.\nВведите другое наименование или выберите вариант из списка."
+                                                }
                                               ]
                                             ]
                                           },
@@ -4406,8 +4499,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Дополнительно"
+                            {
+                              "langKey": "ru",
+                              "value": "Дополнительно"
+                            }
                           ]
                         ]
                       },
@@ -4436,8 +4531,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Дерево подсистем"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Дерево подсистем"
+                                  }
                                 ]
                               ]
                             },
@@ -4454,8 +4551,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Колонок"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Колонок"
+                                        }
                                       ]
                                     ]
                                   },
@@ -4537,12 +4636,7 @@
                 "id": 145,
                 "name": "ГруппаКоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -4556,8 +4650,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Командная панель левая"
+                            {
+                              "langKey": "ru",
+                              "value": "Командная панель левая"
+                            }
                           ]
                         ]
                       },
@@ -4586,8 +4682,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Командная панель правая"
+                            {
+                              "langKey": "ru",
+                              "value": "Командная панель правая"
+                            }
                           ]
                         ]
                       },
@@ -4705,8 +4803,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Доступен"
+                      {
+                        "langKey": "ru",
+                        "value": "Доступен"
+                      }
                     ]
                   ]
                 }
@@ -4717,8 +4817,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Размещение в панелях отчетов"
+                      {
+                        "langKey": "ru",
+                        "value": "Размещение в панелях отчетов"
+                      }
                     ]
                   ]
                 }
@@ -4736,8 +4838,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Сбросить настройки"
+                      {
+                        "langKey": "ru",
+                        "value": "Сбросить настройки"
+                      }
                     ]
                   ]
                 }
@@ -4774,12 +4878,7 @@
                 "id": 2,
                 "name": "ПользователиВарианта",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Пользователи варианта"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[11]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 }
               },
               {
@@ -4816,8 +4915,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Уведомить в чате об этом варианте отчета"
+                      {
+                        "langKey": "ru",
+                        "value": "Уведомить в чате об этом варианте отчета"
+                      }
                     ]
                   ]
                 }
@@ -4850,8 +4951,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Сохранение варианта отчета в файл"
+              {
+                "langKey": "ru",
+                "value": "Сохранение варианта отчета в файл"
+              }
             ]
           ]
         },
@@ -4859,7 +4962,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/СохранениеВариантаОтчетаВФайл/Ext/Form/Module.bsl",
+            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/СохранениеВариантаОтчетаВФа_л/Ext/Form/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[12]/mdoReference"
             },
@@ -4870,19 +4973,16 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/СохранениеВариантаОтчетаВФайл/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
           "handlers": [
             [
               {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -4895,8 +4995,10 @@
               "title": {
                 "content": [
                   [
-                    "ru",
-                    "Варианты сохранения"
+                    {
+                      "langKey": "ru",
+                      "value": "Варианты сохранения"
+                    }
                   ]
                 ]
               },
@@ -4912,8 +5014,10 @@
                     "title": {
                       "content": [
                         [
-                          "ru",
-                          "Один вариант отчета"
+                          {
+                            "langKey": "ru",
+                            "value": "Один вариант отчета"
+                          }
                         ]
                       ]
                     },
@@ -4942,8 +5046,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Пользовательские настройки"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Пользовательские настройки"
+                                }
                               ]
                             ]
                           },
@@ -4958,12 +5064,7 @@
                                 "id": 20,
                                 "name": "ПользовательскиеНастройкиПометка",
                                 "title": {
-                                  "content": [
-                                    [
-                                      "ru",
-                                      "Пометка"
-                                    ]
-                                  ]
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                 },
                                 "dataPath": {
                                   "segments": "ПользовательскиеНастройки.Check",
@@ -4976,12 +5077,7 @@
                                 "id": 17,
                                 "name": "ПользовательскиеНастройкиЗначение",
                                 "title": {
-                                  "content": [
-                                    [
-                                      "ru",
-                                      "Значение"
-                                    ]
-                                  ]
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                 },
                                 "dataPath": {
                                   "segments": "ПользовательскиеНастройки.Value",
@@ -5004,8 +5100,10 @@
                     "title": {
                       "content": [
                         [
-                          "ru",
-                          "Несколько вариантов отчетов"
+                          {
+                            "langKey": "ru",
+                            "value": "Несколько вариантов отчетов"
+                          }
                         ]
                       ]
                     },
@@ -5034,8 +5132,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Описание вариантов отчетов"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Описание вариантов отчетов"
+                                }
                               ]
                             ]
                           },
@@ -5052,8 +5152,10 @@
                                 "title": {
                                   "content": [
                                     [
-                                      "ru",
-                                      "Вариант отчета"
+                                      {
+                                        "langKey": "ru",
+                                        "value": "Вариант отчета"
+                                      }
                                     ]
                                   ]
                                 },
@@ -5097,8 +5199,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Имя файла"
+                      {
+                        "langKey": "ru",
+                        "value": "Имя файла"
+                      }
                     ]
                   ]
                 }
@@ -5109,8 +5213,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Настройки"
+                      {
+                        "langKey": "ru",
+                        "value": "Настройки"
+                      }
                     ]
                   ]
                 }
@@ -5128,8 +5234,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Каталог"
+                      {
+                        "langKey": "ru",
+                        "value": "Каталог"
+                      }
                     ]
                   ]
                 }
@@ -5138,12 +5246,7 @@
                 "id": 13,
                 "name": "ОписаниеВариантовОтчетов",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Описание вариантов отчетов"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[12]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 }
               }
             ],
@@ -5174,8 +5277,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Условия отборов отчета"
+              {
+                "langKey": "ru",
+                "value": "Условия отборов отчета"
+              }
             ]
           ]
         },
@@ -5194,19 +5299,19 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/УсловияОтборовОтчета/Ext/Form.xml",
           "title": {
             "content": [
               [
-                "ru",
-                "Условия фильтров отчета"
+                {
+                  "langKey": "ru",
+                  "value": "Условия фильтров отчета"
+                }
               ]
             ]
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -5218,8 +5323,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Фильтры"
+                      {
+                        "langKey": "ru",
+                        "value": "Фильтры"
+                      }
                     ]
                   ]
                 },
@@ -5264,12 +5371,7 @@
                 "id": 47,
                 "name": "ГруппаКоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5367,12 +5469,7 @@
                 "id": 8,
                 "name": "Отборы",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Фильтры"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[13]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 }
               }
             ],
@@ -5403,8 +5500,10 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Элемент условного оформления отчета"
+              {
+                "langKey": "ru",
+                "value": "Элемент условного оформления отчета"
+              }
             ]
           ]
         },
@@ -5423,14 +5522,12 @@
         "formType": "MANAGED",
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "dataPath": "src/test/resources/ext/designer/ssl_3_1/src/cf/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ЭлементУсловногоОформленияОтчета/Ext/Form.xml",
           "title": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
           },
           "handlers": [
             {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -5442,8 +5539,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Оформляемые поля"
+                      {
+                        "langKey": "ru",
+                        "value": "Оформляемые поля"
+                      }
                     ]
                   ]
                 },
@@ -5459,8 +5558,10 @@
                       "title": {
                         "content": [
                           [
-                            "ru",
-                            "Варианты выбора"
+                            {
+                              "langKey": "ru",
+                              "value": "Варианты выбора"
+                            }
                           ]
                         ]
                       },
@@ -5487,12 +5588,7 @@
                             "id": 362,
                             "name": "ОформляемыеПоляСтраницы",
                             "title": {
-                              "content": [
-                                [
-                                  "ru",
-                                  "Оформляемые поля"
-                                ]
-                              ]
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                             },
                             "dataPath": {
                               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5506,8 +5602,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Оформляемое поле"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Оформляемое поле"
+                                        }
                                       ]
                                     ]
                                   },
@@ -5535,12 +5633,7 @@
                                   "id": 366,
                                   "name": "СтраницаКоманднаяПанель",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Командная панель"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                   },
                                   "dataPath": {
                                     "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5551,12 +5644,7 @@
                                       "id": 368,
                                       "name": "ОформляемыеПоляКомандыОсновные",
                                       "title": {
-                                        "content": [
-                                          [
-                                            "ru",
-                                            "Команды основные"
-                                          ]
-                                        ]
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                       },
                                       "dataPath": {
                                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5582,8 +5670,10 @@
                                             "title": {
                                               "content": [
                                                 [
-                                                  "ru",
-                                                  "Изменить флажки"
+                                                  {
+                                                    "langKey": "ru",
+                                                    "value": "Изменить флажки"
+                                                  }
                                                 ]
                                               ]
                                             },
@@ -5627,8 +5717,10 @@
                                             "title": {
                                               "content": [
                                                 [
-                                                  "ru",
-                                                  "Переместить"
+                                                  {
+                                                    "langKey": "ru",
+                                                    "value": "Переместить"
+                                                  }
                                                 ]
                                               ]
                                             },
@@ -5684,12 +5776,7 @@
                       "id": 30,
                       "name": "ОформляемыеПоля",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Оформляемые поля"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                       },
                       "dataPath": {
                         "segments": "КомпоновщикНастроек.Settings.ConditionalAppearance[0].Fields",
@@ -5701,12 +5788,7 @@
                           "id": 206,
                           "name": "ОформляемыеПоляГруппаКолонокПоле",
                           "title": {
-                            "content": [
-                              [
-                                "ru",
-                                "Поле"
-                              ]
-                            ]
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                           },
                           "dataPath": {
                             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5754,12 +5836,7 @@
                 "id": 333,
                 "name": "ГруппаОформление",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Оформление"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5770,12 +5847,7 @@
                     "id": 72,
                     "name": "Оформление",
                     "title": {
-                      "content": [
-                        [
-                          "ru",
-                          "Оформление"
-                        ]
-                      ]
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
                     },
                     "dataPath": {
                       "segments": "КомпоновщикНастроек.Settings.ConditionalAppearance[0].Appearance",
@@ -5790,8 +5862,10 @@
                           "title": {
                             "content": [
                               [
-                                "ru",
-                                "Использование параметра"
+                                {
+                                  "langKey": "ru",
+                                  "value": "Использование параметра"
+                                }
                               ]
                             ]
                           },
@@ -5835,12 +5909,7 @@
                           "id": 108,
                           "name": "ОформлениеГруппаКолонокЗначениеПараметра",
                           "title": {
-                            "content": [
-                              [
-                                "ru",
-                                "Значение"
-                              ]
-                            ]
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                           },
                           "dataPath": {
                             "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5888,12 +5957,7 @@
                 "id": 335,
                 "name": "ГруппаОтбор",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Фильтры"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[13]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5905,12 +5969,7 @@
                       "id": 345,
                       "name": "ОтборКоманднаяПанель1",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Командная панель"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5924,8 +5983,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Условие:"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Условие:"
+                                  }
                                 ]
                               ]
                             },
@@ -5939,12 +6000,7 @@
                             "id": 350,
                             "name": "ОтборКомандыОсновные",
                             "title": {
-                              "content": [
-                                [
-                                  "ru",
-                                  "Команды основные"
-                                ]
-                              ]
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                             },
                             "dataPath": {
                               "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -5958,8 +6014,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Добавить"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Добавить"
+                                        }
                                       ]
                                     ]
                                   },
@@ -5973,12 +6031,7 @@
                                   "id": 285,
                                   "name": "ОтборГруппаИзменитьФлажки",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Изменить флажки"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                   },
                                   "dataPath": {
                                     "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6018,12 +6071,7 @@
                                   "id": 291,
                                   "name": "ОтборГруппаПереместить",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Переместить"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                                   },
                                   "dataPath": {
                                     "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6071,12 +6119,7 @@
                       "id": 51,
                       "name": "Отбор",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Фильтры"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[13]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                       },
                       "dataPath": {
                         "segments": "КомпоновщикНастроек.Settings.ConditionalAppearance[0].Filter",
@@ -6104,8 +6147,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Фильтр"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Фильтр"
+                                  }
                                 ]
                               ]
                             },
@@ -6121,8 +6166,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Основные элементы фильтра"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Основные элементы фильтра"
+                                        }
                                       ]
                                     ]
                                   },
@@ -6138,8 +6185,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Левое значение"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Левое значение"
+                                              }
                                             ]
                                           ]
                                         },
@@ -6196,12 +6245,7 @@
                                         "id": 240,
                                         "name": "ОтборГруппаКолонокПравоеЗначение",
                                         "title": {
-                                          "content": [
-                                            [
-                                              "ru",
-                                              "Правое значение"
-                                            ]
-                                          ]
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/title"
                                         },
                                         "dataPath": {
                                           "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6275,8 +6319,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Фильтр группа 6"
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Фильтр группа 6"
+                                        }
                                       ]
                                     ]
                                   },
@@ -6292,8 +6338,10 @@
                                         "title": {
                                           "content": [
                                             [
-                                              "ru",
-                                              "Применение"
+                                              {
+                                                "langKey": "ru",
+                                                "value": "Применение"
+                                              }
                                             ]
                                           ]
                                         },
@@ -6379,12 +6427,7 @@
                 "id": 339,
                 "name": "КоманднаяПанель",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Командная панель"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "dataPath": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6396,12 +6439,7 @@
                       "id": 341,
                       "name": "ВариантыИспользования",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Еще"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6415,8 +6453,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Варианты использования (команды)"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Варианты использования (команды)"
+                                  }
                                 ]
                               ]
                             },
@@ -6432,8 +6472,10 @@
                                   "title": {
                                     "content": [
                                       [
-                                        "ru",
-                                        "Показывать:                 "
+                                        {
+                                          "langKey": "ru",
+                                          "value": "Показывать:                 "
+                                        }
                                       ]
                                     ]
                                   },
@@ -6447,12 +6489,7 @@
                                   "id": 199,
                                   "name": "КомандыИзменитьФлажки",
                                   "title": {
-                                    "content": [
-                                      [
-                                        "ru",
-                                        "Изменить флажки"
-                                      ]
-                                    ]
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                   },
                                   "dataPath": {
                                     "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6463,12 +6500,7 @@
                                       "id": 343,
                                       "name": "ГруппаИзменитьФлажки",
                                       "title": {
-                                        "content": [
-                                          [
-                                            "ru",
-                                            "Изменить флажки"
-                                          ]
-                                        ]
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                       },
                                       "dataPath": {
                                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6516,8 +6548,10 @@
                             "title": {
                               "content": [
                                 [
-                                  "ru",
-                                  "Варианты использования (пометки)"
+                                  {
+                                    "langKey": "ru",
+                                    "value": "Варианты использования (пометки)"
+                                  }
                                 ]
                               ]
                             },
@@ -6630,12 +6664,7 @@
                       "id": 323,
                       "name": "КомандыОсновные",
                       "title": {
-                        "content": [
-                          [
-                            "ru",
-                            "Команды основные"
-                          ]
-                        ]
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -6730,12 +6759,7 @@
                 "id": 8,
                 "name": "Наименование",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Заголовок"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/title"
                 }
               },
               {
@@ -6744,8 +6768,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В группировке"
+                      {
+                        "langKey": "ru",
+                        "value": "В группировке"
+                      }
                     ]
                   ]
                 }
@@ -6756,8 +6782,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В параметрах"
+                      {
+                        "langKey": "ru",
+                        "value": "В параметрах"
+                      }
                     ]
                   ]
                 }
@@ -6768,8 +6796,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В фильтрах"
+                      {
+                        "langKey": "ru",
+                        "value": "В фильтрах"
+                      }
                     ]
                   ]
                 }
@@ -6780,8 +6810,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В общем итоге"
+                      {
+                        "langKey": "ru",
+                        "value": "В общем итоге"
+                      }
                     ]
                   ]
                 }
@@ -6792,8 +6824,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В иерархической группировке"
+                      {
+                        "langKey": "ru",
+                        "value": "В иерархической группировке"
+                      }
                     ]
                   ]
                 }
@@ -6804,8 +6838,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В заголовке полей"
+                      {
+                        "langKey": "ru",
+                        "value": "В заголовке полей"
+                      }
                     ]
                   ]
                 }
@@ -6816,8 +6852,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "В заголовке"
+                      {
+                        "langKey": "ru",
+                        "value": "В заголовке"
+                      }
                     ]
                   ]
                 }
@@ -6849,8 +6887,10 @@
                 "title": {
                   "content": [
                     [
-                      "ru",
-                      "Вариант выбора оформляемых полей"
+                      {
+                        "langKey": "ru",
+                        "value": "Вариант выбора оформляемых полей"
+                      }
                     ]
                   ]
                 }
@@ -6859,12 +6899,7 @@
                 "id": 7,
                 "name": "ОформляемоеПоле",
                 "title": {
-                  "content": [
-                    [
-                      "ru",
-                      "Оформляемое поле"
-                    ]
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 }
               }
             ],
@@ -6905,8 +6940,10 @@
   "synonym": {
     "content": [
       [
-        "ru",
-        "Хранилище вариантов отчетов"
+        {
+          "langKey": "ru",
+          "value": "Хранилище вариантов отчетов"
+        }
       ]
     ]
   },
