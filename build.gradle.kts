@@ -14,7 +14,7 @@ plugins {
     id("io.freefair.javadoc-utf-8") version "8.6"
     id("io.freefair.maven-central.validate-poms") version "8.6"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "5.0.0.4638"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
 
