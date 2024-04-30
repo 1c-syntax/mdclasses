@@ -8,7 +8,7 @@ plugins {
     signing
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.3"
-    id("com.gorylenko.gradle-git-properties") version "2.4.1"
+    id("com.gorylenko.gradle-git-properties") version "2.4.2"
     id("io.freefair.lombok") version "8.6"
     id("io.freefair.javadoc-links") version "8.6"
     id("io.freefair.javadoc-utf-8") version "8.6"
