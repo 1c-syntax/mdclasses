@@ -99,7 +99,8 @@ public enum RoleRight implements EnumWithValue {
   START("Start"),
   STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange"),
   SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange"),
-  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange")
+  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange"),
+  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START("ExclusiveModeTerminationAtSessionStart")
   ;
 
   @Accessors(fluent = true)
