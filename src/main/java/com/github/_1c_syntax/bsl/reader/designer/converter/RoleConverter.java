@@ -22,11 +22,13 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.Role;
-import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @DesignerConverter
 public class RoleConverter extends AbstractReadConverter {
@@ -37,12 +39,16 @@ public class RoleConverter extends AbstractReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
     readerContext.setValue(DATA_FIELD,
-      RoleData.create(DesignerPaths.roleDataPath(readerContext.getCurrentPath(), readerContext.getName())));
+      ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName())));
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
     return Role.class.isAssignableFrom(type);
+  }
+
+  private static Path dataPath(Path path, String name) {
+    return Paths.get(path.getParent().toString(), name, "Ext", "Rights.xml");
   }
 }

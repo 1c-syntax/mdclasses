@@ -22,11 +22,12 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.Role;
-import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+
+import java.nio.file.Path;
 
 @EDTConverter
 public class RoleConverter extends AbstractReadConverter {
@@ -36,12 +37,16 @@ public class RoleConverter extends AbstractReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    readerContext.setValue(DATA_FIELD, RoleData.create(EDTPaths.roleDataPath(readerContext.getCurrentPath())));
+    readerContext.setValue(DATA_FIELD, ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath())));
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
     return Role.class.isAssignableFrom(type);
+  }
+
+  private static Path dataPath(Path path) {
+    return Path.of(path.getParent().toString(), "Rights.rights");
   }
 }

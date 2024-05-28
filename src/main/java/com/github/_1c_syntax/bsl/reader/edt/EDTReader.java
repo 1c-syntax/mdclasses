@@ -21,8 +21,10 @@
  */
 package com.github._1c_syntax.bsl.reader.edt;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
+import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
 import com.github._1c_syntax.bsl.mdo.children.Dimension;
@@ -44,65 +46,84 @@ import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
+import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
+import com.github._1c_syntax.bsl.reader.edt.converter.Unmarshaller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.core.ClassLoaderReference;
+import com.thoughtworks.xstream.core.util.CompositeClassLoader;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FilenameUtils;
 
+import javax.annotation.Nullable;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Slf4j
 public class EDTReader implements MDReader {
 
-  @Getter(lazy = true)
-  private static final ExtendXStream xstream = createXMLMapper();
+  /**
+   * Путь к файлу описания конфигурации
+   */
+  public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", "Configuration.mdo")
+    .toString();
+
+  @Getter
+  private final ExtendXStream xstream;
 
   @Getter
   private final Path rootPath;
 
   public EDTReader(Path path, boolean skipSupport) {
+    xstream = createXMLMapper();
     rootPath = path;
     if (!skipSupport) {
-      ParseSupportData.readSimple(EDTPaths.parentConfigurationsPath(rootPath));
+      ParseSupportData.readSimple(parentConfigurationsPath());
     }
   }
 
   @Override
+  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EDT;
   }
 
   @Override
+  @NonNull
   public MDClass readConfiguration() {
-    var mdc = Optional.of((MDClass) read(
-      EDTPaths.mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+    var mdc = Optional.ofNullable((MDClass) read(
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
     ));
-    return mdc.orElse(MDClasses.createConfiguration());
+    return mdc.orElse(Configuration.EMPTY);
   }
 
   @Override
-  public MDClass readExternalSource() {
+  @NonNull
+  public ExternalSource readExternalSource() {
     var value = read(rootPath);
-    if (value instanceof MDClass mdc) {
-      return mdc;
+    if (value instanceof ExternalSource externalSource) {
+      return externalSource;
     } else {
-      return MDClasses.createExternalReport();
+      return ExternalReport.EMPTY;
     }
   }
 
   @Override
-  public Object read(String fullName) {
-    return read(rootPath, fullName);
-  }
-
-  @Override
+  @Nullable
   public Object read(Path folder, String fullName) {
     var dotPosition = fullName.indexOf('.');
     var type = MDOType.fromValue(fullName.substring(0, dotPosition));
@@ -111,9 +132,9 @@ public class EDTReader implements MDReader {
     if (type.isPresent()) {
       Path path;
       if (rootPath.equals(folder)) {
-        path = EDTPaths.mdoPath(folder, type.get(), name);
+        path = mdoPath(folder, type.get(), name);
       } else {
-        path = EDTPaths.mdoPath(folder, name);
+        path = mdoPath(folder, name);
       }
       return read(path);
     }
@@ -121,12 +142,73 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  public ExtendXStream getEXStream() {
-    return getXstream();
+  @Nullable
+  public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
+    Path formDataPath;
+    var basePath = currentPath.getParent().toString();
+    if (mdoType == MDOType.COMMON_FORM) {
+      formDataPath = Path.of(basePath, "Form.form");
+    } else {
+      formDataPath = Path.of(basePath, MDOType.FORM.getGroupName(), name, "Form.form");
+    }
+
+    if (!formDataPath.toFile().exists()) {
+      return EmptyFormData.getEmpty();
+    }
+    return (FormData) read(formDataPath);
   }
 
-  private static ExtendXStream createXMLMapper() {
-    var xStream = new ExtendXStream();
+  @Override
+  @NonNull
+  public Path moduleFolder(Path mdoPath, MDOType mdoType) {
+    if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
+      return mdoPath.getParent().getParent();
+    } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
+      return Paths.get(mdoPath.getParent().toString(), mdoType.getGroupName());
+    } else {
+      return mdoTypeFolderPath(mdoPath);
+    }
+  }
+
+  @Override
+  @NonNull
+  public Path modulePath(Path folder, String name, ModuleType moduleType) {
+    if (ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
+      return Paths.get(folder.toString(), MDOType.CONFIGURATION.getName(), moduleType.getFileName());
+    }
+    return Paths.get(folder.toString(), name, moduleType.getFileName());
+  }
+
+  @Override
+  @NonNull
+  public Path mdoTypeFolderPath(Path mdoPath) {
+    return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
+      FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
+  }
+
+  @Override
+  @NonNull
+  public String subsystemsNodeName() {
+    return "subsystems";
+  }
+
+  @Override
+  @NonNull
+  public String configurationExtensionFilter() {
+    return "(<objectBelonging>)";
+  }
+
+  @Override
+  public void unmarshal(HierarchicalStreamReader reader,
+                        UnmarshallingContext context,
+                        AbstractReaderContext readerContext) {
+    Unmarshaller.unmarshal(reader, context, readerContext);
+  }
+
+  private ExtendXStream createXMLMapper() {
+    var classLoaderReference = new ClassLoaderReference(new CompositeClassLoader());
+    var mapper = ExtendXStream.buildMapper(classLoaderReference);
+    var xStream = new ExtendXStream(this, classLoaderReference, mapper);
 
     // необходимо зарегистрировать все используемые классы
     registerClasses(xStream);
@@ -162,5 +244,18 @@ public class EDTReader implements MDReader {
     xStream.alias("templates", ObjectTemplate.class);
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
     xStream.alias("Form", ManagedFormData.class);
+  }
+
+  private Path parentConfigurationsPath() {
+    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.getName(),
+      "ParentConfigurations.bin");
+  }
+
+  private static Path mdoPath(Path rootPath, MDOType type, String name) {
+    return mdoPath(Paths.get(rootPath.toString(), "src", type.getGroupName()), name);
+  }
+
+  private static Path mdoPath(Path folder, String name) {
+    return Paths.get(folder.toString(), name, name + ".mdo");
   }
 }
