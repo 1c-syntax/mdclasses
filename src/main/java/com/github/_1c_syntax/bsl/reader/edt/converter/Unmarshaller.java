@@ -25,10 +25,10 @@ import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
+import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
-import com.github._1c_syntax.bsl.reader.common.context.ReaderContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -55,7 +55,9 @@ public class Unmarshaller {
   /**
    * Читают общую информацию из файла
    */
-  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, ReaderContext readerContext) {
+  public void unmarshal(HierarchicalStreamReader reader,
+                        UnmarshallingContext context,
+                        AbstractReaderContext readerContext) {
     readerContext.setLastValue(null);
     readerContext.setLastName("");
 
@@ -66,15 +68,7 @@ public class Unmarshaller {
     }
   }
 
-  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, MDReaderContext readerContext) {
-    unmarshal(reader, context, (ReaderContext) readerContext);
-  }
-
-  public void unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context, MDCReaderContext readerContext) {
-    unmarshal(reader, context, (ReaderContext) readerContext);
-  }
-
-  private void readNode(String name, UnmarshallingContext context, ReaderContext readerContext) {
+  private void readNode(String name, UnmarshallingContext context, AbstractReaderContext readerContext) {
 
     Class<?> fieldClass = null;
     if (readerContext instanceof MDCReaderContext) {
@@ -102,7 +96,7 @@ public class Unmarshaller {
       return;
     }
 
-    var value = ReaderUtils.readValue(context, fieldClass);
+    var value = ExtendXStream.readValue(context, fieldClass);
     if (readerContext instanceof MDReaderContext mdReaderContext) {
       saveExtra(mdReaderContext, name, value);
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
@@ -111,7 +105,7 @@ public class Unmarshaller {
     readerContext.setValue(name, transformMultiLanguageString(readerContext, name, value));
   }
 
-  private Object transformMultiLanguageString(ReaderContext readerContext, String name, Object value) {
+  private Object transformMultiLanguageString(AbstractReaderContext readerContext, String name, Object value) {
     var newVal = value;
     if (readerContext.getLastName().equals(name)
       && readerContext.getLastValue() instanceof MultiLanguageString lastValue
@@ -146,4 +140,5 @@ public class Unmarshaller {
       // no-op
     }
   }
+
 }

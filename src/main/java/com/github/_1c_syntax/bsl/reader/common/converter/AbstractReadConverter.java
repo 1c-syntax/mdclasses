@@ -21,16 +21,18 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
+/**
+ * Базовый класс-конвертер объектов при чтении из файла
+ */
 public abstract class AbstractReadConverter implements ReadConverter {
   protected MDReaderContext read(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = new MDReaderContext(reader);
-    ReaderUtils.unmarshal(reader, context, readerContext);
+    readerContext.getMdReader().unmarshal(reader, context, readerContext);
     return readerContext;
   }
 }

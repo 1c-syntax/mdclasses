@@ -44,12 +44,14 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
 import com.thoughtworks.xstream.converters.basic.IntConverter;
 import com.thoughtworks.xstream.converters.basic.NullConverter;
@@ -61,9 +63,16 @@ import com.thoughtworks.xstream.converters.collections.SingletonCollectionConver
 import com.thoughtworks.xstream.converters.collections.SingletonMapConverter;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
+import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
+import com.thoughtworks.xstream.mapper.CachingMapper;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
+import com.thoughtworks.xstream.mapper.ClassAliasingMapper;
+import com.thoughtworks.xstream.mapper.DefaultImplementationsMapper;
+import com.thoughtworks.xstream.mapper.DefaultMapper;
+import com.thoughtworks.xstream.mapper.Mapper;
+import com.thoughtworks.xstream.mapper.SecurityMapper;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
@@ -85,22 +94,13 @@ import java.util.function.Function;
 @Getter
 public class ExtendXStream extends XStream {
 
-  /**
-   * Используется для чтения элементов формы (см. FormEventConverter, DesignerFormItemConverter)
-   */
-  private Converter reflectionConverter;
-  private Converter collectionConverter;
-
-  public ExtendXStream() {
-    super(new PureJavaReflectionProvider(), new ExtendStaxDriver());
-
+  public ExtendXStream(MDReader reader, ClassLoaderReference classLoaderReference, Mapper mapper) {
+    super(new PureJavaReflectionProvider(), new ExtendStaxDriver(reader), classLoaderReference, mapper);
     init();
   }
 
-  public ExtendXStream(QNameMap qNameMap) {
-    super(new PureJavaReflectionProvider(), new ExtendStaxDriver(qNameMap));
-
-    // автоопределение аннотаций
+  public ExtendXStream(MDReader reader, QNameMap qNameMap, ClassLoaderReference classLoaderReference, Mapper mapper) {
+    super(new PureJavaReflectionProvider(), new ExtendStaxDriver(reader, qNameMap), classLoaderReference, mapper);
     init();
   }
 
@@ -137,6 +137,40 @@ public class ExtendXStream extends XStream {
   }
 
   /**
+   * Возвращает класс реализации объекта по имени поля / строковому краткому имени
+   *
+   * @param reader    Ридер файла
+   * @param className Имя искомого класса
+   * @return Найденный класс
+   */
+  public static Class<?> getRealClass(HierarchicalStreamReader reader, String className) {
+    return getCurrentMDReader(reader).getXstream().getRealClass(className);
+  }
+
+  /**
+   * Выполняет чтение объекта из файла
+   *
+   * @param reader      Ридер файла
+   * @param contentPath Путь к файлу
+   * @return Найденный класс
+   */
+  public static Object read(HierarchicalStreamReader reader, Path contentPath) {
+    return getCurrentMDReader(reader).read(contentPath);
+  }
+
+  /**
+   * Выполняет чтение объекта из файла по имени
+   *
+   * @param reader      Ридер файла
+   * @param contentPath Путь к файлу
+   * @param fullName    Имя читаемого объекта
+   * @return Найденный класс
+   */
+  public static Object read(HierarchicalStreamReader reader, Path contentPath, String fullName) {
+    return getCurrentMDReader(reader).read(contentPath, fullName);
+  }
+
+  /**
    * Возвращает путь текущего читаемого файла
    *
    * @param reader Текущий ридер
@@ -144,6 +178,28 @@ public class ExtendXStream extends XStream {
    */
   public static Path getCurrentPath(HierarchicalStreamReader reader) {
     return ((ExtendReaderWrapper) reader).getPath();
+  }
+
+  /**
+   * Выполняет ссылку на MDReader, связанный с читатем файла
+   *
+   * @param reader Ридер файла
+   * @return Найденный класс
+   */
+  public static MDReader getCurrentMDReader(HierarchicalStreamReader reader) {
+    return ((ExtendReaderWrapper) reader).getMDReader();
+  }
+
+  /**
+   * Читает значение из файла
+   *
+   * @param context Контекст чтения файла
+   * @param clazz   Класс для преобразования
+   * @return Прочитанное значение
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> T readValue(UnmarshallingContext context, Class<T> clazz) {
+    return (T) context.convertAnother(null, clazz);
   }
 
   /**
@@ -174,21 +230,18 @@ public class ExtendXStream extends XStream {
    */
   @Override
   protected void setupConverters() {
-    reflectionConverter = new ReflectionConverter(getMapper(), getReflectionProvider());
-    collectionConverter = new CollectionConverter(getMapper());
-
     registerConverter(new NullConverter(), PRIORITY_VERY_HIGH);
     registerConverter(new IntConverter(), PRIORITY_NORMAL);
     registerConverter(new BooleanConverter(), PRIORITY_NORMAL);
     registerConverter(new StringConverter(), PRIORITY_LOW);
 
-    registerConverter(collectionConverter);
+    registerConverter(new CollectionConverter(getMapper()));
     registerConverter(new ArrayConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new MapConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new SingletonCollectionConverter(getMapper()), PRIORITY_NORMAL);
     registerConverter(new SingletonMapConverter(getMapper()), PRIORITY_NORMAL);
 
-    registerConverter(reflectionConverter, PRIORITY_VERY_LOW);
+    registerConverter(new ReflectionConverter(getMapper(), getReflectionProvider()), PRIORITY_VERY_LOW);
 
     registerConverters(this,
       "com.github._1c_syntax.bsl.reader.common.converter",
@@ -213,12 +266,6 @@ public class ExtendXStream extends XStream {
   }
 
   private void init() {
-    // автоопределение аннотаций
-    autodetectAnnotations(false);
-
-    // игнорирование неизвестных тегов
-    ignoreUnknownElements();
-
     // настройки безопасности доступа к данным
     setMode(XStream.NO_REFERENCES);
     addPermission(new WildcardTypePermission(new String[]{"com.github._1c_syntax.**"}));
@@ -273,7 +320,7 @@ public class ExtendXStream extends XStream {
     try {
       return Class.forName(classInfo.getName());
     } catch (ClassNotFoundException e) {
-      LOGGER.error("Cannot resolve class {}\n {}", classInfo.getName(), e);
+      LOGGER.error("Cannot resolve class {}\n", classInfo.getName(), e);
       return null;
     }
   }
@@ -285,9 +332,18 @@ public class ExtendXStream extends XStream {
         return clazz.getDeclaredConstructors()[0].newInstance();
       } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException |
                InstantiationException e) {
-        LOGGER.error("Cannot resolve class {}\n{}", classInfo.getName(), e);
+        LOGGER.error("Cannot resolve class {}\n", classInfo.getName(), e);
         throw new IllegalArgumentException("Cannot resolve class");
       }
     };
+  }
+
+  public static Mapper buildMapper(ClassLoaderReference classLoaderReference) {
+    Mapper mapper = new DefaultMapper(classLoaderReference);
+    mapper = new ClassAliasingMapper(mapper);
+    mapper = new DefaultImplementationsMapper(mapper);
+    mapper = new SecurityMapper(mapper);
+    mapper = new CachingMapper(mapper);
+    return mapper;
   }
 }

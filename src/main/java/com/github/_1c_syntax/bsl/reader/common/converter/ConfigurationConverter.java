@@ -19,43 +19,49 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.designer.converter;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
+import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+
+import java.io.FileInputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
- * Конвертор для объектов в формате конфигуратора, минуя класс враппер
+ * Обобщенный конвертер для контейнеров конфигурации и расширения
  */
-@Slf4j
-@DesignerConverter
-public class MetaDataObjectConverter implements ReadConverter {
+@CommonConverter
+public class ConfigurationConverter implements ReadConverter {
 
   @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    reader.moveDown();
-    var nodeName = reader.getNodeName();
-    Class<?> realClass = ExtendXStream.getRealClass(reader, nodeName);
-    if (realClass == null) {
-      LOGGER.error("Unexpected type `{}`, path: `{}`", nodeName, ExtendXStream.getCurrentPath(reader));
-      throw new IllegalStateException("Unexpected type: " + nodeName);
+    int count;
+    var fileInputStream = new FileInputStream(ExtendXStream.getCurrentPath(reader).toFile());
+    try (var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8)) {
+      count = (int) scanner.findAll(ExtendXStream.getCurrentMDReader(reader).configurationExtensionFilter()).count();
     }
-    try {
-      return ExtendXStream.readValue(context, realClass);
-    } catch (ConversionException e) {
-      LOGGER.error("Can't convert: `{}`", ExtendXStream.getCurrentPath(reader));
-      throw e;
+
+    Class<?> realClass = Configuration.class;
+    if (count > 0) {
+      realClass = ConfigurationExtension.class;
     }
+
+    var readerContext = new MDCReaderContext(realClass, reader);
+    readerContext.getMdReader().unmarshal(reader, context, readerContext);
+    return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return DesignerRootWrapper.class.isAssignableFrom(type);
+    return ConfigurationTree.class.isAssignableFrom(type);
   }
 }

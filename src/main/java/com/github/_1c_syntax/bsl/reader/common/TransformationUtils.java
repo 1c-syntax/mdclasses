@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.reader.common;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
@@ -32,11 +31,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Вспомогательный класс для конвертирования значений между моделями
@@ -45,7 +46,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class TransformationUtils {
 
-  private static final Map<Class<?>, Map<String, Method>> methods = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Method>> methods = new ConcurrentHashMap<>();
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
@@ -113,16 +114,17 @@ public class TransformationUtils {
    * Вызывает метод сборки билдера
    *
    * @param builder Собираемый билдер
+   * @param path    Файл, который собирается
    * @return Собранный билдером объект
    */
   @Nullable
-  public Object build(@NonNull Object builder) {
+  public Object build(@NonNull Object builder, @NonNull Path path) {
     var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
     if (method != null) {
       try {
         return method.invoke(builder);
-      } catch (IllegalAccessException | InvocationTargetException e) {
-        LOGGER.error(LOGGER_MESSAGE_PREF, builder.getClass(), BUILD_METHOD_NAME, e);
+      } catch (Exception e) {
+        LOGGER.error("File {}, Class {}, method {}", path, builder.getClass(), BUILD_METHOD_NAME, e);
       }
     }
     return null;
@@ -145,9 +147,9 @@ public class TransformationUtils {
 
   @Nullable
   private Method getMethod(@NonNull Class<?> clazz, @NonNull String methodName) {
-    var classMethods = methods.get(clazz);
+    var classMethods = methods.get(clazz.getName());
     if (classMethods == null) {
-      classMethods = new CaseInsensitiveMap<>();
+      classMethods = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
     }
 
     var method = classMethods.get(methodName);
@@ -173,6 +175,6 @@ public class TransformationUtils {
                                  @NonNull Method method,
                                  @NonNull String builderMethodName) {
     classMethods.put(builderMethodName, method);
-    methods.put(builderClass, classMethods);
+    methods.put(builderClass.getName(), classMethods);
   }
 }

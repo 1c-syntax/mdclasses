@@ -34,6 +34,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Используется для хранения текстовой строки на разных языках
@@ -173,6 +174,16 @@ public class MultiLanguageString implements Comparable<MultiLanguageString> {
       var leftOne = left.iterator().next();
       var rightOne = right.iterator().next();
       return leftOne.compareTo(rightOne);
+    }
+  }
+
+  public String toString() {
+    if (isEmpty()) {
+      return "empty";
+    } else {
+      return content.stream()
+        .map(entry -> entry.langKey + ": " + entry.value)
+        .collect(Collectors.joining(", "));
     }
   }
 

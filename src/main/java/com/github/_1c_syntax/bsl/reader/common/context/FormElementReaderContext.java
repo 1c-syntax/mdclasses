@@ -25,24 +25,18 @@ import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem;
-import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
-import java.nio.file.Path;
 import java.util.Map;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Для хранения контекста при чтении элементов форм
  */
-@Data
-public class FormElementReaderContext implements ReaderContext {
+@EqualsAndHashCode(callSuper = true)
+public class FormElementReaderContext extends AbstractReaderContext {
 
   private static final Map<String, Class<?>> CLASSES = Map.of(
     "Form", ManagedFormData.class,
@@ -56,55 +50,19 @@ public class FormElementReaderContext implements ReaderContext {
 
   private static final Class<?> DEFAULT_CLASS_FORM_ITEM = SimpleFormItem.class;
 
-  String lastName;
-  Object lastValue;
-
-  /**
-   * Строковое имя объекта
-   */
-  String realClassName;
-
-  /**
-   * Класс будущего объекта
-   */
-  Class<?> realClass;
-
-  /**
-   * Билдер объекта
-   */
-  Object builder;
-
-  /**
-   * Путь к текущему, читаемому файлу
-   */
-  Path currentPath;
-
-  /**
-   * Вариант исходников в формате конфигуратора
-   */
-  boolean isDesignerFormat;
-
-  public FormElementReaderContext(@NonNull String name, @NonNull HierarchicalStreamReader reader) {
-    currentPath = ExtendXStream.getCurrentPath(reader);
-    realClassName = name;
-    isDesignerFormat = MDOReader.getConfigurationSourceByMDOPath(currentPath) == ConfigurationSource.DESIGNER;
-
-    realClass = realClassByName(realClassName);
+  public FormElementReaderContext(@NonNull String elementName, @NonNull HierarchicalStreamReader reader) {
+    super(reader);
+    name = elementName;
+    realClass = realClassByName(elementName);
     if (realClass == null) {
       realClass = DEFAULT_CLASS_FORM_ITEM;
     }
     builder = TransformationUtils.builder(realClass);
-    requireNonNull(builder);
-  }
-
-  @Override
-  public Object build() {
-    return TransformationUtils.build(builder);
   }
 
   @Override
   public Class<?> fieldType(String fieldName) {
-    var clazz = ReaderContext.super.fieldType(fieldName);
+    var clazz = super.fieldType(fieldName);
     if (clazz == null) {
       clazz = realClassByName(fieldName);
     }

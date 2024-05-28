@@ -147,15 +147,20 @@ public class XdtoPackageDataConverter implements ReadConverter {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var node = reader.getNodeName();
-      if (TYPE_DEF_NODE_NAME.equals(node)) {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          node = reader.getNodeName();
-          if (PROPERTY_NODE_NAME.equals(node)) {
-            builder.property(readProperty(reader));
-          }
-          reader.moveUp();
+
+      if (!TYPE_DEF_NODE_NAME.equals(node)) {
+        // пропустим и пойдем дальше
+        reader.moveUp();
+        continue;
+      }
+
+      while (reader.hasMoreChildren()) {
+        reader.moveDown();
+        node = reader.getNodeName();
+        if (PROPERTY_NODE_NAME.equals(node)) {
+          builder.property(readProperty(reader));
         }
+        reader.moveUp();
       }
       reader.moveUp();
     }

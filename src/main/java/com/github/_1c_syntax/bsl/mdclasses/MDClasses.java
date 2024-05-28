@@ -61,7 +61,7 @@ public class MDClasses {
    *
    * @return Пустой внешний отчет
    */
-  public MDClass createExternalReport() {
+  public ExternalSource createExternalReport() {
     return ExternalReport.EMPTY;
   }
 

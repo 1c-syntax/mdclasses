@@ -37,8 +37,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FormElementConverter implements ReadConverter {
 
+  private static final String CONDITIONAL_APPEARANCE_TYPE_NAME = "ConditionalAppearance";
+
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    // todo надо научится читать, пока пропускаем
+    if (CONDITIONAL_APPEARANCE_TYPE_NAME.equals(reader.getNodeName())) {
+      return null;
+    }
+
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));

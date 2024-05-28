@@ -26,18 +26,17 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
-import com.github._1c_syntax.bsl.reader.MDOReader;
-import com.github._1c_syntax.bsl.reader.common.ReaderUtils;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.apache.commons.io.FilenameUtils;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Конвертер для дочерних элементов (атрибуты, операции и т.д.)
@@ -45,20 +44,18 @@ import java.util.Map;
 @DesignerConverter
 public class MDChildConverter extends AbstractReadConverter {
 
-  private static final Map<Class<?>, MDOType> TYPES_BY_CLASSES = computeTypes();
+  private static final Map<String, MDOType> TYPES_BY_CLASSES = computeTypes();
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var currentPath = ExtendXStream.getCurrentPath(reader);
     var realClassName = reader.getNodeName();
-    var realClass = MDOReader.getReader(currentPath).getEXStream().getRealClass(realClassName);
+    var realClass = ExtendXStream.getRealClass(reader, realClassName);
 
-    if (TYPES_BY_CLASSES.containsKey(realClass) && reader.getAttributeCount() == 0) {
-      var mdoType = TYPES_BY_CLASSES.get(realClass);
-      var childrenFolder = DesignerPaths.childrenFolder(currentPath, mdoType);
-      var childName = ReaderUtils.readValue(context, String.class);
-      var childPath = Paths.get(childrenFolder.toString(), childName + DesignerPaths.EXTENSION_DOT);
-      return MDOReader.read(childPath);
+    if (TYPES_BY_CLASSES.containsKey(realClass.getName()) && reader.getAttributeCount() == 0) {
+      var mdoType = TYPES_BY_CLASSES.get(realClass.getName());
+      var childName = ExtendXStream.readValue(context, String.class);
+      return ExtendXStream.read(reader, childDataPath(currentPath, mdoType, childName));
     } else {
       return super.read(reader, context);
     }
@@ -71,11 +68,18 @@ public class MDChildConverter extends AbstractReadConverter {
         && MDChild.class.isAssignableFrom(type);
   }
 
-  private static Map<Class<?>, MDOType> computeTypes() {
-    Map<Class<?>, MDOType> types = new HashMap<>();
-    types.put(ObjectForm.class, MDOType.FORM);
-    types.put(Recalculation.class, MDOType.RECALCULATION);
-    types.put(ExternalDataSourceTable.class, MDOType.EXTERNAL_DATA_SOURCE_TABLE);
+  private static Map<String, MDOType> computeTypes() {
+    Map<String, MDOType> types = new ConcurrentHashMap<>();
+    types.put(ObjectForm.class.getName(), MDOType.FORM);
+    types.put(Recalculation.class.getName(), MDOType.RECALCULATION);
+    types.put(ExternalDataSourceTable.class.getName(), MDOType.EXTERNAL_DATA_SOURCE_TABLE);
     return types;
+  }
+
+  private static Path childDataPath(Path path, MDOType mdoType, String childName) {
+    return Paths.get(path.getParent().toString(),
+      FilenameUtils.getBaseName(path.toString()),
+      mdoType.getGroupName(),
+      childName + ".xml");
   }
 }

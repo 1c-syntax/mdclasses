@@ -51,12 +51,12 @@ dependencies {
     implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
 
     // логирование
-    implementation("org.slf4j", "slf4j-api", "1.7.30")
+    implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")
 
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
-    implementation("io.github.1c-syntax", "utils", "0.6.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.5.1")
+    implementation("io.github.1c-syntax", "utils", "0.6.1")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.6.0")
     implementation("io.github.1c-syntax", "supportconf", "0.14.0") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
@@ -75,7 +75,7 @@ dependencies {
 
     // логирование
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-    testImplementation("org.slf4j", "slf4j-log4j12", "1.7.30")
+    testImplementation("org.slf4j", "slf4j-log4j12", "2.1.0-alpha1")
 }
 
 java {

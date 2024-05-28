@@ -24,134 +24,76 @@ package com.github._1c_syntax.bsl.reader.common.context;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
-import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
-import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
-import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import com.github._1c_syntax.bsl.reader.common.converter.ProtectedModuleInfo;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
-import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import static java.util.Objects.requireNonNull;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Для хранения контекста при чтении MD и ExternalSource объектов
  */
-@Data
-public class MDReaderContext implements ReaderContext {
+@EqualsAndHashCode(callSuper = true)
+@Slf4j
+@ToString
+public class MDReaderContext extends AbstractReaderContext {
 
   private static final String MDO_REFERENCE_FIELD_NAME = "mdoReference";
   private static final String OWNER_FIELD_NAME = "owner";
   private static final String PARENT_SUBSYSTEM_FIELD_NAME = "parentSubsystem";
-  private static final String URI_FIELD_NAME = "uri";
-  private static final String IS_PROTECTED_FIELD_NAME = "isProtected";
   private static final String UUID_FIELD_NAME = "uuid";
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String DATA_FIELD_NAME = "data";
-  private static final String MODULES_FIELD_NAME = "modules";
-
-  /**
-   * Строковое имя объекта
-   */
-  String realClassName;
-
-  /**
-   * Класс будущего объекта
-   */
-  Class<?> realClass;
-
-  /**
-   * Билдер объекта
-   */
-  Object builder;
-
-  /**
-   * Путь к текущему, читаемому файлу
-   */
-  Path currentPath;
-
-  /**
-   * Вариант исходников в формате конфигуратора
-   */
-  boolean isDesignerFormat;
-
-  /**
-   * Режим поддержки
-   */
-  SupportVariant supportVariant = SupportVariant.NONE;
 
   /**
    * Коллекция билдеров для дочерних объектов, которые надо доделать
    */
-  Map<String, List<MDReaderContext>> childrenContexts;
-
-  /**
-   * Имя прочитанного объекта
-   */
-  String name;
+  private final Map<String, List<MDReaderContext>> childrenContexts;
 
   /**
    * Тип макета
    */
-  TemplateType templateType;
-
-  /**
-   * Тип объекта ссылки
-   */
-  MDOType mdoType;
-
-  /**
-   * Ссылка на текущий объект
-   */
-  MdoReference mdoReference = MdoReference.EMPTY;
+  @Setter
+  @Getter
+  private TemplateType templateType;
 
   /**
    * Ссылка на родительский объект
    */
-  MdoReference owner = MdoReference.EMPTY;
-
-  String lastName;
-  Object lastValue;
+  @Setter
+  private MdoReference owner = MdoReference.EMPTY;
 
   public MDReaderContext(@NonNull HierarchicalStreamReader reader) {
-    currentPath = ExtendXStream.getCurrentPath(reader);
-    isDesignerFormat = MDOReader.getConfigurationSourceByMDOPath(currentPath) == ConfigurationSource.DESIGNER;
-    realClassName = reader.getNodeName();
-    realClass = MDOReader.getReader(currentPath).getEXStream().getRealClass(realClassName);
+    super(reader);
 
+    var realClassName = reader.getNodeName();
+    realClass = mdReader.getXstream().getRealClass(realClassName);
     builder = TransformationUtils.builder(realClass);
-    requireNonNull(builder);
-
-    mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
-    childrenContexts = new HashMap<>();
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
     supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
 
-    setValue(UUID_FIELD_NAME, uuid);
-    setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
+    super.setValue(UUID_FIELD_NAME, uuid);
+    super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
+
+    childrenContexts = new ConcurrentHashMap<>();
   }
 
   @Override
@@ -159,79 +101,58 @@ public class MDReaderContext implements ReaderContext {
     if (value instanceof MDReaderContext child) {
       saveChildName(methodName, child);
     } else {
-      ReaderContext.super.setValue(methodName, value);
+      super.setValue(methodName, value);
     }
   }
 
   @Override
   public Object build() {
-    mdoReference = MdoReference.create(owner, mdoType, name);
-    setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
+    try {
+      mdoReference = MdoReference.create(owner, mdoType, name);
+      setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
 
-    if (MDChild.class.isAssignableFrom(realClass)) {
-      setValue(OWNER_FIELD_NAME, owner);
+      if (MDChild.class.isAssignableFrom(realClass)) {
+        setValue(OWNER_FIELD_NAME, owner);
+      }
+
+      if (Subsystem.class.isAssignableFrom(realClass)) {
+        setValue(PARENT_SUBSYSTEM_FIELD_NAME, owner);
+      }
+
+      if (Form.class.isAssignableFrom(realClass)) {
+        setValue(DATA_FIELD_NAME, mdReader.readFormData(currentPath, name, mdoType));
+      }
+
+      if (ChildrenOwner.class.isAssignableFrom(realClass)) {
+        setValueChildren();
+      }
+
+      if (ModuleOwner.class.isAssignableFrom(realClass)) {
+        setValueModules();
+      }
+
+      return super.build();
+    } catch (Exception e) {
+      LOGGER.warn("Can't read file '{}' - it's broken (object skipped) \n: ", currentPath, e);
+      LOGGER.warn("Reader context\n: '{}'", this);
+      LOGGER.warn("Builder content\n: '{}'", builder);
     }
-
-    if (Subsystem.class.isAssignableFrom(realClass)) {
-      setValue(PARENT_SUBSYSTEM_FIELD_NAME, owner);
-    }
-
-    if (Form.class.isAssignableFrom(realClass)) {
-      setValue(DATA_FIELD_NAME, readFormData());
-    }
-
-    if (ChildrenOwner.class.isAssignableFrom(realClass)) {
-      setValueChildren();
-    }
-
-    if (ModuleOwner.class.isAssignableFrom(realClass)) {
-      setValueModules();
-    }
-
-    return TransformationUtils.build(builder);
+    return null;
   }
 
   private void saveChildName(String collectionName, MDReaderContext child) {
     var collection = childrenContexts.get(collectionName);
     if (collection == null) {
-      collection = new ArrayList<>();
+      collection = Collections.synchronizedList(new ArrayList<>());
     }
     collection.add(child);
     childrenContexts.put(collectionName, collection);
   }
 
-  private void setValueModules() {
-    var folder = getModuleFolder();
-    if (!folder.toFile().exists()) {
-      return;
-    }
-
-    var moduleTypes = ModuleType.byMDOType(mdoType);
-    if (moduleTypes.isEmpty()) {
-      return;
-    }
-
-    List<Module> modules = new ArrayList<>();
-    moduleTypes.forEach((ModuleType moduleType) -> {
-        var protectedModuleInfo = getModuleInfo(folder, moduleType);
-        if (protectedModuleInfo.getModulePath().toFile().exists()) {
-          modules.add(ObjectModule.builder()
-            .moduleType(moduleType)
-            .uri(protectedModuleInfo.getModulePath().toUri())
-            .owner(mdoReference)
-            .supportVariant(supportVariant)
-            .isProtected(protectedModuleInfo.isProtected())
-            .build());
-        }
-      }
-    );
-    setValue(MODULES_FIELD_NAME, modules);
-  }
-
   private void setValueChildren() {
     childrenContexts.forEach((String collectionName, List<MDReaderContext> collectionSource) -> {
       if (collectionName.endsWith("s")) {
-        var collection = collectionSource.parallelStream()
+        var collection = collectionSource.stream()
           .map((MDReaderContext childContext) -> {
             childContext.setOwner(mdoReference);
             return childContext.build();
@@ -240,44 +161,12 @@ public class MDReaderContext implements ReaderContext {
       } else {
         collectionSource.stream()
           .filter(Objects::nonNull) // исключаем не прочитанное
+          .filter(childContext -> childContext.name != null) // битые
           .forEach((MDReaderContext childContext) -> {
             childContext.setOwner(mdoReference);
             setValue(collectionName, childContext.build());
           });
       }
     });
-  }
-
-  private FormData readFormData() {
-    Path formDataPath;
-    if (isDesignerFormat) {
-      formDataPath = DesignerPaths.formDataPath(currentPath, name);
-    } else {
-      formDataPath = EDTPaths.formDataPath(currentPath, mdoType, name);
-    }
-
-    if (!formDataPath.toFile().exists()) {
-      return EmptyFormData.getEmpty();
-    }
-
-    return (FormData) MDOReader.getReader(currentPath).read(formDataPath);
-  }
-
-  private Path getModuleFolder() {
-    if (isDesignerFormat) {
-      return DesignerPaths.moduleFolder(currentPath, mdoType);
-    } else {
-      return EDTPaths.moduleFolder(currentPath, mdoType);
-    }
-  }
-
-  private ProtectedModuleInfo getModuleInfo(Path folder, ModuleType moduleType) {
-    Path modulePath;
-    if (isDesignerFormat) {
-      modulePath = DesignerPaths.modulePath(folder, name, moduleType);
-    } else {
-      modulePath = EDTPaths.modulePath(folder, name, moduleType);
-    }
-    return new ProtectedModuleInfo(modulePath, isDesignerFormat);
   }
 }

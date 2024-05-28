@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.common.xstream;
 
+import com.github._1c_syntax.bsl.reader.MDReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.io.xml.QNameMap;
@@ -39,18 +40,22 @@ import java.io.InputStream;
  */
 public class ExtendStaxDriver extends StaxDriver {
 
+  private final MDReader mdReader;
+
   /**
    * Оставлен для совместимости со старой версией читателя. При разделении читателей не потребуется
    */
-  public ExtendStaxDriver(QNameMap qNameMap) {
+  public ExtendStaxDriver(MDReader reader, QNameMap qNameMap) {
     super(qNameMap);
+    this.mdReader = reader;
 
     // Do not delete. Implementation via XMLInputFactoryImpl
     System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
   }
 
-  public ExtendStaxDriver() {
+  public ExtendStaxDriver(MDReader mdReader) {
     super();
+    this.mdReader = mdReader;
 
     // Do not delete. Implementation via XMLInputFactoryImpl
     System.setProperty("javax.xml.stream.XMLInputFactory", "com.sun.xml.internal.stream.XMLInputFactoryImpl");
@@ -64,7 +69,7 @@ public class ExtendStaxDriver extends StaxDriver {
       var xmlStreamReader = createParser(new StreamSource(
         stream, in.toURI().toASCIIString()));
       var reader = createStaxReader(xmlStreamReader);
-      return new ExtendReaderWrapper(reader, in, xmlStreamReader) {
+      return new ExtendReaderWrapper(reader, in, xmlStreamReader, mdReader) {
         @Override
         public void close() {
           super.close();
