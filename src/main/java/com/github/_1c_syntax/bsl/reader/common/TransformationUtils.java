@@ -147,27 +147,11 @@ public class TransformationUtils {
 
   @Nullable
   private Method getMethod(@NonNull Class<?> clazz, @NonNull String methodName) {
-    var classMethods = methods.get(clazz.getName());
-    if (classMethods == null) {
-      classMethods = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
-    }
-
-    var method = classMethods.get(methodName);
-    // ключ метода в кэше есть, но метода нет
-    if (method == null) {
-      // ключ метода в кэше есть, но метода нет
-      if (classMethods.containsKey(methodName)) {
-        return null;
-      }
-      method = Arrays.stream(clazz.getDeclaredMethods())
-        .filter(classMethod -> methodName.equalsIgnoreCase(classMethod.getName()))
+    return methods.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
+      .computeIfAbsent(methodName, k -> Arrays.stream(clazz.getDeclaredMethods())
+        .filter(m -> methodName.equalsIgnoreCase(m.getName()))
         .findFirst()
-        .orElse(null);
-      if (method != null) {
-        saveMethod(clazz, classMethods, method, methodName);
-      }
-    }
-    return method;
+        .orElse(null));
   }
 
   private static void saveMethod(@NonNull Class<?> builderClass,
