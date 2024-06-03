@@ -153,12 +153,4 @@ public class TransformationUtils {
         .findFirst()
         .orElse(null));
   }
-
-  private static void saveMethod(@NonNull Class<?> builderClass,
-                                 @NonNull Map<String, Method> classMethods,
-                                 @NonNull Method method,
-                                 @NonNull String builderMethodName) {
-    classMethods.put(builderMethodName, method);
-    methods.put(builderClass.getName(), classMethods);
-  }
 }
