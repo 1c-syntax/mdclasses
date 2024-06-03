@@ -107,46 +107,35 @@ public class MDReaderContext extends AbstractReaderContext {
 
   @Override
   public Object build() {
-    try {
-      mdoReference = MdoReference.create(owner, mdoType, name);
-      setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
+    mdoReference = MdoReference.create(owner, mdoType, name);
+    setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
 
-      if (MDChild.class.isAssignableFrom(realClass)) {
-        setValue(OWNER_FIELD_NAME, owner);
-      }
-
-      if (Subsystem.class.isAssignableFrom(realClass)) {
-        setValue(PARENT_SUBSYSTEM_FIELD_NAME, owner);
-      }
-
-      if (Form.class.isAssignableFrom(realClass)) {
-        setValue(DATA_FIELD_NAME, mdReader.readFormData(currentPath, name, mdoType));
-      }
-
-      if (ChildrenOwner.class.isAssignableFrom(realClass)) {
-        setValueChildren();
-      }
-
-      if (ModuleOwner.class.isAssignableFrom(realClass)) {
-        setValueModules();
-      }
-
-      return super.build();
-    } catch (Exception e) {
-      LOGGER.warn("Can't read file '{}' - it's broken (object skipped) \n: ", currentPath, e);
-      LOGGER.warn("Reader context\n: '{}'", this);
-      LOGGER.warn("Builder content\n: '{}'", builder);
+    if (MDChild.class.isAssignableFrom(realClass)) {
+      setValue(OWNER_FIELD_NAME, owner);
     }
-    return null;
+
+    if (Subsystem.class.isAssignableFrom(realClass)) {
+      setValue(PARENT_SUBSYSTEM_FIELD_NAME, owner);
+    }
+
+    if (Form.class.isAssignableFrom(realClass)) {
+      setValue(DATA_FIELD_NAME, mdReader.readFormData(currentPath, name, mdoType));
+    }
+
+    if (ChildrenOwner.class.isAssignableFrom(realClass)) {
+      setValueChildren();
+    }
+
+    if (ModuleOwner.class.isAssignableFrom(realClass)) {
+      setValueModules();
+    }
+
+    return super.build();
   }
 
   private void saveChildName(String collectionName, MDReaderContext child) {
-    var collection = childrenContexts.get(collectionName);
-    if (collection == null) {
-      collection = Collections.synchronizedList(new ArrayList<>());
-    }
-    collection.add(child);
-    childrenContexts.put(collectionName, collection);
+    childrenContexts.computeIfAbsent(collectionName, k -> Collections.synchronizedList(new ArrayList<>()))
+      .add(child);
   }
 
   private void setValueChildren() {
