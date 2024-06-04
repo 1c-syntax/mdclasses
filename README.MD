@@ -9,7 +9,6 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=1c-syntax_mdclasses&metric=coverage)](https://sonarcloud.io/dashboard?id=1c-syntax_mdclasses)
 
 [![Download](https://img.shields.io/github/release/1c-syntax/mdclasses.svg?label=download&style=flat)](https://github.com/1c-syntax/mdclasses/releases/latest)
-[![JitPack](https://jitpack.io/v/1c-syntax/mdclasses.svg)](https://jitpack.io/#1c-syntax/mdclasses)
 [![GitHub Releases](https://img.shields.io/github/downloads/1c-syntax/mdclasses/latest/total?style=flat-square)](https://github.com/1c-syntax/mdclasses/releases)
 
 ## Сайт проекта (документация)
