@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -55,13 +56,11 @@ public class DataSetConverter implements ReadConverter {
       } else if (DATA_SOURCE_NODE_NAME.equals(nodeName)) {
         dataSet.dataSource(reader.getValue());
       } else if (ITEM_SOURCE_NODE_NAME.equals(nodeName)) {
-        dataSet.item((DataCompositionSchema.DataSet)
-          context.convertAnother(reader, DataCompositionSchema.DataSet.class));
+        dataSet.item(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
       } else if (FIELD_NODE_NAME.equals(nodeName)) {
         dataSet.field(readField(reader));
       } else if (QUERY_SOURCE_NODE_NAME.equals(nodeName)) {
-        var querySource = (QuerySource) context.convertAnother(reader, QuerySource.class);
-        dataSet.querySource(querySource);
+        dataSet.querySource(ExtendXStream.readValue(context, QuerySource.class));
       } else {
         // no-op
       }

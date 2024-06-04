@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,15 +21,23 @@
  */
 package com.github._1c_syntax.bsl.reader;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
+import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
-import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.MDObject;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
+import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
-import com.thoughtworks.xstream.converters.Converter;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ModuleType;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import lombok.NonNull;
 
 import javax.annotation.Nullable;
-import java.io.File;
 import java.nio.file.Path;
 
 /**
@@ -38,53 +46,87 @@ import java.nio.file.Path;
 public class FakeReader implements MDReader {
 
   @Override
+  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EMPTY;
   }
 
-  @Nullable
   @Override
-  public MDObject read(String fullName) {
+  @NonNull
+  public MDClass readConfiguration() {
+    return Configuration.EMPTY;
+  }
+
+  @Override
+  @NonNull
+  public ExternalSource readExternalSource() {
+    return ExternalReport.EMPTY;
+  }
+
+  @Override
+  @NonNull
+  public Path getRootPath() {
+    return Path.of("fake-path");
+  }
+
+  @Override
+  @Nullable
+  public MDObject read(Path path) {
     return null;
   }
 
-  @Nullable
   @Override
+  @Nullable
   public MDObject read(Path folder, String fullName) {
     return null;
   }
 
+  @Override
   @Nullable
-  @Override
-  public MDObject read(Path fullMdoName) {
-    return null;
-  }
-
-  @Nullable
-  @Override
-  public Object fromXml(File file) {
-    return null;
-  }
-
-  @Nullable
-  @Override
-  public Converter getReflectionConverter() {
-    return null;
-  }
-
-  @Nullable
-  @Override
-  public ExtendXStream getEXStream() {
+  public ExtendXStream getXstream() {
     return null;
   }
 
   @Override
-  public MDClass readConfiguration() {
-    return MDClasses.createConfiguration();
+  @NonNull
+  public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
+    return EmptyFormData.getEmpty();
   }
 
   @Override
-  public MDClass readExternalSource() {
-    return null;
+  @NonNull
+  public Path moduleFolder(Path mdoPath, MDOType mdoType) {
+    return getRootPath();
+  }
+
+  @Override
+  @NonNull
+  public Path modulePath(Path folder, String name, ModuleType moduleType) {
+    return getRootPath();
+  }
+
+  @Override
+  @NonNull
+  public Path mdoTypeFolderPath(Path mdoPath) {
+    return getRootPath();
+  }
+
+  @Override
+  @NonNull
+  public String subsystemsNodeName() {
+    return "";
+  }
+
+  @Override
+  @NonNull
+  public String configurationExtensionFilter() {
+    return "";
+  }
+
+  @Override
+  public void unmarshal(HierarchicalStreamReader reader,
+                        UnmarshallingContext context,
+                        AbstractReaderContext readerContext) {
+    // no-op
   }
 }

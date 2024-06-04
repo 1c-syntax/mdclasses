@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -85,10 +84,7 @@ public class IntegrationService implements MDObject, ModuleOwner, ChildrenOwner 
   List<IntegrationServiceChannel> integrationServiceChannels;
 
   @Override
-  @NonNull
   public List<MD> getChildren() {
-    return integrationServiceChannels.stream()
-      .map(MD.class::cast)
-      .toList();
+    return Collections.unmodifiableList(integrationServiceChannels);
   }
 }

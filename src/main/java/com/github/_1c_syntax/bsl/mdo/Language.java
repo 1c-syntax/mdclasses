@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -32,8 +32,6 @@ import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-
-import java.util.Map;
 
 /**
  * ВНИМАНИЕ!
@@ -101,7 +99,7 @@ public class Language implements MDObject {
     return Language.builder()
       .name(name)
       .uuid("")
-      .synonym(new MultiLanguageString(Map.of(code, name)))
+      .synonym(MultiLanguageString.create(code, name))
       .mdoReference(MdoReference.create(
         MDOType.LANGUAGE,
         MDOType.LANGUAGE.getGroupName() + "." + name,

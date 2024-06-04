@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,17 +22,15 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
-import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
-import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -46,6 +44,7 @@ import java.util.List;
 public class RoleData {
 
   public static final RoleData EMPTY = RoleData.builder().build();
+  public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
 
   /**
    * Устанавливать права для новых объектов
@@ -64,19 +63,6 @@ public class RoleData {
 
   @Singular
   List<ObjectRight> objectRights;
-
-  // todo переделать на конвертер
-  public static RoleData create(@NonNull Path path) {
-    var data = MDOReader.read(path);
-    if (data instanceof RoleData roleData) {
-      return roleData;
-    } else if (data == null) {
-      LOGGER.warn("Missing file " + path);
-      return null;
-    } else {
-      throw new IllegalArgumentException("Wrong Role data file " + path);
-    }
-  }
 
   @Value
   @ToString(of = {"name"})
@@ -97,8 +83,8 @@ public class RoleData {
   }
 
   @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
+  @ToString(of = {"name", "value"})
+  @EqualsAndHashCode(of = {"name", "value"})
   @Builder
   public static class Right {
     /**

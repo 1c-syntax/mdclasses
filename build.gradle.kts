@@ -8,13 +8,13 @@ plugins {
     signing
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.3"
-    id("com.gorylenko.gradle-git-properties") version "2.4.1"
-    id("io.freefair.lombok") version "8.4"
-    id("io.freefair.javadoc-links") version "8.4"
-    id("io.freefair.javadoc-utf-8") version "8.4"
-    id("io.freefair.maven-central.validate-poms") version "8.4"
-    id("ru.vyarus.pom") version "2.2.2"
-    id("org.sonarqube") version "4.4.1.3373"
+    id("com.gorylenko.gradle-git-properties") version "2.4.2"
+    id("io.freefair.lombok") version "8.6"
+    id("io.freefair.javadoc-links") version "8.6"
+    id("io.freefair.javadoc-utf-8") version "8.6"
+    id("io.freefair.maven-central.validate-poms") version "8.6"
+    id("ru.vyarus.pom") version "3.0.0"
+    id("org.sonarqube") version "5.0.0.4638"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
 
@@ -51,13 +51,13 @@ dependencies {
     implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
 
     // логирование
-    implementation("org.slf4j", "slf4j-api", "1.7.30")
+    implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")
 
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
-    implementation("com.github.1c-syntax", "utils", "0.5.1")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.5.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.12.1") {
+    implementation("io.github.1c-syntax", "utils", "0.6.1")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.6.0")
+    implementation("io.github.1c-syntax", "supportconf", "0.14.0") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
 
@@ -75,7 +75,7 @@ dependencies {
 
     // логирование
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-    testImplementation("org.slf4j", "slf4j-log4j12", "1.7.30")
+    testImplementation("org.slf4j", "slf4j-log4j12", "2.1.0-alpha1")
 }
 
 java {

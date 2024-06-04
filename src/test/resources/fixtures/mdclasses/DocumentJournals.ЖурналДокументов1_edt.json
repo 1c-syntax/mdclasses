@@ -1,5 +1,5 @@
 {"com.github._1c_syntax.bsl.mdo.DocumentJournal": {
-  "allAttributes": [
+  "columns": [
     {
       "uuid": "b52d063e-5d2c-498b-a333-4957277f47e3",
       "name": "Графа",
@@ -13,8 +13,10 @@
       "synonym": {
         "content": [
           [
-            "ru",
-            "Графа"
+            {
+              "langKey": "ru",
+              "value": "Графа"
+            }
           ]
         ]
       },
@@ -29,23 +31,23 @@
       "indexing": "DONT_INDEX"
     }
   ],
-  "columns": [
-    {
-      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/allAttributes/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn"
-    }
-  ],
   "commands": [],
   "comment": "",
+  "explanation": {
+    "content": [
+      []
+    ]
+  },
   "forms": [],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/allAttributes/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
   },
   "modules": [
     {
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/DocumentJournals/ЖурналДокументов1/ManagerModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/allAttributes/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
       },
       "supportVariant": "NONE",
       "isProtected": false
@@ -62,7 +64,7 @@
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
   },
   "templates": [],
   "uuid": "c6743657-4787-40de-9a45-2493c630f626"

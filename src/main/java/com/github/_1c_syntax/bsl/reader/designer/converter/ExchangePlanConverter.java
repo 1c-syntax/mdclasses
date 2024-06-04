@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,11 +22,13 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
-import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @DesignerConverter
 public class ExchangePlanConverter extends AbstractReadConverter {
@@ -36,13 +38,17 @@ public class ExchangePlanConverter extends AbstractReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    var contentPath = DesignerPaths.exchangePlanContentPath(readerContext.getCurrentPath(), readerContext.getName());
-    readerContext.setValue(DATA_FIELD, MDOReader.read(contentPath));
+    var contentPath = dataPath(readerContext.getCurrentPath(), readerContext.getName());
+    readerContext.setValue(DATA_FIELD, ExtendXStream.read(reader, contentPath));
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
     return ExchangePlan.class.isAssignableFrom(type);
+  }
+
+  private static Path dataPath(Path path, String name) {
+    return Paths.get(path.getParent().toString(), name, "Ext", "Content.xml");
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -33,9 +33,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 public class FormHandlerConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var event = reader.getAttribute("name");
-    var name = reader.getValue();
-    return new FormHandler(event, name);
+    return FormHandler.create(reader.getAttribute("name"), reader.getValue());
   }
 
   @Override

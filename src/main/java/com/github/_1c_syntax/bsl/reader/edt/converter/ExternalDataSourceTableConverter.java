@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,14 +22,13 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
-import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.reader.edt.EDTPaths;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -45,10 +44,7 @@ public class ExternalDataSourceTableConverter extends AbstractReadConverter {
     if (reader.getAttributeCount() == 0) {
       // здесь только имя после третьей точки
       var childName = reader.getValue().split("\\.")[POSITION_CHILD_NAME];
-      var childrenFolder = EDTPaths.childrenFolder(ExtendXStream.getCurrentPath(reader),
-        MDOType.EXTERNAL_DATA_SOURCE_TABLE);
-      var childPath = Paths.get(childrenFolder.toString(), childName, childName + EDTPaths.EXTENSION_DOT);
-      return MDOReader.read(childPath);
+      return ExtendXStream.read(reader, dataPath(ExtendXStream.getCurrentPath(reader), childName));
     }
 
     return super.read(reader, context);
@@ -57,5 +53,10 @@ public class ExternalDataSourceTableConverter extends AbstractReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return ExternalDataSourceTable.class.isAssignableFrom(type);
+  }
+
+  private static Path dataPath(Path path, String childName) {
+    return Paths.get(path.getParent().toString(), MDOType.EXTERNAL_DATA_SOURCE_TABLE.getGroupName(),
+      childName, childName + ".mdo");
   }
 }

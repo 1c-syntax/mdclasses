@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
@@ -33,6 +34,8 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.javabean.BeanProvider;
 import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -76,10 +79,41 @@ public class MDTestUtils {
    * @return Сериализованное в Json представление объекта
    */
   public String createJson(Object obj) {
-    XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+    var xstream = new XStream(new JsonHierarchicalStreamDriver());
     xstream.setMode(XStream.XPATH_ABSOLUTE_REFERENCES);
     xstream.registerConverter(new TestURIConverter());
     xstream.registerConverter(new JavaBeanConverter(xstream.getMapper(), getBeanProvider(), obj.getClass()), -20);
+    try (var scanResult = new ClassGraph()
+      .enableClassInfo()
+      .enableAnnotationInfo()
+      .acceptPackages("com.github._1c_syntax.bsl.mdo", "com.github._1c_syntax.bsl.mdclasses")
+      .scan()) {
+
+      scanResult.getAllClasses().forEach((ClassInfo classInfo) -> {
+        try {
+          var clazz = Class.forName(classInfo.getName());
+          if (MD.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "children");
+            xstream.omitField(clazz, "modulesByType");
+            xstream.omitField(clazz, "modulesByMDORef");
+            xstream.omitField(clazz, "modulesByObject");
+            xstream.omitField(clazz, "modulesByURI");
+          }
+          if (CommonModule.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "modules");
+          }
+          xstream.omitField(clazz, "storageFields");
+          xstream.omitField(clazz, "plainStorageFields");
+          xstream.omitField(clazz, "plainChildren");
+          xstream.omitField(clazz, "allAttributes");
+          xstream.omitField(clazz, "allModules");
+
+        } catch (ClassNotFoundException e) {
+          throw new RuntimeException(e);
+        }
+      });
+    }
+
     if (obj instanceof MDClass) {
       xstream.registerConverter(new TestCollectionConverter(xstream.getMapper()));
     }
@@ -98,7 +132,7 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdo = MDOReader.readMDObject(configurationPath, mdoRef);
+    var mdo = MDOReader.read(configurationPath, mdoRef);
     assertThat(mdo).isInstanceOf(MD.class);
 
     Path fixturePath;

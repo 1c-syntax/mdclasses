@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.types.MdoReference;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -37,71 +36,13 @@ public interface ChildrenOwner {
   /**
    * Возвращает все дочерние элементы объекта
    */
-  default List<MD> getChildren() {
-    List<MD> children = new ArrayList<>();
-
-    if (this instanceof AttributeOwner attributeOwner) {
-      children.addAll(attributeOwner.getAllAttributes());
-    }
-
-    if (this instanceof TabularSectionOwner tabularSectionOwner) {
-      children.addAll(tabularSectionOwner.getTabularSections());
-    }
-
-    if (this instanceof CommandOwner commandOwner) {
-      children.addAll(commandOwner.getCommands());
-    }
-
-    if (this instanceof TemplateOwner templateOwner) {
-      children.addAll(templateOwner.getTemplates());
-    }
-
-    if (this instanceof FormOwner formOwner) {
-      children.addAll(formOwner.getForms());
-    }
-
-    return children;
-  }
-
-  /**
-   * Возвращает все дочерние элементы объекта, являющиеся атрибутами или ТЧ
-   */
-  default List<MD> getMDOChildren() {
-    List<MD> children = new ArrayList<>();
-
-    if (this instanceof AttributeOwner attributeOwner) {
-      children.addAll(attributeOwner.getAllAttributes());
-    }
-
-    if (this instanceof TabularSectionOwner tabularSectionOwner) {
-      children.addAll(tabularSectionOwner.getTabularSections());
-    }
-
-    return children;
-  }
+  List<MD> getChildren();
 
   /**
    * Возвращает дочерние элементы объекта, являющиеся атрибутами или ТЧ, плоским списком.
    */
   default List<MD> getPlainChildren() {
-    List<MD> children = new ArrayList<>(getChildren());
-    getChildren().stream().filter(ChildrenOwner.class::isInstance)
-      .map(ChildrenOwner.class::cast)
-      .forEach(mdObject -> children.addAll(mdObject.getPlainChildren()));
-
-    return children;
-  }
-
-  /**
-   * Возвращает дочерние элементы объекта плоским списком.
-   */
-  default List<MD> getMDOPlainChildren() {
-    List<MD> children = new ArrayList<>(getMDOChildren());
-    getChildren().stream().filter(ChildrenOwner.class::isInstance)
-      .map(ChildrenOwner.class::cast)
-      .forEach(mdObject -> children.addAll(mdObject.getMDOPlainChildren()));
-
-    return children;
+    return getChildren();
   }
 
   /**
@@ -111,9 +52,7 @@ public interface ChildrenOwner {
    * @return Контейнер с найденным значением (может быть пустым)
    */
   default Optional<MD> findChild(MdoReference ref) {
-    return getPlainChildren().stream()
-      .filter(mdObject -> mdObject.getMdoReference().equals(ref))
-      .findFirst();
+    return findChild(md -> md.getMdoReference().equals(ref));
   }
 
   /**
@@ -123,10 +62,7 @@ public interface ChildrenOwner {
    * @return Контейнер с найденным значением (может быть пустым)
    */
   default Optional<MD> findChild(String mdoRef) {
-    return getPlainChildren().stream()
-      .filter(mdObject -> mdObject.getMdoReference().getMdoRef().equalsIgnoreCase(mdoRef)
-        || mdObject.getMdoReference().getMdoRefRu().equalsIgnoreCase(mdoRef))
-      .findFirst();
+    return findChild(MdoReference.create(mdoRef));
   }
 
   /**

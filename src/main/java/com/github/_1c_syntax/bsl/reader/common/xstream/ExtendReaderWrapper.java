@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.common.xstream;
 
+import com.github._1c_syntax.bsl.reader.MDReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.ReaderWrapper;
 
@@ -29,16 +30,18 @@ import java.io.File;
 import java.nio.file.Path;
 
 /**
- * Реализация враппера ридера, позволяющего читать в прикладном коде путь к файлу
+ * Реализация враппера ридера, позволяющего читать в прикладном коде путь к файлу и текущему редеру
  */
 public class ExtendReaderWrapper extends ReaderWrapper {
   private final File file;
   private final XMLStreamReader xmlStreamReader;
+  private final MDReader mdReader;
 
-  public ExtendReaderWrapper(HierarchicalStreamReader reader, File in, XMLStreamReader streamReader) {
-    super(reader);
-    file = in;
-    xmlStreamReader = streamReader;
+  public ExtendReaderWrapper(HierarchicalStreamReader hsReader, File in, XMLStreamReader xmlReader, MDReader mdReader) {
+    super(hsReader);
+    this.file = in;
+    this.xmlStreamReader = xmlReader;
+    this.mdReader = mdReader;
   }
 
   public Path getPath() {
@@ -47,5 +50,9 @@ public class ExtendReaderWrapper extends ReaderWrapper {
 
   public XMLStreamReader getXMLStreamReader() {
     return xmlStreamReader;
+  }
+
+  public MDReader getMDReader() {
+    return mdReader;
   }
 }

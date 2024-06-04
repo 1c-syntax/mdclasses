@@ -1,53 +1,44 @@
 {"com.github._1c_syntax.bsl.mdo.Sequence": {
-  "allAttributes": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 1,
-      "com.github._1c_syntax.bsl.mdo.children.Dimension": {
-        "uuid": "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
-        "name": "Измерение1",
-        "mdoReference": {
-          "type": "DIMENSION",
-          "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
-          "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "SEQUENCE",
-          "mdoRef": "Sequence.Последовательность1",
-          "mdoRefRu": "Последовательность.Последовательность1"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "master": false,
-        "denyIncompleteValues": false,
-        "useInTotals": true
-      }
-    }
-  ],
   "comment": "",
   "dimensions": [
     {
-      "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/allAttributes/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.Dimension"
+      "uuid": "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
+      "name": "Измерение1",
+      "mdoReference": {
+        "type": "DIMENSION",
+        "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
+        "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          []
+        ]
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "type": "SEQUENCE",
+        "mdoRef": "Sequence.Последовательность1",
+        "mdoRefRu": "Последовательность.Последовательность1"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "master": false,
+      "denyIncompleteValues": false,
+      "useInTotals": true
     }
   ],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/allAttributes/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
   },
   "modules": [
     {
       "moduleType": "RecordSetModule",
       "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Sequences/Последовательность1/Ext/RecordSetModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/allAttributes/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
       },
       "supportVariant": "NONE",
       "isProtected": false
@@ -57,7 +48,7 @@
   "objectBelonging": "OWN",
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/allAttributes/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
   },
   "uuid": "514bbcf4-7fc4-4a3e-9245-598fad397eec"
 }}

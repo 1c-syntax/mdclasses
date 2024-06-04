@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -61,7 +61,7 @@ public class MDClasses {
    *
    * @return Пустой внешний отчет
    */
-  public MDClass createExternalReport() {
+  public ExternalSource createExternalReport() {
     return ExternalReport.EMPTY;
   }
 

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import lombok.NonNull;
-
 import java.util.List;
 
 /**
@@ -37,7 +35,6 @@ public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, At
   List<Attribute> getAttributes();
 
   @Override
-  @NonNull
   default List<Attribute> getAllAttributes() {
     return getAttributes();
   }

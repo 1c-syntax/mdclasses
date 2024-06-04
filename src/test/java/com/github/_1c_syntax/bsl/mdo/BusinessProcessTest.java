@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -26,17 +26,52 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class BusinessProcessTest {
   @ParameterizedTest
   @CsvSource(
     {
       "true, mdclasses, BusinessProcesses.БизнесПроцесс1, _edt",
-      "false, mdclasses, BusinessProcesses.БизнесПроцесс1",
-      "true, ssl_3_1, BusinessProcesses.Задание, _edt",
-      "false, ssl_3_1, BusinessProcesses.Задание"
+      "false, mdclasses, BusinessProcesses.БизнесПроцесс1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+
+    var businessProcess = (BusinessProcess) mdo;
+
+    assertThat(businessProcess.getSynonym().isEmpty()).isTrue();
+    assertThat(businessProcess.getSynonym().get("ru")).isEmpty();
+    assertThat(businessProcess.getSynonym().get("en")).isEmpty();
+    assertThat(businessProcess.getSynonym().getAny()).isEmpty();
+
+    assertThat(businessProcess.getDescription()).isEqualTo("БизнесПроцесс1");
+    assertThat(businessProcess.getDescription("ru")).isEqualTo("БизнесПроцесс1");
+    assertThat(businessProcess.getDescription("en")).isEqualTo("БизнесПроцесс1");
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_1, BusinessProcesses.Задание, _edt",
+      "false, ssl_3_1, BusinessProcesses.Задание"
+    }
+  )
+  void testSSL_3_1(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+
+    var businessProcess = (BusinessProcess) mdo;
+
+    assertThat(businessProcess.getSynonym().isEmpty()).isFalse();
+    assertThat(businessProcess.getSynonym().get("ru")).isEqualTo("Задание");
+    assertThat(businessProcess.getSynonym().get("en")).isEmpty();
+    assertThat(businessProcess.getSynonym().getAny()).isEqualTo("Задание");
+
+    assertThat(businessProcess.getDescription()).isEqualTo("Задание");
+    assertThat(businessProcess.getDescription("ru")).isEqualTo("Задание");
+    assertThat(businessProcess.getDescription("en")).isEqualTo("Задание");
+    assertThat(businessProcess.getDescription("")).isEqualTo("Задание");
+    assertThat(businessProcess.getDescription("пыщь")).isEqualTo("Задание");
   }
 }

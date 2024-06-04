@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -75,4 +75,33 @@ public interface MD {
    */
   String getComment();
 
+  /**
+   * Представление объекта, формируемое на основании синонима для русского языка.
+   * Если синонима для русского нет, вернет иной синоним при его наличии. В противном случае вернет имя.
+   */
+  default String getDescription() {
+    return getDescription("ru");
+  }
+
+  /**
+   * Представление объекта, формируемое на основании синонима для указанного языка.
+   * Если синонима для указанного языка нет, вернет иной синоним при его наличии. В противном случае вернет имя.
+   *
+   * @param code Код языка
+   */
+  default String getDescription(String code) {
+    if (getSynonym().isEmpty()) {
+      return getName();
+    }
+    var description = getSynonym().get(code);
+    if (description.isEmpty()) {
+      description = getSynonym().getAny();
+    }
+
+    if (description.isEmpty()) {
+      description = getName();
+    }
+
+    return description;
+  }
 }

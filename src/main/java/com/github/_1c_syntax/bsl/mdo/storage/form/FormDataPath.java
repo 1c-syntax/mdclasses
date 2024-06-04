@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -31,7 +31,7 @@ import lombok.Value;
 public class FormDataPath {
 
   /**
-   * ссылка на пустой элемент
+   * Ссылка на пустой элемент
    */
   public static final FormDataPath EMPTY = new FormDataPath();
 

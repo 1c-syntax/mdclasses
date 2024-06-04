@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,12 +29,13 @@ import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -69,6 +70,7 @@ public class CalculationRegister implements Register {
 
   @Default
   List<Module> modules = Collections.emptyList();
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
 
   @Singular
   List<ObjectCommand> commands;
@@ -79,12 +81,15 @@ public class CalculationRegister implements Register {
   List<Resource> resources;
   @Singular
   List<Dimension> dimensions;
+  Lazy<List<Attribute>> allAttributes = new Lazy<>(this::computeAllAttributes);
 
   @Singular
   List<ObjectForm> forms;
 
   @Singular
   List<ObjectTemplate> templates;
+
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
 
   /*
    * Свое
@@ -93,11 +98,37 @@ public class CalculationRegister implements Register {
   @Singular
   List<Recalculation> recalculations;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   @Override
-  @NonNull
   public List<MD> getChildren() {
-    var children = Register.super.getChildren();
-    children.addAll(recalculations);
-    return children;
+    return children.getOrCompute();
   }
+
+  @Override
+  public List<Attribute> getAllAttributes() {
+    return allAttributes.getOrCompute();
+  }
+
+  @Override
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  private List<MD> computeChildren() {
+    return LazyLoader.computeChildren(this);
+  }
+
+  private List<Attribute> computeAllAttributes() {
+    return LazyLoader.computeAllAttributes(this);
+  }
+
+  private List<Module> computeAllModules() {
+    return LazyLoader.computeAllModules(this);
+  }
+
 }

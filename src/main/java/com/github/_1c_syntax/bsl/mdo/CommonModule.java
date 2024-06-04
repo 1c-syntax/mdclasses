@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -71,6 +72,8 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   URI uri;
 
   boolean isProtected;
+
+  Lazy<List<Module>> modules = new Lazy<>(this::computeModules);
 
   /*
    * Свое
@@ -123,6 +126,10 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
 
   @Override
   public List<Module> getModules() {
+    return modules.getOrCompute();
+  }
+
+  private List<Module> computeModules() {
     return List.of(this);
   }
 }

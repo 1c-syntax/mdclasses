@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -48,7 +48,7 @@ public class ProtectedModuleInfo {
    */
   private Path modulePath;
 
-  public ProtectedModuleInfo(Path path) {
+  public ProtectedModuleInfo(Path path, boolean onlyFindBin) {
     modulePath = path;
     isProtected = false;
 
@@ -58,7 +58,7 @@ public class ProtectedModuleInfo {
         isProtected = true;
         modulePath = prtModulePath;
       }
-    } else {
+    } else if (!onlyFindBin) { // нет смысла читать файлы, если ищем только bin
       var bytes = new byte[PROTECTED_FILE_HEADER.length];
       try (var fis = new FileInputStream(modulePath.toFile())) {
         isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length

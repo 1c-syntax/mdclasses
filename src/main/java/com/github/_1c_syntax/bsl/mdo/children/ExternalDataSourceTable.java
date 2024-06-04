@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -32,8 +33,10 @@ import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -43,7 +46,6 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
@@ -73,12 +75,15 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+
   /*
    * ModuleOwner
    */
 
   @Default
   List<Module> modules = Collections.emptyList();
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
 
   /*
    * CommandOwner
@@ -123,6 +128,25 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
 
   @Override
   public List<Attribute> getAllAttributes() {
-    return getFields().stream().map(Attribute.class::cast).collect(Collectors.toList());
+    return Collections.unmodifiableList(fields);
   }
+
+  @Override
+  public List<MD> getChildren() {
+    return children.getOrCompute();
+  }
+
+  @Override
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  private List<MD> computeChildren() {
+    return LazyLoader.computeChildren(this);
+  }
+
+  private List<Module> computeAllModules() {
+    return LazyLoader.computeAllModules(this);
+  }
+
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,11 +22,13 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
-import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
-import com.github._1c_syntax.bsl.reader.designer.DesignerPaths;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @DesignerConverter
 public class XDTOPackageConverter extends AbstractReadConverter {
@@ -37,12 +39,16 @@ public class XDTOPackageConverter extends AbstractReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
     readerContext.setValue(DATA_FIELD,
-      XdtoPackageData.create(DesignerPaths.packageDataPath(readerContext.getCurrentPath(), readerContext.getName())));
+      ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName())));
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
     return XDTOPackage.class.isAssignableFrom(type);
+  }
+
+  private static Path dataPath(Path path, String name) {
+    return Paths.get(path.getParent().toString(), name, "Ext", "Package.bin");
   }
 }

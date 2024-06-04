@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -49,7 +50,7 @@ public class RoleDataConverter implements ReadConverter {
         builder.objectRight(objectRight);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        var value = context.convertAnother(fieldClass, fieldClass);
+        var value = ExtendXStream.readValue(context, fieldClass);
         TransformationUtils.setValue(builder, name, value);
       }
 
@@ -69,7 +70,7 @@ public class RoleDataConverter implements ReadConverter {
         builder.right(right);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        var value = context.convertAnother(fieldClass, fieldClass);
+        var value = ExtendXStream.readValue(context, fieldClass);
         TransformationUtils.setValue(builder, name, value);
       }
 
@@ -85,11 +86,12 @@ public class RoleDataConverter implements ReadConverter {
       reader.moveDown();
       var name = reader.getNodeName();
       var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-      var value = context.convertAnother(fieldClass, fieldClass);
+      var value = ExtendXStream.readValue(context, fieldClass);
       TransformationUtils.setValue(builder, name, value);
       reader.moveUp();
     }
-    return builder.build();
+
+    return RoleData.RIGHT_INTERNER.intern(builder.build());
   }
 
   @Override

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -51,8 +52,7 @@ public class DataCompositionSchemaConverter implements ReadConverter {
       reader.moveDown();
       var nodeName = reader.getNodeName();
       if (DATASET_NODE_NAME.equals(nodeName)) {
-        dataSets.add((DataCompositionSchema.DataSet)
-          context.convertAnother(reader, DataCompositionSchema.DataSet.class));
+        dataSets.add(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
       }
       reader.moveUp();
     }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,9 +24,9 @@ package com.github._1c_syntax.bsl.mdo.support;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Возможные варианты языков, на которых разрабатывается код
@@ -68,7 +68,7 @@ public enum ScriptVariant implements EnumWithValue {
   }
 
   private static Map<String, ScriptVariant> computeKeys() {
-    Map<String, ScriptVariant> keysMap = new CaseInsensitiveMap<>();
+    Map<String, ScriptVariant> keysMap = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
     for (var element : values()) {
       keysMap.put(element.value(), element);
       keysMap.put(element.valueRu(), element);

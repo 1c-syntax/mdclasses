@@ -1,11 +1,28 @@
 {"com.github._1c_syntax.bsl.mdo.WebService": {
-  "children": [
+  "comment": "",
+  "descriptorFileName": "EnterpriseDataExchange_1_0_1_1.1cws",
+  "mdoReference": {
+    "type": "WEB_SERVICE",
+    "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1",
+    "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1"
+  },
+  "modules": [
     {
-      "default": {
-        "tag": 4
+      "moduleType": "WEBServiceModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/WebServices/EnterpriseDataExchange_1_0_1_1/Ext/Module.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
       },
-      "int": 9,
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "EnterpriseDataExchange_1_0_1_1",
+  "namespace": "http://www.1c.ru/SSL/EnterpriseDataExchange_1_0_1_1",
+  "objectBelonging": "OWN",
+  "operations": [
+    [
+      {
         "uuid": "e6fe7103-4dfa-4302-a58e-ccd7fac19c9d",
         "name": "Ping",
         "mdoReference": {
@@ -18,16 +35,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Ping"
+              {
+                "langKey": "ru",
+                "value": "Ping"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "type": "WEB_SERVICE",
-          "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1",
-          "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "Ping",
         "nillable": true,
@@ -35,7 +52,7 @@
         "dataLockControlMode": "MANAGED",
         "parameters": []
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "bb3a9973-67ce-479e-8668-c2f3bb20301e",
         "name": "TestConnection",
         "mdoReference": {
@@ -48,14 +65,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Test connection"
+              {
+                "langKey": "ru",
+                "value": "Test connection"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ПроверкаПодключения",
         "nillable": false,
@@ -76,14 +95,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Exchange plan name"
+                    {
+                      "langKey": "ru",
+                      "value": "Exchange plan name"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -101,14 +122,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Peer code"
+                    {
+                      "langKey": "ru",
+                      "value": "Peer code"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -126,14 +149,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Error message"
+                    {
+                      "langKey": "ru",
+                      "value": "Error message"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -142,7 +167,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "c3a958b1-590f-4418-a74f-5982b478cf52",
         "name": "PrepareDataForGetting",
         "mdoReference": {
@@ -155,14 +180,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Prepare data for getting"
+              {
+                "langKey": "ru",
+                "value": "Prepare data for getting"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ПодготовитьДанныеКПолучению",
         "nillable": true,
@@ -181,16 +208,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Exchange plan name"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -206,16 +228,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Peer code"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -233,14 +250,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Part size"
+                    {
+                      "langKey": "ru",
+                      "value": "Part size"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -258,14 +277,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Operation ID"
+                    {
+                      "langKey": "ru",
+                      "value": "Operation ID"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -281,16 +302,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -299,7 +315,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "db05d35b-5f53-4c27-ba80-b477b9a98299",
         "name": "PrepareDataActionResult",
         "mdoReference": {
@@ -312,14 +328,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Prepare data action result"
+              {
+                "langKey": "ru",
+                "value": "Prepare data action result"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ПолучитьРезультатПодготовкиДанныхКВыгрузке",
         "nillable": false,
@@ -338,16 +356,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Operation ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[4]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -363,16 +376,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -381,7 +389,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "57046262-b9ce-4670-9cf5-6db9e58dd0d5",
         "name": "GetDataPart",
         "mdoReference": {
@@ -394,14 +402,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Get data part"
+              {
+                "langKey": "ru",
+                "value": "Get data part"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ВыгрузитьЧастьФайла",
         "nillable": true,
@@ -422,14 +432,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "File ID"
+                    {
+                      "langKey": "ru",
+                      "value": "File ID"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -447,14 +459,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Part number"
+                    {
+                      "langKey": "ru",
+                      "value": "Part number"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -470,16 +484,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -488,7 +497,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "77559c11-713f-454d-aff4-56649e1350e9",
         "name": "ConfirmGettingFile",
         "mdoReference": {
@@ -501,14 +510,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Confirm getting file"
+              {
+                "langKey": "ru",
+                "value": "Confirm getting file"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ПодтвердитьПолучениеДанных",
         "nillable": true,
@@ -527,16 +538,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "File ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -554,14 +560,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Clear data pool"
+                    {
+                      "langKey": "ru",
+                      "value": "Clear data pool"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -577,16 +585,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -595,7 +598,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "eee99b8e-29b6-4b7a-81f1-3d91d740c0d7",
         "name": "PutFilePart",
         "mdoReference": {
@@ -608,14 +611,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Put file part"
+              {
+                "langKey": "ru",
+                "value": "Put file part"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ЗагрузитьЧастьФайла",
         "nillable": true,
@@ -634,16 +639,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "File ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -659,16 +659,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Part number"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "IN"
@@ -686,14 +681,16 @@
               "synonym": {
                 "content": [
                   [
-                    "ru",
-                    "Part data"
+                    {
+                      "langKey": "ru",
+                      "value": "Part data"
+                    }
                   ]
                 ]
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -709,16 +706,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -727,7 +719,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "ec580e4f-1518-4923-a10e-bc1da8688b37",
         "name": "PutData",
         "mdoReference": {
@@ -740,14 +732,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Put data"
+              {
+                "langKey": "ru",
+                "value": "Put data"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ЗагрузитьДанныеВИнформационнуюБазу",
         "nillable": true,
@@ -766,16 +760,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Exchange plan name"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -791,16 +780,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Peer code"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -816,16 +800,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "File ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -841,16 +820,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Operation ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[4]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -866,16 +840,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -884,7 +853,7 @@
           []
         ]
       },
-      "com.github._1c_syntax.bsl.mdo.children.WebServiceOperation": {
+      {
         "uuid": "d8066600-c669-449d-a187-fdd3af8f7afa",
         "name": "PutDataActionResult",
         "mdoReference": {
@@ -897,14 +866,16 @@
         "synonym": {
           "content": [
             [
-              "ru",
-              "Put data action result"
+              {
+                "langKey": "ru",
+                "value": "Put data action result"
+              }
             ]
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/mdoReference"
         },
         "procedureName": "ПолучитьРезультатЗагрузкиДанных",
         "nillable": false,
@@ -923,16 +894,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Operation ID"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[4]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]/mdoReference"
               },
               "nillable": false,
               "transferDirection": "IN"
@@ -948,16 +914,11 @@
               "objectBelonging": "OWN",
               "comment": "",
               "synonym": {
-                "content": [
-                  [
-                    "ru",
-                    "Error message"
-                  ]
-                ]
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]/parameters/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]/synonym"
               },
               "supportVariant": "NOT_EDITABLE",
               "owner": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]/mdoReference"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/operations/c/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]/mdoReference"
               },
               "nillable": true,
               "transferDirection": "OUT"
@@ -965,56 +926,6 @@
           ],
           []
         ]
-      }
-    }
-  ],
-  "comment": "",
-  "descriptorFileName": "EnterpriseDataExchange_1_0_1_1.1cws",
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
-  },
-  "modules": [
-    {
-      "moduleType": "WEBServiceModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/WebServices/EnterpriseDataExchange_1_0_1_1/Ext/Module.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation/owner"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
-    }
-  ],
-  "name": "EnterpriseDataExchange_1_0_1_1",
-  "namespace": "http://www.1c.ru/SSL/EnterpriseDataExchange_1_0_1_1",
-  "objectBelonging": "OWN",
-  "operations": [
-    [
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[7]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]"
-      },
-      {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.WebService/children/java.util.CollSer/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]"
       }
     ],
     []
@@ -1025,8 +936,10 @@
   "synonym": {
     "content": [
       [
-        "ru",
-        "Enterprise Data Exchange 1.0.1.1"
+        {
+          "langKey": "ru",
+          "value": "Enterprise Data Exchange 1.0.1.1"
+        }
       ]
     ]
   },

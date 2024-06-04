@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2023
+ * Copyright (c) 2019 - 2024
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import lombok.NonNull;
-
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,7 +34,16 @@ public interface TabularSection extends MDChild, AttributeOwner {
   List<Attribute> getAttributes();
 
   @Override
-  @NonNull
+  default List<MD> getChildren() {
+    return Collections.unmodifiableList(getAttributes());
+  }
+
+  @Override
+  default List<MD> getStorageFields() {
+    return getChildren();
+  }
+
+  @Override
   default List<Attribute> getAllAttributes() {
     return getAttributes();
   }
