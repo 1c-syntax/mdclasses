@@ -37,4 +37,14 @@ class StyleTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
   }
 
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_3_24, Styles.Стиль, _edt"
+    }
+  )
+  void test_3_24(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  }
+
 }
