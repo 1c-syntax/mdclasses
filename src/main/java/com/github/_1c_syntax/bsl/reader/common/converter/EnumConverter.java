@@ -40,8 +40,8 @@ public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSi
 
   private static final String URL_TEMPLATE =
     "https://github.com/1c-syntax/mdclasses/issues/new?labels=bug&title=%5BBUG%5D%20Unknown%20element%20%5B{}%20{}%5D";
-  private static final String WARN_TEMPLATE = "Parsing error due to unknown element {}. Please, create issue using link "
-    + URL_TEMPLATE;
+  private static final String WARN_TEMPLATE =
+    "Parsing error due to unknown element {}. Please, create issue using link " + URL_TEMPLATE;
 
   private final Class<T> enumClazz;
   private final T unknown;
