@@ -27,12 +27,14 @@ import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.utils.CaseInsensitivePattern;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import org.apache.commons.io.FilenameUtils;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
 
 import static java.util.Objects.requireNonNull;
 
@@ -44,7 +46,7 @@ public class SubsystemConverter implements ReadConverter {
 
   private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.getName() + ".";
   private static final int COUNT_PARTS = 2;
-  private static final String NAME_SPLITTER = "[\\\\/]" + MDOType.SUBSYSTEM.getGroupName() + "[\\\\/]";
+  private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]" + MDOType.SUBSYSTEM.getGroupName() + "[\\\\/]");
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -64,7 +66,7 @@ public class SubsystemConverter implements ReadConverter {
 
       // определим это самостоятельная или дочерняя
       // у дочерней будет несколько вложенных папок подсистемы
-      if (localRootPath.split(NAME_SPLITTER).length > COUNT_PARTS) {
+      if (NAME_SPLITTER_PATTERN.split(localRootPath).length > COUNT_PARTS) {
         return readerContext;
       } else {
         return readerContext.build();
