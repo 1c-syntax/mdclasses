@@ -33,7 +33,13 @@ import lombok.experimental.Accessors;
 public enum IndexingType implements EnumWithValue {
   DONT_INDEX("DontIndex"),                                  // не индексировать
   INDEX("Index"),                                           // индексировать
-  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder");  // индексировать с доп упорядочиванием
+  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder"),  // индексировать с доп упорядочиванием
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

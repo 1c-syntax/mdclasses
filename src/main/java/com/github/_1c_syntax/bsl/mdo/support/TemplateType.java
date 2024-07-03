@@ -37,7 +37,13 @@ public enum TemplateType implements EnumWithValue {
   SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
   ACTIVE_DOCUMENT("ActiveDocument"),
   GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
-  TEXT_DOCUMENT("TextDocument");
+  TEXT_DOCUMENT("TextDocument"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

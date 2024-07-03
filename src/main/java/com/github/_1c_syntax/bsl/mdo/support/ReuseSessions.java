@@ -34,7 +34,13 @@ public enum ReuseSessions implements EnumWithValue {
 
   USE("Use"),
   AUTO_USE("AutoUse"),
-  DONT_USE("DontUse");
+  DONT_USE("DontUse"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

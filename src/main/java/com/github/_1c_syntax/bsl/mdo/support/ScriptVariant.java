@@ -35,7 +35,13 @@ import java.util.concurrent.ConcurrentSkipListMap;
 @Getter
 public enum ScriptVariant implements EnumWithValue {
   ENGLISH("English", "Английский", "en"),
-  RUSSIAN("Russian", "Русский", "ru");
+  RUSSIAN("Russian", "Русский", "ru"),
+  UNKNOWN("unknown", "unknown", "--") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   private static final Map<String, ScriptVariant> keys = computeKeys();
 

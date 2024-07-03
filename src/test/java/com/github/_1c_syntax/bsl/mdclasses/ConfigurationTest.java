@@ -241,6 +241,15 @@ class ConfigurationTest {
       .isEmpty();
   }
 
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_unknown, _edt"
+    }
+  )
+  void unknownEnums(ArgumentsAccessor argumentsAccessor) {
+    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
+  }
 
   private static void checkChildrenSSL(Configuration cf) {
     assertThat(cf.getSubsystems())

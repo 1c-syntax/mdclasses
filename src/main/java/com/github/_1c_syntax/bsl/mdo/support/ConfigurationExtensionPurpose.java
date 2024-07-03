@@ -34,7 +34,13 @@ public enum ConfigurationExtensionPurpose implements EnumWithValue {
   CUSTOMIZATION("Customization"),
   ADD_ON("AddOn"),
   PATCH("Patch"),
-  UNDEFINED("Undefined");
+  UNDEFINED("Undefined"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;
