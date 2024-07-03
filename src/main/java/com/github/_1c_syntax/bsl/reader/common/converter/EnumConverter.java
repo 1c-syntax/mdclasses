@@ -26,6 +26,9 @@ import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
  * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от EnumWithValues.
@@ -41,53 +44,38 @@ public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSi
     + URL_TEMPLATE;
 
   private final Class<T> enumClazz;
+  private final T unknown;
+  private final Map<String, T> enumElements;
 
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
+    unknown = unknown();
+    enumElements = new HashMap<>();
+    for (T item : enumClazz.getEnumConstants()) {
+      enumElements.put(item.value(), item);
+      if (UsePurposes.class.isAssignableFrom(enumClazz)) {
+        enumElements.put(((UsePurposes) item).valueVar2(), item);
+      }
+    }
   }
 
   @Override
   public Object fromString(String sourceString) {
-    Object result;
-    if (UsePurposes.class.isAssignableFrom(enumClazz)) {
-      result = fromValueStringUsePurposes(sourceString);
-    } else {
-      result = fromValue(enumClazz, sourceString);
-    }
-
+    var result = enumElements.get(sourceString);
     if (result == null) {
       LOGGER.warn(WARN_TEMPLATE, sourceString, enumClazz.getName(), sourceString);
-      return unknown(enumClazz);
+      result = unknown;
     }
     return result;
   }
 
-  private static <T extends Enum<T> & EnumWithValue> T fromValue(Class<T> clazz, String value) {
-    for (T item : clazz.getEnumConstants()) {
-      if (item.value().equals(value)) {
-        return item;
-      }
-    }
-    return null;
-  }
-
-  private static Object fromValueStringUsePurposes(String sourceString) {
-    for (UsePurposes item : UsePurposes.class.getEnumConstants()) {
-      if (item.valueVar1().equals(sourceString)
-        || item.valueVar2().equals(sourceString)) {
-        return item;
-      }
-    }
-    return null;
-  }
-
-  private static <T extends Enum<T> & EnumWithValue> T unknown(Class<T> clazz) {
-    for (T item : clazz.getEnumConstants()) {
+  private T unknown() {
+    for (T item : enumClazz.getEnumConstants()) {
       if (item.isUnknown()) {
         return item;
       }
     }
-    throw new IllegalStateException("No unknown value found for enum " + clazz.getName());
+    throw new IllegalStateException("No unknown value found for enum " + enumClazz.getName());
   }
 
   @Override
