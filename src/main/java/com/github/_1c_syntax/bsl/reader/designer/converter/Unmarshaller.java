@@ -155,35 +155,12 @@ public class Unmarshaller {
       var name = reader.getNodeName();
       if (USE_PURPOSES_NODE.equals(name)) {
         readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
-        reader.moveUp();
-        continue;
-      }
-
-      var fieldClass = readerContext.fieldType(name);
-      if (fieldClass == null) {
-        reader.moveUp();
-        continue;
-      }
-
-      var value = readValue(reader, context, fieldClass);
-
-      if (name.equals(NAME_NODE) && value instanceof String string) {
-        readerContext.setName(string);
-      }
-
-      if (readerContext instanceof MDReaderContext mdReaderContext) {
-        if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
-          mdReaderContext.setTemplateType(templateType);
-        }
       } else {
-        var mdcReaderContext = (MDCReaderContext) readerContext;
-        if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-          mdcReaderContext.setCompatibilityMode(compatibilityMode);
-        } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-          mdcReaderContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+        var fieldClass = readerContext.fieldType(name);
+        if (fieldClass != null) {
+          readValue(reader, context, readerContext, fieldClass, name);
         }
       }
-      readerContext.setValue(name, value);
       reader.moveUp();
     }
   }
@@ -196,6 +173,32 @@ public class Unmarshaller {
       readerContext.setValue(name, value);
       reader.moveUp();
     }
+  }
+
+  private void readValue(HierarchicalStreamReader reader,
+                         UnmarshallingContext context,
+                         AbstractReaderContext readerContext,
+                         Class<?> fieldClass,
+                         String name) {
+    var value = readValue(reader, context, fieldClass);
+
+    if (name.equals(NAME_NODE) && value instanceof String string) {
+      readerContext.setName(string);
+    }
+
+    if (readerContext instanceof MDReaderContext mdReaderContext) {
+      if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
+        mdReaderContext.setTemplateType(templateType);
+      }
+    } else {
+      var mdcReaderContext = (MDCReaderContext) readerContext;
+      if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        mdcReaderContext.setCompatibilityMode(compatibilityMode);
+      } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        mdcReaderContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+      }
+    }
+    readerContext.setValue(name, value);
   }
 
   private Object readValue(HierarchicalStreamReader reader,
