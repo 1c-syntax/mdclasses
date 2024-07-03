@@ -49,6 +49,7 @@ class ConfigurationTest {
       "false, mdclasses_3_18",
       "true, mdclasses_ext, _edt",
       "false, mdclasses_ext",
+      "true, mdclasses_3_24, _edt"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

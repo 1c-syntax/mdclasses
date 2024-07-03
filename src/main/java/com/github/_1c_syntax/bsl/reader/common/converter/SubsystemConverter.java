@@ -44,6 +44,7 @@ public class SubsystemConverter implements ReadConverter {
 
   private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.getName() + ".";
   private static final int COUNT_PARTS = 2;
+  private static final String NAME_SPLITTER = "[\\\\/]" + MDOType.SUBSYSTEM.getGroupName() + "[\\\\/]";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -63,7 +64,7 @@ public class SubsystemConverter implements ReadConverter {
 
       // определим это самостоятельная или дочерняя
       // у дочерней будет несколько вложенных папок подсистемы
-      if (localRootPath.split(MDOType.SUBSYSTEM.getName()).length > COUNT_PARTS) {
+      if (localRootPath.split(NAME_SPLITTER).length > COUNT_PARTS) {
         return readerContext;
       } else {
         return readerContext.build();
