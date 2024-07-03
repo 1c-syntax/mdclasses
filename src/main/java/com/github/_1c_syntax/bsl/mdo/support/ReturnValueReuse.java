@@ -34,7 +34,13 @@ public enum ReturnValueReuse implements EnumWithValue {
 
   DONT_USE("DontUse"),
   DURING_REQUEST("DuringRequest"),
-  DURING_SESSION("DuringSession");
+  DURING_SESSION("DuringSession"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

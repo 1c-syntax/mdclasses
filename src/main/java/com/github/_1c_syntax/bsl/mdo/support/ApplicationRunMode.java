@@ -34,7 +34,13 @@ import java.util.Arrays;
 public enum ApplicationRunMode implements EnumWithValue {
   AUTO("Auto"),
   MANAGED_APPLICATION("ManagedApplication"),
-  ORDINARY_APPLICATION("OrdinaryApplication");
+  ORDINARY_APPLICATION("OrdinaryApplication"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

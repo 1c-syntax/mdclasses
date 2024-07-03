@@ -44,6 +44,7 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
@@ -263,6 +264,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(TemplateType.class));
     registerConverter(new EnumConverter<>(TransferDirection.class));
     registerConverter(new EnumConverter<>(UseMode.class));
+    registerConverter(new EnumConverter<>(UsePurposes.class));
   }
 
   private void init() {

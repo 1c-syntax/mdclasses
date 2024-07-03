@@ -30,7 +30,13 @@ import lombok.experimental.Accessors;
 public enum DataSetType implements EnumWithValue {
   DATA_SET_QUERY("DataSetQuery"),
   DATA_SET_UNION("DataSetUnion"),
-  DATA_SET_OBJECT("DataSetObject");
+  DATA_SET_OBJECT("DataSetObject"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

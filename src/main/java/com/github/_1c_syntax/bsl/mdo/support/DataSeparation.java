@@ -32,7 +32,13 @@ import lombok.experimental.Accessors;
 @Getter
 public enum DataSeparation implements EnumWithValue {
   DONT_USE("DontUse"),
-  SEPARATE("Separate");
+  SEPARATE("Separate"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

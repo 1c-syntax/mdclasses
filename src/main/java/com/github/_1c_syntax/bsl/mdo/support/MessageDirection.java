@@ -32,7 +32,13 @@ import lombok.experimental.Accessors;
 @Getter
 public enum MessageDirection implements EnumWithValue {
   SEND("Send"),
-  RECEIVE("Receive");
+  RECEIVE("Receive"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

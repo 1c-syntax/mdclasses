@@ -32,7 +32,13 @@ import lombok.experimental.Accessors;
 @Getter
 public enum FormType implements EnumWithValue {
   ORDINARY("Ordinary"),
-  MANAGED("Managed");
+  MANAGED("Managed"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

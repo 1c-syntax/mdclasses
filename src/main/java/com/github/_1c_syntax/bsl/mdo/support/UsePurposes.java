@@ -30,11 +30,17 @@ import lombok.experimental.Accessors;
  */
 @AllArgsConstructor
 @Getter
-public enum UsePurposes {
+public enum UsePurposes implements EnumWithValue {
   PLATFORM_APPLICATION("PersonalComputer", "PlatformApplication",
     "Приложение для платформы"),
   MOBILE_PLATFORM_APPLICATION("MobileDevice", "MobilePlatformApplication",
-    "Приложение для мобильной платформы");
+    "Приложение для мобильной платформы"),
+  UNKNOWN("unknown", "unknown", "unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String valueVar1;
@@ -44,4 +50,9 @@ public enum UsePurposes {
 
   @Accessors(fluent = true)
   private final String valueRu;
+
+  @Override
+  public String value() {
+    return valueVar1;
+  }
 }

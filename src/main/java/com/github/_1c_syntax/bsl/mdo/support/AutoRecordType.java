@@ -32,7 +32,13 @@ import lombok.experimental.Accessors;
 @Getter
 public enum AutoRecordType implements EnumWithValue {
   ALLOW("Allow"),
-  DENY("Deny");
+  DENY("Deny"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

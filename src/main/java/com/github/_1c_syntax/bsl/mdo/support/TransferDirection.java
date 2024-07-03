@@ -31,10 +31,15 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Getter
 public enum TransferDirection implements EnumWithValue {
-
   OUT("Out"),
   IN_OUT("InOut"),
-  IN("In");
+  IN("In"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;
