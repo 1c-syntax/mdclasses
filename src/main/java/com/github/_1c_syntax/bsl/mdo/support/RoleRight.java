@@ -25,89 +25,143 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
+
 /**
  * Возможные права роли
  */
 @AllArgsConstructor
 @Getter
 public enum RoleRight implements EnumWithValue {
-  VIEW("View"),
-  EDIT("Edit"),
-  GET("Get"),
-  READ("Read"),
-  SET("Set"),
-  INPUT_BY_STRING("InputByString"),
-  UPDATE("Update"),
-  USE("Use"),
-  INSERT("Insert"),
-  MAIN_WINDOW_MODE_NORMAL("MainWindowModeNormal"),
-  MAIN_WINDOW_MODE_WORKPLACE("MainWindowModeWorkplace"),
-  MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE("MainWindowModeEmbeddedWorkplace"),
-  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE("MainWindowModeFullscreenWorkplace"),
-  MAIN_WINDOW_MODE_KIOSK("MainWindowModeKiosk"),
-  ANALYTICS_SYSTEM_CLIENT("AnalyticsSystemClient"),
-  ADMINISTRATION("Administration"),
-  DATA_ADMINISTRATION("DataAdministration"),
-  UPDATE_DATA_BASE_CONFIGURATION("UpdateDataBaseConfiguration"),
-  EXCLUSIVE_MODE("ExclusiveMode"),
-  ACTIVE_USERS("ActiveUsers"),
-  EVENT_LOG("EventLog"),
-  THIN_CLIENT("ThinClient"),
-  WEB_CLIENT("WebClient"),
-  THICK_CLIENT("ThickClient"),
-  EXTERNAL_CONNECTION("ExternalConnection"),
-  AUTOMATION("Automation"),
-  ALL_FUNCTIONS_MODE("AllFunctionsMode"),
-  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION("CollaborationSystemInfoBaseRegistration"),
-  SAVE_USER_DATA("SaveUserData"),
-  CONFIGURATION_EXTENSIONS_ADMINISTRATION("ConfigurationExtensionsAdministration"),
-  INTERACTIVE_OPEN_EXT_DATA_PROCESSORS("InteractiveOpenExtDataProcessors"),
-  INTERACTIVE_OPEN_EXT_REPORTS("InteractiveOpenExtReports"),
-  OUTPUT("Output"),
-  DELETE("Delete"),
-  POSTING("Posting"),
-  UNDO_POSTING("UndoPosting"),
-  INTERACTIVE_INSERT("InteractiveInsert"),
-  INTERACTIVE_DELETE("InteractiveDelete"),
-  INTERACTIVE_SET_DELETION_MARK("InteractiveSetDeletionMark"),
-  INTERACTIVE_CLEAR_DELETION_MARK("InteractiveClearDeletionMark"),
-  INTERACTIVE_DELETE_MARKED("InteractiveDeleteMarked"),
-  INTERACTIVE_POSTING("InteractivePosting"),
-  INTERACTIVE_POSTING_REGULAR("InteractivePostingRegular"),
-  INTERACTIVE_UNDO_POSTING("InteractiveUndoPosting"),
-  INTERACTIVE_CHANGE_OF_POSTED("InteractiveChangeOfPosted"),
-  INTERACTIVE_DELETE_PREDEFINED_DATA("InteractiveDeletePredefinedData"),
-  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA("InteractiveSetDeletionMarkPredefinedData"),
-  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA("InteractiveClearDeletionMarkPredefinedData"),
-  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA("InteractiveDeleteMarkedPredefinedData"),
-  EXECUTE("Execute"),
-  READ_DATA_HISTORY("ReadDataHistory"),
-  READ_DATA_HISTORY_OF_MISSING_DATA("ReadDataHistoryOfMissingData"),
-  UPDATE_DATA_HISTORY("UpdateDataHistory"),
-  UPDATE_DATA_HISTORY_OF_MISSING_DATA("UpdateDataHistoryOfMissingData"),
-  UPDATE_DATA_HISTORY_SETTINGS("UpdateDataHistorySettings"),
-  UPDATE_DATA_HISTORY_VERSION_COMMENT("UpdateDataHistoryVersionComment"),
-  VIEW_DATA_HISTORY("ViewDataHistory"),
-  EDIT_DATA_HISTORY_VERSION_COMMENT("EditDataHistoryVersionComment"),
-  SWITCH_TO_DATA_HISTORY_VERSION("SwitchToDataHistoryVersion"),
-  TOTALS_CONTROL("TotalsControl"),
-  MOBILE_CLIENT("MobileClient"),
-  INTERACTIVE_ACTIVATE("InteractiveActivate"),
-  INTERACTIVE_EXECUTE("InteractiveExecute"),
-  TECHNICAL_SPECIALIST_MODE("TechnicalSpecialistMode"),
-  INTERACTIVE_START("InteractiveStart"),
-  START("Start"),
-  STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange"),
-  SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange"),
-  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange"),
-  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START("ExclusiveModeTerminationAtSessionStart"),
-  UNKNOWN("unknown") {
+  READ("Read", "Чтение"),
+  INSERT("Insert", "Добавление"),
+  UPDATE("Update", "Изменение"),
+  DELETE("Delete", "Удаление"),
+  POSTING("Posting", "Проведение"),
+  UNDO_POSTING("UndoPosting", "ОтменаПроведения"),
+  VIEW("View", "Просмотр"),
+  INTERACTIVE_INSERT("InteractiveInsert", "ИнтерактивноеДобавление"),
+  EDIT("Edit", "Редактирование"),
+  INTERACTIVE_DELETE("InteractiveDelete", "ИнтерактивноеУдаление"),
+  INTERACTIVE_SET_DELETION_MARK("InteractiveSetDeletionMark", "ИнтерактивнаяПометкаУдаления"),
+  INTERACTIVE_CLEAR_DELETION_MARK("InteractiveClearDeletionMark", "ИнтерактивноеСнятиеПометкиУдаления"),
+  INTERACTIVE_DELETE_MARKED("InteractiveDeleteMarked", "ИнтерактивноеУдалениеПомеченных"),
+  INTERACTIVE_POSTING("InteractivePosting", "ИнтерактивноеПроведение"),
+  INTERACTIVE_POSTING_REGULAR("InteractivePostingRegular", "ИнтерактивноеПроведениеНеОперативное"),
+  INTERACTIVE_UNDO_POSTING("InteractiveUndoPosting", "ИнтерактивнаяОтменаПроведения"),
+  INTERACTIVE_CHANGE_OF_POSTED("InteractiveChangeOfPosted", "ИнтерактивноеИзменениеПроведенных"),
+  INPUT_BY_STRING("InputByString", "ВводПоСтроке"),
+  TOTALS_CONTROL("TotalsControl", "УправлениеИтогами"),
+  USE("Use", "Использование"),
+  ADMINISTRATION("Administration", "Администрирование"),
+  DATA_ADMINISTRATION("DataAdministration", "АдминистрированиеДанных"),
+  EXCLUSIVE_MODE("ExclusiveMode", "МонопольныйРежим"),
+  ACTIVE_USERS("ActiveUsers", "АктивныеПользователи"),
+  EVENT_LOG("EventLog", "ЖурналРегистрации"),
+  EXTERNAL_CONNECTION("ExternalConnection", "ВнешнееСоединение"),
+  AUTOMATION("Automation", "Automation"),
+  INTERACTIVE_OPEN_EXT_DATA_PROCESSORS("InteractiveOpenExtDataProcessors", "ИнтерактивноеОткрытиеВнешнихОбработок"),
+  INTERACTIVE_OPEN_EXT_REPORTS("InteractiveOpenExtReports", "ИнтерактивноеОткрытиеВнешнихОтчетов"),
+  GET("Get", "Получение"),
+  SET("Set", "Установка"),
+  INTERACTIVE_ACTIVATE("InteractiveActivate", "ИнтерактивнаяАктивация"),
+  START("Start", "Старт"),
+  INTERACTIVE_START("InteractiveStart", "ИнтерактивныйСтарт"),
+  EXECUTE("Execute", "Выполнение"),
+  INTERACTIVE_EXECUTE("InteractiveExecute", "ИнтерактивноеВыполнение"),
+  OUTPUT("Output", "Вывод"),
+  UPDATE_DATA_BASE_CONFIGURATION("UpdateDataBaseConfiguration", "ОбновлениеКонфигурацииБазыДанных"),
+  THIN_CLIENT("ThinClient", "ТонкийКлиент"),
+  WEB_CLIENT("WebClient", "ВебКлиент"),
+  THICK_CLIENT("ThickClient", "ТолстыйКлиент"),
+  ALL_FUNCTIONS_MODE("AllFunctionsMode", "РежимВсеФункции"),
+  SAVE_USER_DATA("SaveUserData", "СохранениеДанныхПользователя"),
+  STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange", "ИзменениеСтандартнойАутентификации"),
+  SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange",
+    "ИзменениеСтандартнойАутентификацииСеанса"),
+  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange", "ИзменениеАутентификацииОССеанса"),
+  INTERACTIVE_DELETE_PREDEFINED_DATA("InteractiveDeletePredefinedData",
+    "ИнтерактивноеУдалениеПредопределенныхДанных"),
+  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA("InteractiveSetDeletionMarkPredefinedData",
+    "ИнтерактивнаяПометкаУдаленияПредопределенныхДанных"),
+  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA("InteractiveClearDeletionMarkPredefinedData",
+    "ИнтерактивноеСнятиеПометкиУдаленияПредопределенныхДанных"),
+  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA("InteractiveDeleteMarkedPredefinedData",
+    "ИнтерактивноеУдалениеПомеченныхПредопределенныхДанных"),
+  CONFIGURATION_EXTENSIONS_ADMINISTRATION("ConfigurationExtensionsAdministration",
+    "АдминистрированиеРасширенийКонфигурации"),
+  READ_DATA_HISTORY("ReadDataHistory", "ЧтениеИсторииДанных"),
+  VIEW_DATA_HISTORY("ViewDataHistory", "ПросмотрИсторииДанных"),
+  READ_DATA_HISTORY_OF_MISSING_DATA("ReadDataHistoryOfMissingData",
+    "ЧтениеИсторииДанныхОтсутстсвующихДанных"),
+  UPDATE_DATA_HISTORY("UpdateDataHistory", "ИзменениеИсторииДанных"),
+  UPDATE_DATA_HISTORY_OF_MISSING_DATA("UpdateDataHistoryOfMissingData",
+    "ИзменениеИсторииДанныхОтсутствующихДанных"),
+  UPDATE_DATA_HISTORY_SETTINGS("UpdateDataHistorySettings", "ИзменениеНастроекИсторииДанных"),
+  UPDATE_DATA_HISTORY_VERSION_COMMENT("UpdateDataHistoryVersionComment",
+    "ИзменениеКомментарияВерсииИсторииДанных"),
+  EDIT_DATA_HISTORY_VERSION_COMMENT("EditDataHistoryVersionComment",
+    "РедактированиеКомментарияВерсииИсторииДанных"),
+  SWITCH_TO_DATA_HISTORY_VERSION("SwitchToDataHistoryVersion", "ПереходНаВерсиюИсторииДанных"),
+  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION("CollaborationSystemInfoBaseRegistration",
+    "РегистрацияИнформационнойБазыСистемыВзаимодействия"),
+  MOBILE_CLIENT("MobileClient", "МобильныйКлиент"),
+  MAIN_WINDOW_MODE_NORMAL("MainWindowModeNormal", "РежимОсновногоОкнаОбычный"),
+  MAIN_WINDOW_MODE_WORKPLACE("MainWindowModeWorkplace", "РежимОсновногоОкнаРабочееМесто"),
+  MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE("MainWindowModeEmbeddedWorkplace",
+    "РежимОсновногоОкнаВстроенноеРабочееМесто"),
+  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE("MainWindowModeFullscreenWorkplace",
+    "РежимОсновногоОкнаПолноэкранноеРабочееМесто"),
+  MAIN_WINDOW_MODE_KIOSK("MainWindowModeKiosk", "РежимОсновногоОкнаКиоск"),
+  TECHNICAL_SPECIALIST_MODE("TechnicalSpecialistMode", "РежимТехническогоСпециалиста"),
+  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START("ExclusiveModeTerminationAtSessionStart",
+    "ЗавершениеМонопольногоРежимаПриНачалеСеанса"),
+  ANALYTICS_SYSTEM_CLIENT("AnalyticsSystemClient", "КлиентСистемыАналитики"),
+  REMOTE_DESKTOP_HOST("RemoteDesktopHost",
+    "ПредоставлениеУдаленногоУправленияРабочимСтоломДругомуПользователю"),
+  REMOTE_DESKTOP_CLIENT("RemoteDesktopClient",
+    "УдаленноеУправлениеРабочимСтоломДругогоПользователя"),
+  UNKNOWN("unknown", "unknown") {
     @Override
     public boolean isUnknown() {
       return true;
     }
   };
 
+  private static final Map<String, RoleRight> keys = computeKeys();
+
+  /**
+   * Английское имя
+   */
   @Accessors(fluent = true)
   private final String value;
+
+  /**
+   * Русское имя
+   */
+  @Accessors(fluent = true)
+  private final String valueRu;
+
+  /**
+   * Ищет элемент перечисления по имени (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то unknown
+   */
+  public static RoleRight valueByString(String string) {
+    return keys.getOrDefault(string, UNKNOWN);
+  }
+
+  private static Map<String, RoleRight> computeKeys() {
+    Map<String, RoleRight> keysMap = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
+    for (var element : values()) {
+      if (element.isUnknown()) {
+        continue;
+      }
+      keysMap.put(element.value(), element);
+      keysMap.put(element.valueRu(), element);
+    }
+    return keysMap;
+  }
 }
