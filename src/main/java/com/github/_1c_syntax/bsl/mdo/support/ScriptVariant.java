@@ -76,6 +76,9 @@ public enum ScriptVariant implements EnumWithValue {
   private static Map<String, ScriptVariant> computeKeys() {
     Map<String, ScriptVariant> keysMap = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
     for (var element : values()) {
+      if (element.isUnknown()) {
+        continue;
+      }
       keysMap.put(element.value(), element);
       keysMap.put(element.valueRu(), element);
       keysMap.put(element.shortName(), element);
