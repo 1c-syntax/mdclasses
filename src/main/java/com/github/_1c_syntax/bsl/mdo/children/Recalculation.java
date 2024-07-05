@@ -21,11 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -41,7 +43,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Recalculation implements MDChild, ModuleOwner {
+public class Recalculation implements MDChild, ModuleOwner, AccessRightsOwner {
 
   /*
    * Для MDChild
@@ -71,4 +73,10 @@ public class Recalculation implements MDChild, ModuleOwner {
   @Default
   List<Module> modules = Collections.emptyList();
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return ObjectAttribute.posibleRights();
+  }
 }

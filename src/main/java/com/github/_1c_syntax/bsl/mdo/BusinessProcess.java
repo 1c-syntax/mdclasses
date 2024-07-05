@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -44,7 +45,10 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class BusinessProcess implements ReferenceObject {
+public class BusinessProcess implements ReferenceObject, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = computePosibleRighs();
+
   /*
    * ReferenceObject
    */
@@ -130,6 +134,13 @@ public class BusinessProcess implements ReferenceObject {
     return allModules.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
+
   private List<MD> computeChildren() {
     return LazyLoader.computeChildren(this);
   }
@@ -148,5 +159,34 @@ public class BusinessProcess implements ReferenceObject {
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
+  }
+
+  private static List<RoleRight> computePosibleRighs() {
+    return List.of(
+      RoleRight.INSERT,
+      RoleRight.READ,
+      RoleRight.UPDATE,
+      RoleRight.DELETE,
+      RoleRight.VIEW,
+      RoleRight.EDIT,
+      RoleRight.INPUT_BY_STRING,
+      RoleRight.INTERACTIVE_DELETE,
+      RoleRight.INTERACTIVE_INSERT,
+      RoleRight.INTERACTIVE_SET_DELETION_MARK,
+      RoleRight.INTERACTIVE_CLEAR_DELETION_MARK,
+      RoleRight.INTERACTIVE_DELETE_MARKED,
+      RoleRight.START,
+      RoleRight.INTERACTIVE_START,
+      RoleRight.INTERACTIVE_ACTIVATE,
+      RoleRight.READ_DATA_HISTORY,
+      RoleRight.VIEW_DATA_HISTORY,
+      RoleRight.READ_DATA_HISTORY_OF_MISSING_DATA,
+      RoleRight.UPDATE_DATA_HISTORY,
+      RoleRight.UPDATE_DATA_HISTORY_OF_MISSING_DATA,
+      RoleRight.UPDATE_DATA_HISTORY_SETTINGS,
+      RoleRight.UPDATE_DATA_HISTORY_VERSION_COMMENT,
+      RoleRight.EDIT_DATA_HISTORY_VERSION_COMMENT,
+      RoleRight.SWITCH_TO_DATA_HISTORY_VERSION
+    );
   }
 }

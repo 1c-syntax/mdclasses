@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -42,7 +43,9 @@ import java.util.stream.Collectors;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Subsystem implements MDObject, ChildrenOwner {
+public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.VIEW);
 
   /*
    * MDObject
@@ -138,6 +141,13 @@ public class Subsystem implements MDObject, ChildrenOwner {
   @Override
   public List<MD> getPlainChildren() {
     return plainChildren.getOrCompute();
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
   }
 
   private List<MD> computePlainChildren() {

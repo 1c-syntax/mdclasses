@@ -91,7 +91,7 @@ public class DesignerReader implements MDReader {
   private final Path rootPath;
 
   public DesignerReader(Path path, boolean skipSupport) {
-    xstream =  createXMLMapper();
+    xstream = createXMLMapper();
     rootPath = path;
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());

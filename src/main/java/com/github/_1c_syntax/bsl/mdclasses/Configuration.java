@@ -74,6 +74,7 @@ import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
@@ -111,6 +112,8 @@ public class Configuration implements CF {
    * Пустая конфигурация
    */
   public static final Configuration EMPTY = createEmptyConfiguration();
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = computePosibleRighs();
 
   /*
    * CF
@@ -342,6 +345,13 @@ public class Configuration implements CF {
     return modulesByURI.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
+
   private List<MD> computePlainChildren() {
     return LazyLoader.computePlainChildren(this);
   }
@@ -370,5 +380,36 @@ public class Configuration implements CF {
       .name(emptyString)
       .uuid(emptyString)
       .build();
+  }
+
+  private static List<RoleRight> computePosibleRighs() {
+    return List.of(
+      RoleRight.ADMINISTRATION,
+      RoleRight.DATA_ADMINISTRATION,
+      RoleRight.UPDATE_DATA_BASE_CONFIGURATION,
+      RoleRight.EXCLUSIVE_MODE,
+      RoleRight.ACTIVE_USERS,
+      RoleRight.EVENT_LOG,
+      RoleRight.THIN_CLIENT,
+      RoleRight.WEB_CLIENT,
+      RoleRight.MOBILE_CLIENT,
+      RoleRight.THICK_CLIENT,
+      RoleRight.EXTERNAL_CONNECTION,
+      RoleRight.AUTOMATION,
+      RoleRight.TECHNICAL_SPECIALIST_MODE,
+      RoleRight.COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION,
+      RoleRight.MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE,
+      RoleRight.MAIN_WINDOW_MODE_KIOSK,
+      RoleRight.MAIN_WINDOW_MODE_NORMAL,
+      RoleRight.MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE,
+      RoleRight.MAIN_WINDOW_MODE_WORKPLACE,
+      RoleRight.ANALYTICS_SYSTEM_CLIENT,
+      RoleRight.EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START,
+      RoleRight.SAVE_USER_DATA,
+      RoleRight.CONFIGURATION_EXTENSIONS_ADMINISTRATION,
+      RoleRight.INTERACTIVE_OPEN_EXT_DATA_PROCESSORS,
+      RoleRight.INTERACTIVE_OPEN_EXT_REPORTS,
+      RoleRight.OUTPUT
+    );
   }
 }

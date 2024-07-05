@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -46,7 +47,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class AccumulationRegister implements Register {
+public class AccumulationRegister implements Register, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = computePosibleRighs();
 
   /*
    * Register
@@ -115,6 +118,13 @@ public class AccumulationRegister implements Register {
     return allModules.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
+
   private List<MD> computeChildren() {
     return LazyLoader.computeChildren(this);
   }
@@ -125,6 +135,16 @@ public class AccumulationRegister implements Register {
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
+  }
+
+  private static List<RoleRight> computePosibleRighs() {
+    return List.of(
+      RoleRight.READ,
+      RoleRight.UPDATE,
+      RoleRight.VIEW,
+      RoleRight.EDIT,
+      RoleRight.TOTALS_CONTROL
+    );
   }
 }
 

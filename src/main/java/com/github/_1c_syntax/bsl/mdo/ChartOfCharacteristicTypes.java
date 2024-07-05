@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -44,7 +45,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfCharacteristicTypes implements ReferenceObject {
+public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRightsOwner {
 
   /*
    * ReferenceObject
@@ -126,6 +127,13 @@ public class ChartOfCharacteristicTypes implements ReferenceObject {
     return allModules.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return Catalog.posibleRights();
+  }
+
   private List<MD> computeChildren() {
     return LazyLoader.computeChildren(this);
   }
@@ -145,5 +153,4 @@ public class ChartOfCharacteristicTypes implements ReferenceObject {
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
   }
-
 }

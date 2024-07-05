@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
@@ -33,6 +34,7 @@ import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -52,7 +54,9 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
-  TemplateOwner {
+  TemplateOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = computePosibleRighs();
 
   /*
    * Для MDChild
@@ -141,6 +145,13 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
     return allModules.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
+
   private List<MD> computeChildren() {
     return LazyLoader.computeChildren(this);
   }
@@ -149,4 +160,17 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
     return LazyLoader.computeAllModules(this);
   }
 
+  private static List<RoleRight> computePosibleRighs() {
+    return List.of(
+      RoleRight.INSERT,
+      RoleRight.READ,
+      RoleRight.UPDATE,
+      RoleRight.DELETE,
+      RoleRight.VIEW,
+      RoleRight.EDIT,
+      RoleRight.INPUT_BY_STRING,
+      RoleRight.INTERACTIVE_DELETE,
+      RoleRight.INTERACTIVE_INSERT
+    );
+  }
 }

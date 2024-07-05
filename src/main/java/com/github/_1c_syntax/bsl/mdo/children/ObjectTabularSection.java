@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -40,7 +42,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ObjectTabularSection implements TabularSection {
+public class ObjectTabularSection implements TabularSection, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.VIEW, RoleRight.EDIT);
 
   /*
    * Для TabularSection
@@ -65,4 +69,11 @@ public class ObjectTabularSection implements TabularSection {
 
   @Singular
   List<Attribute> attributes;
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
 }

@@ -21,12 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -43,7 +45,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class WebServiceOperation implements MDChild, ChildrenOwner {
+public class WebServiceOperation implements MDChild, ChildrenOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.USE);
 
   /*
    * Для MDChild
@@ -105,5 +109,12 @@ public class WebServiceOperation implements MDChild, ChildrenOwner {
   @Override
   public List<MD> getChildren() {
     return Collections.unmodifiableList(parameters);
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
   }
 }

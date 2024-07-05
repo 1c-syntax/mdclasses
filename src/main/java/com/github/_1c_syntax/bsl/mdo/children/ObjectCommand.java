@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -42,6 +43,8 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ObjectCommand implements Command, MDChild {
+
+  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.VIEW);
 
   /*
    * Для Command
@@ -70,4 +73,11 @@ public class ObjectCommand implements Command, MDChild {
 
   @Default
   MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> posibleRights() {
+    return POSIBLE_RIGHTS;
+  }
 }
