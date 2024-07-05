@@ -99,6 +99,12 @@ public class BusinessProcess implements ReferenceObject {
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
+  /**
+   * Ссылка на задачу
+   */
+  @Default
+  MdoReference task = MdoReference.EMPTY;
+
   @Override
   public List<MD> getChildren() {
     return children.getOrCompute();

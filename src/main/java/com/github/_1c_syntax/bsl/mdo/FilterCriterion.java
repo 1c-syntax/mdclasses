@@ -93,6 +93,12 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
    */
 
   /**
+   * Состав критерия
+   */
+  @Singular("addContent")
+  List<MdoReference> content;
+
+  /**
    * Пояснение
    */
   @Default

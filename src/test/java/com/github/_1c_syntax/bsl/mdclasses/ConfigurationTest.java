@@ -36,6 +36,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -211,7 +213,7 @@ class ConfigurationTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "false, mdclasses_ext",
+      "false, mdclasses_ext"
     }
   )
   void testFullExt(ArgumentsAccessor argumentsAccessor) {
@@ -227,6 +229,9 @@ class ConfigurationTest {
     // проверка состава дочерних
     checkChildrenExt(cf);
 
+    // проверка порядок
+    checkChildrenOrder(cf);
+
     assertThat(cf.getPlainChildren())
       .hasSize(147)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
@@ -239,6 +244,21 @@ class ConfigurationTest {
       .hasSize(cf.getCommonForms().size() + 12);
     assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
       .isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_ext, _edt"
+    }
+  )
+  void testFullExtEdt(ArgumentsAccessor argumentsAccessor) {
+    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
+    assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
+    var cf = (ConfigurationExtension) mdc;
+
+    // проверка порядок
+    checkChildrenOrder(cf);
   }
 
   @ParameterizedTest
@@ -878,4 +898,98 @@ class ConfigurationTest {
         cf.getExternalDataSources().size());
   }
 
+  private static void checkChildrenOrder(ConfigurationExtension cf) {
+    var ordered = List.of("Language.Русский",
+      "Subsystem.ПерваяПодсистема",
+      "Subsystem.ПерваяПодсистема1",
+      "StyleItem.ЭлементСтиля1",
+      "StyleItem.ЭлементСтиля2",
+      "Style.Стиль1",
+      "Style.Стиль2",
+      "CommonPicture.ОбщаяКартинка1",
+      "CommonPicture.ОбщаяКартинка2",
+      "SessionParameter.ПараметрСеанса1",
+      "SessionParameter.ПараметрСеанса2",
+      "Role.Роль1",
+      "Role.Роль2",
+      "CommonTemplate.Макет",
+      "CommonTemplate.Макет1",
+      "FilterCriterion.КритерийОтбора1",
+      "FilterCriterion.КритерийОтбора2",
+      "CommonModule.ПростойОбщийМодуль",
+      "CommonModule.ОбщийМодульВызовСервера",
+      "CommonModule.ОбщийМодульПовтИспВызов",
+      "CommonModule.ОбщийМодульПовтИспСеанс",
+      "CommonModule.ОбщийМодульПолныйеПрава",
+      "CommonModule.ПростойОбщийМодуль1",
+      "CommonModule.ОбщийМодульВызовСервера1",
+      "CommonModule.ОбщийМодульПовтИспВызов1",
+      "CommonModule.ОбщийМодульПовтИспСеанс1",
+      "CommonAttribute.ОбщийРеквизит1",
+      "ExchangePlan.ПланОбмена1",
+      "ExchangePlan.ПланОбмена2",
+      "XDTOPackage.ПакетXDTO1",
+      "XDTOPackage.ПакетXDTO2",
+      "WebService.WebСервис1",
+      "WebService.WebСервис2",
+      "HTTPService.HTTPСервис1",
+      "HTTPService.HTTPСервис2",
+      "WSReference.WSСсылка1",
+      "WSReference.WSСсылка2",
+      "EventSubscription.ПодпискаНаСобытие1",
+      "ScheduledJob.РегламентноеЗадание1",
+      "SettingsStorage.ХранилищеНастроек1",
+      "FunctionalOption.ФункциональнаяОпция1",
+      "FunctionalOption.ФункциональнаяОпция2",
+      "FunctionalOptionsParameter.ПараметрФункциональныхОпций1",
+      "FunctionalOptionsParameter.ПараметрФункциональныхОпций2",
+      "DefinedType.ОпределяемыйТип1",
+      "CommonCommand.ОбщаяКоманда1",
+      "CommonCommand.ОбщаяКоманда2",
+      "CommandGroup.ГруппаКоманд1",
+      "CommandGroup.ГруппаКоманд2",
+      "Constant.Константа1",
+      "Constant.Константа2",
+      "CommonForm.Форма",
+      "CommonForm.Форма1",
+      "Catalog.Справочник1",
+      "Catalog.Справочник2",
+      "Document.Документ1",
+      "Document.Документ2",
+      "DocumentNumerator.НумераторДокументов1",
+      "Sequence.Последовательность1",
+      "DocumentJournal.ЖурналДокументов1",
+      "Enum.Перечисление1",
+      "Enum.Перечисление2",
+      "Report.Отчет1",
+      "Report.Отчет2",
+      "DataProcessor.Обработка1",
+      "DataProcessor.Обработка2",
+      "InformationRegister.РегистрСведений1",
+      "InformationRegister.РегистрСведений2",
+      "InformationRegister.РегистрСведений3",
+      "InformationRegister.РегистрСведений4",
+      "AccumulationRegister.РегистрНакопления1",
+      "AccumulationRegister.РегистрНакопления2",
+      "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+      "ChartOfCharacteristicTypes.ПланВидовХарактеристик2",
+      "ChartOfAccounts.ПланСчетов1",
+      "ChartOfAccounts.ПланСчетов2",
+      "AccountingRegister.РегистрБухгалтерии1",
+      "AccountingRegister.РегистрБухгалтерии2",
+      "ChartOfCalculationTypes.ПланВидовРасчета1",
+      "ChartOfCalculationTypes.ПланВидовРасчета2",
+      "CalculationRegister.РегистрРасчета2",
+      "CalculationRegister.РегистрРасчета1",
+      "BusinessProcess.БизнесПроцесс1",
+      "Task.Задача1");
+
+    assertThat(cf.getChildren()).hasSize(ordered.size());
+
+    for (int i = 0; i < cf.getChildren().size(); i++) {
+      var original = cf.getChildren().get(i);
+      var fixture = ordered.get(i);
+      assertThat(fixture).isEqualTo(original.getMdoReference().getMdoRef());
+    }
+  }
 }

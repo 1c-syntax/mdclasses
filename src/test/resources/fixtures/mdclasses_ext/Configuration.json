@@ -45,6 +45,11 @@
       "templates": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
+      },
+      "task": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       }
     }
   ],
@@ -105,15 +110,13 @@
       "indexing": "DONT_INDEX",
       "dataSeparation": "SEPARATE",
       "dataSeparationValue": {
-        "type": "UNKNOWN",
-        "mdoRef": "",
-        "mdoRefRu": ""
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "dataSeparationUse": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "conditionalSeparation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "usersSeparation": "SEPARATE",
       "authenticationSeparation": "SEPARATE",
@@ -417,7 +420,8 @@
           "denyIncompleteValues": false,
           "useInTotals": true
         }
-      ]
+      ],
+      "documents": []
     }
   ],
   "sessionParameters": [
