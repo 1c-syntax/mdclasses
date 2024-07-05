@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Служебный класс для хранения контекста при "сборке" объекта при чтении из файла
@@ -114,13 +115,16 @@ public class MDCReaderContext extends AbstractReaderContext {
     var children = childrenNames.parallelStream()
       .map(fullName -> (MD) mdReader.read(fullName))
       .filter(Objects::nonNull)
-      .toList();
+      .collect(Collectors.toMap(md -> md.getMdoReference().getMdoRef(), md -> md));
 
-    children.forEach((MD child) -> {
+    // после обработки порядок нарушился, необходимо его соблюсти
+    childrenNames.forEach((String name) -> {
+      var child = children.get(name);
+      if (child != null) {
         var fieldName = child.getMdoType().getName();
         setValue(fieldName, child);
         setValue(CHILD_FILED_NAME, child);
       }
-    );
+    });
   }
 }
