@@ -72,8 +72,17 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner {
    * Свое
    */
 
+  /**
+   * Измерения
+   */
   @Singular("dimension")
   List<Dimension> dimensions;
+
+  /**
+   * Документы
+   */
+  @Singular("addDocuments")
+  List<MdoReference> documents;
 
   /*
    * Для AttributeOwner
