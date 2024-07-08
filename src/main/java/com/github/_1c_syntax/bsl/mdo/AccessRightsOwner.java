@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -36,7 +37,6 @@ public interface AccessRightsOwner {
    * Возможные ограничения доступа (права).
    * Лучше использовать статик метод posibleRights класса.
    */
-  @SuppressWarnings("unchecked")
   default List<RoleRight> getPosibleRights() {
     var value = Arrays.stream(getClass().getDeclaredMethods())
       .filter(method -> "posibleRights".equals(method.getName()))
@@ -47,10 +47,17 @@ public interface AccessRightsOwner {
     }
 
     try {
-      return (List<RoleRight>) value.get().invoke(getClass());
-    } catch (Exception e) {
-      return Collections.emptyList();
+      var result = value.get().invoke(getClass());
+      if (result instanceof List<?> rights) {
+        return rights.stream()
+          .filter(RoleRight.class::isInstance)
+          .map(RoleRight.class::cast)
+          .toList();
+      }
+    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+      // no-op
     }
+    return Collections.emptyList();
   }
 
   /**

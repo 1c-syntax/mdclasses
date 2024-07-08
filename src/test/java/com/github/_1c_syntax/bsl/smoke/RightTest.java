@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.smoke;
 
-import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import io.github.classgraph.ClassGraph;
