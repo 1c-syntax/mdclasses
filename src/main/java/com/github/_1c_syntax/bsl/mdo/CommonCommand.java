@@ -66,7 +66,7 @@ public class CommonCommand implements MDObject, Command {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return ObjectCommand.posibleRights();
+  public static List<RoleRight> possibleRights() {
+    return ObjectCommand.possibleRights();
   }
 }

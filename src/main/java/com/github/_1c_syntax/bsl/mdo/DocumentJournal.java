@@ -49,7 +49,7 @@ import java.util.List;
 public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner, TemplateOwner,
   AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.VIEW);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.VIEW);
 
   /*
    * MDObject
@@ -142,8 +142,8 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 
   private List<MD> computeChildren() {

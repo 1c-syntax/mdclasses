@@ -43,7 +43,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class IntegrationServiceChannel implements MDChild, AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.USE);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.USE);
 
   /*
    * Для MDChild
@@ -91,7 +91,7 @@ public class IntegrationServiceChannel implements MDChild, AccessRightsOwner {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 }

@@ -43,7 +43,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.EDIT);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.EDIT);
 
   /*
    * MDObject
@@ -104,7 +104,7 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRi
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 }

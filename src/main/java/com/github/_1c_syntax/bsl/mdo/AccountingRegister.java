@@ -119,8 +119,8 @@ public class AccountingRegister implements Register, AccessRightsOwner {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return AccumulationRegister.posibleRights();
+  public static List<RoleRight> possibleRights() {
+    return AccumulationRegister.possibleRights();
   }
 
   private List<MD> computeChildren() {

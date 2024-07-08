@@ -44,7 +44,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExternalDataSourceTableField implements Attribute, AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.VIEW, RoleRight.EDIT);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.VIEW, RoleRight.EDIT);
 
   /*
    * Для Attribute
@@ -75,7 +75,7 @@ public class ExternalDataSourceTableField implements Attribute, AccessRightsOwne
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 }

@@ -164,8 +164,8 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return ObjectAttribute.posibleRights();
+  public static List<RoleRight> possibleRights() {
+    return ObjectAttribute.possibleRights();
   }
 
   @Value

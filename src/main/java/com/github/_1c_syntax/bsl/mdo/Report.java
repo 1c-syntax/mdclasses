@@ -49,7 +49,7 @@ import java.util.List;
 public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
   FormOwner, TemplateOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
 
   /*
    * MDObject
@@ -163,8 +163,8 @@ public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwn
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 
   private List<MD> computeChildren() {

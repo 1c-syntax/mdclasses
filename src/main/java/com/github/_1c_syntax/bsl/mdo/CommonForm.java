@@ -44,7 +44,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CommonForm implements MDObject, Form, AccessRightsOwner {
 
-  private static final List<RoleRight> POSIBLE_RIGHTS = List.of(RoleRight.VIEW);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.VIEW);
 
   /*
    * MDObject
@@ -85,7 +85,7 @@ public class CommonForm implements MDObject, Form, AccessRightsOwner {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return POSIBLE_RIGHTS;
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 }

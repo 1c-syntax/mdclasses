@@ -293,8 +293,8 @@ public class ConfigurationExtension implements CF {
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return Configuration.posibleRights();
+  public static List<RoleRight> possibleRights() {
+    return Configuration.possibleRights();
   }
 
   private List<MD> computePlainChildren() {

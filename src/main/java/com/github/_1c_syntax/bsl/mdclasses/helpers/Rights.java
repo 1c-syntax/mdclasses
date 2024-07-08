@@ -23,23 +23,32 @@ package com.github._1c_syntax.bsl.mdclasses.helpers;
 
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
 import lombok.experimental.UtilityClass;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Помощник для работы с ролями и правами
  */
 @UtilityClass
 public class Rights {
+
+  private static final Map<String, List<RoleRight>> POSSIBLE_RIGHTS = computePossibleRights();
 
   /**
    * Проверяет наличие указанного разрешения хотя бы у одной роли для конфигурации/расширения
@@ -111,6 +120,21 @@ public class Rights {
     return rolesAccess(cf, mdoReference, roleRight);
   }
 
+  /**
+   * Возможные ограничения доступа (права).
+   * Лучше использовать статик метод possibleRights класса.
+   */
+  public List<RoleRight> getPossibleRights(Class<? extends AccessRightsOwner> clazz) {
+    return POSSIBLE_RIGHTS.getOrDefault(clazz.getName(), Collections.emptyList());
+  }
+
+  /**
+   * Проверяет переданное право на допустимость для применения к объекту
+   */
+  public boolean isValidRight(Class<? extends AccessRightsOwner> clazz, RoleRight roleRight) {
+    return getPossibleRights(clazz).contains(roleRight);
+  }
+
   private static boolean rightAccess(CF cf, MdoReference mdoReference, RoleRight roleRight) {
     if (cf.equals(Configuration.EMPTY)) {
       return false;
@@ -146,5 +170,52 @@ public class Rights {
     });
 
     return Collections.unmodifiableList(roles);
+  }
+
+  private static Map<String, List<RoleRight>> computePossibleRights() {
+    try (var scanResult = new ClassGraph()
+      .enableClassInfo()
+      .acceptPackages("com.github._1c_syntax.bsl")
+      .scan()) {
+
+      var classes = scanResult.getClassesImplementing(AccessRightsOwner.class);
+      Map<String, List<RoleRight>> rights = new HashMap<>();
+
+      classes.stream()
+        .filter(ci -> !ci.isInterface())
+        .map(ClassInfo::getName)
+        .forEach(name -> rights.put(name, getPossibleRights(name)));
+      return Collections.unmodifiableMap(rights);
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private List<RoleRight> getPossibleRights(String className) {
+    Class<AccessRightsOwner> clazz;
+    try {
+      clazz = (Class<AccessRightsOwner>) Class.forName(className);
+    } catch (ClassNotFoundException e) {
+      return Collections.emptyList();
+    }
+
+    var value = Arrays.stream(clazz.getDeclaredMethods())
+      .filter(method -> "possibleRights".equals(method.getName()))
+      .findFirst();
+
+    if (value.isPresent()) {
+      try {
+        var result = value.get().invoke(clazz);
+        if (result instanceof List<?> rights) {
+          return rights.stream()
+            .filter(RoleRight.class::isInstance)
+            .map(RoleRight.class::cast)
+            .toList();
+        }
+      } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        // no-op
+      }
+    }
+
+    return Collections.emptyList();
   }
 }

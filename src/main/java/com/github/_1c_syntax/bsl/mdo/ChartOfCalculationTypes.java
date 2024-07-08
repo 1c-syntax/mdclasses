@@ -129,8 +129,8 @@ public class ChartOfCalculationTypes implements ReferenceObject, AccessRightsOwn
   /**
    * Возвращает перечень возможных прав доступа
    */
-  public static List<RoleRight> posibleRights() {
-    return Catalog.posibleRights();
+  public static List<RoleRight> possibleRights() {
+    return Catalog.possibleRights();
   }
 
   private List<MD> computeChildren() {

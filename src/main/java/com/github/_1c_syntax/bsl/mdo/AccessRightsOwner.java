@@ -21,11 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.helpers.Rights;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,35 +33,16 @@ public interface AccessRightsOwner {
 
   /**
    * Возможные ограничения доступа (права).
-   * Лучше использовать статик метод posibleRights класса.
+   * Лучше использовать статик метод possibleRights класса.
    */
-  default List<RoleRight> getPosibleRights() {
-    var value = Arrays.stream(getClass().getDeclaredMethods())
-      .filter(method -> "posibleRights".equals(method.getName()))
-      .findFirst();
-
-    if (value.isEmpty()) {
-      return Collections.emptyList();
-    }
-
-    try {
-      var result = value.get().invoke(getClass());
-      if (result instanceof List<?> rights) {
-        return rights.stream()
-          .filter(RoleRight.class::isInstance)
-          .map(RoleRight.class::cast)
-          .toList();
-      }
-    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-      // no-op
-    }
-    return Collections.emptyList();
+  default List<RoleRight> getPossibleRights() {
+    return Rights.getPossibleRights(getClass());
   }
 
   /**
    * Проверяет переданное право на допустимость для применения к объекту
    */
   default boolean isValidRight(RoleRight roleRight) {
-    return getPosibleRights().contains(roleRight);
+    return Rights.isValidRight(getClass(), roleRight);
   }
 }

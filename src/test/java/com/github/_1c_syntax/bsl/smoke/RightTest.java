@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RightTest {
 
   @Test
-  void posibleRights() {
+  void possibleRights() {
     try (var scanResult = new ClassGraph()
       .enableClassInfo()
       .acceptPackages("com.github._1c_syntax.bsl")
@@ -49,13 +49,13 @@ class RightTest {
       var list = classes.stream()
         .filter(ci -> !ci.isInterface())
         .map(ClassInfo::getName)
-        .filter(name -> getPosibleRights(name).isEmpty()).toList();
+        .filter(name -> getPossibleRights(name).isEmpty()).toList();
       assertThat(list).isEmpty();
     }
   }
 
   @SuppressWarnings("unchecked")
-  private List<RoleRight> getPosibleRights(String className) {
+  private List<RoleRight> getPossibleRights(String className) {
     Class<AccessRightsOwner> clazz;
     try {
       clazz = (Class<AccessRightsOwner>) Class.forName(className);
@@ -64,7 +64,7 @@ class RightTest {
     }
 
     var value = Arrays.stream(clazz.getDeclaredMethods())
-      .filter(method -> "posibleRights".equals(method.getName()))
+      .filter(method -> "possibleRights".equals(method.getName()))
       .findFirst();
 
     if (value.isEmpty()) {
