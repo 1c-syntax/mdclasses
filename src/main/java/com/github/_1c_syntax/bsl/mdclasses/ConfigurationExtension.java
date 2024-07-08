@@ -74,6 +74,7 @@ import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -289,6 +290,13 @@ public class ConfigurationExtension implements CF {
     return modulesByURI.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return Configuration.possibleRights();
+  }
+
   private List<MD> computePlainChildren() {
     return LazyLoader.computePlainChildren(this);
   }
@@ -300,7 +308,6 @@ public class ConfigurationExtension implements CF {
   private Map<URI, MD> computeModulesByObject() {
     return LazyLoader.computeModulesByObject(this);
   }
-
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);

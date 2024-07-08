@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -46,7 +47,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class InformationRegister implements Register {
+public class InformationRegister implements Register, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
 
   /*
    * Register
@@ -116,6 +119,13 @@ public class InformationRegister implements Register {
     return allModules.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
+  }
+
   private List<MD> computeChildren() {
     return LazyLoader.computeChildren(this);
   }
@@ -126,5 +136,24 @@ public class InformationRegister implements Register {
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
+  }
+
+  private static List<RoleRight> computePossibleRighs() {
+    return List.of(
+      RoleRight.READ,
+      RoleRight.UPDATE,
+      RoleRight.VIEW,
+      RoleRight.EDIT,
+      RoleRight.TOTALS_CONTROL,
+      RoleRight.READ_DATA_HISTORY,
+      RoleRight.VIEW_DATA_HISTORY,
+      RoleRight.READ_DATA_HISTORY_OF_MISSING_DATA,
+      RoleRight.UPDATE_DATA_HISTORY,
+      RoleRight.UPDATE_DATA_HISTORY_OF_MISSING_DATA,
+      RoleRight.UPDATE_DATA_HISTORY_SETTINGS,
+      RoleRight.UPDATE_DATA_HISTORY_VERSION_COMMENT,
+      RoleRight.EDIT_DATA_HISTORY_VERSION_COMMENT,
+      RoleRight.SWITCH_TO_DATA_HISTORY_VERSION
+    );
   }
 }

@@ -21,11 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo.children;
 
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -34,11 +36,13 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ExtDimensionAccountingFlag implements Attribute {
+public class ExtDimensionAccountingFlag implements Attribute, AccessRightsOwner {
 
   /*
    * Для MDChild
@@ -66,4 +70,10 @@ public class ExtDimensionAccountingFlag implements Attribute {
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return ObjectAttribute.possibleRights();
+  }
 }

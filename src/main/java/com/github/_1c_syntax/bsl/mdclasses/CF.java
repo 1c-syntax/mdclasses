@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface CF extends MDClass, ConfigurationTree {
+public interface CF extends MDClass, ConfigurationTree, CFAccess {
 
   /**
    * Язык приложения по умолчанию
