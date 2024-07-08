@@ -33,7 +33,7 @@ import java.util.List;
 public interface AccessRightsOwner {
 
   /**
-   * Возможные ограничения доступа.
+   * Возможные ограничения доступа (права).
    * Лучше использовать статик метод posibleRights класса.
    */
   @SuppressWarnings("unchecked")
@@ -51,5 +51,12 @@ public interface AccessRightsOwner {
     } catch (Exception e) {
       return Collections.emptyList();
     }
+  }
+
+  /**
+   * Проверяет переданное право на допустимость для применения к объекту
+   */
+  default boolean isValidRight(RoleRight roleRight) {
+    return getPosibleRights().contains(roleRight);
   }
 }

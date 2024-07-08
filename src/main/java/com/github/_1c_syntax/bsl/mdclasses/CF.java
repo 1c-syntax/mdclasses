@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -39,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface CF extends MDClass, ConfigurationTree, AccessRightsOwner {
+public interface CF extends MDClass, ConfigurationTree, CFAccess {
 
   /**
    * Язык приложения по умолчанию

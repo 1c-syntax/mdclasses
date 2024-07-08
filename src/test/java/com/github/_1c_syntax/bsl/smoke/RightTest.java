@@ -45,7 +45,7 @@ class RightTest {
 
       var classes = scanResult.getClassesImplementing(AccessRightsOwner.class);
 
-      assertThat(classes).hasSize(42);
+      assertThat(classes).hasSize(43);
 
       var list = classes.stream()
         .filter(ci -> !ci.isInterface())
