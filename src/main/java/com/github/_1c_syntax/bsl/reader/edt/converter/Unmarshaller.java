@@ -99,13 +99,16 @@ public class Unmarshaller {
     if (name.equals(NAME_NODE)) {
       readerContext.setName((String) value);
     }
-    if (readerContext instanceof MDReaderContext mdReaderContext && TEMPLATE_TYPE_NODE.equals(name)) {
-      mdReaderContext.setTemplateType((TemplateType) value);
+    if (readerContext instanceof MDReaderContext mdReaderContext
+      && TEMPLATE_TYPE_NODE.equals(name)
+      && value instanceof TemplateType newValue) {
+      mdReaderContext.setTemplateType(newValue);
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
       saveExtra(mdcReaderContext, name, value);
     } else if (readerContext instanceof FormElementReaderContext formElementReaderContext
-      && "type".equals(name)) {
-      formElementReaderContext.setElementType((FormElementType) value);
+      && "type".equals(name)
+      && value instanceof FormElementType newValue) {
+      formElementReaderContext.setElementType(newValue);
     }
     readerContext.setValue(name, transformMultiLanguageString(readerContext, name, value));
   }
