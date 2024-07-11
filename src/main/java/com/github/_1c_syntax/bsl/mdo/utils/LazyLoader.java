@@ -21,12 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.utils;
 
+import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.CalculationRegister;
 import com.github._1c_syntax.bsl.mdo.ChartOfAccounts;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
@@ -38,8 +40,10 @@ import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -203,8 +207,8 @@ public class LazyLoader {
    * @return немодифицироруемое соответствие
    */
   public Map<URI, ModuleType> computeModulesByType(ModuleOwner mdo) {
-    return Collections.unmodifiableMap(mdo.getAllModules().stream()
-      .collect(Collectors.toMap(Module::getUri, Module::getModuleType)));
+    return mdo.getAllModules().stream()
+      .collect(Collectors.toUnmodifiableMap(Module::getUri, Module::getModuleType));
   }
 
   /**
@@ -230,6 +234,18 @@ public class LazyLoader {
   }
 
   /**
+   * Производит расчет соответствия ссылки довернего объекта к нему самому
+   *
+   * @param childrenOwner родительский объект
+   * @return Немодифицируемое соответствие
+   */
+  public static Map<MdoReference, MD> computeChildrenByMdoRef(ChildrenOwner childrenOwner) {
+    return childrenOwner.getPlainChildren().stream()
+      .collect(Collectors.toUnmodifiableMap(MD::getMdoReference, child -> child));
+  }
+
+
+  /**
    * Создает соответствие URI модуля объекта модулю.
    * Используется все модуля объекта, включая дочерних объектов.
    *
@@ -237,8 +253,8 @@ public class LazyLoader {
    * @return немодифицироруемое соответствие
    */
   public Map<URI, Module> computeModulesByURI(ModuleOwner mdo) {
-    return Collections.unmodifiableMap(mdo.getAllModules().stream()
-      .collect(Collectors.toMap(Module::getUri, module -> module)));
+    return mdo.getAllModules().stream()
+      .collect(Collectors.toUnmodifiableMap(Module::getUri, module -> module));
   }
 
   /**
@@ -269,6 +285,18 @@ public class LazyLoader {
       .flatMap(Collection::stream)
       .toList());
     return Collections.unmodifiableList(items);
+  }
+
+  /**
+   * Производит расчет соответствия имени общего модуля к нему самому
+   *
+   * @param cf Конфигурация или расширение
+   * @return Немодифицируемое соответствие
+   */
+  public static Map<String, CommonModule> computeCommonModulesByName(ConfigurationTree cf) {
+    Map<String, CommonModule> result = new CaseInsensitiveMap<>();
+    cf.getCommonModules().forEach(commonModule -> result.put(commonModule.getName(), commonModule));
+    return Collections.unmodifiableMap(result);
   }
 
   private <T> List<T> addAll(List<T> result, List<? extends T> source) {

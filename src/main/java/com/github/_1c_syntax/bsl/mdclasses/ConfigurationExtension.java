@@ -248,6 +248,8 @@ public class ConfigurationExtension implements CF {
   Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
   Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
   Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
+  Lazy<Map<String, CommonModule>> commonModulesByName = new Lazy<>(this::computeCommonModulesByName);
+  Lazy<Map<MdoReference, MD>> childrenByMdoRef = new Lazy<>(this::computeChildrenByMdoRef);
 
   /*
    * Свое
@@ -290,6 +292,16 @@ public class ConfigurationExtension implements CF {
     return modulesByURI.getOrCompute();
   }
 
+  @Override
+  public Map<String, CommonModule> getCommonModulesByName() {
+    return commonModulesByName.getOrCompute();
+  }
+
+  @Override
+  public Map<MdoReference, MD> getChildrenByMdoRef() {
+    return childrenByMdoRef.getOrCompute();
+  }
+
   /**
    * Возвращает перечень возможных прав доступа
    */
@@ -315,6 +327,14 @@ public class ConfigurationExtension implements CF {
 
   private Map<URI, Module> computeModulesByURI() {
     return LazyLoader.computeModulesByURI(this);
+  }
+
+  private Map<String, CommonModule> computeCommonModulesByName() {
+    return LazyLoader.computeCommonModulesByName(this);
+  }
+
+  private Map<MdoReference, MD> computeChildrenByMdoRef() {
+    return LazyLoader.computeChildrenByMdoRef(this);
   }
 
 }
