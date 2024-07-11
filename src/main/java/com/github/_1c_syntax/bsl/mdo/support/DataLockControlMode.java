@@ -33,7 +33,13 @@ import lombok.experimental.Accessors;
 public enum DataLockControlMode implements EnumWithValue {
   AUTOMATIC("Automatic"),
   MANAGED("Managed"),
-  AUTOMATIC_AND_MANAGED("AutomaticAndManaged");
+  AUTOMATIC_AND_MANAGED("AutomaticAndManaged"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

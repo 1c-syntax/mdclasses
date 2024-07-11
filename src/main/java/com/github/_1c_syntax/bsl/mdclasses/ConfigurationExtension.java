@@ -74,6 +74,7 @@ import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -247,6 +248,8 @@ public class ConfigurationExtension implements CF {
   Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
   Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
   Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
+  Lazy<Map<String, CommonModule>> commonModulesByName = new Lazy<>(this::computeCommonModulesByName);
+  Lazy<Map<MdoReference, MD>> childrenByMdoRef = new Lazy<>(this::computeChildrenByMdoRef);
 
   /*
    * Свое
@@ -289,6 +292,23 @@ public class ConfigurationExtension implements CF {
     return modulesByURI.getOrCompute();
   }
 
+  @Override
+  public Map<String, CommonModule> getCommonModulesByName() {
+    return commonModulesByName.getOrCompute();
+  }
+
+  @Override
+  public Map<MdoReference, MD> getChildrenByMdoRef() {
+    return childrenByMdoRef.getOrCompute();
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return Configuration.possibleRights();
+  }
+
   private List<MD> computePlainChildren() {
     return LazyLoader.computePlainChildren(this);
   }
@@ -301,13 +321,20 @@ public class ConfigurationExtension implements CF {
     return LazyLoader.computeModulesByObject(this);
   }
 
-
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
   }
 
   private Map<URI, Module> computeModulesByURI() {
     return LazyLoader.computeModulesByURI(this);
+  }
+
+  private Map<String, CommonModule> computeCommonModulesByName() {
+    return LazyLoader.computeCommonModulesByName(this);
+  }
+
+  private Map<MdoReference, MD> computeChildrenByMdoRef() {
+    return LazyLoader.computeChildrenByMdoRef(this);
   }
 
 }

@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -73,7 +74,7 @@ class DocumentTest {
       .hasSize(9)
       .anyMatch(item -> item.getName().equals("ТабличнаяЧасть1НомерСтроки"))
       .anyMatch(item -> item.getId() == 35)
-      .anyMatch(item -> item.getType().equals("InputField"))
-      .anyMatch(item -> item.getDataPath().getSegments().startsWith("~"));
+      .anyMatch(item -> item.getType().equals(FormElementType.INPUT_FIELD))
+      .anyMatch(item -> item.getDataPath().segments().startsWith("~"));
   }
 }

@@ -31,9 +31,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "format": {
-          "content": [
-            []
-          ]
+          "content": []
         },
         "editFormat": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -1144,7 +1142,7 @@
           ],
           "items": [
             {
-              "type": "UsualGroup",
+              "type": "USUAL_GROUP",
               "id": 207,
               "name": "Документ",
               "title": {
@@ -1159,12 +1157,12 @@
               },
               "dataPath": {
                 "segments": "",
-                "empty": true
+                "isEmpty": true
               },
               "items": [
                 [
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 154,
                     "name": "Шапка",
                     "title": {
@@ -1183,7 +1181,7 @@
                     "items": [
                       [
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 165,
                           "name": "ГруппыШапки",
                           "title": {
@@ -1202,7 +1200,7 @@
                           "items": [
                             [
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 160,
                                 "name": "ГруппаАвторИсполнитель",
                                 "title": {
@@ -1221,7 +1219,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 161,
                                       "name": "Автор",
                                       "title": {
@@ -1229,12 +1227,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Автор",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 163,
                                       "name": "Исполнитель",
                                       "title": {
@@ -1242,7 +1240,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Исполнитель",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -1251,7 +1249,7 @@
                                 ]
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 109,
                                 "name": "ГруппаДатаИСрок",
                                 "title": {
@@ -1270,7 +1268,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 152,
                                       "name": "Дата",
                                       "title": {
@@ -1278,12 +1276,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Date",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 12,
                                       "name": "СрокИсполнения",
                                       "title": {
@@ -1291,7 +1289,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокИсполнения",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -1300,7 +1298,7 @@
                                 ]
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 28,
                                 "name": "ГруппаНомерИВажность",
                                 "title": {
@@ -1319,7 +1317,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 149,
                                       "name": "Номер",
                                       "title": {
@@ -1327,12 +1325,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Number",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 16,
                                       "name": "Важность",
                                       "title": {
@@ -1340,7 +1338,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Важность",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -1353,7 +1351,7 @@
                           ]
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 155,
                           "name": "ГруппаПриоритет",
                           "title": {
@@ -1372,7 +1370,7 @@
                           "items": [
                             [
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 119,
                                 "name": "СрокНачалаИсполнения",
                                 "title": {
@@ -1380,12 +1378,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаНачала",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 135,
                                 "name": "СрокНачалаИсполненияВремя",
                                 "title": {
@@ -1393,7 +1391,7 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаНачала",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               }
@@ -1406,7 +1404,7 @@
                     ]
                   },
                   {
-                    "type": "Pages",
+                    "type": "PAGES",
                     "id": 201,
                     "name": "Страницы",
                     "title": {
@@ -1425,7 +1423,7 @@
                     "items": [
                       [
                         {
-                          "type": "Page",
+                          "type": "PAGE",
                           "id": 203,
                           "name": "Главное",
                           "title": {
@@ -1443,7 +1441,7 @@
                           },
                           "items": [
                             {
-                              "type": "UsualGroup",
+                              "type": "USUAL_GROUP",
                               "id": 94,
                               "name": "ГруппаСодержание",
                               "title": {
@@ -1455,7 +1453,7 @@
                               "items": [
                                 [
                                   {
-                                    "type": "InputField",
+                                    "type": "INPUT_FIELD",
                                     "id": 156,
                                     "name": "Наименование",
                                     "title": {
@@ -1463,12 +1461,12 @@
                                     },
                                     "dataPath": {
                                       "segments": "Объект.Description",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   },
                                   {
-                                    "type": "LabelField",
+                                    "type": "LABEL_FIELD",
                                     "id": 129,
                                     "name": "Предмет",
                                     "title": {
@@ -1476,12 +1474,12 @@
                                     },
                                     "dataPath": {
                                       "segments": "ПредметСтрокой",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   },
                                   {
-                                    "type": "InputField",
+                                    "type": "INPUT_FIELD",
                                     "id": 18,
                                     "name": "Содержание",
                                     "title": {
@@ -1489,7 +1487,7 @@
                                     },
                                     "dataPath": {
                                       "segments": "ЗаданиеСодержание",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   }
@@ -1500,7 +1498,7 @@
                           ]
                         },
                         {
-                          "type": "Page",
+                          "type": "PAGE",
                           "id": 205,
                           "name": "ИсторияВыполнения",
                           "title": {
@@ -1518,7 +1516,7 @@
                           },
                           "items": [
                             {
-                              "type": "InputField",
+                              "type": "INPUT_FIELD",
                               "id": 126,
                               "name": "РезультатВыполнения",
                               "title": {
@@ -1526,7 +1524,7 @@
                               },
                               "dataPath": {
                                 "segments": "ЗаданиеРезультатВыполнения",
-                                "empty": false
+                                "isEmpty": false
                               },
                               "items": []
                             }
@@ -1537,7 +1535,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 131,
                     "name": "ГруппаСостояние",
                     "title": {
@@ -1549,7 +1547,7 @@
                     "items": []
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 27,
                     "name": "ГруппаРезультат",
                     "title": {
@@ -1568,7 +1566,7 @@
                     "items": [
                       [
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 78,
                           "name": "ОписаниеРезультата",
                           "title": {
@@ -1576,12 +1574,12 @@
                           },
                           "dataPath": {
                             "segments": "Объект.РезультатВыполнения",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 54,
                           "name": "ГруппаВыполненоДата",
                           "title": {
@@ -1600,7 +1598,7 @@
                           "items": [
                             [
                               {
-                                "type": "UsualButton",
+                                "type": "USUAL_BUTTON",
                                 "id": 123,
                                 "name": "Выполнено",
                                 "title": {
@@ -1612,7 +1610,7 @@
                                 "items": []
                               },
                               {
-                                "type": "UsualButton",
+                                "type": "USUAL_BUTTON",
                                 "id": 137,
                                 "name": "Отклонено",
                                 "title": {
@@ -1624,7 +1622,7 @@
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 55,
                                 "name": "ДатаИсполнения",
                                 "title": {
@@ -1639,12 +1637,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаИсполнения",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 146,
                                 "name": "ДатаИсполненияВремя",
                                 "title": {
@@ -1652,12 +1650,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаИсполнения",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "Hyperlink",
+                                "type": "HYPERLINK",
                                 "id": 199,
                                 "name": "ИзменитьЗадание",
                                 "title": {
@@ -1824,7 +1822,7 @@
           ],
           "items": [
             {
-              "type": "UsualGroup",
+              "type": "USUAL_GROUP",
               "id": 234,
               "name": "Документ",
               "title": {
@@ -1836,7 +1834,7 @@
               "items": [
                 [
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 134,
                     "name": "ГруппаСостояние",
                     "title": {
@@ -1848,7 +1846,7 @@
                     "items": []
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 165,
                     "name": "Шапка",
                     "title": {
@@ -1860,7 +1858,7 @@
                     "items": [
                       [
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 166,
                           "name": "ГруппыШапки",
                           "title": {
@@ -1872,7 +1870,7 @@
                           "items": [
                             [
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 167,
                                 "name": "ГруппаАвторИсполнитель",
                                 "title": {
@@ -1884,7 +1882,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 168,
                                       "name": "Автор",
                                       "title": {
@@ -1892,12 +1890,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Автор",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 170,
                                       "name": "Исполнитель",
                                       "title": {
@@ -1905,7 +1903,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Исполнитель",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -1914,7 +1912,7 @@
                                 ]
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 172,
                                 "name": "ГруппаДатаИСрок",
                                 "title": {
@@ -1926,7 +1924,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 173,
                                       "name": "Дата",
                                       "title": {
@@ -1934,12 +1932,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Date",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 175,
                                       "name": "СрокИсполнения",
                                       "title": {
@@ -1947,7 +1945,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокИсполнения",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -1956,7 +1954,7 @@
                                 ]
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 177,
                                 "name": "ГруппаНомерИВажность",
                                 "title": {
@@ -1968,7 +1966,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 178,
                                       "name": "Номер",
                                       "title": {
@@ -1976,12 +1974,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Number",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 180,
                                       "name": "Важность",
                                       "title": {
@@ -1989,7 +1987,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.Важность",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -2002,7 +2000,7 @@
                           ]
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 182,
                           "name": "ГруппаПриоритет",
                           "title": {
@@ -2014,7 +2012,7 @@
                           "items": [
                             [
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 183,
                                 "name": "СрокНачалаИсполнения",
                                 "title": {
@@ -2022,12 +2020,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаНачала",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 185,
                                 "name": "СрокНачалаИсполненияВремя",
                                 "title": {
@@ -2035,7 +2033,7 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаНачала",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               }
@@ -2048,7 +2046,7 @@
                     ]
                   },
                   {
-                    "type": "Pages",
+                    "type": "PAGES",
                     "id": 222,
                     "name": "Страницы",
                     "title": {
@@ -2060,7 +2058,7 @@
                     "items": [
                       [
                         {
-                          "type": "Page",
+                          "type": "PAGE",
                           "id": 224,
                           "name": "Главное",
                           "title": {
@@ -2071,7 +2069,7 @@
                           },
                           "items": [
                             {
-                              "type": "UsualGroup",
+                              "type": "USUAL_GROUP",
                               "id": 94,
                               "name": "ГруппаСодержание",
                               "title": {
@@ -2083,7 +2081,7 @@
                               "items": [
                                 [
                                   {
-                                    "type": "InputField",
+                                    "type": "INPUT_FIELD",
                                     "id": 159,
                                     "name": "Наименование",
                                     "title": {
@@ -2091,12 +2089,12 @@
                                     },
                                     "dataPath": {
                                       "segments": "Объект.Description",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   },
                                   {
-                                    "type": "LabelField",
+                                    "type": "LABEL_FIELD",
                                     "id": 132,
                                     "name": "Предмет",
                                     "title": {
@@ -2104,12 +2102,12 @@
                                     },
                                     "dataPath": {
                                       "segments": "ПредметСтрокой",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   },
                                   {
-                                    "type": "InputField",
+                                    "type": "INPUT_FIELD",
                                     "id": 18,
                                     "name": "Содержание",
                                     "title": {
@@ -2117,7 +2115,7 @@
                                     },
                                     "dataPath": {
                                       "segments": "ЗаданиеСодержание",
-                                      "empty": false
+                                      "isEmpty": false
                                     },
                                     "items": []
                                   }
@@ -2128,7 +2126,7 @@
                           ]
                         },
                         {
-                          "type": "Page",
+                          "type": "PAGE",
                           "id": 226,
                           "name": "ИсторияВыполнения",
                           "title": {
@@ -2139,7 +2137,7 @@
                           },
                           "items": [
                             {
-                              "type": "InputField",
+                              "type": "INPUT_FIELD",
                               "id": 126,
                               "name": "РезультатВыполнения",
                               "title": {
@@ -2147,7 +2145,7 @@
                               },
                               "dataPath": {
                                 "segments": "ЗаданиеРезультатВыполнения",
-                                "empty": false
+                                "isEmpty": false
                               },
                               "items": []
                             }
@@ -2158,7 +2156,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 27,
                     "name": "ГруппаРезультат",
                     "title": {
@@ -2177,7 +2175,7 @@
                     "items": [
                       [
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 78,
                           "name": "ОписаниеРезультата",
                           "title": {
@@ -2185,12 +2183,12 @@
                           },
                           "dataPath": {
                             "segments": "Объект.РезультатВыполнения",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 54,
                           "name": "ГруппаВыполненаДата",
                           "title": {
@@ -2209,7 +2207,7 @@
                           "items": [
                             [
                               {
-                                "type": "UsualButton",
+                                "type": "USUAL_BUTTON",
                                 "id": 123,
                                 "name": "Выполнено",
                                 "title": {
@@ -2221,7 +2219,7 @@
                                 "items": []
                               },
                               {
-                                "type": "UsualButton",
+                                "type": "USUAL_BUTTON",
                                 "id": 147,
                                 "name": "Отменено",
                                 "title": {
@@ -2233,7 +2231,7 @@
                                 "items": []
                               },
                               {
-                                "type": "UsualButton",
+                                "type": "USUAL_BUTTON",
                                 "id": 124,
                                 "name": "Возвращено",
                                 "title": {
@@ -2245,7 +2243,7 @@
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 55,
                                 "name": "ДатаИсполнения",
                                 "title": {
@@ -2260,12 +2258,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаИсполнения",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 161,
                                 "name": "ДатаИсполненияВремя",
                                 "title": {
@@ -2273,12 +2271,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.ДатаИсполнения",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "Hyperlink",
+                                "type": "HYPERLINK",
                                 "id": 130,
                                 "name": "ИзменитьЗадание",
                                 "title": {
@@ -2464,7 +2462,7 @@
           ],
           "items": [
             {
-              "type": "UsualGroup",
+              "type": "USUAL_GROUP",
               "id": 151,
               "name": "Документ",
               "title": {
@@ -2476,7 +2474,7 @@
               "items": [
                 [
                   {
-                    "type": "LabelField",
+                    "type": "LABEL_FIELD",
                     "id": 99,
                     "name": "ГлавнаяЗадача",
                     "title": {
@@ -2484,12 +2482,12 @@
                     },
                     "dataPath": {
                       "segments": "ГлавнаяЗадачаСтрокой",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 92,
                     "name": "ГруппаСостояние",
                     "title": {
@@ -2501,7 +2499,7 @@
                     "items": [
                       [
                         {
-                          "type": "PictureDecoration",
+                          "type": "PICTURE_DECORATION",
                           "id": 93,
                           "name": "ДекорацияЗначок",
                           "title": {
@@ -2513,7 +2511,7 @@
                           "items": []
                         },
                         {
-                          "type": "LabelField",
+                          "type": "LABEL_FIELD",
                           "id": 155,
                           "name": "ИнфоНадписьЗаголовок",
                           "title": {
@@ -2521,7 +2519,7 @@
                           },
                           "dataPath": {
                             "segments": "ИнфоНадписьЗаголовок",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -2530,7 +2528,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 145,
                     "name": "Шапка",
                     "title": {
@@ -2542,7 +2540,7 @@
                     "items": [
                       [
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 27,
                           "name": "ГруппаСрокВажность",
                           "title": {
@@ -2561,7 +2559,7 @@
                           "items": [
                             [
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 19,
                                 "name": "ЗаголовокЗадания",
                                 "title": {
@@ -2569,12 +2567,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Наименование",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 57,
                                 "name": "Важность",
                                 "title": {
@@ -2582,12 +2580,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Важность",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 103,
                                 "name": "Номер",
                                 "title": {
@@ -2595,7 +2593,7 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Number",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               }
@@ -2604,7 +2602,7 @@
                           ]
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 67,
                           "name": "ГруппаИсполнение",
                           "title": {
@@ -2623,7 +2621,7 @@
                           "items": [
                             [
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 69,
                                 "name": "Исполнитель",
                                 "title": {
@@ -2631,12 +2629,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Исполнитель",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 147,
                                 "name": "ГруппаСрокИсполнения",
                                 "title": {
@@ -2648,7 +2646,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 21,
                                       "name": "СрокИсполнения",
                                       "title": {
@@ -2663,12 +2661,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокИсполнения",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 88,
                                       "name": "СрокИсполненияВремя",
                                       "title": {
@@ -2676,7 +2674,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокИсполнения",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -2693,7 +2691,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 75,
                     "name": "ГруппаСодержание",
                     "title": {
@@ -2705,7 +2703,7 @@
                     "items": [
                       [
                         {
-                          "type": "LabelField",
+                          "type": "LABEL_FIELD",
                           "id": 86,
                           "name": "Предмет",
                           "title": {
@@ -2713,12 +2711,12 @@
                           },
                           "dataPath": {
                             "segments": "ПредметСтрокой",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 17,
                           "name": "Содержание",
                           "title": {
@@ -2726,7 +2724,7 @@
                           },
                           "dataPath": {
                             "segments": "Объект.Содержание",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -2735,7 +2733,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 56,
                     "name": "ГруппаПроверка",
                     "title": {
@@ -2754,7 +2752,7 @@
                     "items": [
                       [
                         {
-                          "type": "CheckBoxField",
+                          "type": "CHECK_BOX_FIELD",
                           "id": 54,
                           "name": "НаПроверке",
                           "title": {
@@ -2769,12 +2767,12 @@
                           },
                           "dataPath": {
                             "segments": "Объект.НаПроверке",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 28,
                           "name": "ГруппаПроверяющий",
                           "title": {
@@ -2786,7 +2784,7 @@
                           "items": [
                             [
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 14,
                                 "name": "Проверяющий",
                                 "title": {
@@ -2794,12 +2792,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Проверяющий",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "UsualGroup",
+                                "type": "USUAL_GROUP",
                                 "id": 149,
                                 "name": "ГруппаСрокПроверки",
                                 "title": {
@@ -2811,7 +2809,7 @@
                                 "items": [
                                   [
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 23,
                                       "name": "СрокПроверки",
                                       "title": {
@@ -2819,12 +2817,12 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокПроверки",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     },
                                     {
-                                      "type": "InputField",
+                                      "type": "INPUT_FIELD",
                                       "id": 90,
                                       "name": "СрокПроверкиВремя",
                                       "title": {
@@ -2832,7 +2830,7 @@
                                       },
                                       "dataPath": {
                                         "segments": "Объект.СрокПроверки",
-                                        "empty": false
+                                        "isEmpty": false
                                       },
                                       "items": []
                                     }
@@ -2849,7 +2847,7 @@
                     ]
                   },
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 81,
                     "name": "ГруппаОбщиеСведения",
                     "title": {
@@ -2861,7 +2859,7 @@
                     "items": [
                       [
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 79,
                           "name": "Автор",
                           "title": {
@@ -2869,12 +2867,12 @@
                           },
                           "dataPath": {
                             "segments": "Объект.Автор",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 97,
                           "name": "Дата",
                           "title": {
@@ -2889,7 +2887,7 @@
                           },
                           "dataPath": {
                             "segments": "Объект.Date",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -3049,7 +3047,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 21,
                 "name": "ГруппаПоРеквизитам",
                 "title": {
@@ -3068,7 +3066,7 @@
                 "items": [
                   [
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 14,
                       "name": "ПоАвтору",
                       "title": {
@@ -3076,12 +3074,12 @@
                       },
                       "dataPath": {
                         "segments": "ПоАвтору",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 17,
                       "name": "ПоИсполнителю",
                       "title": {
@@ -3089,12 +3087,12 @@
                       },
                       "dataPath": {
                         "segments": "ПоИсполнителю",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 19,
                       "name": "ПоПроверяющему",
                       "title": {
@@ -3102,7 +3100,7 @@
                       },
                       "dataPath": {
                         "segments": "ПоПроверяющему",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -3111,7 +3109,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 50,
                 "name": "Флажки",
                 "title": {
@@ -3130,7 +3128,7 @@
                 "items": [
                   [
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 22,
                       "name": "ПоказыватьЗавершенныеЗадания",
                       "title": {
@@ -3138,12 +3136,12 @@
                       },
                       "dataPath": {
                         "segments": "ПоказыватьЗавершенныеЗадания",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 48,
                       "name": "ПоказыватьОстановленные",
                       "title": {
@@ -3151,7 +3149,7 @@
                       },
                       "dataPath": {
                         "segments": "ПоказыватьОстановленные",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -3160,7 +3158,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 92,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -3179,7 +3177,7 @@
                 "items": []
               },
               {
-                "type": "CommandBar",
+                "type": "COMMAND_BAR",
                 "id": 53,
                 "name": "КоманднаяПанель",
                 "title": {
@@ -3198,7 +3196,7 @@
                 "items": [
                   [
                     {
-                      "type": "CommandBarButton",
+                      "type": "COMMAND_BAR_BUTTON",
                       "id": 94,
                       "name": "ФормаОбщаяКомандаКартаМаршрутаБизнесПроцесса",
                       "title": {
@@ -3206,12 +3204,12 @@
                       },
                       "dataPath": {
                         "segments": "Items.Список.CurrentData.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CommandBarButton",
+                      "type": "COMMAND_BAR_BUTTON",
                       "id": 51,
                       "name": "ФормаОстановить",
                       "title": {
@@ -3223,7 +3221,7 @@
                       "items": []
                     },
                     {
-                      "type": "CommandBarButton",
+                      "type": "COMMAND_BAR_BUTTON",
                       "id": 52,
                       "name": "ФормаПродолжитьБизнесПроцесс",
                       "title": {
@@ -3239,7 +3237,7 @@
                 ]
               },
               {
-                "type": "Table",
+                "type": "TABLE",
                 "id": 1,
                 "name": "Список",
                 "title": {
@@ -3254,12 +3252,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "PictureField",
+                      "type": "PICTURE_FIELD",
                       "id": 24,
                       "name": "ВажностьКартинка",
                       "title": {
@@ -3267,12 +3265,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ВажностьКартинка",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 4,
                       "name": "Номер",
                       "title": {
@@ -3280,12 +3278,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Number",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 6,
                       "name": "Дата",
                       "title": {
@@ -3293,12 +3291,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Date",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "ColumnGroup",
+                      "type": "COLUMN_GROUP",
                       "id": 54,
                       "name": "ГруппаСодержание",
                       "title": {
@@ -3310,7 +3308,7 @@
                       "items": [
                         [
                           {
-                            "type": "LabelField",
+                            "type": "LABEL_FIELD",
                             "id": 26,
                             "name": "Наименование",
                             "title": {
@@ -3318,12 +3316,12 @@
                             },
                             "dataPath": {
                               "segments": "Список.Наименование",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "LabelField",
+                            "type": "LABEL_FIELD",
                             "id": 32,
                             "name": "Предмет",
                             "title": {
@@ -3331,12 +3329,12 @@
                             },
                             "dataPath": {
                               "segments": "Список.Предмет",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "LabelField",
+                            "type": "LABEL_FIELD",
                             "id": 28,
                             "name": "Содержание",
                             "title": {
@@ -3344,7 +3342,7 @@
                             },
                             "dataPath": {
                               "segments": "Список.Содержание",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           }
@@ -3353,7 +3351,7 @@
                       ]
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 42,
                       "name": "СрокИсполнения",
                       "title": {
@@ -3361,12 +3359,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.СрокИсполнения",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 44,
                       "name": "СрокПроверки",
                       "title": {
@@ -3374,12 +3372,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.СрокПроверки",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 38,
                       "name": "ДатаЗавершения",
                       "title": {
@@ -3394,12 +3392,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ДатаЗавершения",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 10,
                       "name": "ВедущаяЗадача",
                       "title": {
@@ -3407,12 +3405,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.HeadTask",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 30,
                       "name": "НомерИтерации",
                       "title": {
@@ -3420,12 +3418,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.НомерИтерации",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 34,
                       "name": "Автор",
                       "title": {
@@ -3433,12 +3431,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Автор",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 36,
                       "name": "Исполнитель",
                       "title": {
@@ -3446,12 +3444,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Исполнитель",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "ColumnGroup",
+                      "type": "COLUMN_GROUP",
                       "id": 57,
                       "name": "ГруппаПроверка",
                       "title": {
@@ -3463,7 +3461,7 @@
                       "items": [
                         [
                           {
-                            "type": "CheckBoxField",
+                            "type": "CHECK_BOX_FIELD",
                             "id": 55,
                             "name": "НаПроверке",
                             "title": {
@@ -3471,12 +3469,12 @@
                             },
                             "dataPath": {
                               "segments": "Список.НаПроверке",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "LabelField",
+                            "type": "LABEL_FIELD",
                             "id": 40,
                             "name": "Проверяющий",
                             "title": {
@@ -3484,7 +3482,7 @@
                             },
                             "dataPath": {
                               "segments": "Список.Проверяющий",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           }
@@ -3493,7 +3491,7 @@
                       ]
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 89,
                       "name": "Ссылка",
                       "title": {
@@ -3501,7 +3499,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -3618,6 +3616,11 @@
     "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/synonym"
   },
   "tabularSections": [],
+  "task": {
+    "type": "TASK",
+    "mdoRef": "Task.ЗадачаИсполнителя",
+    "mdoRefRu": "Задача.ЗадачаИсполнителя"
+  },
   "templates": [],
   "uuid": "dad11c2e-08fc-4a6b-8829-8be6c64c15fc"
 }}

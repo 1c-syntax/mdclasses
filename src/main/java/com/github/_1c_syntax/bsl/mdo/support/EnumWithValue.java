@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.mdo.support;
 
 /**
  * Расширение для перечислений, необходимое для использования в анмаршалинге
- * автор идеи: alkoleft (https://github.com/alkoleft)
  */
 public interface EnumWithValue {
   /**
@@ -32,4 +31,11 @@ public interface EnumWithValue {
    * @return Строковое значение перечисления
    */
   String value();
+
+  /**
+   * Признак того, что значение используется как значение для неизвестных
+   */
+  default boolean isUnknown() {
+    return false;
+  }
 }

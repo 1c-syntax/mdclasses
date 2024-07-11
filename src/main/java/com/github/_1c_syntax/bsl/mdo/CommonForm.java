@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
@@ -41,7 +42,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonForm implements MDObject, Form {
+public class CommonForm implements MDObject, Form, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.VIEW);
 
   /*
    * MDObject
@@ -73,10 +76,16 @@ public class CommonForm implements MDObject, Form {
   FormType formType = FormType.MANAGED;
 
   @Default
-  FormData data = EmptyFormData.getEmpty();
+  FormData data = EmptyFormData.EMPTY;
 
   /*
    * Свое
    */
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
+  }
 }

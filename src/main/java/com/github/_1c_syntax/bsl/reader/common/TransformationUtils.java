@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
@@ -46,7 +47,8 @@ import java.util.concurrent.ConcurrentSkipListMap;
 @Slf4j
 public class TransformationUtils {
 
-  private static final Map<String, Map<String, Method>> methods = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Optional<Method>>> METHODS = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Optional<Type>>> TYPES = new ConcurrentHashMap<>();
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
@@ -84,11 +86,10 @@ public class TransformationUtils {
    */
   @Nullable
   public Type fieldType(Object source, String methodName) {
-    var method = getMethod(source.getClass(), methodName);
-    if (method != null) {
-      return method.getGenericParameterTypes()[0];
-    }
-    return null;
+    return TYPES.computeIfAbsent(source.getClass().getName(),
+        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
+      .computeIfAbsent(methodName, l -> computeFieldType(source, methodName))
+      .orElse(null);
   }
 
   /**
@@ -130,27 +131,29 @@ public class TransformationUtils {
     return null;
   }
 
-  /**
-   * Вычисляет класс типа значения из типа коллекции (для списков)
-   *
-   * @param fieldClass Тип поля-коллекции
-   * @return тип класса
-   */
-  public Class<?> computeType(@NonNull ParameterizedType fieldClass) {
-    var type = (fieldClass).getActualTypeArguments()[0];
-    if (type instanceof WildcardType) {
-      return (Class<?>) ((WildcardType) type).getUpperBounds()[0];
-    } else {
-      return (Class<?>) type;
-    }
-  }
-
   @Nullable
   private Method getMethod(@NonNull Class<?> clazz, @NonNull String methodName) {
-    return methods.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
+    return METHODS.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
       .computeIfAbsent(methodName, k -> Arrays.stream(clazz.getDeclaredMethods())
         .filter(m -> methodName.equalsIgnoreCase(m.getName()))
-        .findFirst()
-        .orElse(null));
+        .findFirst())
+      .orElse(null);
+  }
+
+  private static Optional<Type> computeFieldType(Object source, String methodName) {
+    var method = getMethod(source.getClass(), methodName);
+    if (method != null) {
+      var fieldClass = method.getGenericParameterTypes()[0];
+      if (fieldClass instanceof ParameterizedType parameterizedType) {
+        var type = parameterizedType.getActualTypeArguments()[0];
+        if (type instanceof WildcardType wildcardType) {
+          fieldClass = wildcardType.getUpperBounds()[0];
+        } else {
+          fieldClass = type;
+        }
+      }
+      return Optional.of(fieldClass);
+    }
+    return Optional.empty();
   }
 }

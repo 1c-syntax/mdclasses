@@ -23,12 +23,15 @@ package com.github._1c_syntax.bsl.reader.common.context;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
 import java.util.Map;
 
@@ -50,26 +53,23 @@ public class FormElementReaderContext extends AbstractReaderContext {
 
   private static final Class<?> DEFAULT_CLASS_FORM_ITEM = SimpleFormItem.class;
 
+  @Setter
+  @Getter
+  private FormElementType elementType;
+
   public FormElementReaderContext(@NonNull String elementName, @NonNull HierarchicalStreamReader reader) {
     super(reader);
     name = elementName;
-    realClass = realClassByName(elementName);
-    if (realClass == null) {
-      realClass = DEFAULT_CLASS_FORM_ITEM;
-    }
+    realClass = CLASSES.getOrDefault(elementName, DEFAULT_CLASS_FORM_ITEM);
     builder = TransformationUtils.builder(realClass);
   }
 
   @Override
   public Class<?> fieldType(String fieldName) {
-    var clazz = super.fieldType(fieldName);
+    var clazz = CLASSES.get(fieldName);
     if (clazz == null) {
-      clazz = realClassByName(fieldName);
+      clazz = super.fieldType(fieldName);
     }
     return clazz;
-  }
-
-  private static Class<?> realClassByName(String name) {
-    return CLASSES.get(name);
   }
 }

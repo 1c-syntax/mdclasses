@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="318e517a-2dd6-4cdf-a502-c8cd6e429ff6">
+  <producedTypes>
+    <refType typeId="8ae77960-ef55-4af0-bba0-66a754f963ea" valueTypeId="abf318a0-7342-4e25-8a0b-24d26bdf23b7"/>
+    <listType typeId="691a4920-0cbe-4d60-b53d-924d6a045f47" valueTypeId="f6a9bb52-1dad-445d-8e02-456c71565987"/>
+    <objectType typeId="797c1ff0-8f13-4ab9-9e13-947c9e851c54" valueTypeId="e9968503-4649-4c80-a1d0-be298f852e50"/>
+    <managerType typeId="5e99dd03-6c02-4a0f-9042-305028264b0e" valueTypeId="8687f240-4755-4595-91a8-511464607401"/>
+    <recordManagerType typeId="7f4bc492-78e7-4a8f-b573-e4a6869f85d4" valueTypeId="aa37e5a3-aea8-4809-95bb-b96fe517a291"/>
+    <recordSetType typeId="908f7490-0859-4191-a004-d3d2cc7512af" valueTypeId="842637a9-27ff-47fa-8707-6655917bd1d3"/>
+    <recordType typeId="c206e85b-a5dc-4ebc-9016-6edf8a9933a8" valueTypeId="628f17a7-3adf-4f5e-bfbc-57f1416ce1af"/>
+    <recordKeyType typeId="85f289f5-685b-4ca9-b9d4-4bad879e02a3" valueTypeId="6dea0141-ce89-4f2e-ba64-91fd420f591b"/>
+  </producedTypes>
+  <name>ИнформацияОбОшибках</name>
+  <synonym>
+    <key>ru</key>
+    <value>Информация об ошибках</value>
+  </synonym>
+  <parentDataSource>ExternalDataSource.ТекущаяСУБД</parentDataSource>
+  <nameInDataSource>ErrorInformation</nameInDataSource>
+  <tableDataType>NonobjectData</tableDataType>
+  <unfilledParentValue xsi:type="core:StringValue">
+    <value></value>
+  </unfilledParentValue>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <tableFields uuid="87f60b35-2a90-49fd-aa27-c094d7374c98">
+    <name>Период</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>Period</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="e6e7c2e1-b4b4-4da5-8d1a-b5b7e0c18cdd">
+    <name>ИдентификаторОшибки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идентификатор ошибки</value>
+    </synonym>
+    <type>
+      <types>DefinedType.ТипUIDСтрока</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <nameInDataSource>ErrorID</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="5569bb8a-91fa-40b4-a86c-0840769ddf76">
+    <name>УровеньОшибки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уровень ошибки</value>
+    </synonym>
+    <type>
+      <types>UUID</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <nameInDataSource>ErrorLevel</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="e04f524f-a38c-4a4a-9810-f8a87b17089c">
+    <name>Категория</name>
+    <synonym>
+      <key>ru</key>
+      <value>Категория</value>
+    </synonym>
+    <type>
+      <types>UUID</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <nameInDataSource>Category</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="09a537fe-b8df-490d-8800-bc1959376cd3">
+    <name>НомерСеанса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер сеанса</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <nameInDataSource>SessionNumber</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="2abf5cec-cec6-4493-9da0-bdc8ae4cf962">
+    <name>Пользователь</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь</value>
+    </synonym>
+    <type>
+      <types>UUID</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <nameInDataSource>CurrentUser</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="995d9173-88e3-4afb-b60f-242f530978e7">
+    <name>ДатаУведомления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата уведомления</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>DateOfNotice</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="8dbba219-9048-43ac-88b3-ff5cdd4071d1">
+    <name>ОписаниеОшибки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Описание ошибки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>ErrorDescription</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <forms uuid="1d52a188-4e96-435f-9f64-ee0695bb3365">
+    <name>RecordForm</name>
+    <synonym>
+      <key>ru</key>
+      <value>Record form</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="681048bc-2642-40ec-b037-a61bce5cfab4">
+    <name>ListForm</name>
+    <synonym>
+      <key>ru</key>
+      <value>List form</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="ff4437b1-325e-47d7-87f7-9cf5e51460c5">
+    <name>Command</name>
+    <synonym>
+      <key>ru</key>
+      <value>Command</value>
+    </synonym>
+    <group>ActionsPanelTools</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+  <templates uuid="28805bba-20fd-40dd-b442-1f7ca7dcf665">
+    <name>Template</name>
+    <synonym>
+      <key>ru</key>
+      <value>Template</value>
+    </synonym>
+  </templates>
+</mdclass:Table>

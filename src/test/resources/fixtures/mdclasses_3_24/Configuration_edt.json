@@ -1,0 +1,1725 @@
+{"com.github._1c_syntax.bsl.mdclasses.Configuration": {
+  "XDTOPackages": [
+    {
+      "uuid": "b8a93cce-56e4-4507-b281-5c525a466a0f",
+      "name": "ПакетXDTO1",
+      "mdoReference": {
+        "type": "XDTO_PACKAGE",
+        "mdoRef": "XDTOPackage.ПакетXDTO1",
+        "mdoRefRu": "ПакетXDTO.ПакетXDTO1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": []
+      },
+      "supportVariant": "NONE",
+      "namespace": "http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8",
+      "data": {
+        "targetNamespace": "http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8",
+        "imports": [
+          [
+            2
+          ],
+          []
+        ],
+        "valueTypes": [
+          [
+            278
+          ],
+          []
+        ],
+        "objectTypes": [
+          [
+            737
+          ],
+          []
+        ],
+        "properties": [
+          {
+            "name": "performance",
+            "type": "d2p1:Performance",
+            "lowerBound": 0,
+            "upperBound": 0,
+            "nillable": false,
+            "form": "Attribute",
+            "typeDef": []
+          }
+        ]
+      }
+    }
+  ],
+  "accountingRegisters": [
+    {
+      "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+      "name": "РегистрБухгалтерии1",
+      "mdoReference": {
+        "type": "ACCOUNTING_REGISTER",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            2
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "resources": [
+        {
+          "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
+          "name": "Ресурс1",
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "dimensions": [
+        {
+          "uuid": "902c08a9-e457-436a-b0fb-b996f0d9bb00",
+          "name": "Измерение1",
+          "mdoReference": {
+            "type": "DIMENSION",
+            "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "INDEX",
+          "master": false,
+          "denyIncompleteValues": false,
+          "useInTotals": true
+        }
+      ],
+      "forms": [],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "accumulationRegisters": [
+    {
+      "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+      "name": "РегистрНакопления1",
+      "mdoReference": {
+        "type": "ACCUMULATION_REGISTER",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "resources": [
+        {
+          "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
+          "name": "Ресурс1",
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accumulationRegisters/com.github._1c_syntax.bsl.mdo.AccumulationRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "dimensions": [
+        {
+          "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
+          "name": "Измерение1",
+          "mdoReference": {
+            "type": "DIMENSION",
+            "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accumulationRegisters/com.github._1c_syntax.bsl.mdo.AccumulationRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "master": false,
+          "denyIncompleteValues": false,
+          "useInTotals": true
+        }
+      ],
+      "forms": [],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "bots": [],
+  "briefInformation": {
+    "content": [
+      [
+        2
+      ]
+    ]
+  },
+  "businessProcesses": [
+    {
+      "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+      "name": "БизнесПроцесс1",
+      "mdoReference": {
+        "type": "BUSINESS_PROCESS",
+        "mdoRef": "BusinessProcess.БизнесПроцесс1",
+        "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "task": {
+        "type": "TASK",
+        "mdoRef": "Task.Задача1",
+        "mdoRefRu": "Задача.Задача1"
+      }
+    }
+  ],
+  "calculationRegisters": [
+    {
+      "uuid": "90587c7d-b950-4476-ac14-426e4a83d9c4",
+      "name": "РегистрРасчета1",
+      "mdoReference": {
+        "type": "CALCULATION_REGISTER",
+        "mdoRef": "CalculationRegister.РегистрРасчета1",
+        "mdoRefRu": "РегистрРасчета.РегистрРасчета1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "resources": [
+        {
+          "uuid": "86f41061-e298-4da5-8d28-489a349d55fc",
+          "name": "Ресурс1",
+          "mdoReference": {
+            "type": "RESOURCE",
+            "mdoRef": "CalculationRegister.РегистрРасчета1.Resource.Ресурс1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Ресурс.Ресурс1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/calculationRegisters/com.github._1c_syntax.bsl.mdo.CalculationRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "dimensions": [
+        {
+          "uuid": "f3e7cca5-4902-4ad5-96c7-db8336f52c6e",
+          "name": "Измерение1",
+          "mdoReference": {
+            "type": "DIMENSION",
+            "mdoRef": "CalculationRegister.РегистрРасчета1.Dimension.Измерение1",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/calculationRegisters/com.github._1c_syntax.bsl.mdo.CalculationRegister/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "master": false,
+          "denyIncompleteValues": true,
+          "useInTotals": true
+        }
+      ],
+      "forms": [],
+      "templates": [],
+      "recalculations": [
+        {
+          "uuid": "16b54095-8711-4ef1-a38b-93d12f6f6e93",
+          "name": "Перерасчет",
+          "mdoReference": {
+            "type": "RECALCULATION",
+            "mdoRef": "CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет",
+            "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Перерасчет.Перерасчет"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/calculationRegisters/com.github._1c_syntax.bsl.mdo.CalculationRegister/mdoReference"
+          },
+          "modules": [
+            1
+          ]
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "catalogs": [
+    {
+      "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
+      "name": "Справочник1",
+      "mdoReference": {
+        "type": "CATALOG",
+        "mdoRef": "Catalog.Справочник1",
+        "mdoRefRu": "Справочник.Справочник1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        2
+      ],
+      "commands": [
+        {
+          "uuid": "342ec3c7-82d4-42bb-a5ff-8a756f110744",
+          "name": "Команда1",
+          "mdoReference": {
+            "type": "COMMAND",
+            "mdoRef": "Catalog.Справочник1.Command.Команда1",
+            "mdoRefRu": "Справочник.Справочник1.Команда.Команда1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "modules": [
+            1
+          ],
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/catalogs/com.github._1c_syntax.bsl.mdo.Catalog/mdoReference"
+          }
+        }
+      ],
+      "attributes": [
+        [
+          3
+        ],
+        []
+      ],
+      "tabularSections": [
+        {
+          "uuid": "451202c5-b1af-4bce-a705-0b5570071588",
+          "name": "ТабличнаяЧасть1",
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Catalog.Справочник1.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Справочник.Справочник1.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/catalogs/com.github._1c_syntax.bsl.mdo.Catalog/mdoReference"
+          },
+          "attributes": [
+            [
+              2
+            ],
+            []
+          ]
+        }
+      ],
+      "forms": [
+        [
+          3
+        ],
+        []
+      ],
+      "templates": [
+        {
+          "uuid": "42def71b-52cc-4e34-8a08-82f0dfcd47bf",
+          "name": "Макет",
+          "mdoReference": {
+            "type": "TEMPLATE",
+            "mdoRef": "Catalog.Справочник1.Template.Макет",
+            "mdoRefRu": "Справочник.Справочник1.Макет.Макет"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "modules": [],
+          "templateType": "SPREADSHEET_DOCUMENT",
+          "data": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
+          },
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/catalogs/com.github._1c_syntax.bsl.mdo.Catalog/mdoReference"
+          }
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "chartsOfAccounts": [
+    {
+      "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+      "name": "ПланСчетов1",
+      "mdoReference": {
+        "type": "CHART_OF_ACCOUNTS",
+        "mdoRef": "ChartOfAccounts.ПланСчетов1",
+        "mdoRefRu": "ПланСчетов.ПланСчетов1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "accountingFlags": [
+        {
+          "uuid": "957a5154-1e63-49e1-8e99-3893490da6f6",
+          "name": "ПризнакУчета",
+          "mdoReference": {
+            "type": "ACCOUNTING_FLAG",
+            "mdoRef": "ChartOfAccounts.ПланСчетов1.AccountingFlag.ПризнакУчета",
+            "mdoRefRu": "ПланСчетов.ПланСчетов1.ПризнакУчета.ПризнакУчета"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfAccounts/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "extDimensionAccountingFlags": [
+        {
+          "uuid": "4f04d72a-e3e9-4e9b-96da-7d0e1ad989e6",
+          "name": "ПризнакУчета",
+          "mdoReference": {
+            "type": "EXT_DIMENSION_ACCOUNTING_FLAG",
+            "mdoRef": "ChartOfAccounts.ПланСчетов1.ExtDimensionAccountingFlag.ПризнакУчета",
+            "mdoRefRu": "ПланСчетов.ПланСчетов1.ПризнакУчетаСубконто.ПризнакУчета"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfAccounts/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfAccounts/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "chartsOfCalculationTypes": [
+    {
+      "uuid": "1755c534-9ccd-49c4-9f8b-2aa066424aaa",
+      "name": "ПланВидовРасчета1",
+      "mdoReference": {
+        "type": "CHART_OF_CALCULATION_TYPES",
+        "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета1",
+        "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "chartsOfCharacteristicTypes": [
+    {
+      "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+      "name": "ПланВидовХарактеристик1",
+      "mdoReference": {
+        "type": "CHART_OF_CHARACTERISTIC_TYPES",
+        "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+        "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        2
+      ],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "commandGroups": [
+    {
+      "uuid": "9bd3b0b1-b276-4b0e-9811-44a41ebb0c7c",
+      "name": "ГруппаКоманд1",
+      "mdoReference": {
+        "type": "COMMAND_GROUP",
+        "mdoRef": "CommandGroup.ГруппаКоманд1",
+        "mdoRefRu": "ГруппаКоманд.ГруппаКоманд1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "comment": "",
+  "commonAttributes": [
+    {
+      "uuid": "d4f0c0ac-ed26-4085-a1b4-e52314b973ad",
+      "name": "ОбщийРеквизит1",
+      "mdoReference": {
+        "type": "COMMON_ATTRIBUTE",
+        "mdoRef": "CommonAttribute.ОбщийРеквизит1",
+        "mdoRefRu": "ОбщийРеквизит.ОбщийРеквизит1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "autoUse": "USE",
+      "passwordMode": false,
+      "indexing": "DONT_INDEX",
+      "dataSeparation": "DONT_USE",
+      "dataSeparationValue": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "dataSeparationUse": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+      },
+      "conditionalSeparation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+      },
+      "usersSeparation": "DONT_USE",
+      "authenticationSeparation": "DONT_USE",
+      "configurationExtensionsSeparation": "DONT_USE",
+      "content": [
+        [
+          2
+        ],
+        []
+      ]
+    }
+  ],
+  "commonCommands": [
+    {
+      "uuid": "a608f796-f58e-4f8a-b63f-272342b32f35",
+      "name": "ОбщаяКоманда1",
+      "mdoReference": {
+        "type": "COMMON_COMMAND",
+        "mdoRef": "CommonCommand.ОбщаяКоманда1",
+        "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ]
+    }
+  ],
+  "commonForms": [
+    {
+      "uuid": "5ac59104-28a5-40b1-ab5b-2857fb41991a",
+      "name": "Форма",
+      "mdoReference": {
+        "type": "COMMON_FORM",
+        "mdoRef": "CommonForm.Форма",
+        "mdoRefRu": "ОбщаяФорма.Форма"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "formType": "MANAGED",
+      "data": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+        "title": {
+          "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+        },
+        "handlers": [],
+        "items": [],
+        "attributes": []
+      }
+    }
+  ],
+  "commonModules": [
+    [
+      6
+    ],
+    []
+  ],
+  "commonPictures": [
+    {
+      "uuid": "db84513d-2535-494b-843e-6d8931cb2f82",
+      "name": "ОбщаяКартинка1",
+      "mdoReference": {
+        "type": "COMMON_PICTURE",
+        "mdoRef": "CommonPicture.ОбщаяКартинка1",
+        "mdoRefRu": "ОбщаяКартинка.ОбщаяКартинка1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "availabilityForChoice": false,
+      "availabilityForAppearance": false
+    }
+  ],
+  "commonTemplates": [
+    [
+      10
+    ],
+    []
+  ],
+  "compatibilityMode": {
+    "minor": 3,
+    "version": 24
+  },
+  "configurationExtensionCompatibilityMode": {
+    "minor": 3,
+    "version": 99
+  },
+  "configurationSource": "EDT",
+  "constants": [
+    {
+      "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+      "name": "Константа1",
+      "mdoReference": {
+        "type": "CONSTANT",
+        "mdoRef": "Constant.Константа1",
+        "mdoRefRu": "Константа.Константа1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        2
+      ],
+      "passwordMode": false,
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "copyrights": {
+    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+  },
+  "dataLockControlMode": "MANAGED",
+  "dataProcessors": [
+    {
+      "uuid": "a7c57ba0-75d8-487d-b8ea-ae5083d8a503",
+      "name": "Обработка1",
+      "mdoReference": {
+        "type": "DATA_PROCESSOR",
+        "mdoRef": "DataProcessor.Обработка1",
+        "mdoRefRu": "Обработка.Обработка1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [
+        [
+          2
+        ],
+        []
+      ],
+      "templates": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "defaultLanguage": {
+    "type": "LANGUAGE",
+    "mdoRef": "Language.Русский",
+    "mdoRefRu": "Язык.Русский"
+  },
+  "defaultRunMode": "MANAGED_APPLICATION",
+  "definedTypes": [
+    {
+      "uuid": "e8c616d9-4957-48ab-a917-afb6847f6840",
+      "name": "ОпределяемыйТип1",
+      "mdoReference": {
+        "type": "DEFINED_TYPE",
+        "mdoRef": "DefinedType.ОпределяемыйТип1",
+        "mdoRefRu": "ОпределяемыйТип.ОпределяемыйТип1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "detailedInformation": {
+    "content": [
+      [
+        2
+      ]
+    ]
+  },
+  "documentJournals": [
+    {
+      "uuid": "c6743657-4787-40de-9a45-2493c630f626",
+      "name": "ЖурналДокументов1",
+      "mdoReference": {
+        "type": "DOCUMENT_JOURNAL",
+        "mdoRef": "DocumentJournal.ЖурналДокументов1",
+        "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "columns": [
+        {
+          "uuid": "b52d063e-5d2c-498b-a333-4957277f47e3",
+          "name": "Графа",
+          "mdoReference": {
+            "type": "COLUMN",
+            "mdoRef": "DocumentJournal.ЖурналДокументов1.Column.Графа",
+            "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1.Колонка.Графа"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX"
+        }
+      ],
+      "forms": [],
+      "templates": [],
+      "registeredDocuments": [
+        {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.Документ1",
+          "mdoRefRu": "Документ.Документ1"
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "documentNumerators": [
+    {
+      "uuid": "e401f835-6bfc-4cd4-8d87-5e6b6332a3f6",
+      "name": "НумераторДокументов1",
+      "mdoReference": {
+        "type": "DOCUMENT_NUMERATOR",
+        "mdoRef": "DocumentNumerator.НумераторДокументов1",
+        "mdoRefRu": "НумераторДокументов.НумераторДокументов1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "documents": [
+    {
+      "uuid": "ce4fb46b-4af7-493e-9fcb-76ad8c4f8acd",
+      "name": "Документ1",
+      "mdoReference": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/registeredDocuments/com.github._1c_syntax.bsl.types.MdoReference"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        2
+      ],
+      "commands": [
+        [
+          2
+        ],
+        []
+      ],
+      "attributes": [
+        [
+          3
+        ],
+        []
+      ],
+      "tabularSections": [
+        {
+          "uuid": "508fe2d9-44b0-4b34-a349-2b0bcae6adc4",
+          "name": "ТабличнаяЧасть1",
+          "mdoReference": {
+            "type": "TABULAR_SECTION",
+            "mdoRef": "Document.Документ1.TabularSection.ТабличнаяЧасть1",
+            "mdoRefRu": "Документ.Документ1.ТабличнаяЧасть.ТабличнаяЧасть1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/registeredDocuments/com.github._1c_syntax.bsl.types.MdoReference"
+          },
+          "attributes": [
+            [
+              2
+            ],
+            []
+          ]
+        }
+      ],
+      "forms": [
+        [
+          3
+        ],
+        []
+      ],
+      "templates": [],
+      "registerRecords": [
+        [
+          4
+        ],
+        []
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "enums": [
+    {
+      "uuid": "f11f3441-4b64-4344-b1a0-0e4b3e466e03",
+      "name": "Перечисление1",
+      "mdoReference": {
+        "type": "ENUM",
+        "mdoRef": "Enum.Перечисление1",
+        "mdoRefRu": "Перечисление.Перечисление1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "forms": [],
+      "templates": [],
+      "enumValues": [
+        {
+          "uuid": "47a90ebe-6127-4041-bdd4-def343363004",
+          "name": "ЗначениеПеречисления1",
+          "mdoReference": {
+            "type": "ENUM_VALUE",
+            "mdoRef": "Enum.Перечисление1.EnumValue.ЗначениеПеречисления1",
+            "mdoRefRu": "Перечисление.Перечисление1.ЗначениеПеречисления.ЗначениеПеречисления1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/enums/com.github._1c_syntax.bsl.mdo.Enum/mdoReference"
+          }
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "eventSubscriptions": [
+    {
+      "uuid": "4da21a7b-3d07-4e6d-b91f-7e1c8ddcffcd",
+      "name": "ПодпискаНаСобытие1",
+      "mdoReference": {
+        "type": "EVENT_SUBSCRIPTION",
+        "mdoRef": "EventSubscription.ПодпискаНаСобытие1",
+        "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "handler": {
+        "methodPath": "CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью",
+        "moduleName": "ПростойОбщийМодуль",
+        "methodName": "ПодпискаНаСобытие1ПередЗаписью"
+      },
+      "event": "BeforeWrite"
+    }
+  ],
+  "exchangePlans": [
+    {
+      "uuid": "242cb07d-3d2b-4689-b590-d3ed23ac9d10",
+      "name": "ПланОбмена1",
+      "mdoReference": {
+        "type": "EXCHANGE_PLAN",
+        "mdoRef": "ExchangePlan.ПланОбмена1",
+        "mdoRefRu": "ПланОбмена.ПланОбмена1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "distributedInfoBase": false,
+      "includeConfigurationExtensions": false,
+      "content": [
+        [
+          2
+        ],
+        []
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "externalDataSources": [
+    {
+      "uuid": "2ceefe90-5a06-41ce-aac5-a3293a85946f",
+      "name": "ТекущаяСУБД",
+      "mdoReference": {
+        "type": "EXTERNAL_DATA_SOURCE",
+        "mdoRef": "ExternalDataSource.ТекущаяСУБД",
+        "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "tables": [
+        {
+          "uuid": "318e517a-2dd6-4cdf-a502-c8cd6e429ff6",
+          "name": "ИнформацияОбОшибках",
+          "mdoReference": {
+            "type": "EXTERNAL_DATA_SOURCE_TABLE",
+            "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках",
+            "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/externalDataSources/com.github._1c_syntax.bsl.mdo.ExternalDataSource/mdoReference"
+          },
+          "modules": [
+            2
+          ],
+          "commands": [
+            {
+              "uuid": "ff4437b1-325e-47d7-87f7-9cf5e51460c5",
+              "name": "Command",
+              "mdoReference": {
+                "type": "COMMAND",
+                "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Command.Command",
+                "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Команда.Command"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    1
+                  ]
+                ]
+              },
+              "supportVariant": "NONE",
+              "modules": [
+                1
+              ],
+              "owner": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/externalDataSources/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              }
+            }
+          ],
+          "fields": [
+            [
+              8
+            ],
+            []
+          ],
+          "forms": [
+            [
+              2
+            ],
+            []
+          ],
+          "templates": [
+            {
+              "uuid": "28805bba-20fd-40dd-b442-1f7ca7dcf665",
+              "name": "Template",
+              "mdoReference": {
+                "type": "TEMPLATE",
+                "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Template.Template",
+                "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Макет.Template"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  [
+                    1
+                  ]
+                ]
+              },
+              "supportVariant": "NONE",
+              "modules": [],
+              "templateType": "SPREADSHEET_DOCUMENT",
+              "data": {
+                "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData",
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/catalogs/com.github._1c_syntax.bsl.mdo.Catalog/templates/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/data"
+              },
+              "owner": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/externalDataSources/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+              }
+            }
+          ],
+          "dataLockControlMode": "MANAGED"
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "filterCriteria": [
+    {
+      "uuid": "6e9d3381-0607-43df-866d-14ee5d65a294",
+      "name": "КритерийОтбора1",
+      "mdoReference": {
+        "type": "FILTER_CRITERION",
+        "mdoRef": "FilterCriterion.КритерийОтбора1",
+        "mdoRefRu": "КритерийОтбора.КритерийОтбора1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "commands": [],
+      "forms": [],
+      "content": [],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "functionalOptions": [
+    {
+      "uuid": "d3b7fd71-6570-4047-91e0-b3df75dba08d",
+      "name": "ФункциональнаяОпция1",
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTION",
+        "mdoRef": "FunctionalOption.ФункциональнаяОпция1",
+        "mdoRefRu": "ФункциональнаяОпция.ФункциональнаяОпция1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "location": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/constants/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
+      },
+      "privilegedGetMode": true,
+      "content": []
+    }
+  ],
+  "functionalOptionsParameters": [
+    {
+      "uuid": "9fae7345-6220-4e5b-b4c1-84bb921a58b7",
+      "name": "ПараметрФункциональныхОпций",
+      "mdoReference": {
+        "type": "FUNCTIONAL_OPTIONS_PARAMETER",
+        "mdoRef": "FunctionalOptionsParameter.ПараметрФункциональныхОпций",
+        "mdoRefRu": "ПараметрФункциональныхОпций.ПараметрФункциональныхОпций"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "use": {
+        "type": "DIMENSION",
+        "mdoRef": "InformationRegister.РегистрСведений1.Dimension.Измерение1",
+        "mdoRefRu": "РегистрСведений.РегистрСведений1.Измерение.Измерение1"
+      }
+    }
+  ],
+  "httpServices": [
+    {
+      "uuid": "3f029e1e-5a9e-4446-b74f-cbcb79b1e2fe",
+      "name": "HTTPСервис1",
+      "mdoReference": {
+        "type": "HTTP_SERVICE",
+        "mdoRef": "HTTPService.HTTPСервис1",
+        "mdoRefRu": "HTTPСервис.HTTPСервис1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "urlTemplates": [
+        {
+          "uuid": "4d97db36-cfbf-4f11-9647-d95677380b8f",
+          "name": "ШаблонURL",
+          "mdoReference": {
+            "type": "HTTP_SERVICE_URL_TEMPLATE",
+            "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL",
+            "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/httpServices/com.github._1c_syntax.bsl.mdo.HTTPService/mdoReference"
+          },
+          "methods": [
+            [
+              2
+            ],
+            []
+          ],
+          "template": "/*"
+        }
+      ]
+    }
+  ],
+  "informationRegisters": [
+    [
+      2
+    ],
+    []
+  ],
+  "integrationServices": [],
+  "interfaces": [],
+  "languages": [
+    [
+      3
+    ],
+    []
+  ],
+  "mdoReference": {
+    "type": "CONFIGURATION",
+    "mdoRef": "Configuration.Конфигурация",
+    "mdoRefRu": "Конфигурация.Конфигурация"
+  },
+  "modalityUseMode": "USE_WITH_WARNINGS",
+  "modules": [
+    3
+  ],
+  "name": "Конфигурация",
+  "objectAutonumerationMode": "NotAutoFree",
+  "objectBelonging": "OWN",
+  "reports": [
+    {
+      "uuid": "34d3754d-298c-4786-92f6-a487db249fc7",
+      "name": "Отчет1",
+      "mdoReference": {
+        "type": "REPORT",
+        "mdoRef": "Report.Отчет1",
+        "mdoRefRu": "Отчет.Отчет1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        2
+      ],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [
+        [
+          3
+        ],
+        []
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "roles": [
+    {
+      "uuid": "ecad0539-4f9f-491b-b0f2-f8f42d9a7c41",
+      "name": "Роль1",
+      "mdoReference": {
+        "type": "ROLE",
+        "mdoRef": "Role.Роль1",
+        "mdoRefRu": "Роль.Роль1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "data": {
+        "setForNewObjects": false,
+        "setForAttributesByDefault": true,
+        "independentRightsOfChildObjects": false,
+        "objectRights": [
+          [
+            3
+          ],
+          []
+        ]
+      }
+    }
+  ],
+  "scheduledJobs": [
+    {
+      "uuid": "0de0c839-4427-46d9-be68-302f88ac162c",
+      "name": "РегламентноеЗадание1",
+      "mdoReference": {
+        "type": "SCHEDULED_JOB",
+        "mdoRef": "ScheduledJob.РегламентноеЗадание1",
+        "mdoRefRu": "РегламентноеЗадание.РегламентноеЗадание1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "methodName": {
+        "methodPath": "CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1",
+        "moduleName": "ПростойОбщийМодуль",
+        "methodName": "РегламентноеЗадание1"
+      },
+      "description": "Описание Регламентное задание 1",
+      "key": "ПроверкаАктивностиСеансаУдаленияОбъектов",
+      "use": true,
+      "predefined": true,
+      "restartCountOnFailure": 3,
+      "restartIntervalOnFailure": 10
+    }
+  ],
+  "scriptVariant": "RUSSIAN",
+  "sequences": [
+    {
+      "uuid": "514bbcf4-7fc4-4a3e-9245-598fad397eec",
+      "name": "Последовательность1",
+      "mdoReference": {
+        "type": "SEQUENCE",
+        "mdoRef": "Sequence.Последовательность1",
+        "mdoRefRu": "Последовательность.Последовательность1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "dimensions": [
+        {
+          "uuid": "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
+          "name": "Измерение1",
+          "mdoReference": {
+            "type": "DIMENSION",
+            "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
+            "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/sequences/com.github._1c_syntax.bsl.mdo.Sequence/mdoReference"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "master": false,
+          "denyIncompleteValues": false,
+          "useInTotals": true
+        }
+      ],
+      "documents": [
+        {
+          "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/registeredDocuments/com.github._1c_syntax.bsl.types.MdoReference"
+        }
+      ]
+    }
+  ],
+  "sessionParameters": [
+    {
+      "uuid": "66844df5-823b-40f1-ab8a-b07c1cb7462f",
+      "name": "ПараметрСеанса1",
+      "mdoReference": {
+        "type": "SESSION_PARAMETER",
+        "mdoRef": "SessionParameter.ПараметрСеанса1",
+        "mdoRefRu": "ПараметрСеанса.ПараметрСеанса1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "settingsStorages": [
+    {
+      "uuid": "e7a9947d-7565-4681-b75c-c9a229b45042",
+      "name": "ХранилищеНастроек1",
+      "mdoReference": {
+        "type": "SETTINGS_STORAGE",
+        "mdoRef": "SettingsStorage.ХранилищеНастроек1",
+        "mdoRefRu": "ХранилищеНастроек.ХранилищеНастроек1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "forms": [],
+      "templates": []
+    }
+  ],
+  "styleItems": [
+    {
+      "uuid": "68047ae8-62aa-4696-9780-d364feb3cc10",
+      "name": "ЭлементСтиля1",
+      "mdoReference": {
+        "type": "STYLE_ITEM",
+        "mdoRef": "StyleItem.ЭлементСтиля1",
+        "mdoRefRu": "ЭлементСтиля.ЭлементСтиля1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "styles": [
+    {
+      "uuid": "d6aaa851-cba7-486d-92f4-ab31b1628c6b",
+      "name": "Стиль",
+      "mdoReference": {
+        "type": "STYLE",
+        "mdoRef": "Style.Стиль",
+        "mdoRefRu": "Стиль.Стиль"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE"
+    }
+  ],
+  "subsystems": [
+    [
+      2
+    ],
+    []
+  ],
+  "supportVariant": "NONE",
+  "synchronousExtensionAndAddInCallUseMode": "USE_WITH_WARNINGS",
+  "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
+  "synonym": {
+    "content": [
+      [
+        2
+      ]
+    ]
+  },
+  "tasks": [
+    {
+      "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+      "name": "Задача1",
+      "mdoReference": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [],
+      "commands": [],
+      "attributes": [],
+      "tabularSections": [],
+      "forms": [],
+      "templates": [],
+      "addressingAttributes": [
+        {
+          "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
+          "name": "РеквизитАдресации",
+          "mdoReference": {
+            "type": "TASK_ADDRESSING_ATTRIBUTE",
+            "mdoRef": "Task.Задача1.AddressingAttribute.РеквизитАдресации",
+            "mdoRefRu": "Задача.Задача1.РеквизитАдресации.РеквизитАдресации"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              [
+                1
+              ]
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
+          },
+          "passwordMode": false,
+          "kind": "CUSTOM",
+          "indexing": "DONT_INDEX",
+          "format": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "editFormat": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "toolTip": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+          },
+          "markNegatives": false,
+          "mask": "",
+          "multiLine": false,
+          "extendedEdit": false,
+          "fillFromFillingValue": false,
+          "choiceForm": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+          }
+        }
+      ],
+      "explanation": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      }
+    }
+  ],
+  "useManagedFormInOrdinaryApplication": true,
+  "useOrdinaryFormInManagedApplication": false,
+  "usePurposes": [
+    "PLATFORM_APPLICATION"
+  ],
+  "uuid": "46c7c1d0-b04d-4295-9b04-ae3207c18d29",
+  "vendor": "",
+  "version": "",
+  "webServices": [
+    {
+      "uuid": "d7f9b06b-0799-486e-adff-c45a2d5b8101",
+      "name": "WebСервис1",
+      "mdoReference": {
+        "type": "WEB_SERVICE",
+        "mdoRef": "WebService.WebСервис1",
+        "mdoRefRu": "WebСервис.WebСервис1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "supportVariant": "NONE",
+      "modules": [
+        1
+      ],
+      "namespace": "http://test.test",
+      "descriptorFileName": "ws1.1cws",
+      "reuseSessions": "AUTO_USE",
+      "sessionMaxAge": 20,
+      "operations": [
+        [
+          2
+        ],
+        []
+      ]
+    }
+  ],
+  "wsReferences": [
+    {
+      "uuid": "95b745f2-e1fa-4f94-b7f9-f3f0224fc8c7",
+      "name": "WSСсылка",
+      "mdoReference": {
+        "type": "WS_REFERENCE",
+        "mdoRef": "WSReference.WSСсылка",
+        "mdoRefRu": "WSСсылка.WSСсылка"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          [
+            1
+          ]
+        ]
+      },
+      "supportVariant": "NONE",
+      "locationURL": "http://ya.ru"
+    }
+  ]
+}}

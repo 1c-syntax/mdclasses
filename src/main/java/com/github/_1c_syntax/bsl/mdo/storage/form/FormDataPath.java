@@ -21,38 +21,22 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import lombok.Getter;
-import lombok.Value;
-
 /**
  * Путь к реквизиту атрибута форма
+ *
+ * @param segments Путь к реквизиту
  */
-@Value
-public class FormDataPath {
+public record FormDataPath(String segments) {
 
   /**
    * Ссылка на пустой элемент
    */
-  public static final FormDataPath EMPTY = new FormDataPath();
-
-  /**
-   * Путь к реквизиту
-   */
-  String segments;
+  public static final FormDataPath EMPTY = new FormDataPath("");
 
   /**
    * Признак отсутствия пути
    */
-  @Getter
-  boolean empty;
-
-  private FormDataPath() {
-    segments = "";
-    empty = true;
-  }
-
-  public FormDataPath(String segments) {
-    this.segments = segments;
-    this.empty = false;
+  public boolean isEmpty() {
+    return segments.isEmpty();
   }
 }

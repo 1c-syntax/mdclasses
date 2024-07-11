@@ -31,9 +31,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "format": {
-          "content": [
-            []
-          ]
+          "content": []
         },
         "editFormat": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -397,7 +395,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 14,
                 "name": "СодержаниеЗаметки",
                 "title": {
@@ -412,11 +410,11 @@
                 },
                 "dataPath": {
                   "segments": "",
-                  "empty": true
+                  "isEmpty": true
                 },
                 "items": [
                   {
-                    "type": "UsualGroup",
+                    "type": "USUAL_GROUP",
                     "id": 102,
                     "name": "ГруппаПредмет",
                     "title": {
@@ -428,7 +426,7 @@
                     "items": [
                       [
                         {
-                          "type": "Label",
+                          "type": "LABEL",
                           "id": 65,
                           "name": "НадписьПредмет",
                           "title": {
@@ -447,7 +445,7 @@
                           "items": []
                         },
                         {
-                          "type": "Label",
+                          "type": "LABEL",
                           "id": 63,
                           "name": "Предмет",
                           "title": {
@@ -465,7 +463,7 @@
                 ]
               },
               {
-                "type": "FormattedDocumentField",
+                "type": "FORMATTED_DOCUMENT_FIELD",
                 "id": 9,
                 "name": "Содержание",
                 "title": {
@@ -473,12 +471,12 @@
                 },
                 "dataPath": {
                   "segments": "ФорматированныйТекст",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 90,
                 "name": "ПараметрыОтображения",
                 "title": {
@@ -497,7 +495,7 @@
                 "items": [
                   [
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 80,
                       "name": "ОтображатьНаРабочемСтоле",
                       "title": {
@@ -512,12 +510,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.ДляРабочегоСтола",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 82,
                       "name": "Пометка",
                       "title": {
@@ -532,12 +530,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.Пометка",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 105,
                       "name": "ГруппаЗаметок",
                       "title": {
@@ -545,7 +543,7 @@
                       },
                       "dataPath": {
                         "segments": "Объект.Parent",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -554,7 +552,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 91,
                 "name": "ИнформацияОбАвторе",
                 "title": {
@@ -573,7 +571,7 @@
                 "items": [
                   [
                     {
-                      "type": "Label",
+                      "type": "LABEL",
                       "id": 92,
                       "name": "НадписьАвтор",
                       "title": {
@@ -592,7 +590,7 @@
                       "items": []
                     },
                     {
-                      "type": "Label",
+                      "type": "LABEL",
                       "id": 94,
                       "name": "Автор",
                       "title": {
@@ -608,7 +606,7 @@
                 ]
               },
               {
-                "type": "Label",
+                "type": "LABEL",
                 "id": 103,
                 "name": "ДатаЗаметки",
                 "title": {
@@ -717,7 +715,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 30,
                 "name": "Фильтры",
                 "title": {
@@ -736,7 +734,7 @@
                 "items": [
                   [
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 28,
                       "name": "ФильтрПоЦвету",
                       "title": {
@@ -744,12 +742,12 @@
                       },
                       "dataPath": {
                         "segments": "ВыбранныйЦвет",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 26,
                       "name": "ФильтрПоПредмету",
                       "title": {
@@ -757,12 +755,12 @@
                       },
                       "dataPath": {
                         "segments": "ВыбранныйПредмет",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 31,
                       "name": "ПоказыватьУдаленные",
                       "title": {
@@ -770,7 +768,7 @@
                       },
                       "dataPath": {
                         "segments": "ПоказыватьУдаленные",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -779,7 +777,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 43,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -798,7 +796,7 @@
                 "items": []
               },
               {
-                "type": "CommandBar",
+                "type": "COMMAND_BAR",
                 "id": 33,
                 "name": "КоманднаяПанель",
                 "title": {
@@ -817,7 +815,7 @@
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 1,
                 "name": "Список",
                 "title": {
@@ -832,12 +830,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 20,
                       "name": "Тема",
                       "title": {
@@ -852,12 +850,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Description",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 22,
                       "name": "Предмет",
                       "title": {
@@ -865,12 +863,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ПредставлениеПредмета",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 24,
                       "name": "ДатаИзменения",
                       "title": {
@@ -878,12 +876,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ДатаИзменения",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 54,
                       "name": "Ссылка",
                       "title": {
@@ -891,7 +889,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -1027,7 +1025,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 43,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -1039,7 +1037,7 @@
                 "items": []
               },
               {
-                "type": "CommandBar",
+                "type": "COMMAND_BAR",
                 "id": 41,
                 "name": "КоманднаяПанель",
                 "title": {
@@ -1051,7 +1049,7 @@
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 1,
                 "name": "Список",
                 "title": {
@@ -1059,12 +1057,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 45,
                       "name": "Наименование",
                       "title": {
@@ -1072,12 +1070,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Description",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 25,
                       "name": "Автор",
                       "title": {
@@ -1085,12 +1083,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Автор",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 57,
                       "name": "Ссылка",
                       "title": {
@@ -1098,7 +1096,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -1107,7 +1105,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 30,
                 "name": "Фильтры",
                 "title": {
@@ -1119,7 +1117,7 @@
                 "items": [
                   [
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 23,
                       "name": "ПоказыватьЗаметкиДругихПользователей",
                       "title": {
@@ -1127,12 +1125,12 @@
                       },
                       "dataPath": {
                         "segments": "ПоказыватьЗаметкиДругихПользователей",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 28,
                       "name": "ПоказыватьУдаленные",
                       "title": {
@@ -1140,7 +1138,7 @@
                       },
                       "dataPath": {
                         "segments": "ПоказыватьУдаленные",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -1241,7 +1239,7 @@
           ],
           "items": [
             {
-              "type": "",
+              "type": "TABLE",
               "id": 1,
               "name": "Список",
               "title": {
@@ -1249,12 +1247,12 @@
               },
               "dataPath": {
                 "segments": "Список",
-                "empty": false
+                "isEmpty": false
               },
               "items": [
                 [
                   {
-                    "type": "ColumnGroup",
+                    "type": "COLUMN_GROUP",
                     "id": 8,
                     "name": "Содержание",
                     "title": {
@@ -1266,7 +1264,7 @@
                     "items": [
                       [
                         {
-                          "type": "LabelField",
+                          "type": "LABEL_FIELD",
                           "id": 4,
                           "name": "ПредставлениеЗаметки",
                           "title": {
@@ -1274,12 +1272,12 @@
                           },
                           "dataPath": {
                             "segments": "Список.Description",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "LabelField",
+                          "type": "LABEL_FIELD",
                           "id": 9,
                           "name": "ПредставлениеПредмета",
                           "title": {
@@ -1287,7 +1285,7 @@
                           },
                           "dataPath": {
                             "segments": "Список.ПредставлениеПредмета",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -1296,7 +1294,7 @@
                     ]
                   },
                   {
-                    "type": "LabelField",
+                    "type": "LABEL_FIELD",
                     "id": 35,
                     "name": "Ссылка",
                     "title": {
@@ -1304,7 +1302,7 @@
                     },
                     "dataPath": {
                       "segments": "Список.Ref",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   }
@@ -1380,7 +1378,7 @@
           "items": [
             [
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 1,
                 "name": "Код",
                 "title": {
@@ -1392,7 +1390,7 @@
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 3,
                 "name": "Наименование",
                 "title": {
@@ -1400,12 +1398,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Description",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 5,
                 "name": "Родитель",
                 "title": {
@@ -1413,12 +1411,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Parent",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 7,
                 "name": "Автор",
                 "title": {
@@ -1426,7 +1424,7 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Автор",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               }

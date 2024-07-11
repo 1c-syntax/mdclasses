@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
@@ -53,7 +54,7 @@ public class FormElementConverter implements ReadConverter {
       LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
       return null;
     }
-    readerContext.setValue("type", reader.getNodeName());
+    readerContext.setValue("type", FormElementType.fromString(reader.getNodeName()));
     readerContext.setValue("name", reader.getAttribute("name"));
     Unmarshaller.unmarshal(reader, context, readerContext);
     return readerContext.build();

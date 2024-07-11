@@ -12,9 +12,7 @@
         "objectBelonging": "OWN",
         "comment": "",
         "synonym": {
-          "content": [
-            []
-          ]
+          "content": []
         },
         "supportVariant": "NONE",
         "owner": {
@@ -227,7 +225,7 @@
           "items": [
             [
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 1,
                 "name": "Номер",
                 "title": {
@@ -235,12 +233,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Number",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 4,
                 "name": "Дата",
                 "title": {
@@ -248,12 +246,12 @@
                 },
                 "dataPath": {
                   "segments": "~Объект.Date",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 7,
                 "name": "Реквизит1",
                 "title": {
@@ -261,12 +259,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Реквизит1",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 10,
                 "name": "Реквизит2",
                 "title": {
@@ -274,12 +272,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Реквизит2",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 13,
                 "name": "Реквизит3",
                 "title": {
@@ -287,12 +285,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Реквизит3",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 16,
                 "name": "ТабличнаяЧасть1",
                 "title": {
@@ -300,12 +298,12 @@
                 },
                 "dataPath": {
                   "segments": "Объект.ТабличнаяЧасть1",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 29,
                       "name": "ТабличнаяЧасть1НомерСтроки",
                       "title": {
@@ -313,12 +311,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.ТабличнаяЧасть1.LineNumber",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 32,
                       "name": "ТабличнаяЧасть1Реквизит1",
                       "title": {
@@ -326,12 +324,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.ТабличнаяЧасть1.Реквизит1",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 35,
                       "name": "ТабличнаяЧасть1Реквизит2",
                       "title": {
@@ -339,7 +337,7 @@
                       },
                       "dataPath": {
                         "segments": "Объект.ТабличнаяЧасть1.Реквизит2",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -413,7 +411,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 1,
                 "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                 "title": {
@@ -428,12 +426,12 @@
                 },
                 "dataPath": {
                   "segments": "",
-                  "empty": true
+                  "isEmpty": true
                 },
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 3,
                 "name": "Список",
                 "title": {
@@ -441,12 +439,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 16,
                       "name": "Ссылка",
                       "title": {
@@ -454,12 +452,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 19,
                       "name": "Дата",
                       "title": {
@@ -467,12 +465,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Date",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 22,
                       "name": "Номер",
                       "title": {
@@ -480,12 +478,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Number",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 25,
                       "name": "Проведен",
                       "title": {
@@ -493,12 +491,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Posted",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 28,
                       "name": "ПометкаУдаления",
                       "title": {
@@ -506,12 +504,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.DeletionMark",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 31,
                       "name": "Реквизит1",
                       "title": {
@@ -519,12 +517,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит1",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 34,
                       "name": "Реквизит2",
                       "title": {
@@ -532,12 +530,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит2",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 37,
                       "name": "Реквизит3",
                       "title": {
@@ -545,7 +543,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит3",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -619,7 +617,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 1,
                 "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                 "title": {
@@ -631,7 +629,7 @@
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 3,
                 "name": "Список",
                 "title": {
@@ -639,12 +637,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 16,
                       "name": "Ссылка",
                       "title": {
@@ -652,12 +650,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 19,
                       "name": "Дата",
                       "title": {
@@ -665,12 +663,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Date",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 22,
                       "name": "Номер",
                       "title": {
@@ -678,12 +676,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Number",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 25,
                       "name": "Проведен",
                       "title": {
@@ -691,12 +689,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Posted",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CheckBoxField",
+                      "type": "CHECK_BOX_FIELD",
                       "id": 28,
                       "name": "ПометкаУдаления",
                       "title": {
@@ -704,12 +702,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.DeletionMark",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 31,
                       "name": "Реквизит1",
                       "title": {
@@ -717,12 +715,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит1",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 34,
                       "name": "Реквизит2",
                       "title": {
@@ -730,12 +728,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит2",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 37,
                       "name": "Реквизит3",
                       "title": {
@@ -743,7 +741,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Реквизит3",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }

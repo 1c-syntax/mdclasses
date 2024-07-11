@@ -31,9 +31,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "format": {
-          "content": [
-            []
-          ]
+          "content": []
         },
         "editFormat": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -147,7 +145,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 43,
                 "name": "КоманднаяПанель",
                 "title": {
@@ -162,12 +160,12 @@
                 },
                 "dataPath": {
                   "segments": "",
-                  "empty": true
+                  "isEmpty": true
                 },
                 "items": [
                   [
                     {
-                      "type": "UsualButton",
+                      "type": "USUAL_BUTTON",
                       "id": 32,
                       "name": "ФормаЗагрузитьКурсыВалют",
                       "title": {
@@ -179,7 +177,7 @@
                       "items": []
                     },
                     {
-                      "type": "CommandBar",
+                      "type": "COMMAND_BAR",
                       "id": 42,
                       "name": "КоманднаяПанельЛевая",
                       "title": {
@@ -198,7 +196,7 @@
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 2,
                       "name": "НачалоПериода",
                       "title": {
@@ -213,12 +211,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.НачалоПериодаЗагрузки",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 3,
                       "name": "ОкончаниеПериода",
                       "title": {
@@ -233,12 +231,12 @@
                       },
                       "dataPath": {
                         "segments": "Объект.ОкончаниеПериодаЗагрузки",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "CommandBar",
+                      "type": "COMMAND_BAR",
                       "id": 44,
                       "name": "КоманднаяПанельПравая",
                       "title": {
@@ -257,7 +255,7 @@
                       "items": [
                         [
                           {
-                            "type": "",
+                            "type": "BUTTON",
                             "id": 35,
                             "name": "ФормаВыбратьВсеВалюты",
                             "title": {
@@ -269,7 +267,7 @@
                             "items": []
                           },
                           {
-                            "type": "",
+                            "type": "BUTTON",
                             "id": 36,
                             "name": "ФормаСнятьВыбор",
                             "title": {
@@ -289,7 +287,7 @@
                 ]
               },
               {
-                "type": "Pages",
+                "type": "PAGES",
                 "id": 63,
                 "name": "Страницы",
                 "title": {
@@ -308,7 +306,7 @@
                 "items": [
                   [
                     {
-                      "type": "Page",
+                      "type": "PAGE",
                       "id": 65,
                       "name": "СтраницаСписокВалют",
                       "title": {
@@ -326,7 +324,7 @@
                       },
                       "items": [
                         {
-                          "type": "",
+                          "type": "TABLE",
                           "id": 7,
                           "name": "СписокВалют",
                           "title": {
@@ -341,12 +339,12 @@
                           },
                           "dataPath": {
                             "segments": "Объект.СписокВалют",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": [
                             [
                               {
-                                "type": "CheckBoxField",
+                                "type": "CHECK_BOX_FIELD",
                                 "id": 33,
                                 "name": "Загружать",
                                 "title": {
@@ -354,12 +352,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.Загружать",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "LabelField",
+                                "type": "LABEL_FIELD",
                                 "id": 9,
                                 "name": "КодВалюты",
                                 "title": {
@@ -374,12 +372,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.КодВалюты",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "LabelField",
+                                "type": "LABEL_FIELD",
                                 "id": 40,
                                 "name": "СписокВалютСимвольныйКод",
                                 "title": {
@@ -394,12 +392,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.СимвольныйКод",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 38,
                                 "name": "СписокВалютПредставление",
                                 "title": {
@@ -414,12 +412,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.Представление",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "LabelField",
+                                "type": "LABEL_FIELD",
                                 "id": 11,
                                 "name": "ДатаКурса",
                                 "title": {
@@ -427,12 +425,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.ДатаКурса",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "LabelField",
+                                "type": "LABEL_FIELD",
                                 "id": 12,
                                 "name": "Курс",
                                 "title": {
@@ -440,12 +438,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.Курс",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "LabelField",
+                                "type": "LABEL_FIELD",
                                 "id": 13,
                                 "name": "Кратность",
                                 "title": {
@@ -453,12 +451,12 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.Кратность",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               },
                               {
-                                "type": "InputField",
+                                "type": "INPUT_FIELD",
                                 "id": 84,
                                 "name": "СписокВалютОтступ",
                                 "title": {
@@ -466,7 +464,7 @@
                                 },
                                 "dataPath": {
                                   "segments": "Объект.СписокВалют.Отступ",
-                                  "empty": false
+                                  "isEmpty": false
                                 },
                                 "items": []
                               }
@@ -477,7 +475,7 @@
                       ]
                     },
                     {
-                      "type": "Page",
+                      "type": "PAGE",
                       "id": 67,
                       "name": "СтраницаВыполняетсяЗагрузкаКурсов",
                       "title": {
@@ -496,7 +494,7 @@
                       "items": [
                         [
                           {
-                            "type": "",
+                            "type": "DECORATION",
                             "id": 69,
                             "name": "КартинкаДлительнаяОперация",
                             "title": {
@@ -515,7 +513,7 @@
                             "items": []
                           },
                           {
-                            "type": "Label",
+                            "type": "LABEL",
                             "id": 72,
                             "name": "НадписьВыполняетсяЗагрузкаКурсовВалют",
                             "title": {
@@ -627,7 +625,7 @@
           ],
           "items": [
             {
-              "type": "InputField",
+              "type": "INPUT_FIELD",
               "id": 1,
               "name": "Текст",
               "title": {
@@ -635,7 +633,7 @@
               },
               "dataPath": {
                 "segments": "Текст",
-                "empty": false
+                "isEmpty": false
               },
               "items": []
             }
@@ -730,7 +728,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 9,
                 "name": "СклонениеЦелойЧасти",
                 "title": {
@@ -749,7 +747,7 @@
                 "items": [
                   [
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 13,
                       "name": "ЦелаяЧастьРод",
                       "title": {
@@ -764,12 +762,12 @@
                       },
                       "dataPath": {
                         "segments": "ЦелаяЧастьРод",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 10,
                       "name": "ЦелаяЧастьОдин",
                       "title": {
@@ -784,12 +782,12 @@
                       },
                       "dataPath": {
                         "segments": "ЦелаяЧастьОдин",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 11,
                       "name": "ЦелаяЧатьДва",
                       "title": {
@@ -804,12 +802,12 @@
                       },
                       "dataPath": {
                         "segments": "ЦелаяЧатьДва",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 12,
                       "name": "ПолеПрописи3наРусском",
                       "title": {
@@ -824,7 +822,7 @@
                       },
                       "dataPath": {
                         "segments": "ЦелаяЧастьПять",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -833,7 +831,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 55,
                 "name": "ГруппаПараметрыДробнойЧасти",
                 "title": {
@@ -852,7 +850,7 @@
                 "items": [
                   [
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 14,
                       "name": "СклонениеДробнойЧасти",
                       "title": {
@@ -871,7 +869,7 @@
                       "items": [
                         [
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 18,
                             "name": "ДробнаяЧастьРод",
                             "title": {
@@ -879,12 +877,12 @@
                             },
                             "dataPath": {
                               "segments": "ДробнаяЧастьРод",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 17,
                             "name": "ДробнаяЧастьОдин",
                             "title": {
@@ -892,12 +890,12 @@
                             },
                             "dataPath": {
                               "segments": "ДробнаяЧастьОдин",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 16,
                             "name": "ДробнаяЧастьДва",
                             "title": {
@@ -905,12 +903,12 @@
                             },
                             "dataPath": {
                               "segments": "ДробнаяЧастьДва",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 15,
                             "name": "ДробнаяЧастьПять",
                             "title": {
@@ -918,7 +916,7 @@
                             },
                             "dataPath": {
                               "segments": "ДробнаяЧастьПять",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           }
@@ -927,7 +925,7 @@
                       ]
                     },
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 56,
                       "name": "ГруппаЧислоРазрядовДробнойЧасти",
                       "title": {
@@ -945,7 +943,7 @@
                       },
                       "items": [
                         {
-                          "type": "InputField",
+                          "type": "INPUT_FIELD",
                           "id": 20,
                           "name": "ДлинаДробнойЧасти",
                           "title": {
@@ -953,7 +951,7 @@
                           },
                           "dataPath": {
                             "segments": "ДлинаДробнойЧасти",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -964,7 +962,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 61,
                 "name": "ГруппаПримерПрописи",
                 "title": {
@@ -983,7 +981,7 @@
                 "items": [
                   [
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 59,
                       "name": "СуммаЧисло",
                       "title": {
@@ -998,12 +996,12 @@
                       },
                       "dataPath": {
                         "segments": "СуммаЧисло",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "InputField",
+                      "type": "INPUT_FIELD",
                       "id": 62,
                       "name": "СуммаПрописью",
                       "title": {
@@ -1011,7 +1009,7 @@
                       },
                       "dataPath": {
                         "segments": "СуммаПрописью",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }
@@ -1238,7 +1236,7 @@
           ],
           "items": [
             {
-              "type": "",
+              "type": "TABLE",
               "id": 1,
               "name": "СписокВалют",
               "title": {
@@ -1246,12 +1244,12 @@
               },
               "dataPath": {
                 "segments": "Валюты",
-                "empty": false
+                "isEmpty": false
               },
               "items": [
                 [
                   {
-                    "type": "InputField",
+                    "type": "INPUT_FIELD",
                     "id": 4,
                     "name": "КодВалюты",
                     "title": {
@@ -1259,12 +1257,12 @@
                     },
                     "dataPath": {
                       "segments": "Валюты.КодВалютыЦифровой",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "InputField",
+                    "type": "INPUT_FIELD",
                     "id": 6,
                     "name": "КраткоеНаименование",
                     "title": {
@@ -1272,12 +1270,12 @@
                     },
                     "dataPath": {
                       "segments": "Валюты.КодВалютыБуквенный",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "InputField",
+                    "type": "INPUT_FIELD",
                     "id": 8,
                     "name": "Наименование",
                     "title": {
@@ -1285,12 +1283,12 @@
                     },
                     "dataPath": {
                       "segments": "Валюты.Наименование",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "InputField",
+                    "type": "INPUT_FIELD",
                     "id": 10,
                     "name": "СтраныИТерритории",
                     "title": {
@@ -1298,12 +1296,12 @@
                     },
                     "dataPath": {
                       "segments": "Валюты.СтраныИТерритории",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "CheckBoxField",
+                    "type": "CHECK_BOX_FIELD",
                     "id": 15,
                     "name": "Загружается",
                     "title": {
@@ -1311,7 +1309,7 @@
                     },
                     "dataPath": {
                       "segments": "Валюты.Загружается",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   }

@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -42,7 +43,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ExternalDataSource implements MDObject, ChildrenOwner {
+public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
 
   /*
    * MDObject
@@ -93,8 +96,24 @@ public class ExternalDataSource implements MDObject, ChildrenOwner {
     return plainChildren.getOrCompute();
   }
 
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
+  }
+
   private List<MD> computePlainChildren() {
     return LazyLoader.computePlainChildren(this);
   }
 
+  private static List<RoleRight> computePossibleRighs() {
+    return List.of(
+      RoleRight.USE,
+      RoleRight.STANDARD_AUTHENTICATION_CHANGE,
+      RoleRight.SESSION_STANDARD_AUTHENTICATION_CHANGE,
+      RoleRight.SESSION_OS_AUTHENTICATION_CHANGE,
+      RoleRight.ADMINISTRATION
+    );
+  }
 }

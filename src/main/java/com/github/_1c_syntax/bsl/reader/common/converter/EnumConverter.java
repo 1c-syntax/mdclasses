@@ -22,7 +22,12 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
@@ -30,26 +35,47 @@ import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
  * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
  * *XStreamFactory.
  */
+@Slf4j
 public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSingleValueConverter {
 
+  private static final String URL_TEMPLATE =
+    "https://github.com/1c-syntax/mdclasses/issues/new?labels=bug&title=%5BBUG%5D%20Unknown%20element%20%5B{}%20{}%5D";
+  private static final String WARN_TEMPLATE =
+    "Parsing error due to unknown element {}. Please, create issue using link " + URL_TEMPLATE;
+
   private final Class<T> enumClazz;
+  private final T unknown;
+  private final Map<String, T> enumElements;
 
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
+    unknown = unknown();
+    enumElements = new HashMap<>();
+    for (T item : enumClazz.getEnumConstants()) {
+      enumElements.put(item.value(), item);
+      if (UsePurposes.class.isAssignableFrom(enumClazz)) {
+        enumElements.put(((UsePurposes) item).valueVar2(), item);
+      }
+    }
   }
 
   @Override
   public Object fromString(String sourceString) {
-    return fromValue(enumClazz, sourceString);
+    var result = enumElements.get(sourceString);
+    if (result == null) {
+      LOGGER.warn(WARN_TEMPLATE, sourceString, enumClazz.getName(), sourceString);
+      result = unknown;
+    }
+    return result;
   }
 
-  private static <T extends Enum<T> & EnumWithValue> T fromValue(Class<T> clazz, String value) {
-    for (T item : clazz.getEnumConstants()) {
-      if (item.value().equals(value)) {
+  private T unknown() {
+    for (T item : enumClazz.getEnumConstants()) {
+      if (item.isUnknown()) {
         return item;
       }
     }
-    throw new IllegalArgumentException(clazz.getName() + " " + value);
+    throw new IllegalStateException("No unknown value found for enum " + enumClazz.getName());
   }
 
   @Override

@@ -30,11 +30,7 @@
       "objectBelonging": "ADOPTED",
       "comment": "",
       "synonym": {
-        "content": [
-          [
-            0
-          ]
-        ]
+        "content": []
       },
       "supportVariant": "NONE",
       "modules": [],
@@ -45,6 +41,11 @@
       "templates": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
+      },
+      "task": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
       }
     }
   ],
@@ -105,15 +106,13 @@
       "indexing": "DONT_INDEX",
       "dataSeparation": "DONT_USE",
       "dataSeparationValue": {
-        "type": "UNKNOWN",
-        "mdoRef": "",
-        "mdoRefRu": ""
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "dataSeparationUse": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "conditionalSeparation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
       },
       "usersSeparation": "DONT_USE",
       "authenticationSeparation": "DONT_USE",
@@ -452,7 +451,8 @@
           "denyIncompleteValues": false,
           "useInTotals": true
         }
-      ]
+      ],
+      "documents": []
     }
   ],
   "sessionParameters": [
@@ -487,7 +487,12 @@
     ],
     []
   ],
-  "styles": [],
+  "styles": [
+    [
+      2
+    ],
+    []
+  ],
   "subsystems": [
     [
       2

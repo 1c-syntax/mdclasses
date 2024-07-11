@@ -107,6 +107,9 @@ public class MDTestUtils {
           xstream.omitField(clazz, "plainChildren");
           xstream.omitField(clazz, "allAttributes");
           xstream.omitField(clazz, "allModules");
+          xstream.omitField(clazz, "plainItems");
+          xstream.omitField(clazz, "commonModulesByName");
+          xstream.omitField(clazz, "childrenByMdoRef");
 
         } catch (ClassNotFoundException e) {
           throw new RuntimeException(e);
@@ -229,6 +232,7 @@ public class MDTestUtils {
     return (ExternalSource) mdc;
   }
 
+  @SneakyThrows
   private void objectEqualJson(Object obj, Path fixturePath) {
     var fixture = getFixture(fixturePath);
     var current = createJson(obj);

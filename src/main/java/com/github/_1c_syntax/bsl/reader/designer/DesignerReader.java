@@ -91,7 +91,7 @@ public class DesignerReader implements MDReader {
   private final Path rootPath;
 
   public DesignerReader(Path path, boolean skipSupport) {
-    xstream =  createXMLMapper();
+    xstream = createXMLMapper();
     rootPath = path;
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
@@ -148,7 +148,7 @@ public class DesignerReader implements MDReader {
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
     var formDataPath = Paths.get(currentPath.getParent().toString(), name, "Ext", "Form.xml");
     if (!formDataPath.toFile().exists()) {
-      return EmptyFormData.getEmpty();
+      return EmptyFormData.EMPTY;
     }
     return (FormData) read(formDataPath);
   }

@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
@@ -44,6 +45,7 @@ import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
@@ -263,6 +265,8 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(TemplateType.class));
     registerConverter(new EnumConverter<>(TransferDirection.class));
     registerConverter(new EnumConverter<>(UseMode.class));
+    registerConverter(new EnumConverter<>(UsePurposes.class));
+    registerConverter(new EnumConverter<>(FormElementType.class));
   }
 
   private void init() {

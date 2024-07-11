@@ -33,7 +33,13 @@ import lombok.experimental.Accessors;
 public enum UseMode implements EnumWithValue {
   DONT_USE("DontUse"),
   USE("Use"),
-  USE_WITH_WARNINGS("UseWithWarnings");
+  USE_WITH_WARNINGS("UseWithWarnings"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

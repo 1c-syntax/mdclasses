@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -45,7 +46,9 @@ import java.util.List;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
-  FormOwner, TemplateOwner {
+  FormOwner, TemplateOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
 
   /*
    * MDObject
@@ -153,6 +156,13 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
   @Override
   public List<Module> getAllModules() {
     return allModules.getOrCompute();
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 
   private List<MD> computeChildren() {

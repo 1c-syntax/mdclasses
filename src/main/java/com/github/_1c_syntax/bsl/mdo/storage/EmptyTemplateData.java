@@ -21,14 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import lombok.Value;
-
 /**
  * Реализация пустого содержимого макета
  */
-@Value
-public class EmptyTemplateData implements TemplateData {
+public final class EmptyTemplateData implements TemplateData {
   private static final EmptyTemplateData EMPTY = new EmptyTemplateData();
+
+  private EmptyTemplateData() {
+  }
 
   /**
    * Возвращает ссылку на пустое содержимое макета

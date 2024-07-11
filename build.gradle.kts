@@ -14,7 +14,7 @@ plugins {
     id("io.freefair.javadoc-utf-8") version "8.6"
     id("io.freefair.maven-central.validate-poms") version "8.6"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.sonarqube") version "5.0.0.4638"
+    id("org.sonarqube") version "5.1.0.4882"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
 
@@ -56,7 +56,7 @@ dependencies {
     // прочее
     implementation("commons-io", "commons-io", "2.8.0")
     implementation("io.github.1c-syntax", "utils", "0.6.1")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.6.0")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.7.0")
     implementation("io.github.1c-syntax", "supportconf", "0.14.0") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }

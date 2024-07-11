@@ -21,9 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Value;
 
 import java.util.regex.Pattern;
 
@@ -31,24 +29,20 @@ import java.util.regex.Pattern;
  * POJO представление свойств типа «Обработчики событий» для таких типов метаданных как
  * «Регламентные задания» или «Подписки на события»
  */
-@Getter
-@Setter
-@NoArgsConstructor
+@Value
 public class Handler {
 
   /**
    * Ссылка на пустой обработчик
    */
   public static final Handler EMPTY = new Handler();
-
-  private static final String METHOD_HANDLER_SPLIT_REGEX = "\\.";
-  private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile(METHOD_HANDLER_SPLIT_REGEX);
+  private static final Pattern METHOD_HANDLER_SPLIT_PATTERN = Pattern.compile("\\.");
   private static final int METHOD_NAME_POSITION = 2;
   private static final int MODULE_NAME_POSITION = 1;
 
-  private String methodPath = "";
-  private String moduleName = "";
-  private String methodName = "";
+  String methodPath;
+  String moduleName;
+  String methodName;
 
   public Handler(String path) {
     path = path == null ? "" : path;
@@ -57,10 +51,21 @@ public class Handler {
     String[] data = METHOD_HANDLER_SPLIT_PATTERN.split(path);
     if (data.length > MODULE_NAME_POSITION) {
       moduleName = data[MODULE_NAME_POSITION];
+    } else {
+      moduleName = "";
     }
+
     if (data.length > METHOD_NAME_POSITION) {
       methodName = data[METHOD_NAME_POSITION];
+    } else {
+      methodName = "";
     }
+  }
+
+  private Handler() {
+    methodPath = "";
+    moduleName = "";
+    methodName = "";
   }
 
   /**

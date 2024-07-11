@@ -32,7 +32,13 @@ import lombok.experimental.Accessors;
 @Getter
 public enum ObjectBelonging implements EnumWithValue {
   ADOPTED("Adopted"),
-  OWN("Own");
+  OWN("Own"),
+  UNKNOWN("unknown") {
+    @Override
+    public boolean isUnknown() {
+      return true;
+    }
+  };
 
   @Accessors(fluent = true)
   private final String value;

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -73,7 +74,7 @@ public class RoleData {
      * Имя субъекта права (mdoref и базовые)
      */
     @Default
-    String name = "";
+    MdoReference name = MdoReference.EMPTY;
 
     /**
      * Набор самих прав

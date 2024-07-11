@@ -32,7 +32,6 @@ import lombok.Value;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -46,7 +45,7 @@ public class MultiLanguageString implements Comparable<MultiLanguageString> {
   /**
    * Ссылка на пустой элемент
    */
-  public static final MultiLanguageString EMPTY = new MultiLanguageString(Collections.emptyMap());
+  public static final MultiLanguageString EMPTY = new MultiLanguageString();
   private static final GenericInterner<MultiLanguageString> interner = new GenericInterner<>();
 
   /**
@@ -54,11 +53,8 @@ public class MultiLanguageString implements Comparable<MultiLanguageString> {
    */
   Set<Entry> content;
 
-  private MultiLanguageString(@NonNull Map<String, String> source) {
-    Set<Entry> newContent = new HashSet<>();
-    source.forEach(
-      (langKey, text) -> newContent.add(Entry.create(langKey, text)));
-    content = Collections.unmodifiableSet(newContent);
+  private MultiLanguageString() {
+    content = Collections.emptySet();
   }
 
   private MultiLanguageString(@NonNull String langKey, @NonNull String value) {
@@ -191,14 +187,13 @@ public class MultiLanguageString implements Comparable<MultiLanguageString> {
     return interner.intern(this);
   }
 
+  @Getter
   @EqualsAndHashCode
-  public static class Entry implements Comparable<Entry> {
+  public static final class Entry implements Comparable<Entry> {
     private static final StringInterner stringInterner = new StringInterner();
     private static final GenericInterner<Entry> interner = new GenericInterner<>();
 
-    @Getter
     private final String langKey;
-    @Getter
     private final String value;
 
     private Entry(String langKey, String value) {

@@ -46,6 +46,7 @@ public class Unmarshaller {
   private static final String CHILD_OBJECTS_NODE = "ChildObjects";
   private static final String CHILD_ITEMS_NODE = "ChildItems";
   private static final String ITEMS_NODE = "items";
+  private static final String USE_PURPOSES_NODE = "UsePurposes";
 
   private static final String EVENTS_NODE = "Events";
   private static final String HANDLES_NODE = "Handlers";
@@ -128,7 +129,7 @@ public class Unmarshaller {
 
   private void readItemNode(HierarchicalStreamReader reader,
                             UnmarshallingContext context,
-                            FormElementReaderContext readerContext,
+                            AbstractReaderContext readerContext,
                             String nodeName) {
     var fieldClass = readerContext.fieldType(nodeName);
     while (reader.hasMoreChildren()) {
@@ -152,31 +153,14 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      var fieldClass = readerContext.fieldType(name);
-      if (fieldClass == null) {
-        reader.moveUp();
-        continue;
-      }
-
-      var value = readValue(reader, context, fieldClass);
-
-      if (name.equals(NAME_NODE) && value instanceof String string) {
-        readerContext.setName(string);
-      }
-
-      if (readerContext instanceof MDReaderContext mdReaderContext) {
-        if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
-          mdReaderContext.setTemplateType(templateType);
-        }
+      if (USE_PURPOSES_NODE.equals(name)) {
+        readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
       } else {
-        var mdcReaderContext = (MDCReaderContext) readerContext;
-        if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-          mdcReaderContext.setCompatibilityMode(compatibilityMode);
-        } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-          mdcReaderContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+        var fieldClass = readerContext.fieldType(name);
+        if (fieldClass != null) {
+          readValue(reader, context, readerContext, fieldClass, name);
         }
       }
-      readerContext.setValue(name, value);
       reader.moveUp();
     }
   }
@@ -185,10 +169,35 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      var value = name + "." + reader.getValue();
-      readerContext.setValue(name, value);
+      readerContext.setValue(name, name + "." + reader.getValue());
       reader.moveUp();
     }
+  }
+
+  private void readValue(HierarchicalStreamReader reader,
+                         UnmarshallingContext context,
+                         AbstractReaderContext readerContext,
+                         Class<?> fieldClass,
+                         String name) {
+    var value = readValue(reader, context, fieldClass);
+
+    if (name.equals(NAME_NODE) && value instanceof String string) {
+      readerContext.setName(string);
+    }
+
+    if (readerContext instanceof MDReaderContext mdReaderContext) {
+      if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
+        mdReaderContext.setTemplateType(templateType);
+      }
+    } else {
+      var mdcReaderContext = (MDCReaderContext) readerContext;
+      if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        mdcReaderContext.setCompatibilityMode(compatibilityMode);
+      } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
+        mdcReaderContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+      }
+    }
+    readerContext.setValue(name, value);
   }
 
   private Object readValue(HierarchicalStreamReader reader,

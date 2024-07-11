@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -43,7 +44,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, FormOwner {
+public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, FormOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.VIEW);
 
   /*
    * MDObject
@@ -93,6 +96,12 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
    */
 
   /**
+   * Состав критерия
+   */
+  @Singular("addContent")
+  List<MdoReference> content;
+
+  /**
    * Пояснение
    */
   @Default
@@ -106,6 +115,13 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
   @Override
   public List<Module> getAllModules() {
     return allModules.getOrCompute();
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
   }
 
   private List<MD> computeChildren() {

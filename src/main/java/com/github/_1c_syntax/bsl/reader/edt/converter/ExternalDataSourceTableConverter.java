@@ -30,6 +30,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
 
 /**
  * Конвертер для таблицы внешнего источника
@@ -38,12 +39,13 @@ import java.nio.file.Paths;
 public class ExternalDataSourceTableConverter extends AbstractReadConverter {
 
   private static final int POSITION_CHILD_NAME = 3;
+  private static final Pattern SPLITTER_PATTERN = Pattern.compile("\\.");
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (reader.getAttributeCount() == 0) {
       // здесь только имя после третьей точки
-      var childName = reader.getValue().split("\\.")[POSITION_CHILD_NAME];
+      var childName = SPLITTER_PATTERN.split(reader.getValue())[POSITION_CHILD_NAME];
       return ExtendXStream.read(reader, dataPath(ExtendXStream.getCurrentPath(reader), childName));
     }
 

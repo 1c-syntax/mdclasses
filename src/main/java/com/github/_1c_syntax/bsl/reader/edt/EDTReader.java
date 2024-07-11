@@ -153,7 +153,7 @@ public class EDTReader implements MDReader {
     }
 
     if (!formDataPath.toFile().exists()) {
-      return EmptyFormData.getEmpty();
+      return EmptyFormData.EMPTY;
     }
     return (FormData) read(formDataPath);
   }

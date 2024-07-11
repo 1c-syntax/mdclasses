@@ -31,9 +31,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "format": {
-          "content": [
-            []
-          ]
+          "content": []
         },
         "editFormat": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -385,7 +383,7 @@
           "items": [
             [
               {
-                "type": "CommandBar",
+                "type": "COMMAND_BAR",
                 "id": 182,
                 "name": "КоманднаяПанельШапка",
                 "title": {
@@ -400,12 +398,12 @@
                 },
                 "dataPath": {
                   "segments": "",
-                  "empty": true
+                  "isEmpty": true
                 },
                 "items": [
                   [
                     {
-                      "type": "",
+                      "type": "FORM_GROUP",
                       "id": 190,
                       "name": "ФормаГруппаКомандыФормы",
                       "title": {
@@ -417,7 +415,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 86,
                       "name": "ФормаКоманднаяПанельПровестиИЗакрыть",
                       "title": {
@@ -429,7 +427,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 192,
                       "name": "Провести",
                       "title": {
@@ -441,7 +439,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 91,
                       "name": "ФормаЗаполненияЗаписать",
                       "title": {
@@ -460,7 +458,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 92,
                       "name": "ФормаЗаполненияПровестиЗакрыть",
                       "title": {
@@ -479,7 +477,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 87,
                       "name": "ФормаКоманднаяПанельЗаписать",
                       "title": {
@@ -491,7 +489,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 215,
                       "name": "ФормаПеречитать",
                       "title": {
@@ -503,7 +501,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 219,
                       "name": "ФормаОтменаПроведения",
                       "title": {
@@ -515,7 +513,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 217,
                       "name": "ФормаУстановитьПометкуУдаления",
                       "title": {
@@ -527,7 +525,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "FORM_GROUP",
                       "id": 186,
                       "name": "ФормаГлобальныеКоманды",
                       "title": {
@@ -539,7 +537,7 @@
                       "items": []
                     },
                     {
-                      "type": "Popup",
+                      "type": "POPUP",
                       "id": 188,
                       "name": "ПодменюПечать",
                       "title": {
@@ -558,7 +556,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "FORM_GROUP",
                       "id": 204,
                       "name": "ПодменюАнкетирование",
                       "title": {
@@ -570,7 +568,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 194,
                       "name": "ПоказатьВСпискеАнкета",
                       "title": {
@@ -582,7 +580,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 93,
                       "name": "Справка",
                       "title": {
@@ -598,7 +596,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 15,
                 "name": "ГруппаОсновныеРеквизиты",
                 "title": {
@@ -617,7 +615,7 @@
                 "items": [
                   [
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 184,
                       "name": "ГруппаШапкаЛево",
                       "title": {
@@ -636,7 +634,7 @@
                       "items": [
                         [
                           {
-                            "type": "UsualGroup",
+                            "type": "USUAL_GROUP",
                             "id": 2,
                             "name": "ГруппаНомерДата",
                             "title": {
@@ -655,7 +653,7 @@
                             "items": [
                               [
                                 {
-                                  "type": "InputField",
+                                  "type": "INPUT_FIELD",
                                   "id": 3,
                                   "name": "Номер",
                                   "title": {
@@ -663,12 +661,12 @@
                                   },
                                   "dataPath": {
                                     "segments": "Объект.Number",
-                                    "empty": false
+                                    "isEmpty": false
                                   },
                                   "items": []
                                 },
                                 {
-                                  "type": "InputField",
+                                  "type": "INPUT_FIELD",
                                   "id": 5,
                                   "name": "Дата",
                                   "title": {
@@ -676,7 +674,7 @@
                                   },
                                   "dataPath": {
                                     "segments": "Объект.Date",
-                                    "empty": false
+                                    "isEmpty": false
                                   },
                                   "items": []
                                 }
@@ -685,7 +683,7 @@
                             ]
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 212,
                             "name": "РежимАнкетирования",
                             "title": {
@@ -693,12 +691,12 @@
                             },
                             "dataPath": {
                               "segments": "Объект.РежимАнкетирования",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 10,
                             "name": "Опрос",
                             "title": {
@@ -706,12 +704,12 @@
                             },
                             "dataPath": {
                               "segments": "Объект.Опрос",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 206,
                             "name": "ШаблонАнкеты",
                             "title": {
@@ -719,7 +717,7 @@
                             },
                             "dataPath": {
                               "segments": "Объект.ШаблонАнкеты",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           }
@@ -728,7 +726,7 @@
                       ]
                     },
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 37,
                       "name": "ГруппаШапкаПраво",
                       "title": {
@@ -747,7 +745,7 @@
                       "items": [
                         [
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 66,
                             "name": "ДатаРедактирования",
                             "title": {
@@ -755,12 +753,12 @@
                             },
                             "dataPath": {
                               "segments": "Объект.ДатаРедактирования",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 12,
                             "name": "Респондент",
                             "title": {
@@ -768,12 +766,12 @@
                             },
                             "dataPath": {
                               "segments": "Объект.Респондент",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           },
                           {
-                            "type": "InputField",
+                            "type": "INPUT_FIELD",
                             "id": 209,
                             "name": "Интервьюер",
                             "title": {
@@ -781,7 +779,7 @@
                             },
                             "dataPath": {
                               "segments": "Объект.Интервьюер",
-                              "empty": false
+                              "isEmpty": false
                             },
                             "items": []
                           }
@@ -794,7 +792,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 158,
                 "name": "ГруппаЗаполнение",
                 "title": {
@@ -813,7 +811,7 @@
                 "items": [
                   [
                     {
-                      "type": "CommandBar",
+                      "type": "COMMAND_BAR",
                       "id": 178,
                       "name": "КоманднаяПанельДокументАнкетаЛево",
                       "title": {
@@ -831,7 +829,7 @@
                       },
                       "items": [
                         {
-                          "type": "",
+                          "type": "BUTTON",
                           "id": 156,
                           "name": "СкрытьПоказатьДеревоРазделовДокумент",
                           "title": {
@@ -852,7 +850,7 @@
                       ]
                     },
                     {
-                      "type": "CommandBar",
+                      "type": "COMMAND_BAR",
                       "id": 180,
                       "name": "КоманднаяПанельДокументаАнкетаПраво",
                       "title": {
@@ -871,7 +869,7 @@
                       "items": [
                         [
                           {
-                            "type": "",
+                            "type": "BUTTON",
                             "id": 163,
                             "name": "ПредыдущийРаздел",
                             "title": {
@@ -883,7 +881,7 @@
                             "items": []
                           },
                           {
-                            "type": "",
+                            "type": "BUTTON",
                             "id": 165,
                             "name": "СледующийРаздел",
                             "title": {
@@ -910,7 +908,7 @@
                 ]
               },
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 68,
                 "name": "ГруппаДеревоРазделовФормаЗаполнения",
                 "title": {
@@ -929,7 +927,7 @@
                 "items": [
                   [
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 77,
                       "name": "ГруппаДеревоРазделов",
                       "title": {
@@ -947,7 +945,7 @@
                       },
                       "items": [
                         {
-                          "type": "",
+                          "type": "TABLE",
                           "id": 69,
                           "name": "ДеревоРазделов",
                           "title": {
@@ -955,11 +953,11 @@
                           },
                           "dataPath": {
                             "segments": "ДеревоРазделов",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": [
                             {
-                              "type": "LabelField",
+                              "type": "LABEL_FIELD",
                               "id": 72,
                               "name": "ДеревоРазделовФормулировка",
                               "title": {
@@ -974,7 +972,7 @@
                               },
                               "dataPath": {
                                 "segments": "ДеревоРазделов.Формулировка",
-                                "empty": false
+                                "isEmpty": false
                               },
                               "items": []
                             }
@@ -983,7 +981,7 @@
                       ]
                     },
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 43,
                       "name": "ГруппаТелоАнкеты",
                       "title": {
@@ -1001,7 +999,7 @@
                       },
                       "items": [
                         {
-                          "type": "Label",
+                          "type": "LABEL",
                           "id": 78,
                           "name": "НадписьВступление",
                           "title": {
@@ -1015,7 +1013,7 @@
                       ]
                     },
                     {
-                      "type": "UsualGroup",
+                      "type": "USUAL_GROUP",
                       "id": 95,
                       "name": "ГруппаОжидание",
                       "title": {
@@ -1033,7 +1031,7 @@
                       },
                       "items": [
                         {
-                          "type": "UsualGroup",
+                          "type": "USUAL_GROUP",
                           "id": 103,
                           "name": "ГруппаОжиданиеЭлементы",
                           "title": {
@@ -1052,7 +1050,7 @@
                           "items": [
                             [
                               {
-                                "type": "",
+                                "type": "DECORATION",
                                 "id": 96,
                                 "name": "ДекорацияОжиданиеЭлементы",
                                 "title": {
@@ -1071,7 +1069,7 @@
                                 "items": []
                               },
                               {
-                                "type": "",
+                                "type": "DECORATION",
                                 "id": 98,
                                 "name": "КартинкаДлительныйПроцесс",
                                 "title": {
@@ -1090,7 +1088,7 @@
                                 "items": []
                               },
                               {
-                                "type": "Label",
+                                "type": "LABEL",
                                 "id": 100,
                                 "name": "НадписьПодождите",
                                 "title": {
@@ -1119,7 +1117,7 @@
                 ]
               },
               {
-                "type": "CommandBar",
+                "type": "COMMAND_BAR",
                 "id": 176,
                 "name": "КоманднаяПанельПодвал",
                 "title": {
@@ -1138,7 +1136,7 @@
                 "items": [
                   [
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 107,
                       "name": "ПредыдущийРазделПодвал",
                       "title": {
@@ -1157,7 +1155,7 @@
                       "items": []
                     },
                     {
-                      "type": "",
+                      "type": "BUTTON",
                       "id": 108,
                       "name": "СледующийРазделПодвал",
                       "title": {
@@ -1173,7 +1171,7 @@
                 ]
               },
               {
-                "type": "InputField",
+                "type": "INPUT_FIELD",
                 "id": 111,
                 "name": "Комментарий",
                 "title": {
@@ -1181,7 +1179,7 @@
                 },
                 "dataPath": {
                   "segments": "Объект.Комментарий",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": []
               }
@@ -1377,7 +1375,7 @@
           "items": [
             [
               {
-                "type": "UsualGroup",
+                "type": "USUAL_GROUP",
                 "id": 23,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -1396,7 +1394,7 @@
                 "items": []
               },
               {
-                "type": "",
+                "type": "TABLE",
                 "id": 1,
                 "name": "Список",
                 "title": {
@@ -1411,12 +1409,12 @@
                 },
                 "dataPath": {
                   "segments": "Список",
-                  "empty": false
+                  "isEmpty": false
                 },
                 "items": [
                   [
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 6,
                       "name": "Номер",
                       "title": {
@@ -1424,12 +1422,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Number",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 4,
                       "name": "Дата",
                       "title": {
@@ -1437,12 +1435,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Date",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 34,
                       "name": "РежимАнкетирования",
                       "title": {
@@ -1457,12 +1455,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.РежимАнкетирования",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 37,
                       "name": "ШаблонАнкеты",
                       "title": {
@@ -1477,12 +1475,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ШаблонАнкеты",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 8,
                       "name": "Опрос",
                       "title": {
@@ -1490,12 +1488,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Опрос",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 10,
                       "name": "Респондент",
                       "title": {
@@ -1503,12 +1501,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.Респондент",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 12,
                       "name": "ДатаРедактирования",
                       "title": {
@@ -1516,12 +1514,12 @@
                       },
                       "dataPath": {
                         "segments": "Список.ДатаРедактирования",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     },
                     {
-                      "type": "LabelField",
+                      "type": "LABEL_FIELD",
                       "id": 20,
                       "name": "Ссылка",
                       "title": {
@@ -1529,7 +1527,7 @@
                       },
                       "dataPath": {
                         "segments": "Список.Ref",
-                        "empty": false
+                        "isEmpty": false
                       },
                       "items": []
                     }

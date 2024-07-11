@@ -1,9 +1,7 @@
 {"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
   "comment": "",
   "explanation": {
-    "content": [
-      []
-    ]
+    "content": []
   },
   "mdoReference": {
     "type": "EXTERNAL_DATA_SOURCE",
@@ -50,8 +48,8 @@
       },
       "modules": [
         {
-          "moduleType": "RecordSetModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
+          "moduleType": "ManagerModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -59,8 +57,8 @@
           "isProtected": false
         },
         {
-          "moduleType": "ManagerModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
+          "moduleType": "RecordSetModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -383,7 +381,7 @@
               ],
               "items": [
                 {
-                  "type": "UsualGroup",
+                  "type": "USUAL_GROUP",
                   "id": 1,
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {
@@ -398,7 +396,7 @@
                   },
                   "dataPath": {
                     "segments": "",
-                    "empty": true
+                    "isEmpty": true
                   },
                   "items": []
                 }
@@ -461,7 +459,7 @@
               ],
               "items": [
                 {
-                  "type": "UsualGroup",
+                  "type": "USUAL_GROUP",
                   "id": 1,
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {

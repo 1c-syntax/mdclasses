@@ -21,24 +21,49 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Реализация содержимого пустой формы
  */
-public class EmptyFormData implements FormData {
-
-  private static final EmptyFormData EMPTY = new EmptyFormData();
+public final class EmptyFormData implements FormData {
 
   /**
    * Возвращает ссылку на пустое содержимое формы
-   *
-   * @return Пустое содержимое формы
    */
-  public static EmptyFormData getEmpty() {
-    return EMPTY;
+  public static final EmptyFormData EMPTY = new EmptyFormData();
+
+  private EmptyFormData() {
   }
 
   @Override
-  public boolean isEmpty() {
-    return true;
+  public MultiLanguageString getTitle() {
+    return MultiLanguageString.EMPTY;
+  }
+
+  @Override
+  public List<FormHandler> getHandlers() {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public List<FormItem> getItems() {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public List<FormItem> getPlainItems() {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public List<FormAttribute> getAttributes() {
+    return Collections.emptyList();
   }
 }

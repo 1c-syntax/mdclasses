@@ -68,11 +68,11 @@ public class FormHandler implements Comparable<FormHandler> {
     }
 
     int compareResult = event.compareTo(formHandler.event);
-    if (compareResult != 0) {
-      return compareResult;
+    if (compareResult == 0) {
+      compareResult = name.compareTo(formHandler.name);
     }
 
-    return name.compareTo(formHandler.name);
+    return compareResult;
   }
 
   private FormHandler intern() {

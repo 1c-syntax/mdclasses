@@ -1,10 +1,15 @@
 {"com.github._1c_syntax.bsl.mdo.FilterCriterion": {
   "commands": [],
   "comment": "",
+  "content": [
+    {
+      "type": "ATTRIBUTE",
+      "mdoRef": "Catalog.ВерсииФайлов.Attribute.Том",
+      "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.Том"
+    }
+  ],
   "explanation": {
-    "content": [
-      []
-    ]
+    "content": []
   },
   "forms": [
     {
@@ -39,7 +44,7 @@
         "items": [
           [
             {
-              "type": "UsualGroup",
+              "type": "USUAL_GROUP",
               "id": 23,
               "name": "ГруппаПользовательскихНастроек",
               "title": {
@@ -54,12 +59,12 @@
               },
               "dataPath": {
                 "segments": "",
-                "empty": true
+                "isEmpty": true
               },
               "items": []
             },
             {
-              "type": "CommandBar",
+              "type": "COMMAND_BAR",
               "id": 21,
               "name": "КоманднаяПанель",
               "title": {
@@ -78,7 +83,7 @@
               "items": [
                 [
                   {
-                    "type": "",
+                    "type": "BUTTON",
                     "id": 27,
                     "name": "ФормаИзменить",
                     "title": {
@@ -90,7 +95,7 @@
                     "items": []
                   },
                   {
-                    "type": "",
+                    "type": "BUTTON",
                     "id": 25,
                     "name": "ФормаОбновить",
                     "title": {
@@ -106,7 +111,7 @@
               ]
             },
             {
-              "type": "",
+              "type": "TABLE",
               "id": 1,
               "name": "Список",
               "title": {
@@ -121,12 +126,12 @@
               },
               "dataPath": {
                 "segments": "Список",
-                "empty": false
+                "isEmpty": false
               },
               "items": [
                 [
                   {
-                    "type": "ColumnGroup",
+                    "type": "COLUMN_GROUP",
                     "id": 14,
                     "name": "КартинкаИНаименование",
                     "title": {
@@ -145,7 +150,7 @@
                     "items": [
                       [
                         {
-                          "type": "PictureField",
+                          "type": "PICTURE_FIELD",
                           "id": 6,
                           "name": "СсылкаИндексКартинки",
                           "title": {
@@ -153,12 +158,12 @@
                           },
                           "dataPath": {
                             "segments": "Список.Ref.ИндексКартинки",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         },
                         {
-                          "type": "LabelField",
+                          "type": "LABEL_FIELD",
                           "id": 8,
                           "name": "СсылкаПутьКФайлу",
                           "title": {
@@ -166,7 +171,7 @@
                           },
                           "dataPath": {
                             "segments": "Список.Ref.ПутьКФайлу",
-                            "empty": false
+                            "isEmpty": false
                           },
                           "items": []
                         }
@@ -175,7 +180,7 @@
                     ]
                   },
                   {
-                    "type": "LabelField",
+                    "type": "LABEL_FIELD",
                     "id": 10,
                     "name": "СсылкаРазмер",
                     "title": {
@@ -183,12 +188,12 @@
                     },
                     "dataPath": {
                       "segments": "Список.Ref.Размер",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   },
                   {
-                    "type": "LabelField",
+                    "type": "LABEL_FIELD",
                     "id": 12,
                     "name": "СсылкаАвтор",
                     "title": {
@@ -196,7 +201,7 @@
                     },
                     "dataPath": {
                       "segments": "Список.Ref.Автор",
-                      "empty": false
+                      "isEmpty": false
                     },
                     "items": []
                   }
