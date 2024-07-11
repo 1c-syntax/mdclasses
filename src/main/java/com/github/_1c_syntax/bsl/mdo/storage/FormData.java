@@ -26,8 +26,6 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,42 +35,32 @@ public interface FormData {
   /**
    * Признак пустого содержимого
    */
-  boolean isEmpty();
+  default boolean isEmpty() {
+    return this == EmptyFormData.EMPTY;
+  }
 
   /**
    * Заголовок формы
    */
-  default MultiLanguageString getTitle() {
-    return MultiLanguageString.EMPTY;
-  }
+  MultiLanguageString getTitle();
 
   /**
    * Обработчики событий формы
    */
-  default List<FormHandler> getHandlers() {
-    return Collections.emptyList();
-  }
+  List<FormHandler> getHandlers();
 
   /**
    * Список визуальных элементов формы первого уровня (т.е. с родителем - форма)
    */
-  default List<FormItem> getItems() {
-    return Collections.emptyList();
-  }
+  List<FormItem> getItems();
 
   /**
    * Список всех визуальных элементов формы
    */
-  default List<FormItem> getPlainItems() {
-    List<FormItem> allItems = new ArrayList<>(getItems());
-    getItems().forEach(formItem -> allItems.addAll(formItem.getPlainItems()));
-    return allItems;
-  }
+  List<FormItem> getPlainItems();
 
   /**
    * Список реквизитов формы
    */
-  default List<FormAttribute> getAttributes() {
-    return Collections.emptyList();
-  }
+  List<FormAttribute> getAttributes();
 }

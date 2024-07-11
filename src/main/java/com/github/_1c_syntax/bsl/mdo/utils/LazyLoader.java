@@ -36,6 +36,8 @@ import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
 
@@ -237,6 +239,36 @@ public class LazyLoader {
   public Map<URI, Module> computeModulesByURI(ModuleOwner mdo) {
     return Collections.unmodifiableMap(mdo.getAllModules().stream()
       .collect(Collectors.toMap(Module::getUri, module -> module)));
+  }
+
+  /**
+   * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
+   *
+   * @param formItem Элемент формы, у которого есть дочерние элементы
+   * @return Немодифицируемый список дочерних объектов
+   */
+  public List<FormItem> computePlainFormItems(FormItem formItem) {
+    List<FormItem> items = addAll(Collections.emptyList(), formItem.getItems());
+    items = addAll(items, items.stream()
+      .map(FormItem::getPlainItems)
+      .flatMap(Collection::stream)
+      .toList());
+    return Collections.unmodifiableList(items);
+  }
+
+  /**
+   * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
+   *
+   * @param formData Форма, у которой есть дочерние элементы
+   * @return Немодифицируемый список дочерних объектов
+   */
+  public List<FormItem> computePlainFormItems(ManagedFormData formData) {
+    List<FormItem> items = addAll(Collections.emptyList(), formData.getItems());
+    items = addAll(items, items.stream()
+      .map(FormItem::getPlainItems)
+      .flatMap(Collection::stream)
+      .toList());
+    return Collections.unmodifiableList(items);
   }
 
   private <T> List<T> addAll(List<T> result, List<? extends T> source) {

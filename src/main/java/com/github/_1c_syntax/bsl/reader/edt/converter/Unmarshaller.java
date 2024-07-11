@@ -23,9 +23,11 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
@@ -68,18 +70,15 @@ public class Unmarshaller {
     }
   }
 
-  private void readNode(String name, UnmarshallingContext context, AbstractReaderContext readerContext) {
-
+  private void readNode(String inName, UnmarshallingContext context, AbstractReaderContext readerContext) {
     Class<?> fieldClass = null;
-    if (readerContext instanceof MDCReaderContext) {
-      var mdoType = MDOType.fromValue(name);
-      if (mdoType.isPresent()) {
-        if (LANGUAGE_NODE.equals(name)) {
-          fieldClass = Language.class;
-          name = LANGUAGE_METHOD_NAME;
-        } else {
-          fieldClass = String.class;
-        }
+    var name = inName;
+    if (readerContext instanceof MDCReaderContext && MDOType.fromValue(name).isPresent()) {
+      if (LANGUAGE_NODE.equals(name)) {
+        fieldClass = Language.class;
+        name = LANGUAGE_METHOD_NAME;
+      } else {
+        fieldClass = String.class;
       }
     }
 
@@ -97,19 +96,25 @@ public class Unmarshaller {
     }
 
     var value = ExtendXStream.readValue(context, fieldClass);
-    if (readerContext instanceof MDReaderContext mdReaderContext) {
-      saveExtra(mdReaderContext, name, value);
+    if (name.equals(NAME_NODE)) {
+      readerContext.setName((String) value);
+    }
+    if (readerContext instanceof MDReaderContext mdReaderContext && TEMPLATE_TYPE_NODE.equals(name)) {
+      mdReaderContext.setTemplateType((TemplateType) value);
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
       saveExtra(mdcReaderContext, name, value);
+    } else if (readerContext instanceof FormElementReaderContext formElementReaderContext
+      && "type".equals(name)) {
+      formElementReaderContext.setElementType((FormElementType) value);
     }
     readerContext.setValue(name, transformMultiLanguageString(readerContext, name, value));
   }
 
   private Object transformMultiLanguageString(AbstractReaderContext readerContext, String name, Object value) {
     var newVal = value;
-    if (readerContext.getLastName().equals(name)
+    if (value instanceof MultiLanguageString newValue
       && readerContext.getLastValue() instanceof MultiLanguageString lastValue
-      && value instanceof MultiLanguageString newValue) {
+      && readerContext.getLastName().equals(name)) {
       newVal = MultiLanguageString.create(lastValue, newValue);
     }
     readerContext.setLastName(name);
@@ -117,28 +122,15 @@ public class Unmarshaller {
     return newVal;
   }
 
-  private static void saveExtra(MDReaderContext readerContext, String name, Object value) {
-    if (name.equals(NAME_NODE) && value instanceof String string) {
-      readerContext.setName(string);
-    } else if (name.equals(TEMPLATE_TYPE_NODE) && value instanceof TemplateType templateType) {
-      readerContext.setTemplateType(templateType);
-    } else {
-      // no-op
-    }
-  }
-
   private static void saveExtra(MDCReaderContext readerContext, String name, Object value) {
-    if (name.equals(NAME_NODE) && value instanceof String string) {
-      readerContext.setName(string);
-    } else if (name.equals(CP_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-      readerContext.setCompatibilityMode(compatibilityMode);
-    } else if (name.equals(CP_EXT_MODE_NODE) && value instanceof CompatibilityMode compatibilityMode) {
-      readerContext.setConfigurationExtensionCompatibilityMode(compatibilityMode);
+    if (CP_MODE_NODE.equals(name)) {
+      readerContext.setCompatibilityMode((CompatibilityMode) value);
+    } else if (CP_EXT_MODE_NODE.equals(name)) {
+      readerContext.setConfigurationExtensionCompatibilityMode((CompatibilityMode) value);
     } else if (value instanceof Language) {
       readerContext.setValue(CHILD_FILED, value);
     } else {
       // no-op
     }
   }
-
 }

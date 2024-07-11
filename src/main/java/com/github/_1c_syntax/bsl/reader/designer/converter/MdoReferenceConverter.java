@@ -40,34 +40,9 @@ public class MdoReferenceConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var nodeName = reader.getNodeName();
     var value = "";
-    if (ITEM_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {
-      while (reader.hasMoreChildren()) {
-        reader.moveDown();
-        var propertyName = reader.getNodeName();
-        if (METADATA_NODE_NAME.equals(propertyName)) {
-          value = reader.getValue();
-          reader.moveUp();
-          break;
-        }
-        reader.moveUp();
-      }
-    } else if (USE_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {
-      reader.moveDown();
-      value = reader.getValue();
-      reader.moveUp();
-    } else if (PICTURE_NODE_NAME.equals(nodeName) && reader.hasMoreChildren()) {
-      while (reader.hasMoreChildren()) {
-        reader.moveDown();
-        var propertyName = reader.getNodeName();
-        if (REF_NODE_NAME.equals(propertyName)) {
-          value = reader.getValue();
-          reader.moveUp();
-          break;
-        }
-        reader.moveUp();
-      }
+    if (reader.hasMoreChildren()) {
+      value = readValue(reader);
     } else {
       value = reader.getValue();
     }
@@ -81,5 +56,43 @@ public class MdoReferenceConverter implements ReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return MdoReference.class.isAssignableFrom(type);
+  }
+
+  private static String readValue(HierarchicalStreamReader reader) {
+    var nodeName = reader.getNodeName();
+    var value = "";
+
+    switch (nodeName) {
+      case ITEM_NODE_NAME -> {
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          if (METADATA_NODE_NAME.equals(reader.getNodeName())) {
+            value = reader.getValue();
+            reader.moveUp();
+            break;
+          }
+          reader.moveUp();
+        }
+      }
+      case USE_NODE_NAME -> {
+        reader.moveDown();
+        value = reader.getValue();
+        reader.moveUp();
+      }
+      case PICTURE_NODE_NAME -> {
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          if (REF_NODE_NAME.equals(reader.getNodeName())) {
+            value = reader.getValue();
+            reader.moveUp();
+            break;
+          }
+          reader.moveUp();
+        }
+      }
+      default -> value = reader.getValue();
+    }
+
+    return value;
   }
 }

@@ -23,14 +23,13 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 /**
- * Конвертор данных управляемой формы в формате ЕДТ
+ * Конвертор элемента управляемой формы в формате ЕДТ
  */
 @EDTConverter
 public class ManagedFormDataConverter implements ReadConverter {
@@ -45,7 +44,6 @@ public class ManagedFormDataConverter implements ReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return type == ManagedFormData.class
-      || FormItem.class.isAssignableFrom(type)
       || FormAttribute.class.isAssignableFrom(type);
   }
 }

@@ -50,8 +50,7 @@ public class DataCompositionSchemaConverter implements ReadConverter {
     // линейно читаем файл
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      var nodeName = reader.getNodeName();
-      if (DATASET_NODE_NAME.equals(nodeName)) {
+      if (DATASET_NODE_NAME.equals(reader.getNodeName())) {
         dataSets.add(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
       }
       reader.moveUp();

@@ -144,7 +144,7 @@ public class Rights {
       .filter(roleData -> !roleData.equals(RoleData.EMPTY))
       .map(RoleData::getObjectRights)
       .flatMap(Collection::stream)
-      .filter(objectRight -> objectRight.getName().equals(mdoReference.getMdoRef()))
+      .filter(objectRight -> objectRight.getName().equals(mdoReference))
       .map(RoleData.ObjectRight::getRights)
       .flatMap(Collection::stream)
       .anyMatch(right -> roleRight == right.getName() && right.isValue());
@@ -155,11 +155,10 @@ public class Rights {
       return Collections.emptyList();
     }
 
-    var mdoRef = mdoReference.getMdoRef();
     List<Role> roles = new ArrayList<>();
     cf.getRoles().forEach((Role role) -> {
       var hasAcccess = role.getData().getObjectRights().stream()
-        .filter(objectRight -> objectRight.getName().equals(mdoRef))
+        .filter(objectRight -> objectRight.getName().equals(mdoReference))
         .map(RoleData.ObjectRight::getRights)
         .flatMap(Collection::stream)
         .anyMatch(right -> roleRight == right.getName() && right.isValue());

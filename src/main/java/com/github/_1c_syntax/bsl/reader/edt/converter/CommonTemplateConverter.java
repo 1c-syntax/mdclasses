@@ -22,19 +22,17 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.CommonTemplate;
-import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
-import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 import java.nio.file.Path;
 
 @EDTConverter
-public class TemplateConverter extends AbstractReadConverter {
+public class CommonTemplateConverter extends AbstractReadConverter {
 
   private static final String DATA_FIELD = "data";
 
@@ -43,34 +41,22 @@ public class TemplateConverter extends AbstractReadConverter {
 
     var readerContext = super.read(reader, context);
     TemplateData templateData = EmptyTemplateData.getEmpty();
-    var path = dataPath(readerContext.getCurrentPath(), readerContext.getName(), readerContext.getMdoType());
+    var path = dataPath(readerContext.getCurrentPath());
     var data = ExtendXStream.read(reader, path);
     if (data instanceof TemplateData templData) {
       templateData = templData;
     }
 
     readerContext.setValue(DATA_FIELD, templateData);
-    if (readerContext.getRealClass().isAssignableFrom(CommonTemplate.class)) {
-      return readerContext.build();
-    } else {
-      return readerContext;
-    }
+    return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return Template.class.isAssignableFrom(type);
+    return CommonTemplate.class.isAssignableFrom(type);
   }
 
-  private static Path dataPath(Path path, String name, MDOType type) {
-    var currentPath = path.getParent();
-    var basePath = currentPath.toString();
-    if (type == MDOType.COMMON_TEMPLATE) {
-      currentPath = Path.of(basePath, "Template.dcs");
-    } else {
-      currentPath = Path.of(basePath, MDOType.TEMPLATE.getGroupName(), name, "Template.dcs");
-    }
-
-    return currentPath;
+  private static Path dataPath(Path path) {
+    return Path.of(path.getParent().toString(), "Template.dcs");
   }
 }

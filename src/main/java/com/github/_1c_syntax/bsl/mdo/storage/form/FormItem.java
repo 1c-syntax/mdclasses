@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,9 +30,9 @@ import java.util.List;
  */
 public interface FormItem {
   /**
-   * Тип элемента (кнопка, группа и т.д.) // todo переделать на модель
+   * Тип элемента (кнопка, группа и т.д.)
    */
-  String getType();
+  FormElementType getType();
 
   /**
    * Имя элемента формы
@@ -63,9 +62,5 @@ public interface FormItem {
   /**
    * Список всех визуальных элементов (со всеми дочерними)
    */
-  default List<FormItem> getPlainItems() {
-    List<FormItem> allItems = new ArrayList<>(getItems());
-    getItems().forEach(formItem -> allItems.addAll(formItem.getPlainItems()));
-    return allItems;
-  }
+  List<FormItem> getPlainItems();
 }

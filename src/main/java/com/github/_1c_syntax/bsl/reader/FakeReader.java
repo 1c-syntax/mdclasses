@@ -90,7 +90,7 @@ public class FakeReader implements MDReader {
   @Override
   @NonNull
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
-    return EmptyFormData.getEmpty();
+    return EmptyFormData.EMPTY;
   }
 
   @Override

@@ -169,8 +169,7 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      var value = name + "." + reader.getValue();
-      readerContext.setValue(name, value);
+      readerContext.setValue(name, name + "." + reader.getValue());
       reader.moveUp();
     }
   }
