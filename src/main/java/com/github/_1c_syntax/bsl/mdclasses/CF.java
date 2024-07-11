@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -91,6 +92,16 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   Map<URI, Module> getModulesByURI();
 
   /**
+   * Возвращает соответствие имени общего модуля к нему самому
+   */
+  Map<String, CommonModule> getCommonModulesByName();
+
+  /**
+   * Возвращает соответствие ссылки на дочерний объект к нему самому
+   */
+  Map<MdoReference, MD> getChildrenByMdoRef();
+
+  /**
    * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
    */
   default Map<ModuleType, URI> mdoModuleTypes(MdoReference mdoReference) {
@@ -157,5 +168,15 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   @Override
   default Optional<MD> findChild(URI uri) {
     return Optional.ofNullable(getModulesByObject().get(uri));
+  }
+
+  @Override
+  default Optional<MD> findChild(MdoReference ref) {
+    return Optional.ofNullable(getChildrenByMdoRef().get(ref));
+  }
+
+  @Override
+  default Optional<CommonModule> findCommonModule(String name) {
+    return Optional.ofNullable(getCommonModulesByName().get(name));
   }
 }

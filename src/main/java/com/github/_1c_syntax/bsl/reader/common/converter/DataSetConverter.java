@@ -46,23 +46,20 @@ public class DataSetConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var dataSet = DataCompositionSchema.DataSet.builder();
-    dataSet.type(DataSetType.fromValue(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
+    dataSet.type(DataSetType.fromString(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      var nodeName = reader.getNodeName();
-      if (NAME_NODE_NAME.equals(nodeName)) {
-        dataSet.name(reader.getValue());
-      } else if (DATA_SOURCE_NODE_NAME.equals(nodeName)) {
-        dataSet.dataSource(reader.getValue());
-      } else if (ITEM_SOURCE_NODE_NAME.equals(nodeName)) {
-        dataSet.item(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
-      } else if (FIELD_NODE_NAME.equals(nodeName)) {
-        dataSet.field(readField(reader));
-      } else if (QUERY_SOURCE_NODE_NAME.equals(nodeName)) {
-        dataSet.querySource(ExtendXStream.readValue(context, QuerySource.class));
-      } else {
-        // no-op
+      switch (reader.getNodeName()) {
+        case NAME_NODE_NAME -> dataSet.name(reader.getValue());
+        case DATA_SOURCE_NODE_NAME -> dataSet.dataSource(reader.getValue());
+        case ITEM_SOURCE_NODE_NAME ->
+          dataSet.item(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
+        case FIELD_NODE_NAME -> dataSet.field(readField(reader));
+        case QUERY_SOURCE_NODE_NAME -> dataSet.querySource(ExtendXStream.readValue(context, QuerySource.class));
+        default -> {
+          // no-op
+        }
       }
       reader.moveUp();
     }
@@ -74,13 +71,12 @@ public class DataSetConverter implements ReadConverter {
     var field = "";
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      var fieldNodeName = reader.getNodeName();
-      if (FIELD_NODE_NAME.equals(fieldNodeName)) {
-        field = reader.getValue();
-      } else if (DATA_PATH_NODE_NAME.equals(fieldNodeName)) {
-        dataPath = reader.getValue();
-      } else {
-        // no-op
+      switch (reader.getNodeName()) {
+        case FIELD_NODE_NAME -> field = reader.getValue();
+        case DATA_PATH_NODE_NAME -> dataPath = reader.getValue();
+        default -> {
+          // no-op
+        }
       }
       reader.moveUp();
     }

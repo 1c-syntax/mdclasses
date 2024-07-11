@@ -48,19 +48,27 @@ public class ProtectedModuleInfo {
    */
   private Path modulePath;
 
+  /**
+   * Признак существования модуля
+   */
+  private boolean exist;
+
   public ProtectedModuleInfo(Path path, boolean onlyFindBin) {
     modulePath = path;
     isProtected = false;
+    var modulePathFile = modulePath.toFile();
+    exist = modulePathFile.exists();
 
-    if (!modulePath.toFile().exists()) {
-      var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePath.toFile().getPath()) + ".bin");
+    if (!exist) {
+      var prtModulePath = Paths.get(FilenameUtils.removeExtension(modulePathFile.getPath()) + ".bin");
       if (prtModulePath.toFile().exists()) {
         isProtected = true;
         modulePath = prtModulePath;
+        exist = true;
       }
     } else if (!onlyFindBin) { // нет смысла читать файлы, если ищем только bin
       var bytes = new byte[PROTECTED_FILE_HEADER.length];
-      try (var fis = new FileInputStream(modulePath.toFile())) {
+      try (var fis = new FileInputStream(modulePathFile)) {
         isProtected = (fis.read(bytes) == PROTECTED_FILE_HEADER.length
           && Arrays.equals(bytes, PROTECTED_FILE_HEADER));
       } catch (IOException e) {

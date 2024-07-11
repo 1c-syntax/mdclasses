@@ -41,13 +41,12 @@ public class FormHandlerConverter implements ReadConverter {
     var name = "";
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      var node = reader.getNodeName();
-      if (NAME_NODE_NAME.equals(node)) {
-        name = reader.getValue().intern();
-      } else if (EVENT_NODE_NAME.equals(node)) {
-        event = reader.getValue().intern();
-      } else {
-        // no-op
+      switch (reader.getNodeName()) {
+        case NAME_NODE_NAME -> name = reader.getValue();
+        case EVENT_NODE_NAME -> event = reader.getValue();
+        default -> {
+          // no-op
+        }
       }
       reader.moveUp();
     }

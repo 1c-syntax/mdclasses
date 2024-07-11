@@ -37,7 +37,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.lang.reflect.ParameterizedType;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -133,11 +132,7 @@ public abstract class AbstractReaderContext {
    * @return Определенный класс
    */
   public Class<?> fieldType(String fieldName) {
-    var fieldClass = TransformationUtils.fieldType(builder, fieldName);
-    if (fieldClass instanceof ParameterizedType parameterizedType) {
-      fieldClass = TransformationUtils.computeType(parameterizedType);
-    }
-    return (Class<?>) fieldClass;
+    return (Class<?>) TransformationUtils.fieldType(builder, fieldName);
   }
 
   /**
@@ -169,7 +164,7 @@ public abstract class AbstractReaderContext {
     List<Module> modules = new ArrayList<>();
     moduleTypes.forEach((ModuleType moduleType) -> {
         var protectedModuleInfo = new ProtectedModuleInfo(mdReader.modulePath(folder, name, moduleType), isDesigner);
-        if (protectedModuleInfo.getModulePath().toFile().exists()) {
+        if (protectedModuleInfo.isExist()) {
           modules.add(ObjectModule.builder()
             .moduleType(moduleType)
             .uri(protectedModuleInfo.getModulePath().toUri())

@@ -19,50 +19,34 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.designer.converter;
+package com.github._1c_syntax.bsl.reader.edt.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.extern.slf4j.Slf4j;
 
 /**
- * Конвертор элемента формы в формате конфигуратора
+ * Конвертор данных управляемой формы в формате ЕДТ
  */
-@DesignerConverter
-@Slf4j
-public class FormElementConverter implements ReadConverter {
-
-  private static final String CONDITIONAL_APPEARANCE_TYPE_NAME = "ConditionalAppearance";
+@EDTConverter
+public class FormItemConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    // todo надо научится читать, пока пропускаем
-    if (CONDITIONAL_APPEARANCE_TYPE_NAME.equals(reader.getNodeName())) {
-      return null;
-    }
-
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
-    try {
-      readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
-    } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
-      return null;
-    }
-    readerContext.setValue("type", FormElementType.fromString(reader.getNodeName()));
-    readerContext.setValue("name", reader.getAttribute("name"));
+    var attributeType = reader.getAttribute("type");
     Unmarshaller.unmarshal(reader, context, readerContext);
+    if (readerContext.getElementType() == null) {
+      readerContext.setValue("type", FormElementType.fromString(attributeType.replace("form:", "")));
+    }
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return FormItem.class.isAssignableFrom(type)
-      || type == FormAttribute.class;
+    return FormItem.class.isAssignableFrom(type);
   }
 }

@@ -32,25 +32,16 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 @EDTConverter
 public class FormDataPathConverter implements ReadConverter {
 
-  private static final String SEGMENTS_NODE_NAME = "segments";
-
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var value = "";
-    while (reader.hasMoreChildren()) {
+    if (reader.hasMoreChildren()) {
       reader.moveDown();
-      var node = reader.getNodeName();
-      if (SEGMENTS_NODE_NAME.equals(node)) {
-        value = reader.getValue().intern();
-      }
+      var value = new FormDataPath(reader.getValue().intern());
       reader.moveUp();
+      return value;
     }
 
-    if (value.isEmpty()) {
-      return null;
-    }
-
-    return new FormDataPath(value);
+    return null;
   }
 
   @Override

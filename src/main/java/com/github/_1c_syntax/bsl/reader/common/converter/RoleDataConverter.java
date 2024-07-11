@@ -45,7 +45,7 @@ public class RoleDataConverter implements ReadConverter {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (name.equals(OBJECT_NODE_NAME)) {
+      if (OBJECT_NODE_NAME.equals(name)) {
         var objectRight = readObjectRight(reader, context);
         builder.objectRight(objectRight);
       } else {
@@ -65,7 +65,7 @@ public class RoleDataConverter implements ReadConverter {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (name.equals(RIGHT_NODE_NAME)) {
+      if (RIGHT_NODE_NAME.equals(name)) {
         var right = readRight(reader, context);
         builder.right(right);
       } else {

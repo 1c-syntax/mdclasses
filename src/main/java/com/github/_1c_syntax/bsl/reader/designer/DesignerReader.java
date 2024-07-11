@@ -148,7 +148,7 @@ public class DesignerReader implements MDReader {
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
     var formDataPath = Paths.get(currentPath.getParent().toString(), name, "Ext", "Form.xml");
     if (!formDataPath.toFile().exists()) {
-      return EmptyFormData.getEmpty();
+      return EmptyFormData.EMPTY;
     }
     return (FormData) read(formDataPath);
   }

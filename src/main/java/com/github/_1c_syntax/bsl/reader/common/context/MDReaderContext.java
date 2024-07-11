@@ -43,7 +43,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -139,23 +138,16 @@ public class MDReaderContext extends AbstractReaderContext {
   }
 
   private void setValueChildren() {
-    childrenContexts.forEach((String collectionName, List<MDReaderContext> collectionSource) -> {
-      if (collectionName.endsWith("s")) {
-        var collection = collectionSource.stream()
-          .map((MDReaderContext childContext) -> {
-            childContext.setOwner(mdoReference);
-            return childContext.build();
-          }).toList();
-        setValue(collectionName, collection);
-      } else {
-        collectionSource.stream()
-          .filter(Objects::nonNull) // исключаем не прочитанное
-          .filter(childContext -> childContext.name != null) // битые
-          .forEach((MDReaderContext childContext) -> {
-            childContext.setOwner(mdoReference);
-            setValue(collectionName, childContext.build());
-          });
+    childrenContexts.forEach((String collectionName, List<MDReaderContext> value) -> {
+      var collection = value.parallelStream()
+        .map((MDReaderContext childContext) -> {
+          childContext.setOwner(mdoReference);
+          return childContext.build();
+        }).toList();
+      if (!collectionName.endsWith("s")) {
+        collectionName += "s";
       }
+      setValue(collectionName, collection);
     });
   }
 }

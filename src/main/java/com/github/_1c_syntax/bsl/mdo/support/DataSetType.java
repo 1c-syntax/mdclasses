@@ -25,6 +25,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 @AllArgsConstructor
 @Getter
 public enum DataSetType implements EnumWithValue {
@@ -38,6 +42,8 @@ public enum DataSetType implements EnumWithValue {
     }
   };
 
+  private static final Map<String, DataSetType> KEYS = computeKeys();
+
   @Accessors(fluent = true)
   private final String value;
 
@@ -47,12 +53,15 @@ public enum DataSetType implements EnumWithValue {
    * @param value Строковое представление
    * @return Найденный тип
    */
-  public static DataSetType fromValue(String value) {
+  public static DataSetType fromString(String value) {
+    return KEYS.getOrDefault(value, UNKNOWN);
+  }
+
+  private static Map<String, DataSetType> computeKeys() {
+    Map<String, DataSetType> keys = new HashMap<>();
     for (DataSetType dataSetType : DataSetType.values()) {
-      if (dataSetType.value.equals(value)) {
-        return dataSetType;
-      }
+      keys.put(dataSetType.value, dataSetType);
     }
-    throw new IllegalArgumentException(value);
+    return Collections.unmodifiableMap(keys);
   }
 }

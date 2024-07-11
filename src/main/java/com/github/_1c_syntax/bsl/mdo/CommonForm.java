@@ -76,7 +76,7 @@ public class CommonForm implements MDObject, Form, AccessRightsOwner {
   FormType formType = FormType.MANAGED;
 
   @Default
-  FormData data = EmptyFormData.getEmpty();
+  FormData data = EmptyFormData.EMPTY;
 
   /*
    * Свое

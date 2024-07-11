@@ -73,7 +73,7 @@ public class ObjectForm implements Form, MDChild {
   FormType formType = FormType.MANAGED;
 
   @Default
-  FormData data = EmptyFormData.getEmpty();
+  FormData data = EmptyFormData.EMPTY;
 
   /*
    * Для MDChild

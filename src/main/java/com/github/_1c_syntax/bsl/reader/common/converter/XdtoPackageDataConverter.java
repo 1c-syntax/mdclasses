@@ -64,21 +64,13 @@ public class XdtoPackageDataConverter implements ReadConverter {
       reader.moveDown();
       var node = reader.getNodeName();
       switch (node) {
-        case IMPORT_NODE_NAME:
-          builder.oneImport(reader.getAttribute(NAMESPACE_ATTRIBUTE_NAME));
-          break;
-        case PROPERTY_NODE_NAME:
-          builder.property(readProperty(reader));
-          break;
-        case VALUE_TYPE_NODE_NAME:
-          builder.valueType(readValueType(reader));
-          break;
-        case OBJECT_TYPE_NODE_NAME:
-          builder.objectType(readObjectType(reader));
-          break;
-        default:
+        case IMPORT_NODE_NAME -> builder.oneImport(reader.getAttribute(NAMESPACE_ATTRIBUTE_NAME));
+        case PROPERTY_NODE_NAME -> builder.property(readProperty(reader));
+        case VALUE_TYPE_NODE_NAME -> builder.valueType(readValueType(reader));
+        case OBJECT_TYPE_NODE_NAME -> builder.objectType(readObjectType(reader));
+        default -> {
           // no-op
-          break;
+        }
       }
       reader.moveUp();
     }
@@ -102,9 +94,9 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   private static XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ValueType.builder()
-      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
-    builder.base(getAttribute(reader, BASE_ATTRIBUTE_NAME));
-    builder.variety(getAttribute(reader, VARIETY_ATTRIBUTE_NAME));
+      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)))
+      .base(getAttribute(reader, BASE_ATTRIBUTE_NAME))
+      .variety(getAttribute(reader, VARIETY_ATTRIBUTE_NAME));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
@@ -119,9 +111,9 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   private static XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.Property.builder()
-      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
-    builder.type(getAttribute(reader, TYPE_ATTRIBUTE_NAME));
-    builder.form(getAttribute(reader, FORM_ATTRIBUTE_NAME));
+      .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)))
+      .type(getAttribute(reader, TYPE_ATTRIBUTE_NAME))
+      .form(getAttribute(reader, FORM_ATTRIBUTE_NAME));
 
     var value = reader.getAttribute(LOWER_BOUND_ATTRIBUTE_NAME);
     if (value != null) {
@@ -146,9 +138,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
   private static void readTypeDef(HierarchicalStreamReader reader, XdtoPackageData.Property.PropertyBuilder builder) {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      var node = reader.getNodeName();
-
-      if (!TYPE_DEF_NODE_NAME.equals(node)) {
+      if (!TYPE_DEF_NODE_NAME.equals(reader.getNodeName())) {
         // пропустим и пойдем дальше
         reader.moveUp();
         continue;
@@ -156,8 +146,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
       while (reader.hasMoreChildren()) {
         reader.moveDown();
-        node = reader.getNodeName();
-        if (PROPERTY_NODE_NAME.equals(node)) {
+        if (PROPERTY_NODE_NAME.equals(reader.getNodeName())) {
           builder.property(readProperty(reader));
         }
         reader.moveUp();

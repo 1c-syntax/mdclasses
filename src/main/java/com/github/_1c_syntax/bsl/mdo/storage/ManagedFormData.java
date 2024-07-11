@@ -25,6 +25,8 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Singular;
@@ -47,8 +49,14 @@ public class ManagedFormData implements FormData {
   @Singular("addAttributes")
   List<FormAttribute> attributes;
 
+  Lazy<List<FormItem>> plainItems = new Lazy<>(this::computePlainItems);
+
   @Override
-  public boolean isEmpty() {
-    return false;
+  public List<FormItem> getPlainItems() {
+    return plainItems.getOrCompute();
+  }
+
+  private List<FormItem> computePlainItems() {
+    return LazyLoader.computePlainFormItems(this);
   }
 }
