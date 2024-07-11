@@ -96,7 +96,7 @@ public enum FormElementType implements EnumWithValue {
   public static FormElementType fromString(String value) {
     var result = KEYS.getOrDefault(value, UNKNOWN);
     if (result.isUnknown()) {
-      LOGGER.info(value);
+      LOGGER.warn("Unknown form element type: {}", value);
     }
 
     return KEYS.getOrDefault(value, UNKNOWN);

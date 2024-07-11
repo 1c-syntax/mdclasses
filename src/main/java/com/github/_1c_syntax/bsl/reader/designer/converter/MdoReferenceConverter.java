@@ -63,36 +63,29 @@ public class MdoReferenceConverter implements ReadConverter {
     var value = "";
 
     switch (nodeName) {
-      case ITEM_NODE_NAME -> {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          if (METADATA_NODE_NAME.equals(reader.getNodeName())) {
-            value = reader.getValue();
-            reader.moveUp();
-            break;
-          }
-          reader.moveUp();
-        }
-      }
+      case ITEM_NODE_NAME -> value = readValue(reader, METADATA_NODE_NAME, value);
       case USE_NODE_NAME -> {
         reader.moveDown();
         value = reader.getValue();
         reader.moveUp();
       }
-      case PICTURE_NODE_NAME -> {
-        while (reader.hasMoreChildren()) {
-          reader.moveDown();
-          if (REF_NODE_NAME.equals(reader.getNodeName())) {
-            value = reader.getValue();
-            reader.moveUp();
-            break;
-          }
-          reader.moveUp();
-        }
-      }
+      case PICTURE_NODE_NAME -> value = readValue(reader, REF_NODE_NAME, value);
       default -> value = reader.getValue();
     }
 
+    return value;
+  }
+
+  private static String readValue(HierarchicalStreamReader reader, String metadataNodeName, String value) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      if (metadataNodeName.equals(reader.getNodeName())) {
+        value = reader.getValue();
+        reader.moveUp();
+        break;
+      }
+      reader.moveUp();
+    }
     return value;
   }
 }
