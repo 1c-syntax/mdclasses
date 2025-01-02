@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2025
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -268,6 +268,18 @@ class ConfigurationTest {
     }
   )
   void unknownEnums(ArgumentsAccessor argumentsAccessor) {
+    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "false, mdclasses_5_1",
+      // "true, mdclasses_5_1, _edt" todo пока не поддерживается
+
+    }
+  )
+  void test5_1(ArgumentsAccessor argumentsAccessor) {
     var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
   }
 

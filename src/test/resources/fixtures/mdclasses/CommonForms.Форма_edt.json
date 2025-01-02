@@ -9,12 +9,20 @@
     "items": [],
     "attributes": []
   },
+  "description": "Форма",
   "formType": "MANAGED",
   "mdoReference": {
     "type": "COMMON_FORM",
     "mdoRef": "CommonForm.Форма",
     "mdoRefRu": "ОбщаяФорма.Форма"
   },
+  "mdoType": "COMMON_FORM",
+  "moduleTypes": [
+    [
+      "FormModule",
+      "src/test/resources/ext/edt/mdclasses/configuration/src/CommonForms/Форма/Module.bsl"
+    ]
+  ],
   "modules": [
     {
       "moduleType": "FormModule",
@@ -28,6 +36,15 @@
   ],
   "name": "Форма",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
+    }
+  ],
   "supportVariant": "NONE",
   "synonym": {
     "content": [

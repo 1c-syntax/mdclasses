@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2025
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -32,7 +32,7 @@ class MDClassesTest {
   void createConfigurations() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.createConfigurations(srcPath);
-    assertThat(mdcs).hasSize(10);
+    assertThat(mdcs).hasSize(11);
 
     // каталоги с обработками не читаются
     srcPath = Paths.get("src/test/resources/ext/edt/external");
@@ -56,6 +56,6 @@ class MDClassesTest {
   void create() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.create(srcPath);
-    assertThat(mdcs).hasSize(14);
+    assertThat(mdcs).hasSize(15);
   }
 }

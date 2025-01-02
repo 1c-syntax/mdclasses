@@ -2841,6 +2841,7 @@
     ],
     []
   ],
+  "description": "Обновление информационной базы",
   "distributedInfoBase": false,
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -2850,10 +2851,21 @@
   "mdoReference": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
   },
+  "mdoType": "EXCHANGE_PLAN",
+  "moduleTypes": [
+    [
+      "ManagerModule",
+      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
+    ],
+    [
+      "ObjectModule",
+      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
+    ]
+  ],
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -2861,8 +2873,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -2872,6 +2884,35 @@
   ],
   "name": "ОбновлениеИнформационнойБазы",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 21,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INSERT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "DELETE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INPUT_BY_STRING",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_INSERT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_SET_DELETION_MARK",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_CLEAR_DELETION_MARK",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_MARKED",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY_OF_MISSING_DATA",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_SETTINGS",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT_DATA_HISTORY_VERSION_COMMENT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SWITCH_TO_DATA_HISTORY_VERSION"
+    }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
