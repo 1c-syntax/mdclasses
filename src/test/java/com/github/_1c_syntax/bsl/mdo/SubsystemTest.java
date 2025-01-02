@@ -76,7 +76,7 @@ class SubsystemTest {
     assertThat(subsystemChild.getChildren())
       .hasSize(1)
       .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"))
-      .anyMatch(child -> child instanceof Subsystem);
+      .anyMatch(Subsystem.class::isInstance);
     assertThat(subsystemChild.getContent()).hasSize(2);
     assertThat(subsystemChild.getParentSubsystem()).isEqualTo(subsystem.getMdoReference());
     var parent2nd = subsystemChild.getMdoReference();

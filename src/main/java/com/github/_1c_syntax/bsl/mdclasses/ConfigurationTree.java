@@ -55,6 +55,7 @@ import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.IntegrationService;
 import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -398,6 +399,18 @@ public interface ConfigurationTree {
    */
   default Optional<StyleItem> findStyleItem(Predicate<? super StyleItem> predicate) {
     return getStyleItems().stream().filter(predicate).findFirst();
+  }
+
+  /**
+   * Цвет палитры
+   */
+  List<PaletteColor> getPaletteColors();
+
+  /**
+   * Поиск элемента стиля по условию
+   */
+  default Optional<PaletteColor> findPaletteColor(Predicate<? super PaletteColor> predicate) {
+    return getPaletteColors().stream().filter(predicate).findFirst();
   }
 
   /**

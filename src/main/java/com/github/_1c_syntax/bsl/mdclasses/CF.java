@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
@@ -50,6 +51,11 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
    * Язык, на котором ведется разработка
    */
   ScriptVariant getScriptVariant();
+
+  /**
+   * Вид интерфейса
+   */
+  InterfaceCompatibilityMode getInterfaceCompatibilityMode();
 
   /**
    * Режим совместимости

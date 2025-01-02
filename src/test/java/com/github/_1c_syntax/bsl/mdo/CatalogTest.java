@@ -47,10 +47,10 @@ class CatalogTest {
     assertThat(catalog.getAllAttributes()).hasSize(3);
     assertThat(catalog.getChildren())
       .hasSize(9)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .anyMatch(child -> child instanceof ObjectCommand)
-      .anyMatch(child -> child instanceof ObjectForm)
-      .anyMatch(child -> child instanceof TabularSection)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(ObjectCommand.class::isInstance)
+      .anyMatch(ObjectForm.class::isInstance)
+      .anyMatch(TabularSection.class::isInstance)
     ;
     assertThat(catalog.getPlainChildren()).hasSize(11);
     assertThat(catalog.getAttributes()).hasSize(3);
@@ -65,17 +65,17 @@ class CatalogTest {
     assertThat(catalog.getAllModules()).hasSize(6);
     assertThat(catalog.getStorageFields())
       .hasSize(4)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .anyMatch(child -> child instanceof TabularSection)
-      .noneMatch(child -> child instanceof ObjectCommand)
-      .noneMatch(child -> child instanceof ObjectForm)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(TabularSection.class::isInstance)
+      .noneMatch(ObjectCommand.class::isInstance)
+      .noneMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getPlainStorageFields())
       .hasSize(6)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .anyMatch(child -> child instanceof TabularSection)
-      .noneMatch(child -> child instanceof ObjectCommand)
-      .noneMatch(child -> child instanceof ObjectForm)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(TabularSection.class::isInstance)
+      .noneMatch(ObjectCommand.class::isInstance)
+      .noneMatch(ObjectForm.class::isInstance)
     ;
 
 //    var formData = catalog.getForms().stream().filter(form -> form.getName().equals("ФормаСписка"))
@@ -96,21 +96,21 @@ class CatalogTest {
     var catalog = (Catalog) mdo;
     assertThat(catalog.getChildren())
       .hasSize(14)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .anyMatch(child -> child instanceof ObjectCommand)
-      .anyMatch(child -> child instanceof ObjectForm)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(ObjectCommand.class::isInstance)
+      .anyMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getStorageFields())
       .hasSize(8)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .noneMatch(child -> child instanceof ObjectCommand)
-      .noneMatch(child -> child instanceof ObjectForm)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .noneMatch(ObjectCommand.class::isInstance)
+      .noneMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getPlainStorageFields())
       .hasSize(8)
-      .anyMatch(child -> child instanceof ObjectAttribute)
-      .noneMatch(child -> child instanceof ObjectCommand)
-      .noneMatch(child -> child instanceof ObjectForm)
+      .anyMatch(ObjectAttribute.class::isInstance)
+      .noneMatch(ObjectCommand.class::isInstance)
+      .noneMatch(ObjectForm.class::isInstance)
     ;
 
     assertThat(catalog.getSynonym().isEmpty()).isFalse();

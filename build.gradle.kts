@@ -54,7 +54,7 @@ dependencies {
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
     implementation("io.github.1c-syntax", "utils", "0.6.2")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.7.1")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.0-rc.1")
     implementation("io.github.1c-syntax", "supportconf", "0.14.1") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }

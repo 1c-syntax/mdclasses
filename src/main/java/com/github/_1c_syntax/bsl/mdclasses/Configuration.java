@@ -57,6 +57,7 @@ import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -72,6 +73,7 @@ import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -88,7 +90,6 @@ import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -105,7 +106,6 @@ import java.util.Map;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-@NonNull
 public class Configuration implements CF {
 
   /**
@@ -139,6 +139,8 @@ public class Configuration implements CF {
   MdoReference defaultLanguage = MdoReference.EMPTY;
   @Default
   ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
+  @Default
+  InterfaceCompatibilityMode interfaceCompatibilityMode = InterfaceCompatibilityMode.VERSION_8_2;
   @Default
   CompatibilityMode compatibilityMode = new CompatibilityMode();
   @Default
@@ -207,6 +209,8 @@ public class Configuration implements CF {
   List<IntegrationService> integrationServices;
   @Singular
   List<StyleItem> styleItems;
+  @Singular
+  List<PaletteColor> paletteColors;
   @Singular
   List<Style> styles;
   @Singular

@@ -271,6 +271,18 @@ class ConfigurationTest {
     var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
   }
 
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "false, mdclasses_5_1",
+      // "true, mdclasses_5_1, _edt" todo пока не поддерживается
+
+    }
+  )
+  void test5_1(ArgumentsAccessor argumentsAccessor) {
+    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
+  }
+
   private static void checkChildrenSSL(Configuration cf) {
     assertThat(cf.getSubsystems())
       .hasSize(3)
