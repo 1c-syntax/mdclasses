@@ -154,6 +154,21 @@ public class MDClasses {
     return result;
   }
 
+  public Project createProject(Path sourcePath, boolean skipSupport) {
+    var mdclasses = create(sourcePath, skipSupport);
+
+    var cf = mdclasses.stream().filter(CF.class::isInstance).findFirst();
+    CF cfData = Configuration.EMPTY;
+    if (cf.isPresent()) {
+      cfData = (CF) cf.get();
+    }
+    var project = Project.create(cfData);
+    mdclasses.stream().filter(ConfigurationExtension.class::isInstance)
+      .map(ConfigurationExtension.class::cast)
+      .forEach(project::addExtension);
+    return project;
+  }
+
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
     List<Path> listPath = new ArrayList<>();
     var excludeFolders = mdoTypeGroupNames();
