@@ -185,4 +185,13 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   default Optional<CommonModule> findCommonModule(String name) {
     return Optional.ofNullable(getCommonModulesByName().get(name));
   }
+
+  /**
+   * Возвращает признак пустоты конфигурации
+   *
+   * @return Это пустая конфигурация
+   */
+  default boolean isEmpty() {
+    return this == Configuration.EMPTY;
+  }
 }

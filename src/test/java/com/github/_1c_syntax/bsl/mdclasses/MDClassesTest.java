@@ -58,4 +58,19 @@ class MDClassesTest {
     var mdcs = MDClasses.create(srcPath);
     assertThat(mdcs).hasSize(15);
   }
+
+  @Test
+  void createProjectEmpty() {
+    var srcPath = Paths.get("src/test/resources/ext");
+    var project = MDClasses.createProject(srcPath, false);
+    assertThat(project.getConfiguration().isEmpty()).isTrue();
+  }
+
+  @Test
+  void createProject() {
+    var srcPath = Paths.get("src/test/resources/project");
+    var project = MDClasses.createProject(srcPath, false);
+    assertThat(project.getConfiguration().isEmpty()).isFalse();
+
+  }
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:ExchangePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="61a31b23-58bb-4382-8381-dd82419dc42e" thisNode="936d0dab-4dc5-45b4-b06c-9cd6e3a9ea32">
+  <producedTypes>
+    <objectType typeId="50b0b46c-c25e-4138-a455-93be373e8cba" valueTypeId="88c0d82d-dd31-4b6a-bbaf-21c79e3003f5"/>
+    <refType typeId="9cf87fea-8166-40dc-9e20-27f0ec5fa651" valueTypeId="a737bf44-f0f2-432c-8346-aa2af96e8428"/>
+    <selectionType typeId="4de5cb4a-adec-47c1-ae8c-1b03b27af962" valueTypeId="3085396d-f93c-4f3f-a480-af1a8dbe483e"/>
+    <listType typeId="9325a8e9-2d19-43b7-9ac0-3b60597b9e69" valueTypeId="80fb1d7e-ca19-4585-a61b-d7e1dbd9f2bd"/>
+    <managerType typeId="f24cd632-ab17-431d-8436-5c48cc60b8e7" valueTypeId="d9b61c65-d8c4-43a3-a39d-76f46e0d565d"/>
+  </producedTypes>
+  <name>ПланОбмена1</name>
+  <synonym>
+    <key>ru</key>
+    <value>План обмена1</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>ExchangePlan.ПланОбмена1.StandardAttribute.Code</inputByString>
+  <inputByString>ExchangePlan.ПланОбмена1.StandardAttribute.Description</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>DontUse</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <codeLength>9</codeLength>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <descriptionLength>25</descriptionLength>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>ExchangePlan.ПланОбмена1.Form.ФормаУзла</defaultObjectForm>
+  <attributes uuid="551d4524-a5eb-4ae7-8ba5-3d98e1df0e5f">
+    <name>Реквизит1</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реквизит1</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <tabularSections uuid="93c1d504-2349-4f41-877b-30815f981e57">
+    <producedTypes>
+      <objectType typeId="9bc9ef5e-cf02-42f0-832f-500f0bf5b85c" valueTypeId="f6b57ba0-3dde-4444-94bc-81e943b4ab98"/>
+      <rowType typeId="63bd44d0-4203-47b6-a6f5-84fd63a40fcf" valueTypeId="1ccf4385-51d8-4e1d-946c-b387ab11a121"/>
+    </producedTypes>
+    <name>ТабличнаяЧасть1</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табличная часть1</value>
+    </synonym>
+    <attributes uuid="6ab65123-dd34-4e02-b509-f10ee9dfecb0">
+      <name>Реквизит5</name>
+      <synonym>
+        <key>ru</key>
+        <value>Реквизит5</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="efcb78e3-480b-4f77-967d-68aa92bb45ec">
+    <name>ФормаУзла</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма узла</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:ExchangePlan>
