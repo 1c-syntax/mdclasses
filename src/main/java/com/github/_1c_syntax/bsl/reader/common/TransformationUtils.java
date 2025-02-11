@@ -77,6 +77,24 @@ public class TransformationUtils {
     }
   }
 
+  public Object getValue(@NonNull Object source, @NonNull String methodName) {
+    var method = getMethod(source.getClass(), methodName);
+    if (method == null) {
+      method = getMethod(source.getClass(), "get" + methodName);
+      if (method == null) {
+        method = getMethod(source.getClass(), "is" + methodName);
+      }
+    }
+    if (method != null) {
+      try {
+        return method.invoke(source);
+      } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, source.getClass(), methodName, e);
+      }
+    }
+    return null;
+  }
+
   /**
    * Определяет тип значения поля\метода
    *

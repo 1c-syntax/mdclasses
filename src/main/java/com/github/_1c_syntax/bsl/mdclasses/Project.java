@@ -1,3 +1,24 @@
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright (c) 2019 - 2025
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.AccountingRegister;
@@ -34,6 +55,8 @@ import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.IntegrationService;
 import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
@@ -48,11 +71,17 @@ import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Singular;
 import lombok.Value;
 
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,8 +101,8 @@ public class Project implements ConfigurationTree {
   /**
    * Набор расширений конфигурации
    */
-  @Default
-  Map<String, ConfigurationExtension> extensions = new HashMap<>();
+  @Singular
+  Map<String, ConfigurationExtension> extensions;
 
   @Singular
   List<Subsystem> subsystems;
@@ -172,9 +201,20 @@ public class Project implements ConfigurationTree {
   @Singular
   List<ExternalDataSource> externalDataSources;
 
-  public static Project create(CF configuration) {
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+
+  Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
+  Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
+  Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
+  Lazy<Map<String, CommonModule>> commonModulesByName = new Lazy<>(this::computeCommonModulesByName);
+  Lazy<Map<MdoReference, MD>> childrenByMdoRef = new Lazy<>(this::computeChildrenByMdoRef);
+
+  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+
+  public static ProjectBuilder create(Configuration configuration) {
     if (configuration.isEmpty()) {
-      return Project.builder().build();
+      return Project.builder();
     }
 
     var builder = Project.builder();
@@ -227,10 +267,148 @@ public class Project implements ConfigurationTree {
     builder.businessProcesses(configuration.getBusinessProcesses());
     builder.tasks(configuration.getTasks());
     builder.externalDataSources(configuration.getExternalDataSources());
-    return builder.build();
+    return builder;
   }
 
-  public void addExtension(ConfigurationExtension extension) {
+  public static void addExtension(ProjectBuilder builder, ConfigurationExtension extension) {
+    if (extension.isEmpty()) {
+      return;
+    }
 
+    builder.extension(extension.getName(), extension);
+
+    addChildren(builder.subsystems, extension.getSubsystems());
+    addChildren(builder.commonModules, extension.getCommonModules());
+    addChildren(builder.sessionParameters, extension.getSessionParameters());
+    addChildren(builder.roles, extension.getRoles());
+    addChildren(builder.commonAttributes, extension.getCommonAttributes());
+    addChildren(builder.exchangePlans, extension.getExchangePlans());
+    addChildren(builder.filterCriteria, extension.getFilterCriteria());
+    addChildren(builder.eventSubscriptions, extension.getEventSubscriptions());
+    addChildren(builder.scheduledJobs, extension.getScheduledJobs());
+    addChildren(builder.bots, extension.getBots());
+    addChildren(builder.functionalOptions, extension.getFunctionalOptions());
+    addChildren(builder.functionalOptionsParameters, extension.getFunctionalOptionsParameters());
+    addChildren(builder.definedTypes, extension.getDefinedTypes());
+    addChildren(builder.settingsStorages, extension.getSettingsStorages());
+    addChildren(builder.commonForms, extension.getCommonForms());
+    addChildren(builder.commonCommands, extension.getCommonCommands());
+    addChildren(builder.commandGroups, extension.getCommandGroups());
+    addChildren(builder.commonTemplates, extension.getCommonTemplates());
+    addChildren(builder.commonPictures, extension.getCommonPictures());
+    addChildren(builder.interfaces, extension.getInterfaces());
+    addChildren(builder.xDTOPackages, extension.getXDTOPackages());
+    addChildren(builder.webServices, extension.getWebServices());
+    addChildren(builder.httpServices, extension.getHttpServices());
+    addChildren(builder.wsReferences, extension.getWsReferences());
+    addChildren(builder.integrationServices, extension.getIntegrationServices());
+    addChildren(builder.styleItems, extension.getStyleItems());
+    addChildren(builder.paletteColors, extension.getPaletteColors());
+    addChildren(builder.styles, extension.getStyles());
+    addChildren(builder.languages, extension.getLanguages());
+    addChildren(builder.constants, extension.getConstants());
+    addChildren(builder.catalogs, extension.getCatalogs());
+    addChildren(builder.documents, extension.getDocuments());
+    addChildren(builder.documentNumerators, extension.getDocumentNumerators());
+    addChildren(builder.sequences, extension.getSequences());
+    addChildren(builder.documentJournals, extension.getDocumentJournals());
+    addChildren(builder.enums, extension.getEnums());
+    addChildren(builder.reports, extension.getReports());
+    addChildren(builder.dataProcessors, extension.getDataProcessors());
+    addChildren(builder.chartsOfCharacteristicTypes, extension.getChartsOfCharacteristicTypes());
+    addChildren(builder.chartsOfAccounts, extension.getChartsOfAccounts());
+    addChildren(builder.chartsOfCalculationTypes, extension.getChartsOfCalculationTypes());
+    addChildren(builder.informationRegisters, extension.getInformationRegisters());
+    addChildren(builder.accumulationRegisters, extension.getAccumulationRegisters());
+    addChildren(builder.accountingRegisters, extension.getAccountingRegisters());
+    addChildren(builder.calculationRegisters, extension.getCalculationRegisters());
+    addChildren(builder.businessProcesses, extension.getBusinessProcesses());
+    addChildren(builder.tasks, extension.getTasks());
+    addChildren(builder.externalDataSources, extension.getExternalDataSources());
   }
+
+  public List<Module> getAllModules() {
+    return allModules.getOrCompute();
+  }
+
+  public List<MD> getChildren() {
+    return children.getOrCompute();
+  }
+
+  public List<MD> getPlainChildren() {
+    return plainChildren.getOrCompute();
+  }
+
+  public Map<URI, ModuleType> getModulesByType() {
+    return modulesByType.getOrCompute();
+  }
+
+  public Map<URI, MD> getModulesByObject() {
+    return modulesByObject.getOrCompute();
+  }
+
+  public Map<URI, Module> getModulesByURI() {
+    return modulesByURI.getOrCompute();
+  }
+
+  public Map<String, CommonModule> getCommonModulesByName() {
+    return commonModulesByName.getOrCompute();
+  }
+
+  public Map<MdoReference, MD> getChildrenByMdoRef() {
+    return childrenByMdoRef.getOrCompute();
+  }
+
+  private static <T> void addChildren(List<T> destination, List<T> source) {
+    destination.addAll(source);
+  }
+
+  private List<MD> computeChildren() {
+    List<MD> list = new ArrayList<>(configuration.getChildren());
+    extensions.values().forEach(ext -> list.addAll(ext.getChildren()));
+    return Collections.unmodifiableList(list);
+  }
+
+  private List<MD> computePlainChildren() {
+    List<MD> list = new ArrayList<>(configuration.getPlainChildren());
+    extensions.values().forEach(ext -> list.addAll(ext.getPlainChildren()));
+    return Collections.unmodifiableList(list);
+  }
+
+  private Map<URI, ModuleType> computeModulesByType() {
+    Map<URI, ModuleType> map = new HashMap<>(configuration.getModulesByType());
+    extensions.values().forEach(ext -> map.putAll(ext.getModulesByType()));
+    return Collections.unmodifiableMap(map);
+  }
+
+  private Map<URI, MD> computeModulesByObject() {
+    Map<URI, MD> map = new HashMap<>(configuration.getModulesByObject());
+    extensions.values().forEach(ext -> map.putAll(ext.getModulesByObject()));
+    return Collections.unmodifiableMap(map);
+  }
+
+  private List<Module> computeAllModules() {
+    List<Module> list = new ArrayList<>(configuration.getAllModules());
+    extensions.values().forEach(ext -> list.addAll(ext.getAllModules()));
+    return Collections.unmodifiableList(list);
+  }
+
+  private Map<URI, Module> computeModulesByURI() {
+    Map<URI, Module> map = new HashMap<>(configuration.getModulesByURI());
+    extensions.values().forEach(ext -> map.putAll(ext.getModulesByURI()));
+    return Collections.unmodifiableMap(map);
+  }
+
+  private Map<String, CommonModule> computeCommonModulesByName() {
+    Map<String, CommonModule> map = new HashMap<>(configuration.getCommonModulesByName());
+    extensions.values().forEach(ext -> map.putAll(ext.getCommonModulesByName()));
+    return Collections.unmodifiableMap(map);
+  }
+
+  private Map<MdoReference, MD> computeChildrenByMdoRef() {
+    Map<MdoReference, MD> map = new HashMap<>(configuration.getChildrenByMdoRef());
+    extensions.values().forEach(ext -> map.putAll(ext.getChildrenByMdoRef()));
+    return Collections.unmodifiableMap(map);
+  }
+
 }
