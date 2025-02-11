@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
@@ -61,7 +62,7 @@ class MDClassesTest {
 
   @Test
   void createProjectEmpty() {
-    var srcPath = Paths.get("src/test/resources/ext");
+    var srcPath = Paths.get("src/test/resources/ext/mdclasses_ext");
     var project = MDClasses.createProject(srcPath, false);
     assertThat(project.getConfiguration().isEmpty()).isTrue();
   }
@@ -71,6 +72,63 @@ class MDClassesTest {
     var srcPath = Paths.get("src/test/resources/project");
     var project = MDClasses.createProject(srcPath, false);
     assertThat(project.getConfiguration().isEmpty()).isFalse();
+    assertThat(project.getExtensions()).hasSize(2);
+    assertThat(project.getSubsystems()).hasSize(4);
+    assertThat(project.getCommonModules()).hasSize(3);
+    assertThat(project.getSessionParameters()).hasSize(2);
+    assertThat(project.getRoles()).hasSize(2);
+    assertThat(project.getCommonAttributes()).hasSize(0);
+    assertThat(project.getExchangePlans()).hasSize(2);
+    assertThat(project.getFilterCriteria()).hasSize(0);
+    assertThat(project.getEventSubscriptions()).hasSize(0);
+    assertThat(project.getScheduledJobs()).hasSize(0);
+    assertThat(project.getBots()).hasSize(0);
+    assertThat(project.getFunctionalOptions()).hasSize(0);
+    assertThat(project.getFunctionalOptionsParameters()).hasSize(0);
+    assertThat(project.getDefinedTypes()).hasSize(0);
+    assertThat(project.getSettingsStorages()).hasSize(0);
+    assertThat(project.getCommonForms()).hasSize(0);
+    assertThat(project.getCommonCommands()).hasSize(0);
+    assertThat(project.getCommandGroups()).hasSize(0);
+    assertThat(project.getCommonTemplates()).hasSize(0);
+    assertThat(project.getCommonPictures()).hasSize(0);
+    assertThat(project.getInterfaces()).hasSize(0);
+    assertThat(project.getXDTOPackages()).hasSize(0);
+    assertThat(project.getWebServices()).hasSize(0);
+    assertThat(project.getHttpServices()).hasSize(0);
+    assertThat(project.getWsReferences()).hasSize(0);
+    assertThat(project.getIntegrationServices()).hasSize(0);
+    assertThat(project.getStyleItems()).hasSize(0);
+    assertThat(project.getPaletteColors()).hasSize(0);
+    assertThat(project.getStyles()).hasSize(0);
+    assertThat(project.getLanguages()).hasSize(3);
+    assertThat(project.getConstants()).hasSize(0);
+    assertThat(project.getCatalogs()).hasSize(3);
+    assertThat(project.getDocuments()).hasSize(1);
+    assertThat(project.getDocumentNumerators()).hasSize(0);
+    assertThat(project.getSequences()).hasSize(0);
+    assertThat(project.getDocumentJournals()).hasSize(0);
+    assertThat(project.getEnums()).hasSize(0);
+    assertThat(project.getReports()).hasSize(0);
+    assertThat(project.getDataProcessors()).hasSize(0);
+    assertThat(project.getChartsOfCharacteristicTypes()).hasSize(0);
+    assertThat(project.getChartsOfAccounts()).hasSize(0);
+    assertThat(project.getChartsOfCalculationTypes()).hasSize(0);
+    assertThat(project.getInformationRegisters()).hasSize(1);
+    assertThat(project.getAccumulationRegisters()).hasSize(0);
+    assertThat(project.getAccountingRegisters()).hasSize(0);
+    assertThat(project.getCalculationRegisters()).hasSize(0);
+    assertThat(project.getBusinessProcesses()).hasSize(0);
+    assertThat(project.getTasks()).hasSize(0);
+    assertThat(project.getExternalDataSources()).hasSize(0);
 
+    assertThat(project.getChildren()).hasSize(21);
+    assertThat(project.getPlainChildren()).hasSize(46);
+    assertThat(project.getChildrenByMdoRef()).hasSize(38);
+    assertThat(project.getModulesByType()).hasSize(4);
+    assertThat(project.getModulesByURI()).hasSize(4);
+    assertThat(project.getModulesByObject()).hasSize(4);
+    assertThat(project.getCommonModulesByName()).hasSize(2);
+    assertThat(project.getAllModules()).hasSize(4);
   }
 }

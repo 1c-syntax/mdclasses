@@ -92,7 +92,12 @@ public class DesignerReader implements MDReader {
 
   public DesignerReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var file = path.toFile();
+    if(file.isFile() && "Configuration.xml".equals(file.getName())) { // передали сам файл, а не каталог
+      rootPath = path.getParent();
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }

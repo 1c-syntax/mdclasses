@@ -90,7 +90,12 @@ public class EDTReader implements MDReader {
 
   public EDTReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var file = path.toFile();
+    if(file.isFile() && "Configuration.mdo".equals(file.getName())) { // передали сам файл, а не каталог
+      rootPath = path.getParent().getParent().getParent();
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }

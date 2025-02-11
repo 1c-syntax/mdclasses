@@ -154,19 +154,30 @@ public class MDClasses {
     return result;
   }
 
+  /**
+   * Возвращает проект - совокупность конфигурации и расширений в каталоге
+   *
+   * @param sourcePath  - Каталог проекта
+   * @param skipSupport - Признак необходимость пропустить чтение поставки
+   * @return - Проект
+   */
   public Project createProject(Path sourcePath, boolean skipSupport) {
     var mdclasses = create(sourcePath, skipSupport);
 
-    var cf = mdclasses.stream().filter(CF.class::isInstance).findFirst();
-    CF cfData = Configuration.EMPTY;
+    var cf = mdclasses.stream().filter(Configuration.class::isInstance).findFirst();
+    Configuration cfData = Configuration.EMPTY;
     if (cf.isPresent()) {
-      cfData = (CF) cf.get();
+      cfData = (Configuration) cf.get();
     }
-    var project = Project.create(cfData);
+    var projectBuilder = Project.create(cfData);
     mdclasses.stream().filter(ConfigurationExtension.class::isInstance)
       .map(ConfigurationExtension.class::cast)
-      .forEach(project::addExtension);
-    return project;
+      .forEach(ext -> Project.addExtension(projectBuilder, ext));
+    return projectBuilder.build();
+  }
+
+  public Project createProject(Path sourcePath) {
+    return createProject(sourcePath, false);
   }
 
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
