@@ -71,6 +71,7 @@ import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.utils.Lazy;
@@ -85,6 +86,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Проект решения, включающий в себя конфигурацию, расширения и внешние обработки и отчеты
@@ -96,7 +99,7 @@ public class Project implements ConfigurationTree {
    * Основная конфигурация
    */
   @Default
-  CF configuration = Configuration.EMPTY;
+  Configuration configuration = Configuration.EMPTY;
 
   /**
    * Набор расширений конфигурации
@@ -357,6 +360,69 @@ public class Project implements ConfigurationTree {
 
   public Map<MdoReference, MD> getChildrenByMdoRef() {
     return childrenByMdoRef.getOrCompute();
+  }
+
+  public ModuleType getModuleTypeByURI(URI uri) {
+    return getModulesByType().getOrDefault(uri, ModuleType.UNKNOWN);
+  }
+
+  public Map<ModuleType, List<URI>> mdoModuleTypes(String mdoRef) {
+    return mdoModuleTypes(MdoReference.create(mdoRef));
+  }
+
+  public Map<ModuleType, List<URI>> mdoModuleTypes(MdoReference mdoRef) {
+    Map<ModuleType, List<URI>> result = new HashMap<>();
+    computeModuleTypes(result, configuration, mdoRef);
+
+    for (ConfigurationExtension ext : extensions.values()) {
+      computeModuleTypes(result, ext, mdoRef);
+    }
+
+    return result;
+  }
+
+  private void computeModuleTypes(Map<ModuleType, List<URI>> result, CF cf, MdoReference mdoRef) {
+    for (Map.Entry<ModuleType, URI> entry : cf.mdoModuleTypes(mdoRef).entrySet()) {
+      ModuleType moduleType = entry.getKey();
+      URI uri = entry.getValue();
+      var uris = result.getOrDefault(moduleType, new ArrayList<>());
+      uris.add(uri);
+      result.put(moduleType, uris);
+    }
+  }
+
+  public Optional<MD> findChild(MdoReference ref) {
+    return Optional.ofNullable(getChildrenByMdoRef().get(ref));
+  }
+
+  public Optional<MD> findChild(URI uri) {
+    return Optional.ofNullable(getModulesByObject().get(uri));
+  }
+
+  public Optional<MD> findChild(Predicate<? super MD> predicate) {
+    return getPlainChildren().stream().filter(predicate).findFirst();
+  }
+
+  public Optional<Module> getModuleByUri(URI uri) {
+    return Optional.ofNullable(getModulesByURI().get(uri));
+  }
+
+  public List<Subsystem> includedSubsystems(MdoReference mdoReference, boolean addParentSubsystem) {
+    List<Subsystem> list = new ArrayList<>(configuration.includedSubsystems(mdoReference, addParentSubsystem));
+    extensions.values().forEach(ext -> list.addAll(ext.includedSubsystems(mdoReference, addParentSubsystem)));
+    return list;
+  }
+
+  public List<Subsystem> includedSubsystems(MD md, boolean addParentSubsystem) {
+    return includedSubsystems(md.getMdoReference(), addParentSubsystem);
+  }
+
+  public ScriptVariant getScriptVariant() {
+    return configuration.getScriptVariant();
+  }
+
+  public boolean isEmpty() {
+    return configuration.isEmpty() && extensions.isEmpty();
   }
 
   private static <T> void addChildren(List<T> destination, List<T> source) {
