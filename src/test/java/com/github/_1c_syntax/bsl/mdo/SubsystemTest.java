@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2025
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -76,7 +76,7 @@ class SubsystemTest {
     assertThat(subsystemChild.getChildren())
       .hasSize(1)
       .anyMatch(child -> child.getName().equals("ПодчиненнаяПодсистема3Уровня"))
-      .anyMatch(child -> child instanceof Subsystem);
+      .anyMatch(Subsystem.class::isInstance);
     assertThat(subsystemChild.getContent()).hasSize(2);
     assertThat(subsystemChild.getParentSubsystem()).isEqualTo(subsystem.getMdoReference());
     var parent2nd = subsystemChild.getMdoReference();

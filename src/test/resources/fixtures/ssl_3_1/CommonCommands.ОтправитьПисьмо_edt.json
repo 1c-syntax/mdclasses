@@ -1,10 +1,18 @@
 {"com.github._1c_syntax.bsl.mdo.CommonCommand": {
   "comment": "",
+  "description": "Отправить письмо...",
   "mdoReference": {
     "type": "COMMON_COMMAND",
     "mdoRef": "CommonCommand.ОтправитьПисьмо",
     "mdoRefRu": "ОбщаяКоманда.ОтправитьПисьмо"
   },
+  "mdoType": "COMMON_COMMAND",
+  "moduleTypes": [
+    [
+      "CommandModule",
+      "src/test/resources/ext/edt/ssl_3_1/configuration/src/CommonCommands/ОтправитьПисьмо/CommandModule.bsl"
+    ]
+  ],
   "modules": [
     {
       "moduleType": "CommandModule",
@@ -18,6 +26,15 @@
   ],
   "name": "ОтправитьПисьмо",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
+    }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [

@@ -34,8 +34,7 @@
           ]
         },
         "dataPath": {
-          "segments": "",
-          "isEmpty": true
+          "segments": ""
         },
         "items": [
           [
@@ -85,8 +84,7 @@
                       "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
                     },
                     "dataPath": {
-                      "segments": "ТекстСообщения",
-                      "isEmpty": false
+                      "segments": "ТекстСообщения"
                     },
                     "items": []
                   },
@@ -98,8 +96,7 @@
                       "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
                     },
                     "dataPath": {
-                      "segments": "БольшеНеЗадаватьЭтотВопрос",
-                      "isEmpty": false
+                      "segments": "БольшеНеЗадаватьЭтотВопрос"
                     },
                     "items": []
                   }
@@ -167,12 +164,20 @@
       []
     ]
   },
+  "description": "Вопрос",
   "formType": "MANAGED",
   "mdoReference": {
     "type": "COMMON_FORM",
     "mdoRef": "CommonForm.Вопрос",
     "mdoRefRu": "ОбщаяФорма.Вопрос"
   },
+  "mdoType": "COMMON_FORM",
+  "moduleTypes": [
+    [
+      "FormModule",
+      "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonForms/Вопрос/Ext/Form/Module.bsl"
+    ]
+  ],
   "modules": [
     {
       "moduleType": "FormModule",
@@ -186,6 +191,15 @@
   ],
   "name": "Вопрос",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
+    }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [

@@ -7,14 +7,14 @@ plugins {
     jacoco
     signing
     id("org.cadixdev.licenser") version "0.6.1"
-    id("me.qoomon.git-versioning") version "6.4.3"
+    id("me.qoomon.git-versioning") version "6.4.4"
     id("com.gorylenko.gradle-git-properties") version "2.4.2"
-    id("io.freefair.lombok") version "8.6"
-    id("io.freefair.javadoc-links") version "8.6"
-    id("io.freefair.javadoc-utf-8") version "8.6"
-    id("io.freefair.maven-central.validate-poms") version "8.6"
+    id("io.freefair.lombok") version "8.12.1"
+    id("io.freefair.javadoc-links") version "8.12.1"
+    id("io.freefair.javadoc-utf-8") version "8.12.1"
+    id("io.freefair.maven-central.validate-poms") version "8.12.1"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.sonarqube") version "5.1.0.4882"
+    id("org.sonarqube") version "6.0.1.5171"
     id("io.codearte.nexus-staging") version "0.30.0"
 }
 
@@ -39,7 +39,6 @@ val isSnapshot = gitVersioning.gitVersionDetails.refType != GitRefType.TAG
 repositories {
     mavenLocal()
     mavenCentral()
-    maven(url = "https://jitpack.io")
     maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
@@ -47,35 +46,31 @@ dependencies {
 
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
-    // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
+    implementation("com.thoughtworks.xstream", "xstream", "1.4.21")
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")
 
     // прочее
-    implementation("commons-io", "commons-io", "2.8.0")
-    implementation("io.github.1c-syntax", "utils", "0.6.1")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.7.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.14.0") {
-        exclude("io.github.1c-syntax", "bsl-common-library")
-    }
+    implementation("commons-io", "commons-io", "2.18.0")
+    implementation("io.github.1c-syntax", "utils", "0.6.2")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.0")
+    implementation("io.github.1c-syntax", "supportconf", "0.14.2")
 
     // быстрый поиск классов
-    implementation("io.github.classgraph", "classgraph", "4.8.147")
+    implementation("io.github.classgraph", "classgraph", "4.8.179")
 
     // тестирование
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.0")
-    testImplementation("org.assertj", "assertj-core", "3.18.1")
-    testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
-    testImplementation("org.skyscreamer", "jsonassert", "1.5.0")
-    testImplementation("org.objenesis", "objenesis", "3.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.11.4")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.11.4")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.11.4")
+    testImplementation("org.assertj", "assertj-core", "3.27.0")
+    testImplementation("com.ginsberg", "junit5-system-exit", "2.0.2")
+    testImplementation("org.skyscreamer", "jsonassert", "1.5.3")
+    testImplementation("org.objenesis", "objenesis", "3.4")
 
     // логирование
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-    testImplementation("org.slf4j", "slf4j-log4j12", "2.1.0-alpha1")
+    testImplementation("org.slf4j", "slf4j-reload4j", "2.1.0-alpha1")
 }
 
 java {

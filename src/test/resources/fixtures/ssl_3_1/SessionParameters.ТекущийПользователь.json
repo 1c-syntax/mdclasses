@@ -1,12 +1,24 @@
 {"com.github._1c_syntax.bsl.mdo.SessionParameter": {
   "comment": "",
+  "description": "Текущий пользователь",
   "mdoReference": {
     "type": "SESSION_PARAMETER",
     "mdoRef": "SessionParameter.ТекущийПользователь",
     "mdoRefRu": "ПараметрСеанса.ТекущийПользователь"
   },
+  "mdoType": "SESSION_PARAMETER",
   "name": "ТекущийПользователь",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 2,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "GET",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SET"
+    }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [

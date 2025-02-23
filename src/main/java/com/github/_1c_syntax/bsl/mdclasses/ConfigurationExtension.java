@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2025
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -57,6 +57,7 @@ import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -72,6 +73,7 @@ import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
+import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -130,6 +132,8 @@ public class ConfigurationExtension implements CF {
   MdoReference defaultLanguage = MdoReference.EMPTY;
   @Default
   ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
+  @Default
+  InterfaceCompatibilityMode interfaceCompatibilityMode = InterfaceCompatibilityMode.VERSION_8_2;
   @Default
   CompatibilityMode compatibilityMode = new CompatibilityMode();
   @Default
@@ -198,6 +202,8 @@ public class ConfigurationExtension implements CF {
   List<IntegrationService> integrationServices;
   @Singular
   List<StyleItem> styleItems;
+  @Singular
+  List<PaletteColor> paletteColors;
   @Singular
   List<Style> styles;
   @Singular

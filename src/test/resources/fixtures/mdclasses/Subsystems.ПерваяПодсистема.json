@@ -1,6 +1,7 @@
 {"com.github._1c_syntax.bsl.mdo.Subsystem": {
   "comment": "",
   "content": [],
+  "description": "Первая подсистема",
   "explanation": {
     "content": []
   },
@@ -11,6 +12,7 @@
     "mdoRef": "Subsystem.ПерваяПодсистема",
     "mdoRefRu": "Подсистема.ПерваяПодсистема"
   },
+  "mdoType": "SUBSYSTEM",
   "name": "ПерваяПодсистема",
   "objectBelonging": "OWN",
   "parentSubsystem": {
@@ -18,6 +20,15 @@
     "mdoRef": "",
     "mdoRefRu": ""
   },
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
+    }
+  ],
   "subsystems": [
     [
       {
@@ -37,6 +48,7 @@
           ],
           []
         ],
+        "description": "Подчиненная подсистема",
         "explanation": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
         },
@@ -47,11 +59,13 @@
           "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема",
           "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема"
         },
+        "mdoType": "SUBSYSTEM",
         "name": "ПодчиненнаяПодсистема",
         "objectBelonging": "OWN",
         "parentSubsystem": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
         },
+        "possibleRights": [],
         "subsystems": [],
         "supportVariant": "NONE",
         "synonym": {
@@ -83,6 +97,7 @@
           ],
           []
         ],
+        "description": "Починенная система2",
         "explanation": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
         },
@@ -93,11 +108,13 @@
           "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
           "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
         },
+        "mdoType": "SUBSYSTEM",
         "name": "ПочиненнаяСистема2",
         "objectBelonging": "OWN",
         "parentSubsystem": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
         },
+        "possibleRights": [],
         "subsystems": [
           {
             "comment": "",
@@ -121,6 +138,7 @@
               ],
               []
             ],
+            "description": "Подчиненная подсистема3 уровня",
             "explanation": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
             },
@@ -131,11 +149,13 @@
               "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
               "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
             },
+            "mdoType": "SUBSYSTEM",
             "name": "ПодчиненнаяПодсистема3Уровня",
             "objectBelonging": "OWN",
             "parentSubsystem": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/subsystems/c/com.github._1c_syntax.bsl.mdo.Subsystem[2]/mdoReference"
             },
+            "possibleRights": [],
             "subsystems": [],
             "supportVariant": "NONE",
             "synonym": {

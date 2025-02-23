@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2025
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -61,8 +61,10 @@ public enum FormElementType implements EnumWithValue {
   PAGE("Page"),
   PAGES("Pages"),
   PDF_DOCUMENT_FIELD("PDFDocumentField"),
+  PERIOD_FIELD("PeriodField"),
   PICTURE_DECORATION("PictureDecoration"),
   PICTURE_FIELD("PictureField"),
+  PLANNER_FIELD("PlannerField"),
   POPUP("Popup"),
   PROGRESS_BAR_FIELD("ProgressBarField"),
   RADIO_BUTTON_FIELD("RadioButtonField"),
@@ -80,7 +82,8 @@ public enum FormElementType implements EnumWithValue {
     }
   },
   USUAL_BUTTON("UsualButton"),
-  USUAL_GROUP("UsualGroup");
+  USUAL_GROUP("UsualGroup"),
+  VIEW_STATUS_ADDITION("ViewStatusAddition");
 
   private static final Map<String, FormElementType> KEYS = computeKeys();
 

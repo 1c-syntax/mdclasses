@@ -1,5 +1,6 @@
 {"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
   "comment": "",
+  "description": "Текущая СУБД",
   "explanation": {
     "content": []
   },
@@ -8,8 +9,22 @@
     "mdoRef": "ExternalDataSource.ТекущаяСУБД",
     "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД"
   },
+  "mdoType": "EXTERNAL_DATA_SOURCE",
   "name": "ТекущаяСУБД",
   "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 5,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "USE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "STANDARD_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SESSION_STANDARD_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SESSION_OS_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "ADMINISTRATION"
+    }
+  ],
   "supportVariant": "NONE",
   "synonym": {
     "content": [
@@ -395,8 +410,7 @@
                     ]
                   },
                   "dataPath": {
-                    "segments": "",
-                    "isEmpty": true
+                    "segments": ""
                   },
                   "items": []
                 }
