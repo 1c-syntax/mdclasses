@@ -180,6 +180,10 @@ public class MDClasses {
     return createProject(sourcePath, false);
   }
 
+  public Project createProject() {
+    return Project.builder().build();
+  }
+
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
     List<Path> listPath = new ArrayList<>();
     var excludeFolders = mdoTypeGroupNames();
