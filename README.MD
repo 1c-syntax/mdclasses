@@ -22,8 +22,7 @@
 
 ## Связанные проекты
 
-* [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) - языковой сервер для языка 1С:Предприятие
-* [BSL Parser](https://github.com/1c-syntax/bsl-parser) - парсер языка 1С:Предприятие 8 и 1С:Enterprise Development Tools
+- [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) - языковой сервер для языка 1С:Предприятие
 
 ## Спасибо контрибьютерам
 

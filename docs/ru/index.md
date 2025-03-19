@@ -39,8 +39,8 @@ dependencies {
 ### Простой пример использования
 
 ```java
-import com.github._1c_syntax.mdclasses.mdo.Configuration;
-import com.github._1c_syntax.mdclasses.metadata.ConfigurationParser;
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Configuration;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -49,9 +49,8 @@ public class Example {
         // Путь к каталогу конфигурации
         Path configurationPath = Paths.get("path/to/configuration");
         
-        // Создание парсера и чтение конфигурации
-        ConfigurationParser parser = new ConfigurationParser();
-        Configuration configuration = parser.parse(configurationPath);
+        // Чтение конфигурации
+        Configuration configuration = (Configuration) MDClasses.createConfiguration(configurationPath);
         
         // Вывод информации о конфигурации
         System.out.println("Имя конфигурации: " + configuration.getName());

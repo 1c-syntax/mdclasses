@@ -17,19 +17,39 @@
 ### Инициализация парсера и чтение конфигурации
 
 ```java
-import com.github._1c_syntax.mdclasses.mdo.Configuration;
-import com.github._1c_syntax.mdclasses.metadata.ConfigurationParser;
+// Сначала стандартные библиотеки Java
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+// Затем библиотеки сторонних разработчиков
+import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.AccumulationRegister;
+import com.github._1c_syntax.bsl.mdo.Catalog;
+import com.github._1c_syntax.bsl.mdo.Configuration;
+import com.github._1c_syntax.bsl.mdo.Document;
+import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.FormItem;
+import com.github._1c_syntax.bsl.mdo.InformationRegister;
+import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.MdoReference;
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleType;
+import com.github._1c_syntax.bsl.mdo.Right;
+import com.github._1c_syntax.bsl.mdo.Role;
+import com.github._1c_syntax.bsl.mdo.Subsystem;
+// ... и другие объекты метаданных
 
 // Путь к каталогу конфигурации
 Path configurationPath = Paths.get("path/to/configuration");
 
-// Создание парсера
-ConfigurationParser parser = new ConfigurationParser();
-
 // Чтение конфигурации
-Configuration configuration = parser.parse(configurationPath);
+Configuration configuration = MDClasses.createConfiguration(configurationPath);
 ```
 
 ### Получение основной информации о конфигурации
@@ -62,20 +82,23 @@ configuration.getSubsystems().forEach(subsystem -> {
     System.out.println("Подсистема: " + subsystem.getName());
     
     // Получение дочерних подсистем
-    subsystem.getChildren().stream()
-        .filter(child -> child instanceof Subsystem)
-        .map(child -> (Subsystem) child)
-        .forEach(childSubsystem -> {
-            System.out.println("  - Дочерняя подсистема: " + childSubsystem.getName());
-        });
+    subsystem.getSubsystems().forEach(childSubsystem -> {
+        System.out.println("  - Дочерняя подсистема: " + childSubsystem.getName());
+    });
 });
 ```
 
 ### Получение списка всех объектов конфигурации
 
 ```java
-// Получение всех дочерних объектов конфигурации
-List<MDObjectBase> allObjects = configuration.getChildren();
+// Получение всех объектов конфигурации
+List<MD> allObjects = configuration.getAllMdo();
+
+// Для работы со справочниками
+List<Catalog> catalogs = configuration.getCatalogs();
+
+// Для работы с документами
+List<Document> documents = configuration.getDocuments();
 
 // Вывод количества объектов по типам
 Map<String, Long> objectCountByType = allObjects.stream()
@@ -251,16 +274,15 @@ allModules.stream()
 
 ```java
 // Создание ссылки на объект метаданных
-MDOReference reference = new MDOReference("Справочник.Товары", "Catalog.Products");
+MdoReference reference = MdoReference.create("Справочник.Товары");
 
 // Поиск объекта по ссылке
-MDObjectBase mdObject = configuration.findChild(reference);
+Optional<MD> mdoOptional = configuration.findChild(reference);
 
-if (mdObject != null) {
-    System.out.println("Найден объект: " + mdObject.getName());
-} else {
-    System.out.println("Объект не найден");
-}
+mdoOptional.ifPresentOrElse(
+    mdo -> System.out.println("Найден объект: " + mdo.getName()),
+    () -> System.out.println("Объект не найден")
+);
 ```
 
 ### Фильтрация объектов по условию
@@ -278,7 +300,7 @@ catalogsWithTabularSections.forEach(catalog -> {
 
 // Найти все объекты с определенным префиксом имени
 String prefix = "ПрефиксИмени";
-List<MDObjectBase> objectsWithPrefix = configuration.getChildren().stream()
+List<MD> objectsWithPrefix = configuration.getAllMdo().stream()
     .filter(obj -> obj.getName().startsWith(prefix))
     .collect(Collectors.toList());
 
@@ -337,12 +359,7 @@ roles.forEach(role -> {
         Map<String, List<Right>> rightsByObject = role.getRights().stream()
             .collect(Collectors.groupingBy(Right::getName));
         
-        rightsByObject.forEach((object, rightsList) -> {
-            System.out.println("  Объект: " + object);
-            rightsList.forEach(right -> {
-                System.out.println("    Право: " + right.getValue());
-            });
-        });
+        // ... existing code ...
     }
 });
 ```
