@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -331,6 +331,7 @@
   
   <span class="md-ellipsis">
     Домашняя
+    
   </span>
   
 
@@ -365,6 +366,7 @@
   
   <span class="md-ellipsis">
     MDClasses
+    
   </span>
   
 
@@ -376,6 +378,7 @@
   
   <span class="md-ellipsis">
     MDClasses
+    
   </span>
   
 
@@ -397,9 +400,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#Полезная-информация" class="md-nav__link">
+  <a href="#Обзор" class="md-nav__link">
     <span class="md-ellipsis">
-      Полезная информация
+      Обзор
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Основные-возможности" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные возможности
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Начало-работы" class="md-nav__link">
+    <span class="md-ellipsis">
+      Начало работы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Структура-документации" class="md-nav__link">
+    <span class="md-ellipsis">
+      Структура документации
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Ограничения" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ограничения
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Сценарии-использования" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сценарии использования
     </span>
   </a>
   
@@ -425,7 +473,8 @@
         
   
   <span class="md-ellipsis">
-    Примеры использования
+    Примеры использования MDClasses
+    
   </span>
   
 
@@ -447,6 +496,7 @@
   
   <span class="md-ellipsis">
     Системные требования
+    
   </span>
   
 
@@ -468,6 +518,7 @@
   
   <span class="md-ellipsis">
     JavaDoc
+    
   </span>
   
 
@@ -498,17 +549,80 @@
                 
                   
 
+
   
   
 
 
 <h1 id="MDClasses">MDClasses<a class="headerlink" href="#MDClasses" title="Permanent link">&para;</a></h1>
-<p><em>В разработке</em></p>
-<h2 id="Полезная-информация">Полезная информация<a class="headerlink" href="#Полезная-информация" title="Permanent link">&para;</a></h2>
+<h2 id="Обзор">Обзор<a class="headerlink" href="#Обзор" title="Permanent link">&para;</a></h2>
+<p>MDClasses - это библиотека на Java для чтения и анализа метаданных 1С:Предприятие 8. Библиотека позволяет работать с конфигурациями, выгруженными в XML-формате (через конфигуратор или средствами сравнения/объединения конфигураций) или в формате EDT.</p>
+<h2 id="Основные-возможности">Основные возможности<a class="headerlink" href="#Основные-возможности" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="examples/">Примеры использования</a></li>
-<li><a href="systemRequirements/">Системные требования</a></li>
-<li><a href="features/">Возможности</a></li>
+<li>Чтение конфигурации из формата XML и EDT</li>
+<li>Доступ к объектам метаданных через программный интерфейс</li>
+<li>Анализ структуры метаданных: справочники, документы, регистры и т.д.</li>
+<li>Работа с модулями 1С</li>
+<li>Анализ форм и их элементов</li>
+<li>Доступ к правам и ролям</li>
+<li>Построение зависимостей между объектами</li>
+</ul>
+<h2 id="Начало-работы">Начало работы<a class="headerlink" href="#Начало-работы" title="Permanent link">&para;</a></h2>
+<h3 id="Подключение-библиотеки">Подключение библиотеки<a class="headerlink" href="#Подключение-библиотеки" title="Permanent link">&para;</a></h3>
+<h4 id="Maven">Maven<a class="headerlink" href="#Maven" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>io.github.1c-syntax<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>mdclasses<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>версия_библиотеки<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h4 id="Gradle">Gradle<a class="headerlink" href="#Gradle" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.1c-syntax:mdclasses:версия_библиотеки&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="Простой-пример-использования">Простой пример использования<a class="headerlink" href="#Простой-пример-использования" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdclasses.MDClasses</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Configuration</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Path</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Paths</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Путь к каталогу конфигурации</span>
+<span class="w">        </span><span class="n">Path</span><span class="w"> </span><span class="n">configurationPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;path/to/configuration&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Чтение конфигурации</span>
+<span class="w">        </span><span class="n">Configuration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Configuration</span><span class="p">)</span><span class="w"> </span><span class="n">MDClasses</span><span class="p">.</span><span class="na">createConfiguration</span><span class="p">(</span><span class="n">configurationPath</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Вывод информации о конфигурации</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Имя конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Количество справочников: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="Структура-документации">Структура документации<a class="headerlink" href="#Структура-документации" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../README.md">README</a> - общая информация о проекте</li>
+<li><a href="systemRequirements/">Требования к системе</a> - требования к системе для использования библиотеки</li>
+<li><a href="features/">Возможности</a> - описание возможностей библиотеки</li>
+<li><a href="examples/">Примеры использования</a> - подробные примеры с кодом</li>
+</ul>
+<h2 id="Ограничения">Ограничения<a class="headerlink" href="#Ограничения" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Библиотека предназначена только для чтения метаданных, она не позволяет изменять конфигурацию</li>
+<li>Некоторые специфические возможности 1С могут быть не поддержаны в текущей версии</li>
+</ul>
+<h2 id="Сценарии-использования">Сценарии использования<a class="headerlink" href="#Сценарии-использования" title="Permanent link">&para;</a></h2>
+<p>MDClasses может использоваться для различных задач, связанных с анализом конфигураций 1С:</p>
+<ul>
+<li>Статический анализ кода 1С</li>
+<li>Построение диаграмм зависимостей объектов метаданных</li>
+<li>Автоматизированное документирование конфигураций</li>
+<li>Миграция данных между различными конфигурациями</li>
+<li>Аудит безопасности конфигураций 1С</li>
+<li>Анализ производительности конфигураций</li>
+<li>Интеграция с другими инструментами разработки</li>
 </ul>
 
 
@@ -585,7 +699,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "search.highlight", "toc.integrate", "header.autohide"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
     
     
-      <script src="assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

@@ -18,15 +18,15 @@
       
       
       <link rel="icon" href="../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
-        <title>Примеры использования - MDClasses Dev</title>
+        <title>Примеры использования MDClasses - MDClasses Dev</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#Примеры-использования" class="md-skip">
+        <a href="#Примеры-использования-MDClasses" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Примеры использования
+              Примеры использования MDClasses
             
           </span>
         </div>
@@ -333,6 +333,7 @@
   
   <span class="md-ellipsis">
     Домашняя
+    
   </span>
   
 
@@ -358,6 +359,7 @@
   
   <span class="md-ellipsis">
     MDClasses
+    
   </span>
   
 
@@ -383,15 +385,119 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Примеры использования MDClasses
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Примеры использования
+    Примеры использования MDClasses
+    
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#Оглавление" class="md-nav__link">
+    <span class="md-ellipsis">
+      Оглавление
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Базовые-операции" class="md-nav__link">
+    <span class="md-ellipsis">
+      Базовые операции
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Работа-с-конфигурацией" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с конфигурацией
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Работа-с-метаданными" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с метаданными
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Работа-с-формами" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с формами
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Работа-с-модулями" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с модулями
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Поиск-и-фильтрация-объектов" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поиск и фильтрация объектов
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#Практические-сценарии" class="md-nav__link">
+    <span class="md-ellipsis">
+      Практические сценарии
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -410,6 +516,7 @@
   
   <span class="md-ellipsis">
     Системные требования
+    
   </span>
   
 
@@ -431,6 +538,7 @@
   
   <span class="md-ellipsis">
     JavaDoc
+    
   </span>
   
 
@@ -461,12 +569,370 @@
                 
                   
 
+
   
   
 
 
-<h1 id="Примеры-использования">Примеры использования<a class="headerlink" href="#Примеры-использования" title="Permanent link">&para;</a></h1>
-<p><em>В разработке</em></p>
+<h1 id="Примеры-использования-MDClasses">Примеры использования MDClasses<a class="headerlink" href="#Примеры-использования-MDClasses" title="Permanent link">&para;</a></h1>
+<p>В этом документе представлены примеры использования библиотеки MDClasses для работы с метаданными 1С.</p>
+<h2 id="Оглавление">Оглавление<a class="headerlink" href="#Оглавление" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#базовые-операции">Базовые операции</a></li>
+<li><a href="#работа-с-конфигурацией">Работа с конфигурацией</a></li>
+<li><a href="#работа-с-метаданными">Работа с метаданными</a></li>
+<li><a href="#работа-с-формами">Работа с формами</a></li>
+<li><a href="#работа-с-модулями">Работа с модулями</a></li>
+<li><a href="#поиск-и-фильтрация-объектов">Поиск и фильтрация объектов</a></li>
+<li><a href="#практические-сценарии">Практические сценарии</a></li>
+</ul>
+<h2 id="Базовые-операции">Базовые операции<a class="headerlink" href="#Базовые-операции" title="Permanent link">&para;</a></h2>
+<h3 id="Инициализация-парсера-и-чтение-конфигурации">Инициализация парсера и чтение конфигурации<a class="headerlink" href="#Инициализация-парсера-и-чтение-конфигурации" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Сначала стандартные библиотеки Java</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Path</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.Paths</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashSet</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.stream.Collectors</span><span class="p">;</span>
+
+<span class="c1">// Затем библиотеки сторонних разработчиков</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdclasses.MDClasses</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.AccumulationRegister</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Catalog</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Configuration</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Document</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Form</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.FormItem</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.InformationRegister</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.MD</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.MdoReference</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Module</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.ModuleType</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Right</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Role</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.github._1c_syntax.bsl.mdo.Subsystem</span><span class="p">;</span>
+<span class="c1">// ... и другие объекты метаданных</span>
+
+<span class="c1">// Путь к каталогу конфигурации</span>
+<span class="n">Path</span><span class="w"> </span><span class="n">configurationPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;path/to/configuration&quot;</span><span class="p">);</span>
+
+<span class="c1">// Чтение конфигурации</span>
+<span class="n">Configuration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MDClasses</span><span class="p">.</span><span class="na">createConfiguration</span><span class="p">(</span><span class="n">configurationPath</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="Получение-основной-информации-о-конфигурации">Получение основной информации о конфигурации<a class="headerlink" href="#Получение-основной-информации-о-конфигурации" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Название конфигурации</span>
+<span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Имя конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+
+<span class="c1">// Синоним конфигурации</span>
+<span class="n">String</span><span class="w"> </span><span class="n">synonym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getSynonym</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Синоним конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">synonym</span><span class="p">);</span>
+
+<span class="c1">// Версия конфигурации</span>
+<span class="n">String</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getVersion</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Версия: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">version</span><span class="p">);</span>
+
+<span class="c1">// Поставщик</span>
+<span class="n">String</span><span class="w"> </span><span class="n">vendor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getVendor</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Поставщик: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vendor</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="Работа-с-конфигурацией">Работа с конфигурацией<a class="headerlink" href="#Работа-с-конфигурацией" title="Permanent link">&para;</a></h2>
+<h3 id="Обход-подсистем">Обход подсистем<a class="headerlink" href="#Обход-подсистем" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех подсистем верхнего уровня</span>
+<span class="n">configuration</span><span class="p">.</span><span class="na">getSubsystems</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">subsystem</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Подсистема: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subsystem</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Получение дочерних подсистем</span>
+<span class="w">    </span><span class="n">subsystem</span><span class="p">.</span><span class="na">getSubsystems</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">childSubsystem</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - Дочерняя подсистема: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">childSubsystem</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="Получение-списка-всех-объектов-конфигурации">Получение списка всех объектов конфигурации<a class="headerlink" href="#Получение-списка-всех-объектов-конфигурации" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех объектов конфигурации</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">MD</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allObjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getAllMdo</span><span class="p">();</span>
+
+<span class="c1">// Для работы со справочниками</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Catalog</span><span class="o">&gt;</span><span class="w"> </span><span class="n">catalogs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">();</span>
+
+<span class="c1">// Для работы с документами</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">documents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getDocuments</span><span class="p">();</span>
+
+<span class="c1">// Вывод количества объектов по типам</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">objectCountByType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allObjects</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span>
+<span class="w">        </span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">Collectors</span><span class="p">.</span><span class="na">counting</span><span class="p">()</span>
+<span class="w">    </span><span class="p">));</span>
+
+<span class="n">objectCountByType</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="Работа-с-метаданными">Работа с метаданными<a class="headerlink" href="#Работа-с-метаданными" title="Permanent link">&para;</a></h2>
+<h3 id="Работа-со-справочниками">Работа со справочниками<a class="headerlink" href="#Работа-со-справочниками" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех справочников</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Catalog</span><span class="o">&gt;</span><span class="w"> </span><span class="n">catalogs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">();</span>
+
+<span class="n">catalogs</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">catalog</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Справочник: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Получение реквизитов справочника</span>
+<span class="w">    </span><span class="n">catalog</span><span class="p">.</span><span class="na">getAttributes</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">attribute</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Реквизит: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">                          </span><span class="s">&quot;, Тип: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getType</span><span class="p">().</span><span class="na">getDescription</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Получение табличных частей</span>
+<span class="w">    </span><span class="n">catalog</span><span class="p">.</span><span class="na">getTabularSections</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">section</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Табличная часть: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">section</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Получение реквизитов табличной части</span>
+<span class="w">        </span><span class="n">section</span><span class="p">.</span><span class="na">getAttributes</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">attribute</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    Реквизит ТЧ: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">                              </span><span class="s">&quot;, Тип: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getType</span><span class="p">().</span><span class="na">getDescription</span><span class="p">());</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="Работа-с-документами">Работа с документами<a class="headerlink" href="#Работа-с-документами" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех документов</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">documents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getDocuments</span><span class="p">();</span>
+
+<span class="n">documents</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">document</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Документ: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">document</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Получение реквизитов документа</span>
+<span class="w">    </span><span class="n">document</span><span class="p">.</span><span class="na">getAttributes</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">attribute</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Реквизит: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Получение табличных частей</span>
+<span class="w">    </span><span class="n">document</span><span class="p">.</span><span class="na">getTabularSections</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">section</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Табличная часть: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">section</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Получение регистраторов движений</span>
+<span class="w">    </span><span class="n">document</span><span class="p">.</span><span class="na">getRegisterRecords</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">registerRecord</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Регистратор: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">registerRecord</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="Работа-с-регистрами">Работа с регистрами<a class="headerlink" href="#Работа-с-регистрами" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Работа с регистрами накопления</span>
+<span class="n">configuration</span><span class="p">.</span><span class="na">getAccumulationRegisters</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">register</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Регистр накопления: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">register</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Вид регистра: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">register</span><span class="p">.</span><span class="na">getRegisterType</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Получение измерений регистра</span>
+<span class="w">    </span><span class="n">register</span><span class="p">.</span><span class="na">getDimensions</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">dimension</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Измерение: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dimension</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Получение ресурсов регистра</span>
+<span class="w">    </span><span class="n">register</span><span class="p">.</span><span class="na">getResources</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">resource</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Ресурс: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">resource</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// Работа с регистрами сведений</span>
+<span class="n">configuration</span><span class="p">.</span><span class="na">getInformationRegisters</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">register</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Регистр сведений: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">register</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Периодичность: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">register</span><span class="p">.</span><span class="na">getPeriodicity</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Получение измерений регистра</span>
+<span class="w">    </span><span class="n">register</span><span class="p">.</span><span class="na">getDimensions</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">dimension</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Измерение: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dimension</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="Работа-с-формами">Работа с формами<a class="headerlink" href="#Работа-с-формами" title="Permanent link">&para;</a></h2>
+<h3 id="Получение-и-анализ-форм">Получение и анализ форм<a class="headerlink" href="#Получение-и-анализ-форм" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех форм</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Form</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allForms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getAllForms</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Всего форм в конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">allForms</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+
+<span class="c1">// Анализ конкретной формы</span>
+<span class="n">allForms</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">form</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;ФормаДокумента&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="na">getName</span><span class="p">()))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">findFirst</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">form</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Анализ формы: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="na">getFormData</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Получение элементов формы</span>
+<span class="w">            </span><span class="n">FormItem</span><span class="w"> </span><span class="n">rootItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="na">getFormData</span><span class="p">().</span><span class="na">getItems</span><span class="p">();</span>
+<span class="w">            </span><span class="n">analyzeFormItem</span><span class="p">(</span><span class="n">rootItem</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="c1">// Рекурсивный метод для анализа элементов формы</span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">analyzeFormItem</span><span class="p">(</span><span class="n">FormItem</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">indent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;  &quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="n">level</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">indent</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;Элемент: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, Тип: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getType</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// Обработка дочерних элементов</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getChildItems</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">item</span><span class="p">.</span><span class="na">getChildItems</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">child</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">analyzeFormItem</span><span class="p">(</span><span class="n">child</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="Работа-с-модулями">Работа с модулями<a class="headerlink" href="#Работа-с-модулями" title="Permanent link">&para;</a></h2>
+<h3 id="Получение-и-анализ-модулей">Получение и анализ модулей<a class="headerlink" href="#Получение-и-анализ-модулей" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех модулей</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Module</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allModules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getAllModules</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Всего модулей в конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">allModules</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+
+<span class="c1">// Группировка модулей по типу</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">ModuleType</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Module</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">modulesByType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allModules</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span><span class="n">Module</span><span class="p">::</span><span class="n">getModuleType</span><span class="p">));</span>
+
+<span class="c1">// Вывод количества модулей каждого типа</span>
+<span class="n">modulesByType</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Модули типа &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">type</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">modules</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="c1">// Анализ содержимого конкретного модуля</span>
+<span class="n">allModules</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">module</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">getModuleType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ModuleType</span><span class="p">.</span><span class="na">ObjectModule</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">module</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">getOwner</span><span class="p">().</span><span class="na">getName</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;ИмяОбъекта&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">findFirst</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">module</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Содержимое модуля:&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">getContent</span><span class="p">().</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="na">length</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lines</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h2 id="Поиск-и-фильтрация-объектов">Поиск и фильтрация объектов<a class="headerlink" href="#Поиск-и-фильтрация-объектов" title="Permanent link">&para;</a></h2>
+<h3 id="Поиск-объекта-по-ссылке">Поиск объекта по ссылке<a class="headerlink" href="#Поиск-объекта-по-ссылке" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Создание ссылки на объект метаданных</span>
+<span class="n">MdoReference</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MdoReference</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;Справочник.Товары&quot;</span><span class="p">);</span>
+
+<span class="c1">// Поиск объекта по ссылке</span>
+<span class="n">Optional</span><span class="o">&lt;</span><span class="n">MD</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mdoOptional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">findChild</span><span class="p">(</span><span class="n">reference</span><span class="p">);</span>
+
+<span class="n">mdoOptional</span><span class="p">.</span><span class="na">ifPresentOrElse</span><span class="p">(</span>
+<span class="w">    </span><span class="n">mdo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Найден объект: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mdo</span><span class="p">.</span><span class="na">getName</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Объект не найден&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="Фильтрация-объектов-по-условию">Фильтрация объектов по условию<a class="headerlink" href="#Фильтрация-объектов-по-условию" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Найти все справочники с табличными частями</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Catalog</span><span class="o">&gt;</span><span class="w"> </span><span class="n">catalogsWithTabularSections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">catalog</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">!</span><span class="n">catalog</span><span class="p">.</span><span class="na">getTabularSections</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Справочники с табличными частями:&quot;</span><span class="p">);</span>
+<span class="n">catalogsWithTabularSections</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">catalog</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">catalog</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">getTabularSections</span><span class="p">().</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ТЧ)&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Найти все объекты с определенным префиксом имени</span>
+<span class="n">String</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ПрефиксИмени&quot;</span><span class="p">;</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">MD</span><span class="o">&gt;</span><span class="w"> </span><span class="n">objectsWithPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getAllMdo</span><span class="p">().</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">startsWith</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Объекты с префиксом &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;:&quot;</span><span class="p">);</span>
+<span class="n">objectsWithPrefix</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="Практические-сценарии">Практические сценарии<a class="headerlink" href="#Практические-сценарии" title="Permanent link">&para;</a></h2>
+<h3 id="Построение-диаграммы-зависимостей-объектов">Построение диаграммы зависимостей объектов<a class="headerlink" href="#Построение-диаграммы-зависимостей-объектов" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Упрощенный пример построения графа зависимостей между объектами</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="c1">// Сбор зависимостей из типов реквизитов справочников</span>
+<span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">catalog</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">catalogKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Catalog.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="n">dependencies</span><span class="p">.</span><span class="na">putIfAbsent</span><span class="p">(</span><span class="n">catalogKey</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">catalog</span><span class="p">.</span><span class="na">getAttributes</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">attribute</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">attribute</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">typeDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attribute</span><span class="p">.</span><span class="na">getType</span><span class="p">().</span><span class="na">getDescription</span><span class="p">();</span>
+<span class="w">            </span><span class="c1">// Проверяем, что тип ссылается на другой объект метаданных</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">typeDescription</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">typeDescription</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;CatalogRef.&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">referencedObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typeDescription</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">&quot;CatalogRef.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Catalog.&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">dependencies</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">catalogKey</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="n">referencedObject</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// Вывод зависимостей</span>
+<span class="n">dependencies</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">refs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">refs</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; зависит от:&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">refs</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">ref</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ref</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="Анализ-прав-доступа">Анализ прав доступа<a class="headerlink" href="#Анализ-прав-доступа" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Получение всех ролей</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Role</span><span class="o">&gt;</span><span class="w"> </span><span class="n">roles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getRoles</span><span class="p">();</span>
+
+<span class="c1">// Анализ прав доступа к объектам для каждой роли</span>
+<span class="n">roles</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">role</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Роль: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">role</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">role</span><span class="p">.</span><span class="na">getRights</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Группировка прав по объектам</span>
+<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Right</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">rightsByObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">role</span><span class="p">.</span><span class="na">getRights</span><span class="p">().</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span><span class="n">Right</span><span class="p">::</span><span class="n">getName</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// ... existing code ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="Поиск-неиспользуемых-реквизитов">Поиск неиспользуемых реквизитов<a class="headerlink" href="#Поиск-неиспользуемых-реквизитов" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Упрощенный пример поиска неиспользуемых реквизитов</span>
+<span class="c1">// (в реальном сценарии нужен более сложный анализ кода модулей)</span>
+
+<span class="c1">// Сбор всех реквизитов справочников</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">catalogAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">catalog</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">catalogName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">catalog</span><span class="p">.</span><span class="na">getAttributes</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span><span class="n">attr</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">attributes</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">attr</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="n">catalogAttributes</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">catalogName</span><span class="p">,</span><span class="w"> </span><span class="n">attributes</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Простой анализ использования в модулях</span>
+<span class="n">catalogAttributes</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">catalogName</span><span class="p">,</span><span class="w"> </span><span class="n">attributes</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Проверка реквизитов справочника: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">catalogName</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">attributes</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">attrName</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Поиск использования реквизита в модулях</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Module</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getAllModules</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="p">.</span><span class="na">getContent</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">attrName</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  Потенциально неиспользуемый реквизит: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attrName</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Эти примеры демонстрируют базовые возможности библиотеки MDClasses. В реальных сценариях вы можете комбинировать и расширять их для решения конкретных задач по анализу и обработке метаданных 1С.</p>
 
 
 
@@ -542,7 +1008,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "search.highlight", "toc.integrate", "header.autohide"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
