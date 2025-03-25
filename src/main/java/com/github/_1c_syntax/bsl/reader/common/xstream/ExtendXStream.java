@@ -126,8 +126,6 @@ public class ExtendXStream extends XStream {
         LOGGER.debug("Can't read file '{}' - unknown class (skipped) \n", file, e);
       } catch (StreamException e) {
         LOGGER.error("Can't read file '{}' - it's broken (skipped): {}", file, e.getCause().getMessage());
-      } catch (Exception e) {
-        LOGGER.error("Can't read file '{}' - unknown error (skipped) \n", file, e);
       }
     }
     return result;
