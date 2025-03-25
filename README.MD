@@ -12,8 +12,17 @@
 [![GitHub Releases](https://img.shields.io/github/downloads/1c-syntax/mdclasses/latest/total?style=flat-square)](https://github.com/1c-syntax/mdclasses/releases)
 
 ## Сайт проекта (документация)
+
 - [Релизная версия](https://1c-syntax.github.io/mdclasses/)
 - [Текущая (Develop) версия](https://1c-syntax.github.io/mdclasses/dev/)
+
+## Лицензия
+
+Проект распространяется под лицензией [GNU LGPL v3](https://www.gnu.org/licenses/lgpl-3.0.ru.html).
+
+## Связанные проекты
+
+- [BSL Language Server](https://github.com/1c-syntax/bsl-language-server) - языковой сервер для языка 1С:Предприятие
 
 ## Спасибо контрибьютерам
 
