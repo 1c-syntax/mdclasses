@@ -68,6 +68,7 @@ import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.mapper.CachingMapper;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
@@ -119,11 +120,14 @@ public class ExtendXStream extends XStream {
     if (file.exists()) {
       try {
         result = super.fromXML(file);
-      } catch (ConversionException e) {
-        LOGGER.error("Can't read file '{}' - it's broken \n: ", file, e);
-        throw e;
+      } catch (ConversionException  e) {
+        LOGGER.error("Can't read file '{}' - it's broken (skipped) \n", file, e);
       } catch (CannotResolveClassException e) {
-        LOGGER.debug("Can't read file '{}' - unknown class \n: ", file, e);
+        LOGGER.debug("Can't read file '{}' - unknown class (skipped) \n", file, e);
+      } catch (StreamException e) {
+        LOGGER.error("Can't read file '{}' - it's broken (skipped): {}", file, e.getCause().getMessage());
+      } catch (Exception e) {
+        LOGGER.error("Can't read file '{}' - unknown error (skipped) \n", file, e);
       }
     }
     return result;
