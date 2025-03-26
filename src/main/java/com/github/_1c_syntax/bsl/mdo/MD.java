@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -59,6 +60,25 @@ public interface MD {
    * MDO-Ссылка на объект
    */
   MdoReference getMdoReference();
+
+  /**
+   * Строковое представление MDO-Ссылки на объект, локализованное для указанного языка разработки
+   */
+  default String getMdoRef(ScriptVariant scriptVariant) {
+    var mdoReference = getMdoReference();
+    if (scriptVariant == ScriptVariant.ENGLISH) {
+      return mdoReference.getMdoRef();
+    } else {
+      return mdoReference.getMdoRefRu();
+    }
+  }
+
+  /**
+   * Строковое представление MDO-Ссылки на объект
+   */
+  default String getMdoRef() {
+    return getMdoReference().getMdoRef();
+  }
 
   /**
    * Принадлежность объекта конфигурации (собственный или заимствованный)
