@@ -21,10 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class EnumTest {
   @ParameterizedTest
@@ -38,5 +42,16 @@ class EnumTest {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+
+    var mdoRef = MdoReference.create(argumentsAccessor.getString(2));
+    var mdoRefString = mdoRef.getMdoRef();
+    var mdoRefStringRu = mdoRef.getMdoRefRu();
+
+    assertThat(mdo.getMdoReference()).isEqualTo(mdoRef);
+    assertThat(mdo.getMdoRef(ScriptVariant.ENGLISH)).isEqualTo(mdoRefString);
+    assertThat(mdo.getMdoRef(ScriptVariant.UNKNOWN)).isEqualTo(mdoRefStringRu);
+    assertThat(mdo.getMdoRef(ScriptVariant.RUSSIAN)).isEqualTo(mdoRefStringRu);
+
+    assertThat(mdo.getMdoRef()).isEqualTo(mdo.getMdoRef(ScriptVariant.ENGLISH));
   }
 }
