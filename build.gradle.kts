@@ -1,30 +1,36 @@
-import me.qoomon.gitversioning.commons.GitRefType
-import java.util.*
+import java.util.Calendar
+import org.jreleaser.model.Active.*
 
 plugins {
     `java-library`
     `maven-publish`
     jacoco
-    signing
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.4"
-    id("com.gorylenko.gradle-git-properties") version "2.5.0"
-    id("io.freefair.lombok") version "8.14"
-    id("io.freefair.javadoc-links") version "8.14"
-    id("io.freefair.javadoc-utf-8") version "8.14"
-    id("io.freefair.maven-central.validate-poms") version "8.14"
+    id("io.freefair.lombok") version "8.14.2"
+    id("io.freefair.javadoc-links") version "8.14.2"
+    id("io.freefair.javadoc-utf-8") version "8.14.2"
+    id("io.freefair.maven-central.validate-poms") version "8.14.2"
+    id("com.github.ben-manes.versions") version "0.52.0"
     id("ru.vyarus.pom") version "3.0.0"
+    id("org.jreleaser") version "1.19.0"
     id("org.sonarqube") version "6.2.0.5505"
-    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
 group = "io.github.1c-syntax"
 gitVersioning.apply {
     refs {
-        considerTagsOnBranches = true
+        describeTagFirstParent = false
         tag("v(?<tagVersion>[0-9].*)") {
             version = "\${ref.tagVersion}\${dirty}"
         }
+
+        branch("develop") {
+            version = "\${describe.tag.version.major}." +
+                    "\${describe.tag.version.minor.next}.0." +
+                    "\${describe.distance}-SNAPSHOT\${dirty}"
+        }
+
         branch(".+") {
             version = "\${ref}-\${commit.short}\${dirty}"
         }
@@ -34,12 +40,10 @@ gitVersioning.apply {
         version = "\${commit.short}\${dirty}"
     }
 }
-val isSnapshot = gitVersioning.gitVersionDetails.refType != GitRefType.TAG
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
@@ -53,9 +57,9 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
-    implementation("io.github.1c-syntax", "utils", "0.6.2")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.14.2")
+    implementation("io.github.1c-syntax", "utils", "0.6.3")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.1")
+    implementation("io.github.1c-syntax", "supportconf", "0.14.3")
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.179")
@@ -105,7 +109,7 @@ tasks.check {
 tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
-        xml.outputLocation.set(File("$buildDir/reports/jacoco/test/jacoco.xml"))
+        xml.outputLocation.set(layout.buildDirectory.file("reports/jacoco/test/jacoco.xml"))
     }
 }
 
@@ -134,7 +138,7 @@ sonar {
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
-        property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
+        property("sonar.coverage.jacoco.xmlReportPaths", "${layout.buildDirectory.get()}/reports/jacoco/test/jacoco.xml")
     }
 }
 
@@ -161,40 +165,17 @@ license {
     exclude("**/*.orig")
 }
 
-signing {
-    val signingInMemoryKey: String? by project      // env.ORG_GRADLE_PROJECT_signingInMemoryKey
-    val signingInMemoryPassword: String? by project // env.ORG_GRADLE_PROJECT_signingInMemoryPassword
-    if (signingInMemoryKey != null) {
-        useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryPassword)
-        sign(publishing.publications)
-    }
-}
 
 publishing {
     repositories {
         maven {
-            name = "sonatype"
-            url = if (isSnapshot)
-                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            else
-                uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-
-            val sonatypeUsername: String? by project
-            val sonatypePassword: String? by project
-
-            credentials {
-                username = sonatypeUsername // ORG_GRADLE_PROJECT_sonatypeUsername
-                password = sonatypePassword // ORG_GRADLE_PROJECT_sonatypePassword
-            }
+            name = "staging"
+            url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
         }
     }
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
-
-            if (isSnapshot && project.hasProperty("simplifyVersion")) {
-                version = findProperty("git.ref.slug") as String + "-SNAPSHOT"
-            }
 
             pom {
                 description.set("Metadata read/write library for Language 1C (BSL)")
@@ -229,14 +210,19 @@ publishing {
                     developerConnection.set("scm:git:git@github.com:1c-syntax/mdclasses.git")
                     url.set("https://github.com/1c-syntax/mdclasses")
                 }
+                // Добавлено для Maven Central validation
+                issueManagement {
+                    system.set("GitHub Issues")
+                    url.set("https://github.com/1c-syntax/mdclasses/issues")
+                }
+                // Добавлено для Maven Central validation
+                ciManagement {
+                    system.set("GitHub Actions")
+                    url.set("https://github.com/1c-syntax/mdclasses/actions")
+                }
             }
         }
     }
-}
-
-nexusStaging {
-    serverUrl = "https://s01.oss.sonatype.org/service/local/"
-    stagingProfileId = "15bd88b4d17915" // ./gradlew getStagingProfile
 }
 
 tasks.register("precommit") {
@@ -244,4 +230,33 @@ tasks.register("precommit") {
     group = "Developer tools"
     dependsOn(":test")
     dependsOn(":updateLicenses")
+}
+
+jreleaser {
+    signing {
+        active = ALWAYS
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("release-deploy") {
+                    active = RELEASE
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+            nexus2 {
+                create("snapshot-deploy") {
+                    active = SNAPSHOT
+                    snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
+                    applyMavenCentralRules = true
+                    snapshotSupported = true
+                    closeRepository = true
+                    releaseRepository = true
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+        }
+    }
 }
