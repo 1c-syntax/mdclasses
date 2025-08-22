@@ -110,6 +110,7 @@ public class MDTestUtils {
           xstream.omitField(clazz, "plainItems");
           xstream.omitField(clazz, "commonModulesByName");
           xstream.omitField(clazz, "childrenByMdoRef");
+          xstream.omitField(clazz, "mdoRef");
 
         } catch (ClassNotFoundException e) {
           throw new RuntimeException(e);

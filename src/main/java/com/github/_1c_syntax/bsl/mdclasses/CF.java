@@ -161,6 +161,15 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
       .toList();
   }
 
+  /**
+   * Возвращает локализованное представление ссылки на объект метаданных с учетом используемого варианта языка разработки
+   * @param md Объект метаданных, принадлежащий MDClasses
+   * @return Строковое представление ссылки
+   */
+  default String getMdoRefLocal(MD md) {
+    return md.getMdoRef(getScriptVariant());
+  }
+
   @Override
   default ModuleType getModuleTypeByURI(URI uri) {
     return getModulesByType().getOrDefault(uri, ModuleType.UNKNOWN);
