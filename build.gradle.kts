@@ -14,7 +14,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.52.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.19.0"
-    id("org.sonarqube") version "6.2.0.5505"
+    id("org.sonarqube") version "6.3.0.5676"
 }
 
 group = "io.github.1c-syntax"
