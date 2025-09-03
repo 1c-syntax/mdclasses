@@ -7,6 +7,7 @@
 - [Базовые операции](#базовые-операции)
 - [Работа с конфигурацией](#работа-с-конфигурацией)
 - [Работа с метаданными](#работа-с-метаданными)
+- [Работа с типами реквизитов](#работа-с-типами-реквизитов)
 - [Работа с формами](#работа-с-формами)
 - [Работа с модулями](#работа-с-модулями)
 - [Поиск и фильтрация объектов](#поиск-и-фильтрация-объектов)
@@ -44,6 +45,11 @@ import com.github._1c_syntax.bsl.mdo.ModuleType;
 import com.github._1c_syntax.bsl.mdo.Right;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.support.AttributeType;
+import com.github._1c_syntax.bsl.mdo.support.NumberQualifier;
+import com.github._1c_syntax.bsl.mdo.support.StringQualifier;
+import com.github._1c_syntax.bsl.mdo.support.TypeCategory;
+import com.github._1c_syntax.bsl.mdo.support.TypeDescription;
 // ... и другие объекты метаданных
 
 // Путь к каталогу конфигурации
@@ -197,6 +203,108 @@ configuration.getInformationRegisters().forEach(register -> {
     register.getDimensions().forEach(dimension -> {
         System.out.println("  Измерение: " + dimension.getName());
     });
+});
+```
+
+## Работа с типами реквизитов
+
+Библиотека предоставляет полную информацию о типах данных реквизитов метаданных.
+
+### Получение базовой информации о типе
+
+```java
+// Работа с реквизитами справочника
+Catalog catalog = (Catalog) configuration.findChild("Catalog.МойСправочник").orElse(null);
+
+if (catalog != null) {
+    catalog.getAllAttributes().forEach(attribute -> {
+        AttributeType type = attribute.getType();
+        
+        System.out.println("Реквизит: " + attribute.getName());
+        System.out.println("  Тип: " + type.getDisplayName());
+        System.out.println("  Составной: " + type.isComposite());
+    });
+}
+```
+
+### Работа с примитивными типами
+
+```java
+// Пример работы со строковым типом
+AttributeType type = attribute.getType();
+List<TypeDescription> descriptions = type.getTypeDescriptions();
+
+for (TypeDescription desc : descriptions) {
+    if (desc.isPrimitive() && "String".equals(desc.getTypeName())) {
+        System.out.println("Примитивный тип: " + desc.getTypeName());
+        
+        // Получение квалификаторов строки
+        if (desc.getQualifier().isPresent() && 
+            desc.getQualifier().get() instanceof StringQualifier) {
+            StringQualifier sq = (StringQualifier) desc.getQualifier().get();
+            System.out.println("  Длина: " + sq.getLength());
+            System.out.println("  Допустимая длина: " + sq.getAllowedLength());
+        }
+    }
+}
+```
+
+### Работа с ссылочными типами
+
+```java
+// Определение ссылочных типов
+for (TypeDescription desc : type.getTypeDescriptions()) {
+    if (desc.isReference()) {
+        System.out.println("Ссылочный тип: " + desc.getTypeName());
+        
+        // Анализ типа ссылки
+        if (desc.getTypeName().startsWith("CatalogRef.")) {
+            String catalogName = desc.getTypeName().substring("CatalogRef.".length());
+            System.out.println("  Ссылка на справочник: " + catalogName);
+        } else if (desc.getTypeName().startsWith("DocumentRef.")) {
+            String documentName = desc.getTypeName().substring("DocumentRef.".length());
+            System.out.println("  Ссылка на документ: " + documentName);
+        }
+    }
+}
+```
+
+### Работа с составными типами
+
+```java
+// Обработка составных типов (несколько типов в одном реквизите)
+AttributeType type = attribute.getType();
+
+if (type.isComposite()) {
+    System.out.println("Составной тип содержит:");
+    
+    for (TypeDescription desc : type.getTypeDescriptions()) {
+        System.out.println("  - " + desc.getTypeName() + 
+                          " (категория: " + desc.getCategory() + ")");
+    }
+}
+```
+
+### Анализ типов по категориям
+
+```java
+import com.github._1c_syntax.bsl.mdo.support.TypeCategory;
+
+// Группировка реквизитов по категориям типов
+Map<TypeCategory, List<Attribute>> attributesByCategory = 
+    catalog.getAllAttributes().stream()
+        .collect(Collectors.groupingBy(attr -> {
+            // Берем категорию первого типа (для простых типов)
+            return attr.getType().getTypeDescriptions().isEmpty() 
+                ? TypeCategory.PRIMITIVE 
+                : attr.getType().getTypeDescriptions().get(0).getCategory();
+        }));
+
+attributesByCategory.forEach((category, attributes) -> {
+    System.out.println("Категория " + category + ":");
+    attributes.forEach(attr -> 
+        System.out.println("  " + attr.getName() + ": " + 
+                          attr.getType().getDisplayName()));
 });
 ```
 
