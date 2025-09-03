@@ -28,7 +28,17 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "Boolean",
+            "category": "PRIMITIVE",
+            "qualifier": {}
+          }
+        ]
+      }
     }
   ],
   "attributes": [],
@@ -58,7 +68,19 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "Boolean",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+            }
+          }
+        ]
+      }
     }
   ],
   "forms": [],

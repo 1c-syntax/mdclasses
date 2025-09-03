@@ -33,7 +33,23 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "dff5b5d8-762d-4490-a336-dcc8d93c17d5",
@@ -65,7 +81,24 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Number",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                  "precision": 10,
+                  "fractionDigits": 0,
+                  "allowedSign": "ANY"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "ecd3c57a-75c8-474c-9c48-ac4c3831ab15",
@@ -97,7 +130,17 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Boolean",
+              "category": "PRIMITIVE",
+              "qualifier": {}
+            }
+          ]
+        }
       }
     ],
     []
@@ -613,24 +656,15 @@
   "mdoType": "CATALOG",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ManagerModule.bsl"
     ]
   ],
   "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    },
     {
       "moduleType": "ObjectModule",
       "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ObjectModule.bsl",
@@ -639,6 +673,15 @@
       },
       "supportVariant": "NONE",
       "isProtected": true
+    },
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Catalogs/Справочник1/ManagerModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+      },
+      "supportVariant": "NONE",
+      "isProtected": false
     }
   ],
   "name": "Справочник1",
@@ -730,7 +773,23 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "String",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                      "length": 10,
+                      "allowedLength": "VARIABLE"
+                    }
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "7580cfcb-eadd-4bfe-8199-ce1c14867e10",
@@ -762,7 +821,24 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "Number",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                      "precision": 10,
+                      "fractionDigits": 0,
+                      "allowedSign": "ANY"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ],
         []

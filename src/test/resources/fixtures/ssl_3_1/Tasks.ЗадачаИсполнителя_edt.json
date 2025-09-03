@@ -30,6 +30,16 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Characteristic.ОбъектыАдресацииЗадач",
+              "category": "PRIMITIVE",
+              "qualifier": {}
+            }
+          ]
+        },
         "format": {
           "content": []
         },
@@ -84,6 +94,25 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.ВнешниеПользователи",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            },
+            {
+              "typeName": "CatalogRef.Пользователи",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -136,6 +165,18 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Characteristic.ОбъектыАдресацииЗадач",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -188,6 +229,18 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.РолиИсполнителей",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -255,7 +308,26 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.ВнешниеПользователи",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            },
+            {
+              "typeName": "CatalogRef.Пользователи",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "b1dc619d-8d91-4f7a-aa50-1d07ff9aebdc",
@@ -294,7 +366,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": true
+        "fillFromFillingValue": true,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "EnumRef.ВариантыВажностиЗадачи",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "370f0c75-d2c5-4be5-a633-4bcc77998ece",
@@ -333,7 +417,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.ГруппыИсполнителейЗадач",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "f80b505f-b4ff-45fb-bd88-74b274ae9d2b",
@@ -372,7 +468,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "2139532c-f6cb-4393-936e-cc912e5adca9",
@@ -411,7 +519,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "755c3eca-4956-4a44-9b38-c11dae00b87f",
@@ -450,7 +570,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "f57c558c-2c94-4b9d-8697-448d0548ab1a",
@@ -489,7 +621,23 @@
         "mask": "",
         "multiLine": true,
         "extendedEdit": true,
-        "fillFromFillingValue": true
+        "fillFromFillingValue": true,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 0,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "a310c09f-4d3a-4d3a-9ad5-7a5735a33a1d",
@@ -528,7 +676,40 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "DocumentRef",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            },
+            {
+              "typeName": "TaskRef",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            },
+            {
+              "typeName": "ChartOfCharacteristicTypesRef",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            },
+            {
+              "typeName": "CatalogRef",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "c32db021-eca1-4b67-aa85-3d6e28c51b53",
@@ -560,7 +741,23 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 500,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "e9ed0ee4-3fbe-4093-9078-cb265ed6842c",
@@ -599,7 +796,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Boolean",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "02466dcf-02a1-4853-814f-a913a9baba45",
@@ -638,7 +847,23 @@
         "mask": "",
         "multiLine": true,
         "extendedEdit": true,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 0,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "c4a40dc9-b619-4219-9d9a-e11f49a14fb1",
@@ -677,7 +902,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "EnumRef.СостоянияБизнесПроцессов",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "62b75eb2-42e1-4484-a77f-b676dd36f3d4",
@@ -716,7 +953,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "5e28e22a-dd6e-4703-92bd-13f5cb0dc023",
@@ -755,7 +1004,23 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 150,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       }
     ],
     []
@@ -5320,18 +5585,18 @@
   "mdoType": "TASK",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
       },
@@ -5339,8 +5604,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
       },

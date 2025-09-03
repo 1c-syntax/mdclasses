@@ -28,7 +28,23 @@
       "indexing": "DONT_INDEX",
       "master": false,
       "denyIncompleteValues": true,
-      "useInTotals": true
+      "useInTotals": true,
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "String",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "explanation": {
@@ -113,7 +129,24 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "Number",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                "precision": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "supportVariant": "NONE",

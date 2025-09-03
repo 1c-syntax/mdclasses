@@ -40,7 +40,17 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "DocumentRef.НазначениеОпросов",
+              "category": "REFERENCE",
+              "qualifier": {}
+            }
+          ]
+        }
       },
       {
         "uuid": "f6a29b80-e4c3-4c4f-8e2c-d4dda851d813",
@@ -79,7 +89,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "DefinedType.Респондент",
+              "category": "DEFINED",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "2d8d5d74-2bc0-4282-af66-e4a37694c147",
@@ -118,7 +140,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "cfd31341-287b-4684-9ac0-b28b4e066f15",
@@ -157,7 +191,33 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.ВопросыШаблонаАнкеты",
+              "category": "REFERENCE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            },
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier/value"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "81de1b0b-7f2d-4098-ae99-061c6a90dc29",
@@ -196,7 +256,23 @@
         "mask": "",
         "multiLine": true,
         "extendedEdit": true,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 0,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "77c8a065-a8aa-4f39-93b6-c88f4c38ec66",
@@ -235,7 +311,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "DefinedType.Интервьюер",
+              "category": "DEFINED",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "366fa6da-d3bf-4bb0-9a55-a307f9edee6a",
@@ -274,7 +362,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "CatalogRef.ШаблоныАнкет",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "dd0610c8-cd87-4fe2-8a1f-70157132785b",
@@ -313,7 +413,19 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "EnumRef.РежимыАнкетирования",
+              "category": "REFERENCE",
+              "qualifier": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+              }
+            }
+          ]
+        }
       }
     ],
     []
@@ -1695,7 +1807,19 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "CatalogRef.ВопросыШаблонаАнкеты",
+                  "category": "REFERENCE",
+                  "qualifier": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "5cec5e16-46ad-4f8c-b869-f5b1cc487884",
@@ -1734,7 +1858,19 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "ChartOfCharacteristicTypesRef.ВопросыДляАнкетирования",
+                  "category": "REFERENCE",
+                  "qualifier": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "ca0363bb-81c2-4fce-b2f0-e8f42d118a74",
@@ -1773,7 +1909,24 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "Number",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                      "precision": 10,
+                      "fractionDigits": 0,
+                      "allowedSign": "ANY"
+                    }
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "7aacdf81-49fd-47a3-a36a-c483f1b05872",
@@ -1812,7 +1965,19 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "Characteristic.ВопросыДляАнкетирования",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "857015e2-afb2-403d-bfb7-7acb5080797b",
@@ -1851,7 +2016,23 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "String",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                      "length": 0,
+                      "allowedLength": "VARIABLE"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ],
         []

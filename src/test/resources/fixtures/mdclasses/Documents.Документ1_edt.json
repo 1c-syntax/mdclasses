@@ -33,7 +33,23 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "String",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "bdbbb8f0-84af-4a72-80c4-21f7436bbe99",
@@ -65,7 +81,24 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Number",
+              "category": "PRIMITIVE",
+              "qualifier": {
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                  "precision": 10,
+                  "fractionDigits": 0,
+                  "allowedSign": "ANY"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "f9b6dbc4-79c1-4985-bfd2-87cb8c9fb01c",
@@ -97,7 +130,17 @@
         "mask": "",
         "multiLine": false,
         "extendedEdit": false,
-        "fillFromFillingValue": false
+        "fillFromFillingValue": false,
+        "type": {
+          "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+          "typeDescriptions": [
+            {
+              "typeName": "Date",
+              "category": "PRIMITIVE",
+              "qualifier": {}
+            }
+          ]
+        }
       }
     ],
     []
@@ -755,18 +798,18 @@
   "mdoType": "DOCUMENT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -774,8 +817,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -899,7 +942,19 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "CatalogRef.Справочник1",
+                  "category": "REFERENCE",
+                  "qualifier": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "22b9ca2e-c861-4f47-8377-cc364b9ebf5d",
@@ -931,7 +986,24 @@
             "mask": "",
             "multiLine": false,
             "extendedEdit": false,
-            "fillFromFillingValue": false
+            "fillFromFillingValue": false,
+            "type": {
+              "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+              "typeDescriptions": [
+                {
+                  "typeName": "Number",
+                  "category": "PRIMITIVE",
+                  "qualifier": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                      "precision": 10,
+                      "fractionDigits": 0,
+                      "allowedSign": "ANY"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ],
         []

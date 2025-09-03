@@ -25,8 +25,17 @@ import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.Dimension;
+import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
+import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -102,6 +111,7 @@ public class MDTestUtils {
           if (CommonModule.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "modules");
           }
+
           xstream.omitField(clazz, "storageFields");
           xstream.omitField(clazz, "plainStorageFields");
           xstream.omitField(clazz, "plainChildren");

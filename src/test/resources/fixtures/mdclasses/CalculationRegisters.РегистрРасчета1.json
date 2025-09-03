@@ -28,7 +28,11 @@
       "indexing": "DONT_INDEX",
       "master": false,
       "denyIncompleteValues": true,
-      "useInTotals": true
+      "useInTotals": true,
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": []
+      }
     }
   ],
   "explanation": {
@@ -113,7 +117,11 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "@reference": "/com.github._1c_syntax.bsl.mdo.CalculationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type"
+      }
     }
   ],
   "supportVariant": "NONE",
