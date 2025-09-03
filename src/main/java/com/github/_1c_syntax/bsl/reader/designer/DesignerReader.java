@@ -37,6 +37,7 @@ import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceURLTemplate;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeType;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
@@ -247,6 +248,7 @@ public class DesignerReader implements MDReader {
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
+    xStream.alias("Type", AttributeType.class);
   }
 
   private Path parentConfigurationsPath() {

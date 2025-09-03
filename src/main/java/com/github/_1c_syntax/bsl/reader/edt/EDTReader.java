@@ -37,6 +37,7 @@ import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceURLTemplate;
 import com.github._1c_syntax.bsl.mdo.children.IntegrationServiceChannel;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeType;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
@@ -244,6 +245,7 @@ public class EDTReader implements MDReader {
     xStream.alias("templates", ObjectTemplate.class);
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
     xStream.alias("Form", ManagedFormData.class);
+    xStream.alias("type", AttributeType.class);
   }
 
   private Path parentConfigurationsPath() {

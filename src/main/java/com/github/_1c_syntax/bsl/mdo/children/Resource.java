@@ -24,6 +24,8 @@ package com.github._1c_syntax.bsl.mdo.children;
 import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.AttributeType;
+import com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -73,6 +75,12 @@ public class Resource implements Attribute, AccessRightsOwner {
   /*
    * Свое
    */
+
+  /**
+   * Тип данных реквизита
+   */
+  @Default
+  AttributeType type = AttributeTypeImpl.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа

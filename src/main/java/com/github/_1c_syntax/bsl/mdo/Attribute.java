@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.AttributeType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 
 /**
@@ -43,4 +44,9 @@ public interface Attribute extends MDChild {
    * Вариант индексирования реквизита
    */
   IndexingType getIndexing();
+  
+  /**
+   * Тип данных реквизита
+   */
+  AttributeType getType();
 }
