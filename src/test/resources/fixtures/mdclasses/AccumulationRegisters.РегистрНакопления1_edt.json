@@ -1,0 +1,128 @@
+{"com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "description": "Регистр накопления",
+  "dimensions": [
+    {
+      "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
+      "name": "Измерение1",
+      "mdoReference": {
+        "type": "DIMENSION",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": []
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "type": "ACCUMULATION_REGISTER",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "master": false,
+      "denyIncompleteValues": false,
+      "useInTotals": true,
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "String",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "explanation": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+  },
+  "forms": [],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+  },
+  "mdoType": "ACCUMULATION_REGISTER",
+  "moduleTypes": [],
+  "modules": [],
+  "name": "РегистрНакопления1",
+  "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 5,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "TOTALS_CONTROL"
+    }
+  ],
+  "resources": [
+    {
+      "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
+      "name": "Ресурс1",
+      "mdoReference": {
+        "type": "RESOURCE",
+        "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
+        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "Number",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                "precision": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        {
+          "langKey": "ru",
+          "value": "Регистр накопления"
+        }
+      ]
+    ]
+  },
+  "templates": [],
+  "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f"
+}}

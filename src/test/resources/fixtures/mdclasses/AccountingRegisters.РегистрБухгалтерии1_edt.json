@@ -1,0 +1,132 @@
+{"com.github._1c_syntax.bsl.mdo.AccountingRegister": {
+  "attributes": [],
+  "commands": [],
+  "comment": "",
+  "description": "Регистр бухгалтерии",
+  "dimensions": [
+    {
+      "uuid": "902c08a9-e457-436a-b0fb-b996f0d9bb00",
+      "name": "Измерение1",
+      "mdoReference": {
+        "type": "DIMENSION",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Измерение.Измерение1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": []
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "type": "ACCOUNTING_REGISTER",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "INDEX",
+      "master": false,
+      "denyIncompleteValues": false,
+      "useInTotals": true,
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "String",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "explanation": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+  },
+  "forms": [],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+  },
+  "mdoType": "ACCOUNTING_REGISTER",
+  "moduleTypes": [],
+  "modules": [],
+  "name": "РегистрБухгалтерии1",
+  "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 5,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "TOTALS_CONTROL"
+    }
+  ],
+  "resources": [
+    {
+      "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
+      "name": "Ресурс1",
+      "mdoReference": {
+        "type": "RESOURCE",
+        "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Resource.Ресурс1",
+        "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.Ресурс.Ресурс1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+      },
+      "passwordMode": false,
+      "kind": "CUSTOM",
+      "indexing": "DONT_INDEX",
+      "type": {
+        "@class": "com.github._1c_syntax.bsl.mdo.support.AttributeTypeImpl",
+        "typeDescriptions": [
+          {
+            "typeName": "Number",
+            "category": "PRIMITIVE",
+            "qualifier": {
+              "value": {
+                "@class": "com.github._1c_syntax.bsl.mdo.support.NumberQualifier",
+                "precision": 10,
+                "fractionDigits": 0,
+                "allowedSign": "ANY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "supportVariant": "NONE",
+  "synonym": {
+    "content": [
+      [
+        {
+          "langKey": "en",
+          "value": "Accounting register"
+        },
+        {
+          "langKey": "ru",
+          "value": "Регистр бухгалтерии"
+        }
+      ]
+    ]
+  },
+  "templates": [],
+  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a"
+}}

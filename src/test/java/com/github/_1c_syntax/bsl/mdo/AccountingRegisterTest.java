@@ -32,7 +32,7 @@ class AccountingRegisterTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, AccountingRegisters.РегистрБухгалтерии1",
+      "true, mdclasses, AccountingRegisters.РегистрБухгалтерии1, _edt",
       "false, mdclasses, AccountingRegisters.РегистрБухгалтерии1"
     }
   )

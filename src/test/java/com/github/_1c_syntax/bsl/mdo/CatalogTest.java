@@ -45,6 +45,12 @@ class CatalogTest {
     assertThat(mdo).isInstanceOf(Catalog.class);
     var catalog = (Catalog) mdo;
     assertThat(catalog.getAllAttributes()).hasSize(3);
+    
+    // Проверяем что типы реквизитов доступны
+    for (var attribute : catalog.getAllAttributes()) {
+      assertThat(attribute.getType()).isNotNull();
+      assertThat(attribute.getType().getDisplayName()).isNotEmpty();
+    }
     assertThat(catalog.getChildren())
       .hasSize(9)
       .anyMatch(ObjectAttribute.class::isInstance)

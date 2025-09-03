@@ -30,7 +30,7 @@ class TasksTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, Tasks.Задача1",
+      "true, mdclasses, Tasks.Задача1, _edt",
       "false, mdclasses, Tasks.Задача1",
       "true, ssl_3_1, Tasks.ЗадачаИсполнителя, _edt",
       "false, ssl_3_1, Tasks.ЗадачаИсполнителя"

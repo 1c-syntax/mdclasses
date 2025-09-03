@@ -32,7 +32,7 @@ class AccumulationRegisterTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, AccumulationRegisters.РегистрНакопления1",
+      "true, mdclasses, AccumulationRegisters.РегистрНакопления1, _edt",
       "false, mdclasses, AccumulationRegisters.РегистрНакопления1"
     }
   )
