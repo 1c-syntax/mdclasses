@@ -199,11 +199,7 @@
               "typeName": "CatalogRef.ВопросыШаблонаАнкеты",
               "category": "REFERENCE",
               "qualifier": {
-                "value": {
-                  "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
-                  "length": 10,
-                  "allowedLength": "VARIABLE"
-                }
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier"
               }
             },
             {
@@ -212,7 +208,8 @@
               "qualifier": {
                 "value": {
                   "@class": "com.github._1c_syntax.bsl.mdo.support.StringQualifier",
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/typeDescriptions/com.github._1c_syntax.bsl.mdo.support.TypeDescription/qualifier/value"
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
                 }
               }
             }
@@ -1660,18 +1657,18 @@
   "mdoType": "DOCUMENT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -1679,8 +1676,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Documents/Анкета/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },

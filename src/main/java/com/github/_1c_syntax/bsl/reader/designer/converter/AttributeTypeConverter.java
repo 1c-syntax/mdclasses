@@ -27,7 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.NumberQualifier;
 import com.github._1c_syntax.bsl.mdo.support.StringQualifier;
 import com.github._1c_syntax.bsl.mdo.support.TypeDescription;
 import com.github._1c_syntax.bsl.mdo.support.TypeCategory;
-import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.AttributeTypeConverterBase;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
@@ -39,12 +39,12 @@ import java.util.Optional;
  * Конвертер типов данных для Designer формата
  */
 @DesignerConverter
-public class AttributeTypeConverter extends AbstractReadConverter {
+public class AttributeTypeConverter extends AttributeTypeConverterBase {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // В designer формате Type элемент содержит v8:Type и квалификаторы
-    String typeName = null;
+    List<String> typeNames = new ArrayList<>();
     Optional<StringQualifier> stringQualifier = Optional.empty();
     Optional<NumberQualifier> numberQualifier = Optional.empty();
     
@@ -53,7 +53,7 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       String nodeName = reader.getNodeName();
       
       if ("v8:Type".equals(nodeName)) {
-        typeName = normalizeTypeName(reader.getValue());
+        typeNames.add(normalizeTypeName(reader.getValue()));
       } else if ("v8:StringQualifiers".equals(nodeName)) {
         stringQualifier = Optional.of(parseStringQualifiers(reader));
       } else if ("v8:NumberQualifiers".equals(nodeName)) {
@@ -63,23 +63,7 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       reader.moveUp();
     }
     
-    if (typeName == null || typeName.isEmpty()) {
-      return AttributeTypeImpl.EMPTY;
-    }
-    
-    TypeDescription.TypeDescriptionBuilder builder = TypeDescription.builder()
-      .typeName(typeName)
-      .category(determineTypeCategory(typeName));
-    
-    if (stringQualifier.isPresent()) {
-      builder.qualifier(Optional.of(stringQualifier.get()));
-    } else if (numberQualifier.isPresent()) {
-      builder.qualifier(Optional.of(numberQualifier.get()));
-    }
-    
-    return AttributeTypeImpl.builder()
-      .typeDescriptions(List.of(builder.build()))
-      .build();
+    return createAttributeType(typeNames, stringQualifier, numberQualifier);
   }
   
   @Override
@@ -87,31 +71,12 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return AttributeType.class.isAssignableFrom(type);
   }
   
-  private TypeDescription parseTypeWithQualifiers(HierarchicalStreamReader reader, String typeName) {
-    TypeDescription.TypeDescriptionBuilder builder = TypeDescription.builder()
-      .typeName(normalizeTypeName(typeName))
-      .category(determineTypeCategory(typeName));
-    
-    // Ищем квалификаторы на том же уровне что и v8:Type
-    HierarchicalStreamReader parent = reader;
-    while (parent.hasMoreChildren()) {
-      parent.moveDown();
-      String qualifierName = parent.getNodeName();
-      
-      if ("v8:StringQualifiers".equals(qualifierName)) {
-        StringQualifier qualifier = parseStringQualifiers(parent);
-        builder.qualifier(Optional.of(qualifier));
-      } else if ("v8:NumberQualifiers".equals(qualifierName)) {
-        NumberQualifier qualifier = parseNumberQualifiers(parent);
-        builder.qualifier(Optional.of(qualifier));
-      }
-      
-      parent.moveUp();
-    }
-    
-    return builder.build();
-  }
   
+  /**
+   * Парсит строковые квалификаторы из XML
+   * @param reader XML reader
+   * @return объект StringQualifier
+   */
   private StringQualifier parseStringQualifiers(HierarchicalStreamReader reader) {
     StringQualifier.StringQualifierBuilder builder = StringQualifier.builder();
     
@@ -122,10 +87,17 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       
       switch (nodeName) {
         case "v8:Length":
-          builder.length(Integer.parseInt(value));
+          try {
+            builder.length(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения длины
+          }
           break;
         case "v8:AllowedLength":
           builder.allowedLength("Fixed".equals(value) ? StringQualifier.AllowedLength.FIXED : StringQualifier.AllowedLength.VARIABLE);
+          break;
+        default:
+          // Игнорируем неизвестные элементы
           break;
       }
       
@@ -135,6 +107,11 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return builder.build();
   }
   
+  /**
+   * Парсит числовые квалификаторы из XML
+   * @param reader XML reader
+   * @return объект NumberQualifier
+   */
   private NumberQualifier parseNumberQualifiers(HierarchicalStreamReader reader) {
     NumberQualifier.NumberQualifierBuilder builder = NumberQualifier.builder();
     
@@ -145,13 +122,24 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       
       switch (nodeName) {
         case "v8:Digits":
-          builder.precision(Integer.parseInt(value));
+          try {
+            builder.precision(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения точности
+          }
           break;
         case "v8:FractionDigits":
-          builder.fractionDigits(Integer.parseInt(value));
+          try {
+            builder.fractionDigits(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения дробных разрядов
+          }
           break;
         case "v8:AllowedSign":
           builder.allowedSign("Nonnegative".equals(value) ? NumberQualifier.AllowedSign.NONNEGATIVE : NumberQualifier.AllowedSign.ANY);
+          break;
+        default:
+          // Игнорируем неизвестные элементы
           break;
       }
       
@@ -161,23 +149,23 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return builder.build();
   }
   
+  /**
+   * Нормализует имя типа, удаляя префиксы пространств имен
+   * @param typeName исходное имя типа
+   * @return нормализованное имя типа
+   */
   private String normalizeTypeName(String typeName) {
-    if (typeName.startsWith("xs:")) {
-      return typeName.substring(3);
+    if (typeName == null) {
+      return "";
     }
-    if (typeName.startsWith("cfg:")) {
-      return typeName.substring(4);
+    String trimmed = typeName.trim();
+    if (trimmed.startsWith("xs:")) {
+      return trimmed.substring(3);
     }
-    return typeName;
+    if (trimmed.startsWith("cfg:")) {
+      return trimmed.substring(4);
+    }
+    return trimmed;
   }
   
-  private TypeCategory determineTypeCategory(String typeName) {
-    if (typeName.contains("Ref.") || typeName.contains("Object.")) {
-      return TypeCategory.REFERENCE;
-    }
-    if (typeName.startsWith("DefinedType.")) {
-      return TypeCategory.DEFINED;
-    }
-    return TypeCategory.PRIMITIVE;
-  }
 }

@@ -67,14 +67,32 @@ public final class AttributeTypeFactory {
    * Создает описание типа на основе строкового представления
    */
   private static TypeDescription createTypeDescription(String typeName) {
-    TypeCategory category = determineTypeCategory(typeName);
+    String normalized = normalizeTypeName(typeName);
+    TypeCategory category = determineTypeCategory(normalized);
     
     return TypeDescription.builder()
-      .typeName(typeName)
+      .typeName(normalized)
       .category(category)
       .build();
   }
   
+  /**
+   * Нормализует имя типа, удаляя префиксы пространств имен
+   */
+  private static String normalizeTypeName(String typeName) {
+    if (typeName == null) {
+      return null;
+    }
+    String trimmed = typeName.trim();
+    if (trimmed.startsWith("xs:")) {
+      return trimmed.substring(3);
+    }
+    if (trimmed.startsWith("cfg:")) {
+      return trimmed.substring(4);
+    }
+    return trimmed;
+  }
+
   /**
    * Определяет категорию типа по его названию
    */
@@ -130,6 +148,14 @@ public final class AttributeTypeFactory {
    * Создает тип с квалификаторами строки
    */
   public static AttributeType createStringType(int length, StringQualifier.AllowedLength allowedLength) {
+    // Валидация параметров
+    if (length < 0) {
+      throw new IllegalArgumentException("String length must be >= 0");
+    }
+    if (allowedLength == null) {
+      allowedLength = StringQualifier.AllowedLength.VARIABLE;
+    }
+    
     StringQualifier qualifier = StringQualifier.builder()
       .length(length)
       .allowedLength(allowedLength)
@@ -150,6 +176,17 @@ public final class AttributeTypeFactory {
    * Создает тип с квалификаторами числа
    */
   public static AttributeType createNumberType(int precision, int fractionDigits, NumberQualifier.AllowedSign allowedSign) {
+    // Валидация параметров
+    if (precision <= 0) {
+      throw new IllegalArgumentException("Number precision must be > 0");
+    }
+    if (fractionDigits < 0 || fractionDigits > precision) {
+      throw new IllegalArgumentException("fractionDigits must be in range [0, precision]");
+    }
+    if (allowedSign == null) {
+      allowedSign = NumberQualifier.AllowedSign.ANY;
+    }
+    
     NumberQualifier qualifier = NumberQualifier.builder()
       .precision(precision)
       .fractionDigits(fractionDigits)

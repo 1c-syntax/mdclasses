@@ -27,7 +27,7 @@ import com.github._1c_syntax.bsl.mdo.support.NumberQualifier;
 import com.github._1c_syntax.bsl.mdo.support.StringQualifier;
 import com.github._1c_syntax.bsl.mdo.support.TypeDescription;
 import com.github._1c_syntax.bsl.mdo.support.TypeCategory;
-import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
+import com.github._1c_syntax.bsl.reader.common.converter.AttributeTypeConverterBase;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
@@ -39,7 +39,7 @@ import java.util.Optional;
  * Конвертер типов данных для EDT формата
  */
 @EDTConverter
-public class AttributeTypeConverter extends AbstractReadConverter {
+public class AttributeTypeConverter extends AttributeTypeConverterBase {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -63,29 +63,7 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       reader.moveUp();
     }
     
-    if (typeNames.isEmpty()) {
-      return AttributeTypeImpl.EMPTY;
-    }
-    
-    List<TypeDescription> typeDescriptions = new ArrayList<>();
-    for (String typeName : typeNames) {
-      TypeDescription.TypeDescriptionBuilder builder = TypeDescription.builder()
-        .typeName(typeName)
-        .category(determineTypeCategory(typeName));
-      
-      // Квалификаторы применяются ко всем типам в группе
-      if (stringQualifier.isPresent()) {
-        builder.qualifier(Optional.of(stringQualifier.get()));
-      } else if (numberQualifier.isPresent()) {
-        builder.qualifier(Optional.of(numberQualifier.get()));
-      }
-      
-      typeDescriptions.add(builder.build());
-    }
-    
-    return AttributeTypeImpl.builder()
-      .typeDescriptions(typeDescriptions)
-      .build();
+    return createAttributeType(typeNames, stringQualifier, numberQualifier);
   }
   
   @Override
@@ -93,31 +71,12 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return AttributeType.class.isAssignableFrom(type);
   }
   
-  private TypeDescription parseTypeWithQualifiers(HierarchicalStreamReader reader, String typeName) {
-    TypeDescription.TypeDescriptionBuilder builder = TypeDescription.builder()
-      .typeName(typeName)
-      .category(determineTypeCategory(typeName));
-    
-    // Ищем квалификаторы на том же уровне что и types
-    HierarchicalStreamReader parent = reader;
-    while (parent.hasMoreChildren()) {
-      parent.moveDown();
-      String qualifierName = parent.getNodeName();
-      
-      if ("stringQualifiers".equals(qualifierName)) {
-        StringQualifier qualifier = parseStringQualifiers(parent);
-        builder.qualifier(Optional.of(qualifier));
-      } else if ("numberQualifiers".equals(qualifierName)) {
-        NumberQualifier qualifier = parseNumberQualifiers(parent);
-        builder.qualifier(Optional.of(qualifier));
-      }
-      
-      parent.moveUp();
-    }
-    
-    return builder.build();
-  }
   
+  /**
+   * Парсит строковые квалификаторы из EDT
+   * @param reader EDT reader
+   * @return объект StringQualifier
+   */
   private StringQualifier parseStringQualifiers(HierarchicalStreamReader reader) {
     StringQualifier.StringQualifierBuilder builder = StringQualifier.builder();
     
@@ -128,10 +87,17 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       
       switch (nodeName) {
         case "length":
-          builder.length(Integer.parseInt(value));
+          try {
+            builder.length(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения длины
+          }
           break;
         case "allowedLength":
           builder.allowedLength("Fixed".equals(value) ? StringQualifier.AllowedLength.FIXED : StringQualifier.AllowedLength.VARIABLE);
+          break;
+        default:
+          // Игнорируем неизвестные элементы
           break;
       }
       
@@ -141,6 +107,11 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return builder.build();
   }
   
+  /**
+   * Парсит числовые квалификаторы из EDT
+   * @param reader EDT reader
+   * @return объект NumberQualifier
+   */
   private NumberQualifier parseNumberQualifiers(HierarchicalStreamReader reader) {
     NumberQualifier.NumberQualifierBuilder builder = NumberQualifier.builder();
     
@@ -151,13 +122,24 @@ public class AttributeTypeConverter extends AbstractReadConverter {
       
       switch (nodeName) {
         case "precision":
-          builder.precision(Integer.parseInt(value));
+          try {
+            builder.precision(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения точности
+          }
           break;
         case "fractionDigits":
-          builder.fractionDigits(Integer.parseInt(value));
+          try {
+            builder.fractionDigits(Integer.parseInt(value));
+          } catch (NumberFormatException e) {
+            // Игнорируем некорректные значения дробных разрядов
+          }
           break;
         case "allowedSign":
           builder.allowedSign("Nonnegative".equals(value) ? NumberQualifier.AllowedSign.NONNEGATIVE : NumberQualifier.AllowedSign.ANY);
+          break;
+        default:
+          // Игнорируем неизвестные элементы
           break;
       }
       
@@ -167,13 +149,4 @@ public class AttributeTypeConverter extends AbstractReadConverter {
     return builder.build();
   }
   
-  private TypeCategory determineTypeCategory(String typeName) {
-    if (typeName.contains("Ref.") || typeName.contains("Object.")) {
-      return TypeCategory.REFERENCE;
-    }
-    if (typeName.startsWith("DefinedType.")) {
-      return TypeCategory.DEFINED;
-    }
-    return TypeCategory.PRIMITIVE;
-  }
 }
