@@ -28,7 +28,16 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "name": "Boolean",
+            "nameRu": "Булево"
+          }
+        ],
+        "composite": false
+      }
     }
   ],
   "attributes": [],
@@ -58,7 +67,15 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+          }
+        ],
+        "composite": false
+      }
     }
   ],
   "forms": [],

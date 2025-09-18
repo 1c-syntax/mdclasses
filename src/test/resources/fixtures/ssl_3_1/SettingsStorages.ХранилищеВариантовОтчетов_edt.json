@@ -235,6 +235,15 @@
                 "name": "БыстрыеНастройки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueTable",
+                      "nameRu": "ТаблицаЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -242,6 +251,15 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DataCompositionSettingsComposer",
+                      "nameRu": "КомпоновщикНастроекКомпоновкиДанных"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -249,6 +267,10 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [],
+                  "composite": false
                 }
               },
               {
@@ -256,6 +278,15 @@
                 "name": "ВариантМодифицирован",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Boolean",
+                      "nameRu": "Булево"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -263,6 +294,15 @@
                 "name": "КлючТекущегоВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "String",
+                      "nameRu": "Строка"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -560,6 +600,15 @@
                 "name": "ДеревоВариантовОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueTree",
+                      "nameRu": "ДеревоЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -567,6 +616,16 @@
                 "name": "ТекущийПользователь",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.Пользователи",
+                      "nameRu": "СправочникСсылка.Пользователи",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -574,6 +633,9 @@
                 "name": "ОтчетИнформация",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -581,6 +643,14 @@
                 "name": "ПолныеПраваНаВарианты",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -595,6 +665,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -602,6 +680,14 @@
                 "name": "ПоказыватьЛичныеВариантыОтчетовДругихАвторов",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -609,6 +695,14 @@
                 "name": "КлючВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -623,6 +717,19 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.ВнешниеПользователи",
+                      "nameRu": "СправочникСсылка.ВнешниеПользователи",
+                      "composite": false
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": true
                 }
               }
             ],
@@ -711,6 +818,14 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -718,6 +833,9 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -725,6 +843,14 @@
                 "name": "ИмяКоллекцииПолей",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -732,6 +858,9 @@
                 "name": "ИдентификаторЭлементаСтруктурыНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -739,6 +868,14 @@
                 "name": "Режим",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -1383,6 +1520,15 @@
                 "name": "НачалоПериода",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Date",
+                      "nameRu": "Дата"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1390,6 +1536,14 @@
                 "name": "КонецПериода",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1404,6 +1558,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1411,6 +1573,14 @@
                 "name": "ИмяТекущегоЭлемента",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1418,6 +1588,14 @@
                 "name": "ОграничениеСнизу",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1425,6 +1603,14 @@
                 "name": "ВыбранныйГодОграничен",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1432,6 +1618,15 @@
                 "name": "Период",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "StandardPeriod",
+                      "nameRu": "СтандартныйПериод"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1439,6 +1634,14 @@
                 "name": "ИмяКоманды",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -1529,6 +1732,14 @@
                     }
                   ]
                 ]
+              },
+              "type": {
+                "types": [
+                  {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                  }
+                ],
+                "composite": false
               }
             }
           ]
@@ -1630,6 +1841,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -1644,6 +1863,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -2930,6 +3157,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -2944,6 +3174,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -2951,6 +3184,15 @@
                 "name": "Значения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueList",
+                      "nameRu": "СписокЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2965,6 +3207,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2972,6 +3222,14 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2986,6 +3244,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3000,6 +3266,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Number",
+                      "nameRu": "Число"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3014,6 +3289,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3021,6 +3304,9 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3028,6 +3314,9 @@
                 "name": "СвойстваЗаголовка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3035,6 +3324,9 @@
                 "name": "ИдентификаторЭлементаСтруктурыНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3042,6 +3334,14 @@
                 "name": "ДоступныеЗначения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3049,6 +3349,14 @@
                 "name": "СнятьФильтрПоУсловию",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3056,6 +3364,9 @@
                 "name": "ИндексыГруппИЭлементов",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3063,6 +3374,14 @@
                 "name": "КоличествоСтрокВРазделеОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3070,6 +3389,14 @@
                 "name": "ВыведеныВсеЗначенияРазделаОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3077,6 +3404,14 @@
                 "name": "КоличествоПервыхЧитаемыхСтрок",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3084,6 +3419,14 @@
                 "name": "АдресДанныхРасшифровки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3091,6 +3434,15 @@
                 "name": "Документ",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "SpreadsheetDocument",
+                      "nameRu": "ТабличныйДокумент"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -3207,6 +3559,14 @@
               "name": "ОтключитьОписания",
               "title": {
                 "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+              },
+              "type": {
+                "types": [
+                  {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                  }
+                ],
+                "composite": false
               }
             }
           ]
@@ -3398,6 +3758,16 @@
                 "name": "ВариантСсылка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.ВариантыОтчетов",
+                      "nameRu": "СправочникСсылка.ВариантыОтчетов",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3405,6 +3775,21 @@
                 "name": "ПодсистемаСсылка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.ИдентификаторыОбъектовРасширений",
+                      "nameRu": "СправочникСсылка.ИдентификаторыОбъектовРасширений",
+                      "composite": false
+                    },
+                    {
+                      "name": "CatalogRef.ИдентификаторыОбъектовМетаданных",
+                      "nameRu": "СправочникСсылка.ИдентификаторыОбъектовМетаданных",
+                      "composite": false
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -3412,6 +3797,17 @@
                 "name": "ОтчетСсылка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[2]"
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -3419,6 +3815,14 @@
                 "name": "ГруппыПодсистем",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3426,6 +3830,14 @@
                 "name": "ЕстьДругиеОтчеты",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3433,6 +3845,14 @@
                 "name": "ВариантыПанели",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3440,6 +3860,14 @@
                 "name": "ВариантыПанелиНомерЭлемента",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3447,6 +3875,14 @@
                 "name": "ВариантыПанелиКлючТекущегоВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3461,6 +3897,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3468,6 +3912,14 @@
                 "name": "ОтчетНаименование",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -3887,6 +4339,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3901,6 +4356,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3915,6 +4373,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3929,6 +4390,9 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3943,6 +4407,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3950,6 +4422,9 @@
                 "name": "ЛевоеЗначение1",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3957,6 +4432,9 @@
                 "name": "ЛевоеЗначение2",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -3971,6 +4449,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3978,6 +4464,14 @@
                 "name": "Использование2",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3985,6 +4479,14 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3992,6 +4494,9 @@
                 "name": "СвойстваЗаголовка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -4006,6 +4511,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4020,6 +4533,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4027,6 +4548,15 @@
                 "name": "ТипЗначенияФильтра",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "TypeDescription",
+                      "nameRu": "ОписаниеТипа"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4034,6 +4564,14 @@
                 "name": "ДоступныеЗначения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4041,6 +4579,9 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -4048,6 +4589,14 @@
                 "name": "КлючТекущегоВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4062,6 +4611,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -4709,6 +5266,14 @@
                 "name": "ПрототипКлюч",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4716,6 +5281,14 @@
                 "name": "ВариантыОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4723,6 +5296,14 @@
                 "name": "ВариантСсылка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4730,6 +5311,14 @@
                 "name": "ВариантКлючВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4737,6 +5326,14 @@
                 "name": "ПрототипСсылка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4744,6 +5341,14 @@
                 "name": "ИдентификаторТекущейСтроки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4758,6 +5363,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4772,6 +5385,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4779,6 +5400,9 @@
                 "name": "Контекст",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -4793,6 +5417,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4800,6 +5432,14 @@
                 "name": "ОписаниеМодифицировано",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4807,6 +5447,14 @@
                 "name": "НаименованиеМодифицировано",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4814,6 +5462,14 @@
                 "name": "ПрототипПредопределенный",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4821,6 +5477,16 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogObject.ВариантыОтчетов",
+                      "nameRu": "СправочникОбъект.ВариантыОтчетов",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4828,6 +5494,14 @@
                 "name": "ПользователиВарианта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[11]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4835,6 +5509,14 @@
                 "name": "ИспользоватьВнешнихПользователей",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4842,6 +5524,14 @@
                 "name": "ИспользоватьГруппыПользователей",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4849,6 +5539,14 @@
                 "name": "ЭтоКонтекстныйВариантОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4856,6 +5554,14 @@
                 "name": "ВариантыКонтекста",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4870,6 +5576,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -5146,6 +5860,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5160,6 +5882,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5167,6 +5897,14 @@
                 "name": "ХранилищеПользовательскихНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5181,6 +5919,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5188,6 +5934,14 @@
                 "name": "ОписаниеВариантовОтчетов",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[12]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -5366,6 +6120,14 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5373,6 +6135,9 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -5380,6 +6145,14 @@
                 "name": "ИмяТаблицы",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5387,6 +6160,9 @@
                 "name": "ИдентификаторЭлементаСтруктурыНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -5394,6 +6170,14 @@
                 "name": "Картинки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5401,6 +6185,14 @@
                 "name": "Режим",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5408,6 +6200,14 @@
                 "name": "Отборы",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[13]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -6633,6 +7433,14 @@
                 "name": "КомпоновщикНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6640,6 +7448,9 @@
                 "name": "НастройкиОтчета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -6647,6 +7458,9 @@
                 "name": "ИдентификаторЭлементаСтруктурыНастроек",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -6654,6 +7468,9 @@
                 "name": "ИдентификаторКД",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               },
               {
@@ -6661,6 +7478,14 @@
                 "name": "НаименованиеПоУмолчанию",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6668,6 +7493,14 @@
                 "name": "Наименование",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6682,6 +7515,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6696,6 +7537,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6710,6 +7559,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6724,6 +7581,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6738,6 +7603,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6752,6 +7625,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6766,6 +7647,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6773,6 +7662,14 @@
                 "name": "ФлажкиОбластиОтображения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6780,6 +7677,14 @@
                 "name": "ТребуетсяОбновлениеНаименованияПоУмолчанию",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6787,6 +7692,14 @@
                 "name": "ЭтоНовый",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6801,6 +7714,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -6808,6 +7729,9 @@
                 "name": "ОформляемоеПоле",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[14]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type"
                 }
               }
             ],

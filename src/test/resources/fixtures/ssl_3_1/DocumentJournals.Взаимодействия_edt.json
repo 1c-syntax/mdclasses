@@ -27,9 +27,38 @@
           "mdoRef": "DocumentJournal.Взаимодействия",
           "mdoRefRu": "ЖурналДокументов.Взаимодействия"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER"
+        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.Автор",
+              "mdoRefRu": "Документ.Встреча.Реквизит.Автор"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Автор",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Автор"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Автор",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Автор"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Автор",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Автор"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.Автор",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Автор"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "a2accf54-5966-42e8-ab2e-e56e415963ee",
@@ -55,9 +84,15 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          {
+            "type": "ATTRIBUTE",
+            "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Входящий",
+            "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Входящий"
+          }
+        ]
       },
       {
         "uuid": "d8eb5329-5900-4b5d-b45e-458513dddfef",
@@ -83,9 +118,43 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER"
+        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Ответственный",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Ответственный"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.Ответственный",
+              "mdoRefRu": "Документ.Встреча.Реквизит.Ответственный"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Ответственный",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Ответственный"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Ответственный",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Ответственный"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Ответственный",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Ответственный"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.Ответственный",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Ответственный"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "6d521e58-24a3-4f19-b4b0-dff84f7ca86b",
@@ -111,9 +180,43 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Тема",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Тема"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Тема",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Тема"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.Тема",
+              "mdoRefRu": "Документ.Встреча.Реквизит.Тема"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Тема",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Тема"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Тема",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Тема"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.Тема",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Тема"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "8c413fa5-9e24-4b81-aa55-0e78c5e3e20f",
@@ -139,9 +242,43 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.СписокУчастников",
+              "mdoRefRu": "Документ.Встреча.Реквизит.СписокУчастников"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.АбонентПредставление",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.АбонентПредставление"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.СписокПолучателейПисьма",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.СписокПолучателейПисьма"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ОтправительПредставление",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ОтправительПредставление"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.СписокУчастников",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.СписокУчастников"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.СписокУчастников",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.СписокУчастников"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "a4322f22-7de0-4018-8e06-9f1aa7cf0c07",
@@ -167,9 +304,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.СтатусПисьма",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.СтатусПисьма"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.Состояние",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Состояние"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "eaaed107-69d4-4963-be83-74519e331715",
@@ -195,9 +346,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER"
+        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.УчетнаяЗапись",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.УчетнаяЗапись"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.УчетнаяЗапись",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.УчетнаяЗапись"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "38cddf96-8703-4396-8c73-47fb22828a48",
@@ -223,9 +388,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ЕстьВложения",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ЕстьВложения"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ЕстьВложения",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ЕстьВложения"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "2c2cb793-0177-4983-91ca-9c292c5b10f1",
@@ -251,9 +430,43 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER"
+        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.Встреча.Реквизит.ВзаимодействиеОснование"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.ВзаимодействиеОснование"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.ВзаимодействиеОснование"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ВзаимодействиеОснование"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ВзаимодействиеОснование"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.ВзаимодействиеОснование",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ВзаимодействиеОснование"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "2a2e7f51-a4e5-48ec-b969-b1fca18ba9b5",
@@ -279,9 +492,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER"
+        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ДатаПолучения",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ДатаПолучения"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаОтправления",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаОтправления"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "221fa473-3327-44e6-a033-6fdfd2be713c",
@@ -307,9 +534,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Размер",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Размер"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Размер",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Размер"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "7a5973f0-7e29-44af-8e7b-70af71f704a4",
@@ -335,9 +576,43 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX"
+        "indexing": "INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Встреча.Attribute.Важность",
+              "mdoRefRu": "Документ.Встреча.Реквизит.Важность"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Важность",
+              "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Важность"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Важность",
+              "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Важность"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Важность",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Важность"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Важность",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Важность"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.Важность",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Важность"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "2b2bf0f7-0946-4492-bba0-27f007a70e64",
@@ -363,9 +638,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.ДатаКогдаОтправить",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаКогдаОтправить"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаКогдаОтправить",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаКогдаОтправить"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "22c9a703-5ed3-4156-8fa6-476b1c1452f1",
@@ -391,9 +680,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.СообщениеSMS.Attribute.ДатаАктуальностиОтправки",
+              "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаАктуальностиОтправки"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаАктуальностиОтправки",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаАктуальностиОтправки"
+            }
+          ],
+          []
+        ]
       },
       {
         "uuid": "8be10d88-8c37-4444-9c89-6cbbe9913bda",
@@ -419,9 +722,23 @@
         "owner": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn/owner"
         },
-        "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "INDEX"
+        "indexing": "INDEX",
+        "references": [
+          [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ИдентификаторСообщения",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ИдентификаторСообщения"
+            },
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ИдентификаторСообщения",
+              "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ИдентификаторСообщения"
+            }
+          ],
+          []
+        ]
       }
     ],
     []
@@ -2959,6 +3276,15 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DynamicList",
+                      "nameRu": "ДинамическийСписок"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2973,6 +3299,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "String",
+                      "nameRu": "Строка"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2980,6 +3315,16 @@
                 "name": "Ответственный",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn[3]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.Пользователи",
+                      "nameRu": "СправочникСсылка.Пользователи",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -2994,6 +3339,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3008,6 +3361,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3022,6 +3383,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3029,6 +3398,14 @@
                 "name": "Закладки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3036,6 +3413,15 @@
                 "name": "ТаблицаДопРеквизитовСвойств",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueTable",
+                      "nameRu": "ТаблицаЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3050,6 +3436,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueTree",
+                      "nameRu": "ДеревоЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3057,6 +3452,16 @@
                 "name": "ТекущееСвойствоПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения",
+                      "nameRu": "ПланВидовХарактеристикСсылка.ДополнительныеРеквизитыИСведения",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3064,6 +3469,15 @@
                 "name": "ТекущееСвойствоПанелиНавигацииЯвляетсяРеквизитом",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Boolean",
+                      "nameRu": "Булево"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3071,6 +3485,15 @@
                 "name": "СписокВыбораТипаПредмета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueList",
+                      "nameRu": "СписокЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3078,6 +3501,14 @@
                 "name": "ИмяТекущейПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3085,6 +3516,14 @@
                 "name": "ПредставлениеТекущегоСвойства",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3092,6 +3531,14 @@
                 "name": "ПоказыватьВсеАктивныеПредметы",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3099,6 +3546,14 @@
                 "name": "Папки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3106,6 +3561,14 @@
                 "name": "НастройкиДеревьевПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3113,6 +3576,14 @@
                 "name": "НеОтрабатыватьАктивизациюПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3120,6 +3591,14 @@
                 "name": "ОтправлятьСообщениеСразу",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3127,6 +3606,14 @@
                 "name": "ТаблицаДопРеквизитовСвойствТипаБулево",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3134,6 +3621,14 @@
                 "name": "Категории",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3141,6 +3636,14 @@
                 "name": "ТолькоПочта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3148,6 +3651,14 @@
                 "name": "ОписанияНайденоПолнотекстовымПоиском",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3162,6 +3673,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3169,6 +3688,14 @@
                 "name": "РасширенныйПоиск",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3176,6 +3703,14 @@
                 "name": "ИнформационнаяБазаФайловая",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3183,6 +3718,14 @@
                 "name": "ДокументыДоступныеДляСоздания",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3190,6 +3733,14 @@
                 "name": "ИспользоватьПризнакРассмотрено",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3197,6 +3748,36 @@
                 "name": "ВзаимодействиеДляКоторогоСформированПредпросмотр",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DocumentRef.ЭлектронноеПисьмоИсходящее",
+                      "nameRu": "ДокументСсылка.ЭлектронноеПисьмоИсходящее",
+                      "composite": false
+                    },
+                    {
+                      "name": "DocumentRef.ЗапланированноеВзаимодействие",
+                      "nameRu": "ДокументСсылка.ЗапланированноеВзаимодействие",
+                      "composite": false
+                    },
+                    {
+                      "name": "DocumentRef.ЭлектронноеПисьмоВходящее",
+                      "nameRu": "ДокументСсылка.ЭлектронноеПисьмоВходящее",
+                      "composite": false
+                    },
+                    {
+                      "name": "DocumentRef.ТелефонныйЗвонок",
+                      "nameRu": "ДокументСсылка.ТелефонныйЗвонок",
+                      "composite": false
+                    },
+                    {
+                      "name": "DocumentRef.Встреча",
+                      "nameRu": "ДокументСсылка.Встреча",
+                      "composite": false
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -3211,6 +3792,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3218,6 +3807,14 @@
                 "name": "ПредметыПанельНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3232,6 +3829,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3239,6 +3844,14 @@
                 "name": "ТолькоЗначимыеПредметы",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3246,6 +3859,14 @@
                 "name": "ТолькоЗначимыеКонтакты",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3253,6 +3874,14 @@
                 "name": "ОтображатьОбластьЧтения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3260,6 +3889,14 @@
                 "name": "ПанельНавигацииСкрыта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3267,6 +3904,14 @@
                 "name": "ЗаголовокПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3274,6 +3919,14 @@
                 "name": "ЗаголовокПанелиНавигацииПодсказка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3281,6 +3934,10 @@
                 "name": "ЗначениеУстановленноеПослеЗаполненияПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [],
+                  "composite": false
                 }
               },
               {
@@ -3288,6 +3945,14 @@
                 "name": "ВключитьНебезопасноеСодержимое",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3295,6 +3960,14 @@
                 "name": "ЕстьНебезопасноеСодержимое",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3302,6 +3975,14 @@
                 "name": "ЗапрещеноОтображениеНебезопасногоСодержимогоВПисьмах",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3309,6 +3990,14 @@
                 "name": "ПравоПометкиУдаленияПапок",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3316,6 +4005,9 @@
                 "name": "ГиперссылкаЦвет",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[39]/type"
                 }
               },
               {
@@ -3323,6 +4015,15 @@
                 "name": "ДатаПредыдущегоВыполненияКомандыОтправкиПолученияПочты",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Date",
+                      "nameRu": "Дата"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3330,6 +4031,14 @@
                 "name": "ДатаПредыдущегоПолученияОтправкиПочты",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[45]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3337,6 +4046,14 @@
                 "name": "ОтправкаПолучениеПисемВыполняется",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3344,6 +4061,14 @@
                 "name": "РазделениеВключено",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -3812,6 +4537,14 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3819,6 +4552,14 @@
                 "name": "Ответственный",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn[3]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3826,6 +4567,14 @@
                 "name": "Статус",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3833,6 +4582,14 @@
                 "name": "ОтборПоПредмету",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3840,6 +4597,16 @@
                 "name": "Контакт",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DefinedType.КонтактВзаимодействия",
+                      "nameRu": "ОпределяемыйТип.КонтактВзаимодействия",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3847,6 +4614,16 @@
                 "name": "ПредметДляОтбора",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DefinedType.ПредметВзаимодействия",
+                      "nameRu": "ОпределяемыйТип.ПредметВзаимодействия",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3854,6 +4631,14 @@
                 "name": "ВВидеДерева",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3861,6 +4646,14 @@
                 "name": "ДеревоВзаимодействий",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3868,6 +4661,15 @@
                 "name": "Интервал",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "StandardPeriod",
+                      "nameRu": "СтандартныйПериод"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3875,6 +4677,14 @@
                 "name": "ТипВзаимодействия",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3882,6 +4692,14 @@
                 "name": "ТолькоПочта",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3889,6 +4707,14 @@
                 "name": "ДокументыДоступныеДляСоздания",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -3896,6 +4722,14 @@
                 "name": "ИспользоватьПризнакРассмотрено",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -4146,6 +4980,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4153,6 +4995,14 @@
                 "name": "ФормаДиалогаПечатиПриОткрытииОткрывалась",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4160,6 +5010,14 @@
                 "name": "НеВызыватьКомандуПечати",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4167,6 +5025,14 @@
                 "name": "Вложения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4174,6 +5040,14 @@
                 "name": "ИмяПользователяУчетнойЗаписи",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4181,6 +5055,14 @@
                 "name": "ВложенияСИдентификаторами",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4188,6 +5070,14 @@
                 "name": "ОтображатьВложенияПисьма",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4195,6 +5085,30 @@
                 "name": "Письмо",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    },
+                    {
+                      "name": "CatalogRef.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы",
+                      "nameRu": "СправочникСсылка.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы",
+                      "composite": false
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[3]"
+                    },
+                    {
+                      "name": "CatalogRef.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы",
+                      "nameRu": "СправочникСсылка.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы",
+                      "composite": false
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -4202,6 +5116,14 @@
                 "name": "ТемаПисьма",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4209,6 +5131,14 @@
                 "name": "ДатаПисьма",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[45]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4216,6 +5146,17 @@
                 "name": "ПисьмоОснование",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[3]"
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -4223,6 +5164,14 @@
                 "name": "ТемаПисьмаОснования",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4230,6 +5179,14 @@
                 "name": "ДатаПисьмаОснования",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[45]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4237,6 +5194,14 @@
                 "name": "ЗапрещенныеРасширения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4244,6 +5209,14 @@
                 "name": "ВключитьНебезопасноеСодержимое",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4251,6 +5224,14 @@
                 "name": "ЕстьНебезопасноеСодержимое",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4258,6 +5239,14 @@
                 "name": "ИсходныйТекстHTML",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -4545,6 +5534,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4559,6 +5556,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4573,6 +5578,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4587,6 +5600,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[45]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4601,6 +5622,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[45]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4615,6 +5644,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "TextDocument",
+                      "nameRu": "ТекстовыйДокумент"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4622,6 +5660,17 @@
                 "name": "Письмо",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[29]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[3]"
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -4629,6 +5678,14 @@
                 "name": "ТипПисьма",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4643,6 +5700,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4657,6 +5722,16 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.ПапкиЭлектронныхПисем",
+                      "nameRu": "СправочникСсылка.ПапкиЭлектронныхПисем",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4664,6 +5739,16 @@
                 "name": "УчетнаяЗапись",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "CatalogRef.УчетныеЗаписиЭлектроннойПочты",
+                      "nameRu": "СправочникСсылка.УчетныеЗаписиЭлектроннойПочты",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4671,6 +5756,14 @@
                 "name": "ТекущаяПапка",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -4678,6 +5771,14 @@
                 "name": "ВыполненаКомандаЗакрыть",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -5329,6 +6430,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "FormattedDocument",
+                      "nameRu": "ФорматированныйДокумент"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5336,6 +6446,14 @@
                 "name": "ПриОтветеПересылкеФорматированныйДокумент",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5343,6 +6461,9 @@
                 "name": "НастройкиХранилище",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[39]/type"
                 }
               },
               {
@@ -5357,6 +6478,16 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "EnumRef.СпособыРедактированияЭлектронныхПисем",
+                      "nameRu": "ПеречислениеСсылка.СпособыРедактированияЭлектронныхПисем",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5371,6 +6502,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5378,6 +6517,14 @@
                 "name": "ВключатьПодписьПриОтветеПересылке",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5385,6 +6532,14 @@
                 "name": "ВключатьПодписьДляНовыхСообщений",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5399,6 +6554,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5413,6 +6576,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5427,6 +6598,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5441,6 +6620,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5455,6 +6642,16 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "EnumRef.ПорядокОтветовНаЗапросыУведомленийОПрочтении",
+                      "nameRu": "ПеречислениеСсылка.ПорядокОтветовНаЗапросыУведомленийОПрочтении",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5469,6 +6666,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5483,6 +6688,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5497,6 +6710,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -5626,6 +6847,14 @@
                 "name": "ТаблицаТиповПредметов",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5633,6 +6862,14 @@
                 "name": "ТекущийТипПредмета",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -5647,6 +6884,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],

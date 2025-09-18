@@ -107,6 +107,16 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DataProcessorObject.Обработка1",
+                      "nameRu": "ОбработкаОбъект.Обработка1",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -114,6 +124,15 @@
                 "name": "Реквизит1",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "String",
+                      "nameRu": "Строка"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -121,6 +140,15 @@
                 "name": "Реквизит2",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Date",
+                      "nameRu": "Дата"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -128,6 +156,35 @@
                 "name": "Реквизит3",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    },
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    },
+                    {
+                      "name": "Boolean",
+                      "nameRu": "Булево"
+                    },
+                    {
+                      "name": "UUID",
+                      "nameRu": "УникальныйИдентификатор",
+                      "variant": "V8"
+                    },
+                    {
+                      "name": "FormattedString",
+                      "nameRu": "ФорматированнаяСтрока"
+                    },
+                    {
+                      "name": "DocumentRef",
+                      "nameRu": "ДокументСсылка",
+                      "composite": true
+                    }
+                  ],
+                  "composite": true
                 }
               },
               {
@@ -135,6 +192,15 @@
                 "name": "Реквизит4",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "SpreadsheetDocument",
+                      "nameRu": "ТабличныйДокумент"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -142,6 +208,16 @@
                 "name": "Реквизит5",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "EnumRef.Перечисление1",
+                      "nameRu": "ПеречислениеСсылка.Перечисление1",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               }
             ],
@@ -785,6 +861,16 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "DataProcessorObject.ЖурналРегистрации",
+                      "nameRu": "ОбработкаОбъект.ЖурналРегистрации",
+                      "composite": false
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -799,6 +885,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -806,6 +900,15 @@
                 "name": "Журнал",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "ValueTable",
+                      "nameRu": "ТаблицаЗначений"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -813,6 +916,10 @@
                 "name": "ОтборЖурналаРегистрации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [],
+                  "composite": false
                 }
               },
               {
@@ -827,6 +934,15 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "Number",
+                      "nameRu": "Число"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -834,6 +950,15 @@
                 "name": "ИнтервалДат",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "name": "StandardPeriod",
+                      "nameRu": "СтандартныйПериод"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -848,6 +973,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -855,6 +988,14 @@
                 "name": "АдресХранилища",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -862,6 +1003,9 @@
                 "name": "ОтборЖурналаРегистрацииПоУмолчанию",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -876,6 +1020,14 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -883,6 +1035,14 @@
                 "name": "ЗапускатьНеВФоне",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType[3]"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -890,6 +1050,14 @@
                 "name": "ИдентификаторЗадания",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/com.github._1c_syntax.bsl.types.V8ValueType"
+                    }
+                  ],
+                  "composite": false
                 }
               },
               {
@@ -897,6 +1065,9 @@
                 "name": "ХранилищеДанных",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               }
             ],

@@ -91,7 +91,13 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          }
         }
       ],
       "dimensions": [
@@ -115,6 +121,12 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -169,7 +181,13 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          }
         }
       ],
       "dimensions": [
@@ -193,6 +211,12 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -284,7 +308,13 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          }
         }
       ],
       "dimensions": [
@@ -308,6 +338,12 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          },
           "master": false,
           "denyIncompleteValues": true,
           "useInTotals": true
@@ -507,7 +543,13 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          }
         }
       ],
       "extDimensionAccountingFlags": [
@@ -530,7 +572,13 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          }
         }
       ],
       "explanation": {
@@ -625,6 +673,12 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
       "supportVariant": "NONE",
+      "type": {
+        "types": [
+          1
+        ],
+        "composite": false
+      },
       "autoUse": "USE",
       "passwordMode": false,
       "indexing": "DONT_INDEX",
@@ -763,6 +817,12 @@
       "modules": [
         2
       ],
+      "type": {
+        "types": [
+          1
+        ],
+        "composite": false
+      },
       "passwordMode": false,
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
@@ -824,7 +884,13 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          1
+        ],
+        "composite": false
+      }
     }
   ],
   "description": "Конфигурация",
@@ -876,9 +942,15 @@
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/mdoReference"
           },
-          "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "references": [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Документ1.Attribute.Реквизит1",
+              "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит1"
+            }
+          ]
         }
       ],
       "forms": [],
@@ -1373,12 +1445,12 @@
       "src/test/resources/ext/designer/mdclasses/src/cf/Ext/SessionModule.bsl"
     ],
     [
-      "ExternalConnectionModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ExternalConnectionModule.bsl"
-    ],
-    [
       "ManagedApplicationModule",
       "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ManagedApplicationModule.bsl"
+    ],
+    [
+      "ExternalConnectionModule",
+      "src/test/resources/ext/designer/mdclasses/src/cf/Ext/ExternalConnectionModule.bsl"
     ]
   ],
   "modules": [
@@ -1551,6 +1623,12 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -1578,7 +1656,13 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          1
+        ],
+        "composite": false
+      }
     }
   ],
   "settingsStorages": [
@@ -1697,6 +1781,12 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              1
+            ],
+            "composite": false
+          },
           "format": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
           },

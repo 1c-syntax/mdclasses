@@ -71,13 +71,6 @@ public class DefinedType implements MDObject, ValueTypeOwner {
    * Свое
    */
 
-  /**
-   * Описание типа значения
-   */
-  @Default
-  @Getter(AccessLevel.NONE)
-  ValueTypeDescription type = ValueTypeDescription.EMPTY;
-
   @Override
   public ValueTypeDescription getValueType() {
     return type;
