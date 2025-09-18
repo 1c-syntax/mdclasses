@@ -45,7 +45,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * MDObject
@@ -107,7 +107,7 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
     return LazyLoader.computePlainChildren(this);
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.USE,
       RoleRight.STANDARD_AUTHENTICATION_CHANGE,

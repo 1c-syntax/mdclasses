@@ -30,7 +30,6 @@ import java.util.List;
  * Базовый интерфейс для всех регистров (Сведений, Накопления...)
  */
 public interface Register extends MDObject, AttributeOwner, CommandOwner, ModuleOwner, FormOwner, TemplateOwner {
-
   /**
    * Список реквизитов регистра
    */
@@ -45,5 +44,4 @@ public interface Register extends MDObject, AttributeOwner, CommandOwner, Module
    * Список измерений регистра
    */
   List<Dimension> getDimensions();
-
 }
