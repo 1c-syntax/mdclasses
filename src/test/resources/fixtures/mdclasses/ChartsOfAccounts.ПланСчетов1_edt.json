@@ -32,11 +32,25 @@
       "type": {
         "types": [
           {
-            "name": "Boolean",
-            "nameRu": "Булево"
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "name": "Boolean",
+              "nameRu": "Булево"
+            }
           }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 0
+          }
+        ]
       }
     }
   ],
@@ -71,10 +85,17 @@
       "type": {
         "types": [
           {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
           }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": []
       }
     }
   ],

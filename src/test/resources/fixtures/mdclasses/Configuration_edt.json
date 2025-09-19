@@ -94,9 +94,31 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "name": "Number",
+                  "nameRu": "Число"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false
+                }
+              }
+            ]
           }
         }
       ],
@@ -123,9 +145,30 @@
           "indexing": "INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "name": "String",
+                  "nameRu": "Строка"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            ]
           },
           "master": false,
           "denyIncompleteValues": false,
@@ -184,9 +227,30 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/resources/com.github._1c_syntax.bsl.mdo.children.Resource/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false
+                }
+              }
+            ]
           }
         }
       ],
@@ -213,9 +277,29 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            ]
           },
           "master": false,
           "denyIncompleteValues": false,
@@ -311,9 +395,30 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/resources/com.github._1c_syntax.bsl.mdo.children.Resource/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false
+                }
+              }
+            ]
           }
         }
       ],
@@ -340,9 +445,29 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            ]
           },
           "master": false,
           "denyIncompleteValues": true,
@@ -546,9 +671,26 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "name": "Boolean",
+                  "nameRu": "Булево"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 0
+              }
+            ]
           }
         }
       ],
@@ -575,9 +717,18 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfAccounts/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": []
           }
         }
       ],
@@ -675,9 +826,29 @@
       "supportVariant": "NONE",
       "type": {
         "types": [
-          1
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
       },
       "autoUse": "USE",
       "passwordMode": false,
@@ -819,9 +990,29 @@
       ],
       "type": {
         "types": [
-          1
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
       },
       "passwordMode": false,
       "explanation": {
@@ -887,9 +1078,29 @@
       "supportVariant": "NONE",
       "type": {
         "types": [
-          1
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
       }
     }
   ],
@@ -1117,6 +1328,24 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
       "supportVariant": "NONE",
+      "source": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+              "name": "CatalogObject.Справочник1",
+              "nameRu": "СправочникОбъект.Справочник1",
+              "composite": false,
+              "kind": "CATALOG"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      },
       "handler": {
         "methodPath": "CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью",
         "moduleName": "ПростойОбщийМодуль",
@@ -1436,16 +1665,16 @@
   "modalityUseMode": "USE",
   "moduleTypes": [
     [
+      "ExternalConnectionModule",
+      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ExternalConnectionModule.bsl"
+    ],
+    [
       "SessionModule",
       "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/SessionModule.bsl"
     ],
     [
       "ManagedApplicationModule",
       "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ManagedApplicationModule.bsl"
-    ],
-    [
-      "ExternalConnectionModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ExternalConnectionModule.bsl"
     ]
   ],
   "modules": [
@@ -1620,9 +1849,21 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                  "name": "DocumentRef.Документ1",
+                  "nameRu": "ДокументСсылка.Документ1",
+                  "composite": false,
+                  "kind": "DOCUMENT"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": []
           },
           "master": false,
           "denyIncompleteValues": false,
@@ -1654,9 +1895,18 @@
       "supportVariant": "NONE",
       "type": {
         "types": [
-          1
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfAccounts/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
         ],
-        "composite": false
+        "composite": false,
+        "qualifiers": []
       }
     }
   ],
@@ -1758,9 +2008,29 @@
           "indexing": "DONT_INDEX",
           "type": {
             "types": [
-              1
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                }
+              }
             ],
-            "composite": false
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE"
+                }
+              }
+            ]
           },
           "format": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"

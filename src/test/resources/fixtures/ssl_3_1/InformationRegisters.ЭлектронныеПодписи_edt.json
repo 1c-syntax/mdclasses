@@ -37,12 +37,27 @@
         "type": {
           "types": [
             {
-              "name": "DefinedType.ПодписанныйОбъект",
-              "nameRu": "ОпределяемыйТип.ПодписанныйОбъект",
-              "composite": false
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "DefinedType.ПодписанныйОбъект",
+                "nameRu": "ОпределяемыйТип.ПодписанныйОбъект",
+                "composite": false,
+                "kind": "DEFINED_TYPE"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 0
+            }
+          ]
         },
         "master": true,
         "denyIncompleteValues": false,
@@ -78,11 +93,30 @@
         "type": {
           "types": [
             {
-              "name": "Number",
-              "nameRu": "Число"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Number",
+                "nameRu": "Число"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": true
+              }
+            }
+          ]
         },
         "master": false,
         "denyIncompleteValues": false,
@@ -172,11 +206,28 @@
         "type": {
           "types": [
             {
-              "name": "Date",
-              "nameRu": "Дата"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Date",
+                "nameRu": "Дата"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
         }
       },
       {
@@ -209,11 +260,29 @@
         "type": {
           "types": [
             {
-              "name": "String",
-              "nameRu": "Строка"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "String",
+                "nameRu": "Строка"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 260,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
         }
       },
       {
@@ -246,10 +315,28 @@
         "type": {
           "types": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
         }
       },
       {
@@ -282,10 +369,28 @@
         "type": {
           "types": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
         }
       },
       {
@@ -318,10 +423,28 @@
         "type": {
           "types": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 28,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
         }
       },
       {
@@ -354,12 +477,19 @@
         "type": {
           "types": [
             {
-              "name": "ValueStorage",
-              "nameRu": "ХранилищеЗначений",
-              "variant": "V8"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": {
+                "name": "ValueStorage",
+                "nameRu": "ХранилищеЗначений",
+                "variant": "V8"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": []
         }
       },
       {
@@ -392,11 +522,18 @@
         "type": {
           "types": [
             {
-              "name": "Boolean",
-              "nameRu": "Булево"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Boolean",
+                "nameRu": "Булево"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": []
         }
       },
       {
@@ -429,10 +566,17 @@
         "type": {
           "types": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[6]/type/types/com.github._1c_syntax.bsl.types.V8ValueType"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.V8ValueType"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": []
         }
       },
       {
@@ -465,10 +609,27 @@
         "type": {
           "types": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
         }
       },
       {
@@ -501,12 +662,20 @@
         "type": {
           "types": [
             {
-              "name": "CatalogRef.Пользователи",
-              "nameRu": "СправочникСсылка.Пользователи",
-              "composite": false
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.Пользователи",
+                "nameRu": "СправочникСсылка.Пользователи",
+                "composite": false,
+                "kind": "CATALOG"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": []
         }
       }
     ],

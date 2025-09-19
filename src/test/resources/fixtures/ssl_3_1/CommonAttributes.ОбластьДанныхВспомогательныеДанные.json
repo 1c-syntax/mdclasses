@@ -173,10 +173,29 @@
   "valueType": {
     "types": [
       {
-        "name": "Number",
-        "nameRu": "Число"
+        "default": {
+          "tag": 1
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+          "name": "Number",
+          "nameRu": "Число"
+        }
       }
     ],
-    "composite": false
+    "composite": false,
+    "qualifiers": [
+      {
+        "default": {
+          "tag": 1
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+          "precision": 7,
+          "scale": 0,
+          "nonNegative": true
+        }
+      }
+    ]
   }
 }}

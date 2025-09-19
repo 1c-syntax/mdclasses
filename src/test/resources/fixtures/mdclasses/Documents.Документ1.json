@@ -26,11 +26,29 @@
         "type": {
           "types": [
             {
-              "name": "String",
-              "nameRu": "Строка"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "String",
+                "nameRu": "Строка"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 10,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -67,11 +85,30 @@
         "type": {
           "types": [
             {
-              "name": "Number",
-              "nameRu": "Число"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Number",
+                "nameRu": "Число"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": false
+              }
+            }
+          ]
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -108,11 +145,28 @@
         "type": {
           "types": [
             {
-              "name": "Date",
-              "nameRu": "Дата"
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Date",
+                "nameRu": "Дата"
+              }
             }
           ],
-          "composite": false
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE"
+              }
+            }
+          ]
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -377,12 +431,27 @@
               "type": {
                 "types": [
                   {
-                    "name": "DocumentObject.Документ1",
-                    "nameRu": "ДокументОбъект.Документ1",
-                    "composite": false
+                    "default": {
+                      "tag": 1
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                      "name": "DocumentObject.Документ1",
+                      "nameRu": "ДокументОбъект.Документ1",
+                      "composite": false,
+                      "kind": "DOCUMENT"
+                    }
                   }
                 ],
-                "composite": false
+                "composite": false,
+                "qualifiers": [
+                  {
+                    "default": {
+                      "tag": 1
+                    },
+                    "int": 0
+                  }
+                ]
               }
             }
           ]
@@ -583,11 +652,18 @@
               "type": {
                 "types": [
                   {
-                    "name": "DynamicList",
-                    "nameRu": "ДинамическийСписок"
+                    "default": {
+                      "tag": 1
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                      "name": "DynamicList",
+                      "nameRu": "ДинамическийСписок"
+                    }
                   }
                 ],
-                "composite": false
+                "composite": false,
+                "qualifiers": []
               }
             }
           ]
@@ -781,10 +857,17 @@
               "type": {
                 "types": [
                   {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    "default": {
+                      "tag": 1
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                    }
                   }
                 ],
-                "composite": false
+                "composite": false,
+                "qualifiers": []
               }
             }
           ]
@@ -809,18 +892,18 @@
   "mdoType": "DOCUMENT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -828,8 +911,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Documents/Документ1/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -946,12 +1029,20 @@
             "type": {
               "types": [
                 {
-                  "name": "CatalogRef.Справочник1",
-                  "nameRu": "СправочникСсылка.Справочник1",
-                  "composite": false
+                  "default": {
+                    "tag": 1
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                    "name": "CatalogRef.Справочник1",
+                    "nameRu": "СправочникСсылка.Справочник1",
+                    "composite": false,
+                    "kind": "CATALOG"
+                  }
                 }
               ],
-              "composite": false
+              "composite": false,
+              "qualifiers": []
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -988,10 +1079,29 @@
             "type": {
               "types": [
                 {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/com.github._1c_syntax.bsl.types.PrimitiveValueType"
+                  "default": {
+                    "tag": 1
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                  }
                 }
               ],
-              "composite": false
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 1
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                    "precision": 10,
+                    "scale": 0,
+                    "nonNegative": false
+                  }
+                }
+              ]
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
