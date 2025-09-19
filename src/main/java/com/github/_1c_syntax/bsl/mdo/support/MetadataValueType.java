@@ -182,9 +182,8 @@ public class MetadataValueType implements ValueType {
     }
 
     var posDot = name.indexOf(".");
-    var key = name;
     if (posDot > 0) {
-      key = name.substring(0, posDot);
+      var key = name.substring(0, posDot);
       var variant = ALL_VARIANTS.get(key.toLowerCase(Locale.ROOT));
       if (variant != null) {
         type = new MetadataValueType(variant.kind(), name, variant.nameRu() + name.substring(posDot), false);
@@ -231,11 +230,11 @@ public class MetadataValueType implements ValueType {
 
   private static Map<String, Variant> computeAllProvidedTypesVariants() {
     Map<String, Variant> variants = new ConcurrentHashMap<>();
-    builtinTypes().forEach((ValueType valueType) -> {
+    builtinTypes().forEach((ValueType valueType) ->
       variants.put(valueType.getName().toLowerCase(Locale.ROOT),
         new Variant(valueType.getNameRu(), ((MetadataValueType) valueType).getKind()
-        ));
-    });
+        ))
+    );
 
     variants.put(MDOType.DEFINED_TYPE.getName().toLowerCase(Locale.ROOT),
       new Variant(MDOType.DEFINED_TYPE.getNameRu(), MDOType.DEFINED_TYPE));

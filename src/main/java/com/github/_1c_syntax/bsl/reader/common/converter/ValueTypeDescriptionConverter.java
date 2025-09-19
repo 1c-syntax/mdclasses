@@ -47,7 +47,7 @@ public class ValueTypeDescriptionConverter implements ReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     List<ValueType> types = new ArrayList<>();
     List<Qualifier> qualifiers = new ArrayList<>();
-    boolean composite = false;
+    var composite = false;
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var nodeName = reader.getNodeName();
