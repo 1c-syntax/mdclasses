@@ -55,22 +55,7 @@ public class ValueTypeTest {
     }
   )
   void testCatalog(ArgumentsAccessor argumentsAccessor) {
-    var isEDT = argumentsAccessor.getBoolean(0);
-    var examplePackName = argumentsAccessor.getString(1);
-
-    Path configurationPath;
-    if (isEDT) {
-      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
-    } else {
-      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
-    }
-
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
-    assertThat(mdc).isNotNull();
-    assertThat(mdc).isInstanceOf(MDClass.class);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-
-    var configuration = (Configuration) mdc;
+    var configuration = readConfiguration(argumentsAccessor);
 
     var childMDO = configuration.findChild("Catalog.Справочник1");
     if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
@@ -102,22 +87,7 @@ public class ValueTypeTest {
     }
   )
   void testDefinedType(ArgumentsAccessor argumentsAccessor) {
-    var isEDT = argumentsAccessor.getBoolean(0);
-    var examplePackName = argumentsAccessor.getString(1);
-
-    Path configurationPath;
-    if (isEDT) {
-      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
-    } else {
-      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
-    }
-
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
-    assertThat(mdc).isNotNull();
-    assertThat(mdc).isInstanceOf(MDClass.class);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-
-    var configuration = (Configuration) mdc;
+    var configuration = readConfiguration(argumentsAccessor);
 
     var childMDO = configuration.findChild("DefinedType.ЗначениеДоступа");
     if (childMDO.isPresent() && childMDO.get() instanceof DefinedType definedType) {
@@ -139,5 +109,24 @@ public class ValueTypeTest {
       assertThat(typeContains.getName()).isEqualTo("EnumRef.ДополнительныеЗначенияДоступа");
       assertThat(typeContains.getNameRu()).isEqualTo("ПеречислениеСсылка.ДополнительныеЗначенияДоступа");
     }
+  }
+
+  private static Configuration readConfiguration(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH);
+    } else {
+      configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
+    }
+
+    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    assertThat(mdc).isNotNull();
+    assertThat(mdc).isInstanceOf(MDClass.class);
+    assertThat(mdc).isInstanceOf(Configuration.class);
+
+    return (Configuration) mdc;
   }
 }

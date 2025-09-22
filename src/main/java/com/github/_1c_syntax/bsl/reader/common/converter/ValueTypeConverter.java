@@ -99,7 +99,7 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
 
     PrimitiveValueType.builtinTypes().forEach(valueType ->
       types.put(valueType.getName().toLowerCase(Locale.ROOT), valueType));
-    types.put("xs:decimal", PrimitiveValueType.NUMBER);
+    types.put("xs:decimal".toLowerCase(Locale.ROOT), PrimitiveValueType.NUMBER);
     types.put("xs:dateTime".toLowerCase(Locale.ROOT), PrimitiveValueType.DATE);
 
     V8ValueType.builtinTypes().forEach(valueType ->

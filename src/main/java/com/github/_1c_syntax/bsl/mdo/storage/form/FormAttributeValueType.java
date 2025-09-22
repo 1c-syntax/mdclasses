@@ -28,7 +28,7 @@ import lombok.NonNull;
 
 import java.util.List;
 
-public class FormAttributeValueType implements ValueType {
+public final class FormAttributeValueType implements ValueType {
   public static final FormAttributeValueType VALUE_TABLE = new FormAttributeValueType("ValueTable", "ТаблицаЗначений");
   public static final FormAttributeValueType VALUE_TREE = new FormAttributeValueType("ValueTree", "ДеревоЗначений");
   public static final FormAttributeValueType VALUE_LIST = new FormAttributeValueType("ValueList", "СписокЗначений");
@@ -115,7 +115,7 @@ public class FormAttributeValueType implements ValueType {
    *
    * @return Список встроенных типов
    */
-  public static List<ValueType> builtinTypes() {
+  public static List<? extends ValueType> builtinTypes() {
     return BUILTIN_TYPES;
   }
 }

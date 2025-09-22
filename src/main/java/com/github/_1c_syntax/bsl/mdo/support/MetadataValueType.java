@@ -36,7 +36,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Типы данных, построенные на метаданных
  */
-public class MetadataValueType implements ValueType {
+public final class MetadataValueType implements ValueType {
   public static final MetadataValueType ACCOUNTING_REGISTER_MANAGER = createManager(MDOType.ACCOUNTING_REGISTER);
   public static final MetadataValueType ACCOUNTING_REGISTER_REC_SET = createRecSet(MDOType.ACCOUNTING_REGISTER);
   public static final MetadataValueType ACCUMULATION_REGISTER_MANAGER = createManager(MDOType.ACCUMULATION_REGISTER);
@@ -204,7 +204,7 @@ public class MetadataValueType implements ValueType {
    *
    * @return Список встроенных типов
    */
-  public static List<ValueType> builtinTypes() {
+  public static List<? extends ValueType> builtinTypes() {
     return BUILTIN_TYPES;
   }
 
