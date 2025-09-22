@@ -488,6 +488,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#Анализ-типов-данных" class="md-nav__link">
+    <span class="md-ellipsis">
+      Анализ типов данных
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#Поиск-и-фильтрация-объектов" class="md-nav__link">
     <span class="md-ellipsis">
       Поиск и фильтрация объектов
@@ -595,6 +604,7 @@
 <li><a href="#работа-с-метаданными">Работа с метаданными</a></li>
 <li><a href="#работа-с-формами">Работа с формами</a></li>
 <li><a href="#работа-с-модулями">Работа с модулями</a></li>
+<li><a href="#анализ-типов-данных">Анализ описания типов данных</a></li>
 <li><a href="#поиск-и-фильтрация-объектов">Поиск и фильтрация объектов</a></li>
 <li><a href="#практические-сценарии">Практические сценарии</a></li>
 </ul>
@@ -822,6 +832,121 @@
 <span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lines</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h2 id="Анализ-типов-данных">Анализ типов данных<a class="headerlink" href="#Анализ-типов-данных" title="Permanent link">&para;</a></h2>
+<p>При чтении описания метаданных для объектов и их атрибутов вычисляются описания типов. Все сущности, имеющие описания типов данных, реализуют интерфейс <code>ValueTypeOwner</code>. </p>
+<p>Ниже приведены примеры, как можно использовать данную информацию.</p>
+<h3 id="Получение-описания-типа-реквизита-справочника">Получение описания типа реквизита справочника<a class="headerlink" href="#Получение-описания-типа-реквизита-справочника" title="Permanent link">&para;</a></h3>
+<p>Часть описания реквизита справочника</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&lt;attributes</span><span class="w"> </span><span class="na">uuid=</span><span class="s">&quot;dff5b5d8-762d-4490-a336-dcc8d93c17d5&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Реквизит2<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;type&gt;</span>
+<span class="w">      </span><span class="nt">&lt;types&gt;</span>Number<span class="nt">&lt;/types&gt;</span>
+<span class="w">      </span><span class="nt">&lt;numberQualifiers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;precision&gt;</span>10<span class="nt">&lt;/precision&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/numberQualifiers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/type&gt;</span>
+<span class="w">    </span><span class="nt">&lt;minValue</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;core:UndefinedValue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;maxValue</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;core:UndefinedValue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;fillValue</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;core:UndefinedValue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;fullTextSearch&gt;</span>Use<span class="nt">&lt;/fullTextSearch&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/attributes&gt;</span>
+</code></pre></div>
+<p>Код, которым можно посмотреть описание типа</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// найдем справочник из прочитанной конфигурации</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">childMDO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">findChild</span><span class="p">(</span><span class="s">&quot;Catalog.Справочник1&quot;</span><span class="p">);</span>
+
+<span class="c1">// проверим, что это на самом деле справочник    </span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">childMDO</span><span class="p">.</span><span class="na">isPresent</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">childMDO</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">Catalog</span><span class="w"> </span><span class="n">catalog</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// убедимся, что у справочника есть дочерние</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">catalog</span><span class="p">.</span><span class="na">getChildren</span><span class="p">()).</span><span class="na">isNotEmpty</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// найдем нужный дочерний (реквизит)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">childAttribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">findChild</span><span class="p">(</span><span class="n">md</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;Реквизит2&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="na">getName</span><span class="p">()));</span>
+
+<span class="w">    </span><span class="c1">// проверим, что он есть и нужного типа  </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">childAttribute</span><span class="p">.</span><span class="na">isPresent</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">childAttribute</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">ObjectAttribute</span><span class="w"> </span><span class="n">objectAttribute</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// проверим наименование </span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;Реквизит2&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// описание типа `getValueType`</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getValueType</span><span class="p">()).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// убеимся в наличии примитивного типа СТРОКА в составе описания</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">PrimitiveValueType</span><span class="p">.</span><span class="na">NUMBER</span><span class="p">)).</span><span class="na">isTrue</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// убедимся, что тип не составно</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">isComposite</span><span class="p">()).</span><span class="na">isFalse</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// убедимся, что квалификаторы прочитаны</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">getQualifiers</span><span class="p">()).</span><span class="na">hasSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// убедимся, что прочитан квалификатор числа</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">qualifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objectAttribute</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">getQualifiers</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">qualifier</span><span class="p">).</span><span class="na">isInstanceOf</span><span class="p">(</span><span class="n">NumberQualifiers</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// убаимся, что квалификатор числа содожержит верную информацию</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">numberQualifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">NumberQualifiers</span><span class="p">)</span><span class="w"> </span><span class="n">qualifier</span><span class="p">;</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">numberQualifiers</span><span class="p">.</span><span class="na">getPrecision</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// длина 10</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">numberQualifiers</span><span class="p">.</span><span class="na">getScale</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">      </span><span class="c1">// точность 0</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">numberQualifiers</span><span class="p">.</span><span class="na">isNonNegative</span><span class="p">()).</span><span class="na">isFalse</span><span class="p">();</span><span class="w">    </span><span class="c1">// возможны любые знаки</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="Определение-состава-определяемого-типа">Определение состава определяемого типа<a class="headerlink" href="#Определение-состава-определяемого-типа" title="Permanent link">&para;</a></h3>
+<p>Часть описания определяемого типа</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&lt;name&gt;</span>ЗначениеДоступа<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;type&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ПапкиФайлов<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ВнешниеПользователи<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.КлючиДоступа<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ИдентификаторыОбъектовРасширений<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ГруппыВнешнихПользователей<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ГруппыПользователей<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>EnumRef.ДополнительныеЗначенияДоступа<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ДополнительныеОтчетыИОбработки<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.Пользователи<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ГруппыИсполнителейЗадач<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.УчетныеЗаписиЭлектроннойПочты<span class="nt">&lt;/types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;types&gt;</span>CatalogRef.ИдентификаторыОбъектовМетаданных<span class="nt">&lt;/types&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/type&gt;</span>
+</code></pre></div>
+<p>Код, которым можно посмотреть описание типа</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// найдем определяемый тип прочитанной конфигурации</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">childMDO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">findChild</span><span class="p">(</span><span class="s">&quot;DefinedType.ЗначениеДоступа&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">childMDO</span><span class="p">.</span><span class="na">isPresent</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">childMDO</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">DefinedType</span><span class="w"> </span><span class="n">definedType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;ЗначениеДоступа&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// убедимся, что тип прочитан</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">()).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// убедимся, что в составе нет ЧИСЛА</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">PrimitiveValueType</span><span class="p">.</span><span class="na">NUMBER</span><span class="p">)).</span><span class="na">isFalse</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// убедимся, что описание соответствует составному типу</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">isComposite</span><span class="p">()).</span><span class="na">isTrue</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// квалификаторов нет</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">getQualifiers</span><span class="p">()).</span><span class="na">isEmpty</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// создадим типа по имени</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">typeContains</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetadataValueType</span><span class="p">.</span><span class="na">fromString</span><span class="p">(</span><span class="s">&quot;EnumRef.ДополнительныеЗначенияДоступа&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeContains</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// полученый тип относится к перечислению</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeContains</span><span class="p">.</span><span class="na">getKind</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">MDOType</span><span class="p">.</span><span class="na">ENUM</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// тип не составной</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeContains</span><span class="p">.</span><span class="na">isComposite</span><span class="p">()).</span><span class="na">isFalse</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// есть имя на английском</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeContains</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;EnumRef.ДополнительныеЗначенияДоступа&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// и русском  </span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeContains</span><span class="p">.</span><span class="na">getNameRu</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;ПеречислениеСсылка.ДополнительныеЗначенияДоступа&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// второй тип</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">typeNotContains</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetadataValueType</span><span class="p">.</span><span class="na">fromString</span><span class="p">(</span><span class="s">&quot;CatalogRef.Контрагенты&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">typeNotContains</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// убедимся, что первый тип входит в состав описания</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">typeContains</span><span class="p">)).</span><span class="na">isTrue</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// убедимся, что второй тип нпе входит в состав</span>
+<span class="w">    </span><span class="n">assertThat</span><span class="p">(</span><span class="n">definedType</span><span class="p">.</span><span class="na">getValueType</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="n">typeNotContains</span><span class="p">)).</span><span class="na">isFalse</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 <h2 id="Поиск-и-фильтрация-объектов">Поиск и фильтрация объектов<a class="headerlink" href="#Поиск-и-фильтрация-объектов" title="Permanent link">&para;</a></h2>
 <h3 id="Поиск-объекта-по-ссылке">Поиск объекта по ссылке<a class="headerlink" href="#Поиск-объекта-по-ссылке" title="Permanent link">&para;</a></h3>
