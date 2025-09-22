@@ -34,6 +34,31 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "DefinedType.ПодписанныйОбъект",
+                "nameRu": "ОпределяемыйТип.ПодписанныйОбъект",
+                "composite": false,
+                "kind": "DEFINED_TYPE"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 0
+            }
+          ]
+        },
         "master": true,
         "denyIncompleteValues": false,
         "useInTotals": true
@@ -65,6 +90,34 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Number",
+                "nameRu": "Число"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": true
+              }
+            }
+          ]
+        },
         "master": false,
         "denyIncompleteValues": false,
         "useInTotals": true
@@ -149,7 +202,33 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Date",
+                "nameRu": "Дата"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "f779f4a1-1fab-46d4-8043-ac25c247d361",
@@ -177,7 +256,34 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "String",
+                "nameRu": "Строка"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 260,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "308358bc-773a-43fa-adff-dcc5884a2bd4",
@@ -205,7 +311,33 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "ed541a1c-a842-40a9-b357-612db71ec32c",
@@ -233,7 +365,33 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "b0e37495-7d9e-41d0-8225-652f9ac328cf",
@@ -261,7 +419,33 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 28,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "3bd2e1c8-9ef3-449b-acf6-397b90669c49",
@@ -289,7 +473,24 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": {
+                "name": "ValueStorage",
+                "nameRu": "ХранилищеЗначений",
+                "variant": "V8"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "cb334191-2ff3-439e-bdaf-4b8fe6561c3b",
@@ -317,7 +518,23 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Boolean",
+                "nameRu": "Булево"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "f9865a2a-50e3-4f9c-a509-319be62dc468",
@@ -345,7 +562,22 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.V8ValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "5f3a30b0-1ba8-423c-9bc2-f9a87cafe818",
@@ -373,7 +605,32 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "766d8852-3bb4-4a6c-81c0-911722af4e8e",
@@ -401,7 +658,25 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.Пользователи",
+                "nameRu": "СправочникСсылка.Пользователи",
+                "composite": false,
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       }
     ],
     []

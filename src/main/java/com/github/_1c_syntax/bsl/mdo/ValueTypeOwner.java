@@ -21,27 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.Dimension;
-import com.github._1c_syntax.bsl.mdo.children.Resource;
-
-import java.util.List;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 
 /**
- * Базовый интерфейс для всех регистров (Сведений, Накопления...)
+ * Расширение - владелец имеет тип значения
  */
-public interface Register extends MDObject, AttributeOwner, CommandOwner, ModuleOwner, FormOwner, TemplateOwner {
+public interface ValueTypeOwner {
   /**
-   * Список реквизитов регистра
+   * Возвращает описание типа значения
    */
-  List<Attribute> getAttributes();
-
-  /**
-   * Список ресурсов регистра
-   */
-  List<Resource> getResources();
-
-  /**
-   * Список измерений регистра
-   */
-  List<Dimension> getDimensions();
+  ValueTypeDescription getValueType();
 }

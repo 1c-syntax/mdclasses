@@ -30,9 +30,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
@@ -45,7 +48,7 @@ import java.util.List;
 public class TaskAddressingAttribute implements Attribute, AccessRightsOwner {
 
   /*
-   * Для MDChild
+   * Для Attribute
    */
 
   @Default
@@ -69,6 +72,9 @@ public class TaskAddressingAttribute implements Attribute, AccessRightsOwner {
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
    * Свое
@@ -129,5 +135,10 @@ public class TaskAddressingAttribute implements Attribute, AccessRightsOwner {
    */
   public static List<RoleRight> possibleRights() {
     return ObjectAttribute.possibleRights();
+  }
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
   }
 }

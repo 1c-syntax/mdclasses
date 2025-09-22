@@ -101,6 +101,33 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
       "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "name": "String",
+              "nameRu": "Строка"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
+      },
       "autoUse": "DONT_USE",
       "passwordMode": false,
       "indexing": "DONT_INDEX",
@@ -192,7 +219,33 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
+      }
     }
   ],
   "description": "Расширение",
@@ -300,6 +353,18 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
       "supportVariant": "NONE",
+      "source": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 0
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      },
       "handler": {
         "methodPath": "",
         "moduleName": "",
@@ -486,6 +551,24 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                  "name": "DocumentRef.Документ1",
+                  "nameRu": "ДокументСсылка.Документ1",
+                  "composite": false,
+                  "kind": "DOCUMENT"
+                }
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true

@@ -30,6 +30,31 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "Characteristic.ОбъектыАдресацииЗадач",
+                "nameRu": "Характеристика.ОбъектыАдресацииЗадач",
+                "composite": false,
+                "kind": "CHART_OF_CHARACTERISTIC_TYPES"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 0
+            }
+          ]
+        },
         "format": {
           "content": []
         },
@@ -84,6 +109,30 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 2,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.ВнешниеПользователи",
+                "nameRu": "СправочникСсылка.ВнешниеПользователи",
+                "composite": false,
+                "kind": "CATALOG"
+              },
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.Пользователи",
+                "nameRu": "СправочникСсылка.Пользователи",
+                "composite": false,
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": true,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -136,6 +185,21 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -188,6 +252,24 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.РолиИсполнителей",
+                "nameRu": "СправочникСсылка.РолиИсполнителей",
+                "composite": false,
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -245,6 +327,24 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 2,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+              },
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[2]"
+              }
+            }
+          ],
+          "composite": true,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -284,6 +384,24 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "EnumRef.ВариантыВажностиЗадачи",
+                "nameRu": "ПеречислениеСсылка.ВариантыВажностиЗадачи",
+                "composite": false,
+                "kind": "ENUM"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -323,6 +441,24 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef.ГруппыИсполнителейЗадач",
+                "nameRu": "СправочникСсылка.ГруппыИсполнителейЗадач",
+                "composite": false,
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -362,6 +498,32 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Date",
+                "nameRu": "Дата"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -401,6 +563,31 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -440,6 +627,31 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -479,6 +691,33 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "String",
+                "nameRu": "Строка"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -518,6 +757,42 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 4,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "DocumentRef",
+                "nameRu": "ДокументСсылка",
+                "composite": true,
+                "kind": "DOCUMENT"
+              },
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "TaskRef",
+                "nameRu": "ЗадачаСсылка",
+                "composite": true,
+                "kind": "TASK"
+              },
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "ChartOfCharacteristicTypesRef",
+                "nameRu": "ПланВидовХарактеристикСсылка",
+                "composite": true,
+                "kind": "CHART_OF_CHARACTERISTIC_TYPES"
+              },
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "CatalogRef",
+                "nameRu": "СправочникСсылка",
+                "composite": true,
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": true,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -550,6 +825,32 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 500,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -589,6 +890,22 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "name": "Boolean",
+                "nameRu": "Булево"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -628,6 +945,32 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -667,6 +1010,24 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                "name": "EnumRef.СостоянияБизнесПроцессов",
+                "nameRu": "ПеречислениеСсылка.СостоянияБизнесПроцессов",
+                "composite": false,
+                "kind": "ENUM"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -706,6 +1067,31 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATETIME"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -745,6 +1131,32 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 1
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 150,
+                "allowedLength": "VARIABLE"
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
         },
@@ -1308,6 +1720,24 @@
               "name": "Объект",
               "title": {
                 "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+              },
+              "type": {
+                "types": [
+                  {
+                    "default": {
+                      "tag": 1
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                      "name": "TaskObject.ЗадачаИсполнителя",
+                      "nameRu": "ЗадачаОбъект.ЗадачаИсполнителя",
+                      "composite": false,
+                      "kind": "TASK"
+                    }
+                  }
+                ],
+                "composite": false,
+                "qualifiers": []
               }
             }
           ]
@@ -1685,6 +2115,22 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "name": "DynamicList",
+                        "nameRu": "ДинамическийСписок"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -1699,6 +2145,21 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -1706,6 +2167,22 @@
                 "name": "ДеревоЗадач",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "name": "ValueTree",
+                        "nameRu": "ДеревоЗначений"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -2353,6 +2830,21 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -2367,6 +2859,21 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -2374,6 +2881,21 @@
                 "name": "ДеревоЗадач",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -2900,6 +3422,21 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -2907,6 +3444,21 @@
                 "name": "ПоказыватьВыполненные",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -2914,6 +3466,32 @@
                 "name": "РежимГруппировки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -2921,6 +3499,11 @@
                 "name": "ПараметрыОтбораФормы",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -3438,6 +4021,21 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3445,6 +4043,21 @@
                 "name": "ПоказыватьВыполненные",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3452,6 +4065,32 @@
                 "name": "РежимГруппировки",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
+                  ]
                 }
               }
             ],
@@ -3837,6 +4476,21 @@
                 "name": "Исполнитель",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[2]"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3850,6 +4504,32 @@
                         "value": "Комментарий"
                       }
                     ]
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
                   ]
                 }
               },
@@ -3865,6 +4545,34 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "name": "Number",
+                        "nameRu": "Число"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                        "precision": 1,
+                        "scale": 0,
+                        "nonNegative": false
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -3879,6 +4587,21 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3886,6 +4609,21 @@
                 "name": "ИспользуетсяБезОбъектовАдресации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3893,6 +4631,21 @@
                 "name": "ИспользуетсяСОбъектамиАдресации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3900,6 +4653,21 @@
                 "name": "ОсновнойОбъектАдресации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[3]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3907,6 +4675,22 @@
                 "name": "ТипыДополнительногоОбъектаАдресации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "name": "TypeDescription",
+                        "nameRu": "ОписаниеТипа"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3914,6 +4698,21 @@
                 "name": "ТипыОсновногоОбъектаАдресации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3928,6 +4727,21 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -3942,6 +4756,21 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -4470,6 +5299,21 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -4477,6 +5321,21 @@
                 "name": "НачальныйПризнакВыполнения",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[10]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -4484,6 +5343,32 @@
                 "name": "ПредметСтрокой",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -4491,6 +5376,32 @@
                 "name": "АвторСтрокой",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
+                  ]
                 }
               }
             ],
@@ -5238,6 +6149,21 @@
                 "name": "Список",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -5245,6 +6171,21 @@
                 "name": "ПоАвтору",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[2]"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -5252,6 +6193,21 @@
                 "name": "ПоИсполнителю",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType[2]"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -5265,6 +6221,33 @@
                         "value": "Показывать"
                       }
                     ]
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                        "precision": 1,
+                        "scale": 0,
+                        "nonNegative": true
+                      }
+                    }
                   ]
                 }
               },
@@ -5280,6 +6263,32 @@
                       }
                     ]
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 100,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -5293,6 +6302,32 @@
                         "value": "Строка задачи"
                       }
                     ]
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 1
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 100,
+                        "allowedLength": "VARIABLE"
+                      }
+                    }
                   ]
                 }
               }
@@ -5320,18 +6355,18 @@
   "mdoType": "TASK",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
       },
@@ -5339,8 +6374,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/Tasks/ЗадачаИсполнителя/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
       },

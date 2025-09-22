@@ -49,7 +49,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class InformationRegister implements Register, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * Register
@@ -138,7 +138,7 @@ public class InformationRegister implements Register, AccessRightsOwner {
     return LazyLoader.computeAllModules(this);
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.READ,
       RoleRight.UPDATE,

@@ -44,6 +44,7 @@ gitVersioning.apply {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven("https://central.sonatype.com/repository/maven-snapshots")
 }
 
 dependencies {
@@ -57,9 +58,11 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.0.9-SNAPSHOT")
     implementation("io.github.1c-syntax", "utils", "0.6.3")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.1")
-    implementation("io.github.1c-syntax", "supportconf", "0.14.3")
+    implementation("io.github.1c-syntax", "supportconf", "0.14.3") {
+        exclude("io.github.1c-syntax", "bsl-common-library")
+    }
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.179")

@@ -12,18 +12,18 @@
   "mdoType": "CONSTANT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ManagerModule.bsl"
-    ],
-    [
       "ValueManagerModule",
       "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ValueManagerModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ManagerModule.bsl",
+      "moduleType": "ValueManagerModule",
+      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ValueManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
       },
@@ -31,8 +31,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ValueManagerModule",
-      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ValueManagerModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
       },
@@ -66,5 +66,32 @@
   "synonym": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/explanation"
   },
-  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4"
+  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+  "valueType": {
+    "types": [
+      {
+        "default": {
+          "tag": 1
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+          "name": "String",
+          "nameRu": "Строка"
+        }
+      }
+    ],
+    "composite": false,
+    "qualifiers": [
+      {
+        "default": {
+          "tag": 1
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+          "length": 10,
+          "allowedLength": "VARIABLE"
+        }
+      }
+    ]
+  }
 }}

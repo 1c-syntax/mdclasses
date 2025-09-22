@@ -25,10 +25,10 @@ import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 
 /**
- * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящие данные
+ * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящих данные
  * это могут быть реквизиты, колонки, измерения, а также общие реквизиты и константы
  */
-public interface Attribute extends MDChild {
+public interface Attribute extends MDChild, ValueTypeOwner {
   /**
    * Режим пароля. Только для реквизитов с типом с типом `Строка`
    */

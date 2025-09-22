@@ -56,7 +56,7 @@ import java.util.List;
 public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
   TemplateOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * Для MDChild
@@ -160,7 +160,7 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
     return LazyLoader.computeAllModules(this);
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.INSERT,
       RoleRight.READ,

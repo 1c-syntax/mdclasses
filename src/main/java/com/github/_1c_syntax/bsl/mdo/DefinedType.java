@@ -25,9 +25,12 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
@@ -35,7 +38,7 @@ import lombok.Value;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class DefinedType implements MDObject {
+public class DefinedType implements MDObject, ValueTypeOwner {
 
   /*
    * MDObject
@@ -57,6 +60,19 @@ public class DefinedType implements MDObject {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
+
+  /*
    * Свое
    */
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
 }

@@ -26,6 +26,33 @@
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "name": "String",
+              "nameRu": "Строка"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE"
+            }
+          }
+        ]
+      },
       "format": {
         "content": []
       },
@@ -119,6 +146,31 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
+                  "name": "CatalogRef.Валюты",
+                  "nameRu": "СправочникСсылка.Валюты",
+                  "composite": false,
+                  "kind": "CATALOG"
+                }
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 1
+                },
+                "int": 0
+              }
+            ]
+          },
           "format": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
           },

@@ -28,11 +28,15 @@ import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.List;
 
 @Value
 @Builder
@@ -60,9 +64,30 @@ public class DocumentJournalColumn implements Attribute {
   SupportVariant supportVariant = SupportVariant.NONE;
   @Default
   MdoReference owner = MdoReference.EMPTY;
-  boolean passwordMode;
   @Default
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+
+  /*
+   * Свое
+   */
+
+  /**
+   * Ссылки на реквизиты документов, входящих в состав колонки
+   */
+  @Singular("addReferences")
+  List<MdoReference> references;
+
+  // не бывает
+  @Override
+  public boolean isPasswordMode() {
+    return false;
+  }
+
+  // Колонки не имеют собственного типа, а наследуют из ссылок
+  @Override
+  public ValueTypeDescription getValueType() {
+    return ValueTypeDescription.EMPTY;
+  }
 }

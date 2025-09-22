@@ -9,6 +9,7 @@
 - [Работа с метаданными](#работа-с-метаданными)
 - [Работа с формами](#работа-с-формами)
 - [Работа с модулями](#работа-с-модулями)
+- [Анализ описания типов данных](#анализ-типов-данных)
 - [Поиск и фильтрация объектов](#поиск-и-фильтрация-объектов)
 - [Практические сценарии](#практические-сценарии)
 
@@ -267,6 +268,139 @@ allModules.stream()
             System.out.println((i+1) + ": " + lines[i]);
         }
     });
+```
+
+## Анализ типов данных
+
+При чтении описания метаданных для объектов и их атрибутов вычисляются описания типов. Все сущности, имеющие описания типов данных, реализуют интерфейс `ValueTypeOwner`. 
+
+Ниже приведены примеры, как можно использовать данную информацию.
+
+### Получение описания типа реквизита справочника
+
+Часть описания реквизита справочника
+
+```xml
+  <attributes uuid="dff5b5d8-762d-4490-a336-dcc8d93c17d5">
+    <name>Реквизит2</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+```
+
+Код, которым можно посмотреть описание типа
+
+```java
+// найдем справочник из прочитанной конфигурации
+var childMDO = configuration.findChild("Catalog.Справочник1");
+
+// проверим, что это на самом деле справочник    
+if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
+    
+    // убедимся, что у справочника есть дочерние
+    assertThat(catalog.getChildren()).isNotEmpty();
+    
+    // найдем нужный дочерний (реквизит)
+    var childAttribute = catalog.findChild(md -> "Реквизит2".equals(md.getName()));
+
+    // проверим, что он есть и нужного типа  
+    if (childAttribute.isPresent() && childAttribute.get() instanceof ObjectAttribute objectAttribute) {
+        
+        // проверим наименование 
+        assertThat(objectAttribute.getName()).isEqualTo("Реквизит2");
+        
+        // описание типа `getValueType`
+        assertThat(objectAttribute.getValueType()).isNotNull();
+        // убеимся в наличии примитивного типа СТРОКА в составе описания
+        assertThat(objectAttribute.getValueType().contains(PrimitiveValueType.NUMBER)).isTrue();
+        // убедимся, что тип не составно
+        assertThat(objectAttribute.getValueType().isComposite()).isFalse();
+        // убедимся, что квалификаторы прочитаны
+        assertThat(objectAttribute.getValueType().getQualifiers()).hasSize(1);
+
+        // убедимся, что прочитан квалификатор числа
+        var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
+        assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
+
+        // убаимся, что квалификатор числа содожержит верную информацию
+        var numberQualifiers = (NumberQualifiers) qualifier;
+        assertThat(numberQualifiers.getPrecision()).isEqualTo(10); // длина 10
+        assertThat(numberQualifiers.getScale()).isEqualTo(0);      // точность 0
+        assertThat(numberQualifiers.isNonNegative()).isFalse();    // возможны любые знаки
+      }
+    }
+}
+```
+
+### Определение состава определяемого типа 
+
+Часть описания определяемого типа
+
+```xml
+  <name>ЗначениеДоступа</name>
+  <type>
+    <types>CatalogRef.ПапкиФайлов</types>
+    <types>CatalogRef.ВнешниеПользователи</types>
+    <types>CatalogRef.КлючиДоступа</types>
+    <types>CatalogRef.ИдентификаторыОбъектовРасширений</types>
+    <types>CatalogRef.ГруппыВнешнихПользователей</types>
+    <types>CatalogRef.ГруппыПользователей</types>
+    <types>EnumRef.ДополнительныеЗначенияДоступа</types>
+    <types>ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения</types>
+    <types>CatalogRef.ДополнительныеОтчетыИОбработки</types>
+    <types>CatalogRef.Пользователи</types>
+    <types>CatalogRef.ГруппыИсполнителейЗадач</types>
+    <types>CatalogRef.УчетныеЗаписиЭлектроннойПочты</types>
+    <types>CatalogRef.ИдентификаторыОбъектовМетаданных</types>
+  </type>
+```
+
+Код, которым можно посмотреть описание типа
+
+```java
+
+// найдем определяемый тип прочитанной конфигурации
+var childMDO = configuration.findChild("DefinedType.ЗначениеДоступа");
+if (childMDO.isPresent() && childMDO.get() instanceof DefinedType definedType) {
+    assertThat(definedType.getName()).isEqualTo("ЗначениеДоступа");
+    // убедимся, что тип прочитан
+    assertThat(definedType.getValueType()).isNotNull();
+    // убедимся, что в составе нет ЧИСЛА
+    assertThat(definedType.getValueType().contains(PrimitiveValueType.NUMBER)).isFalse();
+    // убедимся, что описание соответствует составному типу
+    assertThat(definedType.getValueType().isComposite()).isTrue();
+    // квалификаторов нет
+    assertThat(definedType.getValueType().getQualifiers()).isEmpty();
+
+    // создадим типа по имени
+    var typeContains = MetadataValueType.fromString("EnumRef.ДополнительныеЗначенияДоступа");
+
+    assertThat(typeContains).isNotNull();
+    // полученый тип относится к перечислению
+    assertThat(typeContains.getKind()).isEqualTo(MDOType.ENUM);
+    // тип не составной
+    assertThat(typeContains.isComposite()).isFalse();
+    // есть имя на английском
+    assertThat(typeContains.getName()).isEqualTo("EnumRef.ДополнительныеЗначенияДоступа");
+    // и русском  
+    assertThat(typeContains.getNameRu()).isEqualTo("ПеречислениеСсылка.ДополнительныеЗначенияДоступа");
+
+    // второй тип
+    var typeNotContains = MetadataValueType.fromString("CatalogRef.Контрагенты");
+    assertThat(typeNotContains).isNotNull();
+    // убедимся, что первый тип входит в состав описания
+    assertThat(definedType.getValueType().contains(typeContains)).isTrue();
+    // убедимся, что второй тип нпе входит в состав
+    assertThat(definedType.getValueType().contains(typeNotContains)).isFalse();
+}
 ```
 
 ## Поиск и фильтрация объектов

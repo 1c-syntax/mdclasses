@@ -26,9 +26,12 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
@@ -38,7 +41,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class SessionParameter implements MDObject, AccessRightsOwner {
+public class SessionParameter implements MDObject, AccessRightsOwner, ValueTypeOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.GET, RoleRight.SET);
 
@@ -60,6 +63,19 @@ public class SessionParameter implements MDObject, AccessRightsOwner {
   MultiLanguageString synonym = MultiLanguageString.EMPTY;
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
 
   /*
    * Свое

@@ -30,9 +30,12 @@ import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -43,7 +46,9 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonAttribute implements MDObject, AccessRightsOwner {
+public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner {
+
+  // todo соединить с атрибутом
 
   /*
    * ReferenceObject
@@ -63,6 +68,14 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   MultiLanguageString synonym = MultiLanguageString.EMPTY;
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
+
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
    * Свое
@@ -133,6 +146,11 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   @Singular("addContent")
   List<UseContent> content;
 
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
+
   /**
    * Проверяет наличие объекта в составе общего реквизита (вне зависимости от режима использования)
    *
@@ -154,11 +172,7 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
     var value = content.stream()
       .filter(useContent -> useContent.getMetadata().equals(mdoReference))
       .findAny();
-    if (value.isPresent()) {
-      return value.get().getUse();
-    } else {
-      return UseMode.DONT_USE;
-    }
+    return value.map(UseContent::getUse).orElse(UseMode.DONT_USE);
   }
 
   /**

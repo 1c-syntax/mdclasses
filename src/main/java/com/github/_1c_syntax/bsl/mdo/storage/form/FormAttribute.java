@@ -21,9 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
 import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
+import lombok.Getter;
+import lombok.NonNull;
 import lombok.Value;
 
 /**
@@ -31,7 +36,7 @@ import lombok.Value;
  */
 @Value
 @Builder
-public class FormAttribute {
+public class FormAttribute implements ValueTypeOwner {
 
   /**
    * Идентификатор
@@ -50,4 +55,18 @@ public class FormAttribute {
    */
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
+
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
+
+  @Override
+  @NonNull
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
 }

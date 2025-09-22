@@ -47,7 +47,7 @@ import java.util.List;
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Catalog implements ReferenceObject, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * ReferenceObject
@@ -156,7 +156,7 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
     return LazyLoader.computeAllModules(this);
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.INSERT,
       RoleRight.READ,

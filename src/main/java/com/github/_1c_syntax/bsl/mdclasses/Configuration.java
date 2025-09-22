@@ -113,7 +113,7 @@ public class Configuration implements CF {
    */
   public static final Configuration EMPTY = createEmptyConfiguration();
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * CF
@@ -406,7 +406,7 @@ public class Configuration implements CF {
       .build();
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.ADMINISTRATION,
       RoleRight.DATA_ADMINISTRATION,

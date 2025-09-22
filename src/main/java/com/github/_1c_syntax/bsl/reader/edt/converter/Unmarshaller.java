@@ -33,6 +33,7 @@ import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.experimental.UtilityClass;
@@ -53,6 +54,8 @@ public class Unmarshaller {
 
   private static final String CHILD_FILED = "child";
   private static final String TABLE_FIELDS_FIELD = "fields";
+  private static final String VALUE_TYPE_OTHER_FIELD = "valueType";
+  private static final String VALUE_TYPE_FIELD = "type";
 
   /**
    * Читают общую информацию из файла
@@ -89,6 +92,11 @@ public class Unmarshaller {
     if (fieldClass == null && TABLE_FIELDS_NODE.equals(name)) {
       name = TABLE_FIELDS_FIELD;
       fieldClass = ExternalDataSourceTableField.class;
+    }
+
+    if (fieldClass == null && VALUE_TYPE_OTHER_FIELD.equals(name)) {
+      name = VALUE_TYPE_FIELD;
+      fieldClass = ValueTypeDescription.class;
     }
 
     if (fieldClass == null) {

@@ -28,7 +28,30 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "name": "Boolean",
+              "nameRu": "Булево"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 0
+          }
+        ]
+      }
     }
   ],
   "attributes": [],
@@ -58,7 +81,22 @@
       },
       "passwordMode": false,
       "kind": "CUSTOM",
-      "indexing": "DONT_INDEX"
+      "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      }
     }
   ],
   "forms": [],

@@ -29,6 +29,34 @@
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
+              "name": "Number",
+              "nameRu": "Число"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 1
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+              "precision": 10,
+              "scale": 0,
+              "nonNegative": false
+            }
+          }
+        ]
+      },
       "format": {
         "content": []
       },
@@ -2854,18 +2882,18 @@
   "mdoType": "EXCHANGE_PLAN",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
-    ],
-    [
       "ObjectModule",
       "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
+    ],
+    [
+      "ManagerModule",
+      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
@@ -2873,8 +2901,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
