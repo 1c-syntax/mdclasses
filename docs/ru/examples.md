@@ -317,7 +317,7 @@ if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
         // проверим наименование 
         assertThat(objectAttribute.getName()).isEqualTo("Реквизит2");
         
-        // // описание типа доступно через getValueType()
+        // описание типа доступно через getValueType()
         assertThat(objectAttribute.getValueType()).isNotNull();
         // убедимся в наличии примитивного типа СТРОКА в составе описания
         assertThat(objectAttribute.getValueType().contains(PrimitiveValueType.NUMBER)).isTrue();
@@ -330,7 +330,7 @@ if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
         var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
         assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
 
-        // убаимся, что квалификатор числа содожержит верную информацию
+        // убедимся, что квалификатор числа содежржит верную информацию
         var numberQualifiers = (NumberQualifiers) qualifier;
         assertThat(numberQualifiers.getPrecision()).isEqualTo(10); // длина 10
         assertThat(numberQualifiers.getScale()).isEqualTo(0);      // точность 0

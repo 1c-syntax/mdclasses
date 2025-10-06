@@ -22,4 +22,7 @@
 /**
  * Пакет для хранения данных элементов форм
  */
+@ParametersAreNonnullByDefault
 package com.github._1c_syntax.bsl.mdo.storage.form;
+
+import javax.annotation.ParametersAreNonnullByDefault;
