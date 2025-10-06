@@ -196,7 +196,7 @@ public class MDClasses {
         && type != MDOType.EXTERNAL_DATA_PROCESSOR
         && type != MDOType.UNKNOWN
       )
-      .map(MDOType::getGroupName)
+      .map(MDOType::groupName)
       .collect(Collectors.toSet());
   }
 }

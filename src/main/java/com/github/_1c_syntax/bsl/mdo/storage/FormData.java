@@ -24,7 +24,7 @@ package com.github._1c_syntax.bsl.mdo.storage;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 
 import java.util.List;
 

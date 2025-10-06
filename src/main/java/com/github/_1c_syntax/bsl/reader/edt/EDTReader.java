@@ -106,7 +106,7 @@ public class EDTReader implements MDReader {
   @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
@@ -149,7 +149,7 @@ public class EDTReader implements MDReader {
     if (mdoType == MDOType.COMMON_FORM) {
       formDataPath = Path.of(basePath, "Form.form");
     } else {
-      formDataPath = Path.of(basePath, MDOType.FORM.getGroupName(), name, "Form.form");
+      formDataPath = Path.of(basePath, MDOType.FORM.groupName(), name, "Form.form");
     }
 
     if (!formDataPath.toFile().exists()) {
@@ -164,7 +164,7 @@ public class EDTReader implements MDReader {
     if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
       return mdoPath.getParent().getParent();
     } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
-      return Paths.get(mdoPath.getParent().toString(), mdoType.getGroupName());
+      return Paths.get(mdoPath.getParent().toString(), mdoType.groupName());
     } else {
       return mdoTypeFolderPath(mdoPath);
     }
@@ -174,7 +174,7 @@ public class EDTReader implements MDReader {
   @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     if (ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
-      return Paths.get(folder.toString(), MDOType.CONFIGURATION.getName(), moduleType.getFileName());
+      return Paths.get(folder.toString(), MDOType.CONFIGURATION.nameEn(), moduleType.getFileName());
     }
     return Paths.get(folder.toString(), name, moduleType.getFileName());
   }
@@ -247,12 +247,12 @@ public class EDTReader implements MDReader {
   }
 
   private Path parentConfigurationsPath() {
-    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.getName(),
+    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(),
       "ParentConfigurations.bin");
   }
 
   private static Path mdoPath(Path rootPath, MDOType type, String name) {
-    return mdoPath(Paths.get(rootPath.toString(), "src", type.getGroupName()), name);
+    return mdoPath(Paths.get(rootPath.toString(), "src", type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {

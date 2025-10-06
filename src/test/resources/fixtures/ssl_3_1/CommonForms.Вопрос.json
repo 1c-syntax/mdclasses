@@ -25,12 +25,16 @@
         "name": "Колонки",
         "title": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Колонки"
               }
-            ]
+            }
           ]
         },
         "dataPath": {
@@ -44,12 +48,16 @@
               "name": "Предупреждение",
               "title": {
                 "content": [
-                  [
-                    {
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                       "langKey": "ru",
                       "value": "Предупреждение"
                     }
-                  ]
+                  }
                 ]
               },
               "dataPath": {
@@ -63,12 +71,16 @@
               "name": "Строки",
               "title": {
                 "content": [
-                  [
-                    {
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                       "langKey": "ru",
                       "value": "Строки"
                     }
-                  ]
+                  }
                 ]
               },
               "dataPath": {
@@ -121,7 +133,7 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 0
               }
@@ -135,25 +147,26 @@
           "name": "БольшеНеЗадаватьЭтотВопрос",
           "title": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Больше не задавать этот вопрос"
                 }
-              ]
+              }
             ]
           },
           "type": {
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "name": "Boolean",
-                  "nameRu": "Булево"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
               }
             ],
             "composite": false,
@@ -170,26 +183,27 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "name": "Number",
-                  "nameRu": "Число"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
               }
             ],
             "composite": false,
             "qualifiers": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                   "precision": 5,
                   "scale": 0,
-                  "nonNegative": true
+                  "nonNegative": true,
+                  "description": {
+                    "nameRu": "КвалификаторыЧисла (5.0 неотр)",
+                    "nameEn": "NumberQualifiers (5.0 nonneg)"
+                  }
                 }
               }
             ]
@@ -205,25 +219,26 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "name": "String",
-                  "nameRu": "Строка"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
               }
             ],
             "composite": false,
             "qualifiers": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 0,
-                  "allowedLength": "VARIABLE"
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                    "nameEn": "StringQualifiers (0, Variable)"
+                  }
                 }
               }
             ]
@@ -239,24 +254,25 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
               }
             ],
             "composite": false,
             "qualifiers": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 0,
-                  "allowedLength": "VARIABLE"
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
                 }
               }
             ]
@@ -272,24 +288,25 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
               }
             ],
             "composite": false,
             "qualifiers": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 0,
-                  "allowedLength": "VARIABLE"
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
                 }
               }
             ]
@@ -338,12 +355,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Вопрос"
         }
-      ]
+      }
     ]
   },
   "uuid": "573f1753-9194-4aaf-9217-5cac70ff108f"

@@ -79,7 +79,7 @@ public class MDChildConverter extends AbstractReadConverter {
   private static Path childDataPath(Path path, MDOType mdoType, String childName) {
     return Paths.get(path.getParent().toString(),
       FilenameUtils.getBaseName(path.toString()),
-      mdoType.getGroupName(),
+      mdoType.groupName(),
       childName + ".xml");
   }
 }

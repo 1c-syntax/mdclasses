@@ -40,7 +40,7 @@ public class FormItemConverter implements ReadConverter {
     var attributeType = reader.getAttribute("type");
     Unmarshaller.unmarshal(reader, context, readerContext);
     if (readerContext.getElementType() == null) {
-      readerContext.setValue("type", FormElementType.fromString(attributeType.replace("form:", "")));
+      readerContext.setValue("type", FormElementType.valueByName(attributeType.replace("form:", "")));
     }
     return readerContext.build();
   }

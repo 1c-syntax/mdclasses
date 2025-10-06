@@ -27,9 +27,10 @@ import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Catalog;
 import com.github._1c_syntax.bsl.mdo.DefinedType;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
-import com.github._1c_syntax.bsl.mdo.support.MetadataValueType;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.ValueTypes;
 import com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers;
+import com.github._1c_syntax.bsl.types.value.CustomValueType;
 import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -97,17 +98,17 @@ public class ValueTypeTest {
       assertThat(definedType.getValueType().isComposite()).isTrue();
       assertThat(definedType.getValueType().getQualifiers()).isEmpty();
 
-      var typeContains = MetadataValueType.fromString("EnumRef.ДополнительныеЗначенияДоступа");
-      var typeNotContains = MetadataValueType.fromString("CatalogRef.Контрагенты");
+      var typeContains = ValueTypes.getOrCompute("EnumRef.ДополнительныеЗначенияДоступа");
+      var typeNotContains = ValueTypes.getOrCompute("CatalogRef.Контрагенты");
       assertThat(typeContains).isNotNull();
       assertThat(typeNotContains).isNotNull();
       assertThat(definedType.getValueType().contains(typeContains)).isTrue();
       assertThat(definedType.getValueType().contains(typeNotContains)).isFalse();
+      assertThat(typeContains).isInstanceOf(CustomValueType.class);
 
-      assertThat(typeContains.getKind()).isEqualTo(MDOType.ENUM);
-      assertThat(typeContains.isComposite()).isFalse();
-      assertThat(typeContains.getName()).isEqualTo("EnumRef.ДополнительныеЗначенияДоступа");
-      assertThat(typeContains.getNameRu()).isEqualTo("ПеречислениеСсылка.ДополнительныеЗначенияДоступа");
+      assertThat(((CustomValueType) typeContains).kind()).isEqualTo(MDOType.ENUM);
+      assertThat(typeContains.nameEn()).isEqualTo("EnumRef.ДополнительныеЗначенияДоступа");
+      assertThat(typeContains.nameRu()).isEqualTo("ПеречислениеСсылка.ДополнительныеЗначенияДоступа");
     }
   }
 

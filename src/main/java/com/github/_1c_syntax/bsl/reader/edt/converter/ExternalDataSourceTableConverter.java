@@ -58,7 +58,7 @@ public class ExternalDataSourceTableConverter extends AbstractReadConverter {
   }
 
   private static Path dataPath(Path path, String childName) {
-    return Paths.get(path.getParent().toString(), MDOType.EXTERNAL_DATA_SOURCE_TABLE.getGroupName(),
+    return Paths.get(path.getParent().toString(), MDOType.EXTERNAL_DATA_SOURCE_TABLE.groupName(),
       childName, childName + ".mdo");
   }
 }

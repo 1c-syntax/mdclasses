@@ -12,18 +12,18 @@
   "mdoType": "CONSTANT",
   "moduleTypes": [
     [
-      "ValueManagerModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl"
-    ],
-    [
       "ManagerModule",
       "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl"
+    ],
+    [
+      "ValueManagerModule",
+      "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ValueManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
       },
@@ -31,8 +31,8 @@
       "isProtected": false
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl",
+      "moduleType": "ValueManagerModule",
+      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl",
       "owner": {
         "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
       },
@@ -71,25 +71,26 @@
     "types": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-          "name": "String",
-          "nameRu": "Строка"
-        }
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
       }
     ],
     "composite": false,
     "qualifiers": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
         "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
           "length": 10,
-          "allowedLength": "VARIABLE"
+          "allowedLength": "VARIABLE",
+          "description": {
+            "nameRu": "КвалификаторыСтроки (10, Переменная)",
+            "nameEn": "StringQualifiers (10, Variable)"
+          }
         }
       }
     ]

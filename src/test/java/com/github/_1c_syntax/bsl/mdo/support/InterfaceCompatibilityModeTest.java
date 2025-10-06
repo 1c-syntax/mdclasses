@@ -30,11 +30,11 @@ class InterfaceCompatibilityModeTest {
   @Test
   void getByName() {
 
-    assertThat(InterfaceCompatibilityMode.getByName("taxi")).isEqualTo(InterfaceCompatibilityMode.TAXI);
-    assertThat(InterfaceCompatibilityMode.getByName("TAXI")).isEqualTo(InterfaceCompatibilityMode.TAXI);
-    assertThat(InterfaceCompatibilityMode.getByName("VERSION_8_2"))
+    assertThat(InterfaceCompatibilityMode.valueByName("taxi")).isEqualTo(InterfaceCompatibilityMode.TAXI);
+    assertThat(InterfaceCompatibilityMode.valueByName("TAXI")).isEqualTo(InterfaceCompatibilityMode.TAXI);
+    assertThat(InterfaceCompatibilityMode.valueByName("Версия8_2"))
       .isEqualTo(InterfaceCompatibilityMode.VERSION_8_2);
-    assertThat(InterfaceCompatibilityMode.getByName("Version8_5EnableTaxi"))
+    assertThat(InterfaceCompatibilityMode.valueByName("Version8_5EnableTaxi"))
       .isEqualTo(InterfaceCompatibilityMode.VERSION_8_5_ENABLE_TAXI);
   }
 }

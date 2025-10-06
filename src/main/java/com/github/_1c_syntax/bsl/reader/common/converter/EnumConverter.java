@@ -21,13 +21,12 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
-import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.types.EnumWithName;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
@@ -36,7 +35,7 @@ import java.util.Map;
  * *XStreamFactory.
  */
 @Slf4j
-public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSingleValueConverter {
+public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSingleValueConverter {
 
   private static final String URL_TEMPLATE =
     "https://github.com/1c-syntax/mdclasses/issues/new?labels=bug&title=%5BBUG%5D%20Unknown%20element%20%5B{}%20{}%5D";
@@ -44,38 +43,31 @@ public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSi
     "Parsing error due to unknown element {}. Please, create issue using link " + URL_TEMPLATE;
 
   private final Class<T> enumClazz;
-  private final T unknown;
-  private final Map<String, T> enumElements;
+  private final Method valueByNameMethod;
 
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
-    unknown = unknown();
-    enumElements = new HashMap<>();
-    for (T item : enumClazz.getEnumConstants()) {
-      enumElements.put(item.value(), item);
-      if (UsePurposes.class.isAssignableFrom(enumClazz)) {
-        enumElements.put(((UsePurposes) item).valueVar2(), item);
+    Method methodFind = null;
+    for (var method : clazz.getDeclaredMethods()) {
+      if (method.getName().equals("valueByName")) {
+        methodFind = method;
+        break;
       }
+    }
+    if (methodFind != null) {
+      valueByNameMethod = methodFind;
+    } else {
+      throw new ClassCastException("Not found method valueByName");
     }
   }
 
   @Override
   public Object fromString(String sourceString) {
-    var result = enumElements.get(sourceString);
-    if (result == null) {
-      LOGGER.warn(WARN_TEMPLATE, sourceString, enumClazz.getName(), sourceString);
-      result = unknown;
+    try {
+      return valueByNameMethod.invoke(enumClazz, sourceString);
+    } catch (IllegalAccessException | InvocationTargetException e) {
+      throw new RuntimeException(e);
     }
-    return result;
-  }
-
-  private T unknown() {
-    for (T item : enumClazz.getEnumConstants()) {
-      if (item.isUnknown()) {
-        return item;
-      }
-    }
-    throw new IllegalStateException("No unknown value found for enum " + enumClazz.getName());
   }
 
   @Override

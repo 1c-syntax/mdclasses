@@ -57,6 +57,34 @@
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
+            }
+          }
+        ]
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/bots/com.github._1c_syntax.bsl.mdo.Bot/synonym"
       }
@@ -215,25 +243,25 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                  "name": "String",
-                  "nameRu": "Строка"
-                }
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
               }
             ],
             "composite": false,
             "qualifiers": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 10,
-                  "allowedLength": "VARIABLE"
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfCharacteristicTypes/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
                 }
               }
             ]
@@ -293,18 +321,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.mdo.support.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Русский"
-              }
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Русский"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -482,9 +508,16 @@
   "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
   "synonym": {
     "content": [
-      [
-        1
-      ]
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Конфигурация"
+        }
+      }
     ]
   },
   "tasks": [],

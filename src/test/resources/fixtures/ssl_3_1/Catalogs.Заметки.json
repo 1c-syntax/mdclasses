@@ -13,12 +13,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Автор"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -34,13 +38,15 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                "name": "CatalogRef.Пользователи",
-                "nameRu": "СправочникСсылка.Пользователи",
-                "composite": false,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "СправочникСсылка.Пользователи",
+                  "nameEn": "CatalogRef.Пользователи"
+                },
+                "variant": "METADATA",
                 "kind": "CATALOG"
               }
             }
@@ -49,7 +55,7 @@
           "qualifiers": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 0
             }
@@ -79,12 +85,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Предмет"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -98,13 +108,15 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                "name": "DefinedType.ПредметЗаметок",
-                "nameRu": "ОпределяемыйТип.ПредметЗаметок",
-                "composite": false,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ОпределяемыйТип.ПредметЗаметок",
+                  "nameEn": "DefinedType.ПредметЗаметок"
+                },
+                "variant": "METADATA",
                 "kind": "DEFINED_TYPE"
               }
             }
@@ -136,12 +148,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Содержание"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -155,14 +171,10 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.types.value.V8ValueType": {
-                "name": "ValueStorage",
-                "nameRu": "ХранилищеЗначений",
-                "variant": "V8"
-              }
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": "VALUE_STORAGE"
             }
           ],
           "composite": false,
@@ -204,25 +216,26 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                "name": "String",
-                "nameRu": "Строка"
-              }
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
             }
           ],
           "composite": false,
           "qualifiers": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": "VARIABLE"
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                  "nameEn": "StringQualifiers (0, Variable)"
+                }
               }
             }
           ]
@@ -251,12 +264,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Для рабочего стола"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -270,13 +287,10 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                "name": "Boolean",
-                "nameRu": "Булево"
-              }
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
             }
           ],
           "composite": false,
@@ -306,12 +320,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Пометка"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -325,13 +343,15 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                "name": "EnumRef.ЦветаЗаметок",
-                "nameRu": "ПеречислениеСсылка.ЦветаЗаметок",
-                "composite": false,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ПеречислениеСсылка.ЦветаЗаметок",
+                  "nameEn": "EnumRef.ЦветаЗаметок"
+                },
+                "variant": "METADATA",
                 "kind": "ENUM"
               }
             }
@@ -363,12 +383,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Дата изменения"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -382,24 +406,25 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                "name": "Date",
-                "nameRu": "Дата"
-              }
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
             }
           ],
           "composite": false,
           "qualifiers": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATETIME"
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
               }
             }
           ]
@@ -440,24 +465,26 @@
           "types": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-              }
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
             }
           ],
           "composite": false,
           "qualifiers": [
             {
               "default": {
-                "tag": 1
+                "tag": 4
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 100,
-                "allowedLength": "VARIABLE"
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (100, Переменная)",
+                  "nameEn": "StringQualifiers (100, Variable)"
+                }
               }
             }
           ]
@@ -490,12 +517,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Все заметки"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NOT_EDITABLE",
@@ -534,12 +565,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Форма элемента"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -593,12 +628,16 @@
                 "name": "СодержаниеЗаметки",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Содержание заметки"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -623,12 +662,16 @@
                           "name": "НадписьПредмет",
                           "title": {
                             "content": [
-                              [
-                                {
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                   "langKey": "ru",
                                   "value": "Предмет:"
                                 }
-                              ]
+                              }
                             ]
                           },
                           "dataPath": {
@@ -672,12 +715,16 @@
                 "name": "ПараметрыОтображения",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Параметры отображения"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -691,12 +738,16 @@
                       "name": "ОтображатьНаРабочемСтоле",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Отображать на рабочем столе"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -710,12 +761,16 @@
                       "name": "Пометка",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Цвет"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -745,12 +800,16 @@
                 "name": "ИнформацияОбАвторе",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Информация об авторе"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -764,12 +823,16 @@
                       "name": "НадписьАвтор",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Автор:"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -799,12 +862,16 @@
                 "name": "ДатаЗаметки",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Записана: 25 ноября 2011 г."
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -827,13 +894,15 @@
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                        "name": "CatalogObject.Заметки",
-                        "nameRu": "СправочникОбъект.Заметки",
-                        "composite": false,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "СправочникОбъект.Заметки",
+                          "nameEn": "CatalogObject.Заметки"
+                        },
+                        "variant": "METADATA",
                         "kind": "CATALOG"
                       }
                     }
@@ -847,25 +916,26 @@
                 "name": "ФорматированныйТекст",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Форматированный текст"
                       }
-                    ]
+                    }
                   ]
                 },
                 "type": {
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
-                        "name": "FormattedDocument",
-                        "nameRu": "ФорматированныйДокумент"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "FORMATTED_DOCUMENT"
                     }
                   ],
                   "composite": false,
@@ -942,12 +1012,16 @@
                 "name": "Фильтры",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Фильтры"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -1001,12 +1075,16 @@
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Группа пользовательских настроек"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -1020,12 +1098,16 @@
                 "name": "КоманднаяПанель",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Командная панель"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -1039,12 +1121,16 @@
                 "name": "Список",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Список"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -1058,12 +1144,16 @@
                       "name": "Тема",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Тема"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -1126,13 +1216,10 @@
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
-                        "name": "DynamicList",
-                        "nameRu": "ДинамическийСписок"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
                     }
                   ],
                   "composite": false,
@@ -1144,36 +1231,41 @@
                 "name": "ВыбранныйПредмет",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Выбранный предмет"
                       }
-                    ]
+                    }
                   ]
                 },
                 "type": {
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
                     }
                   ],
                   "composite": false,
                   "qualifiers": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 100,
-                        "allowedLength": "VARIABLE"
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
                       }
                     }
                   ]
@@ -1184,23 +1276,27 @@
                 "name": "ВыбранныйЦвет",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Выбранный цвет"
                       }
-                    ]
+                    }
                   ]
                 },
                 "type": {
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
                       }
                     }
                   ],
@@ -1213,24 +1309,26 @@
                 "name": "ПоказыватьУдаленные",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Показывать удаленные"
                       }
-                    ]
+                    }
                   ]
                 },
                 "type": {
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
                     }
                   ],
                   "composite": false,
@@ -1264,12 +1362,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Заметки"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -1289,12 +1391,16 @@
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Мои заметки"
                 }
-              ]
+              }
             ]
           },
           "handlers": [
@@ -1441,12 +1547,10 @@
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
                     }
                   ],
                   "composite": false,
@@ -1470,24 +1574,26 @@
                 "name": "ПоказыватьЗаметкиДругихПользователей",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Показывать заметки других пользователей"
                       }
-                    ]
+                    }
                   ]
                 },
                 "type": {
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
                     }
                   ],
                   "composite": false,
@@ -1504,12 +1610,10 @@
                   "types": [
                     {
                       "default": {
-                        "tag": 1
+                        "tag": 4
                       },
                       "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                      }
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
                     }
                   ],
                   "composite": false,
@@ -1648,12 +1752,10 @@
                 "types": [
                   {
                     "default": {
-                      "tag": 1
+                      "tag": 4
                     },
                     "int": 1,
-                    "com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType"
-                    }
+                    "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
                   }
                 ],
                 "composite": false,
@@ -1685,12 +1787,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Форма группы"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -1789,11 +1895,11 @@
                 "types": [
                   {
                     "default": {
-                      "tag": 1
+                      "tag": 4
                     },
                     "int": 1,
-                    "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.mdo.support.MetadataValueType"
+                    "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
                     }
                   }
                 ],
@@ -1853,6 +1959,7 @@
   ],
   "name": "Заметки",
   "objectBelonging": "OWN",
+  "owners": [],
   "possibleRights": [
     {
       "default": {
