@@ -27,12 +27,13 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
- * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от EnumWithValues.
- * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
- * *XStreamFactory.
+ * Для использования с конкретным перечислением достаточно зарегистрировать
+ * EnumConverter<ВашEnum> в XStream (см. ExtendXStream).
+ * Перечисление должно реализовывать EnumWithName и предоставлять статический метод valueByName(String).
  */
 @Slf4j
 public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSingleValueConverter {
@@ -41,22 +42,26 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
 
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
-    Method methodFind = null;
-    for (var method : clazz.getDeclaredMethods()) {
-      if ("valueByName".equals(method.getName())) {
-        methodFind = method;
-        break;
+    try {
+      var methodFind = clazz.getDeclaredMethod("valueByName", String.class);
+      if (!Modifier.isStatic(methodFind.getModifiers())) {
+        throw new IllegalArgumentException("valueByName must be static: " + clazz.getName());
       }
-    }
-    if (methodFind != null) {
+      if (!enumClazz.isAssignableFrom(methodFind.getReturnType())) {
+        throw new IllegalArgumentException("valueByName must return " + enumClazz.getName());
+      }
+      methodFind.setAccessible(true);
       valueByNameMethod = methodFind;
-    } else {
-      throw new ClassCastException("Not found method valueByName");
+    } catch (NoSuchMethodException e) {
+      throw new IllegalArgumentException("Not found valueByName(String) in " + clazz.getName(), e);
     }
   }
 
   @Override
   public Object fromString(String sourceString) {
+    if (sourceString == null) {
+      return null;
+    }
     try {
       return valueByNameMethod.invoke(null, sourceString);
     } catch (IllegalAccessException | InvocationTargetException e) {
