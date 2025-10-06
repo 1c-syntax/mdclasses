@@ -58,7 +58,7 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
   @Override
   public Object fromString(String sourceString) {
     try {
-      return valueByNameMethod.invoke(enumClazz, sourceString);
+      return valueByNameMethod.invoke(null, sourceString);
     } catch (IllegalAccessException | InvocationTargetException e) {
       throw new RuntimeException(e);
     }
