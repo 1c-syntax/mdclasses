@@ -286,7 +286,6 @@ public class StdAttributeFiller {
       stdAttributes.put(name, childContext);
       contexts.add(childContext);
       parentContext.getChildrenContexts().put(collectionName, contexts);
-//      LOGGER.debug("Для {} добавлен стандартный реквизит {}", parentContext.getMdoReference(), name);
     }
     return childContext;
   }
