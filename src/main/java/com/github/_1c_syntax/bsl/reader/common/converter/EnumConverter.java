@@ -32,7 +32,7 @@ import java.lang.reflect.Modifier;
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
  * Для использования с конкретным перечислением достаточно зарегистрировать
- * 'EnumConverter<MyEnum>' в XStream (см. ExtendXStream).
+ * в XStream (см. ExtendXStream).
  * Перечисление должно реализовывать EnumWithName и предоставлять статический метод valueByName(String).
  */
 @Slf4j
