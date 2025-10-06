@@ -40,7 +40,11 @@ import lombok.Setter;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Сохраняемый контекст при чтении файла
@@ -76,6 +80,7 @@ public abstract class AbstractReaderContext {
   /**
    * Режим поддержки
    */
+  @Getter
   protected SupportVariant supportVariant;
 
   /**
@@ -87,6 +92,7 @@ public abstract class AbstractReaderContext {
   /**
    * Ссылка на текущий объект
    */
+  @Getter
   protected MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
@@ -110,9 +116,24 @@ public abstract class AbstractReaderContext {
   @Getter
   private Object lastValue;
 
+  /**
+   * всякие прочитанные атрибуты
+   */
+  @Getter
+  private final Map<String, Object> cache;
+
   protected AbstractReaderContext(@NonNull HierarchicalStreamReader reader) {
     currentPath = ExtendXStream.getCurrentPath(reader);
     mdReader = ExtendXStream.getCurrentMDReader(reader);
+
+    cache = new ConcurrentHashMap<>();
+  }
+
+  protected AbstractReaderContext(@NonNull Path currentPath, @NonNull MDReader mdReader) {
+    this.currentPath = currentPath;
+    this.mdReader = mdReader;
+
+    cache = new ConcurrentHashMap<>();
   }
 
   /**
@@ -122,7 +143,10 @@ public abstract class AbstractReaderContext {
    * @param value      устанавливаемое значение
    */
   public void setValue(String methodName, Object value) {
-    TransformationUtils.setValue(builder, methodName, value);
+    if (value != null) {
+      TransformationUtils.setValue(builder, methodName, value);
+      cache.put(methodName.toLowerCase(Locale.ROOT), value);
+    }
   }
 
   /**
@@ -140,6 +164,11 @@ public abstract class AbstractReaderContext {
    */
   public Object build() {
     return TransformationUtils.build(builder, currentPath);
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T> T getFromCache(@NonNull String key, T defaultValue) {
+    return (T) cache.getOrDefault(key.toLowerCase(Locale.ROOT), defaultValue);
   }
 
   protected void setValueModules() {
@@ -175,6 +204,7 @@ public abstract class AbstractReaderContext {
         }
       }
     );
+    modules.sort(Comparator.comparing(Module::toString));
     return modules;
   }
 }

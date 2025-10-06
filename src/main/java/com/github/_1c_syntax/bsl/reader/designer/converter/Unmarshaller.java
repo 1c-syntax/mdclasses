@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
@@ -35,6 +36,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Выполняет базовое чтение файлов
@@ -56,7 +58,9 @@ public class Unmarshaller {
   private static final String TEMPLATE_TYPE_NODE = "TemplateType";
   private static final String CP_MODE_NODE = "CompatibilityMode";
   private static final String CP_EXT_MODE_NODE = "ConfigurationExtensionCompatibilityMode";
-
+  private static final String STANDARD_ATTRIBUTES_NODE = "StandardAttributes";
+  private static final String STANDARD_ATTRIBUTE_NODE = "StandardAttribute";
+  private static final String ATTRIBUTE_FIELD_NAME = "Attribute";
 
   /**
    * Читает информацию из файлов MD и MDC
@@ -155,11 +159,13 @@ public class Unmarshaller {
       var name = reader.getNodeName();
       if (USE_PURPOSES_NODE.equals(name)) {
         readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
+      } else if (STANDARD_ATTRIBUTES_NODE.equals(name)) {
+        readPropertiesNode(reader, context, readerContext);
+      } else if (STANDARD_ATTRIBUTE_NODE.equals(name)) {
+        readValue(reader, context, readerContext, StandardAttribute.class, ATTRIBUTE_FIELD_NAME);
       } else {
         var fieldClass = readerContext.fieldType(name);
-        if (fieldClass != null) {
-          readValue(reader, context, readerContext, fieldClass, name);
-        }
+        readValue(reader, context, readerContext, Objects.requireNonNullElse(fieldClass, String.class), name);
       }
       reader.moveUp();
     }

@@ -63,7 +63,7 @@ class ExternalReportTest {
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(erf.getPlainChildren())
-      .hasSize(9)
+      .hasSize(10)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(erf.getForms()).hasSize(5);
