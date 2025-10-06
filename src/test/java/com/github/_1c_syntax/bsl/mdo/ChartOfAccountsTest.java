@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -40,9 +41,11 @@ class ChartOfAccountsTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ChartOfAccounts.class);
     var chartOfAccounts = (ChartOfAccounts) mdo;
-    assertThat(chartOfAccounts.getAllAttributes()).hasSize(2);
-    assertThat(chartOfAccounts.getChildren()).hasSize(2);
-    assertThat(chartOfAccounts.getAttributes()).isEmpty();
+    assertThat(chartOfAccounts.getAllAttributes()).hasSize(12);
+    assertThat(chartOfAccounts.getChildren()).hasSize(12);
+    assertThat(chartOfAccounts.getAttributes())
+      .hasSize(10)
+      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(chartOfAccounts.getAccountingFlags()).hasSize(1);
     assertThat(chartOfAccounts.getExtDimensionAccountingFlags()).hasSize(1);
   }

@@ -2,6 +2,522 @@
   "attributes": [
     [
       {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.PredefinedDataName",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.ИмяПредопределенныхДанных"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "CHART_OF_CHARACTERISTIC_TYPES",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                  "nameEn": "StringQualifiers (0, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ИмяПредопределенныхДанных",
+          "nameEn": "PredefinedDataName"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.ValueType",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.ТипЗначения"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 7,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN",
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "СправочникСсылка.ЗначенияСвойствОбъектов",
+                  "nameEn": "CatalogRef.ЗначенияСвойствОбъектов"
+                },
+                "variant": "METADATA",
+                "kind": "CATALOG"
+              },
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "СправочникСсылка.ЗначенияСвойствОбъектовИерархия",
+                  "nameEn": "CatalogRef.ЗначенияСвойствОбъектовИерархия"
+                },
+                "variant": "METADATA",
+                "kind": "CATALOG"
+              },
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "СправочникСсылка.Пользователи",
+                  "nameEn": "CatalogRef.Пользователи"
+                },
+                "variant": "METADATA",
+                "kind": "CATALOG"
+              },
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE",
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER",
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": true,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 3,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              },
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 1024,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (1024, Переменная)",
+                  "nameEn": "StringQualifiers (1024, Variable)"
+                }
+              },
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 17,
+                "scale": 5,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (17.5)",
+                  "nameEn": "NumberQualifiers (17.5)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ТипЗначения",
+          "nameEn": "ValueType"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Description",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Наименование"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 150,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (150, Переменная)",
+                  "nameEn": "StringQualifiers (150, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Наименование",
+          "nameEn": "Description"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Code",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Код"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 0,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (0.0)",
+                  "nameEn": "NumberQualifiers (0.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Код",
+          "nameEn": "Code"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.IsFolder",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.ЭтоГруппа"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ЭтоГруппа",
+          "nameEn": "IsFolder"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Parent",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Родитель"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ПланВидовХарактеристикСсылка.ДополнительныеРеквизитыИСведения",
+                  "nameEn": "ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
+                },
+                "variant": "METADATA",
+                "kind": "CHART_OF_CHARACTERISTIC_TYPES"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Родитель",
+          "nameEn": "Parent"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": true
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Predefined",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Предопределенный"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[5]/type"
+        },
+        "fullName": {
+          "nameRu": "Предопределенный",
+          "nameEn": "Predefined"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.DeletionMark",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.ПометкаУдаления"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[5]/type"
+        },
+        "fullName": {
+          "nameRu": "ПометкаУдаления",
+          "nameEn": "DeletionMark"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Ref",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Ссылка"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Ссылка",
+          "nameEn": "Ref"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
         "uuid": "8064eb3a-d56c-4517-9db0-b7300149c7c4",
         "name": "Виден",
         "mdoReference": {
@@ -27,9 +543,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "type": "CHART_OF_CHARACTERISTIC_TYPES",
-          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения",
-          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -45,20 +559,13 @@
             }
           ],
           "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 0
-            }
-          ]
+          "qualifiers": []
         },
         "format": {
-          "content": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -92,7 +599,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -105,12 +612,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "fullName": {
-                  "nameRu": "ПланВидовХарактеристикСсылка.ДополнительныеРеквизитыИСведения",
-                  "nameEn": "ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения"
-                },
-                "variant": "METADATA",
-                "kind": "CHART_OF_CHARACTERISTIC_TYPES"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
               }
             }
           ],
@@ -118,10 +620,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -155,7 +657,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -174,10 +676,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -211,7 +713,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -230,10 +732,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -267,7 +769,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -286,10 +788,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -323,7 +825,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -342,10 +844,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -379,7 +881,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -413,10 +915,10 @@
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -450,7 +952,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -476,18 +978,17 @@
                 "length": 150,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (150, Переменная)",
-                  "nameEn": "StringQualifiers (150, Variable)"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -521,7 +1022,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -547,17 +1048,17 @@
                 "length": 150,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -591,7 +1092,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -610,10 +1111,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -647,7 +1148,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -681,10 +1182,10 @@
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -718,7 +1219,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -744,18 +1245,17 @@
                 "length": 0,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                  "nameEn": "StringQualifiers (0, Variable)"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -789,7 +1289,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -824,10 +1324,10 @@
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -861,7 +1361,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -887,17 +1387,17 @@
                 "length": 0,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -931,7 +1431,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -957,17 +1457,17 @@
                 "length": 0,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -1001,7 +1501,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -1020,10 +1520,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -1057,7 +1557,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -1083,10 +1583,10 @@
           "qualifiers": []
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -1120,7 +1620,7 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
@@ -1146,17 +1646,17 @@
                 "length": 150,
                 "allowedLength": "VARIABLE",
                 "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                 }
               }
             }
           ]
         },
         "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
         },
         "markNegatives": false,
         "mask": "",
@@ -1171,7 +1671,7 @@
   "comment": "",
   "description": "Дополнительные реквизиты и сведения",
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "forms": [
     [
@@ -1215,7 +1715,7 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
           },
           "handlers": [
             [
@@ -1405,7 +1905,7 @@
                                           "id": 412,
                                           "name": "НеиспользуемыеРеквизиты",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                           },
                                           "dataPath": {
                                             "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -1550,7 +2050,7 @@
                                                       "id": 399,
                                                       "name": "Ссылка",
                                                       "title": {
-                                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                       },
                                                       "dataPath": {
                                                         "segments": "НаборыСвойств.Ссылка"
@@ -1690,7 +2190,7 @@
                                             "id": 379,
                                             "name": "СвойстваЗаголовок",
                                             "title": {
-                                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                             },
                                             "dataPath": {
                                               "segments": "Свойства.Заголовок"
@@ -1727,7 +2227,7 @@
                                               "id": 384,
                                               "name": "СписокДополнительныхРеквизитовТипЗначения",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "segments": "Items.Свойства.CurrentData.ТипЗначения"
@@ -1762,7 +2262,7 @@
                                               "id": 390,
                                               "name": "СписокДополнительныхРеквизитовЗаголовокФормыЗначения",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "segments": "Items.Свойства.CurrentData.ЗаголовокФормыЗначения"
@@ -1774,7 +2274,7 @@
                                               "id": 393,
                                               "name": "СписокДополнительныхРеквизитовЗаголовокФормыВыбораЗначения",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "segments": "Items.Свойства.CurrentData.ЗаголовокФормыВыбораЗначения"
@@ -1907,7 +2407,7 @@
                                   "id": 20,
                                   "name": "ЭтоДополнительноеСведение",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                   },
                                   "dataPath": {
                                     "segments": "ЭтоДополнительноеСведение"
@@ -1981,7 +2481,7 @@
                                         "id": 37,
                                         "name": "РедактироватьФорматЗначения",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2020,7 +2520,7 @@
                                         "id": 478,
                                         "name": "КартинкаПояснение",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2109,7 +2609,7 @@
                                         "id": 442,
                                         "name": "ОднострочныйВид",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "segments": "ПредставлениеРеквизита"
@@ -2121,7 +2621,7 @@
                                         "id": 445,
                                         "name": "ВыводитьВВидеГиперссылки",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "segments": "Объект.ВыводитьВВидеГиперссылки"
@@ -2160,7 +2660,7 @@
                                         "id": 450,
                                         "name": "МногострочныйВид",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "segments": "ПредставлениеРеквизита"
@@ -2475,7 +2975,7 @@
                                                     "id": 483,
                                                     "name": "ИдентификаторДляФормул",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                     },
                                                     "dataPath": {
                                                       "segments": "Объект.ИдентификаторДляФормул"
@@ -2487,7 +2987,7 @@
                                                     "id": 486,
                                                     "name": "ЗаполнитьИдентификаторДляФормул",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                     },
                                                     "dataPath": {
                                                       "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2538,7 +3038,7 @@
                                                     "id": 33,
                                                     "name": "ЗаголовокФормыЗначения",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                     },
                                                     "dataPath": {
                                                       "segments": "Объект.ЗаголовокФормыЗначения"
@@ -2550,7 +3050,7 @@
                                                     "id": 35,
                                                     "name": "ЗаголовокФормыВыбораЗначения",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                     },
                                                     "dataPath": {
                                                       "segments": "Объект.ЗаголовокФормыВыбораЗначения"
@@ -2566,7 +3066,7 @@
                                               "id": 28,
                                               "name": "Комментарий",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "segments": "Объект.Комментарий"
@@ -2628,7 +3128,7 @@
                                               "id": 106,
                                               "name": "УточнениеНаборовИзменить",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2740,7 +3240,7 @@
                                                         "id": 83,
                                                         "name": "ЗначенияВес",
                                                         "title": {
-                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                         },
                                                         "dataPath": {
                                                           "segments": "Значения.Вес"
@@ -2752,7 +3252,7 @@
                                                         "id": 460,
                                                         "name": "ЗначенияСсылка",
                                                         "title": {
-                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                         },
                                                         "dataPath": {
                                                           "segments": "Значения.Ref"
@@ -2815,7 +3315,7 @@
                                                         "id": 304,
                                                         "name": "ЗначенияДополнительногоРеквизитаНаименование",
                                                         "title": {
-                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                                         },
                                                         "dataPath": {
                                                           "segments": "ЗначенияДополнительныхРеквизитов.Наименование"
@@ -2860,7 +3360,7 @@
                                         "id": 69,
                                         "name": "ДополнительныеЗначенияСВесом",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                         },
                                         "dataPath": {
                                           "segments": "Объект.ДополнительныеЗначенияСВесом"
@@ -2918,7 +3418,7 @@
                                               "id": 105,
                                               "name": "УточнениеСпискаЗначенийИзменить",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                               },
                                               "dataPath": {
                                                 "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -2964,7 +3464,7 @@
                                 "id": 457,
                                 "name": "Имя",
                                 "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                 },
                                 "dataPath": {
                                   "segments": "Объект.Имя"
@@ -3031,7 +3531,7 @@
                           "id": 233,
                           "name": "КомандаНазад",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                           },
                           "dataPath": {
                             "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3068,7 +3568,7 @@
                             "id": 235,
                             "name": "КомандаДалее",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                             },
                             "dataPath": {
                               "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3080,7 +3580,7 @@
                             "id": 242,
                             "name": "Закрыть",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                             },
                             "dataPath": {
                               "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
@@ -3104,7 +3604,7 @@
                 "id": 1,
                 "name": "Объект",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3167,7 +3667,7 @@
                 "id": 2,
                 "name": "СписокНаборов",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3187,7 +3687,7 @@
                 "id": 7,
                 "name": "МногострочноеПолеВвода",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3273,7 +3773,7 @@
                 "id": 10,
                 "name": "ПоказатьУточнениеНабора",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3293,7 +3793,7 @@
                 "id": 4,
                 "name": "ТекущийНаборСвойств",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3315,7 +3815,7 @@
                 "id": 13,
                 "name": "ПереданныеПараметрыФормы",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [],
@@ -3361,7 +3861,7 @@
                         "length": 0,
                         "allowedLength": "VARIABLE",
                         "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                         }
                       }
                     }
@@ -3372,7 +3872,7 @@
                 "id": 15,
                 "name": "РежимПомощника",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3423,7 +3923,7 @@
                 "id": 17,
                 "name": "ПустаяСсылка",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3433,7 +3933,7 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
                       }
                     }
                   ],
@@ -3445,7 +3945,7 @@
                 "id": 18,
                 "name": "УсловияЗависимостиРеквизитов",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3465,7 +3965,7 @@
                 "id": 19,
                 "name": "ИзмененыУсловияЗависимостиРеквизитов",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3485,7 +3985,7 @@
                 "id": 20,
                 "name": "ВыбранныйНаборСвойств",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3601,7 +4101,7 @@
                         "length": 0,
                         "allowedLength": "VARIABLE",
                         "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                         }
                       }
                     }
@@ -3612,7 +4112,7 @@
                 "id": 5,
                 "name": "ТекущийЗаголовок",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -3635,7 +4135,7 @@
                         "length": 0,
                         "allowedLength": "VARIABLE",
                         "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                         }
                       }
                     }
@@ -3647,7 +4147,7 @@
           ]
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -3697,7 +4197,7 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
           },
           "handlers": [
             {
@@ -3804,7 +4304,7 @@
                       "id": 11,
                       "name": "Ссылка",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                       },
                       "dataPath": {
                         "segments": "Список.Ref"
@@ -3823,7 +4323,7 @@
               "id": 1,
               "name": "Список",
               "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "type": {
                 "types": [
@@ -3842,7 +4342,7 @@
           ]
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -3892,7 +4392,7 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
           },
           "handlers": [
             {
@@ -4221,7 +4721,7 @@
           "attributes": []
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -4421,7 +4921,7 @@
                           "id": 8,
                           "name": "ОтдельныеЗначенияРеквизита",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                           },
                           "dataPath": {
                             "segments": "ОтдельноеСвойствоСОтдельнымСпискомЗначений"
@@ -4502,7 +5002,7 @@
                                       "id": 6,
                                       "name": "ОбщиеЗначенияРеквизитов",
                                       "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                       },
                                       "dataPath": {
                                         "segments": "ОтдельноеСвойствоСОбщимСпискомЗначений"
@@ -4564,7 +5064,7 @@
                                       "id": 4,
                                       "name": "ОбщийРеквизит",
                                       "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                       },
                                       "dataPath": {
                                         "segments": "ОбщееСвойство"
@@ -4707,7 +5207,7 @@
                           "id": 26,
                           "name": "ОтдельныеЗначенияСведения",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                           },
                           "dataPath": {
                             "segments": "ОтдельноеСвойствоСОтдельнымСпискомЗначений"
@@ -4788,7 +5288,7 @@
                                       "id": 22,
                                       "name": "ОбщиеЗначенияСведений",
                                       "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                       },
                                       "dataPath": {
                                         "segments": "ОтдельноеСвойствоСОбщимСпискомЗначений"
@@ -4850,7 +5350,7 @@
                                       "id": 18,
                                       "name": "ОбщееСведение",
                                       "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                       },
                                       "dataPath": {
                                         "segments": "ОбщееСвойство"
@@ -5042,7 +5542,7 @@
                 "id": 4,
                 "name": "Свойство",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5052,7 +5552,7 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
                       }
                     }
                   ],
@@ -5064,7 +5564,7 @@
                 "id": 5,
                 "name": "ЭтоДополнительноеСведение",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5084,7 +5584,7 @@
                 "id": 6,
                 "name": "ТекущийНаборСвойств",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5107,7 +5607,7 @@
           ]
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -5157,7 +5657,7 @@
         "data": {
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
           },
           "handlers": [
             [
@@ -5199,7 +5699,7 @@
                     "id": 18,
                     "name": "ЗависимостиРеквизитовРеквизит",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                     },
                     "dataPath": {
                       "segments": "ЗависимостиРеквизитов.Представление"
@@ -5211,7 +5711,7 @@
                     "id": 21,
                     "name": "ЗависимостиРеквизитовВидСравнения",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                     },
                     "dataPath": {
                       "segments": "ЗависимостиРеквизитов.Условие"
@@ -5223,7 +5723,7 @@
                     "id": 24,
                     "name": "ЗависимостиРеквизитовПравоеЗначение",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                     },
                     "dataPath": {
                       "segments": "ЗависимостиРеквизитов.Значение"
@@ -5272,7 +5772,7 @@
                 "id": 2,
                 "name": "РеквизитыОбъектаВХранилище",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5295,7 +5795,7 @@
                         "length": 0,
                         "allowedLength": "VARIABLE",
                         "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                         }
                       }
                     }
@@ -5306,7 +5806,7 @@
                 "id": 3,
                 "name": "НастраиваемоеСвойство",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5329,7 +5829,7 @@
                         "length": 0,
                         "allowedLength": "VARIABLE",
                         "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                         }
                       }
                     }
@@ -5340,7 +5840,7 @@
                 "id": 4,
                 "name": "ДобавлениеСтроки",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5360,7 +5860,7 @@
                 "id": 5,
                 "name": "НажатаОтмена",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5380,7 +5880,7 @@
                 "id": 6,
                 "name": "НаборСвойств",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "types": [
@@ -5403,7 +5903,7 @@
           ]
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -5477,7 +5977,7 @@
                   "id": 14,
                   "name": "РеквизитыОбъектаПредставление",
                   "title": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                   },
                   "dataPath": {
                     "segments": "РеквизитыОбъекта.Представление"
@@ -5511,7 +6011,7 @@
           ]
         },
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "usePurposes": [
           [
@@ -5525,34 +6025,34 @@
     []
   ],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "moduleTypes": [
     [
-      "ObjectModule",
-      "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl"
-    ],
-    [
       "ManagerModule",
       "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ManagerModule.bsl"
+    ],
+    [
+      "ObjectModule",
+      "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl"
     ]
   ],
   "modules": [
     {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl",
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NOT_EDITABLE",
       "isProtected": false
     },
     {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ManagerModule.bsl",
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NOT_EDITABLE",
       "isProtected": false
@@ -5636,10 +6136,72 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "attributes": [
           [
+            {
+              "uuid": "d6b72e00-018a-4fdc-b6a4-06dcecf89809",
+              "mdoReference": {
+                "type": "STANDARD_ATTRIBUTE",
+                "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.TabularSection.ЗависимостиДополнительныхРеквизитов.StandardAttribute.LineNumber",
+                "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.ТабличнаяЧасть.ЗависимостиДополнительныхРеквизитов.СтандартныйРеквизит.НомерСтроки"
+              },
+              "comment": "",
+              "synonym": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "supportVariant": "NOT_EDITABLE",
+              "owner": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/tabularSections/c/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+              },
+              "passwordMode": false,
+              "kind": "STANDARD",
+              "type": {
+                "types": [
+                  {
+                    "default": {
+                      "tag": 4
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                  }
+                ],
+                "composite": false,
+                "qualifiers": [
+                  {
+                    "default": {
+                      "tag": 4
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                      "precision": 5,
+                      "scale": 0,
+                      "nonNegative": false,
+                      "description": {
+                        "nameRu": "КвалификаторыЧисла (5.0)",
+                        "nameEn": "NumberQualifiers (5.0)"
+                      }
+                    }
+                  }
+                ]
+              },
+              "fullName": {
+                "nameRu": "НомерСтроки",
+                "nameEn": "LineNumber"
+              },
+              "format": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "editFormat": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "markNegatives": false,
+              "mask": "",
+              "multiLine": false,
+              "extendedEdit": false,
+              "fillFromFillingValue": false
+            },
             {
               "uuid": "9f816562-57f0-473f-8c85-14f7521ffd7f",
               "name": "ЗависимоеСвойство",
@@ -5700,10 +6262,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -5747,10 +6309,10 @@
                 "qualifiers": []
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -5797,7 +6359,7 @@
                     },
                     "int": 2,
                     "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
                     },
                     "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
                   }
@@ -5821,10 +6383,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -5892,10 +6454,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -5983,10 +6545,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6024,10 +6586,45 @@
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "attributes": [
           [
+            {
+              "uuid": "8f51328b-73a8-46fb-b6db-7b7a84c05c2a",
+              "mdoReference": {
+                "type": "STANDARD_ATTRIBUTE",
+                "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.TabularSection.Представления.StandardAttribute.LineNumber",
+                "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.ТабличнаяЧасть.Представления.СтандартныйРеквизит.НомерСтроки"
+              },
+              "comment": "",
+              "synonym": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "supportVariant": "NOT_EDITABLE",
+              "owner": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/tabularSections/c/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection[2]/mdoReference"
+              },
+              "passwordMode": false,
+              "kind": "STANDARD",
+              "type": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/tabularSections/c/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
+              },
+              "fullName": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/tabularSections/c/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/fullName"
+              },
+              "format": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "editFormat": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "markNegatives": false,
+              "mask": "",
+              "multiLine": false,
+              "extendedEdit": false,
+              "fillFromFillingValue": false
+            },
             {
               "uuid": "0f0f5b42-2407-44e6-85d7-26ace96b2cd9",
               "name": "КодЯзыка",
@@ -6088,10 +6685,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6147,10 +6744,10 @@
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6199,17 +6796,17 @@
                       "length": 0,
                       "allowedLength": "VARIABLE",
                       "description": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                       }
                     }
                   }
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6258,17 +6855,17 @@
                       "length": 150,
                       "allowedLength": "VARIABLE",
                       "description": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                       }
                     }
                   }
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6317,17 +6914,17 @@
                       "length": 150,
                       "allowedLength": "VARIABLE",
                       "description": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
                       }
                     }
                   }
                 ]
               },
               "format": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "editFormat": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
               },
               "markNegatives": false,
               "mask": "",
@@ -6345,74 +6942,6 @@
   "templates": [],
   "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
   "valueType": {
-    "types": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 7,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN",
-        "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-          "fullName": {
-            "nameRu": "СправочникСсылка.ЗначенияСвойствОбъектов",
-            "nameEn": "CatalogRef.ЗначенияСвойствОбъектов"
-          },
-          "variant": "METADATA",
-          "kind": "CATALOG"
-        },
-        "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-          "fullName": {
-            "nameRu": "СправочникСсылка.ЗначенияСвойствОбъектовИерархия",
-            "nameEn": "CatalogRef.ЗначенияСвойствОбъектовИерархия"
-          },
-          "variant": "METADATA",
-          "kind": "CATALOG"
-        },
-        "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-          "fullName": {
-            "nameRu": "СправочникСсылка.Пользователи",
-            "nameEn": "CatalogRef.Пользователи"
-          },
-          "variant": "METADATA",
-          "kind": "CATALOG"
-        },
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE",
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER",
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-      }
-    ],
-    "composite": true,
-    "qualifiers": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 3,
-        "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-          "dateFractions": "DATE_TIME",
-          "description": {
-            "nameRu": "КвалификаторыДаты (ДатаВремя)",
-            "nameEn": "DateQualifiers (DateTime)"
-          }
-        },
-        "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-          "length": 1024,
-          "allowedLength": "VARIABLE",
-          "description": {
-            "nameRu": "КвалификаторыСтроки (1024, Переменная)",
-            "nameEn": "StringQualifiers (1024, Variable)"
-          }
-        },
-        "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-          "precision": 17,
-          "scale": 5,
-          "nonNegative": false,
-          "description": {
-            "nameRu": "КвалификаторыЧисла (17.5)",
-            "nameEn": "NumberQualifiers (17.5)"
-          }
-        }
-      }
-    ]
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
   }
 }}
