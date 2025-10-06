@@ -102,6 +102,11 @@ public class EDTReader implements MDReader {
     return ConfigurationSource.EDT;
   }
 
+  /**
+   * Read the project's configuration MDClass from src/Configuration/Configuration.mdo, returning an empty configuration when unavailable.
+   *
+   * @return the configuration MDClass; `Configuration.EMPTY` if the configuration file is not present or cannot be read
+   */
   @Override
   @NonNull
   public MDClass readConfiguration() {
@@ -141,6 +146,14 @@ public class EDTReader implements MDReader {
     return null;
   }
 
+  /**
+   * Reads form metadata from the appropriate Form.form file for the given MDO path and name.
+   *
+   * @param currentPath the path to the MDO file or folder from which to derive the form location
+   * @param name the object name used to locate the form when not a common form
+   * @param mdoType the MDO type that determines whether to use the common form location or the type-specific folder
+   * @return the parsed FormData, or EmptyFormData.EMPTY if the Form.form file does not exist
+   */
   @Override
   @Nullable
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
@@ -158,6 +171,20 @@ public class EDTReader implements MDReader {
     return (FormData) read(formDataPath);
   }
 
+  /**
+   * Resolve the filesystem folder that should contain modules for the given MDO file.
+   *
+   * <p>Behavior:
+   * <ul>
+   *   <li>If `mdoType` is `EXTERNAL_DATA_SOURCE_TABLE`, returns the grandparent of `mdoPath`.</li>
+   *   <li>If `mdoType` is not in `MDOType.valuesWithoutChildren()`, returns the parent of `mdoPath` joined with `mdoType.groupName()`.</li>
+   *   <li>Otherwise, returns the folder path determined by `mdoTypeFolderPath(mdoPath)`.</li>
+   * </ul>
+   *
+   * @param mdoPath path to the MDO file
+   * @param mdoType the MDO type that determines module folder layout
+   * @return the path to the folder that should contain modules for the specified MDO
+   */
   @Override
   @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
@@ -170,6 +197,17 @@ public class EDTReader implements MDReader {
     }
   }
 
+  /**
+   * Compute the filesystem path to a module file for the given folder, object name, and module type.
+   *
+   * If the module type is a configuration-level module, the path is
+   * folder/<configuration>/fileName; otherwise the path is folder/<name>/fileName.
+   *
+   * @param folder     base folder used to resolve the module path
+   * @param name       object name used as the subfolder when the module is object-scoped
+   * @param moduleType type of module which provides the target file name and placement rules
+   * @return           the resolved path to the module file
+   */
   @Override
   @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
@@ -220,6 +258,11 @@ public class EDTReader implements MDReader {
     return xStream;
   }
 
+  /**
+   * Register XML element name aliases on the provided XStream instance to map EDT XML nodes to their domain classes.
+   *
+   * @param xStream the XStream instance to configure with aliases for EDT model classes
+   */
   private static void registerClasses(XStream xStream) {
     xStream.alias("accountingFlags", AccountingFlag.class);
     xStream.alias("addressingAttributes", TaskAddressingAttribute.class);
@@ -246,15 +289,36 @@ public class EDTReader implements MDReader {
     xStream.alias("Form", ManagedFormData.class);
   }
 
+  /**
+   * Builds the filesystem path to ParentConfigurations.bin located under src/Configuration in the reader's root directory.
+   *
+   * @return the Path to ParentConfigurations.bin under the reader's root path
+   */
   private Path parentConfigurationsPath() {
     return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(),
       "ParentConfigurations.bin");
   }
 
+  /**
+   * Builds the filesystem path to an MDO file located under the root project's src directory
+   * for the given MDO type and object name.
+   *
+   * @param rootPath the project root directory that contains the `src` folder
+   * @param type the MDO type whose group name determines the subfolder under `src`
+   * @param name the object name; used as the folder name and base file name
+   * @return the path to `src/{type.groupName()}/{name}/{name}.mdo`
+   */
   private static Path mdoPath(Path rootPath, MDOType type, String name) {
     return mdoPath(Paths.get(rootPath.toString(), "src", type.groupName()), name);
   }
 
+  /**
+   * Builds the filesystem path to an MDO file for the given object name under the specified folder.
+   *
+   * @param folder the base folder (typically the MDO type group or parent folder)
+   * @param name   the object name; used as both a subdirectory name and the MDO file base name
+   * @return       the path folder/{name}/{name}.mdo
+   */
   private static Path mdoPath(Path folder, String name) {
     return Paths.get(folder.toString(), name, name + ".mdo");
   }

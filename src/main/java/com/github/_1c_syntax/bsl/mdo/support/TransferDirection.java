@@ -46,15 +46,21 @@ public enum TransferDirection implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates a TransferDirection with the given English and Russian display names.
+   *
+   * @param nameEn English display name
+   * @param nameRu Russian display name
+   */
   TransferDirection(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds a TransferDirection by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (English or Russian); matching is case-insensitive
+   * @return the matching TransferDirection, or `UNKNOWN` if no match is found
    */
   public static TransferDirection valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

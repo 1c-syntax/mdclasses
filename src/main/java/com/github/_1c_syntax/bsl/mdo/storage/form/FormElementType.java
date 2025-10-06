@@ -84,15 +84,21 @@ public enum FormElementType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Initializes the enum constant with localized display names.
+   *
+   * @param nameEn the English display name for the element
+   * @param nameRu the Russian display name for the element
+   */
   FormElementType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds a FormElementType by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to look up (case-insensitive)
+   * @return the matching FormElementType, or {@code UNKNOWN} if no match is found; a warning is logged when no match is found
    */
   public static FormElementType valueByName(String string) {
     var result = KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

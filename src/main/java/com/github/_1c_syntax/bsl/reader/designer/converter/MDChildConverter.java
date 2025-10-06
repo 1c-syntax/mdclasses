@@ -76,6 +76,15 @@ public class MDChildConverter extends AbstractReadConverter {
     return types;
   }
 
+  /**
+   * Builds the filesystem path to a child MDO data XML file.
+   *
+   * @param path the original resource path for the parent MDO file
+   * @param mdoType the MDO type whose group name is used as a path segment
+   * @param childName the child object's base name (without extension)
+   * @return the Path to the child data XML file in the form
+   *         parent/<baseName>/<groupName>/<childName>.xml
+   */
   private static Path childDataPath(Path path, MDOType mdoType, String childName) {
     return Paths.get(path.getParent().toString(),
       FilenameUtils.getBaseName(path.toString()),

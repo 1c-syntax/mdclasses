@@ -46,15 +46,21 @@ public enum UseMode implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Create a UseMode with the specified English and Russian names.
+   *
+   * @param nameEn English name for the enum constant
+   * @param nameRu Russian name for the enum constant
+   */
   UseMode(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds an enum constant by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to look up
+   * @return the matching UseMode, or UNKNOWN if no match is found
    */
   public static UseMode valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

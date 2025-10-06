@@ -161,10 +161,20 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
     return LazyLoader.computePlainStorageFields(this);
   }
 
+  /**
+   * Compute the complete list of modules associated with this chart of characteristic types.
+   *
+   * @return the list of all modules that apply to this object, possibly empty
+   */
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
   }
 
+  /**
+   * Gets the value type description for this chart of characteristic types.
+   *
+   * @return the ValueTypeDescription describing this object's value type
+   */
   @Override
   public ValueTypeDescription getValueType() {
     return type;

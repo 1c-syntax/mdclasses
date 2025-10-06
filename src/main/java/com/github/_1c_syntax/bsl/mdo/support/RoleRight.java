@@ -124,15 +124,21 @@ public enum RoleRight implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates an enum constant with the specified English and Russian display names.
+   *
+   * @param nameEn English display name for the role
+   * @param nameRu Russian display name for the role
+   */
   RoleRight(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds a RoleRight by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to look up
+   * @return the matching {@code RoleRight}, or {@code UNKNOWN} if no match is found
    */
   public static RoleRight valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

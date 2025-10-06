@@ -47,15 +47,23 @@ public enum ConfigurationExtensionPurpose implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates an enum constant with the specified English and Russian names.
+   *
+   * @param nameEn the English name for the enum constant
+   * @param nameRu the Russian name for the enum constant
+   */
   ConfigurationExtensionPurpose(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds an enum constant by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * <p>Lookup is case-insensitive (uses Locale.ROOT).</p>
+   *
+   * @param string the English or Russian name to look up
+   * @return `UNKNOWN` if no match is found, otherwise the matching enum constant
    */
   public static ConfigurationExtensionPurpose valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

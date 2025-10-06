@@ -46,15 +46,21 @@ public enum ReuseSessions implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates an enum constant initialized with an English and a Russian name.
+   *
+   * @param nameEn the English name
+   * @param nameRu the Russian name
+   */
   ReuseSessions(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Lookup an enum constant by its English or Russian name, case-insensitively.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (English or Russian)
+   * @return the matching {@code ReuseSessions} constant; {@code UNKNOWN} if no match
    */
   public static ReuseSessions valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

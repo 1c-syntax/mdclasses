@@ -53,6 +53,16 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
    */
   private static final Map<String, ValueType> ALL_TYPES = builtinTypes();
 
+  /**
+   * Resolves a ValueType from its string name, using the internal cache, namespace-insensitive lookup, and a metadata fallback.
+   *
+   * Looks up the name in the cache, retries after removing a namespace prefix (text before the first ':'), and if still not found
+   * queries metadata via ValueTypes.getOrCompute. The resolved type is cached under the original key. If the resolved type is a
+   * CustomValueType with variant UNKNOWN, a warning is logged.
+   *
+   * @param string the textual name of the value type (may include a namespace prefix like "xs:string")
+   * @return the resolved ValueType instance, or {@code null} if no type could be resolved
+   */
   @Override
   public Object fromString(String string) {
     // сначала из кеша
@@ -90,6 +100,13 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     return type == ValueType.class;
   }
 
+  /**
+   * Builds the initial mapping of known value type names (lowercased) to their corresponding ValueType instances.
+   *
+   * The returned map contains built-in types and several explicit name aliases used by upstream metadata.
+   *
+   * @return a concurrent map keyed by lowercase type name to the corresponding `ValueType`
+   */
   private static Map<String, ValueType> builtinTypes() {
     Map<String, ValueType> types = new ConcurrentHashMap<>();
 

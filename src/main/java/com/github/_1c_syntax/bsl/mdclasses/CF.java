@@ -146,14 +146,11 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   }
 
   /**
-   * Возвращает список подсистем, в состав которых входит ссылка
+   * List subsystems that include the specified metadata reference.
    *
-   * @param mdoReference       ссылка на объект метаданных
-   * @param addParentSubsystem - признак необходимости добавлять родительскую (текущую) подсистему в список,
-   *                           если объект присутствует в дочерних.
-   *                           Используется для кейса: раз есть в дочерней, то считаем что и ко всем родителям
-   *                           тоже относится
-   * @return список подсистем
+   * @param mdoReference       the metadata object reference to search for
+   * @param addParentSubsystem if true, include parent (containing) subsystems when the reference is present in a child subsystem
+   * @return a list of subsystems that include the given reference (may be empty)
    */
   default List<Subsystem> includedSubsystems(MdoReference mdoReference, boolean addParentSubsystem) {
     return getSubsystems().parallelStream()

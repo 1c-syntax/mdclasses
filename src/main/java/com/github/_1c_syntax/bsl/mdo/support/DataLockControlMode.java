@@ -46,15 +46,21 @@ public enum DataLockControlMode implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Initializes the enum constant's localized name using the provided English and Russian variants.
+   *
+   * @param nameEn the English name
+   * @param nameRu the Russian name
+   */
   DataLockControlMode(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds an enum constant by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (English or Russian)
+   * @return the matching DataLockControlMode, or {@code UNKNOWN} if no match is found
    */
   public static DataLockControlMode valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

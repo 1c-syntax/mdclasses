@@ -45,16 +45,22 @@ public enum AutoRecordType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates an enum constant with the given English and Russian display names.
+   *
+   * @param nameEn the English name for the enum constant
+   * @param nameRu the Russian name for the enum constant
+   */
   AutoRecordType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds the enum constant matching the given English or Russian name (case-insensitive).
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (English or Russian, case-insensitive)
+   * @return the matching {@code AutoRecordType}, or {@code UNKNOWN} if no match is found
    */
   public static AutoRecordType valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

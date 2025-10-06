@@ -45,15 +45,21 @@ public enum DataSeparation implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Constructs a DataSeparation constant and initializes its combined `fullName`.
+   *
+   * @param nameEn the English name used to build the fullName
+   * @param nameRu the Russian name used to build the fullName
+   */
   DataSeparation(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds a DataSeparation constant matching the given name in English or Russian.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (case-insensitive, English or Russian)
+   * @return the matching DataSeparation constant, or {@link #UNKNOWN} if no match is found
    */
   public static DataSeparation valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

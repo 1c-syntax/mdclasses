@@ -50,15 +50,21 @@ public enum TemplateType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Initializes the enum constant's bilingual full name.
+   *
+   * @param nameEn English name of the template
+   * @param nameRu Russian name of the template
+   */
   TemplateType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds the TemplateType constant matching the given English or Russian name (case-insensitive).
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up in English or Russian; comparison uses case-insensitive matching
+   * @return the matching TemplateType, or `UNKNOWN` if no match is found
    */
   public static TemplateType valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

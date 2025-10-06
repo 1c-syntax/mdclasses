@@ -231,8 +231,9 @@ public class ExtendXStream extends XStream {
   }
 
   /**
-   * Переопределение списка регистрируемых конвертеров. Оставлены только те, что нужны, особенно исключены те,
-   * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
+   * Customize the set of converters registered on this XStream instance.
+   *
+   * Registers only the converters required by the application and omits converters that trigger reflective-access problems on some JVMs.
    */
   @Override
   protected void setupConverters() {
@@ -275,6 +276,13 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(DateFractions.class));
   }
 
+  /**
+   * Configures XStream security and class aliasing used by this instance.
+   *
+   * Configures the serializer to disable object references, grants a wildcard
+   * type permission for the project's package hierarchy, and performs all
+   * MD-related class alias registrations.
+   */
   private void init() {
     // настройки безопасности доступа к данным
     setMode(XStream.NO_REFERENCES);

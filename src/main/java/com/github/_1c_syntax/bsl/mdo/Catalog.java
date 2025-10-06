@@ -109,6 +109,11 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   @Singular("addOwners")
   List<MdoReference> owners;
 
+  /**
+   * Retrieve the catalog's child metadata objects.
+   *
+   * @return the list of child MD objects for this catalog, computed on first access and cached for subsequent calls
+   */
   @Override
   public List<MD> getChildren() {
     return children.getOrCompute();

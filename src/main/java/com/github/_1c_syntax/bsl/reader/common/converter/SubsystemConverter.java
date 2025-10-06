@@ -49,6 +49,19 @@ public class SubsystemConverter implements ReadConverter {
   private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]"
     + MDOType.SUBSYSTEM.groupName() + "[\\\\/]");
 
+  /**
+   * Unmarshals a subsystem node from the XML reader into either a reference, a reader context, or a built subsystem object.
+   *
+   * If the current node name equals mdReader.subsystemsNodeName() and the node has no attributes, returns a read result
+   * for a child-subsystem reference whose name is START_MDOREF_NAME concatenated with the node text and whose path is
+   * derived from the MD reader and current path. Otherwise performs full unmarshalling via an MDReaderContext and:
+   * - returns the MDReaderContext itself when the local root path indicates a nested (child) subsystem, or
+   * - returns readerContext.build() for a standalone subsystem.
+   *
+   * @param reader  the HierarchicalStreamReader positioned at the subsystem node
+   * @param context the UnmarshallingContext used during unmarshalling
+   * @return an object representing either a subsystem reference, an MDReaderContext for nested subsystems, or the built standalone subsystem object
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var name = reader.getNodeName();
@@ -80,6 +93,13 @@ public class SubsystemConverter implements ReadConverter {
     return Subsystem.class.isAssignableFrom(type);
   }
 
+  /**
+   * Builds the filesystem path pointing to the subsystem folder for the given metadata node.
+   *
+   * @param mdReader    reader providing metadata layout helpers (used to obtain the MDO type folder path)
+   * @param currentPath the current node path from which the base name is taken and appended
+   * @return            a Path composed of the MDO type folder path for the current path, the current path's base name, and the subsystem group name
+   */
   private static Path dataPath(MDReader mdReader, Path currentPath) {
     return Paths.get(
       mdReader.mdoTypeFolderPath(currentPath).toString(),

@@ -81,6 +81,13 @@ public class TemplateConverter extends AbstractReadConverter {
     return Paths.get(path.getParent().toString(), name, "Ext", "Template.xml");
   }
 
+  /**
+   * Constructs the filesystem path to a child template XML file located under the template group directory.
+   *
+   * @param path the base template file path whose parent directory and base name are used to build the child path
+   * @param childName the child template name (without file extension)
+   * @return the Path pointing to "{parent}/{baseName}/{templateGroup}/{childName}.xml"
+   */
   private static Path childDataPath(Path path, String childName) {
     return Paths.get(
       path.getParent().toString(),

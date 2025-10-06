@@ -53,21 +53,35 @@ public enum UsePurposes implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullNameAdd;
 
+  /**
+   * Initializes the enum constant with primary and additional multi-language names.
+   *
+   * @param nameEn primary English name
+   * @param nameEnAdd additional English name
+   * @param nameRu Russian name used for both primary and additional representations
+   */
   UsePurposes(String nameEn, String nameEnAdd, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
     this.fullNameAdd = MultiName.create(nameEnAdd, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds a UsePurposes enum constant by an English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to look up (case-insensitive)
+   * @return the matching enum constant, or UNKNOWN if no match is found
    */
   public static UsePurposes valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
   }
 
+  /**
+   * Builds a lookup map that associates lowercase name variants with their corresponding UsePurposes constants.
+   *
+   * <p>Includes each enum element's primary English name, Russian name, and the additional English name.</p>
+   *
+   * @return a map whose keys are lowercase name variants (Locale.ROOT) and whose values are the corresponding UsePurposes
+   */
   private static Map<String, UsePurposes> computeKeys() {
     Map<String, UsePurposes> keysMap = new ConcurrentSkipListMap<>();
     for (var element : values()) {

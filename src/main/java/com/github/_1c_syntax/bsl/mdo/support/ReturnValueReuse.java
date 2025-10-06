@@ -46,15 +46,21 @@ public enum ReturnValueReuse implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Constructs the enum constant and sets its localized full name from the provided English and Russian labels.
+   *
+   * @param nameEn English label for the constant
+   * @param nameRu Russian label for the constant
+   */
   ReturnValueReuse(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds an enum constant by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (English or Russian); comparison is case-insensitive
+   * @return the matching {@code ReturnValueReuse}, or {@code UNKNOWN} if no match is found
    */
   public static ReturnValueReuse valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

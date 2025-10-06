@@ -43,15 +43,21 @@ public enum DataSetType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates a DataSetType with the provided English and Russian names.
+   *
+   * @param nameEn the English name of the dataset type (used for lookups and display)
+   * @param nameRu the Russian name of the dataset type (used for lookups and display)
+   */
   DataSetType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds the enum constant matching the given English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to search for (lookup is case-insensitive)
+   * @return the matching DataSetType, or UNKNOWN if no match is found
    */
   public static DataSetType valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

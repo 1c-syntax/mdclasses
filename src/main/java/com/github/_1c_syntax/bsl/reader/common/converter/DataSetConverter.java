@@ -43,6 +43,16 @@ public class DataSetConverter implements ReadConverter {
   private static final String ITEM_SOURCE_NODE_NAME = "item";
   private static final String DATA_PATH_NODE_NAME = "dataPath";
 
+  /**
+   * Unmarshals the current XML node into a DataCompositionSchema.DataSet instance.
+   *
+   * Reads the node's "type" attribute and its child elements (name, dataSource, item, field, query)
+   * to construct and return a DataCompositionSchema.DataSet.
+   *
+   * @param reader  the HierarchicalStreamReader positioned at the DataSet XML node
+   * @param context the UnmarshallingContext used for nested object deserialization
+   * @return the DataCompositionSchema.DataSet built from the XML node
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var dataSet = DataCompositionSchema.DataSet.builder();

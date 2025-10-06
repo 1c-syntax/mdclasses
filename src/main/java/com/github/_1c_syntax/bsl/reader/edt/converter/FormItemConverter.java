@@ -34,6 +34,13 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 @EDTConverter
 public class FormItemConverter implements ReadConverter {
 
+  /**
+   * Convert the current EDT form-item XML node into a FormItem instance.
+   *
+   * @param reader  the XML reader positioned on the form item node to unmarshal
+   * @param context the unmarshalling context used to resolve nested elements
+   * @return the constructed FormItem (or a related subtype) built from the parsed node
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);

@@ -200,6 +200,20 @@ public class MDTestUtils {
     return (CF) mdc;
   }
 
+  /**
+   * Reads an external source definition from test resources, validates it against a fixture JSON, and returns the parsed ExternalSource.
+   *
+   * <p>Expects ArgumentsAccessor to contain:
+   * <ol>
+   *   <li>index 0: boolean — `true` for EDT resources, `false` for Designer;</li>
+   *   <li>index 1: String — the external source name;</li>
+   *   <li>index 2: boolean — `true` if the source is a report, `false` otherwise;</li>
+   *   <li>optional index 3: String — fixture filename postfix to use instead of the default.</li>
+   * </ol>
+   *
+   * @param argumentsAccessor accessor providing the described arguments
+   * @return the ExternalSource parsed from the corresponding test resource
+   */
   public ExternalSource readExternalSourceWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
     var isEDT = argumentsAccessor.getBoolean(0);
     var name = argumentsAccessor.getString(1);
@@ -233,6 +247,12 @@ public class MDTestUtils {
     return (ExternalSource) mdc;
   }
 
+  /**
+   * Asserts that the JSON representation of the given object matches the contents of a fixture file after normalizing Yi characters.
+   *
+   * @param obj         the object to serialize to JSON for comparison
+   * @param fixturePath path to the fixture file whose contents are compared against the serialized object
+   */
   @SneakyThrows
   private void objectEqualJson(Object obj, Path fixturePath) {
     var fixture = getFixture(fixturePath);

@@ -41,6 +41,17 @@ import java.util.List;
 public class ValueTypeDescriptionConverter implements ReadConverter {
   private static final List<String> TYPE_NODE_NAMES = List.of("types", "Type", "TypeSet");
 
+  /**
+   * Builds a ValueTypeDescription by parsing child nodes from the given reader.
+   *
+   * Parses child elements whose names match TYPE_NODE_NAMES into ValueType instances
+   * and elements whose names end with "Qualifiers" into Qualifier instances; other
+   * child elements are ignored (a warning is logged).
+   *
+   * @param reader  the hierarchical reader positioned at the element to unmarshal
+   * @param context the unmarshalling context used to create nested objects
+   * @return a ValueTypeDescription containing the parsed value types and qualifiers
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     List<ValueType> types = new ArrayList<>();
@@ -60,6 +71,11 @@ public class ValueTypeDescriptionConverter implements ReadConverter {
     return ValueTypeDescription.create(types, qualifiers);
   }
 
+  /**
+   * Indicates whether this converter supports the given type.
+   *
+   * @return {@code true} if {@code type} is {@code ValueTypeDescription.class}, {@code false} otherwise.
+   */
   @Override
   public boolean canConvert(Class type) {
     return type == ValueTypeDescription.class;

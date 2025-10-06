@@ -50,15 +50,21 @@ public enum InterfaceCompatibilityMode implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Create an enum constant with the specified English and Russian display names.
+   *
+   * @param nameEn the English name for the enum constant
+   * @param nameRu the Russian name for the enum constant
+   */
   InterfaceCompatibilityMode(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Resolve an InterfaceCompatibilityMode constant by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to resolve (English or Russian); lookup is case-insensitive
+   * @return the matching InterfaceCompatibilityMode, or `UNKNOWN` if no match is found
    */
   public static InterfaceCompatibilityMode valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

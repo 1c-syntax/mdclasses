@@ -45,15 +45,21 @@ public enum FormType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Constructs a FormType with English and Russian display names.
+   *
+   * @param nameEn English display name
+   * @param nameRu Russian display name
+   */
   FormType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds the FormType matching the given English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the name to look up (case-insensitive, English or Russian)
+   * @return the matching FormType, or {@code UNKNOWN} if no match is found
    */
   public static FormType valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

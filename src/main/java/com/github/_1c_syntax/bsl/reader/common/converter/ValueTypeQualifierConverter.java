@@ -54,6 +54,18 @@ public class ValueTypeQualifierConverter implements ReadConverter {
   private static final String ALLOWED_SIGN_NODE_NAME = "AllowedSign";
   private static final String NONNEGATIVE_VALUE = "Nonnegative";
 
+  /**
+   * Converts an EDT-format qualifier XML node into the corresponding Qualifier instance.
+   *
+   * Parses the current XML node and its children to construct one of: StringQualifiers,
+   * DateQualifiers, NumberQualifiers, BinaryDataQualifiers, or returns Qualifier.EMPTY
+   * if the node type is unknown.
+   *
+   * @param reader  XML reader positioned at the qualifier node
+   * @param context unmarshalling context (unused for value construction)
+   * @return the constructed Qualifier instance (one of StringQualifiers, DateQualifiers,
+   *         NumberQualifiers, BinaryDataQualifiers) or `Qualifier.EMPTY` if the node is not recognized
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // запоминаем тип

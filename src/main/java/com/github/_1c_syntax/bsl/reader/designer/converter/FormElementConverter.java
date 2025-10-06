@@ -36,6 +36,13 @@ import lombok.extern.slf4j.Slf4j;
 @DesignerConverter
 @Slf4j
 public class FormElementConverter implements ReadConverter {
+  /**
+   * Unmarshals the current form element XML node into a form element representation.
+   *
+   * @param reader  the XML reader positioned at the form element node
+   * @param context the unmarshalling context provided by XStream
+   * @return the constructed form element object, or {@code null} if the node's "id" attribute cannot be parsed as an integer
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);

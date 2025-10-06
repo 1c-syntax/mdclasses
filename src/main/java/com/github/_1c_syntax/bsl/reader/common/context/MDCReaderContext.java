@@ -111,6 +111,13 @@ public class MDCReaderContext extends AbstractReaderContext {
     return super.build();
   }
 
+  /**
+   * Reads the child MD objects referenced in {@code childrenNames}, matches them back to their names,
+   * and assigns each found child to two fields on this context: the child's MDO type name in English
+   * and the generic "child" field, preserving the original order of {@code childrenNames}.
+   *
+   * Missing or unreadable children are ignored.
+   */
   private void setValueChildren() {
     var children = childrenNames.parallelStream()
       .map(fullName -> (MD) mdReader.read(fullName))

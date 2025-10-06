@@ -40,6 +40,17 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
   private final Class<T> enumClazz;
   private final Method valueByNameMethod;
 
+  /**
+   * Creates an EnumConverter for the provided enum class and resolves its required
+   * static `valueByName(String)` factory method used for string-to-enum conversion.
+   *
+   * <p>The constructor validates that the method exists, is static, and returns a
+   * type assignable to the provided enum class.</p>
+   *
+   * @param clazz the enum class to convert
+   * @throws IllegalArgumentException if the `valueByName(String)` method is not found,
+   *         is not static, or its return type is not assignable to the provided enum class
+   */
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
     try {
@@ -57,6 +68,13 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
     }
   }
 
+  /**
+   * Converts the given string to the corresponding enum constant of the target enum type.
+   *
+   * @param sourceString the enum name to convert; may be null
+   * @return the enum constant matching {@code sourceString}, or {@code null} if {@code sourceString} is null
+   * @throws RuntimeException if the underlying reflective invocation fails
+   */
   @Override
   public Object fromString(String sourceString) {
     if (sourceString == null) {
@@ -69,6 +87,12 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
     }
   }
 
+  /**
+   * Determines whether this converter supports converting the given type.
+   *
+   * @param type the class to check for compatibility with the converter's target enum class
+   * @return `true` if the provided type is the same as or a subtype of the converter's enum class, `false` otherwise
+   */
   @Override
   public boolean canConvert(Class type) {
     return enumClazz.isAssignableFrom(type);

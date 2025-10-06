@@ -104,6 +104,11 @@ public class DesignerReader implements MDReader {
     return ConfigurationSource.DESIGNER;
   }
 
+  /**
+   * Loads the configuration metadata class from the designer source.
+   *
+   * @return the configuration MDClass; {@link Configuration#EMPTY} if no configuration is found
+   */
   @Override
   @NonNull
   public MDClass readConfiguration() {
@@ -249,18 +254,45 @@ public class DesignerReader implements MDReader {
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
   }
 
+  /**
+   * Path to the ParentConfigurations.bin file located in the reader's Ext directory.
+   *
+   * @return the Path pointing to "Ext/ParentConfigurations.bin" under the reader's root path
+   */
   private Path parentConfigurationsPath() {
     return Paths.get(rootPath.toString(), "Ext", "ParentConfigurations.bin");
   }
 
+  /**
+   * Builds the expected file path for an MDO given a root path, its type, and the MDO name.
+   *
+   * @param path the root directory containing MDO groups
+   * @param type the MDO type whose group name is used as a subdirectory
+   * @param name the base name of the MDO (without extension)
+   * @return the path to the MDO XML file located in the type's group folder (name.xml)
+   */
   private static Path mdoPath(Path path, MDOType type, String name) {
     return mdoPath(Paths.get(path.toString(), type.groupName()), name);
   }
 
+  /**
+   * Builds the filesystem path to an MDO XML file inside the given folder.
+   *
+   * @param folder the directory containing the MDO file
+   * @param name the base name of the MDO file (without extension)
+   * @return the Path pointing to "name.xml" inside the specified folder
+   */
   private static Path mdoPath(Path folder, String name) {
     return Paths.get(folder.toString(), name + ".xml");
   }
 
+  /**
+   * Compute the folder path for child MDOs belonging to a given metadata object.
+   *
+   * @param path path to the metadata object file
+   * @param type metadata object type whose group-name folder will be appended
+   * @return path formed by: parent directory of `path` / base name of `path` / `type.groupName()`
+   */
   private static Path childrenFolder(Path path, MDOType type) {
     return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.groupName());
   }

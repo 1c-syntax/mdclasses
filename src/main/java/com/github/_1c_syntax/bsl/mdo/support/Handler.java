@@ -45,6 +45,13 @@ public class Handler {
   String moduleName;
   String methodName;
 
+  /**
+   * Constructs a Handler by parsing a dot-separated handler path into module and method components.
+   *
+   * @param path dot-separated handler path (for example "Type.Module.Method"); may be null.
+   *             If null or not containing the expected segments, the corresponding module or method
+   *             fields are set to an empty string.
+   */
   public Handler(@Nullable String path) {
     path = path == null ? "" : path;
 

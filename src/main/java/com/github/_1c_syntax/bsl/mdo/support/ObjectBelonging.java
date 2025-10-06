@@ -45,15 +45,21 @@ public enum ObjectBelonging implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Initialize the enum constant with its English and Russian display names.
+   *
+   * @param nameEn the English display name
+   * @param nameRu the Russian display name
+   */
   ObjectBelonging(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Lookup an ObjectBelonging by its English or Russian name using case-insensitive matching.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name to look up
+   * @return the matching ObjectBelonging, or {@code UNKNOWN} if no match is found
    */
   public static ObjectBelonging valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

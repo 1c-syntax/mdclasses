@@ -95,6 +95,13 @@ public class Language implements MDObject {
     return defaultLanguage(ScriptVariant.RUSSIAN);
   }
 
+  /**
+   * Creates a Language instance with the provided display name and language code.
+   *
+   * @param name the display name of the language
+   * @param code the language code used for synonym and languageCode fields
+   * @return a Language configured with the given name and code; synonym is initialized and mdoReference is configured for MDOType.LANGUAGE
+   */
   private static Language newLanguage(String name, String code) {
     return Language.builder()
       .name(name)

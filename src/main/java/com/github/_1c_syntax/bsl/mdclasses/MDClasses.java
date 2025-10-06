@@ -190,6 +190,13 @@ public class MDClasses {
     return listPath;
   }
 
+  /**
+   * Collects the group names of MDO types to be used for exclusion filters.
+   *
+   * <p>Excludes the EXTERNAL_REPORT, EXTERNAL_DATA_PROCESSOR, and UNKNOWN types.</p>
+   *
+   * @return a set of group-name strings for all included MDOType values
+   */
   private Set<String> mdoTypeGroupNames() {
     return Arrays.stream(MDOType.values())
       .filter(type -> type != MDOType.EXTERNAL_REPORT

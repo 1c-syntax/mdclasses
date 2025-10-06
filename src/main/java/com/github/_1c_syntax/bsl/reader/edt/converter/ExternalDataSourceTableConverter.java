@@ -52,11 +52,24 @@ public class ExternalDataSourceTableConverter extends AbstractReadConverter {
     return super.read(reader, context);
   }
 
+  /**
+   * Determines whether the supplied class represents or is a subclass of ExternalDataSourceTable.
+   *
+   * @param type the class to check
+   * @return `true` if `ExternalDataSourceTable` is assignable from the given class, `false` otherwise
+   */
   @Override
   public boolean canConvert(Class type) {
     return ExternalDataSourceTable.class.isAssignableFrom(type);
   }
 
+  /**
+   * Builds the filesystem path to an external data source table's `.mdo` file for a given child.
+   *
+   * @param path the current file path whose parent will be used as the base directory
+   * @param childName the child element name (used as subdirectory and filename without extension)
+   * @return a Path pointing to "{parent}/{EXTERNAL_DATA_SOURCE_TABLE.groupName()}/{childName}/{childName}.mdo"
+   */
   private static Path dataPath(Path path, String childName) {
     return Paths.get(path.getParent().toString(), MDOType.EXTERNAL_DATA_SOURCE_TABLE.groupName(),
       childName, childName + ".mdo");

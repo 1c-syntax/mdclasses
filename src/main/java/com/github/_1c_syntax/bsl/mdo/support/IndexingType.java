@@ -46,15 +46,21 @@ public enum IndexingType implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Creates an IndexingType by composing its English and Russian names into a MultiName.
+   *
+   * @param nameEn English name used as the identifier
+   * @param nameRu Russian name used for display
+   */
   IndexingType(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Locate an IndexingType by its English or Russian name.
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string the English or Russian name of the enum value to resolve
+   * @return the matching IndexingType, or {@code UNKNOWN} if no match is found
    */
   public static IndexingType valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

@@ -46,15 +46,21 @@ public enum ApplicationRunMode implements EnumWithName {
   @Accessors(fluent = true)
   private final MultiName fullName;
 
+  /**
+   * Create an ApplicationRunMode with the given English and Russian display names.
+   *
+   * @param nameEn the English name for the mode
+   * @param nameRu the Russian name for the mode
+   */
   ApplicationRunMode(String nameEn, String nameRu) {
     this.fullName = MultiName.create(nameEn, nameRu);
   }
 
   /**
-   * Ищет элемент перечисления по именам (рус, анг)
+   * Finds an ApplicationRunMode by its English or Russian name (case-insensitive).
    *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то UNKNOWN
+   * @param string English or Russian name of the mode to look up
+   * @return the matching ApplicationRunMode, or UNKNOWN if no match is found
    */
   public static ApplicationRunMode valueByName(String string) {
     return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);

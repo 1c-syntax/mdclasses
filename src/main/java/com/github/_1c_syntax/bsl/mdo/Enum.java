@@ -134,10 +134,20 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
     return allModules.getOrCompute();
   }
 
+  /**
+   * Compute the list of all modules associated with this Enum.
+   *
+   * @return a list of Module objects representing all modules belonging to this Enum; empty list if there are none
+   */
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
   }
 
+  /**
+   * Returns the list of attributes declared on this enum.
+   *
+   * @return the list of attributes for this enum
+   */
   @Override
   public List<Attribute> getAllAttributes() {
     return getAttributes();

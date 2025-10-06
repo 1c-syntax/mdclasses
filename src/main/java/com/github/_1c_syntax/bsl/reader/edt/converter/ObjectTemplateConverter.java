@@ -52,11 +52,24 @@ public class ObjectTemplateConverter extends AbstractReadConverter {
     return readerContext;
   }
 
+  /**
+   * Determines whether this converter supports the specified class.
+   *
+   * @param type the class to test for convertibility
+   * @return `true` if `ObjectTemplate` is assignable from the provided class, `false` otherwise
+   */
   @Override
   public boolean canConvert(Class type) {
     return ObjectTemplate.class.isAssignableFrom(type);
   }
 
+  /**
+   * Builds the filesystem path to a template's Template.dcs file.
+   *
+   * @param path the current Path within the MDClasses structure; the path's parent is used as the base directory
+   * @param name the template name to include in the constructed path
+   * @return the Path pointing to "{parent}/{TEMPLATE group}/{name}/Template.dcs"
+   */
   private static Path dataPath(Path path, String name) {
     return Path.of(path.getParent().toString(), MDOType.TEMPLATE.groupName(), name, "Template.dcs");
   }
