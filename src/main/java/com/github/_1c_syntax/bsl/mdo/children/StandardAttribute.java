@@ -84,7 +84,7 @@ public class StandardAttribute implements Attribute, AccessRightsOwner {
    */
 
   /**
-   * Второе имя реквизита, на русском
+   * Полное имя реквизита на обоих языках
    */
   @Default
   MultiName fullName = MultiName.EMPTY;
