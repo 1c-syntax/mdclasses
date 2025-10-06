@@ -9,7 +9,7 @@
 - [Работа с метаданными](#работа-с-метаданными)
 - [Работа с формами](#работа-с-формами)
 - [Работа с модулями](#работа-с-модулями)
-- [Анализ описания типов данных](#анализ-типов-данных)
+- [Анализ типов данных](#анализ-типов-данных)
 - [Поиск и фильтрация объектов](#поиск-и-фильтрация-объектов)
 - [Практические сценарии](#практические-сценарии)
 
@@ -317,11 +317,11 @@ if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
         // проверим наименование 
         assertThat(objectAttribute.getName()).isEqualTo("Реквизит2");
         
-        // описание типа `getValueType`
+        // описание типа доступно через getValueType()
         assertThat(objectAttribute.getValueType()).isNotNull();
-        // убеимся в наличии примитивного типа СТРОКА в составе описания
+        // убедимся в наличии примитивного типа СТРОКА в составе описания
         assertThat(objectAttribute.getValueType().contains(PrimitiveValueType.NUMBER)).isTrue();
-        // убедимся, что тип не составно
+        // убедимся, что тип не составной
         assertThat(objectAttribute.getValueType().isComposite()).isFalse();
         // убедимся, что квалификаторы прочитаны
         assertThat(objectAttribute.getValueType().getQualifiers()).hasSize(1);
@@ -330,7 +330,7 @@ if (childMDO.isPresent() && childMDO.get() instanceof Catalog catalog) {
         var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
         assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
 
-        // убаимся, что квалификатор числа содожержит верную информацию
+        // убедимся, что квалификатор числа содежржит верную информацию
         var numberQualifiers = (NumberQualifiers) qualifier;
         assertThat(numberQualifiers.getPrecision()).isEqualTo(10); // длина 10
         assertThat(numberQualifiers.getScale()).isEqualTo(0);      // точность 0
@@ -380,11 +380,11 @@ if (childMDO.isPresent() && childMDO.get() instanceof DefinedType definedType) {
     // квалификаторов нет
     assertThat(definedType.getValueType().getQualifiers()).isEmpty();
 
-    // создадим типа по имени
+    // создадим тип по имени
     var typeContains = MetadataValueType.fromString("EnumRef.ДополнительныеЗначенияДоступа");
 
     assertThat(typeContains).isNotNull();
-    // полученый тип относится к перечислению
+    // полученный тип относится к перечислению
     assertThat(typeContains.getKind()).isEqualTo(MDOType.ENUM);
     // тип не составной
     assertThat(typeContains.isComposite()).isFalse();
@@ -398,7 +398,7 @@ if (childMDO.isPresent() && childMDO.get() instanceof DefinedType definedType) {
     assertThat(typeNotContains).isNotNull();
     // убедимся, что первый тип входит в состав описания
     assertThat(definedType.getValueType().contains(typeContains)).isTrue();
-    // убедимся, что второй тип нпе входит в состав
+    // убедимся, что второй тип не входит в состав
     assertThat(definedType.getValueType().contains(typeNotContains)).isFalse();
 }
 ```

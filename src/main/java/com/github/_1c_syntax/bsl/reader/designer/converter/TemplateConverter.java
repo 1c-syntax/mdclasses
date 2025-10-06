@@ -85,7 +85,7 @@ public class TemplateConverter extends AbstractReadConverter {
     return Paths.get(
       path.getParent().toString(),
       FilenameUtils.getBaseName(path.toString()),
-      MDOType.TEMPLATE.getGroupName(),
+      MDOType.TEMPLATE.groupName(),
       childName + ".xml"
     );
   }

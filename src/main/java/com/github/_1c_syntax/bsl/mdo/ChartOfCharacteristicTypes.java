@@ -24,16 +24,19 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.github._1c_syntax.utils.Lazy;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -45,7 +48,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRightsOwner {
+public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRightsOwner, ValueTypeOwner {
 
   /*
    * ReferenceObject
@@ -90,6 +93,14 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
 
   Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
   Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
    * Свое
@@ -152,5 +163,10 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
+  }
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
   }
 }

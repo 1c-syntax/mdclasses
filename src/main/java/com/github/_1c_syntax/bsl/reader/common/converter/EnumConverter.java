@@ -21,61 +21,52 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.support.EnumWithValue;
-import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.types.EnumWithName;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 /**
  * Класс-конвертер из строкового значения в элемент перечисления.
- * Для каждого конкретного перечисления надо создать собственный класс, унаследованный от EnumWithValues.
- * Необходимо в конструкторе передать класс перечисления и зарегистрировать созданный класс конвертора в
- * *XStreamFactory.
+ * Для использования с конкретным перечислением достаточно зарегистрировать
+ * EnumConverter<ВашEnum> в XStream (см. ExtendXStream).
+ * Перечисление должно реализовывать EnumWithName и предоставлять статический метод valueByName(String).
  */
 @Slf4j
-public class EnumConverter<T extends Enum<T> & EnumWithValue> extends AbstractSingleValueConverter {
-
-  private static final String URL_TEMPLATE =
-    "https://github.com/1c-syntax/mdclasses/issues/new?labels=bug&title=%5BBUG%5D%20Unknown%20element%20%5B{}%20{}%5D";
-  private static final String WARN_TEMPLATE =
-    "Parsing error due to unknown element {}. Please, create issue using link " + URL_TEMPLATE;
-
+public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSingleValueConverter {
   private final Class<T> enumClazz;
-  private final T unknown;
-  private final Map<String, T> enumElements;
+  private final Method valueByNameMethod;
 
   public EnumConverter(Class<T> clazz) {
     enumClazz = clazz;
-    unknown = unknown();
-    enumElements = new HashMap<>();
-    for (T item : enumClazz.getEnumConstants()) {
-      enumElements.put(item.value(), item);
-      if (UsePurposes.class.isAssignableFrom(enumClazz)) {
-        enumElements.put(((UsePurposes) item).valueVar2(), item);
+    try {
+      var methodFind = clazz.getDeclaredMethod("valueByName", String.class);
+      if (!Modifier.isStatic(methodFind.getModifiers())) {
+        throw new IllegalArgumentException("valueByName must be static: " + clazz.getName());
       }
+      if (!enumClazz.isAssignableFrom(methodFind.getReturnType())) {
+        throw new IllegalArgumentException("valueByName must return " + enumClazz.getName());
+      }
+      methodFind.setAccessible(true);
+      valueByNameMethod = methodFind;
+    } catch (NoSuchMethodException e) {
+      throw new IllegalArgumentException("Not found valueByName(String) in " + clazz.getName(), e);
     }
   }
 
   @Override
   public Object fromString(String sourceString) {
-    var result = enumElements.get(sourceString);
-    if (result == null) {
-      LOGGER.warn(WARN_TEMPLATE, sourceString, enumClazz.getName(), sourceString);
-      result = unknown;
+    if (sourceString == null) {
+      return null;
     }
-    return result;
-  }
-
-  private T unknown() {
-    for (T item : enumClazz.getEnumConstants()) {
-      if (item.isUnknown()) {
-        return item;
-      }
+    try {
+      return valueByNameMethod.invoke(null, sourceString);
+    } catch (IllegalAccessException | InvocationTargetException e) {
+      throw new RuntimeException(e);
     }
-    throw new IllegalStateException("No unknown value found for enum " + enumClazz.getName());
   }
 
   @Override

@@ -108,7 +108,7 @@ public class DesignerReader implements MDReader {
   @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
@@ -254,7 +254,7 @@ public class DesignerReader implements MDReader {
   }
 
   private static Path mdoPath(Path path, MDOType type, String name) {
-    return mdoPath(Paths.get(path.toString(), type.getGroupName()), name);
+    return mdoPath(Paths.get(path.toString(), type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {
@@ -262,6 +262,6 @@ public class DesignerReader implements MDReader {
   }
 
   private static Path childrenFolder(Path path, MDOType type) {
-    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.getGroupName());
+    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.groupName());
   }
 }

@@ -29,10 +29,10 @@ class ApplicationRunModeTest {
 
   @Test
   void getByName() {
-    assertThat(ApplicationRunMode.getByName("auto")).isEqualTo(ApplicationRunMode.AUTO);
-    assertThat(ApplicationRunMode.getByName("auTo")).isEqualTo(ApplicationRunMode.AUTO);
-    assertThat(ApplicationRunMode.getByName("{sfdsfsd}")).isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
-    assertThat(ApplicationRunMode.getByName("Managedapplication"))
+    assertThat(ApplicationRunMode.valueByName("auto")).isEqualTo(ApplicationRunMode.AUTO);
+    assertThat(ApplicationRunMode.valueByName("auTo")).isEqualTo(ApplicationRunMode.AUTO);
+    assertThat(ApplicationRunMode.valueByName("{sfdsfsd}")).isEqualTo(ApplicationRunMode.UNKNOWN);
+    assertThat(ApplicationRunMode.valueByName("Managedapplication"))
       .isEqualTo(ApplicationRunMode.MANAGED_APPLICATION);
   }
 }

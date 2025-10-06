@@ -22,12 +22,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Текущий пользователь"
         }
-      ]
+      }
     ]
   },
   "uuid": "1ed910db-e434-4efd-9b12-c25353a31d5a",
@@ -35,13 +39,15 @@
     "types": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
-        "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-          "name": "CatalogRef.Пользователи",
-          "nameRu": "СправочникСсылка.Пользователи",
-          "composite": false,
+        "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+          "fullName": {
+            "nameRu": "СправочникСсылка.Пользователи",
+            "nameEn": "CatalogRef.Пользователи"
+          },
+          "variant": "METADATA",
           "kind": "CATALOG"
         }
       }
@@ -50,7 +56,7 @@
     "qualifiers": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 0
       }

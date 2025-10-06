@@ -28,12 +28,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Текущая СУБД"
         }
-      ]
+      }
     ]
   },
   "tables": [
@@ -49,12 +53,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Информация об ошибках"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -63,8 +71,8 @@
       },
       "modules": [
         {
-          "moduleType": "ManagerModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
+          "moduleType": "RecordSetModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -72,8 +80,8 @@
           "isProtected": false
         },
         {
-          "moduleType": "RecordSetModule",
-          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/RecordSetModule.bsl",
+          "moduleType": "ManagerModule",
+          "uri": "src/test/resources/ext/edt/mdclasses/configuration/src/ExternalDataSources/ТекущаяСУБД/Tables/ИнформацияОбОшибках/ManagerModule.bsl",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
           },
@@ -94,12 +102,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Command"
                 }
-              ]
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -133,12 +145,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Период"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -152,25 +168,26 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                    "name": "String",
-                    "nameRu": "Строка"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
                 }
               ],
               "composite": false,
               "qualifiers": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 20,
-                    "allowedLength": "VARIABLE"
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (20, Переменная)",
+                      "nameEn": "StringQualifiers (20, Variable)"
+                    }
                   }
                 }
               ]
@@ -188,12 +205,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Идентификатор ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -207,13 +228,15 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                    "name": "DefinedType.ТипUIDСтрока",
-                    "nameRu": "ОпределяемыйТип.ТипUIDСтрока",
-                    "composite": false,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "fullName": {
+                      "nameRu": "ОпределяемыйТип.ТипUIDСтрока",
+                      "nameEn": "DefinedType.ТипUIDСтрока"
+                    },
+                    "variant": "METADATA",
                     "kind": "DEFINED_TYPE"
                   }
                 }
@@ -222,7 +245,7 @@
               "qualifiers": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 0
                 }
@@ -241,12 +264,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Уровень ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -260,14 +287,10 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.V8ValueType": {
-                    "name": "UUID",
-                    "nameRu": "УникальныйИдентификатор",
-                    "variant": "V8"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
                 }
               ],
               "composite": false,
@@ -286,12 +309,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Категория"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -305,12 +332,10 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.V8ValueType": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField[3]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.V8ValueType"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
                 }
               ],
               "composite": false,
@@ -329,12 +354,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Номер сеанса"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -348,26 +377,27 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                    "name": "Number",
-                    "nameRu": "Число"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
                 }
               ],
               "composite": false,
               "qualifiers": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                     "precision": 15,
                     "scale": 0,
-                    "nonNegative": true
+                    "nonNegative": true,
+                    "description": {
+                      "nameRu": "КвалификаторыЧисла (15.0 неотр)",
+                      "nameEn": "NumberQualifiers (15.0 nonneg)"
+                    }
                   }
                 }
               ]
@@ -385,12 +415,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Пользователь"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -404,12 +438,10 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.V8ValueType": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField[3]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.V8ValueType"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
                 }
               ],
               "composite": false,
@@ -428,12 +460,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Дата уведомления"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -447,24 +483,25 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
                 }
               ],
               "composite": false,
               "qualifiers": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 20,
-                    "allowedLength": "VARIABLE"
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
                   }
                 }
               ]
@@ -482,12 +519,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Описание ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -501,24 +542,26 @@
               "types": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-                  }
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
                 }
               ],
               "composite": false,
               "qualifiers": [
                 {
                   "default": {
-                    "tag": 1
+                    "tag": 4
                   },
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 0,
-                    "allowedLength": "VARIABLE"
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                      "nameEn": "StringQualifiers (0, Variable)"
+                    }
                   }
                 }
               ]
@@ -541,12 +584,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Record form"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -580,12 +627,16 @@
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {
                     "content": [
-                      [
-                        {
+                      {
+                        "default": {
+                          "tag": 2
+                        },
+                        "int": 1,
+                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                           "langKey": "ru",
                           "value": "User settings group"
                         }
-                      ]
+                      }
                     ]
                   },
                   "dataPath": {
@@ -619,12 +670,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "List form"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -693,12 +748,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Template"
                 }
-              ]
+              }
             ]
           },
           "supportVariant": "NONE",

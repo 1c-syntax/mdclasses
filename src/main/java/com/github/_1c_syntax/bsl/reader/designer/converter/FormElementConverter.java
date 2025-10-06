@@ -45,7 +45,7 @@ public class FormElementConverter implements ReadConverter {
       LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
       return null;
     }
-    readerContext.setValue("type", FormElementType.fromString(reader.getNodeName()));
+    readerContext.setValue("type", FormElementType.valueByName(reader.getNodeName()));
     readerContext.setValue("name", reader.getAttribute("name"));
     Unmarshaller.unmarshal(reader, context, readerContext);
     return readerContext.build();
