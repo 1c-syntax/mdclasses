@@ -58,7 +58,6 @@ public class Unmarshaller {
   private static final String VALUE_TYPE_OTHER_FIELD = "valueType";
   private static final String VALUE_TYPE_FIELD = "type";
   private static final String STANDARD_ATTRIBUTES_NODE = "standardAttributes";
-  private static final String TYPE_FIELD = "type";
 
   /**
    * Читают общую информацию из файла
@@ -122,7 +121,7 @@ public class Unmarshaller {
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
       saveExtra(mdcReaderContext, name, value);
     } else if (readerContext instanceof FormElementReaderContext formElementReaderContext
-      && TYPE_FIELD.equals(name)
+      && VALUE_TYPE_FIELD.equals(name)
       && value instanceof FormElementType newValue) {
       formElementReaderContext.setElementType(newValue);
     }

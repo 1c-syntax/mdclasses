@@ -57,12 +57,12 @@ public class StdAttributeFiller {
 
     var stdAttributes = REGISTRY.getOrDefault(parentContext.getMdoType(), Collections.emptyList());
     if (stdAttributes.isEmpty()) {
-      LOGGER.warn("Для {} нет настроенных стандартных реквизитов", parentContext.getMdoType());
+      LOGGER.debug("Для {} нет настроенных стандартных реквизитов", parentContext.getMdoType());
     }
 
     Map<String, MDReaderContext> existsStdAttributes = new HashMap<>();
     parentContext.getChildrenContexts().forEach((String collectionName, List<MDReaderContext> value) -> value.stream()
-      .filter(context -> context.getRealClass().isAssignableFrom(StandardAttribute.class))
+      .filter(context -> StandardAttribute.class.isAssignableFrom(context.getRealClass()))
       .forEach(mdReaderContext -> existsStdAttributes.put(mdReaderContext.getName(), mdReaderContext)));
 
     var uuid = parentContext.getFromCache(UUID_FIELD_NAME, "");
@@ -274,10 +274,13 @@ public class StdAttributeFiller {
     var childContext = stdAttributes.get(name);
     if (childContext == null) {
       var collectionName = "Attributes";
-      var contexts = parentContext.getChildrenContexts().getOrDefault(collectionName, new ArrayList<>());
-      if (contexts.isEmpty()) {
+      var contexts = parentContext.getChildrenContexts().get(collectionName);
+      if (contexts == null) {
         collectionName = "Attribute";
-        contexts = parentContext.getChildrenContexts().getOrDefault(collectionName, new ArrayList<>());
+        contexts = parentContext.getChildrenContexts().get(collectionName);
+        if (contexts == null) {
+          contexts = Collections.synchronizedList(new ArrayList<>());
+        }
       }
 
       childContext = new MDReaderContext(parentContext.getCurrentPath(), parentContext.getMdReader());

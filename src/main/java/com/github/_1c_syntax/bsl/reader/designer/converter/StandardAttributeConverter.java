@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
-import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
