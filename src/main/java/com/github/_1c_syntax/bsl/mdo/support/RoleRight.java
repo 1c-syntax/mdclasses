@@ -40,15 +40,19 @@ public enum RoleRight implements EnumWithName {
   ALL_FUNCTIONS_MODE("AllFunctionsMode", "РежимВсеФункции"),
   ANALYTICS_SYSTEM_CLIENT("AnalyticsSystemClient", "КлиентСистемыАналитики"),
   AUTOMATION("Automation", "Automation"),
-  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION("CollaborationSystemInfoBaseRegistration", "РегистрацияИнформационнойБазыСистемыВзаимодействия"),
-  CONFIGURATION_EXTENSIONS_ADMINISTRATION("ConfigurationExtensionsAdministration", "АдминистрированиеРасширенийКонфигурации"),
+  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION(
+    "CollaborationSystemInfoBaseRegistration", "РегистрацияИнформационнойБазыСистемыВзаимодействия"),
+  CONFIGURATION_EXTENSIONS_ADMINISTRATION(
+    "ConfigurationExtensionsAdministration", "АдминистрированиеРасширенийКонфигурации"),
   DATA_ADMINISTRATION("DataAdministration", "АдминистрированиеДанных"),
   DELETE("Delete", "Удаление"),
   EDIT("Edit", "Редактирование"),
-  EDIT_DATA_HISTORY_VERSION_COMMENT("EditDataHistoryVersionComment", "РедактированиеКомментарияВерсииИсторииДанных"),
+  EDIT_DATA_HISTORY_VERSION_COMMENT(
+    "EditDataHistoryVersionComment", "РедактированиеКомментарияВерсииИсторииДанных"),
   EVENT_LOG("EventLog", "ЖурналРегистрации"),
   EXCLUSIVE_MODE("ExclusiveMode", "МонопольныйРежим"),
-  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START("ExclusiveModeTerminationAtSessionStart", "ЗавершениеМонопольногоРежимаПриНачалеСеанса"),
+  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START(
+    "ExclusiveModeTerminationAtSessionStart", "ЗавершениеМонопольногоРежимаПриНачалеСеанса"),
   EXECUTE("Execute", "Выполнение"),
   EXTERNAL_CONNECTION("ExternalConnection", "ВнешнееСоединение"),
   GET("Get", "Получение"),
@@ -57,10 +61,12 @@ public enum RoleRight implements EnumWithName {
   INTERACTIVE_ACTIVATE("InteractiveActivate", "ИнтерактивнаяАктивация"),
   INTERACTIVE_CHANGE_OF_POSTED("InteractiveChangeOfPosted", "ИнтерактивноеИзменениеПроведенных"),
   INTERACTIVE_CLEAR_DELETION_MARK("InteractiveClearDeletionMark", "ИнтерактивноеСнятиеПометкиУдаления"),
-  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA("InteractiveClearDeletionMarkPredefinedData", "ИнтерактивноеСнятиеПометкиУдаленияПредопределенныхДанных"),
+  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA(
+    "InteractiveClearDeletionMarkPredefinedData", "ИнтерактивноеСнятиеПометкиУдаленияПредопределенныхДанных"),
   INTERACTIVE_DELETE("InteractiveDelete", "ИнтерактивноеУдаление"),
   INTERACTIVE_DELETE_MARKED("InteractiveDeleteMarked", "ИнтерактивноеУдалениеПомеченных"),
-  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA("InteractiveDeleteMarkedPredefinedData", "ИнтерактивноеУдалениеПомеченныхПредопределенныхДанных"),
+  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA(
+    "InteractiveDeleteMarkedPredefinedData", "ИнтерактивноеУдалениеПомеченныхПредопределенныхДанных"),
   INTERACTIVE_DELETE_PREDEFINED_DATA("InteractiveDeletePredefinedData", "ИнтерактивноеУдалениеПредопределенныхДанных"),
   INTERACTIVE_EXECUTE("InteractiveExecute", "ИнтерактивноеВыполнение"),
   INTERACTIVE_INSERT("InteractiveInsert", "ИнтерактивноеДобавление"),
@@ -69,11 +75,13 @@ public enum RoleRight implements EnumWithName {
   INTERACTIVE_POSTING("InteractivePosting", "ИнтерактивноеПроведение"),
   INTERACTIVE_POSTING_REGULAR("InteractivePostingRegular", "ИнтерактивноеПроведениеНеОперативное"),
   INTERACTIVE_SET_DELETION_MARK("InteractiveSetDeletionMark", "ИнтерактивнаяПометкаУдаления"),
-  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA("InteractiveSetDeletionMarkPredefinedData", "ИнтерактивнаяПометкаУдаленияПредопределенныхДанных"),
+  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA(
+    "InteractiveSetDeletionMarkPredefinedData", "ИнтерактивнаяПометкаУдаленияПредопределенныхДанных"),
   INTERACTIVE_START("InteractiveStart", "ИнтерактивныйСтарт"),
   INTERACTIVE_UNDO_POSTING("InteractiveUndoPosting", "ИнтерактивнаяОтменаПроведения"),
   MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE("MainWindowModeEmbeddedWorkplace", "РежимОсновногоОкнаВстроенноеРабочееМесто"),
-  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE("MainWindowModeFullscreenWorkplace", "РежимОсновногоОкнаПолноэкранноеРабочееМесто"),
+  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE(
+    "MainWindowModeFullscreenWorkplace", "РежимОсновногоОкнаПолноэкранноеРабочееМесто"),
   MAIN_WINDOW_MODE_KIOSK("MainWindowModeKiosk", "РежимОсновногоОкнаКиоск"),
   MAIN_WINDOW_MODE_NORMAL("MainWindowModeNormal", "РежимОсновногоОкнаОбычный"),
   MAIN_WINDOW_MODE_WORKPLACE("MainWindowModeWorkplace", "РежимОсновногоОкнаРабочееМесто"),
@@ -87,7 +95,8 @@ public enum RoleRight implements EnumWithName {
   REMOTE_DESKTOP_HOST("RemoteDesktopHost", "ПредоставлениеУдаленногоУправленияРабочимСтоломДругомуПользователю"),
   SAVE_USER_DATA("SaveUserData", "СохранениеДанныхПользователя"),
   SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange", "ИзменениеАутентификацииОССеанса"),
-  SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange", "ИзменениеСтандартнойАутентификацииСеанса"),
+  SESSION_STANDARD_AUTHENTICATION_CHANGE(
+    "SessionStandardAuthenticationChange", "ИзменениеСтандартнойАутентификацииСеанса"),
   SET("Set", "Установка"),
   STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange", "ИзменениеСтандартнойАутентификации"),
   START("Start", "Старт"),

@@ -36,12 +36,6 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSingleValueConverter {
-
-  private static final String URL_TEMPLATE =
-    "https://github.com/1c-syntax/mdclasses/issues/new?labels=bug&title=%5BBUG%5D%20Unknown%20element%20%5B{}%20{}%5D";
-  private static final String WARN_TEMPLATE =
-    "Parsing error due to unknown element {}. Please, create issue using link " + URL_TEMPLATE;
-
   private final Class<T> enumClazz;
   private final Method valueByNameMethod;
 
@@ -49,7 +43,7 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
     enumClazz = clazz;
     Method methodFind = null;
     for (var method : clazz.getDeclaredMethods()) {
-      if (method.getName().equals("valueByName")) {
+      if ("valueByName".equals(method.getName())) {
         methodFind = method;
         break;
       }

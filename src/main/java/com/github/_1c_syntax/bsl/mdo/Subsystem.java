@@ -97,6 +97,12 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   @Singular("subsystem")
   List<Subsystem> subsystems;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   /*
    * Для ChildrenOwner
    */
@@ -109,12 +115,6 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   /*
    * свое
    */
-
-  /**
-   * Пояснение
-   */
-  @Default
-  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Возвращает список подсистем, в которые входит указанная ссылка на объект
