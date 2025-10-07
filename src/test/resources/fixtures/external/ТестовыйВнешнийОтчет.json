@@ -12,9 +12,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Ревзит отчета"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -30,25 +37,26 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "name": "String",
-              "nameRu": "Строка"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": "VARIABLE"
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
             }
           }
         ]
@@ -94,9 +102,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        1
-      ]
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Тестовый внешний отчет"
+        }
+      }
     ]
   },
   "tabularSections": [
@@ -112,9 +127,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Табличная часть"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -122,67 +144,10 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
       },
       "attributes": [
-        {
-          "uuid": "397c0640-f782-4090-a3d6-5715a8ecf85c",
-          "name": "РеквизитТЧ",
-          "mdoReference": {
-            "type": "ATTRIBUTE",
-            "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.TabularSection.ТабличнаяЧасть.Attribute.РеквизитТЧ",
-            "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.ТабличнаяЧасть.ТабличнаяЧасть.Реквизит.РеквизитТЧ"
-          },
-          "objectBelonging": "OWN",
-          "comment": "",
-          "synonym": {
-            "content": [
-              [
-                1
-              ]
-            ]
-          },
-          "supportVariant": "NONE",
-          "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
-          },
-          "passwordMode": false,
-          "kind": "CUSTOM",
-          "indexing": "DONT_INDEX",
-          "type": {
-            "types": [
-              {
-                "default": {
-                  "tag": 1
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                  "name": "CatalogRef.Валюты",
-                  "nameRu": "СправочникСсылка.Валюты",
-                  "composite": false,
-                  "kind": "CATALOG"
-                }
-              }
-            ],
-            "composite": false,
-            "qualifiers": [
-              {
-                "default": {
-                  "tag": 1
-                },
-                "int": 0
-              }
-            ]
-          },
-          "format": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-          },
-          "editFormat": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-          },
-          "markNegatives": false,
-          "mask": "",
-          "multiLine": false,
-          "extendedEdit": false,
-          "fillFromFillingValue": false
-        }
+        [
+          2
+        ],
+        []
       ]
     }
   ],
@@ -199,9 +164,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Основная схема компоновки данных"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",

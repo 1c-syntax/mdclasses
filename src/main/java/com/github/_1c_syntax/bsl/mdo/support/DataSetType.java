@@ -21,47 +21,39 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-@AllArgsConstructor
-@Getter
-public enum DataSetType implements EnumWithValue {
-  DATA_SET_QUERY("DataSetQuery"),
-  DATA_SET_UNION("DataSetUnion"),
-  DATA_SET_OBJECT("DataSetObject"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+@ToString(of = "fullName")
+public enum DataSetType implements EnumWithName {
+  DATA_SET_QUERY("DataSetQuery", "НаборДанныхЗапрос"),
+  DATA_SET_UNION("DataSetUnion", "НаборДанныхОбъединение"),
+  DATA_SET_OBJECT("DataSetObject", "НаборДанныхОбъект"),
+  UNKNOWN("unknown", "неизвестный");
 
-  private static final Map<String, DataSetType> KEYS = computeKeys();
+  private static final Map<String, DataSetType> KEYS = EnumWithName.computeKeys(values());
 
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
 
-  /**
-   * Выполняет преобразование из строкового представления в значение
-   *
-   * @param value Строковое представление
-   * @return Найденный тип
-   */
-  public static DataSetType fromString(String value) {
-    return KEYS.getOrDefault(value, UNKNOWN);
+  DataSetType(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
   }
 
-  private static Map<String, DataSetType> computeKeys() {
-    Map<String, DataSetType> keys = new HashMap<>();
-    for (DataSetType dataSetType : DataSetType.values()) {
-      keys.put(dataSetType.value, dataSetType);
-    }
-    return Collections.unmodifiableMap(keys);
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static DataSetType valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
   }
 }

@@ -21,38 +21,60 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Назначения использования приложения и форм
  */
-@AllArgsConstructor
-@Getter
-public enum UsePurposes implements EnumWithValue {
+@ToString(of = "fullName")
+public enum UsePurposes implements EnumWithName {
   PLATFORM_APPLICATION("PersonalComputer", "PlatformApplication",
-    "Приложение для платформы"),
+    "ПриложениеДляПлатформы"),
   MOBILE_PLATFORM_APPLICATION("MobileDevice", "MobilePlatformApplication",
-    "Приложение для мобильной платформы"),
-  UNKNOWN("unknown", "unknown", "unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
+    "ПриложениеДляМобильнойПлатформы"),
+  UNKNOWN("unknown", "unknown", "неизвестный");
+
+
+  private static final Map<String, UsePurposes> KEYS = computeKeys();
+
+  @Getter
+  @Accessors(fluent = true)
+  private final MultiName fullName;
+
+  @Getter
+  @Accessors(fluent = true)
+  private final MultiName fullNameAdd;
+
+  UsePurposes(String nameEn, String nameEnAdd, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+    this.fullNameAdd = MultiName.create(nameEnAdd, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static UsePurposes valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
+
+  private static Map<String, UsePurposes> computeKeys() {
+    Map<String, UsePurposes> keysMap = new ConcurrentSkipListMap<>();
+    for (var element : values()) {
+      keysMap.put(element.nameEn().toLowerCase(Locale.ROOT), element);
+      keysMap.put(element.nameRu().toLowerCase(Locale.ROOT), element);
+      keysMap.put(element.fullNameAdd().getEn().toLowerCase(Locale.ROOT), element);
     }
-  };
-
-  @Accessors(fluent = true)
-  private final String valueVar1;
-
-  @Accessors(fluent = true)
-  private final String valueVar2;
-
-  @Accessors(fluent = true)
-  private final String valueRu;
-
-  @Override
-  public String value() {
-    return valueVar1;
+    return keysMap;
   }
 }

@@ -21,34 +21,42 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
 
-@AllArgsConstructor
-@ToString
-@Getter
-public enum ApplicationRunMode implements EnumWithValue {
-  AUTO("Auto"),
-  MANAGED_APPLICATION("ManagedApplication"),
-  ORDINARY_APPLICATION("OrdinaryApplication"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+/**
+ * Варианты запуска клиентского приложения
+ */
+@ToString(of = "fullName")
+public enum ApplicationRunMode implements EnumWithName {
+  AUTO("Auto", "Авто"),
+  MANAGED_APPLICATION("ManagedApplication", "УправляемоеПриложение"),
+  ORDINARY_APPLICATION("OrdinaryApplication", "ОбычноеПриложение"),
+  UNKNOWN("unknown", "неизвестный");
 
+  private static final Map<String, ApplicationRunMode> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
 
-  public static ApplicationRunMode getByName(String value) {
-    return Arrays.stream(values())
-      .filter(defaultApplicationRunMode -> defaultApplicationRunMode.value().equalsIgnoreCase(value))
-      .findAny()
-      .orElse(MANAGED_APPLICATION);
+  ApplicationRunMode(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static ApplicationRunMode valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
   }
 }

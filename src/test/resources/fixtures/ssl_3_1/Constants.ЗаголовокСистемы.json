@@ -37,12 +37,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Заголовок программы"
         }
-      ]
+      }
     ]
   },
   "uuid": "a1875d63-4303-46f1-bdea-fc529b5891f3",
@@ -50,25 +54,26 @@
     "types": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-          "name": "String",
-          "nameRu": "Строка"
-        }
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
       }
     ],
     "composite": false,
     "qualifiers": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
         "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
           "length": 0,
-          "allowedLength": "VARIABLE"
+          "allowedLength": "VARIABLE",
+          "description": {
+            "nameRu": "КвалификаторыСтроки (0, Переменная)",
+            "nameEn": "StringQualifiers (0, Variable)"
+          }
         }
       }
     ]

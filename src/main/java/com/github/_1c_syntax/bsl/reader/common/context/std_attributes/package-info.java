@@ -19,23 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.support;
-
 /**
- * Расширение для перечислений, необходимое для использования в анмаршалинге
+ * Сервисные классы для заполнения стандартных реквизитов в зависимости от типа метаданных
  */
-public interface EnumWithValue {
-  /**
-   * Возвращает значение перечисления
-   *
-   * @return Строковое значение перечисления
-   */
-  String value();
-
-  /**
-   * Признак того, что значение используется как значение для неизвестных
-   */
-  default boolean isUnknown() {
-    return false;
-  }
-}
+package com.github._1c_syntax.bsl.reader.common.context.std_attributes;

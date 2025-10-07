@@ -1,5 +1,260 @@
 {"com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
-  "attributes": [],
+  "attributes": [
+    [
+      {
+        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Active",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Активность"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "type": "ACCUMULATION_REGISTER",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Активность",
+          "nameEn": "Active"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Period",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Период"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Период",
+          "nameEn": "Period"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.LineNumber",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.НомерСтроки"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 5,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (5.0)",
+                  "nameEn": "NumberQualifiers (5.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "НомерСтроки",
+          "nameEn": "LineNumber"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Recorder",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Регистратор"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Регистратор",
+          "nameEn": "Recorder"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.RecordType",
+          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.ВидДвижения"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type"
+        },
+        "fullName": {
+          "nameRu": "ВидДвижения",
+          "nameEn": "RecordType"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
   "commands": [],
   "comment": "",
   "description": "Регистр накопления",
@@ -15,13 +270,11 @@
       "objectBelonging": "OWN",
       "comment": "",
       "synonym": {
-        "content": []
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
       },
       "supportVariant": "NONE",
       "owner": {
-        "type": "ACCUMULATION_REGISTER",
-        "mdoRef": "AccumulationRegister.РегистрНакопления1",
-        "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "passwordMode": false,
       "kind": "CUSTOM",
@@ -30,25 +283,26 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "name": "String",
-              "nameRu": "Строка"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": "VARIABLE"
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
             }
           }
         ]
@@ -59,11 +313,11 @@
     }
   ],
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "forms": [],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },
   "mdoType": "ACCUMULATION_REGISTER",
   "moduleTypes": [],
@@ -95,11 +349,11 @@
       "objectBelonging": "OWN",
       "comment": "",
       "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
       },
       "supportVariant": "NONE",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "passwordMode": false,
       "kind": "CUSTOM",
@@ -108,26 +362,27 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "name": "Number",
-              "nameRu": "Число"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
               "precision": 10,
               "scale": 0,
-              "nonNegative": false
+              "nonNegative": false,
+              "description": {
+                "nameRu": "КвалификаторыЧисла (10.0)",
+                "nameEn": "NumberQualifiers (10.0)"
+              }
             }
           }
         ]
@@ -137,12 +392,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Регистр накопления"
         }
-      ]
+      }
     ]
   },
   "templates": [],

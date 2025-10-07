@@ -21,13 +21,11 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.support.MetadataValueType;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.types.Qualifier;
 import com.github._1c_syntax.bsl.types.ValueType;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
-import com.github._1c_syntax.bsl.types.value.V8ValueType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
@@ -47,21 +45,11 @@ public class ValueTypeDescriptionConverter implements ReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     List<ValueType> types = new ArrayList<>();
     List<Qualifier> qualifiers = new ArrayList<>();
-    var composite = false;
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var nodeName = reader.getNodeName();
       if (TYPE_NODE_NAMES.contains(nodeName)) {
-        var result = ExtendXStream.readValue(context, ValueType.class);
-        if (!composite) {
-          if (result instanceof MetadataValueType metadataValueType) {
-            composite = metadataValueType.isComposite();
-          } else if (result == V8ValueType.ANY_REF) {
-            composite = true;
-          }
-        }
-
-        types.add(result);
+        types.add(ExtendXStream.readValue(context, ValueType.class));
       } else if (nodeName.endsWith("Qualifiers")) {
         qualifiers.add(ExtendXStream.readValue(context, Qualifier.class));
       } else { // что-то еще
@@ -69,7 +57,7 @@ public class ValueTypeDescriptionConverter implements ReadConverter {
       }
       reader.moveUp();
     }
-    return ValueTypeDescription.create(types, composite || types.size() > 1, qualifiers);
+    return ValueTypeDescription.create(types, qualifiers);
   }
 
   @Override

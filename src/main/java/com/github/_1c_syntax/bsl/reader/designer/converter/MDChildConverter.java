@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -65,6 +66,7 @@ public class MDChildConverter extends AbstractReadConverter {
   public boolean canConvert(Class type) {
     return
       !ObjectTemplate.class.isAssignableFrom(type)
+        && !StandardAttribute.class.isAssignableFrom(type)
         && MDChild.class.isAssignableFrom(type);
   }
 
@@ -79,7 +81,7 @@ public class MDChildConverter extends AbstractReadConverter {
   private static Path childDataPath(Path path, MDOType mdoType, String childName) {
     return Paths.get(path.getParent().toString(),
       FilenameUtils.getBaseName(path.toString()),
-      mdoType.getGroupName(),
+      mdoType.groupName(),
       childName + ".xml");
   }
 }

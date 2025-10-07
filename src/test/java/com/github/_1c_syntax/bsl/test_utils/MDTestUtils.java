@@ -208,8 +208,8 @@ public class MDTestUtils {
     Path externalSourcePath;
     if (isEDT) {
       var sourceTypeName = (isReport)
-        ? MDOType.EXTERNAL_REPORT.getGroupName()
-        : MDOType.EXTERNAL_DATA_PROCESSOR.getGroupName();
+        ? MDOType.EXTERNAL_REPORT.groupName()
+        : MDOType.EXTERNAL_DATA_PROCESSOR.groupName();
       externalSourcePath = Path.of(EXAMPLES_PATH, EDT_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name, name + ".mdo");
     } else {
       var sourceTypeName = (isReport) ? "erf" : "epf";
@@ -237,6 +237,7 @@ public class MDTestUtils {
   private void objectEqualJson(Object obj, Path fixturePath) {
     var fixture = getFixture(fixturePath);
     var current = createJson(obj);
+
     Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
   }
 

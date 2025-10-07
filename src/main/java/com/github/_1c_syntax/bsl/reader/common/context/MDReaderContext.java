@@ -21,13 +21,17 @@
  */
 package com.github._1c_syntax.bsl.reader.common.context;
 
+import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -39,6 +43,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -60,9 +65,11 @@ public class MDReaderContext extends AbstractReaderContext {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String DATA_FIELD_NAME = "data";
 
+
   /**
    * Коллекция билдеров для дочерних объектов, которые надо доделать
    */
+  @Getter
   private final Map<String, List<MDReaderContext>> childrenContexts;
 
   /**
@@ -95,6 +102,15 @@ public class MDReaderContext extends AbstractReaderContext {
     childrenContexts = new ConcurrentHashMap<>();
   }
 
+  public MDReaderContext(@NonNull Path currentPath,
+                         @NonNull MDReader mdReader) {
+    super(currentPath, mdReader);
+    realClass = StandardAttribute.class;
+    builder = TransformationUtils.builder(realClass);
+    mdoType = MDOType.STANDARD_ATTRIBUTE;
+    childrenContexts = new ConcurrentHashMap<>();
+  }
+
   @Override
   public final void setValue(String methodName, Object value) {
     if (value instanceof MDReaderContext child) {
@@ -106,8 +122,10 @@ public class MDReaderContext extends AbstractReaderContext {
 
   @Override
   public Object build() {
-    mdoReference = MdoReference.create(owner, mdoType, name);
-    setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
+    if (mdoReference.isEmpty()) {
+      mdoReference = MdoReference.create(owner, mdoType, name);
+      setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
+    }
 
     if (MDChild.class.isAssignableFrom(realClass)) {
       setValue(OWNER_FIELD_NAME, owner);
@@ -119,6 +137,10 @@ public class MDReaderContext extends AbstractReaderContext {
 
     if (Form.class.isAssignableFrom(realClass)) {
       setValue(DATA_FIELD_NAME, mdReader.readFormData(currentPath, name, mdoType));
+    }
+
+    if (AttributeOwner.class.isAssignableFrom(realClass)) {
+      StdAttributeFiller.fill(this);
     }
 
     if (ChildrenOwner.class.isAssignableFrom(realClass)) {

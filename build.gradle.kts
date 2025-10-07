@@ -7,11 +7,11 @@ plugins {
     jacoco
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.4"
-    id("io.freefair.lombok") version "8.14.2"
-    id("io.freefair.javadoc-links") version "8.14.2"
-    id("io.freefair.javadoc-utf-8") version "8.14.2"
-    id("io.freefair.maven-central.validate-poms") version "8.14.2"
-    id("com.github.ben-manes.versions") version "0.52.0"
+    id("io.freefair.lombok") version "9.0.0"
+    id("io.freefair.javadoc-links") version "9.0.0"
+    id("io.freefair.javadoc-utf-8") version "9.0.0"
+    id("io.freefair.maven-central.validate-poms") version "9.0.0"
+    id("com.github.ben-manes.versions") version "0.53.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.20.0"
     id("org.sonarqube") version "6.3.1.5724"
@@ -58,7 +58,7 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.0.9-SNAPSHOT")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.0.16-SNAPSHOT")
     implementation("io.github.1c-syntax", "utils", "0.6.3")
     implementation("io.github.1c-syntax", "supportconf", "0.14.3") {
         exclude("io.github.1c-syntax", "bsl-common-library")

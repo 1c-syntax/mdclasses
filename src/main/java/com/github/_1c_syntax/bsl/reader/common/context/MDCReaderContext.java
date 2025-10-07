@@ -121,7 +121,7 @@ public class MDCReaderContext extends AbstractReaderContext {
     childrenNames.forEach((String name) -> {
       var child = children.get(name);
       if (child != null) {
-        var fieldName = child.getMdoType().getName();
+        var fieldName = child.getMdoType().nameEn();
         setValue(fieldName, child);
         setValue(CHILD_FILED_NAME, child);
       }

@@ -21,30 +21,46 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
-@AllArgsConstructor
-@Getter
-public enum TemplateType implements EnumWithValue {
-  ADD_IN("AddIn"),
-  BINARY_DATA("BinaryData"),
-  DATA_COMPOSITION_SCHEME("DataCompositionSchema"),
-  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate"),
-  GRAPHICAL_SCHEME("GraphicalSchema"),
-  HTML_DOCUMENT("HTMLDocument"),
-  SPREADSHEET_DOCUMENT("SpreadsheetDocument"),
-  ACTIVE_DOCUMENT("ActiveDocument"),
-  GEOGRAPHICAL_SCHEMA("GeographicalSchema"),
-  TEXT_DOCUMENT("TextDocument"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+import java.util.Locale;
+import java.util.Map;
 
+@ToString(of = "fullName")
+public enum TemplateType implements EnumWithName {
+  ADD_IN("AddIn", "ВнешняяКомпонента"),
+  BINARY_DATA("BinaryData", "ДвоичныеДанные"),
+  DATA_COMPOSITION_SCHEME("DataCompositionSchema", "СхемаКомпоновкиДанных"),
+  DATA_COMPOSITION_APPEARANCE_TEMPLATE("DataCompositionAppearanceTemplate", "МакетОформленияКомпоновкиДанных"),
+  GRAPHICAL_SCHEME("GraphicalSchema", "ГрафическаяСхема"),
+  HTML_DOCUMENT("HTMLDocument", "HTMLДокумент"),
+  SPREADSHEET_DOCUMENT("SpreadsheetDocument", "ТабличныйДокумент"),
+  ACTIVE_DOCUMENT("ActiveDocument", "ActiveDocument"),
+  GEOGRAPHICAL_SCHEMA("GeographicalSchema", "ГеографическаяСхема"),
+  TEXT_DOCUMENT("TextDocument", "ТекстовыйДокумент"),
+  UNKNOWN("unknown", "неизвестный");
+
+  private static final Map<String, TemplateType> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
+
+  TemplateType(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static TemplateType valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
 }

@@ -12,12 +12,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Признак учета"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -33,20 +37,17 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "name": "Boolean",
-              "nameRu": "Булево"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 0
           }
@@ -54,12 +55,519 @@
       }
     }
   ],
-  "attributes": [],
+  "attributes": [
+    [
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Ref",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Ссылка"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ПланСчетовСсылка.ПланСчетов1",
+                  "nameEn": "ChartOfAccountsRef.ПланСчетов1"
+                },
+                "variant": "METADATA",
+                "kind": "CHART_OF_ACCOUNTS"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Ссылка",
+          "nameEn": "Ref"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.DeletionMark",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.ПометкаУдаления"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "ПометкаУдаления",
+          "nameEn": "DeletionMark"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Description",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Наименование"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 25,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
+                  "nameEn": "StringQualifiers (25, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Наименование",
+          "nameEn": "Description"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Order",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Порядок"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 5,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (5.0)",
+                  "nameEn": "NumberQualifiers (5.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Порядок",
+          "nameEn": "Order"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Parent",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Родитель"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Родитель",
+          "nameEn": "Parent"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Predefined",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Предопределенный"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "Предопределенный",
+          "nameEn": "Predefined"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.PredefinedDataName",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.ИмяПредопределенныхДанных"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                  "nameEn": "StringQualifiers (0, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ИмяПредопределенныхДанных",
+          "nameEn": "PredefinedDataName"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Code",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Код"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 9,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (9.0)",
+                  "nameEn": "NumberQualifiers (9.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Код",
+          "nameEn": "Code"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.OffBalance",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Забалансовый"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "Забалансовый",
+          "nameEn": "OffBalance"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "2766f353-abd2-4e7f-9a95-53f05c83f5d4",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ChartOfAccounts.ПланСчетов1.StandardAttribute.Type",
+          "mdoRefRu": "ПланСчетов.ПланСчетов1.СтандартныйРеквизит.Тип"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Тип",
+          "nameEn": "Type"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
   "commands": [],
   "comment": "",
   "description": "ПланСчетов1",
   "explanation": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "extDimensionAccountingFlags": [
     {
@@ -86,12 +594,10 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
           }
         ],
         "composite": false,
@@ -158,7 +664,7 @@
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/explanation"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "tabularSections": [],
   "templates": [],

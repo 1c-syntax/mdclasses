@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.Value;
 
+import javax.annotation.Nullable;
 import java.util.regex.Pattern;
 
 /**
@@ -44,7 +45,7 @@ public class Handler {
   String moduleName;
   String methodName;
 
-  public Handler(String path) {
+  public Handler(@Nullable String path) {
     path = path == null ? "" : path;
 
     methodPath = path;

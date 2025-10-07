@@ -22,4 +22,10 @@
 /**
  * Содержит ридер для формата ЕДТ
  */
+@ParametersAreNonnullByDefault
+@ReturnValuesAreNonnullByDefault
 package com.github._1c_syntax.bsl.reader.edt;
+
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
+
+import javax.annotation.ParametersAreNonnullByDefault;

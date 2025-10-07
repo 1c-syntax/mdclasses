@@ -24,10 +24,10 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -63,7 +63,7 @@ class ExternalReportTest {
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(erf.getPlainChildren())
-      .hasSize(9)
+      .hasSize(10)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(erf.getForms()).hasSize(5);

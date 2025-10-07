@@ -21,15 +21,17 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttributeValueType;
-import com.github._1c_syntax.bsl.mdo.support.MetadataValueType;
 import com.github._1c_syntax.bsl.types.ValueType;
+import com.github._1c_syntax.bsl.types.ValueTypeVariant;
+import com.github._1c_syntax.bsl.types.ValueTypes;
+import com.github._1c_syntax.bsl.types.value.CustomValueType;
+import com.github._1c_syntax.bsl.types.value.MDOValueType;
 import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
-import com.github._1c_syntax.bsl.types.value.UnknownValueType;
 import com.github._1c_syntax.bsl.types.value.V8ValueType;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -73,16 +75,13 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     }
 
     // Попробуем найти тип в типах метаданных
-    type = MetadataValueType.fromString(trimString);
-    if (type != null) {
-      putType(string, type);
-      return type;
-    }
-
-    // Тип нам неизвестен, выведем ворнинг и создадим неизвестный тип
-    LOGGER.warn(WARN_TEMPLATE, string, string);
-    type = new UnknownValueType(string);
+    type = ValueTypes.getOrCompute(trimString);
     putType(string, type);
+
+    if (type instanceof CustomValueType customValueType && customValueType.variant() == ValueTypeVariant.UNKNOWN) {
+      // Тип нам неизвестен, выведем ворнинг
+      LOGGER.warn(WARN_TEMPLATE, string, string);
+    }
     return type;
   }
 
@@ -94,23 +93,21 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
   private static Map<String, ValueType> builtinTypes() {
     Map<String, ValueType> types = new ConcurrentHashMap<>();
 
-    MetadataValueType.builtinTypes().forEach(valueType ->
-      types.put(valueType.getName().toLowerCase(Locale.ROOT), valueType));
+    Arrays.stream(MDOValueType.values()).forEach(valueType ->
+      types.put(valueType.nameEn().toLowerCase(Locale.ROOT), valueType));
+    types.put("cfg:AnyIBRef".toLowerCase(Locale.ROOT), MDOValueType.ANY_REF);
 
-    PrimitiveValueType.builtinTypes().forEach(valueType ->
-      types.put(valueType.getName().toLowerCase(Locale.ROOT), valueType));
+    Arrays.stream(PrimitiveValueType.values()).forEach(valueType ->
+      types.put(valueType.nameEn().toLowerCase(Locale.ROOT), valueType));
     types.put("xs:decimal".toLowerCase(Locale.ROOT), PrimitiveValueType.NUMBER);
     types.put("xs:dateTime".toLowerCase(Locale.ROOT), PrimitiveValueType.DATE);
 
-    V8ValueType.builtinTypes().forEach(valueType ->
-      types.put(valueType.getName().toLowerCase(Locale.ROOT), valueType));
+    Arrays.stream(V8ValueType.values()).forEach(valueType ->
+      types.put(valueType.nameEn().toLowerCase(Locale.ROOT), valueType));
     types.put("xs:base64Binary".toLowerCase(Locale.ROOT), V8ValueType.VALUE_STORAGE);
-    types.put("cfg:AnyIBRef".toLowerCase(Locale.ROOT), V8ValueType.ANY_REF);
 
-    FormAttributeValueType.builtinTypes().forEach(valueType ->
-      types.put(valueType.getName().toLowerCase(Locale.ROOT), valueType));
-    types.put("v8:ValueListType".toLowerCase(Locale.ROOT), FormAttributeValueType.VALUE_LIST);
-    types.put("d5p1:FlowchartContextType".toLowerCase(Locale.ROOT), FormAttributeValueType.GRAPHICAL_SCHEMA);
+    types.put("v8:ValueListType".toLowerCase(Locale.ROOT), V8ValueType.VALUE_LIST);
+    types.put("d5p1:FlowchartContextType".toLowerCase(Locale.ROOT), V8ValueType.GRAPHICAL_SCHEMA);
 
     return types;
   }

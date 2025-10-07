@@ -35,7 +35,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          7
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -105,25 +110,26 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "name": "String",
-              "nameRu": "Строка"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": "VARIABLE"
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
             }
           }
         ]
@@ -224,24 +230,25 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-              "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.PrimitiveValueType"
-            }
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
           }
         ],
         "composite": false,
         "qualifiers": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": "VARIABLE"
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
             }
           }
         ]
@@ -280,9 +287,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Форма списка"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -332,6 +346,7 @@
     ],
     []
   ],
+  "empty": false,
   "enums": [
     [
       2
@@ -357,7 +372,7 @@
         "types": [
           {
             "default": {
-              "tag": 1
+              "tag": 4
             },
             "int": 0
           }
@@ -555,13 +570,15 @@
             "types": [
               {
                 "default": {
-                  "tag": 1
+                  "tag": 4
                 },
                 "int": 1,
-                "com.github._1c_syntax.bsl.mdo.support.MetadataValueType": {
-                  "name": "DocumentRef.Документ1",
-                  "nameRu": "ДокументСсылка.Документ1",
-                  "composite": false,
+                "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                  "fullName": {
+                    "nameRu": "ДокументСсылка.Документ1",
+                    "nameEn": "DocumentRef.Документ1"
+                  },
+                  "variant": "METADATA",
                   "kind": "DOCUMENT"
                 }
               }
@@ -624,9 +641,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        1
-      ]
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Расширение"
+        }
+      }
     ]
   },
   "tasks": [
@@ -646,7 +670,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          8
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],

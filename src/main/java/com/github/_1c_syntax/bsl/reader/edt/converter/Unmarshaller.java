@@ -23,8 +23,8 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
@@ -33,6 +33,7 @@ import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -56,6 +57,7 @@ public class Unmarshaller {
   private static final String TABLE_FIELDS_FIELD = "fields";
   private static final String VALUE_TYPE_OTHER_FIELD = "valueType";
   private static final String VALUE_TYPE_FIELD = "type";
+  private static final String STANDARD_ATTRIBUTES_NODE = "standardAttributes";
 
   /**
    * Читают общую информацию из файла
@@ -83,6 +85,9 @@ public class Unmarshaller {
       } else {
         fieldClass = String.class;
       }
+    } else if (readerContext instanceof MDReaderContext && STANDARD_ATTRIBUTES_NODE.equals(name)) {
+      fieldClass = StandardAttribute.class;
+      name = "attributes";
     }
 
     if (fieldClass == null) {
@@ -99,11 +104,13 @@ public class Unmarshaller {
       fieldClass = ValueTypeDescription.class;
     }
 
+    Object value;
     if (fieldClass == null) {
-      return;
+      value = ExtendXStream.readValue(context, String.class);
+    } else {
+      value = ExtendXStream.readValue(context, fieldClass);
     }
 
-    var value = ExtendXStream.readValue(context, fieldClass);
     if (name.equals(NAME_NODE)) {
       readerContext.setName((String) value);
     }
@@ -114,7 +121,7 @@ public class Unmarshaller {
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
       saveExtra(mdcReaderContext, name, value);
     } else if (readerContext instanceof FormElementReaderContext formElementReaderContext
-      && "type".equals(name)
+      && VALUE_TYPE_FIELD.equals(name)
       && value instanceof FormElementType newValue) {
       formElementReaderContext.setElementType(newValue);
     }

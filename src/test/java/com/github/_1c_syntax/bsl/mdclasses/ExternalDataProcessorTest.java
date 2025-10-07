@@ -59,7 +59,7 @@ class ExternalDataProcessorTest {
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(epf.getPlainChildren())
-      .hasSize(6)
+      .hasSize(7)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(epf.getForms()).hasSize(2);

@@ -43,6 +43,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
@@ -66,7 +67,6 @@ import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
@@ -84,6 +84,11 @@ public class DesignerReader implements MDReader {
    */
   public static final String CONFIGURATION_MDO_PATH = "Configuration.xml";
 
+  /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.xml";
+
   @Getter
   private final ExtendXStream xstream;
 
@@ -92,29 +97,37 @@ public class DesignerReader implements MDReader {
 
   public DesignerReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      var parent = normalizedPath.getParent();
+      if (parent == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить каталог конфигурации для файла " + normalizedPath);
+      }
+      rootPath = parent;
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }
   }
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.DESIGNER;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -154,7 +167,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.COMMAND) {
       return childrenFolder(mdoPath, mdoType);
@@ -166,7 +178,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
 
@@ -182,19 +193,16 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString()));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "Subsystem";
   }
 
   @Override
-  @NonNull
   public String configurationExtensionFilter() {
     return "(<ObjectBelonging>)";
   }
@@ -247,6 +255,7 @@ public class DesignerReader implements MDReader {
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
+    xStream.alias("StandardAttribute", StandardAttribute.class);
   }
 
   private Path parentConfigurationsPath() {
@@ -254,7 +263,7 @@ public class DesignerReader implements MDReader {
   }
 
   private static Path mdoPath(Path path, MDOType type, String name) {
-    return mdoPath(Paths.get(path.toString(), type.getGroupName()), name);
+    return mdoPath(Paths.get(path.toString(), type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {
@@ -262,6 +271,6 @@ public class DesignerReader implements MDReader {
   }
 
   private static Path childrenFolder(Path path, MDOType type) {
-    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.getGroupName());
+    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.groupName());
   }
 }

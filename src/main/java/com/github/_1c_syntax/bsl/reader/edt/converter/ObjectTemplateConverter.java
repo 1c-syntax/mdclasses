@@ -58,6 +58,6 @@ public class ObjectTemplateConverter extends AbstractReadConverter {
   }
 
   private static Path dataPath(Path path, String name) {
-    return Path.of(path.getParent().toString(), MDOType.TEMPLATE.getGroupName(), name, "Template.dcs");
+    return Path.of(path.getParent().toString(), MDOType.TEMPLATE.groupName(), name, "Template.dcs");
   }
 }

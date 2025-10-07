@@ -160,12 +160,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Область данных вспомогательные данные"
         }
-      ]
+      }
     ]
   },
   "usersSeparation": "DONT_USE",
@@ -174,26 +178,27 @@
     "types": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": {
-          "name": "Number",
-          "nameRu": "Число"
-        }
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
       }
     ],
     "composite": false,
     "qualifiers": [
       {
         "default": {
-          "tag": 1
+          "tag": 4
         },
         "int": 1,
         "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
           "precision": 7,
           "scale": 0,
-          "nonNegative": true
+          "nonNegative": true,
+          "description": {
+            "nameRu": "КвалификаторыЧисла (7.0 неотр)",
+            "nameEn": "NumberQualifiers (7.0 nonneg)"
+          }
         }
       }
     ]

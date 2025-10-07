@@ -43,6 +43,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
@@ -64,7 +65,6 @@ import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
@@ -82,6 +82,11 @@ public class EDTReader implements MDReader {
   public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", "Configuration.mdo")
     .toString();
 
+  /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.mdo";
+
   @Getter
   private final ExtendXStream xstream;
 
@@ -90,29 +95,43 @@ public class EDTReader implements MDReader {
 
   public EDTReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      var configurationDir = normalizedPath.getParent();
+      if (configurationDir == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить каталог Configuration для файла " + normalizedPath);
+      }
+      var srcDir = configurationDir.getParent();
+      var projectRoot = srcDir != null ? srcDir.getParent() : null;
+      if (srcDir == null || projectRoot == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить корень проекта EDT для файла " + normalizedPath);
+      }
+      rootPath = projectRoot;
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }
   }
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EDT;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -149,7 +168,7 @@ public class EDTReader implements MDReader {
     if (mdoType == MDOType.COMMON_FORM) {
       formDataPath = Path.of(basePath, "Form.form");
     } else {
-      formDataPath = Path.of(basePath, MDOType.FORM.getGroupName(), name, "Form.form");
+      formDataPath = Path.of(basePath, MDOType.FORM.groupName(), name, "Form.form");
     }
 
     if (!formDataPath.toFile().exists()) {
@@ -159,41 +178,36 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
       return mdoPath.getParent().getParent();
     } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
-      return Paths.get(mdoPath.getParent().toString(), mdoType.getGroupName());
+      return Paths.get(mdoPath.getParent().toString(), mdoType.groupName());
     } else {
       return mdoTypeFolderPath(mdoPath);
     }
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     if (ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
-      return Paths.get(folder.toString(), MDOType.CONFIGURATION.getName(), moduleType.getFileName());
+      return Paths.get(folder.toString(), MDOType.CONFIGURATION.nameEn(), moduleType.getFileName());
     }
     return Paths.get(folder.toString(), name, moduleType.getFileName());
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
       FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "subsystems";
   }
 
   @Override
-  @NonNull
   public String configurationExtensionFilter() {
     return "(<objectBelonging>)";
   }
@@ -244,15 +258,16 @@ public class EDTReader implements MDReader {
     xStream.alias("templates", ObjectTemplate.class);
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
     xStream.alias("Form", ManagedFormData.class);
+    xStream.alias("standardAttributes", StandardAttribute.class);
   }
 
   private Path parentConfigurationsPath() {
-    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.getName(),
+    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(),
       "ParentConfigurations.bin");
   }
 
   private static Path mdoPath(Path rootPath, MDOType type, String name) {
-    return mdoPath(Paths.get(rootPath.toString(), "src", type.getGroupName()), name);
+    return mdoPath(Paths.get(rootPath.toString(), "src", type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {

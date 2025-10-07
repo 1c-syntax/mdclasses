@@ -27,14 +27,11 @@ import com.github._1c_syntax.bsl.types.DateFractions;
 import com.github._1c_syntax.bsl.types.Qualifier;
 import com.github._1c_syntax.bsl.types.qualifiers.BinaryDataQualifiers;
 import com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers;
-import com.github._1c_syntax.bsl.types.qualifiers.EmptyQualifiers;
 import com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers;
 import com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Locale;
 
 /**
  * Конвертор обработчика типа значения в формате ЕДТ
@@ -63,7 +60,7 @@ public class ValueTypeQualifierConverter implements ReadConverter {
     var nodeName = reader.getNodeName();
     var length = 0;
     var allowedLength = AllowedLength.VARIABLE;
-    var dateFractions = DateFractions.DATETIME;
+    var dateFractions = DateFractions.DATE_TIME;
     var precision = 0;
     var scale = 0;
     var nonNegative = false;
@@ -73,14 +70,14 @@ public class ValueTypeQualifierConverter implements ReadConverter {
       if (LENGTH_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         length = Integer.parseInt(reader.getValue());
       } else if (ALLOWED_LENGTH_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
-        allowedLength = AllowedLength.valueOf(reader.getValue().toUpperCase(Locale.ROOT));
+        allowedLength = AllowedLength.valueByName(reader.getValue());
       } else if (DATE_FRACTIONS_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
-        dateFractions = DateFractions.valueOf(reader.getValue().toUpperCase(Locale.ROOT));
+        dateFractions = DateFractions.valueByName(reader.getValue());
       } else if (SCALE_NODE_NAME.equalsIgnoreCase(reader.getNodeName())
         || FRACTION_DIGITS_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         scale = Integer.parseInt(reader.getValue());
       } else if (PRECISION_NODE_NAME.equalsIgnoreCase(reader.getNodeName())
-      || DIGITS_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
+        || DIGITS_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         precision = Integer.parseInt(reader.getValue());
       } else if (NON_NEGATIVE_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         nonNegative = Boolean.parseBoolean(reader.getValue());
@@ -100,7 +97,7 @@ public class ValueTypeQualifierConverter implements ReadConverter {
       return BinaryDataQualifiers.create(length, allowedLength);
     } else { // квалификаторы пока не обрабатываются
       LOGGER.warn("Unknown qualifiers {}", nodeName);
-      return EmptyQualifiers.EMPTY;
+      return Qualifier.EMPTY;
     }
   }
 
