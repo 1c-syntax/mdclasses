@@ -85,6 +85,11 @@ public class DesignerReader implements MDReader {
    */
   public static final String CONFIGURATION_MDO_PATH = "Configuration.xml";
 
+  /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.xml";
+
   @Getter
   private final ExtendXStream xstream;
 
@@ -93,7 +98,12 @@ public class DesignerReader implements MDReader {
 
   public DesignerReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var file = path.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      rootPath = path.getParent();
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }

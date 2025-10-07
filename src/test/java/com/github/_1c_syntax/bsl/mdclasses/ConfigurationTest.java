@@ -33,10 +33,12 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -211,16 +213,16 @@ class ConfigurationTest {
       .isEmpty();
   }
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "false, mdclasses_ext"
-    }
-  )
-  void testFullExt(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
+  @Test
+  void testFullExt() {
+    var configurationPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf/Configuration.xml");
+    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    assertThat(mdc).isNotNull()
+      .isInstanceOf(MDClass.class)
+      .isInstanceOf(ConfigurationExtension.class);
+
     var cf = (ConfigurationExtension) mdc;
+    assertThat(cf.isEmpty()).isFalse();
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules()).isEmpty();
     assertThat(cf.getAllModules())
@@ -247,16 +249,17 @@ class ConfigurationTest {
       .isEmpty();
   }
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses_ext, _edt"
-    }
-  )
-  void testFullExtEdt(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
+  @Test
+  void testFullExtEdt() {
+    var configurationPath = Path.of(
+      "src/test/resources/ext/edt/mdclasses_ext/configuration/src/Configuration/Configuration.mdo");
+    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    assertThat(mdc).isNotNull()
+      .isInstanceOf(MDClass.class)
+      .isInstanceOf(ConfigurationExtension.class);
+
     var cf = (ConfigurationExtension) mdc;
+    assertThat(cf.isEmpty()).isFalse();
 
     // проверка порядок
     checkChildrenOrder(cf);

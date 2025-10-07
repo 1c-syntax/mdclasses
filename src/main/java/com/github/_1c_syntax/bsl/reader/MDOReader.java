@@ -120,15 +120,23 @@ public class MDOReader {
   private ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
     var configurationSource = ConfigurationSource.EMPTY;
     if (rootPath != null) {
-      var rootPathString = rootPath.toString();
-
-      var rootConfiguration = new File(rootPathString, DesignerReader.CONFIGURATION_MDO_PATH);
-      if (rootConfiguration.exists()) {
-        configurationSource = ConfigurationSource.DESIGNER;
-      } else {
-        rootConfiguration = Paths.get(rootPathString, EDTReader.CONFIGURATION_MDO_PATH).toFile();
-        if (rootConfiguration.exists()) {
+      if (rootPath.toFile().isFile()) { // передали сам файл, а не каталог
+        var filename = rootPath.getFileName().toString();
+        if (DesignerReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
+          configurationSource = ConfigurationSource.DESIGNER;
+        } else if (EDTReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
           configurationSource = ConfigurationSource.EDT;
+        }
+      } else {
+        var rootPathString = rootPath.toString();
+        var rootConfiguration = new File(rootPathString, DesignerReader.CONFIGURATION_MDO_PATH);
+        if (rootConfiguration.exists()) {
+          configurationSource = ConfigurationSource.DESIGNER;
+        } else {
+          rootConfiguration = Paths.get(rootPathString, EDTReader.CONFIGURATION_MDO_PATH).toFile();
+          if (rootConfiguration.exists()) {
+            configurationSource = ConfigurationSource.EDT;
+          }
         }
       }
     }

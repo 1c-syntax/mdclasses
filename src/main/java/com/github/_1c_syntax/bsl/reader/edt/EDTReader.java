@@ -83,6 +83,11 @@ public class EDTReader implements MDReader {
   public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", "Configuration.mdo")
     .toString();
 
+  /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.mdo";
+
   @Getter
   private final ExtendXStream xstream;
 
@@ -91,7 +96,12 @@ public class EDTReader implements MDReader {
 
   public EDTReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    rootPath = path;
+    var file = path.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      rootPath = path.getParent().getParent().getParent();
+    } else {
+      rootPath = path;
+    }
     if (!skipSupport) {
       ParseSupportData.readSimple(parentConfigurationsPath());
     }
