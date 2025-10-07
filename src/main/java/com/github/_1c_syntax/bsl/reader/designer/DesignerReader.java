@@ -67,7 +67,6 @@ import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
@@ -98,9 +97,15 @@ public class DesignerReader implements MDReader {
 
   public DesignerReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    var file = path.toFile();
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
-      rootPath = path.getParent();
+      var parent = normalizedPath.getParent();
+      if (parent == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить каталог конфигурации для файла " + normalizedPath);
+      }
+      rootPath = parent;
     } else {
       rootPath = path;
     }
@@ -110,13 +115,11 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.DESIGNER;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
       mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
@@ -125,7 +128,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -165,7 +167,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.COMMAND) {
       return childrenFolder(mdoPath, mdoType);
@@ -177,7 +178,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
 
@@ -193,19 +193,16 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString()));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "Subsystem";
   }
 
   @Override
-  @NonNull
   public String configurationExtensionFilter() {
     return "(<ObjectBelonging>)";
   }

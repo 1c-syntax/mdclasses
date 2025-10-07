@@ -65,7 +65,6 @@ import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
@@ -96,9 +95,21 @@ public class EDTReader implements MDReader {
 
   public EDTReader(Path path, boolean skipSupport) {
     xstream = createXMLMapper();
-    var file = path.toFile();
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
-      rootPath = path.getParent().getParent().getParent();
+      var configurationDir = normalizedPath.getParent();
+      if (configurationDir == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить каталог Configuration для файла " + normalizedPath);
+      }
+      var srcDir = configurationDir.getParent();
+      var projectRoot = srcDir != null ? srcDir.getParent() : null;
+      if (srcDir == null || projectRoot == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить корень проекта EDT для файла " + normalizedPath);
+      }
+      rootPath = projectRoot;
     } else {
       rootPath = path;
     }
@@ -108,13 +119,11 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EDT;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
       mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
@@ -123,7 +132,6 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -170,7 +178,6 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
       return mdoPath.getParent().getParent();
@@ -182,7 +189,6 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     if (ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
       return Paths.get(folder.toString(), MDOType.CONFIGURATION.nameEn(), moduleType.getFileName());
@@ -191,20 +197,17 @@ public class EDTReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
       FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "subsystems";
   }
 
   @Override
-  @NonNull
   public String configurationExtensionFilter() {
     return "(<objectBelonging>)";
   }
