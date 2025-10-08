@@ -114,7 +114,10 @@ public class EDTReader implements MDReader {
       rootPath = path;
     }
     if (!skipSupport) {
-      ParseSupportData.readSimple(parentConfigurationsPath());
+      var pcbin = parentConfigurationsPath();
+      if (pcbin.toFile().exists()) {
+        ParseSupportData.read(pcbin);
+      }
     }
   }
 
