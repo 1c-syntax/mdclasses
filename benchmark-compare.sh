@@ -89,6 +89,9 @@ build_from_branch() {
     echo "   Сборка Gradle..."
     ./gradlew clean jmhJar --quiet
 
+    git log -1 --oneline > "$RESULTS_DIR/$version_name-commit.txt"
+    git rev-parse HEAD > "$RESULTS_DIR/$version_name-hash.txt"
+
     sleep 2
 
     local jar_file

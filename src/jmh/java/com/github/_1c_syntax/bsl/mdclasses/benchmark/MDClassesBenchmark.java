@@ -54,6 +54,7 @@ public class MDClassesBenchmark {
   public void setup() {
     // Предварительная загрузка для разогрева
     MDClasses.createConfiguration(configPathEDT, false);
+    MDClasses.createConfiguration(configPathDesigner, false);
   }
 
   @Benchmark
@@ -78,11 +79,5 @@ public class MDClassesBenchmark {
   public void test_Designer_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
     var model = MDClasses.createConfiguration(configPathDesigner, true);
     blackhole.consume(model);
-  }
-
-  @TearDown(Level.Iteration)
-  public void tearDown() {
-    // Принудительный GC после каждой итерации
-    System.gc();
   }
 }
