@@ -33,6 +33,7 @@ import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -93,7 +94,12 @@ public class MDReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    if (uuid != null) {
+      supportVariant = ParseSupportData.get(uuid, currentPath);
+    } else {
+      supportVariant = SupportVariant.NONE;
+    }
+
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
 
     super.setValue(UUID_FIELD_NAME, uuid);

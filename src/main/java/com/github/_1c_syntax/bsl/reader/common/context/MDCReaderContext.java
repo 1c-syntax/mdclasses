@@ -77,7 +77,7 @@ public class MDCReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    supportVariant = ParseSupportData.get(uuid, currentPath);
     mdoType = MDOType.CONFIGURATION;
 
     super.setValue(UUID_FIELD_NAME, uuid);
