@@ -138,7 +138,7 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.SKIP_SUPPORT);
+    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
     assertThat(mdo).isInstanceOf(MD.class);
 
     Path fixturePath;
