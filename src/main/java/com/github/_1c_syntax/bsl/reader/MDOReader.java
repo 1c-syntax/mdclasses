@@ -84,7 +84,7 @@ public class MDOReader {
    * @return Прочитанный объект метаданных
    */
   public Object read(@NonNull Path folder, @NonNull String fullName) {
-    return read(folder, fullName, MDCReadSettings.SKIP_SUPPORT);
+    return read(folder, fullName, MDCReadSettings.DEFAULT);
   }
 
   /**
