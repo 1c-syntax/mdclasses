@@ -50,7 +50,7 @@ public class MDOReader {
    * @return Прочитанный контейнер метаданных (конфигурация)
    */
   public MDClass readConfiguration(@NonNull Path rootPath) {
-    return readConfiguration(rootPath, MDCReadSettings.SKIP_SUPPORT);
+    return readConfiguration(rootPath, MDCReadSettings.DEFAULT);
   }
 
   /**

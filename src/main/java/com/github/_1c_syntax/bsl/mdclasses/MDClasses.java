@@ -176,7 +176,7 @@ public class MDClasses {
    * @return Список прочитанных контейнеров
    */
   public List<MDClass> create(Path sourcePath) {
-    return create(sourcePath, MDCReadSettings.SKIP_SUPPORT);
+    return create(sourcePath, MDCReadSettings.DEFAULT);
   }
 
   /**
