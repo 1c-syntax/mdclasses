@@ -216,7 +216,7 @@ class ConfigurationTest {
   @Test
   void testFullExt() {
     var configurationPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf/Configuration.xml");
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
     assertThat(mdc).isNotNull()
       .isInstanceOf(MDClass.class)
       .isInstanceOf(ConfigurationExtension.class);
@@ -253,7 +253,7 @@ class ConfigurationTest {
   void testFullExtEdt() {
     var configurationPath = Path.of(
       "src/test/resources/ext/edt/mdclasses_ext/configuration/src/Configuration/Configuration.mdo");
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
     assertThat(mdc).isNotNull()
       .isInstanceOf(MDClass.class)
       .isInstanceOf(ConfigurationExtension.class);

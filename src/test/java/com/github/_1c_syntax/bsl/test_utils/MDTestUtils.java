@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
@@ -165,7 +166,8 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    var mdc = MDClasses.createConfiguration(configurationPath,
+      MDCReadSettings.builder().skipSupport(skipSupport).build());
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
 
@@ -192,7 +194,8 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    var mdc = MDClasses.createConfiguration(configurationPath,
+      MDCReadSettings.builder().skipSupport(skipSupport).build());
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
     assertThat(mdc).isInstanceOf(CF.class);

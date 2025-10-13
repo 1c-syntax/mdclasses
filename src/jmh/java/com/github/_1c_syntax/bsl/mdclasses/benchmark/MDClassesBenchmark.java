@@ -21,18 +21,17 @@
  */
 package com.github._1c_syntax.bsl.mdclasses.benchmark;
 
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 
@@ -53,31 +52,31 @@ public class MDClassesBenchmark {
   @Setup
   public void setup() {
     // Предварительная загрузка для разогрева
-    MDClasses.createConfiguration(configPathEDT, false);
-    MDClasses.createConfiguration(configPathDesigner, false);
+    MDClasses.createConfiguration(configPathEDT);
+    MDClasses.createConfiguration(configPathDesigner);
   }
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_False(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT, false);
+    var model = MDClasses.createConfiguration(configPathEDT);
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT, true);
+    var model = MDClasses.createConfiguration(configPathEDT, MDCReadSettings.SKIP_SUPPORT);
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_False(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner, false);
+    var model = MDClasses.createConfiguration(configPathDesigner);
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner, true);
+    var model = MDClasses.createConfiguration(configPathDesigner, MDCReadSettings.SKIP_SUPPORT);
     blackhole.consume(model);
   }
 }

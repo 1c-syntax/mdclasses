@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -93,7 +94,7 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public EDTReader(Path path, boolean skipSupport) {
+  public EDTReader(Path path, MDCReadSettings readSettings) {
     xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
@@ -113,7 +114,7 @@ public class EDTReader implements MDReader {
     } else {
       rootPath = path;
     }
-    if (!skipSupport) {
+    if (!readSettings.isSkipSupport()) {
       var pcbin = parentConfigurationsPath();
       if (pcbin.toFile().exists()) {
         ParseSupportData.read(pcbin);
