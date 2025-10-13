@@ -189,9 +189,7 @@ public class MDClasses {
    */
   @Deprecated(since = "0.16.0")
   public List<MDClass> create(Path sourcePath, boolean skipSupport) {
-    var result = new ArrayList<>(createConfigurations(sourcePath, skipSupport));
-    result.addAll(createExternalSources(sourcePath));
-    return result;
+    return create(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
   /**
