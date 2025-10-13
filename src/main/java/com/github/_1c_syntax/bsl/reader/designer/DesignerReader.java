@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.designer;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -95,8 +96,11 @@ public class DesignerReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public DesignerReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public DesignerReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
@@ -105,11 +109,13 @@ public class DesignerReader implements MDReader {
         throw new IllegalArgumentException(
           "Не удалось определить каталог конфигурации для файла " + normalizedPath);
       }
-      rootPath = parent;
+      this.rootPath = parent;
     } else {
-      rootPath = path;
+      this.rootPath = path;
     }
-    if (!skipSupport) {
+    this.readSettings = readSettings;
+
+    if (!readSettings.isSkipSupport()) {
       var pcbin = parentConfigurationsPath();
       if (pcbin.toFile().exists()) {
         ParseSupportData.read(pcbin);

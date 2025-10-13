@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -93,8 +94,11 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public EDTReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public EDTReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
@@ -109,11 +113,13 @@ public class EDTReader implements MDReader {
         throw new IllegalArgumentException(
           "Не удалось определить корень проекта EDT для файла " + normalizedPath);
       }
-      rootPath = projectRoot;
+      this.rootPath = projectRoot;
     } else {
-      rootPath = path;
+      this.rootPath = path;
     }
-    if (!skipSupport) {
+    this.readSettings = readSettings;
+
+    if (!readSettings.isSkipSupport()) {
       var pcbin = parentConfigurationsPath();
       if (pcbin.toFile().exists()) {
         ParseSupportData.read(pcbin);

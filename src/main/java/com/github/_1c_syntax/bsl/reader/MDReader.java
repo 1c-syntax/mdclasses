@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader;
 
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
@@ -56,6 +57,13 @@ public interface MDReader {
    */
   @NonNull
   Path getRootPath();
+
+  /**
+   * Возвращает установленные настройки чтения
+   * @return Настройки чтения
+   */
+  @NonNull
+  MDCReadSettings getReadSettings();
 
   /**
    * Выполняет чтение конфигурации
