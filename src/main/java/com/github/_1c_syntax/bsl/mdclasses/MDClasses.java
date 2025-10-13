@@ -129,7 +129,7 @@ public class MDClasses {
   @Deprecated(since = "0.16.0")
   public List<MDClass> createConfigurations(Path sourcePath, boolean skipSupport) {
     return findFiles(sourcePath, SEARCH_CONFIGURATION).parallelStream()
-      .map(path -> createConfiguration(path, MDCReadSettings.SKIP_SUPPORT))
+      .map(path -> createConfiguration(path, MDCReadSettings.builder().skipSupport(skipSupport).build()))
       .toList();
   }
 
@@ -203,7 +203,7 @@ public class MDClasses {
    */
   public List<MDClass> create(Path sourcePath, MDCReadSettings readSettings) {
     var result = new ArrayList<>(createConfigurations(sourcePath, readSettings));
-    result.addAll(createExternalSources(sourcePath));
+    result.addAll(createExternalSources(sourcePath, readSettings));
     return result;
   }
 

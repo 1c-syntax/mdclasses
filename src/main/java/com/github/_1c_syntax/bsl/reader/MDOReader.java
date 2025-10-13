@@ -84,7 +84,7 @@ public class MDOReader {
    * @return Прочитанный объект метаданных
    */
   public Object read(@NonNull Path folder, @NonNull String fullName) {
-    return read(folder, fullName, false);
+    return read(folder, fullName, MDCReadSettings.SKIP_SUPPORT);
   }
 
   /**
@@ -97,12 +97,7 @@ public class MDOReader {
    */
   @Deprecated(since = "0.16.0")
   public Object read(@NonNull Path folder, @NonNull String fullName, boolean skipSupport) {
-    var reader = createReader(folder, MDCReadSettings.builder().skipSupport(skipSupport).build(), MDOType.UNKNOWN);
-    if (folder.toFile().isFile()) {
-      return reader.read(fullName);
-    } else {
-      return reader.read(folder, fullName);
-    }
+    return read(folder, fullName, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
   /**

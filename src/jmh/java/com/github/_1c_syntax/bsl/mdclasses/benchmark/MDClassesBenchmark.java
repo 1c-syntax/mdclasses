@@ -48,6 +48,13 @@ public class MDClassesBenchmark {
 
   private final Path configPathEDT = Path.of("src/test/resources/ext/edt/ssl_3_1/configuration");
   private final Path configPathDesigner = Path.of("src/test/resources/ext/designer/ssl_3_1/src/cf");
+  private static final MDCReadSettings SKIP_ALL = MDCReadSettings.builder()
+    .skipSupport(true)
+    .skipRoleData(true)
+    .skipFormElementItems(true)
+    .skipXdtoPackage(true)
+    .skipDataCompositionSchema(true)
+    .build();
 
   @Setup
   public void setup() {
@@ -64,14 +71,7 @@ public class MDClassesBenchmark {
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT,
-      MDCReadSettings.builder()
-        .skipSupport(true)
-        .skipRoleData(true)
-        .skipFormElementItems(true)
-        .skipXdtoPackage(true)
-        .skipDataCompositionSchema(true)
-        .build());
+    var model = MDClasses.createConfiguration(configPathEDT, SKIP_ALL);
     blackhole.consume(model);
   }
 
@@ -83,14 +83,7 @@ public class MDClassesBenchmark {
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner,
-      MDCReadSettings.builder()
-        .skipSupport(true)
-        .skipRoleData(true)
-        .skipFormElementItems(true)
-        .skipXdtoPackage(true)
-        .skipDataCompositionSchema(true)
-        .build());
+    var model = MDClasses.createConfiguration(configPathDesigner, SKIP_ALL);
     blackhole.consume(model);
   }
 }

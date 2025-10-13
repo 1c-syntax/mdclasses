@@ -74,15 +74,15 @@ public class DataCompositionSchema implements TemplateData {
 
   private List<DataSet> computePlainDataSets() {
     List<DataSet> result = new ArrayList<>();
-    fillPlaintDataSetByList(result, dataSets);
+    fillPlainDataSetByList(result, dataSets);
 
     return result;
   }
 
-  private void fillPlaintDataSetByList(List<DataSet> result, List<DataSet> items) {
+  private static void fillPlainDataSetByList(List<DataSet> result, List<DataSet> items) {
     items.forEach((DataSet dataSet) -> {
       result.add(dataSet);
-      fillPlaintDataSetByList(result, dataSet.getItems());
+      fillPlainDataSetByList(result, dataSet.getItems());
     });
   }
 

@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
