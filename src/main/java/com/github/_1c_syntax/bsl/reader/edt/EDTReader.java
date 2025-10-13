@@ -94,8 +94,11 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
+  @Getter
+  private final MDCReadSettings readSettings;
+
   public EDTReader(Path path, MDCReadSettings readSettings) {
-    xstream = createXMLMapper();
+    this.xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
@@ -110,10 +113,12 @@ public class EDTReader implements MDReader {
         throw new IllegalArgumentException(
           "Не удалось определить корень проекта EDT для файла " + normalizedPath);
       }
-      rootPath = projectRoot;
+      this.rootPath = projectRoot;
     } else {
-      rootPath = path;
+      this.rootPath = path;
     }
+    this.readSettings = readSettings;
+
     if (!readSettings.isSkipSupport()) {
       var pcbin = parentConfigurationsPath();
       if (pcbin.toFile().exists()) {

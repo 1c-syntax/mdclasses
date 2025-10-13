@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -49,7 +50,7 @@ public class DataCompositionSchema implements TemplateData {
   /**
    * Плоский список наборов данных
    */
-  List<DataSet> plainDataSets;
+  Lazy<List<DataSet>> plainDataSets = new Lazy<>(this::computePlainDataSets);
 
   /**
    * Путь к файлу с данными макета
@@ -59,8 +60,6 @@ public class DataCompositionSchema implements TemplateData {
 
   public DataCompositionSchema(@NonNull List<DataSet> dataSetsTree, @NonNull Path path) {
     dataSets = dataSetsTree;
-    plainDataSets = new ArrayList<>();
-    fillPlaintDataSetByList(dataSetsTree);
     dataPath = path;
   }
 
@@ -69,10 +68,21 @@ public class DataCompositionSchema implements TemplateData {
     return false;
   }
 
-  private void fillPlaintDataSetByList(List<DataSet> items) {
+  public List<DataSet> getPlainDataSets() {
+    return plainDataSets.getOrCompute();
+  }
+
+  private List<DataSet> computePlainDataSets() {
+    List<DataSet> result = new ArrayList<>();
+    fillPlaintDataSetByList(result, dataSets);
+
+    return result;
+  }
+
+  private void fillPlaintDataSetByList(List<DataSet> result, List<DataSet> items) {
     items.forEach((DataSet dataSet) -> {
-      plainDataSets.add(dataSet);
-      fillPlaintDataSetByList(dataSet.getItems());
+      result.add(dataSet);
+      fillPlaintDataSetByList(result, dataSet.getItems());
     });
   }
 

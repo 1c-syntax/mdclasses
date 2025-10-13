@@ -112,6 +112,7 @@ public class MDTestUtils {
           xstream.omitField(clazz, "commonModulesByName");
           xstream.omitField(clazz, "childrenByMdoRef");
           xstream.omitField(clazz, "mdoRef");
+          xstream.omitField(clazz, "plainDataSets");
 
         } catch (ClassNotFoundException e) {
           throw new RuntimeException(e);
@@ -184,6 +185,10 @@ public class MDTestUtils {
   }
 
   public CF readConfiguration(ArgumentsAccessor argumentsAccessor, boolean skipSupport) {
+    return readConfiguration(argumentsAccessor, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  public CF readConfiguration(ArgumentsAccessor argumentsAccessor, MDCReadSettings readSettings) {
     var isEDT = argumentsAccessor.getBoolean(0);
     var examplePackName = argumentsAccessor.getString(1);
 
@@ -194,8 +199,7 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath,
-      MDCReadSettings.builder().skipSupport(skipSupport).build());
+    var mdc = MDClasses.createConfiguration(configurationPath, readSettings);
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
     assertThat(mdc).isInstanceOf(CF.class);

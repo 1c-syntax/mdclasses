@@ -94,7 +94,7 @@ public class MDReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    if (uuid != null) {
+    if (uuid != null && !mdReader.getReadSettings().isSkipSupport()) {
       supportVariant = ParseSupportData.get(uuid, currentPath);
     } else {
       supportVariant = SupportVariant.NONE;

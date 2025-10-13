@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -56,6 +58,10 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipXdtoPackage()) {
+      return XdtoPackageData.EMPTY;
+    }
 
     var builder = XdtoPackageData.builder();
     builder.targetNamespace(reader.getAttribute(TARGET_NAMESPACE_ATTRIBUTE_NAME));

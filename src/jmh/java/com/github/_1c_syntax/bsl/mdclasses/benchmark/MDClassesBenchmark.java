@@ -64,7 +64,14 @@ public class MDClassesBenchmark {
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT, MDCReadSettings.SKIP_SUPPORT);
+    var model = MDClasses.createConfiguration(configPathEDT,
+      MDCReadSettings.builder()
+        .skipSupport(true)
+        .skipRoleData(true)
+        .skipFormElementItems(true)
+        .skipXdtoPackage(true)
+        .skipDataCompositionSchema(true)
+        .build());
     blackhole.consume(model);
   }
 
@@ -76,7 +83,14 @@ public class MDClassesBenchmark {
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner, MDCReadSettings.SKIP_SUPPORT);
+    var model = MDClasses.createConfiguration(configPathDesigner,
+      MDCReadSettings.builder()
+        .skipSupport(true)
+        .skipRoleData(true)
+        .skipFormElementItems(true)
+        .skipXdtoPackage(true)
+        .skipDataCompositionSchema(true)
+        .build());
     blackhole.consume(model);
   }
 }

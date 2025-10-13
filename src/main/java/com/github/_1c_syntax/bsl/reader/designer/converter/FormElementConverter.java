@@ -38,6 +38,10 @@ import lombok.extern.slf4j.Slf4j;
 public class FormElementConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipFormElementItems()) {
+      return null;
+    }
+
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
