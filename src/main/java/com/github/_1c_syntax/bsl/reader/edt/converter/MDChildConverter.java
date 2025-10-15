@@ -22,6 +22,8 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDChild;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
@@ -42,6 +44,8 @@ public class MDChildConverter extends AbstractReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return !ExternalDataSourceTable.class.isAssignableFrom(type)
+      && !ExternalDataSourceCube.class.isAssignableFrom(type)
+      && !ExternalDataSourceCubeDimensionTable.class.isAssignableFrom(type)
       && !ObjectTemplate.class.isAssignableFrom(type)
       && MDChild.class.isAssignableFrom(type);
   }

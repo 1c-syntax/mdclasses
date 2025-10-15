@@ -68,6 +68,7 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 
 import java.util.List;
@@ -665,5 +666,17 @@ public interface ConfigurationTree {
    */
   default Optional<ExternalDataSource> findExternalDataSource(Predicate<? super ExternalDataSource> predicate) {
     return getExternalDataSources().stream().filter(predicate).findFirst();
+  }
+
+  /**
+   * WebSocket-клиенты
+   */
+  List<WebSocketClient> getWebSocketClients();
+
+  /**
+   * Поиск WebSocket-клиента по условию
+   */
+  default Optional<WebSocketClient> findWebSocketClient(Predicate<? super WebSocketClient> predicate) {
+    return getWebSocketClients().stream().filter(predicate).findFirst();
   }
 }

@@ -1063,11 +1063,11 @@
   ],
   "compatibilityMode": {
     "minor": 3,
-    "version": 10
+    "version": 24
   },
   "configurationExtensionCompatibilityMode": {
     "minor": 3,
-    "version": 10
+    "version": 99
   },
   "configurationSource": "EDT",
   "constants": [
@@ -1124,7 +1124,7 @@
   "copyrights": {
     "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
   },
-  "dataLockControlMode": "AUTOMATIC",
+  "dataLockControlMode": "MANAGED",
   "dataProcessors": [
     {
       "uuid": "a7c57ba0-75d8-487d-b8ea-ae5083d8a503",
@@ -1206,7 +1206,7 @@
       }
     }
   ],
-  "description": "Конфигурация",
+  "description": "Фикстура 8.3.4",
   "detailedInformation": {
     "content": [
       [
@@ -1657,8 +1657,6 @@
           "dataLockControlMode": "MANAGED"
         }
       ],
-      "functions": [],
-      "cubes": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -1684,12 +1682,7 @@
       ],
       "commands": [],
       "forms": [],
-      "content": [
-        [
-          2
-        ],
-        []
-      ],
+      "content": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -1829,19 +1822,19 @@
     "mdoRefRu": "Конфигурация.Конфигурация"
   },
   "mdoType": "CONFIGURATION",
-  "modalityUseMode": "USE",
+  "modalityUseMode": "USE_WITH_WARNINGS",
   "moduleTypes": [
     [
-      "ExternalConnectionModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ExternalConnectionModule.bsl"
+      "SessionModule",
+      "src/test/resources/ext/edt/mdclasses_3_24/configuration/src/Configuration/SessionModule.bsl"
     ],
     [
-      "SessionModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/SessionModule.bsl"
+      "ExternalConnectionModule",
+      "src/test/resources/ext/edt/mdclasses_3_24/configuration/src/Configuration/ExternalConnectionModule.bsl"
     ],
     [
       "ManagedApplicationModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ManagedApplicationModule.bsl"
+      "src/test/resources/ext/edt/mdclasses_3_24/configuration/src/Configuration/ManagedApplicationModule.bsl"
     ]
   ],
   "modules": [
@@ -2040,10 +2033,9 @@
         }
       ],
       "documents": [
-        [
-          2
-        ],
-        []
+        {
+          "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/registeredDocuments/com.github._1c_syntax.bsl.types.MdoReference"
+        }
       ]
     }
   ],
@@ -2116,7 +2108,34 @@
       "supportVariant": "NONE"
     }
   ],
-  "styles": [],
+  "styles": [
+    {
+      "uuid": "d6aaa851-cba7-486d-92f4-ab31b1628c6b",
+      "name": "Стиль",
+      "mdoReference": {
+        "type": "STYLE",
+        "mdoRef": "Style.Стиль",
+        "mdoRefRu": "Стиль.Стиль"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Стиль"
+            }
+          }
+        ]
+      },
+      "supportVariant": "NONE"
+    }
+  ],
   "subsystems": [
     [
       2
@@ -2127,7 +2146,11 @@
   "synchronousExtensionAndAddInCallUseMode": "USE_WITH_WARNINGS",
   "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+    "content": [
+      [
+        2
+      ]
+    ]
   },
   "tasks": [
     {
@@ -2237,12 +2260,9 @@
     }
   ],
   "useManagedFormInOrdinaryApplication": true,
-  "useOrdinaryFormInManagedApplication": true,
+  "useOrdinaryFormInManagedApplication": false,
   "usePurposes": [
-    [
-      2
-    ],
-    []
+    "PLATFORM_APPLICATION"
   ],
   "uuid": "46c7c1d0-b04d-4295-9b04-ae3207c18d29",
   "vendor": "",
@@ -2277,7 +2297,6 @@
       ]
     }
   ],
-  "webSocketClients": [],
   "wsReferences": [
     {
       "uuid": "95b745f2-e1fa-4f94-b7f9-f3f0224fc8c7",

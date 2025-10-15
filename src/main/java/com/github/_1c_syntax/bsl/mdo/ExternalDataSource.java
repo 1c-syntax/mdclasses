@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -66,6 +68,7 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
+  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
   Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
 
   /*
@@ -79,6 +82,18 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
   List<ExternalDataSourceTable> tables;
 
   /**
+   * Функции
+   */
+  @Singular
+  List<ExternalDataSourceFunction> functions;
+
+  /**
+   * Кубы
+   */
+  @Singular
+  List<ExternalDataSourceCube> cubes;
+
+  /**
    * Пояснение
    */
   @Default
@@ -88,7 +103,7 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
 
   @Override
   public List<MD> getChildren() {
-    return Collections.unmodifiableList(tables);
+    return children.getOrCompute();
   }
 
   @Override
@@ -101,6 +116,10 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  private List<MD> computeChildren() {
+    return LazyLoader.computeChildren(this);
   }
 
   private List<MD> computePlainChildren() {

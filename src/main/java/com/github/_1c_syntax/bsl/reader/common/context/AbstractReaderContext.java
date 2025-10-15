@@ -145,7 +145,19 @@ public abstract class AbstractReaderContext {
   public void setValue(String methodName, Object value) {
     if (value != null) {
       TransformationUtils.setValue(builder, methodName, value);
-      cache.put(methodName.toLowerCase(Locale.ROOT), value);
+      var key = methodName.toLowerCase(Locale.ROOT);
+      var cacheValue = cache.get(key);
+      if (cacheValue instanceof List<?> list) {
+        List<Object> newValue = Collections.synchronizedList(new ArrayList<>(list));
+        if (value instanceof List<?> valueList) {
+          newValue.addAll(valueList);
+        } else {
+          newValue.add(value);
+        }
+        cache.put(key, newValue);
+      } else {
+        cache.put(key, value);
+      }
     }
   }
 

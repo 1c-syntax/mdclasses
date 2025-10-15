@@ -70,6 +70,7 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
@@ -194,6 +195,8 @@ public class ConfigurationExtension implements CF {
   List<XDTOPackage> xDTOPackages;
   @Singular
   List<WebService> webServices;
+  @Singular
+  List<WebSocketClient> webSocketClients;
   @Singular
   List<HTTPService> httpServices;
   @Singular

@@ -1,0 +1,1091 @@
+{"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
+  "comment": "",
+  "cubes": [
+    {
+      "uuid": "e99413c0-c055-43cc-bece-a13dfc6f24c3",
+      "name": "Куб1",
+      "mdoReference": {
+        "type": "EXTERNAL_DATA_SOURCE_CUBE",
+        "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1",
+        "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": []
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "type": "EXTERNAL_DATA_SOURCE",
+        "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1",
+        "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1"
+      },
+      "modules": [],
+      "commands": [],
+      "dimensions": [
+        [
+          {
+            "uuid": "0a51865e-7302-4903-b6af-0823aa657bd0",
+            "name": "Измерение1",
+            "mdoReference": {
+              "type": "DIMENSION",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.Dimension.Измерение1",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.Измерение.Измерение1"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "fullName": {
+                      "nameRu": "ВнешнийИсточникДанныхКубТаблицаИзмеренийСсылка.ВнешнийИсточникДанных1.Куб1.ddddd",
+                      "nameEn": "ExternalDataSourceCubeDimensionTableRef.ВнешнийИсточникДанных1.Куб1.ddddd"
+                    },
+                    "variant": "METADATA",
+                    "kind": "EXTERNAL_DATA_SOURCE"
+                  }
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 0
+                }
+              ]
+            },
+            "master": false,
+            "denyIncompleteValues": false,
+            "useInTotals": true
+          },
+          {
+            "uuid": "850947bf-b9c5-4c3c-a116-18d86e242eaf",
+            "name": "Измерение2",
+            "mdoReference": {
+              "type": "DIMENSION",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.Dimension.Измерение2",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.Измерение.Измерение2"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                  }
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            },
+            "master": false,
+            "denyIncompleteValues": false,
+            "useInTotals": true
+          }
+        ],
+        []
+      ],
+      "resources": [
+        [
+          {
+            "uuid": "7ac8abf2-6a4b-4327-8d2e-9a1b97cd05f9",
+            "name": "Ресурс1",
+            "mdoReference": {
+              "type": "RESOURCE",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.Resource.Ресурс1",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.Ресурс.Ресурс1"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                      "nameEn": "StringQualifiers (10, Variable)"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "uuid": "d966bfe0-1dd0-4469-8fc3-e5a00ca2080a",
+            "name": "Ресурс2",
+            "mdoReference": {
+              "type": "RESOURCE",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.Resource.Ресурс2",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.Ресурс.Ресурс2"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        []
+      ],
+      "dimensionTables": [
+        {
+          "uuid": "1e4f16b6-3c26-40ca-ab45-3342028cb8c3",
+          "name": "ddddd",
+          "mdoReference": {
+            "type": "EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE",
+            "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd",
+            "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Ddddd"
+                }
+              }
+            ]
+          },
+          "supportVariant": "NONE",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+          },
+          "modules": [],
+          "commands": [],
+          "fields": [
+            [
+              {
+                "uuid": "c5dbde56-d8fb-463b-932f-aa237caf41e4",
+                "name": "Поле1",
+                "mdoReference": {
+                  "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+                  "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd.Field.Поле1",
+                  "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd.Поле.Поле1"
+                },
+                "objectBelonging": "OWN",
+                "comment": "",
+                "synonym": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "supportVariant": "NONE",
+                "owner": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensionTables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable/mdoReference"
+                },
+                "passwordMode": false,
+                "kind": "CUSTOM",
+                "indexing": "DONT_INDEX",
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 10,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "uuid": "9c386c9b-fd69-4692-8967-f21c8860b2c8",
+                "name": "Поле2",
+                "mdoReference": {
+                  "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+                  "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd.Field.Поле2",
+                  "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd.Поле.Поле2"
+                },
+                "objectBelonging": "OWN",
+                "comment": "",
+                "synonym": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "supportVariant": "NONE",
+                "owner": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensionTables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable/mdoReference"
+                },
+                "passwordMode": false,
+                "kind": "CUSTOM",
+                "indexing": "DONT_INDEX",
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 10,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "uuid": "48104c75-9809-42de-b1ef-6e4a9083bff2",
+                "name": "Поле3",
+                "mdoReference": {
+                  "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+                  "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd.Field.Поле3",
+                  "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd.Поле.Поле3"
+                },
+                "objectBelonging": "OWN",
+                "comment": "",
+                "synonym": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "supportVariant": "NONE",
+                "owner": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensionTables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable/mdoReference"
+                },
+                "passwordMode": false,
+                "kind": "CUSTOM",
+                "indexing": "DONT_INDEX",
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 10,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            []
+          ],
+          "forms": [
+            {
+              "uuid": "d3f3b25a-91bd-4cbe-ba11-fa2242c934fe",
+              "name": "ФормаОбъекта",
+              "mdoReference": {
+                "type": "FORM",
+                "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd.Form.ФормаОбъекта",
+                "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd.Форма.ФормаОбъекта"
+              },
+              "objectBelonging": "OWN",
+              "comment": "",
+              "synonym": {
+                "content": [
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Форма объекта"
+                    }
+                  }
+                ]
+              },
+              "supportVariant": "NONE",
+              "modules": [],
+              "formType": "MANAGED",
+              "data": {
+                "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "handlers": [],
+                "items": [
+                  [
+                    {
+                      "type": "INPUT_FIELD",
+                      "id": 1,
+                      "name": "Родитель",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                      },
+                      "dataPath": {
+                        "segments": "Объект.Parent"
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "INPUT_FIELD",
+                      "id": 4,
+                      "name": "Поле2",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                      },
+                      "dataPath": {
+                        "segments": "Объект.Поле2"
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "INPUT_FIELD",
+                      "id": 7,
+                      "name": "Поле1",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                      },
+                      "dataPath": {
+                        "segments": "Объект.Поле1"
+                      },
+                      "items": []
+                    },
+                    {
+                      "type": "INPUT_FIELD",
+                      "id": 10,
+                      "name": "Поле3",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                      },
+                      "dataPath": {
+                        "segments": "Объект.Поле3"
+                      },
+                      "items": []
+                    }
+                  ],
+                  []
+                ],
+                "attributes": [
+                  {
+                    "id": 1,
+                    "name": "Объект",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                    },
+                    "type": {
+                      "types": [
+                        {
+                          "default": {
+                            "tag": 4
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                            "fullName": {
+                              "nameRu": "ВнешнийИсточникДанныхКубТаблицаИзмеренийОбъект.ВнешнийИсточникДанных1.Куб1.ddddd",
+                              "nameEn": "ExternalDataSourceCubeDimensionTableObject.ВнешнийИсточникДанных1.Куб1.ddddd"
+                            },
+                            "variant": "METADATA",
+                            "kind": "EXTERNAL_DATA_SOURCE"
+                          }
+                        }
+                      ],
+                      "composite": false,
+                      "qualifiers": []
+                    }
+                  }
+                ]
+              },
+              "owner": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensionTables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable/mdoReference"
+              },
+              "usePurposes": [
+                [
+                  "PLATFORM_APPLICATION",
+                  "MOBILE_PLATFORM_APPLICATION"
+                ],
+                []
+              ]
+            }
+          ],
+          "templates": [],
+          "dataLockControlMode": "AUTOMATIC"
+        }
+      ],
+      "forms": [
+        {
+          "uuid": "cbae64a9-a3eb-4670-8750-c6020d7027d4",
+          "name": "ФормаСписка",
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.Form.ФормаСписка",
+            "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.Форма.ФормаСписка"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Форма списка"
+                }
+              }
+            ]
+          },
+          "supportVariant": "NONE",
+          "modules": [],
+          "formType": "MANAGED",
+          "data": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+            "title": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "handlers": [],
+            "items": [
+              [
+                {
+                  "type": "USUAL_GROUP",
+                  "id": 1,
+                  "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
+                  "title": {
+                    "content": [
+                      {
+                        "default": {
+                          "tag": 2
+                        },
+                        "int": 1,
+                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                          "langKey": "ru",
+                          "value": "Группа пользовательских настроек"
+                        }
+                      }
+                    ]
+                  },
+                  "dataPath": {
+                    "segments": ""
+                  },
+                  "items": []
+                },
+                {
+                  "type": "TABLE",
+                  "id": 3,
+                  "name": "Список",
+                  "title": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                  },
+                  "dataPath": {
+                    "segments": "Список"
+                  },
+                  "items": [
+                    [
+                      {
+                        "type": "LABEL_FIELD",
+                        "id": 16,
+                        "name": "Измерение1",
+                        "title": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                        },
+                        "dataPath": {
+                          "segments": "Список.Измерение1"
+                        },
+                        "items": []
+                      },
+                      {
+                        "type": "LABEL_FIELD",
+                        "id": 19,
+                        "name": "Измерение2",
+                        "title": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                        },
+                        "dataPath": {
+                          "segments": "Список.Измерение2"
+                        },
+                        "items": []
+                      },
+                      {
+                        "type": "LABEL_FIELD",
+                        "id": 22,
+                        "name": "Ресурс1",
+                        "title": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                        },
+                        "dataPath": {
+                          "segments": "Список.Ресурс1"
+                        },
+                        "items": []
+                      },
+                      {
+                        "type": "LABEL_FIELD",
+                        "id": 25,
+                        "name": "Ресурс2",
+                        "title": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                        },
+                        "dataPath": {
+                          "segments": "Список.Ресурс2"
+                        },
+                        "items": []
+                      }
+                    ],
+                    []
+                  ]
+                }
+              ],
+              []
+            ],
+            "attributes": [
+              {
+                "id": 1,
+                "name": "Список",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
+                }
+              }
+            ]
+          },
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/mdoReference"
+          },
+          "usePurposes": [
+            [
+              "PLATFORM_APPLICATION",
+              "MOBILE_PLATFORM_APPLICATION"
+            ],
+            []
+          ]
+        }
+      ],
+      "templates": [],
+      "dataLockControlMode": "AUTOMATIC"
+    }
+  ],
+  "description": "ВнешнийИсточникДанных1",
+  "explanation": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+  },
+  "functions": [
+    {
+      "uuid": "8e535b6f-e5cc-409f-9498-0e1fb49ebecc",
+      "name": "Функция1",
+      "mdoReference": {
+        "type": "EXTERNAL_DATA_SOURCE_FUNCTION",
+        "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Function.Функция1",
+        "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Функция.Функция1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/owner"
+      },
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      },
+      "returnValue": true,
+      "expressionInDataSource": "selecet top 1 from table1"
+    }
+  ],
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/owner"
+  },
+  "mdoType": "EXTERNAL_DATA_SOURCE",
+  "name": "ВнешнийИсточникДанных1",
+  "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 5,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "USE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "STANDARD_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SESSION_STANDARD_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SESSION_OS_AUTHENTICATION_CHANGE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "ADMINISTRATION"
+    }
+  ],
+  "supportVariant": "NONE",
+  "synonym": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+  },
+  "tables": [
+    {
+      "uuid": "b817dcc5-3fcc-438d-9f6f-286c63092718",
+      "name": "Таблица1",
+      "mdoReference": {
+        "type": "EXTERNAL_DATA_SOURCE_TABLE",
+        "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1",
+        "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+      },
+      "supportVariant": "NONE",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/owner"
+      },
+      "modules": [],
+      "commands": [],
+      "fields": [
+        [
+          {
+            "uuid": "b54d1134-9b1d-4712-99aa-e1d4725d7e0b",
+            "name": "Поле1",
+            "mdoReference": {
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1.Field.Поле1",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1.Поле.Поле1"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "uuid": "351ee934-6d2c-4b35-b529-f547e017b29a",
+            "name": "Поле2",
+            "mdoReference": {
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1.Field.Поле2",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1.Поле.Поле2"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "uuid": "1a129ff1-f1c2-431b-b312-16d62665fca0",
+            "name": "Поле3",
+            "mdoReference": {
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1.Field.Поле3",
+              "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1.Поле.Поле3"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "supportVariant": "NONE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        []
+      ],
+      "forms": [
+        {
+          "uuid": "fd31fcaf-b85b-46f8-9d0e-a521383103fd",
+          "name": "ФормаОбъекта",
+          "mdoReference": {
+            "type": "FORM",
+            "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1.Form.ФормаОбъекта",
+            "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1.Форма.ФормаОбъекта"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/dimensionTables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/synonym"
+          },
+          "supportVariant": "NONE",
+          "modules": [],
+          "formType": "MANAGED",
+          "data": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+            "title": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+            },
+            "handlers": [],
+            "items": [
+              [
+                {
+                  "type": "INPUT_FIELD",
+                  "id": 1,
+                  "name": "Поле1",
+                  "title": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                  },
+                  "dataPath": {
+                    "segments": "Объект.Поле1"
+                  },
+                  "items": []
+                },
+                {
+                  "type": "INPUT_FIELD",
+                  "id": 4,
+                  "name": "Поле2",
+                  "title": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                  },
+                  "dataPath": {
+                    "segments": "Объект.Поле2"
+                  },
+                  "items": []
+                },
+                {
+                  "type": "INPUT_FIELD",
+                  "id": 7,
+                  "name": "Поле3",
+                  "title": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                  },
+                  "dataPath": {
+                    "segments": "Объект.Поле3"
+                  },
+                  "items": []
+                }
+              ],
+              []
+            ],
+            "attributes": [
+              {
+                "id": 1,
+                "name": "Объект",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/cubes/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube/synonym"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "ВнешнийИсточникДанныхТаблицаОбъект.ВнешнийИсточникДанных1.Таблица1",
+                          "nameEn": "ExternalDataSourceTableObject.ВнешнийИсточникДанных1.Таблица1"
+                        },
+                        "variant": "METADATA",
+                        "kind": "EXTERNAL_DATA_SOURCE"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
+                }
+              }
+            ]
+          },
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+          },
+          "usePurposes": [
+            [
+              "PLATFORM_APPLICATION",
+              "MOBILE_PLATFORM_APPLICATION"
+            ],
+            []
+          ]
+        }
+      ],
+      "templates": [
+        {
+          "uuid": "d5072b01-281a-435e-8480-397b1d22a721",
+          "name": "Макет",
+          "mdoReference": {
+            "type": "TEMPLATE",
+            "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1.Template.Макет",
+            "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Таблица.Таблица1.Макет.Макет"
+          },
+          "objectBelonging": "OWN",
+          "comment": "",
+          "synonym": {
+            "content": [
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Макет"
+                }
+              }
+            ]
+          },
+          "supportVariant": "NONE",
+          "modules": [],
+          "templateType": "TEXT_DOCUMENT",
+          "data": {
+            "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
+          },
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/mdoReference"
+          }
+        }
+      ],
+      "dataLockControlMode": "AUTOMATIC"
+    }
+  ],
+  "uuid": "306d863e-bc23-4d25-b1cf-eefbb4a5b64a"
+}}

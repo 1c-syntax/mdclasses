@@ -22,6 +22,8 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDChild;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
@@ -75,6 +77,8 @@ public class MDChildConverter extends AbstractReadConverter {
     types.put(ObjectForm.class.getName(), MDOType.FORM);
     types.put(Recalculation.class.getName(), MDOType.RECALCULATION);
     types.put(ExternalDataSourceTable.class.getName(), MDOType.EXTERNAL_DATA_SOURCE_TABLE);
+    types.put(ExternalDataSourceCube.class.getName(), MDOType.EXTERNAL_DATA_SOURCE_CUBE);
+    types.put(ExternalDataSourceCubeDimensionTable.class.getName(), MDOType.EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE);
     return types;
   }
 

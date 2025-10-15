@@ -32,6 +32,9 @@ import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
@@ -265,6 +268,9 @@ public class DesignerReader implements MDReader {
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
     xStream.alias("StandardAttribute", StandardAttribute.class);
+    xStream.alias("Cube", ExternalDataSourceCube.class);
+    xStream.alias("Function", ExternalDataSourceFunction.class);
+    xStream.alias("DimensionTable", ExternalDataSourceCubeDimensionTable.class);
   }
 
   private Path parentConfigurationsPath() {
