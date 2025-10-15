@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDReader;
@@ -101,6 +102,10 @@ public class MDReaderContext extends AbstractReaderContext {
     }
 
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+    if(mdoType == MDOType.UNKNOWN && realClass.isAssignableFrom(ExternalDataSourceTableField.class)) {
+      realClassName = "Field";
+      mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+    }
 
     super.setValue(UUID_FIELD_NAME, uuid);
     super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);

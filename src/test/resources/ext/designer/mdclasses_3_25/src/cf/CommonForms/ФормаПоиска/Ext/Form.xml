@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.18">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Поиск</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПоиска" id="1">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПоискаРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<InputField name="СтрокаПоиска" id="3">
+					<DataPath>СтрокаПоиска</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<MaxWidth>75</MaxWidth>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Введите строку для поиска или ссылку для перехода</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="SearchStringКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="SearchStringРасширеннаяПодсказка" id="5"/>
+					<Events>
+						<Event name="OnChange">СтрокаПоискаПриИзменении</Event>
+						<Event name="StartChoice">СтрокаПоискаНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<Button name="КнопкаПоиска" id="6">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.ВыполнитьПоиск</CommandName>
+					<ExtendedTooltip name="КнопкаПоискаРасширеннаяПодсказка" id="7"/>
+				</Button>
+				<UsualGroup name="ГруппаПоискаИстория" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиска история</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиска история</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПоискаИсторияРасширеннаяПодсказка" id="83"/>
+					<ChildItems>
+						<Button name="ИсторияПоиска" id="84">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ИсторияПоиска</CommandName>
+							<ExtendedTooltip name="ИсторияПоискаExtendedTooltip" id="85"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="СтраницыРезультатов" id="30">
+			<ToolTipRepresentation>None</ToolTipRepresentation>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesResultРасширеннаяПодсказка" id="31"/>
+			<ChildItems>
+				<Page name="СтраницаПодсказки" id="42">
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="PageHelpStringРасширеннаяПодсказка" id="43"/>
+					<ChildItems>
+						<LabelDecoration name="СтрокаПодсказки" id="44">
+							<MaxWidth>75</MaxWidth>
+							<Title formatted="true"/>
+							<ContextMenu name="СтрокаПодсказкиКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="СтрокаПодсказкиРасширеннаяПодсказка" id="46"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаРезультатаПоиска" id="32">
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="PageSearchResultРасширеннаяПодсказка" id="33"/>
+					<ChildItems>
+						<Pages name="СтраницыРезультатаПоиска" id="70">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="СтраницыРезультатаПоискаРасширеннаяПодсказка" id="71"/>
+							<ChildItems>
+								<Page name="СтраницаРезультатаПоискаПрокрутка" id="72">
+									<ScrollOnCompress>true</ScrollOnCompress>
+									<ExtendedTooltip name="СтраницаРезультатаПоискаПрокруткаРасширеннаяПодсказка" id="73"/>
+									<ChildItems>
+										<LabelDecoration name="РезультатыПоиска" id="24">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<Title formatted="true"/>
+											<ContextMenu name="SearchResultКонтекстноеМеню" id="25"/>
+											<ExtendedTooltip name="SearchResultРасширеннаяПодсказка" id="26"/>
+											<Events>
+												<Event name="URLProcessing">РезультатыПоискаОбработкаНавигационнойСсылки</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="ГруппаНавигации" id="51">
+							<GroupVerticalAlign>Bottom</GroupVerticalAlign>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="NavigateGroupРасширеннаяПодсказка" id="52"/>
+							<ChildItems>
+								<LabelDecoration name="КнопкаНачало" id="53">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В начало</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="bFirstКонтекстноеМеню" id="54"/>
+									<ExtendedTooltip name="bFirstРасширеннаяПодсказка" id="55"/>
+									<Events>
+										<Event name="Click">КнопкаНачалоНажатие</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="КнопкаПредыдущая" id="56">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Предыдущая</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="bPrevКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="bPrevРасширеннаяПодсказка" id="58"/>
+									<Events>
+										<Event name="Click">КнопкаСледующаяНажатие</Event>
+									</Events>
+								</LabelDecoration>
+								<UsualGroup name="ГруппаТекущаяСтраница" id="74">
+									<ToolTipRepresentation>None</ToolTipRepresentation>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаТекущаяСтраницаРасширеннаяПодсказка" id="75"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияТекущаяСтраница" id="76">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДекорацияТекущаяСтраницаКонтекстноеМеню" id="77"/>
+											<ExtendedTooltip name="ДекорацияТекущаяСтраницаРасширеннаяПодсказка" id="78"/>
+										</LabelDecoration>
+										<LabelDecoration name="ДекорацияТекущаяСтраницаЗначение" id="79">
+											<ContextMenu name="ДекорацияТекущаяСтраницаЗначениеКонтекстноеМеню" id="80"/>
+											<ExtendedTooltip name="ДекорацияТекущаяСтраницаЗначениеРасширеннаяПодсказка" id="81"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="КнопкаСледующая" id="62">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующая</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="bNextКонтекстноеМеню" id="63"/>
+									<ExtendedTooltip name="bNextРасширеннаяПодсказка" id="64"/>
+									<Events>
+										<Event name="Click">КнопкаПредыдущаяНажатие</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаПоиска" id="40">
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ShowTitle>false</ShowTitle>
+					<ScrollOnCompress>true</ScrollOnCompress>
+					<ExtendedTooltip name="PageNotFoundРасширеннаяПодсказка" id="41"/>
+					<ChildItems>
+						<LabelDecoration name="СтрокаНеНайдено" id="21">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;fontsize 12&gt;По запросу &lt;/&gt;&lt;fontsize 12&gt;ничего не найдено.
+&lt;/&gt;
+&lt;fontsize 10&gt;&lt;b&gt;&lt;color #008000&gt;Рекомендации:&lt;/&gt;&lt;/&gt;&lt;/&gt;
+
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;Упростите запрос, исключив из него какое-либо слово.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;Воспользуйтесь поиском по началу слова.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+Используйте звездочку (*) в качестве окончания.
+Например, поиск стро* найдет все документы, которые содержат слова, начинающиеся на стро – Журнал "Строительство и ремонт", "ООО СтройКомплект" и т.д.
+
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;Воспользуйтесь нечетким поиском&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;.
+Используйте решетку (#).
+Например, Сентинель#2 найдет все документы, содержащие такие слова, которые отличаются от слова Сентинель на одну или две буквы.
+
+&lt;font Arial&gt;&lt;fontsize 10&gt;&lt;b&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;Ищите синонимы.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+Используйте восклицательный знак (!).
+Например, поиск !инструкция найдет все документы в которых встречаются слова инструкция, предписание, указание.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СтрокаНеНайденоКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="СтрокаНеНайденоРасширеннаяПодсказка" id="23"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СтрокаПоиска" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущаяПозиция" id="3">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗначенияРезультата" id="4">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоследниеЗапросы" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последние запросы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьПоиск" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить поиск</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьПоиск</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИсторияПоиска" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История поиска</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История поиска</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.History</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсторияПоиска</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

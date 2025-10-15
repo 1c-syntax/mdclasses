@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Предопределенный</dataPath>
+			<field>Предопределенный</field>
+		</field>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>ТабличнаяЧасть2</dataPath>
+			<field>ТабличнаяЧасть2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть2.Реквизит2</dataPath>
+			<field>ТабличнаяЧасть2.Реквизит2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИмяПредопределенныхДанных</dataPath>
+			<field>ИмяПредопределенныхДанных</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть2.Реквизит1</dataPath>
+			<field>ТабличнаяЧасть2.Реквизит1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть2.Ссылка</dataPath>
+			<field>ТабличнаяЧасть2.Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВерсияДанных</dataPath>
+			<field>ВерсияДанных</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть2.НомерСтроки</dataPath>
+			<field>ТабличнаяЧасть2.НомерСтроки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Наименование</dataPath>
+			<field>Наименование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПометкаУдаления</dataPath>
+			<field>ПометкаУдаления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Родитель</dataPath>
+			<field>Родитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Код</dataPath>
+			<field>Код</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Реквизит2</dataPath>
+			<field>Реквизит2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Реквизит1</dataPath>
+			<field>Реквизит1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть1.НомерСтроки</dataPath>
+			<field>ТабличнаяЧасть1.НомерСтроки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТабличнаяЧасть1.Ссылка</dataPath>
+			<field>ТабличнаяЧасть1.Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Реквизит3</dataPath>
+			<field>Реквизит3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Реквизит4</dataPath>
+			<field>Реквизит4</field>
+		</field>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>ТабличнаяЧасть1</dataPath>
+			<field>ТабличнаяЧасть1</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Справочник1.Ссылка КАК Ссылка,
+	Справочник1.ВерсияДанных КАК ВерсияДанных,
+	Справочник1.ПометкаУдаления КАК ПометкаУдаления,
+	Справочник1.Родитель КАК Родитель,
+	Справочник1.Код КАК Код,
+	Справочник1.Наименование КАК Наименование,
+	Справочник1.Реквизит1 КАК Реквизит1,
+	Справочник1.Реквизит2 КАК Реквизит2,
+	Справочник1.Реквизит3 КАК Реквизит3,
+	Справочник1.Реквизит4 КАК Реквизит4,
+	Справочник1.ТабличнаяЧасть1.(
+		Ссылка КАК Ссылка,
+		НомерСтроки КАК НомерСтроки
+	) КАК ТабличнаяЧасть1,
+	Справочник1.ТабличнаяЧасть2.(
+		Ссылка КАК Ссылка,
+		НомерСтроки КАК НомерСтроки,
+		Реквизит1 КАК Реквизит1,
+		Реквизит2 КАК Реквизит2
+	) КАК ТабличнаяЧасть2,
+	Справочник1.Предопределенный КАК Предопределенный,
+	Справочник1.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных
+ИЗ
+	Справочник.Справочник1 КАК Справочник1</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
