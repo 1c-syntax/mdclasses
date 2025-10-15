@@ -146,18 +146,23 @@ public abstract class AbstractReaderContext {
     if (value != null) {
       TransformationUtils.setValue(builder, methodName, value);
       var key = methodName.toLowerCase(Locale.ROOT);
-      var cacheValue = cache.get(key);
-      if (cacheValue instanceof List<?> list) {
-        List<Object> newValue = Collections.synchronizedList(new ArrayList<>(list));
-        if (value instanceof List<?> valueList) {
-          newValue.addAll(valueList);
+      cache.compute(key, (String k, Object existing) -> {
+        if (existing instanceof List<?> existingList) {
+          @SuppressWarnings("unchecked")
+          var list = (List<Object>) existingList;
+          if (value instanceof List<?> valueList) {
+            list.addAll(valueList);
+          } else {
+            list.add(value);
+          }
+          return list;
         } else {
-          newValue.add(value);
+          if (value instanceof List<?>) { // список при добавлении сделаем синхронизируемым
+            return Collections.synchronizedList(new ArrayList<>((List<?>) value));
+          }
+          return value;
         }
-        cache.put(key, newValue);
-      } else {
-        cache.put(key, value);
-      }
+      });
     }
   }
 

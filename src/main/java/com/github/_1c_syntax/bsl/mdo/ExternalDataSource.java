@@ -99,8 +99,6 @@ public class ExternalDataSource implements MDObject, ChildrenOwner, AccessRights
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
-  // todo сделать функции и кубы
-
   @Override
   public List<MD> getChildren() {
     return children.getOrCompute();
