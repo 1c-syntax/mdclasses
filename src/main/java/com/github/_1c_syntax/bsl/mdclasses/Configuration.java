@@ -104,7 +104,7 @@ import java.util.Map;
  * Корневой класс конфигурации 1с
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Configuration implements CF {

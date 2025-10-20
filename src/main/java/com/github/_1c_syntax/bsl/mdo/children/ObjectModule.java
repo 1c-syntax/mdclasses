@@ -34,7 +34,7 @@ import lombok.Value;
 import java.net.URI;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"uri"})
 @EqualsAndHashCode(of = {"uri"})
 public class ObjectModule implements Module {

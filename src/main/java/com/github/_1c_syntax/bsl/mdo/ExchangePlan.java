@@ -43,7 +43,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExchangePlan implements ReferenceObject, AccessRightsOwner {
@@ -227,7 +227,7 @@ public class ExchangePlan implements ReferenceObject, AccessRightsOwner {
   }
 
   @Value
-  @Builder
+  @Builder(toBuilder = true)
   public static class RecordContent {
 
     /**

@@ -38,7 +38,7 @@ import java.net.URI;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CommonModule implements MDObject, Module, ModuleOwner {

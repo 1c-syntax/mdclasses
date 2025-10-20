@@ -103,7 +103,7 @@ import java.util.Map;
  * Класс расширения конфигурации 1с
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ConfigurationExtension implements CF {

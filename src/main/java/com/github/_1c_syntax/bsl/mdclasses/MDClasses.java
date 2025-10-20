@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.reader.MDMerger;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.experimental.UtilityClass;
@@ -128,9 +129,53 @@ public class MDClasses {
    */
   @Deprecated(since = "0.16.0")
   public List<MDClass> createConfigurations(Path sourcePath, boolean skipSupport) {
-    return findFiles(sourcePath, SEARCH_CONFIGURATION).parallelStream()
-      .map(path -> createConfiguration(path, MDCReadSettings.builder().skipSupport(skipSupport).build()))
-      .toList();
+    return createConfigurations(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  /**
+   * Читает каталог проекта и
+   * - возвращает объект MDClass, если содержится только один объект MDC
+   * - возвращает объединенную конфигурацию с расширениями
+   * - возвращает объединение расширений с пустой конфигурацией
+   *
+   * @param sourcePath Путь к каталогу исходников
+   * @return Результат чтения решения
+   */
+  public MDClass createSolution(Path sourcePath) {
+    var mdcs = createConfigurations(sourcePath, MDCReadSettings.DEFAULT);
+
+    if (mdcs.isEmpty()) {
+      return Configuration.EMPTY;
+    } else if (mdcs.size() == 1) {
+      return mdcs.get(0);
+    } else {
+      var mdc = mdcs.stream().filter(Configuration.class::isInstance).map(Configuration.class::cast).findFirst();
+      var cf = mdc.orElse(Configuration.EMPTY);
+      var extensions = mdcs.stream()
+        .filter(ConfigurationExtension.class::isInstance)
+        .map(ConfigurationExtension.class::cast)
+        .toList();
+
+      if (cf.isEmpty()) {
+        if (extensions.isEmpty()) {
+          // вернем первое значение, т.к. там нет ни конфы, ни расширений
+          return mdcs.get(0);
+        } else if (extensions.size() == 1) {
+          // есть одно расширение, вернем его
+          return extensions.get(0);
+        }
+      } else if (extensions.isEmpty()) {
+        // расширений нет, вернем конфигурацию
+        return cf;
+      }
+
+      // объединим расширения с конфигурацией в одно целое
+      var result = cf;
+      for (var extension : extensions) {
+        result = MDMerger.merge(result, extension);
+      }
+      return result;
+    }
   }
 
   /**
