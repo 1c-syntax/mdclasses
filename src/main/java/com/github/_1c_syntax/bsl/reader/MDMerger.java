@@ -116,7 +116,8 @@ public class MDMerger {
       .clearEnums().enums(mergeMD(cf, extension, CF::getEnums, newChildren))
       .clearReports().reports(mergeMD(cf, extension, CF::getReports, newChildren))
       .clearDataProcessors().dataProcessors(mergeMD(cf, extension, CF::getDataProcessors, newChildren))
-      .clearChartsOfCharacteristicTypes().chartsOfCharacteristicTypes(mergeMD(cf, extension, CF::getChartsOfCharacteristicTypes, newChildren))
+      .clearChartsOfCharacteristicTypes()
+      .chartsOfCharacteristicTypes(mergeMD(cf, extension, CF::getChartsOfCharacteristicTypes, newChildren))
       .clearChartsOfAccounts().chartsOfAccounts(mergeMD(cf, extension, CF::getChartsOfAccounts, newChildren))
       .clearChartsOfCalculationTypes().chartsOfCalculationTypes(mergeMD(cf, extension, CF::getChartsOfCalculationTypes, newChildren))
       .clearInformationRegisters().informationRegisters(mergeMD(cf, extension, CF::getInformationRegisters, newChildren))
@@ -202,7 +203,6 @@ public class MDMerger {
 
     // список ссылок всех существующих объектов
     var additionalRefs = additionalList.stream().collect(Collectors.toMap(MD::getMdoRef, md -> md));
-    var sourceRefs = sourceList.stream().map(MD::getMdoRef).toList();
 
     // переносим сначала существующие объекты
     List<T> result = new ArrayList<>();
@@ -223,6 +223,7 @@ public class MDMerger {
       result.add(md);
     });
 
+    var sourceRefs = sourceList.stream().map(MD::getMdoRef).toList();
     result.addAll(additionalList.stream().filter(md -> !sourceRefs.contains(md.getMdoRef())).toList());
     newChildren.addAll(result);
     return Collections.unmodifiableList(result);

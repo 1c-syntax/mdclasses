@@ -170,7 +170,7 @@ public class TransformationUtils {
       try {
         return method.invoke(builder);
       } catch (Exception e) {
-        LOGGER.error("Class {}, method {}", builder.getClass(), BUILD_METHOD_NAME, e);
+        LOGGER.error(LOGGER_MESSAGE_PREF, builder.getClass(), BUILD_METHOD_NAME, e);
       }
     }
     return null;

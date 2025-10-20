@@ -21,11 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.BusinessProcess;
-import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
