@@ -202,7 +202,8 @@ public class MDMerger {
     }
 
     // список ссылок всех существующих объектов
-    var additionalRefs = additionalList.stream().collect(Collectors.toMap(MD::getMdoRef, md -> md));
+    var additionalRefs = additionalList.stream()
+      .collect(Collectors.toMap(MD::getMdoRef, Function.identity(), (a, b) -> b));
 
     // переносим сначала существующие объекты
     List<T> result = new ArrayList<>();
@@ -223,8 +224,11 @@ public class MDMerger {
       result.add(md);
     });
 
-    var sourceRefs = sourceList.stream().map(MD::getMdoRef).toList();
-    result.addAll(additionalList.stream().filter(md -> !sourceRefs.contains(md.getMdoRef())).toList());
+    var sourceRefs = sourceList.stream().map(MD::getMdoRef).collect(Collectors.toSet());
+    result.addAll(additionalList.stream()
+      .filter(md -> !sourceRefs.contains(md.getMdoRef()))
+      .toList());
+
     newChildren.addAll(result);
     return Collections.unmodifiableList(result);
   }
@@ -236,7 +240,9 @@ public class MDMerger {
       var merge = mergeModules(source, ((ModuleOwner) modMD).getModules());
       if (source != merge) { // список модулей изменился, создадим копию
         var builder = TransformationUtils.toBuilder(srcMD);
-        assert builder != null;
+        if (builder == null) { // такого не бывает, но проверка нужна для спокойствия jwm
+          throw new IllegalStateException("toBuilder() is not available for " + srcMD.getClass());
+        }
         TransformationUtils.setValue(builder, "modules", merge);
         return (T) TransformationUtils.build(builder);
       }
@@ -293,8 +299,10 @@ public class MDMerger {
     if (source != merge) { // список изменился, создадим копию
       if (builder == null) {
         builder = TransformationUtils.toBuilder(srcMD);
+        if (builder == null) { // такого не бывает, но проверка нужна для спокойствия jwm
+          throw new IllegalStateException("toBuilder() is not available for " + srcMD.getClass());
+        }
       }
-      assert builder != null;
       TransformationUtils.invoke(builder, "clear" + methodName);
       TransformationUtils.setValue(builder, methodName, merge);
     }

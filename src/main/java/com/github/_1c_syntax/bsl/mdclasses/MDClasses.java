@@ -295,5 +295,4 @@ public class MDClasses {
       .map(MDOType::groupName)
       .collect(Collectors.toSet());
   }
-
 }
