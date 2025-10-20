@@ -43,7 +43,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner, TemplateOwner,

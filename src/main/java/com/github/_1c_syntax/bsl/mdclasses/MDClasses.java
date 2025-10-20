@@ -21,9 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
-import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.reader.MDMerger;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.experimental.UtilityClass;
@@ -36,10 +34,8 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -136,6 +132,15 @@ public class MDClasses {
     return createConfigurations(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
+  /**
+   * Читает каталог проекта и
+   * - возвращает объект MDClass, если содержится только один объект MDC
+   * - возвращает объединенную конфигурацию с расширениями
+   * - возвращает объединение расширений с пустой конфигурацией
+   *
+   * @param sourcePath Путь к каталогу исходников
+   * @return Результат чтения решения
+   */
   public MDClass createSolution(Path sourcePath) {
     var mdcs = createConfigurations(sourcePath, MDCReadSettings.DEFAULT);
 
@@ -160,15 +165,14 @@ public class MDClasses {
           return extensions.get(0);
         }
       } else if (extensions.isEmpty()) {
-        // расширений нет, вернем конфу
+        // расширений нет, вернем конфигурацию
         return cf;
       }
 
-      // объединим расширения с конфой в одно целое
+      // объединим расширения с конфигурацией в одно целое
       var result = cf;
       for (var extension : extensions) {
-        var merge = merge(result, extension);
-        result = merge;
+        result = MDMerger.merge(result, extension);
       }
       return result;
     }
@@ -292,110 +296,4 @@ public class MDClasses {
       .collect(Collectors.toSet());
   }
 
-
-  private static Configuration merge(final Configuration cf, ConfigurationExtension extension) {
-    var builder = cf.toBuilder();
-    // todo подумать о том, как контролировать, что все свойства копируются
-    if (cf.isEmpty()) { // скопируем из первого расширения
-      builder.configurationSource(extension.getConfigurationSource())
-        .name("solution")
-        .uuid("solution")
-        .defaultLanguage(extension.getDefaultLanguage())
-        .scriptVariant(extension.getScriptVariant())
-        .interfaceCompatibilityMode(extension.getInterfaceCompatibilityMode())
-        .compatibilityMode(extension.getCompatibilityMode())
-        .defaultRunMode(extension.getDefaultRunMode());
-    }
-
-    return builder
-      .modules(mergeModules(cf.getModules(), extension.getModules()))
-      .subsystems(mergeMD(cf, extension, CF::getSubsystems))
-      .commonModules(mergeMD(cf, extension, CF::getCommonModules))
-      .sessionParameters(mergeMD(cf, extension, CF::getSessionParameters))
-      .roles(mergeMD(cf, extension, CF::getRoles))
-      .commonAttributes(mergeMD(cf, extension, CF::getCommonAttributes))
-      .filterCriteria(mergeMD(cf, extension, CF::getFilterCriteria))
-      .eventSubscriptions(mergeMD(cf, extension, CF::getEventSubscriptions))
-      .scheduledJobs(mergeMD(cf, extension, CF::getScheduledJobs))
-      .bots(mergeMD(cf, extension, CF::getBots))
-      .functionalOptions(mergeMD(cf, extension, CF::getFunctionalOptions))
-      .functionalOptionsParameters(mergeMD(cf, extension, CF::getFunctionalOptionsParameters))
-      .definedTypes(mergeMD(cf, extension, CF::getDefinedTypes))
-      .settingsStorages(mergeMD(cf, extension, CF::getSettingsStorages))
-      .commonForms(mergeMD(cf, extension, CF::getCommonForms))
-      .commonCommands(mergeMD(cf, extension, CF::getCommonCommands))
-      .commandGroups(mergeMD(cf, extension, CF::getCommandGroups))
-      .commonTemplates(mergeMD(cf, extension, CF::getCommonTemplates))
-      .commonPictures(mergeMD(cf, extension, CF::getCommonPictures))
-      .interfaces(mergeMD(cf, extension, CF::getInterfaces))
-      .xDTOPackages(mergeMD(cf, extension, CF::getXDTOPackages))
-      .webServices(mergeMD(cf, extension, CF::getWebServices))
-      .webSocketClients(mergeMD(cf, extension, CF::getWebSocketClients))
-      .httpServices(mergeMD(cf, extension, CF::getHttpServices))
-      .wsReferences(mergeMD(cf, extension, CF::getWsReferences))
-      .integrationServices(mergeMD(cf, extension, CF::getIntegrationServices))
-      .styleItems(mergeMD(cf, extension, CF::getStyleItems))
-      .paletteColors(mergeMD(cf, extension, CF::getPaletteColors))
-      .styles(mergeMD(cf, extension, CF::getStyles))
-      .languages(mergeMD(cf, extension, CF::getLanguages))
-      .constants(mergeMD(cf, extension, CF::getConstants))
-      .catalogs(mergeMD(cf, extension, CF::getCatalogs))
-      .documents(mergeMD(cf, extension, CF::getDocuments))
-      .documentNumerators(mergeMD(cf, extension, CF::getDocumentNumerators))
-      .sequences(mergeMD(cf, extension, CF::getSequences))
-      .documentJournals(mergeMD(cf, extension, CF::getDocumentJournals))
-      .enums(mergeMD(cf, extension, CF::getEnums))
-      .reports(mergeMD(cf, extension, CF::getReports))
-      .dataProcessors(mergeMD(cf, extension, CF::getDataProcessors))
-      .chartsOfCharacteristicTypes(mergeMD(cf, extension, CF::getChartsOfCharacteristicTypes))
-      .chartsOfAccounts(mergeMD(cf, extension, CF::getChartsOfAccounts))
-      .chartsOfCalculationTypes(mergeMD(cf, extension, CF::getChartsOfCalculationTypes))
-      .informationRegisters(mergeMD(cf, extension, CF::getInformationRegisters))
-      .accumulationRegisters(mergeMD(cf, extension, CF::getAccumulationRegisters))
-      .accountingRegisters(mergeMD(cf, extension, CF::getAccountingRegisters))
-      .calculationRegisters(mergeMD(cf, extension, CF::getCalculationRegisters))
-      .businessProcesses(mergeMD(cf, extension, CF::getBusinessProcesses))
-      .tasks(mergeMD(cf, extension, CF::getTasks))
-      .externalDataSources(mergeMD(cf, extension, CF::getExternalDataSources))
-      .children(mergeMD(cf, extension, CF::getChildren))
-      .build();
-  }
-
-  private static List<Module> mergeModules(List<Module> oldList, List<Module> newList) {
-    if (newList.isEmpty()) {
-      return oldList;
-    } else if (oldList.isEmpty()) {
-      return newList;
-    }
-    var result = new ArrayList<>(oldList);
-    result.addAll(newList);
-    return Collections.unmodifiableList(result);
-  }
-
-  private static <T extends MD> List<T> mergeMD(Configuration cf,
-                                                ConfigurationExtension extension,
-                                                Function<CF, List<T>> getList) {
-    var newList = getList.apply(extension);
-    var oldList = getList.apply(cf);
-    if (oldList.isEmpty() || newList.isEmpty()) {
-      return newList;
-    }
-
-    var refs = oldList.stream().map(MD::getMdoRef).toList();
-    // добавим все новые
-    var result = new ArrayList<>(newList.stream().filter(md -> !refs.contains(md.getMdoRef())).toList());
-//    newList.stream().filter(md -> refs.contains(md.getMdoRef()))
-//      .forEach((T md) -> {
-//        boolean changed;
-////        var builder = md.toBuilder()
-//        if(md instanceof ModuleOwner moduleOwner) {
-//
-//        }
-//      });
-    // для совпадающих надо создать копии и смержить содержимое
-    // todo скопировать модули
-    // todo скопировать дочерние
-    // todo смержить содержимое
-    return Collections.unmodifiableList(result);
-  }
 }

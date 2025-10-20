@@ -65,7 +65,12 @@ public interface ModuleOwner extends MD {
   /**
    * Возвращает соответствие типов модулей их путям к файлам
    */
-  default Map<ModuleType, URI> getModuleTypes() {
-    return getModules().stream().collect(Collectors.toMap(Module::getModuleType, Module::getUri));
+  default Map<ModuleType, List<URI>> getModuleTypes() {
+    return getModules().stream().collect(
+      Collectors.groupingBy(
+        Module::getModuleType,
+        Collectors.mapping(Module::getUri, Collectors.toList())
+      )
+    );
   }
 }

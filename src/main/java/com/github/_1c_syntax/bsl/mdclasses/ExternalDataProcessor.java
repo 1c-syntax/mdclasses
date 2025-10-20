@@ -47,7 +47,7 @@ import java.util.List;
  * Внешняя обработка
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExternalDataProcessor implements ExternalSource {
