@@ -92,9 +92,34 @@ class MDClassesSolutionTest {
       .hasSize(7)
       .containsValue(cf.findChild(MdoReference.create("Catalog.Расш1_Справочник3.Form.ФормаЭлемента")).get())
     ;
+  }
+
+  @Test
+  void createSolutionCf_2_exts_empty_cf() {
+    var solution = MDClasses.createSolution(Path.of("src/test/resources/solutions/sol2"));
+    assertThat(solution).isInstanceOf(Configuration.class);
+    var cf = (Configuration) solution;
+    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
+    assertThat(cf.getModules()).hasSize(1);
+    assertThat(cf.getChildren()).hasSize(8);
+
+    assertThat(cf.getAllModules()).hasSize(4);
+
+    assertThat(cf.getRoles()).hasSize(2);
+    assertThat(cf.getLanguages()).hasSize(1);
+    assertThat(cf.getConstants()).hasSize(1);
+    assertThat(cf.getCatalogs()).hasSize(2);
+    assertThat(cf.getDocuments()).hasSize(1);
+    assertThat(cf.getEnums()).isEmpty();
+    assertThat(cf.getDataProcessors()).hasSize(1);
+    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(39);
+
+    assertThat(cf.getModulesByType()).hasSize(4)
+      .containsValue(ModuleType.FormModule)
+    ;
 
     assertThat(cf.getModulesByObject())
-      .hasSize(7)
+      .hasSize(4)
       .containsValue(cf.findChild(MdoReference.create("Catalog.Расш1_Справочник3.Form.ФормаЭлемента")).get())
     ;
   }

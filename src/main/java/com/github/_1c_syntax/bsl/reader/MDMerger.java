@@ -58,6 +58,7 @@ public class MDMerger {
    * @param extension Добавляемое расширение
    * @return Объединенная конфигурация
    */
+  @NonNull
   public static Configuration merge(@NonNull Configuration cf, @NonNull ConfigurationExtension extension) {
     var builder = cf.toBuilder();
     // todo подумать о том, как контролировать, что все свойства копируются
@@ -286,15 +287,15 @@ public class MDMerger {
                                                            Function<K, List<T>> getList,
                                                            String methodName,
                                                            ArrayList<MD> newChildren) {
-    var oldList = getList.apply(srcMD);
-    var mergeList = mergeMD(srcMD, modMD, getList, newChildren);
-    if (oldList != mergeList) { // список изменился, создадим копию
+    var source = getList.apply(srcMD);
+    var merge = mergeMD(srcMD, modMD, getList, newChildren);
+    if (source != merge) { // список изменился, создадим копию
       if (builder == null) {
         builder = TransformationUtils.toBuilder(srcMD);
       }
       assert builder != null;
       TransformationUtils.invoke(builder, "clear" + methodName);
-      TransformationUtils.setValue(builder, methodName, mergeList);
+      TransformationUtils.setValue(builder, methodName, merge);
     }
     return builder;
   }
