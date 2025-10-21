@@ -151,16 +151,17 @@ public class MDClasses {
    * - возвращает объединенную конфигурацию с расширениями
    * - возвращает объединение расширений с пустой конфигурацией
    *
-   * @param sourcePath Путь к каталогу исходников
+   * @param sourcePath   Путь к каталогу исходников
    * @param readSettings Настройки чтения проекта
    * @return Результат чтения решения
    */
   public MDClass createSolution(Path sourcePath, MDCReadSettings readSettings) {
     var mdcs = createConfigurations(sourcePath, readSettings);
+    MDClass result;
     if (mdcs.isEmpty()) {
-      return Configuration.EMPTY;
+      result = Configuration.EMPTY;
     } else if (mdcs.size() == 1) {
-      return mdcs.get(0);
+      result = mdcs.get(0);
     } else {
       var mdc = mdcs.stream().filter(Configuration.class::isInstance).map(Configuration.class::cast).findFirst();
       var cf = mdc.orElse(Configuration.EMPTY);
@@ -183,12 +184,12 @@ public class MDClasses {
       }
 
       // объединим расширения с конфигурацией в одно целое
-      var result = cf;
+      result = cf;
       for (var extension : extensions) {
-        result = MDMerger.merge(result, extension);
+        result = MDMerger.merge((Configuration) result, extension);
       }
-      return result;
     }
+    return result;
   }
 
   /**
