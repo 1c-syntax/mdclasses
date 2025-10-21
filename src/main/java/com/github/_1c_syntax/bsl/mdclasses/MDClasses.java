@@ -142,8 +142,21 @@ public class MDClasses {
    * @return Результат чтения решения
    */
   public MDClass createSolution(Path sourcePath) {
-    var mdcs = createConfigurations(sourcePath, MDCReadSettings.DEFAULT);
+    return createSolution(sourcePath, MDCReadSettings.DEFAULT);
+  }
 
+  /**
+   * Читает каталог проекта и
+   * - возвращает объект MDClass, если содержится только один объект MDC
+   * - возвращает объединенную конфигурацию с расширениями
+   * - возвращает объединение расширений с пустой конфигурацией
+   *
+   * @param sourcePath Путь к каталогу исходников
+   * @param readSettings Настройки чтения проекта
+   * @return Результат чтения решения
+   */
+  public MDClass createSolution(Path sourcePath, MDCReadSettings readSettings) {
+    var mdcs = createConfigurations(sourcePath, readSettings);
     if (mdcs.isEmpty()) {
       return Configuration.EMPTY;
     } else if (mdcs.size() == 1) {
