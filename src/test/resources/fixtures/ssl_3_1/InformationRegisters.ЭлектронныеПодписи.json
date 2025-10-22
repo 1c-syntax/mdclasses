@@ -1,5 +1,224 @@
 {"com.github._1c_syntax.bsl.mdo.InformationRegister": {
-  "attributes": [],
+  "attributes": [
+    [
+      {
+        "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.StandardAttribute.Active",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.СтандартныйРеквизит.Активность"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Активность",
+          "nameEn": "Active"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.StandardAttribute.LineNumber",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.СтандартныйРеквизит.НомерСтроки"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 5,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (5.0)",
+                  "nameEn": "NumberQualifiers (5.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "НомерСтроки",
+          "nameEn": "LineNumber"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.StandardAttribute.Recorder",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.СтандартныйРеквизит.Регистратор"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Регистратор",
+          "nameEn": "Recorder"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи.StandardAttribute.Period",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи.СтандартныйРеквизит.Период"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Период",
+          "nameEn": "Period"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
   "commands": [],
   "comment": "",
   "description": "Электронные подписи",
@@ -17,23 +236,45 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Подписанный объект"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ЭлектронныеПодписи",
-          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ОпределяемыйТип.ПодписанныйОбъект",
+                  "nameEn": "DefinedType.ПодписанныйОбъект"
+                },
+                "variant": "METADATA",
+                "kind": "DEFINED_TYPE"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
         "master": true,
         "denyIncompleteValues": false,
         "useInTotals": true
@@ -50,21 +291,54 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Порядковый номер"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": true,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (10.0 неотр)",
+                  "nameEn": "NumberQualifiers (10.0 nonneg)"
+                }
+              }
+            }
+          ]
+        },
         "master": false,
         "denyIncompleteValues": false,
         "useInTotals": true
@@ -73,17 +347,19 @@
     []
   ],
   "explanation": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "forms": [],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },
   "mdoType": "INFORMATION_REGISTER",
   "moduleTypes": [
     [
       "ManagerModule",
-      "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ЭлектронныеПодписи/Ext/ManagerModule.bsl"
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ЭлектронныеПодписи/Ext/ManagerModule.bsl"
+      ]
     ]
   ],
   "modules": [
@@ -91,7 +367,7 @@
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/ЭлектронныеПодписи/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NOT_EDITABLE",
       "isProtected": false
@@ -135,21 +411,51 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Дата проверки подписи"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "f779f4a1-1fab-46d4-8043-ac25c247d361",
@@ -163,21 +469,53 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Имя файла подписи"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 260,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (260, Переменная)",
+                  "nameEn": "StringQualifiers (260, Variable)"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "308358bc-773a-43fa-adff-dcc5884a2bd4",
@@ -191,21 +529,53 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Комментарий"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                  "nameEn": "StringQualifiers (0, Variable)"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "ed541a1c-a842-40a9-b357-612db71ec32c",
@@ -219,21 +589,52 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Кому выдан сертификат"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 0,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/resources/c/com.github._1c_syntax.bsl.mdo.children.Resource[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "b0e37495-7d9e-41d0-8225-652f9ac328cf",
@@ -247,21 +648,53 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Отпечаток"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 28,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (28, Переменная)",
+                  "nameEn": "StringQualifiers (28, Variable)"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "3bd2e1c8-9ef3-449b-acf6-397b90669c49",
@@ -275,21 +708,38 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Подпись"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": "VALUE_STORAGE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "cb334191-2ff3-439e-bdaf-4b8fe6561c3b",
@@ -303,21 +753,38 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Подпись верна"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "f9865a2a-50e3-4f9c-a509-319be62dc468",
@@ -331,21 +798,38 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Сертификат"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": "VALUE_STORAGE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       },
       {
         "uuid": "5f3a30b0-1ba8-423c-9bc2-f9a87cafe818",
@@ -359,21 +843,51 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Дата подписи"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
+                }
+              }
+            }
+          ]
+        }
       },
       {
         "uuid": "766d8852-3bb4-4a6c-81c0-911722af4e8e",
@@ -387,21 +901,45 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Установивший подпись"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
         "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/dimensions/c/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX"
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "СправочникСсылка.Пользователи",
+                  "nameEn": "CatalogRef.Пользователи"
+                },
+                "variant": "METADATA",
+                "kind": "CATALOG"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        }
       }
     ],
     []
@@ -409,12 +947,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Электронные подписи"
         }
-      ]
+      }
     ]
   },
   "templates": [],

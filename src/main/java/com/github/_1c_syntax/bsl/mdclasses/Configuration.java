@@ -70,14 +70,13 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -86,6 +85,8 @@ import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
 import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -103,7 +104,7 @@ import java.util.Map;
  * Корневой класс конфигурации 1с
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class Configuration implements CF {
@@ -113,7 +114,7 @@ public class Configuration implements CF {
    */
   public static final Configuration EMPTY = createEmptyConfiguration();
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * CF
@@ -201,6 +202,8 @@ public class Configuration implements CF {
   List<XDTOPackage> xDTOPackages;
   @Singular
   List<WebService> webServices;
+  @Singular
+  List<WebSocketClient> webSocketClients;
   @Singular
   List<HTTPService> httpServices;
   @Singular
@@ -406,7 +409,7 @@ public class Configuration implements CF {
       .build();
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.ADMINISTRATION,
       RoleRight.DATA_ADMINISTRATION,

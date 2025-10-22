@@ -20,12 +20,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Форма"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NONE",
@@ -86,7 +90,7 @@
                 "items": []
               },
               {
-                "type": "SPREADSHEET_DOCUMENT_FIELD",
+                "type": "SPREAD_SHEET_DOCUMENT_FIELD",
                 "id": 10,
                 "name": "Реквизит4",
                 "title": {
@@ -107,6 +111,33 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "ОбработкаОбъект.Обработка1",
+                          "nameEn": "DataProcessorObject.Обработка1"
+                        },
+                        "variant": "METADATA",
+                        "kind": "DATA_PROCESSOR"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 0
+                    }
+                  ]
                 }
               },
               {
@@ -114,6 +145,34 @@
                 "name": "Реквизит1",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                          "nameEn": "StringQualifiers (0, Variable)"
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -121,6 +180,33 @@
                 "name": "Реквизит2",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                        "dateFractions": "DATE",
+                        "description": {
+                          "nameRu": "КвалификаторыДаты (Дата)",
+                          "nameEn": "DateQualifiers (Date)"
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -128,6 +214,44 @@
                 "name": "Реквизит3",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 6,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN",
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE",
+                      "com.github._1c_syntax.bsl.types.value.MDOValueType": "DOCUMENT_REF",
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "FORMATTED_STRING",
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING",
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
+                    }
+                  ],
+                  "composite": true,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 2,
+                      "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                        "dateFractions": "DATE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
+                        }
+                      },
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -135,6 +259,19 @@
                 "name": "Реквизит4",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "SPREADSHEET_DOCUMENT"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -142,6 +279,26 @@
                 "name": "Реквизит5",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "ПеречислениеСсылка.Перечисление1",
+                          "nameEn": "EnumRef.Перечисление1"
+                        },
+                        "variant": "METADATA",
+                        "kind": "ENUM"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -173,12 +330,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "ЖурналРегистрации"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NONE",
@@ -198,12 +359,16 @@
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Журнал регистрации"
                 }
-              ]
+              }
             ]
           },
           "handlers": [
@@ -231,12 +396,16 @@
                 "name": "ГруппаОтбора",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Отбора"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -250,12 +419,16 @@
                       "name": "КоличествоПоказываемыхСобытий",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Показывать"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -281,12 +454,16 @@
                       "name": "ПредставлениеОтбора",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Отбор"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -304,12 +481,16 @@
                 "name": "Страницы",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Страницы"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -334,12 +515,16 @@
                           "name": "Журнал",
                           "title": {
                             "content": [
-                              [
-                                {
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                   "langKey": "ru",
                                   "value": "Журнал"
                                 }
-                              ]
+                              }
                             ]
                           },
                           "dataPath": {
@@ -353,12 +538,16 @@
                                 "name": "Дата",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Дата, время"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -384,12 +573,16 @@
                                 "name": "ГруппаПользовательКомпьютерПриложение",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Пользователь, компьютер, приложение, сеанс"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -403,12 +596,16 @@
                                       "name": "ИмяПользователя",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Пользователь"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -422,12 +619,16 @@
                                       "name": "Компьютер",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Компьютер"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -441,12 +642,16 @@
                                       "name": "ГруппаПриложениеСеанс",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Приложение сеанс"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -460,12 +665,16 @@
                                             "name": "ПредставлениеПриложения",
                                             "title": {
                                               "content": [
-                                                [
-                                                  {
+                                                {
+                                                  "default": {
+                                                    "tag": 2
+                                                  },
+                                                  "int": 1,
+                                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                                     "langKey": "ru",
                                                     "value": "Приложение"
                                                   }
-                                                ]
+                                                }
                                               ]
                                             },
                                             "dataPath": {
@@ -499,12 +708,16 @@
                                 "name": "ГруппаСобытиеИДанные",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Событие, данные и метаданные, комментарий"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -518,12 +731,16 @@
                                       "name": "ПредставлениеСобытия",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Событие"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -537,12 +754,16 @@
                                       "name": "ГруппаДанныеМетаданные",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Данные метаданные"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -568,12 +789,16 @@
                                             "name": "ПредставлениеМетаданных",
                                             "title": {
                                               "content": [
-                                                [
-                                                  {
+                                                {
+                                                  "default": {
+                                                    "tag": 2
+                                                  },
+                                                  "int": 1,
+                                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                                     "langKey": "ru",
                                                     "value": "Метаданные"
                                                   }
-                                                ]
+                                                }
                                               ]
                                             },
                                             "dataPath": {
@@ -591,12 +816,16 @@
                                       "name": "Комментарий",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Комментарий"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -614,12 +843,16 @@
                                 "name": "ГруппаСервер",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Рабочий сервер, IP порты"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -673,12 +906,16 @@
                                 "name": "ГруппаТранзакция",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Транзакция"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -692,12 +929,16 @@
                                       "name": "СтатусТранзакции",
                                       "title": {
                                         "content": [
-                                          [
-                                            {
+                                          {
+                                            "default": {
+                                              "tag": 2
+                                            },
+                                            "int": 1,
+                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                               "langKey": "ru",
                                               "value": "Статус транзакции"
                                             }
-                                          ]
+                                          }
                                         ]
                                       },
                                       "dataPath": {
@@ -745,12 +986,16 @@
                       "name": "ИндикаторДлительныхОпераций",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Индикатор длительных операций"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -758,7 +1003,7 @@
                       },
                       "items": [
                         {
-                          "type": "SPREADSHEET_DOCUMENT_FIELD",
+                          "type": "SPREAD_SHEET_DOCUMENT_FIELD",
                           "id": 114,
                           "name": "ПолеИндикаторДлительныхОпераций",
                           "title": {
@@ -785,6 +1030,26 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "ОбработкаОбъект.ЖурналРегистрации",
+                          "nameEn": "DataProcessorObject.ЖурналРегистрации"
+                        },
+                        "variant": "METADATA",
+                        "kind": "DATA_PROCESSOR"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -792,12 +1057,43 @@
                 "name": "ПредставлениеОтбора",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Представление отбора"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -806,6 +1102,19 @@
                 "name": "Журнал",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "VALUE_TABLE"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -813,6 +1122,11 @@
                 "name": "ОтборЖурналаРегистрации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -820,12 +1134,45 @@
                 "name": "КоличествоПоказываемыхСобытий",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Количество показываемых событий"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                        "precision": 10,
+                        "scale": 0,
+                        "nonNegative": true,
+                        "description": {
+                          "nameRu": "КвалификаторыЧисла (10.0 неотр)",
+                          "nameEn": "NumberQualifiers (10.0 nonneg)"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -834,6 +1181,19 @@
                 "name": "ИнтервалДат",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "STANDARD_PERIOD"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -841,13 +1201,30 @@
                 "name": "ПолеИндикаторДлительныхОпераций",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Поле индикатор длительных операций"
                       }
-                    ]
+                    }
                   ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "SPREADSHEET_DOCUMENT"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -855,6 +1232,33 @@
                 "name": "АдресХранилища",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -862,6 +1266,9 @@
                 "name": "ОтборЖурналаРегистрацииПоУмолчанию",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -869,12 +1276,43 @@
                 "name": "Критичность",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Критичность"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -883,6 +1321,19 @@
                 "name": "ЗапускатьНеВФоне",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -890,6 +1341,19 @@
                 "name": "ИдентификаторЗадания",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -897,6 +1361,9 @@
                 "name": "ХранилищеДанных",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               }
             ],

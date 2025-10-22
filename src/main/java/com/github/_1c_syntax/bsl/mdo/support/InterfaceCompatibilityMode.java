@@ -21,41 +21,46 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Возможные варианты интерфейсов
  */
-@AllArgsConstructor
-@ToString
-@Getter
-public enum InterfaceCompatibilityMode implements EnumWithValue {
-  TAXI("Taxi"),
-  TAXI_ENABLE_VERSION_8_2("TaxiEnableVersion8_2"),
-  TAXI_ENABLE_VERSION_8_5("TaxiEnableVersion8_5"),
-  VERSION_8_2("Version8_2"),
-  VERSION_8_2_ENABLE_TAXI("Version8_2EnableTaxi"),
-  VERSION_8_5("Version8_5"),
-  VERSION_8_5_ENABLE_TAXI("Version8_5EnableTaxi"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+@ToString(of = "fullName")
+public enum InterfaceCompatibilityMode implements EnumWithName {
+  TAXI("Taxi", "Такси"),
+  TAXI_ENABLE_VERSION_8_2("TaxiEnableVersion8_2", "ТаксиРазрешитьВерсия8_2"),
+  TAXI_ENABLE_VERSION_8_5("TaxiEnableVersion8_5", "ТаксиРазрешитьВерсия8_5"),
+  VERSION_8_2("Version8_2", "Версия8_2"),
+  VERSION_8_2_ENABLE_TAXI("Version8_2EnableTaxi", "Версия8_2РазрешитьТакси"),
+  VERSION_8_5("Version8_5", "Версия8_5"),
+  VERSION_8_5_ENABLE_TAXI("Version8_5EnableTaxi", "Версия8_5РазрешитьТакси"),
+  UNKNOWN("unknown", "неизвестный");
 
+  private static final Map<String, InterfaceCompatibilityMode> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
 
-  public static InterfaceCompatibilityMode getByName(String value) {
-    return Arrays.stream(values())
-      .filter(interfaceCompMode -> interfaceCompMode.value().equalsIgnoreCase(value))
-      .findAny()
-      .orElse(VERSION_8_2);
+  InterfaceCompatibilityMode(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static InterfaceCompatibilityMode valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
   }
 }

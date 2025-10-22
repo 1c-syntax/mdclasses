@@ -22,4 +22,10 @@
 /**
  * Содержит ридер для формата конфигуратора
  */
+@ParametersAreNonnullByDefault
+@ReturnValuesAreNonnullByDefault
 package com.github._1c_syntax.bsl.reader.designer;
+
+import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
+
+import javax.annotation.ParametersAreNonnullByDefault;

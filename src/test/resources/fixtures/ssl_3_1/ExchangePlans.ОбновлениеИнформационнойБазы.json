@@ -1,46 +1,517 @@
 {"com.github._1c_syntax.bsl.mdo.ExchangePlan": {
   "attributes": [
-    {
-      "uuid": "5371672a-c8e0-4c12-834e-f23dd885b49a",
-      "name": "Очередь",
-      "mdoReference": {
-        "type": "ATTRIBUTE",
-        "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.Attribute.Очередь",
-        "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.Реквизит.Очередь"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          [
+    [
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ThisNode",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ЭтотУзел"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "EXCHANGE_PLAN",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
             {
-              "langKey": "ru",
-              "value": "Очередь"
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ПланОбменаСсылка.ОбновлениеИнформационнойБазы",
+                  "nameEn": "ExchangePlanRef.ОбновлениеИнформационнойБазы"
+                },
+                "variant": "METADATA",
+                "kind": "EXCHANGE_PLAN"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
             }
           ]
-        ]
+        },
+        "fullName": {
+          "nameRu": "ЭтотУзел",
+          "nameEn": "ThisNode"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       },
-      "supportVariant": "NOT_EDITABLE",
-      "owner": {
-        "type": "EXCHANGE_PLAN",
-        "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы",
-        "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы"
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ReceivedNo",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.НомерПринятого"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 5,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (5.0)",
+                  "nameEn": "NumberQualifiers (5.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "НомерПринятого",
+          "nameEn": "ReceivedNo"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "format": {
-        "content": []
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.SentNo",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.НомерОтправленного"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "НомерОтправленного",
+          "nameEn": "SentNo"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       },
-      "editFormat": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Ref",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Ссылка"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "Ссылка",
+          "nameEn": "Ref"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       },
-      "markNegatives": false,
-      "mask": "",
-      "multiLine": false,
-      "extendedEdit": false,
-      "fillFromFillingValue": false
-    }
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.DeletionMark",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ПометкаУдаления"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "ПометкаУдаления",
+          "nameEn": "DeletionMark"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Description",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Наименование"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 25,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
+                  "nameEn": "StringQualifiers (25, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Наименование",
+          "nameEn": "Description"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Code",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Код"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 9,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (9.0)",
+                  "nameEn": "NumberQualifiers (9.0)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Код",
+          "nameEn": "Code"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "5371672a-c8e0-4c12-834e-f23dd885b49a",
+        "name": "Очередь",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.Attribute.Очередь",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.Реквизит.Очередь"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Очередь"
+              }
+            }
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "nameRu": "КвалификаторыЧисла (10.0)",
+                  "nameEn": "NumberQualifiers (10.0)"
+                }
+              }
+            }
+          ]
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ExchangeDate",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ДатаОбмена"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ДатаОбмена",
+          "nameEn": "ExchangeDate"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
   ],
   "commands": [],
   "comment": "",
@@ -2844,22 +3315,26 @@
   "description": "Обновление информационной базы",
   "distributedInfoBase": false,
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "forms": [],
   "includeConfigurationExtensions": false,
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },
   "mdoType": "EXCHANGE_PLAN",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
+      "ObjectModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
+      ]
     ],
     [
-      "ObjectModule",
-      "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
+      ]
     ]
   ],
   "modules": [
@@ -2867,7 +3342,7 @@
       "moduleType": "ManagerModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NOT_EDITABLE",
       "isProtected": false
@@ -2876,7 +3351,7 @@
       "moduleType": "ObjectModule",
       "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NOT_EDITABLE",
       "isProtected": false
@@ -2916,12 +3391,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Обновление информационной базы"
         }
-      ]
+      }
     ]
   },
   "tabularSections": [],

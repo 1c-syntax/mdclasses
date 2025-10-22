@@ -42,7 +42,6 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -50,6 +49,8 @@ import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
+import com.github._1c_syntax.bsl.types.DateFractions;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
@@ -271,6 +272,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(UsePurposes.class));
     registerConverter(new EnumConverter<>(FormElementType.class));
     registerConverter(new EnumConverter<>(InterfaceCompatibilityMode.class));
+    registerConverter(new EnumConverter<>(DateFractions.class));
   }
 
   private void init() {

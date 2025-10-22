@@ -46,7 +46,7 @@ public class DataSetConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var dataSet = DataCompositionSchema.DataSet.builder();
-    dataSet.type(DataSetType.fromString(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
+    dataSet.type(DataSetType.valueByName(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();

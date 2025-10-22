@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -40,11 +41,13 @@ class CalculationRegisterTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo).isInstanceOf(CalculationRegister.class);
     var calculationRegister = (CalculationRegister) mdo;
-    assertThat(calculationRegister.getAllAttributes()).hasSize(2);
-    assertThat(calculationRegister.getChildren()).hasSize(3);
+    assertThat(calculationRegister.getAllAttributes()).hasSize(14);
+    assertThat(calculationRegister.getChildren()).hasSize(15);
     assertThat(calculationRegister.getResources()).hasSize(1);
     assertThat(calculationRegister.getDimensions()).hasSize(1);
-    assertThat(calculationRegister.getAttributes()).isEmpty();
+    assertThat(calculationRegister.getAttributes())
+      .hasSize(12)
+      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(calculationRegister.getRecalculations()).hasSize(1);
     var recalc = calculationRegister.getRecalculations().get(0);
     assertThat(recalc.getModules())

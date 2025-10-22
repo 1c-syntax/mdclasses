@@ -21,14 +21,17 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
@@ -36,12 +39,12 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Constant implements MDObject, ModuleOwner, AccessRightsOwner {
+public class Constant implements MDObject, ModuleOwner, AccessRightsOwner, ValueTypeOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * MDObject
@@ -69,6 +72,13 @@ public class Constant implements MDObject, ModuleOwner, AccessRightsOwner {
   @Default
   List<Module> modules = Collections.emptyList();
 
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
    * Свое
@@ -85,6 +95,11 @@ public class Constant implements MDObject, ModuleOwner, AccessRightsOwner {
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
+
   /**
    * Возвращает перечень возможных прав доступа
    */
@@ -92,7 +107,7 @@ public class Constant implements MDObject, ModuleOwner, AccessRightsOwner {
     return POSSIBLE_RIGHTS;
   }
 
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.READ,
       RoleRight.UPDATE,

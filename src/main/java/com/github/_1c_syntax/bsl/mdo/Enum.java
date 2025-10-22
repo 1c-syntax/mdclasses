@@ -25,11 +25,11 @@ import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -42,10 +42,10 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, TemplateOwner {
+public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, TemplateOwner, AttributeOwner {
 
   /*
    * MDObject
@@ -98,6 +98,13 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
   List<ObjectTemplate> templates;
 
   /*
+   * AttributeOwner
+   */
+
+  @Singular
+  List<Attribute> attributes;
+
+  /*
    * Свое
    */
 
@@ -129,6 +136,11 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
 
   private List<Module> computeAllModules() {
     return LazyLoader.computeAllModules(this);
+  }
+
+  @Override
+  public List<Attribute> getAllAttributes() {
+    return getAttributes();
   }
 
 }

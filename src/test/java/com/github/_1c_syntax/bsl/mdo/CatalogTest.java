@@ -24,11 +24,17 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ValueTypes;
+import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,16 +50,17 @@ class CatalogTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo).isInstanceOf(Catalog.class);
     var catalog = (Catalog) mdo;
-    assertThat(catalog.getAllAttributes()).hasSize(3);
+    assertThat(catalog.getAllAttributes()).hasSize(12);
     assertThat(catalog.getChildren())
-      .hasSize(9)
+      .hasSize(18)
       .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(StandardAttribute.class::isInstance)
       .anyMatch(ObjectCommand.class::isInstance)
       .anyMatch(ObjectForm.class::isInstance)
       .anyMatch(TabularSection.class::isInstance)
     ;
-    assertThat(catalog.getPlainChildren()).hasSize(11);
-    assertThat(catalog.getAttributes()).hasSize(3);
+    assertThat(catalog.getPlainChildren()).hasSize(21);
+    assertThat(catalog.getAttributes()).hasSize(12);
     assertThat(catalog.getTabularSections()).hasSize(1);
     assertThat(catalog.getForms()).hasSize(3);
     assertThat(catalog.getTemplates()).hasSize(1);
@@ -64,15 +71,17 @@ class CatalogTest {
     ;
     assertThat(catalog.getAllModules()).hasSize(6);
     assertThat(catalog.getStorageFields())
-      .hasSize(4)
+      .hasSize(13)
       .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(StandardAttribute.class::isInstance)
       .anyMatch(TabularSection.class::isInstance)
       .noneMatch(ObjectCommand.class::isInstance)
       .noneMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getPlainStorageFields())
-      .hasSize(6)
+      .hasSize(16)
       .anyMatch(ObjectAttribute.class::isInstance)
+      .anyMatch(StandardAttribute.class::isInstance)
       .anyMatch(TabularSection.class::isInstance)
       .noneMatch(ObjectCommand.class::isInstance)
       .noneMatch(ObjectForm.class::isInstance)
@@ -95,19 +104,19 @@ class CatalogTest {
 
     var catalog = (Catalog) mdo;
     assertThat(catalog.getChildren())
-      .hasSize(14)
+      .hasSize(23)
       .anyMatch(ObjectAttribute.class::isInstance)
       .anyMatch(ObjectCommand.class::isInstance)
       .anyMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getStorageFields())
-      .hasSize(8)
+      .hasSize(17)
       .anyMatch(ObjectAttribute.class::isInstance)
       .noneMatch(ObjectCommand.class::isInstance)
       .noneMatch(ObjectForm.class::isInstance)
     ;
     assertThat(catalog.getPlainStorageFields())
-      .hasSize(8)
+      .hasSize(17)
       .anyMatch(ObjectAttribute.class::isInstance)
       .noneMatch(ObjectCommand.class::isInstance)
       .noneMatch(ObjectForm.class::isInstance)
@@ -127,7 +136,35 @@ class CatalogTest {
     assertThat(attribute.getDescription()).isEqualTo("Автор");
     assertThat(attribute.getDescription("ru")).isEqualTo("Автор");
     assertThat(attribute.getDescription("en")).isEqualTo("Автор");
+    assertThat(attribute.getValueType()).isNotNull();
+    assertThat(attribute.getValueType()
+      .contains(Objects.requireNonNull(ValueTypes.get("CatalogRef.Пользователи")))).isTrue();
 
+    child = catalog.findChild(MdoReference.create("Catalog.Заметки.StandardAttribute.PredefinedDataName"));
+    assertThat(child).isPresent();
+    var stdAttribute = (StandardAttribute) child.get();
+    assertThat(stdAttribute.getName()).isEqualTo("PredefinedDataName");
+    assertThat(stdAttribute.getFullName().getRu()).isEqualTo("ИмяПредопределенныхДанных");
+    assertThat(stdAttribute.getMdoReference())
+      .isEqualTo(MdoReference.create("Catalog.Заметки.StandardAttribute.PredefinedDataName"));
+    assertThat(stdAttribute.getKind()).isEqualTo(AttributeKind.STANDARD);
+    assertThat(stdAttribute.getSynonym().isEmpty()).isTrue();
+    assertThat(stdAttribute.getDescription()).isEqualTo("ИмяПредопределенныхДанных");
+    assertThat(stdAttribute.getDescription("ru")).isEqualTo("ИмяПредопределенныхДанных");
+    assertThat(stdAttribute.getDescription("en")).isEqualTo("PredefinedDataName");
+    assertThat(stdAttribute.getValueType()).isNotNull();
+    assertThat(stdAttribute.getValueType().contains(PrimitiveValueType.STRING)).isTrue();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Catalogs.ВерсииФайлов, _edt",
+    "false, ssl_3_1, Catalogs.ВерсииФайлов"
+  })
+  void testSSLFixture(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo)
+      .isInstanceOf(Catalog.class);
   }
 
 //  private void checkExtInfo(FormDataOLD formData) {

@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -40,12 +41,14 @@ class AccumulationRegisterTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo).isInstanceOf(AccumulationRegister.class);
     var accumulationRegister = (AccumulationRegister) mdo;
-    assertThat(accumulationRegister.getAttributes()).isEmpty();
+    assertThat(accumulationRegister.getAttributes())
+      .hasSize(5)
+      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(accumulationRegister.getForms()).isEmpty();
     assertThat(accumulationRegister.getCommands()).isEmpty();
     assertThat(accumulationRegister.getModules()).isEmpty();
     assertThat(accumulationRegister.getResources()).hasSize(1);
     assertThat(accumulationRegister.getDimensions()).hasSize(1);
-    assertThat(accumulationRegister.getChildren()).hasSize(2);
+    assertThat(accumulationRegister.getChildren()).hasSize(7);
   }
 }

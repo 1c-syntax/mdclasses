@@ -21,12 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -97,6 +97,12 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   @Singular("subsystem")
   List<Subsystem> subsystems;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   /*
    * Для ChildrenOwner
    */
@@ -109,12 +115,6 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   /*
    * свое
    */
-
-  /**
-   * Пояснение
-   */
-  @Default
-  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Возвращает список подсистем, в которые входит указанная ссылка на объект

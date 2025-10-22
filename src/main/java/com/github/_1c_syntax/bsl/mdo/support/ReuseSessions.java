@@ -21,27 +21,42 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Возможные варианты повторного использования сеансов WS
  */
-@AllArgsConstructor
-@Getter
-public enum ReuseSessions implements EnumWithValue {
+@ToString(of = "fullName")
+public enum ReuseSessions implements EnumWithName {
+  USE("Use", "Использовать"),
+  AUTO_USE("AutoUse", "ИспользоватьАвтоматически"),
+  DONT_USE("DontUse", "НеИспользовать"),
+  UNKNOWN("unknown", "неизвестный");
 
-  USE("Use"),
-  AUTO_USE("AutoUse"),
-  DONT_USE("DontUse"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+  private static final Map<String, ReuseSessions> KEYS = EnumWithName.computeKeys(values());
 
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
+
+  ReuseSessions(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static ReuseSessions valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
 }

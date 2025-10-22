@@ -70,7 +70,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          6
+        ],
+        []
+      ],
       "resources": [
         {
           "uuid": "e88df8bd-bf97-41a4-88fc-09c84a51824b",
@@ -91,7 +96,36 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false,
+                  "description": {
+                    "nameRu": "КвалификаторыЧисла (10.0)",
+                    "nameEn": "NumberQualifiers (10.0)"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
       "dimensions": [
@@ -115,6 +149,34 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                    "nameEn": "StringQualifiers (10, Variable)"
+                  }
+                }
+              }
+            ]
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -140,15 +202,27 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Регистр накопления"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          5
+        ],
+        []
+      ],
       "resources": [
         {
           "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
@@ -169,7 +243,35 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false,
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/resources/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
       "dimensions": [
@@ -193,6 +295,33 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
+                }
+              }
+            ]
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -232,7 +361,12 @@
         1
       ],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          7
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -263,7 +397,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          12
+        ],
+        []
+      ],
       "resources": [
         {
           "uuid": "86f41061-e298-4da5-8d28-489a349d55fc",
@@ -284,7 +423,35 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 10,
+                  "scale": 0,
+                  "nonNegative": false,
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/resources/com.github._1c_syntax.bsl.mdo.children.Resource/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
       "dimensions": [
@@ -308,6 +475,33 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
+                }
+              }
+            ]
+          },
           "master": false,
           "denyIncompleteValues": true,
           "useInTotals": true
@@ -328,9 +522,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Перерасчет"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -390,7 +591,7 @@
       ],
       "attributes": [
         [
-          3
+          12
         ],
         []
       ],
@@ -414,7 +615,7 @@
           },
           "attributes": [
             [
-              2
+              3
             ],
             []
           ]
@@ -439,9 +640,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Макет"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -457,7 +665,8 @@
       ],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
-      }
+      },
+      "owners": []
     }
   ],
   "chartsOfAccounts": [
@@ -479,7 +688,12 @@
         1
       ],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          10
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -496,9 +710,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Признак учета"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -507,7 +728,27 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 0
+              }
+            ]
+          }
         }
       ],
       "extDimensionAccountingFlags": [
@@ -530,7 +771,20 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          }
         }
       ],
       "explanation": {
@@ -555,7 +809,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          7
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -583,10 +842,42 @@
         2
       ],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          9
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -625,6 +916,33 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
       "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      },
       "autoUse": "USE",
       "passwordMode": false,
       "indexing": "DONT_INDEX",
@@ -684,9 +1002,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Форма"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -763,6 +1088,33 @@
       "modules": [
         2
       ],
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      },
       "passwordMode": false,
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
@@ -824,7 +1176,34 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "description": "Конфигурация",
@@ -867,18 +1246,31 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Графа"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
           "owner": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/documentJournals/com.github._1c_syntax.bsl.mdo.DocumentJournal/mdoReference"
           },
-          "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "references": [
+            {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Документ1.Attribute.Реквизит1",
+              "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит1"
+            }
+          ]
         }
       ],
       "forms": [],
@@ -936,7 +1328,7 @@
       ],
       "attributes": [
         [
-          3
+          8
         ],
         []
       ],
@@ -960,7 +1352,7 @@
           },
           "attributes": [
             [
-              2
+              3
             ],
             []
           ]
@@ -984,6 +1376,7 @@
       }
     }
   ],
+  "empty": false,
   "enums": [
     {
       "uuid": "f11f3441-4b64-4344-b1a0-0e4b3e466e03",
@@ -1005,6 +1398,12 @@
       "commands": [],
       "forms": [],
       "templates": [],
+      "attributes": [
+        [
+          2
+        ],
+        []
+      ],
       "enumValues": [
         {
           "uuid": "47a90ebe-6127-4041-bdd4-def343363004",
@@ -1045,6 +1444,26 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
       "supportVariant": "NONE",
+      "source": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+              "fullName": {
+                "nameRu": "СправочникОбъект.Справочник1",
+                "nameEn": "CatalogObject.Справочник1"
+              },
+              "variant": "METADATA",
+              "kind": "CATALOG"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      },
       "handler": {
         "methodPath": "CommonModule.ПростойОбщийМодуль.ПодпискаНаСобытие1ПередЗаписью",
         "moduleName": "ПростойОбщийМодуль",
@@ -1072,7 +1491,12 @@
         1
       ],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          8
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -1102,9 +1526,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Текущая СУБД"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -1121,9 +1552,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Информация об ошибках"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -1146,9 +1584,16 @@
               "comment": "",
               "synonym": {
                 "content": [
-                  [
-                    1
-                  ]
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Command"
+                    }
+                  }
                 ]
               },
               "supportVariant": "NONE",
@@ -1185,9 +1630,16 @@
               "comment": "",
               "synonym": {
                 "content": [
-                  [
-                    1
-                  ]
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Template"
+                    }
+                  }
                 ]
               },
               "supportVariant": "NONE",
@@ -1205,6 +1657,8 @@
           "dataLockControlMode": "MANAGED"
         }
       ],
+      "functions": [],
+      "cubes": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -1276,9 +1730,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Параметр функциональных опций"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -1320,9 +1781,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Шаблон URL"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -1365,15 +1833,21 @@
   "moduleTypes": [
     [
       "SessionModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/SessionModule.bsl"
+      [
+        1
+      ]
     ],
     [
       "ExternalConnectionModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ExternalConnectionModule.bsl"
+      [
+        1
+      ]
     ],
     [
       "ManagedApplicationModule",
-      "src/test/resources/ext/edt/mdclasses/configuration/src/Configuration/ManagedApplicationModule.bsl"
+      [
+        1
+      ]
     ]
   ],
   "modules": [
@@ -1546,6 +2020,26 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                  "fullName": {
+                    "nameRu": "ДокументСсылка.Документ1",
+                    "nameEn": "DocumentRef.Документ1"
+                  },
+                  "variant": "METADATA",
+                  "kind": "DOCUMENT"
+                }
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -1573,7 +2067,20 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      }
     }
   ],
   "settingsStorages": [
@@ -1643,7 +2150,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          8
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -1660,9 +2172,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                1
-              ]
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                  "langKey": "ru",
+                  "value": "Реквизит адресации"
+                }
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -1672,6 +2191,33 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
+                }
+              }
+            ]
+          },
           "format": {
             "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
           },
@@ -1737,6 +2283,7 @@
       ]
     }
   ],
+  "webSocketClients": [],
   "wsReferences": [
     {
       "uuid": "95b745f2-e1fa-4f94-b7f9-f3f0224fc8c7",
@@ -1750,9 +2297,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            1
-          ]
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "WSСсылка"
+            }
+          }
         ]
       },
       "supportVariant": "NONE",

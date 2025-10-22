@@ -7,14 +7,15 @@ plugins {
     jacoco
     id("org.cadixdev.licenser") version "0.6.1"
     id("me.qoomon.git-versioning") version "6.4.4"
-    id("io.freefair.lombok") version "8.14.2"
-    id("io.freefair.javadoc-links") version "8.14.2"
-    id("io.freefair.javadoc-utf-8") version "8.14.2"
-    id("io.freefair.maven-central.validate-poms") version "8.14.2"
-    id("com.github.ben-manes.versions") version "0.52.0"
+    id("io.freefair.lombok") version "9.0.0"
+    id("io.freefair.javadoc-links") version "9.0.0"
+    id("io.freefair.javadoc-utf-8") version "9.0.0"
+    id("io.freefair.maven-central.validate-poms") version "9.0.0"
+    id("com.github.ben-manes.versions") version "0.53.0"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.jreleaser") version "1.19.0"
-    id("org.sonarqube") version "6.2.0.5505"
+    id("org.jreleaser") version "1.20.0"
+    id("org.sonarqube") version "7.0.0.6105"
+    id("me.champeau.jmh") version "0.7.3"
 }
 
 group = "io.github.1c-syntax"
@@ -44,6 +45,7 @@ gitVersioning.apply {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven("https://central.sonatype.com/repository/maven-snapshots")
 }
 
 dependencies {
@@ -57,9 +59,11 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
-    implementation("io.github.1c-syntax", "utils", "0.6.3")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.8.1")
-    implementation("io.github.1c-syntax", "supportconf", "0.14.3")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.0")
+    implementation("io.github.1c-syntax", "utils", "0.6.4")
+    implementation("io.github.1c-syntax", "supportconf", "0.15.0") {
+        exclude("io.github.1c-syntax", "bsl-common-library")
+    }
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.179")
@@ -75,6 +79,10 @@ dependencies {
 
     // логирование
     testImplementation("org.slf4j", "slf4j-reload4j", "2.1.0-alpha1")
+
+    // бенчмарк
+    jmh("org.openjdk.jmh:jmh-core:1.37")
+    jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
 }
 
 java {
@@ -90,6 +98,14 @@ sourceSets {
             exclude("**/*.xsd")
         }
     }
+}
+
+jmh {
+    warmupIterations = 3
+    iterations = 5
+    fork = 2
+    resultFormat = "JSON"
+    resultsFile = file("build/jmh-results.json")
 }
 
 tasks.test {
@@ -138,7 +154,10 @@ sonar {
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
-        property("sonar.coverage.jacoco.xmlReportPaths", "${layout.buildDirectory.get()}/reports/jacoco/test/jacoco.xml")
+        property(
+            "sonar.coverage.jacoco.xmlReportPaths",
+            "${layout.buildDirectory.get()}/reports/jacoco/test/jacoco.xml"
+        )
     }
 }
 

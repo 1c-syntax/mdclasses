@@ -33,7 +33,9 @@ class InformationRegisterTest {
       "true, mdclasses, InformationRegisters.РегистрСведений1, _edt",
       "false, mdclasses, InformationRegisters.РегистрСведений1",
       "true, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, _edt",
-      "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи"
+      "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи",
+      "true, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов, _edt",
+      "false, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.test_utils;
 
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
@@ -111,6 +112,7 @@ public class MDTestUtils {
           xstream.omitField(clazz, "commonModulesByName");
           xstream.omitField(clazz, "childrenByMdoRef");
           xstream.omitField(clazz, "mdoRef");
+          xstream.omitField(clazz, "plainDataSets");
 
         } catch (ClassNotFoundException e) {
           throw new RuntimeException(e);
@@ -136,7 +138,7 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdo = MDOReader.read(configurationPath, mdoRef);
+    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
     assertThat(mdo).isInstanceOf(MD.class);
 
     Path fixturePath;
@@ -165,7 +167,8 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    var mdc = MDClasses.createConfiguration(configurationPath,
+      MDCReadSettings.builder().skipSupport(skipSupport).build());
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
 
@@ -182,6 +185,10 @@ public class MDTestUtils {
   }
 
   public CF readConfiguration(ArgumentsAccessor argumentsAccessor, boolean skipSupport) {
+    return readConfiguration(argumentsAccessor, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  public CF readConfiguration(ArgumentsAccessor argumentsAccessor, MDCReadSettings readSettings) {
     var isEDT = argumentsAccessor.getBoolean(0);
     var examplePackName = argumentsAccessor.getString(1);
 
@@ -192,7 +199,7 @@ public class MDTestUtils {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath, skipSupport);
+    var mdc = MDClasses.createConfiguration(configurationPath, readSettings);
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
     assertThat(mdc).isInstanceOf(CF.class);
@@ -208,8 +215,8 @@ public class MDTestUtils {
     Path externalSourcePath;
     if (isEDT) {
       var sourceTypeName = (isReport)
-        ? MDOType.EXTERNAL_REPORT.getGroupName()
-        : MDOType.EXTERNAL_DATA_PROCESSOR.getGroupName();
+        ? MDOType.EXTERNAL_REPORT.groupName()
+        : MDOType.EXTERNAL_DATA_PROCESSOR.groupName();
       externalSourcePath = Path.of(EXAMPLES_PATH, EDT_PATH, EXTERNAL_SOURCE_PATH, sourceTypeName, name, name + ".mdo");
     } else {
       var sourceTypeName = (isReport) ? "erf" : "epf";
@@ -237,6 +244,7 @@ public class MDTestUtils {
   private void objectEqualJson(Object obj, Path fixturePath) {
     var fixture = getFixture(fixturePath);
     var current = createJson(obj);
+
     Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
   }
 

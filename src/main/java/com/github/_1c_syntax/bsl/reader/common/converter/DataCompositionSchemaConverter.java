@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
@@ -45,6 +46,10 @@ public class DataCompositionSchemaConverter implements ReadConverter {
   @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipDataCompositionSchema()) {
+      return EmptyTemplateData.getEmpty();
+    }
+
     List<DataCompositionSchema.DataSet> dataSets = new ArrayList<>();
 
     // линейно читаем файл

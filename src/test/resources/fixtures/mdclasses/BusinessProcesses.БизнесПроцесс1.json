@@ -1,22 +1,380 @@
 {"com.github._1c_syntax.bsl.mdo.BusinessProcess": {
-  "attributes": [],
+  "attributes": [
+    [
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Ref",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Ссылка"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "type": "BUSINESS_PROCESS",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "БизнесПроцессСсылка.БизнесПроцесс1",
+                  "nameEn": "BusinessProcessRef.БизнесПроцесс1"
+                },
+                "variant": "METADATA",
+                "kind": "BUSINESS_PROCESS"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Ссылка",
+          "nameEn": "Ref"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.DeletionMark",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.ПометкаУдаления"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "ПометкаУдаления",
+          "nameEn": "DeletionMark"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Date",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Дата"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Дата",
+          "nameEn": "Date"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Number",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Номер"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 9,
+                "allowedLength": "VARIABLE",
+                "description": {
+                  "nameRu": "КвалификаторыСтроки (9, Переменная)",
+                  "nameEn": "StringQualifiers (9, Variable)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Номер",
+          "nameEn": "Number"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Started",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Стартован"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "Стартован",
+          "nameEn": "Started"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Completed",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Завершен"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "Завершен",
+          "nameEn": "Completed"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "560a32ca-028d-4b88-b6f2-6b7212bf31f8",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.HeadTask",
+          "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.ВедущаяЗадача"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NONE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ЗадачаСсылка.Задача1",
+                  "nameEn": "TaskRef.Задача1"
+                },
+                "variant": "METADATA",
+                "kind": "TASK"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "ВедущаяЗадача",
+          "nameEn": "HeadTask"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
   "commands": [],
   "comment": "",
   "description": "БизнесПроцесс1",
   "explanation": {
-    "content": []
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "forms": [],
   "mdoReference": {
-    "type": "BUSINESS_PROCESS",
-    "mdoRef": "BusinessProcess.БизнесПроцесс1",
-    "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },
   "mdoType": "BUSINESS_PROCESS",
   "moduleTypes": [
     [
       "ObjectModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/BusinessProcesses/БизнесПроцесс1/Ext/ObjectModule.bsl"
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/BusinessProcesses/БизнесПроцесс1/Ext/ObjectModule.bsl"
+      ]
     ]
   ],
   "modules": [
@@ -24,7 +382,7 @@
       "moduleType": "ObjectModule",
       "uri": "src/test/resources/ext/designer/mdclasses/src/cf/BusinessProcesses/БизнесПроцесс1/Ext/ObjectModule.bsl",
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/mdoReference"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
       },
       "supportVariant": "NONE",
       "isProtected": false
@@ -66,7 +424,7 @@
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/explanation"
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
   "tabularSections": [],
   "task": {

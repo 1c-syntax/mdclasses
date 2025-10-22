@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
+import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
@@ -38,6 +39,7 @@ import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -99,6 +101,16 @@ public class LazyLoader {
 
     if (mdo instanceof CalculationRegister calculationRegister) {
       children = addAll(children, calculationRegister.getRecalculations());
+    }
+
+    if (mdo instanceof ExternalDataSource externalDataSource) {
+      children = addAll(children, externalDataSource.getTables());
+      children = addAll(children, externalDataSource.getCubes());
+      children = addAll(children, externalDataSource.getFunctions());
+    }
+
+    if (mdo instanceof ExternalDataSourceCube externalDataSourceCube) {
+      children = addAll(children, externalDataSourceCube.getDimensionTables());
     }
 
     return Collections.unmodifiableList(children);
@@ -174,6 +186,11 @@ public class LazyLoader {
       children = addAll(children, chartOfAccounts.getAttributes());
       children = addAll(children, chartOfAccounts.getAccountingFlags());
       children = addAll(children, chartOfAccounts.getExtDimensionAccountingFlags());
+    }
+
+    if (mdo instanceof ExternalDataSourceCube cube) {
+      children = addAll(children, cube.getResources());
+      children = addAll(children, cube.getDimensions());
     }
 
     return Collections.unmodifiableList(children);

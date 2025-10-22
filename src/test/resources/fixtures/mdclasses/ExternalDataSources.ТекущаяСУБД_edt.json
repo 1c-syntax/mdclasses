@@ -1,9 +1,11 @@
 {"com.github._1c_syntax.bsl.mdo.ExternalDataSource": {
   "comment": "",
+  "cubes": [],
   "description": "Текущая СУБД",
   "explanation": {
     "content": []
   },
+  "functions": [],
   "mdoReference": {
     "type": "EXTERNAL_DATA_SOURCE",
     "mdoRef": "ExternalDataSource.ТекущаяСУБД",
@@ -28,12 +30,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Текущая СУБД"
         }
-      ]
+      }
     ]
   },
   "tables": [
@@ -49,12 +55,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Информация об ошибках"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -94,12 +104,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Command"
                 }
-              ]
+              }
             ]
           },
           "supportVariant": "NONE",
@@ -125,20 +139,24 @@
             "uuid": "87f60b35-2a90-49fd-aa27-c094d7374c98",
             "name": "Период",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..Период",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..Период"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.Период",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.Период"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Период"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -147,26 +165,58 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 20,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (20, Переменная)",
+                      "nameEn": "StringQualifiers (20, Variable)"
+                    }
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "e6e7c2e1-b4b4-4da5-8d1a-b5b7e0c18cdd",
             "name": "ИдентификаторОшибки",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..ИдентификаторОшибки",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..ИдентификаторОшибки"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.ИдентификаторОшибки",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.ИдентификаторОшибки"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Идентификатор ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -175,26 +225,57 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "fullName": {
+                      "nameRu": "ОпределяемыйТип.ТипUIDСтрока",
+                      "nameEn": "DefinedType.ТипUIDСтрока"
+                    },
+                    "variant": "METADATA",
+                    "kind": "DEFINED_TYPE"
+                  }
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 0
+                }
+              ]
+            }
           },
           {
             "uuid": "5569bb8a-91fa-40b4-a86c-0840769ddf76",
             "name": "УровеньОшибки",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..УровеньОшибки",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..УровеньОшибки"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.УровеньОшибки",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.УровеньОшибки"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Уровень ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -203,26 +284,43 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            }
           },
           {
             "uuid": "e04f524f-a38c-4a4a-9810-f8a87b17089c",
             "name": "Категория",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..Категория",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..Категория"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.Категория",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.Категория"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Категория"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -231,26 +329,43 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            }
           },
           {
             "uuid": "09a537fe-b8df-490d-8800-bc1959376cd3",
             "name": "НомерСеанса",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..НомерСеанса",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..НомерСеанса"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.НомерСеанса",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.НомерСеанса"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Номер сеанса"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -259,26 +374,59 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                    "precision": 15,
+                    "scale": 0,
+                    "nonNegative": true,
+                    "description": {
+                      "nameRu": "КвалификаторыЧисла (15.0 неотр)",
+                      "nameEn": "NumberQualifiers (15.0 nonneg)"
+                    }
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "2abf5cec-cec6-4493-9da0-bdc8ae4cf962",
             "name": "Пользователь",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..Пользователь",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..Пользователь"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.Пользователь",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.Пользователь"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Пользователь"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -287,26 +435,43 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            }
           },
           {
             "uuid": "995d9173-88e3-4afb-b60f-242f530978e7",
             "name": "ДатаУведомления",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..ДатаУведомления",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..ДатаУведомления"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.ДатаУведомления",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.ДатаУведомления"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Дата уведомления"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -315,26 +480,57 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 20,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            }
           },
           {
             "uuid": "8dbba219-9048-43ac-88b3-ff5cdd4071d1",
             "name": "ОписаниеОшибки",
             "mdoReference": {
-              "type": "UNKNOWN",
-              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках..ОписаниеОшибки",
-              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках..ОписаниеОшибки"
+              "type": "EXTERNAL_DATA_SOURCE_TABLE_FIELD",
+              "mdoRef": "ExternalDataSource.ТекущаяСУБД.Table.ИнформацияОбОшибках.Field.ОписаниеОшибки",
+              "mdoRefRu": "ВнешнийИсточникДанных.ТекущаяСУБД.Таблица.ИнформацияОбОшибках.Поле.ОписаниеОшибки"
             },
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Описание ошибки"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -343,7 +539,35 @@
             },
             "passwordMode": false,
             "kind": "CUSTOM",
-            "indexing": "DONT_INDEX"
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 0,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                      "nameEn": "StringQualifiers (0, Variable)"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ],
         []
@@ -362,12 +586,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Record form"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -401,12 +629,16 @@
                   "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
                   "title": {
                     "content": [
-                      [
-                        {
+                      {
+                        "default": {
+                          "tag": 2
+                        },
+                        "int": 1,
+                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                           "langKey": "ru",
                           "value": "User settings group"
                         }
-                      ]
+                      }
                     ]
                   },
                   "dataPath": {
@@ -440,12 +672,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "List form"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NONE",
@@ -514,12 +750,16 @@
           "comment": "",
           "synonym": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Template"
                 }
-              ]
+              }
             ]
           },
           "supportVariant": "NONE",

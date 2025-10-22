@@ -44,9 +44,10 @@ import static java.util.Objects.requireNonNull;
 @CommonConverter
 public class SubsystemConverter implements ReadConverter {
 
-  private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.getName() + ".";
+  private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.nameEn() + ".";
   private static final int COUNT_PARTS = 2;
-  private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]" + MDOType.SUBSYSTEM.getGroupName() + "[\\\\/]");
+  private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]"
+    + MDOType.SUBSYSTEM.groupName() + "[\\\\/]");
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -83,7 +84,7 @@ public class SubsystemConverter implements ReadConverter {
     return Paths.get(
       mdReader.mdoTypeFolderPath(currentPath).toString(),
       FilenameUtils.getBaseName(currentPath.toString()),
-      MDOType.SUBSYSTEM.getGroupName()
+      MDOType.SUBSYSTEM.groupName()
     );
   }
 }

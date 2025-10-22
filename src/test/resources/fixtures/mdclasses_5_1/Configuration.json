@@ -53,10 +53,43 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          9
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
+            }
+          }
+        ]
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/bots/com.github._1c_syntax.bsl.mdo.Bot/synonym"
       }
@@ -136,6 +169,7 @@
     ],
     []
   ],
+  "empty": false,
   "enums": [],
   "eventSubscriptions": [],
   "exchangePlans": [
@@ -155,7 +189,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          8
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -189,7 +228,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          4
+        ],
+        []
+      ],
       "resources": [
         {
           "uuid": "bdf4a4cb-24dc-4223-a79d-4702b1adaa5c",
@@ -210,7 +254,34 @@
           },
           "passwordMode": false,
           "kind": "CUSTOM",
-          "indexing": "DONT_INDEX"
+          "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 10,
+                  "allowedLength": "VARIABLE",
+                  "description": {
+                    "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/chartsOfCharacteristicTypes/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
       "dimensions": [
@@ -266,18 +337,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.mdo.support.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Русский"
-              }
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Русский"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NONE",
@@ -294,7 +363,9 @@
   "moduleTypes": [
     [
       "ManagedApplicationModule",
-      "src/test/resources/ext/designer/mdclasses_5_1/src/cf/Ext/ManagedApplicationModule.bsl"
+      [
+        1
+      ]
     ]
   ],
   "modules": [
@@ -455,9 +526,16 @@
   "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
   "synonym": {
     "content": [
-      [
-        1
-      ]
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Конфигурация"
+        }
+      }
     ]
   },
   "tasks": [],
@@ -470,5 +548,6 @@
   "vendor": "",
   "version": "",
   "webServices": [],
+  "webSocketClients": [],
   "wsReferences": []
 }}

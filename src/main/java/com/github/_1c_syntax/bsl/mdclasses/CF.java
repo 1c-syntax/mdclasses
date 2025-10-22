@@ -28,11 +28,11 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
 
 import java.net.URI;
 import java.util.Collections;
@@ -110,7 +110,7 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   /**
    * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
    */
-  default Map<ModuleType, URI> mdoModuleTypes(MdoReference mdoReference) {
+  default Map<ModuleType, List<URI>> mdoModuleTypes(MdoReference mdoReference) {
     var child = findChild(mdoReference);
     if (child.isPresent() && child.get() instanceof ModuleOwner moduleOwner) {
       return moduleOwner.getModuleTypes();
@@ -122,7 +122,7 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   /**
    * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
    */
-  default Map<ModuleType, URI> mdoModuleTypes(String mdoRef) {
+  default Map<ModuleType, List<URI>> mdoModuleTypes(String mdoRef) {
     return mdoModuleTypes(MdoReference.create(mdoRef));
   }
 
@@ -162,7 +162,9 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   }
 
   /**
-   * Возвращает локализованное представление ссылки на объект метаданных с учетом используемого варианта языка разработки
+   * Возвращает локализованное представление ссылки на объект метаданных с учетом используемого варианта языка
+   * разработки
+   *
    * @param md Объект метаданных, принадлежащий MDClasses
    * @return Строковое представление ссылки
    */
@@ -193,5 +195,14 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   @Override
   default Optional<CommonModule> findCommonModule(String name) {
     return Optional.ofNullable(getCommonModulesByName().get(name));
+  }
+
+  /**
+   * Возвращает признак пустоты конфигурации
+   *
+   * @return Это пустая конфигурация
+   */
+  default boolean isEmpty() {
+    return this == Configuration.EMPTY;
   }
 }

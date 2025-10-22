@@ -21,26 +21,42 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Возможные варианты режима блокировки
  */
-@AllArgsConstructor
-@Getter
-public enum DataLockControlMode implements EnumWithValue {
-  AUTOMATIC("Automatic"),
-  MANAGED("Managed"),
-  AUTOMATIC_AND_MANAGED("AutomaticAndManaged"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+@ToString(of = "fullName")
+public enum DataLockControlMode implements EnumWithName {
+  AUTOMATIC("Automatic", "Автоматический"),
+  MANAGED("Managed", "Автоматический"),
+  AUTOMATIC_AND_MANAGED("AutomaticAndManaged", "АвтоматическийИУправляемый"),
+  UNKNOWN("unknown", "неизвестный");
 
+  private static final Map<String, DataLockControlMode> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
+
+  DataLockControlMode(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static DataLockControlMode valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
 }

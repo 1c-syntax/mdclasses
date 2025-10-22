@@ -35,7 +35,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          7
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -101,6 +106,34 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
       "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                "nameEn": "StringQualifiers (10, Variable)"
+              }
+            }
+          }
+        ]
+      },
       "autoUse": "USE",
       "passwordMode": false,
       "indexing": "DONT_INDEX",
@@ -191,7 +224,34 @@
       "synonym": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+              "length": 10,
+              "allowedLength": "VARIABLE",
+              "description": {
+                "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+              }
+            }
+          }
+        ]
+      }
     }
   ],
   "description": "Расширение",
@@ -244,6 +304,7 @@
     ],
     []
   ],
+  "empty": false,
   "enums": [
     [
       2
@@ -265,6 +326,18 @@
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
       },
       "supportVariant": "NONE",
+      "source": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 0
+          }
+        ],
+        "composite": false,
+        "qualifiers": []
+      },
       "handler": {
         "methodPath": "",
         "moduleName": "",
@@ -451,6 +524,26 @@
           "passwordMode": false,
           "kind": "CUSTOM",
           "indexing": "DONT_INDEX",
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                  "fullName": {
+                    "nameRu": "ДокументСсылка.Документ1",
+                    "nameEn": "DocumentRef.Документ1"
+                  },
+                  "variant": "METADATA",
+                  "kind": "DOCUMENT"
+                }
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          },
           "master": false,
           "denyIncompleteValues": false,
           "useInTotals": true
@@ -506,9 +599,16 @@
   "supportVariant": "NONE",
   "synonym": {
     "content": [
-      [
-        1
-      ]
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Расширение"
+        }
+      }
     ]
   },
   "tasks": [
@@ -528,7 +628,12 @@
       "supportVariant": "NONE",
       "modules": [],
       "commands": [],
-      "attributes": [],
+      "attributes": [
+        [
+          8
+        ],
+        []
+      ],
       "tabularSections": [],
       "forms": [],
       "templates": [],
@@ -550,6 +655,7 @@
     ],
     []
   ],
+  "webSocketClients": [],
   "wsReferences": [
     [
       2

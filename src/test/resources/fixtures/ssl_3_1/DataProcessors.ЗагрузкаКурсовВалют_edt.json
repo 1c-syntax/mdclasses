@@ -13,12 +13,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Начало периода загрузки"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -30,6 +34,33 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (Дата)",
+                  "nameEn": "DateQualifiers (Date)"
+                }
+              }
+            }
+          ]
+        },
         "format": {
           "content": []
         },
@@ -54,12 +85,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Окончание периода загрузки"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -69,6 +104,32 @@
         "passwordMode": false,
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE",
+                "description": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
+                }
+              }
+            }
+          ]
+        },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
         },
@@ -104,12 +165,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Форма"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -151,12 +216,16 @@
                 "name": "КоманднаяПанель",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Командная панель"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -182,12 +251,16 @@
                       "name": "КоманднаяПанельЛевая",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Командная панель левая"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -201,12 +274,16 @@
                       "name": "НачалоПериода",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "С"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -220,12 +297,16 @@
                       "name": "ОкончаниеПериода",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "По"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -239,12 +320,16 @@
                       "name": "КоманднаяПанельПравая",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Командная панель правая"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -290,12 +375,16 @@
                 "name": "Страницы",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Страницы"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -309,12 +398,16 @@
                       "name": "СтраницаСписокВалют",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Страница список валют"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -327,12 +420,16 @@
                           "name": "СписокВалют",
                           "title": {
                             "content": [
-                              [
-                                {
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                   "langKey": "ru",
                                   "value": "Валют"
                                 }
-                              ]
+                              }
                             ]
                           },
                           "dataPath": {
@@ -358,12 +455,16 @@
                                 "name": "КодВалюты",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Цифр. код"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -377,12 +478,16 @@
                                 "name": "СписокВалютСимвольныйКод",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Симв. код"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -396,12 +501,16 @@
                                 "name": "СписокВалютПредставление",
                                 "title": {
                                   "content": [
-                                    [
-                                      {
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                         "langKey": "ru",
                                         "value": "Валюта"
                                       }
-                                    ]
+                                    }
                                   ]
                                 },
                                 "dataPath": {
@@ -469,12 +578,16 @@
                       "name": "СтраницаВыполняетсяЗагрузкаКурсов",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Страница выполняется загрузка курсов"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -488,12 +601,16 @@
                             "name": "КартинкаДлительнаяОперация",
                             "title": {
                               "content": [
-                                [
-                                  {
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                     "langKey": "ru",
                                     "value": "Картинка длительная операция"
                                   }
-                                ]
+                                }
                               ]
                             },
                             "dataPath": {
@@ -507,12 +624,16 @@
                             "name": "НадписьВыполняетсяЗагрузкаКурсовВалют",
                             "title": {
                               "content": [
-                                [
-                                  {
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                                     "langKey": "ru",
                                     "value": "Выполняется загрузка курсов валют..."
                                   }
-                                ]
+                                }
                               ]
                             },
                             "dataPath": {
@@ -538,6 +659,33 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "fullName": {
+                          "nameRu": "ОбработкаОбъект.ЗагрузкаКурсовВалют",
+                          "nameEn": "DataProcessorObject.ЗагрузкаКурсовВалют"
+                        },
+                        "variant": "METADATA",
+                        "kind": "DATA_PROCESSOR"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 0
+                    }
+                  ]
                 }
               },
               {
@@ -545,6 +693,19 @@
                 "name": "СообщитьЧтоКурсыАктуальны",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               }
             ],
@@ -574,12 +735,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Сообщения об ошибках"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -599,12 +764,16 @@
           "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
           "title": {
             "content": [
-              [
-                {
+              {
+                "default": {
+                  "tag": 2
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                   "langKey": "ru",
                   "value": "Подробнее"
                 }
-              ]
+              }
             ]
           },
           "handlers": [
@@ -633,6 +802,21 @@
                 "name": "Объект",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                      }
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -640,12 +824,44 @@
                 "name": "Текст",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Текст"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                          "nameEn": "StringQualifiers (0, Variable)"
+                        }
+                      }
+                    }
                   ]
                 }
               }
@@ -676,12 +892,16 @@
         "comment": "АПК:58",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Параметры прописи валюты на русском языке"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -721,12 +941,16 @@
                 "name": "СклонениеЦелойЧасти",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Целая часть"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -740,12 +964,16 @@
                       "name": "ЦелаяЧастьРод",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Род"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -759,12 +987,16 @@
                       "name": "ЦелаяЧастьОдин",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Один"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -778,12 +1010,16 @@
                       "name": "ЦелаяЧатьДва",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Два"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -797,12 +1033,16 @@
                       "name": "ПолеПрописи3наРусском",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Пять"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -820,12 +1060,16 @@
                 "name": "ГруппаПараметрыДробнойЧасти",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Дробная часть"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -839,12 +1083,16 @@
                       "name": "СклонениеДробнойЧасти",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Склонение дробной части"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -910,12 +1158,16 @@
                       "name": "ГруппаЧислоРазрядовДробнойЧасти",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Число разрядов дробной части"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -946,12 +1198,16 @@
                 "name": "ГруппаПримерПрописи",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Пример прописи суммы"
                       }
-                    ]
+                    }
                   ]
                 },
                 "dataPath": {
@@ -965,12 +1221,16 @@
                       "name": "СуммаЧисло",
                       "title": {
                         "content": [
-                          [
-                            {
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
                               "value": "Сумма"
                             }
-                          ]
+                          }
                         ]
                       },
                       "dataPath": {
@@ -1004,12 +1264,44 @@
                 "name": "ЦелаяЧастьОдин",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Целая часть один"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "nameRu": "КвалификаторыСтроки (25, Переменная)",
+                          "nameEn": "StringQualifiers (25, Variable)"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1018,12 +1310,43 @@
                 "name": "ЦелаяЧатьДва",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Целая чать два"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1032,12 +1355,43 @@
                 "name": "ЦелаяЧастьПять",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Целая часть пять"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1046,12 +1400,43 @@
                 "name": "ЦелаяЧастьРод",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Целая часть род"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1060,12 +1445,43 @@
                 "name": "ДробнаяЧастьОдин",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Дробная часть один"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1074,12 +1490,43 @@
                 "name": "ДробнаяЧастьДва",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Дробная часть два"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1088,12 +1535,43 @@
                 "name": "ДробнаяЧастьПять",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Дробная часть пять"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1102,12 +1580,43 @@
                 "name": "ДробнаяЧастьРод",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Дробная часть род"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 25,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1116,6 +1625,33 @@
                 "name": "ДлинаДробнойЧасти",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1123,6 +1659,19 @@
                 "name": "ЗависимыйКурсВалют",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
                 }
               },
               {
@@ -1130,12 +1679,45 @@
                 "name": "СуммаЧисло",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Сумма число"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                        "precision": 10,
+                        "scale": 2,
+                        "nonNegative": true,
+                        "description": {
+                          "nameRu": "КвалификаторыЧисла (10.2 неотр)",
+                          "nameEn": "NumberQualifiers (10.2 nonneg)"
+                        }
+                      }
+                    }
                   ]
                 }
               },
@@ -1144,12 +1726,43 @@
                 "name": "СуммаПрописью",
                 "title": {
                   "content": [
-                    [
-                      {
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
                         "value": "Сумма прописью"
                       }
-                    ]
+                    }
+                  ]
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                        "length": 0,
+                        "allowedLength": "VARIABLE",
+                        "description": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
+                        }
+                      }
+                    }
                   ]
                 }
               }
@@ -1180,12 +1793,16 @@
         "comment": "",
         "synonym": {
           "content": [
-            [
-              {
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
                 "value": "Подбор валют из классификатора"
               }
-            ]
+            }
           ]
         },
         "supportVariant": "NOT_EDITABLE",
@@ -1295,13 +1912,30 @@
               "name": "Валюты",
               "title": {
                 "content": [
-                  [
-                    {
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                       "langKey": "ru",
                       "value": "Валюты"
                     }
-                  ]
+                  }
                 ]
+              },
+              "type": {
+                "types": [
+                  {
+                    "default": {
+                      "tag": 4
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.value.V8ValueType": "VALUE_TABLE"
+                  }
+                ],
+                "composite": false,
+                "qualifiers": []
               }
             }
           ]
@@ -1326,12 +1960,16 @@
   "mdoType": "DATA_PROCESSOR",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/DataProcessors/ЗагрузкаКурсовВалют/ManagerModule.bsl"
+      "ObjectModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/DataProcessors/ЗагрузкаКурсовВалют/ObjectModule.bsl"
+      ]
     ],
     [
-      "ObjectModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/DataProcessors/ЗагрузкаКурсовВалют/ObjectModule.bsl"
+      "ManagerModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/DataProcessors/ЗагрузкаКурсовВалют/ManagerModule.bsl"
+      ]
     ]
   ],
   "modules": [
@@ -1369,12 +2007,16 @@
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [
-      [
-        {
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
           "langKey": "ru",
           "value": "Загрузка курсов валют"
         }
-      ]
+      }
     ]
   },
   "tabularSections": [
@@ -1390,12 +2032,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Список валют"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NOT_EDITABLE",
@@ -1404,6 +2050,68 @@
       },
       "attributes": [
         [
+          {
+            "uuid": "3068be84-a401-4701-8ac9-411fae130f84",
+            "mdoReference": {
+              "type": "STANDARD_ATTRIBUTE",
+              "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.TabularSection.СписокВалют.StandardAttribute.LineNumber",
+              "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.ТабличнаяЧасть.СписокВалют.СтандартныйРеквизит.НомерСтроки"
+            },
+            "comment": "",
+            "synonym": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "STANDARD",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                    "precision": 5,
+                    "scale": 0,
+                    "nonNegative": false,
+                    "description": {
+                      "nameRu": "КвалификаторыЧисла (5.0)",
+                      "nameEn": "NumberQualifiers (5.0)"
+                    }
+                  }
+                }
+              ]
+            },
+            "fullName": {
+              "nameRu": "НомерСтроки",
+              "nameEn": "LineNumber"
+            },
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
           {
             "uuid": "957394a7-e5b8-47fc-8680-1e71efe2be7d",
             "name": "КодВалюты",
@@ -1416,12 +2124,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Код валюты"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1431,6 +2143,34 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 3,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (3, Переменная)",
+                      "nameEn": "StringQualifiers (3, Variable)"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1463,6 +2203,26 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "fullName": {
+                      "nameRu": "СправочникСсылка.Валюты",
+                      "nameEn": "CatalogRef.Валюты"
+                    },
+                    "variant": "METADATA",
+                    "kind": "CATALOG"
+                  }
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1487,12 +2247,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Дата курса"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1502,6 +2266,32 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                    "dateFractions": "DATE",
+                    "description": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1526,12 +2316,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Курс"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1541,6 +2335,35 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                    "precision": 10,
+                    "scale": 4,
+                    "nonNegative": true,
+                    "description": {
+                      "nameRu": "КвалификаторыЧисла (10.4 неотр)",
+                      "nameEn": "NumberQualifiers (10.4 nonneg)"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1565,12 +2388,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Кратность"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1580,6 +2407,35 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                    "precision": 10,
+                    "scale": 0,
+                    "nonNegative": true,
+                    "description": {
+                      "nameRu": "КвалификаторыЧисла (10.0 неотр)",
+                      "nameEn": "NumberQualifiers (10.0 nonneg)"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1604,12 +2460,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Загружать"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1619,6 +2479,19 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1643,12 +2516,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Представление"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1658,6 +2535,34 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 50,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (50, Переменная)",
+                      "nameEn": "StringQualifiers (50, Variable)"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1682,12 +2587,16 @@
             "comment": "",
             "synonym": {
               "content": [
-                [
-                  {
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                     "langKey": "ru",
                     "value": "Символьный код"
                   }
-                ]
+                }
               ]
             },
             "supportVariant": "NOT_EDITABLE",
@@ -1697,6 +2606,34 @@
             "passwordMode": false,
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+                }
+              ],
+              "composite": false,
+              "qualifiers": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                    "length": 10,
+                    "allowedLength": "VARIABLE",
+                    "description": {
+                      "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                      "nameEn": "StringQualifiers (10, Variable)"
+                    }
+                  }
+                }
+              ]
+            },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
             },
@@ -1727,12 +2664,16 @@
       "comment": "",
       "synonym": {
         "content": [
-          [
-            {
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
               "langKey": "ru",
               "value": "Общероссийский классификатор валют"
             }
-          ]
+          }
         ]
       },
       "supportVariant": "NOT_EDITABLE",

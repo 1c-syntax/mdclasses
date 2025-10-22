@@ -24,6 +24,33 @@
       "passwordMode": false,
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
+      "type": {
+        "types": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+              "fullName": {
+                "nameRu": "ДокументСсылка.Документ1",
+                "nameEn": "DocumentRef.Документ1"
+              },
+              "variant": "METADATA",
+              "kind": "DOCUMENT"
+            }
+          }
+        ],
+        "composite": false,
+        "qualifiers": [
+          {
+            "default": {
+              "tag": 4
+            },
+            "int": 0
+          }
+        ]
+      },
       "master": false,
       "denyIncompleteValues": false,
       "useInTotals": true
@@ -51,7 +78,9 @@
   "moduleTypes": [
     [
       "RecordSetModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Sequences/Последовательность1/Ext/RecordSetModule.bsl"
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/Sequences/Последовательность1/Ext/RecordSetModule.bsl"
+      ]
     ]
   ],
   "modules": [

@@ -23,8 +23,12 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
+import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -32,15 +36,19 @@ import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.nio.file.Path;
+import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@Slf4j
 class ConfigurationTest {
   @ParameterizedTest
   @CsvSource(
@@ -82,7 +90,7 @@ class ConfigurationTest {
     checkChildrenSSL(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(6458)
+      .hasSize(8038)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getModulesByType())
@@ -196,7 +204,7 @@ class ConfigurationTest {
     checkChildrenMdclasses(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(124 + cf.getInterfaces().size() + cf.getStyles().size())
+      .hasSize(222 + cf.getInterfaces().size() + cf.getStyles().size())
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
@@ -210,16 +218,16 @@ class ConfigurationTest {
       .isEmpty();
   }
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "false, mdclasses_ext"
-    }
-  )
-  void testFullExt(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
+  @Test
+  void testFullExt() {
+    var configurationPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf/Configuration.xml");
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
+    assertThat(mdc).isNotNull()
+      .isInstanceOf(MDClass.class)
+      .isInstanceOf(ConfigurationExtension.class);
+
     var cf = (ConfigurationExtension) mdc;
+    assertThat(cf.isEmpty()).isFalse();
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules()).isEmpty();
     assertThat(cf.getAllModules())
@@ -233,7 +241,7 @@ class ConfigurationTest {
     checkChildrenOrder(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(147)
+      .hasSize(328)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
@@ -249,13 +257,79 @@ class ConfigurationTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses_ext, _edt"
+      "true, ssl_3_1, _edt",
+      "false, ssl_3_1"
     }
   )
-  void testFullExtEdt(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
+  void testFullSSLSkipAll(ArgumentsAccessor argumentsAccessor) {
+    var settings = MDCReadSettings.builder()
+      .skipSupport(true)
+      .skipRoleData(true)
+      .skipFormElementItems(true)
+      .skipXdtoPackage(true)
+      .skipDataCompositionSchema(true)
+      .build();
+
+    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, settings);
+    assertThat(mdc).isInstanceOf(Configuration.class);
+    var cf = (Configuration) mdc;
+    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
+    assertThat(cf.getModules())
+      .hasSize(4)
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getAllModules())
+      .hasSize(1320 + cf.getCommonModules().size())
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getPlainChildren())
+      .hasSize(8038)
+      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getRoles())
+      .hasSize(86)
+      .allMatch(role -> role.getData() == RoleData.EMPTY)
+    ;
+
+    assertThat(cf.getXDTOPackages())
+      .hasSize(38)
+      .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
+    ;
+
+    var forms = cf.getPlainChildren().stream()
+      .filter(FormOwner.class::isInstance)
+      .map(FormOwner.class::cast)
+      .map(FormOwner::getForms)
+      .flatMap(Collection::stream)
+      .toList();
+
+    assertThat(forms)
+      .hasSize(632)
+      .allMatch(form -> form.getData().getPlainItems().isEmpty());
+
+    var templates = cf.getPlainChildren().stream()
+      .filter(TemplateOwner.class::isInstance)
+      .map(TemplateOwner.class::cast)
+      .map(TemplateOwner::getTemplates)
+      .flatMap(Collection::stream)
+      .toList();
+
+    assertThat(templates)
+      .hasSize(89)
+      .allMatch(template -> template.getData().isEmpty());
+  }
+
+  @Test
+  void testFullExtEdt() {
+    var configurationPath = Path.of(
+      "src/test/resources/ext/edt/mdclasses_ext/configuration/src/Configuration/Configuration.mdo");
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
+    assertThat(mdc).isNotNull()
+      .isInstanceOf(MDClass.class)
+      .isInstanceOf(ConfigurationExtension.class);
+
     var cf = (ConfigurationExtension) mdc;
+    assertThat(cf.isEmpty()).isFalse();
 
     // проверка порядок
     checkChildrenOrder(cf);

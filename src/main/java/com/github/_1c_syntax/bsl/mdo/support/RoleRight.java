@@ -21,147 +21,120 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Возможные права роли
  */
-@AllArgsConstructor
-@Getter
-public enum RoleRight implements EnumWithValue {
-  READ("Read", "Чтение"),
-  INSERT("Insert", "Добавление"),
-  UPDATE("Update", "Изменение"),
-  DELETE("Delete", "Удаление"),
-  POSTING("Posting", "Проведение"),
-  UNDO_POSTING("UndoPosting", "ОтменаПроведения"),
-  VIEW("View", "Просмотр"),
-  INTERACTIVE_INSERT("InteractiveInsert", "ИнтерактивноеДобавление"),
-  EDIT("Edit", "Редактирование"),
-  INTERACTIVE_DELETE("InteractiveDelete", "ИнтерактивноеУдаление"),
-  INTERACTIVE_SET_DELETION_MARK("InteractiveSetDeletionMark", "ИнтерактивнаяПометкаУдаления"),
-  INTERACTIVE_CLEAR_DELETION_MARK("InteractiveClearDeletionMark", "ИнтерактивноеСнятиеПометкиУдаления"),
-  INTERACTIVE_DELETE_MARKED("InteractiveDeleteMarked", "ИнтерактивноеУдалениеПомеченных"),
-  INTERACTIVE_POSTING("InteractivePosting", "ИнтерактивноеПроведение"),
-  INTERACTIVE_POSTING_REGULAR("InteractivePostingRegular", "ИнтерактивноеПроведениеНеОперативное"),
-  INTERACTIVE_UNDO_POSTING("InteractiveUndoPosting", "ИнтерактивнаяОтменаПроведения"),
-  INTERACTIVE_CHANGE_OF_POSTED("InteractiveChangeOfPosted", "ИнтерактивноеИзменениеПроведенных"),
-  INPUT_BY_STRING("InputByString", "ВводПоСтроке"),
-  TOTALS_CONTROL("TotalsControl", "УправлениеИтогами"),
-  USE("Use", "Использование"),
-  ADMINISTRATION("Administration", "Администрирование"),
-  DATA_ADMINISTRATION("DataAdministration", "АдминистрированиеДанных"),
-  EXCLUSIVE_MODE("ExclusiveMode", "МонопольныйРежим"),
+@ToString(of = "fullName")
+public enum RoleRight implements EnumWithName {
   ACTIVE_USERS("ActiveUsers", "АктивныеПользователи"),
-  EVENT_LOG("EventLog", "ЖурналРегистрации"),
-  EXTERNAL_CONNECTION("ExternalConnection", "ВнешнееСоединение"),
+  ADMINISTRATION("Administration", "Администрирование"),
+  ALL_FUNCTIONS_MODE("AllFunctionsMode", "РежимВсеФункции"),
+  ANALYTICS_SYSTEM_CLIENT("AnalyticsSystemClient", "КлиентСистемыАналитики"),
   AUTOMATION("Automation", "Automation"),
+  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION(
+    "CollaborationSystemInfoBaseRegistration", "РегистрацияИнформационнойБазыСистемыВзаимодействия"),
+  CONFIGURATION_EXTENSIONS_ADMINISTRATION(
+    "ConfigurationExtensionsAdministration", "АдминистрированиеРасширенийКонфигурации"),
+  DATA_ADMINISTRATION("DataAdministration", "АдминистрированиеДанных"),
+  DELETE("Delete", "Удаление"),
+  EDIT("Edit", "Редактирование"),
+  EDIT_DATA_HISTORY_VERSION_COMMENT(
+    "EditDataHistoryVersionComment", "РедактированиеКомментарияВерсииИсторииДанных"),
+  EVENT_LOG("EventLog", "ЖурналРегистрации"),
+  EXCLUSIVE_MODE("ExclusiveMode", "МонопольныйРежим"),
+  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START(
+    "ExclusiveModeTerminationAtSessionStart", "ЗавершениеМонопольногоРежимаПриНачалеСеанса"),
+  EXECUTE("Execute", "Выполнение"),
+  EXTERNAL_CONNECTION("ExternalConnection", "ВнешнееСоединение"),
+  GET("Get", "Получение"),
+  INPUT_BY_STRING("InputByString", "ВводПоСтроке"),
+  INSERT("Insert", "Добавление"),
+  INTERACTIVE_ACTIVATE("InteractiveActivate", "ИнтерактивнаяАктивация"),
+  INTERACTIVE_CHANGE_OF_POSTED("InteractiveChangeOfPosted", "ИнтерактивноеИзменениеПроведенных"),
+  INTERACTIVE_CLEAR_DELETION_MARK("InteractiveClearDeletionMark", "ИнтерактивноеСнятиеПометкиУдаления"),
+  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA(
+    "InteractiveClearDeletionMarkPredefinedData", "ИнтерактивноеСнятиеПометкиУдаленияПредопределенныхДанных"),
+  INTERACTIVE_DELETE("InteractiveDelete", "ИнтерактивноеУдаление"),
+  INTERACTIVE_DELETE_MARKED("InteractiveDeleteMarked", "ИнтерактивноеУдалениеПомеченных"),
+  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA(
+    "InteractiveDeleteMarkedPredefinedData", "ИнтерактивноеУдалениеПомеченныхПредопределенныхДанных"),
+  INTERACTIVE_DELETE_PREDEFINED_DATA("InteractiveDeletePredefinedData", "ИнтерактивноеУдалениеПредопределенныхДанных"),
+  INTERACTIVE_EXECUTE("InteractiveExecute", "ИнтерактивноеВыполнение"),
+  INTERACTIVE_INSERT("InteractiveInsert", "ИнтерактивноеДобавление"),
   INTERACTIVE_OPEN_EXT_DATA_PROCESSORS("InteractiveOpenExtDataProcessors", "ИнтерактивноеОткрытиеВнешнихОбработок"),
   INTERACTIVE_OPEN_EXT_REPORTS("InteractiveOpenExtReports", "ИнтерактивноеОткрытиеВнешнихОтчетов"),
-  GET("Get", "Получение"),
-  SET("Set", "Установка"),
-  INTERACTIVE_ACTIVATE("InteractiveActivate", "ИнтерактивнаяАктивация"),
-  START("Start", "Старт"),
+  INTERACTIVE_POSTING("InteractivePosting", "ИнтерактивноеПроведение"),
+  INTERACTIVE_POSTING_REGULAR("InteractivePostingRegular", "ИнтерактивноеПроведениеНеОперативное"),
+  INTERACTIVE_SET_DELETION_MARK("InteractiveSetDeletionMark", "ИнтерактивнаяПометкаУдаления"),
+  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA(
+    "InteractiveSetDeletionMarkPredefinedData", "ИнтерактивнаяПометкаУдаленияПредопределенныхДанных"),
   INTERACTIVE_START("InteractiveStart", "ИнтерактивныйСтарт"),
-  EXECUTE("Execute", "Выполнение"),
-  INTERACTIVE_EXECUTE("InteractiveExecute", "ИнтерактивноеВыполнение"),
-  OUTPUT("Output", "Вывод"),
-  UPDATE_DATA_BASE_CONFIGURATION("UpdateDataBaseConfiguration", "ОбновлениеКонфигурацииБазыДанных"),
-  THIN_CLIENT("ThinClient", "ТонкийКлиент"),
-  WEB_CLIENT("WebClient", "ВебКлиент"),
-  THICK_CLIENT("ThickClient", "ТолстыйКлиент"),
-  ALL_FUNCTIONS_MODE("AllFunctionsMode", "РежимВсеФункции"),
-  SAVE_USER_DATA("SaveUserData", "СохранениеДанныхПользователя"),
-  STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange", "ИзменениеСтандартнойАутентификации"),
-  SESSION_STANDARD_AUTHENTICATION_CHANGE("SessionStandardAuthenticationChange",
-    "ИзменениеСтандартнойАутентификацииСеанса"),
-  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange", "ИзменениеАутентификацииОССеанса"),
-  INTERACTIVE_DELETE_PREDEFINED_DATA("InteractiveDeletePredefinedData",
-    "ИнтерактивноеУдалениеПредопределенныхДанных"),
-  INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA("InteractiveSetDeletionMarkPredefinedData",
-    "ИнтерактивнаяПометкаУдаленияПредопределенныхДанных"),
-  INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA("InteractiveClearDeletionMarkPredefinedData",
-    "ИнтерактивноеСнятиеПометкиУдаленияПредопределенныхДанных"),
-  INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA("InteractiveDeleteMarkedPredefinedData",
-    "ИнтерактивноеУдалениеПомеченныхПредопределенныхДанных"),
-  CONFIGURATION_EXTENSIONS_ADMINISTRATION("ConfigurationExtensionsAdministration",
-    "АдминистрированиеРасширенийКонфигурации"),
-  READ_DATA_HISTORY("ReadDataHistory", "ЧтениеИсторииДанных"),
-  VIEW_DATA_HISTORY("ViewDataHistory", "ПросмотрИсторииДанных"),
-  READ_DATA_HISTORY_OF_MISSING_DATA("ReadDataHistoryOfMissingData",
-    "ЧтениеИсторииДанныхОтсутстсвующихДанных"),
-  UPDATE_DATA_HISTORY("UpdateDataHistory", "ИзменениеИсторииДанных"),
-  UPDATE_DATA_HISTORY_OF_MISSING_DATA("UpdateDataHistoryOfMissingData",
-    "ИзменениеИсторииДанныхОтсутствующихДанных"),
-  UPDATE_DATA_HISTORY_SETTINGS("UpdateDataHistorySettings", "ИзменениеНастроекИсторииДанных"),
-  UPDATE_DATA_HISTORY_VERSION_COMMENT("UpdateDataHistoryVersionComment",
-    "ИзменениеКомментарияВерсииИсторииДанных"),
-  EDIT_DATA_HISTORY_VERSION_COMMENT("EditDataHistoryVersionComment",
-    "РедактированиеКомментарияВерсииИсторииДанных"),
-  SWITCH_TO_DATA_HISTORY_VERSION("SwitchToDataHistoryVersion", "ПереходНаВерсиюИсторииДанных"),
-  COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION("CollaborationSystemInfoBaseRegistration",
-    "РегистрацияИнформационнойБазыСистемыВзаимодействия"),
-  MOBILE_CLIENT("MobileClient", "МобильныйКлиент"),
+  INTERACTIVE_UNDO_POSTING("InteractiveUndoPosting", "ИнтерактивнаяОтменаПроведения"),
+  MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE("MainWindowModeEmbeddedWorkplace", "РежимОсновногоОкнаВстроенноеРабочееМесто"),
+  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE(
+    "MainWindowModeFullscreenWorkplace", "РежимОсновногоОкнаПолноэкранноеРабочееМесто"),
+  MAIN_WINDOW_MODE_KIOSK("MainWindowModeKiosk", "РежимОсновногоОкнаКиоск"),
   MAIN_WINDOW_MODE_NORMAL("MainWindowModeNormal", "РежимОсновногоОкнаОбычный"),
   MAIN_WINDOW_MODE_WORKPLACE("MainWindowModeWorkplace", "РежимОсновногоОкнаРабочееМесто"),
-  MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE("MainWindowModeEmbeddedWorkplace",
-    "РежимОсновногоОкнаВстроенноеРабочееМесто"),
-  MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE("MainWindowModeFullscreenWorkplace",
-    "РежимОсновногоОкнаПолноэкранноеРабочееМесто"),
-  MAIN_WINDOW_MODE_KIOSK("MainWindowModeKiosk", "РежимОсновногоОкнаКиоск"),
+  MOBILE_CLIENT("MobileClient", "МобильныйКлиент"),
+  OUTPUT("Output", "Вывод"),
+  POSTING("Posting", "Проведение"),
+  READ("Read", "Чтение"),
+  READ_DATA_HISTORY("ReadDataHistory", "ЧтениеИсторииДанных"),
+  READ_DATA_HISTORY_OF_MISSING_DATA("ReadDataHistoryOfMissingData", "ЧтениеИсторииДанныхОтсутстсвующихДанных"),
+  REMOTE_DESKTOP_CLIENT("RemoteDesktopClient", "УдаленноеУправлениеРабочимСтоломДругогоПользователя"),
+  REMOTE_DESKTOP_HOST("RemoteDesktopHost", "ПредоставлениеУдаленногоУправленияРабочимСтоломДругомуПользователю"),
+  SAVE_USER_DATA("SaveUserData", "СохранениеДанныхПользователя"),
+  SESSION_OS_AUTHENTICATION_CHANGE("SessionOSAuthenticationChange", "ИзменениеАутентификацииОССеанса"),
+  SESSION_STANDARD_AUTHENTICATION_CHANGE(
+    "SessionStandardAuthenticationChange", "ИзменениеСтандартнойАутентификацииСеанса"),
+  SET("Set", "Установка"),
+  STANDARD_AUTHENTICATION_CHANGE("StandardAuthenticationChange", "ИзменениеСтандартнойАутентификации"),
+  START("Start", "Старт"),
+  SWITCH_TO_DATA_HISTORY_VERSION("SwitchToDataHistoryVersion", "ПереходНаВерсиюИсторииДанных"),
   TECHNICAL_SPECIALIST_MODE("TechnicalSpecialistMode", "РежимТехническогоСпециалиста"),
-  EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START("ExclusiveModeTerminationAtSessionStart",
-    "ЗавершениеМонопольногоРежимаПриНачалеСеанса"),
-  ANALYTICS_SYSTEM_CLIENT("AnalyticsSystemClient", "КлиентСистемыАналитики"),
-  REMOTE_DESKTOP_HOST("RemoteDesktopHost",
-    "ПредоставлениеУдаленногоУправленияРабочимСтоломДругомуПользователю"),
-  REMOTE_DESKTOP_CLIENT("RemoteDesktopClient",
-    "УдаленноеУправлениеРабочимСтоломДругогоПользователя"),
-  UNKNOWN("unknown", "unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+  THICK_CLIENT("ThickClient", "ТолстыйКлиент"),
+  THIN_CLIENT("ThinClient", "ТонкийКлиент"),
+  TOTALS_CONTROL("TotalsControl", "УправлениеИтогами"),
+  UNDO_POSTING("UndoPosting", "ОтменаПроведения"),
+  UNKNOWN("unknown", "unknown"),
+  UPDATE("Update", "Изменение"),
+  UPDATE_DATA_BASE_CONFIGURATION("UpdateDataBaseConfiguration", "ОбновлениеКонфигурацииБазыДанных"),
+  UPDATE_DATA_HISTORY("UpdateDataHistory", "ИзменениеИсторииДанных"),
+  UPDATE_DATA_HISTORY_OF_MISSING_DATA("UpdateDataHistoryOfMissingData", "ИзменениеИсторииДанныхОтсутствующихДанных"),
+  UPDATE_DATA_HISTORY_SETTINGS("UpdateDataHistorySettings", "ИзменениеНастроекИсторииДанных"),
+  UPDATE_DATA_HISTORY_VERSION_COMMENT("UpdateDataHistoryVersionComment", "ИзменениеКомментарияВерсииИсторииДанных"),
+  USE("Use", "Использование"),
+  VIEW("View", "Просмотр"),
+  VIEW_DATA_HISTORY("ViewDataHistory", "ПросмотрИсторииДанных"),
+  WEB_CLIENT("WebClient", "ВебКлиент");
 
-  private static final Map<String, RoleRight> keys = computeKeys();
+  private static final Map<String, RoleRight> KEYS = EnumWithName.computeKeys(values());
 
-  /**
-   * Английское имя
-   */
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
 
-  /**
-   * Русское имя
-   */
-  @Accessors(fluent = true)
-  private final String valueRu;
-
-  /**
-   * Ищет элемент перечисления по имени (рус, анг)
-   *
-   * @param string Имя искомого элемента
-   * @return Найденное значение, если не найден - то unknown
-   */
-  public static RoleRight valueByString(String string) {
-    return keys.getOrDefault(string, UNKNOWN);
+  RoleRight(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
   }
 
-  private static Map<String, RoleRight> computeKeys() {
-    Map<String, RoleRight> keysMap = new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER);
-    for (var element : values()) {
-      if (element.isUnknown()) {
-        continue;
-      }
-      keysMap.put(element.value(), element);
-      keysMap.put(element.valueRu(), element);
-    }
-    return keysMap;
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static RoleRight valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
   }
 }

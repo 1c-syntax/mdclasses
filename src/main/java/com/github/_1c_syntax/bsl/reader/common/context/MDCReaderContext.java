@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -77,7 +78,11 @@ public class MDCReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    if (uuid != null && !mdReader.getReadSettings().isSkipSupport()) {
+      supportVariant = ParseSupportData.get(uuid, currentPath);
+    } else {
+      supportVariant = SupportVariant.NONE;
+    }
     mdoType = MDOType.CONFIGURATION;
 
     super.setValue(UUID_FIELD_NAME, uuid);
@@ -121,7 +126,7 @@ public class MDCReaderContext extends AbstractReaderContext {
     childrenNames.forEach((String name) -> {
       var child = children.get(name);
       if (child != null) {
-        var fieldName = child.getMdoType().getName();
+        var fieldName = child.getMdoType().nameEn();
         setValue(fieldName, child);
         setValue(CHILD_FILED_NAME, child);
       }

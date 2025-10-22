@@ -12,12 +12,16 @@
   "mdoType": "CONSTANT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl"
+      "ValueManagerModule",
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl"
+      ]
     ],
     [
-      "ValueManagerModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl"
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl"
+      ]
     ]
   ],
   "modules": [
@@ -66,5 +70,33 @@
   "synonym": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/explanation"
   },
-  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4"
+  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+  "valueType": {
+    "types": [
+      {
+        "default": {
+          "tag": 4
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+      }
+    ],
+    "composite": false,
+    "qualifiers": [
+      {
+        "default": {
+          "tag": 4
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+          "length": 10,
+          "allowedLength": "VARIABLE",
+          "description": {
+            "nameRu": "КвалификаторыСтроки (10, Переменная)",
+            "nameEn": "StringQualifiers (10, Variable)"
+          }
+        }
+      }
+    ]
+  }
 }}

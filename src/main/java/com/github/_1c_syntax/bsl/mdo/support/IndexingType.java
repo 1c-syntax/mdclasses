@@ -21,26 +21,42 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Варианты индексирования реквизитов
  */
-@AllArgsConstructor
-@Getter
-public enum IndexingType implements EnumWithValue {
-  DONT_INDEX("DontIndex"),                                  // не индексировать
-  INDEX("Index"),                                           // индексировать
-  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder"),  // индексировать с доп упорядочиванием
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+@ToString(of = "fullName")
+public enum IndexingType implements EnumWithName {
+  DONT_INDEX("DontIndex", "НеИндексировать"),
+  INDEX("Index", "Индексировать"),
+  INDEX_WITH_ADDITIONAL_ORDER("IndexWithAdditionalOrder", "ИндексироватьСДопУпорядочиванием"),
+  UNKNOWN("unknown", "неизвестный");
 
+  private static final Map<String, IndexingType> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
+
+  IndexingType(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static IndexingType valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
 }
