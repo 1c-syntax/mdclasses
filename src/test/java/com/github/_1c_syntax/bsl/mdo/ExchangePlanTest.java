@@ -28,7 +28,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ExchangePlanTest {
   @ParameterizedTest
@@ -77,43 +77,8 @@ class ExchangePlanTest {
     assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
     assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
     assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
+    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
+    assertThat(exchangePlan.getContent()).hasSize(349);
   }
-//
-//    @Override
-//    @Test
-//    void testEDT() {
-//      var mdo = getMDObjectEDT("ExchangePlans.ПланОбмена1");
-//      checkBaseField(mdo, ExchangePlan.class, "ПланОбмена1",
-//        "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
-//      checkForms(mdo);
-//      checkTemplates(mdo);
-//      checkCommands(mdo);
-//      assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-//      checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ExchangePlans/ПланОбмена1",
-//        ModuleType.ObjectModule);
-//      var exchangePlan = (ExchangePlan) mdo;
-////    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
-////    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-////    assertThat(exchangePlan.getContent()).hasSize(2);
-//    }
-//
-//    @Override
-//    @Test
-//    void testDesigner() {
-//      var mdo = getMDObjectDesigner("ExchangePlans.ПланОбмена1");
-//      checkBaseField(mdo, ExchangePlan.class, "ПланОбмена1",
-//        "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
-//      checkForms(mdo);
-//      checkTemplates(mdo);
-//      checkCommands(mdo);
-//      assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-//      assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
-//      var exchangePlan = (ExchangePlan) mdo;
-////    assertThat(exchangePlan.isDistributedInfoBase()).isTrue();
-////    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isTrue();
-////    assertThat(exchangePlan.getContent()).hasSize(2);
-//    }
-//
-//  }
-
 }

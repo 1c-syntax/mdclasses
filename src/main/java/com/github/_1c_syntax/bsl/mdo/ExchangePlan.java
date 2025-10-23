@@ -141,11 +141,8 @@ public class ExchangePlan implements ReferenceObject, AccessRightsOwner {
     var value = content.stream()
       .filter(useContent -> useContent.getMetadata().equals(mdoReference))
       .findAny();
-    if (value.isPresent()) {
-      return value.get().getAutoRecord();
-    } else {
-      return AutoRecordType.DENY;
-    }
+    var allow = value.map(RecordContent::isAllow).orElse(false);
+    return allow ? AutoRecordType.ALLOW : AutoRecordType.DENY;
   }
 
   @Override
@@ -227,7 +224,7 @@ public class ExchangePlan implements ReferenceObject, AccessRightsOwner {
   }
 
   @Value
-  @Builder(toBuilder = true)
+  @Builder
   public static class RecordContent {
 
     /**
@@ -237,9 +234,8 @@ public class ExchangePlan implements ReferenceObject, AccessRightsOwner {
     MdoReference metadata = MdoReference.EMPTY;
 
     /**
-     * Режим авторегистрации
+     * Разрешена авторегистрация
      */
-    @Default
-    AutoRecordType autoRecord = AutoRecordType.DENY;
+    boolean allow;
   }
 }
