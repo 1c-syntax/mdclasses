@@ -21,27 +21,19 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
+import lombok.NonNull;
 
 /**
  * Модель хранения информации о запросе СКД
  *
- * @param position  Позиция запроса в исходном файле
+ * @param line      Номер строки позиции запроса в исходном файле
+ * @param column    Номер первого символа позиции запроса в исходном файле
  * @param textQuery Текст запроса
  */
-public record QuerySource(SourcePosition position, String textQuery) {
+public record QuerySource(int line, int column, @NonNull String textQuery) {
 
   /**
    * Пустой запрос
    */
-  private static final QuerySource EMPTY = new QuerySource(new SourcePosition(0, 0), "");
-
-  /**
-   * Ссылка на пустой запрос
-   *
-   * @return Пустой запрос
-   */
-  public static QuerySource empty() {
-    return EMPTY;
-  }
+  public static final QuerySource EMPTY = new QuerySource(0, 0, "");
 }

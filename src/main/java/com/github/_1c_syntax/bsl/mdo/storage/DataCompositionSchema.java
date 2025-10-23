@@ -119,7 +119,7 @@ public class DataCompositionSchema implements TemplateData {
      * Текста запроса (опционально)
      */
     @Default
-    QuerySource querySource = QuerySource.empty();
+    QuerySource querySource = QuerySource.EMPTY;
 
     /**
      * Поля набора данных

@@ -87,6 +87,6 @@ class ReportTest {
       .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных1")
         && dataSet.getType() == DataSetType.DATA_SET_QUERY
         && dataSet.getQuerySource().textQuery().equals(QUERY_TEXT)
-        && dataSet.getQuerySource().position().line() == 24);
+        && dataSet.getQuerySource().line() == 24);
   }
 }
