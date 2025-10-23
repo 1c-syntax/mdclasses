@@ -46,7 +46,7 @@ public class SimpleFormItem implements FormItem {
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
   @Default
-  FormDataPath dataPath = FormDataPath.EMPTY;
+  String dataPath = "";
   @Singular("addItems")
   List<FormItem> items;
 

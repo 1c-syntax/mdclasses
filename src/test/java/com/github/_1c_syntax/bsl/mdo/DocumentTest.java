@@ -75,6 +75,6 @@ class DocumentTest {
       .anyMatch(item -> item.getName().equals("ТабличнаяЧасть1НомерСтроки"))
       .anyMatch(item -> item.getId() == 35)
       .anyMatch(item -> item.getType().equals(FormElementType.INPUT_FIELD))
-      .anyMatch(item -> item.getDataPath().segments().startsWith("~"));
+      .anyMatch(item -> item.getDataPath().startsWith("~"));
   }
 }
