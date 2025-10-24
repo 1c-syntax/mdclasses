@@ -32,7 +32,7 @@ jobs:
       run: ./gradlew check --stacktrace
     - name: Upload Test Results
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
           name: Test Results (Java ${{ matrix.java_version }}.${{ matrix.os }})
           path: "**/test-results/test/**/*.xml"
