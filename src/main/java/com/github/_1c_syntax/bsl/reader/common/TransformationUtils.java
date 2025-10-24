@@ -112,7 +112,15 @@ public class TransformationUtils {
    */
   @Nullable
   public Object builder(@NonNull Class<?> clazz) {
-    return methodInvoke(clazz, BUILDER_METHOD_NAME);
+    var method = getMethod(clazz, BUILDER_METHOD_NAME);
+    if (method != null) {
+      try {
+        return method.invoke(clazz);
+      } catch (IllegalAccessException | InvocationTargetException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, clazz, BUILDER_METHOD_NAME, e);
+      }
+    }
+    return null;
   }
 
   /**
@@ -123,7 +131,16 @@ public class TransformationUtils {
    */
   @Nullable
   public Object toBuilder(@NonNull Object object) {
-    return methodInvoke(object.getClass(), TO_BUILDER_METHOD_NAME);
+    var clazz = object.getClass();
+    var method = getMethod(clazz, TO_BUILDER_METHOD_NAME);
+    if (method != null) {
+      try {
+        return method.invoke(object);
+      } catch (IllegalAccessException | InvocationTargetException e) {
+        LOGGER.error(LOGGER_MESSAGE_PREF, clazz, TO_BUILDER_METHOD_NAME, e);
+      }
+    }
+    return null;
   }
 
   /**
@@ -168,7 +185,7 @@ public class TransformationUtils {
       .orElse(null);
   }
 
-  private Optional<Type> computeFieldType(Object source, String methodName) {
+  private static Optional<Type> computeFieldType(Object source, String methodName) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null) {
       var fieldClass = method.getGenericParameterTypes()[0];
@@ -183,18 +200,5 @@ public class TransformationUtils {
       return Optional.of(fieldClass);
     }
     return Optional.empty();
-  }
-
-  @Nullable
-  private Object methodInvoke(@NonNull Class<?> clazz, String methodName) {
-    var method = getMethod(clazz, methodName);
-    if (method != null) {
-      try {
-        return method.invoke(clazz);
-      } catch (IllegalAccessException | InvocationTargetException e) {
-        LOGGER.error(LOGGER_MESSAGE_PREF, clazz, methodName, e);
-      }
-    }
-    return null;
   }
 }
