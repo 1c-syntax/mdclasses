@@ -261,7 +261,6 @@ public class LazyLoader {
       .collect(Collectors.toUnmodifiableMap(MD::getMdoReference, child -> child));
   }
 
-
   /**
    * Создает соответствие URI модуля объекта модулю.
    * Используется все модуля объекта, включая дочерних объектов.
@@ -321,14 +320,22 @@ public class LazyLoader {
       return Collections.unmodifiableList(source);
     } else if (source.isEmpty()) {
       return result;
-    } else if ("UnmodifiableRandomAccessList".equals(result.getClass().getSimpleName())) {
-      // todo надо придумать как красиво тип определить
+    } else if (isUnmodifiableList(result)) {
       List<T> newList = new ArrayList<>(result);
       newList.addAll(source);
       return newList;
     } else {
       result.addAll(source);
       return result;
+    }
+  }
+
+  public static <T> boolean isUnmodifiableList(List<T> list) {
+    try {
+      list.addAll(Collections.emptyList());
+      return false;
+    } catch (UnsupportedOperationException e) {
+      return true;
     }
   }
 }

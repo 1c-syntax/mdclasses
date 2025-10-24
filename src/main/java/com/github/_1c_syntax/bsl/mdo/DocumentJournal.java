@@ -31,10 +31,10 @@ import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -70,7 +70,8 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * ModuleOwner
@@ -78,7 +79,8 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -129,29 +131,10 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
     return Collections.unmodifiableList(columns);
   }
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
   }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
 }

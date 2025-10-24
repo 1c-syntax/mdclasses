@@ -37,7 +37,7 @@ public class FormItemConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipFormElementItems()) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
       return null;
     }
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);

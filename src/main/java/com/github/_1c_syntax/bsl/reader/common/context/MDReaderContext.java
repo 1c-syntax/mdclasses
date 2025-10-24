@@ -43,7 +43,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -56,7 +55,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Для хранения контекста при чтении MD и ExternalSource объектов
  */
 @EqualsAndHashCode(callSuper = true)
-@Slf4j
 @ToString
 public class MDReaderContext extends AbstractReaderContext {
 
@@ -95,14 +93,14 @@ public class MDReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    if (uuid != null && !mdReader.getReadSettings().isSkipSupport()) {
+    if (uuid != null && !mdReader.getReadSettings().skipSupport()) {
       supportVariant = ParseSupportData.get(uuid, currentPath);
     } else {
       supportVariant = SupportVariant.NONE;
     }
 
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
-    if(mdoType == MDOType.UNKNOWN && realClass.isAssignableFrom(ExternalDataSourceTableField.class)) {
+    if (mdoType == MDOType.UNKNOWN && ExternalDataSourceTableField.class.isAssignableFrom(realClass)) {
       realClassName = "Field";
       mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
     }

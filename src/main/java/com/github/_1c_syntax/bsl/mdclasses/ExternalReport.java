@@ -32,10 +32,10 @@ import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -70,7 +70,8 @@ public class ExternalReport implements ExternalSource {
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   @Default
   ConfigurationSource configurationSource = ConfigurationSource.EMPTY;
@@ -84,8 +85,10 @@ public class ExternalReport implements ExternalSource {
   @Singular
   List<TabularSection> tabularSections;
 
-  Lazy<List<MD>> storageFields = new Lazy<>(this::computeStorageFields);
-  Lazy<List<MD>> plainStorageFields = new Lazy<>(this::computePlainStorageFields);
+  @Getter(lazy = true)
+  List<MD> storageFields = LazyLoader.computeStorageFields(this);
+  @Getter(lazy = true)
+  List<MD> plainStorageFields = LazyLoader.computePlainStorageFields(this);
 
   @Singular
   List<ObjectForm> forms;
@@ -93,53 +96,10 @@ public class ExternalReport implements ExternalSource {
   @Singular
   List<ObjectTemplate> templates;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
-
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getStorageFields() {
-    return storageFields.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainStorageFields() {
-    return plainStorageFields.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private List<MD> computeStorageFields() {
-    return LazyLoader.computeStorageFields(this);
-  }
-
-  private List<MD> computePlainStorageFields() {
-    return LazyLoader.computePlainStorageFields(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   private static ExternalReport createEmptyExternalReport() {
     var emptyString = "empty";

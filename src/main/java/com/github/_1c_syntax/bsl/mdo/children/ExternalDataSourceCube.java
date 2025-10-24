@@ -38,10 +38,10 @@ import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -79,8 +79,10 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   /*
    * ModuleOwner
@@ -88,7 +90,8 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -118,8 +121,8 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
    */
   @Singular
   List<ExternalDataSourceCubeDimensionTable> dimensionTables;
-
-  Lazy<List<Attribute>> allAttributes = new Lazy<>(this::computeAllAttributes);
+  @Getter(lazy = true)
+  List<Attribute> allAttributes = LazyLoader.computeAllAttributes(this);
 
   /*
    * FormOwner
@@ -145,47 +148,11 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  @Override
-  public List<Attribute> getAllAttributes() {
-    return allAttributes.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
-  }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private List<Attribute> computeAllAttributes() {
-    return LazyLoader.computeAllAttributes(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
   }
 
   private static List<RoleRight> computePossibleRights() {

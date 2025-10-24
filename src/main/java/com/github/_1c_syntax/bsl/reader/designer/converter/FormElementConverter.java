@@ -38,7 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 public class FormElementConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipFormElementItems()) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
       return null;
     }
 

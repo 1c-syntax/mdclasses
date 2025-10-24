@@ -53,41 +53,41 @@ class XDTOPackageTest {
     var xdto = (XDTOPackage) mdo;
     assertThat(xdto.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
     assertThat(xdto.getData()).isNotNull();
-    assertThat(xdto.getData().getTargetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
-    assertThat(xdto.getData().getImports()).hasSize(2)
+    assertThat(xdto.getData().targetNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
+    assertThat(xdto.getData().imports()).hasSize(2)
       .anyMatch("http://www.1c.ru/SSL/Exchange/Message"::equals)
       .anyMatch("http://www.1c.ru/SSL/Exchange/Message2"::equals);
 
-    assertThat(xdto.getData().getValueTypes()).hasSize(278)
-      .anyMatch(xdtoValueType -> xdtoValueType.getName().equals("ТипКоличество"))
-      .anyMatch(xdtoValueType -> xdtoValueType.getBase().equals("xs:decimal"))
-      .anyMatch(xdtoValueType -> xdtoValueType.getEnumerations().size() == 1)
-      .anyMatch(xdtoValueType -> xdtoValueType.getVariety().equals("Atomic"))
+    assertThat(xdto.getData().valueTypes()).hasSize(278)
+      .anyMatch(xdtoValueType -> xdtoValueType.name().equals("ТипКоличество"))
+      .anyMatch(xdtoValueType -> xdtoValueType.base().equals("xs:decimal"))
+      .anyMatch(xdtoValueType -> xdtoValueType.enumerations().size() == 1)
+      .anyMatch(xdtoValueType -> xdtoValueType.variety().equals("Atomic"))
     ;
 
-    assertThat(xdto.getData().getProperties()).hasSize(1);
-    var xdtoProperty = xdto.getData().getProperties().get(0);
-    assertThat(xdtoProperty.getName()).isEqualTo("performance");
-    assertThat(xdtoProperty.getType()).isEqualTo("d2p1:Performance");
-    assertThat(xdtoProperty.getForm()).isEqualTo("Attribute");
+    assertThat(xdto.getData().properties()).hasSize(1);
+    var xdtoProperty = xdto.getData().properties().get(0);
+    assertThat(xdtoProperty.name()).isEqualTo("performance");
+    assertThat(xdtoProperty.type()).isEqualTo("d2p1:Performance");
+    assertThat(xdtoProperty.form()).isEqualTo("Attribute");
 
-    assertThat(xdto.getData().getObjectTypes()).hasSize(737)
-      .anyMatch(xdtoObjectType -> xdtoObjectType.getName().equals("КлючевыеСвойстваМаркиНоменклатуры"))
-      .anyMatch(xdtoObjectType -> xdtoObjectType.getBase().equals("d2p1:Object"))
-      .anyMatch(xdtoValueType -> xdtoValueType.getProperties().size() == 5)
+    assertThat(xdto.getData().objectTypes()).hasSize(737)
+      .anyMatch(xdtoObjectType -> xdtoObjectType.name().equals("КлючевыеСвойстваМаркиНоменклатуры"))
+      .anyMatch(xdtoObjectType -> xdtoObjectType.base().equals("d2p1:Object"))
+      .anyMatch(xdtoValueType -> xdtoValueType.properties().size() == 5)
     ;
 
-    var example = xdto.getData().getObjectTypes().get(732);
-    assertThat(example.getBase()).isEmpty();
-    assertThat(example.getName()).isEqualTo("КлючевыеСвойстваПринадлежностьПрайсЛистаКонтрагенту");
-    assertThat(example.getProperties()).hasSize(4);
+    var example = xdto.getData().objectTypes().get(732);
+    assertThat(example.base()).isEmpty();
+    assertThat(example.name()).isEqualTo("КлючевыеСвойстваПринадлежностьПрайсЛистаКонтрагенту");
+    assertThat(example.properties()).hasSize(4);
 
-    var exampleProperty = example.getProperties().get(3);
-    assertThat(exampleProperty.getName()).isEqualTo("status");
-    assertThat(exampleProperty.getType()).isEqualTo("xs:int");
-    assertThat(exampleProperty.getLowerBound()).isEqualTo(1);
-    assertThat(exampleProperty.getUpperBound()).isEqualTo(-1);
-    assertThat(exampleProperty.getForm()).isEmpty();
-    assertThat(exampleProperty.isNillable()).isTrue();
+    var exampleProperty = example.properties().get(3);
+    assertThat(exampleProperty.name()).isEqualTo("status");
+    assertThat(exampleProperty.type()).isEqualTo("xs:int");
+    assertThat(exampleProperty.lowerBound()).isEqualTo(1);
+    assertThat(exampleProperty.upperBound()).isEqualTo(-1);
+    assertThat(exampleProperty.form()).isEmpty();
+    assertThat(exampleProperty.nillable()).isTrue();
   }
 }
