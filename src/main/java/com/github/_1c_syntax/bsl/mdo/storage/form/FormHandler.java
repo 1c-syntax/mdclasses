@@ -35,6 +35,8 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode
 public class FormHandler implements Comparable<FormHandler> {
 
+  // todo создать глобальный интернер ???
+
   private static final GenericInterner<FormHandler> interner = new GenericInterner<>();
   private static final StringInterner stringInterner = new StringInterner();
 

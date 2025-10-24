@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -35,6 +34,7 @@ import lombok.Value;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Реализация хранения содержимого макета-схемы компоновки данных
@@ -50,7 +50,8 @@ public class DataCompositionSchema implements TemplateData {
   /**
    * Плоский список наборов данных
    */
-  Lazy<List<DataSet>> plainDataSets = new Lazy<>(this::computePlainDataSets);
+  @Getter(lazy = true)
+  List<DataSet> plainDataSets = computePlainDataSets();
 
   /**
    * Путь к файлу с данными макета
@@ -68,13 +69,9 @@ public class DataCompositionSchema implements TemplateData {
     return false;
   }
 
-  public List<DataSet> getPlainDataSets() {
-    return plainDataSets.getOrCompute();
-  }
-
   private List<DataSet> computePlainDataSets() {
     List<DataSet> result = new ArrayList<>();
-    fillPlainDataSetByList(result, dataSets);
+    fillPlainDataSetByList(result, Objects.requireNonNull(dataSets));
 
     return result;
   }
