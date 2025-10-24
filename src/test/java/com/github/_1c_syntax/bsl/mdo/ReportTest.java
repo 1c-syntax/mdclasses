@@ -75,18 +75,18 @@ class ReportTest {
     assertThat(dataCompositionSchema).isNotNull();
     assertThat(dataCompositionSchema.getDataSets())
       .hasSize(4)
-      .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных1") && dataSet.getType() == DataSetType.DATA_SET_QUERY)
-      .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных2") && dataSet.getType() == DataSetType.DATA_SET_QUERY)
-      .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных3") && dataSet.getType() == DataSetType.DATA_SET_UNION
-        && dataSet.getItems().size() == 3)
-      .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных3") && dataSet.getType() == DataSetType.DATA_SET_OBJECT)
+      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных1") && dataSet.type() == DataSetType.DATA_SET_QUERY)
+      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных2") && dataSet.type() == DataSetType.DATA_SET_QUERY)
+      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных3") && dataSet.type() == DataSetType.DATA_SET_UNION
+        && dataSet.items().size() == 3)
+      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных3") && dataSet.type() == DataSetType.DATA_SET_OBJECT)
     ;
 
     assertThat(dataCompositionSchema.getPlainDataSets())
       .hasSize(8)
-      .anyMatch(dataSet -> dataSet.getName().equals("НаборДанных1")
-        && dataSet.getType() == DataSetType.DATA_SET_QUERY
-        && dataSet.getQuerySource().textQuery().equals(QUERY_TEXT)
-        && dataSet.getQuerySource().line() == 24);
+      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных1")
+        && dataSet.type() == DataSetType.DATA_SET_QUERY
+        && dataSet.querySource().textQuery().equals(QUERY_TEXT)
+        && dataSet.querySource().line() == 24);
   }
 }

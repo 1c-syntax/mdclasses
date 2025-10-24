@@ -53,19 +53,19 @@ class RoleTest {
     var roleData = role.getData();
     assertThat(roleData).isNotNull();
 
-    var objectRights = roleData.getObjectRights();
+    var objectRights = roleData.objectRights();
     assertThat(objectRights).hasSize(3);
 
     var confRights = objectRights.get(0);
-    assertThat(confRights.getName().getMdoRef()).isEqualTo("Configuration.Конфигурация");
-    assertThat(confRights.getRights()).hasSize(18);
+    assertThat(confRights.name().getMdoRef()).isEqualTo("Configuration.Конфигурация");
+    assertThat(confRights.rights()).hasSize(18);
 
     var documentRights = objectRights.get(1);
-    assertThat(documentRights.getName().getMdoRef()).isEqualTo("Document.Документ1");
-    assertThat(documentRights.getRights()).hasSize(18);
+    assertThat(documentRights.name().getMdoRef()).isEqualTo("Document.Документ1");
+    assertThat(documentRights.rights()).hasSize(18);
 
     var catalogRights = objectRights.get(2);
-    assertThat(catalogRights.getName().getMdoRef()).isEqualTo("Catalog.Справочник1");
-    assertThat(catalogRights.getRights()).hasSize(16);
+    assertThat(catalogRights.name().getMdoRef()).isEqualTo("Catalog.Справочник1");
+    assertThat(catalogRights.rights()).hasSize(16);
   }
 }

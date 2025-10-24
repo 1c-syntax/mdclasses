@@ -24,28 +24,16 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 import com.github._1c_syntax.utils.GenericInterner;
 import com.github._1c_syntax.utils.StringInterner;
 import edu.umd.cs.findbugs.annotations.Nullable;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
-import lombok.experimental.Accessors;
 
 /**
  * Обработчик события формы
  */
-@Value
-@EqualsAndHashCode
-public class FormHandler implements Comparable<FormHandler> {
-
-  // todo создать глобальный интернер ???
+public record FormHandler(String event, String name) implements Comparable<FormHandler> {
 
   private static final GenericInterner<FormHandler> interner = new GenericInterner<>();
   private static final StringInterner stringInterner = new StringInterner();
 
-  @Accessors(fluent = true)
-  String event;
-  @Accessors(fluent = true)
-  String name;
-
-  private FormHandler(String event, String name) {
+  public FormHandler(String event, String name) {
     this.event = stringInterner.intern(event);
     this.name = stringInterner.intern(name);
   }

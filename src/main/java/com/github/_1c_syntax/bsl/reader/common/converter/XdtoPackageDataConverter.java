@@ -56,6 +56,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
   private static final StringInterner stringInterner = new StringInterner();
 
   @Override
+  @NonNull
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
     if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipXdtoPackage()) {
@@ -83,6 +84,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
     return builder.build();
   }
 
+  @NonNull
   private static XdtoPackageData.ObjectType readObjectType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ObjectType.builder()
       .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)));
@@ -97,6 +99,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
     return builder.build();
   }
 
+  @NonNull
   private static XdtoPackageData.ValueType readValueType(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.ValueType.builder()
       .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)))
@@ -114,6 +117,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
     return builder.build();
   }
 
+  @NonNull
   private static XdtoPackageData.Property readProperty(HierarchicalStreamReader reader) {
     var builder = XdtoPackageData.Property.builder()
       .name(stringInterner.intern(reader.getAttribute(NAME_ATTRIBUTE_NAME)))
@@ -165,7 +169,8 @@ public class XdtoPackageDataConverter implements ReadConverter {
     return XdtoPackageData.class.isAssignableFrom(type);
   }
 
-  private static @NonNull String getAttribute(HierarchicalStreamReader reader, String name) {
+  @NonNull
+  private static String getAttribute(HierarchicalStreamReader reader, String name) {
     var value = reader.getAttribute(name);
     if (value == null) {
       value = "";
