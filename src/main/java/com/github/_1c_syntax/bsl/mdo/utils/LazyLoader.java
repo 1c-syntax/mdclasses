@@ -332,8 +332,7 @@ public class LazyLoader {
 
   public static <T> boolean isUnmodifiableList(List<T> list) {
     try {
-      list.add(null);
-      list.remove(list.size() - 1);
+      list.addAll(Collections.emptyList());
       return false;
     } catch (UnsupportedOperationException e) {
       return true;

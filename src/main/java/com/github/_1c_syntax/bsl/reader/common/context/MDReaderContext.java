@@ -100,7 +100,7 @@ public class MDReaderContext extends AbstractReaderContext {
     }
 
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
-    if (mdoType == MDOType.UNKNOWN && realClass.isAssignableFrom(ExternalDataSourceTableField.class)) {
+    if (mdoType == MDOType.UNKNOWN && ExternalDataSourceTableField.class.isAssignableFrom(realClass)) {
       realClassName = "Field";
       mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
     }

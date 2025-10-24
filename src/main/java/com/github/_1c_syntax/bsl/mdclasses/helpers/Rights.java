@@ -157,13 +157,13 @@ public class Rights {
 
     List<Role> roles = new ArrayList<>();
     cf.getRoles().forEach((Role role) -> {
-      var hasAcccess = role.getData().objectRights().stream()
+      var hasAccess = role.getData().objectRights().stream()
         .filter(objectRight -> objectRight.name().equals(mdoReference))
         .map(RoleData.ObjectRight::rights)
         .flatMap(Collection::stream)
         .anyMatch(right -> roleRight == right.name() && right.value());
 
-      if (hasAcccess) {
+      if (hasAccess) {
         roles.add(role);
       }
     });
