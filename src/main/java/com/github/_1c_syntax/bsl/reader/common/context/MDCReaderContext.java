@@ -32,7 +32,6 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +43,6 @@ import java.util.stream.Collectors;
  * Служебный класс для хранения контекста при "сборке" объекта при чтении из файла
  */
 @EqualsAndHashCode(callSuper = true)
-@Slf4j
 public class MDCReaderContext extends AbstractReaderContext {
 
   private static final String UUID_FIELD_NAME = "uuid";
@@ -78,7 +76,7 @@ public class MDCReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    if (uuid != null && !mdReader.getReadSettings().isSkipSupport()) {
+    if (uuid != null && !mdReader.getReadSettings().skipSupport()) {
       supportVariant = ParseSupportData.get(uuid, currentPath);
     } else {
       supportVariant = SupportVariant.NONE;

@@ -59,7 +59,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
   @NonNull
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 
-    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipXdtoPackage()) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipXdtoPackage()) {
       return XdtoPackageData.EMPTY;
     }
 

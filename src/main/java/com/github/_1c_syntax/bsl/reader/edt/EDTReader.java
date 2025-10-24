@@ -122,7 +122,7 @@ public class EDTReader implements MDReader {
     }
     this.readSettings = readSettings;
 
-    if (!readSettings.isSkipSupport()) {
+    if (!readSettings.skipSupport()) {
       var pcbin = parentConfigurationsPath();
       if (pcbin.toFile().exists()) {
         ParseSupportData.read(pcbin);

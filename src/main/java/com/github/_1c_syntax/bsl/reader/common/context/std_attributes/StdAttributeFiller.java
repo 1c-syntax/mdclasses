@@ -47,7 +47,8 @@ public class StdAttributeFiller {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final List<MDOType> EXCLUDED = List.of(
     MDOType.DATA_PROCESSOR, MDOType.REPORT, MDOType.EXTERNAL_DATA_PROCESSOR, MDOType.EXTERNAL_REPORT,
-    MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE);
+    MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE, MDOType.EXTERNAL_DATA_SOURCE_CUBE,
+    MDOType.EXTERNAL_DATA_SOURCE_FUNCTION);
   private static final Map<MDOType, List<StdAtrInfo>> REGISTRY = computeRegistry();
 
   public void fill(MDReaderContext parentContext) {
