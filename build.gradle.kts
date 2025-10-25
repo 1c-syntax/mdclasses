@@ -80,6 +80,9 @@ dependencies {
     // логирование
     testImplementation("org.slf4j", "slf4j-reload4j", "2.1.0-alpha1")
 
+    // jol
+    testImplementation("org.openjdk.jol", "jol-core", "0.16")
+
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
     jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
