@@ -13,7 +13,7 @@ plugins {
     id("io.freefair.maven-central.validate-poms") version "9.0.0"
     id("com.github.ben-manes.versions") version "0.53.0"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.jreleaser") version "1.20.0"
+    id("org.jreleaser") version "1.21.0"
     id("org.sonarqube") version "7.0.1.6134"
     id("me.champeau.jmh") version "0.7.3"
 }
