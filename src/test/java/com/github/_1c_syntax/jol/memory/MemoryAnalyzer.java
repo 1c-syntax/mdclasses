@@ -29,7 +29,6 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.info.GraphLayout;
-import org.openjdk.jol.vm.VM;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -55,45 +54,49 @@ public class MemoryAnalyzer {
       .map(MemoryAnalyzer::analyzeClass)
       .filter(Objects::nonNull)
       .sorted(Comparator.comparing(AnalysisResult::getWastedBytes).reversed())
+      .limit(10)
       .toList();
   }
 
   public void printAnalysisReport(List<AnalysisResult> results) {
-    LOGGER.info("=== MEMORY ANALYSIS REPORT ===");
-    LOGGER.info("JVM details: {}", VM.current().details());
-    LOGGER.info("");
-
-    for (var result : results) {
-      if(result.getAlignmentEfficiency() == 100) {
-        continue;
-      }
-      LOGGER.info("Class: {}", result.getClassName());
-      LOGGER.info("Instance size: {} bytes", result.getInstanceSize());
-      LOGGER.info("Total size: {} bytes", result.getTotalSize());
-      LOGGER.info("Wasted bytes: {} bytes", result.getWastedBytes());
-      LOGGER.info("Alignment efficiency: {}", String.format("%.2f", result.getAlignmentEfficiency()) + "%");
-
-      if (!result.getAlignmentIssues().isEmpty()) {
-        LOGGER.info("Alignment issues:");
-        for (FieldAlignmentIssue issue : result.getAlignmentIssues()) {
-          LOGGER.info("  - {}: {} bytes", issue.description(), issue.paddingSize());
-        }
-      }
-
-      if (!result.getOptimizationSuggestions().isEmpty()) {
-        LOGGER.info("Optimization suggestions:");
-        for (String suggestion : result.getOptimizationSuggestions()) {
-          LOGGER.info("  - {}", suggestion);
-        }
-      }
-
-      LOGGER.info("Field sizes:");
-      result.getFieldSizes().forEach(
-        (field, size) -> LOGGER.info("  {}: {} bytes", field, size)
-      );
-
-      LOGGER.info("---");
+    if (!results.isEmpty()) {
+      var rec = results.get(0);
+      LOGGER.info("Class: {}", rec.getClassName());
+      LOGGER.info("Count: {}", results.size());
+      LOGGER.info("Instance size: {} bytes", rec.getInstanceSize());
+      LOGGER.info("Total size: {} bytes", results.stream().mapToLong(AnalysisResult::getTotalSize).sum());
+      LOGGER.info("Wasted bytes: {} bytes", rec.getWastedBytes());
+      LOGGER.info("Alignment efficiency: {}", String.format("%.2f", rec.getAlignmentEfficiency()) + "%");
     }
+//
+//    for (var result : results) {
+//      LOGGER.info("Class: {}", result.getClassName());
+//      LOGGER.info("Instance size: {} bytes", result.getInstanceSize());
+//      LOGGER.info("Total size: {} bytes", result.getTotalSize());
+//      LOGGER.info("Wasted bytes: {} bytes", result.getWastedBytes());
+//      LOGGER.info("Alignment efficiency: {}", String.format("%.2f", result.getAlignmentEfficiency()) + "%");
+//
+////      if (!result.getAlignmentIssues().isEmpty()) {
+////        LOGGER.info("Alignment issues:");
+////        for (FieldAlignmentIssue issue : result.getAlignmentIssues()) {
+////          LOGGER.info("  - {}: {} bytes", issue.description(), issue.paddingSize());
+////        }
+////      }
+//
+////      if (!result.getOptimizationSuggestions().isEmpty()) {
+////        LOGGER.info("Optimization suggestions:");
+////        for (String suggestion : result.getOptimizationSuggestions()) {
+////          LOGGER.info("  - {}", suggestion);
+////        }
+////      }
+//
+////      LOGGER.info("Field sizes:");
+////      result.getFieldSizes().forEach(
+////        (field, size) -> LOGGER.info("  {}: {} bytes", field, size)
+////      );
+//
+//      LOGGER.info("---");
+//    }
   }
 
   /**
@@ -209,26 +212,9 @@ public class MemoryAnalyzer {
   private Map<String, Long> calculateFieldSizes(ClassLayout classLayout) {
     Map<String, Long> fieldSizes = new LinkedHashMap<>();
     classLayout.fields().forEach(field -> {
-      var fieldSize = getFieldSize(field.typeClass().getClass());
-      fieldSizes.put(field.name(), fieldSize);
+      fieldSizes.put(field.name(), field.size());
     });
     return fieldSizes;
-  }
-
-  private long getFieldSize(Class<?> fieldType) {
-    if (fieldType == boolean.class || fieldType == byte.class) {
-      return 1;
-    }
-    if (fieldType == char.class || fieldType == short.class) {
-      return 2;
-    }
-    if (fieldType == int.class || fieldType == float.class) {
-      return 4;
-    }
-    if (fieldType == long.class || fieldType == double.class) {
-      return 8;
-    }
-    return 4; // ссылка
   }
 
   private List<FieldAlignmentIssue> findAlignmentIssues(ClassLayout classLayout) {

@@ -116,6 +116,7 @@ public class ExtendXStream extends XStream {
    * @return Прочитанный объект
    */
   @Override
+  @SuppressWarnings("unchecked")
   public Object fromXML(File file) {
     Object result = null;
     if (file.exists()) {

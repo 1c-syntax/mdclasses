@@ -52,7 +52,8 @@ dependencies {
 
     implementation("org.apache.commons", "commons-collections4", "4.4")
 
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.21")
+//    implementation("com.thoughtworks.xstream", "xstream", "1.4.21")
+    compileOnly(files("binary/xstream-1.5.0-bsl.jar"))
 
     // логирование
     implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")

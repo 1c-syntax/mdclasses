@@ -244,7 +244,7 @@ public class MDTestUtils {
   private void objectEqualJson(Object obj, Path fixturePath) {
     var fixture = getFixture(fixturePath);
     var current = createJson(obj);
-
+//    Files.writeString(fixturePath, current, StandardCharsets.UTF_8);
     Assertions.assertThat(fixRusYi(current), true).isEqual(fixRusYi(fixture));
   }
 
