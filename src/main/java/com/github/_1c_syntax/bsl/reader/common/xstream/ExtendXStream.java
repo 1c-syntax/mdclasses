@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
@@ -255,6 +256,7 @@ public class ExtendXStream extends XStream {
 
     registerConverter(new EnumConverter<>(ApplicationRunMode.class));
     registerConverter(new EnumConverter<>(AutoRecordType.class));
+    registerConverter(new EnumConverter<>(CodeSeries.class));
     registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));

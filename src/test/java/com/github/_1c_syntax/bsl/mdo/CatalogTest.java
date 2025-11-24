@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -172,10 +173,10 @@ class CatalogTest {
 
   @ParameterizedTest
   @CsvSource({
-    "true, mdclasses_ext, Catalogs.Справочник2",
-    "false, mdclasses_ext, Catalogs.Справочник2"
+    "true, mdclasses_3_27, Catalogs.Справочник3",
+    "false, mdclasses_3_27, Catalogs.Справочник3"
   })
-  void testCheckUnique(ArgumentsAccessor argumentsAccessor) {
+  void testCodeSeries(ArgumentsAccessor argumentsAccessor) {
     var isEDT = argumentsAccessor.getBoolean(0);
     var examplePackName = argumentsAccessor.getString(1);
     var mdoRef = argumentsAccessor.getString(2);
@@ -190,7 +191,7 @@ class CatalogTest {
     var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
     assertThat(mdo).isInstanceOf(Catalog.class);
     var catalog = (Catalog) mdo;
-    assertThat(catalog.isCheckUnique()).isTrue();
+    assertThat(catalog.getCodeSeries()).isEqualTo(CodeSeries.WITHIN_SUBORDINATION);
   }
 
 //  private void checkExtInfo(FormDataOLD formData) {
