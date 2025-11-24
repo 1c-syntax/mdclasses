@@ -109,6 +109,11 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Проверка уникальности кода
+   */
+  boolean checkUnique;
+
+  /**
    * Список владельцев
    */
   @Singular("addOwners")

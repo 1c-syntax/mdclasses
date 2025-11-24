@@ -21,11 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ValueTypes;
@@ -34,6 +36,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.nio.file.Path;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -165,6 +168,29 @@ class CatalogTest {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo)
       .isInstanceOf(Catalog.class);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_ext, Catalogs.Справочник2",
+    "false, mdclasses_ext, Catalogs.Справочник2"
+  })
+  void testCheckUnique(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+    var mdoRef = argumentsAccessor.getString(2);
+
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of("src/test/resources/ext/edt", examplePackName, "configuration");
+    } else {
+      configurationPath = Path.of("src/test/resources/ext/designer", examplePackName, "src/cf");
+    }
+
+    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+    var catalog = (Catalog) mdo;
+    assertThat(catalog.isCheckUnique()).isTrue();
   }
 
 //  private void checkExtInfo(FormDataOLD formData) {
