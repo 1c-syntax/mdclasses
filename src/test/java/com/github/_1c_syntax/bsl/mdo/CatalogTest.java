@@ -194,6 +194,29 @@ class CatalogTest {
     assertThat(catalog.getCodeSeries()).isEqualTo(CodeSeries.WITHIN_SUBORDINATION);
   }
 
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_ext, Catalogs.Справочник2",
+    "false, mdclasses_ext, Catalogs.Справочник2"
+  })
+  void testCheckUnique(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var examplePackName = argumentsAccessor.getString(1);
+    var mdoRef = argumentsAccessor.getString(2);
+
+    Path configurationPath;
+    if (isEDT) {
+      configurationPath = Path.of("src/test/resources/ext/edt", examplePackName, "configuration");
+    } else {
+      configurationPath = Path.of("src/test/resources/ext/designer", examplePackName, "src/cf");
+    }
+
+    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+    var catalog = (Catalog) mdo;
+    assertThat(catalog.isCheckUnique()).isTrue();
+  }
+
 //  private void checkExtInfo(FormDataOLD formData) {
 //    var extInfo = (DynamicListExtInfo) formData.getAttributes().get(1).getExtInfo();
 //    assertThat(extInfo)

@@ -116,6 +116,11 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   CodeSeries codeSeries = CodeSeries.UNKNOWN;
 
   /**
+   * Проверка уникальности кода
+   */
+  boolean checkUnique;
+
+  /**
    * Список владельцев
    */
   @Singular("addOwners")
