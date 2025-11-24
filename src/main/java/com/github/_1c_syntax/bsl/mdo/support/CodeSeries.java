@@ -37,6 +37,7 @@ import java.util.Map;
 public enum CodeSeries implements EnumWithName {
   WHOLE_CATALOG("WholeCatalog", "ВоВсемСправочнике"),
   WITHIN_SUBORDINATION("WithinSubordination", "ВПределахПодчинения"),
+  WITHIN_OWNER_SUBORDINATION("WithinOwnerSubordination", "ВПределахПодчиненияВладельцу"),
   WHOLE_CHARACTERISTIC_KIND("WholeCharacteristicKind", "ВоВсемПланеВидовХарактеристик"),
   WHOLE_CHART_OF_ACCOUNTS("WholeChartOfAccounts", "ВоВсемПланеСчетов"),
   UNKNOWN("unknown", "неизвестный");
