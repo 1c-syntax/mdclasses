@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
+import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
@@ -38,6 +39,7 @@ import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -99,6 +101,16 @@ public class LazyLoader {
 
     if (mdo instanceof CalculationRegister calculationRegister) {
       children = addAll(children, calculationRegister.getRecalculations());
+    }
+
+    if (mdo instanceof ExternalDataSource externalDataSource) {
+      children = addAll(children, externalDataSource.getTables());
+      children = addAll(children, externalDataSource.getCubes());
+      children = addAll(children, externalDataSource.getFunctions());
+    }
+
+    if (mdo instanceof ExternalDataSourceCube externalDataSourceCube) {
+      children = addAll(children, externalDataSourceCube.getDimensionTables());
     }
 
     return Collections.unmodifiableList(children);
@@ -176,6 +188,11 @@ public class LazyLoader {
       children = addAll(children, chartOfAccounts.getExtDimensionAccountingFlags());
     }
 
+    if (mdo instanceof ExternalDataSourceCube cube) {
+      children = addAll(children, cube.getResources());
+      children = addAll(children, cube.getDimensions());
+    }
+
     return Collections.unmodifiableList(children);
   }
 
@@ -244,7 +261,6 @@ public class LazyLoader {
       .collect(Collectors.toUnmodifiableMap(MD::getMdoReference, child -> child));
   }
 
-
   /**
    * Создает соответствие URI модуля объекта модулю.
    * Используется все модуля объекта, включая дочерних объектов.
@@ -304,14 +320,22 @@ public class LazyLoader {
       return Collections.unmodifiableList(source);
     } else if (source.isEmpty()) {
       return result;
-    } else if ("UnmodifiableRandomAccessList".equals(result.getClass().getSimpleName())) {
-      // todo надо придумать как красиво тип определить
+    } else if (isUnmodifiableList(result)) {
       List<T> newList = new ArrayList<>(result);
       newList.addAll(source);
       return newList;
     } else {
       result.addAll(source);
       return result;
+    }
+  }
+
+  public static <T> boolean isUnmodifiableList(List<T> list) {
+    try {
+      list.addAll(Collections.emptyList());
+      return false;
+    } catch (UnsupportedOperationException e) {
+      return true;
     }
   }
 }

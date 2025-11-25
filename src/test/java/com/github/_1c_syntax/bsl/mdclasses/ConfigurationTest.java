@@ -23,8 +23,12 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
+import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -39,6 +43,7 @@ import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -216,7 +221,7 @@ class ConfigurationTest {
   @Test
   void testFullExt() {
     var configurationPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf/Configuration.xml");
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
     assertThat(mdc).isNotNull()
       .isInstanceOf(MDClass.class)
       .isInstanceOf(ConfigurationExtension.class);
@@ -249,11 +254,76 @@ class ConfigurationTest {
       .isEmpty();
   }
 
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_1, _edt",
+      "false, ssl_3_1"
+    }
+  )
+  void testFullSSLSkipAll(ArgumentsAccessor argumentsAccessor) {
+    var settings = MDCReadSettings.builder()
+      .skipSupport(true)
+      .skipRoleData(true)
+      .skipFormElementItems(true)
+      .skipXdtoPackage(true)
+      .skipDataCompositionSchema(true)
+      .build();
+
+    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, settings);
+    assertThat(mdc).isInstanceOf(Configuration.class);
+    var cf = (Configuration) mdc;
+    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
+    assertThat(cf.getModules())
+      .hasSize(4)
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getAllModules())
+      .hasSize(1320 + cf.getCommonModules().size())
+      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getPlainChildren())
+      .hasSize(8038)
+      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+
+    assertThat(cf.getRoles())
+      .hasSize(86)
+      .allMatch(role -> role.getData() == RoleData.EMPTY)
+    ;
+
+    assertThat(cf.getXDTOPackages())
+      .hasSize(38)
+      .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
+    ;
+
+    var forms = cf.getPlainChildren().stream()
+      .filter(FormOwner.class::isInstance)
+      .map(FormOwner.class::cast)
+      .map(FormOwner::getForms)
+      .flatMap(Collection::stream)
+      .toList();
+
+    assertThat(forms)
+      .hasSize(632)
+      .allMatch(form -> form.getData().getPlainItems().isEmpty());
+
+    var templates = cf.getPlainChildren().stream()
+      .filter(TemplateOwner.class::isInstance)
+      .map(TemplateOwner.class::cast)
+      .map(TemplateOwner::getTemplates)
+      .flatMap(Collection::stream)
+      .toList();
+
+    assertThat(templates)
+      .hasSize(89)
+      .allMatch(template -> template.getData().isEmpty());
+  }
+
   @Test
   void testFullExtEdt() {
     var configurationPath = Path.of(
       "src/test/resources/ext/edt/mdclasses_ext/configuration/src/Configuration/Configuration.mdo");
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
     assertThat(mdc).isNotNull()
       .isInstanceOf(MDClass.class)
       .isInstanceOf(ConfigurationExtension.class);

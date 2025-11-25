@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
-import com.github._1c_syntax.bsl.mdo.support.SourcePosition;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -37,10 +36,7 @@ public class QuerySourceConverter implements ReadConverter {
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var location = ((ExtendReaderWrapper) reader).getXMLStreamReader().getLocation();
-    var query = reader.getValue();
-    var position = new SourcePosition(location.getLineNumber(), location.getColumnNumber());
-
-    return new QuerySource(position, query);
+    return new QuerySource(location.getLineNumber(), location.getColumnNumber(), reader.getValue());
   }
 
   @Override

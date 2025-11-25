@@ -23,9 +23,9 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.Value;
 
@@ -46,18 +46,10 @@ public class SimpleFormItem implements FormItem {
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
   @Default
-  FormDataPath dataPath = FormDataPath.EMPTY;
+  String dataPath = "";
   @Singular("addItems")
   List<FormItem> items;
 
-  Lazy<List<FormItem>> plainItems = new Lazy<>(this::computePlainItems);
-
-  @Override
-  public List<FormItem> getPlainItems() {
-    return plainItems.getOrCompute();
-  }
-
-  private List<FormItem> computePlainItems() {
-    return LazyLoader.computePlainFormItems(this);
-  }
+  @Getter(lazy = true)
+  List<FormItem> plainItems = LazyLoader.computePlainFormItems(this);
 }

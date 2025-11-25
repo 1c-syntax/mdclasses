@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt.converter;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -36,6 +37,9 @@ public class FormItemConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
+      return null;
+    }
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
     var attributeType = reader.getAttribute("type");
     Unmarshaller.unmarshal(reader, context, readerContext);

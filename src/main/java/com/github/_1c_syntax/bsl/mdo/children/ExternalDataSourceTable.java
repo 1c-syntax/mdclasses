@@ -38,10 +38,10 @@ import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -50,7 +50,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
@@ -79,7 +79,8 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
   @Default
   MdoReference owner = MdoReference.EMPTY;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * ModuleOwner
@@ -87,7 +88,8 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -135,29 +137,11 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
     return Collections.unmodifiableList(fields);
   }
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
-  }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
   }
 
   private static List<RoleRight> computePossibleRights() {

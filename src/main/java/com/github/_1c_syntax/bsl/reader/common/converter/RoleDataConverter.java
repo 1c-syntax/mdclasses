@@ -39,6 +39,9 @@ public class RoleDataConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipRoleData()) {
+      return RoleData.EMPTY;
+    }
 
     var builder = RoleData.builder();
 

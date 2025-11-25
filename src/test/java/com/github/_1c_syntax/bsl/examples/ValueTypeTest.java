@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.examples;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.Catalog;
@@ -123,7 +124,7 @@ public class ValueTypeTest {
       configurationPath = Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
     }
 
-    var mdc = MDClasses.createConfiguration(configurationPath, true);
+    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
     assertThat(mdc).isNotNull();
     assertThat(mdc).isInstanceOf(MDClass.class);
     assertThat(mdc).isInstanceOf(Configuration.class);

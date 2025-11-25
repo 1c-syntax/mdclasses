@@ -70,6 +70,7 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
@@ -85,10 +86,10 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ScriptVariant;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -102,7 +103,7 @@ import java.util.Map;
  * Класс расширения конфигурации 1с
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ConfigurationExtension implements CF {
@@ -142,7 +143,8 @@ public class ConfigurationExtension implements CF {
   ApplicationRunMode defaultRunMode = ApplicationRunMode.AUTO;
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
   @Default
   String vendor = "";
   @Default
@@ -194,6 +196,8 @@ public class ConfigurationExtension implements CF {
   List<XDTOPackage> xDTOPackages;
   @Singular
   List<WebService> webServices;
+  @Singular
+  List<WebSocketClient> webSocketClients;
   @Singular
   List<HTTPService> httpServices;
   @Singular
@@ -249,13 +253,19 @@ public class ConfigurationExtension implements CF {
 
   @Singular
   List<MD> children;
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
-  Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
-  Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
-  Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
-  Lazy<Map<String, CommonModule>> commonModulesByName = new Lazy<>(this::computeCommonModulesByName);
-  Lazy<Map<MdoReference, MD>> childrenByMdoRef = new Lazy<>(this::computeChildrenByMdoRef);
+  @Getter(lazy = true)
+  Map<URI, ModuleType> modulesByType = LazyLoader.computeModulesByType(this);
+  @Getter(lazy = true)
+  Map<URI, Module> modulesByURI = LazyLoader.computeModulesByURI(this);
+  @Getter(lazy = true)
+  Map<URI, MD> modulesByObject = LazyLoader.computeModulesByObject(this);
+  @Getter(lazy = true)
+  Map<String, CommonModule> commonModulesByName = LazyLoader.computeCommonModulesByName(this);
+  @Getter(lazy = true)
+  Map<MdoReference, MD> childrenByMdoRef = LazyLoader.computeChildrenByMdoRef(this);
 
   /*
    * Свое
@@ -273,74 +283,11 @@ public class ConfigurationExtension implements CF {
   @Default
   String namePrefix = "";
 
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  @Override
-  public Map<URI, ModuleType> getModulesByType() {
-    return modulesByType.getOrCompute();
-  }
-
-  @Override
-  public Map<URI, MD> getModulesByObject() {
-    return modulesByObject.getOrCompute();
-  }
-
-  @Override
-  public Map<URI, Module> getModulesByURI() {
-    return modulesByURI.getOrCompute();
-  }
-
-  @Override
-  public Map<String, CommonModule> getCommonModulesByName() {
-    return commonModulesByName.getOrCompute();
-  }
-
-  @Override
-  public Map<MdoReference, MD> getChildrenByMdoRef() {
-    return childrenByMdoRef.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return Configuration.possibleRights();
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private Map<URI, ModuleType> computeModulesByType() {
-    return LazyLoader.computeModulesByType(this);
-  }
-
-  private Map<URI, MD> computeModulesByObject() {
-    return LazyLoader.computeModulesByObject(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
-  private Map<URI, Module> computeModulesByURI() {
-    return LazyLoader.computeModulesByURI(this);
-  }
-
-  private Map<String, CommonModule> computeCommonModulesByName() {
-    return LazyLoader.computeCommonModulesByName(this);
-  }
-
-  private Map<MdoReference, MD> computeChildrenByMdoRef() {
-    return LazyLoader.computeChildrenByMdoRef(this);
   }
 
 }

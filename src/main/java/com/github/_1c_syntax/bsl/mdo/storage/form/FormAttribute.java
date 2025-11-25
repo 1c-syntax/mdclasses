@@ -28,7 +28,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Value;
 
 /**
@@ -65,7 +64,6 @@ public class FormAttribute implements ValueTypeOwner {
   ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   @Override
-  @NonNull
   public ValueTypeDescription getValueType() {
     return type;
   }

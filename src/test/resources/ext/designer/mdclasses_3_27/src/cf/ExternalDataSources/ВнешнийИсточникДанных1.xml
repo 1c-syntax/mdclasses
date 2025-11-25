@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<ExternalDataSource uuid="306d863e-bc23-4d25-b1cf-eefbb4a5b64a">
+		<InternalInfo>
+			<xr:GeneratedType name="ExternalDataSourceManager.ВнешнийИсточникДанных1" category="Manager">
+				<xr:TypeId>641b572a-d6d6-4565-acef-bd6bcf308742</xr:TypeId>
+				<xr:ValueId>8d8bed6c-9a36-4332-863a-ac9ca82b6528</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ExternalDataSourceTablesManager.ВнешнийИсточникДанных1" category="TablesManager">
+				<xr:TypeId>45e4d270-2805-40f6-835f-18d0ba809703</xr:TypeId>
+				<xr:ValueId>81978f1a-60e7-412e-bb81-9401552a7846</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ExternalDataSourceCubesManager.ВнешнийИсточникДанных1" category="CubesManager">
+				<xr:TypeId>33d25ace-b261-4d2c-ac63-923b6d040b87</xr:TypeId>
+				<xr:ValueId>a880e27a-11b9-4228-b049-41f4ba34c57c</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ВнешнийИсточникДанных1</Name>
+			<Synonym/>
+			<Comment/>
+			<DataLockControlMode>Automatic</DataLockControlMode>
+		</Properties>
+		<ChildObjects>
+			<Table>Таблица1</Table>
+			<Cube>Куб1</Cube>
+			<Function uuid="8e535b6f-e5cc-409f-9498-0e1fb49ebecc">
+				<Properties>
+					<Name>Функция1</Name>
+					<Synonym/>
+					<Comment/>
+					<ReturnValue>true</ReturnValue>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>10</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<ExpressionInDataSource>selecet top 1 from table1</ExpressionInDataSource>
+				</Properties>
+			</Function>
+		</ChildObjects>
+	</ExternalDataSource>
+</MetaDataObject>

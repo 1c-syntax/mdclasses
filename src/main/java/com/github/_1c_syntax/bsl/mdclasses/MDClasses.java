@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.reader.MDMerger;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import lombok.experimental.UtilityClass;
@@ -72,18 +73,30 @@ public class MDClasses {
    * @return Конфигурация или расширение
    */
   public MDClass createConfiguration(Path path) {
-    return createConfiguration(path, false);
+    return createConfiguration(path, MDCReadSettings.DEFAULT);
   }
 
   /**
    * Создает конфигурацию или расширение по указанному пути
    *
+   * @param path         Путь к корню проекта
+   * @param readSettings Настройки чтения
+   * @return Конфигурация или расширение
+   */
+  public MDClass createConfiguration(Path path, MDCReadSettings readSettings) {
+    return MDOReader.readConfiguration(path, readSettings);
+  }
+
+  /**
    * @param path        Путь к корню проекта
    * @param skipSupport Флаг управления чтением информации о поддержке
    * @return Конфигурация или расширение
+   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
+   * Создает конфигурацию или расширение по указанному пути
    */
+  @Deprecated(since = "0.16.0")
   public MDClass createConfiguration(Path path, boolean skipSupport) {
-    return MDOReader.readConfiguration(path, skipSupport);
+    return createConfiguration(path, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
   /**
@@ -103,7 +116,7 @@ public class MDClasses {
    * @return Список прочитанных контейнеров конфигураций и расширений
    */
   public List<MDClass> createConfigurations(Path sourcePath) {
-    return createConfigurations(sourcePath, false);
+    return createConfigurations(sourcePath, MDCReadSettings.DEFAULT);
   }
 
   /**
@@ -112,10 +125,83 @@ public class MDClasses {
    * @param sourcePath  каталог исходных файлов
    * @param skipSupport Флаг управления чтением информации о поддержке
    * @return Список прочитанных контейнеров конфигураций и расширений
+   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
    */
+  @Deprecated(since = "0.16.0")
   public List<MDClass> createConfigurations(Path sourcePath, boolean skipSupport) {
+    return createConfigurations(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  /**
+   * Читает каталог проекта и
+   * - возвращает объект MDClass, если содержится только один объект MDC
+   * - возвращает объединенную конфигурацию с расширениями
+   * - возвращает объединение расширений с пустой конфигурацией
+   *
+   * @param sourcePath Путь к каталогу исходников
+   * @return Результат чтения решения
+   */
+  public MDClass createSolution(Path sourcePath) {
+    return createSolution(sourcePath, MDCReadSettings.DEFAULT);
+  }
+
+  /**
+   * Читает каталог проекта и
+   * - возвращает объект MDClass, если содержится только один объект MDC
+   * - возвращает объединенную конфигурацию с расширениями
+   * - возвращает объединение расширений с пустой конфигурацией
+   *
+   * @param sourcePath   Путь к каталогу исходников
+   * @param readSettings Настройки чтения проекта
+   * @return Результат чтения решения
+   */
+  public MDClass createSolution(Path sourcePath, MDCReadSettings readSettings) {
+    var mdcs = createConfigurations(sourcePath, readSettings);
+    MDClass result;
+    if (mdcs.isEmpty()) {
+      result = Configuration.EMPTY;
+    } else if (mdcs.size() == 1) {
+      result = mdcs.get(0);
+    } else {
+      var mdc = mdcs.stream().filter(Configuration.class::isInstance).map(Configuration.class::cast).findFirst();
+      var cf = mdc.orElse(Configuration.EMPTY);
+      var extensions = mdcs.stream()
+        .filter(ConfigurationExtension.class::isInstance)
+        .map(ConfigurationExtension.class::cast)
+        .toList();
+
+      if (cf.isEmpty()) {
+        if (extensions.isEmpty()) {
+          // вернем первое значение, т.к. там нет ни конфы, ни расширений
+          return mdcs.get(0);
+        } else if (extensions.size() == 1) {
+          // есть одно расширение, вернем его
+          return extensions.get(0);
+        }
+      } else if (extensions.isEmpty()) {
+        // расширений нет, вернем конфигурацию
+        return cf;
+      }
+
+      // объединим расширения с конфигурацией в одно целое
+      result = cf;
+      for (var extension : extensions) {
+        result = MDMerger.merge((Configuration) result, extension);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Возвращает список конфигураций\расширений в указанном каталоге исходных файлов
+   *
+   * @param sourcePath   каталог исходных файлов
+   * @param readSettings Настройки чтения
+   * @return Список прочитанных контейнеров конфигураций и расширений
+   */
+  public List<MDClass> createConfigurations(Path sourcePath, MDCReadSettings readSettings) {
     return findFiles(sourcePath, SEARCH_CONFIGURATION).parallelStream()
-      .map(path -> createConfiguration(path, skipSupport))
+      .map(path -> createConfiguration(path, readSettings))
       .toList();
   }
 
@@ -126,8 +212,19 @@ public class MDClasses {
    * @return Список прочитанных контейнеров внешних отчетов и обработок
    */
   public List<MDClass> createExternalSources(Path sourcePath) {
+    return createExternalSources(sourcePath, MDCReadSettings.DEFAULT);
+  }
+
+  /**
+   * Возвращает список внешних отчетов и обработок в указанном каталоге исходных файлов
+   *
+   * @param sourcePath   каталог исходных файлов
+   * @param readSettings Настройки чтения
+   * @return Список прочитанных контейнеров внешних отчетов и обработок
+   */
+  public List<MDClass> createExternalSources(Path sourcePath, MDCReadSettings readSettings) {
     return findFiles(sourcePath, SEARCH_EX_RES).parallelStream()
-      .map(MDOReader::readExternalSource)
+      .map(mdoPath -> MDOReader.readExternalSource(mdoPath, readSettings))
       .toList();
   }
 
@@ -138,7 +235,7 @@ public class MDClasses {
    * @return Список прочитанных контейнеров
    */
   public List<MDClass> create(Path sourcePath) {
-    return create(sourcePath, false);
+    return create(sourcePath, MDCReadSettings.DEFAULT);
   }
 
   /**
@@ -147,10 +244,23 @@ public class MDClasses {
    * @param sourcePath  каталог исходных файлов
    * @param skipSupport Флаг управления чтением информации о поддержке
    * @return Список прочитанных контейнеров
+   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
    */
+  @Deprecated(since = "0.16.0")
   public List<MDClass> create(Path sourcePath, boolean skipSupport) {
-    var result = new ArrayList<>(createConfigurations(sourcePath, skipSupport));
-    result.addAll(createExternalSources(sourcePath));
+    return create(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  /**
+   * Возвращает список контейнеров метаданных в указанном каталоге исходных файлов
+   *
+   * @param sourcePath   каталог исходных файлов
+   * @param readSettings Настройки чтения
+   * @return Список прочитанных контейнеров
+   */
+  public List<MDClass> create(Path sourcePath, MDCReadSettings readSettings) {
+    var result = new ArrayList<>(createConfigurations(sourcePath, readSettings));
+    result.addAll(createExternalSources(sourcePath, readSettings));
     return result;
   }
 
@@ -166,7 +276,7 @@ public class MDClasses {
 
         var parentName = path.getParent().getFileName().toString();
         var parentParentName = "";
-        if (path.getParent().getParent() != null) {
+        if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
           parentParentName = path.getParent().getParent().getFileName().toString();
         }
 

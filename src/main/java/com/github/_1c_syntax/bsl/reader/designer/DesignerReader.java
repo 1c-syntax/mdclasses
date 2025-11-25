@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.designer;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -31,6 +32,9 @@ import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
@@ -95,8 +99,11 @@ public class DesignerReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public DesignerReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public DesignerReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
@@ -105,12 +112,17 @@ public class DesignerReader implements MDReader {
         throw new IllegalArgumentException(
           "Не удалось определить каталог конфигурации для файла " + normalizedPath);
       }
-      rootPath = parent;
+      this.rootPath = parent;
     } else {
-      rootPath = path;
+      this.rootPath = path;
     }
-    if (!skipSupport) {
-      ParseSupportData.readSimple(parentConfigurationsPath());
+    this.readSettings = readSettings;
+
+    if (!readSettings.skipSupport()) {
+      var pcbin = parentConfigurationsPath();
+      if (pcbin.toFile().exists()) {
+        ParseSupportData.read(pcbin);
+      }
     }
   }
 
@@ -256,6 +268,9 @@ public class DesignerReader implements MDReader {
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
     xStream.alias("StandardAttribute", StandardAttribute.class);
+    xStream.alias("Cube", ExternalDataSourceCube.class);
+    xStream.alias("Function", ExternalDataSourceFunction.class);
+    xStream.alias("DimensionTable", ExternalDataSourceCubeDimensionTable.class);
   }
 
   private Path parentConfigurationsPath() {

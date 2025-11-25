@@ -32,10 +32,10 @@ import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -44,7 +44,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class AccumulationRegister implements Register, AccessRightsOwner {
@@ -72,7 +72,8 @@ public class AccumulationRegister implements Register, AccessRightsOwner {
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   @Singular
   List<ObjectCommand> commands;
@@ -83,15 +84,16 @@ public class AccumulationRegister implements Register, AccessRightsOwner {
   List<Resource> resources;
   @Singular
   List<Dimension> dimensions;
-  Lazy<List<Attribute>> allAttributes = new Lazy<>(this::computeAllAttributes);
+  @Getter(lazy = true)
+  List<Attribute> allAttributes = LazyLoader.computeAllAttributes(this);
 
   @Singular
   List<ObjectForm> forms;
 
   @Singular
   List<ObjectTemplate> templates;
-
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * Свое
@@ -103,38 +105,11 @@ public class AccumulationRegister implements Register, AccessRightsOwner {
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<Attribute> getAllAttributes() {
-    return allAttributes.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
-  }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<Attribute> computeAllAttributes() {
-    return LazyLoader.computeAllAttributes(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
   }
 
   private static List<RoleRight> computePossibleRights() {

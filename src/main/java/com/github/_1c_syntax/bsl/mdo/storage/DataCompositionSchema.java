@@ -23,17 +23,15 @@ package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Singular;
-import lombok.ToString;
 import lombok.Value;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Реализация хранения содержимого макета-схемы компоновки данных
@@ -49,7 +47,8 @@ public class DataCompositionSchema implements TemplateData {
   /**
    * Плоский список наборов данных
    */
-  List<DataSet> plainDataSets;
+  @Getter(lazy = true)
+  List<DataSet> plainDataSets = computePlainDataSets();
 
   /**
    * Путь к файлу с данными макета
@@ -59,8 +58,6 @@ public class DataCompositionSchema implements TemplateData {
 
   public DataCompositionSchema(@NonNull List<DataSet> dataSetsTree, @NonNull Path path) {
     dataSets = dataSetsTree;
-    plainDataSets = new ArrayList<>();
-    fillPlaintDataSetByList(dataSetsTree);
     dataPath = path;
   }
 
@@ -69,59 +66,41 @@ public class DataCompositionSchema implements TemplateData {
     return false;
   }
 
-  private void fillPlaintDataSetByList(List<DataSet> items) {
+  private List<DataSet> computePlainDataSets() {
+    List<DataSet> result = new ArrayList<>();
+    fillPlainDataSetByList(result, Objects.requireNonNull(dataSets));
+
+    return result;
+  }
+
+  private static void fillPlainDataSetByList(List<DataSet> result, List<DataSet> items) {
     items.forEach((DataSet dataSet) -> {
-      plainDataSets.add(dataSet);
-      fillPlaintDataSetByList(dataSet.getItems());
+      result.add(dataSet);
+      fillPlainDataSetByList(result, dataSet.items());
     });
   }
 
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
+  /**
+   * @param name        Имя набора данных
+   * @param type        Тип набора данных
+   * @param dataSource  Имя источника данных
+   * @param items       Подчиненные наборы данных
+   * @param querySource Текста запроса (опционально)
+   * @param fields      Поля набора данных
+   */
   @Builder
-  public static class DataSet {
-    /**
-     * Имя набора данных
-     */
-    @Default
-    String name = "";
-
-    /**
-     * Тип набора данных
-     */
-    @Default
-    DataSetType type = DataSetType.DATA_SET_QUERY;
-
-    /**
-     * Имя источника данных
-     */
-    @Default
-    String dataSource = "";
-
-    /**
-     * Подчиненные наборы данных
-     */
-    @Singular
-    List<DataSet> items;
-
-    /**
-     * Текста запроса (опционально)
-     */
-    @Default
-    QuerySource querySource = QuerySource.empty();
-
-    /**
-     * Поля набора данных
-     */
-    @Singular
-    List<DataSetField> fields;
+  public record DataSet(@NonNull String name,
+                        @NonNull DataSetType type,
+                        @NonNull String dataSource,
+                        @NonNull @Singular List<DataSet> items,
+                        @NonNull QuerySource querySource,
+                        @NonNull @Singular List<DataSetField> fields) {
   }
 
   /**
    * @param dataPath Путь к данным поля
    * @param name     Имя поля
    */
-  public record DataSetField(String dataPath, String name) {
+  public record DataSetField(@NonNull String dataPath, @NonNull String name) {
   }
 }

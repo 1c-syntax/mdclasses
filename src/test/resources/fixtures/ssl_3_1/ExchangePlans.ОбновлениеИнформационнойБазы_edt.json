@@ -5,8 +5,8 @@
         "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
         "mdoReference": {
           "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ExchangeDate",
-          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ДатаОбмена"
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ThisNode",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ЭтотУзел"
         },
         "comment": "",
         "synonym": {
@@ -17,66 +17,6 @@
           "type": "EXCHANGE_PLAN",
           "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы",
           "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
-                "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
-                }
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "ДатаОбмена",
-          "nameEn": "ExchangeDate"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ThisNode",
-          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ЭтотУзел"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
         },
         "passwordMode": false,
         "kind": "STANDARD",
@@ -203,7 +143,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
         },
         "fullName": {
           "nameRu": "НомерОтправленного",
@@ -246,7 +186,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
               }
             }
           ],
@@ -509,6 +449,66 @@
         "multiLine": false,
         "extendedEdit": false,
         "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ExchangeDate",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ДатаОбмена"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": "DATE_TIME",
+                "description": {
+                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                  "nameEn": "DateQualifiers (DateTime)"
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ДатаОбмена",
+          "nameEn": "ExchangeDate"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       }
     ],
     []
@@ -523,7 +523,7 @@
           "mdoRef": "InformationRegister.СостоянияРассылокОтчетов",
           "mdoRefRu": "РегистрСведений.СостоянияРассылокОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -531,7 +531,7 @@
           "mdoRef": "Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -539,7 +539,7 @@
           "mdoRef": "Catalog.ШаблоныАнкет",
           "mdoRefRu": "Справочник.ШаблоныАнкет"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -547,7 +547,7 @@
           "mdoRef": "InformationRegister.ПроцессыДляЗапуска",
           "mdoRefRu": "РегистрСведений.ПроцессыДляЗапуска"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -555,7 +555,7 @@
           "mdoRef": "InformationRegister.НаличиеФайлов",
           "mdoRefRu": "РегистрСведений.НаличиеФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -563,7 +563,7 @@
           "mdoRef": "Constant.ИспользоватьПочтовыйКлиент",
           "mdoRefRu": "Константа.ИспользоватьПочтовыйКлиент"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -571,7 +571,7 @@
           "mdoRef": "InformationRegister.УдалитьХранимыеФайлыВерсий",
           "mdoRefRu": "РегистрСведений.УдалитьХранимыеФайлыВерсий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -579,7 +579,7 @@
           "mdoRef": "Constant.ПараметрыАдминистрированияИБ",
           "mdoRefRu": "Константа.ПараметрыАдминистрированияИБ"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -587,7 +587,7 @@
           "mdoRef": "Constant.ИспользоватьШаблоныСообщений",
           "mdoRefRu": "Константа.ИспользоватьШаблоныСообщений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -595,7 +595,7 @@
           "mdoRef": "Constant.ПараметрыИтоговИАгрегатов",
           "mdoRefRu": "Константа.ПараметрыИтоговИАгрегатов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -603,7 +603,7 @@
           "mdoRef": "InformationRegister.СообщенияОбменаДанными",
           "mdoRefRu": "РегистрСведений.СообщенияОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -611,7 +611,7 @@
           "mdoRef": "Catalog.НаборыДополнительныхРеквизитовИСведений",
           "mdoRefRu": "Справочник.НаборыДополнительныхРеквизитовИСведений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -619,7 +619,7 @@
           "mdoRef": "InformationRegister.ПериодыНерабочихДнейКалендаря",
           "mdoRefRu": "РегистрСведений.ПериодыНерабочихДнейКалендаря"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -627,7 +627,7 @@
           "mdoRef": "Catalog.ПапкиЭлектронныхПисем",
           "mdoRefRu": "Справочник.ПапкиЭлектронныхПисем"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -635,7 +635,7 @@
           "mdoRef": "Catalog.ВариантыОтчетов",
           "mdoRefRu": "Справочник.ВариантыОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -643,7 +643,7 @@
           "mdoRef": "InformationRegister.ОтветыНаВопросыАнкет",
           "mdoRefRu": "РегистрСведений.ОтветыНаВопросыАнкет"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -651,7 +651,7 @@
           "mdoRef": "InformationRegister.ВерсииОбъектов",
           "mdoRefRu": "РегистрСведений.ВерсииОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -659,7 +659,7 @@
           "mdoRef": "Constant.ДатаУведомленияОНовыхЗадачах",
           "mdoRefRu": "Константа.ДатаУведомленияОНовыхЗадачах"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -667,7 +667,7 @@
           "mdoRef": "InformationRegister.КэшПереводов",
           "mdoRefRu": "РегистрСведений.КэшПереводов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -675,7 +675,7 @@
           "mdoRef": "InformationRegister.ЗамерыКомментарииСтатистики",
           "mdoRefRu": "РегистрСведений.ЗамерыКомментарииСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -683,7 +683,7 @@
           "mdoRef": "Constant.ИспользоватьЭлектронныеПодписи",
           "mdoRefRu": "Константа.ИспользоватьЭлектронныеПодписи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -691,7 +691,7 @@
           "mdoRef": "Catalog.ПрофилиКлючевыхОпераций",
           "mdoRefRu": "Справочник.ПрофилиКлючевыхОпераций"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -699,7 +699,7 @@
           "mdoRef": "Constant.ПараметрыРезервногоКопирования",
           "mdoRefRu": "Константа.ПараметрыРезервногоКопирования"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -707,7 +707,7 @@
           "mdoRef": "Constant.ИспользоватьДополнительныеОтчетыИОбработки",
           "mdoRefRu": "Константа.ИспользоватьДополнительныеОтчетыИОбработки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -715,7 +715,7 @@
           "mdoRef": "InformationRegister.СтатистикаКонфигурации",
           "mdoRefRu": "РегистрСведений.СтатистикаКонфигурации"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -723,7 +723,7 @@
           "mdoRef": "InformationRegister.НомераОтсканированныхФайлов",
           "mdoRefRu": "РегистрСведений.НомераОтсканированныхФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -731,7 +731,7 @@
           "mdoRef": "ChartOfCharacteristicTypes.РазделыДатЗапретаИзменения",
           "mdoRefRu": "ПланВидовХарактеристик.РазделыДатЗапретаИзменения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -739,7 +739,7 @@
           "mdoRef": "InformationRegister.НеудаленныеОбъекты",
           "mdoRefRu": "РегистрСведений.НеудаленныеОбъекты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -747,7 +747,7 @@
           "mdoRef": "Constant.ПериодХраненияЗамеров",
           "mdoRefRu": "Константа.ПериодХраненияЗамеров"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -755,7 +755,7 @@
           "mdoRef": "Constant.НастройкиПодчиненногоУзлаРИБ",
           "mdoRefRu": "Константа.НастройкиПодчиненногоУзлаРИБ"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -763,7 +763,7 @@
           "mdoRef": "InformationRegister.НепринятыеКОбработкеПочтовымСерверомИсходящиеПисьма",
           "mdoRefRu": "РегистрСведений.НепринятыеКОбработкеПочтовымСерверомИсходящиеПисьма"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -771,7 +771,7 @@
           "mdoRef": "Catalog.ВопросыШаблонаАнкеты",
           "mdoRefRu": "Справочник.ВопросыШаблонаАнкеты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -779,7 +779,7 @@
           "mdoRef": "InformationRegister.ЗамерыВремени",
           "mdoRefRu": "РегистрСведений.ЗамерыВремени"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -787,7 +787,7 @@
           "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения",
           "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -795,7 +795,7 @@
           "mdoRef": "InformationRegister.КурсыВалют",
           "mdoRefRu": "РегистрСведений.КурсыВалют"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -803,7 +803,7 @@
           "mdoRef": "Constant.ВерсияДатЗапретаИзменения",
           "mdoRefRu": "Константа.ВерсияДатЗапретаИзменения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -811,7 +811,7 @@
           "mdoRef": "Constant.НастройкаПроксиСервера",
           "mdoRefRu": "Константа.НастройкаПроксиСервера"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -819,7 +819,7 @@
           "mdoRef": "Constant.ЗапрещатьЗагрузкуФайловПоРасширению",
           "mdoRefRu": "Константа.ЗапрещатьЗагрузкуФайловПоРасширению"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -827,7 +827,7 @@
           "mdoRef": "InformationRegister.ОбработчикиСобытийСинхронизацииДанных",
           "mdoRefRu": "РегистрСведений.ОбработчикиСобытийСинхронизацииДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -835,7 +835,7 @@
           "mdoRef": "Catalog.ВнешниеКомпоненты",
           "mdoRefRu": "Справочник.ВнешниеКомпоненты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -843,7 +843,7 @@
           "mdoRef": "Constant.АдресПубликацииИнформационнойБазыВИнтернете",
           "mdoRefRu": "Константа.АдресПубликацииИнформационнойБазыВИнтернете"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -851,7 +851,7 @@
           "mdoRef": "Catalog.КлючиДоступа",
           "mdoRefRu": "Справочник.КлючиДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -859,7 +859,7 @@
           "mdoRef": "InformationRegister.НаборыЗначенийДоступа",
           "mdoRefRu": "РегистрСведений.НаборыЗначенийДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -867,7 +867,7 @@
           "mdoRef": "InformationRegister.НастройкиУчетныхЗаписейЭлектроннойПочты",
           "mdoRefRu": "РегистрСведений.НастройкиУчетныхЗаписейЭлектроннойПочты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -875,7 +875,7 @@
           "mdoRef": "InformationRegister.КалендарныеГрафики",
           "mdoRefRu": "РегистрСведений.КалендарныеГрафики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -883,7 +883,7 @@
           "mdoRef": "InformationRegister.ДомаЗданияСтроения",
           "mdoRefRu": "РегистрСведений.ДомаЗданияСтроения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -891,7 +891,7 @@
           "mdoRef": "Constant.ЗапретитьОтображениеНебезопасногоСодержимогоВПисьмах",
           "mdoRefRu": "Константа.ЗапретитьОтображениеНебезопасногоСодержимогоВПисьмах"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -899,7 +899,7 @@
           "mdoRef": "Catalog.ШаблоныСообщенийПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ШаблоныСообщенийПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -907,7 +907,7 @@
           "mdoRef": "Catalog.Календари",
           "mdoRefRu": "Справочник.Календари"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -915,7 +915,7 @@
           "mdoRef": "InformationRegister.ИдентификаторыПолученныхЭлектронныхПисем",
           "mdoRefRu": "РегистрСведений.ИдентификаторыПолученныхЭлектронныхПисем"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -923,7 +923,7 @@
           "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаКДанным",
           "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаКДанным"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -931,7 +931,7 @@
           "mdoRef": "Catalog.Валюты",
           "mdoRefRu": "Справочник.Валюты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -939,7 +939,7 @@
           "mdoRef": "Catalog.ШаблоныСообщений",
           "mdoRefRu": "Справочник.ШаблоныСообщений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -947,7 +947,7 @@
           "mdoRef": "InformationRegister.ЗависимостиПравДоступа",
           "mdoRefRu": "РегистрСведений.ЗависимостиПравДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -955,7 +955,7 @@
           "mdoRef": "InformationRegister.СлужебныеАдресныеСведения",
           "mdoRefRu": "РегистрСведений.СлужебныеАдресныеСведения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -963,7 +963,7 @@
           "mdoRef": "InformationRegister.УровниСокращенийАдресныхСведений",
           "mdoRefRu": "РегистрСведений.УровниСокращенийАдресныхСведений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -971,7 +971,7 @@
           "mdoRef": "InformationRegister.СостоянияОригиналовПервичныхДокументов",
           "mdoRefRu": "РегистрСведений.СостоянияОригиналовПервичныхДокументов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -979,7 +979,7 @@
           "mdoRef": "InformationRegister.СоответствияОбъектовИнформационныхБаз",
           "mdoRefRu": "РегистрСведений.СоответствияОбъектовИнформационныхБаз"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -987,7 +987,7 @@
           "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВЛокальномРежиме",
           "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВЛокальномРежиме"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -995,7 +995,7 @@
           "mdoRef": "Constant.ВерсияКлассификатораБанков",
           "mdoRefRu": "Константа.ВерсияКлассификатораБанков"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1003,7 +1003,7 @@
           "mdoRef": "Constant.ВыполнятьЗамерыПроизводительности",
           "mdoRefRu": "Константа.ВыполнятьЗамерыПроизводительности"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1011,7 +1011,7 @@
           "mdoRef": "Constant.ПрофильБезопасностиИнформационнойБазы",
           "mdoRefRu": "Константа.ПрофильБезопасностиИнформационнойБазы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1019,7 +1019,7 @@
           "mdoRef": "Constant.ДнейДоСкрытияПерсональныхДанныхСубъектов",
           "mdoRefRu": "Константа.ДнейДоСкрытияПерсональныхДанныхСубъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1027,7 +1027,7 @@
           "mdoRef": "Catalog.ЗапланированноеВзаимодействиеПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ЗапланированноеВзаимодействиеПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1035,7 +1035,7 @@
           "mdoRef": "InformationRegister.НастройкиОбменаДаннымиXDTO",
           "mdoRefRu": "РегистрСведений.НастройкиОбменаДаннымиXDTO"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1043,7 +1043,7 @@
           "mdoRef": "Constant.ИспользоватьПризнакРассмотрено",
           "mdoRefRu": "Константа.ИспользоватьПризнакРассмотрено"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1051,7 +1051,7 @@
           "mdoRef": "InformationRegister.ПредопределенныеВариантыОтчетовВерсийРасширений",
           "mdoRefRu": "РегистрСведений.ПредопределенныеВариантыОтчетовВерсийРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1059,7 +1059,7 @@
           "mdoRef": "InformationRegister.СубъектыДляСкрытияПерсональныхДанных",
           "mdoRefRu": "РегистрСведений.СубъектыДляСкрытияПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1067,7 +1067,7 @@
           "mdoRef": "Constant.СписокРасширенийФайловOpenDocumentОбластиДанных",
           "mdoRefRu": "Константа.СписокРасширенийФайловOpenDocumentОбластиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1075,7 +1075,7 @@
           "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервиса",
           "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1083,7 +1083,7 @@
           "mdoRef": "InformationRegister.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных",
           "mdoRefRu": "РегистрСведений.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1091,7 +1091,7 @@
           "mdoRef": "InformationRegister.РазрешенияНаИспользованиеВнешнихРесурсов",
           "mdoRefRu": "РегистрСведений.РазрешенияНаИспользованиеВнешнихРесурсов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1099,7 +1099,7 @@
           "mdoRef": "InformationRegister.НастройкиСинхронизацииФайлов",
           "mdoRefRu": "РегистрСведений.НастройкиСинхронизацииФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1107,7 +1107,7 @@
           "mdoRef": "InformationRegister.УдалитьОбластиПерсональныхДанных",
           "mdoRefRu": "РегистрСведений.УдалитьОбластиПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1115,7 +1115,7 @@
           "mdoRef": "Catalog.КлючевыеОперации",
           "mdoRefRu": "Справочник.КлючевыеОперации"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1123,7 +1123,7 @@
           "mdoRef": "Catalog.ВидыПроверок",
           "mdoRefRu": "Справочник.ВидыПроверок"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1131,7 +1131,7 @@
           "mdoRef": "Constant.НезависимоеИспользованиеДополнительныхОтчетовИОбработокВМоделиСервиса",
           "mdoRefRu": "Константа.НезависимоеИспользованиеДополнительныхОтчетовИОбработокВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1139,7 +1139,7 @@
           "mdoRef": "Catalog.ВариантыОтветовАнкет",
           "mdoRefRu": "Справочник.ВариантыОтветовАнкет"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1147,7 +1147,7 @@
           "mdoRef": "Catalog.Заметки",
           "mdoRefRu": "Справочник.Заметки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1155,7 +1155,7 @@
           "mdoRef": "Constant.АдресДляВосстановленияПароляУчетнойЗаписи",
           "mdoRefRu": "Константа.АдресДляВосстановленияПароляУчетнойЗаписи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1163,7 +1163,7 @@
           "mdoRef": "Task.ЗадачаИсполнителя",
           "mdoRefRu": "Задача.ЗадачаИсполнителя"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1171,7 +1171,7 @@
           "mdoRef": "InformationRegister.ДополнительныеСведения",
           "mdoRefRu": "РегистрСведений.ДополнительныеСведения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1179,7 +1179,7 @@
           "mdoRef": "Catalog.ПредопределенныеВариантыОтчетовРасширений",
           "mdoRefRu": "Справочник.ПредопределенныеВариантыОтчетовРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1187,7 +1187,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаКРегиструРезультатыПроверкиУчета",
           "mdoRefRu": "РегистрСведений.КлючиДоступаКРегиструРезультатыПроверкиУчета"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1195,7 +1195,7 @@
           "mdoRef": "InformationRegister.ПутиКПрограммамЭлектроннойПодписиИШифрованияНаСерверахLinux",
           "mdoRefRu": "РегистрСведений.ПутиКПрограммамЭлектроннойПодписиИШифрованияНаСерверахLinux"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1203,7 +1203,7 @@
           "mdoRef": "InformationRegister.СостоянияПроверокВеденияУчета",
           "mdoRefRu": "РегистрСведений.СостоянияПроверокВеденияУчета"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1211,7 +1211,7 @@
           "mdoRef": "Document.НазначениеОпросов",
           "mdoRefRu": "Документ.НазначениеОпросов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1219,7 +1219,7 @@
           "mdoRef": "Catalog.СценарииОбменовДанными",
           "mdoRefRu": "Справочник.СценарииОбменовДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1227,7 +1227,7 @@
           "mdoRef": "Constant.ИспользоватьСкрытиеПерсональныхДанныхСубъектов",
           "mdoRefRu": "Константа.ИспользоватьСкрытиеПерсональныхДанныхСубъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1235,7 +1235,7 @@
           "mdoRef": "Catalog.ИдентификаторыОбъектовМетаданных",
           "mdoRefRu": "Справочник.ИдентификаторыОбъектовМетаданных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1243,7 +1243,7 @@
           "mdoRef": "InformationRegister.ФайлыВРабочемКаталоге",
           "mdoRefRu": "РегистрСведений.ФайлыВРабочемКаталоге"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1251,7 +1251,7 @@
           "mdoRef": "Constant.ИспользоватьШифрование",
           "mdoRefRu": "Константа.ИспользоватьШифрование"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1259,7 +1259,7 @@
           "mdoRef": "InformationRegister.ДанныеОбработанныеВЦентральномУзлеРИБ",
           "mdoRefRu": "РегистрСведений.ДанныеОбработанныеВЦентральномУзлеРИБ"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1267,7 +1267,7 @@
           "mdoRef": "InformationRegister.ОбработчикиОбновления",
           "mdoRefRu": "РегистрСведений.ОбработчикиОбновления"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1275,7 +1275,7 @@
           "mdoRef": "InformationRegister.ИсполнителиЗадач",
           "mdoRefRu": "РегистрСведений.ИсполнителиЗадач"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1283,7 +1283,7 @@
           "mdoRef": "Document.ТелефонныйЗвонок",
           "mdoRefRu": "Документ.ТелефонныйЗвонок"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1291,7 +1291,7 @@
           "mdoRef": "InformationRegister.НастройкиВерсионированияОбъектов",
           "mdoRefRu": "РегистрСведений.НастройкиВерсионированияОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1299,7 +1299,7 @@
           "mdoRef": "Catalog.РолиИсполнителей",
           "mdoRefRu": "Справочник.РолиИсполнителей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1307,7 +1307,7 @@
           "mdoRef": "Catalog.ОбщиеВнешниеКомпоненты",
           "mdoRefRu": "Справочник.ОбщиеВнешниеКомпоненты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1315,7 +1315,7 @@
           "mdoRef": "Constant.СписокЗапрещенныхРасширенийОбластиДанных",
           "mdoRefRu": "Константа.СписокЗапрещенныхРасширенийОбластиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1323,7 +1323,7 @@
           "mdoRef": "InformationRegister.НастройкиТранспортаОбменаОбластейДанных",
           "mdoRefRu": "РегистрСведений.НастройкиТранспортаОбменаОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1331,7 +1331,7 @@
           "mdoRef": "Constant.ОтправлятьПисьмаВФорматеHTML",
           "mdoRefRu": "Константа.ОтправлятьПисьмаВФорматеHTML"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1339,7 +1339,7 @@
           "mdoRef": "Constant.ИспользоватьПодчиненныеБизнесПроцессы",
           "mdoRefRu": "Константа.ИспользоватьПодчиненныеБизнесПроцессы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1347,7 +1347,7 @@
           "mdoRef": "Constant.УдалитьЛогинДоступаКСервисуMorpher",
           "mdoRefRu": "Константа.УдалитьЛогинДоступаКСервисуMorpher"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1355,7 +1355,7 @@
           "mdoRef": "InformationRegister.СостоянияКонтактовВзаимодействий",
           "mdoRefRu": "РегистрСведений.СостоянияКонтактовВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1363,7 +1363,7 @@
           "mdoRef": "InformationRegister.ОбластиПерсональныхДанных",
           "mdoRefRu": "РегистрСведений.ОбластиПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1371,7 +1371,7 @@
           "mdoRef": "InformationRegister.СтатусыСинхронизацииФайловСОблачнымСервисом",
           "mdoRefRu": "РегистрСведений.СтатусыСинхронизацииФайловСОблачнымСервисом"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1379,7 +1379,7 @@
           "mdoRef": "Constant.ИспользоватьДатыЗапретаЗагрузки",
           "mdoRefRu": "Константа.ИспользоватьДатыЗапретаЗагрузки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1387,7 +1387,7 @@
           "mdoRef": "InformationRegister.ДанныеПроизводственногоКалендаря",
           "mdoRefRu": "РегистрСведений.ДанныеПроизводственногоКалендаря"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1395,7 +1395,7 @@
           "mdoRef": "Constant.ИспользоватьВерсионированиеОбъектов",
           "mdoRefRu": "Константа.ИспользоватьВерсионированиеОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1403,7 +1403,7 @@
           "mdoRef": "Catalog.ВерсииРасширений",
           "mdoRefRu": "Справочник.ВерсииРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1411,7 +1411,7 @@
           "mdoRef": "InformationRegister.НаследованиеНастроекПравОбъектов",
           "mdoRefRu": "РегистрСведений.НаследованиеНастроекПравОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1419,7 +1419,7 @@
           "mdoRef": "InformationRegister.ПричиныИзмененияАдресныхСведений",
           "mdoRefRu": "РегистрСведений.ПричиныИзмененияАдресныхСведений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1427,7 +1427,7 @@
           "mdoRef": "InformationRegister.СессииОбменаСообщениямиСистемы",
           "mdoRefRu": "РегистрСведений.СессииОбменаСообщениямиСистемы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1435,7 +1435,7 @@
           "mdoRef": "Constant.СписокРасширенийТекстовыхФайлов",
           "mdoRefRu": "Константа.СписокРасширенийТекстовыхФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1443,7 +1443,7 @@
           "mdoRef": "InformationRegister.ЗагруженныеВерсииАдресныхСведений",
           "mdoRefRu": "РегистрСведений.ЗагруженныеВерсииАдресныхСведений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1451,7 +1451,7 @@
           "mdoRef": "InformationRegister.ПраваРолей",
           "mdoRefRu": "РегистрСведений.ПраваРолей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1459,7 +1459,7 @@
           "mdoRef": "Catalog.ТелефонныйЗвонокПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ТелефонныйЗвонокПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1467,7 +1467,7 @@
           "mdoRef": "Document.ЗапланированноеВзаимодействие",
           "mdoRefRu": "Документ.ЗапланированноеВзаимодействие"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1475,7 +1475,7 @@
           "mdoRef": "Constant.СписокРасширенийФайловOpenDocument",
           "mdoRefRu": "Константа.СписокРасширенийФайловOpenDocument"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1483,7 +1483,7 @@
           "mdoRef": "Catalog.ПравилаПроверкиУчета",
           "mdoRefRu": "Справочник.ПравилаПроверкиУчета"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1491,7 +1491,7 @@
           "mdoRef": "Constant.ДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC",
           "mdoRefRu": "Константа.ДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1499,7 +1499,7 @@
           "mdoRef": "Document.Встреча",
           "mdoRefRu": "Документ.Встреча"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1507,7 +1507,7 @@
           "mdoRef": "Catalog.Пользователи",
           "mdoRefRu": "Справочник.Пользователи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1515,7 +1515,7 @@
           "mdoRef": "Constant.ЗагрузитьСообщениеОбменаДанными",
           "mdoRefRu": "Константа.ЗагрузитьСообщениеОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1523,7 +1523,7 @@
           "mdoRef": "Constant.ПроверятьЭлектронныеПодписиНаСервере",
           "mdoRefRu": "Константа.ПроверятьЭлектронныеПодписиНаСервере"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1531,7 +1531,7 @@
           "mdoRef": "Constant.ПровайдерSMS",
           "mdoRefRu": "Константа.ПровайдерSMS"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1539,7 +1539,7 @@
           "mdoRef": "Constant.ПользовательСтандартногоИнтерфейсаOData",
           "mdoRefRu": "Константа.ПользовательСтандартногоИнтерфейсаOData"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1547,7 +1547,7 @@
           "mdoRef": "InformationRegister.ВерсииПодсистем",
           "mdoRefRu": "РегистрСведений.ВерсииПодсистем"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1555,7 +1555,7 @@
           "mdoRef": "Catalog.ПользовательскиеНастройкиОтчетов",
           "mdoRefRu": "Справочник.ПользовательскиеНастройкиОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1563,7 +1563,7 @@
           "mdoRef": "InformationRegister.СостоянияОбменовДанными",
           "mdoRefRu": "РегистрСведений.СостоянияОбменовДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1571,7 +1571,7 @@
           "mdoRef": "Constant.ИспользоватьАвтономнуюРаботуВМоделиСервиса",
           "mdoRefRu": "Константа.ИспользоватьАвтономнуюРаботуВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1579,7 +1579,7 @@
           "mdoRef": "InformationRegister.ПредметыПапкиВзаимодействий",
           "mdoRefRu": "РегистрСведений.ПредметыПапкиВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1587,7 +1587,7 @@
           "mdoRef": "InformationRegister.ЗначенияГруппДоступаПоУмолчанию",
           "mdoRefRu": "РегистрСведений.ЗначенияГруппДоступаПоУмолчанию"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1595,7 +1595,7 @@
           "mdoRef": "Constant.ОтложенноеОбновлениеЗавершеноУспешно",
           "mdoRefRu": "Константа.ОтложенноеОбновлениеЗавершеноУспешно"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1603,7 +1603,7 @@
           "mdoRef": "Constant.ИзвлекатьТекстыФайловНаСервере",
           "mdoRefRu": "Константа.ИзвлекатьТекстыФайловНаСервере"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1611,7 +1611,7 @@
           "mdoRef": "Constant.ИспользоватьПрофилиБезопасностиДляДОО",
           "mdoRefRu": "Константа.ИспользоватьПрофилиБезопасностиДляДОО"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1619,7 +1619,7 @@
           "mdoRef": "Constant.КоличествоЗамеровВПакетеЭкспорта",
           "mdoRefRu": "Константа.КоличествоЗамеровВПакетеЭкспорта"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1627,7 +1627,7 @@
           "mdoRef": "Constant.ИспользоватьДополнительныеРеквизитыИСведения",
           "mdoRefRu": "Константа.ИспользоватьДополнительныеРеквизитыИСведения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1635,7 +1635,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаВнешнихПользователей",
           "mdoRefRu": "РегистрСведений.КлючиДоступаВнешнихПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1643,7 +1643,7 @@
           "mdoRef": "Constant.РазрешитьВыполнениеДООРегламентнымиЗаданиямиВМоделиСервиса",
           "mdoRefRu": "Константа.РазрешитьВыполнениеДООРегламентнымиЗаданиямиВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1651,7 +1651,7 @@
           "mdoRef": "Document.СообщениеSMS",
           "mdoRefRu": "Документ.СообщениеSMS"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1659,7 +1659,7 @@
           "mdoRef": "InformationRegister.ОчередьИзвлеченияТекста",
           "mdoRefRu": "РегистрСведений.ОчередьИзвлеченияТекста"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1667,7 +1667,7 @@
           "mdoRef": "Constant.ИспользоватьАнкетирование",
           "mdoRefRu": "Константа.ИспользоватьАнкетирование"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1675,7 +1675,7 @@
           "mdoRef": "Catalog.УчетныеЗаписиЭлектроннойПочты",
           "mdoRefRu": "Справочник.УчетныеЗаписиЭлектроннойПочты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1683,7 +1683,7 @@
           "mdoRef": "Constant.МаксимальныйРазмерФайла",
           "mdoRefRu": "Константа.МаксимальныйРазмерФайла"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1691,7 +1691,7 @@
           "mdoRef": "InformationRegister.ЗапросыРазрешенийНаИспользованиеВнешнихРесурсов",
           "mdoRefRu": "РегистрСведений.ЗапросыРазрешенийНаИспользованиеВнешнихРесурсов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1699,7 +1699,7 @@
           "mdoRef": "InformationRegister.ПользовательскиеНастройкиДоступаКОбработкам",
           "mdoRefRu": "РегистрСведений.ПользовательскиеНастройкиДоступаКОбработкам"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1707,7 +1707,7 @@
           "mdoRef": "InformationRegister.ПакетыИнформацииПриЗапуске",
           "mdoRefRu": "РегистрСведений.ПакетыИнформацииПриЗапуске"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1715,7 +1715,7 @@
           "mdoRef": "InformationRegister.ЗамерыОбластиСтатистики",
           "mdoRefRu": "РегистрСведений.ЗамерыОбластиСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1723,7 +1723,7 @@
           "mdoRef": "Constant.ПараметрыБлокировкиРаботыСВнешнимиРесурсами",
           "mdoRefRu": "Константа.ПараметрыБлокировкиРаботыСВнешнимиРесурсами"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1731,7 +1731,7 @@
           "mdoRef": "Constant.ПриоритетОбновленияВОбластяхДанных",
           "mdoRefRu": "Константа.ПриоритетОбновленияВОбластяхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1739,7 +1739,7 @@
           "mdoRef": "Document.Анкета",
           "mdoRefRu": "Документ.Анкета"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1747,7 +1747,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаНаборовГруппДоступа",
           "mdoRefRu": "РегистрСведений.КлючиДоступаНаборовГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1755,7 +1755,7 @@
           "mdoRef": "Constant.НастройкиВходаПользователей",
           "mdoRefRu": "Константа.НастройкиВходаПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1763,7 +1763,7 @@
           "mdoRef": "Constant.ПараметрыАдресногоКлассификатора",
           "mdoRefRu": "Константа.ПараметрыАдресногоКлассификатора"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1771,7 +1771,7 @@
           "mdoRef": "Catalog.ПроизводственныеКалендари",
           "mdoRefRu": "Справочник.ПроизводственныеКалендари"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1779,7 +1779,7 @@
           "mdoRef": "Catalog.СтроковыеКонтактыВзаимодействий",
           "mdoRefRu": "Справочник.СтроковыеКонтактыВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1787,7 +1787,7 @@
           "mdoRef": "Catalog.ПоставляемыеДополнительныеОтчетыИОбработки",
           "mdoRefRu": "Справочник.ПоставляемыеДополнительныеОтчетыИОбработки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1795,7 +1795,7 @@
           "mdoRef": "Catalog.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1803,7 +1803,7 @@
           "mdoRef": "InformationRegister.НазначениеДополнительныхОбработок",
           "mdoRefRu": "РегистрСведений.НазначениеДополнительныхОбработок"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1811,7 +1811,7 @@
           "mdoRef": "Catalog.ВидыКонтактнойИнформации",
           "mdoRefRu": "Справочник.ВидыКонтактнойИнформации"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1819,7 +1819,7 @@
           "mdoRef": "Catalog.СтраныМира",
           "mdoRefRu": "Справочник.СтраныМира"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1827,7 +1827,7 @@
           "mdoRef": "Constant.СоздаватьЭлектронныеПодписиНаСервере",
           "mdoRefRu": "Константа.СоздаватьЭлектронныеПодписиНаСервере"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1835,7 +1835,7 @@
           "mdoRef": "Constant.ИспользоватьДатуИВремяВСрокахЗадач",
           "mdoRefRu": "Константа.ИспользоватьДатуИВремяВСрокахЗадач"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1843,7 +1843,7 @@
           "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов",
           "mdoRefRu": "РегистрСведений.СклоненияПредставленийОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1851,7 +1851,7 @@
           "mdoRef": "InformationRegister.СогласияНаОбработкуПерсональныхДанных",
           "mdoRefRu": "РегистрСведений.СогласияНаОбработкуПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1859,7 +1859,7 @@
           "mdoRef": "InformationRegister.ПубличныеИдентификаторыСинхронизируемыхОбъектов",
           "mdoRefRu": "РегистрСведений.ПубличныеИдентификаторыСинхронизируемыхОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1867,7 +1867,7 @@
           "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных",
           "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1875,7 +1875,7 @@
           "mdoRef": "InformationRegister.ДополнительныеАдресныеСведения",
           "mdoRefRu": "РегистрСведений.ДополнительныеАдресныеСведения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1883,7 +1883,7 @@
           "mdoRef": "Catalog.СертификатыКлючейЭлектроннойПодписиИШифрования",
           "mdoRefRu": "Справочник.СертификатыКлючейЭлектроннойПодписиИШифрования"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1891,7 +1891,7 @@
           "mdoRef": "InformationRegister.НастройкиТранспортаОбменаДанными",
           "mdoRefRu": "РегистрСведений.НастройкиТранспортаОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1899,7 +1899,7 @@
           "mdoRef": "Constant.СтатусОбновленияКонфигурации",
           "mdoRefRu": "Константа.СтатусОбновленияКонфигурации"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1907,7 +1907,7 @@
           "mdoRef": "Constant.ИспользоватьОтправкуSMSВШаблонахСообщений",
           "mdoRefRu": "Константа.ИспользоватьОтправкуSMSВШаблонахСообщений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1915,7 +1915,7 @@
           "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаТекущиеЗадания",
           "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаТекущиеЗадания"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1923,7 +1923,7 @@
           "mdoRef": "InformationRegister.СведенияОФайлах",
           "mdoRefRu": "РегистрСведений.СведенияОФайлах"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1931,7 +1931,7 @@
           "mdoRef": "Constant.КоличествоПотоковОбновленияДоступа",
           "mdoRefRu": "Константа.КоличествоПотоковОбновленияДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1939,7 +1939,7 @@
           "mdoRef": "InformationRegister.СоставыГруппПользователей",
           "mdoRefRu": "РегистрСведений.СоставыГруппПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1947,7 +1947,7 @@
           "mdoRef": "InformationRegister.ПотокиОбновления",
           "mdoRefRu": "РегистрСведений.ПотокиОбновления"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1955,7 +1955,7 @@
           "mdoRef": "InformationRegister.ПользовательскиеМакетыПечати",
           "mdoRefRu": "РегистрСведений.ПользовательскиеМакетыПечати"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1963,7 +1963,7 @@
           "mdoRef": "InformationRegister.БезопасноеХранилищеДанныхОбластейДанных",
           "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанныхОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1971,7 +1971,7 @@
           "mdoRef": "InformationRegister.ТаблицыГруппДоступа",
           "mdoRefRu": "РегистрСведений.ТаблицыГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1979,7 +1979,7 @@
           "mdoRef": "Catalog.ЗакладкиВзаимодействий",
           "mdoRefRu": "Справочник.ЗакладкиВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1987,7 +1987,7 @@
           "mdoRef": "Catalog.СостоянияОригиналовПервичныхДокументов",
           "mdoRefRu": "Справочник.СостоянияОригиналовПервичныхДокументов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -1995,7 +1995,7 @@
           "mdoRef": "InformationRegister.ИзмененияОбщихДанныхУзлов",
           "mdoRefRu": "РегистрСведений.ИзмененияОбщихДанныхУзлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2003,7 +2003,7 @@
           "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаПользователей",
           "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2011,7 +2011,7 @@
           "mdoRef": "Catalog.РассылкиОтчетов",
           "mdoRefRu": "Справочник.РассылкиОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2019,7 +2019,7 @@
           "mdoRef": "InformationRegister.НеразделенныеПользователи",
           "mdoRefRu": "РегистрСведений.НеразделенныеПользователи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2027,7 +2027,7 @@
           "mdoRef": "InformationRegister.УведомленияОПрочтении",
           "mdoRefRu": "РегистрСведений.УведомленияОПрочтении"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2035,7 +2035,7 @@
           "mdoRef": "InformationRegister.ДанныеОбъектовДляРегистрацииВОбменах",
           "mdoRefRu": "РегистрСведений.ДанныеОбъектовДляРегистрацииВОбменах"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2043,7 +2043,7 @@
           "mdoRef": "InformationRegister.ДанныеБизнесПроцессов",
           "mdoRefRu": "РегистрСведений.ДанныеБизнесПроцессов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2051,7 +2051,7 @@
           "mdoRef": "Document.ЭлектронноеПисьмоИсходящее",
           "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2059,7 +2059,7 @@
           "mdoRef": "Constant.МинимальныйИнтервалРегламентныхЗаданийДОИОВМоделиСервиса",
           "mdoRefRu": "Константа.МинимальныйИнтервалРегламентныхЗаданийДОИОВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2067,7 +2067,7 @@
           "mdoRef": "Constant.ИспользованиеКаталогаДополнительныхОтчетовИОбработокВМоделиСервиса",
           "mdoRefRu": "Константа.ИспользованиеКаталогаДополнительныхОтчетовИОбработокВМоделиСервиса"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2075,7 +2075,7 @@
           "mdoRef": "InformationRegister.УдалитьЗамерыВремени3",
           "mdoRefRu": "РегистрСведений.УдалитьЗамерыВремени3"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2083,7 +2083,7 @@
           "mdoRef": "InformationRegister.НастройкиПравОбъектов",
           "mdoRefRu": "РегистрСведений.НастройкиПравОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2091,7 +2091,7 @@
           "mdoRef": "Catalog.ДополнительныеОтчетыИОбработки",
           "mdoRefRu": "Справочник.ДополнительныеОтчетыИОбработки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2099,7 +2099,7 @@
           "mdoRef": "Catalog.ВнешниеПользователи",
           "mdoRefRu": "Справочник.ВнешниеПользователи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2107,7 +2107,7 @@
           "mdoRef": "Catalog.ПапкиФайлов",
           "mdoRefRu": "Справочник.ПапкиФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2115,7 +2115,7 @@
           "mdoRef": "InformationRegister.НапоминанияПользователя",
           "mdoRefRu": "РегистрСведений.НапоминанияПользователя"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2123,7 +2123,7 @@
           "mdoRef": "Constant.ДатаОбновленияПовторноИспользуемыхЗначенийМРО",
           "mdoRefRu": "Константа.ДатаОбновленияПовторноИспользуемыхЗначенийМРО"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2131,7 +2131,7 @@
           "mdoRef": "InformationRegister.ЗначенияГруппДоступа",
           "mdoRefRu": "РегистрСведений.ЗначенияГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2139,7 +2139,7 @@
           "mdoRef": "Constant.ИспользоватьАльтернативныйСерверДляЗагрузкиКурсовВалют",
           "mdoRefRu": "Константа.ИспользоватьАльтернативныйСерверДляЗагрузкиКурсовВалют"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2147,7 +2147,7 @@
           "mdoRef": "Constant.ИспользоватьПолнотекстовыйПоиск",
           "mdoRefRu": "Константа.ИспользоватьПолнотекстовыйПоиск"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2155,7 +2155,7 @@
           "mdoRef": "Constant.КаталогСообщенийОбменаДаннымиДляWindows",
           "mdoRefRu": "Константа.КаталогСообщенийОбменаДаннымиДляWindows"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2163,7 +2163,7 @@
           "mdoRef": "Constant.АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности",
           "mdoRefRu": "Константа.АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2171,7 +2171,7 @@
           "mdoRef": "InformationRegister.КэшПрограммныхИнтерфейсов",
           "mdoRefRu": "РегистрСведений.КэшПрограммныхИнтерфейсов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2179,7 +2179,7 @@
           "mdoRef": "InformationRegister.ГруппыЗначенийДоступа",
           "mdoRefRu": "РегистрСведений.ГруппыЗначенийДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2187,7 +2187,7 @@
           "mdoRef": "InformationRegister.НастройкиКомандПечати",
           "mdoRefRu": "РегистрСведений.НастройкиКомандПечати"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2195,7 +2195,7 @@
           "mdoRef": "Constant.ДанныеДляОтложенногоОбновления",
           "mdoRefRu": "Константа.ДанныеДляОтложенногоОбновления"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2203,7 +2203,7 @@
           "mdoRef": "Constant.НеИспользоватьРазделениеПоОбластямДанных",
           "mdoRefRu": "Константа.НеИспользоватьРазделениеПоОбластямДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2211,7 +2211,7 @@
           "mdoRef": "Constant.КаталогСообщенийОбменаДаннымиДляLinux",
           "mdoRefRu": "Константа.КаталогСообщенийОбменаДаннымиДляLinux"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2219,7 +2219,7 @@
           "mdoRef": "Constant.СведенияОБлокируемыхОбъектах",
           "mdoRefRu": "Константа.СведенияОБлокируемыхОбъектах"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2227,7 +2227,7 @@
           "mdoRef": "Catalog.ПредопределенныеВариантыОтчетов",
           "mdoRefRu": "Справочник.ПредопределенныеВариантыОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2235,7 +2235,7 @@
           "mdoRef": "Constant.ИспользоватьЭлектроннуюПочтуВШаблонахСообщений",
           "mdoRefRu": "Константа.ИспользоватьЭлектроннуюПочтуВШаблонахСообщений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2243,7 +2243,7 @@
           "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервисаСПриложениемВИнтернете",
           "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервисаСПриложениемВИнтернете"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2251,7 +2251,7 @@
           "mdoRef": "Constant.ОценкаПроизводительностиПериодЗаписи",
           "mdoRefRu": "Константа.ОценкаПроизводительностиПериодЗаписи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2259,7 +2259,7 @@
           "mdoRef": "Constant.ГлавныйУзел",
           "mdoRefRu": "Константа.ГлавныйУзел"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2267,7 +2267,7 @@
           "mdoRef": "Constant.ЗаголовокСистемы",
           "mdoRefRu": "Константа.ЗаголовокСистемы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2275,7 +2275,7 @@
           "mdoRef": "InformationRegister.РучныеИзмененияГрафиковРаботы",
           "mdoRefRu": "РегистрСведений.РучныеИзмененияГрафиковРаботы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2283,7 +2283,7 @@
           "mdoRef": "Constant.ИспользоватьБизнесПроцессыИЗадачи",
           "mdoRefRu": "Константа.ИспользоватьБизнесПроцессыИЗадачи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2291,7 +2291,7 @@
           "mdoRef": "InformationRegister.СостоянияОбменовДаннымиОбластейДанных",
           "mdoRefRu": "РегистрСведений.СостоянияОбменовДаннымиОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2299,7 +2299,7 @@
           "mdoRef": "Catalog.ГруппыПользователей",
           "mdoRefRu": "Справочник.ГруппыПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2307,7 +2307,7 @@
           "mdoRef": "Constant.ИспользуютсяПрофилиБезопасности",
           "mdoRefRu": "Константа.ИспользуютсяПрофилиБезопасности"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2315,7 +2315,7 @@
           "mdoRef": "Constant.ОграничиватьДоступНаУровнеЗаписейУниверсально",
           "mdoRefRu": "Константа.ОграничиватьДоступНаУровнеЗаписейУниверсально"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2323,7 +2323,7 @@
           "mdoRef": "Constant.ЗарегистрированыИзмененияДанных",
           "mdoRefRu": "Константа.ЗарегистрированыИзмененияДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2331,7 +2331,7 @@
           "mdoRef": "InformationRegister.НастройкиОчисткиФайлов",
           "mdoRefRu": "РегистрСведений.НастройкиОчисткиФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2339,7 +2339,7 @@
           "mdoRef": "InformationRegister.ОбщиеНастройкиУзловИнформационныхБаз",
           "mdoRefRu": "РегистрСведений.ОбщиеНастройкиУзловИнформационныхБаз"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2347,7 +2347,7 @@
           "mdoRef": "Catalog.ЗначенияСвойствОбъектовИерархия",
           "mdoRefRu": "Справочник.ЗначенияСвойствОбъектовИерархия"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2355,7 +2355,7 @@
           "mdoRef": "Constant.МаксимальныйРазмерФайлаОбластиДанных",
           "mdoRefRu": "Константа.МаксимальныйРазмерФайлаОбластиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2363,7 +2363,7 @@
           "mdoRef": "Constant.ИспользоватьВнешнихПользователей",
           "mdoRefRu": "Константа.ИспользоватьВнешнихПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2371,7 +2371,7 @@
           "mdoRef": "Catalog.УчетныеЗаписиСинхронизацииФайлов",
           "mdoRefRu": "Справочник.УчетныеЗаписиСинхронизацииФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2379,7 +2379,7 @@
           "mdoRef": "InformationRegister.ПараметрыРаботыПрограммы",
           "mdoRefRu": "РегистрСведений.ПараметрыРаботыПрограммы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2387,7 +2387,7 @@
           "mdoRef": "Catalog.ПрограммыЭлектроннойПодписиИШифрования",
           "mdoRefRu": "Справочник.ПрограммыЭлектроннойПодписиИШифрования"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2395,7 +2395,7 @@
           "mdoRef": "Catalog.ИдентификаторыОбъектовРасширений",
           "mdoRefRu": "Справочник.ИдентификаторыОбъектовРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2403,7 +2403,7 @@
           "mdoRef": "InformationRegister.СостоянияПапокПисем",
           "mdoRefRu": "РегистрСведений.СостоянияПапокПисем"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2411,7 +2411,7 @@
           "mdoRef": "Constant.НастройкиКолонтитулов",
           "mdoRefRu": "Константа.НастройкиКолонтитулов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2419,7 +2419,7 @@
           "mdoRef": "Constant.ИспользоватьОнлайнПоддержку",
           "mdoRefRu": "Константа.ИспользоватьОнлайнПоддержку"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2427,7 +2427,7 @@
           "mdoRef": "InformationRegister.УдалитьНастройкиТранспортаОбмена",
           "mdoRefRu": "РегистрСведений.УдалитьНастройкиТранспортаОбмена"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2435,7 +2435,7 @@
           "mdoRef": "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач",
           "mdoRefRu": "ПланВидовХарактеристик.ОбъектыАдресацииЗадач"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2443,7 +2443,7 @@
           "mdoRef": "Constant.ИспользоватьГруппыПользователей",
           "mdoRefRu": "Константа.ИспользоватьГруппыПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2451,7 +2451,7 @@
           "mdoRef": "Constant.СинхронизироватьДанныеСПриложениемВИнтернетеПриНачалеРаботыПрограммы",
           "mdoRefRu": "Константа.СинхронизироватьДанныеСПриложениемВИнтернетеПриНачалеРаботыПрограммы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2459,7 +2459,7 @@
           "mdoRef": "InformationRegister.ПсевдонимыПредопределенныхУзлов",
           "mdoRefRu": "РегистрСведений.ПсевдонимыПредопределенныхУзлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2467,7 +2467,7 @@
           "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДаннымиОбластейДанных",
           "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДаннымиОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2475,7 +2475,7 @@
           "mdoRef": "Constant.ИспользоватьНесколькоПроизводственныхКалендарей",
           "mdoRefRu": "Константа.ИспользоватьНесколькоПроизводственныхКалендарей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2483,7 +2483,7 @@
           "mdoRef": "InformationRegister.ПравилаДляОбменаДанными",
           "mdoRefRu": "РегистрСведений.ПравилаДляОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2491,7 +2491,7 @@
           "mdoRef": "InformationRegister.ОбластиСтатистики",
           "mdoRefRu": "РегистрСведений.ОбластиСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2499,7 +2499,7 @@
           "mdoRef": "InformationRegister.АдресныеОбъекты",
           "mdoRefRu": "РегистрСведений.АдресныеОбъекты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2507,7 +2507,7 @@
           "mdoRef": "Constant.НастройкаПодчиненногоУзлаРИБЗавершена",
           "mdoRefRu": "Константа.НастройкаПодчиненногоУзлаРИБЗавершена"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2515,7 +2515,7 @@
           "mdoRef": "Catalog.ГруппыИсполнителейЗадач",
           "mdoRefRu": "Справочник.ГруппыИсполнителейЗадач"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2523,7 +2523,7 @@
           "mdoRef": "Catalog.ЗначенияСвойствОбъектов",
           "mdoRefRu": "Справочник.ЗначенияСвойствОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2531,7 +2531,7 @@
           "mdoRef": "InformationRegister.ДатыПоследнейЗагрузкиПочтовыхСообщений",
           "mdoRefRu": "РегистрСведений.ДатыПоследнейЗагрузкиПочтовыхСообщений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2539,7 +2539,7 @@
           "mdoRef": "InformationRegister.ЭлектронныеПодписи",
           "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2547,7 +2547,7 @@
           "mdoRef": "InformationRegister.ПараметрыОграниченияДоступа",
           "mdoRefRu": "РегистрСведений.ПараметрыОграниченияДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2555,7 +2555,7 @@
           "mdoRef": "Catalog.КлассификаторБанков",
           "mdoRefRu": "Справочник.КлассификаторБанков"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2563,7 +2563,7 @@
           "mdoRef": "InformationRegister.ИсторияАдресныхОбъектов",
           "mdoRefRu": "РегистрСведений.ИсторияАдресныхОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2571,7 +2571,7 @@
           "mdoRef": "Constant.СписокЗапрещенныхРасширений",
           "mdoRefRu": "Константа.СписокЗапрещенныхРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2579,7 +2579,7 @@
           "mdoRef": "InformationRegister.СвязиАдресныхОбъектов",
           "mdoRefRu": "РегистрСведений.СвязиАдресныхОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2587,7 +2587,7 @@
           "mdoRef": "InformationRegister.СообщенияОбменаДаннымиОбластейДанных",
           "mdoRefRu": "РегистрСведений.СообщенияОбменаДаннымиОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2595,7 +2595,7 @@
           "mdoRef": "InformationRegister.НастройкиВариантовОтчетов",
           "mdoRefRu": "РегистрСведений.НастройкиВариантовОтчетов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2603,7 +2603,7 @@
           "mdoRef": "Catalog.СообщениеSMSПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.СообщениеSMSПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2611,7 +2611,7 @@
           "mdoRef": "InformationRegister.СертификатыШифрования",
           "mdoRefRu": "РегистрСведений.СертификатыШифрования"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2619,7 +2619,7 @@
           "mdoRef": "InformationRegister.УдалитьРезультатыОбменаДанными",
           "mdoRefRu": "РегистрСведений.УдалитьРезультатыОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2627,7 +2627,7 @@
           "mdoRef": "InformationRegister.ИспользованиеДополнительныхОтчетовИОбработокСервисаВАвтономномРабочемМесте",
           "mdoRefRu": "РегистрСведений.ИспользованиеДополнительныхОтчетовИОбработокСервисаВАвтономномРабочемМесте"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2635,7 +2635,7 @@
           "mdoRef": "InformationRegister.ЗаблокированныеДляПолученияУчетныеЗаписи",
           "mdoRefRu": "РегистрСведений.ЗаблокированныеДляПолученияУчетныеЗаписи"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2643,7 +2643,7 @@
           "mdoRef": "InformationRegister.ПараметрыРаботыВерсийРасширений",
           "mdoRefRu": "РегистрСведений.ПараметрыРаботыВерсийРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2651,7 +2651,7 @@
           "mdoRef": "InformationRegister.НастройкиТранспортаОбменаОбластиДанных",
           "mdoRefRu": "РегистрСведений.НастройкиТранспортаОбменаОбластиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2659,7 +2659,7 @@
           "mdoRef": "Constant.ИспользоватьНапоминанияПользователя",
           "mdoRefRu": "Константа.ИспользоватьНапоминанияПользователя"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2667,7 +2667,7 @@
           "mdoRef": "Constant.ПрефиксУзлаРаспределеннойИнформационнойБазы",
           "mdoRefRu": "Константа.ПрефиксУзлаРаспределеннойИнформационнойБазы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2675,7 +2675,7 @@
           "mdoRef": "Constant.СообщениеОбменаДаннымиИзГлавногоУзла",
           "mdoRefRu": "Константа.СообщениеОбменаДаннымиИзГлавногоУзла"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2683,7 +2683,7 @@
           "mdoRef": "Constant.ИспользоватьЗаметки",
           "mdoRefRu": "Константа.ИспользоватьЗаметки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2691,7 +2691,7 @@
           "mdoRef": "InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных",
           "mdoRefRu": "РегистрСведений.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2699,7 +2699,7 @@
           "mdoRef": "Catalog.ЯзыкиПечатныхФорм",
           "mdoRefRu": "Справочник.ЯзыкиПечатныхФорм"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2707,7 +2707,7 @@
           "mdoRef": "Document.СогласиеНаОбработкуПерсональныхДанных",
           "mdoRefRu": "Документ.СогласиеНаОбработкуПерсональныхДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2715,7 +2715,7 @@
           "mdoRef": "InformationRegister.РезультатыОбменаДанными",
           "mdoRefRu": "РегистрСведений.РезультатыОбменаДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2723,7 +2723,7 @@
           "mdoRef": "InformationRegister.БуферОперацийСтатистики",
           "mdoRefRu": "РегистрСведений.БуферОперацийСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2731,7 +2731,7 @@
           "mdoRef": "Constant.ПараметрыЦентраМониторинга",
           "mdoRefRu": "Константа.ПараметрыЦентраМониторинга"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2739,7 +2739,7 @@
           "mdoRef": "Constant.ОграничиватьДоступНаУровнеЗаписей",
           "mdoRefRu": "Константа.ОграничиватьДоступНаУровнеЗаписей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2747,7 +2747,7 @@
           "mdoRef": "Catalog.ГруппыВнешнихПользователей",
           "mdoRefRu": "Справочник.ГруппыВнешнихПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2755,7 +2755,7 @@
           "mdoRef": "InformationRegister.ЗамерыВремениТехнологические",
           "mdoRefRu": "РегистрСведений.ЗамерыВремениТехнологические"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2763,7 +2763,7 @@
           "mdoRef": "Constant.ИспользоватьРазделениеПоОбластямДанных",
           "mdoRefRu": "Константа.ИспользоватьРазделениеПоОбластямДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2771,7 +2771,7 @@
           "mdoRef": "Constant.ХранитьФайлыВТомахНаДиске",
           "mdoRefRu": "Константа.ХранитьФайлыВТомахНаДиске"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2779,7 +2779,7 @@
           "mdoRef": "Constant.ИспользоватьСервисСклоненияMorpher",
           "mdoRefRu": "Константа.ИспользоватьСервисСклоненияMorpher"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2787,7 +2787,7 @@
           "mdoRef": "Constant.СведенияОбОбновленииИБ",
           "mdoRefRu": "Константа.СведенияОбОбновленииИБ"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2795,7 +2795,7 @@
           "mdoRef": "Catalog.ГруппыДоступа",
           "mdoRefRu": "Справочник.ГруппыДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2803,7 +2803,7 @@
           "mdoRef": "InformationRegister.ОбщиеПоставляемыеМакетыПечати",
           "mdoRefRu": "РегистрСведений.ОбщиеПоставляемыеМакетыПечати"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2811,7 +2811,7 @@
           "mdoRef": "Constant.КоличествоПотоковОбновленияИнформационнойБазы",
           "mdoRefRu": "Константа.КоличествоПотоковОбновленияИнформационнойБазы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2819,7 +2819,7 @@
           "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДанными",
           "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДанными"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2827,7 +2827,7 @@
           "mdoRef": "InformationRegister.ИспользуемыеВидыДоступа",
           "mdoRefRu": "РегистрСведений.ИспользуемыеВидыДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2835,7 +2835,7 @@
           "mdoRef": "Constant.ОтложенноеОбновлениеВГлавномУзлеЗавершеноУспешно",
           "mdoRefRu": "Константа.ОтложенноеОбновлениеВГлавномУзлеЗавершеноУспешно"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2843,7 +2843,7 @@
           "mdoRef": "InformationRegister.ДатыЗапретаИзменения",
           "mdoRefRu": "РегистрСведений.ДатыЗапретаИзменения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2851,7 +2851,7 @@
           "mdoRef": "InformationRegister.УдаляемыеОбъекты",
           "mdoRefRu": "РегистрСведений.УдаляемыеОбъекты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2859,7 +2859,7 @@
           "mdoRef": "Catalog.ВстречаПрисоединенныеФайлы",
           "mdoRefRu": "Справочник.ВстречаПрисоединенныеФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2867,7 +2867,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаКРегистрам",
           "mdoRefRu": "РегистрСведений.КлючиДоступаКРегистрам"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2875,7 +2875,7 @@
           "mdoRef": "Constant.ИспользоватьДатыЗапретаИзменения",
           "mdoRefRu": "Константа.ИспользоватьДатыЗапретаИзменения"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2883,7 +2883,7 @@
           "mdoRef": "InformationRegister.ЗемельныеУчастки",
           "mdoRefRu": "РегистрСведений.ЗемельныеУчастки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2891,7 +2891,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаКОбъектам",
           "mdoRefRu": "РегистрСведений.КлючиДоступаКОбъектам"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2899,7 +2899,7 @@
           "mdoRef": "Constant.ИспользоватьПрочиеВзаимодействия",
           "mdoRefRu": "Константа.ИспользоватьПрочиеВзаимодействия"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2907,7 +2907,7 @@
           "mdoRef": "Constant.ЭтоАвтономноеРабочееМесто",
           "mdoRefRu": "Константа.ЭтоАвтономноеРабочееМесто"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2915,7 +2915,7 @@
           "mdoRef": "Catalog.НаборыГруппДоступа",
           "mdoRefRu": "Справочник.НаборыГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2923,7 +2923,7 @@
           "mdoRef": "Catalog.ТомаХраненияФайлов",
           "mdoRefRu": "Справочник.ТомаХраненияФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2931,7 +2931,7 @@
           "mdoRef": "InformationRegister.ВерсииПодсистемОбластейДанных",
           "mdoRefRu": "РегистрСведений.ВерсииПодсистемОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2939,7 +2939,7 @@
           "mdoRef": "Catalog.ПравилаОбработкиЭлектроннойПочты",
           "mdoRefRu": "Справочник.ПравилаОбработкиЭлектроннойПочты"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2947,7 +2947,7 @@
           "mdoRef": "ChartOfCharacteristicTypes.ВопросыДляАнкетирования",
           "mdoRefRu": "ПланВидовХарактеристик.ВопросыДляАнкетирования"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2955,7 +2955,7 @@
           "mdoRef": "BusinessProcess.Задание",
           "mdoRefRu": "БизнесПроцесс.Задание"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2963,7 +2963,7 @@
           "mdoRef": "InformationRegister.ИдентификаторыОбъектовВерсийРасширений",
           "mdoRefRu": "РегистрСведений.ИдентификаторыОбъектовВерсийРасширений"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2971,7 +2971,7 @@
           "mdoRef": "Constant.СинхронизироватьДанныеСПриложениемВИнтернетеПриЗавершенииРаботыПрограммы",
           "mdoRefRu": "Константа.СинхронизироватьДанныеСПриложениемВИнтернетеПриЗавершенииРаботыПрограммы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2979,7 +2979,7 @@
           "mdoRef": "Constant.КоличествоЭлементовВТранзакцииЗагрузкиДанных",
           "mdoRefRu": "Константа.КоличествоЭлементовВТранзакцииЗагрузкиДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2987,7 +2987,7 @@
           "mdoRef": "Constant.ЗагрузитьРасширенияИзменяющиеСтруктуруДанных",
           "mdoRefRu": "Константа.ЗагрузитьРасширенияИзменяющиеСтруктуруДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -2995,7 +2995,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаПользователей",
           "mdoRefRu": "РегистрСведений.КлючиДоступаПользователей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3003,7 +3003,7 @@
           "mdoRef": "InformationRegister.КлючиДоступаГруппДоступа",
           "mdoRefRu": "РегистрСведений.КлючиДоступаГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3011,7 +3011,7 @@
           "mdoRef": "InformationRegister.ИспользуемыеВидыДоступаПоТаблицам",
           "mdoRefRu": "РегистрСведений.ИспользуемыеВидыДоступаПоТаблицам"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3019,7 +3019,7 @@
           "mdoRef": "InformationRegister.ДампыПлатформы",
           "mdoRefRu": "РегистрСведений.ДампыПлатформы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3027,7 +3027,7 @@
           "mdoRef": "Constant.АдресПубликацииИнформационнойБазыВЛокальнойСети",
           "mdoRefRu": "Константа.АдресПубликацииИнформационнойБазыВЛокальнойСети"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3035,7 +3035,7 @@
           "mdoRef": "InformationRegister.КодировкиФайлов",
           "mdoRefRu": "РегистрСведений.КодировкиФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3043,7 +3043,7 @@
           "mdoRef": "InformationRegister.ЗамерыОперацииСтатистики",
           "mdoRefRu": "РегистрСведений.ЗамерыОперацииСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3051,7 +3051,7 @@
           "mdoRef": "Constant.ПоследнееОбновлениеДоступа",
           "mdoRefRu": "Константа.ПоследнееОбновлениеДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3059,7 +3059,7 @@
           "mdoRef": "Catalog.Файлы",
           "mdoRefRu": "Справочник.Файлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3067,7 +3067,7 @@
           "mdoRef": "Constant.ПрефиксПоследнегоАвтономногоРабочегоМеста",
           "mdoRefRu": "Константа.ПрефиксПоследнегоАвтономногоРабочегоМеста"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3075,7 +3075,7 @@
           "mdoRef": "Constant.ИсточникДанныхАдресногоКлассификатора",
           "mdoRefRu": "Константа.ИсточникДанныхАдресногоКлассификатора"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3083,7 +3083,7 @@
           "mdoRef": "InformationRegister.ЗамерыСтатистики",
           "mdoRefRu": "РегистрСведений.ЗамерыСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3091,7 +3091,7 @@
           "mdoRef": "InformationRegister.КомментарииСтатистики",
           "mdoRefRu": "РегистрСведений.КомментарииСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3099,7 +3099,7 @@
           "mdoRef": "InformationRegister.ОриентирыАдресныхОбъектов",
           "mdoRefRu": "РегистрСведений.ОриентирыАдресныхОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3107,7 +3107,7 @@
           "mdoRef": "Constant.СинхронизироватьФайлы",
           "mdoRefRu": "Константа.СинхронизироватьФайлы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3115,7 +3115,7 @@
           "mdoRef": "Catalog.ВерсииФайлов",
           "mdoRefRu": "Справочник.ВерсииФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3123,7 +3123,7 @@
           "mdoRef": "InformationRegister.ОперацииСтатистики",
           "mdoRefRu": "РегистрСведений.ОперацииСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3131,7 +3131,7 @@
           "mdoRef": "InformationRegister.ДвоичныеДанныеФайлов",
           "mdoRefRu": "РегистрСведений.ДвоичныеДанныеФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3139,7 +3139,7 @@
           "mdoRef": "InformationRegister.ОбработчикиОбновленияОбщихДанных",
           "mdoRefRu": "РегистрСведений.ОбработчикиОбновленияОбщихДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3147,7 +3147,7 @@
           "mdoRef": "Constant.ПовторитьЗагрузкуСообщенияОбменаДаннымиПередЗапуском",
           "mdoRefRu": "Константа.ПовторитьЗагрузкуСообщенияОбменаДаннымиПередЗапуском"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3155,7 +3155,7 @@
           "mdoRef": "InformationRegister.КомментарииОперацииСтатистики",
           "mdoRefRu": "РегистрСведений.КомментарииОперацииСтатистики"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3163,7 +3163,7 @@
           "mdoRef": "InformationRegister.КонтактыВзаимодействий",
           "mdoRefRu": "РегистрСведений.КонтактыВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3171,7 +3171,7 @@
           "mdoRef": "InformationRegister.РабочиеКаталогиФайлов",
           "mdoRefRu": "РегистрСведений.РабочиеКаталогиФайлов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3179,7 +3179,7 @@
           "mdoRef": "InformationRegister.ПакетыДляОтправки",
           "mdoRefRu": "РегистрСведений.ПакетыДляОтправки"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3187,7 +3187,7 @@
           "mdoRef": "Constant.ДетализироватьОбновлениеИБВЖурналеРегистрации",
           "mdoRefRu": "Константа.ДетализироватьОбновлениеИБВЖурналеРегистрации"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3195,7 +3195,7 @@
           "mdoRef": "Catalog.ПрофилиГруппДоступа",
           "mdoRefRu": "Справочник.ПрофилиГруппДоступа"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3203,7 +3203,7 @@
           "mdoRef": "Document.ЭлектронноеПисьмоВходящее",
           "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3211,7 +3211,7 @@
           "mdoRef": "Constant.ИспользоватьСинхронизациюДанных",
           "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3219,7 +3219,7 @@
           "mdoRef": "Constant.ИдентификаторИнформационнойБазы",
           "mdoRefRu": "Константа.ИдентификаторИнформационнойБазы"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3227,7 +3227,7 @@
           "mdoRef": "InformationRegister.ПоставляемыеМакетыПечати",
           "mdoRefRu": "РегистрСведений.ПоставляемыеМакетыПечати"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3235,7 +3235,7 @@
           "mdoRef": "Constant.ИзменятьЗаданияЗаднимЧислом",
           "mdoRefRu": "Константа.ИзменятьЗаданияЗаднимЧислом"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3243,7 +3243,7 @@
           "mdoRef": "InformationRegister.РежимыПодключенияВнешнихМодулей",
           "mdoRefRu": "РегистрСведений.РежимыПодключенияВнешнихМодулей"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3251,7 +3251,7 @@
           "mdoRef": "InformationRegister.БезопасноеХранилищеДанных",
           "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3259,7 +3259,7 @@
           "mdoRef": "InformationRegister.СостоянияПредметовВзаимодействий",
           "mdoRefRu": "РегистрСведений.СостоянияПредметовВзаимодействий"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3267,7 +3267,7 @@
           "mdoRef": "InformationRegister.РезультатыПроверкиУчета",
           "mdoRefRu": "РегистрСведений.РезультатыПроверкиУчета"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3275,7 +3275,7 @@
           "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервисаСЛокальнойПрограммой",
           "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервисаСЛокальнойПрограммой"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3283,7 +3283,7 @@
           "mdoRef": "InformationRegister.СведенияОПользователях",
           "mdoRefRu": "РегистрСведений.СведенияОПользователях"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3291,7 +3291,7 @@
           "mdoRef": "InformationRegister.БлокировкиСеансовОбластейДанных",
           "mdoRefRu": "РегистрСведений.БлокировкиСеансовОбластейДанных"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3299,7 +3299,7 @@
           "mdoRef": "Constant.ИспользоватьУдалениеПомеченныхОбъектов",
           "mdoRefRu": "Константа.ИспользоватьУдалениеПомеченныхОбъектов"
         },
-        "autoRecord": "DENY"
+        "allow": false
       },
       {
         "metadata": {
@@ -3307,7 +3307,7 @@
           "mdoRef": "Constant.ИспользоватьДатуНачалаЗадач",
           "mdoRefRu": "Константа.ИспользоватьДатуНачалаЗадач"
         },
-        "autoRecord": "DENY"
+        "allow": false
       }
     ],
     []
@@ -3325,12 +3325,16 @@
   "mdoType": "EXCHANGE_PLAN",
   "moduleTypes": [
     [
-      "ManagerModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/ExchangePlans/ОбновлениеИнформационно_Базы/ManagerModule.bsl"
+      "ObjectModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/ExchangePlans/ОбновлениеИнформационно_Базы/ObjectModule.bsl"
+      ]
     ],
     [
-      "ObjectModule",
-      "src/test/resources/ext/edt/ssl_3_1/configuration/src/ExchangePlans/ОбновлениеИнформационно_Базы/ObjectModule.bsl"
+      "ManagerModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/ExchangePlans/ОбновлениеИнформационно_Базы/ManagerModule.bsl"
+      ]
     ]
   ],
   "modules": [

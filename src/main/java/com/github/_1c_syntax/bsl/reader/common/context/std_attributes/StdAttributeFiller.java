@@ -47,7 +47,8 @@ public class StdAttributeFiller {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final List<MDOType> EXCLUDED = List.of(
     MDOType.DATA_PROCESSOR, MDOType.REPORT, MDOType.EXTERNAL_DATA_PROCESSOR, MDOType.EXTERNAL_REPORT,
-    MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE);
+    MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE, MDOType.EXTERNAL_DATA_SOURCE_CUBE,
+    MDOType.EXTERNAL_DATA_SOURCE_FUNCTION, MDOType.EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE);
   private static final Map<MDOType, List<StdAtrInfo>> REGISTRY = computeRegistry();
 
   public void fill(MDReaderContext parentContext) {
@@ -273,7 +274,7 @@ public class StdAttributeFiller {
   private MDReaderContext getOrComputeChildContext(MDReaderContext parentContext, Map<String, MDReaderContext> stdAttributes, String name) {
     var childContext = stdAttributes.get(name);
     if (childContext == null) {
-      var collectionName = "Attributes";
+      var collectionName = "attributes";
       var contexts = parentContext.getChildrenContexts().get(collectionName);
       if (contexts == null) {
         collectionName = "Attribute";

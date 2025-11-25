@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader;
 
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
 import com.github._1c_syntax.bsl.reader.edt.EDTReader;
@@ -49,7 +50,7 @@ public class MDOReader {
    * @return Прочитанный контейнер метаданных (конфигурация)
    */
   public MDClass readConfiguration(@NonNull Path rootPath) {
-    return readConfiguration(rootPath, false);
+    return readConfiguration(rootPath, MDCReadSettings.DEFAULT);
   }
 
   /**
@@ -58,9 +59,22 @@ public class MDOReader {
    * @param rootPath    Каталог исходников
    * @param skipSupport Флаг управления необходимостью читать информацию о поддержке
    * @return Прочитанный контейнер метаданных (конфигурация)
+   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
    */
+  @Deprecated(since = "0.16.0")
   public MDClass readConfiguration(@NonNull Path rootPath, boolean skipSupport) {
-    return createReader(rootPath, skipSupport, MDOType.CONFIGURATION).readConfiguration();
+    return readConfiguration(rootPath, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  /**
+   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
+   *
+   * @param rootPath     Каталог исходников
+   * @param readSettings Настройки чтения
+   * @return Прочитанный контейнер метаданных (конфигурация)
+   */
+  public MDClass readConfiguration(@NonNull Path rootPath, @NonNull MDCReadSettings readSettings) {
+    return createReader(rootPath, readSettings, MDOType.CONFIGURATION).readConfiguration();
   }
 
   /**
@@ -70,7 +84,7 @@ public class MDOReader {
    * @return Прочитанный объект метаданных
    */
   public Object read(@NonNull Path folder, @NonNull String fullName) {
-    return read(folder, fullName, false);
+    return read(folder, fullName, MDCReadSettings.DEFAULT);
   }
 
   /**
@@ -79,9 +93,22 @@ public class MDOReader {
    * @param folder      Каталог исходников
    * @param skipSupport Управление чтением поддержки
    * @return Прочитанный объект метаданных
+   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
    */
+  @Deprecated(since = "0.16.0")
   public Object read(@NonNull Path folder, @NonNull String fullName, boolean skipSupport) {
-    var reader = createReader(folder, skipSupport, MDOType.UNKNOWN);
+    return read(folder, fullName, MDCReadSettings.builder().skipSupport(skipSupport).build());
+  }
+
+  /**
+   * Производит чтение указанного объекта метаданных или контейнера
+   *
+   * @param folder       Каталог исходников
+   * @param readSettings Настройки чтения
+   * @return Прочитанный объект метаданных
+   */
+  public Object read(@NonNull Path folder, @NonNull String fullName, MDCReadSettings readSettings) {
+    var reader = createReader(folder, readSettings, MDOType.UNKNOWN);
     if (folder.toFile().isFile()) {
       return reader.read(fullName);
     } else {
@@ -96,22 +123,33 @@ public class MDOReader {
    * @return Прочитанный контейнер метаданных (внешний отчет или обработка)
    */
   public MDClass readExternalSource(@NonNull Path mdoPath) {
-    return createReader(mdoPath, true, MDOType.EXTERNAL_REPORT).readExternalSource();
+    return readExternalSource(mdoPath, MDCReadSettings.SKIP_SUPPORT);
   }
 
-  private MDReader createReader(Path rootPath, boolean skipSupport, MDOType mdoType) {
+  /**
+   * Производит чтение внешнего контейнера метаданных (внешней обработки или отчета) по файлу описания
+   *
+   * @param mdoPath      Путь к файлу описания
+   * @param readSettings Настройки чтения
+   * @return Прочитанный контейнер метаданных (внешний отчет или обработка)
+   */
+  public MDClass readExternalSource(@NonNull Path mdoPath, MDCReadSettings readSettings) {
+    return createReader(mdoPath, readSettings, MDOType.EXTERNAL_REPORT).readExternalSource();
+  }
+
+  private MDReader createReader(Path rootPath, MDCReadSettings readSettings, MDOType mdoType) {
     if (mdoType == MDOType.CONFIGURATION || mdoType == MDOType.UNKNOWN) {
-      return createReader(rootPath, skipSupport, getConfigurationSourceByPath(rootPath));
+      return createReader(rootPath, readSettings, getConfigurationSourceByPath(rootPath));
     } else {
-      return createReader(rootPath, skipSupport, getConfigurationSourceByPathSimple(rootPath));
+      return createReader(rootPath, readSettings, getConfigurationSourceByPathSimple(rootPath));
     }
   }
 
-  private MDReader createReader(Path rootPath, boolean skipSupport, ConfigurationSource configurationSource) {
+  private MDReader createReader(Path rootPath, MDCReadSettings readSettings, ConfigurationSource configurationSource) {
     if (configurationSource == ConfigurationSource.DESIGNER) {
-      return new DesignerReader(rootPath, skipSupport);
+      return new DesignerReader(rootPath, readSettings);
     } else if (configurationSource == ConfigurationSource.EDT) {
-      return new EDTReader(rootPath, skipSupport);
+      return new EDTReader(rootPath, readSettings);
     } else {
       return new FakeReader();
     }

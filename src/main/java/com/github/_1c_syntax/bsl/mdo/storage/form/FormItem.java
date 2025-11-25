@@ -52,7 +52,7 @@ public interface FormItem {
   /**
    * Путь к реквизиту
    */
-  FormDataPath getDataPath();
+  String getDataPath();
 
   /**
    * Список дочерних визуальных элементов (непосредственных потомков)

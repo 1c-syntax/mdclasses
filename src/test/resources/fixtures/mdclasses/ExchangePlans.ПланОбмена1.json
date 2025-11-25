@@ -451,7 +451,7 @@
           "mdoRef": "Catalog.Справочник1",
           "mdoRefRu": "Справочник.Справочник1"
         },
-        "autoRecord": "ALLOW"
+        "allow": true
       },
       {
         "metadata": {
@@ -459,7 +459,7 @@
           "mdoRef": "Document.Документ1",
           "mdoRefRu": "Документ.Документ1"
         },
-        "autoRecord": "DENY"
+        "allow": false
       }
     ],
     []
@@ -478,7 +478,9 @@
   "moduleTypes": [
     [
       "ObjectModule",
-      "src/test/resources/ext/designer/mdclasses/src/cf/ExchangePlans/ПланОбмена1/Ext/ObjectModule.bsl"
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/ExchangePlans/ПланОбмена1/Ext/ObjectModule.bsl"
+      ]
     ]
   ],
   "modules": [

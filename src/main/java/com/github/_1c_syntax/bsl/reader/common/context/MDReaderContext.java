@@ -27,12 +27,14 @@ import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -41,7 +43,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -54,7 +55,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Для хранения контекста при чтении MD и ExternalSource объектов
  */
 @EqualsAndHashCode(callSuper = true)
-@Slf4j
 @ToString
 public class MDReaderContext extends AbstractReaderContext {
 
@@ -93,8 +93,17 @@ public class MDReaderContext extends AbstractReaderContext {
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    if (uuid != null && !mdReader.getReadSettings().skipSupport()) {
+      supportVariant = ParseSupportData.get(uuid, currentPath);
+    } else {
+      supportVariant = SupportVariant.NONE;
+    }
+
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+    if (mdoType == MDOType.UNKNOWN && ExternalDataSourceTableField.class.isAssignableFrom(realClass)) {
+      realClassName = "Field";
+      mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+    }
 
     super.setValue(UUID_FIELD_NAME, uuid);
     super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);

@@ -142,12 +142,12 @@ public class Rights {
     return cf.getRoles().stream()
       .map(Role::getData)
       .filter(roleData -> !roleData.equals(RoleData.EMPTY))
-      .map(RoleData::getObjectRights)
+      .map(RoleData::objectRights)
       .flatMap(Collection::stream)
-      .filter(objectRight -> objectRight.getName().equals(mdoReference))
-      .map(RoleData.ObjectRight::getRights)
+      .filter(objectRight -> objectRight.name().equals(mdoReference))
+      .map(RoleData.ObjectRight::rights)
       .flatMap(Collection::stream)
-      .anyMatch(right -> roleRight == right.getName() && right.isValue());
+      .anyMatch(right -> roleRight == right.name() && right.value());
   }
 
   private static List<Role> rolesAccess(CF cf, MdoReference mdoReference, RoleRight roleRight) {
@@ -157,13 +157,13 @@ public class Rights {
 
     List<Role> roles = new ArrayList<>();
     cf.getRoles().forEach((Role role) -> {
-      var hasAcccess = role.getData().getObjectRights().stream()
-        .filter(objectRight -> objectRight.getName().equals(mdoReference))
-        .map(RoleData.ObjectRight::getRights)
+      var hasAccess = role.getData().objectRights().stream()
+        .filter(objectRight -> objectRight.name().equals(mdoReference))
+        .map(RoleData.ObjectRight::rights)
         .flatMap(Collection::stream)
-        .anyMatch(right -> roleRight == right.getName() && right.isValue());
+        .anyMatch(right -> roleRight == right.name() && right.value());
 
-      if (hasAcccess) {
+      if (hasAccess) {
         roles.add(role);
       }
     });

@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -31,6 +32,9 @@ import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
@@ -93,8 +97,11 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public EDTReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public EDTReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
@@ -109,12 +116,17 @@ public class EDTReader implements MDReader {
         throw new IllegalArgumentException(
           "Не удалось определить корень проекта EDT для файла " + normalizedPath);
       }
-      rootPath = projectRoot;
+      this.rootPath = projectRoot;
     } else {
-      rootPath = path;
+      this.rootPath = path;
     }
-    if (!skipSupport) {
-      ParseSupportData.readSimple(parentConfigurationsPath());
+    this.readSettings = readSettings;
+
+    if (!readSettings.skipSupport()) {
+      var pcbin = parentConfigurationsPath();
+      if (pcbin.toFile().exists()) {
+        ParseSupportData.read(pcbin);
+      }
     }
   }
 
@@ -259,6 +271,12 @@ public class EDTReader implements MDReader {
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
     xStream.alias("Form", ManagedFormData.class);
     xStream.alias("standardAttributes", StandardAttribute.class);
+    xStream.alias("cubes", ExternalDataSourceCube.class);
+    xStream.alias("Cube", ExternalDataSourceCube.class);
+    xStream.alias("functions", ExternalDataSourceFunction.class);
+    xStream.alias("dimensionTables", ExternalDataSourceCubeDimensionTable.class);
+    xStream.alias("DimensionTable", ExternalDataSourceCubeDimensionTable.class);
+    xStream.alias("fields", ExternalDataSourceTableField.class);
   }
 
   private Path parentConfigurationsPath() {

@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
@@ -67,6 +68,12 @@ public class FakeReader implements MDReader {
   @NonNull
   public Path getRootPath() {
     return Path.of("fake-path");
+  }
+
+  @Override
+  @NonNull
+  public MDCReadSettings getReadSettings() {
+    return MDCReadSettings.DEFAULT;
   }
 
   @Override

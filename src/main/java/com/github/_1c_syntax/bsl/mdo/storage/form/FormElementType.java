@@ -51,6 +51,7 @@ public enum FormElementType implements EnumWithName {
   FORM_GROUP("FormGroup", "ГруппаФормы"),
   GANTT_CHART_FIELD("GanttChartField", "ПолеДиаграммыГанта"),
   GRAPHICAL_SCHEMA_FIELD("GraphicalSchemaField", "ПолеГрафическойСхемы"),
+  GEOGRAPHICAL_SCHEMA_FIELD("GeographicalSchemaField", "ПолеГеографическойСхемы"),
   HTML_DOCUMENT_FIELD("HTMLDocumentField", "ПолеHTMLДокумента"),
   HYPERLINK("Hyperlink", "Гиперссылка"),
   INPUT_FIELD("InputField", "ПолеВвода"),
