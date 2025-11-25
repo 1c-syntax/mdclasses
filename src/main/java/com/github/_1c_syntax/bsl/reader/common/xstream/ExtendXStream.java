@@ -21,6 +21,14 @@
  */
 package com.github._1c_syntax.bsl.reader.common.xstream;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.function.Function;
+
+import javax.annotation.Nullable;
+
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
@@ -31,6 +39,7 @@ import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
@@ -79,18 +88,12 @@ import com.thoughtworks.xstream.mapper.DefaultMapper;
 import com.thoughtworks.xstream.mapper.Mapper;
 import com.thoughtworks.xstream.mapper.SecurityMapper;
 import com.thoughtworks.xstream.security.WildcardTypePermission;
+
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.HasName;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.annotation.Nullable;
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Path;
-import java.util.Objects;
-import java.util.function.Function;
 
 /**
  * Расширение функциональности XStream
@@ -231,8 +234,13 @@ public class ExtendXStream extends XStream {
   }
 
   /**
-   * Переопределение списка регистрируемых конвертеров. Оставлены только те, что нужны, особенно исключены те,
-   * что вызывают недовольство у JVM, в связи с неправильным доступом при рефлексии
+   * Configure the converter set to a curated list required by ExtendXStream.
+   *
+   * Registers only the converters needed for the application's deserialization needs,
+   * including primitive, collection, map, array, reflection, and domain-specific enum
+   * converters, and scans the common-converter package for additional converters.
+   * Intentionally omits default converters that are known to cause JVM access or
+   * reflection issues.
    */
   @Override
   protected void setupConverters() {
@@ -273,8 +281,16 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(FormElementType.class));
     registerConverter(new EnumConverter<>(InterfaceCompatibilityMode.class));
     registerConverter(new EnumConverter<>(DateFractions.class));
+    registerConverter(new EnumConverter<>(CodeSeries.class));
   }
 
+  /**
+   * Configure XStream security, reference handling, and class alias registration.
+   *
+   * Sets the XStream mode to disable object reference tracking, grants wildcard
+   * type permission for the internal package "com.github._1c_syntax.**", and
+   * registers MD-related classes and aliases used during deserialization.
+   */
   private void init() {
     // настройки безопасности доступа к данным
     setMode(XStream.NO_REFERENCES);
