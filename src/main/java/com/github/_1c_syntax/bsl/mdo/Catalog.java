@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -113,6 +114,24 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
    */
   @Singular("addOwners")
   List<MdoReference> owners;
+
+  /**
+   * Проверять уникальность кода справочника.
+   * Определяет, нужно ли проверять уникальность кода справочника.
+   * Если значение равно false, то код справочника должен быть уникальным в пределах области,
+   * определяемой свойством {@link #codeSeries}.
+   */
+  @Default
+  boolean checkUnique = false;
+
+  /**
+   * Серия кодов справочника.
+   * Определяет область действия уникальности кода справочника.
+   * Значение по умолчанию: {@link CodeSeries#WHOLE_CATALOG}.
+   * Для формата EDT: если поле отсутствует, автоматически устанавливается значение WHOLE_CATALOG.
+   */
+  @Default
+  CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
 
   /**
    * Возвращает перечень возможных прав доступа
