@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -115,6 +116,24 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Проверять уникальность кода плана видов характеристик.
+   * Определяет, нужно ли проверять уникальность кода плана видов характеристик.
+   * Если значение равно false, то код плана видов характеристик должен быть уникальным в пределах области,
+   * определяемой свойством {@link #codeSeries}.
+   */
+  @Default
+  boolean checkUnique = false;
+
+  /**
+   * Серия кодов плана видов характеристик.
+   * Определяет область действия уникальности кода плана видов характеристик.
+   * Значение по умолчанию: {@link CodeSeries#WHOLE_CATALOG}.
+   * Для формата EDT: если поле отсутствует, автоматически устанавливается значение WHOLE_CATALOG.
+   */
+  @Default
+  CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
 
   /**
    * Возвращает перечень возможных прав доступа
