@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -48,5 +49,32 @@ class ChartOfAccountsTest {
       .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(chartOfAccounts.getAccountingFlags()).hasSize(1);
     assertThat(chartOfAccounts.getExtDimensionAccountingFlags()).hasSize(1);
+  }
+
+  /**
+   * Проверяет, что для плана счетов "ПланСчетов1" поле checkUnique установлено в true.
+   * <p>
+   * В формате Designer: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
+   * В формате EDT: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
+   *
+   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
+   */
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses, ChartsOfAccounts.ПланСчетов1, _edt",
+    "false, mdclasses, ChartsOfAccounts.ПланСчетов1"
+  })
+  void testCheckUniqueTrue(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo)
+      .isInstanceOf(ChartOfAccounts.class);
+
+    var chartOfAccounts = (ChartOfAccounts) mdo;
+    assertThat(chartOfAccounts.isCheckUnique())
+      .as("Поле checkUnique должно быть true для плана счетов ПланСчетов1")
+      .isTrue();
+    assertThat(chartOfAccounts.getCodeSeries())
+      .as("Поле codeSeries должно быть WHOLE_CATALOG для плана счетов ПланСчетов1")
+      .isEqualTo(CodeSeries.WHOLE_CATALOG);
   }
 }

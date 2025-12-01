@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -121,6 +122,24 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Проверять уникальность кода плана счетов.
+   * Определяет, нужно ли проверять уникальность кода плана счетов.
+   * Если значение равно true, то код плана счетов должен быть уникальным в пределах области,
+   * определяемой свойством {@link #codeSeries}. Если false, проверка уникальности не выполняется.
+   */
+  @Default
+  boolean checkUnique = false;
+
+  /**
+   * Серия кодов плана счетов.
+   * Определяет область действия уникальности кода плана счетов.
+   * Значение по умолчанию: {@link CodeSeries#WHOLE_CATALOG}.
+   * Для формата EDT: если поле отсутствует, автоматически устанавливается значение WHOLE_CATALOG.
+   */
+  @Default
+  CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
 
   /**
    * Возвращает перечень возможных прав доступа
