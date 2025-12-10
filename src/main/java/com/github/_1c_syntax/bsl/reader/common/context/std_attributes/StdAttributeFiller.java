@@ -106,7 +106,8 @@ public class StdAttributeFiller {
         StdAtrInfo.PERIOD,
         StdAtrInfo.RECORDER,
         StdAtrInfo.ACCOUNT,
-        StdAtrInfo.RECORD_TYPE
+        StdAtrInfo.RECORD_TYPE,
+        StdAtrInfo.PERIOD_ADJUSTMENT
       )
     );
 
