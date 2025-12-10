@@ -176,7 +176,7 @@ license {
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
     mapping("java", "SLASHSTAR_STYLE")
-    exclude("**/test/resources/**/*.*")
+    include("**/*.java")
 }
 
 
