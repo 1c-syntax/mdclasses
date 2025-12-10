@@ -5,12 +5,12 @@ plugins {
     `java-library`
     `maven-publish`
     jacoco
-    id("org.cadixdev.licenser") version "0.6.1"
+    id("cloud.rio.license") version "0.18.0"
     id("me.qoomon.git-versioning") version "6.4.4"
     id("io.freefair.lombok") version "9.1.0"
     id("io.freefair.javadoc-links") version "9.1.0"
     id("io.freefair.javadoc-utf-8") version "9.1.0"
-    id("io.freefair.maven-central.validate-poms") version "9.1.0"
+//    id("io.freefair.maven-central.validate-poms") version "9.1.0" не работает на 9 градле
     id("com.github.ben-manes.versions") version "0.53.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.21.0"
@@ -79,6 +79,7 @@ dependencies {
 
     // логирование
     testImplementation("org.slf4j", "slf4j-reload4j", "2.1.0-alpha1")
+    testRuntimeOnly("org.junit.platform", "junit-platform-launcher", "6.1.0-M1")
 
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
@@ -168,20 +169,14 @@ artifacts {
 }
 
 license {
-    header(rootProject.file("license/HEADER.txt"))
-    newLine(false)
+    header = rootProject.file("license/HEADER.txt")
+    skipExistingHeaders = false
+    strictCheck = true
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
-    exclude("**/*.yml")
-    exclude("**/*.bin")
-    exclude("**/*.html")
-    exclude("**/*.properties")
-    exclude("**/*.xml")
-    exclude("**/*.json")
-    exclude("**/*.os")
-    exclude("**/*.bsl")
-    exclude("**/*.orig")
+    mapping("java", "SLASHSTAR_STYLE")
+    exclude("**/test/resources/**/*.*")
 }
 
 
