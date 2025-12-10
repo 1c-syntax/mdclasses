@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import lombok.NonNull;
 
 import java.util.List;
 
@@ -48,7 +47,6 @@ public interface ExternalSource extends MDClass, CommandOwner, AttributeOwner,
    * У внешних нет конфигурации поставщика
    */
   @Override
-  @NonNull
   default SupportVariant getSupportVariant() {
     return SupportVariant.NONE;
   }
@@ -57,13 +55,11 @@ public interface ExternalSource extends MDClass, CommandOwner, AttributeOwner,
    * Внешние не входят в состав расширения
    */
   @Override
-  @NonNull
   default ObjectBelonging getObjectBelonging() {
     return ObjectBelonging.OWN;
   }
 
   @Override
-  @NonNull
   default List<Attribute> getAllAttributes() {
     return getAttributes();
   }

@@ -21,27 +21,34 @@
  */
 package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.QuerySource;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 /**
- * Конвертор информации о запросе в СКД и динамических списках
+ * Конвертор для строки, которая может находиться во вложенной структуре
  */
 @CommonConverter
-public class QuerySourceConverter implements ReadConverter {
+public class AllStringConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var location = ((ExtendReaderWrapper) reader).getXMLStreamReader().getLocation();
-    return new QuerySource(location.getLineNumber(), location.getColumnNumber(), reader.getValue());
+    return read(reader);
+  }
+
+  private static Object read(HierarchicalStreamReader reader) {
+    if (!reader.hasMoreChildren()) {
+      return reader.getValue();
+    } else {
+      reader.moveDown();
+      var result = read(reader);
+      reader.moveUp();
+      return result;
+    }
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return type == QuerySource.class;
+    return type == String.class;
   }
-
 }

@@ -56,7 +56,7 @@ class ConfigurationTest2 {
     checkChildrenMdclasses(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(351)
+      .hasSize(352)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
@@ -92,7 +92,7 @@ class ConfigurationTest2 {
     assertThat(cf.getWebSocketClients()).hasSize(1);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(352)
+      .hasSize(353)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();

@@ -22,14 +22,19 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import lombok.Builder;
-import lombok.Value;
 
 /**
  * Настройки чтения MDC
+ *
+ * @param skipSupport               Пропускать чтение настроек поставки конфигурации
+ * @param skipRoleData              Пропускать чтение содержимого ролей
+ * @param skipXdtoPackage           Пропускать чтение содержимого xdto пакетов
+ * @param skipFormElementItems      Пропускать чтение элементов форм
+ * @param skipDataCompositionSchema Пропускать чтение элементов макетов системы компоновки
  */
-@Value
 @Builder
-public class MDCReadSettings {
+public record MDCReadSettings(boolean skipSupport, boolean skipRoleData, boolean skipXdtoPackage,
+                              boolean skipFormElementItems, boolean skipDataCompositionSchema) {
   /**
    * Настройки по умолчанию
    */
@@ -39,30 +44,4 @@ public class MDCReadSettings {
    * Шаблон с отключением только чтения поддержки
    */
   public static final MDCReadSettings SKIP_SUPPORT = MDCReadSettings.builder().skipSupport(true).build();
-
-  /**
-   * Пропускать чтение настроек поставки конфигурации
-   */
-  boolean skipSupport;
-
-  /**
-   * Пропускать чтение содержимого ролей
-   */
-  boolean skipRoleData;
-
-  /**
-   * Пропускать чтение содержимого xdto пакетов
-   */
-  boolean skipXdtoPackage;
-
-  /**
-   * Пропускать чтение элементов форм
-   */
-  boolean skipFormElementItems;
-
-  /**
-   * Пропускать чтение элементов макетов системы компоновки
-   */
-  boolean skipDataCompositionSchema;
-
 }

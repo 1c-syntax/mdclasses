@@ -16,7 +16,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
         submodules: true
         lfs: true
@@ -31,7 +31,7 @@ jobs:
       run: ./gradlew --no-daemon javadoc
 
     - name: Set up Python
-      uses: actions/setup-python@v6.0.0
+      uses: actions/setup-python@v6.1.0
       with:
         python-version: '3.10'
         architecture: 'x64'

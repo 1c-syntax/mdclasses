@@ -21,10 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ChartOfCharacteristicTypesTest {
   @ParameterizedTest
@@ -38,5 +41,32 @@ class ChartOfCharacteristicTypesTest {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  }
+
+  /**
+   * Проверяет, что для плана видов характеристик "ПланВидовХарактеристик1" поле checkUnique установлено в true.
+   * <p>
+   * В формате Designer: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
+   * В формате EDT: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
+   *
+   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
+   */
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1, _edt",
+    "false, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1"
+  })
+  void testCheckUniqueTrue(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo)
+      .isInstanceOf(ChartOfCharacteristicTypes.class);
+
+    var chartOfCharacteristicTypes = (ChartOfCharacteristicTypes) mdo;
+    assertThat(chartOfCharacteristicTypes.isCheckUnique())
+      .as("Поле checkUnique должно быть true для плана видов характеристик ПланВидовХарактеристик1")
+      .isTrue();
+    assertThat(chartOfCharacteristicTypes.getCodeSeries())
+      .as("Поле codeSeries должно быть WHOLE_CATALOG для плана видов характеристик ПланВидовХарактеристик1")
+      .isEqualTo(CodeSeries.WHOLE_CATALOG);
   }
 }

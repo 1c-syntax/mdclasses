@@ -25,77 +25,38 @@ import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Singular;
-import lombok.ToString;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 /**
  * Хранилище данных конкретной роли
+ *
+ * @param setForNewObjects                Устанавливать права для новых объектов
+ * @param setForAttributesByDefault       Устанавливать права для реквизитов и табличных частей по умолчанию
+ * @param independentRightsOfChildObjects Независимые права подчиненных объектов
  */
-@Value
-@ToString
-@EqualsAndHashCode
 @Builder
-@Slf4j
-public class RoleData {
+public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefault,
+                       boolean independentRightsOfChildObjects, @NonNull @Singular List<ObjectRight> objectRights) {
 
   public static final RoleData EMPTY = RoleData.builder().build();
   public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
 
   /**
-   * Устанавливать права для новых объектов
+   * @param name   Имя субъекта права (mdoref и базовые)
+   * @param rights Набор самих прав
    */
-  boolean setForNewObjects;
-
-  /**
-   * Устанавливать права для реквизитов и табличных частей по умолчанию
-   */
-  boolean setForAttributesByDefault;
-
-  /**
-   * Независимые права подчиненных объектов
-   */
-  boolean independentRightsOfChildObjects;
-
-  @Singular
-  List<ObjectRight> objectRights;
-
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
   @Builder
-  public static class ObjectRight {
-    /**
-     * Имя субъекта права (mdoref и базовые)
-     */
-    @Default
-    MdoReference name = MdoReference.EMPTY;
-
-    /**
-     * Набор самих прав
-     */
-    @Singular
-    List<Right> rights;
+  public record ObjectRight(@NonNull MdoReference name, @NonNull @Singular List<Right> rights) {
   }
 
-  @Value
-  @ToString(of = {"name", "value"})
-  @EqualsAndHashCode(of = {"name", "value"})
+  /**
+   * @param name  Право
+   * @param value Признак установленности права
+   */
   @Builder
-  public static class Right {
-    /**
-     * Право
-     */
-    RoleRight name;
-
-    /**
-     * Признак установленности права
-     */
-    boolean value;
+  public record Right(@NonNull RoleRight name, boolean value) {
   }
 }

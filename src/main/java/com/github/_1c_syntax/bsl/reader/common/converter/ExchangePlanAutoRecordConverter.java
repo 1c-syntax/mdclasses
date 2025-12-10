@@ -79,7 +79,7 @@ public class ExchangePlanAutoRecordConverter implements ReadConverter {
       if (mdoNodeName.equals(node)) {
         builder.metadata(MdoReference.create(reader.getValue()));
       } else if (autoRecordNodeName.equals(node)) {
-        builder.autoRecord(ExtendXStream.readValue(context, AutoRecordType.class));
+        builder.allow(ExtendXStream.readValue(context, AutoRecordType.class) == AutoRecordType.ALLOW);
       } else {
         // no-op
       }

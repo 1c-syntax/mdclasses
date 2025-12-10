@@ -156,6 +156,30 @@ class CatalogTest {
     assertThat(stdAttribute.getValueType().contains(PrimitiveValueType.STRING)).isTrue();
   }
 
+  /**
+   * Проверяет, что для справочника "Заметки" поле checkUnique установлено в false.
+   * <p>
+   * В формате Designer: в XML файле явно указано {@code <CheckUnique>false</CheckUnique>}.
+   * В формате EDT: в XML файле поле отсутствует, используется значение по умолчанию false.
+   *
+   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
+   */
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Catalogs.Заметки, _edt",
+    "false, ssl_3_1, Catalogs.Заметки"
+  })
+  void testCheckUniqueFalse(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo)
+      .isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog.isCheckUnique())
+      .as("Поле checkUnique должно быть false для справочника Заметки")
+      .isFalse();
+  }
+
   @ParameterizedTest
   @CsvSource({
     "true, ssl_3_1, Catalogs.ВерсииФайлов, _edt",
@@ -166,14 +190,4 @@ class CatalogTest {
     assertThat(mdo)
       .isInstanceOf(Catalog.class);
   }
-
-//  private void checkExtInfo(FormDataOLD formData) {
-//    var extInfo = (DynamicListExtInfo) formData.getAttributes().get(1).getExtInfo();
-//    assertThat(extInfo)
-//      .isNotNull()
-//      .isInstanceOf(DynamicListExtInfo.class);
-//
-//    assertThat(extInfo.isCustomQuery()).isTrue();
-//    assertThat(extInfo.getQuery().getTextQuery()).isNotEmpty();
-//  }
 }

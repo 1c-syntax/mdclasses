@@ -276,7 +276,7 @@ public class MDClasses {
 
         var parentName = path.getParent().getFileName().toString();
         var parentParentName = "";
-        if (path.getParent().getParent() != null) {
+        if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
           parentParentName = path.getParent().getParent().getFileName().toString();
         }
 

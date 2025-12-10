@@ -46,7 +46,7 @@ public class DataCompositionSchemaConverter implements ReadConverter {
   @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().isSkipDataCompositionSchema()) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipDataCompositionSchema()) {
       return EmptyTemplateData.getEmpty();
     }
 

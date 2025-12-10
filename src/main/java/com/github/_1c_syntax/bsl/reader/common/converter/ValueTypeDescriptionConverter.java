@@ -53,7 +53,8 @@ public class ValueTypeDescriptionConverter implements ReadConverter {
       } else if (nodeName.endsWith("Qualifiers")) {
         qualifiers.add(ExtendXStream.readValue(context, Qualifier.class));
       } else { // что-то еще
-        LOGGER.warn("Unknown type description field {}", nodeName);
+        var path = ExtendXStream.getCurrentPath(reader);
+        LOGGER.warn("Unknown type description field {} on {}", nodeName, path);
       }
       reader.moveUp();
     }

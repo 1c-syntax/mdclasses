@@ -24,16 +24,17 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
-import com.github._1c_syntax.utils.Lazy;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -70,7 +71,8 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   @Singular
   List<ObjectCommand> commands;
@@ -81,8 +83,10 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   @Singular
   List<TabularSection> tabularSections;
 
-  Lazy<List<MD>> storageFields = new Lazy<>(this::computeStorageFields);
-  Lazy<List<MD>> plainStorageFields = new Lazy<>(this::computePlainStorageFields);
+  @Getter(lazy = true)
+  List<MD> storageFields = LazyLoader.computeStorageFields(this);
+  @Getter(lazy = true)
+  List<MD> plainStorageFields = LazyLoader.computePlainStorageFields(this);
 
   @Singular
   List<ObjectForm> forms;
@@ -90,8 +94,10 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   @Singular
   List<ObjectTemplate> templates;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   /*
    * Свое
@@ -109,56 +115,29 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   @Singular("addOwners")
   List<MdoReference> owners;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
+  /**
+   * Проверять уникальность кода справочника.
+   * Определяет, нужно ли проверять уникальность кода справочника.
+   * Если значение равно false, то код справочника должен быть уникальным в пределах области,
+   * определяемой свойством {@link #codeSeries}.
+   */
+  @Default
+  boolean checkUnique = false;
 
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getStorageFields() {
-    return storageFields.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainStorageFields() {
-    return plainStorageFields.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
+  /**
+   * Серия кодов справочника.
+   * Определяет область действия уникальности кода справочника.
+   * Значение по умолчанию: {@link CodeSeries#WHOLE_CATALOG}.
+   * Для формата EDT: если поле отсутствует, автоматически устанавливается значение WHOLE_CATALOG.
+   */
+  @Default
+  CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
 
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
-  }
-
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private List<MD> computeStorageFields() {
-    return LazyLoader.computeStorageFields(this);
-  }
-
-  private List<MD> computePlainStorageFields() {
-    return LazyLoader.computePlainStorageFields(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
   }
 
   private static List<RoleRight> computePossibleRights() {
