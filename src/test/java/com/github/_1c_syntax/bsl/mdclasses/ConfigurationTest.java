@@ -204,7 +204,7 @@ class ConfigurationTest {
     checkChildrenMdclasses(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(222 + cf.getInterfaces().size() + cf.getStyles().size())
+      .hasSize(223 + cf.getInterfaces().size() + cf.getStyles().size())
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
@@ -241,7 +241,7 @@ class ConfigurationTest {
     checkChildrenOrder(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(328)
+      .hasSize(330)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();

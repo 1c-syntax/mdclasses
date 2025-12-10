@@ -95,7 +95,7 @@ public class StdAtrInfo {
   public static final StdAtrInfo TYPE = new StdAtrInfo("Type", "Тип", StdAtrInfo::computeType);
   public static final StdAtrInfo CALCULATION_TYPE = new StdAtrInfo("CalculationType", "ВидРасчета", StdAtrInfo::computeCalculationType);
   public static final StdAtrInfo EXCHANGE_DATE = new StdAtrInfo("ExchangeDate", "ДатаОбмена", DATETIME_TYPE);
-
+  public static final StdAtrInfo PERIOD_ADJUSTMENT = new StdAtrInfo("PeriodAdjustment", "УточнениеПериода", NUMBER_TYPE);
 
   String nameEn;
   String nameRu;
