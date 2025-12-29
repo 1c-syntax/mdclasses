@@ -193,6 +193,7 @@ public abstract class AbstractReaderContext {
   }
 
   @SuppressWarnings("unchecked")
+  @Nullable
   public <T> T getFromCache(String key) {
     return (T) cache.get(key.toLowerCase(Locale.ROOT));
   }
