@@ -66,8 +66,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
   }
 
   @Override
-  @Nullable
-  public Class<?> fieldType(String fieldName) {
+  public @Nullable Class<?> fieldType(String fieldName) {
     var clazz = CLASSES.get(fieldName);
     if (clazz == null) {
       clazz = super.fieldType(fieldName);

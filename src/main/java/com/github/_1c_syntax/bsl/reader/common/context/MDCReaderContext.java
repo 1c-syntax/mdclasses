@@ -83,9 +83,10 @@ public class MDCReaderContext extends AbstractReaderContext {
       supportVariant = SupportVariant.NONE;
     }
     mdoType = MDOType.CONFIGURATION;
+    configurationExtensionCompatibilityMode = new CompatibilityMode();
 
-    setValue(UUID_FIELD_NAME, uuid);
-    setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
+    super.setValue(UUID_FIELD_NAME, uuid);
+    super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
 
     childrenNames = Collections.synchronizedList(new ArrayList<>());
   }

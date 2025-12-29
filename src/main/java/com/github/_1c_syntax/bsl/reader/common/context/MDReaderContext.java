@@ -109,8 +109,9 @@ public class MDReaderContext extends AbstractReaderContext {
       mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
     }
 
-    setValue(UUID_FIELD_NAME, uuid);
-    setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
+    templateType = TemplateType.UNKNOWN;
+    super.setValue(UUID_FIELD_NAME, uuid);
+    super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
 
     childrenContexts = new ConcurrentHashMap<>();
   }
@@ -121,6 +122,7 @@ public class MDReaderContext extends AbstractReaderContext {
     realClass = StandardAttribute.class;
     builder = TransformationUtils.builder(realClass);
     mdoType = MDOType.STANDARD_ATTRIBUTE;
+    templateType = TemplateType.UNKNOWN;
     childrenContexts = new ConcurrentHashMap<>();
   }
 

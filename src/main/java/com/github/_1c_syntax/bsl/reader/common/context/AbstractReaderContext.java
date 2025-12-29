@@ -128,6 +128,10 @@ public abstract class AbstractReaderContext {
     mdReader = ExtendXStream.getCurrentMDReader(reader);
 
     cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
   }
 
   protected AbstractReaderContext(Path currentPath, MDReader mdReader) {
@@ -135,6 +139,10 @@ public abstract class AbstractReaderContext {
     this.mdReader = mdReader;
 
     cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
   }
 
   /**
@@ -173,8 +181,7 @@ public abstract class AbstractReaderContext {
    * @param fieldName Имя поля\метода
    * @return Определенный класс, если не найден, тогда null
    */
-  @Nullable
-  public Class<?> fieldType(String fieldName) {
+  public @Nullable Class<?> fieldType(String fieldName) {
     return (Class<?>) TransformationUtils.fieldType(builder, fieldName);
   }
 
