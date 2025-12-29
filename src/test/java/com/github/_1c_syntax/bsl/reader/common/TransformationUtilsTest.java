@@ -100,8 +100,9 @@ class TransformationUtilsTest {
   void testBuilder() {
     var builder = TransformationUtils.builder(TestClass.class);
 
-    assertThat(builder).isNotNull();
-    assertThat(builder).isInstanceOf(TestClass.TestClassBuilder.class);
+    assertThat(builder)
+      .isNotNull()
+      .isInstanceOf(TestClass.TestClassBuilder.class);
   }
 
   @Test
@@ -124,8 +125,9 @@ class TransformationUtilsTest {
     var builder = TestClass.builder().name("Test").value(100);
     var result = TransformationUtils.build(builder);
 
-    assertThat(result).isNotNull();
-    assertThat(result).isInstanceOf(TestClass.class);
+    assertThat(result)
+      .isNotNull()
+      .isInstanceOf(TestClass.class);
     assertThat(((TestClass) result).getName()).isEqualTo("Test");
     assertThat(((TestClass) result).getValue()).isEqualTo(100);
   }
@@ -136,8 +138,9 @@ class TransformationUtilsTest {
     var path = Paths.get("test/path");
     var result = TransformationUtils.build(builder, path);
 
-    assertThat(result).isNotNull();
-    assertThat(result).isInstanceOf(TestClass.class);
+    assertThat(result)
+      .isNotNull()
+      .isInstanceOf(TestClass.class);
   }
 
   @Test

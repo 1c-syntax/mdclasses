@@ -39,8 +39,9 @@ class MDOReaderTest {
     var path = Paths.get("src/test/resources/ext/edt/ssl_3_1");
     var configuration = MDOReader.readConfiguration(path);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isInstanceOf(Configuration.class);
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
   }
 
   @Test
@@ -49,8 +50,9 @@ class MDOReaderTest {
     var settings = MDCReadSettings.DEFAULT;
     var configuration = MDOReader.readConfiguration(path, settings);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isInstanceOf(Configuration.class);
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
   }
 
   @Test
@@ -58,8 +60,9 @@ class MDOReaderTest {
     var path = Paths.get("src/test/resources/nonexistent");
     var configuration = MDOReader.readConfiguration(path);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isEqualTo(Configuration.EMPTY);
+    assertThat(configuration)
+      .isNotNull()
+      .isEqualTo(Configuration.EMPTY);
   }
 
   @ParameterizedTest
@@ -71,8 +74,9 @@ class MDOReaderTest {
     var path = Paths.get(pathString);
     var configuration = MDOReader.readConfiguration(path);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isInstanceOf(Configuration.class);
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
   }
 
   @Test
@@ -106,8 +110,9 @@ class MDOReaderTest {
     var path = Paths.get("src/test/resources/nonexistent.mdo");
     var externalSource = MDOReader.readExternalSource(path);
 
-    assertThat(externalSource).isNotNull();
-    assertThat(externalSource).isEqualTo(ExternalReport.EMPTY);
+    assertThat(externalSource)
+      .isNotNull()
+      .isEqualTo(ExternalReport.EMPTY);
   }
 
   @Test
@@ -115,8 +120,9 @@ class MDOReaderTest {
     var path = Paths.get("src/test/resources/ext/edt/ssl_3_1/configuration/Configuration.mdo");
     var configuration = MDOReader.readConfiguration(path);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isInstanceOf(Configuration.class);
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
   }
 
   @Test
@@ -124,8 +130,9 @@ class MDOReaderTest {
     var path = Paths.get("src/test/resources/ext/designer/ssl_3_1/src/Configuration/Configuration.xml");
     var configuration = MDOReader.readConfiguration(path);
 
-    assertThat(configuration).isNotNull();
-    assertThat(configuration).isInstanceOf(Configuration.class);
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
   }
 
   @Test

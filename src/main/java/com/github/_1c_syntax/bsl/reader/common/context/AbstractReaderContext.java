@@ -107,6 +107,7 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private String lastName;
 
   /**
