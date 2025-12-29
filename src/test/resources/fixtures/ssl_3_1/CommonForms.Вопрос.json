@@ -83,6 +83,38 @@
               "items": [
                 [
                   {
+                    "type": "USUAL_GROUP",
+                    "id": 26,
+                    "name": "ТекстСообщенияФорматированнаяСтрокаГруппа",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Текст сообщения форматированная строка (группа)"
+                          }
+                        }
+                      ]
+                    },
+                    "dataPath": "",
+                    "items": [
+                      {
+                        "type": "LABEL_DECORATION",
+                        "id": 23,
+                        "name": "ТекстСообщенияФорматированнаяСтрока",
+                        "title": {
+                          "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                        },
+                        "dataPath": "",
+                        "items": []
+                      }
+                    ]
+                  },
+                  {
                     "type": "INPUT_FIELD",
                     "id": 10,
                     "name": "МногострочныйТекстСообщения",
@@ -97,7 +129,18 @@
                     "id": 3,
                     "name": "БольшеНеЗадаватьЭтотВопрос",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Больше не задавать этот вопрос"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "БольшеНеЗадаватьЭтотВопрос",
                     "items": []
@@ -136,18 +179,7 @@
           "id": 3,
           "name": "БольшеНеЗадаватьЭтотВопрос",
           "title": {
-            "content": [
-              {
-                "default": {
-                  "tag": 2
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                  "langKey": "ru",
-                  "value": "Больше не задавать этот вопрос"
-                }
-              }
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
           },
           "type": {
             "types": [

@@ -74,7 +74,9 @@ public class RoleDataConverter implements ReadConverter {
         builder.right(right);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        assert fieldClass != null;
+        if(fieldClass == null) {
+          continue;
+        }
         var value = ExtendXStream.readValue(context, fieldClass);
         TransformationUtils.setValue(builder, name, value);
       }
@@ -91,7 +93,9 @@ public class RoleDataConverter implements ReadConverter {
       reader.moveDown();
       var name = reader.getNodeName();
       var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-      assert fieldClass != null;
+      if (fieldClass == null) {
+        continue;
+      }
       var value = ExtendXStream.readValue(context, fieldClass);
       TransformationUtils.setValue(builder, name, value);
       reader.moveUp();
