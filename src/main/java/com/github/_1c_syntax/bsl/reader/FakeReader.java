@@ -36,9 +36,8 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.NonNull;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 /**
@@ -47,31 +46,26 @@ import java.nio.file.Path;
 public class FakeReader implements MDReader {
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EMPTY;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     return Configuration.EMPTY;
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     return ExternalReport.EMPTY;
   }
 
   @Override
-  @NonNull
   public Path getRootPath() {
     return Path.of("fake-path");
   }
 
   @Override
-  @NonNull
   public MDCReadSettings getReadSettings() {
     return MDCReadSettings.DEFAULT;
   }
@@ -89,43 +83,36 @@ public class FakeReader implements MDReader {
   }
 
   @Override
-  @Nullable
   public ExtendXStream getXstream() {
-    return null;
+    throw new IllegalCallerException("It's fake reader");
   }
 
   @Override
-  @NonNull
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
     return EmptyFormData.EMPTY;
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "";
   }
 
   @Override
-  @NonNull
   public String configurationExtensionFilter() {
     return "";
   }

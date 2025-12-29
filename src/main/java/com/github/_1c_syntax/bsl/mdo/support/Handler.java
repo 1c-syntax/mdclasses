@@ -22,8 +22,8 @@
 package com.github._1c_syntax.bsl.mdo.support;
 
 import lombok.Value;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.regex.Pattern;
 
 /**

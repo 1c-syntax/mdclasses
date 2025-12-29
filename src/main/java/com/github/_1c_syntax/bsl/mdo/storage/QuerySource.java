@@ -21,8 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import lombok.NonNull;
-
 /**
  * Модель хранения информации о запросе СКД
  *
@@ -30,7 +28,7 @@ import lombok.NonNull;
  * @param column    Номер первого символа позиции запроса в исходном файле
  * @param textQuery Текст запроса
  */
-public record QuerySource(int line, int column, @NonNull String textQuery) {
+public record QuerySource(int line, int column, String textQuery) {
 
   /**
    * Пустой запрос

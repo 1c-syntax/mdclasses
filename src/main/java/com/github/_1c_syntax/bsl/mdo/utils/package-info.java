@@ -22,10 +22,7 @@
 /**
  * Набор внутренних инструментов
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.utils;
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.jspecify.annotations.NullMarked;

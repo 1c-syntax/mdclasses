@@ -35,10 +35,9 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import lombok.NonNull;
 import lombok.experimental.UtilityClass;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,8 +57,7 @@ public class MDMerger {
    * @param extension Добавляемое расширение
    * @return Объединенная конфигурация
    */
-  @NonNull
-  public static Configuration merge(@NonNull Configuration cf, @NonNull ConfigurationExtension extension) {
+  public static Configuration merge(Configuration cf, ConfigurationExtension extension) {
     var builder = cf.toBuilder();
     // todo подумать о том, как контролировать, что все свойства копируются
     if (cf.isEmpty()) { // скопируем из первого расширения

@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Используется для преобразования строковых представлений ссылки на объект
@@ -39,6 +40,7 @@ public class MdoReferenceConverter implements ReadConverter {
   private static final String REF_NODE_NAME = "Ref";
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var value = "";
     if (reader.hasMoreChildren()) {

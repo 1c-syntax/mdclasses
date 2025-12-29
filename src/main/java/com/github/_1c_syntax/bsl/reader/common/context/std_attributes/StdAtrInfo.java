@@ -157,7 +157,7 @@ public class StdAtrInfo {
   }
 
   private static ValueTypeDescription computeOwner(MDReaderContext parentContext) {
-    var owners = parentContext.getFromCache("owners", null);
+    var owners = parentContext.getFromCache("owners");
     if (owners instanceof MdoReference mdoReference) {
       return ValueTypeDescription.createRef(mdoReference);
     } else if (owners instanceof List<?> list) {

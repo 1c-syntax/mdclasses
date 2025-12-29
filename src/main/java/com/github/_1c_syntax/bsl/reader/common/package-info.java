@@ -22,4 +22,7 @@
 /**
  * Общая функциональность читателей
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader.common;
+
+import org.jspecify.annotations.NullMarked;

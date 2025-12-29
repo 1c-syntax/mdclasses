@@ -30,8 +30,8 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,6 +56,7 @@ public class MDCReaderContext extends AbstractReaderContext {
    * Режим совместимости
    */
   @Setter
+  @Nullable
   private CompatibilityMode compatibilityMode;
 
   /**
@@ -69,7 +70,7 @@ public class MDCReaderContext extends AbstractReaderContext {
    */
   private final List<String> childrenNames;
 
-  public MDCReaderContext(@NonNull Class<?> clazz, @NonNull HierarchicalStreamReader reader) {
+  public MDCReaderContext(Class<?> clazz, HierarchicalStreamReader reader) {
     super(reader);
 
     realClass = clazz;
@@ -83,14 +84,14 @@ public class MDCReaderContext extends AbstractReaderContext {
     }
     mdoType = MDOType.CONFIGURATION;
 
-    super.setValue(UUID_FIELD_NAME, uuid);
-    super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
+    setValue(UUID_FIELD_NAME, uuid);
+    setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
 
     childrenNames = Collections.synchronizedList(new ArrayList<>());
   }
 
   @Override
-  public void setValue(String methodName, Object value) {
+  public void setValue(String methodName, @Nullable Object value) {
     if (value instanceof String string && MDOType.fromValue(methodName).isPresent()) {
       childrenNames.add(string);
     } else {

@@ -24,10 +24,7 @@
  * - типы
  * - контейнеры данных (для хранения сложной информации)
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.support;
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.jspecify.annotations.NullMarked;
