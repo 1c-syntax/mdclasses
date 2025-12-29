@@ -242,7 +242,9 @@ public class MDMerger {
           throw new IllegalStateException("toBuilder() is not available for " + srcMD.getClass());
         }
         TransformationUtils.setValue(builder, "modules", merge);
-        return (T) TransformationUtils.build(builder);
+        var computeResult = TransformationUtils.build(builder);
+        assert computeResult != null; // там и не будет null
+        return (T) computeResult;
       }
     }
     return srcMD;
@@ -280,12 +282,15 @@ public class MDMerger {
       if (builder != null) {
         TransformationUtils.invoke(builder, "clearChildren");
         TransformationUtils.setValue(builder, "children", newChildren);
-        result = (T) TransformationUtils.build(builder);
+        var computeResult = TransformationUtils.build(builder);
+        assert computeResult != null; // там и не будет null
+        result = (T) computeResult;
       }
     }
     return result;
   }
 
+  @Nullable
   private static <K, T extends MD> Object copyChildrenList(K srcMD,
                                                            K modMD,
                                                            @Nullable Object builder,
@@ -304,9 +309,11 @@ public class MDMerger {
       TransformationUtils.invoke(builder, "clear" + methodName);
       TransformationUtils.setValue(builder, methodName, merge);
     }
+    // возвращается либо полученный билдер, либо null, который и был изначально.
     return builder;
   }
 
+  @Nullable
   private static Object copyFormOwner(FormOwner srcMD,
                                       FormOwner modMD,
                                       @Nullable Object builder,
@@ -314,6 +321,7 @@ public class MDMerger {
     return copyChildrenList(srcMD, modMD, builder, FormOwner::getForms, "Forms", newChildren);
   }
 
+  @Nullable
   private static Object copyTemplateOwner(TemplateOwner srcMD,
                                           TemplateOwner modMD,
                                           @Nullable Object builder,
@@ -321,6 +329,7 @@ public class MDMerger {
     return copyChildrenList(srcMD, modMD, builder, TemplateOwner::getTemplates, "Templates", newChildren);
   }
 
+  @Nullable
   private static Object copyCommandOwner(CommandOwner srcMD,
                                          CommandOwner modMD,
                                          @Nullable Object builder,

@@ -114,6 +114,7 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private Object lastValue;
 
   /**

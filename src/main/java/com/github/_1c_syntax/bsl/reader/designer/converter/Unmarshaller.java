@@ -136,6 +136,9 @@ public class Unmarshaller {
                             AbstractReaderContext readerContext,
                             String nodeName) {
     var fieldClass = readerContext.fieldType(nodeName);
+    if(fieldClass == null) {
+      return;
+    }
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));

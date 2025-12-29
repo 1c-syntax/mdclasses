@@ -63,12 +63,12 @@ public class MemoryProfiler implements InternalProfiler {
   }
 
   @Override
-  public Collection<Result> afterIteration(
+  public Collection<? extends Result> afterIteration(
     BenchmarkParams benchmarkParams,
     IterationParams iterationParams,
     IterationResult result
   ) {
-    List<Result> results = new ArrayList<>();
+    List<ScalarResult> results = new ArrayList<>();
 
     // Память
     var heapUsage = memoryMXBean.getHeapMemoryUsage();

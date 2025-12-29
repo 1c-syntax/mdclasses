@@ -48,7 +48,7 @@ public class FormElementConverter implements ReadConverter {
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
     } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
+      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader));
       return null;
     }
     readerContext.setValue("type", FormElementType.valueByName(reader.getNodeName()));

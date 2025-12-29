@@ -60,7 +60,7 @@ public class TransformationUtils {
    * @param methodName Метод\свойство билдера
    * @param value      Устанавливаемое значение
    */
-  public void setValue(Object source, String methodName, Object value) {
+  public void setValue(Object source, String methodName, @Nullable Object value) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null && value != null) {
       try {
@@ -118,7 +118,7 @@ public class TransformationUtils {
         LOGGER.error(LOGGER_MESSAGE_PREF, clazz, BUILDER_METHOD_NAME, e);
       }
     }
-    return null;
+    throw new IllegalArgumentException("Incorrect class " + clazz);
   }
 
   /**
