@@ -132,6 +132,7 @@ public abstract class AbstractReaderContext {
     supportVariant = SupportVariant.NONE;
     realClass = String.class; // заглушка
     builder = ""; // заглушка
+    name = ""; // заглушка
   }
 
   protected AbstractReaderContext(Path currentPath, MDReader mdReader) {
@@ -143,6 +144,7 @@ public abstract class AbstractReaderContext {
     supportVariant = SupportVariant.NONE;
     realClass = String.class; // заглушка
     builder = ""; // заглушка
+    name = ""; // заглушка
   }
 
   /**
