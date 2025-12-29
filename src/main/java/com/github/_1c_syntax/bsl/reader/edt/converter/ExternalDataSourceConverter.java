@@ -54,7 +54,9 @@ public class ExternalDataSourceConverter extends AbstractReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (reader.getAttributeCount() == 0) {
       var realClass = ExtendXStream.getRealClass(reader, reader.getNodeName());
-      assert realClass != null;
+      if (realClass == null) {
+        throw new IllegalStateException("Could not resolve class for: " + reader.getNodeName());
+      }
       int position;
       MDOType mdoType;
       var realClassName = realClass.getName();

@@ -28,6 +28,8 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
+import java.util.Objects;
+
 /**
  * Используется для преобразования содержимого пакета XDTO
  */
@@ -53,7 +55,7 @@ public class RoleDataConverter implements ReadConverter {
         builder.objectRight(objectRight);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        assert fieldClass != null;
+        Objects.requireNonNull(fieldClass, "Field type not found for: " + name);
         var value = ExtendXStream.readValue(context, fieldClass);
         TransformationUtils.setValue(builder, name, value);
       }
