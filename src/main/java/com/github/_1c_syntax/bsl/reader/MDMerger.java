@@ -35,10 +35,9 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
-import lombok.NonNull;
 import lombok.experimental.UtilityClass;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,8 +57,7 @@ public class MDMerger {
    * @param extension Добавляемое расширение
    * @return Объединенная конфигурация
    */
-  @NonNull
-  public static Configuration merge(@NonNull Configuration cf, @NonNull ConfigurationExtension extension) {
+  public static Configuration merge(Configuration cf, ConfigurationExtension extension) {
     var builder = cf.toBuilder();
     // todo подумать о том, как контролировать, что все свойства копируются
     if (cf.isEmpty()) { // скопируем из первого расширения
@@ -244,7 +242,9 @@ public class MDMerger {
           throw new IllegalStateException("toBuilder() is not available for " + srcMD.getClass());
         }
         TransformationUtils.setValue(builder, "modules", merge);
-        return (T) TransformationUtils.build(builder);
+        var computeResult = TransformationUtils.build(builder);
+        assert computeResult != null; // там и не будет null
+        return (T) computeResult;
       }
     }
     return srcMD;
@@ -282,12 +282,15 @@ public class MDMerger {
       if (builder != null) {
         TransformationUtils.invoke(builder, "clearChildren");
         TransformationUtils.setValue(builder, "children", newChildren);
-        result = (T) TransformationUtils.build(builder);
+        var computeResult = TransformationUtils.build(builder);
+        assert computeResult != null; // там и не будет null
+        result = (T) computeResult;
       }
     }
     return result;
   }
 
+  @Nullable
   private static <K, T extends MD> Object copyChildrenList(K srcMD,
                                                            K modMD,
                                                            @Nullable Object builder,
@@ -306,9 +309,11 @@ public class MDMerger {
       TransformationUtils.invoke(builder, "clear" + methodName);
       TransformationUtils.setValue(builder, methodName, merge);
     }
+    // возвращается либо полученный билдер, либо null, который и был изначально.
     return builder;
   }
 
+  @Nullable
   private static Object copyFormOwner(FormOwner srcMD,
                                       FormOwner modMD,
                                       @Nullable Object builder,
@@ -316,6 +321,7 @@ public class MDMerger {
     return copyChildrenList(srcMD, modMD, builder, FormOwner::getForms, "Forms", newChildren);
   }
 
+  @Nullable
   private static Object copyTemplateOwner(TemplateOwner srcMD,
                                           TemplateOwner modMD,
                                           @Nullable Object builder,
@@ -323,6 +329,7 @@ public class MDMerger {
     return copyChildrenList(srcMD, modMD, builder, TemplateOwner::getTemplates, "Templates", newChildren);
   }
 
+  @Nullable
   private static Object copyCommandOwner(CommandOwner srcMD,
                                          CommandOwner modMD,
                                          @Nullable Object builder,

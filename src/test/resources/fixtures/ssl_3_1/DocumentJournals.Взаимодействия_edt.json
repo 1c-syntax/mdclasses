@@ -365,7 +365,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
-                "value": "Учетная запись"
+                "value": "Почта"
               }
             }
           ]
@@ -1301,11 +1301,11 @@
       },
       {
         "uuid": "8c241467-76f7-4161-a8a1-5da4a6576b75",
-        "name": "СохранитьПисьмоНаДиск",
+        "name": "СохранитьПисьмо",
         "mdoReference": {
           "type": "COMMAND",
-          "mdoRef": "DocumentJournal.Взаимодействия.Command.СохранитьПисьмоНаДиск",
-          "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.СохранитьПисьмоНаДиск"
+          "mdoRef": "DocumentJournal.Взаимодействия.Command.СохранитьПисьмо",
+          "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.СохранитьПисьмо"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1318,7 +1318,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
-                "value": "Сохранить письмо на диск"
+                "value": "Сохранить письмо на компьютер"
               }
             }
           ]
@@ -1327,7 +1327,7 @@
         "modules": [
           {
             "moduleType": "CommandModule",
-            "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/DocumentJournals/Взаимоде_ствия/Commands/СохранитьПисьмоНаДиск/CommandModule.bsl",
+            "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/DocumentJournals/Взаимоде_ствия/Commands/СохранитьПисьмо/CommandModule.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/commands/c/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[15]/mdoReference"
             },
@@ -1499,6 +1499,62 @@
               },
               {
                 "type": "USUAL_GROUP",
+                "id": 943,
+                "name": "ПредупреждениеОНеактуальностиИндекса",
+                "title": {
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Предупреждение о неактуальности индекса"
+                      }
+                    }
+                  ]
+                },
+                "dataPath": "",
+                "items": [
+                  [
+                    {
+                      "type": "DECORATION",
+                      "id": 945,
+                      "name": "ПредупреждениеОНеактуальностиИндексаКартинка",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                      },
+                      "dataPath": "",
+                      "items": []
+                    },
+                    {
+                      "type": "LABEL",
+                      "id": 948,
+                      "name": "ПредупреждениеОНеактуальностиИндексаНадпись",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Результаты поиска могут быть неточными, повторите поиск позднее"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": []
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "type": "USUAL_GROUP",
                 "id": 832,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -1586,7 +1642,18 @@
                       "id": 67,
                       "name": "Статус",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Статус"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "Статус",
                       "items": []
@@ -1652,7 +1719,18 @@
                             "id": 830,
                             "name": "ИзменитьОтображениеПанелиНавигации",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Изменить отображение панели навигации"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "",
                             "items": []
@@ -1683,7 +1761,18 @@
                                   "id": 27,
                                   "name": "УстановитьВариантНавигацииПоПредмету",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "По предметам"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -1693,7 +1782,18 @@
                                   "id": 28,
                                   "name": "УстановитьВариантНавигацииПоКонтакту",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "По контактам"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -1703,7 +1803,18 @@
                                   "id": 124,
                                   "name": "УстановитьВариантНавигацииПоЗакладкам",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "По закладкам"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -1713,7 +1824,18 @@
                                   "id": 176,
                                   "name": "УстановитьВариантНавигацииПоПапкам",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "По папкам"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -1769,7 +1891,18 @@
                                         "id": 44,
                                         "name": "СписокСоздатьВстречу",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Встречу"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1779,7 +1912,18 @@
                                         "id": 45,
                                         "name": "СписокСоздатьЗапланированноеВзаимодействие",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Запланированное взаимодействие"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1789,7 +1933,18 @@
                                         "id": 46,
                                         "name": "СписокСоздатьТелефонныйЗвонок",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Телефонный звонок"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1799,7 +1954,18 @@
                                         "id": 415,
                                         "name": "СписокСоздатьСообщениеSMS",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Сообщение SMS"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1809,7 +1975,18 @@
                                         "id": 47,
                                         "name": "СписокСоздатьЭлектронноеПисьмо",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Электронное письмо"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1865,7 +2042,18 @@
                                         "id": 342,
                                         "name": "СписокОтветить",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Ответить"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1875,7 +2063,18 @@
                                         "id": 343,
                                         "name": "СписокОтветитьВсем",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Ответить всем"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1885,7 +2084,18 @@
                                         "id": 344,
                                         "name": "СписокПереслать",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Переслать"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1899,7 +2109,18 @@
                                   "id": 59,
                                   "name": "СписокОтправитьПолучитьПочту",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Отправить и получить"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -1951,7 +2172,7 @@
                                         "id": 40,
                                         "name": "СписокРассмотрено",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/title"
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1961,7 +2182,18 @@
                                         "id": 42,
                                         "name": "СписокОтложитьРассмотрение",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Отложить рассмотрение..."
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1971,7 +2203,18 @@
                                         "id": 191,
                                         "name": "СписокНеРассмотрено",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Снять признак рассмотрено"
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1981,7 +2224,18 @@
                                         "id": 39,
                                         "name": "СписокОтветственный",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Установить ответственного..."
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -1991,7 +2245,18 @@
                                         "id": 41,
                                         "name": "СписокПредмет",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Установить предмет взаимодействия..."
+                                              }
+                                            }
+                                          ]
                                         },
                                         "dataPath": "",
                                         "items": []
@@ -2120,7 +2385,7 @@
                                         "id": 55,
                                         "name": "ГруппаНайти",
                                         "title": {
-                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                         },
                                         "dataPath": "",
                                         "items": [
@@ -2168,7 +2433,18 @@
                                   "id": 60,
                                   "name": "СписокОбновить",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Обновить"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -2208,7 +2484,18 @@
                                   "id": 792,
                                   "name": "СписокОтображатьОбластьЧтения",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Отображать область чтения"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -2218,7 +2505,18 @@
                                   "id": 146,
                                   "name": "ФормаПерсональныеНастройки",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Персональные настройки..."
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "",
                                   "items": []
@@ -2591,7 +2889,7 @@
                                                             "id": 700,
                                                             "name": "ДатаПоследнегоВзаимодействия",
                                                             "title": {
-                                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                                             },
                                                             "dataPath": "ПредметыПанельНавигации.ДатаПоследнегоВзаимодействия",
                                                             "items": []
@@ -2660,16 +2958,29 @@
                                           },
                                           "dataPath": "Закладки",
                                           "items": [
-                                            {
-                                              "type": "LABEL_FIELD",
-                                              "id": 122,
-                                              "name": "ЗакладкиНаименование",
-                                              "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                                            [
+                                              {
+                                                "type": "LABEL_FIELD",
+                                                "id": 122,
+                                                "name": "ЗакладкиНаименование",
+                                                "title": {
+                                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                                                },
+                                                "dataPath": "Закладки.Description",
+                                                "items": []
                                               },
-                                              "dataPath": "Закладки.Description",
-                                              "items": []
-                                            }
+                                              {
+                                                "type": "INPUT_FIELD",
+                                                "id": 940,
+                                                "name": "ЗакладкиСсылка",
+                                                "title": {
+                                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                },
+                                                "dataPath": "Закладки.Ref",
+                                                "items": []
+                                              }
+                                            ],
+                                            []
                                           ]
                                         }
                                       ]
@@ -2740,7 +3051,18 @@
                                                     "id": 133,
                                                     "name": "СвойстваПредставление",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "content": [
+                                                        {
+                                                          "default": {
+                                                            "tag": 2
+                                                          },
+                                                          "int": 1,
+                                                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                            "langKey": "ru",
+                                                            "value": "Представление"
+                                                          }
+                                                        }
+                                                      ]
                                                     },
                                                     "dataPath": "Свойства.Представление",
                                                     "items": []
@@ -2750,7 +3072,18 @@
                                                     "id": 136,
                                                     "name": "СвойстваНомерКартинки",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "content": [
+                                                        {
+                                                          "default": {
+                                                            "tag": 2
+                                                          },
+                                                          "int": 1,
+                                                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                            "langKey": "ru",
+                                                            "value": "Номер картинки"
+                                                          }
+                                                        }
+                                                      ]
                                                     },
                                                     "dataPath": "Свойства.НомерКартинки",
                                                     "items": []
@@ -2829,7 +3162,7 @@
                                                     "id": 182,
                                                     "name": "ПапкиНомерКартинки",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                                     },
                                                     "dataPath": "Папки.НомерКартинки",
                                                     "items": []
@@ -2839,7 +3172,7 @@
                                                     "id": 184,
                                                     "name": "ПапкиПредставление",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                                     },
                                                     "dataPath": "Папки.Представление",
                                                     "items": []
@@ -2918,7 +3251,7 @@
                                                     "id": 312,
                                                     "name": "КатегорииНомерКартинки",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                                     },
                                                     "dataPath": "Категории.НомерКартинки",
                                                     "items": []
@@ -2928,7 +3261,7 @@
                                                     "id": 309,
                                                     "name": "КатегорииПредставление",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                                     },
                                                     "dataPath": "Категории.Представление",
                                                     "items": []
@@ -2973,7 +3306,7 @@
                                   "id": 2,
                                   "name": "Список",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                   },
                                   "dataPath": "Список",
                                   "items": [
@@ -3125,7 +3458,7 @@
                                                     "title": {
                                                       "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
                                                     },
-                                                    "dataPath": "Список.Date",
+                                                    "dataPath": "Список.Дата",
                                                     "items": []
                                                   },
                                                   {
@@ -3133,7 +3466,7 @@
                                                     "id": 108,
                                                     "name": "ЕстьВложения",
                                                     "title": {
-                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn[8]/synonym"
                                                     },
                                                     "dataPath": "Список.ЕстьВложения",
                                                     "items": []
@@ -3183,7 +3516,7 @@
                                         "title": {
                                           "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
                                         },
-                                        "dataPath": "Список.Ref",
+                                        "dataPath": "Список.Ссылка",
                                         "items": []
                                       }
                                     ],
@@ -3236,7 +3569,18 @@
                                             "id": 150,
                                             "name": "ПредпросмотрОбычныйТекст",
                                             "title": {
-                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                              "content": [
+                                                {
+                                                  "default": {
+                                                    "tag": 2
+                                                  },
+                                                  "int": 1,
+                                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                    "langKey": "ru",
+                                                    "value": "Предпросмотр"
+                                                  }
+                                                }
+                                              ]
                                             },
                                             "dataPath": "Предпросмотр",
                                             "items": []
@@ -3325,7 +3669,18 @@
                                               "id": 91,
                                               "name": "ПредпросмотрHTML",
                                               "title": {
-                                                "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                                "content": [
+                                                  {
+                                                    "default": {
+                                                      "tag": 2
+                                                    },
+                                                    "int": 1,
+                                                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                      "langKey": "ru",
+                                                      "value": "Предпросмотр HTML"
+                                                    }
+                                                  }
+                                                ]
                                               },
                                               "dataPath": "ПредпросмотрHTML",
                                               "items": []
@@ -3343,7 +3698,18 @@
                                   "id": 323,
                                   "name": "ОписаниеНайденоПолнотекстовымПоиском",
                                   "title": {
-                                    "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Описание найденного полнотекстовым поиском"
+                                        }
+                                      }
+                                    ]
                                   },
                                   "dataPath": "ОписаниеНайденоПолнотекстовымПоиском",
                                   "items": []
@@ -3396,18 +3762,7 @@
                 "id": 4,
                 "name": "Статус",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Статус"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -3561,18 +3916,7 @@
                 "id": 9,
                 "name": "Предпросмотр",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Предпросмотр"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -3606,7 +3950,7 @@
                 "id": 7,
                 "name": "Закладки",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -3834,7 +4178,7 @@
                 "id": 20,
                 "name": "Папки",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -3934,7 +4278,7 @@
                 "id": 25,
                 "name": "Категории",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -3994,18 +4338,7 @@
                 "id": 30,
                 "name": "ОписаниеНайденоПолнотекстовымПоиском",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Описание найденного полнотекстовым поиском"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -4178,18 +4511,7 @@
                 "id": 35,
                 "name": "ПредпросмотрHTML",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Предпросмотр HTML"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -4223,7 +4545,7 @@
                 "id": 36,
                 "name": "ПредметыПанельНавигации",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -4420,7 +4742,7 @@
               },
               {
                 "id": 41,
-                "name": "ЗначениеУстановленноеПослеЗаполненияПанелиНавигации",
+                "name": "ТекущееЗначениеПанелиНавигации",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
                 },
@@ -4626,6 +4948,26 @@
                   "composite": false,
                   "qualifiers": []
                 }
+              },
+              {
+                "id": 49,
+                "name": "ИндексПолнотекстовогоПоискаАктуален",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
+                }
               }
             ],
             []
@@ -4712,7 +5054,7 @@
                 "id": 234,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "dataPath": "",
                 "items": []
@@ -4722,7 +5064,7 @@
                 "id": 34,
                 "name": "ГруппаФильтры",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
                 },
                 "dataPath": "",
                 "items": [
@@ -4732,7 +5074,18 @@
                       "id": 102,
                       "name": "ПереключитьРежимПросмотра",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "В виде дерева / списка"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -4742,7 +5095,7 @@
                       "id": 136,
                       "name": "ТипВзаимодействия",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/title"
                       },
                       "dataPath": "ТипВзаимодействия",
                       "items": []
@@ -4752,7 +5105,7 @@
                       "id": 50,
                       "name": "Статус",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                       },
                       "dataPath": "Статус",
                       "items": []
@@ -4817,7 +5170,7 @@
                           "id": 1,
                           "name": "Список",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                           },
                           "dataPath": "Список",
                           "items": [
@@ -4827,7 +5180,7 @@
                                 "id": 221,
                                 "name": "ГруппаОсновное",
                                 "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                 },
                                 "dataPath": "",
                                 "items": [
@@ -4858,7 +5211,7 @@
                                             "id": 225,
                                             "name": "НомерКартинки",
                                             "title": {
-                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                                             },
                                             "dataPath": "Список.НомерКартинки",
                                             "items": []
@@ -5014,7 +5367,7 @@
                                           "id": 113,
                                           "name": "ДеревоВзаимодействийНомерКартинки",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                           },
                                           "dataPath": "ДеревоВзаимодействий.НомерКартинки",
                                           "items": []
@@ -5024,7 +5377,7 @@
                                           "id": 118,
                                           "name": "ДеревоВзаимодействийУчастники",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn[5]/synonym"
                                           },
                                           "dataPath": "ДеревоВзаимодействий.Участники",
                                           "items": []
@@ -5034,7 +5387,7 @@
                                           "id": 111,
                                           "name": "ДеревоВзаимодействийДата",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                                           },
                                           "dataPath": "ДеревоВзаимодействий.Дата",
                                           "items": []
@@ -5048,7 +5401,7 @@
                                     "id": 116,
                                     "name": "ДеревоВзаимодействийТема",
                                     "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/columns/c/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn[4]/synonym"
                                     },
                                     "dataPath": "ДеревоВзаимодействий.Тема",
                                     "items": []
@@ -5116,7 +5469,7 @@
                 "id": 5,
                 "name": "Статус",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -5474,7 +5827,7 @@
                       "id": 37,
                       "name": "Печать",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/commands/c/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[12]/synonym"
                       },
                       "dataPath": "",
                       "items": []
@@ -5488,7 +5841,7 @@
                 "id": 39,
                 "name": "ПредупреждениеБезопасности",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "dataPath": "",
                 "items": [
@@ -5508,7 +5861,7 @@
                       "id": 44,
                       "name": "ПредупреждениеОНебезопасномСодержимом",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": "",
                       "items": []
@@ -5522,7 +5875,18 @@
                 "id": 1,
                 "name": "ТекстHTML",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Текст HTML"
+                      }
+                    }
+                  ]
                 },
                 "dataPath": "ТекстHTML",
                 "items": []
@@ -5552,7 +5916,18 @@
                     "id": 17,
                     "name": "Группа",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Группа"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "",
                     "items": [
@@ -5562,7 +5937,18 @@
                           "id": 19,
                           "name": "ИндексКартинки",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                            "content": [
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                  "langKey": "ru",
+                                  "value": "Индекс картинки"
+                                }
+                              }
+                            ]
                           },
                           "dataPath": "Вложения.ИндексКартинки",
                           "items": []
@@ -5572,7 +5958,18 @@
                           "id": 22,
                           "name": "ИмяФайла",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                            "content": [
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                  "langKey": "ru",
+                                  "value": "Вложение"
+                                }
+                              }
+                            ]
                           },
                           "dataPath": "Вложения.ИмяФайла",
                           "items": []
@@ -5582,7 +5979,18 @@
                           "id": 25,
                           "name": "ВложенияРазмерПредставление",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                            "content": [
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                  "langKey": "ru",
+                                  "value": "Размер представление"
+                                }
+                              }
+                            ]
                           },
                           "dataPath": "Вложения.РазмерПредставление",
                           "items": []
@@ -5602,18 +6010,7 @@
                 "id": 1,
                 "name": "ТекстHTML",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Текст HTML"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -6216,7 +6613,18 @@
                             "id": 9,
                             "name": "Создано",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Создано"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "Создано",
                             "items": []
@@ -6272,7 +6680,18 @@
                             "id": 6,
                             "name": "ВнутреннийНомер",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Внутренний номер"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "ВнутреннийНомер",
                             "items": []
@@ -6282,7 +6701,18 @@
                             "id": 23,
                             "name": "ВключатьТелоИсходногоПисьма",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Включать тело исходного письма"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "ВключатьТелоИсходногоПисьма",
                             "items": []
@@ -6300,7 +6730,18 @@
                 "id": 26,
                 "name": "Папка",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Папка"
+                      }
+                    }
+                  ]
                 },
                 "dataPath": "Папка",
                 "items": []
@@ -6331,7 +6772,18 @@
                       "id": 1,
                       "name": "УведомитьОДоставке",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Уведомить о доставке"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "УведомитьОДоставке",
                       "items": []
@@ -6341,7 +6793,18 @@
                       "id": 3,
                       "name": "УведомитьОПрочтении",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Уведомить о прочтении"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "УведомитьОПрочтении",
                       "items": []
@@ -6355,7 +6818,18 @@
                 "id": 17,
                 "name": "Заголовки",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Заголовки Интернета"
+                      }
+                    }
+                  ]
                 },
                 "dataPath": "ЗаголовкиИнтернета",
                 "items": []
@@ -6369,18 +6843,7 @@
                 "id": 1,
                 "name": "УведомитьОДоставке",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Уведомить о доставке"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -6400,18 +6863,7 @@
                 "id": 2,
                 "name": "УведомитьОПрочтении",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Уведомить о прочтении"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -6431,18 +6883,7 @@
                 "id": 3,
                 "name": "ВнутреннийНомер",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Внутренний номер"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -6477,18 +6918,7 @@
                 "id": 4,
                 "name": "Создано",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Создано"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -6565,18 +6995,7 @@
                 "id": 7,
                 "name": "ЗаголовкиИнтернета",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Заголовки Интернета"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
                 },
                 "type": {
                   "types": [
@@ -6655,18 +7074,7 @@
                 "id": 6,
                 "name": "ВключатьТелоИсходногоПисьма",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Включать тело исходного письма"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -6686,18 +7094,7 @@
                 "id": 10,
                 "name": "Папка",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Папка"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -7023,7 +7420,18 @@
                                           "id": 5,
                                           "name": "ПодписьДляНовыхСообщенийПростойТекст",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                            "content": [
+                                              {
+                                                "default": {
+                                                  "tag": 2
+                                                },
+                                                "int": 1,
+                                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                  "langKey": "ru",
+                                                  "value": "Подпись для новых сообщений простой текст"
+                                                }
+                                              }
+                                            ]
                                           },
                                           "dataPath": "ПодписьДляНовыхСообщенийПростойТекст",
                                           "items": []
@@ -7077,7 +7485,18 @@
                                             "id": 11,
                                             "name": "НовоеСообщениеФорматированныйДокумент",
                                             "title": {
-                                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                              "content": [
+                                                {
+                                                  "default": {
+                                                    "tag": 2
+                                                  },
+                                                  "int": 1,
+                                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                    "langKey": "ru",
+                                                    "value": "Новое сообщение форматированный документ"
+                                                  }
+                                                }
+                                              ]
                                             },
                                             "dataPath": "НовоеСообщениеФорматированныйДокумент",
                                             "items": []
@@ -7214,7 +7633,18 @@
                                           "id": 27,
                                           "name": "ПодписьПриОтветеПересылкеПростойТекст",
                                           "title": {
-                                            "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                            "content": [
+                                              {
+                                                "default": {
+                                                  "tag": 2
+                                                },
+                                                "int": 1,
+                                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                  "langKey": "ru",
+                                                  "value": "Подпись при ответе пересылке простой текст"
+                                                }
+                                              }
+                                            ]
                                           },
                                           "dataPath": "ПодписьПриОтветеПересылкеПростойТекст",
                                           "items": []
@@ -7364,7 +7794,18 @@
                                 "id": 40,
                                 "name": "ПорядокОтветовНаЗапросыУведомленийОПрочтении",
                                 "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                                  "content": [
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                        "langKey": "ru",
+                                        "value": "Порядок ответов на запросы уведомлений о прочтении"
+                                      }
+                                    }
+                                  ]
                                 },
                                 "dataPath": "ПорядокОтветовНаЗапросыУведомленийОПрочтении",
                                 "items": []
@@ -7401,7 +7842,18 @@
                             "id": 50,
                             "name": "ОтображатьТелоИсходногоПисьма",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Отображать тело исходного письма  при ответе или пересылке"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "ОтображатьТелоИсходногоПисьма",
                             "items": []
@@ -7411,7 +7863,18 @@
                             "id": 52,
                             "name": "ВключатьТелоИсходногоПисьма",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Включать тело исходного письма при ответе пересылке"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "ВключатьТелоИсходногоПисьма",
                             "items": []
@@ -7454,18 +7917,7 @@
                 "id": 2,
                 "name": "НовоеСообщениеФорматированныйДокумент",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Новое сообщение форматированный документ"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -7553,18 +8005,7 @@
                 "id": 5,
                 "name": "ПодписьДляНовыхСообщенийПростойТекст",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Подпись для новых сообщений простой текст"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -7671,18 +8112,7 @@
                 "id": 9,
                 "name": "ПодписьПриОтветеПересылкеПростойТекст",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Подпись при ответе пересылке простой текст"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -7778,18 +8208,7 @@
                 "id": 12,
                 "name": "ПорядокОтветовНаЗапросыУведомленийОПрочтении",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Порядок ответов на запросы уведомлений о прочтении"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -7847,18 +8266,7 @@
                 "id": 14,
                 "name": "ОтображатьТелоИсходногоПисьма",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Отображать тело исходного письма  при ответе или пересылке"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -7878,18 +8286,7 @@
                 "id": 15,
                 "name": "ВключатьТелоИсходногоПисьма",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Включать тело исходного письма при ответе пересылке"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -8011,7 +8408,18 @@
                     "id": 14,
                     "name": "ТаблицаТиповПредметовПредставлениеТипа",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Представление типа"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "ТаблицаТиповПредметов.ПредставлениеТипа",
                     "items": []
@@ -8023,7 +8431,18 @@
                 "id": 23,
                 "name": "НеОтображатьВзаимодействия",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/explanation"
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Не отображать взаимодействия"
+                      }
+                    }
+                  ]
                 },
                 "dataPath": "НеОтображатьВзаимодействия",
                 "items": []
@@ -8091,18 +8510,7 @@
                 "id": 3,
                 "name": "НеОтображатьВзаимодействия",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Не отображать взаимодействия"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DocumentJournal/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -8248,9 +8656,9 @@
               "dataSource": "ИсточникДанных1",
               "items": [],
               "querySource": {
-                "line": 142,
+                "line": 154,
                 "column": 10,
-                "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tЖурналДокументовВзаимодействия.Ссылка,\n\tЖурналДокументовВзаимодействия.Дата,\n\tЖурналДокументовВзаимодействия.ПометкаУдаления,\n\tЖурналДокументовВзаимодействия.Номер,\n\tЖурналДокументовВзаимодействия.Проведен,\n\tЖурналДокументовВзаимодействия.Автор,\n\tЖурналДокументовВзаимодействия.Входящий,\n\tЖурналДокументовВзаимодействия.Тема,\n\tЖурналДокументовВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействия.Участники,\n\tЖурналДокументовВзаимодействия.Тип,\n\tЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,\n\tЖурналДокументовВзаимодействия.ЕстьВложения,\n\tЖурналДокументовВзаимодействия.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействий.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,\n\tСостоянияПредметовВзаимодействий.Активен КАК ПредметАктивен,\n\tПредметыВзаимодействий.ПапкаЭлектронногоПисьма КАК Папка,\n\tЖурналДокументовВзаимодействия.ПолученоОтправлено,\n\tЖурналДокументовВзаимодействия.Размер,\n\tЖурналДокументовВзаимодействия.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая) ТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая) ТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия\n\t\t{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий\n\t\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияПредметовВзаимодействий КАК СостоянияПредметовВзаимодействий\n\t\t\tПО ПредметыВзаимодействий.Предмет = СостоянияПредметовВзаимодействий.Предмет\n\t\tПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие}\n{ГДЕ\n\t(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &ДатаНачала И &ДатаОкончания)}"
+                "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tЖурналДокументовВзаимодействия.Ссылка,\n\tЖурналДокументовВзаимодействия.Дата,\n\tЖурналДокументовВзаимодействия.ПометкаУдаления,\n\tЖурналДокументовВзаимодействия.Номер,\n\tЖурналДокументовВзаимодействия.Проведен,\n\tЖурналДокументовВзаимодействия.Автор,\n\tЖурналДокументовВзаимодействия.Входящий,\n\tЖурналДокументовВзаимодействия.Тема,\n\tЖурналДокументовВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействия.Участники,\n\tЖурналДокументовВзаимодействия.Тип,\n\tЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,\n\tЖурналДокументовВзаимодействия.ЕстьВложения,\n\tЖурналДокументовВзаимодействия.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействий.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,\n\tСостоянияПредметовВзаимодействий.Активен КАК ПредметАктивен,\n\tПредметыВзаимодействий.ПапкаЭлектронногоПисьма КАК Папка,\n\tЖурналДокументовВзаимодействия.ПолученоОтправлено,\n\tЖурналДокументовВзаимодействия.Размер,\n\tЖурналДокументовВзаимодействия.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая) ТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая) ТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия\n\t\t{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий\n\t\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияПредметовВзаимодействий КАК СостоянияПредметовВзаимодействий\n\t\t\tПО ПредметыВзаимодействий.Предмет = СостоянияПредметовВзаимодействий.Предмет\n\t\tПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие}\n{ГДЕ\n\t(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &НачалоПериодаОтбора И &КонецПериодаОтбора)}"
               },
               "fields": [
                 [

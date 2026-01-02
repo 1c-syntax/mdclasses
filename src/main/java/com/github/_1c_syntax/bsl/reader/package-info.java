@@ -22,4 +22,7 @@
 /**
  * Реализация ридеров для разных форматов
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader;
+
+import org.jspecify.annotations.NullMarked;

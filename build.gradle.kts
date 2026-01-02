@@ -68,6 +68,8 @@ dependencies {
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.179")
 
+    implementation("org.jspecify", "jspecify", "1.0.0")
+
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.11.4")
     testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.11.4")

@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Конвертор элемента формы в формате конфигуратора
@@ -37,6 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FormElementConverter implements ReadConverter {
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
       return null;
@@ -46,7 +48,7 @@ public class FormElementConverter implements ReadConverter {
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
     } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
+      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader));
       return null;
     }
     readerContext.setValue("type", FormElementType.valueByName(reader.getNodeName()));

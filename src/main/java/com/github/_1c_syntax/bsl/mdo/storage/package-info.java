@@ -29,4 +29,7 @@
  * Общее для всех пакетов - их неотъемлемая связь с основными объектами метаданных для хранения
  * сложных по структуре данных
  */
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.storage;
+
+import org.jspecify.annotations.NullMarked;

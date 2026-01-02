@@ -21,7 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
+
 import java.nio.file.Path;
 
 /**

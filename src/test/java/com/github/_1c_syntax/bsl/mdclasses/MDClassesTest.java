@@ -28,6 +28,7 @@ import java.nio.file.Paths;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MDClassesTest {
+
   @Test
   void createConfigurations() {
     var srcPath = Paths.get("src/test/resources/ext");

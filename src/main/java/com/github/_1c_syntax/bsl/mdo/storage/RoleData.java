@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
-import lombok.NonNull;
 import lombok.Singular;
 
 import java.util.List;
@@ -39,7 +38,7 @@ import java.util.List;
  */
 @Builder
 public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefault,
-                       boolean independentRightsOfChildObjects, @NonNull @Singular List<ObjectRight> objectRights) {
+                       boolean independentRightsOfChildObjects, @Singular List<ObjectRight> objectRights) {
 
   public static final RoleData EMPTY = RoleData.builder().build();
   public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
@@ -49,7 +48,7 @@ public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefau
    * @param rights Набор самих прав
    */
   @Builder
-  public record ObjectRight(@NonNull MdoReference name, @NonNull @Singular List<Right> rights) {
+  public record ObjectRight(MdoReference name, @Singular List<Right> rights) {
   }
 
   /**
@@ -57,6 +56,6 @@ public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefau
    * @param value Признак установленности права
    */
   @Builder
-  public record Right(@NonNull RoleRight name, boolean value) {
+  public record Right(RoleRight name, boolean value) {
   }
 }

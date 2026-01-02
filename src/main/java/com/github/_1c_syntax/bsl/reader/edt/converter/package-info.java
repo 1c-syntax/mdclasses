@@ -22,4 +22,7 @@
 /**
  * Набор конвертеров для формата ЕДТ
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader.edt.converter;
+
+import org.jspecify.annotations.NullMarked;

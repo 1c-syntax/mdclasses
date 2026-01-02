@@ -85,12 +85,11 @@ import io.github.classgraph.ClassInfo;
 import io.github.classgraph.HasName;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
-import java.util.Objects;
 import java.util.function.Function;
 
 /**
@@ -114,15 +113,16 @@ public class ExtendXStream extends XStream {
    * Читает объект из файла
    *
    * @param file Читаемый файл. Если нечитаемые или ошибочный, то будет ошибка
-   * @return Прочитанный объект
+   * @return Прочитанный объект из файла. Если файла нет, либо он битый, то вернется null
    */
   @Override
+  @Nullable
   public Object fromXML(File file) {
     Object result = null;
     if (file.exists()) {
       try {
         result = super.fromXML(file);
-      } catch (ConversionException  e) {
+      } catch (ConversionException e) {
         LOGGER.error("Can't read file '{}' - it's broken (skipped) \n", file, e);
       } catch (CannotResolveClassException e) {
         LOGGER.debug("Can't read file '{}' - unknown class (skipped) \n", file, e);
@@ -137,8 +137,9 @@ public class ExtendXStream extends XStream {
    * Возвращает класс реализации объекта по имени поля / строковому краткому имени
    *
    * @param className Имя искомого класса
-   * @return Найденный класс
+   * @return Найденный класс. Если не найден, то null
    */
+  @Nullable
   public Class<?> getRealClass(String className) {
     return getMapper().realClass(className);
   }
@@ -150,6 +151,7 @@ public class ExtendXStream extends XStream {
    * @param className Имя искомого класса
    * @return Найденный класс
    */
+  @Nullable
   public static Class<?> getRealClass(HierarchicalStreamReader reader, String className) {
     return getCurrentMDReader(reader).getXstream().getRealClass(className);
   }
@@ -159,8 +161,9 @@ public class ExtendXStream extends XStream {
    *
    * @param reader      Ридер файла
    * @param contentPath Путь к файлу
-   * @return Найденный класс
+   * @return Прочитанное значение
    */
+  @Nullable
   public static Object read(HierarchicalStreamReader reader, Path contentPath) {
     return getCurrentMDReader(reader).read(contentPath);
   }
@@ -171,8 +174,9 @@ public class ExtendXStream extends XStream {
    * @param reader      Ридер файла
    * @param contentPath Путь к файлу
    * @param fullName    Имя читаемого объекта
-   * @return Найденный класс
+   * @return Прочитанное значение
    */
+  @Nullable
   public static Object read(HierarchicalStreamReader reader, Path contentPath, String fullName) {
     return getCurrentMDReader(reader).read(contentPath, fullName);
   }
@@ -226,7 +230,6 @@ public class ExtendXStream extends XStream {
       var classes = scanResult.getClassesWithAnnotation(annotation.getName());
       classes.stream()
         .map(getObjectsFromInfoClass())
-        .filter(Objects::nonNull)
         .forEach(xStream::registerMDCConverter);
     }
   }

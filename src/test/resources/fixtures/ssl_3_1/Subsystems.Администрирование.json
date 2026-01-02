@@ -168,11 +168,6 @@
         "mdoRefRu": "Справочник.РассылкиОтчетов"
       },
       {
-        "type": "REPORT",
-        "mdoRef": "Report.АнализЖурналаРегистрации",
-        "mdoRefRu": "Отчет.АнализЖурналаРегистрации"
-      },
-      {
         "type": "COMMON_COMMAND",
         "mdoRef": "CommonCommand.АвтономнаяРаботаВМоделиСервиса",
         "mdoRefRu": "ОбщаяКоманда.АвтономнаяРаботаВМоделиСервиса"
@@ -278,11 +273,6 @@
         "mdoRefRu": "Обработка.УниверсальныйОбменДаннымиXML"
       },
       {
-        "type": "REPORT",
-        "mdoRef": "Report.СведенияОПользователях",
-        "mdoRefRu": "Отчет.СведенияОПользователях"
-      },
-      {
         "type": "COMMON_COMMAND",
         "mdoRef": "CommonCommand.ПанельОтчетовАдминистрирование",
         "mdoRefRu": "ОбщаяКоманда.ПанельОтчетовАдминистрирование"
@@ -354,11 +344,6 @@
       },
       {
         "type": "COMMON_FORM",
-        "mdoRef": "CommonForm.НастройкаОнлайнПоддержки",
-        "mdoRefRu": "ОбщаяФорма.НастройкаОнлайнПоддержки"
-      },
-      {
-        "type": "COMMON_FORM",
         "mdoRef": "CommonForm.НастройкаКомандПечати",
         "mdoRefRu": "ОбщаяФорма.НастройкаКомандПечати"
       },
@@ -379,8 +364,8 @@
       },
       {
         "type": "COMMON_COMMAND",
-        "mdoRef": "CommonCommand.ВремяТекущегоСеанса",
-        "mdoRefRu": "ОбщаяКоманда.ВремяТекущегоСеанса"
+        "mdoRef": "CommonCommand.ВремяВПриложении",
+        "mdoRefRu": "ОбщаяКоманда.ВремяВПриложении"
       },
       {
         "type": "COMMON_FORM",
@@ -453,11 +438,6 @@
         "mdoRefRu": "Справочник.ШаблоныСообщений"
       },
       {
-        "type": "REPORT",
-        "mdoRef": "Report.АнализПравДоступа",
-        "mdoRefRu": "Отчет.АнализПравДоступа"
-      },
-      {
         "type": "CATALOG",
         "mdoRef": "Catalog.СостоянияОригиналовПервичныхДокументов",
         "mdoRefRu": "Справочник.СостоянияОригиналовПервичныхДокументов"
@@ -466,6 +446,31 @@
         "type": "COMMON_FORM",
         "mdoRef": "CommonForm.ВосстановлениеПаролей",
         "mdoRefRu": "ОбщаяФорма.ВосстановлениеПаролей"
+      },
+      {
+        "type": "REPORT",
+        "mdoRef": "Report.ПродлениеСрокаДействияЭлектронныхПодписей",
+        "mdoRefRu": "Отчет.ПродлениеСрокаДействияЭлектронныхПодписей"
+      },
+      {
+        "type": "COMMON_FORM",
+        "mdoRef": "CommonForm.РазрешенныеНеаккредитованныеУЦ",
+        "mdoRefRu": "ОбщаяФорма.РазрешенныеНеаккредитованныеУЦ"
+      },
+      {
+        "type": "REPORT",
+        "mdoRef": "Report.ДлительностьОтложенногоОбновления",
+        "mdoRefRu": "Отчет.ДлительностьОтложенногоОбновления"
+      },
+      {
+        "type": "COMMON_FORM",
+        "mdoRef": "CommonForm.НастройкиРегистрацииСобытийДоступаКДанным",
+        "mdoRefRu": "ОбщаяФорма.НастройкиРегистрацииСобытийДоступаКДанным"
+      },
+      {
+        "type": "REPORT",
+        "mdoRef": "Report.СертификатыЭлектроннойПодписи",
+        "mdoRefRu": "Отчет.СертификатыЭлектроннойПодписи"
       }
     ],
     []
@@ -509,7 +514,106 @@
       "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
     }
   ],
-  "subsystems": [],
+  "subsystems": [
+    {
+      "comment": "",
+      "content": [
+        [
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.АнализПравДоступа",
+            "mdoRefRu": "Отчет.АнализПравДоступа"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ИзменениеУчастниковГруппПользователей",
+            "mdoRefRu": "Отчет.ИзменениеУчастниковГруппПользователей"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ИзменениеУчетныхЗаписей",
+            "mdoRefRu": "Отчет.ИзменениеУчетныхЗаписей"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ПользователиПоПодразделениям",
+            "mdoRefRu": "Отчет.ПользователиПоПодразделениям"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ПраваРолей",
+            "mdoRefRu": "Отчет.ПраваРолей"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.СведенияОПользователях",
+            "mdoRefRu": "Отчет.СведенияОПользователях"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.УчастникиГруппДоступа",
+            "mdoRefRu": "Отчет.УчастникиГруппДоступа"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.УчастникиГруппПользователей",
+            "mdoRefRu": "Отчет.УчастникиГруппПользователей"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ИзменениеУчастниковГруппДоступа",
+            "mdoRefRu": "Отчет.ИзменениеУчастниковГруппДоступа"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ИзменениеРазрешенныхЗначенийГруппДоступа",
+            "mdoRefRu": "Отчет.ИзменениеРазрешенныхЗначенийГруппДоступа"
+          },
+          {
+            "type": "REPORT",
+            "mdoRef": "Report.ИзменениеРолейПрофилей",
+            "mdoRefRu": "Отчет.ИзменениеРолейПрофилей"
+          }
+        ],
+        []
+      ],
+      "description": "Контроль работы пользователей",
+      "explanation": {
+        "content": []
+      },
+      "includeHelpInContents": true,
+      "includeInCommandInterface": true,
+      "mdoReference": {
+        "type": "SUBSYSTEM",
+        "mdoRef": "Subsystem.Администрирование.Subsystem.КонтрольРаботыПользователей",
+        "mdoRefRu": "Подсистема.Администрирование.Подсистема.КонтрольРаботыПользователей"
+      },
+      "mdoType": "SUBSYSTEM",
+      "name": "КонтрольРаботыПользователей",
+      "objectBelonging": "OWN",
+      "parentSubsystem": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
+      },
+      "possibleRights": [],
+      "subsystems": [],
+      "supportVariant": "NOT_EDITABLE",
+      "synonym": {
+        "content": [
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Контроль работы пользователей"
+            }
+          }
+        ]
+      },
+      "uuid": "fa04bf1e-69c0-4998-a939-039fcaba83c8"
+    }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
     "content": [

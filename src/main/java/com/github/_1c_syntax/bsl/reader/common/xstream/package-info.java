@@ -22,4 +22,7 @@
 /**
  * Содержит расширения для xStream
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader.common.xstream;
+
+import org.jspecify.annotations.NullMarked;

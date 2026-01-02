@@ -32,8 +32,8 @@ class FilterCriterionTest {
     {
       "true, mdclasses, FilterCriteria.КритерийОтбора1, _edt",
       "false, mdclasses, FilterCriteria.КритерийОтбора1",
-      "true, ssl_3_1, FilterCriteria.ФайлыВТоме, _edt",
-      "false, ssl_3_1, FilterCriteria.ФайлыВТоме"
+      "true, ssl_3_1, FilterCriteria.СвязанныеДокументы, _edt",
+      "false, ssl_3_1, FilterCriteria.СвязанныеДокументы"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
 import com.github._1c_syntax.bsl.types.value.V8ValueType;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -116,6 +117,7 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     ALL_TYPES.put(key.toLowerCase(Locale.ROOT), type);
   }
 
+  @Nullable
   private static ValueType getType(String key) {
     return ALL_TYPES.get(key.toLowerCase(Locale.ROOT));
   }

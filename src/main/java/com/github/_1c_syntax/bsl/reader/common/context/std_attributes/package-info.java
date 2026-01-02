@@ -22,4 +22,7 @@
 /**
  * Сервисные классы для заполнения стандартных реквизитов в зависимости от типа метаданных
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader.common.context.std_attributes;
+
+import org.jspecify.annotations.NullMarked;

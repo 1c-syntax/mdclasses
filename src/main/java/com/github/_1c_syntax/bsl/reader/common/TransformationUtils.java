@@ -21,11 +21,10 @@
  */
 package com.github._1c_syntax.bsl.reader.common;
 
-import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -61,7 +60,7 @@ public class TransformationUtils {
    * @param methodName Метод\свойство билдера
    * @param value      Устанавливаемое значение
    */
-  public void setValue(@NonNull Object source, @NonNull String methodName, Object value) {
+  public void setValue(Object source, String methodName, @Nullable Object value) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null && value != null) {
       try {
@@ -78,7 +77,7 @@ public class TransformationUtils {
     }
   }
 
-  public void invoke(@NonNull Object source, @NonNull String methodName) {
+  public void invoke(Object source, String methodName) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null) {
       try {
@@ -110,8 +109,7 @@ public class TransformationUtils {
    * @param clazz Класс, для которого ищется билдер
    * @return Найденный билдер
    */
-  @Nullable
-  public Object builder(@NonNull Class<?> clazz) {
+  public Object builder(Class<?> clazz) {
     var method = getMethod(clazz, BUILDER_METHOD_NAME);
     if (method != null) {
       try {
@@ -120,7 +118,7 @@ public class TransformationUtils {
         LOGGER.error(LOGGER_MESSAGE_PREF, clazz, BUILDER_METHOD_NAME, e);
       }
     }
-    return null;
+    throw new IllegalArgumentException("Incorrect class " + clazz);
   }
 
   /**
@@ -130,7 +128,7 @@ public class TransformationUtils {
    * @return Найденный билдер копирования
    */
   @Nullable
-  public Object toBuilder(@NonNull Object object) {
+  public Object toBuilder(Object object) {
     var clazz = object.getClass();
     var method = getMethod(clazz, TO_BUILDER_METHOD_NAME);
     if (method != null) {
@@ -151,7 +149,7 @@ public class TransformationUtils {
    * @return Собранный билдером объект
    */
   @Nullable
-  public Object build(@NonNull Object builder, @NonNull Path path) {
+  public Object build(Object builder, Path path) {
     var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
     if (method != null) {
       try {
@@ -164,7 +162,7 @@ public class TransformationUtils {
   }
 
   @Nullable
-  public Object build(@NonNull Object builder) {
+  public Object build(Object builder) {
     var method = getMethod(builder.getClass(), BUILD_METHOD_NAME);
     if (method != null) {
       try {
@@ -177,7 +175,7 @@ public class TransformationUtils {
   }
 
   @Nullable
-  private Method getMethod(@NonNull Class<?> clazz, @NonNull String methodName) {
+  private Method getMethod(Class<?> clazz, String methodName) {
     return METHODS.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
       .computeIfAbsent(methodName, k -> Arrays.stream(clazz.getDeclaredMethods())
         .filter(m -> methodName.equalsIgnoreCase(m.getName()))

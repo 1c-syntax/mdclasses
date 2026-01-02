@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import lombok.Builder;
-import lombok.NonNull;
 import lombok.Singular;
 
 import java.util.Collections;
@@ -38,11 +37,11 @@ import java.util.List;
  * @param properties      Список глобальных атрибутов
  */
 @Builder
-public record XdtoPackageData(@NonNull String targetNamespace,
-                              @NonNull @Singular("oneImport") List<String> imports,
-                              @NonNull @Singular List<ValueType> valueTypes,
-                              @NonNull @Singular List<ObjectType> objectTypes,
-                              @NonNull @Singular List<Property> properties) {
+public record XdtoPackageData(String targetNamespace,
+                              @Singular("oneImport") List<String> imports,
+                              @Singular List<ValueType> valueTypes,
+                              @Singular List<ObjectType> objectTypes,
+                              @Singular List<Property> properties) {
 
   public static final XdtoPackageData EMPTY = new XdtoPackageData(
     "",
@@ -59,10 +58,10 @@ public record XdtoPackageData(@NonNull String targetNamespace,
    * @param enumerations Значения элементов перечисления
    */
   @Builder
-  public record ValueType(@NonNull String name,
-                          @NonNull String base,
-                          @NonNull String variety,
-                          @NonNull @Singular List<String> enumerations) {
+  public record ValueType(String name,
+                          String base,
+                          String variety,
+                          @Singular List<String> enumerations) {
   }
 
   /**
@@ -71,7 +70,7 @@ public record XdtoPackageData(@NonNull String targetNamespace,
    * @param properties Список атрибутов объекта
    */
   @Builder
-  public record ObjectType(@NonNull String name, @NonNull String base, @NonNull @Singular List<Property> properties) {
+  public record ObjectType(String name, String base, @Singular List<Property> properties) {
   }
 
   /**
@@ -84,12 +83,12 @@ public record XdtoPackageData(@NonNull String targetNamespace,
    * @param typeDef    Свойства поля
    */
   @Builder
-  public record Property(@NonNull String name,
-                         @NonNull String type,
+  public record Property(String name,
+                         String type,
                          int lowerBound,
                          int upperBound,
                          boolean nillable,
-                         @NonNull String form,
-                         @NonNull @Singular("property") List<Property> typeDef) {
+                         String form,
+                         @Singular("property") List<Property> typeDef) {
   }
 }

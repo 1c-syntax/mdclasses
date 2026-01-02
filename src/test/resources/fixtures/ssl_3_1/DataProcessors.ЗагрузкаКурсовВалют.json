@@ -236,7 +236,18 @@
                       "id": 32,
                       "name": "ФормаЗагрузитьКурсыВалют",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Загрузить и закрыть"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -330,7 +341,18 @@
                             "id": 35,
                             "name": "ФормаВыбратьВсеВалюты",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Выбрать все валюты"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "",
                             "items": []
@@ -340,7 +362,39 @@
                             "id": 36,
                             "name": "ФормаСнятьВыбор",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Снять выбор"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": []
+                          },
+                          {
+                            "type": "SEARCH_STRING_ADDITION",
+                            "id": 87,
+                            "name": "СтрокаПоиска",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Поиск"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "",
                             "items": []
@@ -743,7 +797,18 @@
               "id": 1,
               "name": "Текст",
               "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                "content": [
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Текст"
+                    }
+                  }
+                ]
               },
               "dataPath": "Текст",
               "items": []
@@ -777,18 +842,7 @@
                 "id": 2,
                 "name": "Текст",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Текст"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -955,7 +1009,7 @@
                     {
                       "type": "INPUT_FIELD",
                       "id": 11,
-                      "name": "ЦелаяЧатьДва",
+                      "name": "ЦелаяЧастьДва",
                       "title": {
                         "content": [
                           {
@@ -970,7 +1024,7 @@
                           }
                         ]
                       },
-                      "dataPath": "ЦелаяЧатьДва",
+                      "dataPath": "ЦелаяЧастьДва",
                       "items": []
                     },
                     {
@@ -1109,7 +1163,7 @@
                           "id": 20,
                           "name": "ДлинаДробнойЧасти",
                           "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                           },
                           "dataPath": "ДлинаДробнойЧасти",
                           "items": []
@@ -1167,7 +1221,18 @@
                       "id": 62,
                       "name": "СуммаПрописью",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Сумма прописью"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "СуммаПрописью",
                       "items": []
@@ -1229,7 +1294,7 @@
               },
               {
                 "id": 3,
-                "name": "ЦелаяЧатьДва",
+                "name": "ЦелаяЧастьДва",
                 "title": {
                   "content": [
                     {
@@ -1239,7 +1304,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
-                        "value": "Целая чать два"
+                        "value": "Целая часть два"
                       }
                     }
                   ]
@@ -1647,18 +1712,7 @@
                 "id": 13,
                 "name": "СуммаПрописью",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Сумма прописью"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
                   "types": [
@@ -1786,7 +1840,18 @@
                     "id": 8,
                     "name": "Наименование",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Наименование валюты"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "Валюты.Наименование",
                     "items": []
@@ -1796,7 +1861,18 @@
                     "id": 10,
                     "name": "СтраныИТерритории",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Страны и территории"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "Валюты.СтраныИТерритории",
                     "items": []
@@ -1806,7 +1882,18 @@
                     "id": 15,
                     "name": "Загружается",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Загружается из Интернета"
+                          }
+                        }
+                      ]
                     },
                     "dataPath": "Валюты.Загружается",
                     "items": []
@@ -1870,15 +1957,15 @@
   "mdoType": "DATA_PROCESSOR",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ManagerModule.bsl"
       ]
     ]
   ],

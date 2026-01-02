@@ -22,10 +22,7 @@
 /**
  * Пакет для хранения данных элементов форм
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.jspecify.annotations.NullMarked;

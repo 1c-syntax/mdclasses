@@ -22,10 +22,7 @@
 /**
  * В пакете находятся самостоятельные объекты метаданных и интерфейсы-расширения их дополнительными возможностями
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
+@NullMarked
 package com.github._1c_syntax.bsl.mdo;
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.jspecify.annotations.NullMarked;

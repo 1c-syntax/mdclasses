@@ -22,4 +22,7 @@
 /**
  * Контексты, используемые при чтении файлов
  */
+@NullMarked
 package com.github._1c_syntax.bsl.reader.common.context;
+
+import org.jspecify.annotations.NullMarked;

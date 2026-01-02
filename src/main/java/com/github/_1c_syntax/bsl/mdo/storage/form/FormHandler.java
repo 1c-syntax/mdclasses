@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.utils.GenericInterner;
 import com.github._1c_syntax.utils.StringInterner;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Обработчик события формы

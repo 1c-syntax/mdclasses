@@ -73,8 +73,8 @@ import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import javax.xml.namespace.QName;
 import java.nio.file.Path;
 import java.nio.file.Paths;

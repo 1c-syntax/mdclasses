@@ -27,10 +27,10 @@ import com.github._1c_syntax.bsl.reader.designer.DesignerReader;
 import com.github._1c_syntax.bsl.reader.edt.EDTReader;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
-import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -49,21 +49,8 @@ public class MDOReader {
    * @param rootPath Каталог исходников
    * @return Прочитанный контейнер метаданных (конфигурация)
    */
-  public MDClass readConfiguration(@NonNull Path rootPath) {
+  public MDClass readConfiguration(Path rootPath) {
     return readConfiguration(rootPath, MDCReadSettings.DEFAULT);
-  }
-
-  /**
-   * Производит чтение контейнера метаданных (конфигурации) по каталогу исходников
-   *
-   * @param rootPath    Каталог исходников
-   * @param skipSupport Флаг управления необходимостью читать информацию о поддержке
-   * @return Прочитанный контейнер метаданных (конфигурация)
-   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
-   */
-  @Deprecated(since = "0.16.0")
-  public MDClass readConfiguration(@NonNull Path rootPath, boolean skipSupport) {
-    return readConfiguration(rootPath, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
   /**
@@ -73,7 +60,7 @@ public class MDOReader {
    * @param readSettings Настройки чтения
    * @return Прочитанный контейнер метаданных (конфигурация)
    */
-  public MDClass readConfiguration(@NonNull Path rootPath, @NonNull MDCReadSettings readSettings) {
+  public MDClass readConfiguration(Path rootPath, MDCReadSettings readSettings) {
     return createReader(rootPath, readSettings, MDOType.CONFIGURATION).readConfiguration();
   }
 
@@ -81,23 +68,11 @@ public class MDOReader {
    * Производит чтение указанного объекта метаданных или контейнера
    *
    * @param folder Каталог исходников
-   * @return Прочитанный объект метаданных
+   * @return Прочитанный объект метаданных. Если чтение не удалось, то вернется NULL
    */
-  public Object read(@NonNull Path folder, @NonNull String fullName) {
+  @Nullable
+  public Object read(Path folder, String fullName) {
     return read(folder, fullName, MDCReadSettings.DEFAULT);
-  }
-
-  /**
-   * Производит чтение указанного объекта метаданных или контейнера
-   *
-   * @param folder      Каталог исходников
-   * @param skipSupport Управление чтением поддержки
-   * @return Прочитанный объект метаданных
-   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
-   */
-  @Deprecated(since = "0.16.0")
-  public Object read(@NonNull Path folder, @NonNull String fullName, boolean skipSupport) {
-    return read(folder, fullName, MDCReadSettings.builder().skipSupport(skipSupport).build());
   }
 
   /**
@@ -105,9 +80,10 @@ public class MDOReader {
    *
    * @param folder       Каталог исходников
    * @param readSettings Настройки чтения
-   * @return Прочитанный объект метаданных
+   * @return Прочитанный объект метаданных. Если чтение не удалось, то вернется NULL
    */
-  public Object read(@NonNull Path folder, @NonNull String fullName, MDCReadSettings readSettings) {
+  @Nullable
+  public Object read(Path folder, String fullName, MDCReadSettings readSettings) {
     var reader = createReader(folder, readSettings, MDOType.UNKNOWN);
     if (folder.toFile().isFile()) {
       return reader.read(fullName);
@@ -122,7 +98,7 @@ public class MDOReader {
    * @param mdoPath Путь к файлу описания
    * @return Прочитанный контейнер метаданных (внешний отчет или обработка)
    */
-  public MDClass readExternalSource(@NonNull Path mdoPath) {
+  public MDClass readExternalSource(Path mdoPath) {
     return readExternalSource(mdoPath, MDCReadSettings.SKIP_SUPPORT);
   }
 
@@ -133,7 +109,7 @@ public class MDOReader {
    * @param readSettings Настройки чтения
    * @return Прочитанный контейнер метаданных (внешний отчет или обработка)
    */
-  public MDClass readExternalSource(@NonNull Path mdoPath, MDCReadSettings readSettings) {
+  public MDClass readExternalSource(Path mdoPath, MDCReadSettings readSettings) {
     return createReader(mdoPath, readSettings, MDOType.EXTERNAL_REPORT).readExternalSource();
   }
 
@@ -146,55 +122,58 @@ public class MDOReader {
   }
 
   private MDReader createReader(Path rootPath, MDCReadSettings readSettings, ConfigurationSource configurationSource) {
-    if (configurationSource == ConfigurationSource.DESIGNER) {
-      return new DesignerReader(rootPath, readSettings);
-    } else if (configurationSource == ConfigurationSource.EDT) {
-      return new EDTReader(rootPath, readSettings);
+    return switch (configurationSource) {
+      case DESIGNER -> new DesignerReader(rootPath, readSettings);
+      case EDT -> new EDTReader(rootPath, readSettings);
+      default -> new FakeReader();
+    };
+  }
+
+  private ConfigurationSource getConfigurationSourceByPath(@Nullable Path rootPath) {
+    var configurationSource = ConfigurationSource.EMPTY;
+    if (rootPath == null) {
+      return configurationSource;
+    }
+
+    if (rootPath.toFile().isFile()) { // передали сам файл, а не каталог
+      var filename = rootPath.getFileName().toString();
+      if (DesignerReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
+        configurationSource = ConfigurationSource.DESIGNER;
+      } else if (EDTReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
+        configurationSource = ConfigurationSource.EDT;
+      }
     } else {
-      return new FakeReader();
-    }
-  }
-
-  private ConfigurationSource getConfigurationSourceByPath(Path rootPath) {
-    var configurationSource = ConfigurationSource.EMPTY;
-    if (rootPath != null) {
-      if (rootPath.toFile().isFile()) { // передали сам файл, а не каталог
-        var filename = rootPath.getFileName().toString();
-        if (DesignerReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
-          configurationSource = ConfigurationSource.DESIGNER;
-        } else if (EDTReader.CONFIGURATION_MDO_FILE_NAME.equals(filename)) {
-          configurationSource = ConfigurationSource.EDT;
-        }
+      var rootPathString = rootPath.toString();
+      var rootConfiguration = new File(rootPathString, DesignerReader.CONFIGURATION_MDO_PATH);
+      if (rootConfiguration.exists()) {
+        configurationSource = ConfigurationSource.DESIGNER;
       } else {
-        var rootPathString = rootPath.toString();
-        var rootConfiguration = new File(rootPathString, DesignerReader.CONFIGURATION_MDO_PATH);
+        rootConfiguration = Paths.get(rootPathString, EDTReader.CONFIGURATION_MDO_PATH).toFile();
         if (rootConfiguration.exists()) {
-          configurationSource = ConfigurationSource.DESIGNER;
-        } else {
-          rootConfiguration = Paths.get(rootPathString, EDTReader.CONFIGURATION_MDO_PATH).toFile();
-          if (rootConfiguration.exists()) {
-            configurationSource = ConfigurationSource.EDT;
-          }
+          configurationSource = ConfigurationSource.EDT;
         }
       }
     }
     return configurationSource;
   }
 
-  private ConfigurationSource getConfigurationSourceByPathSimple(Path mdoPath) {
+  private ConfigurationSource getConfigurationSourceByPathSimple(@Nullable Path mdoPath) {
     var configurationSource = ConfigurationSource.EMPTY;
-    if (mdoPath != null) {
-      var mdoFile = mdoPath.toFile();
-      if (mdoFile.exists()) {
-        if (FilenameUtils.isExtension(mdoPath.toString(), "mdo")) {
-          configurationSource = ConfigurationSource.EDT;
-        } else if (FilenameUtils.isExtension(mdoPath.toString(), "xml")) {
-          configurationSource = ConfigurationSource.DESIGNER;
-        } else {
-          // no-op
-        }
-      }
+    if (mdoPath == null) {
+      return configurationSource;
     }
-    return configurationSource;
+
+    var mdoFile = mdoPath.toFile();
+    if (!mdoFile.exists()) {
+      return configurationSource;
+    }
+
+    if (FilenameUtils.isExtension(mdoPath.toString(), "mdo")) {
+      return ConfigurationSource.EDT;
+    } else if (FilenameUtils.isExtension(mdoPath.toString(), "xml")) {
+      return ConfigurationSource.DESIGNER;
+    } else {
+      return ConfigurationSource.EMPTY;
+    }
   }
 }

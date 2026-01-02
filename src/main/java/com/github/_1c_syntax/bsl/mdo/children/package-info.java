@@ -23,10 +23,7 @@
  * Пакет содержит дочерние объекты метаданных, т.е. те, что могут существовать только в подчинении основным.
  * Примеры: Реквизиты, операции сервисов, формы и т.д.
  */
-@ParametersAreNonnullByDefault
-@ReturnValuesAreNonnullByDefault
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.children;
 
-import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
-
-import javax.annotation.ParametersAreNonnullByDefault;
+import org.jspecify.annotations.NullMarked;

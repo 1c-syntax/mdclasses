@@ -34,8 +34,8 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -107,6 +107,7 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private String lastName;
 
   /**
@@ -114,26 +115,37 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private Object lastValue;
 
   /**
-   * всякие прочитанные атрибуты
+   * Всякие прочитанные атрибуты
    */
   @Getter
   private final Map<String, Object> cache;
 
-  protected AbstractReaderContext(@NonNull HierarchicalStreamReader reader) {
+  protected AbstractReaderContext(HierarchicalStreamReader reader) {
     currentPath = ExtendXStream.getCurrentPath(reader);
     mdReader = ExtendXStream.getCurrentMDReader(reader);
 
     cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
+    name = ""; // заглушка
   }
 
-  protected AbstractReaderContext(@NonNull Path currentPath, @NonNull MDReader mdReader) {
+  protected AbstractReaderContext(Path currentPath, MDReader mdReader) {
     this.currentPath = currentPath;
     this.mdReader = mdReader;
 
     cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
+    name = ""; // заглушка
   }
 
   /**
@@ -142,7 +154,7 @@ public abstract class AbstractReaderContext {
    * @param methodName Имя поля\метода
    * @param value      устанавливаемое значение
    */
-  public void setValue(String methodName, Object value) {
+  public void setValue(String methodName, @Nullable Object value) {
     if (value != null) {
       TransformationUtils.setValue(builder, methodName, value);
       var key = methodName.toLowerCase(Locale.ROOT);
@@ -170,9 +182,9 @@ public abstract class AbstractReaderContext {
    * Получение класса типа поля
    *
    * @param fieldName Имя поля\метода
-   * @return Определенный класс
+   * @return Определенный класс, если не найден, тогда null
    */
-  public Class<?> fieldType(String fieldName) {
+  public @Nullable Class<?> fieldType(String fieldName) {
     return (Class<?>) TransformationUtils.fieldType(builder, fieldName);
   }
 
@@ -180,12 +192,20 @@ public abstract class AbstractReaderContext {
    * Сборка контекста в объект
    */
   public Object build() {
-    return TransformationUtils.build(builder, currentPath);
+    var result = TransformationUtils.build(builder, currentPath);
+    assert result != null;
+    return result;
   }
 
   @SuppressWarnings("unchecked")
-  public <T> T getFromCache(@NonNull String key, T defaultValue) {
+  public <T> T getFromCache(String key, T defaultValue) {
     return (T) cache.getOrDefault(key.toLowerCase(Locale.ROOT), defaultValue);
+  }
+
+  @SuppressWarnings("unchecked")
+  @Nullable
+  public <T> T getFromCache(String key) {
+    return (T) cache.get(key.toLowerCase(Locale.ROOT));
   }
 
   protected void setValueModules() {

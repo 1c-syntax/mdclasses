@@ -40,9 +40,9 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -65,7 +65,6 @@ public class MDReaderContext extends AbstractReaderContext {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String DATA_FIELD_NAME = "data";
 
-
   /**
    * Коллекция билдеров для дочерних объектов, которые надо доделать
    */
@@ -85,11 +84,16 @@ public class MDReaderContext extends AbstractReaderContext {
   @Setter
   private MdoReference owner = MdoReference.EMPTY;
 
-  public MDReaderContext(@NonNull HierarchicalStreamReader reader) {
+  public MDReaderContext(HierarchicalStreamReader reader) {
     super(reader);
 
     var realClassName = reader.getNodeName();
-    realClass = mdReader.getXstream().getRealClass(realClassName);
+    var computeRealClass = mdReader.getXstream().getRealClass(realClassName);
+    if (computeRealClass == null) {
+      throw new IllegalArgumentException("Unknown class name " + realClassName);
+    }
+
+    realClass = computeRealClass;
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
@@ -105,23 +109,25 @@ public class MDReaderContext extends AbstractReaderContext {
       mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
     }
 
+    templateType = TemplateType.UNKNOWN;
     super.setValue(UUID_FIELD_NAME, uuid);
     super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
 
     childrenContexts = new ConcurrentHashMap<>();
   }
 
-  public MDReaderContext(@NonNull Path currentPath,
-                         @NonNull MDReader mdReader) {
+  public MDReaderContext(Path currentPath,
+                         MDReader mdReader) {
     super(currentPath, mdReader);
     realClass = StandardAttribute.class;
     builder = TransformationUtils.builder(realClass);
     mdoType = MDOType.STANDARD_ATTRIBUTE;
+    templateType = TemplateType.UNKNOWN;
     childrenContexts = new ConcurrentHashMap<>();
   }
 
   @Override
-  public final void setValue(String methodName, Object value) {
+  public final void setValue(String methodName, @Nullable Object value) {
     if (value instanceof MDReaderContext child) {
       saveChildName(methodName, child);
     } else {

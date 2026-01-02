@@ -31,6 +31,7 @@ import com.github._1c_syntax.utils.CaseInsensitivePattern;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,6 +51,7 @@ public class SubsystemConverter implements ReadConverter {
     + MDOType.SUBSYSTEM.groupName() + "[\\\\/]");
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var name = reader.getNodeName();
     var currentPath = ExtendXStream.getCurrentPath(reader);
