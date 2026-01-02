@@ -348,7 +348,182 @@
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
   },
-  "forms": [],
+  "forms": [
+    {
+      "uuid": "823f925c-b71f-42b1-a71e-0aab823f59c6",
+      "name": "ФормаЗаписи",
+      "mdoReference": {
+        "type": "FORM",
+        "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Form.ФормаЗаписи",
+        "mdoRefRu": "РегистрСведений.СклоненияПредставленийОбъектов.Форма.ФормаЗаписи"
+      },
+      "objectBelonging": "OWN",
+      "comment": "",
+      "synonym": {
+        "content": [
+          {
+            "default": {
+              "tag": 2
+            },
+            "int": 1,
+            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+              "langKey": "ru",
+              "value": "Форма записи"
+            }
+          }
+        ]
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "modules": [
+        {
+          "moduleType": "FormModule",
+          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/СклоненияПредставлени_Объектов/Forms/ФормаЗаписи/Ext/Form/Module.bsl",
+          "owner": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+          },
+          "supportVariant": "NOT_EDITABLE",
+          "isProtected": false
+        }
+      ],
+      "formType": "MANAGED",
+      "data": {
+        "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+        "title": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "handlers": [
+          {
+            "event": "OnCreateAtServer",
+            "name": "ПриСозданииНаСервере"
+          }
+        ],
+        "items": [
+          [
+            {
+              "type": "INPUT_FIELD",
+              "id": 1,
+              "name": "ХешПредставления",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ХешПредставления",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 4,
+              "name": "Объект",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.Объект",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 7,
+              "name": "ИменительныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ИменительныйПадеж",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 10,
+              "name": "РодительныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.РодительныйПадеж",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 13,
+              "name": "ДательныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ДательныйПадеж",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 16,
+              "name": "ВинительныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ВинительныйПадеж",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 19,
+              "name": "ТворительныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ТворительныйПадеж",
+              "items": []
+            },
+            {
+              "type": "INPUT_FIELD",
+              "id": 22,
+              "name": "ПредложныйПадеж",
+              "title": {
+                "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+              },
+              "dataPath": "Запись.ПредложныйПадеж",
+              "items": []
+            }
+          ],
+          []
+        ],
+        "attributes": [
+          {
+            "id": 1,
+            "name": "Запись",
+            "title": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+            },
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                    "fullName": {
+                      "nameRu": "РегистрСведенийМенеджерЗаписи.СклоненияПредставленийОбъектов",
+                      "nameEn": "InformationRegisterRecordManager.СклоненияПредставленийОбъектов"
+                    },
+                    "variant": "METADATA",
+                    "kind": "INFORMATION_REGISTER"
+                  }
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
+            }
+          }
+        ]
+      },
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+      },
+      "usePurposes": [
+        [
+          "PLATFORM_APPLICATION",
+          "MOBILE_PLATFORM_APPLICATION"
+        ],
+        []
+      ]
+    }
+  ],
   "mdoReference": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
   },

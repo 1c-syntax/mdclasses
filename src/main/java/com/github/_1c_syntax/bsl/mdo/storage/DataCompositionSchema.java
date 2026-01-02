@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.mdo.storage;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Singular;
 import lombok.Value;
 
@@ -56,7 +55,7 @@ public class DataCompositionSchema implements TemplateData {
   @Getter
   Path dataPath;
 
-  public DataCompositionSchema(@NonNull List<DataSet> dataSetsTree, @NonNull Path path) {
+  public DataCompositionSchema(List<DataSet> dataSetsTree, Path path) {
     dataSets = dataSetsTree;
     dataPath = path;
   }
@@ -89,18 +88,18 @@ public class DataCompositionSchema implements TemplateData {
    * @param fields      Поля набора данных
    */
   @Builder
-  public record DataSet(@NonNull String name,
-                        @NonNull DataSetType type,
-                        @NonNull String dataSource,
-                        @NonNull @Singular List<DataSet> items,
-                        @NonNull QuerySource querySource,
-                        @NonNull @Singular List<DataSetField> fields) {
+  public record DataSet(String name,
+                        DataSetType type,
+                        String dataSource,
+                        @Singular List<DataSet> items,
+                        QuerySource querySource,
+                        @Singular List<DataSetField> fields) {
   }
 
   /**
    * @param dataPath Путь к данным поля
    * @param name     Имя поля
    */
-  public record DataSetField(@NonNull String dataPath, @NonNull String name) {
+  public record DataSetField(String dataPath, String name) {
   }
 }

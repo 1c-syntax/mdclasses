@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -57,7 +57,7 @@ class RightsTest {
     mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
     assertThat(mdv).isPresent();
     md = mdv.get();
-    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isFalse();
     assertThat(Rights.rightAccess(cf, RoleRight.USE, md)).isFalse();
     assertThat(cf.rightAccess(RoleRight.START, md)).isFalse();
 
@@ -105,21 +105,21 @@ class RightsTest {
       .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
 
     assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
-    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(26);
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(78);
 
     var mdv = cf.findChild("Document.Анкета");
     assertThat(mdv).isPresent();
     var md = mdv.get();
     assertThat(Rights.rolesAccess(cf, RoleRight.DELETE, md)).hasSize(1);
     assertThat(Rights.rolesAccess(cf, RoleRight.INTERACTIVE_DELETE, md)).isEmpty();
-    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(2);
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(1);
     assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
     assertThat(cf.rolesAccess(RoleRight.INTERACTIVE_DELETE_MARKED, md)).isEmpty();
 
     mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
     assertThat(mdv).isPresent();
     md = mdv.get();
-    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(4);
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).isEmpty();
     assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
     assertThat(cf.rolesAccess(RoleRight.DELETE, md)).isEmpty();
 

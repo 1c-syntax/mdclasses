@@ -14,7 +14,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.53.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.21.0"
-    id("org.sonarqube") version "7.2.0.6526"
+    id("org.sonarqube") version "7.2.2.6593"
     id("me.champeau.jmh") version "0.7.3"
 }
 
@@ -59,7 +59,7 @@ dependencies {
 
     // прочее
     implementation("commons-io", "commons-io", "2.18.0")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.0")
+    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.1")
     implementation("io.github.1c-syntax", "utils", "0.6.4")
     implementation("io.github.1c-syntax", "supportconf", "0.15.0") {
         exclude("io.github.1c-syntax", "bsl-common-library")
@@ -67,6 +67,8 @@ dependencies {
 
     // быстрый поиск классов
     implementation("io.github.classgraph", "classgraph", "4.8.179")
+
+    implementation("org.jspecify", "jspecify", "1.0.0")
 
     // тестирование
     testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.11.4")

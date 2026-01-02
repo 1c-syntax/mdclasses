@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -35,6 +35,7 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,10 +51,12 @@ public class MDChildConverter extends AbstractReadConverter {
   private static final Map<String, MDOType> TYPES_BY_CLASSES = computeTypes();
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var currentPath = ExtendXStream.getCurrentPath(reader);
     var realClassName = reader.getNodeName();
     var realClass = ExtendXStream.getRealClass(reader, realClassName);
+    assert realClass != null;
 
     if (TYPES_BY_CLASSES.containsKey(realClass.getName()) && reader.getAttributeCount() == 0) {
       var mdoType = TYPES_BY_CLASSES.get(realClass.getName());

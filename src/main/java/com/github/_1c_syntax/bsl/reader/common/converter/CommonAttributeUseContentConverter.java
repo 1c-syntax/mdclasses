@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +44,16 @@ public class CommonAttributeUseContentConverter implements ReadConverter {
   private static final String USE_NODE_NAME = "Use";
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (ExtendXStream.getCurrentMDReader(reader).getConfigurationSource() == ConfigurationSource.DESIGNER) {
       List<CommonAttribute.UseContent> contents = new ArrayList<>();
       while (reader.hasMoreChildren()) {
         reader.moveDown();
-        contents.add(commonAttributeUseContent(reader, context));
+        var data = commonAttributeUseContent(reader, context);
+        if (data != null) {
+          contents.add(data);
+        }
         reader.moveUp();
       }
       return contents;
@@ -62,8 +67,8 @@ public class CommonAttributeUseContentConverter implements ReadConverter {
     return CommonAttribute.UseContent.class.isAssignableFrom(type);
   }
 
-  private static CommonAttribute.UseContent commonAttributeUseContent(HierarchicalStreamReader reader,
-                                                                      UnmarshallingContext context) {
+  private static CommonAttribute.@Nullable UseContent commonAttributeUseContent(HierarchicalStreamReader reader,
+                                                                                UnmarshallingContext context) {
     if (!reader.hasMoreChildren()) {
       return null;
     }

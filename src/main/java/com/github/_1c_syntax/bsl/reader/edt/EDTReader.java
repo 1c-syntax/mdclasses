@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -71,8 +71,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -105,18 +105,7 @@ public class EDTReader implements MDReader {
     var normalizedPath = path.toAbsolutePath();
     var file = normalizedPath.toFile();
     if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
-      var configurationDir = normalizedPath.getParent();
-      if (configurationDir == null) {
-        throw new IllegalArgumentException(
-          "Не удалось определить каталог Configuration для файла " + normalizedPath);
-      }
-      var srcDir = configurationDir.getParent();
-      var projectRoot = srcDir != null ? srcDir.getParent() : null;
-      if (srcDir == null || projectRoot == null) {
-        throw new IllegalArgumentException(
-          "Не удалось определить корень проекта EDT для файла " + normalizedPath);
-      }
-      this.rootPath = projectRoot;
+      this.rootPath = computeRootPath(normalizedPath);
     } else {
       this.rootPath = path;
     }
@@ -128,6 +117,21 @@ public class EDTReader implements MDReader {
         ParseSupportData.read(pcbin);
       }
     }
+  }
+
+  private static Path computeRootPath(Path normalizedPath) {
+    var configurationDir = normalizedPath.getParent();
+    if (configurationDir == null) {
+      throw new IllegalArgumentException(
+        "Не удалось определить каталог Configuration для файла " + normalizedPath);
+    }
+    var srcDir = configurationDir.getParent();
+    var projectRoot = srcDir != null ? srcDir.getParent() : null;
+    if (srcDir == null || projectRoot == null) {
+      throw new IllegalArgumentException(
+        "Не удалось определить корень проекта EDT для файла " + normalizedPath);
+    }
+    return projectRoot;
   }
 
   @Override

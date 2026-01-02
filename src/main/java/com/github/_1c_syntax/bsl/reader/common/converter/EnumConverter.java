@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.common.converter;
 import com.github._1c_syntax.bsl.types.EnumWithName;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -58,7 +59,8 @@ public class EnumConverter<T extends Enum<T> & EnumWithName> extends AbstractSin
   }
 
   @Override
-  public Object fromString(String sourceString) {
+  @Nullable
+  public Object fromString(@Nullable String sourceString) {
     if (sourceString == null) {
       return null;
     }

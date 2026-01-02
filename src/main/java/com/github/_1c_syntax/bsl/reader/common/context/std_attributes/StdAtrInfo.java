@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -157,7 +157,7 @@ public class StdAtrInfo {
   }
 
   private static ValueTypeDescription computeOwner(MDReaderContext parentContext) {
-    var owners = parentContext.getFromCache("owners", null);
+    var owners = parentContext.getFromCache("owners");
     if (owners instanceof MdoReference mdoReference) {
       return ValueTypeDescription.createRef(mdoReference);
     } else if (owners instanceof List<?> list) {

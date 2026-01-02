@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -136,6 +136,9 @@ public class Unmarshaller {
                             AbstractReaderContext readerContext,
                             String nodeName) {
     var fieldClass = readerContext.fieldType(nodeName);
+    if(fieldClass == null) {
+      return;
+    }
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));

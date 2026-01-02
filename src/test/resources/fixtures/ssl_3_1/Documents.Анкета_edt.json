@@ -422,7 +422,7 @@
         },
         "passwordMode": false,
         "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
+        "indexing": "INDEX",
         "type": {
           "types": [
             {
@@ -898,10 +898,67 @@
                       "id": 190,
                       "name": "ФормаГруппаКомандыФормы",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Форма группа команды формы"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
-                      "items": []
+                      "items": [
+                        [
+                          {
+                            "type": "BUTTON",
+                            "id": 92,
+                            "name": "ФормаЗаполненияЗавершитьИЗакрыть",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Завершить и закрыть"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": []
+                          },
+                          {
+                            "type": "BUTTON",
+                            "id": 91,
+                            "name": "ФормаЗаполненияЗаписать",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Сохранить анкету"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
                     },
                     {
                       "type": "BUTTON",
@@ -925,48 +982,6 @@
                     },
                     {
                       "type": "BUTTON",
-                      "id": 91,
-                      "name": "ФормаЗаполненияЗаписать",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Записать"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    },
-                    {
-                      "type": "BUTTON",
-                      "id": 92,
-                      "name": "ФормаЗаполненияПровестиЗакрыть",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Завершить и закрыть"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    },
-                    {
-                      "type": "BUTTON",
                       "id": 87,
                       "name": "ФормаКоманднаяПанельЗаписать",
                       "title": {
@@ -974,6 +989,94 @@
                       },
                       "dataPath": "",
                       "items": []
+                    },
+                    {
+                      "type": "BUTTON",
+                      "id": 156,
+                      "name": "СкрытьПоказатьДеревоРазделов",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Показать разделы"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": []
+                    },
+                    {
+                      "type": "FORM_GROUP",
+                      "id": 223,
+                      "name": "ГруппаНавигация",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Навигация"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "BUTTON",
+                            "id": 163,
+                            "name": "ПредыдущийРаздел",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Назад"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": []
+                          },
+                          {
+                            "type": "BUTTON",
+                            "id": 165,
+                            "name": "СледующийРаздел",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Далее"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
                     },
                     {
                       "type": "BUTTON",
@@ -1010,7 +1113,18 @@
                       "id": 186,
                       "name": "ФормаГлобальныеКоманды",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Форма глобальные команды"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -1041,7 +1155,18 @@
                       "id": 204,
                       "name": "ПодменюАнкетирование",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Подменю анкетирование"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -1269,110 +1394,7 @@
                   ]
                 },
                 "dataPath": "",
-                "items": [
-                  [
-                    {
-                      "type": "COMMAND_BAR",
-                      "id": 178,
-                      "name": "КоманднаяПанельДокументАнкетаЛево",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Командная панель документ анкета лево"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": [
-                        {
-                          "type": "BUTTON",
-                          "id": 156,
-                          "name": "СкрытьПоказатьДеревоРазделовДокумент",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Показать разделы"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": []
-                        }
-                      ]
-                    },
-                    {
-                      "type": "COMMAND_BAR",
-                      "id": 180,
-                      "name": "КоманднаяПанельДокументаАнкетаПраво",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Командная панель документа анкета право"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": [
-                        [
-                          {
-                            "type": "BUTTON",
-                            "id": 163,
-                            "name": "ПредыдущийРаздел",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "",
-                            "items": []
-                          },
-                          {
-                            "type": "BUTTON",
-                            "id": 165,
-                            "name": "СледующийРаздел",
-                            "title": {
-                              "content": [
-                                {
-                                  "default": {
-                                    "tag": 2
-                                  },
-                                  "int": 1,
-                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                    "langKey": "ru",
-                                    "value": "Далее >"
-                                  }
-                                }
-                              ]
-                            },
-                            "dataPath": "",
-                            "items": []
-                          }
-                        ],
-                        []
-                      ]
-                    }
-                  ],
-                  []
-                ]
+                "items": []
               },
               {
                 "type": "USUAL_GROUP",
@@ -1596,9 +1618,9 @@
                 ]
               },
               {
-                "type": "COMMAND_BAR",
-                "id": 176,
-                "name": "КоманднаяПанельПодвал",
+                "type": "USUAL_GROUP",
+                "id": 229,
+                "name": "ГруппаКоманднаяПанель",
                 "title": {
                   "content": [
                     {
@@ -1608,58 +1630,137 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
-                        "value": "Командная панель подвал"
+                        "value": "Командная панель"
                       }
                     }
                   ]
                 },
                 "dataPath": "",
                 "items": [
-                  [
-                    {
-                      "type": "BUTTON",
-                      "id": 107,
-                      "name": "ПредыдущийРазделПодвал",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "< Назад"
-                            }
+                  {
+                    "type": "COMMAND_BAR",
+                    "id": 176,
+                    "name": "КоманднаяПанельПодвал",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Командная панель подвал"
                           }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
+                        }
+                      ]
                     },
-                    {
-                      "type": "BUTTON",
-                      "id": 108,
-                      "name": "СледующийРазделПодвал",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                      },
-                      "dataPath": "",
-                      "items": []
-                    }
-                  ],
-                  []
+                    "dataPath": "",
+                    "items": [
+                      [
+                        {
+                          "type": "BUTTON",
+                          "id": 227,
+                          "name": "СкрытьПоказатьДеревоРазделовПодвал",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/title"
+                          },
+                          "dataPath": "",
+                          "items": []
+                        },
+                        {
+                          "type": "FORM_GROUP",
+                          "id": 225,
+                          "name": "ГруппаНавигацияПодвал",
+                          "title": {
+                            "content": [
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                  "langKey": "ru",
+                                  "value": "Навигация подвал"
+                                }
+                              }
+                            ]
+                          },
+                          "dataPath": "",
+                          "items": [
+                            [
+                              {
+                                "type": "BUTTON",
+                                "id": 107,
+                                "name": "ПредыдущийРазделПодвал",
+                                "title": {
+                                  "content": [
+                                    {
+                                      "default": {
+                                        "tag": 2
+                                      },
+                                      "int": 1,
+                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                        "langKey": "ru",
+                                        "value": "< Назад"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "dataPath": "",
+                                "items": []
+                              },
+                              {
+                                "type": "BUTTON",
+                                "id": 108,
+                                "name": "СледующийРазделПодвал",
+                                "title": {
+                                  "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                                },
+                                "dataPath": "",
+                                "items": []
+                              }
+                            ],
+                            []
+                          ]
+                        }
+                      ],
+                      []
+                    ]
+                  }
                 ]
               },
               {
-                "type": "INPUT_FIELD",
-                "id": 111,
-                "name": "Комментарий",
+                "type": "USUAL_GROUP",
+                "id": 221,
+                "name": "ГруппаПодвал",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Подвал"
+                      }
+                    }
+                  ]
                 },
-                "dataPath": "Объект.Комментарий",
-                "items": []
+                "dataPath": "",
+                "items": [
+                  {
+                    "type": "INPUT_FIELD",
+                    "id": 111,
+                    "name": "Комментарий",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                    },
+                    "dataPath": "Объект.Комментарий",
+                    "items": []
+                  }
+                ]
               }
             ],
             []
@@ -2213,7 +2314,7 @@
                       "title": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                       },
-                      "dataPath": "Список.Number",
+                      "dataPath": "Список.Номер",
                       "items": []
                     },
                     {
@@ -2223,7 +2324,7 @@
                       "title": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                       },
-                      "dataPath": "Список.Date",
+                      "dataPath": "Список.Дата",
                       "items": []
                     },
                     {
@@ -2305,7 +2406,7 @@
                       "title": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                       },
-                      "dataPath": "Список.Ref",
+                      "dataPath": "Список.Ссылка",
                       "items": []
                     }
                   ],
@@ -2854,6 +2955,62 @@
                   }
                 }
               ]
+            },
+            "format": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+            },
+            "editFormat": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+            },
+            "markNegatives": false,
+            "mask": "",
+            "multiLine": false,
+            "extendedEdit": false,
+            "fillFromFillingValue": false
+          },
+          {
+            "uuid": "100ec1d0-3719-4feb-8a66-02f2c89fcd36",
+            "name": "БезОтвета",
+            "mdoReference": {
+              "type": "ATTRIBUTE",
+              "mdoRef": "Document.Анкета.TabularSection.Состав.Attribute.БезОтвета",
+              "mdoRefRu": "Документ.Анкета.ТабличнаяЧасть.Состав.Реквизит.БезОтвета"
+            },
+            "objectBelonging": "OWN",
+            "comment": "",
+            "synonym": {
+              "content": [
+                {
+                  "default": {
+                    "tag": 2
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                    "langKey": "ru",
+                    "value": "Без ответа"
+                  }
+                }
+              ]
+            },
+            "supportVariant": "NOT_EDITABLE",
+            "owner": {
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/tabularSections/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection/mdoReference"
+            },
+            "passwordMode": false,
+            "kind": "CUSTOM",
+            "indexing": "DONT_INDEX",
+            "type": {
+              "types": [
+                {
+                  "default": {
+                    "tag": 4
+                  },
+                  "int": 1,
+                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                }
+              ],
+              "composite": false,
+              "qualifiers": []
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"

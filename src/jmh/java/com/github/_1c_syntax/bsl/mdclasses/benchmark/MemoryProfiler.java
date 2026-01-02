@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -63,12 +63,12 @@ public class MemoryProfiler implements InternalProfiler {
   }
 
   @Override
-  public Collection<Result> afterIteration(
+  public Collection<? extends Result> afterIteration(
     BenchmarkParams benchmarkParams,
     IterationParams iterationParams,
     IterationResult result
   ) {
-    List<Result> results = new ArrayList<>();
+    List<ScalarResult> results = new ArrayList<>();
 
     // Память
     var heapUsage = memoryMXBean.getHeapMemoryUsage();

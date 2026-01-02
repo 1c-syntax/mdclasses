@@ -775,62 +775,6 @@
         "fillFromFillingValue": false
       },
       {
-        "uuid": "f8ab477c-8e78-48c0-9f99-27748b109706",
-        "name": "УдалитьЗашифрован",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.ВерсииФайлов.Attribute.УдалитьЗашифрован",
-          "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.УдалитьЗашифрован"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "(не используется) Зашифрована"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
         "uuid": "24cff6c8-6c20-4383-b97c-6afa52738960",
         "name": "ИндексКартинки",
         "mdoReference": {
@@ -1045,133 +989,6 @@
         "fillFromFillingValue": false
       },
       {
-        "uuid": "2d51aae9-650d-4719-a94d-2609b69a2d36",
-        "name": "УдалитьПодписанЭП",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.ВерсииФайлов.Attribute.УдалитьПодписанЭП",
-          "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.УдалитьПодписанЭП"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "(не используется) Подписана электронно"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "6025f5b5-6dc7-46b8-96e6-02823c5b4de7",
-        "name": "ПолноеНаименование",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.ВерсииФайлов.Attribute.ПолноеНаименование",
-          "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.ПолноеНаименование"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Полное наименование"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 256,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (256, Переменная)",
-                  "nameEn": "StringQualifiers (256, Variable)"
-                }
-              }
-            }
-          ]
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
         "uuid": "5d9d88ea-b2e4-425c-bb4d-a005e867d56c",
         "name": "ПутьКФайлу",
         "mdoReference": {
@@ -1294,7 +1111,7 @@
                 "scale": 0,
                 "nonNegative": false,
                 "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
                 }
               }
             }
@@ -1911,7 +1728,18 @@
                             "id": 72,
                             "name": "ФормаУдалить",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Удалить"
+                                  }
+                                }
+                              ]
                             },
                             "dataPath": "",
                             "items": []
@@ -1946,7 +1774,18 @@
                       "id": 74,
                       "name": "ПоказыватьПомеченныеФайлы",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Показывать помеченные файлы"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -1957,6 +1796,27 @@
                       "name": "ФормаСправка",
                       "title": {
                         "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                      },
+                      "dataPath": "",
+                      "items": []
+                    },
+                    {
+                      "type": "SEARCH_STRING_ADDITION",
+                      "id": 78,
+                      "name": "СтрокаПоиска",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Поиск"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "",
                       "items": []
@@ -2046,7 +1906,7 @@
                                       }
                                     ]
                                   },
-                                  "dataPath": "Список.ПолноеНаименование",
+                                  "dataPath": "Список.Description",
                                   "items": []
                                 },
                                 {
@@ -2333,7 +2193,7 @@
                             "id": 72,
                             "name": "ФормаУдалить",
                             "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                             },
                             "dataPath": "",
                             "items": []
@@ -2437,7 +2297,17 @@
                       "id": 92,
                       "name": "ПоказыватьПомеченныеФайлы",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                      },
+                      "dataPath": "",
+                      "items": []
+                    },
+                    {
+                      "type": "SEARCH_STRING_ADDITION",
+                      "id": 94,
+                      "name": "СтрокаПоиска",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]/title"
                       },
                       "dataPath": "",
                       "items": []
@@ -3007,7 +2877,7 @@
                     "scale": 0,
                     "nonNegative": false,
                     "description": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
                     }
                   }
                 }
@@ -3180,7 +3050,7 @@
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]/synonym"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
             },
             "supportVariant": "NOT_EDITABLE",
             "owner": {

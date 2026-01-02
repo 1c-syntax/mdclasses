@@ -1057,10 +1057,17 @@
             "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
           },
           "handlers": [
-            {
-              "event": "OnCreateAtServer",
-              "name": "ПриСозданииНаСервере"
-            }
+            [
+              {
+                "event": "OnOpen",
+                "name": "ПриОткрытии"
+              },
+              {
+                "event": "OnCreateAtServer",
+                "name": "ПриСозданииНаСервере"
+              }
+            ],
+            []
           ],
           "items": [
             [
@@ -1407,15 +1414,14 @@
           "handlers": [
             [
               {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
               },
               {
                 "event": "OnLoadDataFromSettingsAtServer",
                 "name": "ПриЗагрузкеДанныхИзНастроекНаСервере"
               },
               {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -1468,7 +1474,18 @@
                       "id": 31,
                       "name": "ПоказыватьУдаленные",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Показывать удаленные"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "ПоказыватьУдаленные",
                       "items": []
@@ -1517,7 +1534,29 @@
                   ]
                 },
                 "dataPath": "",
-                "items": []
+                "items": [
+                  {
+                    "type": "POPUP",
+                    "id": 57,
+                    "name": "ПодменюОрганайзер",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Органайзер"
+                          }
+                        }
+                      ]
+                    },
+                    "dataPath": "",
+                    "items": []
+                  }
+                ]
               },
               {
                 "type": "TABLE",
@@ -1691,18 +1730,7 @@
                 "id": 4,
                 "name": "ПоказыватьУдаленные",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Показывать удаленные"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -1792,7 +1820,7 @@
                 "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               },
               {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
               }
             ],
             []
@@ -1817,7 +1845,18 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "dataPath": "",
-                "items": []
+                "items": [
+                  {
+                    "type": "POPUP",
+                    "id": 60,
+                    "name": "ПодменюОрганайзер",
+                    "title": {
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                    },
+                    "dataPath": "",
+                    "items": []
+                  }
+                ]
               },
               {
                 "type": "TABLE",
@@ -1878,7 +1917,18 @@
                       "id": 23,
                       "name": "ПоказыватьЗаметкиДругихПользователей",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Показывать заметки других пользователей"
+                            }
+                          }
+                        ]
                       },
                       "dataPath": "ПоказыватьЗаметкиДругихПользователей",
                       "items": []
@@ -1888,7 +1938,7 @@
                       "id": 28,
                       "name": "ПоказыватьУдаленные",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                       },
                       "dataPath": "ПоказыватьУдаленные",
                       "items": []
@@ -1936,18 +1986,7 @@
                 "id": 3,
                 "name": "ПоказыватьЗаметкиДругихПользователей",
                 "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Показывать заметки других пользователей"
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -1967,7 +2006,7 @@
                 "id": 4,
                 "name": "ПоказыватьУдаленные",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "type": {
                   "types": [
@@ -2031,7 +2070,7 @@
           },
           "handlers": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [
@@ -2172,7 +2211,7 @@
           },
           "handlers": [
             {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
             }
           ],
           "items": [

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Конвертор обработчика события формы в формате ЕДТ
@@ -36,6 +37,7 @@ public class FormHandlerConverter implements ReadConverter {
   private static final String EVENT_NODE_NAME = "event";
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var event = "";
     var name = "";

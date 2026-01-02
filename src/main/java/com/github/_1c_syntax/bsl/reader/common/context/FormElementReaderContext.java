@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -30,8 +30,8 @@ import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 
@@ -55,9 +55,10 @@ public class FormElementReaderContext extends AbstractReaderContext {
 
   @Setter
   @Getter
+  @Nullable
   private FormElementType elementType;
 
-  public FormElementReaderContext(@NonNull String elementName, @NonNull HierarchicalStreamReader reader) {
+  public FormElementReaderContext(String elementName, HierarchicalStreamReader reader) {
     super(reader);
     name = elementName;
     realClass = CLASSES.getOrDefault(elementName, DEFAULT_CLASS_FORM_ITEM);
@@ -65,7 +66,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
   }
 
   @Override
-  public Class<?> fieldType(String fieldName) {
+  public @Nullable Class<?> fieldType(String fieldName) {
     var clazz = CLASSES.get(fieldName);
     if (clazz == null) {
       clazz = super.fieldType(fieldName);

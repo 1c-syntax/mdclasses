@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Конвертор данных управляемой формы в формате ЕДТ
@@ -36,6 +37,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 public class FormItemConverter implements ReadConverter {
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
       return null;

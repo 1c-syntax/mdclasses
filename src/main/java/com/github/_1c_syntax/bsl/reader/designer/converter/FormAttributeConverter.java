@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Конвертор реквизита формы в формате конфигуратора
@@ -38,6 +39,7 @@ public class FormAttributeConverter implements ReadConverter {
   private static final String CONDITIONAL_APPEARANCE_TYPE_NAME = "ConditionalAppearance";
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // todo надо научится читать, пока пропускаем
     if (CONDITIONAL_APPEARANCE_TYPE_NAME.equals(reader.getNodeName())) {
@@ -48,7 +50,7 @@ public class FormAttributeConverter implements ReadConverter {
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
     } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader).toString());
+      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader));
       return null;
     }
     readerContext.setValue("name", reader.getAttribute("name"));

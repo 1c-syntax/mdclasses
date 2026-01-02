@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,7 @@ import java.util.List;
 public class ExchangePlanAutoRecordConverter implements ReadConverter {
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     if (!reader.hasMoreChildren()) {
       return null;
@@ -48,9 +50,10 @@ public class ExchangePlanAutoRecordConverter implements ReadConverter {
       List<ExchangePlan.RecordContent> content = new ArrayList<>();
       while (reader.hasMoreChildren()) { // root
         reader.moveDown();
-        content.add(
-          exchangePlanAutoRecord(reader, context, "Metadata", "AutoRecord")
-        );
+        var data = exchangePlanAutoRecord(reader, context, "Metadata", "AutoRecord");
+        if (data != null) {
+          content.add(data);
+        }
         reader.moveUp();
       }
       return content;
@@ -64,10 +67,10 @@ public class ExchangePlanAutoRecordConverter implements ReadConverter {
     return ExchangePlan.RecordContent.class.isAssignableFrom(type);
   }
 
-  private static ExchangePlan.RecordContent exchangePlanAutoRecord(HierarchicalStreamReader reader,
-                                                                   UnmarshallingContext context,
-                                                                   String mdoNodeName,
-                                                                   String autoRecordNodeName) {
+  private static ExchangePlan.@Nullable RecordContent exchangePlanAutoRecord(HierarchicalStreamReader reader,
+                                                                             UnmarshallingContext context,
+                                                                             String mdoNodeName,
+                                                                             String autoRecordNodeName) {
     if (!reader.hasMoreChildren()) {
       return null;
     }

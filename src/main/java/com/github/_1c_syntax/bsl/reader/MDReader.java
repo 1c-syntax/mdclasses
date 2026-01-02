@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -32,9 +32,8 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.NonNull;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 /**
@@ -47,7 +46,6 @@ public interface MDReader {
    *
    * @return Тип исходных файлов
    */
-  @NonNull
   ConfigurationSource getConfigurationSource();
 
   /**
@@ -55,14 +53,13 @@ public interface MDReader {
    *
    * @return Путь
    */
-  @NonNull
   Path getRootPath();
 
   /**
    * Возвращает установленные настройки чтения
+   *
    * @return Настройки чтения
    */
-  @NonNull
   MDCReadSettings getReadSettings();
 
   /**
@@ -70,7 +67,6 @@ public interface MDReader {
    *
    * @return Прочитанная конфигурация
    */
-  @NonNull
   MDClass readConfiguration();
 
   /**
@@ -78,7 +74,6 @@ public interface MDReader {
    *
    * @return Прочитанный контейнер
    */
-  @NonNull
   ExternalSource readExternalSource();
 
   /**
@@ -136,7 +131,6 @@ public interface MDReader {
    * @param mdoType Тип объекта
    * @return Путь к каталогу с модулями
    */
-  @NonNull
   Path moduleFolder(Path mdoPath, MDOType mdoType);
 
   /**
@@ -147,7 +141,6 @@ public interface MDReader {
    * @param moduleType Тип модуля
    * @return Путь к файлу модуля
    */
-  @NonNull
   Path modulePath(Path folder, String name, ModuleType moduleType);
 
   /**
@@ -156,7 +149,6 @@ public interface MDReader {
    * @param mdoPath Путь к файлу объекта
    * @return Путь к каталогу типа
    */
-  @NonNull
   Path mdoTypeFolderPath(Path mdoPath);
 
   /**
@@ -164,7 +156,6 @@ public interface MDReader {
    *
    * @return Имя поля
    */
-  @NonNull
   String subsystemsNodeName();
 
   /**
@@ -172,7 +163,6 @@ public interface MDReader {
    *
    * @return Строка-фильтр
    */
-  @NonNull
   String configurationExtensionFilter();
 
   /**

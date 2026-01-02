@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2025
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -31,6 +31,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ExchangePlanTest {
+
   @ParameterizedTest
   @CsvSource(
     {
@@ -79,6 +80,6 @@ class ExchangePlanTest {
     assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
     assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
     assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-    assertThat(exchangePlan.getContent()).hasSize(349);
+    assertThat(exchangePlan.getContent()).hasSize(406);
   }
 }
