@@ -40,7 +40,13 @@ public class RoleConverter extends AbstractReadConverter {
     var readerContext = super.read(reader, context);
     RoleData data;
     try {
-      data = (RoleData) ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath()));
+      var readResult = ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath()));
+      if (readResult instanceof RoleData roleData) {
+        data = roleData;
+      } else {
+        // файл не прочитан или прочитан некорректно
+        data = RoleData.EMPTY;
+      }
     } catch (Exception e) {
       // ничего не делаем, считаем файл битым
       data = RoleData.EMPTY;
