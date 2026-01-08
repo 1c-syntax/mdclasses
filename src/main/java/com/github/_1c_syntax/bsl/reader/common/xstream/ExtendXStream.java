@@ -123,13 +123,13 @@ public class ExtendXStream extends XStream {
       try {
         result = super.fromXML(file);
       } catch (ConversionException e) {
-        LOGGER.error("Can't read file '{}' - it's broken (skipped) \n", file, e);
+        LOGGER.warn("Can't read file '{}' - it's broken (skipped) \n", file, e);
       } catch (CannotResolveClassException e) {
         LOGGER.debug("Can't read file '{}' - unknown class (skipped) \n", file, e);
       } catch (StreamException e) {
-        LOGGER.error("Can't read file '{}' - it's broken (skipped)", file, e);
+        LOGGER.warn("Can't read file '{}' - it's broken (skipped)", file, e);
       } catch (Exception e) {
-        LOGGER.error("Can't read file '{}' - unexpected error (skipped): {}", file, e.getMessage(), e);
+        LOGGER.warn("Can't read file '{}' - unexpected error (skipped): {}", file, e.getMessage(), e);
       }
     }
     return result;
