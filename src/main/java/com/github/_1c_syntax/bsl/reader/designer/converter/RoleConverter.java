@@ -31,17 +31,33 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Конвертер для чтения ролей из формата конфигуратора
+ */
 @DesignerConverter
 public class RoleConverter extends AbstractReadConverter {
 
   private static final String DATA_FIELD = "data";
 
+  /**
+   * Выполняет чтение роли из XML, включая данные прав доступа из файла Rights.xml
+   *
+   * @param reader  Ридер XML потока
+   * @param context Контекст десериализации
+   * @return Прочитанный объект роли с данными прав доступа
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
     RoleData data;
     try {
-      data = (RoleData) ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName()));
+      var readResult = ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName()));
+      if (readResult instanceof RoleData roleData) {
+        data = roleData;
+      } else {
+        // файл не прочитан или прочитан некорректно
+        data = RoleData.EMPTY;
+      }
     } catch (Exception e) {
       // ничего не делаем, считаем файл битым
       data = RoleData.EMPTY;
@@ -51,11 +67,24 @@ public class RoleConverter extends AbstractReadConverter {
     return readerContext.build();
   }
 
+  /**
+   * Проверяет, может ли конвертер обработать указанный тип
+   *
+   * @param type Тип класса для проверки
+   * @return true, если тип является Role или его подклассом
+   */
   @Override
   public boolean canConvert(Class type) {
     return Role.class.isAssignableFrom(type);
   }
 
+  /**
+   * Формирует путь к файлу Rights.xml для роли
+   *
+   * @param path Путь к файлу описания роли
+   * @param name Имя роли
+   * @return Путь к файлу Rights.xml
+   */
   private static Path dataPath(Path path, String name) {
     return Paths.get(path.getParent().toString(), name, "Ext", "Rights.xml");
   }
