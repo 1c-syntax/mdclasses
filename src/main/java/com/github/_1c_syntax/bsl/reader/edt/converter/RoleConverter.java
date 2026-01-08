@@ -30,11 +30,21 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 import java.nio.file.Path;
 
+/**
+ * Конвертер для чтения ролей из формата ЕДТ
+ */
 @EDTConverter
 public class RoleConverter extends AbstractReadConverter {
 
   private static final String DATA_FIELD = "data";
 
+  /**
+   * Выполняет чтение роли из XML, включая данные прав доступа из файла Rights.rights
+   *
+   * @param reader  Ридер XML потока
+   * @param context Контекст десериализации
+   * @return Прочитанный объект роли с данными прав доступа
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
@@ -56,11 +66,23 @@ public class RoleConverter extends AbstractReadConverter {
     return readerContext.build();
   }
 
+  /**
+   * Проверяет, может ли конвертер обработать указанный тип
+   *
+   * @param type Тип класса для проверки
+   * @return true, если тип является Role или его подклассом
+   */
   @Override
   public boolean canConvert(Class type) {
     return Role.class.isAssignableFrom(type);
   }
 
+  /**
+   * Формирует путь к файлу Rights.rights для роли
+   *
+   * @param path Путь к файлу описания роли
+   * @return Путь к файлу Rights.rights
+   */
   private static Path dataPath(Path path) {
     return Path.of(path.getParent().toString(), "Rights.rights");
   }
