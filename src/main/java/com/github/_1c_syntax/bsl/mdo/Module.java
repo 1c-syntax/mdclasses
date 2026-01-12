@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 
 import java.net.URI;
@@ -49,4 +50,9 @@ public interface Module {
    * Признак "защищенности" модуля, т.е. наличия пароля и отсутствие исходного кода
    */
   boolean isProtected();
+
+  /**
+   * Ссылка на владельца модуля
+   */
+  MdoReference getOwner();
 }
