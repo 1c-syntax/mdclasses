@@ -29,17 +29,26 @@
               "default": {
                 "tag": 4
               },
-              "int": 1,
+              "int": 2,
+              "com.github._1c_syntax.bsl.types.value.V8ValueType": "BINARY_DATA",
               "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
             }
           ],
-          "composite": false,
+          "composite": true,
           "qualifiers": [
             {
               "default": {
                 "tag": 4
               },
-              "int": 1,
+              "int": 2,
+              "com.github._1c_syntax.bsl.types.qualifiers.BinaryDataQualifiers": {
+                "length": 16,
+                "allowedLength": "FIXED",
+                "description": {
+                  "nameRu": "КвалификаторыДвоичныхДанных (16, Фиксированная)",
+                  "nameEn": "BinaryDataQualifiers (16, Fixed)"
+                }
+              },
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
                 "allowedLength": "VARIABLE",
@@ -1110,15 +1119,15 @@
   "mdoType": "DOCUMENT",
   "moduleTypes": [
     [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ObjectModule.bsl"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/edt/mdclasses/configuration/src/Documents/Документ1/ObjectModule.bsl"
       ]
     ]
   ],

@@ -120,4 +120,9 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
    */
   @Default
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
+
+  @Override
+  public MdoReference getOwner() {
+    return mdoReference; // сам модуль является владельцем
+  }
 }

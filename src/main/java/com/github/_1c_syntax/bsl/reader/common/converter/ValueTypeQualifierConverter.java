@@ -43,8 +43,10 @@ public class ValueTypeQualifierConverter implements ReadConverter {
   private static final String DATE_QUALIFIERS_NODE_NAME = "DateQualifiers";
   private static final String NUMBER_QUALIFIERS_NODE_NAME = "NumberQualifiers";
   private static final String BINARY_DATA_QUALIFIERS_NODE_NAME = "BinaryDataQualifiers";
+  private static final String BINARY_QUALIFIERS_NODE_NAME = "BinaryQualifiers";
   private static final String LENGTH_NODE_NAME = "length";
   private static final String ALLOWED_LENGTH_NODE_NAME = "allowedLength";
+  private static final String FIXED_NODE_NAME = "fixed";
   private static final String DATE_FRACTIONS_NODE_NAME = "dateFractions";
   private static final String SCALE_NODE_NAME = "scale";
   private static final String PRECISION_NODE_NAME = "precision";
@@ -71,6 +73,9 @@ public class ValueTypeQualifierConverter implements ReadConverter {
         length = Integer.parseInt(reader.getValue());
       } else if (ALLOWED_LENGTH_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         allowedLength = AllowedLength.valueByName(reader.getValue());
+      } else if (FIXED_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
+        var value = Boolean.parseBoolean(reader.getValue());
+        allowedLength = value ? AllowedLength.FIXED : AllowedLength.VARIABLE;
       } else if (DATE_FRACTIONS_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         dateFractions = DateFractions.valueByName(reader.getValue());
       } else if (SCALE_NODE_NAME.equalsIgnoreCase(reader.getNodeName())
@@ -93,7 +98,8 @@ public class ValueTypeQualifierConverter implements ReadConverter {
       return DateQualifiers.create(dateFractions);
     } else if (NUMBER_QUALIFIERS_NODE_NAME.equalsIgnoreCase(nodeName)) {
       return NumberQualifiers.create(precision, scale, nonNegative);
-    } else if (BINARY_DATA_QUALIFIERS_NODE_NAME.equalsIgnoreCase(nodeName)) {
+    } else if (BINARY_DATA_QUALIFIERS_NODE_NAME.equalsIgnoreCase(nodeName)
+      || BINARY_QUALIFIERS_NODE_NAME.equalsIgnoreCase(nodeName)) {
       return BinaryDataQualifiers.create(length, allowedLength);
     } else { // квалификаторы пока не обрабатываются
       LOGGER.warn("Unknown qualifiers {}", nodeName);
