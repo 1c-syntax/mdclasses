@@ -38,6 +38,7 @@ public class RoleDataConverter implements ReadConverter {
 
   private static final String OBJECT_NODE_NAME = "object";
   private static final String RIGHT_NODE_NAME = "right";
+  private static final String RESTRICTION_TEMPLATE_NODE_NAME = "restrictionTemplate";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
@@ -53,6 +54,10 @@ public class RoleDataConverter implements ReadConverter {
       if (OBJECT_NODE_NAME.equals(name)) {
         var objectRight = readObjectRight(reader, context);
         builder.objectRight(objectRight);
+      } else if (RESTRICTION_TEMPLATE_NODE_NAME.equals(name)) {
+        // пропускаем
+        reader.moveUp();
+        continue;
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
         Objects.requireNonNull(fieldClass, "Field type not found for: " + name);
@@ -76,7 +81,7 @@ public class RoleDataConverter implements ReadConverter {
         builder.right(right);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        if(fieldClass == null) {
+        if (fieldClass == null) {
           continue;
         }
         var value = ExtendXStream.readValue(context, fieldClass);
