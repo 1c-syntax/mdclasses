@@ -27,12 +27,12 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-
-import java.util.Objects;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Используется для преобразования содержимого пакета XDTO
  */
+@Slf4j
 @CommonConverter
 public class RoleDataConverter implements ReadConverter {
 
@@ -54,15 +54,15 @@ public class RoleDataConverter implements ReadConverter {
       if (OBJECT_NODE_NAME.equals(name)) {
         var objectRight = readObjectRight(reader, context);
         builder.objectRight(objectRight);
-      } else if (RESTRICTION_TEMPLATE_NODE_NAME.equals(name)) {
-        // пропускаем
-        reader.moveUp();
-        continue;
-      } else {
+      } else if (!RESTRICTION_TEMPLATE_NODE_NAME.equals(name)) { // рестрикций пока нет
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        Objects.requireNonNull(fieldClass, "Field type not found for: " + name);
-        var value = ExtendXStream.readValue(context, fieldClass);
-        TransformationUtils.setValue(builder, name, value);
+        if (fieldClass != null) {
+          var value = ExtendXStream.readValue(context, fieldClass);
+          TransformationUtils.setValue(builder, name, value);
+        } else {
+          // пропустим без падения и будем надеяться, что о ворнинге кто-то скажет
+          LOGGER.warn("Field type not found for {}", name);
+        }
       }
 
       reader.moveUp();
@@ -81,11 +81,10 @@ public class RoleDataConverter implements ReadConverter {
         builder.right(right);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        if (fieldClass == null) {
-          continue;
+        if (fieldClass != null) {
+          var value = ExtendXStream.readValue(context, fieldClass);
+          TransformationUtils.setValue(builder, name, value);
         }
-        var value = ExtendXStream.readValue(context, fieldClass);
-        TransformationUtils.setValue(builder, name, value);
       }
 
       reader.moveUp();
@@ -100,11 +99,10 @@ public class RoleDataConverter implements ReadConverter {
       reader.moveDown();
       var name = reader.getNodeName();
       var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-      if (fieldClass == null) {
-        continue;
+      if (fieldClass != null) {
+        var value = ExtendXStream.readValue(context, fieldClass);
+        TransformationUtils.setValue(builder, name, value);
       }
-      var value = ExtendXStream.readValue(context, fieldClass);
-      TransformationUtils.setValue(builder, name, value);
       reader.moveUp();
     }
 
