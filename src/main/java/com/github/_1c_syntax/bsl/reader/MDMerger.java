@@ -106,6 +106,7 @@ public class MDMerger {
       .clearWebSocketClients().webSocketClients(mergeMD(cf, extension, CF::getWebSocketClients, newChildren))
       .clearHttpServices().httpServices(mergeMD(cf, extension, CF::getHttpServices, newChildren))
       .clearIntegrationServices().integrationServices(mergeMD(cf, extension, CF::getIntegrationServices, newChildren))
+      .clearExchangePlans().exchangePlans(mergeMD(cf, extension, CF::getExchangePlans, newChildren))
       .clearConstants().constants(mergeMD(cf, extension, CF::getConstants, newChildren))
       .clearCatalogs().catalogs(mergeMD(cf, extension, CF::getCatalogs, newChildren))
       .clearDocuments().documents(mergeMD(cf, extension, CF::getDocuments, newChildren))
