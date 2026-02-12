@@ -67,18 +67,19 @@ class MDClassesSolutionTest {
     var cf = (Configuration) solution;
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules()).hasSize(3);
-    assertThat(cf.getChildren()).hasSize(10);
+    assertThat(cf.getChildren()).hasSize(12);
 
     assertThat(cf.getAllModules()).hasSize(7);
 
     assertThat(cf.getRoles()).hasSize(2);
     assertThat(cf.getLanguages()).hasSize(1);
+    assertThat(cf.getExchangePlans()).hasSize(2);
     assertThat(cf.getConstants()).hasSize(1);
     assertThat(cf.getCatalogs()).hasSize(3);
     assertThat(cf.getDocuments()).hasSize(1);
     assertThat(cf.getEnums()).hasSize(1);
     assertThat(cf.getDataProcessors()).hasSize(1);
-    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(53);
+    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(71);
 
     assertThat(cf.getModulesByType()).hasSize(7)
       .containsValue(ModuleType.FormModule)
