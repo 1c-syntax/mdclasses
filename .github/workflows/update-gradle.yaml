@@ -15,10 +15,10 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Set up JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v5
         with:
-          java-version: 17
+          java-version: 21
           distribution: 'temurin'
           cache: gradle
 
