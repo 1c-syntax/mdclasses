@@ -108,7 +108,8 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     types.put("xs:base64Binary".toLowerCase(Locale.ROOT), V8ValueType.VALUE_STORAGE);
 
     types.put("v8:ValueListType".toLowerCase(Locale.ROOT), V8ValueType.VALUE_LIST);
-    types.put("d5p1:FlowchartContextType".toLowerCase(Locale.ROOT), V8ValueType.GRAPHICAL_SCHEMA);
+    types.put("FlowchartContextType".toLowerCase(Locale.ROOT), V8ValueType.GRAPHICAL_SCHEMA);
+    types.put("ChartType".toLowerCase(Locale.ROOT), V8ValueType.CHART);
 
     return types;
   }
