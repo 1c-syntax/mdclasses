@@ -6,14 +6,14 @@ MDClasses is a Java library for reading and analyzing metadata from 1C:Enterpris
 
 **Project Type**: Java library  
 **Build Tool**: Gradle with Kotlin DSL  
-**Primary Language**: Java 17+  
-**Target Runtime**: JVM (Java 17, 21, 25 tested)  
+**Primary Language**: Java 21+  
+**Target Runtime**: JVM (Java 21, 25 tested)  
 **Repository Size**: Medium-sized Java project with extensive test coverage
 
 ## Build and Test Instructions
 
 ### Prerequisites
-- Java 17 or higher (tested on Java 17, 21, and 25)
+- Java 21 or higher (tested on Java 21, and 25)
 - Git with LFS support for test data
 - No additional environment setup required
 
@@ -107,7 +107,7 @@ This runs tests and updates license headers.
 ### GitHub Actions Workflows
 1. **Java CI** (`.github/workflows/java-ci.yml`)
    - Runs on: push and pull request
-   - Tests matrix: Java 17, 21, 25 on Ubuntu, Windows, macOS
+   - Tests matrix: Java 21, 25 on Ubuntu, Windows, macOS
    - Command: `./gradlew check --stacktrace`
    - Duration: ~5-10 minutes
    - Artifacts: Test results uploaded for all matrix combinations
@@ -115,7 +115,7 @@ This runs tests and updates license headers.
 2. **GitHub Pages** (`.github/workflows/gh-pages.yml`)
    - Runs on: push to master/develop when docs change
    - Builds Javadoc and MkDocs documentation
-   - Requires Python 3.10+ and Java 17
+   - Requires Python 3.10+ and Java 21
 
 ### Pre-commit Validation Steps
 Before submitting a PR, ensure:
@@ -127,7 +127,7 @@ Before submitting a PR, ensure:
 ## Code Conventions
 
 ### Java Code Style
-- Target Java 17, use modern Java features where appropriate
+- Target Java 21, use modern Java features where appropriate
 - Use Lombok annotations for reducing boilerplate (`@Getter`, `@Setter`, `@Builder`, etc.)
 - Package naming: `com.github._1c_syntax.bsl.*`
 - Follow standard Java naming conventions

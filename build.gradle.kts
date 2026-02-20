@@ -60,11 +60,9 @@ dependencies {
     // прочее
     implementation("commons-io:commons-io:2.21.0")
 
-    implementation("io.github.1c-syntax:bsl-common-library:0.9.2")
-    implementation("io.github.1c-syntax:utils:0.6.8")
-    implementation("io.github.1c-syntax:supportconf:0.15.0") {
-        exclude("io.github.1c-syntax:bsl-common-library")
-    }
+    implementation("io.github.1c-syntax:bsl-common-library:0.10.0")
+    implementation("io.github.1c-syntax:utils:0.7.0")
+    implementation("io.github.1c-syntax:supportconf:0.16.0")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.184")
@@ -92,8 +90,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
     withJavadocJar()
 }
