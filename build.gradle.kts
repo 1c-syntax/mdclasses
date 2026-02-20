@@ -50,39 +50,41 @@ repositories {
 
 dependencies {
 
-    implementation("org.apache.commons", "commons-collections4", "4.4")
+    implementation("org.apache.commons:commons-collections4:4.5.0")
 
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.21")
+    implementation("com.thoughtworks.xstream:xstream:1.4.21")
 
     // логирование
-    implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")
+    implementation("org.slf4j:slf4j-api:2.0.16")
 
     // прочее
-    implementation("commons-io", "commons-io", "2.18.0")
+    implementation("commons-io:commons-io:2.21.0")
 
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.9.2")
-    implementation("io.github.1c-syntax", "utils", "0.6.8")
-    implementation("io.github.1c-syntax", "supportconf", "0.15.0") {
-        exclude("io.github.1c-syntax", "bsl-common-library")
+    implementation("io.github.1c-syntax:bsl-common-library:0.9.2")
+    implementation("io.github.1c-syntax:utils:0.6.8")
+    implementation("io.github.1c-syntax:supportconf:0.15.0") {
+        exclude("io.github.1c-syntax:bsl-common-library")
     }
 
     // быстрый поиск классов
-    implementation("io.github.classgraph", "classgraph", "4.8.179")
+    implementation("io.github.classgraph:classgraph:4.8.184")
 
-    implementation("org.jspecify", "jspecify", "1.0.0")
+    implementation("org.jspecify:jspecify:1.0.0")
 
     // тестирование
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.11.4")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.11.4")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.11.4")
-    testImplementation("org.assertj", "assertj-core", "3.27.0")
-    testImplementation("com.ginsberg", "junit5-system-exit", "2.0.2")
-    testImplementation("org.skyscreamer", "jsonassert", "1.5.3")
-    testImplementation("org.objenesis", "objenesis", "3.4")
+    testImplementation(platform("org.junit:junit-bom:6.0.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testImplementation("org.assertj:assertj-core:3.27.7")
+    testImplementation("com.ginsberg:junit5-system-exit:2.0.2")
+    testImplementation("org.skyscreamer:jsonassert:1.5.3")
+    testImplementation("org.objenesis:objenesis:3.5")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // логирование
-    testImplementation("org.slf4j", "slf4j-reload4j", "2.1.0-alpha1")
-    testRuntimeOnly("org.junit.platform", "junit-platform-launcher", "6.1.0-M1")
+    testImplementation("org.slf4j:slf4j-reload4j:2.0.16")
 
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
@@ -94,14 +96,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
-}
-
-sourceSets {
-    main {
-        resources {
-            exclude("**/*.xsd")
-        }
-    }
 }
 
 jmh {
