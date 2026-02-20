@@ -60,7 +60,7 @@ public class ValueTypeQualifierConverter implements ReadConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     // запоминаем тип
     var nodeName = reader.getNodeName();
-    var length = 0;
+    long length = 0;
     var allowedLength = AllowedLength.VARIABLE;
     var dateFractions = DateFractions.DATE_TIME;
     var precision = 0;
@@ -70,7 +70,7 @@ public class ValueTypeQualifierConverter implements ReadConverter {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (LENGTH_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
-        length = Integer.parseInt(reader.getValue());
+        length = Long.parseLong(reader.getValue());
       } else if (ALLOWED_LENGTH_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
         allowedLength = AllowedLength.valueByName(reader.getValue());
       } else if (FIXED_NODE_NAME.equalsIgnoreCase(reader.getNodeName())) {
