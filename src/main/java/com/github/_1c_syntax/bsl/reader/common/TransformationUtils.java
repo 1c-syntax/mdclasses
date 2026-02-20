@@ -51,7 +51,7 @@ public class TransformationUtils {
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String TO_BUILDER_METHOD_NAME = "toBuilder";
-  private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}, value {}";
+  private static final String LOGGER_MESSAGE_PREF = "Class {}, method {}";
 
   /**
    * Устанавливает значение в билдере объекта. Не устанавливаются значения равные null
@@ -72,7 +72,7 @@ public class TransformationUtils {
           method.invoke(source, value);
         }
       } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
-        LOGGER.error(LOGGER_MESSAGE_PREF, source.getClass(), methodName, value, e);
+        LOGGER.error(LOGGER_MESSAGE_PREF, source.getClass(), methodName, e);
       }
     }
   }
