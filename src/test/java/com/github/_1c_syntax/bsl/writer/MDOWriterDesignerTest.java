@@ -33,6 +33,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -120,5 +122,31 @@ class MDOWriterDesignerTest {
     assertThat(content).contains("<Name>TestConfigDesigner</Name>");
     assertThat(content).contains("ChildObjects");
     assertThat(content).doesNotContainPattern("<Configuration[^>]*>\\s*<Configuration");
+  }
+
+  @Test
+  void writeThenParseDesignerXmlIsWellFormed(@TempDir Path tempDir) throws Exception {
+    var subsystem = Subsystem.builder()
+      .name("IntegrationSubsystem")
+      .uuid("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+      .synonym(MultiLanguageString.create("ru", "Интеграционный тест"))
+      .build();
+
+    var outFile = tempDir.resolve("Subsystems").resolve("IntegrationSubsystem.xml");
+    MDClasses.writeObject(outFile, subsystem);
+
+    var factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    var doc = factory.newDocumentBuilder().parse(outFile.toFile());
+
+    assertThat(doc.getDocumentElement()).isNotNull();
+    assertThat(doc.getDocumentElement().getLocalName()).isEqualTo("MetaDataObject");
+    var subsystemEl = doc.getElementsByTagNameNS("http://v8.1c.ru/8.3/MDClasses", "Subsystem").item(0);
+    assertThat(subsystemEl).isNotNull();
+    assertThat(subsystemEl.getAttributes().getNamedItem("uuid").getTextContent())
+      .isEqualTo("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
+    var nameEl = doc.getElementsByTagNameNS("http://v8.1c.ru/8.3/MDClasses", "Name").item(0);
+    assertThat(nameEl).isNotNull();
+    assertThat(nameEl.getTextContent()).isEqualTo("IntegrationSubsystem");
   }
 }

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.writer.edt;
 
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -43,9 +44,23 @@ public class SubsystemEdtWriteConverter implements Converter {
   private static final String INCLUDE_IN_COMMAND_INTERFACE = "includeInCommandInterface";
   private static final String INCLUDE_HELP_IN_CONTENTS = "includeHelpInContents";
 
+  /** Сериализует подсистему в EDT XML (name, synonym, флаги, дочерние подсистемы). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var subsystem = (Subsystem) source;
+
+    if (subsystem.getExplanation() != null && !subsystem.getExplanation().isEmpty()) {
+      throw new IllegalStateException(
+        "EDT Subsystem write does not support non-empty explanation");
+    }
+    if (subsystem.getContent() != null && !subsystem.getContent().isEmpty()) {
+      throw new IllegalStateException(
+        "EDT Subsystem write does not support non-empty content");
+    }
+    if (subsystem.getParentSubsystem() != null && !MdoReference.EMPTY.equals(subsystem.getParentSubsystem())) {
+      throw new IllegalStateException(
+        "EDT Subsystem write does not support non-empty parentSubsystem");
+    }
 
     writer.addAttribute("xmlns:mdclass", MDCLASS_NS);
     if (subsystem.getUuid() != null && !subsystem.getUuid().isEmpty()) {
@@ -82,26 +97,17 @@ public class SubsystemEdtWriteConverter implements Converter {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text));
+    writer.setValue(text);
     writer.endNode();
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("SubsystemEdtWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link Subsystem}. */
   @Override
   public boolean canConvert(Class type) {
     return Subsystem.class.isAssignableFrom(type);

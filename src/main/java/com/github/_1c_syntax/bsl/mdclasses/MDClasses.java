@@ -28,6 +28,8 @@ import com.github._1c_syntax.bsl.writer.MDOWriter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -68,13 +70,13 @@ public class MDClasses {
   }
 
   /**
-   * Записывает объект метаданных в файл (формат определяется по расширению пути: .mdo — EDT).
+   * Записывает объект метаданных в файл (формат по расширению пути: .mdo — EDT, .xml — Designer).
    *
-   * @param path   Путь к файлу (например, .../Subsystems/Name/Name.mdo)
-   * @param object Объект метаданных (для EDT поддерживается Subsystem)
+   * @param path   Путь к файлу (например, .../Subsystems/Name/Name.mdo или .../Subsystems/Name.xml)
+   * @param object Объект метаданных (поддерживается Subsystem, Catalog, Configuration)
    * @throws IOException при ошибке записи
    */
-  public void writeObject(Path path, Object object) throws IOException {
+  public void writeObject(@NonNull Path path, @NonNull Object object) throws IOException {
     MDOWriter.writeObject(path, object);
   }
 
@@ -86,7 +88,7 @@ public class MDClasses {
    * @param writeSettings Настройки записи
    * @throws IOException при ошибке записи
    */
-  public void writeObject(Path path, Object object, MDCWriteSettings writeSettings) throws IOException {
+  public void writeObject(@NonNull Path path, @NonNull Object object, @Nullable MDCWriteSettings writeSettings) throws IOException {
     MDOWriter.writeObject(path, object, writeSettings);
   }
 

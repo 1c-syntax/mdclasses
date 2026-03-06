@@ -37,6 +37,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Тесты записи объектов метаданных в формате EDT (.mdo).
@@ -128,32 +129,24 @@ class MDOWriterEdtTest {
   @Test
   void writeObjectThrowsOnNullPath() {
     var subsystem = Subsystem.builder().name("Test").build();
-    try {
-      MDClasses.writeObject((Path) null, subsystem);
-    } catch (Exception e) {
-      assertThat(e).isInstanceOf(IllegalArgumentException.class);
-    }
+    assertThatThrownBy(() -> MDClasses.writeObject((Path) null, subsystem))
+      .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   void writeObjectThrowsOnNullObject(@TempDir Path tempDir) {
     var path = tempDir.resolve("Test.mdo");
-    try {
-      MDClasses.writeObject(path, null);
-    } catch (Exception e) {
-      assertThat(e).isInstanceOf(IllegalArgumentException.class);
-    }
+    assertThatThrownBy(() -> MDClasses.writeObject(path, null))
+      .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   void writeObjectThrowsOnUnsupportedFormat(@TempDir Path tempDir) {
     var subsystem = Subsystem.builder().name("Test").build();
     var path = tempDir.resolve("Test.txt");
-    try {
-      MDClasses.writeObject(path, subsystem);
-    } catch (Exception e) {
-      assertThat(e).isInstanceOf(UnsupportedOperationException.class);
-      assertThat(e.getMessage()).contains(".mdo").contains(".xml");
-    }
+    assertThatThrownBy(() -> MDClasses.writeObject(path, subsystem))
+      .isInstanceOf(UnsupportedOperationException.class)
+      .hasMessageContaining(".mdo")
+      .hasMessageContaining(".xml");
   }
 }

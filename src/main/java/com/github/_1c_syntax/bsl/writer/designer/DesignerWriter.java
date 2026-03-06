@@ -39,7 +39,8 @@ import java.nio.file.Path;
 
 /**
  * Запись объектов метаданных в формате Конфигуратора (Designer .xml).
- * Поддерживаются: Subsystem, Catalog, Configuration.
+ * Поддерживаются только типы: Subsystem, Catalog, Configuration.
+ * ConfigurationExtension и другие реализации CF в данной версии не поддерживаются.
  */
 @Slf4j
 public class DesignerWriter {
@@ -50,6 +51,11 @@ public class DesignerWriter {
   private final XStream xstream;
   private final MDCWriteSettings writeSettings;
 
+  /**
+   * Создаёт писатель Designer XML с заданными настройками.
+   *
+   * @param writeSettings настройки записи (кодировка и др.); null заменяется на {@link MDCWriteSettings#DEFAULT}
+   */
   public DesignerWriter(MDCWriteSettings writeSettings) {
     this.writeSettings = writeSettings != null ? writeSettings : MDCWriteSettings.DEFAULT;
     this.xstream = createXStream();
@@ -59,8 +65,9 @@ public class DesignerWriter {
    * Записывает объект в файл .xml (формат Конфигуратора).
    *
    * @param path   Путь к файлу .xml (родительские каталоги создаются при необходимости)
-   * @param object Объект метаданных (поддерживается Subsystem)
+   * @param object Объект метаданных (поддерживаются только Subsystem, Catalog, Configuration)
    * @throws IOException при ошибке записи
+   * @throws UnsupportedOperationException если тип object не Subsystem, Catalog или Configuration
    */
   public void write(Path path, Object object) throws IOException {
     if (object == null) {

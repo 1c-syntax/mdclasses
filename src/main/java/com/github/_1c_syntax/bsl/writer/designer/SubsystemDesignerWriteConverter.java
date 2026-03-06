@@ -29,9 +29,13 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * Конвертер записи подсистемы в формате Конфигуратора (Designer .xml).
- * Выводит обёртку MetaDataObject и элемент Subsystem с Properties (Name, Synonym, дочерние подсистемы).
+ * Выводит обёртку MetaDataObject и элемент Subsystem с Properties (Name, Synonym, Explanation, дочерние подсистемы).
+ * Ограничение: элемент Content (состав подсистемы по ссылкам) не выводится — в Designer он в формате xr:Item.
  */
 public class SubsystemDesignerWriteConverter implements Converter {
 
@@ -43,7 +47,11 @@ public class SubsystemDesignerWriteConverter implements Converter {
   private static final String V8_LANG = "v8:lang";
   private static final String V8_CONTENT = "v8:content";
   private static final String FALSE = "false";
+  private static final Set<String> ALLOW_EMPTY_NODES = Set.of("Comment", "Explanation", "Picture", "Content");
+  /** Preferred locale order for Explanation when Designer format only allows a single string. */
+  private static final List<String> EXPLANATION_LOCALE_ORDER = List.of("ru", "en");
 
+  /** Сериализует подсистему в Designer XML (Properties, ChildObjects). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var subsystem = (Subsystem) source;
@@ -58,8 +66,9 @@ public class SubsystemDesignerWriteConverter implements Converter {
     writeElement(writer, "IncludeHelpInContents", subsystem.isIncludeHelpInContents() ? "true" : FALSE);
     writeElement(writer, "IncludeInCommandInterface", subsystem.isIncludeInCommandInterface() ? "true" : FALSE);
     writeElement(writer, "UseOneCommand", FALSE);
-    writeElement(writer, "Explanation", "");
+    writeElement(writer, "Explanation", explanationToString(subsystem.getExplanation()));
     writeElement(writer, "Picture", "");
+    // Content: Designer uses <xr:Item xsi:type="xr:MDObjectRef">; not written here (namespace xr not in root)
     writeElement(writer, "Content", "");
     writer.endNode(); // Properties
 
@@ -71,6 +80,33 @@ public class SubsystemDesignerWriteConverter implements Converter {
       }
       writer.endNode(); // ChildObjects
     }
+  }
+
+  /**
+   * Преобразует мультиязычное пояснение в одну строку для элемента Designer Explanation.
+   * В формате Designer элемент Explanation — одно строковое значение, мультиязычность не поддерживается.
+   * Используется подход (A): выбор по предпочтительному порядку локалей — сначала "ru", затем "en",
+   * затем первая доступная запись. Остальные переводы не выводятся.
+   */
+  private static String explanationToString(MultiLanguageString explanation) {
+    if (explanation == null || explanation.isEmpty()) {
+      return "";
+    }
+    var content = explanation.getContent();
+    if (content == null || content.isEmpty()) {
+      return "";
+    }
+    for (var locale : EXPLANATION_LOCALE_ORDER) {
+      var value = content.stream()
+        .filter(e -> locale.equals(e.getLangKey()))
+        .findFirst()
+        .map(e -> e.getValue())
+        .orElse(null);
+      if (value != null && !value.isEmpty()) {
+        return value;
+      }
+    }
+    return content.iterator().next().getValue();
   }
 
   private static void writeSynonym(HierarchicalStreamWriter writer, MultiLanguageString synonym) {
@@ -88,30 +124,21 @@ public class SubsystemDesignerWriteConverter implements Converter {
   }
 
   private static void writeElement(HierarchicalStreamWriter writer, String nodeName, String text) {
-    if (text == null && !nodeName.equals("Comment") && !nodeName.equals("Explanation") && !nodeName.equals("Picture") && !nodeName.equals("Content")) {
+    if (text == null && !ALLOW_EMPTY_NODES.contains(nodeName)) {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text != null ? text : ""));
+    writer.setValue(text != null ? text : "");
     writer.endNode();
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("SubsystemDesignerWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link Subsystem}. */
   @Override
   public boolean canConvert(Class type) {
     return Subsystem.class.isAssignableFrom(type);

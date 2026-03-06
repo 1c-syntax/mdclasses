@@ -48,6 +48,7 @@ public class ConfigurationDesignerWriteConverter implements Converter {
   private static final String V8_LANG = "v8:lang";
   private static final String V8_CONTENT = "v8:content";
 
+  /** Сериализует конфигурацию в Designer XML (Properties, ChildObjects). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var config = (Configuration) source;
@@ -79,14 +80,18 @@ public class ConfigurationDesignerWriteConverter implements Converter {
     writeChildList(writer, config.getSessionParameters());
     writeChildList(writer, config.getSettingsStorages());
     writeChildList(writer, config.getFunctionalOptions());
+    writeChildList(writer, config.getBots());
+    writeChildList(writer, config.getFunctionalOptionsParameters());
     writeChildList(writer, config.getDefinedTypes());
     writeChildList(writer, config.getCommonTemplates());
     writeChildList(writer, config.getCommonPictures());
     writeChildList(writer, config.getCommonAttributes());
     writeChildList(writer, config.getXDTOPackages());
     writeChildList(writer, config.getWebServices());
+    writeChildList(writer, config.getWebSocketClients());
     writeChildList(writer, config.getHttpServices());
     writeChildList(writer, config.getWsReferences());
+    writeChildList(writer, config.getIntegrationServices());
     writeChildList(writer, config.getEventSubscriptions());
     writeChildList(writer, config.getScheduledJobs());
     writeChildList(writer, config.getDocumentNumerators());
@@ -106,6 +111,7 @@ public class ConfigurationDesignerWriteConverter implements Converter {
     writeChildList(writer, config.getStyleItems());
     writeChildList(writer, config.getLanguages());
     writeChildList(writer, config.getCommandGroups());
+    writeChildList(writer, config.getPaletteColors());
     writer.endNode(); // ChildObjects
   }
 
@@ -142,26 +148,17 @@ public class ConfigurationDesignerWriteConverter implements Converter {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text));
+    writer.setValue(text);
     writer.endNode();
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("ConfigurationDesignerWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link Configuration}. */
   @Override
   public boolean canConvert(Class type) {
     return Configuration.class.isAssignableFrom(type);

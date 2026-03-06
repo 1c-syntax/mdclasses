@@ -48,6 +48,7 @@ public class ConfigurationEdtWriteConverter implements Converter {
   private static final String SYNONYM = "synonym";
   private static final String LANGUAGE_CODE = "languageCode";
 
+  /** Сериализует конфигурацию в EDT Configuration.mdo (name, synonym, режимы, списки ссылок и т.д.). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var config = (Configuration) source;
@@ -58,6 +59,7 @@ public class ConfigurationEdtWriteConverter implements Converter {
     }
 
     writeElement(writer, NAME, config.getName());
+    writeSynonym(writer, config.getSynonym());
     writeElement(writer, "configurationExtensionCompatibilityMode", compatibilityModeString(config.getConfigurationExtensionCompatibilityMode()));
     writeElement(writer, "defaultRunMode", config.getDefaultRunMode() != null ? config.getDefaultRunMode().fullName().getEn() : null);
     if (config.getUsePurposes() != null) {
@@ -86,6 +88,7 @@ public class ConfigurationEdtWriteConverter implements Converter {
 
     writeRefList(writer, "subsystems", config.getSubsystems());
     writeRefList(writer, "styleItems", config.getStyleItems());
+    writeRefList(writer, "paletteColors", config.getPaletteColors());
     writeRefList(writer, "styles", config.getStyles());
     writeRefList(writer, "commonPictures", config.getCommonPictures());
     writeRefList(writer, "interfaces", config.getInterfaces());
@@ -98,10 +101,13 @@ public class ConfigurationEdtWriteConverter implements Converter {
     writeRefList(writer, "exchangePlans", config.getExchangePlans());
     writeRefList(writer, "xDTOPackages", config.getXDTOPackages());
     writeRefList(writer, "webServices", config.getWebServices());
+    writeRefList(writer, "webSocketClients", config.getWebSocketClients());
     writeRefList(writer, "httpServices", config.getHttpServices());
     writeRefList(writer, "wsReferences", config.getWsReferences());
+    writeRefList(writer, "integrationServices", config.getIntegrationServices());
     writeRefList(writer, "eventSubscriptions", config.getEventSubscriptions());
     writeRefList(writer, "scheduledJobs", config.getScheduledJobs());
+    writeRefList(writer, "bots", config.getBots());
     writeRefList(writer, "settingsStorages", config.getSettingsStorages());
     writeRefList(writer, "functionalOptions", config.getFunctionalOptions());
     writeRefList(writer, "functionalOptionsParameters", config.getFunctionalOptionsParameters());
@@ -191,12 +197,12 @@ public class ConfigurationEdtWriteConverter implements Converter {
     if (synonym == null || synonym.isEmpty()) {
       return;
     }
-    writer.startNode(SYNONYM);
     for (var entry : synonym.getContent()) {
+      writer.startNode(SYNONYM);
       writeElement(writer, KEY, entry.getLangKey());
       writeElement(writer, VALUE, entry.getValue());
+      writer.endNode();
     }
-    writer.endNode(); // close SYNONYM
   }
 
   private static void writeElement(HierarchicalStreamWriter writer, String nodeName, String text) {
@@ -204,7 +210,7 @@ public class ConfigurationEdtWriteConverter implements Converter {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text));
+    writer.setValue(text);
     writer.endNode();
   }
 
@@ -212,22 +218,13 @@ public class ConfigurationEdtWriteConverter implements Converter {
     return s != null ? s : "";
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("ConfigurationEdtWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link Configuration}. */
   @Override
   public boolean canConvert(Class type) {
     return Configuration.class.isAssignableFrom(type);

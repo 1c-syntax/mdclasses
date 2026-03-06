@@ -22,23 +22,30 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import lombok.Builder;
+import org.jspecify.annotations.Nullable;
+
+import java.nio.charset.StandardCharsets;
 
 /**
- * Настройки записи MDC
+ * Настройки записи объектов метаданных в файлы (EDT и Designer).
+ * Используется при вызове {@link com.github._1c_syntax.bsl.mdclasses.MDClasses#writeObject(java.nio.file.Path, Object, MDCWriteSettings)}.
  *
- * @param encoding Кодировка файлов (по умолчанию UTF-8)
+ * @param encoding Кодировка записываемых файлов (по умолчанию UTF-8)
  */
 @Builder
-public record MDCWriteSettings(String encoding) {
+public record MDCWriteSettings(@Nullable String encoding) {
 
   /**
-   * Настройки по умолчанию (UTF-8)
+   * Настройки по умолчанию: кодировка UTF-8.
    */
   public static final MDCWriteSettings DEFAULT = MDCWriteSettings.builder()
-    .encoding("UTF-8")
+    .encoding(StandardCharsets.UTF_8.name())
     .build();
 
+  /**
+   * Возвращает кодировку для записи файлов; при null в настройках возвращается UTF-8.
+   */
   public String encoding() {
-    return encoding != null ? encoding : "UTF-8";
+    return encoding != null ? encoding : StandardCharsets.UTF_8.name();
   }
 }

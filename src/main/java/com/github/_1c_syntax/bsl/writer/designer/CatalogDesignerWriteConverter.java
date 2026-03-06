@@ -22,8 +22,12 @@
 package com.github._1c_syntax.bsl.writer.designer;
 
 import com.github._1c_syntax.bsl.mdo.Catalog;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.thoughtworks.xstream.converters.Converter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -32,6 +36,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 /**
  * Конвертер записи справочника в формате Конфигуратора (Designer .xml).
  * MVP: Name, Synonym, Comment, базовые свойства (UseStandardCommands, LevelCount, CodeLength и т.д.).
+ * Часть свойств (Hierarchical, HierarchyType, LevelCount, CodeLength и т.д.) задаётся значениями по умолчанию,
+ * так как в модели {@link com.github._1c_syntax.bsl.mdo.Catalog} пока нет соответствующих полей; при их появлении нужно перейти на чтение из catalog.
  */
 public class CatalogDesignerWriteConverter implements Converter {
 
@@ -44,6 +50,7 @@ public class CatalogDesignerWriteConverter implements Converter {
   private static final String V8_CONTENT = "v8:content";
   private static final String FALSE = "false";
 
+  /** Сериализует справочник в Designer XML (Properties: Name, Synonym, Comment и др.). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var catalog = (Catalog) source;
@@ -55,13 +62,14 @@ public class CatalogDesignerWriteConverter implements Converter {
     writeElement(writer, NAME, catalog.getName());
     writeSynonym(writer, catalog.getSynonym());
     writeElement(writer, COMMENT, catalog.getComment() != null ? catalog.getComment() : "");
+    // Catalog model only has getOwners(), getCodeSeries(), isCheckUnique() for these; rest are defaults until model is extended
     writeElement(writer, "Hierarchical", "true");
     writeElement(writer, "HierarchyType", "HierarchyFoldersAndItems");
     writeElement(writer, "LimitLevelCount", FALSE);
     writeElement(writer, "LevelCount", "2");
     writeElement(writer, "FoldersOnTop", "true");
     writeElement(writer, "UseStandardCommands", "true");
-    writeElement(writer, "Owners", "");
+    writeElement(writer, "Owners", formatOwners(catalog.getOwners()));
     writeElement(writer, "SubordinationUse", "ToItems");
     writeElement(writer, "CodeLength", "9");
     writeElement(writer, "DescriptionLength", "25");
@@ -88,31 +96,32 @@ public class CatalogDesignerWriteConverter implements Converter {
     writer.endNode();
   }
 
+  private static String formatOwners(List<MdoReference> owners) {
+    if (owners == null || owners.isEmpty()) {
+      return "";
+    }
+    return owners.stream()
+      .filter(ref -> ref != null && ref.getMdoRef() != null && !ref.getMdoRef().isEmpty())
+      .map(MdoReference::getMdoRef)
+      .collect(Collectors.joining(", "));
+  }
+
   private static void writeElement(HierarchicalStreamWriter writer, String nodeName, String text) {
     if (text == null) {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text));
+    writer.setValue(text);
     writer.endNode();
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("CatalogDesignerWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link com.github._1c_syntax.bsl.mdo.Catalog}. */
   @Override
   public boolean canConvert(Class type) {
     return Catalog.class.isAssignableFrom(type);

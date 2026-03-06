@@ -25,25 +25,23 @@ import com.github._1c_syntax.bsl.mdclasses.MDCWriteSettings;
 import com.github._1c_syntax.bsl.writer.designer.DesignerWriter;
 import com.github._1c_syntax.bsl.writer.edt.EDTWriter;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Фасад записи объектов метаданных в файлы (EDT .mdo, в перспективе Designer .xml).
+ * Фасад записи объектов метаданных в файлы (EDT .mdo и Designer .xml).
  */
 @UtilityClass
-@Slf4j
 public class MDOWriter {
 
   /**
    * Записывает объект метаданных в файл.
-   * Формат определяется по расширению пути: .mdo — EDT.
+   * Формат определяется по расширению пути: .mdo — EDT, .xml — Designer.
    *
-   * @param path   Путь к файлу (например, .../Subsystems/Name/Name.mdo)
-   * @param object Объект метаданных (поддерживается Subsystem для EDT)
+   * @param path   Путь к файлу (например, .../Subsystems/Name/Name.mdo или .../Subsystems/Name.xml)
+   * @param object Объект метаданных (Subsystem, Catalog, Configuration)
    * @throws IOException          при ошибке записи
    * @throws UnsupportedOperationException если формат или тип объекта не поддерживается
    */
@@ -54,10 +52,10 @@ public class MDOWriter {
   /**
    * Записывает объект метаданных в файл с настройками.
    *
-   * @param path         Путь к файлу
-   * @param object       Объект метаданных
-   * @param writeSettings Настройки записи
-   * @throws IOException          при ошибке записи
+   * @param path          Путь к файлу (расширение .mdo или .xml определяет формат)
+   * @param object        Объект метаданных (Subsystem, Catalog, Configuration)
+   * @param writeSettings Настройки записи (кодировка и др.); может быть null — тогда используются настройки по умолчанию
+   * @throws IOException                   при ошибке записи
    * @throws UnsupportedOperationException если формат или тип объекта не поддерживается
    */
   public void writeObject(Path path, Object object, MDCWriteSettings writeSettings) throws IOException {

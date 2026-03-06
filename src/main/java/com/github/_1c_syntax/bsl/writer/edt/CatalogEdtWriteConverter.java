@@ -32,6 +32,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 /**
  * Конвертер записи справочника в формате EDT (.mdo).
  * MVP: name, uuid, synonym, checkUnique, codeSeries.
+ * Часть свойств (useStandardCommands, levelCount, codeLength и т.д.) задаётся значениями по умолчанию,
+ * так как в модели {@link Catalog} пока нет соответствующих полей; при их появлении нужно перейти на чтение из catalog.
  */
 public class CatalogEdtWriteConverter implements Converter {
 
@@ -41,9 +43,19 @@ public class CatalogEdtWriteConverter implements Converter {
   private static final String VALUE = "value";
   private static final String SYNONYM = "synonym";
 
+  /** Сериализует справочник в EDT XML (name, synonym, checkUnique, codeSeries и др.). */
   @Override
   public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
     var catalog = (Catalog) source;
+
+    if (catalog.getExplanation() != null && !catalog.getExplanation().isEmpty()) {
+      throw new IllegalStateException(
+        "EDT Catalog write does not support non-empty explanation, catalog: " + catalog.getName());
+    }
+    if (catalog.getOwners() != null && !catalog.getOwners().isEmpty()) {
+      throw new IllegalStateException(
+        "EDT Catalog write does not support non-empty owners, catalog: " + catalog.getName());
+    }
 
     writer.addAttribute("xmlns:mdclass", MDCLASS_NS);
     if (catalog.getUuid() != null && !catalog.getUuid().isEmpty()) {
@@ -51,6 +63,7 @@ public class CatalogEdtWriteConverter implements Converter {
     }
 
     writeElement(writer, NAME, catalog.getName());
+    // Catalog model only has getCodeSeries(), isCheckUnique() for EDT catalog props; rest are defaults until model is extended
     writeElement(writer, "useStandardCommands", "true");
     writeElement(writer, "fullTextSearchOnInputByString", "DontUse");
     writeElement(writer, "createOnInput", "Use");
@@ -77,12 +90,12 @@ public class CatalogEdtWriteConverter implements Converter {
     if (synonym == null || synonym.isEmpty()) {
       return;
     }
-    writer.startNode(SYNONYM);
     for (var entry : synonym.getContent()) {
+      writer.startNode(SYNONYM);
       writeElement(writer, KEY, entry.getLangKey());
       writeElement(writer, VALUE, entry.getValue());
+      writer.endNode();
     }
-    writer.endNode();
   }
 
   private static void writeElement(HierarchicalStreamWriter writer, String nodeName, String text) {
@@ -90,26 +103,17 @@ public class CatalogEdtWriteConverter implements Converter {
       return;
     }
     writer.startNode(nodeName);
-    writer.setValue(escapeXml(text));
+    writer.setValue(text);
     writer.endNode();
   }
 
-  private static String escapeXml(String s) {
-    if (s == null) {
-      return "";
-    }
-    return s.replace("&", "&amp;")
-      .replace("<", "&lt;")
-      .replace(">", "&gt;")
-      .replace("\"", "&quot;")
-      .replace("'", "&apos;");
-  }
-
+  /** Конвертер только для записи; чтение не поддерживается. */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     throw new UnsupportedOperationException("CatalogEdtWriteConverter is for writing only");
   }
 
+  /** Поддерживается только тип {@link Catalog}. */
   @Override
   public boolean canConvert(Class type) {
     return Catalog.class.isAssignableFrom(type);

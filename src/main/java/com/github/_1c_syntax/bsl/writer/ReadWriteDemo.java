@@ -44,6 +44,11 @@ public final class ReadWriteDemo {
   private ReadWriteDemo() {
   }
 
+  /**
+   * Точка входа: создаёт примеры Subsystem, Catalog, Configuration и записывает их в EDT и Designer.
+   *
+   * @param args необязательный путь к каталогу вывода; по умолчанию build/read-write-demo-output
+   */
   public static void main(String[] args) throws Exception {
     var baseDir = args.length > 0 ? Paths.get(args[0]) : Paths.get("build", "read-write-demo-output");
     var edtDir = baseDir.resolve("edt");
