@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.reader.MDMerger;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.writer.MDOWriter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
@@ -64,6 +65,29 @@ public class MDClasses {
    */
   public ExternalSource createExternalReport() {
     return ExternalReport.EMPTY;
+  }
+
+  /**
+   * Записывает объект метаданных в файл (формат определяется по расширению пути: .mdo — EDT).
+   *
+   * @param path   Путь к файлу (например, .../Subsystems/Name/Name.mdo)
+   * @param object Объект метаданных (для EDT поддерживается Subsystem)
+   * @throws IOException при ошибке записи
+   */
+  public void writeObject(Path path, Object object) throws IOException {
+    MDOWriter.writeObject(path, object);
+  }
+
+  /**
+   * Записывает объект метаданных в файл с настройками записи.
+   *
+   * @param path          Путь к файлу
+   * @param object        Объект метаданных
+   * @param writeSettings Настройки записи
+   * @throws IOException при ошибке записи
+   */
+  public void writeObject(Path path, Object object, MDCWriteSettings writeSettings) throws IOException {
+    MDOWriter.writeObject(path, object, writeSettings);
   }
 
   /**
