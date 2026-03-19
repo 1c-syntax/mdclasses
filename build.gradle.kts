@@ -54,6 +54,10 @@ dependencies {
 
     implementation("com.thoughtworks.xstream:xstream:1.4.21")
 
+    // JAXB (Jakarta) for Designer XML write via XSD-generated classes
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
+    implementation("org.glassfish.jaxb:jaxb-runtime:4.0.5")
+
     // логирование
     implementation("org.slf4j:slf4j-api:2.0.16")
 
@@ -89,11 +93,53 @@ dependencies {
     jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
 }
 
+val xjcOutputMDClasses = layout.buildDirectory.dir("generated/sources/xjc-mdclasses")
+val xsdV85Dir = layout.projectDirectory.dir("src/main/xsd/v8.5")
+
+val xjc by configurations.creating
+dependencies {
+    xjc("org.glassfish.jaxb:jaxb-xjc:4.0.5")
+    xjc("org.glassfish.jaxb:jaxb-runtime:4.0.5")
+}
+
+tasks.register<JavaExec>("xjcMDClasses") {
+    group = "Build"
+    description = "Generate JAXB classes from v8.5 MDClasses XSD"
+    classpath = xjc
+    mainClass = "com.sun.tools.xjc.Driver"
+    workingDir = xsdV85Dir.asFile
+    doFirst {
+        args(
+            "-extension",
+            "-catalog", "catalog.xml",
+            "-b", "bindings.xjb",
+            "-d", xjcOutputMDClasses.get().asFile.absolutePath,
+            "v8.1c.ru-8.3-MDClasses.xsd"
+        )
+    }
+    inputs.dir(xsdV85Dir)
+    outputs.dir(xjcOutputMDClasses)
+}
+
+tasks.compileJava {
+    dependsOn("xjcMDClasses")
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
     withJavadocJar()
+}
+
+sourceSets["main"].java.srcDir(xjcOutputMDClasses)
+
+tasks.named("sourcesJar") {
+    dependsOn("xjcMDClasses")
+}
+
+tasks.named("licenseMain") {
+    dependsOn("xjcMDClasses")
 }
 
 jmh {
@@ -172,6 +218,7 @@ license {
     ext["project"] = "MDClasses"
     mapping("java", "SLASHSTAR_STYLE")
     include("**/*.java")
+    exclude("**/jaxb/**")
 }
 
 
