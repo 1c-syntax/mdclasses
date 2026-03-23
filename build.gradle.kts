@@ -55,7 +55,7 @@ dependencies {
     implementation("com.thoughtworks.xstream:xstream:1.4.21")
 
     // логирование
-    implementation("org.slf4j:slf4j-api:2.0.16")
+    implementation("org.slf4j:slf4j-api:2.0.17")
 
     // прочее
     implementation("commons-io:commons-io:2.21.0")
@@ -82,7 +82,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // логирование
-    testImplementation("org.slf4j:slf4j-reload4j:2.0.16")
+    testImplementation("org.slf4j:slf4j-reload4j:2.0.17")
 
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
