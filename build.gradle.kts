@@ -11,7 +11,7 @@ plugins {
     id("io.freefair.javadoc-links") version "9.2.0"
     id("io.freefair.javadoc-utf-8") version "9.2.0"
 //    id("io.freefair.maven-central.validate-poms") version "9.1.0" не работает на 9 градле
-    id("com.github.ben-manes.versions") version "0.53.0"
+    id("com.github.ben-manes.versions") version "0.54.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.23.0"
     id("org.sonarqube") version "7.2.2.6593"
