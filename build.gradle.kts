@@ -58,7 +58,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.17")
 
     // прочее
-    implementation("commons-io:commons-io:2.21.0")
+    implementation("commons-io:commons-io:2.22.0")
 
     implementation("io.github.1c-syntax:bsl-common-library:0.10.0")
     implementation("io.github.1c-syntax:utils:0.7.0")
