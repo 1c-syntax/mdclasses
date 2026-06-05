@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
@@ -35,6 +36,8 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Интерфейс для ридеров исходников
@@ -123,6 +126,22 @@ public interface MDReader {
    */
   @Nullable
   FormData readFormData(Path currentPath, String name, MDOType mdoType);
+
+  /**
+   * Читает предопределенные данные объекта.
+   * <p>
+   * Для формата Конфигуратора предопределенные данные хранятся в отдельном файле
+   * {@code Ext/Predefined.xml}. Для формата EDT они встроены в основной файл объекта и читаются
+   * штатным образом, поэтому реализация по умолчанию возвращает пустой список.
+   *
+   * @param currentPath Путь к файлу объекта
+   * @param name        Имя объекта
+   * @param mdoType     Тип объекта
+   * @return Список предопределенных значений верхнего уровня
+   */
+  default List<PredefinedValue> readPredefinedData(Path currentPath, String name, MDOType mdoType) {
+    return Collections.emptyList();
+  }
 
   /**
    * Рассчитывает каталог, в которм должны располагаться модули объекта

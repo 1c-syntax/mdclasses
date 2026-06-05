@@ -21,11 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -68,5 +73,30 @@ class ChartOfCharacteristicTypesTest {
     assertThat(chartOfCharacteristicTypes.getCodeSeries())
       .as("Поле codeSeries должно быть WHOLE_CATALOG для плана видов характеристик ПланВидовХарактеристик1")
       .isEqualTo(CodeSeries.WHOLE_CATALOG);
+  }
+
+  /**
+   * Проверяет чтение предопределенных значений плана видов характеристик в обоих форматах.
+   */
+  @ParameterizedTest
+  @CsvSource({
+    "src/test/resources/ext/edt/ssl_3_1/configuration",
+    "src/test/resources/ext/designer/ssl_3_1/src/cf"
+  })
+  void testPredefined(String configurationPath) {
+    var mdo = MDOReader.read(Path.of(configurationPath),
+      "ChartsOfCharacteristicTypes.РазделыДатЗапретаИзменения", MDCReadSettings.DEFAULT);
+    assertThat(mdo).isInstanceOf(ChartOfCharacteristicTypes.class);
+    var chart = (ChartOfCharacteristicTypes) mdo;
+
+    assertThat(chart.getPredefinedValues()).hasSize(1);
+    var predefinedValue = chart.getPredefinedValues().get(0);
+    assertThat(predefinedValue.getName()).isEqualTo("УдалитьОбработкаПерсональныхДанных");
+    assertThat(predefinedValue.getDescription()).isEqualTo("(не используется) Обработка персональных данных");
+    assertThat(predefinedValue.getOwner()).isEqualTo(chart.getMdoReference());
+    assertThat(predefinedValue.getMdoReference())
+      .isEqualTo(MdoReference.create(
+        "ChartOfCharacteristicTypes.РазделыДатЗапретаИзменения.Predefined.УдалитьОбработкаПерсональныхДанных"));
+    assertThat(chart.getChildren()).contains(predefinedValue);
   }
 }

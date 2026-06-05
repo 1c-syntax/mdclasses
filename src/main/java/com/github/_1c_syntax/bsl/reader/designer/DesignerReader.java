@@ -50,8 +50,10 @@ import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
+import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
@@ -78,6 +80,8 @@ import org.jspecify.annotations.Nullable;
 import javax.xml.namespace.QName;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -179,6 +183,19 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
+  public List<PredefinedValue> readPredefinedData(Path currentPath, String name, MDOType mdoType) {
+    var predefinedPath = Paths.get(currentPath.getParent().toString(), name, "Ext", "Predefined.xml");
+    if (!predefinedPath.toFile().exists()) {
+      return Collections.emptyList();
+    }
+    var value = read(predefinedPath);
+    if (value instanceof PredefinedData predefinedData) {
+      return predefinedData.getItems();
+    }
+    return Collections.emptyList();
+  }
+
+  @Override
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.COMMAND) {
       return childrenFolder(mdoPath, mdoType);
@@ -261,6 +278,7 @@ public class DesignerReader implements MDReader {
     xStream.alias("Method", HTTPServiceMethod.class);
     xStream.alias("Operation", WebServiceOperation.class);
     xStream.alias("Parameter", WebServiceOperationParameter.class);
+    xStream.alias("PredefinedData", PredefinedData.class);
     xStream.alias("Recalculation", Recalculation.class);
     xStream.alias("Resource", Resource.class);
     xStream.alias("Table", ExternalDataSourceTable.class);

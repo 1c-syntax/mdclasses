@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -46,7 +47,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Catalog implements ReferenceObject, AccessRightsOwner {
+public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
@@ -102,6 +103,12 @@ public class Catalog implements ReferenceObject, AccessRightsOwner {
   /*
    * Свое
    */
+
+  /**
+   * Предопределенные значения
+   */
+  @Singular
+  List<PredefinedValue> predefinedValues;
 
   /**
    * Пояснение

@@ -19,36 +19,37 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.edt.converter;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
-import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
-import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
-import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
-import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
+import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
+import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 
 /**
- * Конвертер для дочерних элементов (атрибуты, операции и т.д.)
+ * Читает файл предопределенных данных {@code Ext/Predefined.xml} (формат Конфигуратора)
  */
-@EDTConverter
-public class MDChildConverter extends AbstractReadConverter {
+@DesignerConverter
+public class PredefinedDataConverter implements ReadConverter {
+
+  private static final String ITEM_NODE = "Item";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    return super.read(reader, context); // внимание! возвращается контекст, а не объект!
+    var builder = PredefinedData.builder();
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      if (ITEM_NODE.equals(reader.getNodeName())) {
+        builder.item((PredefinedValue) context.convertAnother(null, PredefinedValue.class));
+      }
+      reader.moveUp();
+    }
+    return builder.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return !ExternalDataSourceTable.class.isAssignableFrom(type)
-      && !ExternalDataSourceCube.class.isAssignableFrom(type)
-      && !ExternalDataSourceCubeDimensionTable.class.isAssignableFrom(type)
-      && !ObjectTemplate.class.isAssignableFrom(type)
-      && !PredefinedValue.class.isAssignableFrom(type)
-      && MDChild.class.isAssignableFrom(type);
+    return PredefinedData.class.isAssignableFrom(type);
   }
 }
