@@ -8,7 +8,7 @@ plugins {
     id("cloud.rio.license") version "0.18.0"
     id("me.qoomon.git-versioning") version "6.4.4"
     id("io.freefair.lombok") version "9.4.0"
-    id("io.freefair.javadoc-links") version "9.4.0"
+//    id("io.freefair.javadoc-links") version "9.4.0" // не работает на 9 градле (resolveJavadocLinks)
     id("io.freefair.javadoc-utf-8") version "9.4.0"
 //    id("io.freefair.maven-central.validate-poms") version "9.1.0" не работает на 9 градле
     id("com.github.ben-manes.versions") version "0.54.0"
