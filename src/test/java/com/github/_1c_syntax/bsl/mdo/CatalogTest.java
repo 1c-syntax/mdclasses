@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
@@ -52,14 +53,27 @@ class CatalogTest {
     var catalog = (Catalog) mdo;
     assertThat(catalog.getAllAttributes()).hasSize(12);
     assertThat(catalog.getChildren())
-      .hasSize(18)
+      .hasSize(19)
       .anyMatch(ObjectAttribute.class::isInstance)
       .anyMatch(StandardAttribute.class::isInstance)
       .anyMatch(ObjectCommand.class::isInstance)
       .anyMatch(ObjectForm.class::isInstance)
       .anyMatch(TabularSection.class::isInstance)
+      .anyMatch(PredefinedValue.class::isInstance)
     ;
-    assertThat(catalog.getPlainChildren()).hasSize(21);
+    assertThat(catalog.getPlainChildren()).hasSize(22);
+
+    assertThat(catalog.getPredefinedValues()).hasSize(1);
+    var predefinedValue = catalog.getPredefinedValues().get(0);
+    assertThat(predefinedValue.getName()).isEqualTo("ПредопределенныйЭлемент");
+    assertThat(predefinedValue.getUuid()).isEqualTo("79adb5f1-7224-4404-98a7-d7ed155f6232");
+    assertThat(predefinedValue.getCode()).isEqualTo("000000001");
+    assertThat(predefinedValue.getDescription()).isEqualTo("Предопределенный элемент");
+    assertThat(predefinedValue.isFolder()).isFalse();
+    assertThat(predefinedValue.getChildItems()).isEmpty();
+    assertThat(predefinedValue.getOwner()).isEqualTo(catalog.getMdoReference());
+    assertThat(predefinedValue.getMdoReference())
+      .isEqualTo(MdoReference.create("Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"));
     assertThat(catalog.getAttributes()).hasSize(12);
     assertThat(catalog.getTabularSections()).hasSize(1);
     assertThat(catalog.getForms()).hasSize(3);

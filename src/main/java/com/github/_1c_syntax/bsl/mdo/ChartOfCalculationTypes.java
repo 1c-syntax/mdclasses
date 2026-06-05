@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -45,7 +46,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfCalculationTypes implements ReferenceObject, AccessRightsOwner {
+public class ChartOfCalculationTypes implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner {
 
   /*
    * ReferenceObject
@@ -99,6 +100,12 @@ public class ChartOfCalculationTypes implements ReferenceObject, AccessRightsOwn
   /*
    * Свое
    */
+
+  /**
+   * Предопределенные значения
+   */
+  @Singular
+  List<PredefinedValue> predefinedValues;
 
   /**
    * Пояснение

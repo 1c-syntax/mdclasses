@@ -26,7 +26,9 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
@@ -64,6 +66,7 @@ public class MDReaderContext extends AbstractReaderContext {
   private static final String UUID_FIELD_NAME = "uuid";
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String DATA_FIELD_NAME = "data";
+  private static final String PREDEFINED_VALUES_FIELD_NAME = "predefinedValues";
 
   /**
    * Коллекция билдеров для дочерних объектов, которые надо доделать
@@ -142,6 +145,10 @@ public class MDReaderContext extends AbstractReaderContext {
       setValue(MDO_REFERENCE_FIELD_NAME, mdoReference);
     }
 
+    if (PredefinedDataOwner.class.isAssignableFrom(realClass)) {
+      setupPredefinedValues();
+    }
+
     if (MDChild.class.isAssignableFrom(realClass)) {
       setValue(OWNER_FIELD_NAME, owner);
     }
@@ -172,6 +179,40 @@ public class MDReaderContext extends AbstractReaderContext {
   private void saveChildName(String collectionName, MDReaderContext child) {
     childrenContexts.computeIfAbsent(collectionName, k -> Collections.synchronizedList(new ArrayList<>()))
       .add(child);
+  }
+
+  private void setupPredefinedValues() {
+    // EDT хранит предопределённые внутри файла объекта - они уже прочитаны и лежат в кэше;
+    // Конфигуратор хранит их в отдельном файле Ext/Predefined.xml - дочитываем через ридер
+    List<PredefinedValue> raw = getFromCache(PREDEFINED_VALUES_FIELD_NAME, Collections.emptyList());
+    if (raw.isEmpty()) {
+      raw = mdReader.readPredefinedData(currentPath, name, mdoType);
+    }
+
+    if (raw.isEmpty()) {
+      return;
+    }
+
+    var withRefs = raw.stream()
+      .map(value -> predefinedValueWithRefs(value, mdoReference, supportVariant))
+      .toList();
+
+    TransformationUtils.invoke(builder, "clearPredefinedValues");
+    setValue(PREDEFINED_VALUES_FIELD_NAME, withRefs);
+  }
+
+  private static PredefinedValue predefinedValueWithRefs(PredefinedValue value,
+                                                         MdoReference owner,
+                                                         SupportVariant supportVariant) {
+    var reference = MdoReference.create(owner, MDOType.PREDEFINED_VALUE, value.getName());
+    var valueBuilder = value.toBuilder()
+      .owner(owner)
+      .mdoReference(reference)
+      .supportVariant(supportVariant)
+      .clearChildItems();
+    value.getChildItems()
+      .forEach(child -> valueBuilder.childItem(predefinedValueWithRefs(child, reference, supportVariant)));
+    return valueBuilder.build();
   }
 
   private void setValueChildren() {

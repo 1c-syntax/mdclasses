@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
@@ -38,6 +40,9 @@ import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.experimental.UtilityClass;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Выполняет базовое чтение файлов
@@ -58,6 +63,9 @@ public class Unmarshaller {
   private static final String VALUE_TYPE_OTHER_FIELD = "valueType";
   private static final String VALUE_TYPE_FIELD = "type";
   private static final String STANDARD_ATTRIBUTES_NODE = "standardAttributes";
+  private static final String PREDEFINED_NODE = "predefined";
+  private static final String ITEMS_NODE = "items";
+  private static final String PREDEFINED_VALUES_FIELD = "predefinedValues";
 
   /**
    * Читают общую информацию из файла
@@ -70,8 +78,34 @@ public class Unmarshaller {
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      readNode(reader.getNodeName(), context, readerContext);
+      var nodeName = reader.getNodeName();
+      if (PREDEFINED_NODE.equals(nodeName)
+        && readerContext instanceof MDReaderContext
+        && PredefinedDataOwner.class.isAssignableFrom(readerContext.getRealClass())) {
+        readPredefined(reader, context, readerContext);
+      } else {
+        readNode(nodeName, context, readerContext);
+      }
       reader.moveUp();
+    }
+  }
+
+  /**
+   * Читает встроенные в файл объекта предопределенные данные (обертка {@code <predefined>})
+   */
+  private void readPredefined(HierarchicalStreamReader reader,
+                              UnmarshallingContext context,
+                              AbstractReaderContext readerContext) {
+    List<PredefinedValue> items = new ArrayList<>();
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      if (ITEMS_NODE.equals(reader.getNodeName())) {
+        items.add(ExtendXStream.readValue(context, PredefinedValue.class));
+      }
+      reader.moveUp();
+    }
+    if (!items.isEmpty()) {
+      readerContext.setValue(PREDEFINED_VALUES_FIELD, items);
     }
   }
 
