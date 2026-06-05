@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -30,10 +32,21 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 class ConfigurationTest2 {
+
+  /**
+   * Количество предопределенных значений среди дочерних объектов (включая вложенные).
+   */
+  private static int predefinedCount(List<MD> plainChildren) {
+    return (int) plainChildren.stream()
+      .filter(PredefinedValue.class::isInstance)
+      .count();
+  }
 
   @ParameterizedTest
   @CsvSource(
@@ -92,7 +105,7 @@ class ConfigurationTest2 {
     assertThat(cf.getWebSocketClients()).hasSize(1);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(353)
+      .hasSize(353 + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();

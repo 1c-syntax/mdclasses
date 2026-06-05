@@ -35,6 +35,7 @@ import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
@@ -93,6 +94,10 @@ public class LazyLoader {
 
     if (mdo instanceof Enum anEnum) {
       children = addAll(children, anEnum.getEnumValues());
+    }
+
+    if (mdo instanceof PredefinedDataOwner predefinedDataOwner) {
+      children = addAll(children, predefinedDataOwner.getPredefinedValues());
     }
 
     if (mdo instanceof Task task) {

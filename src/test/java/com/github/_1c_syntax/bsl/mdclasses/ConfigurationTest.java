@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
@@ -50,6 +51,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 class ConfigurationTest {
+
+  /**
+   * Количество предопределенных значений среди дочерних объектов (включая вложенные).
+   * Выносится отдельным слагаемым, т.к. состав предопределенных может отличаться между форматами/версиями фикстур.
+   */
+  private static int predefinedCount(List<MD> plainChildren) {
+    return (int) plainChildren.stream()
+      .filter(com.github._1c_syntax.bsl.mdo.children.PredefinedValue.class::isInstance)
+      .count();
+  }
 
   @ParameterizedTest
   @CsvSource(
@@ -91,7 +102,7 @@ class ConfigurationTest {
     checkChildrenSSL(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(9810)
+      .hasSize(9810 + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getModulesByType())
@@ -205,7 +216,7 @@ class ConfigurationTest {
     checkChildrenMdclasses(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(223 + cf.getInterfaces().size() + cf.getStyles().size())
+      .hasSize(223 + cf.getInterfaces().size() + cf.getStyles().size() + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
@@ -242,7 +253,7 @@ class ConfigurationTest {
     checkChildrenOrder(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(330)
+      .hasSize(330 + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
@@ -284,7 +295,7 @@ class ConfigurationTest {
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getPlainChildren())
-      .hasSize(9810)
+      .hasSize(9810 + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getRoles())

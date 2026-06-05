@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTab
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
@@ -72,6 +73,7 @@ public class MDChildConverter extends AbstractReadConverter {
     return
       !ObjectTemplate.class.isAssignableFrom(type)
         && !StandardAttribute.class.isAssignableFrom(type)
+        && !PredefinedValue.class.isAssignableFrom(type)
         && MDChild.class.isAssignableFrom(type);
   }
 

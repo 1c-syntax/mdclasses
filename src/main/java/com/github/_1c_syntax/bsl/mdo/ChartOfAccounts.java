@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -48,7 +49,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner {
+public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner {
 
   /*
    * ReferenceObject
@@ -104,6 +105,12 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner {
   /*
    * Свое
    */
+
+  /**
+   * Предопределенные значения
+   */
+  @Singular
+  List<PredefinedValue> predefinedValues;
 
   /**
    * Признаки учета
