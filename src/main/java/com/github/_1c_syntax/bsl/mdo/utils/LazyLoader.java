@@ -317,7 +317,19 @@ public class LazyLoader {
   public static Map<String, CommonModule> computeCommonModulesByName(ConfigurationTree cf) {
     Map<String, CommonModule> result = new CaseInsensitiveMap<>();
     cf.getCommonModules().forEach(commonModule -> result.put(commonModule.getName(), commonModule));
-    return Collections.unmodifiableMap(result);
+    // CaseInsensitiveMap.get сворачивает регистр запроса на каждый вызов, а findCommonModule
+    // дёргается десятки тысяч раз (на каждый идентификатор при разрешении ссылок). Оборачиваем в
+    // кэширующий по запросу декоратор с ограниченным LRU, чтобы не сворачивать одно и то же имя
+    // повторно и не дать кэшу расти неограниченно на промахах.
+    return new LookupCachingMap<>(Collections.unmodifiableMap(result), lookupCacheSize(result.size()));
+  }
+
+  /**
+   * Размер LRU-кэша обращений к карте общих модулей: вмещает все имеющиеся модули (чтобы
+   * положительные попадания не вытеснялись) плюс запас под кэширование промахов.
+   */
+  private static int lookupCacheSize(int moduleCount) {
+    return Math.max(2048, moduleCount * 2);
   }
 
   private <T> List<T> addAll(List<T> result, List<? extends T> source) {
