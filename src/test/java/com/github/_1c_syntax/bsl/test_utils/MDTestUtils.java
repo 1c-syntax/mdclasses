@@ -39,6 +39,7 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
@@ -50,6 +51,7 @@ import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 @UtilityClass
 public class MDTestUtils {
   private static final String EXAMPLES_PATH = "src/test/resources/ext";
@@ -140,8 +142,8 @@ public class MDTestUtils {
       ? Path.of(FIXTURES_PATH, examplePackName, mdoRef + fixturePostfix + ".json")
       : Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
     Files.writeString(fixturePath, json, StandardCharsets.UTF_8);
-    System.out.println("Regenerated: " + fixturePath);
-    System.out.println("Size: " + json.length() + " chars, " + json.lines().count() + " lines");
+    LOGGER.info("Regenerated: {}", fixturePath);
+    LOGGER.info("Size: {} chars, {} lines", json.length(), json.lines().count());
   }
 
   public MD getMDWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
