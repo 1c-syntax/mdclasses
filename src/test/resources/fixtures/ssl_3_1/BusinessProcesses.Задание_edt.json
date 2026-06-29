@@ -280,10 +280,13 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
+                "dateFractions": 2,
                 "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                    "nameEn": "DateQualifiers (DateTime)"
+                  }
                 }
               }
             }
@@ -341,11 +344,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 11,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (11, Переменная)",
-                  "nameEn": "StringQualifiers (11, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -532,17 +532,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -588,19 +578,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -646,30 +624,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
-                "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
-                }
-              }
-            }
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -802,11 +757,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 250,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (250, Переменная)",
-                  "nameEn": "StringQualifiers (250, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -855,17 +807,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -931,10 +873,7 @@
                 "precision": 10,
                 "scale": 0,
                 "nonNegative": true,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (10.0 неотр)",
-                  "nameEn": "NumberQualifiers (10.0 nonneg)"
-                }
+                "description": {}
               }
             }
           ]
@@ -983,17 +922,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1102,25 +1031,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 3,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              },
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-              },
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[3]"
-              }
-            }
-          ],
-          "composite": true,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1184,10 +1095,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                  "nameEn": "StringQualifiers (0, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                    "nameEn": "StringQualifiers (0, Variable)"
+                  }
                 }
               }
             }
@@ -1237,31 +1151,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 0,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                }
-              }
-            }
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1370,30 +1260,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
-                "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
-                }
-              }
-            }
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1439,30 +1306,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
-                "description": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
-                }
-              }
-            }
-          ]
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1526,11 +1370,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 150,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (150, Переменная)",
-                  "nameEn": "StringQualifiers (150, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -1579,17 +1420,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1635,19 +1466,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1812,19 +1631,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1870,19 +1677,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1928,19 +1723,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[22]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -2055,25 +1838,7 @@
         "kind": "CUSTOM",
         "indexing": "INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 3,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              },
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[26]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-              },
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-              }
-            }
-          ],
-          "composite": true,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[26]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -2737,17 +2502,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -2757,31 +2512,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -2813,17 +2544,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -2833,31 +2554,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -2878,31 +2575,7 @@
                   ]
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -3432,19 +3105,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type"
                 }
               },
               {
@@ -3454,17 +3115,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -3474,31 +3125,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -3508,19 +3135,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -3530,31 +3145,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -3564,17 +3155,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -3584,31 +3165,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]/title"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -3618,17 +3175,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -3638,19 +3185,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type"
                 }
               },
               {
@@ -3660,22 +3195,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 2,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-                      },
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[3]"
-                      }
-                    }
-                  ],
-                  "composite": true,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type"
                 }
               }
             ],
@@ -4192,17 +3712,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -4212,31 +3722,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -4246,31 +3732,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -4300,17 +3762,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -4320,30 +3772,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                        "dateFractions": "DATE_TIME",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
                 }
               },
               {
@@ -4353,17 +3782,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -4373,17 +3792,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -4393,17 +3802,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               }
             ],
@@ -4942,19 +4341,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -4964,19 +4351,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -4986,19 +4361,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/synonym"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
-                      }
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
                 }
               },
               {
@@ -5008,17 +4371,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -5028,17 +4381,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               }
             ],
@@ -5065,15 +4408,15 @@
   "mdoType": "BUSINESS_PROCESS",
   "moduleTypes": [
     [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ObjectModule.bsl"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/BusinessProcesses/Задание/ObjectModule.bsl"
       ]
     ]
   ],

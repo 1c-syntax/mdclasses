@@ -60,7 +60,7 @@ dependencies {
     // прочее
     implementation("commons-io:commons-io:2.22.0")
 
-    implementation("io.github.1c-syntax:bsl-common-library:0.11.0")
+    implementation("io.github.1c-syntax:bsl-common-library:0.12.0")
     implementation("io.github.1c-syntax:utils:0.7.2")
     implementation("io.github.1c-syntax:supportconf:0.16.0")
 
@@ -102,6 +102,9 @@ jmh {
     fork = 2
     resultFormat = "JSON"
     resultsFile = file("build/jmh-results.json")
+    profilers = listOf(
+        "com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler"
+    )
 }
 
 tasks.test {

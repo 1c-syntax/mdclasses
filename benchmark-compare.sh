@@ -2,6 +2,46 @@
 
 set -e
 
+# Загрузка .env.benchmark если есть
+if [ -f ".env.benchmark" ]; then
+    echo "📄 Загрузка конфигурации из .env.benchmark"
+    set -a
+    source .env.benchmark
+    set +a
+fi
+
+# Параметры по умолчанию
+QUICK_MODE=false
+LABEL_NAME=""
+JVM_ARGS="${BENCH_JVM_ARGS:-}"
+PROFILERS="${BENCH_PROFILERS:-com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler}"
+
+# Разбор аргументов
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --quick)
+            QUICK_MODE=true
+            shift
+            ;;
+        --label)
+            LABEL_NAME="$2"
+            shift 2
+            ;;
+        --jvm-args)
+            JVM_ARGS="$2"
+            shift 2
+            ;;
+        *)
+            POSITIONAL+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Восстанавливаем позиционные аргументы
+set -- "${POSITIONAL[@]}"
+
 # Конфигурация для CI
 if [ -n "$GITHUB_HEAD_REF" ]; then
     # В GitHub Actions
@@ -11,6 +51,22 @@ else
     # Локально
     OLD_BRANCH=${1:-"develop"}
     NEW_BRANCH=${2:-$(git branch --show-current)}
+fi
+
+# Режим быстрого замера
+if [ "$QUICK_MODE" = true ]; then
+    JMH_QUICK_ARGS="-f 1 -wi 2 -i 3"
+    echo "⚡ Быстрый режим: 1 fork, 2 warmup, 3 iterations"
+else
+    JMH_QUICK_ARGS=""
+fi
+
+# Имя для маркировки результатов
+if [ -n "$LABEL_NAME" ]; then
+    NEW_VERSION_NAME="$LABEL_NAME"
+    echo "🏷️  Маркировка результатов: $LABEL_NAME"
+else
+    NEW_VERSION_NAME="new-version"
 fi
 
 RESULTS_DIR="benchmark-results"
@@ -85,27 +141,34 @@ build_from_branch() {
         exit 1
     fi
 
-    git checkout "$branch" --quiet
+    # Из целевой ветки: src/main + билд-система (чтоб зависимости были те)
+    # Из текущей ветки: src/jmh (чтоб бенч-скрипты были актуальные)
+    local temp_dir
+    temp_dir=$(mktemp -d)
+
+    git archive "$branch" build.gradle.kts settings.gradle.kts gradlew gradlew.bat lombok.config gradle.properties gradle/ src/ | tar -x -C "$temp_dir"
+    cp -r src/jmh "$temp_dir/src/jmh"
 
     echo "   Сборка Gradle..."
-    ./gradlew clean jmhJar --quiet
+    (cd "$temp_dir" && chmod +x gradlew && ./gradlew clean jmhJar --no-daemon --quiet 2>&1)
 
-    git log -1 --oneline > "$RESULTS_DIR/$version_name-commit.txt"
-    git rev-parse HEAD > "$RESULTS_DIR/$version_name-hash.txt"
-
-    sleep 2
+    git log -1 --oneline "$branch" > "$RESULTS_DIR/$version_name-commit.txt"
+    git rev-parse "$branch" > "$RESULTS_DIR/$version_name-hash.txt"
 
     local jar_file
-    jar_file=$(find_benchmark_jar "$BUILD_DIR")
+    jar_file=$(find_benchmark_jar "$temp_dir/$BUILD_DIR")
 
     if [[ -z "$jar_file" ]]; then
-        echo "   ❌ Не удалось найти JAR файл в $BUILD_DIR"
-        ls -la "$BUILD_DIR"/*.jar 2>/dev/null || echo "      Нет JAR файлов"
+        echo "   ❌ Не удалось найти JAR файл"
+        ls -la "$temp_dir/$BUILD_DIR"/*.jar 2>/dev/null || echo "      Нет JAR файлов"
+        rm -rf "$temp_dir"
         exit 1
     fi
 
     echo "   ✅ Найден JAR: $(basename "$jar_file")"
     cp "$jar_file" "$RESULTS_DIR/$version_name.jar"
+
+    rm -rf "$temp_dir"
 }
 
 # Основная логика определения способа получения версий
@@ -132,11 +195,11 @@ fi
 
 # Обрабатываем новую версию
 if is_jar_file "$NEW_BRANCH"; then
-    use_existing_jar "$NEW_BRANCH" "new-version"
+    use_existing_jar "$NEW_BRANCH" "$NEW_VERSION_NAME"
     NEW_SOURCE="JAR файл: $(basename "$NEW_BRANCH")"
 elif is_git_branch "$NEW_BRANCH"; then
-    build_from_branch "$NEW_BRANCH" "new-version"
-    NEW_SOURCE="Ветка: $NEW_BRANCH ($(cat $RESULTS_DIR/new-version-commit.txt))"
+    build_from_branch "$NEW_BRANCH" "$NEW_VERSION_NAME"
+    NEW_SOURCE="Ветка: $NEW_BRANCH ($(cat $RESULTS_DIR/$NEW_VERSION_NAME-commit.txt))"
 else
     echo "❌ Второй параметр не является ни JAR файлом, ни существующей веткой: $NEW_BRANCH"
     exit 1
@@ -158,13 +221,7 @@ check_jar_exists() {
 }
 
 check_jar_exists "$RESULTS_DIR/old-version.jar" "прошлой версии"
-check_jar_exists "$RESULTS_DIR/new-version.jar" "новой версии"
-
-# Если использовались ветки, возвращаемся к новой версии для дальнейшей работы
-if ! is_jar_file "$NEW_BRANCH" && is_git_branch "$NEW_BRANCH"; then
-    echo "🔄 Возвращаемся к ветке $NEW_BRANCH..."
-    git checkout "$NEW_BRANCH" --quiet
-fi
+check_jar_exists "$RESULTS_DIR/$NEW_VERSION_NAME.jar" "новой версии"
 
 echo ""
 echo "🎯 ИСТОЧНИКИ ВЕРСИЙ:"
@@ -172,11 +229,26 @@ echo "   Прошлая версия: $OLD_SOURCE"
 echo "   Новая версия: $NEW_SOURCE"
 echo ""
 
+# Формируем общие JMH аргументы
+JMH_COMMON_ARGS=""
+IFS=',' read -ra PROFILER_LIST <<< "$PROFILERS"
+for profiler in "${PROFILER_LIST[@]}"; do
+    JMH_COMMON_ARGS="$JMH_COMMON_ARGS -prof $profiler"
+done
+
+JVM_SYS_PROPS=""
+if [ -n "$BENCH_EDT_PATH" ]; then
+    JVM_SYS_PROPS="$JVM_SYS_PROPS -Dbench.edt.path=$BENCH_EDT_PATH"
+fi
+if [ -n "$BENCH_DESIGNER_PATH" ]; then
+    JVM_SYS_PROPS="$JVM_SYS_PROPS -Dbench.designer.path=$BENCH_DESIGNER_PATH"
+fi
+
 echo "📊 Запуск бенчмарков для прошлой версии..."
-java -jar "$RESULTS_DIR/old-version.jar" -prof com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler -rf json -rff "$RESULTS_DIR/old-results.json"
+java $JVM_ARGS $JVM_SYS_PROPS -jar "$RESULTS_DIR/old-version.jar" $JMH_COMMON_ARGS $JMH_QUICK_ARGS -rf json -rff "$RESULTS_DIR/old-results.json"
 
 echo "📊 Запуск бенчмарков для новой версии..."
-java -jar "$RESULTS_DIR/new-version.jar" -prof com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler -rf json -rff "$RESULTS_DIR/new-results.json"
+java $JVM_ARGS $JVM_SYS_PROPS -jar "$RESULTS_DIR/$NEW_VERSION_NAME.jar" $JMH_COMMON_ARGS $JMH_QUICK_ARGS -rf json -rff "$RESULTS_DIR/$NEW_VERSION_NAME-results.json"
 
 # Обновленная функция анализа для использования правильных источников
 analyze_results() {
@@ -383,15 +455,15 @@ generate_report() {
     echo "📈 ПОЛНЫЙ ОТЧЕТ СРАВНЕНИЯ MDClasses" > "$RESULTS_DIR/comparison-report.txt"
     echo "===================================" >> "$RESULTS_DIR/comparison-report.txt"
     echo "Старая версия: $OLD_BRANCH ($(cat $RESULTS_DIR/old-version-commit.txt))" >> "$RESULTS_DIR/comparison-report.txt"
-    echo "Новая версия: $NEW_BRANCH ($(cat $RESULTS_DIR/new-version-commit.txt))" >> "$RESULTS_DIR/comparison-report.txt"
+    echo "Новая версия: $NEW_VERSION_NAME ($(cat $RESULTS_DIR/$NEW_VERSION_NAME-commit.txt))" >> "$RESULTS_DIR/comparison-report.txt"
     echo "" >> "$RESULTS_DIR/comparison-report.txt"
 
     # Пробуем детальный анализ
-    if analyze_results "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/new-results.json" >> "$RESULTS_DIR/comparison-report.txt" 2>/dev/null; then
+    if analyze_results "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/$NEW_VERSION_NAME-results.json" >> "$RESULTS_DIR/comparison-report.txt" 2>/dev/null; then
         echo "✅ Детальный анализ выполнен"
     else
         echo "⚠️  Детальный анализ не удался, используем простой"
-        simple_analysis "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/new-results.json" >> "$RESULTS_DIR/comparison-report.txt"
+        simple_analysis "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/$NEW_VERSION_NAME-results.json" >> "$RESULTS_DIR/comparison-report.txt"
     fi
 }
 
@@ -400,11 +472,11 @@ generate_report
 echo ""
 echo "✅ Сравнение завершено!"
 echo "📄 Отчет: $RESULTS_DIR/comparison-report.txt"
-echo "📊 Данные: $RESULTS_DIR/old-results.json и $RESULTS_DIR/new-results.json"
+echo "📊 Данные: $RESULTS_DIR/old-results.json и $RESULTS_DIR/$NEW_VERSION_NAME-results.json"
 echo "🎯 Сравнение: $OLD_SOURCE → $NEW_SOURCE"
 
 # Показываем краткий анализ в консоли
 echo ""
 echo "📋 КРАТКИЕ РЕЗУЛЬТАТЫ:"
-analyze_results "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/new-results.json" 2>/dev/null || \
-simple_analysis "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/new-results.json"
+analyze_results "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/$NEW_VERSION_NAME-results.json" 2>/dev/null || \
+simple_analysis "$RESULTS_DIR/old-results.json" "$RESULTS_DIR/$NEW_VERSION_NAME-results.json"

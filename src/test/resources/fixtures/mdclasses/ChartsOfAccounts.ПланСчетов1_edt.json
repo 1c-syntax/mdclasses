@@ -128,17 +128,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type"
         },
         "fullName": {
           "nameRu": "ПометкаУдаления",
@@ -192,11 +182,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 25,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
-                  "nameEn": "StringQualifiers (25, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -255,10 +242,7 @@
                 "precision": 5,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (5.0)",
-                  "nameEn": "NumberQualifiers (5.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -297,19 +281,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "fullName": {
           "nameRu": "Родитель",
@@ -345,7 +317,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type"
         },
         "fullName": {
           "nameRu": "Предопределенный",
@@ -399,10 +371,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                  "nameEn": "StringQualifiers (0, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                    "nameEn": "StringQualifiers (0, Variable)"
+                  }
                 }
               }
             }
@@ -462,10 +437,7 @@
                 "precision": 9,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (9.0)",
-                  "nameEn": "NumberQualifiers (9.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -504,7 +476,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type"
         },
         "fullName": {
           "nameRu": "Забалансовый",
@@ -593,17 +565,7 @@
       "kind": "CUSTOM",
       "indexing": "DONT_INDEX",
       "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-          }
-        ],
-        "composite": false,
-        "qualifiers": []
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfAccounts/accountingFlags/com.github._1c_syntax.bsl.mdo.children.AccountingFlag/type"
       }
     }
   ],
