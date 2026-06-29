@@ -80,7 +80,7 @@ class ExchangePlanTest {
     assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
     assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
     assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-    assertThat(exchangePlan.getContent()).hasSize(406);
+    assertThat(exchangePlan.getContent()).hasSize(414);
   }
 
   @ParameterizedTest

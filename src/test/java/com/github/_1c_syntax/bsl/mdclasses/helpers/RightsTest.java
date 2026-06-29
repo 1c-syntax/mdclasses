@@ -137,7 +137,7 @@ class RightsTest {
       .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
 
     assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
-    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(103);
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(106);
 
     var mdv = cf.findChild("Document.Анкета");
     assertThat(mdv).isPresent();

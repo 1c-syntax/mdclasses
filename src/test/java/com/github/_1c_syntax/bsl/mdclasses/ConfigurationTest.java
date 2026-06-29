@@ -108,18 +108,18 @@ class ConfigurationTest {
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getAllModules())
-      .hasSize(2162)
+      .hasSize(2197)
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     // проверка состава дочерних
     checkChildrenSSL(cf);
 
     assertThat(cf.getPlainChildren())
-      .hasSize(9810 + predefinedCount(cf.getPlainChildren()))
+      .hasSize(10011 + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getModulesByType())
-      .hasSize(2162)
+      .hasSize(2197)
       .containsValue(ModuleType.FormModule)
     ;
 
@@ -138,7 +138,7 @@ class ConfigurationTest {
     ;
 
     assertThat(cf.getModulesByObject())
-      .hasSize(2162)
+      .hasSize(2197)
       .containsValue(cf.findChild(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить")).get())
     ;
 
@@ -193,8 +193,8 @@ class ConfigurationTest {
 
     assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
       .hasSize(cf.getCommonForms().size());
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(857);
+assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+       .hasSize(874);
     assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
       .isEmpty();
 
@@ -362,21 +362,21 @@ class ConfigurationTest {
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getAllModules())
-      .hasSize(2162)
+      .hasSize(2197)
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
-    assertThat(cf.getPlainChildren())
-      .hasSize(9810 + predefinedCount(cf.getPlainChildren()))
-      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
+assertThat(cf.getPlainChildren())
+       .hasSize(10011 + predefinedCount(cf.getPlainChildren()))
+       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getRoles())
-      .hasSize(103)
+      .hasSize(107)
       .allMatch(role -> role.getData() == RoleData.EMPTY)
     ;
 
-    assertThat(cf.getXDTOPackages())
-      .hasSize(49)
-      .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
+assertThat(cf.getXDTOPackages())
+       .hasSize(53)
+       .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
     ;
 
     var forms = cf.getPlainChildren().stream()
@@ -386,9 +386,9 @@ class ConfigurationTest {
       .flatMap(Collection::stream)
       .toList();
 
-    assertThat(forms)
-      .hasSize(752)
-      .allMatch(form -> form.getData().getPlainItems().isEmpty());
+assertThat(forms)
+       .hasSize(769)
+       .allMatch(form -> form.getData().getPlainItems().isEmpty());
 
     var templates = cf.getPlainChildren().stream()
       .filter(TemplateOwner.class::isInstance)
@@ -397,8 +397,8 @@ class ConfigurationTest {
       .flatMap(Collection::stream)
       .toList();
 
-    assertThat(templates)
-      .hasSize(128)
+assertThat(templates)
+       .hasSize(129)
       .allMatch(template -> template.getData().isEmpty());
   }
 
@@ -511,7 +511,7 @@ class ConfigurationTest {
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getCommonModules())
-      .hasSize(556)
+      .hasSize(561)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getSessionParameters())
@@ -519,7 +519,7 @@ class ConfigurationTest {
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getRoles())
-      .hasSize(103)
+      .hasSize(107)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getCommonAttributes())
@@ -539,14 +539,14 @@ class ConfigurationTest {
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getScheduledJobs())
-      .hasSize(49)
+      .hasSize(51)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getBots()).isEmpty();
 
-    assertThat(cf.getFunctionalOptions())
-      .hasSize(74)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getFunctionalOptions())
+       .hasSize(76)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getFunctionalOptionsParameters())
       .hasSize(4)
@@ -564,9 +564,9 @@ class ConfigurationTest {
       .hasSize(105)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getCommonCommands())
-      .hasSize(61)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getCommonCommands())
+       .hasSize(62)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getCommandGroups())
       .hasSize(6)
@@ -576,31 +576,31 @@ class ConfigurationTest {
       .hasSize(15)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getCommonPictures())
-      .hasSize(567)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getCommonPictures())
+       .hasSize(571)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getInterfaces()).isEmpty();
 
-    assertThat(cf.getXDTOPackages())
-      .hasSize(49)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getXDTOPackages())
+       .hasSize(53)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getWebServices())
       .hasSize(13)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getHttpServices())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getHttpServices())
+       .hasSize(2)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getWsReferences()).isEmpty();
 
     assertThat(cf.getIntegrationServices()).isEmpty();
 
-    assertThat(cf.getStyleItems())
-      .hasSize(92)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getStyleItems())
+       .hasSize(93)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getStyles()).isEmpty();
 
@@ -608,13 +608,13 @@ class ConfigurationTest {
       .hasSize(1)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getConstants())
-      .hasSize(167)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getConstants())
+       .hasSize(173)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getCatalogs())
-      .hasSize(72)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getCatalogs())
+       .hasSize(74)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getDocuments())
       .hasSize(11)
@@ -628,17 +628,17 @@ class ConfigurationTest {
       .hasSize(2)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getEnums())
-      .hasSize(98)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getEnums())
+       .hasSize(104)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getReports())
       .hasSize(41)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-    assertThat(cf.getDataProcessors())
-      .hasSize(77)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getDataProcessors())
+       .hasSize(78)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getChartsOfCharacteristicTypes())
       .hasSize(4)
@@ -648,9 +648,9 @@ class ConfigurationTest {
 
     assertThat(cf.getChartsOfCalculationTypes()).isEmpty();
 
-    assertThat(cf.getInformationRegisters())
-      .hasSize(187)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getInformationRegisters())
+       .hasSize(192)
+       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
     assertThat(cf.getAccumulationRegisters()).isEmpty();
 
@@ -706,9 +706,9 @@ class ConfigurationTest {
       .hasSize(3)
       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
-     assertThat(cf.getCommonModules())
-       .hasSize(556)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+assertThat(cf.getCommonModules())
+        .hasSize(556)
+        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
 
      assertThat(cf.getSessionParameters())
        .hasSize(62)
