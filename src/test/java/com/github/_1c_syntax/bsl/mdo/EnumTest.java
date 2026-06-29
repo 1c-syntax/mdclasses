@@ -37,7 +37,9 @@ class EnumTest {
       "true, mdclasses, Enums.Перечисление1, _edt",
       "false, mdclasses, Enums.Перечисление1",
       "true, ssl_3_1, Enums.СтатусыОбработчиковОбновления, _edt",
-      "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления"
+      "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления",
+      "true, ssl_3_2, Enums.СтатусыОбработчиковОбновления, _edt",
+      "false, ssl_3_2, Enums.СтатусыОбработчиковОбновления"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

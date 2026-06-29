@@ -109,7 +109,9 @@ class CatalogTest {
   @ParameterizedTest
   @CsvSource({
     "true, ssl_3_1, Catalogs.Заметки, _edt",
-    "false, ssl_3_1, Catalogs.Заметки"
+    "false, ssl_3_1, Catalogs.Заметки",
+    "true, ssl_3_2, Catalogs.Заметки, _edt",
+    "false, ssl_3_2, Catalogs.Заметки"
   })
   void testSSL(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
@@ -181,7 +183,9 @@ class CatalogTest {
   @ParameterizedTest
   @CsvSource({
     "true, ssl_3_1, Catalogs.Заметки, _edt",
-    "false, ssl_3_1, Catalogs.Заметки"
+    "false, ssl_3_1, Catalogs.Заметки",
+    "true, ssl_3_2, Catalogs.Заметки, _edt",
+    "false, ssl_3_2, Catalogs.Заметки"
   })
   void testCheckUniqueFalse(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
@@ -197,7 +201,9 @@ class CatalogTest {
   @ParameterizedTest
   @CsvSource({
     "true, ssl_3_1, Catalogs.ВерсииФайлов, _edt",
-    "false, ssl_3_1, Catalogs.ВерсииФайлов"
+    "false, ssl_3_1, Catalogs.ВерсииФайлов",
+    "true, ssl_3_2, Catalogs.ВерсииФайлов, _edt",
+    "false, ssl_3_2, Catalogs.ВерсииФайлов"
   })
   void testSSLFixture(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);

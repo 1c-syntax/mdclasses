@@ -33,7 +33,9 @@ class SessionParameterTest {
       "true, mdclasses, SessionParameters.ПараметрСеанса1",
       "false, mdclasses, SessionParameters.ПараметрСеанса1",
       "true, ssl_3_1, SessionParameters.ТекущийПользователь",
-      "false, ssl_3_1, SessionParameters.ТекущийПользователь"
+      "false, ssl_3_1, SessionParameters.ТекущийПользователь",
+      "true, ssl_3_2, SessionParameters.ТекущийПользователь",
+      "false, ssl_3_2, SessionParameters.ТекущийПользователь"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

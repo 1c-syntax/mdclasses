@@ -36,7 +36,8 @@ class LanguageTest {
     {
       "false, mdclasses, Languages.Албанский",
       "false, mdclasses, Languages.Японский",
-      "false, ssl_3_1, Languages.Русский"
+      "false, ssl_3_1, Languages.Русский",
+      "false, ssl_3_2, Languages.Русский"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

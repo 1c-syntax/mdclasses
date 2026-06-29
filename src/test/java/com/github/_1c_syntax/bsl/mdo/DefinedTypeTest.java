@@ -33,7 +33,9 @@ class DefinedTypeTest {
       "true, mdclasses, DefinedTypes.ОпределяемыйТип1",
       "false, mdclasses, DefinedTypes.ОпределяемыйТип1",
       "true, ssl_3_1, DefinedTypes.ВладелецФайлов",
-      "false, ssl_3_1, DefinedTypes.ВладелецФайлов"
+      "false, ssl_3_1, DefinedTypes.ВладелецФайлов",
+      "true, ssl_3_2, DefinedTypes.ВладелецФайлов",
+      "false, ssl_3_2, DefinedTypes.ВладелецФайлов"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

@@ -33,7 +33,9 @@ class CommonPictureTest {
       "true, mdclasses, CommonPictures.ОбщаяКартинка1",
       "false, mdclasses, CommonPictures.ОбщаяКартинка1",
       "true, ssl_3_1, CommonPictures.GoogleMaps",
-      "false, ssl_3_1, CommonPictures.GoogleMaps"
+      "false, ssl_3_1, CommonPictures.GoogleMaps",
+      "true, ssl_3_2, CommonPictures.GoogleMaps",
+      "false, ssl_3_2, CommonPictures.GoogleMaps"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

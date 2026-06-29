@@ -33,7 +33,9 @@ class DocumentJournalTest {
       "true, mdclasses, DocumentJournals.ЖурналДокументов1, _edt",
       "false, mdclasses, DocumentJournals.ЖурналДокументов1",
       "true, ssl_3_1, DocumentJournals.Взаимодействия, _edt",
-      "false, ssl_3_1, DocumentJournals.Взаимодействия"
+      "false, ssl_3_1, DocumentJournals.Взаимодействия",
+      "true, ssl_3_2, DocumentJournals.Взаимодействия, _edt",
+      "false, ssl_3_2, DocumentJournals.Взаимодействия"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

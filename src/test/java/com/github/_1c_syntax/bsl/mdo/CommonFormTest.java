@@ -33,7 +33,9 @@ class CommonFormTest {
       "true, mdclasses, CommonForms.Форма, _edt",
       "false, mdclasses, CommonForms.Форма",
       "true, ssl_3_1, CommonForms.Вопрос, _edt",
-      "false, ssl_3_1, CommonForms.Вопрос"
+      "false, ssl_3_1, CommonForms.Вопрос",
+      "true, ssl_3_2, CommonForms.Вопрос, _edt",
+      "false, ssl_3_2, CommonForms.Вопрос"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

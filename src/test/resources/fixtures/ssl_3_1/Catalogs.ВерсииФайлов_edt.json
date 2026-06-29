@@ -1408,6 +1408,125 @@
         "multiLine": false,
         "extendedEdit": false,
         "fillFromFillingValue": false
+      },
+      {
+        "uuid": "d970abc7-4437-4fc4-87d1-bab2ddde8884",
+        "name": "ДатаПереносаВАрхив",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "Catalog.ВерсииФайлов.Attribute.ДатаПереносаВАрхив",
+          "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.ДатаПереносаВАрхив"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Дата переноса в архив"
+              }
+            }
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": 1,
+                "description": {
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (Дата)",
+                    "nameEn": "DateQualifiers (Date)"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "ee83328e-91d2-4022-b1d3-d7d137098ee9",
+        "name": "УсловноПеренесенВАрхив",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "Catalog.ВерсииФайлов.Attribute.УсловноПеренесенВАрхив",
+          "mdoRefRu": "Справочник.ВерсииФайлов.Реквизит.УсловноПеренесенВАрхив"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Условно перенесен в архив"
+              }
+            }
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
       }
     ],
     []
@@ -2369,6 +2488,27 @@
               "dataPath": "Список",
               "items": [
                 [
+                  {
+                    "type": "PICTURE_FIELD",
+                    "id": 127,
+                    "name": "СписокНомерКартинкиЭтоАрхив",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "В архиве"
+                          }
+                        }
+                      ]
+                    },
+                    "dataPath": "Список.НомерКартинкиЭтоАрхив",
+                    "items": []
+                  },
                   {
                     "type": "COLUMN_GROUP",
                     "id": 114,

@@ -33,7 +33,9 @@ class EventSubscriptionTest {
       "true, mdclasses, EventSubscriptions.ПодпискаНаСобытие1",
       "false, mdclasses, EventSubscriptions.ПодпискаНаСобытие1",
       "true, ssl_3_1, EventSubscriptions.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
-      "false, ssl_3_1, EventSubscriptions.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных"
+      "false, ssl_3_1, EventSubscriptions.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
+      "true, ssl_3_2, EventSubscriptions.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
+      "false, ssl_3_2, EventSubscriptions.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

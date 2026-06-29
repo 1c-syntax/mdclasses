@@ -34,7 +34,9 @@ class DocumentTest {
   @CsvSource(
     {
       "true, ssl_3_1, Documents.Анкета, _edt",
-      "false, ssl_3_1, Documents.Анкета"
+      "false, ssl_3_1, Documents.Анкета",
+      "true, ssl_3_2, Documents.Анкета, _edt",
+      "false, ssl_3_2, Documents.Анкета"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {

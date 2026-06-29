@@ -39,6 +39,7 @@ public class PredefinedValueConverter implements ReadConverter {
 
   private static final String ID_ATTRIBUTE = "id";
   private static final String CHILD_ITEMS_NODE = "ChildItems";
+  private static final String CONTENT_NODE = "content";
   private static final String ITEMS_NODE = "items";
   private static final String VALUE_NODE = "value";
 
@@ -60,7 +61,7 @@ public class PredefinedValueConverter implements ReadConverter {
         case "Code", "code" -> builder.code(readCode(reader));
         case "IsFolder", "isFolder" -> builder.folder(Boolean.parseBoolean(reader.getValue()));
         case CHILD_ITEMS_NODE -> readChildItems(reader, context, builder);
-        case ITEMS_NODE -> builder.childItem((PredefinedValue) context.convertAnother(null, PredefinedValue.class));
+        case ITEMS_NODE, CONTENT_NODE -> builder.childItem((PredefinedValue) context.convertAnother(null, PredefinedValue.class));
         default -> {
           // прочие свойства игнорируем
         }

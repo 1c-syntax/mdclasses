@@ -33,7 +33,9 @@ class FunctionalOptionTest {
       "true, mdclasses, FunctionalOptions.ФункциональнаяОпция1",
       "false, mdclasses, FunctionalOptions.ФункциональнаяОпция1",
       "true, ssl_3_1, FunctionalOptions.ИспользоватьАнкетирование",
-      "false, ssl_3_1, FunctionalOptions.ИспользоватьАнкетирование"
+      "false, ssl_3_1, FunctionalOptions.ИспользоватьАнкетирование",
+      "true, ssl_3_2, FunctionalOptions.ИспользоватьАнкетирование",
+      "false, ssl_3_2, FunctionalOptions.ИспользоватьАнкетирование"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

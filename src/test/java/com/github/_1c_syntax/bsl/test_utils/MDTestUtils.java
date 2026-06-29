@@ -39,6 +39,7 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
@@ -50,6 +51,7 @@ import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 @UtilityClass
 public class MDTestUtils {
   private static final String EXAMPLES_PATH = "src/test/resources/ext";
@@ -124,6 +126,24 @@ public class MDTestUtils {
       xstream.registerConverter(new TestCollectionConverter(xstream.getMapper()));
     }
     return xstream.toXML(obj);
+  }
+
+  /**
+   * Регенерация fixture JSON для указанного MDO объекта.
+   * Используется для создания/обновленияfixture при изменении fixtures.
+   */
+  public static void regenerateFixture(String examplePackName, String mdoRef, boolean isEdt, String fixturePostfix) throws java.io.IOException {
+    var configurationPath = isEdt
+      ? Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH)
+      : Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
+    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
+    var json = createJson(mdo);
+    Path fixturePath = fixturePostfix != null && !fixturePostfix.isEmpty()
+      ? Path.of(FIXTURES_PATH, examplePackName, mdoRef + fixturePostfix + ".json")
+      : Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
+    Files.writeString(fixturePath, json, StandardCharsets.UTF_8);
+    LOGGER.info("Regenerated: {}", fixturePath);
+    LOGGER.info("Size: {} chars, {} lines", json.length(), json.lines().count());
   }
 
   public MD getMDWithSimpleTest(ArgumentsAccessor argumentsAccessor) {

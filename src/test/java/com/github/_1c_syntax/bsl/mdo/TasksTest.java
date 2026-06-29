@@ -33,7 +33,9 @@ class TasksTest {
       "true, mdclasses, Tasks.Задача1",
       "false, mdclasses, Tasks.Задача1",
       "true, ssl_3_1, Tasks.ЗадачаИсполнителя, _edt",
-      "false, ssl_3_1, Tasks.ЗадачаИсполнителя"
+      "false, ssl_3_1, Tasks.ЗадачаИсполнителя",
+      "true, ssl_3_2, Tasks.ЗадачаИсполнителя, _edt",
+      "false, ssl_3_2, Tasks.ЗадачаИсполнителя"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

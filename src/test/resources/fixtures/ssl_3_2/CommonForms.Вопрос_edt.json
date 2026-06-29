@@ -1,0 +1,350 @@
+{"com.github._1c_syntax.bsl.mdo.CommonForm": {
+  "comment": "",
+  "data": {
+    "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
+    "title": {
+      "content": []
+    },
+    "handlers": [
+      [
+        {
+          "event": "OnOpen",
+          "name": "ПриОткрытии"
+        },
+        {
+          "event": "OnCreateAtServer",
+          "name": "ПриСозданииНаСервере"
+        }
+      ],
+      []
+    ],
+    "items": [
+      {
+        "type": "USUAL_GROUP",
+        "id": 15,
+        "name": "Колонки",
+        "title": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Колонки"
+              }
+            }
+          ]
+        },
+        "dataPath": "",
+        "items": [
+          [
+            {
+              "type": "DECORATION",
+              "id": 5,
+              "name": "Предупреждение",
+              "title": {
+                "content": [
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Предупреждение"
+                    }
+                  }
+                ]
+              },
+              "dataPath": "",
+              "items": []
+            },
+            {
+              "type": "USUAL_GROUP",
+              "id": 16,
+              "name": "Строки",
+              "title": {
+                "content": [
+                  {
+                    "default": {
+                      "tag": 2
+                    },
+                    "int": 1,
+                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                      "langKey": "ru",
+                      "value": "Строки"
+                    }
+                  }
+                ]
+              },
+              "dataPath": "",
+              "items": [
+                [
+                  {
+                    "type": "USUAL_GROUP",
+                    "id": 26,
+                    "name": "ТекстСообщения",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Текст сообщения"
+                          }
+                        }
+                      ]
+                    },
+                    "dataPath": "",
+                    "items": [
+                      [
+                        {
+                          "type": "LABEL",
+                          "id": 23,
+                          "name": "ТекстСообщенияНадпись",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                          },
+                          "dataPath": "",
+                          "items": []
+                        },
+                        {
+                          "type": "INPUT_FIELD",
+                          "id": 10,
+                          "name": "ТекстСообщенияПолеВвода",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                          },
+                          "dataPath": "ТекстСообщения",
+                          "items": []
+                        }
+                      ],
+                      []
+                    ]
+                  },
+                  {
+                    "type": "CHECK_BOX_FIELD",
+                    "id": 3,
+                    "name": "БольшеНеЗадаватьЭтотВопрос",
+                    "title": {
+                      "content": [
+                        {
+                          "default": {
+                            "tag": 2
+                          },
+                          "int": 1,
+                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                            "langKey": "ru",
+                            "value": "Больше не задавать этот вопрос"
+                          }
+                        }
+                      ]
+                    },
+                    "dataPath": "БольшеНеЗадаватьЭтотВопрос",
+                    "items": []
+                  }
+                ],
+                []
+              ]
+            }
+          ],
+          []
+        ]
+      }
+    ],
+    "attributes": [
+      [
+        {
+          "id": 1,
+          "name": "СоответствиеКнопокИВозвращаемыхЗначений",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          },
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 0
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          }
+        },
+        {
+          "id": 3,
+          "name": "БольшеНеЗадаватьЭтотВопрос",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+          },
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+              }
+            ],
+            "composite": false,
+            "qualifiers": []
+          }
+        },
+        {
+          "id": 4,
+          "name": "ОжиданиеСчетчик",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          },
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                  "precision": 5,
+                  "scale": 0,
+                  "nonNegative": true,
+                  "description": {}
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "name": "ОжиданиеИмяКнопки",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          },
+          "type": {
+            "types": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+              }
+            ],
+            "composite": false,
+            "qualifiers": [
+              {
+                "default": {
+                  "tag": 4
+                },
+                "int": 1,
+                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                  "length": 0,
+                  "allowedLength": 0,
+                  "description": {
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                      "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                      "nameEn": "StringQualifiers (0, Variable)"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "ОжиданиеЗаголовокКнопки",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          },
+          "type": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
+          }
+        },
+        {
+          "id": 2,
+          "name": "ТекстСообщения",
+          "title": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+          },
+          "type": {
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
+          }
+        }
+      ],
+      []
+    ]
+  },
+  "description": "Вопрос",
+  "formType": "MANAGED",
+  "mdoReference": {
+    "type": "COMMON_FORM",
+    "mdoRef": "CommonForm.Вопрос",
+    "mdoRefRu": "ОбщаяФорма.Вопрос"
+  },
+  "mdoType": "COMMON_FORM",
+  "moduleTypes": [
+    [
+      "FormModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_2/configuration/src/CommonForms/Вопрос/Module.bsl"
+      ]
+    ]
+  ],
+  "modules": [
+    {
+      "moduleType": "FormModule",
+      "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/CommonForms/Вопрос/Module.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/mdoReference"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "Вопрос",
+  "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 1,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
+    }
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Вопрос"
+        }
+      }
+    ]
+  },
+  "uuid": "573f1753-9194-4aaf-9217-5cac70ff108f"
+}}

@@ -33,7 +33,9 @@ class ConstantTest {
       "true, mdclasses, Constants.Константа1, _edt",
       "false, mdclasses, Constants.Константа1",
       "true, ssl_3_1, Constants.ЗаголовокСистемы",
-      "false, ssl_3_1, Constants.ЗаголовокСистемы"
+      "false, ssl_3_1, Constants.ЗаголовокСистемы",
+      "true, ssl_3_2, Constants.ЗаголовокСистемы",
+      "false, ssl_3_2, Constants.ЗаголовокСистемы"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

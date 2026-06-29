@@ -56,7 +56,9 @@ class ReportTest {
   @CsvSource(
     {
       "true, ssl_3_1, Reports.АнализВерсийОбъектов, _edt",
-      "false, ssl_3_1, Reports.АнализВерсийОбъектов"
+      "false, ssl_3_1, Reports.АнализВерсийОбъектов",
+      "true, ssl_3_2, Reports.АнализВерсийОбъектов, _edt",
+      "false, ssl_3_2, Reports.АнализВерсийОбъектов"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {

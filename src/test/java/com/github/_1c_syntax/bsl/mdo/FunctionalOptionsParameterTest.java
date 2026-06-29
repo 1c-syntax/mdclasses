@@ -33,7 +33,9 @@ class FunctionalOptionsParameterTest {
       "true, mdclasses, FunctionalOptionsParameters.ПараметрФункциональныхОпций",
       "false, mdclasses, FunctionalOptionsParameters.ПараметрФункциональныхОпций",
       "true, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
-      "false, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта"
+      "false, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
+      "true, ssl_3_2, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
+      "false, ssl_3_2, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

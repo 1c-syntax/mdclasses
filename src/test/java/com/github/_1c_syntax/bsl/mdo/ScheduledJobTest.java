@@ -34,6 +34,8 @@ class ScheduledJobTest {
     {
       "true, ssl_3_1, ScheduledJobs.ОбновлениеАгрегатов",
       "false, ssl_3_1, ScheduledJobs.ОбновлениеАгрегатов",
+      "true, ssl_3_2, ScheduledJobs.ОбновлениеАгрегатов",
+      "false, ssl_3_2, ScheduledJobs.ОбновлениеАгрегатов",
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {
