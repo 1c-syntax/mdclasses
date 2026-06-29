@@ -981,6 +981,27 @@
           "items": [
             [
               {
+                "type": "COMMAND_BAR",
+                "id": 79,
+                "name": "КоманднаяПанельРедактирования",
+                "title": {
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Командная панель редактирования"
+                      }
+                    }
+                  ]
+                },
+                "dataPath": "",
+                "items": []
+              },
+              {
                 "type": "USUAL_GROUP",
                 "id": 14,
                 "name": "СодержаниеЗаметки",
@@ -1363,7 +1384,7 @@
                       "id": 28,
                       "name": "ФильтрПоЦвету",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                       },
                       "dataPath": "ВыбранныйЦвет",
                       "items": []
@@ -1404,9 +1425,9 @@
                 ]
               },
               {
-                "type": "USUAL_GROUP",
-                "id": 43,
-                "name": "ГруппаПользовательскихНастроек",
+                "type": "COMMAND_BAR",
+                "id": 71,
+                "name": "КоманднаяПанельТакси",
                 "title": {
                   "content": [
                     {
@@ -1416,56 +1437,13 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                         "langKey": "ru",
-                        "value": "Группа пользовательских настроек"
+                        "value": "Командная панель такси"
                       }
                     }
                   ]
                 },
                 "dataPath": "",
                 "items": []
-              },
-              {
-                "type": "COMMAND_BAR",
-                "id": 33,
-                "name": "КоманднаяПанель",
-                "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Командная панель"
-                      }
-                    }
-                  ]
-                },
-                "dataPath": "",
-                "items": [
-                  {
-                    "type": "POPUP",
-                    "id": 57,
-                    "name": "ПодменюОрганайзер",
-                    "title": {
-                      "content": [
-                        {
-                          "default": {
-                            "tag": 2
-                          },
-                          "int": 1,
-                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                            "langKey": "ru",
-                            "value": "Органайзер"
-                          }
-                        }
-                      ]
-                    },
-                    "dataPath": "",
-                    "items": []
-                  }
-                ]
               },
               {
                 "type": "TABLE",
@@ -1691,42 +1669,11 @@
           "items": [
             [
               {
-                "type": "USUAL_GROUP",
-                "id": 43,
-                "name": "ГруппаПользовательскихНастроек",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                },
-                "dataPath": "",
-                "items": []
-              },
-              {
-                "type": "COMMAND_BAR",
-                "id": 41,
-                "name": "КоманднаяПанель",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
-                },
-                "dataPath": "",
-                "items": [
-                  {
-                    "type": "POPUP",
-                    "id": 60,
-                    "name": "ПодменюОрганайзер",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                    },
-                    "dataPath": "",
-                    "items": []
-                  }
-                ]
-              },
-              {
                 "type": "TABLE",
                 "id": 1,
                 "name": "Список",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
                 },
                 "dataPath": "Список",
                 "items": [
@@ -1839,7 +1786,7 @@
                 "id": 3,
                 "name": "ПоказыватьЗаметкиДругихПользователей",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
@@ -1912,7 +1859,7 @@
               "id": 1,
               "name": "Список",
               "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
               },
               "dataPath": "Список",
               "items": [

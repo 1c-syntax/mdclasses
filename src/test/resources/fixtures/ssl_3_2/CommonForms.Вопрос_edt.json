@@ -85,7 +85,7 @@
                   {
                     "type": "USUAL_GROUP",
                     "id": 26,
-                    "name": "ТекстСообщенияФорматированнаяСтрокаГруппа",
+                    "name": "ТекстСообщения",
                     "title": {
                       "content": [
                         {
@@ -95,34 +95,37 @@
                           "int": 1,
                           "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                             "langKey": "ru",
-                            "value": "Текст сообщения форматированная строка (группа)"
+                            "value": "Текст сообщения"
                           }
                         }
                       ]
                     },
                     "dataPath": "",
                     "items": [
-                      {
-                        "type": "LABEL",
-                        "id": 23,
-                        "name": "ТекстСообщенияФорматированнаяСтрока",
-                        "title": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                      [
+                        {
+                          "type": "LABEL",
+                          "id": 23,
+                          "name": "ТекстСообщенияНадпись",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                          },
+                          "dataPath": "",
+                          "items": []
                         },
-                        "dataPath": "",
-                        "items": []
-                      }
+                        {
+                          "type": "INPUT_FIELD",
+                          "id": 10,
+                          "name": "ТекстСообщенияПолеВвода",
+                          "title": {
+                            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
+                          },
+                          "dataPath": "ТекстСообщения",
+                          "items": []
+                        }
+                      ],
+                      []
                     ]
-                  },
-                  {
-                    "type": "INPUT_FIELD",
-                    "id": 10,
-                    "name": "МногострочныйТекстСообщения",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-                    },
-                    "dataPath": "ТекстСообщения",
-                    "items": []
                   },
                   {
                     "type": "CHECK_BOX_FIELD",
@@ -179,7 +182,7 @@
           "id": 3,
           "name": "БольшеНеЗадаватьЭтотВопрос",
           "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
           },
           "type": {
             "types": [

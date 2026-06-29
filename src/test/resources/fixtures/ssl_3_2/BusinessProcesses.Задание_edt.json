@@ -1875,12 +1875,12 @@
   "forms": [
     [
       {
-        "uuid": "f0620d5a-e1fe-419f-af37-e0f462f97e8d",
-        "name": "ДействиеВыполнить",
+        "uuid": "3e2f2ae1-c809-43fc-8276-b0a16a92858c",
+        "name": "ДействиеПроверить",
         "mdoReference": {
           "type": "FORM",
-          "mdoRef": "BusinessProcess.Задание.Form.ДействиеВыполнить",
-          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеВыполнить"
+          "mdoRef": "BusinessProcess.Задание.Form.ДействиеПроверить",
+          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеПроверить"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1893,7 +1893,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
-                "value": "Действие выполнить"
+                "value": "Действие проверить"
               }
             }
           ]
@@ -1902,7 +1902,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/Де_ствиеВыполнить/Module.bsl",
+            "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/Де_ствиеПроверить/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
             },
@@ -1934,537 +1934,374 @@
             []
           ],
           "items": [
-            {
-              "type": "USUAL_GROUP",
-              "id": 207,
-              "name": "Документ",
-              "title": {
-                "content": [
-                  {
-                    "default": {
-                      "tag": 2
-                    },
-                    "int": 1,
-                    "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                      "langKey": "ru",
-                      "value": "Документ"
-                    }
-                  }
-                ]
+            [
+              {
+                "type": "USUAL_GROUP",
+                "id": 134,
+                "name": "ГруппаСостояние",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
+                },
+                "dataPath": "",
+                "items": []
               },
-              "dataPath": "",
-              "items": [
-                [
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 154,
-                    "name": "Шапка",
-                    "title": {
-                      "content": [
-                        {
-                          "default": {
-                            "tag": 2
-                          },
-                          "int": 1,
-                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                            "langKey": "ru",
-                            "value": "Шапка"
+              {
+                "type": "PAGES",
+                "id": 259,
+                "name": "Страницы",
+                "title": {
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Страницы"
+                      }
+                    }
+                  ]
+                },
+                "dataPath": "",
+                "items": [
+                  [
+                    {
+                      "type": "PAGE",
+                      "id": 267,
+                      "name": "СтраницаОписаниеЗадачи",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Описание задачи"
+                            }
                           }
-                        }
-                      ]
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 165,
-                          "name": "ГруппыШапки",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Группы шапки"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 160,
-                                "name": "ГруппаАвторИсполнитель",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Автор исполнитель"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 161,
-                                      "name": "Автор",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Автор",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 163,
-                                      "name": "Исполнитель",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
-                                      },
-                                      "dataPath": "Исполнитель",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 109,
-                                "name": "ГруппаДатаИСрок",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Дата и срок"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 152,
-                                      "name": "Дата",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Date",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 12,
-                                      "name": "СрокИсполнения",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.СрокИсполнения",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 28,
-                                "name": "ГруппаНомерИВажность",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Номер и важность"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 149,
-                                      "name": "Номер",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Number",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 16,
-                                      "name": "Важность",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Важность",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              }
-                            ],
-                            []
-                          ]
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 155,
-                          "name": "ГруппаПриоритет",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Приоритет"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 119,
-                                "name": "СрокНачалаИсполнения",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаНачала",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 135,
-                                "name": "СрокНачалаИсполненияВремя",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаНачала",
-                                "items": []
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "PAGES",
-                    "id": 201,
-                    "name": "Страницы",
-                    "title": {
-                      "content": [
-                        {
-                          "default": {
-                            "tag": 2
-                          },
-                          "int": 1,
-                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                            "langKey": "ru",
-                            "value": "Страницы"
-                          }
-                        }
-                      ]
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "PAGE",
-                          "id": 203,
-                          "name": "Главное",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Главное"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": [
-                            {
-                              "type": "USUAL_GROUP",
-                              "id": 94,
-                              "name": "ГруппаСодержание",
-                              "title": {
-                                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                              },
-                              "dataPath": "",
-                              "items": [
-                                [
-                                  {
-                                    "type": "INPUT_FIELD",
-                                    "id": 156,
-                                    "name": "Наименование",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                    },
-                                    "dataPath": "Объект.Description",
-                                    "items": []
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 269,
+                            "name": "ГруппаНаименованиеИНомер",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
                                   },
-                                  {
-                                    "type": "LABEL_FIELD",
-                                    "id": 129,
-                                    "name": "Предмет",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
-                                    },
-                                    "dataPath": "ПредметСтрокой",
-                                    "items": []
-                                  },
-                                  {
-                                    "type": "INPUT_FIELD",
-                                    "id": 18,
-                                    "name": "Содержание",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                                    },
-                                    "dataPath": "ЗаданиеСодержание",
-                                    "items": []
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Наименование и номер"
                                   }
-                                ],
-                                []
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "PAGE",
-                          "id": 205,
-                          "name": "ИсторияВыполнения",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "История выполнения"
                                 }
-                              }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 159,
+                                  "name": "Наименование",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Description",
+                                  "items": []
+                                },
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 178,
+                                  "name": "Номер",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Number",
+                                  "items": []
+                                }
+                              ],
+                              []
                             ]
                           },
-                          "dataPath": "",
-                          "items": [
-                            {
-                              "type": "INPUT_FIELD",
-                              "id": 126,
-                              "name": "РезультатВыполнения",
-                              "title": {
-                                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                              },
-                              "dataPath": "ЗаданиеРезультатВыполнения",
-                              "items": []
-                            }
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 131,
-                    "name": "ГруппаСостояние",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
-                    },
-                    "dataPath": "",
-                    "items": []
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 27,
-                    "name": "ГруппаРезультат",
-                    "title": {
-                      "content": [
-                        {
-                          "default": {
-                            "tag": 2
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 18,
+                            "name": "Содержание",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
+                            },
+                            "dataPath": "ЗаданиеСодержание",
+                            "items": []
                           },
-                          "int": 1,
-                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                            "langKey": "ru",
-                            "value": "Результат выполнения задания:"
+                          {
+                            "type": "LABEL_FIELD",
+                            "id": 132,
+                            "name": "Предмет",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
+                            },
+                            "dataPath": "ПредметСтрокой",
+                            "items": []
+                          },
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 273,
+                            "name": "ГруппаПараметрыЗадачи",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Параметры задачи"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 265,
+                                  "name": "ГруппаИсполнитель",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 180,
+                                        "name": "Важность",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Важность",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 175,
+                                        "name": "СрокИсполнения",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.СрокИсполнения",
+                                        "items": []
+                                      }
+                                    ],
+                                    []
+                                  ]
+                                },
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 271,
+                                  "name": "ГруппаПраво",
+                                  "title": {
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Право"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 170,
+                                        "name": "Исполнитель",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/synonym"
+                                        },
+                                        "dataPath": "Исполнитель",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 168,
+                                        "name": "Автор",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Автор",
+                                        "items": []
+                                      }
+                                    ],
+                                    []
+                                  ]
+                                }
+                              ],
+                              []
+                            ]
                           }
-                        }
+                        ],
+                        []
                       ]
                     },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "INPUT_FIELD",
-                          "id": 78,
-                          "name": "ОписаниеРезультата",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                    {
+                      "type": "PAGE",
+                      "id": 263,
+                      "name": "СтраницаРезультатВыполнения",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Результат"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 78,
+                            "name": "ОписаниеРезультата",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                            },
+                            "dataPath": "Объект.РезультатВыполнения",
+                            "items": []
                           },
-                          "dataPath": "Объект.РезультатВыполнения",
-                          "items": []
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 54,
-                          "name": "ГруппаВыполненоДата",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Выполнено дата"
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 275,
+                            "name": "ГруппаДатыИсполнения",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Даты исполнения"
+                                  }
                                 }
-                              }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 55,
+                                  "name": "ДатаИсполнения",
+                                  "title": {
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Дата проверки"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "dataPath": "Объект.ДатаИсполнения",
+                                  "items": []
+                                },
+                                {
+                                  "type": "LABEL_FIELD",
+                                  "id": 183,
+                                  "name": "СрокНачалаИсполнения",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.ДатаНачала",
+                                  "items": []
+                                }
+                              ],
+                              []
                             ]
+                          }
+                        ],
+                        []
+                      ]
+                    },
+                    {
+                      "type": "PAGE",
+                      "id": 226,
+                      "name": "ИсторияВыполнения",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "История выполнения"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 126,
+                            "name": "РезультатВыполнения",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                            },
+                            "dataPath": "ЗаданиеРезультатВыполнения",
+                            "items": []
                           },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "USUAL_BUTTON",
-                                "id": 123,
-                                "name": "Выполнено",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
-                                },
-                                "dataPath": "",
-                                "items": []
-                              },
-                              {
-                                "type": "USUAL_BUTTON",
-                                "id": 137,
-                                "name": "Отклонено",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Отменено"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 55,
-                                "name": "ДатаИсполнения",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Дата"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "Объект.ДатаИсполнения",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 146,
-                                "name": "ДатаИсполненияВремя",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаИсполнения",
-                                "items": []
-                              },
-                              {
-                                "type": "HYPERLINK",
-                                "id": 199,
-                                "name": "ИзменитьЗадание",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Изменить задание"
-                                      }
-                                    }
-                                  ]
-                                },
-                                "dataPath": "",
-                                "items": []
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  }
-                ],
-                []
-              ]
-            }
+                          {
+                            "type": "LABEL_FIELD",
+                            "id": 173,
+                            "name": "Дата",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                            },
+                            "dataPath": "Объект.Date",
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
           ],
           "attributes": [
             [
@@ -2538,16 +2375,6 @@
                 }
               },
               {
-                "id": 7,
-                "name": "ЗаданиеВыполнено",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                },
-                "type": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
-                }
-              },
-              {
                 "id": 6,
                 "name": "ЗаданиеСодержание",
                 "title": {
@@ -2555,6 +2382,16 @@
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
+                }
+              },
+              {
+                "id": 7,
+                "name": "ЗаданиеВыполнено",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
                 }
               },
               {
@@ -2576,6 +2413,26 @@
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
+                }
+              },
+              {
+                "id": 9,
+                "name": "ЗаданиеПодтверждено",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
+                }
+              },
+              {
+                "id": 10,
+                "name": "ЗаданиеСсылка",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type"
                 }
               },
               {
@@ -2619,12 +2476,12 @@
         ]
       },
       {
-        "uuid": "3e2f2ae1-c809-43fc-8276-b0a16a92858c",
-        "name": "ДействиеПроверить",
+        "uuid": "f0620d5a-e1fe-419f-af37-e0f462f97e8d",
+        "name": "ДействиеВыполнить",
         "mdoReference": {
           "type": "FORM",
-          "mdoRef": "BusinessProcess.Задание.Form.ДействиеПроверить",
-          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеПроверить"
+          "mdoRef": "BusinessProcess.Задание.Form.ДействиеВыполнить",
+          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ДействиеВыполнить"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -2637,7 +2494,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                 "langKey": "ru",
-                "value": "Действие проверить"
+                "value": "Действие выполнить"
               }
             }
           ]
@@ -2646,7 +2503,7 @@
         "modules": [
           {
             "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/Де_ствиеПроверить/Module.bsl",
+            "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/Де_ствиеВыполнить/Module.bsl",
             "owner": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
             },
@@ -2675,426 +2532,329 @@
             []
           ],
           "items": [
-            {
-              "type": "USUAL_GROUP",
-              "id": 234,
-              "name": "Документ",
-              "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+            [
+              {
+                "type": "COMMAND_BAR",
+                "id": 232,
+                "name": "ГруппаКоманднаяПанель",
+                "title": {
+                  "content": [
+                    {
+                      "default": {
+                        "tag": 2
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                        "langKey": "ru",
+                        "value": "Командная панель"
+                      }
+                    }
+                  ]
+                },
+                "dataPath": "",
+                "items": []
               },
-              "dataPath": "",
-              "items": [
-                [
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 134,
-                    "name": "ГруппаСостояние",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
-                    },
-                    "dataPath": "",
-                    "items": []
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 165,
-                    "name": "Шапка",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 166,
-                          "name": "ГруппыШапки",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 167,
-                                "name": "ГруппаАвторИсполнитель",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 168,
-                                      "name": "Автор",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Автор",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 170,
-                                      "name": "Исполнитель",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/synonym"
-                                      },
-                                      "dataPath": "Исполнитель",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 172,
-                                "name": "ГруппаДатаИСрок",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 173,
-                                      "name": "Дата",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Date",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 175,
-                                      "name": "СрокИсполнения",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.СрокИсполнения",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 177,
-                                "name": "ГруппаНомерИВажность",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 178,
-                                      "name": "Номер",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Number",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 180,
-                                      "name": "Важность",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                      },
-                                      "dataPath": "Объект.Важность",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              }
-                            ],
-                            []
-                          ]
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 182,
-                          "name": "ГруппаПриоритет",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 183,
-                                "name": "СрокНачалаИсполнения",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаНачала",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 185,
-                                "name": "СрокНачалаИсполненияВремя",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаНачала",
-                                "items": []
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "PAGES",
-                    "id": 222,
-                    "name": "Страницы",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "PAGE",
-                          "id": 224,
-                          "name": "Главное",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                          },
-                          "dataPath": "",
-                          "items": [
-                            {
-                              "type": "USUAL_GROUP",
-                              "id": 94,
-                              "name": "ГруппаСодержание",
-                              "title": {
-                                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                              },
-                              "dataPath": "",
-                              "items": [
-                                [
-                                  {
-                                    "type": "INPUT_FIELD",
-                                    "id": 159,
-                                    "name": "Наименование",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                    },
-                                    "dataPath": "Объект.Description",
-                                    "items": []
+              {
+                "type": "USUAL_GROUP",
+                "id": 131,
+                "name": "ГруппаСостояние",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
+                },
+                "dataPath": "",
+                "items": []
+              },
+              {
+                "type": "PAGES",
+                "id": 201,
+                "name": "Страницы",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                },
+                "dataPath": "",
+                "items": [
+                  [
+                    {
+                      "type": "PAGE",
+                      "id": 226,
+                      "name": "ГруппаОЗадаче",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 244,
+                            "name": "ГруппаНаименованиеИНомер",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 156,
+                                  "name": "Наименование",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                                   },
-                                  {
-                                    "type": "LABEL_FIELD",
-                                    "id": 132,
-                                    "name": "Предмет",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
-                                    },
-                                    "dataPath": "ПредметСтрокой",
-                                    "items": []
-                                  },
-                                  {
-                                    "type": "INPUT_FIELD",
-                                    "id": 18,
-                                    "name": "Содержание",
-                                    "title": {
-                                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                                    },
-                                    "dataPath": "ЗаданиеСодержание",
-                                    "items": []
-                                  }
-                                ],
-                                []
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "PAGE",
-                          "id": 226,
-                          "name": "ИсторияВыполнения",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                          },
-                          "dataPath": "",
-                          "items": [
-                            {
-                              "type": "INPUT_FIELD",
-                              "id": 126,
-                              "name": "РезультатВыполнения",
-                              "title": {
-                                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                              },
-                              "dataPath": "ЗаданиеРезультатВыполнения",
-                              "items": []
-                            }
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 27,
-                    "name": "ГруппаРезультат",
-                    "title": {
-                      "content": [
-                        {
-                          "default": {
-                            "tag": 2
-                          },
-                          "int": 1,
-                          "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                            "langKey": "ru",
-                            "value": "Результат проверки задания:"
-                          }
-                        }
-                      ]
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "INPUT_FIELD",
-                          "id": 78,
-                          "name": "ОписаниеРезультата",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                          },
-                          "dataPath": "Объект.РезультатВыполнения",
-                          "items": []
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 54,
-                          "name": "ГруппаВыполненаДата",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
+                                  "dataPath": "Объект.Description",
+                                  "items": []
                                 },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Выполнена дата"
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 149,
+                                  "name": "Номер",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Number",
+                                  "items": []
                                 }
-                              }
+                              ],
+                              []
                             ]
                           },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "USUAL_BUTTON",
-                                "id": 123,
-                                "name": "Выполнено",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
-                                },
-                                "dataPath": "",
-                                "items": []
-                              },
-                              {
-                                "type": "USUAL_BUTTON",
-                                "id": 147,
-                                "name": "Отменено",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                                },
-                                "dataPath": "",
-                                "items": []
-                              },
-                              {
-                                "type": "USUAL_BUTTON",
-                                "id": 124,
-                                "name": "Возвращено",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
-                                      },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Возвращено исполнителю"
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 18,
+                            "name": "Содержание",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
+                            },
+                            "dataPath": "ЗаданиеСодержание",
+                            "items": []
+                          },
+                          {
+                            "type": "LABEL_FIELD",
+                            "id": 129,
+                            "name": "Предмет",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
+                            },
+                            "dataPath": "ПредметСтрокой",
+                            "items": []
+                          },
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 248,
+                            "name": "ГруппаПараметрыЗадачи",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 246,
+                                  "name": "ГруппаЛево",
+                                  "title": {
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Лево"
+                                        }
                                       }
-                                    }
+                                    ]
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 16,
+                                        "name": "Важность",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Важность",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 163,
+                                        "name": "Исполнитель",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
+                                        },
+                                        "dataPath": "Исполнитель",
+                                        "items": []
+                                      }
+                                    ],
+                                    []
                                   ]
                                 },
-                                "dataPath": "",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 55,
-                                "name": "ДатаИсполнения",
-                                "title": {
-                                  "content": [
-                                    {
-                                      "default": {
-                                        "tag": 2
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 242,
+                                  "name": "ГруппаПраво",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 12,
+                                        "name": "СрокИсполнения",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.СрокИсполнения",
+                                        "items": []
                                       },
-                                      "int": 1,
-                                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                        "langKey": "ru",
-                                        "value": "Дата проверки"
+                                      {
+                                        "type": "LABEL_FIELD",
+                                        "id": 161,
+                                        "name": "Автор",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Автор",
+                                        "items": []
                                       }
-                                    }
+                                    ],
+                                    []
                                   ]
+                                }
+                              ],
+                              []
+                            ]
+                          }
+                        ],
+                        []
+                      ]
+                    },
+                    {
+                      "type": "PAGE",
+                      "id": 240,
+                      "name": "СтраницаРезультатВыполнения",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 78,
+                            "name": "ОписаниеРезультата",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/synonym"
+                            },
+                            "dataPath": "Объект.РезультатВыполнения",
+                            "items": []
+                          },
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 55,
+                            "name": "ДатаИсполнения",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Дата выполнения"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "Объект.ДатаИсполнения",
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    },
+                    {
+                      "type": "PAGE",
+                      "id": 205,
+                      "name": "СтраницаИсторияВыполнения",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 126,
+                            "name": "РезультатВыполнения",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                            },
+                            "dataPath": "ЗаданиеРезультатВыполнения",
+                            "items": []
+                          },
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 252,
+                            "name": "ГруппаДатыВыполнения",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Даты выполнения"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 119,
+                                  "name": "СрокНачалаИсполнения",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.ДатаНачала",
+                                  "items": []
                                 },
-                                "dataPath": "Объект.ДатаИсполнения",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 161,
-                                "name": "ДатаИсполненияВремя",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.ДатаИсполнения",
-                                "items": []
-                              },
-                              {
-                                "type": "HYPERLINK",
-                                "id": 130,
-                                "name": "ИзменитьЗадание",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]/title"
-                                },
-                                "dataPath": "",
-                                "items": []
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  }
-                ],
-                []
-              ]
-            }
+                                {
+                                  "type": "LABEL_FIELD",
+                                  "id": 152,
+                                  "name": "Дата",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Date",
+                                  "items": []
+                                }
+                              ],
+                              []
+                            ]
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
           ],
           "attributes": [
             [
@@ -3139,16 +2899,6 @@
                 }
               },
               {
-                "id": 6,
-                "name": "ЗаданиеСодержание",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                },
-                "type": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
-                }
-              },
-              {
                 "id": 7,
                 "name": "ЗаданиеВыполнено",
                 "title": {
@@ -3156,6 +2906,16 @@
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
+                }
+              },
+              {
+                "id": 6,
+                "name": "ЗаданиеСодержание",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
+                },
+                "type": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[13]/type"
                 }
               },
               {
@@ -3169,33 +2929,13 @@
                 }
               },
               {
-                "id": 9,
-                "name": "ЗаданиеПодтверждено",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                },
-                "type": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
-                }
-              },
-              {
-                "id": 10,
-                "name": "ЗаданиеСсылка",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                },
-                "type": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type"
-                }
-              },
-              {
                 "id": 4,
                 "name": "Исполнитель",
                 "title": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
                 },
                 "type": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]/type"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]/type"
                 }
               }
             ],
@@ -3274,258 +3014,20 @@
             []
           ],
           "items": [
-            {
-              "type": "USUAL_GROUP",
-              "id": 151,
-              "name": "Документ",
-              "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-              },
-              "dataPath": "",
-              "items": [
-                [
+            [
+              {
+                "type": "USUAL_GROUP",
+                "id": 92,
+                "name": "ГруппаСостояние",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
+                },
+                "dataPath": "",
+                "items": [
                   {
                     "type": "LABEL_FIELD",
-                    "id": 99,
-                    "name": "ГлавнаяЗадача",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/synonym"
-                    },
-                    "dataPath": "ГлавнаяЗадачаСтрокой",
-                    "items": []
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 92,
-                    "name": "ГруппаСостояние",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[15]/synonym"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "DECORATION",
-                          "id": 93,
-                          "name": "ДекорацияЗначок",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                          },
-                          "dataPath": "",
-                          "items": []
-                        },
-                        {
-                          "type": "LABEL_FIELD",
-                          "id": 155,
-                          "name": "ИнфоНадписьЗаголовок",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Инфо надпись заголовок"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "ИнфоНадписьЗаголовок",
-                          "items": []
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 145,
-                    "name": "Шапка",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 27,
-                          "name": "ГруппаСрокВажность",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Срок важность"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 19,
-                                "name": "ЗаголовокЗадания",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.Наименование",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 57,
-                                "name": "Важность",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.Важность",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 103,
-                                "name": "Номер",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.Number",
-                                "items": []
-                              }
-                            ],
-                            []
-                          ]
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 67,
-                          "name": "ГруппаИсполнение",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Исполнение"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 69,
-                                "name": "Исполнитель",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.Исполнитель",
-                                "items": []
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 147,
-                                "name": "ГруппаСрокИсполнения",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[16]/synonym"
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 21,
-                                      "name": "СрокИсполнения",
-                                      "title": {
-                                        "content": [
-                                          {
-                                            "default": {
-                                              "tag": 2
-                                            },
-                                            "int": 1,
-                                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                              "langKey": "ru",
-                                              "value": "Срок"
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      "dataPath": "Объект.СрокИсполнения",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 88,
-                                      "name": "СрокИсполненияВремя",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                                      },
-                                      "dataPath": "Объект.СрокИсполнения",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 75,
-                    "name": "ГруппаСодержание",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "LABEL_FIELD",
-                          "id": 86,
-                          "name": "Предмет",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
-                          },
-                          "dataPath": "ПредметСтрокой",
-                          "items": []
-                        },
-                        {
-                          "type": "INPUT_FIELD",
-                          "id": 17,
-                          "name": "Содержание",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                          },
-                          "dataPath": "Объект.Содержание",
-                          "items": []
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 56,
-                    "name": "ГруппаПроверка",
+                    "id": 155,
+                    "name": "ИнфоНадписьЗаголовок",
                     "title": {
                       "content": [
                         {
@@ -3535,146 +3037,334 @@
                           "int": 1,
                           "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                             "langKey": "ru",
-                            "value": "Проверка"
+                            "value": "Инфо надпись заголовок"
                           }
                         }
                       ]
                     },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "CHECK_BOX_FIELD",
-                          "id": 54,
-                          "name": "НаПроверке",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Проверить выполнение:"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "Объект.НаПроверке",
-                          "items": []
-                        },
-                        {
-                          "type": "USUAL_GROUP",
-                          "id": 28,
-                          "name": "ГруппаПроверяющий",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[12]/synonym"
-                          },
-                          "dataPath": "",
-                          "items": [
-                            [
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 14,
-                                "name": "Проверяющий",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                                },
-                                "dataPath": "Объект.Проверяющий",
-                                "items": []
-                              },
-                              {
-                                "type": "USUAL_GROUP",
-                                "id": 149,
-                                "name": "ГруппаСрокПроверки",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[17]/synonym"
-                                },
-                                "dataPath": "",
-                                "items": [
-                                  [
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 23,
-                                      "name": "СрокПроверки",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                                      },
-                                      "dataPath": "Объект.СрокПроверки",
-                                      "items": []
-                                    },
-                                    {
-                                      "type": "INPUT_FIELD",
-                                      "id": 90,
-                                      "name": "СрокПроверкиВремя",
-                                      "title": {
-                                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                                      },
-                                      "dataPath": "Объект.СрокПроверки",
-                                      "items": []
-                                    }
-                                  ],
-                                  []
-                                ]
-                              }
-                            ],
-                            []
-                          ]
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 81,
-                    "name": "ГруппаОбщиеСведения",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
-                    },
-                    "dataPath": "",
-                    "items": [
-                      [
-                        {
-                          "type": "INPUT_FIELD",
-                          "id": 79,
-                          "name": "Автор",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                          },
-                          "dataPath": "Объект.Автор",
-                          "items": []
-                        },
-                        {
-                          "type": "INPUT_FIELD",
-                          "id": 97,
-                          "name": "Дата",
-                          "title": {
-                            "content": [
-                              {
-                                "default": {
-                                  "tag": 2
-                                },
-                                "int": 1,
-                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                  "langKey": "ru",
-                                  "value": "Начато"
-                                }
-                              }
-                            ]
-                          },
-                          "dataPath": "Объект.Date",
-                          "items": []
-                        }
-                      ],
-                      []
-                    ]
+                    "dataPath": "ИнфоНадписьЗаголовок",
+                    "items": []
                   }
-                ],
-                []
-              ]
-            }
+                ]
+              },
+              {
+                "type": "PAGES",
+                "id": 182,
+                "name": "Страницы",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                },
+                "dataPath": "",
+                "items": [
+                  [
+                    {
+                      "type": "PAGE",
+                      "id": 184,
+                      "name": "СтраницаОписаниеЗадания",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Описание задания"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 194,
+                            "name": "ГруппаЗаголовок",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Группа"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 19,
+                                  "name": "ЗаголовокЗадания",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Наименование",
+                                  "items": []
+                                },
+                                {
+                                  "type": "INPUT_FIELD",
+                                  "id": 103,
+                                  "name": "Номер",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                  },
+                                  "dataPath": "Объект.Number",
+                                  "items": []
+                                }
+                              ],
+                              []
+                            ]
+                          },
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 17,
+                            "name": "Содержание",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
+                            },
+                            "dataPath": "Объект.Содержание",
+                            "items": []
+                          },
+                          {
+                            "type": "USUAL_GROUP",
+                            "id": 200,
+                            "name": "ГруппаОсновнаяИнформация",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Основная информация"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "",
+                            "items": [
+                              [
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 176,
+                                  "name": "ГруппаИсполнитель",
+                                  "title": {
+                                    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]/synonym"
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 69,
+                                        "name": "Исполнитель",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Исполнитель",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 21,
+                                        "name": "СрокИсполнения",
+                                        "title": {
+                                          "content": [
+                                            {
+                                              "default": {
+                                                "tag": 2
+                                              },
+                                              "int": 1,
+                                              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                                "langKey": "ru",
+                                                "value": "Срок выполнения"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "dataPath": "Объект.СрокИсполнения",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 57,
+                                        "name": "Важность",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Важность",
+                                        "items": []
+                                      }
+                                    ],
+                                    []
+                                  ]
+                                },
+                                {
+                                  "type": "CHECK_BOX_FIELD",
+                                  "id": 54,
+                                  "name": "НаПроверке",
+                                  "title": {
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Проверить выполнение:"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "dataPath": "Объект.НаПроверке",
+                                  "items": []
+                                },
+                                {
+                                  "type": "USUAL_GROUP",
+                                  "id": 198,
+                                  "name": "ГруппаПроверка",
+                                  "title": {
+                                    "content": [
+                                      {
+                                        "default": {
+                                          "tag": 2
+                                        },
+                                        "int": 1,
+                                        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                          "langKey": "ru",
+                                          "value": "Проверка"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "dataPath": "",
+                                  "items": [
+                                    [
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 14,
+                                        "name": "Проверяющий",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.Проверяющий",
+                                        "items": []
+                                      },
+                                      {
+                                        "type": "INPUT_FIELD",
+                                        "id": 23,
+                                        "name": "СрокПроверки",
+                                        "title": {
+                                          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                                        },
+                                        "dataPath": "Объект.СрокПроверки",
+                                        "items": []
+                                      }
+                                    ],
+                                    []
+                                  ]
+                                }
+                              ],
+                              []
+                            ]
+                          }
+                        ],
+                        []
+                      ]
+                    },
+                    {
+                      "type": "PAGE",
+                      "id": 190,
+                      "name": "СтраницаДополнительно",
+                      "title": {
+                        "content": [
+                          {
+                            "default": {
+                              "tag": 2
+                            },
+                            "int": 1,
+                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                              "langKey": "ru",
+                              "value": "Дополнительно"
+                            }
+                          }
+                        ]
+                      },
+                      "dataPath": "",
+                      "items": [
+                        [
+                          {
+                            "type": "LABEL_FIELD",
+                            "id": 86,
+                            "name": "Предмет",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[11]/synonym"
+                            },
+                            "dataPath": "ПредметСтрокой",
+                            "items": []
+                          },
+                          {
+                            "type": "LABEL_FIELD",
+                            "id": 99,
+                            "name": "ГлавнаяЗадача",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]/synonym"
+                            },
+                            "dataPath": "ГлавнаяЗадачаСтрокой",
+                            "items": []
+                          },
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 79,
+                            "name": "Автор",
+                            "title": {
+                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                            },
+                            "dataPath": "Объект.Автор",
+                            "items": []
+                          },
+                          {
+                            "type": "INPUT_FIELD",
+                            "id": 97,
+                            "name": "Дата",
+                            "title": {
+                              "content": [
+                                {
+                                  "default": {
+                                    "tag": 2
+                                  },
+                                  "int": 1,
+                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                    "langKey": "ru",
+                                    "value": "Начато"
+                                  }
+                                }
+                              ]
+                            },
+                            "dataPath": "Объект.Date",
+                            "items": []
+                          }
+                        ],
+                        []
+                      ]
+                    }
+                  ],
+                  []
+                ]
+              }
+            ],
+            []
           ],
           "attributes": [
             [
@@ -3739,7 +3429,7 @@
                 "id": 5,
                 "name": "ИнфоНадписьЗаголовок",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                 },
                 "type": {
                   "types": [
@@ -3865,6 +3555,10 @@
           "handlers": [
             [
               {
+                "event": "OnLoadDataFromSettingsAtServer",
+                "name": "ПриЗагрузкеДанныхИзНастроекНаСервере"
+              },
+              {
                 "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[3]"
               },
               {
@@ -3933,73 +3627,6 @@
               },
               {
                 "type": "USUAL_GROUP",
-                "id": 50,
-                "name": "Флажки",
-                "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Флажки"
-                      }
-                    }
-                  ]
-                },
-                "dataPath": "",
-                "items": [
-                  [
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 22,
-                      "name": "ПоказыватьЗавершенныеЗадания",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Показывать завершенные задания"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "ПоказыватьЗавершенныеЗадания",
-                      "items": []
-                    },
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 48,
-                      "name": "ПоказыватьОстановленные",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Показывать остановленные"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "ПоказыватьОстановленные",
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "type": "USUAL_GROUP",
                 "id": 92,
                 "name": "ГруппаПользовательскихНастроек",
                 "title": {
@@ -4018,83 +3645,6 @@
                 },
                 "dataPath": "",
                 "items": []
-              },
-              {
-                "type": "COMMAND_BAR",
-                "id": 53,
-                "name": "КоманднаяПанель",
-                "title": {
-                  "content": [
-                    {
-                      "default": {
-                        "tag": 2
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                        "langKey": "ru",
-                        "value": "Командная панель"
-                      }
-                    }
-                  ]
-                },
-                "dataPath": "",
-                "items": [
-                  [
-                    {
-                      "type": "BUTTON",
-                      "id": 94,
-                      "name": "ФормаОбщаяКомандаКартаМаршрутаБизнесПроцесса",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                      },
-                      "dataPath": "Items.Список.CurrentData.Ref",
-                      "items": []
-                    },
-                    {
-                      "type": "BUTTON",
-                      "id": 51,
-                      "name": "ФормаОстановить",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Остановить"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    },
-                    {
-                      "type": "BUTTON",
-                      "id": 52,
-                      "name": "ФормаПродолжитьБизнесПроцесс",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Продолжить"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
               },
               {
                 "type": "TABLE",
@@ -4139,6 +3689,36 @@
                     },
                     {
                       "type": "LABEL_FIELD",
+                      "id": 26,
+                      "name": "Наименование",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                      },
+                      "dataPath": "Список.Наименование",
+                      "items": []
+                    },
+                    {
+                      "type": "LABEL_FIELD",
+                      "id": 32,
+                      "name": "Предмет",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                      },
+                      "dataPath": "Список.Предмет",
+                      "items": []
+                    },
+                    {
+                      "type": "LABEL_FIELD",
+                      "id": 28,
+                      "name": "Содержание",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                      },
+                      "dataPath": "Список.Содержание",
+                      "items": []
+                    },
+                    {
+                      "type": "LABEL_FIELD",
                       "id": 6,
                       "name": "Дата",
                       "title": {
@@ -4146,50 +3726,6 @@
                       },
                       "dataPath": "Список.Date",
                       "items": []
-                    },
-                    {
-                      "type": "COLUMN_GROUP",
-                      "id": 54,
-                      "name": "ГруппаСодержание",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[14]/synonym"
-                      },
-                      "dataPath": "",
-                      "items": [
-                        [
-                          {
-                            "type": "LABEL_FIELD",
-                            "id": 26,
-                            "name": "Наименование",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "Список.Наименование",
-                            "items": []
-                          },
-                          {
-                            "type": "LABEL_FIELD",
-                            "id": 32,
-                            "name": "Предмет",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "Список.Предмет",
-                            "items": []
-                          },
-                          {
-                            "type": "LABEL_FIELD",
-                            "id": 28,
-                            "name": "Содержание",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "Список.Содержание",
-                            "items": []
-                          }
-                        ],
-                        []
-                      ]
                     },
                     {
                       "type": "LABEL_FIELD",
@@ -4262,38 +3798,24 @@
                       "items": []
                     },
                     {
-                      "type": "COLUMN_GROUP",
-                      "id": 57,
-                      "name": "ГруппаПроверка",
+                      "type": "CHECK_BOX_FIELD",
+                      "id": 55,
+                      "name": "НаПроверке",
                       "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]/synonym"
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                       },
-                      "dataPath": "",
-                      "items": [
-                        [
-                          {
-                            "type": "CHECK_BOX_FIELD",
-                            "id": 55,
-                            "name": "НаПроверке",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "Список.НаПроверке",
-                            "items": []
-                          },
-                          {
-                            "type": "LABEL_FIELD",
-                            "id": 40,
-                            "name": "Проверяющий",
-                            "title": {
-                              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-                            },
-                            "dataPath": "Список.Проверяющий",
-                            "items": []
-                          }
-                        ],
-                        []
-                      ]
+                      "dataPath": "Список.НаПроверке",
+                      "items": []
+                    },
+                    {
+                      "type": "LABEL_FIELD",
+                      "id": 40,
+                      "name": "Проверяющий",
+                      "title": {
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+                      },
+                      "dataPath": "Список.Проверяющий",
+                      "items": []
                     },
                     {
                       "type": "LABEL_FIELD",
@@ -4368,7 +3890,7 @@
                 "id": 5,
                 "name": "ПоказыватьЗавершенныеЗадания",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
@@ -4378,7 +3900,7 @@
                 "id": 6,
                 "name": "ПоказыватьОстановленные",
                 "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
                 },
                 "type": {
                   "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"

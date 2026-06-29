@@ -212,51 +212,9 @@
                 "items": [
                   [
                     {
-                      "type": "USUAL_BUTTON",
-                      "id": 32,
-                      "name": "ФормаЗагрузитьКурсыВалют",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Загрузить и закрыть"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    },
-                    {
-                      "type": "COMMAND_BAR",
-                      "id": 42,
-                      "name": "КоманднаяПанельЛевая",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Командная панель левая"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "",
-                      "items": []
-                    },
-                    {
                       "type": "INPUT_FIELD",
-                      "id": 2,
-                      "name": "НачалоПериода",
+                      "id": 106,
+                      "name": "Период",
                       "title": {
                         "content": [
                           {
@@ -266,18 +224,18 @@
                             "int": 1,
                             "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
-                              "value": "С"
+                              "value": "Период"
                             }
                           }
                         ]
                       },
-                      "dataPath": "Объект.НачалоПериодаЗагрузки",
+                      "dataPath": "Период",
                       "items": []
                     },
                     {
-                      "type": "INPUT_FIELD",
-                      "id": 3,
-                      "name": "ОкончаниеПериода",
+                      "type": "USUAL_GROUP",
+                      "id": 145,
+                      "name": "КоманднаяПанельПраво",
                       "title": {
                         "content": [
                           {
@@ -287,100 +245,34 @@
                             "int": 1,
                             "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
                               "langKey": "ru",
-                              "value": "По"
-                            }
-                          }
-                        ]
-                      },
-                      "dataPath": "Объект.ОкончаниеПериодаЗагрузки",
-                      "items": []
-                    },
-                    {
-                      "type": "COMMAND_BAR",
-                      "id": 44,
-                      "name": "КоманднаяПанельПравая",
-                      "title": {
-                        "content": [
-                          {
-                            "default": {
-                              "tag": 2
-                            },
-                            "int": 1,
-                            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                              "langKey": "ru",
-                              "value": "Командная панель правая"
+                              "value": "Командная панель право"
                             }
                           }
                         ]
                       },
                       "dataPath": "",
                       "items": [
-                        [
-                          {
-                            "type": "COMMAND_BAR_BUTTON",
-                            "id": 35,
-                            "name": "ФормаВыбратьВсеВалюты",
-                            "title": {
-                              "content": [
-                                {
-                                  "default": {
-                                    "tag": 2
-                                  },
-                                  "int": 1,
-                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                    "langKey": "ru",
-                                    "value": "Выбрать все валюты"
-                                  }
+                        {
+                          "type": "SEARCH_STRING_ADDITION",
+                          "id": 87,
+                          "name": "СтрокаПоиска",
+                          "title": {
+                            "content": [
+                              {
+                                "default": {
+                                  "tag": 2
+                                },
+                                "int": 1,
+                                "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                                  "langKey": "ru",
+                                  "value": "Поиск"
                                 }
-                              ]
-                            },
-                            "dataPath": "",
-                            "items": []
+                              }
+                            ]
                           },
-                          {
-                            "type": "COMMAND_BAR_BUTTON",
-                            "id": 36,
-                            "name": "ФормаСнятьВыбор",
-                            "title": {
-                              "content": [
-                                {
-                                  "default": {
-                                    "tag": 2
-                                  },
-                                  "int": 1,
-                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                    "langKey": "ru",
-                                    "value": "Снять выбор"
-                                  }
-                                }
-                              ]
-                            },
-                            "dataPath": "",
-                            "items": []
-                          },
-                          {
-                            "type": "SEARCH_STRING_ADDITION",
-                            "id": 87,
-                            "name": "СтрокаПоиска",
-                            "title": {
-                              "content": [
-                                {
-                                  "default": {
-                                    "tag": 2
-                                  },
-                                  "int": 1,
-                                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                                    "langKey": "ru",
-                                    "value": "Поиск"
-                                  }
-                                }
-                              ]
-                            },
-                            "dataPath": "",
-                            "items": []
-                          }
-                        ],
-                        []
+                          "dataPath": "",
+                          "items": []
+                        }
                       ]
                     }
                   ],
@@ -449,16 +341,6 @@
                           "dataPath": "Объект.СписокВалют",
                           "items": [
                             [
-                              {
-                                "type": "CHECK_BOX_FIELD",
-                                "id": 33,
-                                "name": "Загружать",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                                },
-                                "dataPath": "Объект.СписокВалют.Загружать",
-                                "items": []
-                              },
                               {
                                 "type": "LABEL_FIELD",
                                 "id": 9,
@@ -550,16 +432,6 @@
                                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
                                 },
                                 "dataPath": "Объект.СписокВалют.Кратность",
-                                "items": []
-                              },
-                              {
-                                "type": "INPUT_FIELD",
-                                "id": 84,
-                                "name": "СписокВалютОтступ",
-                                "title": {
-                                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                                },
-                                "dataPath": "Объект.СписокВалют.Отступ",
                                 "items": []
                               }
                             ],
@@ -692,6 +564,26 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+                    }
+                  ],
+                  "composite": false,
+                  "qualifiers": []
+                }
+              },
+              {
+                "id": 3,
+                "name": "Период",
+                "title": {
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
+                },
+                "type": {
+                  "types": [
+                    {
+                      "default": {
+                        "tag": 4
+                      },
+                      "int": 1,
+                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "STANDARD_PERIOD"
                     }
                   ],
                   "composite": false,
@@ -905,6 +797,10 @@
             [
               {
                 "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler"
+              },
+              {
+                "event": "BeforeClose",
+                "name": "ПередЗакрытием"
               },
               {
                 "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
@@ -1559,7 +1455,7 @@
                     "id": 4,
                     "name": "КодВалюты",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
                     },
                     "dataPath": "Валюты.КодВалютыЦифровой",
                     "items": []
@@ -1569,7 +1465,7 @@
                     "id": 6,
                     "name": "КраткоеНаименование",
                     "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
+                      "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
                     },
                     "dataPath": "Валюты.КодВалютыБуквенный",
                     "items": []
@@ -1925,7 +1821,7 @@
             "objectBelonging": "OWN",
             "comment": "",
             "synonym": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
             },
             "supportVariant": "NOT_EDITABLE",
             "owner": {

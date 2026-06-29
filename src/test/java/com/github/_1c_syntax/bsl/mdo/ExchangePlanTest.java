@@ -60,12 +60,10 @@ class ExchangePlanTest {
   @CsvSource(
     {
       "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
-      "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
+      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы"
     }
   )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
+  void testSSL_3_1(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ExchangePlan.class);
 
@@ -83,5 +81,32 @@ class ExchangePlanTest {
     assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
     assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
     assertThat(exchangePlan.getContent()).hasSize(406);
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
+      "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
+    }
+  )
+  void testSSL_3_2(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ExchangePlan.class);
+
+    var exchangePlan = (ExchangePlan) mdo;
+    var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
+    var mdo2 = MdoReference.create("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы");
+    var mdo3 = MdoReference.create("Catalog.Справочник1");
+    assertThat(exchangePlan.contains(mdo1)).isTrue();
+    assertThat(exchangePlan.contains(mdo2)).isTrue();
+    assertThat(exchangePlan.contains(mdo3)).isFalse();
+
+    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
+    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
+    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
+    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
+    assertThat(exchangePlan.getContent()).hasSize(408);
   }
 }
