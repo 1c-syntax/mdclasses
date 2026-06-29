@@ -42,10 +42,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                  "nameEn": "StringQualifiers (10, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                    "nameEn": "StringQualifiers (10, Variable)"
+                  }
                 }
               }
             }
@@ -105,8 +108,11 @@
                 "scale": 0,
                 "nonNegative": false,
                 "description": {
-                  "nameRu": "КвалификаторыЧисла (10.0)",
-                  "nameEn": "NumberQualifiers (10.0)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыЧисла (10.0)",
+                    "nameEn": "NumberQualifiers (10.0)"
+                  }
                 }
               }
             }
@@ -212,10 +218,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                  "nameEn": "StringQualifiers (0, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                    "nameEn": "StringQualifiers (0, Variable)"
+                  }
                 }
               }
             }
@@ -255,17 +264,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type"
         },
         "fullName": {
           "nameRu": "Предопределенный",
@@ -354,7 +353,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type"
         },
         "fullName": {
           "nameRu": "ПометкаУдаления",
@@ -390,7 +389,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/type"
         },
         "fullName": {
           "nameRu": "ЭтоГруппа",
@@ -426,19 +425,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type"
         },
         "fullName": {
           "nameRu": "Родитель",
@@ -492,11 +479,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 25,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
-                  "nameEn": "StringQualifiers (25, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -553,11 +537,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 9,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (9, Переменная)",
-                  "nameEn": "StringQualifiers (9, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -1151,17 +1132,7 @@
                 "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
               },
               "type": {
-                "types": [
-                  {
-                    "default": {
-                      "tag": 4
-                    },
-                    "int": 1,
-                    "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
-                  }
-                ],
-                "composite": false,
-                "qualifiers": []
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type"
               }
             }
           ]
@@ -1186,15 +1157,15 @@
   "mdoType": "CATALOG",
   "moduleTypes": [
     [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ObjectModule.bin"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/Catalogs/Справочник1/Ext/ObjectModule.bin"
       ]
     ]
   ],
@@ -1323,31 +1294,7 @@
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
             "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                }
-              ],
-              "composite": false,
-              "qualifiers": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                    "length": 10,
-                    "allowedLength": "VARIABLE",
-                    "description": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                    }
-                  }
-                }
-              ]
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/type"
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -1382,32 +1329,7 @@
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
             "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-                }
-              ],
-              "composite": false,
-              "qualifiers": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-                    "precision": 10,
-                    "scale": 0,
-                    "nonNegative": false,
-                    "description": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
-                    }
-                  }
-                }
-              ]
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type"
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -1459,10 +1381,7 @@
                     "precision": 5,
                     "scale": 0,
                     "nonNegative": false,
-                    "description": {
-                      "nameRu": "КвалификаторыЧисла (5.0)",
-                      "nameEn": "NumberQualifiers (5.0)"
-                    }
+                    "description": {}
                   }
                 }
               ]

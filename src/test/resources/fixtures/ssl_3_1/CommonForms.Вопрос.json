@@ -222,10 +222,7 @@
                   "precision": 5,
                   "scale": 0,
                   "nonNegative": true,
-                  "description": {
-                    "nameRu": "КвалификаторыЧисла (5.0 неотр)",
-                    "nameEn": "NumberQualifiers (5.0 nonneg)"
-                  }
+                  "description": {}
                 }
               }
             ]
@@ -256,10 +253,13 @@
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 0,
-                  "allowedLength": "VARIABLE",
+                  "allowedLength": 0,
                   "description": {
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
+                    "value": {
+                      "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                      "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                      "nameEn": "StringQualifiers (0, Variable)"
+                    }
                   }
                 }
               }
@@ -273,31 +273,7 @@
             "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
           },
           "type": {
-            "types": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-              }
-            ],
-            "composite": false,
-            "qualifiers": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                  "length": 0,
-                  "allowedLength": "VARIABLE",
-                  "description": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                  }
-                }
-              }
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
           }
         },
         {
@@ -307,31 +283,7 @@
             "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
           },
           "type": {
-            "types": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-              }
-            ],
-            "composite": false,
-            "qualifiers": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                  "length": 0,
-                  "allowedLength": "VARIABLE",
-                  "description": {
-                    "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                  }
-                }
-              }
-            ]
+            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/type"
           }
         }
       ],

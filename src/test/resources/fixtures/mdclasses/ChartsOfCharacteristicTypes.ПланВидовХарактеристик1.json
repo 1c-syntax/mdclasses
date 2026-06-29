@@ -145,11 +145,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 25,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
-                  "nameEn": "StringQualifiers (25, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -224,19 +221,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
         },
         "fullName": {
           "nameRu": "Родитель",
@@ -326,10 +311,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                  "nameEn": "StringQualifiers (0, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                    "nameEn": "StringQualifiers (0, Variable)"
+                  }
                 }
               }
             }
@@ -389,10 +377,7 @@
                 "precision": 9,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (9.0)",
-                  "nameEn": "NumberQualifiers (9.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -449,10 +434,13 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                  "nameEn": "StringQualifiers (10, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                    "nameEn": "StringQualifiers (10, Variable)"
+                  }
                 }
               }
             }
@@ -492,15 +480,15 @@
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "moduleTypes": [
     [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ObjectModule.bsl"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ObjectModule.bsl"
       ]
     ]
   ],

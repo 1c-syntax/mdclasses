@@ -43,18 +43,24 @@
               "int": 2,
               "com.github._1c_syntax.bsl.types.qualifiers.BinaryDataQualifiers": {
                 "length": 16,
-                "allowedLength": "FIXED",
+                "allowedLength": 1,
                 "description": {
-                  "nameRu": "КвалификаторыДвоичныхДанных (16, Фиксированная)",
-                  "nameEn": "BinaryDataQualifiers (16, Fixed)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДвоичныхДанных (16, Фиксированная)",
+                    "nameEn": "BinaryDataQualifiers (16, Fixed)"
+                  }
                 }
               },
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
-                "allowedLength": "VARIABLE",
+                "allowedLength": 0,
                 "description": {
-                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                  "nameEn": "StringQualifiers (10, Variable)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                    "nameEn": "StringQualifiers (10, Variable)"
+                  }
                 }
               }
             }
@@ -114,8 +120,11 @@
                 "scale": 0,
                 "nonNegative": false,
                 "description": {
-                  "nameRu": "КвалификаторыЧисла (10.0)",
-                  "nameEn": "NumberQualifiers (10.0)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыЧисла (10.0)",
+                    "nameEn": "NumberQualifiers (10.0)"
+                  }
                 }
               }
             }
@@ -171,10 +180,13 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE",
+                "dateFractions": 1,
                 "description": {
-                  "nameRu": "КвалификаторыДаты (Дата)",
-                  "nameEn": "DateQualifiers (Date)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (Дата)",
+                    "nameEn": "DateQualifiers (Date)"
+                  }
                 }
               }
             }
@@ -334,11 +346,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 9,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (9, Переменная)",
-                  "nameEn": "StringQualifiers (9, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -430,10 +439,13 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
+                "dateFractions": 2,
                 "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                    "nameEn": "DateQualifiers (DateTime)"
+                  }
                 }
               }
             }
@@ -1084,17 +1096,7 @@
                 "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
               },
               "type": {
-                "types": [
-                  {
-                    "default": {
-                      "tag": 4
-                    },
-                    "int": 1,
-                    "com.github._1c_syntax.bsl.types.value.V8ValueType": "DYNAMIC_LIST"
-                  }
-                ],
-                "composite": false,
-                "qualifiers": []
+                "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute/type"
               }
             }
           ]
@@ -1310,32 +1312,7 @@
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
             "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-                }
-              ],
-              "composite": false,
-              "qualifiers": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-                    "precision": 10,
-                    "scale": 0,
-                    "nonNegative": false,
-                    "description": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers/description"
-                    }
-                  }
-                }
-              ]
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/type"
             },
             "format": {
               "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
@@ -1387,10 +1364,7 @@
                     "precision": 5,
                     "scale": 0,
                     "nonNegative": false,
-                    "description": {
-                      "nameRu": "КвалификаторыЧисла (5.0)",
-                      "nameEn": "NumberQualifiers (5.0)"
-                    }
+                    "description": {}
                   }
                 }
               ]

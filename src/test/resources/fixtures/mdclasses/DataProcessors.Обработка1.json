@@ -157,10 +157,13 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 0,
-                        "allowedLength": "VARIABLE",
+                        "allowedLength": 0,
                         "description": {
-                          "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                          "nameEn": "StringQualifiers (0, Variable)"
+                          "value": {
+                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                            "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                            "nameEn": "StringQualifiers (0, Variable)"
+                          }
                         }
                       }
                     }
@@ -191,10 +194,13 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                        "dateFractions": "DATE",
+                        "dateFractions": 1,
                         "description": {
-                          "nameRu": "КвалификаторыДаты (Дата)",
-                          "nameEn": "DateQualifiers (Date)"
+                          "value": {
+                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                            "nameRu": "КвалификаторыДаты (Дата)",
+                            "nameEn": "DateQualifiers (Date)"
+                          }
                         }
                       }
                     }
@@ -230,17 +236,10 @@
                       },
                       "int": 2,
                       "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                        "dateFractions": "DATE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers/description"
-                        }
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers"
                       },
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
+                        "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers"
                       }
                     }
                   ]
@@ -1000,31 +999,7 @@
                   ]
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type"
                 }
               },
               {
@@ -1097,10 +1072,7 @@
                         "precision": 10,
                         "scale": 0,
                         "nonNegative": true,
-                        "description": {
-                          "nameRu": "КвалификаторыЧисла (10.0 неотр)",
-                          "nameEn": "NumberQualifiers (10.0 nonneg)"
-                        }
+                        "description": {}
                       }
                     }
                   ]
@@ -1144,17 +1116,7 @@
                   ]
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.V8ValueType": "SPREADSHEET_DOCUMENT"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": []
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]/type"
                 }
               },
               {
@@ -1164,31 +1126,7 @@
                   "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/explanation"
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type"
                 }
               },
               {
@@ -1219,31 +1157,7 @@
                   ]
                 },
                 "type": {
-                  "types": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-                    }
-                  ],
-                  "composite": false,
-                  "qualifiers": [
-                    {
-                      "default": {
-                        "tag": 4
-                      },
-                      "int": 1,
-                      "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                        "length": 0,
-                        "allowedLength": "VARIABLE",
-                        "description": {
-                          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-                        }
-                      }
-                    }
-                  ]
+                  "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]/type"
                 }
               },
               {

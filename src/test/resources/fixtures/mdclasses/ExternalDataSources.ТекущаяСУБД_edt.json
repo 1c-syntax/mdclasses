@@ -185,11 +185,8 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 4294967295,
-                    "allowedLength": "VARIABLE",
-                    "description": {
-                      "nameRu": "КвалификаторыСтроки (4294967295, Переменная)",
-                      "nameEn": "StringQualifiers (4294967295, Variable)"
-                    }
+                    "allowedLength": 0,
+                    "description": {}
                   }
                 }
               ]
@@ -331,17 +328,7 @@
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
             "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
-                }
-              ],
-              "composite": false,
-              "qualifiers": []
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField[3]/type"
             }
           },
           {
@@ -396,10 +383,7 @@
                     "precision": 15,
                     "scale": 0,
                     "nonNegative": true,
-                    "description": {
-                      "nameRu": "КвалификаторыЧисла (15.0 неотр)",
-                      "nameEn": "NumberQualifiers (15.0 nonneg)"
-                    }
+                    "description": {}
                   }
                 }
               ]
@@ -437,17 +421,7 @@
             "kind": "CUSTOM",
             "indexing": "DONT_INDEX",
             "type": {
-              "types": [
-                {
-                  "default": {
-                    "tag": 4
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.value.V8ValueType": "UUID"
-                }
-              ],
-              "composite": false,
-              "qualifiers": []
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ExternalDataSource/tables/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable/fields/c/com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField[3]/type"
             }
           },
           {
@@ -500,11 +474,8 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 20,
-                    "allowedLength": "VARIABLE",
-                    "description": {
-                      "nameRu": "КвалификаторыСтроки (20, Переменная)",
-                      "nameEn": "StringQualifiers (20, Variable)"
-                    }
+                    "allowedLength": 0,
+                    "description": {}
                   }
                 }
               ]
@@ -560,10 +531,13 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 0,
-                    "allowedLength": "VARIABLE",
+                    "allowedLength": 0,
                     "description": {
-                      "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                      "nameEn": "StringQualifiers (0, Variable)"
+                      "value": {
+                        "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                        "nameRu": "КвалификаторыСтроки (0, Переменная)",
+                        "nameEn": "StringQualifiers (0, Variable)"
+                      }
                     }
                   }
                 }

@@ -12,15 +12,15 @@
   "mdoType": "CONSTANT",
   "moduleTypes": [
     [
-      "ValueManagerModule",
-      [
-        "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ValueManagerModule.bsl"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ValueManagerModule",
+      [
+        "src/test/resources/ext/edt/mdclasses/configuration/src/Constants/Константа1/ValueManagerModule.bsl"
       ]
     ]
   ],
@@ -90,10 +90,13 @@
         "int": 1,
         "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
           "length": 10,
-          "allowedLength": "VARIABLE",
+          "allowedLength": 0,
           "description": {
-            "nameRu": "КвалификаторыСтроки (10, Переменная)",
-            "nameEn": "StringQualifiers (10, Variable)"
+            "value": {
+              "@class": "com.github._1c_syntax.bsl.types.MultiName",
+              "nameRu": "КвалификаторыСтроки (10, Переменная)",
+              "nameEn": "StringQualifiers (10, Variable)"
+            }
           }
         }
       }

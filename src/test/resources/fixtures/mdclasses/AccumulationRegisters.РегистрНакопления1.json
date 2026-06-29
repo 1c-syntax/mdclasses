@@ -91,10 +91,13 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
+                "dateFractions": 2,
                 "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                    "nameEn": "DateQualifiers (DateTime)"
+                  }
                 }
               }
             }
@@ -154,10 +157,7 @@
                 "precision": 5,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (5.0)",
-                  "nameEn": "NumberQualifiers (5.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -298,10 +298,13 @@
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": "VARIABLE",
+              "allowedLength": 0,
               "description": {
-                "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                "nameEn": "StringQualifiers (10, Variable)"
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
+                  "nameEn": "StringQualifiers (10, Variable)"
+                }
               }
             }
           }
@@ -380,8 +383,11 @@
               "scale": 0,
               "nonNegative": false,
               "description": {
-                "nameRu": "КвалификаторыЧисла (10.0)",
-                "nameEn": "NumberQualifiers (10.0)"
+                "value": {
+                  "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                  "nameRu": "КвалификаторыЧисла (10.0)",
+                  "nameEn": "NumberQualifiers (10.0)"
+                }
               }
             }
           }

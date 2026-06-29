@@ -38,10 +38,13 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
+                "dateFractions": 2,
                 "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                    "nameEn": "DateQualifiers (DateTime)"
+                  }
                 }
               }
             }
@@ -161,10 +164,7 @@
                 "precision": 5,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (5.0)",
-                  "nameEn": "NumberQualifiers (5.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -239,19 +239,7 @@
         "passwordMode": false,
         "kind": "STANDARD",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type/types/java.util.CollSer/com.github._1c_syntax.bsl.types.value.CustomValueType"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
         },
         "fullName": {
           "nameRu": "Ссылка",
@@ -351,11 +339,8 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 25,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
-                  "nameEn": "StringQualifiers (25, Variable)"
-                }
+                "allowedLength": 0,
+                "description": {}
               }
             }
           ]
@@ -414,10 +399,7 @@
                 "precision": 9,
                 "scale": 0,
                 "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (9.0)",
-                  "nameEn": "NumberQualifiers (9.0)"
-                }
+                "description": {}
               }
             }
           ]
@@ -491,8 +473,11 @@
                 "scale": 0,
                 "nonNegative": false,
                 "description": {
-                  "nameRu": "КвалификаторыЧисла (10.0)",
-                  "nameEn": "NumberQualifiers (10.0)"
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыЧисла (10.0)",
+                    "nameEn": "NumberQualifiers (10.0)"
+                  }
                 }
               }
             }
@@ -542,17 +527,7 @@
         "kind": "CUSTOM",
         "indexing": "DONT_INDEX",
         "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
         },
         "format": {
           "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -3837,15 +3812,15 @@
   "mdoType": "EXCHANGE_PLAN",
   "moduleTypes": [
     [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
-      ]
-    ],
-    [
       "ManagerModule",
       [
         "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
       ]
     ]
   ],
