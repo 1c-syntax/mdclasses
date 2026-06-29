@@ -29,8 +29,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +42,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @UtilityClass
 @Slf4j
@@ -161,7 +164,7 @@ public class MDClasses {
     if (mdcs.isEmpty()) {
       result = Configuration.EMPTY;
     } else if (mdcs.size() == 1) {
-      result = mdcs.get(0);
+      result = mdcs.getFirst();
     } else {
       var mdc = mdcs.stream().filter(Configuration.class::isInstance).map(Configuration.class::cast).findFirst();
       var cf = mdc.orElse(Configuration.EMPTY);
@@ -173,10 +176,10 @@ public class MDClasses {
       if (cf.isEmpty()) {
         if (extensions.isEmpty()) {
           // вернем первое значение, т.к. там нет ни конфы, ни расширений
-          return mdcs.get(0);
+          return mdcs.getFirst();
         } else if (extensions.size() == 1) {
           // есть одно расширение, вернем его
-          return extensions.get(0);
+          return extensions.getFirst();
         }
       } else if (extensions.isEmpty()) {
         // расширений нет, вернем конфигурацию
@@ -265,36 +268,50 @@ public class MDClasses {
   }
 
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
-    List<Path> listPath = new ArrayList<>();
     var excludeFolders = mdoTypeGroupNames();
     excludeFolders.add("Ext");
-    try (Stream<Path> stream = Files.find(sourcePath, Integer.MAX_VALUE,
-      (Path path, BasicFileAttributes basicFileAttributes) -> {
-        if (!basicFileAttributes.isRegularFile()) {
-          return false;
+    List<Path> listPath = new ArrayList<>();
+
+    try {
+      Files.walkFileTree(sourcePath, new SimpleFileVisitor<>() {
+        @Override
+        public FileVisitResult visitFileFailed(Path file, IOException exc) {
+          if (exc instanceof AccessDeniedException) {
+            LOGGER.warn("Skipping directory (access denied): {}", file);
+            return FileVisitResult.CONTINUE;
+          }
+          throw new UncheckedIOException(exc);
         }
 
-        var parentName = path.getParent().getFileName().toString();
-        var parentParentName = "";
-        if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
-          parentParentName = path.getParent().getParent().getFileName().toString();
-        }
+        @Override
+        public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+          if (!attrs.isRegularFile()) {
+            return FileVisitResult.CONTINUE;
+          }
 
-        if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
-          return false;
-        }
-        var fileName = path.getFileName().toString();
-        var ext = FilenameUtils.getExtension(fileName);
-        if (!("xml".equals(ext) || "mdo".equals(ext))) {
-          return false;
-        }
+          var parentName = path.getParent().getFileName().toString();
+          var parentParentName = "";
+          if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
+            parentParentName = path.getParent().getParent().getFileName().toString();
+          }
 
-        return pattern.matcher(fileName).matches();
-      }
-    )) {
-      listPath = stream.toList();
+          if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
+            return FileVisitResult.CONTINUE;
+          }
+          var fileName = path.getFileName().toString();
+          var ext = FilenameUtils.getExtension(fileName);
+          if (!("xml".equals(ext) || "mdo".equals(ext))) {
+            return FileVisitResult.CONTINUE;
+          }
+
+          if (pattern.matcher(fileName).matches()) {
+            listPath.add(path);
+          }
+          return FileVisitResult.CONTINUE;
+        }
+      });
     } catch (IOException e) {
-      LOGGER.error("Error read files", e);
+      LOGGER.error("Error reading files", e);
     }
 
     return listPath;
