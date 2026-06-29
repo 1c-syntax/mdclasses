@@ -48,7 +48,7 @@ import java.util.List;
 public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
   FormOwner, TemplateOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.EDIT, RoleRight.USE, RoleRight.VIEW);
 
   /*
    * MDObject
