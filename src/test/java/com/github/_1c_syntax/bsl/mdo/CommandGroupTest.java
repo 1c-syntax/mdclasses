@@ -33,7 +33,9 @@ class CommandGroupTest {
       "true, mdclasses, CommandGroups.ГруппаКоманд1",
       "false, mdclasses, CommandGroups.ГруппаКоманд1",
       "true, ssl_3_1, CommandGroups.Печать",
-      "false, ssl_3_1, CommandGroups.Печать"
+      "false, ssl_3_1, CommandGroups.Печать",
+      "true, ssl_3_2, CommandGroups.Печать",
+      "false, ssl_3_2, CommandGroups.Печать"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

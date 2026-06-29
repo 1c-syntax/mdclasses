@@ -60,7 +60,9 @@ class ExchangePlanTest {
   @CsvSource(
     {
       "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы"
+      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
+      "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
+      "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {

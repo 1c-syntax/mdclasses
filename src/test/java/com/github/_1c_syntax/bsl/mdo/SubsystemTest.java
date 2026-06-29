@@ -96,7 +96,9 @@ class SubsystemTest {
   @CsvSource(
     {
       "true, ssl_3_1, Subsystems.Администрирование",
-      "false, ssl_3_1, Subsystems.Администрирование"
+      "false, ssl_3_1, Subsystems.Администрирование",
+      "true, ssl_3_2, Subsystems.Администрирование",
+      "false, ssl_3_2, Subsystems.Администрирование"
     }
   )
   void testSSLSimple(ArgumentsAccessor argumentsAccessor) {

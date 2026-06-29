@@ -35,7 +35,11 @@ class StyleItemTest {
       "true, ssl_3_1, StyleItems.ВажнаяНадписьШрифт",
       "false, ssl_3_1, StyleItems.ВажнаяНадписьШрифт",
       "true, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
-      "false, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет"
+      "false, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
+      "true, ssl_3_2, StyleItems.ВажнаяНадписьШрифт",
+      "false, ssl_3_2, StyleItems.ВажнаяНадписьШрифт",
+      "true, ssl_3_2, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
+      "false, ssl_3_2, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

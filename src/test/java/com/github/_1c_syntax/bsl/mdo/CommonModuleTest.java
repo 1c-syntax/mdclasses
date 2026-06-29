@@ -44,6 +44,8 @@ class CommonModuleTest {
       "false, mdclasses, CommonModules.ПростойОбщийМодуль,, true",
       "true, ssl_3_1, CommonModules.АвтономнаяРабота, _edt, true",
       "false, ssl_3_1, CommonModules.АвтономнаяРабота,, true",
+      "true, ssl_3_2, CommonModules.АвтономнаяРабота, _edt, true",
+      "false, ssl_3_2, CommonModules.АвтономнаяРабота,, true",
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

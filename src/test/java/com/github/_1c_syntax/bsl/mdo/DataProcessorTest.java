@@ -54,7 +54,9 @@ class DataProcessorTest {
   @CsvSource(
     {
       "true, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют, _edt",
-      "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют"
+      "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют",
+      "true, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют, _edt",
+      "false, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {

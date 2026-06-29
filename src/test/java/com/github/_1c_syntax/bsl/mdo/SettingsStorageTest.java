@@ -31,7 +31,9 @@ class SettingsStorageTest {
   @CsvSource(
     {
       "true, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов, _edt",
-      "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов"
+      "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов",
+      "true, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов, _edt",
+      "false, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

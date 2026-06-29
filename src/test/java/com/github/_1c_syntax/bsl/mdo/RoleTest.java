@@ -33,7 +33,9 @@ class RoleTest {
   @CsvSource(
     {
       "true, ssl_3_1, Roles.БазовыеПраваБСП",
-      "false, ssl_3_1, Roles.БазовыеПраваБСП"
+      "false, ssl_3_1, Roles.БазовыеПраваБСП",
+      "true, ssl_3_2, Roles.БазовыеПраваБСП",
+      "false, ssl_3_2, Roles.БазовыеПраваБСП"
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {

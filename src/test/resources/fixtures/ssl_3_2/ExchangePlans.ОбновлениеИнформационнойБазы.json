@@ -1,0 +1,3897 @@
+{"com.github._1c_syntax.bsl.mdo.ExchangePlan": {
+  "attributes": [
+    [
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ExchangeDate",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ДатаОбмена"
+        },
+        "comment": "",
+        "synonym": {
+          "content": []
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "type": "EXCHANGE_PLAN",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
+                "dateFractions": 2,
+                "description": {
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
+                    "nameEn": "DateQualifiers (DateTime)"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ДатаОбмена",
+          "nameEn": "ExchangeDate"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ThisNode",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ЭтотУзел"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
+                "fullName": {
+                  "nameRu": "ПланОбменаСсылка.ОбновлениеИнформационнойБазы",
+                  "nameEn": "ExchangePlanRef.ОбновлениеИнформационнойБазы"
+                },
+                "variant": "METADATA",
+                "kind": "EXCHANGE_PLAN"
+              }
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 0
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "ЭтотУзел",
+          "nameEn": "ThisNode"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.ReceivedNo",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.НомерПринятого"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 5,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {}
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "НомерПринятого",
+          "nameEn": "ReceivedNo"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.SentNo",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.НомерОтправленного"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]/type"
+        },
+        "fullName": {
+          "nameRu": "НомерОтправленного",
+          "nameEn": "SentNo"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Ref",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Ссылка"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
+        },
+        "fullName": {
+          "nameRu": "Ссылка",
+          "nameEn": "Ref"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.DeletionMark",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.ПометкаУдаления"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
+            }
+          ],
+          "composite": false,
+          "qualifiers": []
+        },
+        "fullName": {
+          "nameRu": "ПометкаУдаления",
+          "nameEn": "DeletionMark"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Description",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Наименование"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
+                "length": 25,
+                "allowedLength": 0,
+                "description": {}
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Наименование",
+          "nameEn": "Description"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94",
+        "mdoReference": {
+          "type": "STANDARD_ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.StandardAttribute.Code",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.СтандартныйРеквизит.Код"
+        },
+        "comment": "",
+        "synonym": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "STANDARD",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 9,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {}
+              }
+            }
+          ]
+        },
+        "fullName": {
+          "nameRu": "Код",
+          "nameEn": "Code"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "5371672a-c8e0-4c12-834e-f23dd885b49a",
+        "name": "Очередь",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.Attribute.Очередь",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.Реквизит.Очередь"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Очередь"
+              }
+            }
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "type": {
+          "types": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
+            }
+          ],
+          "composite": false,
+          "qualifiers": [
+            {
+              "default": {
+                "tag": 4
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
+                "precision": 10,
+                "scale": 0,
+                "nonNegative": false,
+                "description": {
+                  "value": {
+                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
+                    "nameRu": "КвалификаторыЧисла (10.0)",
+                    "nameEn": "NumberQualifiers (10.0)"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      },
+      {
+        "uuid": "8583ca82-a4f5-4f2a-9b9a-7807b4560e85",
+        "name": "Временная",
+        "mdoReference": {
+          "type": "ATTRIBUTE",
+          "mdoRef": "ExchangePlan.ОбновлениеИнформационнойБазы.Attribute.Временная",
+          "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы.Реквизит.Временная"
+        },
+        "objectBelonging": "OWN",
+        "comment": "",
+        "synonym": {
+          "content": [
+            {
+              "default": {
+                "tag": 2
+              },
+              "int": 1,
+              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+                "langKey": "ru",
+                "value": "Временная"
+              }
+            }
+          ]
+        },
+        "supportVariant": "NOT_EDITABLE",
+        "owner": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+        },
+        "passwordMode": false,
+        "kind": "CUSTOM",
+        "indexing": "DONT_INDEX",
+        "type": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]/type"
+        },
+        "format": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "editFormat": {
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+        },
+        "markNegatives": false,
+        "mask": "",
+        "multiLine": false,
+        "extendedEdit": false,
+        "fillFromFillingValue": false
+      }
+    ],
+    []
+  ],
+  "commands": [],
+  "comment": "",
+  "content": [
+    [
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИсторияРассылкиОтчетов",
+          "mdoRefRu": "РегистрСведений.ИсторияРассылкиОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияРассылокОтчетов",
+          "mdoRefRu": "РегистрСведений.СостоянияРассылокОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЭкземплярыСервераDSS",
+          "mdoRefRu": "Справочник.ЭкземплярыСервераDSS"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ШаблоныАнкет",
+          "mdoRefRu": "Справочник.ШаблоныАнкет"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПроцессыДляЗапуска",
+          "mdoRefRu": "РегистрСведений.ПроцессыДляЗапуска"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НаличиеФайлов",
+          "mdoRefRu": "РегистрСведений.НаличиеФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПочтовыйКлиент",
+          "mdoRefRu": "Константа.ИспользоватьПочтовыйКлиент"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьХранимыеФайлыВерсий",
+          "mdoRefRu": "РегистрСведений.УдалитьХранимыеФайлыВерсий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыАдминистрированияИБ",
+          "mdoRefRu": "Константа.ПараметрыАдминистрированияИБ"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьШаблоныСообщений",
+          "mdoRefRu": "Константа.ИспользоватьШаблоныСообщений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыИтоговИАгрегатов",
+          "mdoRefRu": "Константа.ПараметрыИтоговИАгрегатов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СообщенияОбменаДанными",
+          "mdoRefRu": "РегистрСведений.СообщенияОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.НаборыДополнительныхРеквизитовИСведений",
+          "mdoRefRu": "Справочник.НаборыДополнительныхРеквизитовИСведений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПериодыНерабочихДнейКалендаря",
+          "mdoRefRu": "РегистрСведений.ПериодыНерабочихДнейКалендаря"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.АрхивСообщенийОбменов",
+          "mdoRefRu": "РегистрСведений.АрхивСообщенийОбменов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПапкиЭлектронныхПисем",
+          "mdoRefRu": "Справочник.ПапкиЭлектронныхПисем"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВариантыОтчетов",
+          "mdoRefRu": "Справочник.ВариантыОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОтветыНаВопросыАнкет",
+          "mdoRefRu": "РегистрСведений.ОтветыНаВопросыАнкет"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ВерсииОбъектов",
+          "mdoRefRu": "РегистрСведений.ВерсииОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ДатаУведомленияОНовыхЗадачах",
+          "mdoRefRu": "Константа.ДатаУведомленияОНовыхЗадачах"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КэшПереводов",
+          "mdoRefRu": "РегистрСведений.КэшПереводов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыКомментарииСтатистики",
+          "mdoRefRu": "РегистрСведений.ЗамерыКомментарииСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьЭлектронныеПодписи",
+          "mdoRefRu": "Константа.ИспользоватьЭлектронныеПодписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПрофилиКлючевыхОпераций",
+          "mdoRefRu": "Справочник.ПрофилиКлючевыхОпераций"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыРезервногоКопирования",
+          "mdoRefRu": "Константа.ПараметрыРезервногоКопирования"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДополнительныеОтчетыИОбработки",
+          "mdoRefRu": "Константа.ИспользоватьДополнительныеОтчетыИОбработки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СтатистикаКонфигурации",
+          "mdoRefRu": "РегистрСведений.СтатистикаКонфигурации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НомераОтсканированныхФайлов",
+          "mdoRefRu": "РегистрСведений.НомераОтсканированныхФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CHART_OF_CHARACTERISTIC_TYPES",
+          "mdoRef": "ChartOfCharacteristicTypes.РазделыДатЗапретаИзменения",
+          "mdoRefRu": "ПланВидовХарактеристик.РазделыДатЗапретаИзменения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НеудаленныеОбъекты",
+          "mdoRefRu": "РегистрСведений.НеудаленныеОбъекты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПериодХраненияЗамеров",
+          "mdoRefRu": "Константа.ПериодХраненияЗамеров"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкиПодчиненногоУзлаРИБ",
+          "mdoRefRu": "Константа.НастройкиПодчиненногоУзлаРИБ"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НепринятыеКОбработкеПочтовымСерверомИсходящиеПисьма",
+          "mdoRefRu": "РегистрСведений.НепринятыеКОбработкеПочтовымСерверомИсходящиеПисьма"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВопросыШаблонаАнкеты",
+          "mdoRefRu": "Справочник.ВопросыШаблонаАнкеты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыВремени",
+          "mdoRefRu": "РегистрСведений.ЗамерыВремени"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CHART_OF_CHARACTERISTIC_TYPES",
+          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения",
+          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КурсыВалют",
+          "mdoRefRu": "РегистрСведений.КурсыВалют"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ВерсияДатЗапретаИзменения",
+          "mdoRefRu": "Константа.ВерсияДатЗапретаИзменения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбъектыНезарегистрированныеПриЗацикливании",
+          "mdoRefRu": "РегистрСведений.ОбъектыНезарегистрированныеПриЗацикливании"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСервисМобильнойПодписи",
+          "mdoRefRu": "Константа.ИспользоватьСервисМобильнойПодписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкаПроксиСервера",
+          "mdoRefRu": "Константа.НастройкаПроксиСервера"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗапрещатьЗагрузкуФайловПоРасширению",
+          "mdoRefRu": "Константа.ЗапрещатьЗагрузкуФайловПоРасширению"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбработчикиСобытийСинхронизацииДанных",
+          "mdoRefRu": "РегистрСведений.ОбработчикиСобытийСинхронизацииДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗаявленияНаВыпускСертификата",
+          "mdoRefRu": "РегистрСведений.ЗаявленияНаВыпускСертификата"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВнешниеКомпоненты",
+          "mdoRefRu": "Справочник.ВнешниеКомпоненты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.АдресПубликацииИнформационнойБазыВИнтернете",
+          "mdoRefRu": "Константа.АдресПубликацииИнформационнойБазыВИнтернете"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.КлючиДоступа",
+          "mdoRefRu": "Справочник.КлючиДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НаборыЗначенийДоступа",
+          "mdoRefRu": "РегистрСведений.НаборыЗначенийДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиУчетныхЗаписейЭлектроннойПочты",
+          "mdoRefRu": "РегистрСведений.НастройкиУчетныхЗаписейЭлектроннойПочты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КалендарныеГрафики",
+          "mdoRefRu": "РегистрСведений.КалендарныеГрафики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗапретитьОтображениеНебезопасногоСодержимогоВПисьмах",
+          "mdoRefRu": "Константа.ЗапретитьОтображениеНебезопасногоСодержимогоВПисьмах"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ШаблоныСообщенийПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ШаблоныСообщенийПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.Календари",
+          "mdoRefRu": "Справочник.Календари"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИдентификаторыПолученныхЭлектронныхПисем",
+          "mdoRefRu": "РегистрСведений.ИдентификаторыПолученныхЭлектронныхПисем"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаКДанным",
+          "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаКДанным"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.Валюты",
+          "mdoRefRu": "Справочник.Валюты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ШаблоныСообщений",
+          "mdoRefRu": "Справочник.ШаблоныСообщений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗависимостиПравДоступа",
+          "mdoRefRu": "РегистрСведений.ЗависимостиПравДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СлужебныеАдресныеСведения",
+          "mdoRefRu": "РегистрСведений.СлужебныеАдресныеСведения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УровниСокращенийАдресныхСведений",
+          "mdoRefRu": "РегистрСведений.УровниСокращенийАдресныхСведений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.РазрешитьДоступКИнтернетСервисам",
+          "mdoRefRu": "Константа.РазрешитьДоступКИнтернетСервисам"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияОригиналовПервичныхДокументов",
+          "mdoRefRu": "РегистрСведений.СостоянияОригиналовПервичныхДокументов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СоответствияОбъектовИнформационныхБаз",
+          "mdoRefRu": "РегистрСведений.СоответствияОбъектовИнформационныхБаз"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВЛокальномРежиме",
+          "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВЛокальномРежиме"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗадачиОбменаДаннымиВнутренняяПубликация",
+          "mdoRefRu": "РегистрСведений.ЗадачиОбменаДаннымиВнутренняяПубликация"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИсторияАдминистративнойИерархии",
+          "mdoRefRu": "РегистрСведений.ИсторияАдминистративнойИерархии"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ВерсияКлассификатораБанков",
+          "mdoRefRu": "Константа.ВерсияКлассификатораБанков"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ВыполнятьЗамерыПроизводительности",
+          "mdoRefRu": "Константа.ВыполнятьЗамерыПроизводительности"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПрофильБезопасностиИнформационнойБазы",
+          "mdoRefRu": "Константа.ПрофильБезопасностиИнформационнойБазы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПодписантыСервисаМобильнойПодписи",
+          "mdoRefRu": "Справочник.ПодписантыСервисаМобильнойПодписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЗапланированноеВзаимодействиеПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ЗапланированноеВзаимодействиеПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИерархияГруппПользователей",
+          "mdoRefRu": "РегистрСведений.ИерархияГруппПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиОбменаДаннымиXDTO",
+          "mdoRefRu": "РегистрСведений.НастройкиОбменаДаннымиXDTO"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПризнакРассмотрено",
+          "mdoRefRu": "Константа.ИспользоватьПризнакРассмотрено"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СервисМобильнойПодписиСтатусы",
+          "mdoRefRu": "РегистрСведений.СервисМобильнойПодписиСтатусы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПредопределенныеВариантыОтчетовВерсийРасширений",
+          "mdoRefRu": "РегистрСведений.ПредопределенныеВариантыОтчетовВерсийРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкиРегистрацииСобытийДоступаКДанным",
+          "mdoRefRu": "Константа.НастройкиРегистрацииСобытийДоступаКДанным"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СубъектыДляСкрытияПерсональныхДанных",
+          "mdoRefRu": "РегистрСведений.СубъектыДляСкрытияПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СписокРасширенийФайловOpenDocumentОбластиДанных",
+          "mdoRefRu": "Константа.СписокРасширенийФайловOpenDocumentОбластиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервиса",
+          "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных",
+          "mdoRefRu": "РегистрСведений.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РазрешенияНаИспользованиеВнешнихРесурсов",
+          "mdoRefRu": "РегистрСведений.РазрешенияНаИспользованиеВнешнихРесурсов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиСинхронизацииФайлов",
+          "mdoRefRu": "РегистрСведений.НастройкиСинхронизацииФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПрогрессОбновления",
+          "mdoRefRu": "РегистрСведений.ПрогрессОбновления"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьОбластиПерсональныхДанных",
+          "mdoRefRu": "РегистрСведений.УдалитьОбластиПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.КлючевыеОперации",
+          "mdoRefRu": "Справочник.КлючевыеОперации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВидыПроверок",
+          "mdoRefRu": "Справочник.ВидыПроверок"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НезависимоеИспользованиеДополнительныхОтчетовИОбработокВМоделиСервиса",
+          "mdoRefRu": "Константа.НезависимоеИспользованиеДополнительныхОтчетовИОбработокВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВариантыОтветовАнкет",
+          "mdoRefRu": "Справочник.ВариантыОтветовАнкет"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.Заметки",
+          "mdoRefRu": "Справочник.Заметки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.АдресДляВосстановленияПароляУчетнойЗаписи",
+          "mdoRefRu": "Константа.АдресДляВосстановленияПароляУчетнойЗаписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "TASK",
+          "mdoRef": "Task.ЗадачаИсполнителя",
+          "mdoRefRu": "Задача.ЗадачаИсполнителя"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДополнительныеСведения",
+          "mdoRefRu": "РегистрСведений.ДополнительныеСведения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СнимкиОтчетов",
+          "mdoRefRu": "РегистрСведений.СнимкиОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПредопределенныеВариантыОтчетовРасширений",
+          "mdoRefRu": "Справочник.ПредопределенныеВариантыОтчетовРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаКРегиструРезультатыПроверкиУчета",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаКРегиструРезультатыПроверкиУчета"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПутиКПрограммамЭлектроннойПодписиИШифрованияНаСерверахLinux",
+          "mdoRefRu": "РегистрСведений.ПутиКПрограммамЭлектроннойПодписиИШифрованияНаСерверахLinux"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияПроверокВеденияУчета",
+          "mdoRefRu": "РегистрСведений.СостоянияПроверокВеденияУчета"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.НазначениеОпросов",
+          "mdoRefRu": "Документ.НазначениеОпросов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СценарииОбменовДанными",
+          "mdoRefRu": "Справочник.СценарииОбменовДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСкрытиеПерсональныхДанныхСубъектов",
+          "mdoRefRu": "Константа.ИспользоватьСкрытиеПерсональныхДанныхСубъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СрокиХраненияПерсональныхДанных",
+          "mdoRefRu": "РегистрСведений.СрокиХраненияПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ИдентификаторыОбъектовМетаданных",
+          "mdoRefRu": "Справочник.ИдентификаторыОбъектовМетаданных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ФайлыВРабочемКаталоге",
+          "mdoRefRu": "РегистрСведений.ФайлыВРабочемКаталоге"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьШифрование",
+          "mdoRefRu": "Константа.ИспользоватьШифрование"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДанныеОбработанныеВЦентральномУзлеРИБ",
+          "mdoRefRu": "РегистрСведений.ДанныеОбработанныеВЦентральномУзлеРИБ"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбработчикиОбновления",
+          "mdoRefRu": "РегистрСведений.ОбработчикиОбновления"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИсполнителиЗадач",
+          "mdoRefRu": "РегистрСведений.ИсполнителиЗадач"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.УчетныеЗаписиDSS",
+          "mdoRefRu": "Справочник.УчетныеЗаписиDSS"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.ТелефонныйЗвонок",
+          "mdoRefRu": "Документ.ТелефонныйЗвонок"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиВерсионированияОбъектов",
+          "mdoRefRu": "РегистрСведений.НастройкиВерсионированияОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.РолиИсполнителей",
+          "mdoRefRu": "Справочник.РолиИсполнителей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ОбщиеВнешниеКомпоненты",
+          "mdoRefRu": "Справочник.ОбщиеВнешниеКомпоненты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.РазрешитьДоступКИнтернетСервисамЭлектроннойПодписи",
+          "mdoRefRu": "Константа.РазрешитьДоступКИнтернетСервисамЭлектроннойПодписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СписокЗапрещенныхРасширенийОбластиДанных",
+          "mdoRefRu": "Константа.СписокЗапрещенныхРасширенийОбластиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.МашиночитаемыеДоверенности",
+          "mdoRefRu": "Справочник.МашиночитаемыеДоверенности"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиТранспортаОбменаОбластейДанных",
+          "mdoRefRu": "РегистрСведений.НастройкиТранспортаОбменаОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОтправлятьПисьмаВФорматеHTML",
+          "mdoRefRu": "Константа.ОтправлятьПисьмаВФорматеHTML"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПодчиненныеБизнесПроцессы",
+          "mdoRefRu": "Константа.ИспользоватьПодчиненныеБизнесПроцессы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.УдалитьЛогинДоступаКСервисуMorpher",
+          "mdoRefRu": "Константа.УдалитьЛогинДоступаКСервисуMorpher"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияКонтактовВзаимодействий",
+          "mdoRefRu": "РегистрСведений.СостоянияКонтактовВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбластиПерсональныхДанных",
+          "mdoRefRu": "РегистрСведений.ОбластиПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СтатусыСинхронизацииФайловСОблачнымСервисом",
+          "mdoRefRu": "РегистрСведений.СтатусыСинхронизацииФайловСОблачнымСервисом"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДатыЗапретаЗагрузки",
+          "mdoRefRu": "Константа.ИспользоватьДатыЗапретаЗагрузки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДанныеПроизводственногоКалендаря",
+          "mdoRefRu": "РегистрСведений.ДанныеПроизводственногоКалендаря"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьВерсионированиеОбъектов",
+          "mdoRefRu": "Константа.ИспользоватьВерсионированиеОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СеансыОбменовДанными",
+          "mdoRefRu": "Справочник.СеансыОбменовДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВерсииРасширений",
+          "mdoRefRu": "Справочник.ВерсииРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НаследованиеНастроекПравОбъектов",
+          "mdoRefRu": "РегистрСведений.НаследованиеНастроекПравОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПричиныИзмененияАдресныхСведений",
+          "mdoRefRu": "РегистрСведений.ПричиныИзмененияАдресныхСведений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ХранилищеФайлов",
+          "mdoRefRu": "РегистрСведений.ХранилищеФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СессииОбменаСообщениямиСистемы",
+          "mdoRefRu": "РегистрСведений.СессииОбменаСообщениямиСистемы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СписокРасширенийТекстовыхФайлов",
+          "mdoRefRu": "Константа.СписокРасширенийТекстовыхФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.БезопасноеХранилищеДанныхОбластейДанных",
+          "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанныхОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗагруженныеВерсииАдресныхСведений",
+          "mdoRefRu": "РегистрСведений.ЗагруженныеВерсииАдресныхСведений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПраваРолей",
+          "mdoRefRu": "РегистрСведений.ПраваРолей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ТелефонныйЗвонокПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ТелефонныйЗвонокПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.ЗапланированноеВзаимодействие",
+          "mdoRefRu": "Документ.ЗапланированноеВзаимодействие"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СписокРасширенийФайловOpenDocument",
+          "mdoRefRu": "Константа.СписокРасширенийФайловOpenDocument"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПравилаПроверкиУчета",
+          "mdoRefRu": "Справочник.ПравилаПроверкиУчета"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC",
+          "mdoRefRu": "Константа.ДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.Встреча",
+          "mdoRefRu": "Документ.Встреча"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.Пользователи",
+          "mdoRefRu": "Справочник.Пользователи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗагрузитьСообщениеОбменаДанными",
+          "mdoRefRu": "Константа.ЗагрузитьСообщениеОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПроверятьЭлектронныеПодписиНаСервере",
+          "mdoRefRu": "Константа.ПроверятьЭлектронныеПодписиНаСервере"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПровайдерSMS",
+          "mdoRefRu": "Константа.ПровайдерSMS"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПользовательСтандартногоИнтерфейсаOData",
+          "mdoRefRu": "Константа.ПользовательСтандартногоИнтерфейсаOData"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ВерсииПодсистем",
+          "mdoRefRu": "РегистрСведений.ВерсииПодсистем"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПользовательскиеНастройкиОтчетов",
+          "mdoRefRu": "Справочник.ПользовательскиеНастройкиОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияОбменовДанными",
+          "mdoRefRu": "РегистрСведений.СостоянияОбменовДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОповещенияПользователейСертификатов",
+          "mdoRefRu": "РегистрСведений.ОповещенияПользователейСертификатов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьАвтономнуюРаботуВМоделиСервиса",
+          "mdoRefRu": "Константа.ИспользоватьАвтономнуюРаботуВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПредметыПапкиВзаимодействий",
+          "mdoRefRu": "РегистрСведений.ПредметыПапкиВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗначенияГруппДоступаПоУмолчанию",
+          "mdoRefRu": "РегистрСведений.ЗначенияГруппДоступаПоУмолчанию"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОсновныеПечатныеФормыКонтрагентов",
+          "mdoRefRu": "РегистрСведений.ОсновныеПечатныеФормыКонтрагентов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.РазрешенныеНеаккредитованныеУЦ",
+          "mdoRefRu": "Константа.РазрешенныеНеаккредитованныеУЦ"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОтложенноеОбновлениеЗавершеноУспешно",
+          "mdoRefRu": "Константа.ОтложенноеОбновлениеЗавершеноУспешно"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИзвлекатьТекстыФайловНаСервере",
+          "mdoRefRu": "Константа.ИзвлекатьТекстыФайловНаСервере"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПрофилиБезопасностиДляДОО",
+          "mdoRefRu": "Константа.ИспользоватьПрофилиБезопасностиДляДОО"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КоличествоЗамеровВПакетеЭкспорта",
+          "mdoRefRu": "Константа.КоличествоЗамеровВПакетеЭкспорта"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДополнительныеРеквизитыИСведения",
+          "mdoRefRu": "Константа.ИспользоватьДополнительныеРеквизитыИСведения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаВнешнихПользователей",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаВнешнихПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.РазрешитьВыполнениеДООРегламентнымиЗаданиямиВМоделиСервиса",
+          "mdoRefRu": "Константа.РазрешитьВыполнениеДООРегламентнымиЗаданиямиВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.СообщениеSMS",
+          "mdoRefRu": "Документ.СообщениеSMS"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОчередьИзвлеченияТекста",
+          "mdoRefRu": "РегистрСведений.ОчередьИзвлеченияТекста"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьАнкетирование",
+          "mdoRefRu": "Константа.ИспользоватьАнкетирование"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.УчетныеЗаписиЭлектроннойПочты",
+          "mdoRefRu": "Справочник.УчетныеЗаписиЭлектроннойПочты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.МаксимальныйРазмерФайла",
+          "mdoRefRu": "Константа.МаксимальныйРазмерФайла"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗапросыРазрешенийНаИспользованиеВнешнихРесурсов",
+          "mdoRefRu": "РегистрСведений.ЗапросыРазрешенийНаИспользованиеВнешнихРесурсов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПользовательскиеНастройкиДоступаКОбработкам",
+          "mdoRefRu": "РегистрСведений.ПользовательскиеНастройкиДоступаКОбработкам"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПакетыИнформацииПриЗапуске",
+          "mdoRefRu": "РегистрСведений.ПакетыИнформацииПриЗапуске"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыОбластиСтатистики",
+          "mdoRefRu": "РегистрСведений.ЗамерыОбластиСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыБлокировкиРаботыСВнешнимиРесурсами",
+          "mdoRefRu": "Константа.ПараметрыБлокировкиРаботыСВнешнимиРесурсами"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СертификатыПолучателейРассылкиОтчетов",
+          "mdoRefRu": "РегистрСведений.СертификатыПолучателейРассылкиОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПриоритетОбновленияВОбластяхДанных",
+          "mdoRefRu": "Константа.ПриоритетОбновленияВОбластяхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.Анкета",
+          "mdoRefRu": "Документ.Анкета"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаНаборовГруппДоступа",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаНаборовГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.УдалитьНастройкиВходаПользователей",
+          "mdoRefRu": "Константа.УдалитьНастройкиВходаПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыАдресногоКлассификатора",
+          "mdoRefRu": "Константа.ПараметрыАдресногоКлассификатора"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПроизводственныеКалендари",
+          "mdoRefRu": "Справочник.ПроизводственныеКалендари"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СтроковыеКонтактыВзаимодействий",
+          "mdoRefRu": "Справочник.СтроковыеКонтактыВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПоставляемыеДополнительныеОтчетыИОбработки",
+          "mdoRefRu": "Справочник.ПоставляемыеДополнительныеОтчетыИОбработки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НазначениеДополнительныхОбработок",
+          "mdoRefRu": "РегистрСведений.НазначениеДополнительныхОбработок"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВидыКонтактнойИнформации",
+          "mdoRefRu": "Справочник.ВидыКонтактнойИнформации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СтраныМира",
+          "mdoRefRu": "Справочник.СтраныМира"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.МашиночитаемыеДоверенностиСтатусы",
+          "mdoRefRu": "РегистрСведений.МашиночитаемыеДоверенностиСтатусы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СоздаватьЭлектронныеПодписиНаСервере",
+          "mdoRefRu": "Константа.СоздаватьЭлектронныеПодписиНаСервере"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьГруппыВнешнихПользователей",
+          "mdoRefRu": "Константа.ИспользоватьГруппыВнешнихПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДатуИВремяВСрокахЗадач",
+          "mdoRefRu": "Константа.ИспользоватьДатуИВремяВСрокахЗадач"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов",
+          "mdoRefRu": "РегистрСведений.СклоненияПредставленийОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СогласияНаОбработкуПерсональныхДанных",
+          "mdoRefRu": "РегистрСведений.СогласияНаОбработкуПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПубличныеИдентификаторыСинхронизируемыхОбъектов",
+          "mdoRefRu": "РегистрСведений.ПубличныеИдентификаторыСинхронизируемыхОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.ОтзывСогласияНаОбработкуПерсональныхДанных",
+          "mdoRefRu": "Документ.ОтзывСогласияНаОбработкуПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлассификаторыМЧД",
+          "mdoRefRu": "РегистрСведений.КлассификаторыМЧД"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьКомандуЗаметки",
+          "mdoRefRu": "Константа.ИспользоватьКомандуЗаметки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СертификатыКлючейЭлектроннойПодписиИШифрования",
+          "mdoRefRu": "Справочник.СертификатыКлючейЭлектроннойПодписиИШифрования"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДополнительныеАдресныеСведения",
+          "mdoRefRu": "РегистрСведений.ДополнительныеАдресныеСведения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьНастройкиТранспортаОбменаДанными",
+          "mdoRefRu": "РегистрСведений.УдалитьНастройкиТранспортаОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СтатусОбновленияКонфигурации",
+          "mdoRefRu": "Константа.СтатусОбновленияКонфигурации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьОтправкуSMSВШаблонахСообщений",
+          "mdoRefRu": "Константа.ИспользоватьОтправкуSMSВШаблонахСообщений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаТекущиеЗадания",
+          "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаТекущиеЗадания"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СведенияОФайлах",
+          "mdoRefRu": "РегистрСведений.СведенияОФайлах"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КонтурСинхронизации",
+          "mdoRefRu": "РегистрСведений.КонтурСинхронизации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КоличествоПотоковОбновленияДоступа",
+          "mdoRefRu": "Константа.КоличествоПотоковОбновленияДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СоставыГруппПользователей",
+          "mdoRefRu": "РегистрСведений.СоставыГруппПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПотокиОбновления",
+          "mdoRefRu": "РегистрСведений.ПотокиОбновления"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьКомандуНапоминаний",
+          "mdoRefRu": "Константа.ИспользоватьКомандуНапоминаний"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПользовательскиеМакетыПечати",
+          "mdoRefRu": "РегистрСведений.ПользовательскиеМакетыПечати"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьБезопасноеХранилищеДанныхОбластейДанных",
+          "mdoRefRu": "РегистрСведений.УдалитьБезопасноеХранилищеДанныхОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.МуниципальнаяИерархия",
+          "mdoRefRu": "РегистрСведений.МуниципальнаяИерархия"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ТаблицыГруппДоступа",
+          "mdoRefRu": "РегистрСведений.ТаблицыГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЗакладкиВзаимодействий",
+          "mdoRefRu": "Справочник.ЗакладкиВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СостоянияОригиналовПервичныхДокументов",
+          "mdoRefRu": "Справочник.СостоянияОригиналовПервичныхДокументов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИзмененияОбщихДанныхУзлов",
+          "mdoRefRu": "РегистрСведений.ИзмененияОбщихДанныхУзлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбновлениеКлючейДоступаПользователей",
+          "mdoRefRu": "РегистрСведений.ОбновлениеКлючейДоступаПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.РассылкиОтчетов",
+          "mdoRefRu": "Справочник.РассылкиОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НеразделенныеПользователи",
+          "mdoRefRu": "РегистрСведений.НеразделенныеПользователи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УведомленияОПрочтении",
+          "mdoRefRu": "РегистрСведений.УведомленияОПрочтении"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДанныеОбъектовДляРегистрацииВОбменах",
+          "mdoRefRu": "РегистрСведений.ДанныеОбъектовДляРегистрацииВОбменах"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДанныеБизнесПроцессов",
+          "mdoRefRu": "РегистрСведений.ДанныеБизнесПроцессов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.ЭлектронноеПисьмоИсходящее",
+          "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СпискиОтзываСертификатов",
+          "mdoRefRu": "РегистрСведений.СпискиОтзываСертификатов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.МинимальныйИнтервалРегламентныхЗаданийДОИОВМоделиСервиса",
+          "mdoRefRu": "Константа.МинимальныйИнтервалРегламентныхЗаданийДОИОВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользованиеКаталогаДополнительныхОтчетовИОбработокВМоделиСервиса",
+          "mdoRefRu": "Константа.ИспользованиеКаталогаДополнительныхОтчетовИОбработокВМоделиСервиса"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДлительныеОперации",
+          "mdoRefRu": "РегистрСведений.ДлительныеОперации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьЗамерыВремени3",
+          "mdoRefRu": "РегистрСведений.УдалитьЗамерыВремени3"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиПравОбъектов",
+          "mdoRefRu": "РегистрСведений.НастройкиПравОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ДополнительныеОтчетыИОбработки",
+          "mdoRefRu": "Справочник.ДополнительныеОтчетыИОбработки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВнешниеПользователи",
+          "mdoRefRu": "Справочник.ВнешниеПользователи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПапкиФайлов",
+          "mdoRefRu": "Справочник.ПапкиФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СубъектыДляРасчетаСроковХранения",
+          "mdoRefRu": "РегистрСведений.СубъектыДляРасчетаСроковХранения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НапоминанияПользователя",
+          "mdoRefRu": "РегистрСведений.НапоминанияПользователя"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ДатаОбновленияПовторноИспользуемыхЗначенийМРО",
+          "mdoRefRu": "Константа.ДатаОбновленияПовторноИспользуемыхЗначенийМРО"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиПолномочийМЧД",
+          "mdoRefRu": "РегистрСведений.НастройкиПолномочийМЧД"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗначенияГруппДоступа",
+          "mdoRefRu": "РегистрСведений.ЗначенияГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИсторияМуниципальнойИерархии",
+          "mdoRefRu": "РегистрСведений.ИсторияМуниципальнойИерархии"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьАльтернативныйСерверДляЗагрузкиКурсовВалют",
+          "mdoRefRu": "Константа.ИспользоватьАльтернативныйСерверДляЗагрузкиКурсовВалют"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПолнотекстовыйПоиск",
+          "mdoRefRu": "Константа.ИспользоватьПолнотекстовыйПоиск"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КаталогСообщенийОбменаДаннымиДляWindows",
+          "mdoRefRu": "Константа.КаталогСообщенийОбменаДаннымиДляWindows"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности",
+          "mdoRefRu": "Константа.АвтоматическиНастраиватьРазрешенияВПрофиляхБезопасности"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.РежимОчисткиФайлов",
+          "mdoRefRu": "Константа.РежимОчисткиФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КэшПрограммныхИнтерфейсов",
+          "mdoRefRu": "РегистрСведений.КэшПрограммныхИнтерфейсов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ГруппыЗначенийДоступа",
+          "mdoRefRu": "РегистрСведений.ГруппыЗначенийДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиКомандПечати",
+          "mdoRefRu": "РегистрСведений.НастройкиКомандПечати"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ДанныеДляОтложенногоОбновления",
+          "mdoRefRu": "Константа.ДанныеДляОтложенногоОбновления"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СервисПереводаТекста",
+          "mdoRefRu": "Константа.СервисПереводаТекста"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НеИспользоватьРазделениеПоОбластямДанных",
+          "mdoRefRu": "Константа.НеИспользоватьРазделениеПоОбластямДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КаталогСообщенийОбменаДаннымиДляLinux",
+          "mdoRefRu": "Константа.КаталогСообщенийОбменаДаннымиДляLinux"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СведенияОБлокируемыхОбъектах",
+          "mdoRefRu": "Константа.СведенияОБлокируемыхОбъектах"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПредопределенныеВариантыОтчетов",
+          "mdoRefRu": "Справочник.ПредопределенныеВариантыОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьЭлектроннуюПочтуВШаблонахСообщений",
+          "mdoRefRu": "Константа.ИспользоватьЭлектроннуюПочтуВШаблонахСообщений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервисаСПриложениемВИнтернете",
+          "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервисаСПриложениемВИнтернете"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОценкаПроизводительностиПериодЗаписи",
+          "mdoRefRu": "Константа.ОценкаПроизводительностиПериодЗаписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ГлавныйУзел",
+          "mdoRefRu": "Константа.ГлавныйУзел"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.АдресСервисаМЧДРР",
+          "mdoRefRu": "Константа.АдресСервисаМЧДРР"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗаголовокСистемы",
+          "mdoRefRu": "Константа.ЗаголовокСистемы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РучныеИзмененияГрафиковРаботы",
+          "mdoRefRu": "РегистрСведений.РучныеИзмененияГрафиковРаботы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьБизнесПроцессыИЗадачи",
+          "mdoRefRu": "Константа.ИспользоватьБизнесПроцессыИЗадачи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияОбменовДаннымиОбластейДанных",
+          "mdoRefRu": "РегистрСведений.СостоянияОбменовДаннымиОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ГруппыПользователей",
+          "mdoRefRu": "Справочник.ГруппыПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользуютсяПрофилиБезопасности",
+          "mdoRefRu": "Константа.ИспользуютсяПрофилиБезопасности"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СтандартныеПодсистемыВАвтономномРежиме",
+          "mdoRefRu": "Константа.СтандартныеПодсистемыВАвтономномРежиме"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОграничиватьДоступНаУровнеЗаписейУниверсально",
+          "mdoRefRu": "Константа.ОграничиватьДоступНаУровнеЗаписейУниверсально"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписиМЧД",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписиМЧД"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗарегистрированыИзмененияДанных",
+          "mdoRefRu": "Константа.ЗарегистрированыИзмененияДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиОчисткиФайлов",
+          "mdoRefRu": "РегистрСведений.НастройкиОчисткиФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбщиеНастройкиУзловИнформационныхБаз",
+          "mdoRefRu": "РегистрСведений.ОбщиеНастройкиУзловИнформационныхБаз"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЗначенияСвойствОбъектовИерархия",
+          "mdoRefRu": "Справочник.ЗначенияСвойствОбъектовИерархия"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.МаксимальныйРазмерФайлаОбластиДанных",
+          "mdoRefRu": "Константа.МаксимальныйРазмерФайлаОбластиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьВнешнихПользователей",
+          "mdoRefRu": "Константа.ИспользоватьВнешнихПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.УчетныеЗаписиСинхронизацииФайлов",
+          "mdoRefRu": "Справочник.УчетныеЗаписиСинхронизацииФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПараметрыРаботыПрограммы",
+          "mdoRefRu": "РегистрСведений.ПараметрыРаботыПрограммы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПрограммыЭлектроннойПодписиИШифрования",
+          "mdoRefRu": "Справочник.ПрограммыЭлектроннойПодписиИШифрования"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ИдентификаторыОбъектовРасширений",
+          "mdoRefRu": "Справочник.ИдентификаторыОбъектовРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияПапокПисем",
+          "mdoRefRu": "РегистрСведений.СостоянияПапокПисем"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкиКолонтитулов",
+          "mdoRefRu": "Константа.НастройкиКолонтитулов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СертификатыПользователяDSS",
+          "mdoRefRu": "РегистрСведений.СертификатыПользователяDSS"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.АдминистративнаяИерархия",
+          "mdoRefRu": "РегистрСведений.АдминистративнаяИерархия"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьНастройкиТранспортаОбмена",
+          "mdoRefRu": "РегистрСведений.УдалитьНастройкиТранспортаОбмена"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CHART_OF_CHARACTERISTIC_TYPES",
+          "mdoRef": "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач",
+          "mdoRefRu": "ПланВидовХарактеристик.ОбъектыАдресацииЗадач"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьГруппыПользователей",
+          "mdoRefRu": "Константа.ИспользоватьГруппыПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СинхронизироватьДанныеСПриложениемВИнтернетеПриНачалеРаботыПрограммы",
+          "mdoRefRu": "Константа.СинхронизироватьДанныеСПриложениемВИнтернетеПриНачалеРаботыПрограммы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкиВходаПользователей",
+          "mdoRefRu": "Константа.НастройкиВходаПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПсевдонимыПредопределенныхУзлов",
+          "mdoRefRu": "РегистрСведений.ПсевдонимыПредопределенныхУзлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДаннымиОбластейДанных",
+          "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДаннымиОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьНесколькоПроизводственныхКалендарей",
+          "mdoRefRu": "Константа.ИспользоватьНесколькоПроизводственныхКалендарей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПравилаДляОбменаДанными",
+          "mdoRefRu": "РегистрСведений.ПравилаДляОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбластиСтатистики",
+          "mdoRefRu": "РегистрСведений.ОбластиСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.НастройкаПодчиненногоУзлаРИБЗавершена",
+          "mdoRefRu": "Константа.НастройкаПодчиненногоУзлаРИБЗавершена"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ГруппыИсполнителейЗадач",
+          "mdoRefRu": "Справочник.ГруппыИсполнителейЗадач"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.НастройкиТранспортаСообщенийОбмена",
+          "mdoRefRu": "Справочник.НастройкиТранспортаСообщенийОбмена"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЗначенияСвойствОбъектов",
+          "mdoRefRu": "Справочник.ЗначенияСвойствОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДатыПоследнейЗагрузкиПочтовыхСообщений",
+          "mdoRefRu": "РегистрСведений.ДатыПоследнейЗагрузкиПочтовыхСообщений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЭлектронныеПодписи",
+          "mdoRefRu": "РегистрСведений.ЭлектронныеПодписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПараметрыОграниченияДоступа",
+          "mdoRefRu": "РегистрСведений.ПараметрыОграниченияДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.КлассификаторБанков",
+          "mdoRefRu": "Справочник.КлассификаторБанков"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗемельныеУчастки",
+          "mdoRefRu": "РегистрСведений.ЗемельныеУчастки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИсторияАдресныхОбъектов",
+          "mdoRefRu": "РегистрСведений.ИсторияАдресныхОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СписокЗапрещенныхРасширений",
+          "mdoRefRu": "Константа.СписокЗапрещенныхРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПериодическиеСерверныеОповещения",
+          "mdoRefRu": "РегистрСведений.ПериодическиеСерверныеОповещения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СообщенияОбменаДаннымиОбластейДанных",
+          "mdoRefRu": "РегистрСведений.СообщенияОбменаДаннымиОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиВариантовОтчетов",
+          "mdoRefRu": "РегистрСведений.НастройкиВариантовОтчетов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.СообщениеSMSПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.СообщениеSMSПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СертификатыШифрования",
+          "mdoRefRu": "РегистрСведений.СертификатыШифрования"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьРезультатыОбменаДанными",
+          "mdoRefRu": "РегистрСведений.УдалитьРезультатыОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИспользованиеДополнительныхОтчетовИОбработокСервисаВАвтономномРабочемМесте",
+          "mdoRefRu": "РегистрСведений.ИспользованиеДополнительныхОтчетовИОбработокСервисаВАвтономномРабочемМесте"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗаблокированныеДляПолученияУчетныеЗаписи",
+          "mdoRefRu": "РегистрСведений.ЗаблокированныеДляПолученияУчетныеЗаписи"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПараметрыРаботыВерсийРасширений",
+          "mdoRefRu": "РегистрСведений.ПараметрыРаботыВерсийРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ХранилищеДвоичныхДанных",
+          "mdoRefRu": "Справочник.ХранилищеДвоичныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОсновныеПечатныеФормыОбъектов",
+          "mdoRefRu": "РегистрСведений.ОсновныеПечатныеФормыОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиТранспортаОбменаОбластиДанных",
+          "mdoRefRu": "РегистрСведений.НастройкиТранспортаОбменаОбластиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьНапоминанияПользователя",
+          "mdoRefRu": "Константа.ИспользоватьНапоминанияПользователя"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УничтоженныеПерсональныеДанные",
+          "mdoRefRu": "РегистрСведений.УничтоженныеПерсональныеДанные"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПрефиксУзлаРаспределеннойИнформационнойБазы",
+          "mdoRefRu": "Константа.ПрефиксУзлаРаспределеннойИнформационнойБазы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СообщениеОбменаДаннымиИзГлавногоУзла",
+          "mdoRefRu": "Константа.СообщениеОбменаДаннымиИзГлавногоУзла"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьЗаметки",
+          "mdoRefRu": "Константа.ИспользоватьЗаметки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных",
+          "mdoRefRu": "РегистрСведений.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ЯзыкиПечатныхФорм",
+          "mdoRefRu": "Справочник.ЯзыкиПечатныхФорм"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСервисПереводаТекста",
+          "mdoRefRu": "Константа.ИспользоватьСервисПереводаТекста"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.СогласиеНаОбработкуПерсональныхДанных",
+          "mdoRefRu": "Документ.СогласиеНаОбработкуПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РезультатыОбменаДанными",
+          "mdoRefRu": "РегистрСведений.РезультатыОбменаДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.БуферОперацийСтатистики",
+          "mdoRefRu": "РегистрСведений.БуферОперацийСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОтправленныеСерверныеОповещения",
+          "mdoRefRu": "РегистрСведений.ОтправленныеСерверныеОповещения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПараметрыЦентраМониторинга",
+          "mdoRefRu": "Константа.ПараметрыЦентраМониторинга"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОграничиватьДоступНаУровнеЗаписей",
+          "mdoRefRu": "Константа.ОграничиватьДоступНаУровнеЗаписей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.АдресныеОбъекты",
+          "mdoRefRu": "РегистрСведений.АдресныеОбъекты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СвойстваРасширений",
+          "mdoRefRu": "РегистрСведений.СвойстваРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.АктОбУничтоженииПерсональныхДанных",
+          "mdoRefRu": "Документ.АктОбУничтоженииПерсональныхДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ГруппыВнешнихПользователей",
+          "mdoRefRu": "Справочник.ГруппыВнешнихПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыВремениТехнологические",
+          "mdoRefRu": "РегистрСведений.ЗамерыВремениТехнологические"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьРазделениеПоОбластямДанных",
+          "mdoRefRu": "Константа.ИспользоватьРазделениеПоОбластямДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ХранитьФайлыВТомахНаДиске",
+          "mdoRefRu": "Константа.ХранитьФайлыВТомахНаДиске"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСервисСклоненияMorpher",
+          "mdoRefRu": "Константа.ИспользоватьСервисСклоненияMorpher"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СведенияОбОбновленииИБ",
+          "mdoRefRu": "Константа.СведенияОбОбновленииИБ"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ГруппыДоступа",
+          "mdoRefRu": "Справочник.ГруппыДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбщиеПоставляемыеМакетыПечати",
+          "mdoRefRu": "РегистрСведений.ОбщиеПоставляемыеМакетыПечати"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КоличествоПотоковОбновленияИнформационнойБазы",
+          "mdoRefRu": "Константа.КоличествоПотоковОбновленияИнформационнойБазы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДанными",
+          "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДанными"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИспользуемыеВидыДоступа",
+          "mdoRefRu": "РегистрСведений.ИспользуемыеВидыДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ОтложенноеОбновлениеВГлавномУзлеЗавершеноУспешно",
+          "mdoRefRu": "Константа.ОтложенноеОбновлениеВГлавномУзлеЗавершеноУспешно"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДатыЗапретаИзменения",
+          "mdoRefRu": "РегистрСведений.ДатыЗапретаИзменения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдаляемыеОбъекты",
+          "mdoRefRu": "РегистрСведений.УдаляемыеОбъекты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВстречаПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.ВстречаПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаКРегистрам",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаКРегистрам"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДатыЗапретаИзменения",
+          "mdoRefRu": "Константа.ИспользоватьДатыЗапретаИзменения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаКОбъектам",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаКОбъектам"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьПрочиеВзаимодействия",
+          "mdoRefRu": "Константа.ИспользоватьПрочиеВзаимодействия"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЭтоАвтономноеРабочееМесто",
+          "mdoRefRu": "Константа.ЭтоАвтономноеРабочееМесто"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.НаборыГруппДоступа",
+          "mdoRefRu": "Справочник.НаборыГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ТомаХраненияФайлов",
+          "mdoRefRu": "Справочник.ТомаХраненияФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ВерсииПодсистемОбластейДанных",
+          "mdoRefRu": "РегистрСведений.ВерсииПодсистемОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПравилаОбработкиЭлектроннойПочты",
+          "mdoRefRu": "Справочник.ПравилаОбработкиЭлектроннойПочты"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CHART_OF_CHARACTERISTIC_TYPES",
+          "mdoRef": "ChartOfCharacteristicTypes.ВопросыДляАнкетирования",
+          "mdoRefRu": "ПланВидовХарактеристик.ВопросыДляАнкетирования"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "BUSINESS_PROCESS",
+          "mdoRef": "BusinessProcess.Задание",
+          "mdoRefRu": "БизнесПроцесс.Задание"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.НастройкиАрхиваСообщенийОбменов",
+          "mdoRefRu": "РегистрСведений.НастройкиАрхиваСообщенийОбменов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.МакетыПечатныхФорм",
+          "mdoRefRu": "Справочник.МакетыПечатныхФорм"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИдентификаторыОбъектовВерсийРасширений",
+          "mdoRefRu": "РегистрСведений.ИдентификаторыОбъектовВерсийРасширений"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ФиксацияОбработкиДанныхОбработчиками",
+          "mdoRefRu": "РегистрСведений.ФиксацияОбработкиДанныхОбработчиками"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СинхронизироватьДанныеСПриложениемВИнтернетеПриЗавершенииРаботыПрограммы",
+          "mdoRefRu": "Константа.СинхронизироватьДанныеСПриложениемВИнтернетеПриЗавершенииРаботыПрограммы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.КоличествоЭлементовВТранзакцииЗагрузкиДанных",
+          "mdoRefRu": "Константа.КоличествоЭлементовВТранзакцииЗагрузкиДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ЗагрузитьРасширенияИзменяющиеСтруктуруДанных",
+          "mdoRefRu": "Константа.ЗагрузитьРасширенияИзменяющиеСтруктуруДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаПользователей",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаПользователей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КлючиДоступаГруппДоступа",
+          "mdoRefRu": "РегистрСведений.КлючиДоступаГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.МашиночитаемыеДоверенностиПрисоединенныеФайлы",
+          "mdoRefRu": "Справочник.МашиночитаемыеДоверенностиПрисоединенныеФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДомаЗданияСтроения",
+          "mdoRefRu": "РегистрСведений.ДомаЗданияСтроения"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ИспользуемыеВидыДоступаПоТаблицам",
+          "mdoRefRu": "РегистрСведений.ИспользуемыеВидыДоступаПоТаблицам"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.МашиночитаемыеДоверенностиПредставителиИДоверители",
+          "mdoRefRu": "РегистрСведений.МашиночитаемыеДоверенностиПредставителиИДоверители"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ДампыПлатформы",
+          "mdoRefRu": "РегистрСведений.ДампыПлатформы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.АдресПубликацииИнформационнойБазыВЛокальнойСети",
+          "mdoRefRu": "Константа.АдресПубликацииИнформационнойБазыВЛокальнойСети"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КодировкиФайлов",
+          "mdoRefRu": "РегистрСведений.КодировкиФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыОперацииСтатистики",
+          "mdoRefRu": "РегистрСведений.ЗамерыОперацииСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПоследнееОбновлениеДоступа",
+          "mdoRefRu": "Константа.ПоследнееОбновлениеДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.Файлы",
+          "mdoRefRu": "Справочник.Файлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПрефиксПоследнегоАвтономногоРабочегоМеста",
+          "mdoRefRu": "Константа.ПрефиксПоследнегоАвтономногоРабочегоМеста"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИсточникДанныхАдресногоКлассификатора",
+          "mdoRefRu": "Константа.ИсточникДанныхАдресногоКлассификатора"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ЗамерыСтатистики",
+          "mdoRefRu": "РегистрСведений.ЗамерыСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КомментарииСтатистики",
+          "mdoRefRu": "РегистрСведений.КомментарииСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.СинхронизироватьФайлы",
+          "mdoRefRu": "Константа.СинхронизироватьФайлы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ВерсииФайлов",
+          "mdoRefRu": "Справочник.ВерсииФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОперацииСтатистики",
+          "mdoRefRu": "РегистрСведений.ОперацииСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.УдалитьДвоичныеДанныеФайлов",
+          "mdoRefRu": "РегистрСведений.УдалитьДвоичныеДанныеФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ОбработчикиОбновленияОбщихДанных",
+          "mdoRefRu": "РегистрСведений.ОбработчикиОбновленияОбщихДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ПовторитьЗагрузкуСообщенияОбменаДаннымиПередЗапуском",
+          "mdoRefRu": "Константа.ПовторитьЗагрузкуСообщенияОбменаДаннымиПередЗапуском"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КомментарииОперацииСтатистики",
+          "mdoRefRu": "РегистрСведений.КомментарииОперацииСтатистики"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.КонтактыВзаимодействий",
+          "mdoRefRu": "РегистрСведений.КонтактыВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РабочиеКаталогиФайлов",
+          "mdoRefRu": "РегистрСведений.РабочиеКаталогиФайлов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПакетыДляОтправки",
+          "mdoRefRu": "РегистрСведений.ПакетыДляОтправки"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ДетализироватьОбновлениеИБВЖурналеРегистрации",
+          "mdoRefRu": "Константа.ДетализироватьОбновлениеИБВЖурналеРегистрации"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.ПрофилиГруппДоступа",
+          "mdoRefRu": "Справочник.ПрофилиГруппДоступа"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "DOCUMENT",
+          "mdoRef": "Document.ЭлектронноеПисьмоВходящее",
+          "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСинхронизациюДанных",
+          "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИдентификаторИнформационнойБазы",
+          "mdoRefRu": "Константа.ИдентификаторИнформационнойБазы"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.ПоставляемыеМакетыПечати",
+          "mdoRefRu": "РегистрСведений.ПоставляемыеМакетыПечати"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИзменятьЗаданияЗаднимЧислом",
+          "mdoRefRu": "Константа.ИзменятьЗаданияЗаднимЧислом"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РежимыПодключенияВнешнихМодулей",
+          "mdoRefRu": "РегистрСведений.РежимыПодключенияВнешнихМодулей"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.БезопасноеХранилищеДанных",
+          "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СостоянияПредметовВзаимодействий",
+          "mdoRefRu": "РегистрСведений.СостоянияПредметовВзаимодействий"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.РезультатыПроверкиУчета",
+          "mdoRefRu": "РегистрСведений.РезультатыПроверкиУчета"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьСинхронизациюДанныхВМоделиСервисаСЛокальнойПрограммой",
+          "mdoRefRu": "Константа.ИспользоватьСинхронизациюДанныхВМоделиСервисаСЛокальнойПрограммой"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.СведенияОПользователях",
+          "mdoRefRu": "РегистрСведений.СведенияОПользователях"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "INFORMATION_REGISTER",
+          "mdoRef": "InformationRegister.БлокировкиСеансовОбластейДанных",
+          "mdoRefRu": "РегистрСведений.БлокировкиСеансовОбластейДанных"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьУдалениеПомеченныхОбъектов",
+          "mdoRefRu": "Константа.ИспользоватьУдалениеПомеченныхОбъектов"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CONSTANT",
+          "mdoRef": "Constant.ИспользоватьДатуНачалаЗадач",
+          "mdoRefRu": "Константа.ИспользоватьДатуНачалаЗадач"
+        },
+        "allow": false
+      },
+      {
+        "metadata": {
+          "type": "CATALOG",
+          "mdoRef": "Catalog.НастройкиАвторизацииИнтернетСервисов",
+          "mdoRefRu": "Справочник.НастройкиАвторизацииИнтернетСервисов"
+        },
+        "allow": false
+      }
+    ],
+    []
+  ],
+  "description": "Обновление информационной базы",
+  "distributedInfoBase": false,
+  "explanation": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+  },
+  "forms": [],
+  "includeConfigurationExtensions": false,
+  "mdoReference": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+  },
+  "mdoType": "EXCHANGE_PLAN",
+  "moduleTypes": [
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_2/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl"
+      ]
+    ],
+    [
+      "ObjectModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_2/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl"
+      ]
+    ]
+  ],
+  "modules": [
+    {
+      "moduleType": "ManagerModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ManagerModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    },
+    {
+      "moduleType": "ObjectModule",
+      "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/ExchangePlans/ОбновлениеИнформационно_Базы/Ext/ObjectModule.bsl",
+      "owner": {
+        "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "isProtected": false
+    }
+  ],
+  "name": "ОбновлениеИнформационнойБазы",
+  "objectBelonging": "OWN",
+  "possibleRights": [
+    {
+      "default": {
+        "tag": 4
+      },
+      "int": 21,
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INSERT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "DELETE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INPUT_BY_STRING",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_INSERT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_SET_DELETION_MARK",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_CLEAR_DELETION_MARK",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_MARKED",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY_OF_MISSING_DATA",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_SETTINGS",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT_DATA_HISTORY_VERSION_COMMENT",
+      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SWITCH_TO_DATA_HISTORY_VERSION"
+    }
+  ],
+  "predefinedValues": [],
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+    "content": [
+      {
+        "default": {
+          "tag": 2
+        },
+        "int": 1,
+        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
+          "langKey": "ru",
+          "value": "Обновление информационной базы"
+        }
+      }
+    ]
+  },
+  "tabularSections": [],
+  "templates": [],
+  "uuid": "3fc019d1-aec8-4835-96c5-3bbf43da0b94"
+}}

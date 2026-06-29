@@ -62,7 +62,9 @@ class CommonAttributeTest {
   @CsvSource(
     {
       "true, ssl_3_1, CommonAttributes.ОбластьДанныхВспомогательныеДанные",
-      "false, ssl_3_1, CommonAttributes.ОбластьДанныхВспомогательныеДанные"
+      "false, ssl_3_1, CommonAttributes.ОбластьДанныхВспомогательныеДанные",
+      "true, ssl_3_2, CommonAttributes.ОбластьДанныхВспомогательныеДанные",
+      "false, ssl_3_2, CommonAttributes.ОбластьДанныхВспомогательныеДанные"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {

@@ -41,7 +41,9 @@ class ChartOfCharacteristicTypesTest {
       "true, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1, _edt",
       "false, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1",
       "true, ssl_3_1, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения, _edt",
-      "false, ssl_3_1, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения"
+      "false, ssl_3_1, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения",
+      "true, ssl_3_2, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения, _edt",
+      "false, ssl_3_2, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
@@ -81,7 +83,9 @@ class ChartOfCharacteristicTypesTest {
   @ParameterizedTest
   @CsvSource({
     "src/test/resources/ext/edt/ssl_3_1/configuration",
-    "src/test/resources/ext/designer/ssl_3_1/src/cf"
+    "src/test/resources/ext/designer/ssl_3_1/src/cf",
+    "src/test/resources/ext/edt/ssl_3_2/configuration",
+    "src/test/resources/ext/designer/ssl_3_2/src/cf"
   })
   void testPredefined(String configurationPath) {
     var mdo = MDOReader.read(Path.of(configurationPath),

@@ -51,6 +51,10 @@ class MDClassesTest {
     srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_1");
     mdcs = MDClasses.createExternalSources(srcPath);
     assertThat(mdcs).isEmpty();
+
+    srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_2");
+    mdcs = MDClasses.createExternalSources(srcPath);
+    assertThat(mdcs).isEmpty();
   }
 
   @Test

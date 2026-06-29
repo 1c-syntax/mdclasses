@@ -33,7 +33,9 @@ class CommonCommandTest {
       "true, mdclasses, CommonCommands.ОбщаяКоманда1, _edt",
       "false, mdclasses, CommonCommands.ОбщаяКоманда1",
       "true, ssl_3_1, CommonCommands.ОтправитьПисьмо, _edt",
-      "false, ssl_3_1, CommonCommands.ОтправитьПисьмо"
+      "false, ssl_3_1, CommonCommands.ОтправитьПисьмо",
+      "true, ssl_3_2, CommonCommands.ОтправитьПисьмо, _edt",
+      "false, ssl_3_2, CommonCommands.ОтправитьПисьмо"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

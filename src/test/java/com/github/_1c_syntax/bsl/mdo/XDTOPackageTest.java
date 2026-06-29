@@ -33,7 +33,9 @@ class XDTOPackageTest {
   @CsvSource(
     {
       "true, ssl_3_1, XDTOPackages.ApdexExport_1_0_0_4",
-      "false, ssl_3_1, XDTOPackages.ApdexExport_1_0_0_4"
+      "false, ssl_3_1, XDTOPackages.ApdexExport_1_0_0_4",
+      "true, ssl_3_2, XDTOPackages.ApdexExport_1_0_0_4",
+      "false, ssl_3_2, XDTOPackages.ApdexExport_1_0_0_4"
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {

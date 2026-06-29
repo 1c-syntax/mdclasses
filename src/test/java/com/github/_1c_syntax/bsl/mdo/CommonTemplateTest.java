@@ -51,7 +51,9 @@ class CommonTemplateTest {
       "true, mdclasses, CommonTemplates.ТекстовыйДокумент",
       "false, mdclasses, CommonTemplates.ТекстовыйДокумент",
       "true, ssl_3_1, CommonTemplates.СтруктураПодчиненности",
-      "false, ssl_3_1, CommonTemplates.СтруктураПодчиненности"
+      "false, ssl_3_1, CommonTemplates.СтруктураПодчиненности",
+      "true, ssl_3_2, CommonTemplates.СтруктураПодчиненности",
+      "false, ssl_3_2, CommonTemplates.СтруктураПодчиненности"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

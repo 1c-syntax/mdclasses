@@ -37,7 +37,9 @@ class WebServiceTest {
       "true, mdclasses, WebServices.WebСервис1, _edt",
       "false, mdclasses, WebServices.WebСервис1",
       "true, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1, _edt",
-      "false, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1"
+      "false, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1",
+      "true, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1, _edt",
+      "false, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {

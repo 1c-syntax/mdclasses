@@ -85,7 +85,9 @@ public class ValueTypeTest {
   @CsvSource(
     {
       "true, ssl_3_1, _edt",
-      "false, ssl_3_1"
+      "false, ssl_3_1",
+      "true, ssl_3_2, _edt",
+      "false, ssl_3_2"
     }
   )
   void testDefinedType(ArgumentsAccessor argumentsAccessor) {

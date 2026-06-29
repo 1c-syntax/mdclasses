@@ -55,7 +55,9 @@ class BusinessProcessTest {
   @CsvSource(
     {
       "true, ssl_3_1, BusinessProcesses.Задание, _edt",
-      "false, ssl_3_1, BusinessProcesses.Задание"
+      "false, ssl_3_1, BusinessProcesses.Задание",
+      "true, ssl_3_2, BusinessProcesses.Задание, _edt",
+      "false, ssl_3_2, BusinessProcesses.Задание"
     }
   )
   void testSSL_3_1(ArgumentsAccessor argumentsAccessor) {
