@@ -70,7 +70,7 @@ public class ValueTypeTest {
         assertThat(objectAttribute.getValueType().isComposite()).isFalse();
         assertThat(objectAttribute.getValueType().getQualifiers()).hasSize(1);
 
-        var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
+        var qualifier = objectAttribute.getValueType().getQualifiers().getFirst();
         assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
 
         var numberQualifiers = (NumberQualifiers) qualifier;

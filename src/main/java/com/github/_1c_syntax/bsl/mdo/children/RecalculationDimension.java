@@ -23,31 +23,30 @@ package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
-import com.github._1c_syntax.bsl.mdo.AttributeOwner;
-import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.Module;
-import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+
+import java.util.List;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.Singular;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
-
-import java.util.Collections;
-import java.util.List;
 
 @Value
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Recalculation implements MDChild, AttributeOwner, ModuleOwner, AccessRightsOwner {
+public class RecalculationDimension implements Attribute, AccessRightsOwner {
 
   /*
    * Для MDChild
@@ -71,29 +70,33 @@ public class Recalculation implements MDChild, AttributeOwner, ModuleOwner, Acce
   MdoReference owner = MdoReference.EMPTY;
 
   /*
-   * Для ModuleOwner
+   * Для Attribute
    */
 
   @Default
-  List<Module> modules = Collections.emptyList();
-
-  @Singular
-  List<RecalculationDimension> dimensions;
+  boolean passwordMode = false;
+  @Default
+  AttributeKind kind = AttributeKind.CUSTOM;
+  @Default
+  IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
-   * Для ChildrenOwner
+   * RecalculationDimension specific
    */
 
-  @Override
-  public List<Attribute> getAllAttributes() {
-    return Collections.unmodifiableList(dimensions);
-  }
+  @Default
+  MdoReference registerDimension = MdoReference.EMPTY;
+  @Default
+  MdoReference leadingRegisterData = MdoReference.EMPTY;
 
   @Override
-  public List<MD> getChildren() {
-    return Collections.unmodifiableList(dimensions);
+  public ValueTypeDescription getValueType() {
+    return type;
   }
-  
+
   /**
    * Возвращает перечень возможных прав доступа
    */
