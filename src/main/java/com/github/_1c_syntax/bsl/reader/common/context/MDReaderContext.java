@@ -28,15 +28,19 @@ import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
-import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -97,6 +101,25 @@ public class MDReaderContext extends AbstractReaderContext {
     }
 
     realClass = computeRealClass;
+    if (Dimension.class.isAssignableFrom(realClass)) {
+      if (ConfigurationSource.DESIGNER.equals(mdReader.getConfigurationSource())) {
+        var parentFolder = currentPath.getParent().getFileName().toString();
+        if (MDOType.fromValue(parentFolder).isPresent()
+          && MDOType.fromValue(parentFolder).get() == MDOType.RECALCULATION) {
+          realClass = RecalculationDimension.class;
+          realClassName = realClass.getSimpleName();
+        }
+      } else {
+        var lastParent = ((ExtendReaderWrapper) reader).getLastParentPath();
+        if (lastParent.isPresent()
+          && MDOType.fromValue(lastParent.get()).isPresent()
+          && MDOType.fromValue(lastParent.get()).get() == MDOType.RECALCULATION) {
+          realClass = RecalculationDimension.class;
+          realClassName = realClass.getSimpleName();
+        }
+      }
+    }
+
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
@@ -107,9 +130,13 @@ public class MDReaderContext extends AbstractReaderContext {
     }
 
     mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
-    if (mdoType == MDOType.UNKNOWN && ExternalDataSourceTableField.class.isAssignableFrom(realClass)) {
-      realClassName = "Field";
-      mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+    if (mdoType == MDOType.UNKNOWN) {
+      if (ExternalDataSourceTableField.class.isAssignableFrom(realClass)) {
+        realClassName = "Field";
+        mdoType = MDOType.fromValue(realClassName).orElse(MDOType.UNKNOWN);
+      } else if (RecalculationDimension.class.isAssignableFrom(realClass)) {
+        mdoType = MDOType.RECALCULATION_DIMENSION;
+      }
     }
 
     templateType = TemplateType.UNKNOWN;

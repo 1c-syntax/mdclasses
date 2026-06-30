@@ -70,7 +70,7 @@ public class ValueTypeTest {
         assertThat(objectAttribute.getValueType().isComposite()).isFalse();
         assertThat(objectAttribute.getValueType().getQualifiers()).hasSize(1);
 
-        var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
+        var qualifier = objectAttribute.getValueType().getQualifiers().getFirst();
         assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
 
         var numberQualifiers = (NumberQualifiers) qualifier;
@@ -117,7 +117,9 @@ public class ValueTypeTest {
 
   private static Configuration readConfiguration(ArgumentsAccessor argumentsAccessor) {
     var isEDT = argumentsAccessor.getBoolean(0);
+    assert isEDT != null;
     var examplePackName = argumentsAccessor.getString(1);
+    assert examplePackName != null;
 
     Path configurationPath;
     if (isEDT) {

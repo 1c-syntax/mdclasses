@@ -38,6 +38,7 @@ public class MdoReferenceConverter implements ReadConverter {
   private static final String USE_NODE_NAME = "Use";
   private static final String PICTURE_NODE_NAME = "Picture";
   private static final String REF_NODE_NAME = "Ref";
+  private static final String LEADING_REGISTER_DATA_NODE_NAME = "LeadingRegisterData";
 
   @Override
   @Nullable
@@ -66,7 +67,7 @@ public class MdoReferenceConverter implements ReadConverter {
 
     switch (nodeName) {
       case ITEM_NODE_NAME -> value = readValue(reader, METADATA_NODE_NAME, value);
-      case USE_NODE_NAME -> {
+      case USE_NODE_NAME, LEADING_REGISTER_DATA_NODE_NAME -> {
         reader.moveDown();
         value = reader.getValue();
         reader.moveUp();

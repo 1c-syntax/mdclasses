@@ -45,6 +45,7 @@ import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -128,22 +129,12 @@ public class MDTestUtils {
     return xstream.toXML(obj);
   }
 
-  /**
-   * Регенерация fixture JSON для указанного MDO объекта.
-   * Используется для создания/обновленияfixture при изменении fixtures.
-   */
-  public static void regenerateFixture(String examplePackName, String mdoRef, boolean isEdt, String fixturePostfix) throws java.io.IOException {
-    var configurationPath = isEdt
-      ? Path.of(EXAMPLES_PATH, EDT_PATH, examplePackName, EDT_CF_PATH)
-      : Path.of(EXAMPLES_PATH, DESIGNER_PATH, examplePackName, DESIGNER_CF_PATH);
-    var mdo = MDOReader.read(configurationPath, mdoRef, MDCReadSettings.DEFAULT);
-    var json = createJson(mdo);
-    Path fixturePath = fixturePostfix != null && !fixturePostfix.isEmpty()
-      ? Path.of(FIXTURES_PATH, examplePackName, mdoRef + fixturePostfix + ".json")
-      : Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
-    Files.writeString(fixturePath, json, StandardCharsets.UTF_8);
-    LOGGER.info("Regenerated: {}", fixturePath);
-    LOGGER.info("Size: {} chars, {} lines", json.length(), json.lines().count());
+  public static void regenerateFixture(Object object, Path fixturePath) {
+    try {
+      Files.writeString(fixturePath, createJson(object), StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public MD getMDWithSimpleTest(ArgumentsAccessor argumentsAccessor) {
@@ -199,7 +190,6 @@ public class MDTestUtils {
     } else {
       fixturePath = Path.of(FIXTURES_PATH, examplePackName, mdoRef + ".json");
     }
-
     objectEqualJson(mdc, fixturePath);
     return mdc;
   }

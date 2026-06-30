@@ -21,8 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -49,7 +51,7 @@ class CalculationRegisterTest {
       .hasSize(12)
       .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(calculationRegister.getRecalculations()).hasSize(1);
-    var recalc = calculationRegister.getRecalculations().get(0);
+    var recalc = calculationRegister.getRecalculations().getFirst();
     assertThat(recalc.getModules())
       .hasSize(1)
       .allMatch(Module::isProtected)
@@ -57,5 +59,34 @@ class CalculationRegisterTest {
 
     assertThat(calculationRegister.getModules().stream().filter(Module::isProtected)).isEmpty();
     assertThat(calculationRegister.getAllModules().stream().filter(Module::isProtected)).hasSize(1);
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_3_25, CalculationRegisters.РегистрРасчета1, _edt",
+      "false, mdclasses_3_25, CalculationRegisters.РегистрРасчета1"
+    }
+  )
+  void testRecalculationDimensions(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CalculationRegister.class);
+
+    var calculationRegister = (CalculationRegister) mdo;
+    assertThat(calculationRegister.getRecalculations()).hasSize(1);
+
+    var recalc = calculationRegister.getRecalculations().getFirst();
+    assertThat(recalc.getName()).isEqualTo("Перерасчет1");
+
+    var dimensions = recalc.getDimensions();
+    assertThat(dimensions).hasSize(3);
+
+    var names = dimensions.stream().map(RecalculationDimension::getName).toList();
+    assertThat(names).containsExactlyInAnyOrder("Измерение1", "Измерение2", "Измерение3");
+
+    var types = dimensions.stream().map(RecalculationDimension::getMdoType).distinct().toList();
+    assertThat(types)
+      .hasSize(1)
+      .contains(MDOType.RECALCULATION_DIMENSION);
   }
 }

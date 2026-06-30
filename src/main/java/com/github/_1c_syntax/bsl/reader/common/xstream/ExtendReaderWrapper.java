@@ -28,6 +28,9 @@ import com.thoughtworks.xstream.io.ReaderWrapper;
 import javax.xml.stream.XMLStreamReader;
 import java.io.File;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Реализация враппера ридера, позволяющего читать в прикладном коде путь к файлу и текущему редеру
@@ -36,16 +39,36 @@ public class ExtendReaderWrapper extends ReaderWrapper {
   private final File file;
   private final XMLStreamReader xmlStreamReader;
   private final MDReader mdReader;
+  private final List<String> pathStack;
 
   public ExtendReaderWrapper(HierarchicalStreamReader hsReader, File in, XMLStreamReader xmlReader, MDReader mdReader) {
     super(hsReader);
     this.file = in;
     this.xmlStreamReader = xmlReader;
     this.mdReader = mdReader;
+    this.pathStack = new ArrayList<>();
+  }
+
+  @Override
+  public void moveDown() {
+    pathStack.add(getNodeName());
+    super.moveDown();
+  }
+
+  @Override
+  public void moveUp() {
+    super.moveUp();
+    if (!pathStack.isEmpty()) {
+      pathStack.removeLast();
+    }
   }
 
   public Path getPath() {
     return file.toPath();
+  }
+
+  public Optional<String> getLastParentPath() {
+    return pathStack.isEmpty() ? Optional.empty() : Optional.of(pathStack.getLast());
   }
 
   public XMLStreamReader getXMLStreamReader() {
