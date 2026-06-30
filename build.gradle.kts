@@ -62,7 +62,7 @@ dependencies {
 
     implementation("io.github.1c-syntax:bsl-common-library:0.12.0")
     implementation("io.github.1c-syntax:utils:0.7.2")
-    implementation("io.github.1c-syntax:supportconf:0.16.0")
+    implementation("io.github.1c-syntax:supportconf:0.17.0")
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.184")
