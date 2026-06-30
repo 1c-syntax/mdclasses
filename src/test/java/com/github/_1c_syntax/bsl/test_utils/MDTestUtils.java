@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.Qualifier;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.javabean.BeanProvider;
 import com.thoughtworks.xstream.converters.javabean.JavaBeanConverter;
@@ -90,7 +91,7 @@ public class MDTestUtils {
     try (var scanResult = new ClassGraph()
       .enableClassInfo()
       .enableAnnotationInfo()
-      .acceptPackages("com.github._1c_syntax.bsl.mdo", "com.github._1c_syntax.bsl.mdclasses")
+      .acceptPackages("com.github._1c_syntax.bsl.mdo", "com.github._1c_syntax.bsl.mdclasses", "com.github._1c_syntax.bsl.types.qualifiers")
       .scan()) {
 
       scanResult.getAllClasses().forEach((ClassInfo classInfo) -> {
@@ -105,6 +106,9 @@ public class MDTestUtils {
           }
           if (CommonModule.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "modules");
+          }
+          if (Qualifier.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "description");
           }
           xstream.omitField(clazz, "storageFields");
           xstream.omitField(clazz, "plainStorageFields");
