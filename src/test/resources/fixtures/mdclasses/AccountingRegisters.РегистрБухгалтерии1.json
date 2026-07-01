@@ -93,8 +93,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 5,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -150,14 +149,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -344,8 +336,16 @@
     ],
     []
   ],
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "commands": [],
   "comment": "",
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.AccountingRegister/auxiliaryListForm"
+  },
   "description": "Регистр бухгалтерии",
   "dimensions": [
     {
@@ -387,14 +387,7 @@
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": 0,
-              "description": {
-                "value": {
-                  "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                  "nameEn": "StringQualifiers (10, Variable)"
-                }
-              }
+              "allowedLength": 0
             }
           }
         ]
@@ -470,14 +463,7 @@
             "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
               "precision": 10,
               "scale": 0,
-              "nonNegative": false,
-              "description": {
-                "value": {
-                  "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                  "nameRu": "КвалификаторыЧисла (10.0)",
-                  "nameEn": "NumberQualifiers (10.0)"
-                }
-              }
+              "nonNegative": false
             }
           }
         ]

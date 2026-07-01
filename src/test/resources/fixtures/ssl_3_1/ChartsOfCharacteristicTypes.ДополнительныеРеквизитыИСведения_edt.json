@@ -39,14 +39,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -129,37 +122,16 @@
               },
               "int": 3,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               },
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 1024,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (1024, Переменная)",
-                    "nameEn": "StringQualifiers (1024, Variable)"
-                  }
-                }
+                "allowedLength": 0
               },
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 17,
                 "scale": 5,
-                "nonNegative": false,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыЧисла (17.5)",
-                    "nameEn": "NumberQualifiers (17.5)"
-                  }
-                }
+                "nonNegative": false
               }
             }
           ]
@@ -216,8 +188,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 150,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -275,8 +246,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 0,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -837,8 +807,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 75,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -1365,8 +1334,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 100,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -1480,8 +1448,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 2,
                 "scale": 0,
-                "nonNegative": true,
-                "description": {}
+                "nonNegative": true
               }
             }
           ]
@@ -1920,10 +1887,46 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
   "checkUnique": false,
   "codeSeries": "WHOLE_CATALOG",
   "commands": [],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаСписка",
+    "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаЭлемента",
+    "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаЭлемента"
+  },
   "description": "Дополнительные реквизиты и сведения",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1934,9 +1937,7 @@
         "uuid": "f82d5bd6-4c74-4c23-978c-565aae3d752a",
         "name": "ФормаЭлемента",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаЭлемента",
-          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаЭлемента"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/defaultObjectForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1960,7 +1961,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Forms/ФормаЭлемента/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/defaultObjectForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -4390,9 +4391,7 @@
         "uuid": "7fba41a5-4faa-412b-b367-b30ced0314c0",
         "name": "ФормаСписка",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.Form.ФормаСписка",
-          "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.Форма.ФормаСписка"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/defaultListForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -4416,7 +4415,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/Forms/ФормаСписка/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/defaultListForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -5585,8 +5584,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 1,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -5980,15 +5978,15 @@
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/edt/ssl_3_1/configuration/src/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/edt/ssl_3_1/configuration/src/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_1/configuration/src/ChartsOfCharacteristicTypes/ДополнительныеРеквизитыИСведения/ManagerModule.bsl"
       ]
     ]
   ],
@@ -6132,8 +6130,7 @@
                     "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                       "precision": 5,
                       "scale": 0,
-                      "nonNegative": false,
-                      "description": {}
+                      "nonNegative": false
                     }
                   }
                 ]
@@ -6204,8 +6201,7 @@
                     "int": 1,
                     "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                       "length": 25,
-                      "allowedLength": 0,
-                      "description": {}
+                      "allowedLength": 0
                     }
                   }
                 ]
@@ -6299,8 +6295,7 @@
                     "int": 1,
                     "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                       "length": 99,
-                      "allowedLength": 0,
-                      "description": {}
+                      "allowedLength": 0
                     }
                   }
                 ]
@@ -6367,8 +6362,7 @@
                     "int": 1,
                     "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                       "length": 20,
-                      "allowedLength": 0,
-                      "description": {}
+                      "allowedLength": 0
                     }
                   }
                 ]
@@ -6427,37 +6421,16 @@
                     },
                     "int": 3,
                     "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                      "dateFractions": 1,
-                      "description": {
-                        "value": {
-                          "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                          "nameRu": "КвалификаторыДаты (Дата)",
-                          "nameEn": "DateQualifiers (Date)"
-                        }
-                      }
+                      "dateFractions": 1
                     },
                     "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                       "length": 50,
-                      "allowedLength": 0,
-                      "description": {
-                        "value": {
-                          "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                          "nameRu": "КвалификаторыСтроки (50, Переменная)",
-                          "nameEn": "StringQualifiers (50, Variable)"
-                        }
-                      }
+                      "allowedLength": 0
                     },
                     "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                       "precision": 10,
                       "scale": 0,
-                      "nonNegative": false,
-                      "description": {
-                        "value": {
-                          "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                          "nameRu": "КвалификаторыЧисла (10.0)",
-                          "nameEn": "NumberQualifiers (10.0)"
-                        }
-                      }
+                      "nonNegative": false
                     }
                   }
                 ]
@@ -6593,14 +6566,7 @@
                     "int": 1,
                     "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                       "length": 10,
-                      "allowedLength": 0,
-                      "description": {
-                        "value": {
-                          "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                          "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                          "nameEn": "StringQualifiers (10, Variable)"
-                        }
-                      }
+                      "allowedLength": 0
                     }
                   }
                 ]

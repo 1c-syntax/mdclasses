@@ -21,23 +21,84 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class SettingsStorageTest {
   @ParameterizedTest
   @CsvSource(
     {
       "true, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов, _edt",
-      "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов",
+      "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов"
+    }
+  )
+  void testSSL(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(SettingsStorage.class);
+    var settingsStorage = (SettingsStorage) mdo;
+
+    // FormOwner
+    assertThat(settingsStorage.getDefaultFormMap()).hasSize(4);
+
+    var formLink = settingsStorage.getDefaultFormLink(DefaultFormKind.SAVE_FORM);
+    assertThat(formLink)
+      .isEqualTo(settingsStorage.getDefaultFormMap().get(DefaultFormKind.SAVE_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+
+    var form = settingsStorage.getDefaultForm(DefaultFormKind.SAVE_FORM);
+    assertThat(form).isPresent();
+    assertThat(form.get().getName()).isEqualTo("СохранениеВариантаОтчета");
+
+    var formByLink = settingsStorage.getFormByLink(formLink);
+    assertThat(formByLink).isPresent();
+    assertThat(formByLink.get().getName()).isEqualTo("СохранениеВариантаОтчета");
+
+    assertThat(settingsStorage.getDefaultFormLink(DefaultFormKind.AUX_SAVE_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(settingsStorage.getDefaultForm(DefaultFormKind.AUX_SAVE_FORM)).isEmpty();
+    assertThat(settingsStorage.getDefaultForm(DefaultFormKind.AUX_LOAD_FORM)).isEmpty();
+
+    assertThat(settingsStorage.getFormByLink(MdoReference.create("SettingsStorage.Unknown.Form.Unknown"))).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
       "true, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов, _edt",
       "false, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов"
     }
   )
-  void test(ArgumentsAccessor argumentsAccessor) {
+  void testSSL32(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(SettingsStorage.class);
+    var settingsStorage = (SettingsStorage) mdo;
+
+    // FormOwner
+    assertThat(settingsStorage.getDefaultFormMap()).hasSize(4);
+
+    var formLink = settingsStorage.getDefaultFormLink(DefaultFormKind.SAVE_FORM);
+    assertThat(formLink)
+      .isEqualTo(settingsStorage.getDefaultFormMap().get(DefaultFormKind.SAVE_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+
+    var form = settingsStorage.getDefaultForm(DefaultFormKind.SAVE_FORM);
+    assertThat(form).isPresent();
+    assertThat(form.get().getName()).isEqualTo("СохранениеВариантаОтчета");
+
+    var formByLink = settingsStorage.getFormByLink(formLink);
+    assertThat(formByLink).isPresent();
+    assertThat(formByLink.get().getName()).isEqualTo("СохранениеВариантаОтчета");
+
+    assertThat(settingsStorage.getDefaultFormLink(DefaultFormKind.AUX_SAVE_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(settingsStorage.getDefaultForm(DefaultFormKind.AUX_SAVE_FORM)).isEmpty();
+    assertThat(settingsStorage.getDefaultForm(DefaultFormKind.AUX_LOAD_FORM)).isEmpty();
+
+    assertThat(settingsStorage.getFormByLink(MdoReference.create("SettingsStorage.Unknown.Form.Unknown"))).isEmpty();
   }
 
 }

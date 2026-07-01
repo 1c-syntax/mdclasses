@@ -39,14 +39,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -392,8 +385,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 150,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -450,8 +442,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 11,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -600,14 +591,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -767,14 +751,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 10,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыЧисла (10.0)",
-                    "nameEn": "NumberQualifiers (10.0)"
-                  }
-                }
+                "nonNegative": false
               }
             }
           ]
@@ -888,8 +865,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 5,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -1048,14 +1024,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                    "nameEn": "StringQualifiers (10, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -1458,14 +1427,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 1,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (Дата)",
-                    "nameEn": "DateQualifiers (Date)"
-                  }
-                }
+                "dateFractions": 1
               }
             }
           ]
@@ -1531,10 +1493,46 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
   "checkUnique": true,
   "codeSeries": "WITHIN_OWNER_SUBORDINATION",
   "commands": [],
   "comment": "",
+  "defaultChoiceForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаВыбора",
+    "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаВыбора"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаСписка",
+    "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
   "description": "Версии файлов",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -1545,9 +1543,7 @@
         "uuid": "b2e656c1-f4ff-4d95-b066-4ee11ce4dea8",
         "name": "ФормаСписка",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаСписка",
-          "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаСписка"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultListForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1571,7 +1567,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/ВерсииФа_лов/Forms/ФормаСписка/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultListForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -1829,9 +1825,7 @@
         "uuid": "2d86d1fc-5367-47b8-804e-7f9c5fc8f3b1",
         "name": "ФормаВыбора",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаВыбора",
-          "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаВыбора"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultChoiceForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1855,7 +1849,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/ВерсииФа_лов/Forms/ФормаВыбора/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultChoiceForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -2288,15 +2282,15 @@
   "mdoType": "CATALOG",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/ВерсииФа_лов/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/ВерсииФа_лов/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/ВерсииФа_лов/Ext/ManagerModule.bsl"
       ]
     ]
   ],

@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ValueTypes;
@@ -64,7 +65,7 @@ class CatalogTest {
     assertThat(catalog.getPlainChildren()).hasSize(22);
 
     assertThat(catalog.getPredefinedValues()).hasSize(1);
-    var predefinedValue = catalog.getPredefinedValues().get(0);
+    var predefinedValue = catalog.getPredefinedValues().getFirst();
     assertThat(predefinedValue.getName()).isEqualTo("ПредопределенныйЭлемент");
     assertThat(predefinedValue.getUuid()).isEqualTo("79adb5f1-7224-4404-98a7-d7ed155f6232");
     assertThat(predefinedValue.getCode()).isEqualTo("000000001");
@@ -100,6 +101,33 @@ class CatalogTest {
       .noneMatch(ObjectCommand.class::isInstance)
       .noneMatch(ObjectForm.class::isInstance)
     ;
+
+    // FormOwner
+    assertThat(catalog.getDefaultFormMap()).hasSize(10);
+
+    // Для форм, которые есть в фикстуре
+    var formLink = catalog.getDefaultFormLink(DefaultFormKind.OBJECT_FORM);
+    assertThat(formLink)
+      .isEqualTo(catalog.getDefaultFormMap().get(DefaultFormKind.OBJECT_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+
+    var form = catalog.getDefaultForm(DefaultFormKind.OBJECT_FORM);
+    assertThat(form).isPresent();
+    assertThat(form.get().getName()).isEqualTo("ФормаЭлемента");
+
+    var formByLink = catalog.getFormByLink(formLink);
+    assertThat(formByLink).isPresent();
+    assertThat(formByLink.get().getName()).isEqualTo("ФормаЭлемента");
+
+    // Для форм, которых нет в фикстуре (пустые)
+    assertThat(catalog.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(catalog.getDefaultForm(DefaultFormKind.FOLDER_FORM)).isEmpty();
+
+    // Недоступный тип формы
+    assertThat(catalog.getDefaultForm(DefaultFormKind.AUX_DYNAMIC_LIST_SETTINGS_FORM)).isEmpty();
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(catalog.getFormByLink(MdoReference.create("Catalog.Unknown.Form.Unknown"))).isEmpty();
 
 //    var formData = catalog.getForms().stream().filter(form -> form.getName().equals("ФормаСписка"))
 //      .findFirst().get().getData();

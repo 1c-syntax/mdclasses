@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -49,6 +51,19 @@ class BusinessProcessTest {
     assertThat(businessProcess.getDescription()).isEqualTo("БизнесПроцесс1");
     assertThat(businessProcess.getDescription("ru")).isEqualTo("БизнесПроцесс1");
     assertThat(businessProcess.getDescription("en")).isEqualTo("БизнесПроцесс1");
+
+    // FormOwner
+    assertThat(businessProcess.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре
+    assertThat(businessProcess.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(businessProcess.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(businessProcess.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(businessProcess.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(businessProcess.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(businessProcess.getFormByLink(MdoReference.create("BusinessProcess.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest
@@ -75,5 +90,23 @@ class BusinessProcessTest {
     assertThat(businessProcess.getDescription("en")).isEqualTo("Задание");
     assertThat(businessProcess.getDescription("")).isEqualTo("Задание");
     assertThat(businessProcess.getDescription("пыщь")).isEqualTo("Задание");
+
+    // FormOwner
+    assertThat(businessProcess.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которые есть в фикстуре
+    var formLink = businessProcess.getDefaultFormLink(DefaultFormKind.OBJECT_FORM);
+    assertThat(formLink).isEqualTo(businessProcess.getDefaultFormMap().get(DefaultFormKind.OBJECT_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+    assertThat(businessProcess.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isPresent();
+    assertThat(businessProcess.getFormByLink(formLink)).isPresent();
+
+    // Для форм, которых нет в фикстуре
+    assertThat(businessProcess.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(businessProcess.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(businessProcess.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(businessProcess.getFormByLink(MdoReference.create("BusinessProcess.Unknown.Form.Unknown"))).isEmpty();
   }
 }

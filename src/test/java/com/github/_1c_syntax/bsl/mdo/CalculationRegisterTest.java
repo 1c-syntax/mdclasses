@@ -23,8 +23,10 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -59,6 +61,17 @@ class CalculationRegisterTest {
 
     assertThat(calculationRegister.getModules().stream().filter(Module::isProtected)).isEmpty();
     assertThat(calculationRegister.getAllModules().stream().filter(Module::isProtected)).hasSize(1);
+
+    // FormOwner
+    assertThat(calculationRegister.getDefaultFormMap()).hasSize(2);
+
+    assertThat(calculationRegister.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(calculationRegister.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(calculationRegister.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(calculationRegister.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(calculationRegister.getFormByLink(MdoReference.create("CalculationRegister.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest

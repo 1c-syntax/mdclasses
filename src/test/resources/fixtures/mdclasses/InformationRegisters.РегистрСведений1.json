@@ -91,14 +91,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -156,8 +149,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 5,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -219,8 +211,22 @@
     ],
     []
   ],
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryRecordForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/auxiliaryListForm"
+  },
   "commands": [],
   "comment": "",
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/auxiliaryListForm"
+  },
+  "defaultRecordForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/auxiliaryListForm"
+  },
   "description": "РегистрСведений1",
   "dimensions": [
     {
@@ -262,14 +268,7 @@
             "int": 1,
             "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
               "length": 10,
-              "allowedLength": 0,
-              "description": {
-                "value": {
-                  "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                  "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                  "nameEn": "StringQualifiers (10, Variable)"
-                }
-              }
+              "allowedLength": 0
             }
           }
         ]

@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -41,6 +42,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -110,6 +112,48 @@ public class Task implements ReferenceObject, AccessRightsOwner {
   List<TaskAddressingAttribute> addressingAttributes;
 
   /**
+   * Ссылка на форму объекта по умолчанию
+   */
+  @Default
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму объекта
+   */
+  @Default
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора
+   */
+  @Default
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Пояснение
    */
   @Default
@@ -148,6 +192,17 @@ public class Task implements ReferenceObject, AccessRightsOwner {
       RoleRight.UPDATE_DATA_HISTORY_VERSION_COMMENT,
       RoleRight.EDIT_DATA_HISTORY_VERSION_COMMENT,
       RoleRight.SWITCH_TO_DATA_HISTORY_VERSION
+    );
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.OBJECT_FORM, getDefaultObjectForm()),
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.CHOICE_FORM, getDefaultChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_OBJECT_FORM, getAuxiliaryObjectForm()),
+      Map.entry(DefaultFormKind.AUX_LIST_FORM, getAuxiliaryListForm()),
+      Map.entry(DefaultFormKind.AUX_CHOICE_FORM, getAuxiliaryChoiceForm())
     );
   }
 }

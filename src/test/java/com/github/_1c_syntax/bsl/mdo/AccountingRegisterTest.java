@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -50,5 +52,17 @@ class AccountingRegisterTest {
     assertThat(accountingRegister.getDescription("ru")).isEqualTo("Регистр бухгалтерии");
     assertThat(accountingRegister.getDescription("en")).isEqualTo("Accounting register");
     assertThat(accountingRegister.getDescription("by")).isNotEmpty().isNotEqualTo("РегистрБухгалтерии1");
+
+    assertThat(accountingRegister.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(accountingRegister.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+
+    // FormOwner
+    assertThat(accountingRegister.getDefaultFormMap()).hasSize(2);
+
+    assertThat(accountingRegister.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(accountingRegister.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(accountingRegister.getFormByLink(MdoReference.create("AccountingRegister.Unknown.Form.Unknown"))).isEmpty();
   }
 }

@@ -280,14 +280,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -344,8 +337,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 11,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -757,8 +749,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 250,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -872,8 +863,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 10,
                 "scale": 0,
-                "nonNegative": true,
-                "description": {}
+                "nonNegative": true
               }
             }
           ]
@@ -1095,14 +1085,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -1370,8 +1353,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 150,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -1855,8 +1837,32 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
   "commands": [],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
+    "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
+    "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
+  },
   "description": "Задание",
   "explanation": {
     "content": [
@@ -2957,9 +2963,7 @@
         "uuid": "b58942ca-1367-4e1d-b5b4-7d973d0fecd8",
         "name": "ФормаБизнесПроцесса",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса",
-          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/defaultObjectForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -2983,7 +2987,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/ФормаБизнесПроцесса/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/defaultObjectForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -3514,9 +3518,7 @@
         "uuid": "1a7c7427-bead-4655-9dd6-df6e722663c5",
         "name": "ФормаСписка",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "BusinessProcess.Задание.Form.ФормаСписка",
-          "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаСписка"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/defaultListForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -3540,7 +3542,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/Forms/ФормаСписка/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/defaultListForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -3930,15 +3932,15 @@
   "mdoType": "BUSINESS_PROCESS",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/edt/ssl_3_2/configuration/src/BusinessProcesses/Задание/ManagerModule.bsl"
       ]
     ]
   ],

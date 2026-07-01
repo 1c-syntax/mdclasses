@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -39,6 +40,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -98,6 +100,24 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
    */
 
   /**
+   * Ссылка на форму по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму
+   */
+  @Default
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Состав критерия
    */
   @Singular("addContent")
@@ -114,5 +134,12 @@ public class FilterCriterion implements MDObject, ModuleOwner, CommandOwner, For
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.DEFAULT_FORM, getDefaultForm()),
+      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm())
+    );
   }
 }

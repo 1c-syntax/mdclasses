@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ScriptVariant;
@@ -35,11 +36,7 @@ class EnumTest {
   @CsvSource(
     {
       "true, mdclasses, Enums.Перечисление1, _edt",
-      "false, mdclasses, Enums.Перечисление1",
-      "true, ssl_3_1, Enums.СтатусыОбработчиковОбновления, _edt",
-      "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления",
-      "true, ssl_3_2, Enums.СтатусыОбработчиковОбновления, _edt",
-      "false, ssl_3_2, Enums.СтатусыОбработчиковОбновления"
+      "false, mdclasses, Enums.Перечисление1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
@@ -55,5 +52,69 @@ class EnumTest {
     assertThat(mdo.getMdoRef(ScriptVariant.RUSSIAN)).isEqualTo(mdoRefStringRu);
 
     assertThat(mdo.getMdoRef()).isEqualTo(mdo.getMdoRef(ScriptVariant.ENGLISH));
+
+    // FormOwner
+    assertThat(mdo).isInstanceOf(Enum.class);
+    var anEnum = (Enum) mdo;
+    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
+
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
+
+    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_1, Enums.СтатусыОбработчиковОбновления, _edt",
+      "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления"
+    }
+  )
+  void testSSL(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Enum.class);
+    var anEnum = (Enum) mdo;
+
+    // FormOwner
+    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
+
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
+
+    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_2, Enums.СтатусыОбработчиковОбновления, _edt",
+      "false, ssl_3_2, Enums.СтатусыОбработчиковОбновления"
+    }
+  )
+  void testSSL32(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Enum.class);
+    var anEnum = (Enum) mdo;
+
+    // FormOwner
+    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
+
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
+
+    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
   }
 }

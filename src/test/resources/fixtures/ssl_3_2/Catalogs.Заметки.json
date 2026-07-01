@@ -39,14 +39,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -377,8 +370,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 100,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -810,14 +802,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -872,6 +857,23 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryFolderForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
   "checkUnique": false,
   "codeSeries": "WHOLE_CATALOG",
   "commands": [
@@ -917,6 +919,25 @@
     }
   ],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.Заметки.Form.ФормаГруппы",
+    "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы"
+  },
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента",
+    "mdoRefRu": "Справочник.Заметки.Форма.ФормаЭлемента"
+  },
   "description": "Заметки",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -927,9 +948,7 @@
         "uuid": "d35c51b0-4cb7-4f9c-8aac-6a25a1b49adf",
         "name": "ФормаЭлемента",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента",
-          "mdoRefRu": "Справочник.Заметки.Форма.ФормаЭлемента"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultObjectForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -953,7 +972,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/Заметки/Forms/ФормаЭлемента/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultObjectForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -1957,9 +1976,7 @@
         "uuid": "e1b2ccf9-5a8f-4008-86f3-d2c7cf5581d1",
         "name": "ФормаГруппы",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ФормаГруппы",
-          "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultFolderForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -1983,7 +2000,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/Заметки/Forms/ФормаГруппы/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/defaultFolderForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -2087,15 +2104,15 @@
   "mdoType": "CATALOG",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/Заметки/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/Заметки/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_2/src/cf/Catalogs/Заметки/Ext/ManagerModule.bsl"
       ]
     ]
   ],

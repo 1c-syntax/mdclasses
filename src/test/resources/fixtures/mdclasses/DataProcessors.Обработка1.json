@@ -1,7 +1,17 @@
 {"com.github._1c_syntax.bsl.mdo.DataProcessor": {
   "attributes": [],
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "commands": [],
   "comment": "",
+  "defaultForm": {
+    "type": "FORM",
+    "mdoRef": "DataProcessor.Обработка1.Form.Форма",
+    "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
+  },
   "description": "Обработка1",
   "explanation": {
     "content": []
@@ -12,9 +22,7 @@
         "uuid": "5a32de80-b66f-4d6d-be8b-a117f5f71480",
         "name": "Форма",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "DataProcessor.Обработка1.Form.Форма",
-          "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/defaultForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -38,7 +46,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/mdclasses/src/cf/DataProcessors/Обработка1/Forms/Форма/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/defaultForm"
             },
             "supportVariant": "NONE",
             "isProtected": false
@@ -157,14 +165,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 0,
-                        "allowedLength": 0,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                            "nameEn": "StringQualifiers (0, Variable)"
-                          }
-                        }
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -194,14 +195,7 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                        "dateFractions": 1,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыДаты (Дата)",
-                            "nameEn": "DateQualifiers (Date)"
-                          }
-                        }
+                        "dateFractions": 1
                       }
                     }
                   ]
@@ -1071,8 +1065,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 10,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]

@@ -23,7 +23,9 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -50,19 +52,71 @@ class ReportTest {
 
     assertThat(templateData).isInstanceOf(DataCompositionSchema.class);
     checkDataCompositionSchema((DataCompositionSchema) templateData);
+
+    // FormOwner
+    assertThat(report.getDefaultFormMap()).hasSize(5);
+
+    assertThat(report.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.SETTINGS_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.VARIANT_FORM)).isEmpty();
+    assertThat(report.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_SETTINGS_FORM)).isEmpty();
+
+    assertThat(report.getFormByLink(MdoReference.create("Report.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest
   @CsvSource(
     {
       "true, ssl_3_1, Reports.АнализВерсийОбъектов, _edt",
-      "false, ssl_3_1, Reports.АнализВерсийОбъектов",
-      "true, ssl_3_2, Reports.АнализВерсийОбъектов, _edt",
-      "false, ssl_3_2, Reports.АнализВерсийОбъектов"
+      "false, ssl_3_1, Reports.АнализВерсийОбъектов"
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Report.class);
+    var report = (Report) mdo;
+
+    // FormOwner
+    assertThat(report.getDefaultFormMap()).hasSize(5);
+
+    assertThat(report.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.SETTINGS_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.VARIANT_FORM)).isEmpty();
+    assertThat(report.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_SETTINGS_FORM)).isEmpty();
+
+    assertThat(report.getFormByLink(MdoReference.create("Report.Unknown.Form.Unknown"))).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, ssl_3_2, Reports.АнализВерсийОбъектов, _edt",
+      "false, ssl_3_2, Reports.АнализВерсийОбъектов"
+    }
+  )
+  void testSSL32(ArgumentsAccessor argumentsAccessor) {
+    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Report.class);
+    var report = (Report) mdo;
+
+    // FormOwner
+    assertThat(report.getDefaultFormMap()).hasSize(5);
+
+    assertThat(report.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.SETTINGS_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.VARIANT_FORM)).isEmpty();
+    assertThat(report.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
+    assertThat(report.getDefaultForm(DefaultFormKind.AUX_SETTINGS_FORM)).isEmpty();
+
+    assertThat(report.getFormByLink(MdoReference.create("Report.Unknown.Form.Unknown"))).isEmpty();
   }
 
   private void checkDataCompositionSchema(DataCompositionSchema dataCompositionSchema) {
