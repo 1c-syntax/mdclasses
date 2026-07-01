@@ -21,10 +21,15 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.ChartOfCalculationTypes;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ChartOfCalculationTypesTest {
   @ParameterizedTest
@@ -36,5 +41,20 @@ class ChartOfCalculationTypesTest {
   )
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfCalculationTypes.class);
+    var cct = (ChartOfCalculationTypes) mdo;
+
+    // FormOwner
+    assertThat(cct.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре
+    assertThat(cct.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(cct.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(cct.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(cct.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(cct.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(cct.getFormByLink(MdoReference.create("ChartOfCalculationTypes.Unknown.Form.Unknown"))).isEmpty();
   }
 }

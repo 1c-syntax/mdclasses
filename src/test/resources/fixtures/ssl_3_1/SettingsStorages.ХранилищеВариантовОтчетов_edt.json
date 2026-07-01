@@ -1,5 +1,23 @@
 {"com.github._1c_syntax.bsl.mdo.SettingsStorage": {
+  "auxiliaryLoadForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliarySaveForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/auxiliaryLoadForm"
+  },
   "comment": "",
+  "defaultLoadForm": {
+    "type": "FORM",
+    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборВариантаОтчета",
+    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборВариантаОтчета"
+  },
+  "defaultSaveForm": {
+    "type": "FORM",
+    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчета",
+    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчета"
+  },
   "description": "Хранилище вариантов отчетов",
   "forms": [
     [
@@ -426,14 +444,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 0,
-                        "allowedLength": 0,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                            "nameEn": "StringQualifiers (0, Variable)"
-                          }
-                        }
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -470,9 +481,7 @@
         "uuid": "57964dd6-4b0b-4590-bc44-de744cc423af",
         "name": "ВыборВариантаОтчета",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборВариантаОтчета",
-          "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборВариантаОтчета"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/defaultLoadForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -496,7 +505,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/SettingsStorages/ХранилищеВариантовОтчетов/Forms/ВыборВариантаОтчета/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/defaultLoadForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -2000,14 +2009,7 @@
                       },
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                        "dateFractions": 1,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыДаты (Дата)",
-                            "nameEn": "DateQualifiers (Date)"
-                          }
-                        }
+                        "dateFractions": 1
                       }
                     }
                   ]
@@ -4119,8 +4121,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 150,
-                        "allowedLength": 0,
-                        "description": {}
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -4152,8 +4153,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 5,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -4255,8 +4255,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 10,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -4722,14 +4721,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 10,
                         "scale": 0,
-                        "nonNegative": false,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыЧисла (10.0)",
-                            "nameEn": "NumberQualifiers (10.0)"
-                          }
-                        }
+                        "nonNegative": false
                       }
                     }
                   ]
@@ -4794,9 +4786,7 @@
         "uuid": "364cbfe2-bc44-4387-aa7e-6b4aa086c9e9",
         "name": "СохранениеВариантаОтчета",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчета",
-          "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчета"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/defaultSaveForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -4820,7 +4810,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/edt/ssl_3_1/configuration/src/SettingsStorages/ХранилищеВариантовОтчетов/Forms/СохранениеВариантаОтчета/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.SettingsStorage/defaultSaveForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -7099,14 +7089,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 50,
-                        "allowedLength": 0,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыСтроки (50, Переменная)",
-                            "nameEn": "StringQualifiers (50, Variable)"
-                          }
-                        }
+                        "allowedLength": 0
                       }
                     }
                   ]

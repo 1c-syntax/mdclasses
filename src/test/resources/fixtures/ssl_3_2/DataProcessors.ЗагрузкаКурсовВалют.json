@@ -52,14 +52,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 1,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (Дата)",
-                    "nameEn": "DateQualifiers (Date)"
-                  }
-                }
+                "dateFractions": 1
               }
             }
           ]
@@ -125,8 +118,18 @@
     ],
     []
   ],
+  "auxiliaryForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
   "commands": [],
   "comment": "",
+  "defaultForm": {
+    "type": "FORM",
+    "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.Форма",
+    "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.Форма"
+  },
   "description": "Загрузка курсов валют",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
@@ -137,9 +140,7 @@
         "uuid": "6fcd2a3a-4d66-40e3-bde0-5c274b43783f",
         "name": "Форма",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "DataProcessor.ЗагрузкаКурсовВалют.Form.Форма",
-          "mdoRefRu": "Обработка.ЗагрузкаКурсовВалют.Форма.Форма"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/defaultForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -163,7 +164,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_2/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Forms/Форма/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.DataProcessor/defaultForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -723,14 +724,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 0,
-                        "allowedLength": 0,
-                        "description": {
-                          "value": {
-                            "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                            "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                            "nameEn": "StringQualifiers (0, Variable)"
-                          }
-                        }
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -1149,8 +1143,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 25,
-                        "allowedLength": 0,
-                        "description": {}
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -1360,8 +1353,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 10,
                         "scale": 2,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -1592,15 +1584,15 @@
   "mdoType": "DATA_PROCESSOR",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_2/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_2/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_2/src/cf/DataProcessors/ЗагрузкаКурсовВалют/Ext/ManagerModule.bsl"
       ]
     ]
   ],
@@ -1720,8 +1712,7 @@
                   "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                     "precision": 5,
                     "scale": 0,
-                    "nonNegative": false,
-                    "description": {}
+                    "nonNegative": false
                   }
                 }
               ]
@@ -1792,8 +1783,7 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 3,
-                    "allowedLength": 0,
-                    "description": {}
+                    "allowedLength": 0
                   }
                 }
               ]
@@ -1959,8 +1949,7 @@
                   "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                     "precision": 10,
                     "scale": 4,
-                    "nonNegative": true,
-                    "description": {}
+                    "nonNegative": true
                   }
                 }
               ]
@@ -2028,8 +2017,7 @@
                   "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                     "precision": 10,
                     "scale": 0,
-                    "nonNegative": true,
-                    "description": {}
+                    "nonNegative": true
                   }
                 }
               ]
@@ -2142,14 +2130,7 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 50,
-                    "allowedLength": 0,
-                    "description": {
-                      "value": {
-                        "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                        "nameRu": "КвалификаторыСтроки (50, Переменная)",
-                        "nameEn": "StringQualifiers (50, Variable)"
-                      }
-                    }
+                    "allowedLength": 0
                   }
                 }
               ]
@@ -2216,14 +2197,7 @@
                   "int": 1,
                   "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                     "length": 10,
-                    "allowedLength": 0,
-                    "description": {
-                      "value": {
-                        "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                        "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                        "nameEn": "StringQualifiers (10, Variable)"
-                      }
-                    }
+                    "allowedLength": 0
                   }
                 }
               ]

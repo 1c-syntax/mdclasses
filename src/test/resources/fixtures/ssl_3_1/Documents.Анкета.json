@@ -180,14 +180,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -244,8 +237,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 11,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -496,14 +488,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 10,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                    "nameEn": "StringQualifiers (10, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -570,14 +555,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -786,8 +764,32 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/auxiliaryChoiceForm"
+  },
   "commands": [],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Document/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "Document.Анкета.Form.ФормаСписка",
+    "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Document.Анкета.Form.ФормаДокумента",
+    "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
+  },
   "description": "Анкета",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Document/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
@@ -798,9 +800,7 @@
         "uuid": "f829e2a9-5bdb-4171-8b32-8d10d5968813",
         "name": "ФормаДокумента",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Document.Анкета.Form.ФормаДокумента",
-          "mdoRefRu": "Документ.Анкета.Форма.ФормаДокумента"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Document/defaultObjectForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -824,7 +824,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Forms/ФормаДокумента/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/defaultObjectForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -1969,8 +1969,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 10,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -2011,8 +2010,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 200,
-                        "allowedLength": 0,
-                        "description": {}
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -2059,9 +2057,7 @@
         "uuid": "647ba8f8-57f7-4c19-af59-525517c1e392",
         "name": "ФормаСписка",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Document.Анкета.Form.ФормаСписка",
-          "mdoRefRu": "Документ.Анкета.Форма.ФормаСписка"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Document/defaultListForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -2085,7 +2081,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Forms/ФормаСписка/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Document/defaultListForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -2298,15 +2294,15 @@
   "mdoType": "DOCUMENT",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/Documents/Анкета/Ext/ManagerModule.bsl"
       ]
     ]
   ],
@@ -2457,8 +2453,7 @@
                   "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                     "precision": 5,
                     "scale": 0,
-                    "nonNegative": false,
-                    "description": {}
+                    "nonNegative": false
                   }
                 }
               ]

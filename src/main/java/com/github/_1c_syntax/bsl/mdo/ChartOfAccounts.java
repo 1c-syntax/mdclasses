@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -44,6 +45,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -107,6 +109,48 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
    */
 
   /**
+   * Ссылка на форму объекта по умолчанию
+   */
+  @Default
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму объекта
+   */
+  @Default
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора
+   */
+  @Default
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Предопределенные значения
    */
   @Singular
@@ -153,5 +197,16 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
    */
   public static List<RoleRight> possibleRights() {
     return Catalog.possibleRights();
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.OBJECT_FORM, getDefaultObjectForm()),
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.CHOICE_FORM, getDefaultChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_OBJECT_FORM, getAuxiliaryObjectForm()),
+      Map.entry(DefaultFormKind.AUX_LIST_FORM, getAuxiliaryListForm()),
+      Map.entry(DefaultFormKind.AUX_CHOICE_FORM, getAuxiliaryChoiceForm())
+    );
   }
 }

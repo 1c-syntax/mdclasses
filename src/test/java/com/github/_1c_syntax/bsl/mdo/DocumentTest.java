@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -41,6 +43,25 @@ class DocumentTest {
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {
     var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var doc = (Document) mdo;
+
+    // FormOwner
+    assertThat(doc.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которые есть в фикстуре
+    var formLink = doc.getDefaultFormLink(DefaultFormKind.OBJECT_FORM);
+    assertThat(formLink).isEqualTo(doc.getDefaultFormMap().get(DefaultFormKind.OBJECT_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+    assertThat(doc.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isPresent();
+    assertThat(doc.getFormByLink(formLink)).isPresent();
+
+    // Для форм, которых нет в фикстуре
+    assertThat(doc.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(doc.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(doc.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(doc.getFormByLink(MdoReference.create("Document.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest
@@ -78,5 +99,25 @@ class DocumentTest {
       .anyMatch(item -> item.getId() == 35)
       .anyMatch(item -> item.getType().equals(FormElementType.INPUT_FIELD))
       .anyMatch(item -> item.getDataPath().startsWith("~"));
+
+    assertThat(doc.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которые есть в фикстуре
+    var formLink = doc.getDefaultFormLink(DefaultFormKind.OBJECT_FORM);
+    assertThat(formLink).isEqualTo(doc.getDefaultFormMap().get(DefaultFormKind.OBJECT_FORM));
+    assertThat(formLink.isEmpty()).isFalse();
+
+    var form = doc.getDefaultForm(DefaultFormKind.OBJECT_FORM);
+    assertThat(form).isPresent();
+    assertThat(form.get().getName()).isEqualTo("ФормаДокумента");
+
+    var formByLink = doc.getFormByLink(formLink);
+    assertThat(formByLink).isPresent();
+    assertThat(formByLink.get().getName()).isEqualTo("ФормаДокумента");
+
+    // Для форм, которых нет в фикстуре
+    assertThat(doc.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(doc.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(doc.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
   }
 }

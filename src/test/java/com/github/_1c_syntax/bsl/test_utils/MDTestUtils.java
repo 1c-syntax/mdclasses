@@ -103,6 +103,7 @@ public class MDTestUtils {
             xstream.omitField(clazz, "modulesByMDORef");
             xstream.omitField(clazz, "modulesByObject");
             xstream.omitField(clazz, "modulesByURI");
+            xstream.omitField(clazz, "defaultFormMap");
           }
           if (CommonModule.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "modules");

@@ -117,8 +117,7 @@
                 "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                   "precision": 10,
                   "scale": 0,
-                  "nonNegative": false,
-                  "description": {}
+                  "nonNegative": false
                 }
               }
             ]
@@ -165,14 +164,7 @@
                 "int": 1,
                 "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                   "length": 10,
-                  "allowedLength": 0,
-                  "description": {
-                    "value": {
-                      "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                      "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                      "nameEn": "StringQualifiers (10, Variable)"
-                    }
-                  }
+                  "allowedLength": 0
                 }
               }
             ]
@@ -184,6 +176,14 @@
       ],
       "forms": [],
       "templates": [],
+      "defaultListForm": {
+        "type": "UNKNOWN",
+        "mdoRef": "",
+        "mdoRefRu": ""
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -280,6 +280,12 @@
       ],
       "forms": [],
       "templates": [],
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -321,6 +327,24 @@
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       },
@@ -411,6 +435,12 @@
       ],
       "forms": [],
       "templates": [],
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "recalculations": [
         {
           "uuid": "16b54095-8711-4ef1-a38b-93d12f6f6e93",
@@ -566,6 +596,42 @@
           }
         }
       ],
+      "defaultObjectForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента",
+        "mdoRefRu": "Справочник.Справочник1.Форма.ФормаЭлемента"
+      },
+      "defaultListForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник1.Form.ФормаСписка",
+        "mdoRefRu": "Справочник.Справочник1.Форма.ФормаСписка"
+      },
+      "defaultChoiceForm": {
+        "type": "FORM",
+        "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора",
+        "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора"
+      },
+      "defaultFolderForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultFolderChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryFolderForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryFolderChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "predefinedValues": [
         {
           "uuid": "79adb5f1-7224-4404-98a7-d7ed155f6232",
@@ -626,6 +692,24 @@
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "predefinedValues": [],
       "accountingFlags": [
         {
@@ -740,6 +824,24 @@
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "predefinedValues": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
@@ -776,6 +878,36 @@
       "templates": [],
       "type": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/type"
+      },
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultFolderForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultFolderChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryFolderForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryFolderChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
       },
       "predefinedValues": [],
       "explanation": {
@@ -826,15 +958,13 @@
       "indexing": "DONT_INDEX",
       "dataSeparation": "DONT_USE",
       "dataSeparationValue": {
-        "type": "UNKNOWN",
-        "mdoRef": "",
-        "mdoRefRu": ""
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
       },
       "dataSeparationUse": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
       },
       "conditionalSeparation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
       },
       "usersSeparation": "DONT_USE",
       "authenticationSeparation": "DONT_USE",
@@ -1005,6 +1135,14 @@
         []
       ],
       "templates": [],
+      "defaultForm": {
+        "type": "FORM",
+        "mdoRef": "DataProcessor.Обработка1.Form.Форма",
+        "mdoRefRu": "Обработка.Обработка1.Форма.Форма"
+      },
+      "auxiliaryForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -1105,6 +1243,12 @@
       ],
       "forms": [],
       "templates": [],
+      "defaultForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "registeredDocuments": [
         {
           "type": "DOCUMENT",
@@ -1195,6 +1339,30 @@
         []
       ],
       "templates": [],
+      "defaultObjectForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ1.Form.ФормаДокумента",
+        "mdoRefRu": "Документ.Документ1.Форма.ФормаДокумента"
+      },
+      "defaultListForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ1.Form.ФормаСписка",
+        "mdoRefRu": "Документ.Документ1.Форма.ФормаСписка"
+      },
+      "defaultChoiceForm": {
+        "type": "FORM",
+        "mdoRef": "Document.Документ1.Form.ФормаВыбора",
+        "mdoRefRu": "Документ.Документ1.Форма.ФормаВыбора"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "registerRecords": [
         [
           4
@@ -1256,6 +1424,18 @@
       ],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
       }
     }
   ],
@@ -1330,6 +1510,24 @@
       "tabularSections": [],
       "forms": [],
       "templates": [],
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "predefinedValues": [],
       "distributedInfoBase": false,
       "includeConfigurationExtensions": false,
@@ -1485,6 +1683,18 @@
               }
             }
           ],
+          "defaultObjectForm": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+          },
+          "defaultListForm": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+          },
+          "defaultRecordForm": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+          },
+          "defaultChoiceForm": {
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+          },
           "dataLockControlMode": "MANAGED"
         }
       ],
@@ -1515,6 +1725,12 @@
       ],
       "commands": [],
       "forms": [],
+      "defaultForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "content": [],
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
@@ -1664,13 +1880,13 @@
       ]
     ],
     [
-      "ManagedApplicationModule",
+      "ExternalConnectionModule",
       [
         1
       ]
     ],
     [
-      "ExternalConnectionModule",
+      "ManagedApplicationModule",
       [
         1
       ]
@@ -1745,6 +1961,21 @@
         ],
         []
       ],
+      "defaultForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultSettingsForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultVariantForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliarySettingsForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }
@@ -1917,7 +2148,19 @@
         1
       ],
       "forms": [],
-      "templates": []
+      "templates": [],
+      "defaultSaveForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultLoadForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliarySaveForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryLoadForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      }
     }
   ],
   "styleItems": [
@@ -2055,10 +2298,28 @@
           "extendedEdit": false,
           "fillFromFillingValue": false,
           "choiceForm": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/dataSeparationValue"
+            "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
           }
         }
       ],
+      "defaultObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "defaultChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryObjectForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryListForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
+      "auxiliaryChoiceForm": {
+        "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/accountingRegisters/com.github._1c_syntax.bsl.mdo.AccountingRegister/defaultListForm"
+      },
       "explanation": {
         "@reference": "/com.github._1c_syntax.bsl.mdclasses.Configuration/XDTOPackages/com.github._1c_syntax.bsl.mdo.XDTOPackage/synonym"
       }

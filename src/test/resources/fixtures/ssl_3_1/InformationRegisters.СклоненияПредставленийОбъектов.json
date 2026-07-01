@@ -93,8 +93,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 5,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -188,14 +187,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -219,8 +211,24 @@
     ],
     []
   ],
+  "auxiliaryListForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryRecordForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/auxiliaryListForm"
+  },
   "commands": [],
   "comment": "",
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/auxiliaryListForm"
+  },
+  "defaultRecordForm": {
+    "type": "FORM",
+    "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Form.ФормаЗаписи",
+    "mdoRefRu": "РегистрСведений.СклоненияПредставленийОбъектов.Форма.ФормаЗаписи"
+  },
   "description": "Склонения представлений объектов",
   "dimensions": [
     [
@@ -274,8 +282,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 40,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -350,9 +357,7 @@
       "uuid": "823f925c-b71f-42b1-a71e-0aab823f59c6",
       "name": "ФормаЗаписи",
       "mdoReference": {
-        "type": "FORM",
-        "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Form.ФормаЗаписи",
-        "mdoRefRu": "РегистрСведений.СклоненияПредставленийОбъектов.Форма.ФормаЗаписи"
+        "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/defaultRecordForm"
       },
       "objectBelonging": "OWN",
       "comment": "",
@@ -376,7 +381,7 @@
           "moduleType": "FormModule",
           "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/InformationRegisters/СклоненияПредставлени_Объектов/Forms/ФормаЗаписи/Ext/Form/Module.bsl",
           "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/forms/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
+            "@reference": "/com.github._1c_syntax.bsl.mdo.InformationRegister/defaultRecordForm"
           },
           "supportVariant": "NOT_EDITABLE",
           "isProtected": false
@@ -603,14 +608,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]

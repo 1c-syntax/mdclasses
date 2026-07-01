@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -54,6 +55,19 @@ class ExchangePlanTest {
     assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.ALLOW);
     assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
     assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+
+    // FormOwner
+    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре (все формы пустые)
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest
@@ -81,6 +95,19 @@ class ExchangePlanTest {
     assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
     assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
     assertThat(exchangePlan.getContent()).hasSize(414);
+
+    // FormOwner
+    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре (все формы пустые)
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
   }
 
   @ParameterizedTest
@@ -108,5 +135,18 @@ class ExchangePlanTest {
     assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
     assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
     assertThat(exchangePlan.getContent()).hasSize(408);
+
+    // FormOwner
+    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре (все формы пустые)
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
   }
 }

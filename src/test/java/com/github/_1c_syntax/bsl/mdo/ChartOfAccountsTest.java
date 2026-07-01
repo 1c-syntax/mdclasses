@@ -23,7 +23,9 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -49,6 +51,19 @@ class ChartOfAccountsTest {
       .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
     assertThat(chartOfAccounts.getAccountingFlags()).hasSize(1);
     assertThat(chartOfAccounts.getExtDimensionAccountingFlags()).hasSize(1);
+
+    // FormOwner
+    assertThat(chartOfAccounts.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(chartOfAccounts.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(chartOfAccounts.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(chartOfAccounts.getFormByLink(MdoReference.create("ChartOfAccounts.Unknown.Form.Unknown"))).isEmpty();
   }
 
   /**
@@ -76,5 +91,18 @@ class ChartOfAccountsTest {
     assertThat(chartOfAccounts.getCodeSeries())
       .as("Поле codeSeries должно быть WHOLE_CATALOG для плана счетов ПланСчетов1")
       .isEqualTo(CodeSeries.WHOLE_CATALOG);
+
+    // FormOwner
+    assertThat(chartOfAccounts.getDefaultFormMap()).hasSize(6);
+
+    // Для форм, которых нет в фикстуре
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(chartOfAccounts.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(chartOfAccounts.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
+    assertThat(chartOfAccounts.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(chartOfAccounts.getFormByLink(MdoReference.create("ChartOfAccounts.Unknown.Form.Unknown"))).isEmpty();
   }
 }

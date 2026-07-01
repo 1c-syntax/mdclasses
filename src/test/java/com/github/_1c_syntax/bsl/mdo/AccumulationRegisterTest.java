@@ -21,13 +21,15 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static com.github._1c_syntax.bsl.test_utils.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AccumulationRegisterTest {
   @ParameterizedTest
@@ -50,5 +52,17 @@ class AccumulationRegisterTest {
     assertThat(accumulationRegister.getResources()).hasSize(1);
     assertThat(accumulationRegister.getDimensions()).hasSize(1);
     assertThat(accumulationRegister.getChildren()).hasSize(7);
+
+    assertThat(accumulationRegister.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
+    assertThat(accumulationRegister.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+
+    // FormOwner
+    assertThat(accumulationRegister.getDefaultFormMap()).hasSize(2);
+
+    assertThat(accumulationRegister.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+    assertThat(accumulationRegister.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
+
+    // getFormByLink с несуществующей ссылкой
+    assertThat(accumulationRegister.getFormByLink(MdoReference.create("AccumulationRegister.Unknown.Form.Unknown"))).isEmpty();
   }
 }

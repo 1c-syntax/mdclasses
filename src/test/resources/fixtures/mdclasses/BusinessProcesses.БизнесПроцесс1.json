@@ -144,14 +144,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -208,8 +201,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 9,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -358,8 +350,28 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
   "commands": [],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/auxiliaryChoiceForm"
+  },
   "description": "БизнесПроцесс1",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.BusinessProcess/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"

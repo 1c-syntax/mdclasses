@@ -182,8 +182,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 5,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -276,8 +275,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 25,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -335,8 +333,7 @@
               "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                 "precision": 9,
                 "scale": 0,
-                "nonNegative": false,
-                "description": {}
+                "nonNegative": false
               }
             }
           ]
@@ -392,14 +389,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -423,6 +413,17 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "type": "UNKNOWN",
+    "mdoRef": "",
+    "mdoRefRu": ""
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/auxiliaryChoiceForm"
+  },
   "commands": [],
   "comment": "",
   "content": [
@@ -446,6 +447,15 @@
     ],
     []
   ],
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/auxiliaryChoiceForm"
+  },
+  "defaultListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/auxiliaryChoiceForm"
+  },
+  "defaultObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.ExchangePlan/auxiliaryChoiceForm"
+  },
   "description": "ПланОбмена1",
   "distributedInfoBase": false,
   "explanation": {

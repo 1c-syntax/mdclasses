@@ -432,8 +432,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 150,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -663,14 +662,7 @@
               },
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                    "nameEn": "DateQualifiers (DateTime)"
-                  }
-                }
+                "dateFractions": 2
               }
             }
           ]
@@ -727,8 +719,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 14,
-                "allowedLength": 1,
-                "description": {}
+                "allowedLength": 1
               }
             }
           ]
@@ -1098,14 +1089,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 0,
-                "allowedLength": 0,
-                "description": {
-                  "value": {
-                    "@class": "com.github._1c_syntax.bsl.types.MultiName",
-                    "nameRu": "КвалификаторыСтроки (0, Переменная)",
-                    "nameEn": "StringQualifiers (0, Variable)"
-                  }
-                }
+                "allowedLength": 0
               }
             }
           ]
@@ -1220,8 +1204,7 @@
               "int": 1,
               "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                 "length": 500,
-                "allowedLength": 0,
-                "description": {}
+                "allowedLength": 0
               }
             }
           ]
@@ -1488,6 +1471,15 @@
     ],
     []
   ],
+  "auxiliaryChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/choiceForm"
+  },
+  "auxiliaryListForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/choiceForm"
+  },
+  "auxiliaryObjectForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/choiceForm"
+  },
   "commands": [
     [
       {
@@ -1654,6 +1646,19 @@
     []
   ],
   "comment": "",
+  "defaultChoiceForm": {
+    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/choiceForm"
+  },
+  "defaultListForm": {
+    "type": "FORM",
+    "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
+    "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
+  },
+  "defaultObjectForm": {
+    "type": "FORM",
+    "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
+    "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
+  },
   "description": "Задача",
   "explanation": {
     "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/c/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
@@ -4520,8 +4525,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 1,
                         "scale": 0,
-                        "nonNegative": false,
-                        "description": {}
+                        "nonNegative": false
                       }
                     }
                   ]
@@ -4636,9 +4640,7 @@
         "uuid": "a9957f43-8b6f-4d98-a2d8-77b78047494c",
         "name": "ФормаЗадачи",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/defaultObjectForm"
         },
         "objectBelonging": "OWN",
         "comment": "Форма выполнения задачи по умолчанию",
@@ -4662,7 +4664,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Forms/ФормаЗадачи/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Task/defaultObjectForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -5205,9 +5207,7 @@
         "uuid": "e470e15d-1b06-43cb-a9f9-ba489e2f596f",
         "name": "ФормаСписка",
         "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка",
-          "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка"
+          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/defaultListForm"
         },
         "objectBelonging": "OWN",
         "comment": "",
@@ -5231,7 +5231,7 @@
             "moduleType": "FormModule",
             "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Forms/ФормаСписка/Ext/Form/Module.bsl",
             "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Task/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[8]/mdoReference"
+              "@reference": "/com.github._1c_syntax.bsl.mdo.Task/defaultListForm"
             },
             "supportVariant": "NOT_EDITABLE",
             "isProtected": false
@@ -5920,8 +5920,7 @@
                       "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
                         "precision": 1,
                         "scale": 0,
-                        "nonNegative": true,
-                        "description": {}
+                        "nonNegative": true
                       }
                     }
                   ]
@@ -5963,8 +5962,7 @@
                       "int": 1,
                       "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
                         "length": 100,
-                        "allowedLength": 0,
-                        "description": {}
+                        "allowedLength": 0
                       }
                     }
                   ]
@@ -6015,15 +6013,15 @@
   "mdoType": "TASK",
   "moduleTypes": [
     [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl"
-      ]
-    ],
-    [
       "ObjectModule",
       [
         "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ObjectModule.bsl"
+      ]
+    ],
+    [
+      "ManagerModule",
+      [
+        "src/test/resources/ext/designer/ssl_3_1/src/cf/Tasks/ЗадачаИсполнителя/Ext/ManagerModule.bsl"
       ]
     ]
   ],
