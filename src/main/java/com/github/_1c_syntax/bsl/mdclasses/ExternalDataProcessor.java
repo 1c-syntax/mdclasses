@@ -105,34 +105,10 @@ public class ExternalDataProcessor implements ExternalSource {
   MdoReference defaultForm = MdoReference.EMPTY;
 
   /**
-   * Ссылка на форму настроек по умолчанию
-   */
-  @Default
-  MdoReference defaultSettingsForm = MdoReference.EMPTY;
-
-  /**
-   * Ссылка на форму варианта по умолчанию
-   */
-  @Default
-  MdoReference defaultVariantForm = MdoReference.EMPTY;
-
-  /**
    * Ссылка на дополнительную форму
    */
   @Default
   MdoReference auxiliaryForm = MdoReference.EMPTY;
-
-  /**
-   * Ссылка на дополнительную форму настроек
-   */
-  @Default
-  MdoReference auxiliarySettingsForm = MdoReference.EMPTY;
-
-  /**
-   * Ссылка на дополнительную форму варианта
-   */
-  @Default
-  MdoReference auxiliaryVariantForm = MdoReference.EMPTY;
 
   /**
    * Возможные формы по умолчанию
@@ -143,11 +119,7 @@ public class ExternalDataProcessor implements ExternalSource {
   private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
     return Map.ofEntries(
       Map.entry(DefaultFormKind.DEFAULT_FORM, getDefaultForm()),
-      Map.entry(DefaultFormKind.SETTINGS_FORM, getDefaultSettingsForm()),
-      Map.entry(DefaultFormKind.VARIANT_FORM, getDefaultVariantForm()),
-      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm()),
-      Map.entry(DefaultFormKind.AUX_SETTINGS_FORM, getAuxiliarySettingsForm()),
-      Map.entry(DefaultFormKind.AUX_VARIANT_FORM, getAuxiliaryVariantForm())
+      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm())
     );
   }
 }
