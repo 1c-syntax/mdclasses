@@ -112,9 +112,9 @@ public class EDTReader implements MDReader {
     this.readSettings = readSettings;
 
     if (!readSettings.skipSupport()) {
-      var pcbin = parentConfigurationsPath();
-      if (pcbin.toFile().exists()) {
-        ParseSupportData.read(pcbin);
+      var supportConfigPath = supportConfigPath();
+      if (supportConfigPath.toFile().exists()) {
+        ParseSupportData.read(supportConfigPath);
       }
     }
   }
@@ -283,9 +283,13 @@ public class EDTReader implements MDReader {
     xStream.alias("fields", ExternalDataSourceTableField.class);
   }
 
-  private Path parentConfigurationsPath() {
-    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(),
-      "ParentConfigurations.bin");
+  private Path supportConfigPath() {
+    var configurationDir = Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn());
+    var distr = Paths.get(configurationDir.toString(), "Configuration.distr");
+    if (distr.toFile().exists()) {
+      return distr;
+    }
+    return Paths.get(configurationDir.toString(), "ParentConfigurations.bin");
   }
 
   private static Path mdoPath(Path rootPath, MDOType type, String name) {
