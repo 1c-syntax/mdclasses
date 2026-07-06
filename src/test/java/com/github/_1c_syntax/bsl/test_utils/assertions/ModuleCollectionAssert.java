@@ -146,7 +146,7 @@ public class ModuleCollectionAssert extends AbstractAssert<ModuleCollectionAsser
     String msg = String.format(
       """
       Ожидаемые и фактические модули различаются:
-        ожидаются (expected):
+        отсутствуют в actual (missing):
         %s
       
         отсутствуют в expected (extra):

@@ -149,7 +149,7 @@ public class MDCollectionAssert extends AbstractAssert<MDCollectionAssert, List<
     }
 
     String msg = String.format(
-      "Ожидаемые и фактические элементы различаются:\n  отсутствуют в expected (missing):\n%s\n  отсутствуют в actual (extra):\n%s",
+      "Ожидаемые и фактические элементы различаются:\n  отсутствуют в actual (missing):\n%s\n  отсутствуют в expected (extra):\n%s",
       formatCollection(missing),
       formatCollection(extra)
     );

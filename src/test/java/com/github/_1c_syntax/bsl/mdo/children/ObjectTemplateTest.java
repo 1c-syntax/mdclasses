@@ -25,18 +25,15 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
-import com.github._1c_syntax.bsl.types.MDOType;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -99,39 +96,7 @@ class ObjectTemplateTest {
   }
 
   private static List<TemplateDataFixtureRef> discoverObjectTemplateDataRefs() {
-    List<TemplateDataFixtureRef> refs = new ArrayList<>();
-    try (var packsStream = Files.list(Fixtures.FIXTURES_PATH)) {
-      packsStream.filter(Files::isDirectory)
-        .forEach(packDir -> {
-          var packName = packDir.getFileName().toString();
-          var templatedataDir = packDir.resolve("templatedata");
-          if (!Files.isDirectory(templatedataDir)) return;
-          try (var filesStream = Files.list(templatedataDir)) {
-            filesStream.filter(path -> path.toString().endsWith(".json"))
-              .forEach(fixtureFile -> {
-                var templateRef = org.apache.commons.io.file.PathUtils
-                  .getBaseName(fixtureFile.getFileName());
-                var parentRef = parseParentRef(templateRef);
-                if (parentRef != null) {
-                  refs.add(new TemplateDataFixtureRef(packName, templateRef, parentRef, fixtureFile));
-                }
-              });
-          } catch (IOException e) { throw new RuntimeException(e); }
-        });
-    } catch (IOException e) { throw new RuntimeException(e); }
-    return refs;
-  }
-
-  private static String parseParentRef(String childMdoRef) {
-    var dotIndex = childMdoRef.indexOf('.');
-    if (dotIndex < 0) return null;
-    var typeStr = childMdoRef.substring(0, dotIndex);
-    var rest = childMdoRef.substring(dotIndex + 1);
-    var secondDot = rest.indexOf('.');
-    if (secondDot < 0) return null;
-    var parentName = rest.substring(0, secondDot);
-    var mdoTypeOpt = MDOType.fromValue(typeStr);
-    return mdoTypeOpt.map(mdoType -> mdoType.groupName() + "." + parentName).orElse(null);
+    return Fixtures.discoverChildFixtureRefs("templatedata", TemplateDataFixtureRef::new);
   }
 
   private record TemplateDataFixtureRef(String pack, String templateRef, String parentRef, Path fixturePath) {

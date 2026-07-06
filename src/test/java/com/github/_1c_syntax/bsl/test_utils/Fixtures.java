@@ -54,9 +54,12 @@ import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -150,6 +153,69 @@ public class Fixtures {
     var prettyJson = new JSONObject(asJson(obj)).toString(1);
     Files.writeString(filePath, prettyJson);
     return prettyJson;
+  }
+
+  /**
+   * Фабрика для создания ссылок на фикстуры-потомков
+   */
+  @FunctionalInterface
+  public interface FixtureRefFactory<T> {
+    T create(String pack, String ref, String parentRef, Path fixturePath);
+  }
+
+  /**
+   * Обход каталога фикстур и сбор ссылок на дочерние объекты (ObjectForm, ObjectTemplate и т.п.)
+   *
+   * @param subDir  Подкаталог внутри пака (например, "formdata", "templatedata")
+   * @param factory Фабрика для создания ссылок
+   * @param <T>     Тип ссылки
+   * @return Список ссылок
+   */
+  public static <T> List<T> discoverChildFixtureRefs(String subDir, FixtureRefFactory<T> factory) {
+    List<T> refs = new ArrayList<>();
+    try (var packsStream = Files.list(FIXTURES_PATH)) {
+      packsStream.filter(Files::isDirectory).forEach(packDir -> {
+        var packName = packDir.getFileName().toString();
+        var dataDir = packDir.resolve(subDir);
+        if (!Files.isDirectory(dataDir)) return;
+        try (var filesStream = Files.list(dataDir)) {
+          filesStream.filter(path -> path.toString().endsWith(".json"))
+            .forEach(fixtureFile -> {
+              var ref = org.apache.commons.io.file.PathUtils
+                .getBaseName(fixtureFile.getFileName());
+              var parentRef = parseParentRef(ref);
+              if (parentRef != null) {
+                refs.add(factory.create(packName, ref, parentRef, fixtureFile));
+              }
+            });
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      });
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return refs;
+  }
+
+  /**
+   * Парсинг ссылки на дочерний объект для получения ссылки на родителя.
+   * Например, "Catalog.Справочник1.Form.ФормаЭлемента" -> "Catalogs.Справочник1"
+   *
+   * @param childMdoRef Ссылка на дочерний объект
+   * @return Ссылка на родителя или null, если не удалось распарсить
+   */
+  @Nullable
+  public static String parseParentRef(String childMdoRef) {
+    var dotIndex = childMdoRef.indexOf('.');
+    if (dotIndex < 0) return null;
+    var typeStr = childMdoRef.substring(0, dotIndex);
+    var rest = childMdoRef.substring(dotIndex + 1);
+    var secondDot = rest.indexOf('.');
+    if (secondDot < 0) return null;
+    var parentName = rest.substring(0, secondDot);
+    var mdoTypeOpt = MDOType.fromValue(typeStr);
+    return mdoTypeOpt.map(mdoType -> mdoType.groupName() + "." + parentName).orElse(null);
   }
 
   @Nullable

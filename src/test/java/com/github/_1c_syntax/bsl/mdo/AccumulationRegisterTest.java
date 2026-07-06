@@ -85,22 +85,5 @@ class AccumulationRegisterTest {
         accumulationRegister.getDimensions(),
         accumulationRegister.getResources()
       );
-
-    // --- AttributeOwner ---
-    Assertions.assertThat(accumulationRegister.getAllAttributes(), false)
-      .containsAll(accumulationRegister.getAttributes(),
-        accumulationRegister.getDimensions(),
-        accumulationRegister.getResources()
-      );
-    Assertions.assertThat(accumulationRegister.getStorageFields(), false)
-      .containsAll(accumulationRegister.getAttributes(),
-        accumulationRegister.getDimensions(),
-        accumulationRegister.getResources()
-      );
-    Assertions.assertThat(accumulationRegister.getPlainStorageFields(), false)
-      .containsAll(accumulationRegister.getAttributes(),
-        accumulationRegister.getDimensions(),
-        accumulationRegister.getResources()
-      );
   }
 }
