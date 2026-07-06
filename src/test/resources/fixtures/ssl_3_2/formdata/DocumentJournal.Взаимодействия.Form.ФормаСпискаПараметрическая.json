@@ -1,0 +1,541 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "BeforeLoadDataFromSettingsAtServer"
+   },
+   {
+    "name": "ОбработкаВыбора",
+    "event": "ChoiceProcessing"
+   },
+   {
+    "name": "ОбработкаОповещения",
+    "event": "NotificationProcessing"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Список",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Интервал",
+    "id": 10,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STANDARD_PERIOD"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТипВзаимодействия",
+    "id": 11,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Тип взаимодействия"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 30,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ТолькоПочта",
+    "id": 12,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ДокументыДоступныеДляСоздания",
+    "id": 13,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "VALUE_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ИспользоватьПризнакРассмотрено",
+    "id": 14,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "Ответственный",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ответственный"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.Пользователи",
+        "nameEn": "CatalogRef.Пользователи"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВВидеДерева",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "ДеревоВзаимодействий",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дерево взаимодействий"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TREE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Статус",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Статус"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 14,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ОтборПоПредмету",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "Контакт",
+    "id": 8,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DEFINED_TYPE",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ОпределяемыйТип.КонтактВзаимодействия",
+        "nameEn": "DefinedType.КонтактВзаимодействия"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПредметДляОтбора",
+    "id": 9,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DEFINED_TYPE",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ОпределяемыйТип.ПредметВзаимодействия",
+        "nameEn": "DefinedType.ПредметВзаимодействия"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Взаимодействия"
+    }
+   ]
+  },
+  "items": [
+   {
+    "name": "СтраницыСписокДерево",
+    "id": 103,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы список дерево"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "СтраницаСписок",
+      "id": 104,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница список"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "Список",
+        "id": 1,
+        "type": "TABLE",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Список"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "Тема",
+          "id": 20,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Тема"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "Список.Тема"
+         },
+         {
+          "name": "Участники",
+          "id": 66,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Список.Участники"
+         },
+         {
+          "name": "Дата",
+          "id": 68,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Список.Date"
+         },
+         {
+          "name": "Ссылка",
+          "id": 216,
+          "type": "LABEL_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Список.Ref"
+         },
+         {
+          "name": "НомерКартинки",
+          "id": 225,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Иконка взаимодействия"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "Список.НомерКартинки"
+         },
+         {
+          "name": "ЕстьВложения",
+          "id": 254,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Список.ЕстьВложения"
+         }
+        ],
+        "dataPath": "Список"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаДерево",
+      "id": 105,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница дерево"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ДеревоВзаимодействий",
+        "id": 106,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
+        },
+        "items": [
+         {
+          "name": "ДеревоВзаимодействийДата",
+          "id": 111,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Дата"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ДеревоВзаимодействий.Дата"
+         },
+         {
+          "name": "ДеревоВзаимодействийТема",
+          "id": 116,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+          },
+          "items": [],
+          "dataPath": "ДеревоВзаимодействий.Тема"
+         },
+         {
+          "name": "ДеревоВзаимодействийУчастники",
+          "id": 118,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Участники"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ДеревоВзаимодействий.Участники"
+         },
+         {
+          "name": "ДеревоВзаимодействийНомерКартинки",
+          "id": 113,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Номер картинки"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ДеревоВзаимодействий.НомерКартинки"
+         }
+        ],
+        "dataPath": "ДеревоВзаимодействий"
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаПользовательскихНастроек",
+    "id": 234,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаФильтры",
+    "id": 34,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтры"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ТипВзаимодействия",
+      "id": 136,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тип"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "ТипВзаимодействия"
+     },
+     {
+      "name": "Ответственный",
+      "id": 46,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+      },
+      "items": [],
+      "dataPath": "Ответственный"
+     },
+     {
+      "name": "Статус",
+      "id": 50,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+      },
+      "items": [],
+      "dataPath": "Статус"
+     },
+     {
+      "name": "ПереключитьРежимПросмотра",
+      "id": 102,
+      "type": "USUAL_BUTTON",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "В виде дерева \/ списка"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

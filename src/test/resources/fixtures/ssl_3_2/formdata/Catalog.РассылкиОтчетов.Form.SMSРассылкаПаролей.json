@@ -1,0 +1,466 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Получатели",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Получатели"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "РезультатРассылкиSMS",
+    "id": 10,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Результат рассылки SMS"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ОтборОтправлено",
+    "id": 14,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отправлено"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 15,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "РезультатРассылкиSMSБезОтборов",
+    "id": 16,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "КоличествоОтправлено",
+    "id": 2,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 7,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "КоличествоНеОтправлено",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Не отправлено"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ВидТелефонаПолучателей",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Телефон"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.ВидыКонтактнойИнформации",
+        "nameEn": "CatalogRef.ВидыКонтактнойИнформации"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТипПолучателейРассылки",
+    "id": 5,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+    },
+    "type": {
+     "types": [
+      "TYPE_DESCRIPTION"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ИдентификаторОбъектаМетаданных",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "НаименованиеРассылки",
+    "id": 7,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 100,
+       "allowedLength": 0
+      }
+     ]
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+  },
+  "items": [
+   {
+    "name": "Страницы",
+    "id": 66,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "СтраницаОтправить",
+      "id": 68,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отправить"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ВидТелефонаПолучателей",
+        "id": 26,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+        },
+        "items": [],
+        "dataPath": "ВидТелефонаПолучателей"
+       },
+       {
+        "name": "ДекорацияПодсказка",
+        "id": 35,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Нажмите на кнопку <b>Отправить<\/> для отправки SMS с паролями архивов получателям рассылки отчетов."
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "Получатели",
+        "id": 1,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [
+         {
+          "name": "ПолучательНаименованиеИТелефон",
+          "id": 29,
+          "type": "COLUMN_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Получатель наименование и телефон"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ПолучателиПолучатель",
+            "id": 14,
+            "type": "INPUT_FIELD",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Получатель"
+              }
+             ]
+            },
+            "items": [],
+            "dataPath": "Получатели.Получатель"
+           },
+           {
+            "name": "ПолучателиНомерТелефона",
+            "id": 17,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+            },
+            "items": [],
+            "dataPath": "Получатели.Телефон"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": "Получатели"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаСостояниеВыполнения",
+      "id": 70,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отображение состояния"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ДекорацияПредставлениеДлительнойОперации",
+        "id": 77,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Выполняется рассылка SMS с паролями архивов."
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "ДекорацияЗначокДлительнойОперации",
+        "id": 74,
+        "type": "PICTURE_DECORATION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Декорация значок длительной операции"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаИнформация",
+      "id": 72,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Информация"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ОтборОтправлено",
+        "id": 117,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Показать"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "ОтборОтправлено"
+       },
+       {
+        "name": "РезультатРассылкиSMS",
+        "id": 82,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        },
+        "items": [
+         {
+          "name": "РезультатРассылкиSMSПолучатель",
+          "id": 95,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+          },
+          "items": [],
+          "dataPath": "РезультатРассылкиSMS.Получатель"
+         },
+         {
+          "name": "РезультатРассылкиSMSКомментарий",
+          "id": 98,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Комментарий"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "РезультатРассылкиSMS.Комментарий"
+         }
+        ],
+        "dataPath": "РезультатРассылкиSMS"
+       },
+       {
+        "name": "ГруппаПодвал",
+        "id": 104,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Подвал"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ГруппаИтоги",
+          "id": 162,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Итоги"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "КоличествоОтправлено",
+            "id": 164,
+            "type": "LABEL_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+            },
+            "items": [],
+            "dataPath": "КоличествоОтправлено"
+           },
+           {
+            "name": "КоличествоНеОтправлено",
+            "id": 167,
+            "type": "LABEL_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+            },
+            "items": [],
+            "dataPath": "КоличествоНеОтправлено"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

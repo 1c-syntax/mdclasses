@@ -22,11 +22,23 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
+import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MDOType;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -62,5 +74,75 @@ class ObjectFormTest {
     Assertions.assertThat(form.getAllModules(), false)
       .containsAll(form.getModules());
     assertThat(form.getModuleTypes()).isNotNull();
+  }
+
+  @TestFactory
+  Stream<DynamicTest> compareFormDataDesigner() {
+    return discoverObjectFormDataRefs().stream()
+      .map(fixRef -> createFormDataTest(fixRef, false));
+  }
+
+  @TestFactory
+  Stream<DynamicTest> compareFormDataEDT() {
+    return discoverObjectFormDataRefs().stream()
+      .map(fixRef -> createFormDataTest(fixRef, true));
+  }
+
+  private static DynamicTest createFormDataTest(FormDataFixtureRef fixRef, boolean formatEDT) {
+    var pack = fixRef.pack;
+    var formRef = fixRef.formRef;
+    var parentRef = fixRef.parentRef;
+    var displayName = pack + "/" + formRef + " (" + (formatEDT ? "EDT" : "Designer") + ")";
+
+    return DynamicTest.dynamicTest(displayName, () -> {
+      var fixtureContent = Files.readString(fixRef.fixturePath, StandardCharsets.UTF_8);
+      var parentObj = Fixtures.get(pack, parentRef, formatEDT);
+      assertThat(parentObj).isNotNull();
+      var childOpt = ((ChildrenOwner) parentObj).findChild(formRef);
+      assertThat(childOpt).isPresent();
+      var form = (Form) childOpt.get();
+      var data = form.getData();
+      var actualJson = Fixtures.asJson(data);
+      Assertions.assertThat(actualJson, true).isEqual(fixtureContent);
+    });
+  }
+
+  private static List<FormDataFixtureRef> discoverObjectFormDataRefs() {
+    List<FormDataFixtureRef> refs = new ArrayList<>();
+    try (var packsStream = Files.list(Fixtures.FIXTURES_PATH)) {
+      packsStream.filter(Files::isDirectory)
+        .forEach(packDir -> {
+          var packName = packDir.getFileName().toString();
+          var formdataDir = packDir.resolve("formdata");
+          if (!Files.isDirectory(formdataDir)) return;
+          try (var filesStream = Files.list(formdataDir)) {
+            filesStream.filter(path -> path.toString().endsWith(".json"))
+              .forEach(fixtureFile -> {
+                var formRef = org.apache.commons.io.file.PathUtils
+                  .getBaseName(fixtureFile.getFileName());
+                var parentRef = parseParentRef(formRef);
+                if (parentRef != null) {
+                  refs.add(new FormDataFixtureRef(packName, formRef, parentRef, fixtureFile));
+                }
+              });
+          } catch (IOException e) { throw new RuntimeException(e); }
+        });
+    } catch (IOException e) { throw new RuntimeException(e); }
+    return refs;
+  }
+
+  private static String parseParentRef(String childMdoRef) {
+    var dotIndex = childMdoRef.indexOf('.');
+    if (dotIndex < 0) return null;
+    var typeStr = childMdoRef.substring(0, dotIndex);
+    var rest = childMdoRef.substring(dotIndex + 1);
+    var secondDot = rest.indexOf('.');
+    if (secondDot < 0) return null;
+    var parentName = rest.substring(0, secondDot);
+    var mdoTypeOpt = MDOType.fromValue(typeStr);
+    return mdoTypeOpt.map(mdoType -> mdoType.groupName() + "." + parentName).orElse(null);
+  }
+
+  private record FormDataFixtureRef(String pack, String formRef, String parentRef, Path fixturePath) {
   }
 }

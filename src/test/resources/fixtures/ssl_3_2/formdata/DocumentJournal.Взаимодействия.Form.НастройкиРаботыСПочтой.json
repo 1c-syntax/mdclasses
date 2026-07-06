@@ -1,0 +1,713 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "НастройкиХранилище",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВсегдаЗапрашиватьУведомлениеОПрочтении",
+    "id": 10,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Всегда запрашивать уведомление о прочтении"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВсегдаЗапрашиватьУведомленияОДоставке",
+    "id": 11,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Всегда запрашивать уведомления о доставке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ПорядокОтветовНаЗапросыУведомленийОПрочтении",
+    "id": 12,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Порядок ответов на запросы уведомлений о прочтении"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.ПорядокОтветовНаЗапросыУведомленийОПрочтении",
+        "nameEn": "EnumRef.ПорядокОтветовНаЗапросыУведомленийОПрочтении"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ОтправлятьСообщенияСразу",
+    "id": 13,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отправлять сообщения сразу"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ОтображатьТелоИсходногоПисьма",
+    "id": 14,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отображать тело исходного письма  при ответе или пересылке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ВключатьТелоИсходногоПисьма",
+    "id": 15,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Включать тело исходного письма при ответе пересылке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "НовоеСообщениеФорматированныйДокумент",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Новое сообщение форматированный документ"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "FORMATTED_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПриОтветеПересылкеФорматированныйДокумент",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   },
+   {
+    "name": "ФорматПодписиДляНовыхСообщений",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Формат подписи для новых сообщений"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.СпособыРедактированияЭлектронныхПисем",
+        "nameEn": "EnumRef.СпособыРедактированияЭлектронныхПисем"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПодписьДляНовыхСообщенийПростойТекст",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подпись для новых сообщений простой текст"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ВключатьПодписьПриОтветеПересылке",
+    "id": 6,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Включать подпись при ответе или пересылке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ВключатьПодписьДляНовыхСообщений",
+    "id": 7,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Включать подпись для новых сообщений"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ФорматПодписиПриОтветеПересылке",
+    "id": 8,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Формат подписи при ответе пересылке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/type"
+    }
+   },
+   {
+    "name": "ПодписьПриОтветеПересылкеПростойТекст",
+    "id": 9,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подпись при ответе пересылке простой текст"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/type"
+    }
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Настройки работы с почтой"
+    }
+   ]
+  },
+  "items": [
+   {
+    "name": "УчетнаяЗаписьЭлектроннойПочты",
+    "id": 32,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "СтраницыНастроек",
+    "id": 16,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы настроек"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ОтслеживаниеПисем",
+      "id": 34,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отслеживание писем"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаДляОтправляемыхСообщений",
+        "id": 39,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Для отправляемых сообщений запрашивать:"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ВсегдаЗапрашиватьУведомленияОДоставке",
+          "id": 35,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Уведомление о доставке"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ВсегдаЗапрашиватьУведомленияОДоставке"
+         },
+         {
+          "name": "ВсегдаЗапрашиватьУведомлениеОПрочтении",
+          "id": 37,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Уведомление о прочтении"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ВсегдаЗапрашиватьУведомлениеОПрочтении"
+         },
+         {
+          "name": "ПорядокОтветовНаЗапросыУведомленийОПрочтении",
+          "id": 40,
+          "type": "RADIO_BUTTON_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+          },
+          "items": [],
+          "dataPath": "ПорядокОтветовНаЗапросыУведомленийОПрочтении"
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ПодписьДляНового",
+      "id": 42,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Подпись для нового"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаДляНовыхСообщений",
+        "id": 17,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Подпись для новых сообщений"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ВключатьПодписьДляНовыхСообщений",
+          "id": 1,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/title"
+          },
+          "items": [],
+          "dataPath": "ВключатьПодписьДляНовыхСообщений"
+         },
+         {
+          "name": "ФорматПодписиДляНовыхСообщений",
+          "id": 3,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Формат подписи"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ФорматПодписиДляНовыхСообщений"
+         },
+         {
+          "name": "СтраницыПодписьДляНовыхСообщений",
+          "id": 8,
+          "type": "PAGES",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страницы подпись для новых сообщений"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "СтраницаНовоеСообщениеФорматированныйТекст",
+            "id": 10,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Страница новое сообщение форматированный текст"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ГруппаКомандыФорматированныйДокумент",
+              "id": 15,
+              "type": "COMMAND_BAR",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Команды форматированный документ"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": ""
+             },
+             {
+              "name": "НовоеСообщениеФорматированныйДокумент",
+              "id": 11,
+              "type": "FORMATTED_DOCUMENT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
+              },
+              "items": [],
+              "dataPath": "НовоеСообщениеФорматированныйДокумент"
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "СтраницаНовоеСообщениеПростойТекст",
+            "id": 9,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Страница новое сообщение простой текст"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ПодписьДляНовыхСообщенийПростойТекст",
+              "id": 5,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
+              },
+              "items": [],
+              "dataPath": "ПодписьДляНовыхСообщенийПростойТекст"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ГруппаВключатьФорматНовые",
+          "id": 7,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Для новых сообщений"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "Прочее",
+      "id": 47,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Прочее"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ОтправлятьСообщенияСразу",
+        "id": 45,
+        "type": "CHECK_BOX_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Отправлять сообщения сразу "
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "ОтправлятьСообщенияСразу"
+       },
+       {
+        "name": "ОтображатьТелоИсходногоПисьма",
+        "id": 50,
+        "type": "CHECK_BOX_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+        },
+        "items": [],
+        "dataPath": "ОтображатьТелоИсходногоПисьма"
+       },
+       {
+        "name": "ВключатьТелоИсходногоПисьма",
+        "id": 52,
+        "type": "CHECK_BOX_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+        },
+        "items": [],
+        "dataPath": "ВключатьТелоИсходногоПисьма"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ПодписьПриОтвете",
+      "id": 87,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Подпись при ответе"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаПриОтветеПересылке",
+        "id": 18,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Подпись при ответе или пересылке"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ВключатьПодписьПриОтветеПересылке",
+          "id": 20,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]\/title"
+          },
+          "items": [],
+          "dataPath": "ВключатьПодписьПриОтветеПересылке"
+         },
+         {
+          "name": "ФорматПодписиПриОтветеПересылке",
+          "id": 22,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+          },
+          "items": [],
+          "dataPath": "ФорматПодписиПриОтветеПересылке"
+         },
+         {
+          "name": "СтраницыПодписьПриОтветеПересылке",
+          "id": 24,
+          "type": "PAGES",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страницы подпись при ответе пересылке"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "СтраницаПриОтветеПересылкеПростойТекст",
+            "id": 25,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Страница при ответе пересылке простой текст"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ПодписьПриОтветеПересылкеПростойТекст",
+              "id": 27,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[15]\/title"
+              },
+              "items": [],
+              "dataPath": "ПодписьПриОтветеПересылкеПростойТекст"
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "СтраницаПриОтветеПересылкеФорматированныйДокумент",
+            "id": 26,
+            "type": "PAGE",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+            },
+            "items": [
+             {
+              "name": "ГруппаКомандыПриОтветеПересылкеФорматированныйДокумент",
+              "id": 31,
+              "type": "COMMAND_BAR",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Команды при ответе пересылке форматированный документ"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": ""
+             },
+             {
+              "name": "ПриОтветеПересылкеФорматированныйДокумент",
+              "id": 29,
+              "type": "FORMATTED_DOCUMENT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "ПриОтветеПересылкеФорматированныйДокумент"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

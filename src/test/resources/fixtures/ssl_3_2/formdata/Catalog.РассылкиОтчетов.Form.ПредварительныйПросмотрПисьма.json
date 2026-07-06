@@ -1,0 +1,110 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Текст",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Текст"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   }
+  ],
+  "title": {
+   "content": []
+  },
+  "items": [
+   {
+    "name": "СтраницыТекстПисьма",
+    "id": 7,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы текст письма"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "СтраницаТекстПисьмаОбычныйТекст",
+      "id": 11,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма обычный текст"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ОбычныйТекст",
+        "id": 4,
+        "type": "TEXT_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Текст"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаТекстПисьмаHTML",
+      "id": 9,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма HTML"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "HTMLТекст",
+        "id": 1,
+        "type": "HTML_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Текст"
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

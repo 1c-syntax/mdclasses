@@ -1,0 +1,141 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "ТаблицаТиповПредметов",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Таблица типов предметов"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТекущийТипПредмета",
+    "id": 2,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "НеОтображатьВзаимодействия",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Не отображать взаимодействия"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Выберите тип предмета"
+    }
+   ]
+  },
+  "items": [
+   {
+    "name": "НеОтображатьВзаимодействия",
+    "id": 23,
+    "type": "CHECK_BOX_FIELD",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Скрыть взаимодействия"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": "НеОтображатьВзаимодействия"
+   },
+   {
+    "name": "Группа1",
+    "id": 31,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ТаблицаТиповПредметов",
+      "id": 1,
+      "type": "TABLE",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [
+       {
+        "name": "ТаблицаТиповПредметовПредставлениеТипа",
+        "id": 14,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Представление типа"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "ТаблицаТиповПредметов.ПредставлениеТипа"
+       }
+      ],
+      "dataPath": "ТаблицаТиповПредметов"
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

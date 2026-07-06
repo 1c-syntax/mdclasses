@@ -83,6 +83,13 @@ public class Unmarshaller {
         && readerContext instanceof MDReaderContext
         && PredefinedDataOwner.class.isAssignableFrom(readerContext.getRealClass())) {
         readPredefined(reader, context, readerContext);
+      } else if("extInfo".equals(nodeName)) {
+        while (reader.hasMoreChildren()) {
+          reader.moveDown();
+          var extInfoNodeName = reader.getNodeName();
+          readNode(extInfoNodeName, context, readerContext);
+          reader.moveUp();
+        }
       } else {
         readNode(nodeName, context, readerContext);
       }
