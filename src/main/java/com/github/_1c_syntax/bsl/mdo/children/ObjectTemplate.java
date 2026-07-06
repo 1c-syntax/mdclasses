@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
@@ -36,9 +35,6 @@ import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-
-import java.util.Collections;
-import java.util.List;
 
 @Value
 @Builder
@@ -64,8 +60,6 @@ public class ObjectTemplate implements Template, MDChild {
   MultiLanguageString synonym = MultiLanguageString.EMPTY;
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
-  @Default
-  List<Module> modules = Collections.emptyList();
 
   @Default
   TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;

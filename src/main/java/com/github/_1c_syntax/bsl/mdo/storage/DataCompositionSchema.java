@@ -27,7 +27,7 @@ import lombok.Getter;
 import lombok.Singular;
 import lombok.Value;
 
-import java.nio.file.Path;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -53,9 +53,9 @@ public class DataCompositionSchema implements TemplateData {
    * Путь к файлу с данными макета
    */
   @Getter
-  Path dataPath;
+  URI dataPath;
 
-  public DataCompositionSchema(List<DataSet> dataSetsTree, Path path) {
+  public DataCompositionSchema(List<DataSet> dataSetsTree, URI path) {
     dataSets = dataSetsTree;
     dataPath = path;
   }

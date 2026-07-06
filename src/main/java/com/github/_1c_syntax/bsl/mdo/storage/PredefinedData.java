@@ -22,9 +22,9 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
-import lombok.Builder;
 
 import java.util.List;
 

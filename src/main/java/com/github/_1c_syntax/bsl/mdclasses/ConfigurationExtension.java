@@ -134,7 +134,7 @@ public class ConfigurationExtension implements CF {
   @Default
   ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   @Default
-  InterfaceCompatibilityMode interfaceCompatibilityMode = InterfaceCompatibilityMode.VERSION_8_2;
+  InterfaceCompatibilityMode interfaceCompatibilityMode = InterfaceCompatibilityMode.TAXI;
   @Default
   CompatibilityMode compatibilityMode = new CompatibilityMode();
   @Default
