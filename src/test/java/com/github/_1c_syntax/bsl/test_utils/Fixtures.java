@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
@@ -247,6 +248,10 @@ public class Fixtures {
           if (ManagedFormData.class.isAssignableFrom(clazz)
             || SimpleFormItem.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "plainItems");
+          }
+
+          if (Module.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "uri");
           }
 
           if (Qualifier.class.isAssignableFrom(clazz)) {
