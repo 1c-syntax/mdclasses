@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -89,5 +90,10 @@ public class DocumentJournalColumn implements Attribute {
   @Override
   public ValueTypeDescription getValueType() {
     return ValueTypeDescription.EMPTY;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.COLUMN;
   }
 }

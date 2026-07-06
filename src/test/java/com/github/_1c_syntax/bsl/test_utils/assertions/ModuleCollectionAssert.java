@@ -144,7 +144,14 @@ public class ModuleCollectionAssert extends AbstractAssert<ModuleCollectionAsser
     }
 
     String msg = String.format(
-      "Ожидаемые и фактические модули различаются:\n  ожидаются (expected):\n%s\n  отсутствуют в expected (extra):\n%s",
+      """
+      Ожидаемые и фактические модули различаются:
+        ожидаются (expected):
+        %s
+      
+        отсутствуют в expected (extra):
+        %s
+      """,
       formatCollection(missing),
       formatCollection(extra)
     );
@@ -169,6 +176,7 @@ public class ModuleCollectionAssert extends AbstractAssert<ModuleCollectionAsser
    * Создаёт лаконичное представление модуля для вывода в diff.
    */
   private String toSummary(Module m) {
-    return String.format("Module{uri=%s, type=%s, protected=%s}", m.getUri(), m.getModuleType(), m.isProtected());
+    return String.format("Module{\n\t\t\turi=%s,\n\t\t\ttype=%s, protected=%s}",
+      m.getUri().toString().replace("%", "%%"), m.getModuleType(), m.isProtected());
   }
 }

@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -73,4 +74,9 @@ public class ObjectTemplate implements Template, MDChild {
 
   @Default
   MdoReference owner = MdoReference.EMPTY;
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.TEMPLATE;
+  }
 }
