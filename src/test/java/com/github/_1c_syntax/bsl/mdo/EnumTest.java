@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.ScriptVariant;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -33,88 +32,56 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class EnumTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Enums.Перечисление1, _edt",
-      "false, mdclasses, Enums.Перечисление1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, Enums.Перечисление1",
+    "false, mdclasses, Enums.Перечисление1",
+    "true, ssl_3_1, Enums.СтатусыОбработчиковОбновления",
+    "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления",
+    "true, ssl_3_2, Enums.СтатусыОбработчиковОбновления",
+    "false, ssl_3_2, Enums.СтатусыОбработчиковОбновления"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Enum.class);
 
-    var mdoRef = MdoReference.create(argumentsAccessor.getString(2));
+    var enum_ = (Enum) mdo;
+    assertThat(enum_).isNotNull();
+
+    var mdoRef = enum_.getMdoReference();
     var mdoRefString = mdoRef.getMdoRef();
     var mdoRefStringRu = mdoRef.getMdoRefRu();
 
-    assertThat(mdo.getMdoReference()).isEqualTo(mdoRef);
-    assertThat(mdo.getMdoRef(ScriptVariant.ENGLISH)).isEqualTo(mdoRefString);
-    assertThat(mdo.getMdoRef(ScriptVariant.UNKNOWN)).isEqualTo(mdoRefStringRu);
-    assertThat(mdo.getMdoRef(ScriptVariant.RUSSIAN)).isEqualTo(mdoRefStringRu);
+    assertThat(enum_.getMdoReference()).isEqualTo(mdoRef);
+    assertThat(enum_.getMdoRef(ScriptVariant.ENGLISH)).isEqualTo(mdoRefString);
+    assertThat(enum_.getMdoRef(ScriptVariant.UNKNOWN)).isEqualTo(mdoRefStringRu);
+    assertThat(enum_.getMdoRef(ScriptVariant.RUSSIAN)).isEqualTo(mdoRefStringRu);
+    assertThat(enum_.getMdoRef()).isEqualTo(enum_.getMdoRef(ScriptVariant.ENGLISH));
 
-    assertThat(mdo.getMdoRef()).isEqualTo(mdo.getMdoRef(ScriptVariant.ENGLISH));
+    var enumValues = enum_.getEnumValues();
+    var attributes = enum_.getAttributes();
+    var forms = enum_.getForms();
+    var templates = enum_.getTemplates();
+    var commands = enum_.getCommands();
+    var modules = enum_.getModules();
 
-    // FormOwner
-    assertThat(mdo).isInstanceOf(Enum.class);
-    var anEnum = (Enum) mdo;
-    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
+    var storageFields = enum_.getStorageFields();
 
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
+    // --- AttributeOwner ---
+    Assertions.assertThat(storageFields, false)
+      .containsAll(attributes);
+    Assertions.assertThat(enum_.getStorageFields(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(enum_.getPlainStorageFields(), false)
+      .containsAllPlain(attributes);
 
-    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
-  }
+    // --- ModuleOwner ---
+    Assertions.assertThat(enum_.getAllModules(), false)
+      .containsAll(modules, forms, commands);
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, Enums.СтатусыОбработчиковОбновления, _edt",
-      "false, ssl_3_1, Enums.СтатусыОбработчиковОбновления"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(Enum.class);
-    var anEnum = (Enum) mdo;
-
-    // FormOwner
-    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
-
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
-
-    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, Enums.СтатусыОбработчиковОбновления, _edt",
-      "false, ssl_3_2, Enums.СтатусыОбработчиковОбновления"
-    }
-  )
-  void testSSL32(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(Enum.class);
-    var anEnum = (Enum) mdo;
-
-    // FormOwner
-    assertThat(anEnum.getDefaultFormMap()).hasSize(4);
-
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.CHOICE_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
-    assertThat(anEnum.getDefaultForm(DefaultFormKind.AUX_CHOICE_FORM)).isEmpty();
-
-    assertThat(anEnum.getFormByLink(MdoReference.create("Enum.Unknown.Form.Unknown"))).isEmpty();
+    // --- ChildrenOwner ---
+    Assertions.assertThat(enum_.getChildren(), true)
+      .containsAll(enumValues, attributes, forms, templates, commands);
+    Assertions.assertThat(enum_.getPlainChildren(), true)
+      .containsAllPlain(enumValues, attributes, forms, templates, commands);
   }
 }

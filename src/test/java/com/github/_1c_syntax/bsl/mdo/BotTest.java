@@ -21,20 +21,40 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.net.URI;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class BotTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses_3_18, Bots.Бот1, _edt",
+      "true, mdclasses_3_18, Bots.Бот1",
       "false, mdclasses_3_18, Bots.Бот1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Bot.class);
+
+    var bot = (Bot) mdo;
+    assertThat(bot).isNotNull();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(bot.getAllModules(), false).containsAll(bot.getModules());
+    var moduleTypes = bot.getModuleTypes();
+    assertThat(moduleTypes.keySet()).allMatch(type -> type == ModuleType.BotModule);
+    for (var entry : moduleTypes.entrySet()) {
+      for (URI uri : entry.getValue()) {
+        assertThat(bot.getModuleByUri(uri)).isPresent();
+      }
+    }
   }
 }

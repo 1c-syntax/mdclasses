@@ -21,24 +21,47 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonCommandTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, CommonCommands.ОбщаяКоманда1, _edt",
+      "true, mdclasses, CommonCommands.ОбщаяКоманда1",
       "false, mdclasses, CommonCommands.ОбщаяКоманда1",
-      "true, ssl_3_1, CommonCommands.ОтправитьПисьмо, _edt",
+      "true, ssl_3_1, CommonCommands.ОтправитьПисьмо",
       "false, ssl_3_1, CommonCommands.ОтправитьПисьмо",
-      "true, ssl_3_2, CommonCommands.ОтправитьПисьмо, _edt",
+      "true, ssl_3_2, CommonCommands.ОтправитьПисьмо",
       "false, ssl_3_2, CommonCommands.ОтправитьПисьмо"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CommonCommand.class);
+
+    var commonCommand = (CommonCommand) mdo;
+    assertThat(commonCommand).isNotNull();
+
+    var modules = commonCommand.getModules();
+    Assertions.assertThat(commonCommand.getAllModules(), false)
+      .containsAll(modules);
+
+    assertThat(commonCommand.getModuleTypes())
+      .hasSize(modules.size());
+    assertThat(modules)
+      .allMatch(m -> m.getOwner().equals(commonCommand.getMdoReference()));
+
+    assertThat(commonCommand.getModuleTypes())
+      .containsEntry(ModuleType.CommandModule,
+        modules.stream()
+          .map(Module::getUri)
+          .toList());
   }
 }

@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -39,7 +39,8 @@ class XDTOPackageTest {
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(XDTOPackage.class);
   }
 
   @ParameterizedTest
@@ -50,7 +51,8 @@ class XDTOPackageTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(XDTOPackage.class);
 
     var xdto = (XDTOPackage) mdo;
     assertThat(xdto.getNamespace()).isEqualTo("http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.8");
@@ -68,7 +70,7 @@ class XDTOPackageTest {
     ;
 
     assertThat(xdto.getData().properties()).hasSize(1);
-    var xdtoProperty = xdto.getData().properties().get(0);
+    var xdtoProperty = xdto.getData().properties().getFirst();
     assertThat(xdtoProperty.name()).isEqualTo("performance");
     assertThat(xdtoProperty.type()).isEqualTo("d2p1:Performance");
     assertThat(xdtoProperty.form()).isEqualTo("Attribute");

@@ -21,24 +21,45 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonFormTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, CommonForms.Форма, _edt",
+      "true, mdclasses, CommonForms.Форма",
       "false, mdclasses, CommonForms.Форма",
-      "true, ssl_3_1, CommonForms.Вопрос, _edt",
+      "true, ssl_3_1, CommonForms.Вопрос",
       "false, ssl_3_1, CommonForms.Вопрос",
-      "true, ssl_3_2, CommonForms.Вопрос, _edt",
+      "true, ssl_3_2, CommonForms.Вопрос",
       "false, ssl_3_2, CommonForms.Вопрос"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CommonForm.class);
+
+    var commonForm = (CommonForm) mdo;
+    assertThat(commonForm).isNotNull();
+
+    var modules = commonForm.getModules();
+    Assertions.assertThat(commonForm.getAllModules(), false)
+      .containsAll(modules);
+
+    assertThat(commonForm.getModuleTypes())
+      .hasSize(modules.size());
+
+    assertThat(commonForm.getModuleTypes())
+      .containsEntry(ModuleType.FormModule,
+        modules.stream()
+          .map(Module::getUri)
+          .toList());
   }
 }

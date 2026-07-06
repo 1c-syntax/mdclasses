@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,92 +31,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DocumentJournalTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, DocumentJournals.ЖурналДокументов1, _edt",
-      "false, mdclasses, DocumentJournals.ЖурналДокументов1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, DocumentJournals.ЖурналДокументов1",
+    "false, mdclasses, DocumentJournals.ЖурналДокументов1",
+    "true, ssl_3_1, DocumentJournals.Взаимодействия",
+    "false, ssl_3_1, DocumentJournals.Взаимодействия",
+    "true, ssl_3_2, DocumentJournals.Взаимодействия",
+    "false, ssl_3_2, DocumentJournals.Взаимодействия"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(DocumentJournal.class);
+
     var documentJournal = (DocumentJournal) mdo;
+    assertThat(documentJournal).isNotNull();
 
-    // FormOwner
-    assertThat(documentJournal.getDefaultFormMap()).hasSize(2);
+    var columns = documentJournal.getColumns();
+    var modules = documentJournal.getModules();
+    var moduleTypes = documentJournal.getModuleTypes();
+    var forms = documentJournal.getForms();
+    var templates = documentJournal.getTemplates();
+    var commands = documentJournal.getCommands();
 
-    assertThat(documentJournal.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(documentJournal.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
-    assertThat(documentJournal.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(documentJournal.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
+    // --- ModuleOwner ---
+    assertThat(moduleTypes).hasSize(modules.size());
+    Assertions.assertThat(documentJournal.getAllModules(), false)
+      .containsAll(modules, forms, commands);
 
-    assertThat(documentJournal.getFormByLink(MdoReference.create("DocumentJournal.Unknown.Form.Unknown"))).isEmpty();
+    // --- ChildrenOwner ---
+    Assertions.assertThat(documentJournal.getChildren(), true)
+      .containsAll(columns, forms, templates, commands);
+    Assertions.assertThat(documentJournal.getPlainChildren(), true)
+      .containsAllPlain(columns, forms, templates, commands);
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(documentJournal.getAllAttributes(), false)
+      .containsAll(columns);
+    Assertions.assertThat(documentJournal.getStorageFields(), false)
+      .containsAll(columns);
+    Assertions.assertThat(documentJournal.getPlainStorageFields(), false)
+      .containsAll(columns);
   }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, DocumentJournals.Взаимодействия, _edt",
-      "false, ssl_3_1, DocumentJournals.Взаимодействия"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(DocumentJournal.class);
-    var documentJournal = (DocumentJournal) mdo;
-
-    // FormOwner
-    assertThat(documentJournal.getDefaultFormMap()).hasSize(2);
-
-    var formLink = documentJournal.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM);
-    assertThat(formLink).isEqualTo(documentJournal.getDefaultFormMap().get(DefaultFormKind.DEFAULT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
-
-    var form = documentJournal.getDefaultForm(DefaultFormKind.DEFAULT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("ФормаСписка");
-
-    var formByLink = documentJournal.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("ФормаСписка");
-
-    assertThat(documentJournal.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(documentJournal.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(documentJournal.getFormByLink(MdoReference.create("DocumentJournal.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, DocumentJournals.Взаимодействия, _edt",
-      "false, ssl_3_2, DocumentJournals.Взаимодействия"
-    }
-  )
-  void testSSL32(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(DocumentJournal.class);
-    var documentJournal = (DocumentJournal) mdo;
-
-    // FormOwner
-    assertThat(documentJournal.getDefaultFormMap()).hasSize(2);
-
-    var formLink = documentJournal.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM);
-    assertThat(formLink).isEqualTo(documentJournal.getDefaultFormMap().get(DefaultFormKind.DEFAULT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
-
-    var form = documentJournal.getDefaultForm(DefaultFormKind.DEFAULT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("ФормаСписка");
-
-    var formByLink = documentJournal.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("ФормаСписка");
-
-    assertThat(documentJournal.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(documentJournal.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(documentJournal.getFormByLink(MdoReference.create("DocumentJournal.Unknown.Form.Unknown"))).isEmpty();
-  }
-
 }

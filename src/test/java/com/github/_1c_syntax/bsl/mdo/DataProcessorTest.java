@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -33,109 +31,49 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DataProcessorTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, DataProcessors.Обработка1, _edt",
-      "false, mdclasses, DataProcessors.Обработка1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, DataProcessors.Обработка1",
+    "false, mdclasses, DataProcessors.Обработка1",
+    "true, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют",
+    "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют",
+    "true, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют",
+    "false, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(DataProcessor.class);
 
     var dataProcessor = (DataProcessor) mdo;
-    assertThat(dataProcessor.getForms()).hasSize(2);
+    assertThat(dataProcessor).isNotNull();
 
-    var formData = dataProcessor.getForms().stream()
-      .filter(form -> form.getName().equals("ЖурналРегистрации")).findFirst().get().getData();
+    var attributes = dataProcessor.getAttributes();
+    var tabularSections = dataProcessor.getTabularSections();
+    var forms = dataProcessor.getForms();
+    var templates = dataProcessor.getTemplates();
+    var commands = dataProcessor.getCommands();
+    var modules = dataProcessor.getModules();
+    var moduleTypes = dataProcessor.getModuleTypes();
 
-    // FormOwner
-    assertThat(dataProcessor.getDefaultFormMap()).hasSize(2);
+    // --- ModuleOwner ---
+    assertThat(moduleTypes).hasSize(modules.size());
+    assertThat(modules).allSatisfy(m -> assertThat(m.getOwner()).isEqualTo(dataProcessor.getMdoReference()));
+    Assertions.assertThat(dataProcessor.getAllModules(), false)
+      .containsAll(modules, forms, commands);
 
-    var formLink = dataProcessor.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM);
-    assertThat(formLink)
-      .isEqualTo(dataProcessor.getDefaultFormMap().get(DefaultFormKind.DEFAULT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
+    // --- ChildrenOwner ---
+    Assertions.assertThat(dataProcessor.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(dataProcessor.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
 
-    var form = dataProcessor.getDefaultForm(DefaultFormKind.DEFAULT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("Форма");
-
-    var formByLink = dataProcessor.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("Форма");
-
-    assertThat(dataProcessor.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(dataProcessor.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(dataProcessor.getFormByLink(MdoReference.create("DataProcessor.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют, _edt",
-      "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(DataProcessor.class);
-    var dataProcessor = (DataProcessor) mdo;
-
-    // FormOwner
-    assertThat(dataProcessor.getDefaultFormMap()).hasSize(2);
-
-    var formLink = dataProcessor.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM);
-    assertThat(formLink)
-      .isEqualTo(dataProcessor.getDefaultFormMap().get(DefaultFormKind.DEFAULT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
-
-    var form = dataProcessor.getDefaultForm(DefaultFormKind.DEFAULT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("Форма");
-
-    var formByLink = dataProcessor.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("Форма");
-
-    assertThat(dataProcessor.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(dataProcessor.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(dataProcessor.getFormByLink(MdoReference.create("DataProcessor.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют, _edt",
-      "false, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют"
-    }
-  )
-  void testSSL32(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(DataProcessor.class);
-    var dataProcessor = (DataProcessor) mdo;
-
-    // FormOwner
-    assertThat(dataProcessor.getDefaultFormMap()).hasSize(2);
-
-    var formLink = dataProcessor.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM);
-    assertThat(formLink)
-      .isEqualTo(dataProcessor.getDefaultFormMap().get(DefaultFormKind.DEFAULT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
-
-    var form = dataProcessor.getDefaultForm(DefaultFormKind.DEFAULT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("Форма");
-
-    var formByLink = dataProcessor.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("Форма");
-
-    assertThat(dataProcessor.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(dataProcessor.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(dataProcessor.getFormByLink(MdoReference.create("DataProcessor.Unknown.Form.Unknown"))).isEmpty();
+    // --- AttributeOwner ---
+    Assertions.assertThat(dataProcessor.getAllAttributes(), false)
+      .containsAll(attributes);
+    var storageFields = dataProcessor.getStorageFields();
+    Assertions.assertThat(storageFields, false)
+      .containsAll(attributes, tabularSections);
+    var plainStorageFields = dataProcessor.getPlainStorageFields();
+    Assertions.assertThat(plainStorageFields, false)
+      .containsAllPlain(attributes, tabularSections);
   }
 }

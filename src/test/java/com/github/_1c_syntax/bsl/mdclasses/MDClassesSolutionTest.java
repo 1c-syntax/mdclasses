@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
@@ -56,8 +56,8 @@ class MDClassesSolutionTest {
     var path = Path.of(argumentsAccessor.getString(0));
     var solutionCf = MDClasses.createSolution(path);
     var cf = MDClasses.createConfigurations(path).get(0);
-    Assertions.assertThat(MDTestUtils.createJson(solutionCf), true)
-      .isEqual(MDTestUtils.createJson(cf));
+    Assertions.assertThat(Fixtures.asJson(solutionCf), true)
+      .isEqual(Fixtures.asJson(cf));
   }
 
   @Test

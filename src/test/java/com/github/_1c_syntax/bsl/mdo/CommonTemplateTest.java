@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonTemplateTest {
   @ParameterizedTest
@@ -44,7 +46,7 @@ class CommonTemplateTest {
       "false, mdclasses, CommonTemplates.ДвоичныеДанные",
       "true, mdclasses, CommonTemplates.МакетОформления",
       "false, mdclasses, CommonTemplates.МакетОформления",
-      "true, mdclasses, CommonTemplates.СКД, _edt",
+      "true, mdclasses, CommonTemplates.СКД",
       "false, mdclasses, CommonTemplates.СКД",
       "true, mdclasses, CommonTemplates.ТабличныйДокумент",
       "false, mdclasses, CommonTemplates.ТабличныйДокумент",
@@ -57,6 +59,12 @@ class CommonTemplateTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CommonTemplate.class);
+
+    var commonTemplate = (CommonTemplate) mdo;
+    assertThat(commonTemplate).isNotNull();
+    assertThat(commonTemplate.getTemplateType()).isNotNull();
+    assertThat(commonTemplate.getData()).isNotNull();
   }
 }
