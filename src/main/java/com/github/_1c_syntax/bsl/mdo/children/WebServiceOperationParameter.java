@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -74,4 +75,9 @@ public class WebServiceOperationParameter implements MDChild {
    */
   @Default
   TransferDirection transferDirection = TransferDirection.IN;
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.WS_OPERATION_PARAMETER;
+  }
 }

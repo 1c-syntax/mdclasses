@@ -1,376 +1,340 @@
-{"com.github._1c_syntax.bsl.mdo.Report": {
-  "attributes": [],
-  "auxiliaryForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliarySettingsForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Report/auxiliaryForm"
-  },
-  "commands": [],
-  "comment": "",
-  "defaultForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Report/auxiliaryForm"
-  },
-  "defaultSettingsForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Report/auxiliaryForm"
-  },
-  "defaultVariantForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Report/auxiliaryForm"
-  },
-  "description": "Отчет1",
-  "explanation": {
-    "content": []
-  },
-  "forms": [],
-  "mdoReference": {
-    "type": "REPORT",
-    "mdoRef": "Report.Отчет1",
-    "mdoRefRu": "Отчет.Отчет1"
-  },
+{
+ "com.github._1c_syntax.bsl.mdo.Report": {
   "mdoType": "REPORT",
-  "moduleTypes": [
-    [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Reports/Отчет1/Ext/ObjectModule.bsl"
-      ]
-    ],
-    [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Reports/Отчет1/Ext/ManagerModule.bsl"
-      ]
-    ]
+  "defaultFormMap": [
+   "AUX_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+   },
+   "AUX_SETTINGS_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+   },
+   "DEFAULT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+   },
+   "SETTINGS_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+   },
+   "VARIANT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+   }
   ],
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Reports/Отчет1/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Reports/Отчет1/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    }
-  ],
-  "name": "Отчет1",
-  "objectBelonging": "OWN",
   "possibleRights": [
-    {
-      "default": {
-        "tag": 4
+   "EDIT",
+   "USE",
+   "VIEW"
+  ],
+  "templates": [
+   {
+    "templateType": "TEXT_DOCUMENT",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/mdoReference"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Текстовый документ"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
+    },
+    "name": "ТекстовыйДокумент",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "7f3604a2-474a-4597-ad56-e48854d02085",
+    "mdoReference": {
+     "mdoRefRu": "Отчет.Отчет1.Макет.ТекстовыйДокумент",
+     "type": "TEMPLATE",
+     "mdoRef": "Report.Отчет1.Template.ТекстовыйДокумент"
+    },
+    "supportVariant": "NONE"
+   },
+   {
+    "templateType": "SPREADSHEET_DOCUMENT",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/mdoReference"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Макет отчета"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData",
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data"
+    },
+    "name": "МакетОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "938a7553-1ef1-4d93-b071-0ef1c0740f5b",
+    "mdoReference": {
+     "mdoRefRu": "Отчет.Отчет1.Макет.МакетОтчета",
+     "type": "TEMPLATE",
+     "mdoRef": "Report.Отчет1.Template.МакетОтчета"
+    },
+    "supportVariant": "NONE"
+   },
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/mdoReference"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "СКД"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 24,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+       },
+       "name": "НаборДанных1",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Код1",
+         "dataPath": "Код1"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
       },
-      "int": 3,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "USE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
-    }
+      {
+       "querySource": {
+        "line": 65,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.ВерсияДанных КАК ВерсияДанных,\n\tПервыйСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tПервыйСправочник.Код КАК Код,\n\tПервыйСправочник.Наименование КАК Наименование,\n\tПервыйСправочник.Реквизит1 КАК Реквизит1,\n\tПервыйСправочник.Предопределенный КАК Предопределенный,\n\tПервыйСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+       },
+       "name": "НаборДанных2",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "ВерсияДанных",
+         "dataPath": "ВерсияДанных"
+        },
+        {
+         "name": "ИмяПредопределенныхДанных",
+         "dataPath": "ИмяПредопределенныхДанных"
+        },
+        {
+         "name": "Код",
+         "dataPath": "Код"
+        },
+        {
+         "name": "Наименование",
+         "dataPath": "Наименование"
+        },
+        {
+         "name": "ПометкаУдаления",
+         "dataPath": "ПометкаУдаления"
+        },
+        {
+         "name": "Предопределенный",
+         "dataPath": "Предопределенный"
+        },
+        {
+         "name": "Реквизит1",
+         "dataPath": "Реквизит1"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      },
+      {
+       "querySource": {
+        "line": 0,
+        "column": 0,
+        "textQuery": ""
+       },
+       "name": "НаборДанных3",
+       "type": "DATA_SET_OBJECT",
+       "fields": [],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      },
+      {
+       "querySource": {
+        "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[3]\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+       },
+       "name": "НаборДанных3",
+       "type": "DATA_SET_UNION",
+       "fields": [
+        {
+         "name": "Код1",
+         "dataPath": "Код1"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        }
+       ],
+       "dataSource": "",
+       "items": [
+        {
+         "querySource": {
+          "line": 133,
+          "column": 11,
+          "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+         },
+         "name": "НаборДанных1",
+         "type": "DATA_SET_QUERY",
+         "fields": [
+          {
+           "name": "Код1",
+           "dataPath": "Код1"
+          },
+          {
+           "name": "Ссылка",
+           "dataPath": "Ссылка"
+          }
+         ],
+         "dataSource": "ИсточникДанных1",
+         "items": []
+        },
+        {
+         "querySource": {
+          "line": 110,
+          "column": 11,
+          "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+         },
+         "name": "НаборДанных2",
+         "type": "DATA_SET_QUERY",
+         "fields": [
+          {
+           "name": "Код1",
+           "dataPath": "Код1"
+          },
+          {
+           "name": "Ссылка",
+           "dataPath": "Ссылка"
+          }
+         ],
+         "dataSource": "ИсточникДанных1",
+         "items": []
+        },
+        {
+         "querySource": {
+          "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[3]\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+         },
+         "name": "НаборДанных4",
+         "type": "DATA_SET_UNION",
+         "fields": [],
+         "dataSource": "",
+         "items": [
+          {
+           "querySource": {
+            "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[3]\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+           },
+           "name": "НаборДанных3",
+           "type": "DATA_SET_OBJECT",
+           "fields": [],
+           "dataSource": "ИсточникДанных1",
+           "items": []
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "dataPath": "src\/test\/resources\/mdclasses\/Reports\/Отчет1\/Templates\/СКД\/Template.xml"
+    },
+    "name": "СКД",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "e205e6cf-c198-406f-8658-9223527a0d58",
+    "mdoReference": {
+     "mdoRefRu": "Отчет.Отчет1.Макет.СКД",
+     "type": "TEMPLATE",
+     "mdoRef": "Report.Отчет1.Template.СКД"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "description": "Отчет1",
+  "defaultForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+  },
+  "explanation": {
+   "content": []
+  },
+  "mdoReference": {
+   "mdoRefRu": "Отчет.Отчет1",
+   "type": "REPORT",
+   "mdoRef": "Report.Отчет1"
+  },
+  "uuid": "34d3754d-298c-4786-92f6-a487db249fc7",
+  "defaultSettingsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+  },
+  "mdoRef": "Report.Отчет1",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/mdclasses\/Reports\/Отчет1\/ManagerModule.bsl",
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "uri": "src\/test\/resources\/mdclasses\/Reports\/Отчет1\/ObjectModule.bsl",
+    "supportVariant": "NONE"
+   }
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Report/explanation"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/explanation"
   },
+  "auxiliaryForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "name": "Отчет1",
   "tabularSections": [],
-  "templates": [
-    [
-      {
-        "uuid": "938a7553-1ef1-4d93-b071-0ef1c0740f5b",
-        "name": "МакетОтчета",
-        "mdoReference": {
-          "type": "TEMPLATE",
-          "mdoRef": "Report.Отчет1.Template.МакетОтчета",
-          "mdoRefRu": "Отчет.Отчет1.Макет.МакетОтчета"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Макет отчета"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NONE",
-        "modules": [],
-        "templateType": "SPREADSHEET_DOCUMENT",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
-        }
-      },
-      {
-        "uuid": "e205e6cf-c198-406f-8658-9223527a0d58",
-        "name": "СКД",
-        "mdoReference": {
-          "type": "TEMPLATE",
-          "mdoRef": "Report.Отчет1.Template.СКД",
-          "mdoRefRu": "Отчет.Отчет1.Макет.СКД"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "СКД"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NONE",
-        "modules": [],
-        "templateType": "DATA_COMPOSITION_SCHEME",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
-          "dataSets": [
-            {
-              "name": "НаборДанных1",
-              "type": "DATA_SET_QUERY",
-              "dataSource": "ИсточникДанных1",
-              "items": [],
-              "querySource": {
-                "line": 24,
-                "column": 10,
-                "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
-              },
-              "fields": [
-                [
-                  {
-                    "dataPath": "Ссылка",
-                    "name": "Ссылка"
-                  },
-                  {
-                    "dataPath": "Код1",
-                    "name": "Код1"
-                  }
-                ],
-                []
-              ]
-            },
-            {
-              "name": "НаборДанных2",
-              "type": "DATA_SET_QUERY",
-              "dataSource": "ИсточникДанных1",
-              "items": [],
-              "querySource": {
-                "line": 65,
-                "column": 10,
-                "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.ВерсияДанных КАК ВерсияДанных,\n\tПервыйСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tПервыйСправочник.Код КАК Код,\n\tПервыйСправочник.Наименование КАК Наименование,\n\tПервыйСправочник.Реквизит1 КАК Реквизит1,\n\tПервыйСправочник.Предопределенный КАК Предопределенный,\n\tПервыйСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
-              },
-              "fields": [
-                [
-                  {
-                    "dataPath": "ИмяПредопределенныхДанных",
-                    "name": "ИмяПредопределенныхДанных"
-                  },
-                  {
-                    "dataPath": "Ссылка",
-                    "name": "Ссылка"
-                  },
-                  {
-                    "dataPath": "Предопределенный",
-                    "name": "Предопределенный"
-                  },
-                  {
-                    "dataPath": "Наименование",
-                    "name": "Наименование"
-                  },
-                  {
-                    "dataPath": "ВерсияДанных",
-                    "name": "ВерсияДанных"
-                  },
-                  {
-                    "dataPath": "ПометкаУдаления",
-                    "name": "ПометкаУдаления"
-                  },
-                  {
-                    "dataPath": "Код",
-                    "name": "Код"
-                  },
-                  {
-                    "dataPath": "Реквизит1",
-                    "name": "Реквизит1"
-                  }
-                ],
-                []
-              ]
-            },
-            {
-              "name": "НаборДанных3",
-              "type": "DATA_SET_UNION",
-              "dataSource": "",
-              "items": [
-                [
-                  {
-                    "name": "НаборДанных2",
-                    "type": "DATA_SET_QUERY",
-                    "dataSource": "ИсточникДанных1",
-                    "items": [],
-                    "querySource": {
-                      "line": 110,
-                      "column": 11,
-                      "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
-                    },
-                    "fields": [
-                      [
-                        {
-                          "dataPath": "Ссылка",
-                          "name": "Ссылка"
-                        },
-                        {
-                          "dataPath": "Код1",
-                          "name": "Код1"
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "name": "НаборДанных1",
-                    "type": "DATA_SET_QUERY",
-                    "dataSource": "ИсточникДанных1",
-                    "items": [],
-                    "querySource": {
-                      "line": 133,
-                      "column": 11,
-                      "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
-                    },
-                    "fields": [
-                      [
-                        {
-                          "dataPath": "Ссылка",
-                          "name": "Ссылка"
-                        },
-                        {
-                          "dataPath": "Код1",
-                          "name": "Код1"
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "name": "НаборДанных4",
-                    "type": "DATA_SET_UNION",
-                    "dataSource": "",
-                    "items": [
-                      {
-                        "name": "НаборДанных3",
-                        "type": "DATA_SET_OBJECT",
-                        "dataSource": "ИсточникДанных1",
-                        "items": [],
-                        "querySource": {
-                          "line": 0,
-                          "column": 0,
-                          "textQuery": ""
-                        },
-                        "fields": []
-                      }
-                    ],
-                    "querySource": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/c/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[2]/data/dataSets/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet/querySource"
-                    },
-                    "fields": []
-                  }
-                ],
-                []
-              ],
-              "querySource": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/c/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[2]/data/dataSets/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet/querySource"
-              },
-              "fields": [
-                [
-                  {
-                    "dataPath": "Ссылка",
-                    "name": "Ссылка"
-                  },
-                  {
-                    "dataPath": "Код1",
-                    "name": "Код1"
-                  }
-                ],
-                []
-              ]
-            },
-            {
-              "name": "НаборДанных3",
-              "type": "DATA_SET_OBJECT",
-              "dataSource": "ИсточникДанных1",
-              "items": [],
-              "querySource": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/c/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate[2]/data/dataSets/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]/items/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet/querySource"
-              },
-              "fields": []
-            }
-          ],
-          "dataPath": "src/test/resources/ext/designer/mdclasses/src/cf/Reports/Отчет1/Templates/СКД/Ext/Template.xml"
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
-        }
-      },
-      {
-        "uuid": "7f3604a2-474a-4597-ad56-e48854d02085",
-        "name": "ТекстовыйДокумент",
-        "mdoReference": {
-          "type": "TEMPLATE",
-          "mdoRef": "Report.Отчет1.Template.ТекстовыйДокумент",
-          "mdoRefRu": "Отчет.Отчет1.Макет.ТекстовыйДокумент"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Текстовый документ"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NONE",
-        "modules": [],
-        "templateType": "TEXT_DOCUMENT",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData",
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Report/templates/c/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate/data"
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Report/mdoReference"
-        }
-      }
-    ],
-    []
-  ],
-  "uuid": "34d3754d-298c-4786-92f6-a487db249fc7"
-}}
+  "attributes": [],
+  "comment": "",
+  "objectBelonging": "OWN",
+  "auxiliarySettingsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+  },
+  "commands": [],
+  "forms": [],
+  "defaultVariantForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Report\/auxiliaryForm"
+  }
+ }
+}

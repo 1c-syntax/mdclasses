@@ -46,6 +46,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
     "attributes", FormAttribute.class,
     "Attribute", FormAttribute.class,
     "items", SimpleFormItem.class,
+    "Event", FormHandler.class,
     "Events", FormHandler.class,
     "ChildItems", SimpleFormItem.class,
     ManagedFormData.class.getName(), ManagedFormData.class

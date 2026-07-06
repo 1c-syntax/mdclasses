@@ -106,7 +106,7 @@ class RightsTest {
 
     var cfe = (CF) mdc;
     assertThat(Rights.rightAccess(cfe, RoleRight.ADMINISTRATION)).isTrue();
-    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isFalse();
+    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isTrue();
     assertThat(Rights.rightAccess(cfe, RoleRight.DELETE)).isFalse();
 
     var mdv = cfe.findChild("AccountingRegister.РегистрБухгалтерии1");

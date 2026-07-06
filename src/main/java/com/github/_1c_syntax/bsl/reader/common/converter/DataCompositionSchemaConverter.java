@@ -61,7 +61,7 @@ public class DataCompositionSchemaConverter implements ReadConverter {
       reader.moveUp();
     }
 
-    return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath());
+    return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath().toUri());
   }
 
   @Override

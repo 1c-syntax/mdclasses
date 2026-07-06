@@ -37,6 +37,7 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -174,6 +175,11 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.EXTERNAL_DATA_SOURCE_TABLE;
   }
 
   private static List<RoleRight> computePossibleRights() {

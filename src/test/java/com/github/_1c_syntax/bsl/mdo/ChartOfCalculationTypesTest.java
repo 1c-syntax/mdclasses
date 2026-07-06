@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.ChartOfCalculationTypes;
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -33,28 +31,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ChartOfCalculationTypesTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, ChartsOfCalculationTypes.ПланВидовРасчета1",
-      "false, mdclasses, ChartsOfCalculationTypes.ПланВидовРасчета1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, ChartOfCalculationTypes.ПланВидовРасчета1",
+    "false, mdclasses, ChartOfCalculationTypes.ПланВидовРасчета1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ChartOfCalculationTypes.class);
-    var cct = (ChartOfCalculationTypes) mdo;
 
-    // FormOwner
-    assertThat(cct.getDefaultFormMap()).hasSize(6);
+    var chartOfCalculationTypes = (ChartOfCalculationTypes) mdo;
+    assertThat(chartOfCalculationTypes).isNotNull();
 
-    // Для форм, которых нет в фикстуре
-    assertThat(cct.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(cct.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
-    assertThat(cct.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(cct.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
-    assertThat(cct.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+    var attributes = chartOfCalculationTypes.getAttributes();
+    var tabularSections = chartOfCalculationTypes.getTabularSections();
+    var forms = chartOfCalculationTypes.getForms();
+    var templates = chartOfCalculationTypes.getTemplates();
+    var commands = chartOfCalculationTypes.getCommands();
+    var predefinedValues = chartOfCalculationTypes.getPredefinedValues();
 
-    // getFormByLink с несуществующей ссылкой
-    assertThat(cct.getFormByLink(MdoReference.create("ChartOfCalculationTypes.Unknown.Form.Unknown"))).isEmpty();
+    // --- ModuleOwner ---
+    assertThat(chartOfCalculationTypes.getModuleTypes())
+      .hasSize(chartOfCalculationTypes.getModules().size());
+    Assertions.assertThat(chartOfCalculationTypes.getAllModules(), false)
+      .containsAll(chartOfCalculationTypes.getModules(), forms, commands);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(chartOfCalculationTypes.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(chartOfCalculationTypes.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(chartOfCalculationTypes.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(chartOfCalculationTypes.getStorageFields(), false)
+      .containsAll(attributes, tabularSections);
+    Assertions.assertThat(chartOfCalculationTypes.getPlainStorageFields(), false)
+      .containsAllPlain(attributes, tabularSections);
+
+    // --- PredefinedDataOwner ---
+    assertThat(predefinedValues).isEmpty();
   }
 }

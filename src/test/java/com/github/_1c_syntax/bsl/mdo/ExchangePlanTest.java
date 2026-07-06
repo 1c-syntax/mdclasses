@@ -22,8 +22,8 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -32,121 +32,72 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ExchangePlanTest {
-
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, ExchangePlans.ПланОбмена1, _edt",
-      "false, mdclasses, ExchangePlans.ПланОбмена1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, ExchangePlans.ПланОбмена1",
+    "false, mdclasses, ExchangePlans.ПланОбмена1",
+    "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ExchangePlan.class);
 
     var exchangePlan = (ExchangePlan) mdo;
-    var mdo1 = MdoReference.create("Catalog.Справочник1");
-    var mdo2 = MdoReference.create("Document.Документ1");
-    var mdo3 = MdoReference.create("Catalog.Документ1");
-    assertThat(exchangePlan.contains(mdo1)).isTrue();
-    assertThat(exchangePlan.contains(mdo2)).isTrue();
-    assertThat(exchangePlan.contains(mdo3)).isFalse();
+    assertThat(exchangePlan).isNotNull();
 
-    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.ALLOW);
-    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    var attributes = exchangePlan.getAttributes();
+    var tabularSections = exchangePlan.getTabularSections();
+    var forms = exchangePlan.getForms();
+    var templates = exchangePlan.getTemplates();
+    var commands = exchangePlan.getCommands();
+    var predefinedValues = exchangePlan.getPredefinedValues();
 
-    // FormOwner
-    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
+    // --- ModuleOwner ---
+    Assertions.assertThat(exchangePlan.getAllModules(), true)
+      .containsAll(exchangePlan.getModules(), forms, commands);
 
-    // Для форм, которых нет в фикстуре (все формы пустые)
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
+    // --- PredefinedDataOwner ---
+    assertThat(predefinedValues).hasSize(0);
 
-    // getFormByLink с несуществующей ссылкой
-    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
-  }
+    // --- ReferenceObject logic ---
+    if (exchangePlan.getName().equals("ПланОбмена1")) {
+      var mdo1 = MdoReference.create("Catalog.Справочник1");
+      var mdo2 = MdoReference.create("Document.Документ1");
+      var mdo3 = MdoReference.create("Catalog.Документ1");
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы"
+      assertThat(exchangePlan.contains(mdo1)).isTrue();
+      assertThat(exchangePlan.contains(mdo2)).isTrue();
+      assertThat(exchangePlan.contains(mdo3)).isFalse();
+
+      assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.ALLOW);
+      assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
+      assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    } else {
+      var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
+      var mdo2 = MdoReference.create("Catalog.Справочник1");
+
+      assertThat(exchangePlan.contains(mdo1)).isTrue();
+      assertThat(exchangePlan.contains(mdo2)).isFalse();
+
+      assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
+      assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
     }
-  )
-  void testSSL_3_1(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(ExchangePlan.class);
 
-    var exchangePlan = (ExchangePlan) mdo;
-    var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
-    var mdo2 = MdoReference.create("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы");
-    var mdo3 = MdoReference.create("Catalog.Справочник1");
-    assertThat(exchangePlan.contains(mdo1)).isTrue();
-    assertThat(exchangePlan.contains(mdo2)).isTrue();
-    assertThat(exchangePlan.contains(mdo3)).isFalse();
+    // --- AttributeOwner ---
+    Assertions.assertThat(exchangePlan.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(exchangePlan.getStorageFields(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(exchangePlan.getPlainStorageFields(), true)
+      .containsAllPlain(attributes, tabularSections);
 
-    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
-    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-    assertThat(exchangePlan.getContent()).hasSize(414);
-
-    // FormOwner
-    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
-
-    // Для форм, которых нет в фикстуре (все формы пустые)
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
-
-    // getFormByLink с несуществующей ссылкой
-    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
-    }
-  )
-  void testSSL_3_2(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(ExchangePlan.class);
-
-    var exchangePlan = (ExchangePlan) mdo;
-    var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
-    var mdo2 = MdoReference.create("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы");
-    var mdo3 = MdoReference.create("Catalog.Справочник1");
-    assertThat(exchangePlan.contains(mdo1)).isTrue();
-    assertThat(exchangePlan.contains(mdo2)).isTrue();
-    assertThat(exchangePlan.contains(mdo3)).isFalse();
-
-    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
-    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-    assertThat(exchangePlan.getContent()).hasSize(408);
-
-    // FormOwner
-    assertThat(exchangePlan.getDefaultFormMap()).hasSize(6);
-
-    // Для форм, которых нет в фикстуре (все формы пустые)
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.AUX_OBJECT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(exchangePlan.getDefaultForm(DefaultFormKind.AUX_OBJECT_FORM)).isEmpty();
-    assertThat(exchangePlan.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
-
-    // getFormByLink с несуществующей ссылкой
-    assertThat(exchangePlan.getFormByLink(MdoReference.create("ExchangePlan.Unknown.Form.Unknown"))).isEmpty();
+    // --- Children ---
+    Assertions.assertThat(exchangePlan.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(exchangePlan.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
   }
 }

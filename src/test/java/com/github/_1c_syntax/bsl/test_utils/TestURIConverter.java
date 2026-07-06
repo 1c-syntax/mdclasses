@@ -30,7 +30,15 @@ import java.nio.file.Path;
  * Для возможности сохранять в фикстурах пути относительно рабочего каталога
  */
 public class TestURIConverter extends URIConverter {
-  private final static String WORKDIR = Path.of("").toUri().getPath();
+  private final static String WOKRDIR = Path.of("", "").toUri().getPath();
+  private final static String DESIGNERDIR = Path.of("ext", "designer").toString();
+  private final static String EDTDIR = Path.of("ext", "edt").toString();
+  private final static String DESIGNERCFDIR = Path.of("src", "cf").toString();
+  private final static String EDTCFDIR = Path.of("configuration", "src").toString();
+  private final static String DESIGNEREPFDIR = Path.of("src", "epf").toString();
+  private final static String DESIGNERERFDIR = Path.of("src", "erf").toString();
+  private final static String EDTEPFDIR = Path.of("src", "ExternalDataProcessors").toString();
+  private final static String EDTERFDIR = Path.of("src", "ExternalReports").toString();
 
   @Override
   public String toString(Object obj) {
@@ -40,6 +48,23 @@ public class TestURIConverter extends URIConverter {
         .replace("%D0%98%CC%86", "_")
         .replace("%D0%B8%CC%86", "_"))
       .getPath()
-      .replace(WORKDIR, "");
+      .replace(WOKRDIR, "")
+      .replace(EDTDIR, "")
+      .replace(DESIGNERDIR, "")
+      .replace(DESIGNERCFDIR, "")
+      .replace(EDTCFDIR, "")
+      .replace(EDTEPFDIR, DESIGNEREPFDIR)
+      .replace(EDTERFDIR, DESIGNERERFDIR)
+      .replace("/Ext/", "/")
+      .replace("\\Ext\\", "\\")
+      .replace("/Form/", "/")
+      .replace("\\Form\\", "\\")
+      .replace("/Template/", "/")
+      .replace("\\Template\\", "\\")
+      .replace("//", "/")
+      .replace("\\\\", "\\")
+      .replace(".dcs", ".xml")
+      .replace(".bin", ".bsl")
+      ;
   }
 }

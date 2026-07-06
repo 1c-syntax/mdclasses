@@ -1,56 +1,39 @@
-{"com.github._1c_syntax.bsl.mdo.CommonCommand": {
-  "comment": "",
-  "description": "Отправить письмо...",
-  "mdoReference": {
-    "type": "COMMON_COMMAND",
-    "mdoRef": "CommonCommand.ОтправитьПисьмо",
-    "mdoRefRu": "ОбщаяКоманда.ОтправитьПисьмо"
-  },
+{
+ "com.github._1c_syntax.bsl.mdo.CommonCommand": {
   "mdoType": "COMMON_COMMAND",
-  "moduleTypes": [
-    [
-      "CommandModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonCommands/ОтправитьПисьмо/Ext/CommandModule.bsl"
-      ]
-    ]
-  ],
-  "modules": [
+  "synonym": {
+   "content": [
     {
-      "moduleType": "CommandModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonCommands/ОтправитьПисьмо/Ext/CommandModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.CommonCommand/mdoReference"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
+     "langKey": "ru",
+     "value": "Отправить письмо..."
     }
+   ]
+  },
+  "possibleRights": [
+   "VIEW"
   ],
   "name": "ОтправитьПисьмо",
+  "description": "Отправить письмо...",
+  "comment": "",
   "objectBelonging": "OWN",
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 1,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
-    }
-  ],
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Отправить письмо..."
-        }
-      }
-    ]
+  "mdoReference": {
+   "mdoRefRu": "ОбщаяКоманда.ОтправитьПисьмо",
+   "type": "COMMON_COMMAND",
+   "mdoRef": "CommonCommand.ОтправитьПисьмо"
   },
-  "uuid": "477ab478-b336-4bac-898f-e20e3a4039b5"
-}}
+  "uuid": "477ab478-b336-4bac-898f-e20e3a4039b5",
+  "mdoRef": "CommonCommand.ОтправитьПисьмо",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.CommonCommand\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "CommandModule",
+    "uri": "src\/test\/resources\/ssl_3_1\/CommonCommands\/ОтправитьПисьмо\/CommandModule.bsl",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "supportVariant": "NOT_EDITABLE"
+ }
+}

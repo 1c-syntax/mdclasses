@@ -22,13 +22,13 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CommonAttributeTest {
   @ParameterizedTest
@@ -39,10 +39,11 @@ class CommonAttributeTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(CommonAttribute.class);
 
     var commonAttribute = (CommonAttribute) mdo;
+    assertThat(commonAttribute).isNotNull();
 
     var mdo1 = MdoReference.create("Catalog.Справочник1");
     var mdo2 = MdoReference.create("Catalog.Документ1");
@@ -55,7 +56,6 @@ class CommonAttributeTest {
     assertThat(commonAttribute.useMode(mdo1)).isEqualTo(UseMode.DONT_USE);
     assertThat(commonAttribute.useMode(mdo2)).isEqualTo(UseMode.DONT_USE);
     assertThat(commonAttribute.useMode(mdo3)).isEqualTo(UseMode.USE);
-
   }
 
   @ParameterizedTest
@@ -68,7 +68,7 @@ class CommonAttributeTest {
     }
   )
   void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CommonAttribute.class);
   }
-
 }

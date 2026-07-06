@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -112,5 +113,10 @@ public class PredefinedValue implements MDChild, ChildrenOwner {
   @Override
   public List<MD> getChildren() {
     return Collections.unmodifiableList(childItems);
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.PREDEFINED_VALUE;
   }
 }

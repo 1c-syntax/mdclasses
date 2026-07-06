@@ -1,114 +1,87 @@
-{"com.github._1c_syntax.bsl.mdo.Sequence": {
-  "comment": "",
-  "description": "Последовательность1",
-  "dimensions": [
-    {
-      "uuid": "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
-      "name": "Измерение1",
-      "mdoReference": {
-        "type": "DIMENSION",
-        "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
-        "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": []
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "SEQUENCE",
-        "mdoRef": "Sequence.Последовательность1",
-        "mdoRefRu": "Последовательность.Последовательность1"
-      },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-              "fullName": {
-                "nameRu": "ДокументСсылка.Документ1",
-                "nameEn": "DocumentRef.Документ1"
-              },
-              "variant": "METADATA",
-              "kind": "DOCUMENT"
-            }
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 0
-          }
-        ]
-      },
-      "master": false,
-      "denyIncompleteValues": false,
-      "useInTotals": true
-    }
-  ],
-  "documents": [
-    [
-      {
-        "type": "DOCUMENT",
-        "mdoRef": "Document.Документ1",
-        "mdoRefRu": "Документ.Документ1"
-      },
-      {
-        "type": "DOCUMENT",
-        "mdoRef": "Document.Документ2",
-        "mdoRefRu": "Документ.Документ2"
-      }
-    ],
-    []
-  ],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
-  },
+{
+ "com.github._1c_syntax.bsl.mdo.Sequence": {
   "mdoType": "SEQUENCE",
-  "moduleTypes": [
-    [
-      "RecordSetModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Sequences/Последовательность1/Ext/RecordSetModule.bsl"
-      ]
-    ]
+  "documents": [
+   {
+    "mdoRefRu": "Документ.Документ1",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.Документ1"
+   },
+   {
+    "mdoRefRu": "Документ.Документ2",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.Документ2"
+   }
   ],
-  "modules": [
-    {
-      "moduleType": "RecordSetModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Sequences/Последовательность1/Ext/RecordSetModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/owner"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    }
-  ],
-  "name": "Последовательность1",
-  "objectBelonging": "OWN",
   "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 2,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT"
-    }
+   "EDIT",
+   "READ"
+  ],
+  "description": "Последовательность1",
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Sequence\/dimensions\/com.github._1c_syntax.bsl.mdo.children.Dimension\/owner"
+  },
+  "uuid": "514bbcf4-7fc4-4a3e-9245-598fad397eec",
+  "mdoRef": "Sequence.Последовательность1",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Sequence\/dimensions\/com.github._1c_syntax.bsl.mdo.children.Dimension\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "RecordSetModule",
+    "uri": "src\/test\/resources\/mdclasses\/Sequences\/Последовательность1\/RecordSetModule.bsl",
+    "supportVariant": "NONE"
+   }
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Sequence/dimensions/com.github._1c_syntax.bsl.mdo.children.Dimension/synonym"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Sequence\/dimensions\/com.github._1c_syntax.bsl.mdo.children.Dimension\/synonym"
   },
-  "uuid": "514bbcf4-7fc4-4a3e-9245-598fad397eec"
-}}
+  "name": "Последовательность1",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "dimensions": [
+   {
+    "owner": {
+     "mdoRefRu": "Последовательность.Последовательность1",
+     "type": "SEQUENCE",
+     "mdoRef": "Sequence.Последовательность1"
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "useInTotals": true,
+    "type": {
+     "types": [
+      {
+       "kind": "DOCUMENT",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ДокументСсылка.Документ1",
+        "nameEn": "DocumentRef.Документ1"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "763b82dd-2fdb-4a02-a50b-3eb916c02d3d",
+    "mdoReference": {
+     "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1",
+     "type": "DIMENSION",
+     "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1"
+    },
+    "supportVariant": "NONE",
+    "master": false,
+    "synonym": {
+     "content": []
+    },
+    "passwordMode": false,
+    "name": "Измерение1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "denyIncompleteValues": false
+   }
+  ]
+ }
+}

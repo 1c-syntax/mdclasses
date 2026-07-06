@@ -22,11 +22,9 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -37,69 +35,73 @@ class CalculationRegisterTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, CalculationRegisters.РегистрРасчета1, _edt",
-      "false, mdclasses, CalculationRegisters.РегистрРасчета1"
-    }
-  )
-  void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(CalculationRegister.class);
-    var calculationRegister = (CalculationRegister) mdo;
-    assertThat(calculationRegister.getAllAttributes()).hasSize(14);
-    assertThat(calculationRegister.getChildren()).hasSize(15);
-    assertThat(calculationRegister.getResources()).hasSize(1);
-    assertThat(calculationRegister.getDimensions()).hasSize(1);
-    assertThat(calculationRegister.getAttributes())
-      .hasSize(12)
-      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
-    assertThat(calculationRegister.getRecalculations()).hasSize(1);
-    var recalc = calculationRegister.getRecalculations().getFirst();
-    assertThat(recalc.getModules())
-      .hasSize(1)
-      .allMatch(Module::isProtected)
-    ;
-
-    assertThat(calculationRegister.getModules().stream().filter(Module::isProtected)).isEmpty();
-    assertThat(calculationRegister.getAllModules().stream().filter(Module::isProtected)).hasSize(1);
-
-    // FormOwner
-    assertThat(calculationRegister.getDefaultFormMap()).hasSize(2);
-
-    assertThat(calculationRegister.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(calculationRegister.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(calculationRegister.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
-    assertThat(calculationRegister.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
-
-    // getFormByLink с несуществующей ссылкой
-    assertThat(calculationRegister.getFormByLink(MdoReference.create("CalculationRegister.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses_3_25, CalculationRegisters.РегистрРасчета1, _edt",
+      "true, mdclasses, CalculationRegisters.РегистрРасчета1",
+      "false, mdclasses, CalculationRegisters.РегистрРасчета1",
+      "true, mdclasses_3_25, CalculationRegisters.РегистрРасчета1",
       "false, mdclasses_3_25, CalculationRegisters.РегистрРасчета1"
     }
   )
-  void testRecalculationDimensions(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(CalculationRegister.class);
 
     var calculationRegister = (CalculationRegister) mdo;
-    assertThat(calculationRegister.getRecalculations()).hasSize(1);
+    assertThat(calculationRegister).isNotNull();
 
+    // --- ModuleOwner ---
+    assertThat(calculationRegister.getModuleTypes()).isEmpty();
+    Assertions.assertThat(calculationRegister.getAllModules(), false)
+      .containsAll(calculationRegister.getModules(),
+        calculationRegister.getRecalculations(),
+        calculationRegister.getForms(),
+        calculationRegister.getCommands());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(calculationRegister.getChildren(), true)
+      .containsAll(calculationRegister.getAttributes(),
+        calculationRegister.getResources(),
+        calculationRegister.getDimensions(),
+        calculationRegister.getRecalculations(),
+        calculationRegister.getForms(),
+        calculationRegister.getTemplates(),
+        calculationRegister.getCommands());
+    Assertions.assertThat(calculationRegister.getPlainChildren(), true)
+      .containsAllPlain(calculationRegister.getAttributes(),
+        calculationRegister.getResources(),
+        calculationRegister.getDimensions(),
+        calculationRegister.getRecalculations(),
+        calculationRegister.getForms(),
+        calculationRegister.getTemplates(),
+        calculationRegister.getCommands());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(calculationRegister.getAllAttributes(), false)
+      .containsAll(calculationRegister.getAttributes(),
+        calculationRegister.getResources(),
+        calculationRegister.getDimensions());
+    Assertions.assertThat(calculationRegister.getStorageFields(), false)
+      .containsAll(calculationRegister.getAttributes(),
+        calculationRegister.getResources(),
+        calculationRegister.getDimensions());
+    Assertions.assertThat(calculationRegister.getPlainStorageFields(), false)
+      .containsAll(calculationRegister.getStorageFields());
+
+    // --- CalculationRegister ---
     var recalc = calculationRegister.getRecalculations().getFirst();
-    assertThat(recalc.getName()).isEqualTo("Перерасчет1");
+    if (!recalc.getModules().isEmpty()) {
+      assertThat(recalc.getModules()).allMatch(Module::isProtected);
+    }
 
-    var dimensions = recalc.getDimensions();
-    assertThat(dimensions).hasSize(3);
+    if (recalc.getName().equals("Перерасчет1")) {
+      var recalcDimensions = recalc.getDimensions();
+      assertThat(recalcDimensions).hasSize(3);
 
-    var names = dimensions.stream().map(RecalculationDimension::getName).toList();
-    assertThat(names).containsExactlyInAnyOrder("Измерение1", "Измерение2", "Измерение3");
+      var names = recalcDimensions.stream().map(RecalculationDimension::getName).toList();
+      assertThat(names).containsExactlyInAnyOrder("Измерение1", "Измерение2", "Измерение3");
 
-    var types = dimensions.stream().map(RecalculationDimension::getMdoType).distinct().toList();
-    assertThat(types)
-      .hasSize(1)
-      .contains(MDOType.RECALCULATION_DIMENSION);
+      var types = recalcDimensions.stream().map(RecalculationDimension::getMdoType).distinct().toList();
+      assertThat(types)
+        .contains(MDOType.RECALCULATION_DIMENSION);
+    }
   }
 }

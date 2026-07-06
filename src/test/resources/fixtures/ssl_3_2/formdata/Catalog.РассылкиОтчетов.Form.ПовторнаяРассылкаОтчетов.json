@@ -1,0 +1,165 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Получатели",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Получатели"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "РассылкаСсылка",
+    "id": 2,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.РассылкиОтчетов",
+        "nameEn": "CatalogRef.РассылкиОтчетов"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+  },
+  "items": [
+   {
+    "name": "ГруппаКоманднаяПанельПолучатели",
+    "id": 29,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [
+     {
+      "name": "ПоискПоТекущемуЗначению",
+      "id": 31,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ВывестиСписок",
+      "id": 36,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "СортироватьСписокПоВозрастанию",
+      "id": 38,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "СортироватьСписокПоУбыванию",
+      "id": 40,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "СтрокаПоискаПолучатели",
+      "id": 33,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Поиск"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "Получатели",
+    "id": 1,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [
+     {
+      "name": "ПолучателиПолучатель",
+      "id": 14,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Получатель"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Получатели.Получатель"
+     },
+     {
+      "name": "ПолучателиАдресЭлектроннойПочты",
+      "id": 17,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Адрес электронной почты"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Получатели.АдресЭлектроннойПочты"
+     }
+    ],
+    "dataPath": "Получатели"
+   }
+  ],
+  "empty": false
+ }
+}

@@ -1,0 +1,422 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "ТекстHTML",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Текст HTML"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ТемаПисьма",
+    "id": 10,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 500,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ДатаПисьма",
+    "id": 11,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 1
+      }
+     ]
+    }
+   },
+   {
+    "name": "ПисьмоОснование",
+    "id": 13,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DOCUMENT",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ДокументСсылка.ЭлектронноеПисьмоВходящее",
+        "nameEn": "DocumentRef.ЭлектронноеПисьмоВходящее"
+       }
+      },
+      {
+       "kind": "DOCUMENT",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ДокументСсылка.ЭлектронноеПисьмоИсходящее",
+        "nameEn": "DocumentRef.ЭлектронноеПисьмоИсходящее"
+       }
+      }
+     ],
+     "composite": true,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТемаПисьмаОснования",
+    "id": 14,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ДатаПисьмаОснования",
+    "id": 15,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ЗапрещенныеРасширения",
+    "id": 16,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      "VALUE_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВключитьНебезопасноеСодержимое",
+    "id": 17,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ЕстьНебезопасноеСодержимое",
+    "id": 18,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   },
+   {
+    "name": "ИсходныйТекстHTML",
+    "id": 19,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ФормаДиалогаПечатиПриОткрытииОткрывалась",
+    "id": 2,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   },
+   {
+    "name": "НеВызыватьКомандуПечати",
+    "id": 4,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   },
+   {
+    "name": "Вложения",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Вложения"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ИмяПользователяУчетнойЗаписи",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 150,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ВложенияСИдентификаторами",
+    "id": 7,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "ОтображатьВложенияПисьма",
+    "id": 8,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   },
+   {
+    "name": "Письмо",
+    "id": 9,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type\/types\/com.github._1c_syntax.bsl.types.value.CustomValueType"
+      },
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type\/types\/com.github._1c_syntax.bsl.types.value.CustomValueType[2]"
+      },
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы",
+        "nameEn": "CatalogRef.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы"
+       }
+      },
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы",
+        "nameEn": "CatalogRef.ЭлектронноеПисьмоИсходящееПрисоединенныеФайлы"
+       }
+      },
+      "STRING"
+     ],
+     "composite": true,
+     "qualifiers": [
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type\/qualifiers\/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers"
+      }
+     ]
+    }
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Печать электронного письма"
+    }
+   ]
+  },
+  "items": [
+   {
+    "name": "ТекстHTML",
+    "id": 1,
+    "type": "HTML_DOCUMENT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": "ТекстHTML"
+   },
+   {
+    "name": "Вложения",
+    "id": 4,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/title"
+    },
+    "items": [
+     {
+      "name": "Группа",
+      "id": 17,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Группа"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ИмяФайла",
+        "id": 22,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Вложение"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "Вложения.ИмяФайла"
+       },
+       {
+        "name": "ВложенияРазмерПредставление",
+        "id": 25,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Размер представление"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "Вложения.РазмерПредставление"
+       },
+       {
+        "name": "ИндексКартинки",
+        "id": 19,
+        "type": "PICTURE_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Индекс картинки"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "Вложения.ИндексКартинки"
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": "Вложения"
+   },
+   {
+    "name": "ГруппаПисьмоОснованиеПечать",
+    "id": 35,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Письмо основание печать"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ДекорацияПисьмоОснование",
+      "id": 32,
+      "type": "LABEL_DECORATION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "Печать",
+      "id": 37,
+      "type": "USUAL_BUTTON",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Печать"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

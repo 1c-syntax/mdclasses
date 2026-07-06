@@ -1,0 +1,246 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
+   },
+   {
+    "name": "ПриОткрытии",
+    "event": "OnOpen"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Список",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВыбранныйПредмет",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбранный предмет"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 100,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ВыбранныйЦвет",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбранный цвет"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.ЦветаЗаметок",
+        "nameEn": "EnumRef.ЦветаЗаметок"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПоказыватьУдаленные",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Показывать удаленные"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Все заметки"
+    }
+   ]
+  },
+  "items": [
+   {
+    "name": "КоманднаяПанельТакси",
+    "id": 71,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель такси"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "Список",
+    "id": 1,
+    "type": "TABLE",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "Тема",
+      "id": 20,
+      "type": "LABEL_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тема"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Список.Description"
+     },
+     {
+      "name": "Предмет",
+      "id": 22,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.ПредставлениеПредмета"
+     },
+     {
+      "name": "ДатаИзменения",
+      "id": 24,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.ДатаИзменения"
+     },
+     {
+      "name": "Ссылка",
+      "id": 54,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Ref"
+     }
+    ],
+    "dataPath": "Список"
+   },
+   {
+    "name": "Фильтры",
+    "id": 30,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтры"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ПоказыватьУдаленные",
+      "id": 31,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+      },
+      "items": [],
+      "dataPath": "ПоказыватьУдаленные"
+     },
+     {
+      "name": "ФильтрПоПредмету",
+      "id": 26,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Предмет"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "ВыбранныйПредмет"
+     },
+     {
+      "name": "ФильтрПоЦвету",
+      "id": 28,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Цвет"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "ВыбранныйЦвет"
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

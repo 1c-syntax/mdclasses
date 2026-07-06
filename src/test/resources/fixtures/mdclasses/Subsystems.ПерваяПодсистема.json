@@ -1,218 +1,182 @@
-{"com.github._1c_syntax.bsl.mdo.Subsystem": {
-  "comment": "",
-  "content": [],
+{
+ "com.github._1c_syntax.bsl.mdo.Subsystem": {
+  "mdoType": "SUBSYSTEM",
+  "includeInCommandInterface": true,
+  "possibleRights": [
+   "VIEW"
+  ],
   "description": "Первая подсистема",
   "explanation": {
-    "content": []
+   "content": []
   },
-  "includeHelpInContents": true,
-  "includeInCommandInterface": true,
   "mdoReference": {
-    "type": "SUBSYSTEM",
-    "mdoRef": "Subsystem.ПерваяПодсистема",
-    "mdoRefRu": "Подсистема.ПерваяПодсистема"
+   "mdoRefRu": "Подсистема.ПерваяПодсистема",
+   "type": "SUBSYSTEM",
+   "mdoRef": "Subsystem.ПерваяПодсистема"
   },
-  "mdoType": "SUBSYSTEM",
+  "subsystems": [
+   {
+    "mdoType": "SUBSYSTEM",
+    "includeInCommandInterface": true,
+    "possibleRights": [],
+    "description": "Подчиненная подсистема",
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/explanation"
+    },
+    "mdoReference": {
+     "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема",
+     "type": "SUBSYSTEM",
+     "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема"
+    },
+    "subsystems": [],
+    "uuid": "0fbc4f99-ef89-4d98-9b8f-d26c216c8e31",
+    "content": [
+     {
+      "mdoRefRu": "Справочник.Справочник1",
+      "type": "CATALOG",
+      "mdoRef": "Catalog.Справочник1"
+     },
+     {
+      "mdoRefRu": "Обработка.Обработка1",
+      "type": "DATA_PROCESSOR",
+      "mdoRef": "DataProcessor.Обработка1"
+     }
+    ],
+    "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема",
+    "supportVariant": "NONE",
+    "includeHelpInContents": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подчиненная подсистема"
+      }
+     ]
+    },
+    "name": "ПодчиненнаяПодсистема",
+    "comment": "",
+    "objectBelonging": "OWN",
+    "parentSubsystem": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/mdoReference"
+    }
+   },
+   {
+    "mdoType": "SUBSYSTEM",
+    "includeInCommandInterface": true,
+    "possibleRights": [],
+    "description": "Починенная система2",
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/explanation"
+    },
+    "mdoReference": {
+     "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2",
+     "type": "SUBSYSTEM",
+     "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2"
+    },
+    "subsystems": [
+     {
+      "mdoType": "SUBSYSTEM",
+      "includeInCommandInterface": true,
+      "possibleRights": [],
+      "description": "Подчиненная подсистема3 уровня",
+      "explanation": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/explanation"
+      },
+      "mdoReference": {
+       "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня",
+       "type": "SUBSYSTEM",
+       "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня"
+      },
+      "subsystems": [],
+      "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b",
+      "content": [
+       {
+        "mdoRefRu": "НумераторДокументов.НумераторДокументов1",
+        "type": "DOCUMENT_NUMERATOR",
+        "mdoRef": "DocumentNumerator.НумераторДокументов1"
+       },
+       {
+        "mdoRefRu": "Перечисление.Перечисление1",
+        "type": "ENUM",
+        "mdoRef": "Enum.Перечисление1"
+       },
+       {
+        "mdoRefRu": "Задача.Задача1",
+        "type": "TASK",
+        "mdoRef": "Task.Задача1"
+       }
+      ],
+      "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
+      "supportVariant": "NONE",
+      "includeHelpInContents": true,
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Подчиненная подсистема3 уровня"
+        }
+       ]
+      },
+      "name": "ПодчиненнаяПодсистема3Уровня",
+      "comment": "",
+      "objectBelonging": "OWN",
+      "parentSubsystem": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/subsystems\/com.github._1c_syntax.bsl.mdo.Subsystem[2]\/mdoReference"
+      }
+     }
+    ],
+    "uuid": "c2e12fa5-e679-4932-8c37-db175f268b3d",
+    "content": [
+     {
+      "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1",
+      "type": "BUSINESS_PROCESS",
+      "mdoRef": "BusinessProcess.БизнесПроцесс1"
+     },
+     {
+      "mdoRefRu": "ПланСчетов.ПланСчетов1",
+      "type": "CHART_OF_ACCOUNTS",
+      "mdoRef": "ChartOfAccounts.ПланСчетов1"
+     }
+    ],
+    "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
+    "supportVariant": "NONE",
+    "includeHelpInContents": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Починенная система2"
+      }
+     ]
+    },
+    "name": "ПочиненнаяСистема2",
+    "comment": "",
+    "objectBelonging": "OWN",
+    "parentSubsystem": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Subsystem\/mdoReference"
+    }
+   }
+  ],
+  "uuid": "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293",
+  "content": [],
+  "mdoRef": "Subsystem.ПерваяПодсистема",
+  "supportVariant": "NONE",
+  "includeHelpInContents": true,
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Первая подсистема"
+    }
+   ]
+  },
   "name": "ПерваяПодсистема",
+  "comment": "",
   "objectBelonging": "OWN",
   "parentSubsystem": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 1,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
-    }
-  ],
-  "subsystems": [
-    [
-      {
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CATALOG",
-              "mdoRef": "Catalog.Справочник1",
-              "mdoRefRu": "Справочник.Справочник1"
-            },
-            {
-              "type": "DATA_PROCESSOR",
-              "mdoRef": "DataProcessor.Обработка1",
-              "mdoRefRu": "Обработка.Обработка1"
-            }
-          ],
-          []
-        ],
-        "description": "Подчиненная подсистема",
-        "explanation": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПодчиненнаяПодсистема",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПодчиненнаяПодсистема"
-        },
-        "mdoType": "SUBSYSTEM",
-        "name": "ПодчиненнаяПодсистема",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
-        },
-        "possibleRights": [],
-        "subsystems": [],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Подчиненная подсистема"
-              }
-            }
-          ]
-        },
-        "uuid": "0fbc4f99-ef89-4d98-9b8f-d26c216c8e31"
-      },
-      {
-        "comment": "",
-        "content": [
-          [
-            {
-              "type": "CHART_OF_ACCOUNTS",
-              "mdoRef": "ChartOfAccounts.ПланСчетов1",
-              "mdoRefRu": "ПланСчетов.ПланСчетов1"
-            },
-            {
-              "type": "BUSINESS_PROCESS",
-              "mdoRef": "BusinessProcess.БизнесПроцесс1",
-              "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-            }
-          ],
-          []
-        ],
-        "description": "Починенная система2",
-        "explanation": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
-        },
-        "includeHelpInContents": true,
-        "includeInCommandInterface": true,
-        "mdoReference": {
-          "type": "SUBSYSTEM",
-          "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2",
-          "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2"
-        },
-        "mdoType": "SUBSYSTEM",
-        "name": "ПочиненнаяСистема2",
-        "objectBelonging": "OWN",
-        "parentSubsystem": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/mdoReference"
-        },
-        "possibleRights": [],
-        "subsystems": [
-          {
-            "comment": "",
-            "content": [
-              [
-                {
-                  "type": "TASK",
-                  "mdoRef": "Task.Задача1",
-                  "mdoRefRu": "Задача.Задача1"
-                },
-                {
-                  "type": "ENUM",
-                  "mdoRef": "Enum.Перечисление1",
-                  "mdoRefRu": "Перечисление.Перечисление1"
-                },
-                {
-                  "type": "DOCUMENT_NUMERATOR",
-                  "mdoRef": "DocumentNumerator.НумераторДокументов1",
-                  "mdoRefRu": "НумераторДокументов.НумераторДокументов1"
-                }
-              ],
-              []
-            ],
-            "description": "Подчиненная подсистема3 уровня",
-            "explanation": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/explanation"
-            },
-            "includeHelpInContents": true,
-            "includeInCommandInterface": true,
-            "mdoReference": {
-              "type": "SUBSYSTEM",
-              "mdoRef": "Subsystem.ПерваяПодсистема.Subsystem.ПочиненнаяСистема2.Subsystem.ПодчиненнаяПодсистема3Уровня",
-              "mdoRefRu": "Подсистема.ПерваяПодсистема.Подсистема.ПочиненнаяСистема2.Подсистема.ПодчиненнаяПодсистема3Уровня"
-            },
-            "mdoType": "SUBSYSTEM",
-            "name": "ПодчиненнаяПодсистема3Уровня",
-            "objectBelonging": "OWN",
-            "parentSubsystem": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Subsystem/subsystems/c/com.github._1c_syntax.bsl.mdo.Subsystem[2]/mdoReference"
-            },
-            "possibleRights": [],
-            "subsystems": [],
-            "supportVariant": "NONE",
-            "synonym": {
-              "content": [
-                {
-                  "default": {
-                    "tag": 2
-                  },
-                  "int": 1,
-                  "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                    "langKey": "ru",
-                    "value": "Подчиненная подсистема3 уровня"
-                  }
-                }
-              ]
-            },
-            "uuid": "71eb6d50-7c51-41b4-9a43-753e49ee518b"
-          }
-        ],
-        "supportVariant": "NONE",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Починенная система2"
-              }
-            }
-          ]
-        },
-        "uuid": "c2e12fa5-e679-4932-8c37-db175f268b3d"
-      }
-    ],
-    []
-  ],
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Первая подсистема"
-        }
-      }
-    ]
-  },
-  "uuid": "3d00f7d6-e3b0-49cf-8093-e2e4f6ea2293"
-}}
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  }
+ }
+}

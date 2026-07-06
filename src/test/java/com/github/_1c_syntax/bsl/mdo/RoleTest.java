@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -39,7 +39,8 @@ class RoleTest {
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Role.class);
   }
 
   @ParameterizedTest
@@ -50,7 +51,9 @@ class RoleTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Role.class);
+
     var role = (Role) mdo;
     var roleData = role.getData();
     assertThat(roleData).isNotNull();
@@ -58,7 +61,7 @@ class RoleTest {
     var objectRights = roleData.objectRights();
     assertThat(objectRights).hasSize(3);
 
-    var confRights = objectRights.get(0);
+    var confRights = objectRights.getFirst();
     assertThat(confRights.name().getMdoRef()).isEqualTo("Configuration.Конфигурация");
     assertThat(confRights.rights()).hasSize(18);
 

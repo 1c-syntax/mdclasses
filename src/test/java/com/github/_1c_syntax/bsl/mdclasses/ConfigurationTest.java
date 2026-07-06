@@ -24,103 +24,92 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
-import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
-import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
-import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.ConfigurationSource;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.test_utils.assertions.ConfigurationCollectionAssert;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.nio.file.Path;
 import java.util.Collection;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 class ConfigurationTest {
 
-  /**
-   * Количество предопределенных значений среди дочерних объектов (включая вложенные).
-   * Выносится отдельным слагаемым, т.к. состав предопределенных может отличаться между форматами/версиями фикстур.
-   */
-  private static int predefinedCount(List<MD> plainChildren) {
-    return (int) plainChildren.stream()
-      .filter(PredefinedValue.class::isInstance)
-      .count();
-   }
-
-  private static int predefinedCount32(List<MD> plainChildren) {
-    return (int) plainChildren.stream()
-      .filter(PredefinedValue.class::isInstance)
-      .count();
-  }
-
-  private static int nonPredefinedCount(List<MD> plainChildren) {
-    return (int) plainChildren.stream()
-      .filter(md -> !(md instanceof PredefinedValue))
-      .count();
-  }
-
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, _edt",
-      "false, mdclasses",
-      "true, mdclasses_3_18, _edt",
-      "false, mdclasses_3_18",
-      "true, mdclasses_ext, _edt",
-      "false, mdclasses_ext",
-      "true, mdclasses_3_24, _edt"
+      "true, mdclasses, Configuration",
+      "false, mdclasses, Configuration",
+      "true, mdclasses_3_18, Configuration",
+      "false, mdclasses_3_18, Configuration",
+      "true, mdclasses_ext, Configuration",
+      "false, mdclasses_ext, Configuration",
+      "true, mdclasses_3_25, Configuration",
+      "false, mdclasses_3_25, Configuration",
+      "true, mdclasses_3_27, Configuration",
+      "false, mdclasses_3_27, Configuration",
+      "false, mdclasses_5_1, Configuration",
+      "true, mdclasses_5_1, Configuration"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
+    var packName = argumentsAccessor.getString(1);
+    var cf = (CF) Fixtures.get(argumentsAccessor);
+    assertThat(cf).isNotNull();
+    ConfigurationCollectionAssert.assertThat(cf, false)
+      .hasSize(packName)
+      .containsAllChildren()
+      .containsAllPlainChildren();
   }
 
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ssl_3_1, _edt",
-      "false, ssl_3_1"
+      "true, ssl_3_1, Configuration",
+      "false, ssl_3_1, Configuration",
+      "true, ssl_3_2, Configuration",
+      "false, ssl_3_2, Configuration"
     }
   )
   void testFullSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-    var cf = (Configuration) mdc;
-    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NOT_EDITABLE);
-    assertThat(cf.getModules())
-      .hasSize(4)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+    var packName = argumentsAccessor.getString(1);
+    var cf = (CF) Fixtures.get(argumentsAccessor);
+    assertThat(cf).isNotNull();
+    ConfigurationCollectionAssert.assertThat(cf, false)
+      .hasSize(packName)
+      .containsAllChildren()
+      .containsAllPlainChildren();
 
-    assertThat(cf.getAllModules())
-      .hasSize(2197)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .hasSize(cf.getCommonForms().size());
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
+      .isNotEmpty();
+    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
+      .isEmpty();
 
-    // проверка состава дочерних
-    checkChildrenSSL(cf);
+    Assertions.assertThat(cf.getAllModules(), false)
+      .containsAll(cf.getAllModules(), cf.getPlainChildren());
 
-    assertThat(cf.getPlainChildren())
-      .hasSize(10011 + predefinedCount(cf.getPlainChildren()))
-      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
+    assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
+    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
 
     assertThat(cf.getModulesByType())
-      .hasSize(2197)
       .containsValue(ModuleType.FormModule)
+      .containsValue(ModuleType.CommandModule)
+      .containsValue(ModuleType.CommonModule)
+      .containsValue(ModuleType.ManagerModule)
     ;
 
     assertThat(cf.mdoModuleTypes("BusinessProcess.Задание.Form.ДействиеВыполнить"))
@@ -138,7 +127,6 @@ class ConfigurationTest {
     ;
 
     assertThat(cf.getModulesByObject())
-      .hasSize(2197)
       .containsValue(cf.findChild(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить")).get())
     ;
 
@@ -187,160 +175,12 @@ class ConfigurationTest {
     ;
     assertThat(cf.findChild(commonModule.getUri()))
       .contains(commonModule);
-
-    assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
-    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
-
-    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(cf.getCommonForms().size());
-assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-       .hasSize(874);
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
-      .isEmpty();
-
-    assertThat(cf.getSynonym().isEmpty()).isFalse();
-    assertThat(cf.getSynonym().get("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
-    assertThat(cf.getDescription()).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
-    assertThat(cf.getDescription("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
-    assertThat(cf.getDescription("en")).isEqualTo("Библиотека стандартных подсистем, редакция 3.1");
   }
 
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ssl_3_2, _edt",
-      "false, ssl_3_2"
-    }
-  )
-  void testFullSSL32(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-    var cf = (Configuration) mdc;
-    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NOT_EDITABLE);
-
-    assertThat(cf.getModules())
-      .hasSize(4)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getPlainChildren())
-      .hasSize(nonPredefinedCount(cf.getPlainChildren()) + predefinedCount32(cf.getPlainChildren()))
-      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    checkChildrenSSL32(cf);
-
-    var mdoRef = MdoReference.create("BusinessProcess.Задание");
-    var mdo = cf.findChild(mdoRef).get();
-
-    assertThat(cf.includedSubsystems(mdoRef, false))
-      .hasSize(1)
-      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
-    ;
-    assertThat(cf.includedSubsystems(mdoRef, true))
-      .hasSize(2)
-      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
-      .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
-    ;
-    assertThat(cf.includedSubsystems(mdo, true))
-      .hasSize(2)
-      .anyMatch(subsystem -> subsystem.getName().equals("БизнесПроцессыИЗадачи"))
-      .anyMatch(subsystem -> subsystem.getName().equals("СтандартныеПодсистемы"))
-    ;
-
-    assertThat(((BusinessProcess) mdo).getModules())
-      .hasSize(2)
-      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule);
-    assertThat(((BusinessProcess) mdo).getAllModules())
-      .hasSize(6)
-      .anyMatch(module -> module.getModuleType() == ModuleType.ManagerModule)
-      .anyMatch(module -> module.getModuleType() == ModuleType.FormModule);
-
-    var commonModule = cf.findCommonModule("АвтономнаяРабота").get();
-
-    assertThat(cf.getSynonym().isEmpty()).isFalse();
-    assertThat(cf.getSynonym().get("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.2");
-    assertThat(cf.getDescription()).isEqualTo("Библиотека стандартных подсистем, редакция 3.2");
-    assertThat(cf.getDescription("ru")).isEqualTo("Библиотека стандартных подсистем, редакция 3.2");
-    assertThat(cf.getDescription("en")).isEqualTo("Библиотека стандартных подсистем, редакция 3.2");
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, _edt",
-      "false, mdclasses"
-    }
-  )
-  void testFullMdclasses(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, false);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-    var cf = (Configuration) mdc;
-    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
-    assertThat(cf.getModules())
-      .hasSize(3)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAllModules())
-      .hasSize(43 + cf.getCommonModules().size())
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
-
-    // проверка состава дочерних
-    checkChildrenMdclasses(cf);
-
-    assertThat(cf.getPlainChildren())
-      .hasSize(223 + cf.getInterfaces().size() + cf.getStyles().size() + predefinedCount(cf.getPlainChildren()))
-      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getModules().stream().filter(Module::isProtected)).isEmpty();
-    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).hasSize(2);
-
-    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(cf.getCommonForms().size());
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(11);
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
-      .isEmpty();
-  }
-
-  @Test
-  void testFullExt() {
-    var configurationPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf/Configuration.xml");
-    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
-    assertThat(mdc).isNotNull()
-      .isInstanceOf(MDClass.class)
-      .isInstanceOf(ConfigurationExtension.class);
-
-    var cf = (ConfigurationExtension) mdc;
-    assertThat(cf.isEmpty()).isFalse();
-    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
-    assertThat(cf.getModules()).isEmpty();
-    assertThat(cf.getAllModules())
-      .hasSize(7 + cf.getCommonModules().size())
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
-
-    // проверка состава дочерних
-    checkChildrenExt(cf);
-
-    // проверка порядок
-    checkChildrenOrder(cf);
-
-    assertThat(cf.getPlainChildren())
-      .hasSize(330 + predefinedCount(cf.getPlainChildren()))
-      .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAllModules().stream().filter(Module::isProtected)).isEmpty();
-
-    assertThat(cf.getChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(cf.getCommonForms().size());
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && !form.getData().isEmpty()))
-      .hasSize(cf.getCommonForms().size() + 12);
-    assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form && form.getData().isEmpty()))
-      .isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, _edt",
+      "true, ssl_3_1",
       "false, ssl_3_1"
     }
   )
@@ -353,9 +193,13 @@ assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form &
       .skipDataCompositionSchema(true)
       .build();
 
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, settings);
+    var formatEDT = argumentsAccessor.getBoolean(0);
+    var packName = argumentsAccessor.getString(1);
+    var mdc = Fixtures.getNoCache(packName, "Configuration", formatEDT, settings);
     assertThat(mdc).isInstanceOf(Configuration.class);
+
     var cf = (Configuration) mdc;
+    assertThat(cf).isNotNull();
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules())
       .hasSize(4)
@@ -365,73 +209,7 @@ assertThat(cf.getPlainChildren().stream().filter(md -> md instanceof Form form &
       .hasSize(2197)
       .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
 
-assertThat(cf.getPlainChildren())
-       .hasSize(10011 + predefinedCount(cf.getPlainChildren()))
-       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getRoles())
-      .hasSize(107)
-      .allMatch(role -> role.getData() == RoleData.EMPTY)
-    ;
-
-assertThat(cf.getXDTOPackages())
-       .hasSize(53)
-       .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
-    ;
-
-    var forms = cf.getPlainChildren().stream()
-      .filter(FormOwner.class::isInstance)
-      .map(FormOwner.class::cast)
-      .map(FormOwner::getForms)
-      .flatMap(Collection::stream)
-      .toList();
-
-assertThat(forms)
-       .hasSize(769)
-       .allMatch(form -> form.getData().getPlainItems().isEmpty());
-
-    var templates = cf.getPlainChildren().stream()
-      .filter(TemplateOwner.class::isInstance)
-      .map(TemplateOwner.class::cast)
-      .map(TemplateOwner::getTemplates)
-      .flatMap(Collection::stream)
-      .toList();
-
-assertThat(templates)
-       .hasSize(129)
-      .allMatch(template -> template.getData().isEmpty());
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, _edt",
-      "false, ssl_3_2"
-    }
-  )
-  void testFullSSLSkipAll32(ArgumentsAccessor argumentsAccessor) {
-    var settings = MDCReadSettings.builder()
-      .skipSupport(true)
-      .skipRoleData(true)
-      .skipFormElementItems(true)
-      .skipXdtoPackage(true)
-      .skipDataCompositionSchema(true)
-      .build();
-
-    var mdc = MDTestUtils.readConfiguration(argumentsAccessor, settings);
-    assertThat(mdc).isInstanceOf(Configuration.class);
-    var cf = (Configuration) mdc;
-    assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
-    assertThat(cf.getModules())
-      .hasSize(4)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAllModules())
-      .hasSize(2184)
-      .allMatch(module -> module.getSupportVariant().equals(SupportVariant.NONE));
-
     assertThat(cf.getPlainChildren())
-      .hasSize(nonPredefinedCount(cf.getPlainChildren()) + predefinedCount(cf.getPlainChildren()))
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(cf.getRoles())
@@ -440,7 +218,7 @@ assertThat(templates)
     ;
 
     assertThat(cf.getXDTOPackages())
-      .hasSize(54)
+      .hasSize(53)
       .allMatch(xdtoPackage -> xdtoPackage.getData() == XdtoPackageData.EMPTY)
     ;
 
@@ -452,7 +230,7 @@ assertThat(templates)
       .toList();
 
     assertThat(forms)
-      .hasSize(772)
+      .hasSize(769)
       .allMatch(form -> form.getData().getPlainItems().isEmpty());
 
     var templates = cf.getPlainChildren().stream()
@@ -465,967 +243,5 @@ assertThat(templates)
     assertThat(templates)
       .hasSize(129)
       .allMatch(template -> template.getData().isEmpty());
-  }
-
-  @Test
-  void testFullExtEdt() {
-    var configurationPath = Path.of(
-      "src/test/resources/ext/edt/mdclasses_ext/configuration/src/Configuration/Configuration.mdo");
-    var mdc = MDClasses.createConfiguration(configurationPath, MDCReadSettings.SKIP_SUPPORT);
-    assertThat(mdc).isNotNull()
-      .isInstanceOf(MDClass.class)
-      .isInstanceOf(ConfigurationExtension.class);
-
-    var cf = (ConfigurationExtension) mdc;
-    assertThat(cf.isEmpty()).isFalse();
-
-    // проверка порядок
-    checkChildrenOrder(cf);
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses_unknown, _edt"
-    }
-  )
-  void unknownEnums(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "false, mdclasses_5_1",
-      // "true, mdclasses_5_1, _edt" todo пока не поддерживается
-
-    }
-  )
-  void test5_1(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.getMDCWithSimpleTest(argumentsAccessor, false);
-  }
-
-  private static void checkChildrenSSL(Configuration cf) {
-    assertThat(cf.getSubsystems())
-      .hasSize(3)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getCommonModules())
-      .hasSize(561)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getSessionParameters())
-      .hasSize(62)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getRoles())
-      .hasSize(107)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getCommonAttributes())
-      .hasSize(7)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getExchangePlans())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getFilterCriteria())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getEventSubscriptions())
-      .hasSize(91)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getScheduledJobs())
-      .hasSize(51)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getBots()).isEmpty();
-
-assertThat(cf.getFunctionalOptions())
-       .hasSize(76)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getFunctionalOptionsParameters())
-      .hasSize(4)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getDefinedTypes())
-      .hasSize(72)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getSettingsStorages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getCommonForms())
-      .hasSize(105)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getCommonCommands())
-       .hasSize(62)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getCommandGroups())
-      .hasSize(6)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getCommonTemplates())
-      .hasSize(15)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getCommonPictures())
-       .hasSize(571)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getInterfaces()).isEmpty();
-
-assertThat(cf.getXDTOPackages())
-       .hasSize(53)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getWebServices())
-      .hasSize(13)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getHttpServices())
-       .hasSize(2)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getWsReferences()).isEmpty();
-
-    assertThat(cf.getIntegrationServices()).isEmpty();
-
-assertThat(cf.getStyleItems())
-       .hasSize(93)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getStyles()).isEmpty();
-
-    assertThat(cf.getLanguages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getConstants())
-       .hasSize(173)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getCatalogs())
-       .hasSize(74)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getDocuments())
-      .hasSize(11)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getDocumentNumerators()).isEmpty();
-
-    assertThat(cf.getSequences()).isEmpty();
-
-    assertThat(cf.getDocumentJournals())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getEnums())
-       .hasSize(104)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getReports())
-      .hasSize(41)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getDataProcessors())
-       .hasSize(78)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getChartsOfCharacteristicTypes())
-      .hasSize(4)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getChartsOfAccounts()).isEmpty();
-
-    assertThat(cf.getChartsOfCalculationTypes()).isEmpty();
-
-assertThat(cf.getInformationRegisters())
-       .hasSize(192)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getAccumulationRegisters()).isEmpty();
-
-    assertThat(cf.getAccountingRegisters()).isEmpty();
-
-    assertThat(cf.getCalculationRegisters()).isEmpty();
-
-    assertThat(cf.getBusinessProcesses())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getTasks())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-    assertThat(cf.getExternalDataSources()).isEmpty();
-
-    assertThat(cf.getDataLockControlMode()).isEqualTo(DataLockControlMode.MANAGED);
-    assertThat(cf.getModalityUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
-    assertThat(cf.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
-    assertThat(cf.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
-
-    assertThat(cf.getChildren()).hasSize(
-      cf.getSubsystems().size() + cf.getCommonModules().size() +
-        cf.getSessionParameters().size() + cf.getRoles().size() +
-        cf.getCommonAttributes().size() + cf.getExchangePlans().size() +
-        cf.getFilterCriteria().size() + cf.getEventSubscriptions().size() +
-        cf.getScheduledJobs().size() + cf.getBots().size() +
-        cf.getFunctionalOptions().size() + cf.getFunctionalOptionsParameters().size() +
-        cf.getDefinedTypes().size() + cf.getSettingsStorages().size() +
-        cf.getCommonForms().size() + cf.getCommonCommands().size() +
-        cf.getCommandGroups().size() + cf.getCommonTemplates().size() +
-        cf.getCommonPictures().size() + cf.getInterfaces().size() +
-        cf.getXDTOPackages().size() + cf.getWebServices().size() +
-        cf.getHttpServices().size() + cf.getWsReferences().size() +
-        cf.getIntegrationServices().size() + cf.getStyleItems().size() +
-        cf.getStyles().size() + cf.getLanguages().size() +
-        cf.getConstants().size() + cf.getCatalogs().size() +
-        cf.getDocuments().size() + cf.getDocumentNumerators().size() +
-        cf.getSequences().size() + cf.getDocumentJournals().size() +
-        cf.getEnums().size() + cf.getReports().size() +
-        cf.getDataProcessors().size() + cf.getChartsOfCharacteristicTypes().size() +
-        cf.getChartsOfAccounts().size() + cf.getChartsOfCalculationTypes().size() +
-        cf.getInformationRegisters().size() + cf.getAccumulationRegisters().size() +
-        cf.getAccountingRegisters().size() + cf.getCalculationRegisters().size() +
-         cf.getBusinessProcesses().size() + cf.getTasks().size() +
-         cf.getExternalDataSources().size());
-
-   }
-
-  private static void checkChildrenSSL32(Configuration cf) {
-    assertThat(cf.getSubsystems())
-      .hasSize(3)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-assertThat(cf.getCommonModules())
-        .hasSize(556)
-        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getSessionParameters())
-       .hasSize(62)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getRoles())
-       .hasSize(107)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommonAttributes())
-       .hasSize(7)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getExchangePlans())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getFilterCriteria())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getEventSubscriptions())
-       .hasSize(91)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getScheduledJobs())
-       .hasSize(50)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getBots()).isEmpty();
-
-     assertThat(cf.getFunctionalOptions())
-       .hasSize(76)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getFunctionalOptionsParameters())
-       .hasSize(4)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getDefinedTypes())
-       .hasSize(72)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getSettingsStorages())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommonForms())
-       .hasSize(104)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommonCommands())
-       .hasSize(63)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommandGroups())
-       .hasSize(6)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommonTemplates())
-       .hasSize(15)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getCommonPictures())
-       .hasSize(600)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getInterfaces()).isEmpty();
-
-     assertThat(cf.getXDTOPackages())
-       .hasSize(54)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getWebServices())
-       .hasSize(13)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getHttpServices())
-       .hasSize(2)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getWsReferences()).isEmpty();
-
-     assertThat(cf.getIntegrationServices()).isEmpty();
-
-     assertThat(cf.getStyleItems())
-       .hasSize(97)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getStyles()).isEmpty();
-
-     assertThat(cf.getLanguages())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getConstants())
-       .hasSize(172)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-      assertThat(cf.getCatalogs())
-        .hasSize(74)
-        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getDocuments())
-       .hasSize(11)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getDocumentNumerators()).isEmpty();
-
-     assertThat(cf.getSequences()).isEmpty();
-
-     assertThat(cf.getDocumentJournals())
-       .hasSize(2)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getEnums())
-       .hasSize(104)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getReports())
-       .hasSize(41)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getDataProcessors())
-       .hasSize(78)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getChartsOfCharacteristicTypes())
-       .hasSize(4)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getChartsOfAccounts()).isEmpty();
-
-     assertThat(cf.getChartsOfCalculationTypes()).isEmpty();
-
-    assertThat(cf.getInformationRegisters())
-        .hasSize(187)
-        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getAccumulationRegisters()).isEmpty();
-
-     assertThat(cf.getAccountingRegisters()).isEmpty();
-
-     assertThat(cf.getCalculationRegisters()).isEmpty();
-
-     assertThat(cf.getBusinessProcesses())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getTasks())
-       .hasSize(1)
-       .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NOT_EDITABLE));
-
-     assertThat(cf.getExternalDataSources()).isEmpty();
-
-     assertThat(cf.getModulesByObject())
-       .hasSize(2184)
-       .containsValue(cf.findChild(MdoReference.create("BusinessProcess.Задание.Form.ДействиеВыполнить")).get())
-     ;
-
-     assertThat(cf.getDataLockControlMode()).isEqualTo(DataLockControlMode.MANAGED);
-     assertThat(cf.getModalityUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
-     assertThat(cf.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
-     assertThat(cf.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE);
-
-     assertThat(cf.getChildren()).hasSize(
-       cf.getSubsystems().size() + cf.getCommonModules().size() +
-         cf.getSessionParameters().size() + cf.getRoles().size() +
-         cf.getCommonAttributes().size() + cf.getExchangePlans().size() +
-         cf.getFilterCriteria().size() + cf.getEventSubscriptions().size() +
-         cf.getScheduledJobs().size() + cf.getBots().size() +
-         cf.getFunctionalOptions().size() + cf.getFunctionalOptionsParameters().size() +
-         cf.getDefinedTypes().size() + cf.getSettingsStorages().size() +
-         cf.getCommonForms().size() + cf.getCommonCommands().size() +
-         cf.getCommandGroups().size() + cf.getCommonTemplates().size() +
-         cf.getCommonPictures().size() + cf.getInterfaces().size() +
-         cf.getXDTOPackages().size() + cf.getWebServices().size() +
-         cf.getHttpServices().size() + cf.getWsReferences().size() +
-         cf.getIntegrationServices().size() + cf.getStyleItems().size() +
-         cf.getStyles().size() + cf.getLanguages().size() +
-         cf.getConstants().size() + cf.getCatalogs().size() +
-         cf.getDocuments().size() + cf.getDocumentNumerators().size() +
-         cf.getSequences().size() + cf.getDocumentJournals().size() +
-         cf.getEnums().size() + cf.getReports().size() +
-         cf.getDataProcessors().size() + cf.getChartsOfCharacteristicTypes().size() +
-         cf.getChartsOfAccounts().size() + cf.getChartsOfCalculationTypes().size() +
-         cf.getInformationRegisters().size() + cf.getAccumulationRegisters().size() +
-         cf.getAccountingRegisters().size() + cf.getCalculationRegisters().size() +
-         cf.getBusinessProcesses().size() + cf.getTasks().size() +
-         cf.getExternalDataSources().size());
-  }
-
-  private static void checkChildrenMdclasses(Configuration cf) {
-    assertThat(cf.getSubsystems())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonModules())
-      .hasSize(6)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSessionParameters())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getRoles())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonAttributes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getExchangePlans())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getFilterCriteria())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getEventSubscriptions())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getScheduledJobs())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getBots()).isEmpty();
-
-    assertThat(cf.getFunctionalOptions())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getFunctionalOptionsParameters())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDefinedTypes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSettingsStorages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonForms())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonCommands())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommandGroups())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonTemplates())
-      .hasSize(10)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonPictures())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    if (cf.getConfigurationSource() == ConfigurationSource.DESIGNER) {
-      assertThat(cf.getInterfaces())
-        .hasSize(2)
-        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-    } else {
-      assertThat(cf.getInterfaces()).isEmpty();
-    }
-
-    assertThat(cf.getXDTOPackages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getWebServices())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getHttpServices())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getWsReferences())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getIntegrationServices()).isEmpty();
-
-    assertThat(cf.getStyleItems())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    if (cf.getConfigurationSource() == ConfigurationSource.DESIGNER) {
-      assertThat(cf.getStyles())
-        .hasSize(1)
-        .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-    } else {
-      assertThat(cf.getStyles()).isEmpty();
-    }
-
-    assertThat(cf.getLanguages())
-      .hasSize(3)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getConstants())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCatalogs())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocuments())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocumentNumerators())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSequences())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocumentJournals())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getEnums())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getReports())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDataProcessors())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfCharacteristicTypes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfAccounts())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfCalculationTypes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getInformationRegisters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAccumulationRegisters())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAccountingRegisters())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCalculationRegisters())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getBusinessProcesses())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getTasks())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getExternalDataSources())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDataLockControlMode()).isEqualTo(DataLockControlMode.AUTOMATIC);
-    assertThat(cf.getModalityUseMode()).isEqualTo(UseMode.USE);
-    assertThat(cf.getSynchronousExtensionAndAddInCallUseMode()).isEqualTo(UseMode.USE_WITH_WARNINGS);
-    assertThat(cf.getSynchronousPlatformExtensionAndAddInCallUseMode()).isEqualTo(UseMode.DONT_USE);
-
-    assertThat(cf.getChildren()).hasSize(
-      cf.getSubsystems().size() + cf.getCommonModules().size() +
-        cf.getSessionParameters().size() + cf.getRoles().size() +
-        cf.getCommonAttributes().size() + cf.getExchangePlans().size() +
-        cf.getFilterCriteria().size() + cf.getEventSubscriptions().size() +
-        cf.getScheduledJobs().size() + cf.getBots().size() +
-        cf.getFunctionalOptions().size() + cf.getFunctionalOptionsParameters().size() +
-        cf.getDefinedTypes().size() + cf.getSettingsStorages().size() +
-        cf.getCommonForms().size() + cf.getCommonCommands().size() +
-        cf.getCommandGroups().size() + cf.getCommonTemplates().size() +
-        cf.getCommonPictures().size() + cf.getInterfaces().size() +
-        cf.getXDTOPackages().size() + cf.getWebServices().size() +
-        cf.getHttpServices().size() + cf.getWsReferences().size() +
-        cf.getIntegrationServices().size() + cf.getStyleItems().size() +
-        cf.getStyles().size() + cf.getLanguages().size() +
-        cf.getConstants().size() + cf.getCatalogs().size() +
-        cf.getDocuments().size() + cf.getDocumentNumerators().size() +
-        cf.getSequences().size() + cf.getDocumentJournals().size() +
-        cf.getEnums().size() + cf.getReports().size() +
-        cf.getDataProcessors().size() + cf.getChartsOfCharacteristicTypes().size() +
-        cf.getChartsOfAccounts().size() + cf.getChartsOfCalculationTypes().size() +
-        cf.getInformationRegisters().size() + cf.getAccumulationRegisters().size() +
-        cf.getAccountingRegisters().size() + cf.getCalculationRegisters().size() +
-        cf.getBusinessProcesses().size() + cf.getTasks().size() +
-        cf.getExternalDataSources().size());
-  }
-
-  private static void checkChildrenExt(ConfigurationExtension cf) {
-    assertThat(cf.getSubsystems())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonModules())
-      .hasSize(9)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSessionParameters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getRoles())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonAttributes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getExchangePlans())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getFilterCriteria())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getEventSubscriptions())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getScheduledJobs())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getBots()).isEmpty();
-
-    assertThat(cf.getFunctionalOptions())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getFunctionalOptionsParameters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDefinedTypes())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSettingsStorages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonForms())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonCommands())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommandGroups())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonTemplates())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCommonPictures())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getInterfaces()).isEmpty();
-
-    assertThat(cf.getXDTOPackages())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getWebServices())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getHttpServices())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getWsReferences())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getIntegrationServices()).isEmpty();
-
-    assertThat(cf.getStyleItems())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getStyles())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getLanguages())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getConstants())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCatalogs())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocuments())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocumentNumerators())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getSequences())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDocumentJournals())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getEnums())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getReports())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getDataProcessors())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfCharacteristicTypes())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfAccounts())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getChartsOfCalculationTypes())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getInformationRegisters())
-      .hasSize(4)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAccumulationRegisters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getAccountingRegisters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getCalculationRegisters())
-      .hasSize(2)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getBusinessProcesses())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getTasks())
-      .hasSize(1)
-      .allMatch(mdo -> mdo.getSupportVariant().equals(SupportVariant.NONE));
-
-    assertThat(cf.getExternalDataSources()).isEmpty();
-
-    assertThat(cf.getChildren()).hasSize(
-      cf.getSubsystems().size() + cf.getCommonModules().size() +
-        cf.getSessionParameters().size() + cf.getRoles().size() +
-        cf.getCommonAttributes().size() + cf.getExchangePlans().size() +
-        cf.getFilterCriteria().size() + cf.getEventSubscriptions().size() +
-        cf.getScheduledJobs().size() + cf.getBots().size() +
-        cf.getFunctionalOptions().size() + cf.getFunctionalOptionsParameters().size() +
-        cf.getDefinedTypes().size() + cf.getSettingsStorages().size() +
-        cf.getCommonForms().size() + cf.getCommonCommands().size() +
-        cf.getCommandGroups().size() + cf.getCommonTemplates().size() +
-        cf.getCommonPictures().size() + cf.getInterfaces().size() +
-        cf.getXDTOPackages().size() + cf.getWebServices().size() +
-        cf.getHttpServices().size() + cf.getWsReferences().size() +
-        cf.getIntegrationServices().size() + cf.getStyleItems().size() +
-        cf.getStyles().size() + cf.getLanguages().size() +
-        cf.getConstants().size() + cf.getCatalogs().size() +
-        cf.getDocuments().size() + cf.getDocumentNumerators().size() +
-        cf.getSequences().size() + cf.getDocumentJournals().size() +
-        cf.getEnums().size() + cf.getReports().size() +
-        cf.getDataProcessors().size() + cf.getChartsOfCharacteristicTypes().size() +
-        cf.getChartsOfAccounts().size() + cf.getChartsOfCalculationTypes().size() +
-        cf.getInformationRegisters().size() + cf.getAccumulationRegisters().size() +
-        cf.getAccountingRegisters().size() + cf.getCalculationRegisters().size() +
-        cf.getBusinessProcesses().size() + cf.getTasks().size() +
-        cf.getExternalDataSources().size());
-  }
-
-  private static void checkChildrenOrder(ConfigurationExtension cf) {
-    var ordered = List.of("Language.Русский",
-      "Subsystem.ПерваяПодсистема",
-      "Subsystem.ПерваяПодсистема1",
-      "StyleItem.ЭлементСтиля1",
-      "StyleItem.ЭлементСтиля2",
-      "Style.Стиль1",
-      "Style.Стиль2",
-      "CommonPicture.ОбщаяКартинка1",
-      "CommonPicture.ОбщаяКартинка2",
-      "SessionParameter.ПараметрСеанса1",
-      "SessionParameter.ПараметрСеанса2",
-      "Role.Роль1",
-      "Role.Роль2",
-      "CommonTemplate.Макет",
-      "CommonTemplate.Макет1",
-      "FilterCriterion.КритерийОтбора1",
-      "FilterCriterion.КритерийОтбора2",
-      "CommonModule.ПростойОбщийМодуль",
-      "CommonModule.ОбщийМодульВызовСервера",
-      "CommonModule.ОбщийМодульПовтИспВызов",
-      "CommonModule.ОбщийМодульПовтИспСеанс",
-      "CommonModule.ОбщийМодульПолныйеПрава",
-      "CommonModule.ПростойОбщийМодуль1",
-      "CommonModule.ОбщийМодульВызовСервера1",
-      "CommonModule.ОбщийМодульПовтИспВызов1",
-      "CommonModule.ОбщийМодульПовтИспСеанс1",
-      "CommonAttribute.ОбщийРеквизит1",
-      "ExchangePlan.ПланОбмена1",
-      "ExchangePlan.ПланОбмена2",
-      "XDTOPackage.ПакетXDTO1",
-      "XDTOPackage.ПакетXDTO2",
-      "WebService.WebСервис1",
-      "WebService.WebСервис2",
-      "HTTPService.HTTPСервис1",
-      "HTTPService.HTTPСервис2",
-      "WSReference.WSСсылка1",
-      "WSReference.WSСсылка2",
-      "EventSubscription.ПодпискаНаСобытие1",
-      "ScheduledJob.РегламентноеЗадание1",
-      "SettingsStorage.ХранилищеНастроек1",
-      "FunctionalOption.ФункциональнаяОпция1",
-      "FunctionalOption.ФункциональнаяОпция2",
-      "FunctionalOptionsParameter.ПараметрФункциональныхОпций1",
-      "FunctionalOptionsParameter.ПараметрФункциональныхОпций2",
-      "DefinedType.ОпределяемыйТип1",
-      "CommonCommand.ОбщаяКоманда1",
-      "CommonCommand.ОбщаяКоманда2",
-      "CommandGroup.ГруппаКоманд1",
-      "CommandGroup.ГруппаКоманд2",
-      "Constant.Константа1",
-      "Constant.Константа2",
-      "CommonForm.Форма",
-      "CommonForm.Форма1",
-      "Catalog.Справочник1",
-      "Catalog.Справочник2",
-      "Document.Документ1",
-      "Document.Документ2",
-      "DocumentNumerator.НумераторДокументов1",
-      "Sequence.Последовательность1",
-      "DocumentJournal.ЖурналДокументов1",
-      "Enum.Перечисление1",
-      "Enum.Перечисление2",
-      "Report.Отчет1",
-      "Report.Отчет2",
-      "DataProcessor.Обработка1",
-      "DataProcessor.Обработка2",
-      "InformationRegister.РегистрСведений1",
-      "InformationRegister.РегистрСведений2",
-      "InformationRegister.РегистрСведений3",
-      "InformationRegister.РегистрСведений4",
-      "AccumulationRegister.РегистрНакопления1",
-      "AccumulationRegister.РегистрНакопления2",
-      "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
-      "ChartOfCharacteristicTypes.ПланВидовХарактеристик2",
-      "ChartOfAccounts.ПланСчетов1",
-      "ChartOfAccounts.ПланСчетов2",
-      "AccountingRegister.РегистрБухгалтерии1",
-      "AccountingRegister.РегистрБухгалтерии2",
-      "ChartOfCalculationTypes.ПланВидовРасчета1",
-      "ChartOfCalculationTypes.ПланВидовРасчета2",
-      "CalculationRegister.РегистрРасчета2",
-      "CalculationRegister.РегистрРасчета1",
-      "BusinessProcess.БизнесПроцесс1",
-      "Task.Задача1");
-
-    assertThat(cf.getChildren()).hasSize(ordered.size());
-
-    for (int i = 0; i < cf.getChildren().size(); i++) {
-      var original = cf.getChildren().get(i);
-      var fixture = ordered.get(i);
-      assertThat(fixture).isEqualTo(original.getMdoReference().getMdoRef());
-    }
   }
 }

@@ -135,7 +135,7 @@ public class StdAtrInfo {
   private static ValueTypeDescription computeCode(MDReaderContext parentContext) {
     if ("String".equals(parentContext.getFromCache("codeType", "Number"))) {
       var codeAllowedLength = AllowedLength.valueByName(
-        parentContext.getFromCache("codeAllowedLength", "Variable"));
+        parentContext.getFromCache("codeAllowedLength", "Fixed"));
       var codeLength = Integer.parseInt(parentContext.getFromCache("codeLength", "0"));
       return ValueTypeDescription.createString(codeLength, codeAllowedLength);
     } else {
@@ -147,7 +147,7 @@ public class StdAtrInfo {
   private static ValueTypeDescription computeNumber(MDReaderContext parentContext) {
     if ("String".equals(parentContext.getFromCache("numberType", "Number"))) {
       var numberAllowedLength = AllowedLength.valueByName(
-        parentContext.getFromCache("numberAllowedLength", "Variable"));
+        parentContext.getFromCache("numberAllowedLength", "Fixed"));
       var numberLength = Integer.parseInt(parentContext.getFromCache("numberLength", "0"));
       return ValueTypeDescription.createString(numberLength, numberAllowedLength);
     } else {

@@ -1,0 +1,967 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПослеЗаписи",
+    "event": "AfterWrite"
+   },
+   {
+    "name": "ПослеЗаписиНаСервере",
+    "event": "AfterWriteAtServer"
+   },
+   {
+    "name": "ПередЗакрытием",
+    "event": "BeforeClose"
+   },
+   {
+    "name": "ПередЗаписьюНаСервере",
+    "event": "BeforeWriteAtServer"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриОткрытии",
+    "event": "OnOpen"
+   },
+   {
+    "name": "ПриЧтенииНаСервере",
+    "event": "OnReadAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Объект",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DOCUMENT",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ДокументОбъект.Анкета",
+        "nameEn": "DocumentObject.Анкета"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПодчиненныеВопросы",
+    "id": 10,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ПредыдущийРазделБезВопросов",
+    "id": 11,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ДеревоРазделов",
+    "id": 12,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дерево разделов"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TREE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ДобавленныеДинамическиРеквизиты",
+    "id": 13,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "VALUE_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Заключение",
+    "id": 14,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "НомерТекущегоРаздела",
+    "id": 15,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 10,
+       "nonNegative": true,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ИмяЭлементаДляПозиционирования",
+    "id": 16,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 200,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ЭтоСеансОбычногоПользователя",
+    "id": 17,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ВозможностьПредварительногоСохранения",
+    "id": 2,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ПараметрыПодключаемыхКоманд",
+    "id": 20,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Вступление",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/type"
+    }
+   },
+   {
+    "name": "ОтборРеспондентов",
+    "id": 4,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ИмяМетаданныхРеспондент",
+    "id": 5,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/type"
+    }
+   },
+   {
+    "name": "ШаблонАнкеты",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.ШаблоныАнкет",
+        "nameEn": "CatalogRef.ШаблоныАнкет"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВопросыПредставлениеТипы",
+    "id": 7,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ТаблицаВопросовРаздела",
+    "id": 8,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ВариантыОтветовНаВопросы",
+    "id": 9,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "КоманднаяПанельШапка",
+    "id": 182,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель шапка"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ФормаГлобальныеКоманды",
+      "id": 186,
+      "type": "BUTTON_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Форма глобальные команды"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаГруппаКомандыФормы",
+      "id": 190,
+      "type": "BUTTON_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Форма группа команды формы"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ФормаЗаполненияЗаписать",
+        "id": 91,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Сохранить анкету"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "ФормаЗаполненияЗавершитьИЗакрыть",
+        "id": 92,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Завершить и закрыть"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ПодменюАнкетирование",
+      "id": 204,
+      "type": "BUTTON_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Подменю анкетирование"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ГруппаНавигация",
+      "id": 223,
+      "type": "BUTTON_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Навигация"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ПредыдущийРаздел",
+        "id": 163,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Назад"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "СледующийРаздел",
+        "id": 165,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Далее"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СкрытьПоказатьДеревоРазделов",
+      "id": 156,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Показать разделы"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "Провести",
+      "id": 192,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ПоказатьВСпискеАнкета",
+      "id": 194,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаПеречитать",
+      "id": 215,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаУстановитьПометкуУдаления",
+      "id": 217,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаОтменаПроведения",
+      "id": 219,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаКоманднаяПанельПровестиИЗакрыть",
+      "id": 86,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ФормаКоманднаяПанельЗаписать",
+      "id": 87,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "Справка",
+      "id": 93,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "ПодменюПечать",
+      "id": 188,
+      "type": "POPUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Печать"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаОсновныеРеквизиты",
+    "id": 15,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Основные реквизиты"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ГруппаШапкаЛево",
+      "id": 184,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Шапка лево"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "Опрос",
+        "id": 10,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.Опрос"
+       },
+       {
+        "name": "ШаблонАнкеты",
+        "id": 206,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.ШаблонАнкеты"
+       },
+       {
+        "name": "РежимАнкетирования",
+        "id": 212,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.РежимАнкетирования"
+       },
+       {
+        "name": "ГруппаНомерДата",
+        "id": 2,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Номер дата"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "Номер",
+          "id": 3,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.Number"
+         },
+         {
+          "name": "Дата",
+          "id": 5,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.Date"
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ГруппаШапкаПраво",
+      "id": 37,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Шапка право"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "Респондент",
+        "id": 12,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.Респондент"
+       },
+       {
+        "name": "Интервьюер",
+        "id": 209,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.Интервьюер"
+       },
+       {
+        "name": "ДатаРедактирования",
+        "id": 66,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.ДатаРедактирования"
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаЗаполнение",
+    "id": 158,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Заполнение"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаПодвал",
+    "id": 221,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подвал"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "Комментарий",
+      "id": 111,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Объект.Комментарий"
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаКоманднаяПанель",
+    "id": 229,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "КоманднаяПанельПодвал",
+      "id": 176,
+      "type": "COMMAND_BAR",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Командная панель подвал"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаНавигацияПодвал",
+        "id": 225,
+        "type": "BUTTON_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Навигация подвал"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ПредыдущийРазделПодвал",
+          "id": 107,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "< Назад"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": ""
+         },
+         {
+          "name": "СледующийРазделПодвал",
+          "id": 108,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+          },
+          "items": [],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "СкрытьПоказатьДеревоРазделовПодвал",
+        "id": 227,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/title"
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ГруппаДеревоРазделовФормаЗаполнения",
+    "id": 68,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дерево разделов форма заполнения"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ГруппаТелоАнкеты",
+      "id": 43,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тело анкеты"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "НадписьВступление",
+        "id": 78,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ГруппаДеревоРазделов",
+      "id": 77,
+      "type": "USUAL_GROUP",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+      },
+      "items": [
+       {
+        "name": "ДеревоРазделов",
+        "id": 69,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+        },
+        "items": [
+         {
+          "name": "ДеревоРазделовФормулировка",
+          "id": 72,
+          "type": "LABEL_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Раздел"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ДеревоРазделов.Формулировка"
+         }
+        ],
+        "dataPath": "ДеревоРазделов"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "ГруппаОжидание",
+      "id": 95,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Ожидание"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаОжиданиеЭлементы",
+        "id": 103,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Ожидание элементы"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "НадписьПодождите",
+          "id": 100,
+          "type": "LABEL_DECORATION",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Подождите пожалуйста…    Открывается раздел анкеты\n"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": ""
+         },
+         {
+          "name": "ДекорацияОжиданиеЭлементы",
+          "id": 96,
+          "type": "PICTURE_DECORATION",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Декорация ожидание элементы"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": ""
+         },
+         {
+          "name": "КартинкаДлительныйПроцесс",
+          "id": 98,
+          "type": "PICTURE_DECORATION",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Подождите пожалуйста…\nОткрывается раздел анкеты"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

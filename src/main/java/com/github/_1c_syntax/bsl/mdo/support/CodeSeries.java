@@ -21,15 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import java.util.Locale;
-import java.util.Map;
-
 import com.github._1c_syntax.bsl.types.EnumWithName;
 import com.github._1c_syntax.bsl.types.MultiName;
-
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Серия кодов справочника.

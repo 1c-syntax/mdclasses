@@ -52,7 +52,7 @@ public class ValueTypeTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, _edt",
+      "true, mdclasses",
       "false, mdclasses"
     }
   )
@@ -84,9 +84,9 @@ public class ValueTypeTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ssl_3_1, _edt",
+      "true, ssl_3_1",
       "false, ssl_3_1",
-      "true, ssl_3_2, _edt",
+      "true, ssl_3_2",
       "false, ssl_3_2"
     }
   )

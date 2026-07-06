@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,71 +31,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FilterCriterionTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, FilterCriteria.КритерийОтбора1, _edt",
-      "false, mdclasses, FilterCriteria.КритерийОтбора1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, FilterCriteria.КритерийОтбора1",
+    "false, mdclasses, FilterCriteria.КритерийОтбора1",
+    "true, ssl_3_1, FilterCriteria.СвязанныеДокументы",
+    "false, ssl_3_1, FilterCriteria.СвязанныеДокументы",
+    "true, ssl_3_2, FilterCriteria.СвязанныеДокументы",
+    "false, ssl_3_2, FilterCriteria.СвязанныеДокументы"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(FilterCriterion.class);
+
     var filterCriterion = (FilterCriterion) mdo;
+    assertThat(filterCriterion).isNotNull();
 
-    // FormOwner
-    assertThat(filterCriterion.getDefaultFormMap()).hasSize(2);
+    var forms = filterCriterion.getForms();
+    var commands = filterCriterion.getCommands();
+    var modules = filterCriterion.getModules();
 
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
 
-    assertThat(filterCriterion.getFormByLink(MdoReference.create("FilterCriterion.Unknown.Form.Unknown"))).isEmpty();
-  }
+    // --- ModuleOwner ---
+    Assertions.assertThat(filterCriterion.getAllModules(), true)
+      .containsAll(modules, forms, commands);
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, FilterCriteria.СвязанныеДокументы, _edt",
-      "false, ssl_3_1, FilterCriteria.СвязанныеДокументы"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(FilterCriterion.class);
-    var filterCriterion = (FilterCriterion) mdo;
-
-    // FormOwner
-    assertThat(filterCriterion.getDefaultFormMap()).hasSize(2);
-
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(filterCriterion.getFormByLink(MdoReference.create("FilterCriterion.Unknown.Form.Unknown"))).isEmpty();
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_2, FilterCriteria.СвязанныеДокументы, _edt",
-      "false, ssl_3_2, FilterCriteria.СвязанныеДокументы"
-    }
-  )
-  void testSSL32(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(FilterCriterion.class);
-    var filterCriterion = (FilterCriterion) mdo;
-
-    // FormOwner
-    assertThat(filterCriterion.getDefaultFormMap()).hasSize(2);
-
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.DEFAULT_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.DEFAULT_FORM)).isEmpty();
-    assertThat(filterCriterion.getDefaultFormLink(DefaultFormKind.AUX_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(filterCriterion.getDefaultForm(DefaultFormKind.AUX_FORM)).isEmpty();
-
-    assertThat(filterCriterion.getFormByLink(MdoReference.create("FilterCriterion.Unknown.Form.Unknown"))).isEmpty();
+    // --- ChildrenOwner ---
+    Assertions.assertThat(filterCriterion.getChildren(), true)
+      .containsAll(forms, commands);
+    Assertions.assertThat(filterCriterion.getPlainChildren(), true)
+      .containsAllPlain(forms, commands);
   }
 }

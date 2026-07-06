@@ -56,6 +56,7 @@ import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
 import com.github._1c_syntax.bsl.reader.edt.converter.Unmarshaller;
@@ -166,11 +167,18 @@ public class EDTReader implements MDReader {
 
     if (type.isPresent()) {
       Path path;
+      var typeValue = type.get();
       if (rootPath.equals(folder)) {
-        path = mdoPath(folder, type.get(), name);
+        path = mdoPath(folder, typeValue, name);
       } else {
         path = mdoPath(folder, name);
       }
+
+      if (!path.toFile().exists()
+        && (MDOType.INTERFACE.equals(typeValue) || MDOType.STYLE.equals(typeValue))) {
+        path = unknownMdoPath(folder, typeValue, name);
+      }
+
       return read(path);
     }
     return null;
@@ -251,6 +259,7 @@ public class EDTReader implements MDReader {
   }
 
   private static void registerClasses(XStream xStream) {
+    xStream.alias("MetaDataObject", DesignerRootWrapper.class); // для чтения неконвертируемых типов
     xStream.alias("accountingFlags", AccountingFlag.class);
     xStream.alias("addressingAttributes", TaskAddressingAttribute.class);
     xStream.alias("attributes", ObjectAttribute.class);
@@ -298,5 +307,9 @@ public class EDTReader implements MDReader {
 
   private static Path mdoPath(Path folder, String name) {
     return Paths.get(folder.toString(), name, name + ".mdo");
+  }
+
+  private static Path unknownMdoPath(Path rootPath, MDOType type, String name) {
+    return Paths.get(rootPath.toString(), "unknown", type.groupName(), name + ".xml");
   }
 }

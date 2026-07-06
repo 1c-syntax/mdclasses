@@ -50,6 +50,7 @@ public class MDCReaderContext extends AbstractReaderContext {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String CHILD_FILED_NAME = "child";
   private static final String COMPATIBILITY_MODE_FILED_NAME = "compatibilityMode";
+  private static final String COMPATIBILITY_EXTENSION_MODE_FILED_NAME = "configurationExtensionCompatibilityMode";
   private static final String CONFIGURATION_SOURCE_MODE_FILED_NAME = "configurationSource";
 
   /**
@@ -107,6 +108,8 @@ public class MDCReaderContext extends AbstractReaderContext {
 
     if (compatibilityMode == null) {
       setValue(COMPATIBILITY_MODE_FILED_NAME, configurationExtensionCompatibilityMode);
+    } else if (configurationExtensionCompatibilityMode.getVersion() == 99) {
+      setValue(COMPATIBILITY_EXTENSION_MODE_FILED_NAME, compatibilityMode);
     }
     setValue(CONFIGURATION_SOURCE_MODE_FILED_NAME, mdReader.getConfigurationSource());
 

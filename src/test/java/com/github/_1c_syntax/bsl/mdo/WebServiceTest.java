@@ -21,39 +21,44 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WebServiceTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, WebServices.WebСервис1, _edt",
-      "false, mdclasses, WebServices.WebСервис1",
-      "true, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1, _edt",
-      "false, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1",
-      "true, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1, _edt",
-      "false, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, WebServices.WebСервис1",
+    "false, mdclasses, WebServices.WebСервис1",
+    "true, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1",
+    "false, ssl_3_1, WebServices.EnterpriseDataExchange_1_0_1_1",
+    "true, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1",
+    "false, ssl_3_2, WebServices.EnterpriseDataExchange_1_0_1_1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(WebService.class);
-    var ws = (WebService) mdo;
-    assertThat(ws.getModules()).hasSize(1);
 
-    var module = ws.getModules().get(0);
-    assertThat(module.getModuleType()).isEqualTo(ModuleType.WEBServiceModule);
-    assertThat(module.getSupportVariant()).isEqualTo(ws.getSupportVariant());
-    assertThat(module.getUri()).isNotNull();
+    var webService = (WebService) mdo;
+    assertThat(webService).isNotNull();
 
-    assertThat(module).isInstanceOf(ObjectModule.class);
-    assertThat(((ObjectModule) module).getOwner()).isEqualTo(mdo.getMdoReference());
+    // --- ModuleOwner ---
+    Assertions.assertThat(webService.getAllModules(), false)
+      .containsAll(webService.getModules());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(webService.getChildren(), false)
+      .containsAll(webService.getOperations());
+    Assertions.assertThat(webService.getPlainChildren(), true)
+      .containsAll(
+        webService.getOperations(),
+        webService.getOperations().stream().map(WebServiceOperation::getChildren).flatMap(Collection::stream).toList());
   }
 }

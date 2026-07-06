@@ -10,7 +10,6 @@ plugins {
     id("io.freefair.lombok") version "9.5.0"
     id("io.freefair.javadoc-links") version "9.5.0"
     id("io.freefair.javadoc-utf-8") version "9.5.0"
-//    id("io.freefair.maven-central.validate-poms") version "9.5.0" // не работает на Gradle 9.5: ValidateMavenPom тянет удалённый из classpath plexus XmlPullParserException
     id("com.github.ben-manes.versions") version "0.54.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.25.0"

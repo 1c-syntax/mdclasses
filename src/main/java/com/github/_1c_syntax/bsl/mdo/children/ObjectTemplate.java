@@ -22,13 +22,13 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.MDChild;
-import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.mdo.storage.TemplateData;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -36,9 +36,6 @@ import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
-
-import java.util.Collections;
-import java.util.List;
 
 @Value
 @Builder
@@ -64,8 +61,6 @@ public class ObjectTemplate implements Template, MDChild {
   MultiLanguageString synonym = MultiLanguageString.EMPTY;
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
-  @Default
-  List<Module> modules = Collections.emptyList();
 
   @Default
   TemplateType templateType = TemplateType.SPREADSHEET_DOCUMENT;
@@ -79,4 +74,9 @@ public class ObjectTemplate implements Template, MDChild {
 
   @Default
   MdoReference owner = MdoReference.EMPTY;
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.TEMPLATE;
+  }
 }

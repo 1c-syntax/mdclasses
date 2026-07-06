@@ -1,0 +1,199 @@
+{
+ "com.github._1c_syntax.bsl.mdo.children.ObjectTemplate": {
+  "owner": {
+   "mdoRefRu": "Отчет.Отчет1",
+   "type": "REPORT",
+   "mdoRef": "Report.Отчет1"
+  },
+  "templateType": "DATA_COMPOSITION_SCHEME",
+  "mdoType": "TEMPLATE",
+  "data": {
+   "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+   "plainDataSets": {},
+   "dataSets": [
+    {
+     "querySource": {
+      "line": 24,
+      "column": 10,
+      "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+     },
+     "name": "НаборДанных1",
+     "type": "DATA_SET_QUERY",
+     "fields": [
+      {
+       "name": "Код1",
+       "dataPath": "Код1"
+      },
+      {
+       "name": "Ссылка",
+       "dataPath": "Ссылка"
+      }
+     ],
+     "dataSource": "ИсточникДанных1",
+     "items": []
+    },
+    {
+     "querySource": {
+      "line": 65,
+      "column": 10,
+      "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.ВерсияДанных КАК ВерсияДанных,\n\tПервыйСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tПервыйСправочник.Код КАК Код,\n\tПервыйСправочник.Наименование КАК Наименование,\n\tПервыйСправочник.Реквизит1 КАК Реквизит1,\n\tПервыйСправочник.Предопределенный КАК Предопределенный,\n\tПервыйСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+     },
+     "name": "НаборДанных2",
+     "type": "DATA_SET_QUERY",
+     "fields": [
+      {
+       "name": "ВерсияДанных",
+       "dataPath": "ВерсияДанных"
+      },
+      {
+       "name": "ИмяПредопределенныхДанных",
+       "dataPath": "ИмяПредопределенныхДанных"
+      },
+      {
+       "name": "Код",
+       "dataPath": "Код"
+      },
+      {
+       "name": "Наименование",
+       "dataPath": "Наименование"
+      },
+      {
+       "name": "ПометкаУдаления",
+       "dataPath": "ПометкаУдаления"
+      },
+      {
+       "name": "Предопределенный",
+       "dataPath": "Предопределенный"
+      },
+      {
+       "name": "Реквизит1",
+       "dataPath": "Реквизит1"
+      },
+      {
+       "name": "Ссылка",
+       "dataPath": "Ссылка"
+      }
+     ],
+     "dataSource": "ИсточникДанных1",
+     "items": []
+    },
+    {
+     "querySource": {
+      "line": 0,
+      "column": 0,
+      "textQuery": ""
+     },
+     "name": "НаборДанных3",
+     "type": "DATA_SET_OBJECT",
+     "fields": [],
+     "dataSource": "ИсточникДанных1",
+     "items": []
+    },
+    {
+     "querySource": {
+      "@reference": "\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+     },
+     "name": "НаборДанных3",
+     "type": "DATA_SET_UNION",
+     "fields": [
+      {
+       "name": "Код1",
+       "dataPath": "Код1"
+      },
+      {
+       "name": "Ссылка",
+       "dataPath": "Ссылка"
+      }
+     ],
+     "dataSource": "",
+     "items": [
+      {
+       "querySource": {
+        "line": 133,
+        "column": 11,
+        "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+       },
+       "name": "НаборДанных1",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Код1",
+         "dataPath": "Код1"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      },
+      {
+       "querySource": {
+        "line": 110,
+        "column": 11,
+        "textQuery": "ВЫБРАТЬ\n\tПервыйСправочник.Ссылка КАК Ссылка,\n\tПервыйСправочник.Код КАК Код1\nИЗ\n\tСправочник.ПервыйСправочник КАК ПервыйСправочник"
+       },
+       "name": "НаборДанных2",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Код1",
+         "dataPath": "Код1"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      },
+      {
+       "querySource": {
+        "@reference": "\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+       },
+       "name": "НаборДанных4",
+       "type": "DATA_SET_UNION",
+       "fields": [],
+       "dataSource": "",
+       "items": [
+        {
+         "querySource": {
+          "@reference": "\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data\/dataSets\/com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema$DataSet[3]\/querySource"
+         },
+         "name": "НаборДанных3",
+         "type": "DATA_SET_OBJECT",
+         "fields": [],
+         "dataSource": "ИсточникДанных1",
+         "items": []
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "dataPath": "src\/test\/resources\/mdclasses\/Reports\/Отчет1\/Templates\/СКД\/Template.xml"
+  },
+  "description": "СКД",
+  "mdoReference": {
+   "mdoRefRu": "Отчет.Отчет1.Макет.СКД",
+   "type": "TEMPLATE",
+   "mdoRef": "Report.Отчет1.Template.СКД"
+  },
+  "uuid": "e205e6cf-c198-406f-8658-9223527a0d58",
+  "mdoRef": "Report.Отчет1.Template.СКД",
+  "supportVariant": "NONE",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "СКД"
+    }
+   ]
+  },
+  "name": "СКД",
+  "comment": "",
+  "objectBelonging": "OWN"
+ }
+}

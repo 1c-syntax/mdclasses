@@ -21,10 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -36,33 +34,56 @@ class AccumulationRegisterTest {
   @CsvSource(
     {
       "true, mdclasses, AccumulationRegisters.РегистрНакопления1",
-      "false, mdclasses, AccumulationRegisters.РегистрНакопления1"
+      "false, mdclasses, AccumulationRegisters.РегистрНакопления1",
+      "true, mdclasses_3_27, AccumulationRegisters.РегистрНакопления2",
+      "false, mdclasses_3_27, AccumulationRegisters.РегистрНакопления2"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(AccumulationRegister.class);
+
     var accumulationRegister = (AccumulationRegister) mdo;
-    assertThat(accumulationRegister.getAttributes())
-      .hasSize(5)
-      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
-    assertThat(accumulationRegister.getForms()).isEmpty();
-    assertThat(accumulationRegister.getCommands()).isEmpty();
-    assertThat(accumulationRegister.getModules()).isEmpty();
-    assertThat(accumulationRegister.getResources()).hasSize(1);
-    assertThat(accumulationRegister.getDimensions()).hasSize(1);
-    assertThat(accumulationRegister.getChildren()).hasSize(7);
+    assertThat(accumulationRegister).isNotNull();
 
-    assertThat(accumulationRegister.getDefaultForm(DefaultFormKind.LIST_FORM)).isEmpty();
-    assertThat(accumulationRegister.getDefaultForm(DefaultFormKind.AUX_LIST_FORM)).isEmpty();
+    // --- ModuleOwner ---
+    assertThat(accumulationRegister.getModuleTypes()).isEmpty();
+    Assertions.assertThat(accumulationRegister.getAllModules(), false)
+      .containsAll(accumulationRegister.getModules(), accumulationRegister.getForms(), accumulationRegister.getCommands());
 
-    // FormOwner
-    assertThat(accumulationRegister.getDefaultFormMap()).hasSize(2);
+    // --- ChildrenOwner ---
+    Assertions.assertThat(accumulationRegister.getChildren(), true)
+      .containsAll(accumulationRegister.getAttributes(),
+        accumulationRegister.getDimensions(),
+        accumulationRegister.getResources(),
+        accumulationRegister.getForms(),
+        accumulationRegister.getCommands(),
+        accumulationRegister.getTemplates()
+      );
+    Assertions.assertThat(accumulationRegister.getPlainChildren(), true)
+      .containsAll(accumulationRegister.getAttributes(),
+        accumulationRegister.getDimensions(),
+        accumulationRegister.getResources(),
+        accumulationRegister.getForms(),
+        accumulationRegister.getCommands(),
+        accumulationRegister.getTemplates()
+      );
 
-    assertThat(accumulationRegister.getDefaultFormLink(DefaultFormKind.LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(accumulationRegister.getDefaultFormLink(DefaultFormKind.AUX_LIST_FORM)).isEqualTo(MdoReference.EMPTY);
-
-    // getFormByLink с несуществующей ссылкой
-    assertThat(accumulationRegister.getFormByLink(MdoReference.create("AccumulationRegister.Unknown.Form.Unknown"))).isEmpty();
+    // --- AttributeOwner ---
+    Assertions.assertThat(accumulationRegister.getAllAttributes(), false)
+      .containsAll(accumulationRegister.getAttributes(),
+        accumulationRegister.getDimensions(),
+        accumulationRegister.getResources()
+      );
+    Assertions.assertThat(accumulationRegister.getStorageFields(), false)
+      .containsAll(accumulationRegister.getAttributes(),
+        accumulationRegister.getDimensions(),
+        accumulationRegister.getResources()
+      );
+    Assertions.assertThat(accumulationRegister.getPlainStorageFields(), false)
+      .containsAll(accumulationRegister.getAttributes(),
+        accumulationRegister.getDimensions(),
+        accumulationRegister.getResources()
+      );
   }
 }
