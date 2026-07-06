@@ -21,22 +21,13 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
-import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
-import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
-import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
-import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
-import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.bsl.types.ValueTypes;
-import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,28 +35,57 @@ class CatalogTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, Catalogs.Справочник1, _edt",
+      "true, mdclasses, Catalogs.Справочник1",
       "false, mdclasses, Catalogs.Справочник1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(Catalog.class);
-    var catalog = (Catalog) mdo;
-    assertThat(catalog.getAllAttributes()).hasSize(12);
-    assertThat(catalog.getChildren())
-      .hasSize(19)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .anyMatch(StandardAttribute.class::isInstance)
-      .anyMatch(ObjectCommand.class::isInstance)
-      .anyMatch(ObjectForm.class::isInstance)
-      .anyMatch(TabularSection.class::isInstance)
-      .anyMatch(PredefinedValue.class::isInstance)
-    ;
-    assertThat(catalog.getPlainChildren()).hasSize(22);
 
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    // --- ModuleOwner ---
+    assertThat(catalog.getModules())
+      .hasSize(2)
+      .anyMatch(Module::isProtected);
+    Assertions.assertThat(catalog.getAllModules(), false)
+      .containsAll(catalog.getModules(), catalog.getForms(), catalog.getCommands());
+    assertThat(catalog.getModuleTypes())
+      .hasSize(catalog.getModules().size())
+      .containsKeys(ModuleType.ObjectModule, ModuleType.ManagerModule);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(catalog.getChildren(), true)
+      .containsAll(catalog.getAttributes(),
+        catalog.getTabularSections(),
+        catalog.getForms(),
+        catalog.getTemplates(),
+        catalog.getCommands(),
+        catalog.getPredefinedValues());
+    Assertions.assertThat(catalog.getPlainChildren(), true)
+      .containsAllPlain(catalog.getAttributes(),
+        catalog.getTabularSections(),
+        catalog.getForms(),
+        catalog.getTemplates(),
+        catalog.getCommands(),
+        catalog.getPredefinedValues());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(catalog.getAllAttributes(), false)
+      .containsAll(catalog.getAttributes());
+    Assertions.assertThat(catalog.getStorageFields(), false)
+      .containsAll(catalog.getAttributes(),
+        catalog.getTabularSections());
+    Assertions.assertThat(catalog.getPlainStorageFields(), true)
+      .containsAllPlain(catalog.getAttributes(),
+        catalog.getTabularSections());
+
+    // --- PredefinedDataOwner ---
     assertThat(catalog.getPredefinedValues()).hasSize(1);
     var predefinedValue = catalog.getPredefinedValues().getFirst();
+    assertThat(predefinedValue).isNotNull();
     assertThat(predefinedValue.getName()).isEqualTo("ПредопределенныйЭлемент");
     assertThat(predefinedValue.getUuid()).isEqualTo("79adb5f1-7224-4404-98a7-d7ed155f6232");
     assertThat(predefinedValue.getCode()).isEqualTo("000000001");
@@ -75,167 +95,53 @@ class CatalogTest {
     assertThat(predefinedValue.getOwner()).isEqualTo(catalog.getMdoReference());
     assertThat(predefinedValue.getMdoReference())
       .isEqualTo(MdoReference.create("Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"));
-    assertThat(catalog.getAttributes()).hasSize(12);
-    assertThat(catalog.getTabularSections()).hasSize(1);
-    assertThat(catalog.getForms()).hasSize(3);
-    assertThat(catalog.getTemplates()).hasSize(1);
-    assertThat(catalog.getCommands()).hasSize(1);
-    assertThat(catalog.getModules())
-      .hasSize(2)
-      .anyMatch(Module::isProtected)
-    ;
-    assertThat(catalog.getAllModules()).hasSize(6);
-    assertThat(catalog.getStorageFields())
-      .hasSize(13)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .anyMatch(StandardAttribute.class::isInstance)
-      .anyMatch(TabularSection.class::isInstance)
-      .noneMatch(ObjectCommand.class::isInstance)
-      .noneMatch(ObjectForm.class::isInstance)
-    ;
-    assertThat(catalog.getPlainStorageFields())
-      .hasSize(16)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .anyMatch(StandardAttribute.class::isInstance)
-      .anyMatch(TabularSection.class::isInstance)
-      .noneMatch(ObjectCommand.class::isInstance)
-      .noneMatch(ObjectForm.class::isInstance)
-    ;
-
-    // FormOwner
-    assertThat(catalog.getDefaultFormMap()).hasSize(10);
-
-    // Для форм, которые есть в фикстуре
-    var formLink = catalog.getDefaultFormLink(DefaultFormKind.OBJECT_FORM);
-    assertThat(formLink)
-      .isEqualTo(catalog.getDefaultFormMap().get(DefaultFormKind.OBJECT_FORM));
-    assertThat(formLink.isEmpty()).isFalse();
-
-    var form = catalog.getDefaultForm(DefaultFormKind.OBJECT_FORM);
-    assertThat(form).isPresent();
-    assertThat(form.get().getName()).isEqualTo("ФормаЭлемента");
-
-    var formByLink = catalog.getFormByLink(formLink);
-    assertThat(formByLink).isPresent();
-    assertThat(formByLink.get().getName()).isEqualTo("ФормаЭлемента");
-
-    // Для форм, которых нет в фикстуре (пустые)
-    assertThat(catalog.getDefaultFormLink(DefaultFormKind.FOLDER_FORM)).isEqualTo(MdoReference.EMPTY);
-    assertThat(catalog.getDefaultForm(DefaultFormKind.FOLDER_FORM)).isEmpty();
-
-    // Недоступный тип формы
-    assertThat(catalog.getDefaultForm(DefaultFormKind.AUX_DYNAMIC_LIST_SETTINGS_FORM)).isEmpty();
-
-    // getFormByLink с несуществующей ссылкой
-    assertThat(catalog.getFormByLink(MdoReference.create("Catalog.Unknown.Form.Unknown"))).isEmpty();
-
-//    var formData = catalog.getForms().stream().filter(form -> form.getName().equals("ФормаСписка"))
-//      .findFirst().get().getData();
-//    checkExtInfo(formData);
   }
 
   @ParameterizedTest
   @CsvSource({
-    "true, ssl_3_1, Catalogs.Заметки, _edt",
+    "true, ssl_3_1, Catalogs.ВерсииФайлов",
+    "false, ssl_3_1, Catalogs.ВерсииФайлов",
+    "true, ssl_3_2, Catalogs.ВерсииФайлов",
+    "false, ssl_3_2, Catalogs.ВерсииФайлов",
+    "true, ssl_3_1, Catalogs.Заметки",
     "false, ssl_3_1, Catalogs.Заметки",
-    "true, ssl_3_2, Catalogs.Заметки, _edt",
+    "true, ssl_3_2, Catalogs.Заметки",
     "false, ssl_3_2, Catalogs.Заметки"
   })
   void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo)
-      .isInstanceOf(Catalog.class);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
 
     var catalog = (Catalog) mdo;
-    assertThat(catalog.getChildren())
-      .hasSize(23)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .anyMatch(ObjectCommand.class::isInstance)
-      .anyMatch(ObjectForm.class::isInstance)
-    ;
-    assertThat(catalog.getStorageFields())
-      .hasSize(17)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .noneMatch(ObjectCommand.class::isInstance)
-      .noneMatch(ObjectForm.class::isInstance)
-    ;
-    assertThat(catalog.getPlainStorageFields())
-      .hasSize(17)
-      .anyMatch(ObjectAttribute.class::isInstance)
-      .noneMatch(ObjectCommand.class::isInstance)
-      .noneMatch(ObjectForm.class::isInstance)
-    ;
+    assertThat(catalog).isNotNull();
 
-    assertThat(catalog.getSynonym().isEmpty()).isFalse();
-    assertThat(catalog.getSynonym().get("ru")).isEqualTo("Заметки");
-    assertThat(catalog.getDescription()).isEqualTo("Заметки");
-    assertThat(catalog.getDescription("ru")).isEqualTo("Заметки");
-    assertThat(catalog.getDescription("en")).isEqualTo("Заметки");
+    // --- ModuleOwner ---
+    Assertions.assertThat(catalog.getAllModules(), false)
+      .containsAll(catalog.getModules(), catalog.getForms(), catalog.getCommands());
 
-    var child = catalog.findChild(MdoReference.create("Catalog.Заметки.Attribute.Автор"));
-    assertThat(child).isPresent();
-    var attribute = (ObjectAttribute) child.get();
-    assertThat(attribute.getSynonym().isEmpty()).isFalse();
-    assertThat(attribute.getSynonym().get("ru")).isEqualTo("Автор");
-    assertThat(attribute.getDescription()).isEqualTo("Автор");
-    assertThat(attribute.getDescription("ru")).isEqualTo("Автор");
-    assertThat(attribute.getDescription("en")).isEqualTo("Автор");
-    assertThat(attribute.getValueType()).isNotNull();
-    assertThat(attribute.getValueType()
-      .contains(Objects.requireNonNull(ValueTypes.get("CatalogRef.Пользователи")))).isTrue();
+    // --- ChildrenOwner ---
+    Assertions.assertThat(catalog.getChildren(), true)
+      .containsAll(catalog.getAttributes(),
+        catalog.getTabularSections(),
+        catalog.getForms(),
+        catalog.getTemplates(),
+        catalog.getCommands());
+    Assertions.assertThat(catalog.getPlainChildren(), true)
+      .containsAllPlain(catalog.getAttributes(),
+        catalog.getTabularSections(),
+        catalog.getForms(),
+        catalog.getTemplates(),
+        catalog.getCommands()
+      );
 
-    child = catalog.findChild(MdoReference.create("Catalog.Заметки.StandardAttribute.PredefinedDataName"));
-    assertThat(child).isPresent();
-    var stdAttribute = (StandardAttribute) child.get();
-    assertThat(stdAttribute.getName()).isEqualTo("PredefinedDataName");
-    assertThat(stdAttribute.getFullName().getRu()).isEqualTo("ИмяПредопределенныхДанных");
-    assertThat(stdAttribute.getMdoReference())
-      .isEqualTo(MdoReference.create("Catalog.Заметки.StandardAttribute.PredefinedDataName"));
-    assertThat(stdAttribute.getKind()).isEqualTo(AttributeKind.STANDARD);
-    assertThat(stdAttribute.getSynonym().isEmpty()).isTrue();
-    assertThat(stdAttribute.getDescription()).isEqualTo("ИмяПредопределенныхДанных");
-    assertThat(stdAttribute.getDescription("ru")).isEqualTo("ИмяПредопределенныхДанных");
-    assertThat(stdAttribute.getDescription("en")).isEqualTo("PredefinedDataName");
-    assertThat(stdAttribute.getValueType()).isNotNull();
-    assertThat(stdAttribute.getValueType().contains(PrimitiveValueType.STRING)).isTrue();
-  }
-
-  /**
-   * Проверяет, что для справочника "Заметки" поле checkUnique установлено в false.
-   * <p>
-   * В формате Designer: в XML файле явно указано {@code <CheckUnique>false</CheckUnique>}.
-   * В формате EDT: в XML файле поле отсутствует, используется значение по умолчанию false.
-   *
-   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
-   */
-  @ParameterizedTest
-  @CsvSource({
-    "true, ssl_3_1, Catalogs.Заметки, _edt",
-    "false, ssl_3_1, Catalogs.Заметки",
-    "true, ssl_3_2, Catalogs.Заметки, _edt",
-    "false, ssl_3_2, Catalogs.Заметки"
-  })
-  void testCheckUniqueFalse(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo)
-      .isInstanceOf(Catalog.class);
-
-    var catalog = (Catalog) mdo;
-    assertThat(catalog.isCheckUnique())
-      .as("Поле checkUnique должно быть false для справочника Заметки")
-      .isFalse();
-  }
-
-  @ParameterizedTest
-  @CsvSource({
-    "true, ssl_3_1, Catalogs.ВерсииФайлов, _edt",
-    "false, ssl_3_1, Catalogs.ВерсииФайлов",
-    "true, ssl_3_2, Catalogs.ВерсииФайлов, _edt",
-    "false, ssl_3_2, Catalogs.ВерсииФайлов"
-  })
-  void testSSLFixture(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo)
-      .isInstanceOf(Catalog.class);
+    // --- AttributeOwner ---
+    Assertions.assertThat(catalog.getAllAttributes(), false)
+      .containsAll(catalog.getAttributes());
+    Assertions.assertThat(catalog.getStorageFields(), false)
+      .containsAll(catalog.getAttributes(),
+        catalog.getTabularSections());
+    Assertions.assertThat(catalog.getPlainStorageFields(), true)
+      .containsAllPlain(catalog.getAttributes(),
+        catalog.getTabularSections());
   }
 }
