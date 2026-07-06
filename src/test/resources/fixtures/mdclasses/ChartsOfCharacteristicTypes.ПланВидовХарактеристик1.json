@@ -1,577 +1,532 @@
-{"com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
-  "attributes": [
-    [
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Ref",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Ссылка"
-        },
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "CHART_OF_CHARACTERISTIC_TYPES",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "fullName": {
-                  "nameRu": "ПланВидовХарактеристикСсылка.ПланВидовХарактеристик1",
-                  "nameEn": "ChartOfCharacteristicTypesRef.ПланВидовХарактеристик1"
-                },
-                "variant": "METADATA",
-                "kind": "CHART_OF_CHARACTERISTIC_TYPES"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 0
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Ссылка",
-          "nameEn": "Ref"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.DeletionMark",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ПометкаУдаления"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
-        },
-        "fullName": {
-          "nameRu": "ПометкаУдаления",
-          "nameEn": "DeletionMark"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Description",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Наименование"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 25,
-                "allowedLength": 0
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Наименование",
-          "nameEn": "Description"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.IsFolder",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ЭтоГруппа"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
-        },
-        "fullName": {
-          "nameRu": "ЭтоГруппа",
-          "nameEn": "IsFolder"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Parent",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Родитель"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/type"
-        },
-        "fullName": {
-          "nameRu": "Родитель",
-          "nameEn": "Parent"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Predefined",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Предопределенный"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
-        },
-        "fullName": {
-          "nameRu": "Предопределенный",
-          "nameEn": "Predefined"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.PredefinedDataName",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ИмяПредопределенныхДанных"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 0,
-                "allowedLength": 0
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "ИмяПредопределенныхДанных",
-          "nameEn": "PredefinedDataName"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Code",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Код"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-                "precision": 9,
-                "scale": 0,
-                "nonNegative": false
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Код",
-          "nameEn": "Code"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.ValueType",
-          "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ТипЗначения"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 10,
-                "allowedLength": 0
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "ТипЗначения",
-          "nameEn": "ValueType"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      }
-    ],
-    []
-  ],
-  "auxiliaryChoiceForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "auxiliaryFolderChoiceForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "auxiliaryFolderForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "auxiliaryListForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "auxiliaryObjectForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "checkUnique": true,
+{
+ "com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
   "codeSeries": "WHOLE_CATALOG",
-  "commands": [],
-  "comment": "",
-  "defaultChoiceForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE_PREDEFINED_DATA",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "auxiliaryFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
   },
   "defaultFolderChoiceForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "defaultFolderForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "defaultListForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
-  },
-  "defaultObjectForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/auxiliaryChoiceForm"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
   },
   "description": "ПланВидовХарактеристик1",
-  "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-  },
-  "forms": [],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-  },
-  "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
-  "moduleTypes": [
-    [
-      "ObjectModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ObjectModule.bsl"
-      ]
-    ],
-    [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ManagerModule.bsl"
-      ]
-    ]
-  ],
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    },
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/ChartsOfCharacteristicTypes/ПланВидовХарактеристик1/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    }
-  ],
-  "name": "ПланВидовХарактеристик1",
-  "objectBelonging": "OWN",
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 25,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INSERT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "DELETE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INPUT_BY_STRING",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_INSERT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_SET_DELETION_MARK",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_CLEAR_DELETION_MARK",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_MARKED",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_PREDEFINED_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY_OF_MISSING_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_SETTINGS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SWITCH_TO_DATA_HISTORY_VERSION"
-    }
-  ],
   "predefinedValues": [],
-  "supportVariant": "NONE",
-  "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
-  "tabularSections": [],
-  "templates": [],
   "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+  "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
   "valueType": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[9]/type"
-  }
-}}
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[8]\/type"
+  },
+  "checkUnique": true,
+  "tabularSections": [],
+  "objectBelonging": "OWN",
+  "commands": [],
+  "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
+  "auxiliaryChoiceForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultFormMap": [
+   "AUX_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "AUX_FOLDER_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "AUX_FOLDER_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "AUX_OBJECT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "FOLDER_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "FOLDER_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   },
+   "OBJECT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+   }
+  ],
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "templates": [],
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+  },
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/mdclasses\/ChartsOfCharacteristicTypes\/ПланВидовХарактеристик1\/ManagerModule.bsl",
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "uri": "src\/test\/resources\/mdclasses\/ChartsOfCharacteristicTypes\/ПланВидовХарактеристик1\/ObjectModule.bsl",
+    "supportVariant": "NONE"
+   }
+  ],
+  "defaultObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "defaultFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "name": "ПланВидовХарактеристик1",
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1",
+     "type": "CHART_OF_CHARACTERISTIC_TYPES",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ИмяПредопределенныхДанных",
+     "nameEn": "PredefinedDataName"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ИмяПредопределенныхДанных",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.PredefinedDataName"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": []
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Код",
+     "nameEn": "Code"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 9,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Код",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Code"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Наименование",
+     "nameEn": "Description"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 25,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Наименование",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Description"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ПометкаУдаления",
+     "nameEn": "DeletionMark"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ПометкаУдаления",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.DeletionMark"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Предопределенный",
+     "nameEn": "Predefined"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/type"
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Предопределенный",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Predefined"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Родитель",
+     "nameEn": "Parent"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CHART_OF_CHARACTERISTIC_TYPES",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПланВидовХарактеристикСсылка.ПланВидовХарактеристик1",
+        "nameEn": "ChartOfCharacteristicTypesRef.ПланВидовХарактеристик1"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Родитель",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Parent"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Ссылка",
+     "nameEn": "Ref"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]\/type"
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.Ссылка",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.Ref"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ТипЗначения",
+     "nameEn": "ValueType"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 10,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ТипЗначения",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.ValueType"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ЭтоГруппа",
+     "nameEn": "IsFolder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/type"
+    },
+    "uuid": "f53a24c3-f1dc-43b7-8dcf-eeb8c0b7f452",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1.СтандартныйРеквизит.ЭтоГруппа",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1.StandardAttribute.IsFolder"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "auxiliaryObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
+  },
+  "comment": "",
+  "forms": []
+ }
+}

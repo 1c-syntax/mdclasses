@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:AccountingRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="dfd497a0-0505-4248-b3b4-e8163a7ac24f">
+<mdclass:AccountingRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="dfd497a0-0505-4248-b3b4-e8163a7ac24f" extendedConfigurationObject="e5930f2f-15d9-48a1-ac69-379ad990b02a">
   <producedTypes>
     <selectionType typeId="036130e6-0bf3-428f-9ead-3de31b912339" valueTypeId="c6e5ac15-f146-45d4-923c-719829d0d039"/>
     <listType typeId="35368714-a8e4-43f7-89f1-dd050a9f3e45" valueTypeId="31f03475-9b20-4088-a78b-95ff8a6da077"/>
@@ -11,39 +11,47 @@
   </producedTypes>
   <name>РегистрБухгалтерии1</name>
   <objectBelonging>Adopted</objectBelonging>
-  <extension xsi:type="mdclassExtension:AccountingRegisterExtension"/>
-  <useStandardCommands>true</useStandardCommands>
-  <enableTotalsSplitting>true</enableTotalsSplitting>
-  <fullTextSearch>Use</fullTextSearch>
-  <dimensions uuid="f9aae55d-e62d-4de7-b7b2-e40239622206">
+  <extension xsi:type="mdclassExtension:AccountingRegisterExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <dimensions uuid="f9aae55d-e62d-4de7-b7b2-e40239622206" extendedConfigurationObject="902c08a9-e457-436a-b0fb-b996f0d9bb00">
     <name>Измерение1</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:AccountingRegisterDimensionExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>String</type>
+        </types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </typeExtension>
       <balance>Checked</balance>
     </extension>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>10</length>
-      </stringQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
     <balance>true</balance>
   </dimensions>
-  <resources uuid="dc6f5492-ecfe-48aa-8358-54093a960395">
+  <resources uuid="dc6f5492-ecfe-48aa-8358-54093a960395" extendedConfigurationObject="e88df8bd-bf97-41a4-88fc-09c84a51824b">
     <name>Ресурс1</name>
     <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+    <extension xsi:type="mdclassExtension:AccountingRegisterResourceExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Number</type>
+        </types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </typeExtension>
+      <balance>Checked</balance>
     </extension>
-    <type>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>10</precision>
-      </numberQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
     <balance>true</balance>
   </resources>
 </mdclass:AccountingRegister>

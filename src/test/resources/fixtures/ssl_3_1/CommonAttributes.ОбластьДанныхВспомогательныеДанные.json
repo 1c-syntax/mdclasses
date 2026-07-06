@@ -1,242 +1,218 @@
-{"com.github._1c_syntax.bsl.mdo.CommonAttribute": {
-  "authenticationSeparation": "DONT_USE",
+{
+ "com.github._1c_syntax.bsl.mdo.CommonAttribute": {
   "autoUse": "DONT_USE",
-  "comment": "",
+  "mdoType": "COMMON_ATTRIBUTE",
   "conditionalSeparation": {
-    "type": "CONSTANT",
-    "mdoRef": "Constant.ИспользоватьРазделениеПоОбластямДанных",
-    "mdoRefRu": "Константа.ИспользоватьРазделениеПоОбластямДанных"
+   "mdoRefRu": "Константа.ИспользоватьРазделениеПоОбластямДанных",
+   "type": "CONSTANT",
+   "mdoRef": "Constant.ИспользоватьРазделениеПоОбластямДанных"
+  },
+  "dataSeparation": "SEPARATE",
+  "indexing": "DONT_INDEX",
+  "possibleRights": [
+   "EDIT",
+   "VIEW"
+  ],
+  "description": "Область данных вспомогательные данные",
+  "mdoReference": {
+   "mdoRefRu": "ОбщийРеквизит.ОбластьДанныхВспомогательныеДанные",
+   "type": "COMMON_ATTRIBUTE",
+   "mdoRef": "CommonAttribute.ОбластьДанныхВспомогательныеДанные"
+  },
+  "uuid": "530a3164-4ef1-4b3b-8269-13764ef4bf15",
+  "content": [
+   {
+    "metadata": {
+     "mdoRefRu": "Справочник.СеансыОбменовДанными",
+     "type": "CATALOG",
+     "mdoRef": "Catalog.СеансыОбменовДанными"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "Константа.ОтложенноеОбновлениеЗавершеноУспешно",
+     "type": "CONSTANT",
+     "mdoRef": "Constant.ОтложенноеОбновлениеЗавершеноУспешно"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "Константа.СведенияОБлокируемыхОбъектах",
+     "type": "CONSTANT",
+     "mdoRef": "Constant.СведенияОБлокируемыхОбъектах"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "Константа.СведенияОбОбновленииИБ",
+     "type": "CONSTANT",
+     "mdoRef": "Constant.СведенияОбОбновленииИБ"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанныхОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.БезопасноеХранилищеДанныхОбластейДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.БлокировкиСеансовОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.БлокировкиСеансовОбластейДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ВерсииПодсистемОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ВерсииПодсистемОбластейДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ОбработчикиОбновления",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ОбработчикиОбновления"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ОтправленныеСерверныеОповещения",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ОтправленныеСерверныеОповещения"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ОчередьИзвлеченияТекста",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ОчередьИзвлеченияТекста"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ПериодическиеСерверныеОповещения",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ПериодическиеСерверныеОповещения"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ПотокиОбновления",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ПотокиОбновления"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.ПрогрессОбновления",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.ПрогрессОбновления"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.СвойстваРасширений",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.СвойстваРасширений"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.СообщенияОбменаДаннымиОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.СообщенияОбменаДаннымиОбластейДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.СостоянияОбменовДаннымиОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.СостоянияОбменовДаннымиОбластейДанных"
+    },
+    "use": "USE"
+   },
+   {
+    "metadata": {
+     "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДаннымиОбластейДанных",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДаннымиОбластейДанных"
+    },
+    "use": "USE"
+   }
+  ],
+  "mdoRef": "CommonAttribute.ОбластьДанныхВспомогательныеДанные",
+  "supportVariant": "NOT_EDITABLE",
+  "authenticationSeparation": "DONT_USE",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Область данных вспомогательные данные"
+    }
+   ]
+  },
+  "dataSeparationUse": {
+   "mdoRefRu": "ПараметрСеанса.ОбластьДанныхИспользование",
+   "type": "SESSION_PARAMETER",
+   "mdoRef": "SessionParameter.ОбластьДанныхИспользование"
   },
   "configurationExtensionsSeparation": "DONT_USE",
-  "content": [
-    [
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных",
-          "mdoRefRu": "РегистрСведений.ИспользованиеПоставляемыхДополнительныхОтчетовИОбработокВОбластяхДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ПрогрессОбновления",
-          "mdoRefRu": "РегистрСведений.ПрогрессОбновления"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ОбработчикиОбновления",
-          "mdoRefRu": "РегистрСведений.ОбработчикиОбновления"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "CATALOG",
-          "mdoRef": "Catalog.СеансыОбменовДанными",
-          "mdoRefRu": "Справочник.СеансыОбменовДанными"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.БезопасноеХранилищеДанныхОбластейДанных",
-          "mdoRefRu": "РегистрСведений.БезопасноеХранилищеДанныхОбластейДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "CONSTANT",
-          "mdoRef": "Constant.ОтложенноеОбновлениеЗавершеноУспешно",
-          "mdoRefRu": "Константа.ОтложенноеОбновлениеЗавершеноУспешно"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ОчередьИзвлеченияТекста",
-          "mdoRefRu": "РегистрСведений.ОчередьИзвлеченияТекста"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ПотокиОбновления",
-          "mdoRefRu": "РегистрСведений.ПотокиОбновления"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "CONSTANT",
-          "mdoRef": "Constant.СведенияОБлокируемыхОбъектах",
-          "mdoRefRu": "Константа.СведенияОБлокируемыхОбъектах"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.СостоянияОбменовДаннымиОбластейДанных",
-          "mdoRefRu": "РегистрСведений.СостоянияОбменовДаннымиОбластейДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.СостоянияУспешныхОбменовДаннымиОбластейДанных",
-          "mdoRefRu": "РегистрСведений.СостоянияУспешныхОбменовДаннымиОбластейДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ПериодическиеСерверныеОповещения",
-          "mdoRefRu": "РегистрСведений.ПериодическиеСерверныеОповещения"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.СообщенияОбменаДаннымиОбластейДанных",
-          "mdoRefRu": "РегистрСведений.СообщенияОбменаДаннымиОбластейДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных",
-          "mdoRefRu": "РегистрСведений.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ОтправленныеСерверныеОповещения",
-          "mdoRefRu": "РегистрСведений.ОтправленныеСерверныеОповещения"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.СвойстваРасширений",
-          "mdoRefRu": "РегистрСведений.СвойстваРасширений"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "CONSTANT",
-          "mdoRef": "Constant.СведенияОбОбновленииИБ",
-          "mdoRefRu": "Константа.СведенияОбОбновленииИБ"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.ВерсииПодсистемОбластейДанных",
-          "mdoRefRu": "РегистрСведений.ВерсииПодсистемОбластейДанных"
-        },
-        "use": "USE"
-      },
-      {
-        "metadata": {
-          "type": "INFORMATION_REGISTER",
-          "mdoRef": "InformationRegister.БлокировкиСеансовОбластейДанных",
-          "mdoRefRu": "РегистрСведений.БлокировкиСеансовОбластейДанных"
-        },
-        "use": "USE"
-      }
-    ],
-    []
-  ],
-  "dataSeparation": "SEPARATE",
-  "dataSeparationUse": {
-    "type": "SESSION_PARAMETER",
-    "mdoRef": "SessionParameter.ОбластьДанныхИспользование",
-    "mdoRefRu": "ПараметрСеанса.ОбластьДанныхИспользование"
-  },
   "dataSeparationValue": {
-    "type": "SESSION_PARAMETER",
-    "mdoRef": "SessionParameter.ОбластьДанныхЗначение",
-    "mdoRefRu": "ПараметрСеанса.ОбластьДанныхЗначение"
+   "mdoRefRu": "ПараметрСеанса.ОбластьДанныхЗначение",
+   "type": "SESSION_PARAMETER",
+   "mdoRef": "SessionParameter.ОбластьДанныхЗначение"
   },
-  "description": "Область данных вспомогательные данные",
-  "indexing": "DONT_INDEX",
-  "mdoReference": {
-    "type": "COMMON_ATTRIBUTE",
-    "mdoRef": "CommonAttribute.ОбластьДанныхВспомогательныеДанные",
-    "mdoRefRu": "ОбщийРеквизит.ОбластьДанныхВспомогательныеДанные"
-  },
-  "mdoType": "COMMON_ATTRIBUTE",
-  "name": "ОбластьДанныхВспомогательныеДанные",
-  "objectBelonging": "OWN",
   "passwordMode": false,
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 2,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT"
-    }
-  ],
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Область данных вспомогательные данные"
-        }
-      }
-    ]
-  },
-  "usersSeparation": "DONT_USE",
-  "uuid": "530a3164-4ef1-4b3b-8269-13764ef4bf15",
   "valueType": {
-    "types": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-      }
-    ],
-    "composite": false,
-    "qualifiers": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-          "precision": 7,
-          "scale": 0,
-          "nonNegative": true
-        }
-      }
-    ]
-  }
-}}
+   "types": [
+    "NUMBER"
+   ],
+   "composite": false,
+   "qualifiers": [
+    {
+     "precision": 7,
+     "nonNegative": true,
+     "scale": 0
+    }
+   ]
+  },
+  "name": "ОбластьДанныхВспомогательныеДанные",
+  "usersSeparation": "DONT_USE",
+  "comment": "",
+  "objectBelonging": "OWN"
+ }
+}

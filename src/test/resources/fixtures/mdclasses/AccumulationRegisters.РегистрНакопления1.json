@@ -1,401 +1,337 @@
-{"com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
-  "attributes": [
-    [
-      {
-        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Active",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Активность"
-        },
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "type": "ACCUMULATION_REGISTER",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 0
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Активность",
-          "nameEn": "Active"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Period",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Период"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": 2
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Период",
-          "nameEn": "Period"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.LineNumber",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.НомерСтроки"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-                "precision": 5,
-                "scale": 0,
-                "nonNegative": false
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "НомерСтроки",
-          "nameEn": "LineNumber"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Recorder",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Регистратор"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [],
-          "composite": false,
-          "qualifiers": []
-        },
-        "fullName": {
-          "nameRu": "Регистратор",
-          "nameEn": "Recorder"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.RecordType",
-          "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.ВидДвижения"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]/type"
-        },
-        "fullName": {
-          "nameRu": "ВидДвижения",
-          "nameEn": "RecordType"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      }
-    ],
-    []
+{
+ "com.github._1c_syntax.bsl.mdo.AccumulationRegister": {
+  "mdoType": "ACCUMULATION_REGISTER",
+  "defaultFormMap": [
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/auxiliaryListForm"
+   },
+   "LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/auxiliaryListForm"
+   }
   ],
-  "auxiliaryListForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "commands": [],
-  "comment": "",
   "defaultListForm": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/auxiliaryListForm"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/auxiliaryListForm"
   },
+  "possibleRights": [
+   "EDIT",
+   "READ",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "VIEW"
+  ],
+  "templates": [],
   "description": "Регистр накопления",
-  "dimensions": [
-    {
-      "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
-      "name": "Измерение1",
-      "mdoReference": {
-        "type": "DIMENSION",
-        "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1",
-        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-      },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-              "length": 10,
-              "allowedLength": 0
-            }
-          }
-        ]
-      },
-      "master": false,
-      "denyIncompleteValues": false,
-      "useInTotals": true
-    }
+  "resources": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "passwordMode": false,
+    "name": "Ресурс1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 10,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1",
+     "type": "RESOURCE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1"
+    },
+    "supportVariant": "NONE"
+   }
   ],
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
-  "forms": [],
   "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
-  "mdoType": "ACCUMULATION_REGISTER",
-  "moduleTypes": [],
+  "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+  "mdoRef": "AccumulationRegister.РегистрНакопления1",
   "modules": [],
-  "name": "РегистрНакопления1",
-  "objectBelonging": "OWN",
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 5,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "TOTALS_CONTROL"
-    }
-  ],
-  "resources": [
-    {
-      "uuid": "a187a281-f5cd-4e1c-8f3f-37212a840339",
-      "name": "Ресурс1",
-      "mdoReference": {
-        "type": "RESOURCE",
-        "mdoRef": "AccumulationRegister.РегистрНакопления1.Resource.Ресурс1",
-        "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Ресурс.Ресурс1"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.AccumulationRegister/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-      },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-              "precision": 10,
-              "scale": 0,
-              "nonNegative": false
-            }
-          }
-        ]
-      }
-    }
-  ],
   "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Регистр накопления"
-        }
-      }
-    ]
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
   },
-  "templates": [],
-  "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f"
-}}
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Регистр накопления"
+    }
+   ]
+  },
+  "name": "РегистрНакопления1",
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1",
+     "type": "ACCUMULATION_REGISTER",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Активность",
+     "nameEn": "Active"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Активность",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Active"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": []
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ВидДвижения",
+     "nameEn": "RecordType"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.ВидДвижения",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.RecordType"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "НомерСтроки",
+     "nameEn": "LineNumber"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 5,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.НомерСтроки",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.LineNumber"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Период",
+     "nameEn": "Period"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 2
+      }
+     ]
+    },
+    "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Период",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Period"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Регистратор",
+     "nameEn": "Recorder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "8ea07f36-d671-4649-bc7a-94daa939e77f",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.СтандартныйРеквизит.Регистратор",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.StandardAttribute.Recorder"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "comment": "",
+  "objectBelonging": "OWN",
+  "commands": [],
+  "forms": [],
+  "dimensions": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "useInTotals": true,
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 10,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "461cae93-fe90-4bbb-8f79-0963e2d39ec5",
+    "mdoReference": {
+     "mdoRefRu": "РегистрНакопления.РегистрНакопления1.Измерение.Измерение1",
+     "type": "DIMENSION",
+     "mdoRef": "AccumulationRegister.РегистрНакопления1.Dimension.Измерение1"
+    },
+    "supportVariant": "NONE",
+    "master": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccumulationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "name": "Измерение1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "denyIncompleteValues": false
+   }
+  ]
+ }
+}

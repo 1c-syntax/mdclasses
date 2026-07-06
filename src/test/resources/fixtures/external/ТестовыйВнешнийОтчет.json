@@ -1,223 +1,465 @@
-{"com.github._1c_syntax.bsl.mdclasses.ExternalReport": {
-  "attributes": [
-    {
-      "uuid": "1b1c36ee-1c6e-4246-9581-a23287e05204",
-      "name": "РевзитОтчета",
-      "mdoReference": {
-        "type": "ATTRIBUTE",
-        "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Attribute.РевзитОтчета",
-        "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Реквизит.РевзитОтчета"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          {
-            "default": {
-              "tag": 2
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-              "langKey": "ru",
-              "value": "Ревзит отчета"
-            }
-          }
-        ]
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "EXTERNAL_REPORT",
-        "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет",
-        "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет"
-      },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-              "length": 10,
-              "allowedLength": 0
-            }
-          }
-        ]
-      },
-      "format": {
-        "content": []
-      },
-      "editFormat": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-      },
-      "markNegatives": false,
-      "mask": "",
-      "multiLine": false,
-      "extendedEdit": false,
-      "fillFromFillingValue": false
-    }
-  ],
-  "auxiliaryForm": {
-    "type": "FORM",
-    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаОтчета1",
-    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаОтчета1"
-  },
-  "auxiliarySettingsForm": {
-    "type": "FORM",
-    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаНастроек1",
-    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаНастроек1"
-  },
-  "auxiliaryVariantForm": {
-    "type": "UNKNOWN",
-    "mdoRef": "",
-    "mdoRefRu": ""
-  },
-  "commands": [],
-  "comment": "",
-  "configurationSource": "DESIGNER",
-  "defaultForm": {
-    "type": "FORM",
-    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаОтчета",
-    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаОтчета"
-  },
-  "defaultSettingsForm": {
-    "type": "FORM",
-    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаНастроек",
-    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаНастроек"
-  },
-  "defaultVariantForm": {
-    "type": "FORM",
-    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаВарианта",
-    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаВарианта"
-  },
-  "description": "Тестовый внешний отчет",
-  "forms": [
-    [
-      5
-    ],
-    []
-  ],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-  },
+{
+ "com.github._1c_syntax.bsl.mdclasses.ExternalReport": {
   "mdoType": "EXTERNAL_REPORT",
-  "moduleTypes": [
-    [
-      "ObjectModule",
-      [
-        1
-      ]
-    ]
-  ],
-  "modules": [
-    1
-  ],
-  "name": "ТестовыйВнешнийОтчет",
-  "objectBelonging": "OWN",
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Тестовый внешний отчет"
-        }
-      }
-    ]
-  },
-  "tabularSections": [
-    {
-      "uuid": "0bdfbd01-b2c1-4ea9-93e2-77b585cb10bb",
-      "name": "ТабличнаяЧасть",
-      "mdoReference": {
-        "type": "TABULAR_SECTION",
-        "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.TabularSection.ТабличнаяЧасть",
-        "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.ТабличнаяЧасть.ТабличнаяЧасть"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          {
-            "default": {
-              "tag": 2
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-              "langKey": "ru",
-              "value": "Табличная часть"
-            }
-          }
-        ]
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "attributes": [
-        [
-          2
-        ],
-        []
-      ]
-    }
+  "defaultFormMap": [
+   "AUX_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/auxiliaryForm"
+   },
+   "AUX_SETTINGS_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/auxiliarySettingsForm"
+   },
+   "AUX_VARIANT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/auxiliaryVariantForm"
+   },
+   "DEFAULT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultForm"
+   },
+   "SETTINGS_FORM",
+   {
+    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаНастроек",
+    "type": "FORM",
+    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаНастроек"
+   },
+   "VARIANT_FORM",
+   {
+    "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаВарианта",
+    "type": "FORM",
+    "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаВарианта"
+   }
   ],
   "templates": [
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Основная схема компоновки данных"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 20,
+        "column": 10,
+        "textQuery": "Выбрать 1 КАК Значение"
+       },
+       "name": "НаборДанных1",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Значение",
+         "dataPath": "Значение"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      }
+     ],
+     "dataPath": "src\/test\/resources\/external\/src\/erf\/Тестовы_Внешни_Отчет\/Templates\/ОсновнаяСхемаКомпоновкиДанных\/Template.xml"
+    },
+    "name": "ОсновнаяСхемаКомпоновкиДанных",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "253891b9-85eb-4e50-ad33-592e87500b31",
+    "mdoReference": {
+     "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Макет.ОсновнаяСхемаКомпоновкиДанных",
+     "type": "TEMPLATE",
+     "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Template.ОсновнаяСхемаКомпоновкиДанных"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "description": "Тестовый внешний отчет",
+  "defaultForm": {
+   "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаОтчета",
+   "type": "FORM",
+   "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаОтчета"
+  },
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+  },
+  "uuid": "0e130a7c-7f6b-41c4-94bc-ad4473b89915",
+  "defaultSettingsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[5]"
+  },
+  "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "uri": "src\/test\/resources\/external\/src\/erf\/Тестовы_Внешни_Отчет\/ObjectModule.bsl",
+    "supportVariant": "NONE"
+   }
+  ],
+  "supportVariant": "NONE",
+  "auxiliaryVariantForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
     {
-      "uuid": "253891b9-85eb-4e50-ad33-592e87500b31",
-      "name": "ОсновнаяСхемаКомпоновкиДанных",
-      "mdoReference": {
-        "type": "TEMPLATE",
-        "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Template.ОсновнаяСхемаКомпоновкиДанных",
-        "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Макет.ОсновнаяСхемаКомпоновкиДанных"
+     "langKey": "ru",
+     "value": "Тестовый внешний отчет"
+    }
+   ]
+  },
+  "auxiliaryForm": {
+   "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаОтчета1",
+   "type": "FORM",
+   "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаОтчета1"
+  },
+  "name": "ТестовыйВнешнийОтчет",
+  "tabularSections": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Табличная часть"
+      }
+     ]
+    },
+    "name": "ТабличнаяЧасть",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "attributes": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          {
-            "default": {
-              "tag": 2
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-              "langKey": "ru",
-              "value": "Основная схема компоновки данных"
-            }
-          }
-        ]
+      "indexing": "DONT_INDEX",
+      "kind": "CUSTOM",
+      "multiLine": false,
+      "format": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+      },
+      "editFormat": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+      },
+      "type": {
+       "types": [
+        {
+         "kind": "CATALOG",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "СправочникСсылка.Валюты",
+          "nameEn": "CatalogRef.Валюты"
+         }
+        }
+       ],
+       "composite": false,
+       "qualifiers": []
+      },
+      "uuid": "397c0640-f782-4090-a3d6-5715a8ecf85c",
+      "mdoReference": {
+       "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.ТабличнаяЧасть.ТабличнаяЧасть.Реквизит.РеквизитТЧ",
+       "type": "ATTRIBUTE",
+       "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.TabularSection.ТабличнаяЧасть.Attribute.РеквизитТЧ"
       },
       "supportVariant": "NONE",
-      "modules": [],
-      "templateType": "DATA_COMPOSITION_SCHEME",
-      "data": {
-        "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
-        "dataSets": [
-          1
-        ],
-        "dataPath": "src/test/resources/ext/designer/external/src/erf/ТестовыйВнешнийОтчет/Templates/ОсновнаяСхемаКомпоновкиДанных/Ext/Template.xml"
+      "fillFromFillingValue": false,
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Реквизит ТЧ"
+        }
+       ]
       },
+      "passwordMode": false,
+      "name": "РеквизитТЧ",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "markNegatives": false,
+      "extendedEdit": false,
+      "mask": ""
+     },
+     {
       "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ExternalReport/attributes/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
+      },
+      "kind": "STANDARD",
+      "multiLine": false,
+      "format": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+      },
+      "fullName": {
+       "nameRu": "НомерСтроки",
+       "nameEn": "LineNumber"
+      },
+      "editFormat": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+      },
+      "type": {
+       "types": [
+        "NUMBER"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "precision": 5,
+         "nonNegative": false,
+         "scale": 0
+        }
+       ]
+      },
+      "uuid": "0bdfbd01-b2c1-4ea9-93e2-77b585cb10bb",
+      "mdoReference": {
+       "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.ТабличнаяЧасть.ТабличнаяЧасть.СтандартныйРеквизит.НомерСтроки",
+       "type": "STANDARD_ATTRIBUTE",
+       "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.TabularSection.ТабличнаяЧасть.StandardAttribute.LineNumber"
+      },
+      "supportVariant": "NONE",
+      "fillFromFillingValue": false,
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+      },
+      "passwordMode": false,
+      "comment": "",
+      "markNegatives": false,
+      "extendedEdit": false,
+      "mask": ""
+     }
+    ],
+    "uuid": "0bdfbd01-b2c1-4ea9-93e2-77b585cb10bb",
+    "mdoReference": {
+     "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.ТабличнаяЧасть.ТабличнаяЧасть",
+     "type": "TABULAR_SECTION",
+     "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.TabularSection.ТабличнаяЧасть"
+    },
+    "supportVariant": "NONE"
+   }
   ],
-  "uuid": "0e130a7c-7f6b-41c4-94bc-ad4473b89915"
-}}
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет",
+     "type": "EXTERNAL_REPORT",
+     "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет"
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "content": []
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 10,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "1b1c36ee-1c6e-4246-9581-a23287e05204",
+    "mdoReference": {
+     "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Реквизит.РевзитОтчета",
+     "type": "ATTRIBUTE",
+     "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Attribute.РевзитОтчета"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ревзит отчета"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "РевзитОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "comment": "",
+  "objectBelonging": "OWN",
+  "auxiliarySettingsForm": {
+   "mdoRefRu": "ВнешнийОтчет.ТестовыйВнешнийОтчет.Форма.ФормаНастроек1",
+   "type": "FORM",
+   "mdoRef": "ExternalReport.ТестовыйВнешнийОтчет.Form.ФормаНастроек1"
+  },
+  "commands": [],
+  "forms": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма варианта"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаВарианта",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "a1c674e3-79da-4ea4-8776-9860a0d1f750",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[6]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[6]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/external\/src\/erf\/Тестовы_Внешни_Отчет\/Forms\/ФормаВарианта\/Module.bsl",
+      "supportVariant": "NONE"
+     }
+    ],
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма отчета1"
+      }
+     ]
+    },
+    "formType": "ORDINARY",
+    "name": "ФормаОтчета1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "dc33f796-9b0e-4427-815a-109dabef1676",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/auxiliaryForm"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [],
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма настроек1"
+      }
+     ]
+    },
+    "formType": "ORDINARY",
+    "name": "ФормаНастроек1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "edb26f13-74f6-4ed6-a8ec-57258c22f67e",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/auxiliarySettingsForm"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [],
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f5ed602b-2889-4013-8dbe-9d070a1bc057",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultForm"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [],
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма настроек"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаНастроек",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "fdd75054-3fe2-482c-840f-9548b4564ffd",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[5]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [],
+    "supportVariant": "NONE"
+   }
+  ],
+  "defaultVariantForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ExternalReport\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[6]"
+  }
+ }
+}
