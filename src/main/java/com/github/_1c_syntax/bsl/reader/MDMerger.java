@@ -24,23 +24,46 @@ package com.github._1c_syntax.bsl.reader;
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
+import com.github._1c_syntax.bsl.mdclasses.ObjectProvenance;
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.CalculationRegister;
+import com.github._1c_syntax.bsl.mdo.ChartOfAccounts;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Command;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
+import com.github._1c_syntax.bsl.mdo.Enum;
+import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
+import com.github._1c_syntax.bsl.mdo.ReferenceObject;
+import com.github._1c_syntax.bsl.mdo.Register;
+import com.github._1c_syntax.bsl.mdo.TabularSection;
+import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
+import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.children.EnumValue;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.experimental.UtilityClass;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -59,7 +82,6 @@ public class MDMerger {
    */
   public static Configuration merge(Configuration cf, ConfigurationExtension extension) {
     var builder = cf.toBuilder();
-    // todo подумать о том, как контролировать, что все свойства копируются
     if (cf.isEmpty()) { // скопируем из первого расширения
       builder.configurationSource(extension.getConfigurationSource())
         .name("solution")
@@ -129,6 +151,27 @@ public class MDMerger {
 
       .clearChildren().children(Collections.unmodifiableList(newChildren))
       .build();
+  }
+
+  /**
+   * Последовательное слияние базовой конфигурации со списком расширений.
+   * Каждое следующее расширение применяется к результату предыдущего.
+   *
+   * @param base       Базовая конфигурация
+   * @param extensions Список расширений (в порядке применения)
+   * @return MergeResult с конфигурацией и происхождениями
+   */
+  public static MergeResult mergeAll(Configuration base, List<ConfigurationExtension> extensions) {
+    var provenance = new HashMap<MdoReference, ObjectProvenance>();
+    initProvenance(base, base.getMdoReference(), provenance);
+
+    var result = base;
+    for (var ext : extensions) {
+      initProvenance(ext, ext.getMdoReference(), provenance);
+      result = merge(result, ext);
+    }
+
+    return new MergeResult(result, Collections.unmodifiableMap(provenance));
   }
 
   /**
@@ -253,8 +296,6 @@ public class MDMerger {
 
   @SuppressWarnings("unchecked")
   private static <T extends MD> T copyChildrenOwner(T srcMD, T modMD) {
-    // todo доделать копирование атрибутов и других дочерних
-
     var result = srcMD;
     if (result instanceof ChildrenOwner childrenOwner) {
       Object builder = null;
@@ -265,6 +306,16 @@ public class MDMerger {
             child -> !(child instanceof Form)
               && !(child instanceof Template)
               && !(child instanceof Command)
+              && !(child instanceof Attribute)
+              && !(child instanceof TabularSection)
+              && !(child instanceof PredefinedValue)
+              && !(child instanceof EnumValue)
+              && !(child instanceof Recalculation)
+              && !(child instanceof TaskAddressingAttribute)
+              && !(child instanceof ExternalDataSourceTable)
+              && !(child instanceof ExternalDataSourceCube)
+              && !(child instanceof ExternalDataSourceFunction)
+              && !(child instanceof ExternalDataSourceCubeDimensionTable)
           ).toList()
       );
 
@@ -278,6 +329,82 @@ public class MDMerger {
 
       if (srcMD instanceof CommandOwner commandOwner) {
         builder = copyCommandOwner(commandOwner, (CommandOwner) modMD, builder, newChildren);
+      }
+
+      // ReferenceObject - attributes (Catalog, Document, ChartOfAccounts, Task, etc.)
+      if (srcMD instanceof ReferenceObject referenceObject) {
+        builder = copyChildrenList(referenceObject, (ReferenceObject) modMD, builder,
+          ReferenceObject::getAttributes, "attributes", newChildren);
+      }
+
+      // TabularSectionOwner - tabular sections
+      if (srcMD instanceof TabularSectionOwner tabularSectionOwner) {
+        builder = copyChildrenList(tabularSectionOwner, (TabularSectionOwner) modMD, builder,
+          TabularSectionOwner::getTabularSections, "tabularSections", newChildren);
+      }
+
+      // PredefinedDataOwner - predefined values
+      if (srcMD instanceof PredefinedDataOwner predefinedDataOwner) {
+        builder = copyChildrenList(predefinedDataOwner, (PredefinedDataOwner) modMD, builder,
+          PredefinedDataOwner::getPredefinedValues, "predefinedValues", newChildren);
+      }
+
+      // Register - attributes, resources, dimensions
+      if (srcMD instanceof Register register) {
+        builder = copyChildrenList(register, (Register) modMD, builder,
+          Register::getAttributes, "attributes", newChildren);
+        builder = copyChildrenList(register, (Register) modMD, builder,
+          Register::getResources, "resources", newChildren);
+        builder = copyChildrenList(register, (Register) modMD, builder,
+          Register::getDimensions, "dimensions", newChildren);
+      }
+
+      // Enum - attributes, enumValues
+      if (srcMD instanceof Enum anEnum) {
+        builder = copyChildrenList(anEnum, (Enum) modMD, builder,
+          Enum::getAttributes, "attributes", newChildren);
+        builder = copyChildrenList(anEnum, (Enum) modMD, builder,
+          Enum::getEnumValues, "enumValues", newChildren);
+      }
+
+      // Task - addressing attributes
+      if (srcMD instanceof Task task) {
+        builder = copyChildrenList(task, (Task) modMD, builder,
+          Task::getAddressingAttributes, "addressingAttributes", newChildren);
+      }
+
+      // CalculationRegister - recalculations
+      if (srcMD instanceof CalculationRegister calculationRegister) {
+        builder = copyChildrenList(calculationRegister, (CalculationRegister) modMD, builder,
+          CalculationRegister::getRecalculations, "recalculations", newChildren);
+      }
+
+      // ExternalDataSource - tables, cubes, functions
+      if (srcMD instanceof ExternalDataSource externalDataSource) {
+        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+          ExternalDataSource::getTables, "tables", newChildren);
+        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+          ExternalDataSource::getCubes, "cubes", newChildren);
+        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+          ExternalDataSource::getFunctions, "functions", newChildren);
+      }
+
+      // ExternalDataSourceCube - dimensionTables, dimensions, resources
+      if (srcMD instanceof ExternalDataSourceCube externalDataSourceCube) {
+        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+          ExternalDataSourceCube::getDimensionTables, "dimensionTables", newChildren);
+        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+          ExternalDataSourceCube::getDimensions, "dimensions", newChildren);
+        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+          ExternalDataSourceCube::getResources, "resources", newChildren);
+      }
+
+      // ChartOfAccounts - accountingFlags, extDimensionAccountingFlags
+      if (srcMD instanceof ChartOfAccounts chartOfAccounts) {
+        builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
+          ChartOfAccounts::getAccountingFlags, "accountingFlags", newChildren);
+        builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
+          ChartOfAccounts::getExtDimensionAccountingFlags, "extDimensionAccountingFlags", newChildren);
       }
 
       if (builder != null) {
@@ -332,9 +459,27 @@ public class MDMerger {
 
   @Nullable
   private static Object copyCommandOwner(CommandOwner srcMD,
-                                         CommandOwner modMD,
-                                         @Nullable Object builder,
-                                         ArrayList<MD> newChildren) {
+                                          CommandOwner modMD,
+                                          @Nullable Object builder,
+                                          ArrayList<MD> newChildren) {
     return copyChildrenList(srcMD, modMD, builder, CommandOwner::getCommands, "Commands", newChildren);
   }
+
+  private static void initProvenance(CF cf, MdoReference ownerRef,
+                                      Map<MdoReference, ObjectProvenance> provenance) {
+    cf.getChildrenByMdoRef().forEach((MdoReference ref, MD md) -> {
+      if (!provenance.containsKey(ref)) {
+        provenance.put(ref, ObjectProvenance.builder()
+          .ownerRef(ownerRef)
+          .objectBelonging(md.getObjectBelonging())
+          .build());
+      }
+    });
+  }
+
+  /**
+   * Результат слияния: конфигурация и происхождения объектов.
+   */
+  public record MergeResult(Configuration configuration, Map<MdoReference, ObjectProvenance> provenance) {}
+
 }

@@ -178,13 +178,6 @@ public interface MDReader {
   String subsystemsNodeName();
 
   /**
-   * Возвращает строку-фильтр для различия расширения и конфигурации
-   *
-   * @return Строка-фильтр
-   */
-  String configurationExtensionFilter();
-
-  /**
    * Выполняет чтение объекта из файла
    *
    * @param reader        - Читатель Xstream

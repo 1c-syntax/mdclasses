@@ -232,11 +232,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  public String configurationExtensionFilter() {
-    return "(<ObjectBelonging>)";
-  }
-
-  @Override
   public void unmarshal(HierarchicalStreamReader reader,
                         UnmarshallingContext context,
                         AbstractReaderContext readerContext) {

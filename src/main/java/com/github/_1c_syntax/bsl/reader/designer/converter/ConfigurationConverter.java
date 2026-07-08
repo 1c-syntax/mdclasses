@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.common.converter;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
@@ -29,29 +29,22 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.SneakyThrows;
 
-import java.io.FileInputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Files;
 
 /**
- * Обобщенный конвертер для контейнеров конфигурации и расширения
+ * Конвертер для конфигурации/расширения в формате Конфигуратора (Designer).
+ * Определяет тип по наличию строки {@code ConfigurationExtensionPurpose} в файле
  */
-@CommonConverter
+@DesignerConverter
 public class ConfigurationConverter implements ReadConverter {
 
-  @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    int count;
-    var fileInputStream = new FileInputStream(ExtendXStream.getCurrentPath(reader).toFile());
-    try (var scanner = new Scanner(fileInputStream, StandardCharsets.UTF_8)) {
-      count = (int) scanner.findAll(ExtendXStream.getCurrentMDReader(reader).configurationExtensionFilter()).count();
-    }
-
     Class<?> realClass = Configuration.class;
-    if (count > 0) {
+
+    if (hasExtensionMarker(reader)) {
       realClass = ConfigurationExtension.class;
     }
 
@@ -63,5 +56,16 @@ public class ConfigurationConverter implements ReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return ConfigurationTree.class.isAssignableFrom(type);
+  }
+
+  /**
+   * Проверяет наличие строки ConfigurationExtensionPurpose в файле
+   */
+  private static boolean hasExtensionMarker(HierarchicalStreamReader reader) {
+    try (var lines = Files.lines(ExtendXStream.getCurrentPath(reader))) {
+      return lines.anyMatch(line -> line.contains("ConfigurationExtensionPurpose"));
+    } catch (IOException e) {
+      return false;
+    }
   }
 }
