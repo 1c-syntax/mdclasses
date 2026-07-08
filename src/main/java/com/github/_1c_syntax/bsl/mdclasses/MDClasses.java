@@ -140,40 +140,39 @@ public class MDClasses {
   public Solution createSolution(Path sourcePath, MDCReadSettings readSettings) {
     var mdcs = createConfigurations(sourcePath, readSettings);
 
-    if (mdcs.isEmpty()) {
-      return Solution.EMPTY;
-    }
+    if (!mdcs.isEmpty()) {
+      if (mdcs.size() == 1) {
+        var mdc = mdcs.getFirst();
+        if (mdc instanceof Configuration cf) {
+          return buildSolution(cf, Collections.emptyList());
+        }
+        if (mdc instanceof ConfigurationExtension ext) {
+          return buildSolution(Configuration.EMPTY, List.of(ext));
+        }
 
-    if (mdcs.size() == 1) {
-      var mdc = mdcs.getFirst();
-      if (mdc instanceof Configuration cf) {
-        return buildSolution(cf, Collections.emptyList());
+        // заглушка, если получилось что-то странное
+        return Solution.EMPTY;
       }
-      if (mdc instanceof ConfigurationExtension ext) {
-        return buildSolution(Configuration.EMPTY, List.of(ext));
+
+      // решение содержит несколько компонент, разделяем
+      var base = mdcs.stream()
+        .filter(Configuration.class::isInstance)
+        .map(Configuration.class::cast)
+        .findFirst()
+        .orElse(Configuration.EMPTY);
+
+      var extensions = mdcs.stream()
+        .filter(ConfigurationExtension.class::isInstance)
+        .map(ConfigurationExtension.class::cast)
+        .toList();
+
+      // что-то странное прочли
+      if (!base.isEmpty() || !extensions.isEmpty()) {
+        return buildSolution(base, extensions);
       }
-
-      // заглушка, если получилось что-то странное
-      return Solution.EMPTY;
     }
 
-    // решение содержит несколько компонент, разделяем
-    var base = mdcs.stream()
-      .filter(Configuration.class::isInstance)
-      .map(Configuration.class::cast)
-      .findFirst()
-      .orElse(Configuration.EMPTY);
-
-    var extensions = mdcs.stream()
-      .filter(ConfigurationExtension.class::isInstance)
-      .map(ConfigurationExtension.class::cast)
-      .toList();
-
-    // что-то странное прочли
-    if (base.isEmpty() && extensions.isEmpty()) {
-      return Solution.EMPTY;
-    }
-    return buildSolution(base, extensions);
+    return Solution.EMPTY;
   }
 
   /**
@@ -253,29 +252,7 @@ public class MDClasses {
 
         @Override
         public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
-          if (!attrs.isRegularFile()) {
-            return FileVisitResult.CONTINUE;
-          }
-
-          var parentName = path.getParent().getFileName().toString();
-          var parentParentName = "";
-          if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
-            parentParentName = path.getParent().getParent().getFileName().toString();
-          }
-
-          if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
-            return FileVisitResult.CONTINUE;
-          }
-          var fileName = path.getFileName().toString();
-          var ext = FilenameUtils.getExtension(fileName);
-          if (!("xml".equals(ext) || "mdo".equals(ext))) {
-            return FileVisitResult.CONTINUE;
-          }
-
-          if (pattern.matcher(fileName).matches()) {
-            listPath.add(path);
-          }
-          return FileVisitResult.CONTINUE;
+          return handleFile(path, attrs, excludeFolders, pattern, listPath);
         }
       });
     } catch (IOException e) {
@@ -283,6 +260,34 @@ public class MDClasses {
     }
 
     return listPath;
+  }
+
+  private static FileVisitResult handleFile(Path path, BasicFileAttributes attrs,
+                                             Set<String> excludeFolders, Pattern pattern,
+                                             List<Path> listPath) {
+    if (!attrs.isRegularFile()) {
+      return FileVisitResult.CONTINUE;
+    }
+
+    var parentName = path.getParent().getFileName().toString();
+    var parentParentName = "";
+    if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
+      parentParentName = path.getParent().getParent().getFileName().toString();
+    }
+
+    if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
+      return FileVisitResult.CONTINUE;
+    }
+    var fileName = path.getFileName().toString();
+    var ext = FilenameUtils.getExtension(fileName);
+    if (!("xml".equals(ext) || "mdo".equals(ext))) {
+      return FileVisitResult.CONTINUE;
+    }
+
+    if (pattern.matcher(fileName).matches()) {
+      listPath.add(path);
+    }
+    return FileVisitResult.CONTINUE;
   }
 
   private Set<String> mdoTypeGroupNames() {

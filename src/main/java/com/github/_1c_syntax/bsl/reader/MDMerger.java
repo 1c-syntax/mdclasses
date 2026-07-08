@@ -140,11 +140,20 @@ public class MDMerger {
       .clearChartsOfCharacteristicTypes()
       .chartsOfCharacteristicTypes(mergeMD(cf, extension, CF::getChartsOfCharacteristicTypes, newChildren))
       .clearChartsOfAccounts().chartsOfAccounts(mergeMD(cf, extension, CF::getChartsOfAccounts, newChildren))
-      .clearChartsOfCalculationTypes().chartsOfCalculationTypes(mergeMD(cf, extension, CF::getChartsOfCalculationTypes, newChildren))
-      .clearInformationRegisters().informationRegisters(mergeMD(cf, extension, CF::getInformationRegisters, newChildren))
-      .clearAccumulationRegisters().accumulationRegisters(mergeMD(cf, extension, CF::getAccumulationRegisters, newChildren))
+
+      .clearChartsOfCalculationTypes()
+      .chartsOfCalculationTypes(mergeMD(cf, extension, CF::getChartsOfCalculationTypes, newChildren))
+
+      .clearInformationRegisters()
+      .informationRegisters(mergeMD(cf, extension, CF::getInformationRegisters, newChildren))
+      .clearAccumulationRegisters()
+
+      .accumulationRegisters(mergeMD(cf, extension, CF::getAccumulationRegisters, newChildren))
       .clearAccountingRegisters().accountingRegisters(mergeMD(cf, extension, CF::getAccountingRegisters, newChildren))
-      .clearCalculationRegisters().calculationRegisters(mergeMD(cf, extension, CF::getCalculationRegisters, newChildren))
+
+      .clearCalculationRegisters()
+      .calculationRegisters(mergeMD(cf, extension, CF::getCalculationRegisters, newChildren))
+
       .clearBusinessProcesses().businessProcesses(mergeMD(cf, extension, CF::getBusinessProcesses, newChildren))
       .clearTasks().tasks(mergeMD(cf, extension, CF::getTasks, newChildren))
       .clearExternalDataSources().externalDataSources(mergeMD(cf, extension, CF::getExternalDataSources, newChildren))
@@ -298,114 +307,13 @@ public class MDMerger {
   private static <T extends MD> T copyChildrenOwner(T srcMD, T modMD) {
     var result = srcMD;
     if (result instanceof ChildrenOwner childrenOwner) {
-      Object builder = null;
-
       var newChildren = new ArrayList<>(
         childrenOwner.getChildren().stream()
-          .filter(
-            child -> !(child instanceof Form)
-              && !(child instanceof Template)
-              && !(child instanceof Command)
-              && !(child instanceof Attribute)
-              && !(child instanceof TabularSection)
-              && !(child instanceof PredefinedValue)
-              && !(child instanceof EnumValue)
-              && !(child instanceof Recalculation)
-              && !(child instanceof TaskAddressingAttribute)
-              && !(child instanceof ExternalDataSourceTable)
-              && !(child instanceof ExternalDataSourceCube)
-              && !(child instanceof ExternalDataSourceFunction)
-              && !(child instanceof ExternalDataSourceCubeDimensionTable)
-          ).toList()
+          .filter(child -> !isSpecialChild(child))
+          .toList()
       );
 
-      if (srcMD instanceof FormOwner formOwner) {
-        builder = copyFormOwner(formOwner, (FormOwner) modMD, builder, newChildren);
-      }
-
-      if (srcMD instanceof TemplateOwner templateOwner) {
-        builder = copyTemplateOwner(templateOwner, (TemplateOwner) modMD, builder, newChildren);
-      }
-
-      if (srcMD instanceof CommandOwner commandOwner) {
-        builder = copyCommandOwner(commandOwner, (CommandOwner) modMD, builder, newChildren);
-      }
-
-      // ReferenceObject - attributes (Catalog, Document, ChartOfAccounts, Task, etc.)
-      if (srcMD instanceof ReferenceObject referenceObject) {
-        builder = copyChildrenList(referenceObject, (ReferenceObject) modMD, builder,
-          ReferenceObject::getAttributes, "attributes", newChildren);
-      }
-
-      // TabularSectionOwner - tabular sections
-      if (srcMD instanceof TabularSectionOwner tabularSectionOwner) {
-        builder = copyChildrenList(tabularSectionOwner, (TabularSectionOwner) modMD, builder,
-          TabularSectionOwner::getTabularSections, "tabularSections", newChildren);
-      }
-
-      // PredefinedDataOwner - predefined values
-      if (srcMD instanceof PredefinedDataOwner predefinedDataOwner) {
-        builder = copyChildrenList(predefinedDataOwner, (PredefinedDataOwner) modMD, builder,
-          PredefinedDataOwner::getPredefinedValues, "predefinedValues", newChildren);
-      }
-
-      // Register - attributes, resources, dimensions
-      if (srcMD instanceof Register register) {
-        builder = copyChildrenList(register, (Register) modMD, builder,
-          Register::getAttributes, "attributes", newChildren);
-        builder = copyChildrenList(register, (Register) modMD, builder,
-          Register::getResources, "resources", newChildren);
-        builder = copyChildrenList(register, (Register) modMD, builder,
-          Register::getDimensions, "dimensions", newChildren);
-      }
-
-      // Enum - attributes, enumValues
-      if (srcMD instanceof Enum anEnum) {
-        builder = copyChildrenList(anEnum, (Enum) modMD, builder,
-          Enum::getAttributes, "attributes", newChildren);
-        builder = copyChildrenList(anEnum, (Enum) modMD, builder,
-          Enum::getEnumValues, "enumValues", newChildren);
-      }
-
-      // Task - addressing attributes
-      if (srcMD instanceof Task task) {
-        builder = copyChildrenList(task, (Task) modMD, builder,
-          Task::getAddressingAttributes, "addressingAttributes", newChildren);
-      }
-
-      // CalculationRegister - recalculations
-      if (srcMD instanceof CalculationRegister calculationRegister) {
-        builder = copyChildrenList(calculationRegister, (CalculationRegister) modMD, builder,
-          CalculationRegister::getRecalculations, "recalculations", newChildren);
-      }
-
-      // ExternalDataSource - tables, cubes, functions
-      if (srcMD instanceof ExternalDataSource externalDataSource) {
-        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
-          ExternalDataSource::getTables, "tables", newChildren);
-        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
-          ExternalDataSource::getCubes, "cubes", newChildren);
-        builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
-          ExternalDataSource::getFunctions, "functions", newChildren);
-      }
-
-      // ExternalDataSourceCube - dimensionTables, dimensions, resources
-      if (srcMD instanceof ExternalDataSourceCube externalDataSourceCube) {
-        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
-          ExternalDataSourceCube::getDimensionTables, "dimensionTables", newChildren);
-        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
-          ExternalDataSourceCube::getDimensions, "dimensions", newChildren);
-        builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
-          ExternalDataSourceCube::getResources, "resources", newChildren);
-      }
-
-      // ChartOfAccounts - accountingFlags, extDimensionAccountingFlags
-      if (srcMD instanceof ChartOfAccounts chartOfAccounts) {
-        builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
-          ChartOfAccounts::getAccountingFlags, "accountingFlags", newChildren);
-        builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
-          ChartOfAccounts::getExtDimensionAccountingFlags, "extDimensionAccountingFlags", newChildren);
-      }
+      var builder = copyChildrenByType(srcMD, modMD, null, newChildren);
 
       if (builder != null) {
         TransformationUtils.invoke(builder, "clearChildren");
@@ -416,6 +324,98 @@ public class MDMerger {
       }
     }
     return result;
+  }
+
+  /**
+   * Проверяет, является ли дочерний объект «специальным» (обрабатывается отдельно,
+   * а не через общий список children).
+   */
+  private static boolean isSpecialChild(MD child) {
+    return child instanceof Form
+      || child instanceof Template
+      || child instanceof Command
+      || child instanceof Attribute
+      || child instanceof TabularSection
+      || child instanceof PredefinedValue
+      || child instanceof EnumValue
+      || child instanceof Recalculation
+      || child instanceof TaskAddressingAttribute
+      || child instanceof ExternalDataSourceTable
+      || child instanceof ExternalDataSourceCube
+      || child instanceof ExternalDataSourceFunction
+      || child instanceof ExternalDataSourceCubeDimensionTable;
+  }
+
+  @Nullable
+  private static <T extends MD> Object copyChildrenByType(T srcMD, T modMD,
+                                                           @Nullable Object builder,
+                                                           ArrayList<MD> newChildren) {
+    if (srcMD instanceof FormOwner formOwner) {
+      builder = copyFormOwner(formOwner, (FormOwner) modMD, builder, newChildren);
+    }
+    if (srcMD instanceof TemplateOwner templateOwner) {
+      builder = copyTemplateOwner(templateOwner, (TemplateOwner) modMD, builder, newChildren);
+    }
+    if (srcMD instanceof CommandOwner commandOwner) {
+      builder = copyCommandOwner(commandOwner, (CommandOwner) modMD, builder, newChildren);
+    }
+    if (srcMD instanceof ReferenceObject referenceObject) {
+      builder = copyChildrenList(referenceObject, (ReferenceObject) modMD, builder,
+        ReferenceObject::getAttributes, "attributes", newChildren);
+    }
+    if (srcMD instanceof TabularSectionOwner tabularSectionOwner) {
+      builder = copyChildrenList(tabularSectionOwner, (TabularSectionOwner) modMD, builder,
+        TabularSectionOwner::getTabularSections, "tabularSections", newChildren);
+    }
+    if (srcMD instanceof PredefinedDataOwner predefinedDataOwner) {
+      builder = copyChildrenList(predefinedDataOwner, (PredefinedDataOwner) modMD, builder,
+        PredefinedDataOwner::getPredefinedValues, "predefinedValues", newChildren);
+    }
+    if (srcMD instanceof Register register) {
+      builder = copyChildrenList(register, (Register) modMD, builder,
+        Register::getAttributes, "attributes", newChildren);
+      builder = copyChildrenList(register, (Register) modMD, builder,
+        Register::getResources, "resources", newChildren);
+      builder = copyChildrenList(register, (Register) modMD, builder,
+        Register::getDimensions, "dimensions", newChildren);
+    }
+    if (srcMD instanceof Enum anEnum) {
+      builder = copyChildrenList(anEnum, (Enum) modMD, builder,
+        Enum::getAttributes, "attributes", newChildren);
+      builder = copyChildrenList(anEnum, (Enum) modMD, builder,
+        Enum::getEnumValues, "enumValues", newChildren);
+    }
+    if (srcMD instanceof Task task) {
+      builder = copyChildrenList(task, (Task) modMD, builder,
+        Task::getAddressingAttributes, "addressingAttributes", newChildren);
+    }
+    if (srcMD instanceof CalculationRegister calculationRegister) {
+      builder = copyChildrenList(calculationRegister, (CalculationRegister) modMD, builder,
+        CalculationRegister::getRecalculations, "recalculations", newChildren);
+    }
+    if (srcMD instanceof ExternalDataSource externalDataSource) {
+      builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+        ExternalDataSource::getTables, "tables", newChildren);
+      builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+        ExternalDataSource::getCubes, "cubes", newChildren);
+      builder = copyChildrenList(externalDataSource, (ExternalDataSource) modMD, builder,
+        ExternalDataSource::getFunctions, "functions", newChildren);
+    }
+    if (srcMD instanceof ExternalDataSourceCube externalDataSourceCube) {
+      builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+        ExternalDataSourceCube::getDimensionTables, "dimensionTables", newChildren);
+      builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+        ExternalDataSourceCube::getDimensions, "dimensions", newChildren);
+      builder = copyChildrenList(externalDataSourceCube, (ExternalDataSourceCube) modMD, builder,
+        ExternalDataSourceCube::getResources, "resources", newChildren);
+    }
+    if (srcMD instanceof ChartOfAccounts chartOfAccounts) {
+      builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
+        ChartOfAccounts::getAccountingFlags, "accountingFlags", newChildren);
+      builder = copyChildrenList(chartOfAccounts, (ChartOfAccounts) modMD, builder,
+        ChartOfAccounts::getExtDimensionAccountingFlags, "extDimensionAccountingFlags", newChildren);
+    }
+    return builder;
   }
 
   @Nullable

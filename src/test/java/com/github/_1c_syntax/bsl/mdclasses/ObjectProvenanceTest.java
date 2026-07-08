@@ -56,8 +56,7 @@ class ObjectProvenanceTest {
     var ref = MdoReference.create("Configuration.Obj");
     var a = ObjectProvenance.builder().ownerRef(ref).build();
     var b = ObjectProvenance.builder().ownerRef(ref).build();
-    assertThat(a).isEqualTo(b);
-    assertThat(a).hasSameHashCodeAs(b);
+    assertThat(a).isEqualTo(b).hasSameHashCodeAs(b);
   }
 
   @Test

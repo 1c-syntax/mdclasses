@@ -74,7 +74,7 @@ public class ConfigurationConverter implements ReadConverter {
     // Проверка через namespace (некоторые форматы EDT не выставляют xsi:type на корне)
     if (reader instanceof ExtendReaderWrapper wrapper) {
       var xmlReader = wrapper.getXMLStreamReader();
-      for (int i = 0; i < xmlReader.getNamespaceCount(); i++) {
+      for (var i = 0; i < xmlReader.getNamespaceCount(); i++) {
         if ("mdclassExtension".equals(xmlReader.getNamespacePrefix(i))) {
           return true;
         }

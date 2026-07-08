@@ -62,10 +62,10 @@ class MDMergerMergeTest {
     var extCfgs = MDClasses.createConfigurations(basePath(isEDT, extPack), settings);
 
     var base = (Configuration) baseCfgs.stream()
-      .filter(c -> c instanceof Configuration)
+      .filter(Configuration.class::isInstance)
       .findFirst().orElseThrow();
     var ext = (ConfigurationExtension) extCfgs.stream()
-      .filter(c -> c instanceof ConfigurationExtension)
+      .filter(ConfigurationExtension.class::isInstance)
       .findFirst().orElseThrow();
 
     var merged = MDMerger.merge(base, ext);
