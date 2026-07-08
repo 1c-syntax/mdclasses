@@ -48,7 +48,7 @@ public class Solution implements CF {
    * Пустое решение (нет объектов метаданных, нет расширений)
    */
   public static final Solution EMPTY = new Solution(
-    Configuration.EMPTY, Configuration.EMPTY, Collections.emptyList(), Map.of());
+    Configuration.EMPTY, Configuration.EMPTY, Collections.emptyList(), Collections.emptyMap());
 
   /**
    * Объединенная конфигурация — результат слияния основной конфигурации со всеми расширениями
@@ -72,7 +72,8 @@ public class Solution implements CF {
    * Хранит, какой конфигурации или расширению принадлежит объект и какими расширениями
    * был изменен.
    */
-  Map<MdoReference, ObjectProvenance> provenance;
+  @Builder.Default
+  Map<MdoReference, ObjectProvenance> provenance = Collections.emptyMap();
 
   /**
    * Возвращает принадлежность для заданной ссылки на объект метаданных.
@@ -110,13 +111,51 @@ public class Solution implements CF {
   @Nullable
   public MDClass getOwner(MdoReference mdoRef) {
     var ownerRef = getOwnerRef(mdoRef);
-    if (ownerRef.equals(baseConfiguration.getMdoReference())) {
+    return getOwnerByRef(ownerRef);
+  }
+
+  /**
+   * Возвращает конфигурацию или расширение ({@link CF}) по ссылке на неё.
+   * <p>
+   * Позволяет получить экземпляр {@link Configuration} или {@link ConfigurationExtension}
+   * из {@code ownerRef}, сохранённого в {@link ObjectProvenance#getOwnerRef()}.
+   *
+   * @param cfMdoRef ссылка на конфигурацию или расширение
+   * @return конфигурация или расширение, или {@code null}, если не найдено
+   */
+  @Nullable
+  public CF getOwnerByRef(MdoReference cfMdoRef) {
+    if (cfMdoRef.equals(baseConfiguration.getMdoReference())) {
       return baseConfiguration;
     }
     return extensions.stream()
-      .filter(ext -> ext.getMdoReference().equals(ownerRef))
+      .filter(ext -> ext.getMdoReference().equals(cfMdoRef))
       .findFirst()
       .orElse(null);
+  }
+
+  /**
+   * Проверяет, входит ли конфигурация или расширение в состав решения.
+   *
+   * @param cf конфигурация или расширение
+   * @return {@code true}, если {@code cf} является базовой конфигурацией
+   *         или одним из расширений
+   */
+  public boolean contains(CF cf) {
+    return cf == baseConfiguration
+      || (cf instanceof ConfigurationExtension ext && extensions.contains(ext));
+  }
+
+  /**
+   * Проверяет, входит ли конфигурация или расширение в состав решения
+   * по ссылке на неё.
+   *
+   * @param ref ссылка на конфигурацию или расширение
+   * @return {@code true}, если {@code ref} соответствует базовой конфигурации
+   *         или одному из расширений
+   */
+  public boolean contains(MdoReference ref) {
+    return getOwnerByRef(ref) != null;
   }
 
   /**

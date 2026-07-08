@@ -468,7 +468,17 @@ public class MDMerger {
   private static void initProvenance(CF cf, MdoReference ownerRef,
                                       Map<MdoReference, ObjectProvenance> provenance) {
     cf.getChildrenByMdoRef().forEach((MdoReference ref, MD md) -> {
-      if (!provenance.containsKey(ref)) {
+      var existing = provenance.get(ref);
+      if (existing != null) {
+        // Объект уже есть от базы (или предыдущего расширения) —
+        // текущий cf расширяет его, добавляем ownerRef в список модифицировавших
+        provenance.put(ref, ObjectProvenance.builder()
+          .ownerRef(existing.getOwnerRef())
+          .objectBelonging(md.getObjectBelonging())
+          .modifiedByExtensionRefs(existing.getModifiedByExtensionRefs())
+          .modifiedByExtensionRef(ownerRef)
+          .build());
+      } else {
         provenance.put(ref, ObjectProvenance.builder()
           .ownerRef(ownerRef)
           .objectBelonging(md.getObjectBelonging())

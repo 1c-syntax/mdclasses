@@ -90,6 +90,16 @@ class SolutionTest {
   }
 
   @Test
+  void testNullSafeWhenProvenanceNotSet() {
+    var solution = Solution.builder()
+      .mergedConfiguration(Configuration.EMPTY)
+      .build();
+    assertThat(solution.getProvenance(objRef)).isNull();
+    assertThat(solution.getOwnerRef(objRef)).isEqualTo(MdoReference.EMPTY);
+    assertThat(solution.getOwner(objRef)).isEqualTo(Configuration.EMPTY);
+  }
+
+  @Test
   void testGetOwnerReturnsExtension() {
     var base = Configuration.EMPTY;
     var ext = ConfigurationExtension.builder()

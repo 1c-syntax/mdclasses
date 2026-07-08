@@ -146,7 +146,28 @@ class MDMergerMergeTest {
       .getMdoReference();
     var prov = result.provenance().get(catalogRef);
     assertThat(prov).isNotNull();
+    assertThat(prov.getOwnerRef())
+      .as("Объект из базы должен иметь ownerRef = базовая конфигурация")
+      .isEqualTo(base.getMdoReference());
     assertThat(prov.getObjectBelonging()).isNotNull();
+    // Расширение модифицирует Справочник1 — проверяем, что ref расширения попал в modifiedByExtensionRefs
+    assertThat(prov.getModifiedByExtensionRefs())
+      .as("Расширение, модифицирующее объект, должно быть в modifiedByExtensionRefs")
+      .contains(ext.getMdoReference());
+
+    // Проверяем происхождение справочника, которого нет в базе (только в расширении)
+    var catalog2Ref = result.configuration().getCatalogs().stream()
+      .filter(c -> "Справочник2".equals(c.getName()))
+      .findFirst().orElseThrow()
+      .getMdoReference();
+    var prov2 = result.provenance().get(catalog2Ref);
+    assertThat(prov2).isNotNull();
+    assertThat(prov2.getOwnerRef())
+      .as("Новый объект из расширения должен иметь ownerRef = расширение")
+      .isEqualTo(ext.getMdoReference());
+    assertThat(prov2.getModifiedByExtensionRefs())
+      .as("Новый объект не модифицировался расширениями")
+      .isEmpty();
   }
 
   @ParameterizedTest
