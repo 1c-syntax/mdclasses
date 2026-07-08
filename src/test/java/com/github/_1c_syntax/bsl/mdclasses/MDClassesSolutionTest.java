@@ -41,30 +41,63 @@ class MDClassesSolutionTest {
   @Test
   void createSolutionEmpty() {
     var solutionEmpty = MDClasses.createSolution(Path.of("src/test/resources/fixtures"));
-    assertThat(solutionEmpty).isEqualTo(Configuration.EMPTY);
+    assertThat(solutionEmpty).isInstanceOf(Solution.class);
+    assertThat(solutionEmpty.getMergedConfiguration()).isEqualTo(Configuration.EMPTY);
   }
 
   @ParameterizedTest
   @CsvSource(
     {
       "src/test/resources/ext/designer/mdclasses/src/cf",
-      "src/test/resources/ext/edt/mdclasses_3_27/configuration",
-      "src/test/resources/ext/designer/mdclasses_ext/src/cf"
+      "src/test/resources/ext/edt/mdclasses_3_27/configuration"
     }
   )
   void createSolutionSimple(ArgumentsAccessor argumentsAccessor) {
     var path = Path.of(argumentsAccessor.getString(0));
     var solutionCf = MDClasses.createSolution(path);
     var cf = MDClasses.createConfigurations(path).get(0);
-    Assertions.assertThat(Fixtures.asJson(solutionCf), true)
+    Assertions.assertThat(Fixtures.asJson(solutionCf.getMergedConfiguration()), true)
       .isEqual(Fixtures.asJson(cf));
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "false, mdclasses_ext",
+      "true, mdclasses_ext"
+    }
+  )
+  void createSolutionSimpleExtension(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var pack = argumentsAccessor.getString(1);
+
+    var basePath = isEDT
+      ? Path.of("src/test/resources/ext/edt/" + pack + "/configuration")
+      : Path.of("src/test/resources/ext/designer/" + pack + "/src/cf");
+
+    var solution = MDClasses.createSolution(basePath);
+    assertThat(solution.getMergedConfiguration()).isNotNull();
+    assertThat(solution.getBaseConfiguration()).isEqualTo(Configuration.EMPTY);
+    assertThat(solution.getExtensions()).hasSize(1);
+  }
+
+  @Test
+  void extensionFormatsProduceIdenticalResult() {
+    var desPath = Path.of("src/test/resources/ext/designer/mdclasses_ext/src/cf");
+    var edtPath = Path.of("src/test/resources/ext/edt/mdclasses_ext/configuration");
+
+    var desSolution = MDClasses.createSolution(desPath);
+    var edtSolution = MDClasses.createSolution(edtPath);
+
+    Assertions.assertThat(Fixtures.asJson(desSolution.getMergedConfiguration()), true)
+      .isEqual(Fixtures.asJson(edtSolution.getMergedConfiguration()));
   }
 
   @Test
   void createSolutionCf_2_exts() {
     var solution = MDClasses.createSolution(Path.of("src/test/resources/solutions/sol1"));
-    assertThat(solution).isInstanceOf(Configuration.class);
-    var cf = (Configuration) solution;
+    assertThat(solution).isInstanceOf(Solution.class);
+    var cf = solution.getMergedConfiguration();
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules()).hasSize(3);
     assertThat(cf.getChildren()).hasSize(12);
@@ -94,8 +127,8 @@ class MDClassesSolutionTest {
   @Test
   void createSolutionCf_2_exts_empty_cf() {
     var solution = MDClasses.createSolution(Path.of("src/test/resources/solutions/sol2"));
-    assertThat(solution).isInstanceOf(Configuration.class);
-    var cf = (Configuration) solution;
+    assertThat(solution).isInstanceOf(Solution.class);
+    var cf = solution.getMergedConfiguration();
     assertThat(cf.getSupportVariant()).isEqualTo(SupportVariant.NONE);
     assertThat(cf.getModules()).hasSize(1);
     assertThat(cf.getChildren()).hasSize(8);
