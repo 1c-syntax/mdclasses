@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
+import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -47,6 +48,9 @@ class CalculationRegisterTest {
 
     var calculationRegister = (CalculationRegister) mdo;
     assertThat(calculationRegister).isNotNull();
+
+    // --- Периодичность ---
+    assertThat(calculationRegister.getPeriodicity()).isEqualTo(CalculationRegisterPeriodicity.MONTH);
 
     // --- ModuleOwner ---
     assertThat(calculationRegister.getModuleTypes()).isEmpty();

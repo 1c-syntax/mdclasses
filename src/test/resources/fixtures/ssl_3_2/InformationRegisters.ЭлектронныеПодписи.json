@@ -1,5 +1,44 @@
 {
  "com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "possibleRights": [
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "description": "Электронные подписи",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+  },
+  "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+  "mdoRef": "InformationRegister.ЭлектронныеПодписи",
+  "supportVariant": "NOT_EDITABLE",
+  "informationRegisterPeriodicity": "NONPERIODICAL",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Электронные подписи"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
   "mdoType": "INFORMATION_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -22,24 +61,7 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "TOTALS_CONTROL",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
   "templates": [],
-  "description": "Электронные подписи",
   "resources": [
    {
     "owner": {
@@ -385,14 +407,9 @@
     "supportVariant": "NOT_EDITABLE"
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
-  "mdoRef": "InformationRegister.ЭлектронныеПодписи",
   "modules": [
    {
     "owner": {
@@ -400,26 +417,11 @@
     },
     "isProtected": false,
     "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/ssl_3_2\/InformationRegisters\/ЭлектронныеПодписи\/ManagerModule.bsl",
     "supportVariant": "NOT_EDITABLE"
    }
   ],
-  "supportVariant": "NOT_EDITABLE",
   "auxiliaryRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
-  },
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "content": [
-    {
-     "langKey": "ru",
-     "value": "Электронные подписи"
-    }
-   ]
   },
   "name": "ЭлектронныеПодписи",
   "attributes": [
@@ -979,11 +981,9 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
   "defaultRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
   },
-  "commands": [],
   "forms": [
    {
     "owner": {
@@ -1018,7 +1018,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_2\/InformationRegisters\/ЭлектронныеПодписи\/Forms\/ОбоснованиеДостоверностиПодписи\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
