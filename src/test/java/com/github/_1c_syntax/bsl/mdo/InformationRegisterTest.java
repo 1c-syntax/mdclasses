@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,16 +33,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class InformationRegisterTest {
   @ParameterizedTest
   @CsvSource({
-    "true, mdclasses, InformationRegisters.РегистрСведений1",
-    "false, mdclasses, InformationRegisters.РегистрСведений1",
-    "true, ssl_3_1, InformationRegisters.ЭлектронныеПодписи",
-    "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи",
-    "true, ssl_3_2, InformationRegisters.ЭлектронныеПодписи",
-    "false, ssl_3_2, InformationRegisters.ЭлектронныеПодписи",
-    "true, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов",
-    "false, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов",
-    "true, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов",
-    "false, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов"
+    "true, mdclasses, InformationRegisters.РегистрСведений1, NONPERIODICAL",
+    "false, mdclasses, InformationRegisters.РегистрСведений1, NONPERIODICAL",
+    "true, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "false, ssl_3_2, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "true, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "false, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "false, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.КурсыВалют, DAY",
+    "false, ssl_3_2, InformationRegisters.КурсыВалют, DAY"
   })
   void test(ArgumentsAccessor argumentsAccessor) {
     var mdo = Fixtures.get(argumentsAccessor);
@@ -49,6 +52,10 @@ class InformationRegisterTest {
 
     var informationRegister = (InformationRegister) mdo;
     assertThat(informationRegister).isNotNull();
+
+    // --- Периодичность ---
+    var expectedPeriodicity = InformationRegisterPeriodicity.valueOf(argumentsAccessor.getString(3));
+    assertThat(informationRegister.getInformationRegisterPeriodicity()).isEqualTo(expectedPeriodicity);
 
     // --- ModuleOwner ---
     Assertions.assertThat(informationRegister.getAllModules(), false)

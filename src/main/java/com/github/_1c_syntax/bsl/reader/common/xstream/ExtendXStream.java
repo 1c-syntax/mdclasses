@@ -37,6 +37,7 @@ import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -266,6 +267,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(DataSeparation.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
+    registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));
     registerConverter(new EnumConverter<>(MessageDirection.class));
     registerConverter(new EnumConverter<>(ObjectBelonging.class));
     registerConverter(new EnumConverter<>(ReturnValueReuse.class));

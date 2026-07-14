@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -101,6 +102,12 @@ public class InformationRegister implements Register, AccessRightsOwner {
   /*
    * Свое
    */
+
+  /**
+   * Периодичность регистра сведений
+   */
+  @Default
+  InformationRegisterPeriodicity informationRegisterPeriodicity = InformationRegisterPeriodicity.NONPERIODICAL;
 
   /**
    * Ссылка на форму списка по умолчанию
