@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -101,6 +102,12 @@ public class CalculationRegister implements Register, AccessRightsOwner {
   /*
    * Свое
    */
+
+  /**
+   * Периодичность регистра расчета
+   */
+  @Default
+  CalculationRegisterPeriodicity periodicity = CalculationRegisterPeriodicity.MONTH;
 
   /**
    * Ссылка на форму списка по умолчанию

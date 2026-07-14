@@ -22,9 +22,8 @@
 package com.github._1c_syntax.bsl.test_utils;
 
 import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 import org.apache.commons.io.file.PathUtils;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,36 +34,40 @@ import java.nio.file.Path;
  * Обходит уже существующие json-фикстуры верхнего уровня (файлы {@code <pack>/<mdoRef>.json}),
  * перечитывает исходные MDO из формата конфигуратора и сохраняет их сериализацию поверх фикстуры.
  * Используется для пересборки фикстур после изменения модели MDO.
+ * <p>
+ * Запускается вручную как обычное java-приложение (метод {@link #main(String[])}) с classpath тестов,
+ * например из IDE. В обычный прогон тестов не входит.
  */
-@Disabled
-class GenerateMdoFixtures {
+@UtilityClass
+public class GenerateMdoFixtures {
 
   private static final Path FIXTURES_BASE = Fixtures.FIXTURES_PATH;
 
-  @Test
   @SneakyThrows
-  void generateAll() {
+  public static void main(String[] args) {
     try (var packsStream = Files.list(FIXTURES_BASE)) {
-      packsStream.filter(Files::isDirectory).forEach(this::generateForPack);
+      packsStream.filter(Files::isDirectory).forEach(GenerateMdoFixtures::generateForPack);
     }
     System.out.println("Done. Regenerated top-level fixtures in " + FIXTURES_BASE);
   }
 
   @SneakyThrows
-  private void generateForPack(Path packDir) {
+  private static void generateForPack(Path packDir) {
     var pack = packDir.getFileName().toString();
     try (var filesStream = Files.list(packDir)) {
       filesStream
         .filter(path -> path.toString().endsWith(".json"))
         .filter(path -> {
           var fileName = path.getFileName().toString();
-          return fileName.startsWith("InformationRegisters.") || fileName.equals("Configuration.json");
+          return fileName.startsWith("InformationRegisters.")
+            || fileName.startsWith("CalculationRegisters.")
+            || fileName.equals("Configuration.json");
         })
         .forEach(fixtureFile -> regenerate(pack, fixtureFile));
     }
   }
 
-  private void regenerate(String pack, Path fixtureFile) {
+  private static void regenerate(String pack, Path fixtureFile) {
     var mdoRef = PathUtils.getBaseName(fixtureFile.getFileName());
     var mdo = Fixtures.get(pack, mdoRef, false);
     if (mdo == null) {
