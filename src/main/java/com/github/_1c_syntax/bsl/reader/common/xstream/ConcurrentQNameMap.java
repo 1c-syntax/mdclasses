@@ -54,7 +54,7 @@ public class ConcurrentQNameMap extends QNameMap {
   }
 
   @Override
-  public void registerMapping(QName qname, String javaClassName) {
+  public synchronized void registerMapping(QName qname, String javaClassName) {
     javaToQName.put(javaClassName, qname);
     qnameToJava.put(qname, javaClassName);
   }
