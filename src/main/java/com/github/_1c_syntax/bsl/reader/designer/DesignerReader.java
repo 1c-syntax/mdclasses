@@ -59,6 +59,7 @@ import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ConcurrentQNameMap;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.converter.DesignerConverter;
 import com.github._1c_syntax.bsl.reader.designer.converter.Unmarshaller;
@@ -71,7 +72,6 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
@@ -239,7 +239,7 @@ public class DesignerReader implements MDReader {
   }
 
   private ExtendXStream createXMLMapper() {
-    var qNameMap = new QNameMap();
+    var qNameMap = new ConcurrentQNameMap();
     qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), ManagedFormData.class);
 
     var classLoaderReference = new ClassLoaderReference(new CompositeClassLoader());
