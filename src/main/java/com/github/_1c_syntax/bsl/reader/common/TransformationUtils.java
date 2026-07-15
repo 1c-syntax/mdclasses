@@ -34,9 +34,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Вспомогательный класс для конвертирования значений между моделями
@@ -45,9 +43,17 @@ import java.util.concurrent.ConcurrentSkipListMap;
 @Slf4j
 public class TransformationUtils {
 
-  private static final Map<String, Map<String, Optional<Method>>> METHODS = new ConcurrentHashMap<>();
-  private static final Map<String, Map<String, Optional<Type>>> TYPES = new ConcurrentHashMap<>();
-  private static final Map<String, Map<String, Optional<SetterDescriptor>>> SETTERS = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Method>> METHODS = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Type>> TYPES = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, SetterDescriptor>> SETTERS = new ConcurrentHashMap<>();
+
+  // Сентинелы отрицательного результата. В ConcurrentHashMap нельзя хранить null, но
+  // отсутствие метода/типа/сеттера тоже нужно кэшировать (иначе повторный дорогой резолв
+  // на каждый промах). Отличаются по ссылочной идентичности от любого настоящего значения.
+  private static final Method ABSENT_METHOD = absentMethod();
+  private static final Type ABSENT_TYPE = void.class;
+  private static final SetterDescriptor ABSENT_SETTER = new SetterDescriptor(ABSENT_METHOD, false, null);
+
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String TO_BUILDER_METHOD_NAME = "toBuilder";
@@ -94,10 +100,13 @@ public class TransformationUtils {
    */
   @Nullable
   public Type fieldType(Object source, String methodName) {
-    return TYPES.computeIfAbsent(source.getClass().getName(),
-        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, l -> computeFieldType(source, methodName))
-      .orElse(null);
+    var perClass = perClassCache(TYPES, source.getClass().getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = computeFieldType(source, methodName);
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached == ABSENT_TYPE ? null : cached;
   }
 
   /**
@@ -173,29 +182,55 @@ public class TransformationUtils {
 
   @Nullable
   private Method getMethod(Class<?> clazz, String methodName) {
-    return METHODS.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, k -> Arrays.stream(clazz.getDeclaredMethods())
+    var perClass = perClassCache(METHODS, clazz.getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = Arrays.stream(clazz.getDeclaredMethods())
         .filter(m -> methodName.equalsIgnoreCase(m.getName()))
-        .findFirst())
-      .orElse(null);
+        .findFirst()
+        .orElse(ABSENT_METHOD);
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached == ABSENT_METHOD ? null : cached;
   }
 
   @Nullable
   private SetterDescriptor getSetter(Class<?> clazz, String methodName) {
-    return SETTERS.computeIfAbsent(clazz.getName(),
-        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, k -> computeSetter(clazz, methodName))
-      .orElse(null);
+    var perClass = perClassCache(SETTERS, clazz.getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = computeSetter(clazz, methodName);
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached == ABSENT_SETTER ? null : cached;
   }
 
-  private Optional<SetterDescriptor> computeSetter(Class<?> clazz, String methodName) {
+  /**
+   * Возвращает (создавая при первом обращении) пер-классовый кэш по имени класса.
+   * <p>
+   * Лямбда {@code k -> new ConcurrentHashMap<>()} незахватывающая, поэтому компилируется в
+   * синглтон и не аллоцируется на вызов; {@code computeIfAbsent} здесь безопасен по аллокациям.
+   * Захватывающие лямбды (резолв метода/типа/сеттера) вынесены на {@code get()}-first в вызывающих
+   * методах — иначе {@code ConcurrentHashMap.computeIfAbsent} (не встраивается JIT-ом) не даёт
+   * escape-анализу их скаляризовать.
+   *
+   * @param cache     Двухуровневый кэш «имя класса → (имя свойства → значение)».
+   * @param className Имя класса.
+   * @param <V>       Тип кэшируемого значения.
+   * @return Пер-классовый кэш свойств.
+   */
+  private static <V> Map<String, V> perClassCache(Map<String, Map<String, V>> cache, String className) {
+    return cache.computeIfAbsent(className, k -> new ConcurrentHashMap<>());
+  }
+
+  private SetterDescriptor computeSetter(Class<?> clazz, String methodName) {
     var setter = getMethod(clazz, methodName);
     if (setter == null) {
-      return Optional.empty();
+      return ABSENT_SETTER;
     }
     var parameterized = setter.getGenericParameterTypes()[0] instanceof ParameterizedType;
     var singularAdder = parameterized ? getMethod(clazz, "add" + methodName) : null;
-    return Optional.of(new SetterDescriptor(setter, parameterized, singularAdder));
+    return new SetterDescriptor(setter, parameterized, singularAdder);
   }
 
   /**
@@ -230,7 +265,7 @@ public class TransformationUtils {
     }
   }
 
-  private static Optional<Type> computeFieldType(Object source, String methodName) {
+  private static Type computeFieldType(Object source, String methodName) {
     var method = getMethod(source.getClass(), methodName);
     if (method != null) {
       var fieldClass = method.getGenericParameterTypes()[0];
@@ -242,8 +277,22 @@ public class TransformationUtils {
           fieldClass = type;
         }
       }
-      return Optional.of(fieldClass);
+      return fieldClass;
     }
-    return Optional.empty();
+    return ABSENT_TYPE;
+  }
+
+  private static Method absentMethod() {
+    try {
+      return TransformationUtils.class.getDeclaredMethod("absentMethodTarget");
+    } catch (NoSuchMethodException e) {
+      throw new ExceptionInInitializerError(e);
+    }
+  }
+
+  @SuppressWarnings("unused")
+  private static void absentMethodTarget() {
+    // Целевой метод-маркер для ABSENT_METHOD; никогда не вызывается — нужен лишь как
+    // ненулевой уникальный экземпляр Method для сентинела отрицательного результата кэша.
   }
 }
