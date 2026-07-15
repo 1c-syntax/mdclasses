@@ -34,7 +34,6 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -48,6 +47,7 @@ public class TransformationUtils {
 
   private static final Map<String, Map<String, Optional<Method>>> METHODS = new ConcurrentHashMap<>();
   private static final Map<String, Map<String, Optional<Type>>> TYPES = new ConcurrentHashMap<>();
+  private static final Map<String, Map<String, Optional<SetterDescriptor>>> SETTERS = new ConcurrentHashMap<>();
   private static final String BUILD_METHOD_NAME = "build";
   private static final String BUILDER_METHOD_NAME = "builder";
   private static final String TO_BUILDER_METHOD_NAME = "toBuilder";
@@ -61,16 +61,13 @@ public class TransformationUtils {
    * @param value      Устанавливаемое значение
    */
   public void setValue(Object source, String methodName, @Nullable Object value) {
-    var method = getMethod(source.getClass(), methodName);
-    if (method != null && value != null) {
+    if (value == null) {
+      return;
+    }
+    var descriptor = getSetter(source.getClass(), methodName);
+    if (descriptor != null) {
       try {
-        var parameterType = method.getGenericParameterTypes()[0];
-        if (parameterType instanceof ParameterizedType && !(value instanceof List)) {
-          var singular = getMethod(source.getClass(), "add" + methodName);
-          Objects.requireNonNullElse(singular, method).invoke(source, value);
-        } else {
-          method.invoke(source, value);
-        }
+        descriptor.target(value).invoke(source, value);
       } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException e) {
         LOGGER.error(LOGGER_MESSAGE_PREF, source.getClass(), methodName, e);
       }
@@ -181,6 +178,56 @@ public class TransformationUtils {
         .filter(m -> methodName.equalsIgnoreCase(m.getName()))
         .findFirst())
       .orElse(null);
+  }
+
+  @Nullable
+  private SetterDescriptor getSetter(Class<?> clazz, String methodName) {
+    return SETTERS.computeIfAbsent(clazz.getName(),
+        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
+      .computeIfAbsent(methodName, k -> computeSetter(clazz, methodName))
+      .orElse(null);
+  }
+
+  private Optional<SetterDescriptor> computeSetter(Class<?> clazz, String methodName) {
+    var setter = getMethod(clazz, methodName);
+    if (setter == null) {
+      return Optional.empty();
+    }
+    var parameterized = setter.getGenericParameterTypes()[0] instanceof ParameterizedType;
+    var singularAdder = parameterized ? getMethod(clazz, "add" + methodName) : null;
+    return Optional.of(new SetterDescriptor(setter, parameterized, singularAdder));
+  }
+
+  /**
+   * Разобранный сеттер билдера, закэшированный по паре (класс, свойство).
+   * <p>
+   * Раньше {@code setValue} на каждый вызов заново вычислял тип параметра
+   * ({@code getGenericParameterTypes()} аллоцирует массив) и, для параметризованных
+   * свойств, склеивал имя {@code "add" + methodName} и делал повторный поиск метода.
+   * Дескриптор считает это один раз.
+   *
+   * @param setter        Метод-сеттер билдера.
+   * @param parameterized Признак того, что первый параметр — параметризованный тип
+   *                      (коллекция), для которого одиночное значение ставится через
+   *                      {@code singularAdder}.
+   * @param singularAdder Метод добавления одиночного значения ({@code add<Свойство>}) или
+   *                      {@code null}, если его нет либо свойство не параметризованное.
+   */
+  private record SetterDescriptor(Method setter, boolean parameterized, @Nullable Method singularAdder) {
+
+    /**
+     * Выбирает целевой метод под конкретное значение: для параметризованного свойства и
+     * одиночного (не {@link List}) значения — {@code singularAdder} (если есть), иначе сеттер.
+     *
+     * @param value Устанавливаемое значение.
+     * @return Метод для вызова через рефлексию.
+     */
+    private Method target(Object value) {
+      if (parameterized && singularAdder != null && !(value instanceof List)) {
+        return singularAdder;
+      }
+      return setter;
+    }
   }
 
   private static Optional<Type> computeFieldType(Object source, String methodName) {
