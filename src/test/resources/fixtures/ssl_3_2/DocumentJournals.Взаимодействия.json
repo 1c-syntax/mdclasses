@@ -1,0 +1,1954 @@
+{
+ "com.github._1c_syntax.bsl.mdo.DocumentJournal": {
+  "mdoType": "DOCUMENT_JOURNAL",
+  "defaultFormMap": [
+   "AUX_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/auxiliaryForm"
+   },
+   "DEFAULT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/defaultForm"
+   }
+  ],
+  "possibleRights": [
+   "READ",
+   "VIEW"
+  ],
+  "columns": [
+   {
+    "owner": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия",
+     "type": "DOCUMENT_JOURNAL",
+     "mdoRef": "DocumentJournal.Взаимодействия"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Размер"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Размер",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Размер"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Размер",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Размер"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Размер",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "221fa473-3327-44e6-a033-6fdfd2be713c",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Размер",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Размер"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата актуальности отправки"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаАктуальностиОтправки",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.ДатаАктуальностиОтправки"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаАктуальностиОтправки",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаАктуальностиОтправки"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ДатаАктуальностиОтправки",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "22c9a703-5ed3-4156-8fa6-476b1c1452f1",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ДатаАктуальностиОтправки",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ДатаАктуальностиОтправки"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Получено отправлено"
+      }
+     ]
+    },
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ДатаПолучения",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ДатаПолучения"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаОтправления",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаОтправления"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ПолученоОтправлено",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "2a2e7f51-a4e5-48ec-b969-b1fca18ba9b5",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ПолученоОтправлено",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ПолученоОтправлено"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата когда отправить"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ДатаКогдаОтправить",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.ДатаКогдаОтправить"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ДатаКогдаОтправить",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ДатаКогдаОтправить"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ДатаКогдаОтправить",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "2b2bf0f7-0946-4492-bba0-27f007a70e64",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ДатаКогдаОтправить",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ДатаКогдаОтправить"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Взаимодействие основание"
+      }
+     ]
+    },
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.ВзаимодействиеОснование"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.ВзаимодействиеОснование"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.ВзаимодействиеОснование"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.ВзаимодействиеОснование"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ВзаимодействиеОснование"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ВзаимодействиеОснование",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ВзаимодействиеОснование"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ВзаимодействиеОснование",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "2c2cb793-0177-4983-91ca-9c292c5b10f1",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ВзаимодействиеОснование",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ВзаимодействиеОснование"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Есть вложения"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ЕстьВложения",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ЕстьВложения"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ЕстьВложения",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ЕстьВложения"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ЕстьВложения",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "38cddf96-8703-4396-8c73-47fb22828a48",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ЕстьВложения",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ЕстьВложения"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Тема"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.Тема"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Тема"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.Тема"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Тема"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Тема"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Тема",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Тема"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Тема",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "6d521e58-24a3-4f19-b4b0-dff84f7ca86b",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Тема",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Тема"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Важность"
+      }
+     ]
+    },
+    "indexing": "INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.Важность"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Важность"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.Важность"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Важность"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Важность"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Важность",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Важность"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Важность",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "7a5973f0-7e29-44af-8e7b-70af71f704a4",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Важность",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Важность"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Идентификатор сообщения"
+      }
+     ]
+    },
+    "indexing": "INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ИдентификаторСообщения",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ИдентификаторСообщения"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.ИдентификаторСообщения",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.ИдентификаторСообщения"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "ИдентификаторСообщения",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "8be10d88-8c37-4444-9c89-6cbbe9913bda",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.ИдентификаторСообщения",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.ИдентификаторСообщения"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Участники"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.СписокУчастников",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.СписокУчастников"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.СписокУчастников",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.СписокУчастников"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.СписокУчастников",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.СписокУчастников"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.АбонентПредставление",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.АбонентПредставление"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.ОтправительПредставление",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.ОтправительПредставление"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.СписокПолучателейПисьма",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.СписокПолучателейПисьма"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Участники",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "8c413fa5-9e24-4b81-aa55-0e78c5e3e20f",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Участники",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Участники"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Входящий"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Входящий",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Входящий"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Входящий",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "a2accf54-5966-42e8-ab2e-e56e415963ee",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Входящий",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Входящий"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Статус исходящего письма"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "references": [
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Состояние",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.Состояние"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.СтатусПисьма",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.СтатусПисьма"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "СтатусИсходящегоПисьма",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "a4322f22-7de0-4018-8e06-9f1aa7cf0c07",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.СтатусИсходящегоПисьма",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.СтатусИсходящегоПисьма"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Автор"
+      }
+     ]
+    },
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.Автор",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.Автор"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Автор",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Автор"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Автор",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.Автор"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Автор",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Автор"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Автор",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Автор"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Автор",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "b5b94d94-25f7-4cfa-b1e9-6009fb848763",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Автор",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Автор"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ответственный"
+      }
+     ]
+    },
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "references": [
+     {
+      "mdoRefRu": "Документ.Встреча.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.Встреча.Attribute.Ответственный"
+     },
+     {
+      "mdoRefRu": "Документ.ЗапланированноеВзаимодействие.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЗапланированноеВзаимодействие.Attribute.Ответственный"
+     },
+     {
+      "mdoRefRu": "Документ.СообщениеSMS.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.СообщениеSMS.Attribute.Ответственный"
+     },
+     {
+      "mdoRefRu": "Документ.ТелефонныйЗвонок.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ТелефонныйЗвонок.Attribute.Ответственный"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.Ответственный"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.Ответственный",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.Ответственный"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "Ответственный",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "d8eb5329-5900-4b5d-b45e-458513dddfef",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.Ответственный",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.Ответственный"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Почта"
+      }
+     ]
+    },
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "references": [
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее.Реквизит.УчетнаяЗапись",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоВходящее.Attribute.УчетнаяЗапись"
+     },
+     {
+      "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее.Реквизит.УчетнаяЗапись",
+      "type": "ATTRIBUTE",
+      "mdoRef": "Document.ЭлектронноеПисьмоИсходящее.Attribute.УчетнаяЗапись"
+     }
+    ],
+    "kind": "CUSTOM",
+    "name": "УчетнаяЗапись",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "eaaed107-69d4-4963-be83-74519e331715",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Колонка.УчетнаяЗапись",
+     "type": "COLUMN",
+     "mdoRef": "DocumentJournal.Взаимодействия.Column.УчетнаяЗапись"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "registeredDocuments": [
+   {
+    "mdoRefRu": "Документ.Встреча",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.Встреча"
+   },
+   {
+    "mdoRefRu": "Документ.ЗапланированноеВзаимодействие",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.ЗапланированноеВзаимодействие"
+   },
+   {
+    "mdoRefRu": "Документ.СообщениеSMS",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.СообщениеSMS"
+   },
+   {
+    "mdoRefRu": "Документ.ТелефонныйЗвонок",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.ТелефонныйЗвонок"
+   },
+   {
+    "mdoRefRu": "Документ.ЭлектронноеПисьмоВходящее",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.ЭлектронноеПисьмоВходящее"
+   },
+   {
+    "mdoRefRu": "Документ.ЭлектронноеПисьмоИсходящее",
+    "type": "DOCUMENT",
+    "mdoRef": "Document.ЭлектронноеПисьмоИсходящее"
+   }
+  ],
+  "templates": [
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Иерархия взаимодействий предмет"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 90,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tВзаимодействия.Ссылка,\n\tПредметыПапкиВзаимодействий.Предмет,\n\tВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tВзаимодействия.Тип,\n\tВзаимодействия.СтатусИсходящегоПисьма,\n\tВзаимодействия.ПометкаУдаления,\n\tВзаимодействия.Входящий\nПОМЕСТИТЬ ПредОтбор\nИЗ\n\tЖурналДокументов.Взаимодействия КАК Взаимодействия\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий\n\t\tПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие\n{ГДЕ\n\t(Взаимодействия.Дата МЕЖДУ &НачалоПериода И &КонецПериода)}\n;\n\n\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\nВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tВЫБОР\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.Встреча\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 10\n\t\t\t\t\tИНАЧЕ 0\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 11\n\t\t\t\t\tИНАЧЕ 1\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 12\n\t\t\t\t\tИНАЧЕ 2\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 13\n\t\t\t\t\tИНАЧЕ 3\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 14\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 15\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 16\n\t\t\t\t\t\t\tИНАЧЕ 4\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.СообщениеSMS\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 22\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 17\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 18\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)\n\t\t\t\t\t\t\t\tТОГДА 19\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 21\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 23\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)\n\t\t\t\t\t\t\t\tТОГДА 24\n\t\t\t\t\t\t\tИНАЧЕ 17\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\tКОНЕЦ КАК НомерКартинки,\n\tВзаимодействия.Ссылка КАК Ссылка,\n\tЕСТЬNULL(ПредОтбор.Ссылка, НЕОПРЕДЕЛЕНО) КАК ВзаимодействиеОснование,\n\tПредметыПапкиВзаимодействий.Предмет,\n\tВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tВзаимодействия.Дата,\n\tВзаимодействия.Тема,\n\tВзаимодействия.Участники,\n\tВзаимодействия.ПометкаУдаления,\n\tВзаимодействия.Тип,\n\tВзаимодействия.СтатусИсходящегоПисьма,\n\tВзаимодействия.Входящий\nИЗ\n\tЖурналДокументов.Взаимодействия КАК Взаимодействия\n\t\tЛЕВОЕ СОЕДИНЕНИЕ ПредОтбор КАК ПредОтбор\n\t\tПО Взаимодействия.ВзаимодействиеОснование = ПредОтбор.Ссылка\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий\n\t\tПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие\n{ГДЕ\n\t(Взаимодействия.Дата МЕЖДУ &НачалоПериода И &КонецПериода)}"
+       },
+       "name": "ИерархияВзаимодействий",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "ВзаимодействиеОснование",
+         "dataPath": "ВзаимодействиеОснование"
+        },
+        {
+         "name": "Входящий",
+         "dataPath": "Входящий"
+        },
+        {
+         "name": "Дата",
+         "dataPath": "Дата"
+        },
+        {
+         "name": "НомерКартинки",
+         "dataPath": "НомерКартинки"
+        },
+        {
+         "name": "Ответственный",
+         "dataPath": "Ответственный"
+        },
+        {
+         "name": "ПометкаУдаления",
+         "dataPath": "ПометкаУдаления"
+        },
+        {
+         "name": "Предмет",
+         "dataPath": "Предмет"
+        },
+        {
+         "name": "Рассмотрено",
+         "dataPath": "Рассмотрено"
+        },
+        {
+         "name": "РассмотретьПосле",
+         "dataPath": "РассмотретьПосле"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        },
+        {
+         "name": "СтатусИсходящегоПисьма",
+         "dataPath": "СтатусИсходящегоПисьма"
+        },
+        {
+         "name": "Тема",
+         "dataPath": "Тема"
+        },
+        {
+         "name": "Тип",
+         "dataPath": "Тип"
+        },
+        {
+         "name": "Участники",
+         "dataPath": "Участники"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      }
+     ],
+     "dataPath": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Templates\/ИерархияВзаимоде_стви_Предмет\/Template.xml"
+    },
+    "name": "ИерархияВзаимодействийПредмет",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "4f262b7f-927e-45f2-ad90-9d5e1b3155d1",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Макет.ИерархияВзаимодействийПредмет",
+     "type": "TEMPLATE",
+     "mdoRef": "DocumentJournal.Взаимодействия.Template.ИерархияВзаимодействийПредмет"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Иерархия взаимодействий контакт"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 120,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ\n\tВзаимодействия.Ссылка КАК Ссылка\nПОМЕСТИТЬ ВзаимодействияПоКонтакту\nИЗ\n\tРегистрСведений.КонтактыВзаимодействий КАК КонтактыВзаимодействий\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ ЖурналДокументов.Взаимодействия КАК Взаимодействия\n\t\tПО КонтактыВзаимодействий.Взаимодействие = Взаимодействия.Ссылка\nГДЕ\n\tКонтактыВзаимодействий.Контакт = &Контакт\n{ГДЕ\n\t(Взаимодействия.Дата МЕЖДУ &НачалоПериода И &КонецПериода)}\n;\n\n\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\nВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ\n\tВзаимодействия.Ссылка,\n\tВзаимодействия.Ответственный,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, ЛОЖЬ) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДАТАВРЕМЯ(1, 1, 1)) КАК РассмотретьПосле,\n\tВзаимодействия.Тип,\n\tВзаимодействия.СтатусИсходящегоПисьма,\n\tВзаимодействия.ПометкаУдаления,\n\tВзаимодействия.Входящий\nПОМЕСТИТЬ ПредОтбор\nИЗ\n\tЖурналДокументов.Взаимодействия КАК Взаимодействия\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий\n\t\tПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие\nГДЕ\n\tВзаимодействия.Ссылка В\n\t\t\t(ВЫБРАТЬ\n\t\t\t\tВзаимодействияПоКонтакту.Ссылка\n\t\t\tИЗ\n\t\t\t\tВзаимодействияПоКонтакту КАК ВзаимодействияПоКонтакту)\n;\n\n\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\nВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tВЫБОР\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.Встреча\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 10\n\t\t\t\t\tИНАЧЕ 0\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 11\n\t\t\t\t\tИНАЧЕ 1\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 12\n\t\t\t\t\tИНАЧЕ 2\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 13\n\t\t\t\t\tИНАЧЕ 3\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 14\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 15\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 16\n\t\t\t\t\t\t\tИНАЧЕ 4\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\t\tКОГДА Взаимодействия.Ссылка ССЫЛКА Документ.СообщениеSMS\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА Взаимодействия.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 22\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 17\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 18\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)\n\t\t\t\t\t\t\t\tТОГДА 19\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 21\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 23\n\t\t\t\t\t\t\tКОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)\n\t\t\t\t\t\t\t\tТОГДА 24\n\t\t\t\t\t\t\tИНАЧЕ 17\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\tКОНЕЦ КАК НомерКартинки,\n\tВзаимодействия.Ссылка КАК Ссылка,\n\tВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредОтбор.Ссылка, НЕОПРЕДЕЛЕНО) КАК ВзаимодействиеОснование,\n\tПредметыПапкиВзаимодействий.Предмет,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, ЛОЖЬ) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДАТАВРЕМЯ(1, 1, 1)) КАК РассмотретьПосле,\n\tВзаимодействия.Дата,\n\tВзаимодействия.Тема,\n\tВзаимодействия.Участники,\n\tВзаимодействия.ПометкаУдаления,\n\tВзаимодействия.Тип,\n\tВзаимодействия.СтатусИсходящегоПисьма,\n\tВзаимодействия.Входящий\nИЗ\n\tЖурналДокументов.Взаимодействия КАК Взаимодействия\n\t\tЛЕВОЕ СОЕДИНЕНИЕ ПредОтбор КАК ПредОтбор\n\t\tПО Взаимодействия.ВзаимодействиеОснование = ПредОтбор.Ссылка\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий\n\t\tПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие\nГДЕ\n\tВзаимодействия.Ссылка В\n\t\t\t(ВЫБРАТЬ\n\t\t\t\tВзаимодействияПоКонтакту.Ссылка\n\t\t\tИЗ\n\t\t\t\tВзаимодействияПоКонтакту КАК ВзаимодействияПоКонтакту)"
+       },
+       "name": "ИерархияВзаимодействий",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "ВзаимодействиеОснование",
+         "dataPath": "ВзаимодействиеОснование"
+        },
+        {
+         "name": "Входящий",
+         "dataPath": "Входящий"
+        },
+        {
+         "name": "Дата",
+         "dataPath": "Дата"
+        },
+        {
+         "name": "НомерКартинки",
+         "dataPath": "НомерКартинки"
+        },
+        {
+         "name": "Ответственный",
+         "dataPath": "Ответственный"
+        },
+        {
+         "name": "ПометкаУдаления",
+         "dataPath": "ПометкаУдаления"
+        },
+        {
+         "name": "Предмет",
+         "dataPath": "Предмет"
+        },
+        {
+         "name": "Рассмотрено",
+         "dataPath": "Рассмотрено"
+        },
+        {
+         "name": "РассмотретьПосле",
+         "dataPath": "РассмотретьПосле"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        },
+        {
+         "name": "СтатусИсходящегоПисьма",
+         "dataPath": "СтатусИсходящегоПисьма"
+        },
+        {
+         "name": "Тема",
+         "dataPath": "Тема"
+        },
+        {
+         "name": "Тип",
+         "dataPath": "Тип"
+        },
+        {
+         "name": "Участники",
+         "dataPath": "Участники"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      }
+     ],
+     "dataPath": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Templates\/ИерархияВзаимоде_стви_Контакт\/Template.xml"
+    },
+    "name": "ИерархияВзаимодействийКонтакт",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "9f4b8e36-83ff-4694-8540-b5f47b18395f",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Макет.ИерархияВзаимодействийКонтакт",
+     "type": "TEMPLATE",
+     "mdoRef": "DocumentJournal.Взаимодействия.Template.ИерархияВзаимодействийКонтакт"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Схема отбор взаимодействия"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 154,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tЖурналДокументовВзаимодействия.Ссылка,\n\tЖурналДокументовВзаимодействия.Дата,\n\tЖурналДокументовВзаимодействия.ПометкаУдаления,\n\tЖурналДокументовВзаимодействия.Номер,\n\tЖурналДокументовВзаимодействия.Проведен,\n\tЖурналДокументовВзаимодействия.Автор,\n\tЖурналДокументовВзаимодействия.Входящий,\n\tЖурналДокументовВзаимодействия.Тема,\n\tЖурналДокументовВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействия.Участники,\n\tЖурналДокументовВзаимодействия.Тип,\n\tЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,\n\tЖурналДокументовВзаимодействия.ЕстьВложения,\n\tЖурналДокументовВзаимодействия.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействий.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,\n\tСостоянияПредметовВзаимодействий.Активен КАК ПредметАктивен,\n\tПредметыВзаимодействий.ПапкаЭлектронногоПисьма КАК Папка,\n\tЖурналДокументовВзаимодействия.ПолученоОтправлено,\n\tЖурналДокументовВзаимодействия.Размер,\n\tЖурналДокументовВзаимодействия.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая) ТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая) ТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия\n\t\t{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий\n\t\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияПредметовВзаимодействий КАК СостоянияПредметовВзаимодействий\n\t\t\tПО ПредметыВзаимодействий.Предмет = СостоянияПредметовВзаимодействий.Предмет\n\t\tПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие}\n{ГДЕ\n\t(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &НачалоПериодаОтбора И &КонецПериодаОтбора)}"
+       },
+       "name": "ОсновнойНаборДанных",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Автор",
+         "dataPath": "Автор"
+        },
+        {
+         "name": "Важность",
+         "dataPath": "Важность"
+        },
+        {
+         "name": "ВажностьНомерКартинки",
+         "dataPath": "ВажностьНомерКартинки"
+        },
+        {
+         "name": "Входящий",
+         "dataPath": "Входящий"
+        },
+        {
+         "name": "Дата",
+         "dataPath": "Дата"
+        },
+        {
+         "name": "ЕстьВложения",
+         "dataPath": "ЕстьВложения"
+        },
+        {
+         "name": "Номер",
+         "dataPath": "Номер"
+        },
+        {
+         "name": "Ответственный",
+         "dataPath": "Ответственный"
+        },
+        {
+         "name": "Папка",
+         "dataPath": "Папка"
+        },
+        {
+         "name": "ПолученоОтправлено",
+         "dataPath": "ПолученоОтправлено"
+        },
+        {
+         "name": "ПометкаУдаления",
+         "dataPath": "ПометкаУдаления"
+        },
+        {
+         "name": "Предмет",
+         "dataPath": "Предмет"
+        },
+        {
+         "name": "ПредметАктивен",
+         "dataPath": "ПредметАктивен"
+        },
+        {
+         "name": "Проведен",
+         "dataPath": "Проведен"
+        },
+        {
+         "name": "Размер",
+         "dataPath": "Размер"
+        },
+        {
+         "name": "Рассмотрено",
+         "dataPath": "Рассмотрено"
+        },
+        {
+         "name": "РассмотретьПосле",
+         "dataPath": "РассмотретьПосле"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        },
+        {
+         "name": "СтатусИсходящегоПисьма",
+         "dataPath": "СтатусИсходящегоПисьма"
+        },
+        {
+         "name": "Тема",
+         "dataPath": "Тема"
+        },
+        {
+         "name": "Тип",
+         "dataPath": "Тип"
+        },
+        {
+         "name": "ТипПредмета",
+         "dataPath": "ТипПредмета"
+        },
+        {
+         "name": "Участники",
+         "dataPath": "Участники"
+        },
+        {
+         "name": "УчетнаяЗапись",
+         "dataPath": "УчетнаяЗапись"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      }
+     ],
+     "dataPath": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Templates\/СхемаОтборВзаимоде_ствия\/Template.xml"
+    },
+    "name": "СхемаОтборВзаимодействия",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "a2b4110b-4d9c-40fd-ab46-bfa08d2eb993",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Макет.СхемаОтборВзаимодействия",
+     "type": "TEMPLATE",
+     "mdoRef": "DocumentJournal.Взаимодействия.Template.СхемаОтборВзаимодействия"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "templateType": "DATA_COMPOSITION_SCHEME",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Схема отбор взаимодействия контакт"
+      }
+     ]
+    },
+    "data": {
+     "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
+     "plainDataSets": {},
+     "dataSets": [
+      {
+       "querySource": {
+        "line": 158,
+        "column": 10,
+        "textQuery": "ВЫБРАТЬ РАЗРЕШЕННЫЕ\n\tЖурналДокументовВзаимодействия.Ссылка,\n\tЖурналДокументовВзаимодействия.Дата,\n\tЖурналДокументовВзаимодействия.ПометкаУдаления,\n\tЖурналДокументовВзаимодействия.Номер,\n\tЖурналДокументовВзаимодействия.Проведен,\n\tЖурналДокументовВзаимодействия.Автор,\n\tЖурналДокументовВзаимодействия.Входящий,\n\tЖурналДокументовВзаимодействия.Тема,\n\tЖурналДокументовВзаимодействия.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействия.Участники,\n\tЖурналДокументовВзаимодействия.Тип,\n\tЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,\n\tЖурналДокументовВзаимодействия.ЕстьВложения,\n\tЖурналДокументовВзаимодействия.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействий.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,\n\tПредметыВзаимодействий.ПапкаЭлектронногоПисьма КАК Папка,\n\tЖурналДокументовВзаимодействия.ПолученоОтправлено,\n\tЖурналДокументовВзаимодействия.Размер,\n\tЖурналДокументовВзаимодействия.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая) ТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая) ТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий\n\t\tПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие\n\t\t{ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КонтактыВзаимодействий КАК КонтактыВзаимодействий\nПО ЖурналДокументовВзаимодействия.Ссылка = КонтактыВзаимодействий.Взаимодействие}\n{ГДЕ\n\tЖурналДокументовВзаимодействия.Ссылка КАК Поиск\n\t,\nКонтактыВзаимодействий.Контакт}\n{ГДЕ\n\t(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &ДатаНачала И &ДатаОкончания)}"
+       },
+       "name": "ОсновнойНаборДанных",
+       "type": "DATA_SET_QUERY",
+       "fields": [
+        {
+         "name": "Автор",
+         "dataPath": "Автор"
+        },
+        {
+         "name": "Важность",
+         "dataPath": "Важность"
+        },
+        {
+         "name": "ВажностьНомерКартинки",
+         "dataPath": "ВажностьНомерКартинки"
+        },
+        {
+         "name": "Входящий",
+         "dataPath": "Входящий"
+        },
+        {
+         "name": "Дата",
+         "dataPath": "Дата"
+        },
+        {
+         "name": "ЕстьВложения",
+         "dataPath": "ЕстьВложения"
+        },
+        {
+         "name": "Контакт",
+         "dataPath": "Контакт"
+        },
+        {
+         "name": "Номер",
+         "dataPath": "Номер"
+        },
+        {
+         "name": "Ответственный",
+         "dataPath": "Ответственный"
+        },
+        {
+         "name": "Папка",
+         "dataPath": "Папка"
+        },
+        {
+         "name": "Поиск",
+         "dataPath": "Поиск"
+        },
+        {
+         "name": "ПолученоОтправлено",
+         "dataPath": "ПолученоОтправлено"
+        },
+        {
+         "name": "ПометкаУдаления",
+         "dataPath": "ПометкаУдаления"
+        },
+        {
+         "name": "Предмет",
+         "dataPath": "Предмет"
+        },
+        {
+         "name": "Проведен",
+         "dataPath": "Проведен"
+        },
+        {
+         "name": "Размер",
+         "dataPath": "Размер"
+        },
+        {
+         "name": "Рассмотрено",
+         "dataPath": "Рассмотрено"
+        },
+        {
+         "name": "РассмотретьПосле",
+         "dataPath": "РассмотретьПосле"
+        },
+        {
+         "name": "Ссылка",
+         "dataPath": "Ссылка"
+        },
+        {
+         "name": "СтатусИсходящегоПисьма",
+         "dataPath": "СтатусИсходящегоПисьма"
+        },
+        {
+         "name": "Тема",
+         "dataPath": "Тема"
+        },
+        {
+         "name": "Тип",
+         "dataPath": "Тип"
+        },
+        {
+         "name": "ТипПредмета",
+         "dataPath": "ТипПредмета"
+        },
+        {
+         "name": "Участники",
+         "dataPath": "Участники"
+        },
+        {
+         "name": "УчетнаяЗапись",
+         "dataPath": "УчетнаяЗапись"
+        }
+       ],
+       "dataSource": "ИсточникДанных1",
+       "items": []
+      }
+     ],
+     "dataPath": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Templates\/СхемаОтборВзаимоде_ствияКонтакт\/Template.xml"
+    },
+    "name": "СхемаОтборВзаимодействияКонтакт",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "b4c026eb-4271-4366-b529-1cdfe2874563",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Макет.СхемаОтборВзаимодействияКонтакт",
+     "type": "TEMPLATE",
+     "mdoRef": "DocumentJournal.Взаимодействия.Template.СхемаОтборВзаимодействияКонтакт"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "description": "Взаимодействия",
+  "defaultForm": {
+   "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.ФормаСписка",
+   "type": "FORM",
+   "mdoRef": "DocumentJournal.Взаимодействия.Form.ФормаСписка"
+  },
+  "explanation": {
+   "content": []
+  },
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+  },
+  "uuid": "7da57c89-af2c-445a-96f7-39250f70306f",
+  "mdoRef": "DocumentJournal.Взаимодействия",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/ManagerModule.bsl",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[3]\/synonym"
+  },
+  "auxiliaryForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "name": "Взаимодействия",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "commands": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Написать электронное письмо"
+      }
+     ]
+    },
+    "name": "НаписатьЭлектронноеПисьмоПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "10008125-3aeb-4912-8ad6-d92d283ea09a",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.НаписатьЭлектронноеПисьмоПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.НаписатьЭлектронноеПисьмоПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/НаписатьЭлектронноеПисьмоПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Позвонить"
+      }
+     ]
+    },
+    "name": "ПозвонитьПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "2c1c9284-ba8b-4282-a89c-429f02ea41f6",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ПозвонитьПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ПозвонитьПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[2]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ПозвонитьПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Взаимодействия"
+      }
+     ]
+    },
+    "name": "ВзаимодействияПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "2e3ac3fb-9f0e-463f-95c2-9f661ce2e015",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ВзаимодействияПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ВзаимодействияПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[3]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/Взаимоде_ствияПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[3]\/synonym"
+    },
+    "name": "ВзаимодействияПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "314b0da2-24d3-48cc-8532-d36c45eb3bf8",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ВзаимодействияПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ВзаимодействияПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[4]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/Взаимоде_ствияПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Запланировать взаимодействие"
+      }
+     ]
+    },
+    "name": "ЗапланироватьВзаимодействиеПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "4077e700-ec20-4afa-8155-bf7e516a70cb",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ЗапланироватьВзаимодействиеПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ЗапланироватьВзаимодействиеПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[5]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ЗапланироватьВзаимоде_ствиеПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[5]\/synonym"
+    },
+    "name": "ЗапланироватьВзаимодействиеПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "5198c6db-2100-4902-82c8-85c8ea555e78",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ЗапланироватьВзаимодействиеПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ЗапланироватьВзаимодействиеПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[6]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ЗапланироватьВзаимоде_ствиеПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Печать"
+      }
+     ]
+    },
+    "name": "ПечатьЭлектронногоПисьма",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "706cbf55-626d-4cab-b589-a2464368f6c1",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ПечатьЭлектронногоПисьма",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ПечатьЭлектронногоПисьма"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[7]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ПечатьЭлектронногоПисьма\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/synonym"
+    },
+    "name": "НаписатьЭлектронноеПисьмоПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "765f9584-fefa-4695-b130-dd54c3b0d79d",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.НаписатьЭлектронноеПисьмоПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.НаписатьЭлектронноеПисьмоПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[8]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/НаписатьЭлектронноеПисьмоПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сохранить письмо на компьютер"
+      }
+     ]
+    },
+    "name": "СохранитьПисьмо",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "8c241467-76f7-4161-a8a1-5da4a6576b75",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.СохранитьПисьмо",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.СохранитьПисьмо"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[9]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/СохранитьПисьмо\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Запланировать встречу"
+      }
+     ]
+    },
+    "name": "ЗапланироватьВстречуПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "b99f2a63-54e8-490b-a0a4-1941fbc38b3f",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ЗапланироватьВстречуПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ЗапланироватьВстречуПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[10]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ЗапланироватьВстречуПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[2]\/synonym"
+    },
+    "name": "ПозвонитьПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "d22a0a50-220d-459e-a23a-39730a1e67c4",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ПозвонитьПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ПозвонитьПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[11]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ПозвонитьПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Настройки работы с почтой"
+      }
+     ]
+    },
+    "name": "НастройкиРаботыСПочтой",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "dd050ca0-8335-4654-ab5c-7babcb4824ef",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.НастройкиРаботыСПочтой",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.НастройкиРаботыСПочтой"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[12]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/Настро_киРаботыСПочто_\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Написать SMS"
+      }
+     ]
+    },
+    "name": "НаписатьSMSПоКонтакту",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "e010c0f9-f770-4fdc-8607-50838c0262ef",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.НаписатьSMSПоКонтакту",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.НаписатьSMSПоКонтакту"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[13]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/НаписатьSMSПоКонтакту\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[10]\/synonym"
+    },
+    "name": "ЗапланироватьВстречуПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f0b1e9f4-2e07-44e6-88d2-c11457135781",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.ЗапланироватьВстречуПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.ЗапланироватьВстречуПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[14]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/ЗапланироватьВстречуПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[13]\/synonym"
+    },
+    "name": "НаписатьSMSПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f935399f-3554-4c08-b0a6-eba13074e1b7",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Команда.НаписатьSMSПоПредмету",
+     "type": "COMMAND",
+     "mdoRef": "DocumentJournal.Взаимодействия.Command.НаписатьSMSПоПредмету"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[15]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Commands\/НаписатьSMSПоПредмету\/CommandModule.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "forms": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма списка"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаСписка",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "27089e8e-2c75-431c-b808-5d4dcba3cdca",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/defaultForm"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/defaultForm"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/ФормаСписка\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Параметры электронного письма"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ПараметрыЭлектронногоПисьма",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "5d3e9678-20fe-4128-867a-3f7addaa7831",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.ПараметрыЭлектронногоПисьма",
+     "type": "FORM",
+     "mdoRef": "DocumentJournal.Взаимодействия.Form.ПараметрыЭлектронногоПисьма"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/ПараметрыЭлектронногоПисьма\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма списка параметрическая"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаСпискаПараметрическая",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "9ab3980e-a480-4f90-a8cc-bde99d5ace35",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.ФормаСпискаПараметрическая",
+     "type": "FORM",
+     "mdoRef": "DocumentJournal.Взаимодействия.Form.ФормаСпискаПараметрическая"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/ФормаСпискаПараметрическая\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand[12]\/synonym"
+    },
+    "formType": "MANAGED",
+    "name": "НастройкиРаботыСПочтой",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "bb878f73-8a0f-459a-9076-ce57fe7957dc",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.НастройкиРаботыСПочтой",
+     "type": "FORM",
+     "mdoRef": "DocumentJournal.Взаимодействия.Form.НастройкиРаботыСПочтой"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/Настро_киРаботыСПочто_\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбор типа предмета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ВыборТипаПредмета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "cb1d4a41-20a9-4d76-8798-d47d8858bff1",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.ВыборТипаПредмета",
+     "type": "FORM",
+     "mdoRef": "DocumentJournal.Взаимодействия.Form.ВыборТипаПредмета"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/ВыборТипаПредмета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/columns\/com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Печать электронного письма"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ПечатьЭлектронногоПисьма",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "ec928563-6e35-4b84-b477-90d2481cec1c",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.Взаимодействия.Форма.ПечатьЭлектронногоПисьма",
+     "type": "FORM",
+     "mdoRef": "DocumentJournal.Взаимодействия.Form.ПечатьЭлектронногоПисьма"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/DocumentJournals\/Взаимоде_ствия\/Forms\/ПечатьЭлектронногоПисьма\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ]
+ }
+}

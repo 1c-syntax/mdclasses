@@ -32,10 +32,12 @@ import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -48,6 +50,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -143,6 +146,24 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
    */
 
   /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму записи по умолчанию
+   */
+  @Default
+  MdoReference defaultRecordForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Режим управления блокировкой
    */
   @Default
@@ -155,10 +176,22 @@ public class ExternalDataSourceCube implements MDChild, ModuleOwner, CommandOwne
     return POSSIBLE_RIGHTS;
   }
 
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.EXTERNAL_DATA_SOURCE_CUBE;
+  }
+
   private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.READ,
       RoleRight.VIEW
+    );
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.RECORD_FORM, getDefaultRecordForm()),
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm())
     );
   }
 }

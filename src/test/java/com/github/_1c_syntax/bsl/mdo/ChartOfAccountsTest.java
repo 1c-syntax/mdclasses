@@ -22,8 +22,8 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
-import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,49 +32,48 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ChartOfAccountsTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, ChartsOfAccounts.ПланСчетов1, _edt",
-      "false, mdclasses, ChartsOfAccounts.ПланСчетов1"
-    }
-  )
-  void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo).isInstanceOf(ChartOfAccounts.class);
-    var chartOfAccounts = (ChartOfAccounts) mdo;
-    assertThat(chartOfAccounts.getAllAttributes()).hasSize(12);
-    assertThat(chartOfAccounts.getChildren()).hasSize(12);
-    assertThat(chartOfAccounts.getAttributes())
-      .hasSize(10)
-      .allMatch(attribute -> attribute.getKind() == AttributeKind.STANDARD);
-    assertThat(chartOfAccounts.getAccountingFlags()).hasSize(1);
-    assertThat(chartOfAccounts.getExtDimensionAccountingFlags()).hasSize(1);
-  }
-
-  /**
-   * Проверяет, что для плана счетов "ПланСчетов1" поле checkUnique установлено в true.
-   * <p>
-   * В формате Designer: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
-   * В формате EDT: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
-   *
-   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
-   */
-  @ParameterizedTest
   @CsvSource({
-    "true, mdclasses, ChartsOfAccounts.ПланСчетов1, _edt",
+    "true, mdclasses, ChartsOfAccounts.ПланСчетов1",
     "false, mdclasses, ChartsOfAccounts.ПланСчетов1"
   })
-  void testCheckUniqueTrue(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo)
-      .isInstanceOf(ChartOfAccounts.class);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfAccounts.class);
 
     var chartOfAccounts = (ChartOfAccounts) mdo;
-    assertThat(chartOfAccounts.isCheckUnique())
-      .as("Поле checkUnique должно быть true для плана счетов ПланСчетов1")
-      .isTrue();
-    assertThat(chartOfAccounts.getCodeSeries())
-      .as("Поле codeSeries должно быть WHOLE_CATALOG для плана счетов ПланСчетов1")
-      .isEqualTo(CodeSeries.WHOLE_CATALOG);
+    assertThat(chartOfAccounts).isNotNull();
+
+    var attributes = chartOfAccounts.getAttributes();
+    var tabularSections = chartOfAccounts.getTabularSections();
+    var forms = chartOfAccounts.getForms();
+    var templates = chartOfAccounts.getTemplates();
+    var commands = chartOfAccounts.getCommands();
+    var accountingFlags = chartOfAccounts.getAccountingFlags();
+    var extDimAccFlags = chartOfAccounts.getExtDimensionAccountingFlags();
+
+    // --- ModuleOwner ---
+    assertThat(chartOfAccounts.getModuleTypes())
+      .hasSize(chartOfAccounts.getModules().size());
+    Assertions.assertThat(chartOfAccounts.getAllModules(), false)
+      .containsAll(chartOfAccounts.getModules(), forms, commands);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(chartOfAccounts.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands, accountingFlags, extDimAccFlags);
+    Assertions.assertThat(chartOfAccounts.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands, accountingFlags, extDimAccFlags);
+
+    // --- AttributeOwner ---
+    assertThat(attributes)
+      .allMatch(a -> a.getKind() == AttributeKind.STANDARD);
+    Assertions.assertThat(chartOfAccounts.getAllAttributes(), false)
+      .containsAll(attributes, accountingFlags, extDimAccFlags);
+    Assertions.assertThat(chartOfAccounts.getStorageFields(), false)
+      .containsAll(attributes, accountingFlags, extDimAccFlags, tabularSections);
+    Assertions.assertThat(chartOfAccounts.getPlainStorageFields(), false)
+      .containsAllPlain(attributes, accountingFlags, extDimAccFlags, tabularSections);
+
+    // --- PredefinedDataOwner ---
+    assertThat(chartOfAccounts.getPredefinedValues()).isEmpty();
   }
 }

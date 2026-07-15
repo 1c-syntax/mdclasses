@@ -45,22 +45,23 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
-import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
-import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ConcurrentQNameMap;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.converter.DesignerConverter;
-import com.github._1c_syntax.bsl.reader.designer.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.designer.converter.Unmarshaller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
@@ -71,7 +72,6 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
@@ -232,11 +232,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  public String configurationExtensionFilter() {
-    return "(<ObjectBelonging>)";
-  }
-
-  @Override
   public void unmarshal(HierarchicalStreamReader reader,
                         UnmarshallingContext context,
                         AbstractReaderContext readerContext) {
@@ -244,7 +239,7 @@ public class DesignerReader implements MDReader {
   }
 
   private ExtendXStream createXMLMapper() {
-    var qNameMap = new QNameMap();
+    var qNameMap = new ConcurrentQNameMap();
     qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), ManagedFormData.class);
 
     var classLoaderReference = new ClassLoaderReference(new CompositeClassLoader());

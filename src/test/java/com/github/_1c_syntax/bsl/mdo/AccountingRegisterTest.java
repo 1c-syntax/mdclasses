@@ -21,7 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -33,22 +34,50 @@ class AccountingRegisterTest {
   @CsvSource(
     {
       "true, mdclasses, AccountingRegisters.РегистрБухгалтерии1",
-      "false, mdclasses, AccountingRegisters.РегистрБухгалтерии1"
+      "false, mdclasses, AccountingRegisters.РегистрБухгалтерии1",
+      "true, mdclasses_3_25, AccountingRegisters.РегистрБухгалтерии1",
+      "false, mdclasses_3_25, AccountingRegisters.РегистрБухгалтерии1"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(AccountingRegister.class);
 
     var accountingRegister = (AccountingRegister) mdo;
+    assertThat(accountingRegister).isNotNull();
 
-    assertThat(accountingRegister.getSynonym().isEmpty()).isFalse();
-    assertThat(accountingRegister.getSynonym().get("ru")).isEqualTo("Регистр бухгалтерии");
-    assertThat(accountingRegister.getSynonym().get("en")).isEqualTo("Accounting register");
-    assertThat(accountingRegister.getSynonym().get("by")).isEmpty();
+    // --- ModuleOwner ---
+    assertThat(accountingRegister.getModuleTypes()).isEmpty();
+    Assertions.assertThat(accountingRegister.getAllModules(), false)
+      .containsAll(accountingRegister.getModules(), accountingRegister.getForms(), accountingRegister.getCommands());
 
-    assertThat(accountingRegister.getDescription()).isEqualTo("Регистр бухгалтерии");
-    assertThat(accountingRegister.getDescription("ru")).isEqualTo("Регистр бухгалтерии");
-    assertThat(accountingRegister.getDescription("en")).isEqualTo("Accounting register");
-    assertThat(accountingRegister.getDescription("by")).isNotEmpty().isNotEqualTo("РегистрБухгалтерии1");
+    // --- ChildrenOwner ---
+    Assertions.assertThat(accountingRegister.getChildren(), false)
+      .containsAll(accountingRegister.getAttributes(),
+        accountingRegister.getDimensions(),
+        accountingRegister.getResources(),
+        accountingRegister.getForms(),
+        accountingRegister.getCommands(),
+        accountingRegister.getTemplates()
+      );
+    Assertions.assertThat(accountingRegister.getPlainChildren(), true)
+      .containsAll(accountingRegister.getChildren());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(accountingRegister.getAllAttributes(), false)
+      .containsAll(accountingRegister.getAttributes(),
+        accountingRegister.getDimensions(),
+        accountingRegister.getResources()
+      );
+    Assertions.assertThat(accountingRegister.getStorageFields(), false)
+      .containsAll(accountingRegister.getAttributes(),
+        accountingRegister.getDimensions(),
+        accountingRegister.getResources()
+      );
+    Assertions.assertThat(accountingRegister.getPlainStorageFields(), false)
+      .containsAll(accountingRegister.getAttributes(),
+        accountingRegister.getDimensions(),
+        accountingRegister.getResources()
+      );
   }
 }

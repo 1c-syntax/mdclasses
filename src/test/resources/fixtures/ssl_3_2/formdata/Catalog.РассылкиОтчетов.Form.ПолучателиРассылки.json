@@ -1,0 +1,276 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "ПутьФормыВыбора",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Получатели",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Получатели"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВидПочтовогоАдресаПолучателей",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Электронная почта"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.ВидыКонтактнойИнформации",
+        "nameEn": "CatalogRef.ВидыКонтактнойИнформации"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ИдентификаторОбъектаМетаданных",
+    "id": 4,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТипПолучателейРассылки",
+    "id": 5,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "TYPE_DESCRIPTION"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ГруппаКонтактнойИнформацииТипаПолучателей",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ИтогВсего",
+    "id": 7,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Всего"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 7,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ИтогИсключены",
+    "id": 8,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Исключены"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/type"
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "ВидПочтовогоАдресаПолучателей",
+    "id": 41,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    },
+    "items": [],
+    "dataPath": "ВидПочтовогоАдресаПолучателей"
+   },
+   {
+    "name": "Получатели",
+    "id": 64,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "items": [
+     {
+      "name": "ПолучателиИсключен",
+      "id": 71,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Исключен"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Получатели.Исключен"
+     },
+     {
+      "name": "ПолучательНаименованиеИПочта",
+      "id": 78,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Получатель наименование и почта"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ПолучателиПолучатель",
+        "id": 68,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Получатель"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "Получатели.Получатель"
+       },
+       {
+        "name": "ПолучателиТЗАдрес",
+        "id": 80,
+        "type": "INPUT_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Адрес"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": "Получатели.Адрес"
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": "Получатели"
+   },
+   {
+    "name": "ГруппаИтоги",
+    "id": 117,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Итоги"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ИтогВсего",
+      "id": 119,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+      },
+      "items": [],
+      "dataPath": "ИтогВсего"
+     },
+     {
+      "name": "ИтогИсключены",
+      "id": 122,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
+      },
+      "items": [],
+      "dataPath": "ИтогИсключены"
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

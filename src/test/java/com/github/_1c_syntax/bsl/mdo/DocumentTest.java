@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,50 +31,44 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DocumentTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, Documents.Анкета, _edt",
-      "false, ssl_3_1, Documents.Анкета"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Documents.Документ1, _edt",
-      "false, mdclasses, Documents.Документ1"
-    }
-  )
+  @CsvSource({
+    "true, ssl_3_1, Documents.Анкета",
+    "false, ssl_3_1, Documents.Анкета",
+    "true, ssl_3_2, Documents.Анкета",
+    "false, ssl_3_2, Documents.Анкета",
+    "true, mdclasses, Documents.Документ1",
+    "false, mdclasses, Documents.Документ1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
 
-    var doc = (Document) mdo;
-    assertThat(doc.getModules().stream().filter(Module::isProtected)).isEmpty();
-    assertThat(doc.getAllModules().stream().filter(Module::isProtected)).isEmpty();
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
 
-    assertThat(doc.getForms().stream().filter(form -> !form.getData().isEmpty())).hasSize(3);
+    var attributes = document.getAttributes();
+    var tabularSections = document.getTabularSections();
+    var forms = document.getForms();
+    var templates = document.getTemplates();
+    var commands = document.getCommands();
+    var modules = document.getModules();
 
-    var formData = doc.getForms().stream().filter(form -> form.getName().equals("ФормаДокумента"))
-      .findFirst().get().getData();
+    // --- AttributeOwner ---
+    Assertions.assertThat(document.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(document.getStorageFields(), false)
+      .containsAll(attributes, tabularSections);
+    Assertions.assertThat(document.getPlainStorageFields(), false)
+      .containsAllPlain(attributes, tabularSections);
 
-    assertThat(formData.getAttributes()).hasSize(1);
-    assertThat(formData.getItems())
-      .hasSize(6)
-      .anyMatch(item -> item.getName().equals("Реквизит1"))
-      .anyMatch(item -> item.getId() == 13);
+    // --- ModuleOwner ---
+    Assertions.assertThat(document.getAllModules(), false)
+      .containsAll(modules, forms, commands);
 
-    assertThat(formData.getHandlers())
-      .hasSize(1)
-      .allMatch(formHandler -> formHandler.event().equals("NewWriteProcessing"));
-
-    assertThat(formData.getPlainItems())
-      .hasSize(9)
-      .anyMatch(item -> item.getName().equals("ТабличнаяЧасть1НомерСтроки"))
-      .anyMatch(item -> item.getId() == 35)
-      .anyMatch(item -> item.getType().equals(FormElementType.INPUT_FIELD))
-      .anyMatch(item -> item.getDataPath().startsWith("~"));
+    // --- ChildrenOwner ---
+    Assertions.assertThat(document.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(document.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
   }
 }

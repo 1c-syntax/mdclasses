@@ -1,0 +1,78 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Текст",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Текст"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "FORMATTED_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "content": []
+  },
+  "items": [
+   {
+    "name": "Основное",
+    "id": 24,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Основное"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "Текст",
+      "id": 26,
+      "type": "FORMATTED_DOCUMENT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Текст"
+     },
+     {
+      "name": "Индикатор",
+      "id": 21,
+      "type": "PICTURE_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Индикатор"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

@@ -1,542 +1,490 @@
-{"com.github._1c_syntax.bsl.mdo.Task": {
-  "addressingAttributes": [
-    {
-      "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
-      "name": "РеквизитАдресации",
-      "mdoReference": {
-        "type": "TASK_ADDRESSING_ATTRIBUTE",
-        "mdoRef": "Task.Задача1.AddressingAttribute.РеквизитАдресации",
-        "mdoRefRu": "Задача.Задача1.РеквизитАдресации.РеквизитАдресации"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          {
-            "default": {
-              "tag": 2
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-              "langKey": "ru",
-              "value": "Реквизит адресации"
-            }
-          }
-        ]
-      },
-      "supportVariant": "NONE",
-      "owner": {
-        "type": "TASK",
-        "mdoRef": "Task.Задача1",
-        "mdoRefRu": "Задача.Задача1"
-      },
-      "passwordMode": false,
-      "kind": "CUSTOM",
-      "indexing": "DONT_INDEX",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-              "length": 10,
-              "allowedLength": "VARIABLE",
-              "description": {
-                "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                "nameEn": "StringQualifiers (10, Variable)"
-              }
-            }
-          }
-        ]
-      },
-      "format": {
-        "content": []
-      },
-      "editFormat": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-      },
-      "toolTip": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-      },
-      "markNegatives": false,
-      "mask": "",
-      "multiLine": false,
-      "extendedEdit": false,
-      "fillFromFillingValue": false,
-      "choiceForm": {
-        "type": "UNKNOWN",
-        "mdoRef": "",
-        "mdoRefRu": ""
-      }
-    }
+{
+ "com.github._1c_syntax.bsl.mdo.Task": {
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "EXECUTE",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_ACTIVATE",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_EXECUTE",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
   ],
-  "attributes": [
-    [
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.Ref",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Ссылка"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "fullName": {
-                  "nameRu": "ЗадачаСсылка.Задача1",
-                  "nameEn": "TaskRef.Задача1"
-                },
-                "variant": "METADATA",
-                "kind": "TASK"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 0
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Ссылка",
-          "nameEn": "Ref"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.Executed",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Выполнена"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "BOOLEAN"
-            }
-          ],
-          "composite": false,
-          "qualifiers": []
-        },
-        "fullName": {
-          "nameRu": "Выполнена",
-          "nameEn": "Executed"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.Description",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Наименование"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 25,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (25, Переменная)",
-                  "nameEn": "StringQualifiers (25, Variable)"
-                }
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Наименование",
-          "nameEn": "Description"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.DeletionMark",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.ПометкаУдаления"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]/type"
-        },
-        "fullName": {
-          "nameRu": "ПометкаУдаления",
-          "nameEn": "DeletionMark"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.Date",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Дата"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "DATE"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers": {
-                "dateFractions": "DATE_TIME",
-                "description": {
-                  "nameRu": "КвалификаторыДаты (ДатаВремя)",
-                  "nameEn": "DateQualifiers (DateTime)"
-                }
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Дата",
-          "nameEn": "Date"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.Number",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Номер"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-                "length": 9,
-                "allowedLength": "VARIABLE",
-                "description": {
-                  "nameRu": "КвалификаторыСтроки (9, Переменная)",
-                  "nameEn": "StringQualifiers (9, Variable)"
-                }
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Номер",
-          "nameEn": "Number"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.RoutePoint",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.ТочкаМаршрута"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [],
-          "composite": false,
-          "qualifiers": []
-        },
-        "fullName": {
-          "nameRu": "ТочкаМаршрута",
-          "nameEn": "RoutePoint"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Task.Задача1.StandardAttribute.BusinessProcess",
-          "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.БизнесПроцесс"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "supportVariant": "NONE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[7]/type"
-        },
-        "fullName": {
-          "nameRu": "БизнесПроцесс",
-          "nameEn": "BusinessProcess"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      }
-    ],
-    []
-  ],
-  "commands": [],
-  "comment": "",
   "description": "Задача1",
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
   },
-  "forms": [],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/owner"
-  },
-  "mdoType": "TASK",
-  "moduleTypes": [],
-  "modules": [],
-  "name": "Задача1",
-  "objectBelonging": "OWN",
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 24,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INSERT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "DELETE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INPUT_BY_STRING",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_INSERT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_SET_DELETION_MARK",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_CLEAR_DELETION_MARK",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_DELETE_MARKED",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_ACTIVATE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EXECUTE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_EXECUTE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY_OF_MISSING_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_SETTINGS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SWITCH_TO_DATA_HISTORY_VERSION"
-    }
-  ],
+  "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+  "mdoRef": "Task.Задача1",
   "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Task/addressingAttributes/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute/format"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
   },
   "tabularSections": [],
+  "objectBelonging": "OWN",
+  "commands": [],
+  "mdoType": "TASK",
+  "auxiliaryChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
+  "defaultFormMap": [
+   "AUX_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   },
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   },
+   "AUX_OBJECT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   },
+   "CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   },
+   "LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   },
+   "OBJECT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+   }
+  ],
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
   "templates": [],
-  "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea"
-}}
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+  },
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
+  "modules": [],
+  "defaultObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
+  "addressingAttributes": [
+   {
+    "owner": {
+     "mdoRefRu": "Задача.Задача1",
+     "type": "TASK",
+     "mdoRef": "Task.Задача1"
+    },
+    "choiceForm": {
+     "mdoRefRu": "",
+     "type": "UNKNOWN",
+     "mdoRef": ""
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "content": []
+    },
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 10,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "bf531047-7ec7-4c74-bfdb-917138b2127c",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.РеквизитАдресации.РеквизитАдресации",
+     "type": "TASK_ADDRESSING_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.AddressingAttribute.РеквизитАдресации"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Реквизит адресации"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "РеквизитАдресации",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "name": "Задача1",
+  "attributes": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "БизнесПроцесс",
+     "nameEn": "BusinessProcess"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.БизнесПроцесс",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.BusinessProcess"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Выполнена",
+     "nameEn": "Executed"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Выполнена",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.Executed"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Дата",
+     "nameEn": "Date"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 2
+      }
+     ]
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Дата",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.Date"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Наименование",
+     "nameEn": "Description"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 25,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Наименование",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.Description"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Номер",
+     "nameEn": "Number"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 9,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Номер",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.Number"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ПометкаУдаления",
+     "nameEn": "DeletionMark"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.ПометкаУдаления",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.DeletionMark"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Ссылка",
+     "nameEn": "Ref"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "TASK",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ЗадачаСсылка.Задача1",
+        "nameEn": "TaskRef.Задача1"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.Ссылка",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.Ref"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ТочкаМаршрута",
+     "nameEn": "RoutePoint"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/type"
+    },
+    "uuid": "c251fcec-ec02-4ef4-8f70-4d70db6631ea",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1.СтандартныйРеквизит.ТочкаМаршрута",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Task.Задача1.StandardAttribute.RoutePoint"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "auxiliaryObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
+  },
+  "comment": "",
+  "forms": []
+ }
+}

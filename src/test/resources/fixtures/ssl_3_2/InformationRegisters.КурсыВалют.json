@@ -1,0 +1,476 @@
+{
+ "com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "possibleRights": [
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "description": "Курсы валют",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "uuid": "105cd740-1f60-45e1-871c-adeecd291b0d",
+  "mdoRef": "InformationRegister.КурсыВалют",
+  "supportVariant": "NOT_EDITABLE",
+  "informationRegisterPeriodicity": "DAY",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Курсы валют"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
+  "mdoType": "INFORMATION_REGISTER",
+  "defaultFormMap": [
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
+   },
+   "AUX_RECORD_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
+   },
+   "LIST_FORM",
+   {
+    "mdoRefRu": "РегистрСведений.КурсыВалют.Форма.ФормаСписка",
+    "type": "FORM",
+    "mdoRef": "InformationRegister.КурсыВалют.Form.ФормаСписка"
+   },
+   "RECORD_FORM",
+   {
+    "mdoRefRu": "РегистрСведений.КурсыВалют.Форма.ФормаЗаписи",
+    "type": "FORM",
+    "mdoRef": "InformationRegister.КурсыВалют.Form.ФормаЗаписи"
+   }
+  ],
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+  },
+  "templates": [],
+  "resources": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Кратность"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "passwordMode": false,
+    "name": "Кратность",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 10,
+       "nonNegative": true,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "4bd1cae4-d5b5-444e-9cf5-67a969714293",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.Ресурс.Кратность",
+     "type": "RESOURCE",
+     "mdoRef": "InformationRegister.КурсыВалют.Resource.Кратность"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Курс"
+      }
+     ]
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "passwordMode": false,
+    "name": "Курс",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "type": {
+     "types": [
+      {
+       "kind": "DEFINED_TYPE",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ОпределяемыйТип.КурсВалюты",
+        "nameEn": "DefinedType.КурсВалюты"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "95aec7d2-179b-4ea3-a3df-3d737b713564",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.Ресурс.Курс",
+     "type": "RESOURCE",
+     "mdoRef": "InformationRegister.КурсыВалют.Resource.Курс"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "RecordSetModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "auxiliaryRecordForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
+  },
+  "name": "КурсыВалют",
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют",
+     "type": "INFORMATION_REGISTER",
+     "mdoRef": "InformationRegister.КурсыВалют"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Активность",
+     "nameEn": "Active"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "105cd740-1f60-45e1-871c-adeecd291b0d",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.СтандартныйРеквизит.Активность",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "InformationRegister.КурсыВалют.StandardAttribute.Active"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": []
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "НомерСтроки",
+     "nameEn": "LineNumber"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 5,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "105cd740-1f60-45e1-871c-adeecd291b0d",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.СтандартныйРеквизит.НомерСтроки",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "InformationRegister.КурсыВалют.StandardAttribute.LineNumber"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Период",
+     "nameEn": "Period"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 2
+      }
+     ]
+    },
+    "uuid": "105cd740-1f60-45e1-871c-adeecd291b0d",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.СтандартныйРеквизит.Период",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "InformationRegister.КурсыВалют.StandardAttribute.Period"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата курса"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Регистратор",
+     "nameEn": "Recorder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "105cd740-1f60-45e1-871c-adeecd291b0d",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.СтандартныйРеквизит.Регистратор",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "InformationRegister.КурсыВалют.StandardAttribute.Recorder"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "comment": "",
+  "defaultRecordForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+  },
+  "forms": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма списка"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаСписка",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "a2f19cb2-9f2e-442b-b9f2-e5253c70871c",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма записи"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаЗаписи",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f279a625-b88f-43b4-bce9-de1186fe7d7e",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "dimensions": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "useInTotals": true,
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.Валюты",
+        "nameEn": "CatalogRef.Валюты"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "b1a330d7-9b88-44e9-aba6-41ce5e5e669c",
+    "mdoReference": {
+     "mdoRefRu": "РегистрСведений.КурсыВалют.Измерение.Валюта",
+     "type": "DIMENSION",
+     "mdoRef": "InformationRegister.КурсыВалют.Dimension.Валюта"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "master": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Валюта"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Валюта",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "denyIncompleteValues": true
+   }
+  ]
+ }
+}

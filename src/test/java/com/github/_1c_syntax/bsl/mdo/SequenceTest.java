@@ -21,21 +21,43 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class SequenceTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Sequences.Последовательность1, _edt",
-      "false, mdclasses, Sequences.Последовательность1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, Sequences.Последовательность1",
+    "false, mdclasses, Sequences.Последовательность1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Sequence.class);
 
+    var sequence = (Sequence) mdo;
+    assertThat(sequence).isNotNull();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(sequence.getAllModules(), false)
+      .containsAll(sequence.getModules());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(sequence.getChildren(), false)
+      .containsAll(sequence.getDimensions());
+    Assertions.assertThat(sequence.getPlainChildren(), true)
+      .containsAll(sequence.getChildren());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(sequence.getAllAttributes(), false)
+      .containsAll(sequence.getDimensions());
+    Assertions.assertThat(sequence.getStorageFields(), false)
+      .containsAll(sequence.getDimensions());
+    Assertions.assertThat(sequence.getPlainStorageFields(), false)
+      .containsAll(sequence.getDimensions());
+  }
 }

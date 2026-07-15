@@ -1,0 +1,887 @@
+{
+ "com.github._1c_syntax.bsl.mdo.WebService": {
+  "mdoType": "WEB_SERVICE",
+  "description": "Enterprise Data Exchange 1.0.1.1",
+  "mdoReference": {
+   "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1",
+   "type": "WEB_SERVICE",
+   "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1"
+  },
+  "uuid": "cb3a5c5b-7bdc-4e12-96f1-11b1213b6853",
+  "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "WEBServiceModule",
+    "uri": "src\/test\/resources\/ssl_3_2\/WebServices\/EnterpriseDataExchange_1_0_1_1\/Module.bsl",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "sessionMaxAge": 20,
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Enterprise Data Exchange 1.0.1.1"
+    }
+   ]
+  },
+  "operations": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "57046262-b9ce-4670-9cf5-6db9e58dd0d5",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.GetDataPart",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.GetDataPart"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Get data part"
+      }
+     ]
+    },
+    "procedureName": "ВыгрузитьЧастьФайла",
+    "name": "GetDataPart",
+    "objectBelonging": "OWN",
+    "comment": "Получить часть сформированного файла с данными, из временного хранилища",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Error message"
+        }
+       ]
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "8b653beb-af9f-4f39-b691-ae14f80b7cd6",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.GetDataPart.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.GetDataPart.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Part number"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "PartNumber",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "8e980ca0-1627-45e8-bd27-5dd1ac199459",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.GetDataPart.Параметр.PartNumber",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.GetDataPart.Parameter.PartNumber"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "File ID"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "FileID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "a9824176-36d5-4be5-9984-f4312ff48515",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.GetDataPart.Параметр.FileID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.GetDataPart.Parameter.FileID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "77559c11-713f-454d-aff4-56649e1350e9",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.ConfirmGettingFile",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.ConfirmGettingFile"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Confirm getting file"
+      }
+     ]
+    },
+    "procedureName": "ПодтвердитьПолучениеДанных",
+    "name": "ConfirmGettingFile",
+    "objectBelonging": "OWN",
+    "comment": "Подтвердить получение файла",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "FileID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "0c965703-c1d0-48b7-80f9-b8d869ff98f5",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.ConfirmGettingFile.Параметр.FileID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.ConfirmGettingFile.Parameter.FileID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Clear data pool"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "ClearDataPool",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "51f8d5ff-aec5-4c0a-ad02-df8c6cb1b4ad",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.ConfirmGettingFile.Параметр.ClearDataPool",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.ConfirmGettingFile.Parameter.ClearDataPool"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[2]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "7ba42162-557b-4e34-8aca-0cdee8cb2452",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.ConfirmGettingFile.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.ConfirmGettingFile.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "bb3a9973-67ce-479e-8668-c2f3bb20301e",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.TestConnection",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.TestConnection"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Test connection"
+      }
+     ]
+    },
+    "procedureName": "ПроверкаПодключения",
+    "name": "TestConnection",
+    "objectBelonging": "OWN",
+    "comment": "Проверка подключения к информационной базе",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Peer code"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "PeerCode",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "2c3fccc6-c4c0-49ec-bfc2-05ce05f27ea9",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.TestConnection.Параметр.PeerCode",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.TestConnection.Parameter.PeerCode"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "37169451-1464-4f24-8ca6-802963ffb636",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.TestConnection.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.TestConnection.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Exchange plan name"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "ExchangePlanName",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "e5250dfe-dda2-4547-9b9e-2470ea1be1ab",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.TestConnection.Параметр.ExchangePlanName",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.TestConnection.Parameter.ExchangePlanName"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "c3a958b1-590f-4418-a74f-5982b478cf52",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Prepare data for getting"
+      }
+     ]
+    },
+    "procedureName": "ПодготовитьДанныеКПолучению",
+    "name": "PrepareDataForGetting",
+    "objectBelonging": "OWN",
+    "comment": "Выгрузить данные из информационной базы, согласно настроек узла плана обмена и подготовить их для отправки",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Part size"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "PartSize",
+      "objectBelonging": "OWN",
+      "comment": "В КБ, 0 не разделять",
+      "uuid": "2ac8bd69-9fbf-4f15-b58d-397d9e903532",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting.Параметр.PartSize",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting.Parameter.PartSize"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Operation ID"
+        }
+       ]
+      },
+      "transferDirection": "OUT",
+      "name": "OperationID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "2ff35814-7eaa-4ae5-bbac-f46bebb36c9d",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting.Параметр.OperationID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting.Parameter.OperationID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "5b460b92-2c74-4f59-88b2-18d9aac42c04",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "ExchangePlanName",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "ef0e618d-0942-460a-ac65-9aca2fed976e",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting.Параметр.ExchangePlanName",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting.Parameter.ExchangePlanName"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "PeerCode",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "fd1ed7ec-d848-41cd-8ce3-2e5a682abcf0",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataForGetting.Параметр.PeerCode",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataForGetting.Parameter.PeerCode"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "d8066600-c669-449d-a187-fdd3af8f7afa",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutDataActionResult",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutDataActionResult"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Put data action result"
+      }
+     ]
+    },
+    "procedureName": "ПолучитьРезультатЗагрузкиДанных",
+    "name": "PutDataActionResult",
+    "objectBelonging": "OWN",
+    "comment": "Получить результат выполнения операции помещения данных в информационную базу",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "45bf7b20-f048-491a-a989-e50bea13d028",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutDataActionResult.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutDataActionResult.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[5]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "OperationID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "dadf86a6-c118-4827-b1b9-6cfee731242f",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutDataActionResult.Параметр.OperationID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutDataActionResult.Parameter.OperationID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "db05d35b-5f53-4c27-ba80-b477b9a98299",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataActionResult",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataActionResult"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Prepare data action result"
+      }
+     ]
+    },
+    "procedureName": "ПолучитьРезультатПодготовкиДанныхКВыгрузке",
+    "name": "PrepareDataActionResult",
+    "objectBelonging": "OWN",
+    "comment": "Получить результат выполнения операции подготовки данных для выгрузки из информационной базы",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "1acf34e6-c428-4130-82f0-5160dfcc0858",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataActionResult.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataActionResult.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[6]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "OperationID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "fa872ae1-b699-46fe-9d6a-e42e1388752b",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PrepareDataActionResult.Параметр.OperationID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PrepareDataActionResult.Parameter.OperationID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "e6fe7103-4dfa-4302-a58e-ccd7fac19c9d",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.Ping",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.Ping"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ping"
+      }
+     ]
+    },
+    "procedureName": "Ping",
+    "name": "Ping",
+    "objectBelonging": "OWN",
+    "comment": "Проверка соединения с информационной базой",
+    "parameters": [],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "ec580e4f-1518-4923-a10e-bc1da8688b37",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Put data"
+      }
+     ]
+    },
+    "procedureName": "ЗагрузитьДанныеВИнформационнуюБазу",
+    "name": "PutData",
+    "objectBelonging": "OWN",
+    "comment": "Поместить данные в информационную базу",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "1f866dc3-a4bc-4e8d-96a3-a26ee073926f",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "FileID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "7e4c0b74-e807-4aa9-ad69-3c85b147bb61",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData.Параметр.FileID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData.Parameter.FileID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[4]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "OperationID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "917a19d7-73db-4247-b892-397598d67879",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData.Параметр.OperationID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData.Parameter.OperationID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "ExchangePlanName",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "91c3902a-314f-4d40-8bcc-8dd131fed2f4",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData.Параметр.ExchangePlanName",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData.Parameter.ExchangePlanName"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[8]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[3]\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "PeerCode",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "ae2b21c5-9349-49e8-9627-26f05c21f43a",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutData.Параметр.PeerCode",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutData.Parameter.PeerCode"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+    },
+    "transactioned": false,
+    "uuid": "eee99b8e-29b6-4b7a-81f1-3d91d740c0d7",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutFilePart",
+     "type": "WS_OPERATION",
+     "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutFilePart"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "nillable": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Put file part"
+      }
+     ]
+    },
+    "procedureName": "ЗагрузитьЧастьФайла",
+    "name": "PutFilePart",
+    "objectBelonging": "OWN",
+    "comment": "Поместить часть файла с данными во временное хранилище",
+    "parameters": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]\/mdoReference"
+      },
+      "synonym": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Part data"
+        }
+       ]
+      },
+      "transferDirection": "IN",
+      "name": "PartData",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "8ed8f72e-404a-4be4-a44d-ddebbad5f411",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutFilePart.Параметр.PartData",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutFilePart.Parameter.PartData"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[3]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "FileID",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "ad4f2d1f-1e6f-4f6a-8061-202c0e42a8e4",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutFilePart.Параметр.FileID",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutFilePart.Parameter.FileID"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": false
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter[2]\/synonym"
+      },
+      "transferDirection": "IN",
+      "name": "PartNumber",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "dd577924-c6cb-4aa9-9db5-366d8958d00f",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutFilePart.Параметр.PartNumber",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutFilePart.Parameter.PartNumber"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     },
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation[9]\/mdoReference"
+      },
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.WebService\/operations\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperation\/parameters\/com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter\/synonym"
+      },
+      "transferDirection": "OUT",
+      "name": "ErrorMessage",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "e919bc4c-86e6-44f6-be27-5a729b63d042",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.EnterpriseDataExchange_1_0_1_1.Операция.PutFilePart.Параметр.ErrorMessage",
+       "type": "WS_OPERATION_PARAMETER",
+       "mdoRef": "WebService.EnterpriseDataExchange_1_0_1_1.Operation.PutFilePart.Parameter.ErrorMessage"
+      },
+      "supportVariant": "NOT_EDITABLE",
+      "nillable": true
+     }
+    ],
+    "dataLockControlMode": "MANAGED"
+   }
+  ],
+  "descriptorFileName": "EnterpriseDataExchange_1_0_1_1.1cws",
+  "name": "EnterpriseDataExchange_1_0_1_1",
+  "namespace": "http:\/\/www.1c.ru\/SSL\/EnterpriseDataExchange_1_0_1_1",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "reuseSessions": "DONT_USE"
+ }
+}

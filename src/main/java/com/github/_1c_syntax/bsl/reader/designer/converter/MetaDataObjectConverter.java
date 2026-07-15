@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.ConversionException;

@@ -24,21 +24,28 @@ package com.github._1c_syntax.bsl.mdclasses;
 import com.github._1c_syntax.bsl.reader.MDMerger;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @UtilityClass
 @Slf4j
@@ -88,18 +95,6 @@ public class MDClasses {
   }
 
   /**
-   * @param path        Путь к корню проекта
-   * @param skipSupport Флаг управления чтением информации о поддержке
-   * @return Конфигурация или расширение
-   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
-   * Создает конфигурацию или расширение по указанному пути
-   */
-  @Deprecated(since = "0.16.0")
-  public MDClass createConfiguration(Path path, boolean skipSupport) {
-    return createConfiguration(path, MDCReadSettings.builder().skipSupport(skipSupport).build());
-  }
-
-  /**
    * Создает внешнюю обработку или внешний отчет по указанному пути
    *
    * @param mdoPath Путь к файлу описания обработки или отчета
@@ -120,19 +115,6 @@ public class MDClasses {
   }
 
   /**
-   * Возвращает список конфигураций\расширений в указанном каталоге исходных файлов
-   *
-   * @param sourcePath  каталог исходных файлов
-   * @param skipSupport Флаг управления чтением информации о поддержке
-   * @return Список прочитанных контейнеров конфигураций и расширений
-   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
-   */
-  @Deprecated(since = "0.16.0")
-  public List<MDClass> createConfigurations(Path sourcePath, boolean skipSupport) {
-    return createConfigurations(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
-  }
-
-  /**
    * Читает каталог проекта и
    * - возвращает объект MDClass, если содержится только один объект MDC
    * - возвращает объединенную конфигурацию с расширениями
@@ -141,55 +123,56 @@ public class MDClasses {
    * @param sourcePath Путь к каталогу исходников
    * @return Результат чтения решения
    */
-  public MDClass createSolution(Path sourcePath) {
+  public Solution createSolution(Path sourcePath) {
     return createSolution(sourcePath, MDCReadSettings.DEFAULT);
   }
 
   /**
    * Читает каталог проекта и
-   * - возвращает объект MDClass, если содержится только один объект MDC
-   * - возвращает объединенную конфигурацию с расширениями
-   * - возвращает объединение расширений с пустой конфигурацией
+   * - возвращает Solution с единственной конфигурацией, если содержится только один объект MDC
+   * - возвращает Solution с объединенной конфигурацией и расширениями
+   * - возвращает Solution с объединением расширений с пустой конфигурацией
    *
    * @param sourcePath   Путь к каталогу исходников
    * @param readSettings Настройки чтения проекта
    * @return Результат чтения решения
    */
-  public MDClass createSolution(Path sourcePath, MDCReadSettings readSettings) {
+  public Solution createSolution(Path sourcePath, MDCReadSettings readSettings) {
     var mdcs = createConfigurations(sourcePath, readSettings);
-    MDClass result;
-    if (mdcs.isEmpty()) {
-      result = Configuration.EMPTY;
-    } else if (mdcs.size() == 1) {
-      result = mdcs.get(0);
-    } else {
-      var mdc = mdcs.stream().filter(Configuration.class::isInstance).map(Configuration.class::cast).findFirst();
-      var cf = mdc.orElse(Configuration.EMPTY);
+
+    if (!mdcs.isEmpty()) {
+      if (mdcs.size() == 1) {
+        var mdc = mdcs.getFirst();
+        if (mdc instanceof Configuration cf) {
+          return buildSolution(cf, Collections.emptyList());
+        }
+        if (mdc instanceof ConfigurationExtension ext) {
+          return buildSolution(Configuration.EMPTY, List.of(ext));
+        }
+
+        // заглушка, если получилось что-то странное
+        return Solution.EMPTY;
+      }
+
+      // решение содержит несколько компонент, разделяем
+      var base = mdcs.stream()
+        .filter(Configuration.class::isInstance)
+        .map(Configuration.class::cast)
+        .findFirst()
+        .orElse(Configuration.EMPTY);
+
       var extensions = mdcs.stream()
         .filter(ConfigurationExtension.class::isInstance)
         .map(ConfigurationExtension.class::cast)
         .toList();
 
-      if (cf.isEmpty()) {
-        if (extensions.isEmpty()) {
-          // вернем первое значение, т.к. там нет ни конфы, ни расширений
-          return mdcs.get(0);
-        } else if (extensions.size() == 1) {
-          // есть одно расширение, вернем его
-          return extensions.get(0);
-        }
-      } else if (extensions.isEmpty()) {
-        // расширений нет, вернем конфигурацию
-        return cf;
-      }
-
-      // объединим расширения с конфигурацией в одно целое
-      result = cf;
-      for (var extension : extensions) {
-        result = MDMerger.merge((Configuration) result, extension);
+      // что-то странное прочли
+      if (!base.isEmpty() || !extensions.isEmpty()) {
+        return buildSolution(base, extensions);
       }
     }
-    return result;
+
+    return Solution.EMPTY;
   }
 
   /**
@@ -241,19 +224,6 @@ public class MDClasses {
   /**
    * Возвращает список контейнеров метаданных в указанном каталоге исходных файлов
    *
-   * @param sourcePath  каталог исходных файлов
-   * @param skipSupport Флаг управления чтением информации о поддержке
-   * @return Список прочитанных контейнеров
-   * @deprecated Стоит использовать метод с параметром MDCReadSettings.
-   */
-  @Deprecated(since = "0.16.0")
-  public List<MDClass> create(Path sourcePath, boolean skipSupport) {
-    return create(sourcePath, MDCReadSettings.builder().skipSupport(skipSupport).build());
-  }
-
-  /**
-   * Возвращает список контейнеров метаданных в указанном каталоге исходных файлов
-   *
    * @param sourcePath   каталог исходных файлов
    * @param readSettings Настройки чтения
    * @return Список прочитанных контейнеров
@@ -265,39 +235,59 @@ public class MDClasses {
   }
 
   private List<Path> findFiles(Path sourcePath, Pattern pattern) {
-    List<Path> listPath = new ArrayList<>();
     var excludeFolders = mdoTypeGroupNames();
     excludeFolders.add("Ext");
-    try (Stream<Path> stream = Files.find(sourcePath, Integer.MAX_VALUE,
-      (Path path, BasicFileAttributes basicFileAttributes) -> {
-        if (!basicFileAttributes.isRegularFile()) {
-          return false;
+    List<Path> listPath = new ArrayList<>();
+
+    try {
+      Files.walkFileTree(sourcePath, new SimpleFileVisitor<>() {
+        @Override
+        public FileVisitResult visitFileFailed(Path file, IOException exc) {
+          if (exc instanceof AccessDeniedException) {
+            LOGGER.warn("Skipping directory (access denied): {}", file);
+            return FileVisitResult.CONTINUE;
+          }
+          throw new UncheckedIOException(exc);
         }
 
-        var parentName = path.getParent().getFileName().toString();
-        var parentParentName = "";
-        if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
-          parentParentName = path.getParent().getParent().getFileName().toString();
+        @Override
+        public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+          return handleFile(path, attrs, excludeFolders, pattern, listPath);
         }
-
-        if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
-          return false;
-        }
-        var fileName = path.getFileName().toString();
-        var ext = FilenameUtils.getExtension(fileName);
-        if (!("xml".equals(ext) || "mdo".equals(ext))) {
-          return false;
-        }
-
-        return pattern.matcher(fileName).matches();
-      }
-    )) {
-      listPath = stream.toList();
+      });
     } catch (IOException e) {
-      LOGGER.error("Error read files", e);
+      LOGGER.error("Error reading files", e);
     }
 
     return listPath;
+  }
+
+  private static FileVisitResult handleFile(Path path, BasicFileAttributes attrs,
+                                             Set<String> excludeFolders, Pattern pattern,
+                                             List<Path> listPath) {
+    if (!attrs.isRegularFile()) {
+      return FileVisitResult.CONTINUE;
+    }
+
+    var parentName = path.getParent().getFileName().toString();
+    var parentParentName = "";
+    if (path.getParent().getParent() != null && path.getParent().getParent().getFileName() != null) {
+      parentParentName = path.getParent().getParent().getFileName().toString();
+    }
+
+    if (excludeFolders.contains(parentName) || excludeFolders.contains(parentParentName)) {
+      return FileVisitResult.CONTINUE;
+    }
+    var fileName = path.getFileName().toString();
+    var ext = FilenameUtils.getExtension(fileName);
+    if (!("xml".equals(ext) || "mdo".equals(ext))) {
+      return FileVisitResult.CONTINUE;
+    }
+
+    if (pattern.matcher(fileName).matches()) {
+      listPath.add(path);
+    }
+    return FileVisitResult.CONTINUE;
   }
 
   private Set<String> mdoTypeGroupNames() {
@@ -308,5 +298,29 @@ public class MDClasses {
       )
       .map(MDOType::groupName)
       .collect(Collectors.toSet());
+  }
+
+  private static Solution buildSolution(Configuration base, List<ConfigurationExtension> extensions) {
+    if (extensions.isEmpty()) {
+      var provenance = new HashMap<MdoReference, ObjectProvenance>();
+      base.getChildrenByMdoRef().forEach((ref, md) ->
+        provenance.put(ref, ObjectProvenance.builder()
+          .ownerRef(base.getMdoReference())
+          .objectBelonging(md.getObjectBelonging())
+          .build()));
+      return Solution.builder()
+        .mergedConfiguration(base)
+        .baseConfiguration(base)
+        .provenance(Collections.unmodifiableMap(provenance))
+        .build();
+    }
+
+    var mergeResult = MDMerger.mergeAll(base, extensions);
+    return Solution.builder()
+      .mergedConfiguration(mergeResult.configuration())
+      .baseConfiguration(base)
+      .extensions(extensions)
+      .provenance(mergeResult.provenance())
+      .build();
   }
 }

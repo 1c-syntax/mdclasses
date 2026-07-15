@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,28 +31,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class IntegrationServiceTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses_3_18, IntegrationServices.СервисИнтеграции1, _edt",
-      "false, mdclasses_3_18, IntegrationServices.СервисИнтеграции1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses_3_18, IntegrationServices.СервисИнтеграции1",
+    "false, mdclasses_3_18, IntegrationServices.СервисИнтеграции1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(IntegrationService.class);
-    var is = (IntegrationService) mdo;
-    assertThat(is.getUuid()).isEqualTo("94ed2401-fd3c-4e92-b34d-1cdad2d8ee42");
-    assertThat(is.getName()).isEqualTo("СервисИнтеграции1");
-    assertThat(is.getMdoReference()).isEqualTo(MdoReference.create("IntegrationServices.СервисИнтеграции1"));
-    assertThat(is.getComment()).isEmpty();
-    assertThat(is.getSynonym().isEmpty()).isTrue();
-    assertThat(is.getSupportVariant()).isEqualTo(SupportVariant.NONE);
-    assertThat(is.getModules())
-      .hasSize(1)
-      .isEqualTo(is.getAllModules());
-    assertThat(is.getIntegrationServiceChannels())
-      .hasSize(2)
-      .isEqualTo(is.getChildren())
-      .isEqualTo(is.getPlainChildren());
+
+    var integrationService = (IntegrationService) mdo;
+    assertThat(integrationService).isNotNull();
+
+    var modules = integrationService.getModules();
+    var channels = integrationService.getIntegrationServiceChannels();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(integrationService.getAllModules(), true).containsAll(modules);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(integrationService.getChildren(), true)
+      .containsAll(channels);
+    Assertions.assertThat(integrationService.getPlainChildren(), true)
+      .containsAllPlain(channels);
   }
 }

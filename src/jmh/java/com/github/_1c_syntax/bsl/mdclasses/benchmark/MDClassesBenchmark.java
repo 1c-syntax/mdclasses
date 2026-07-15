@@ -46,8 +46,12 @@ import java.util.concurrent.TimeUnit;
 @Fork(2)
 public class MDClassesBenchmark {
 
-  private final Path configPathEDT = Path.of("src/test/resources/ext/edt/ssl_3_1/configuration");
-  private final Path configPathDesigner = Path.of("src/test/resources/ext/designer/ssl_3_1/src/cf");
+  private final String configPathEDT = System.getProperty(
+    "bench.edt.path",
+    "src/test/resources/ext/edt/ssl_3_1/configuration");
+  private final String configPathDesigner = System.getProperty(
+    "bench.designer.path",
+    "src/test/resources/ext/designer/ssl_3_1/src/cf");
   private static final MDCReadSettings SKIP_ALL = MDCReadSettings.builder()
     .skipSupport(true)
     .skipRoleData(true)
@@ -59,31 +63,31 @@ public class MDClassesBenchmark {
   @Setup
   public void setup() {
     // Предварительная загрузка для разогрева
-    MDClasses.createConfiguration(configPathEDT);
-    MDClasses.createConfiguration(configPathDesigner);
+    MDClasses.createConfiguration(Path.of(configPathEDT));
+    MDClasses.createConfiguration(Path.of(configPathDesigner));
   }
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_False(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT);
+    var model = MDClasses.createConfiguration(Path.of(configPathEDT));
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_EDT_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathEDT, SKIP_ALL);
+    var model = MDClasses.createConfiguration(Path.of(configPathEDT), SKIP_ALL);
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_False(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner);
+    var model = MDClasses.createConfiguration(Path.of(configPathDesigner));
     blackhole.consume(model);
   }
 
   @Benchmark
   public void test_Designer_CreateConfiguration_SkipSupport_True(Blackhole blackhole) {
-    var model = MDClasses.createConfiguration(configPathDesigner, SKIP_ALL);
+    var model = MDClasses.createConfiguration(Path.of(configPathDesigner), SKIP_ALL);
     blackhole.consume(model);
   }
 }

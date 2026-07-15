@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -38,6 +39,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -89,4 +91,47 @@ public class SettingsStorage implements MDObject, ModuleOwner, FormOwner, Templa
 
   @Singular
   List<ObjectTemplate> templates;
+
+  /*
+   * Свое
+   */
+
+  /**
+   * Ссылка на форму сохранения по умолчанию
+   */
+  @Default
+  MdoReference defaultSaveForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму загрузки по умолчанию
+   */
+  @Default
+  MdoReference defaultLoadForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму сохранения
+   */
+  @Default
+  MdoReference auxiliarySaveForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму загрузки
+   */
+  @Default
+  MdoReference auxiliaryLoadForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.SAVE_FORM, getDefaultSaveForm()),
+      Map.entry(DefaultFormKind.LOAD_FORM, getDefaultLoadForm()),
+      Map.entry(DefaultFormKind.AUX_SAVE_FORM, getAuxiliarySaveForm()),
+      Map.entry(DefaultFormKind.AUX_LOAD_FORM, getAuxiliaryLoadForm())
+    );
+  }
 }

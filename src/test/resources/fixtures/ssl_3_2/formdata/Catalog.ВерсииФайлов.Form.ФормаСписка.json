@@ -1,0 +1,198 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ОбработкаОповещения",
+    "event": "NotificationProcessing"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Список",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "Список",
+    "id": 1,
+    "type": "TABLE",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ГруппаВертикально",
+      "id": 64,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Вертикально"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ГруппаОсновное",
+        "id": 66,
+        "type": "COLUMN_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Основное"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СписокВладелец",
+      "id": 16,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Владелец"
+     },
+     {
+      "name": "СписокАвтор",
+      "id": 18,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Автор"
+     },
+     {
+      "name": "СписокКомментарий",
+      "id": 20,
+      "type": "LABEL_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Комментарий"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Список.Комментарий"
+     },
+     {
+      "name": "СписокДатаСоздания",
+      "id": 22,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.ДатаСоздания"
+     },
+     {
+      "name": "СписокРазмер",
+      "id": 24,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Размер"
+     },
+     {
+      "name": "СписокНомерВерсии",
+      "id": 26,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.НомерВерсии"
+     },
+     {
+      "name": "СписокРасширение",
+      "id": 30,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Расширение"
+     },
+     {
+      "name": "СписокСсылка",
+      "id": 48,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Ссылка"
+     },
+     {
+      "name": "СписокПолноеНаименование",
+      "id": 8,
+      "type": "LABEL_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Наименование"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Список.Наименование"
+     }
+    ],
+    "dataPath": "Список"
+   },
+   {
+    "name": "ГруппаПользовательскихНастроек",
+    "id": 51,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

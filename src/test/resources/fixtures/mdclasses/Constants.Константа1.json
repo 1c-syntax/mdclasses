@@ -1,102 +1,69 @@
-{"com.github._1c_syntax.bsl.mdo.Constant": {
-  "comment": "",
+{
+ "com.github._1c_syntax.bsl.mdo.Constant": {
+  "mdoType": "CONSTANT",
+  "possibleRights": [
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "READ",
+   "READ_DATA_HISTORY",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
   "description": "Константа1",
   "explanation": {
-    "content": []
+   "content": []
   },
   "mdoReference": {
-    "type": "CONSTANT",
-    "mdoRef": "Constant.Константа1",
-    "mdoRefRu": "Константа.Константа1"
+   "mdoRefRu": "Константа.Константа1",
+   "type": "CONSTANT",
+   "mdoRef": "Constant.Константа1"
   },
-  "mdoType": "CONSTANT",
-  "moduleTypes": [
-    [
-      "ValueManagerModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl"
-      ]
-    ],
-    [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl"
-      ]
-    ]
-  ],
+  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+  "mdoRef": "Constant.Константа1",
   "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Constant\/mdoReference"
     },
-    {
-      "moduleType": "ValueManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/Constants/Константа1/Ext/ValueManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/mdoReference"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    }
-  ],
-  "name": "Константа1",
-  "objectBelonging": "OWN",
-  "passwordMode": false,
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 11,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "READ_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_SETTINGS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EDIT_DATA_HISTORY_VERSION_COMMENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SWITCH_TO_DATA_HISTORY_VERSION"
-    }
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/mdclasses\/Constants\/Константа1\/ManagerModule.bsl",
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Constant\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "ValueManagerModule",
+    "uri": "src\/test\/resources\/mdclasses\/Constants\/Константа1\/ValueManagerModule.bsl",
+    "supportVariant": "NONE"
+   }
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Constant/explanation"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Constant\/explanation"
   },
-  "uuid": "61e6a6f2-7057-4e93-96c3-7bd2559217f4",
+  "passwordMode": false,
   "valueType": {
-    "types": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-      }
-    ],
-    "composite": false,
-    "qualifiers": [
-      {
-        "default": {
-          "tag": 4
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-          "length": 10,
-          "allowedLength": "VARIABLE",
-          "description": {
-            "nameRu": "КвалификаторыСтроки (10, Переменная)",
-            "nameEn": "StringQualifiers (10, Variable)"
-          }
-        }
-      }
-    ]
-  }
-}}
+   "types": [
+    "STRING"
+   ],
+   "composite": false,
+   "qualifiers": [
+    {
+     "length": 10,
+     "allowedLength": 0
+    }
+   ]
+  },
+  "name": "Константа1",
+  "comment": "",
+  "objectBelonging": "OWN"
+ }
+}

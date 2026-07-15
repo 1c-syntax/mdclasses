@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class FunctionalOptionsParameterTest {
   @ParameterizedTest
@@ -33,10 +35,13 @@ class FunctionalOptionsParameterTest {
       "true, mdclasses, FunctionalOptionsParameters.ПараметрФункциональныхОпций",
       "false, mdclasses, FunctionalOptionsParameters.ПараметрФункциональныхОпций",
       "true, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
-      "false, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта"
+      "false, ssl_3_1, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
+      "true, ssl_3_2, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта",
+      "false, ssl_3_2, FunctionalOptionsParameters.ТипВерсионируемогоОбъекта"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(FunctionalOptionsParameter.class);
   }
 }

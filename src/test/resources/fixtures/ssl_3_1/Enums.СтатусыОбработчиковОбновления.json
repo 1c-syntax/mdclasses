@@ -1,330 +1,286 @@
-{"com.github._1c_syntax.bsl.mdo.Enum": {
-  "attributes": [
-    [
-      {
-        "uuid": "36b15776-5211-4afa-9b6c-c042121218c0",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.StandardAttribute.Order",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.СтандартныйРеквизит.Порядок"
-        },
-        "comment": "",
-        "synonym": {
-          "content": []
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "type": "ENUM",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "NUMBER"
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.qualifiers.NumberQualifiers": {
-                "precision": 5,
-                "scale": 0,
-                "nonNegative": false,
-                "description": {
-                  "nameRu": "КвалификаторыЧисла (5.0)",
-                  "nameEn": "NumberQualifiers (5.0)"
-                }
-              }
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Порядок",
-          "nameEn": "Order"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "36b15776-5211-4afa-9b6c-c042121218c0",
-        "mdoReference": {
-          "type": "STANDARD_ATTRIBUTE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.StandardAttribute.Ref",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.СтандартныйРеквизит.Ссылка"
-        },
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "STANDARD",
-        "type": {
-          "types": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                "fullName": {
-                  "nameRu": "ПеречислениеСсылка.СтатусыОбработчиковОбновления",
-                  "nameEn": "EnumRef.СтатусыОбработчиковОбновления"
-                },
-                "variant": "METADATA",
-                "kind": "ENUM"
-              }
-            }
-          ],
-          "composite": false,
-          "qualifiers": [
-            {
-              "default": {
-                "tag": 4
-              },
-              "int": 0
-            }
-          ]
-        },
-        "fullName": {
-          "nameRu": "Ссылка",
-          "nameEn": "Ref"
-        },
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      }
-    ],
-    []
-  ],
-  "commands": [],
-  "comment": "",
-  "description": "Статусы обработчиков обновления",
-  "enumValues": [
-    [
-      {
-        "uuid": "422a0e10-361f-46ba-b92e-3088d81e12a4",
-        "name": "Выполнен",
-        "mdoReference": {
-          "type": "ENUM_VALUE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Выполнен",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Выполнен"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Выполнен"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        }
-      },
-      {
-        "uuid": "f37b7b25-abd2-4e19-9712-78aafceb4f43",
-        "name": "НеВыполнялся",
-        "mdoReference": {
-          "type": "ENUM_VALUE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.НеВыполнялся",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.НеВыполнялся"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Не выполнялся"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        }
-      },
-      {
-        "uuid": "7cd4c6ea-5795-4bea-a159-1e66650c42fe",
-        "name": "Выполняется",
-        "mdoReference": {
-          "type": "ENUM_VALUE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Выполняется",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Выполняется"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Выполняется"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        }
-      },
-      {
-        "uuid": "091fcffa-da7e-4375-bf0b-11cc4950b5ad",
-        "name": "Приостановлен",
-        "mdoReference": {
-          "type": "ENUM_VALUE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Приостановлен",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Приостановлен"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Приостановлен"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        }
-      },
-      {
-        "uuid": "57e91491-73b6-43f7-b7f8-26efec56ce9e",
-        "name": "Ошибка",
-        "mdoReference": {
-          "type": "ENUM_VALUE",
-          "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Ошибка",
-          "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Ошибка"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            {
-              "default": {
-                "tag": 2
-              },
-              "int": 1,
-              "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-                "langKey": "ru",
-                "value": "Ошибка"
-              }
-            }
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-        }
-      }
-    ],
-    []
-  ],
-  "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/synonym"
-  },
-  "forms": [],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-  },
+{
+ "com.github._1c_syntax.bsl.mdo.Enum": {
   "mdoType": "ENUM",
-  "moduleTypes": [
-    [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/ssl_3_1/src/cf/Enums/СтатусыОбработчиковОбновления/Ext/ManagerModule.bsl"
-      ]
-    ]
+  "auxiliaryChoiceForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultFormMap": [
+   "AUX_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+   },
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+   },
+   "CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+   },
+   "LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+   }
   ],
-  "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Enums/СтатусыОбработчиковОбновления/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Enum/attributes/c/com.github._1c_syntax.bsl.mdo.children.StandardAttribute/owner"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
-    }
-  ],
-  "name": "СтатусыОбработчиковОбновления",
-  "objectBelonging": "OWN",
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Статусы обработчиков обновления"
-        }
-      }
-    ]
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
   },
   "templates": [],
-  "uuid": "36b15776-5211-4afa-9b6c-c042121218c0"
-}}
+  "description": "Статусы обработчиков обновления",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+  },
+  "uuid": "36b15776-5211-4afa-9b6c-c042121218c0",
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+  },
+  "mdoRef": "Enum.СтатусыОбработчиковОбновления",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/ssl_3_1\/Enums\/СтатусыОбработчиковОбновления\/ManagerModule.bsl",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Статусы обработчиков обновления"
+    }
+   ]
+  },
+  "name": "СтатусыОбработчиковОбновления",
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления",
+     "type": "ENUM",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Порядок",
+     "nameEn": "Order"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 5,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "uuid": "36b15776-5211-4afa-9b6c-c042121218c0",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.СтандартныйРеквизит.Порядок",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.StandardAttribute.Order"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": []
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Ссылка",
+     "nameEn": "Ref"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.СтатусыОбработчиковОбновления",
+        "nameEn": "EnumRef.СтатусыОбработчиковОбновления"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "36b15776-5211-4afa-9b6c-c042121218c0",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.СтандартныйРеквизит.Ссылка",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.StandardAttribute.Ref"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "comment": "",
+  "objectBelonging": "OWN",
+  "commands": [],
+  "forms": [],
+  "enumValues": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Приостановлен"
+      }
+     ]
+    },
+    "name": "Приостановлен",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "091fcffa-da7e-4375-bf0b-11cc4950b5ad",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Приостановлен",
+     "type": "ENUM_VALUE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Приостановлен"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выполнен"
+      }
+     ]
+    },
+    "name": "Выполнен",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "422a0e10-361f-46ba-b92e-3088d81e12a4",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Выполнен",
+     "type": "ENUM_VALUE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Выполнен"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ошибка"
+      }
+     ]
+    },
+    "name": "Ошибка",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "57e91491-73b6-43f7-b7f8-26efec56ce9e",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Ошибка",
+     "type": "ENUM_VALUE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Ошибка"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выполняется"
+      }
+     ]
+    },
+    "name": "Выполняется",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "7cd4c6ea-5795-4bea-a159-1e66650c42fe",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.Выполняется",
+     "type": "ENUM_VALUE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.Выполняется"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Enum\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Не выполнялся"
+      }
+     ]
+    },
+    "name": "НеВыполнялся",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f37b7b25-abd2-4e19-9712-78aafceb4f43",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.СтатусыОбработчиковОбновления.ЗначениеПеречисления.НеВыполнялся",
+     "type": "ENUM_VALUE",
+     "mdoRef": "Enum.СтатусыОбработчиковОбновления.EnumValue.НеВыполнялся"
+    },
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ]
+ }
+}

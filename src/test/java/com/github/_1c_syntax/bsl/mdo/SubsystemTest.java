@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,7 +39,8 @@ class SubsystemTest {
     }
   )
   void testMDClasses(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Subsystem.class);
 
     var subsystem = (Subsystem) mdo;
 
@@ -96,10 +97,13 @@ class SubsystemTest {
   @CsvSource(
     {
       "true, ssl_3_1, Subsystems.Администрирование",
-      "false, ssl_3_1, Subsystems.Администрирование"
+      "false, ssl_3_1, Subsystems.Администрирование",
+      "true, ssl_3_2, Subsystems.Администрирование",
+      "false, ssl_3_2, Subsystems.Администрирование"
     }
   )
   void testSSLSimple(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Subsystem.class);
   }
 }

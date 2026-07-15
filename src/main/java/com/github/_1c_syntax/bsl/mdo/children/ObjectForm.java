@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -91,4 +92,9 @@ public class ObjectForm implements Form, MDChild {
    */
   @Singular("addUsePurposes")
   List<UsePurposes> usePurposes;
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.FORM;
+  }
 }

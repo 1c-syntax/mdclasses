@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
@@ -79,5 +80,10 @@ public class ObjectCommand implements Command, MDChild {
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.COMMAND;
   }
 }

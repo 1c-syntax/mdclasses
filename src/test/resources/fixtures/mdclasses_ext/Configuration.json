@@ -1,665 +1,409 @@
-{"com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension": {
-  "XDTOPackages": [
-    [
-      2
-    ],
-    []
-  ],
-  "accountingRegisters": [
-    [
-      2
-    ],
-    []
-  ],
-  "accumulationRegisters": [
-    [
-      2
-    ],
-    []
-  ],
-  "bots": [],
-  "businessProcesses": [
-    {
-      "uuid": "bb0c9b9f-58d0-4180-b5c8-211ade79fe6a",
-      "name": "БизнесПроцесс1",
-      "mdoReference": {
-        "type": "BUSINESS_PROCESS",
-        "mdoRef": "BusinessProcess.БизнесПроцесс1",
-        "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "content": []
-      },
-      "supportVariant": "NONE",
-      "modules": [],
-      "commands": [],
-      "attributes": [
-        [
-          7
-        ],
-        []
-      ],
-      "tabularSections": [],
-      "forms": [],
-      "templates": [],
-      "explanation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "task": {
-        "type": "UNKNOWN",
-        "mdoRef": "",
-        "mdoRefRu": ""
-      }
-    }
-  ],
-  "calculationRegisters": [
-    [
-      2
-    ],
-    []
-  ],
-  "catalogs": [
-    [
-      2
-    ],
-    []
-  ],
-  "chartsOfAccounts": [
-    [
-      2
-    ],
-    []
-  ],
-  "chartsOfCalculationTypes": [
-    [
-      2
-    ],
-    []
-  ],
-  "chartsOfCharacteristicTypes": [
-    [
-      2
-    ],
-    []
-  ],
-  "commandGroups": [
-    [
-      2
-    ],
-    []
-  ],
-  "comment": "",
-  "commonAttributes": [
-    {
-      "uuid": "88200555-c4e7-4a2d-9e76-434838f0015f",
-      "name": "ОбщийРеквизит1",
-      "mdoReference": {
-        "type": "COMMON_ATTRIBUTE",
-        "mdoRef": "CommonAttribute.ОбщийРеквизит1",
-        "mdoRefRu": "ОбщийРеквизит.ОбщийРеквизит1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-              "length": 10,
-              "allowedLength": "VARIABLE",
-              "description": {
-                "nameRu": "КвалификаторыСтроки (10, Переменная)",
-                "nameEn": "StringQualifiers (10, Variable)"
-              }
-            }
-          }
-        ]
-      },
-      "autoUse": "USE",
-      "passwordMode": false,
-      "indexing": "DONT_INDEX",
-      "dataSeparation": "SEPARATE",
-      "dataSeparationValue": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
-      },
-      "dataSeparationUse": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
-      },
-      "conditionalSeparation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/task"
-      },
-      "usersSeparation": "SEPARATE",
-      "authenticationSeparation": "SEPARATE",
-      "configurationExtensionsSeparation": "SEPARATE",
-      "content": []
-    }
-  ],
-  "commonCommands": [
-    [
-      2
-    ],
-    []
-  ],
-  "commonForms": [
-    [
-      2
-    ],
-    []
-  ],
-  "commonModules": [
-    [
-      9
-    ],
-    []
-  ],
-  "commonPictures": [
-    [
-      2
-    ],
-    []
-  ],
-  "commonTemplates": [
-    [
-      2
-    ],
-    []
+{
+ "com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension": {
+  "dataProcessors": [
+   2
   ],
   "compatibilityMode": {
-    "minor": 3,
-    "version": 16
+   "minor": 3,
+   "version": 16
   },
-  "configurationExtensionCompatibilityMode": {
-    "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/compatibilityMode"
-  },
-  "configurationExtensionPurpose": "CUSTOMIZATION",
-  "configurationSource": "DESIGNER",
-  "constants": [
-    [
-      2
-    ],
-    []
-  ],
-  "dataProcessors": [
-    [
-      2
-    ],
-    []
-  ],
-  "defaultLanguage": {
-    "type": "LANGUAGE",
-    "mdoRef": "Language.Русский",
-    "mdoRefRu": "Язык.Русский"
-  },
-  "defaultRunMode": "MANAGED_APPLICATION",
-  "definedTypes": [
-    {
-      "uuid": "b6f5ff2a-0e1f-4660-b3a3-6e982cfd1be5",
-      "name": "ОпределяемыйТип1",
-      "mdoReference": {
-        "type": "DEFINED_TYPE",
-        "mdoRef": "DefinedType.ОпределяемыйТип1",
-        "mdoRefRu": "ОпределяемыйТип.ОпределяемыйТип1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "type": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.value.PrimitiveValueType": "STRING"
-          }
-        ],
-        "composite": false,
-        "qualifiers": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 1,
-            "com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers": {
-              "length": 10,
-              "allowedLength": "VARIABLE",
-              "description": {
-                "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/commonAttributes/com.github._1c_syntax.bsl.mdo.CommonAttribute/type/qualifiers/java.util.CollSer/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers/description"
-              }
-            }
-          }
-        ]
-      }
-    }
-  ],
-  "description": "Расширение",
-  "documentJournals": [
-    {
-      "uuid": "40b7b7e1-6986-4602-82d4-753480f20e3b",
-      "name": "ЖурналДокументов1",
-      "mdoReference": {
-        "type": "DOCUMENT_JOURNAL",
-        "mdoRef": "DocumentJournal.ЖурналДокументов1",
-        "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "modules": [],
-      "commands": [],
-      "columns": [],
-      "forms": [],
-      "templates": [],
-      "registeredDocuments": [],
-      "explanation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      }
-    }
-  ],
-  "documentNumerators": [
-    {
-      "uuid": "780a7504-61e5-4d50-8481-4031f01db4ca",
-      "name": "НумераторДокументов1",
-      "mdoReference": {
-        "type": "DOCUMENT_NUMERATOR",
-        "mdoRef": "DocumentNumerator.НумераторДокументов1",
-        "mdoRefRu": "НумераторДокументов.НумераторДокументов1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE"
-    }
+  "reports": [
+   2
   ],
   "documents": [
-    [
-      2
-    ],
-    []
-  ],
-  "empty": false,
-  "enums": [
-    [
-      2
-    ],
-    []
-  ],
-  "eventSubscriptions": [
-    {
-      "uuid": "99733189-8e92-4db0-ac1a-c989896543e5",
-      "name": "ПодпискаНаСобытие1",
-      "mdoReference": {
-        "type": "EVENT_SUBSCRIPTION",
-        "mdoRef": "EventSubscription.ПодпискаНаСобытие1",
-        "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "source": {
-        "types": [
-          {
-            "default": {
-              "tag": 4
-            },
-            "int": 0
-          }
-        ],
-        "composite": false,
-        "qualifiers": []
-      },
-      "handler": {
-        "methodPath": "",
-        "moduleName": "",
-        "methodName": ""
-      },
-      "event": ""
-    }
+   2
   ],
   "exchangePlans": [
-    [
-      2
-    ],
-    []
-  ],
-  "externalDataSources": [],
-  "filterCriteria": [
-    [
-      2
-    ],
-    []
-  ],
-  "functionalOptions": [
-    [
-      2
-    ],
-    []
-  ],
-  "functionalOptionsParameters": [
-    [
-      2
-    ],
-    []
-  ],
-  "httpServices": [
-    [
-      2
-    ],
-    []
-  ],
-  "informationRegisters": [
-    [
-      4
-    ],
-    []
-  ],
-  "integrationServices": [],
-  "interfaceCompatibilityMode": "TAXI",
-  "interfaces": [],
-  "languages": [
-    {
-      "uuid": "2739e06e-cb93-4617-bc73-ca2fa2db8d0e",
-      "name": "Русский",
-      "mdoReference": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/defaultLanguage"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "languageCode": "ru"
-    }
-  ],
-  "mdoReference": {
-    "type": "CONFIGURATION",
-    "mdoRef": "Configuration.Расширение",
-    "mdoRefRu": "Конфигурация.Расширение"
-  },
-  "mdoType": "UNKNOWN",
-  "moduleTypes": [],
-  "modules": [],
-  "name": "Расширение",
-  "namePrefix": "Расш_",
-  "objectBelonging": "ADOPTED",
-  "paletteColors": [],
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 26,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "ADMINISTRATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "DATA_ADMINISTRATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "UPDATE_DATA_BASE_CONFIGURATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EXCLUSIVE_MODE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "ACTIVE_USERS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EVENT_LOG",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "THIN_CLIENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "WEB_CLIENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MOBILE_CLIENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "THICK_CLIENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EXTERNAL_CONNECTION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "AUTOMATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "TECHNICAL_SPECIALIST_MODE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "COLLABORATION_SYSTEM_INFO_BASE_REGISTRATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MAIN_WINDOW_MODE_EMBEDDED_WORKPLACE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MAIN_WINDOW_MODE_KIOSK",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MAIN_WINDOW_MODE_NORMAL",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MAIN_WINDOW_MODE_FULLSCREEN_WORKPLACE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "MAIN_WINDOW_MODE_WORKPLACE",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "ANALYTICS_SYSTEM_CLIENT",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "EXCLUSIVE_MODE_TERMINATION_AT_SESSION_START",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "SAVE_USER_DATA",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "CONFIGURATION_EXTENSIONS_ADMINISTRATION",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_OPEN_EXT_DATA_PROCESSORS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "INTERACTIVE_OPEN_EXT_REPORTS",
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "OUTPUT"
-    }
-  ],
-  "reports": [
-    [
-      2
-    ],
-    []
-  ],
-  "roles": [
-    [
-      2
-    ],
-    []
-  ],
-  "scheduledJobs": [
-    {
-      "uuid": "78e14b08-6c57-430f-978b-0af7468ecc49",
-      "name": "РегламентноеЗадание1",
-      "mdoReference": {
-        "type": "SCHEDULED_JOB",
-        "mdoRef": "ScheduledJob.РегламентноеЗадание1",
-        "mdoRefRu": "РегламентноеЗадание.РегламентноеЗадание1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "methodName": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/eventSubscriptions/com.github._1c_syntax.bsl.mdo.EventSubscription/handler"
-      },
-      "description": "",
-      "key": "",
-      "use": false,
-      "predefined": false,
-      "restartCountOnFailure": 0,
-      "restartIntervalOnFailure": 0
-    }
-  ],
-  "scriptVariant": "RUSSIAN",
-  "sequences": [
-    {
-      "uuid": "323e7c7d-14d7-4a93-8ae8-674278078a73",
-      "name": "Последовательность1",
-      "mdoReference": {
-        "type": "SEQUENCE",
-        "mdoRef": "Sequence.Последовательность1",
-        "mdoRefRu": "Последовательность.Последовательность1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "modules": [],
-      "dimensions": [
-        {
-          "uuid": "6ac31292-b44c-42fd-a5e3-a73ddde64e27",
-          "name": "Измерение1",
-          "mdoReference": {
-            "type": "DIMENSION",
-            "mdoRef": "Sequence.Последовательность1.Dimension.Измерение1",
-            "mdoRefRu": "Последовательность.Последовательность1.Измерение.Измерение1"
-          },
-          "objectBelonging": "ADOPTED",
-          "comment": "",
-          "synonym": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-          },
-          "supportVariant": "NONE",
-          "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/sequences/com.github._1c_syntax.bsl.mdo.Sequence/mdoReference"
-          },
-          "passwordMode": false,
-          "kind": "CUSTOM",
-          "indexing": "DONT_INDEX",
-          "type": {
-            "types": [
-              {
-                "default": {
-                  "tag": 4
-                },
-                "int": 1,
-                "com.github._1c_syntax.bsl.types.value.CustomValueType": {
-                  "fullName": {
-                    "nameRu": "ДокументСсылка.Документ1",
-                    "nameEn": "DocumentRef.Документ1"
-                  },
-                  "variant": "METADATA",
-                  "kind": "DOCUMENT"
-                }
-              }
-            ],
-            "composite": false,
-            "qualifiers": []
-          },
-          "master": false,
-          "denyIncompleteValues": false,
-          "useInTotals": true
-        }
-      ],
-      "documents": []
-    }
-  ],
-  "sessionParameters": [
-    [
-      2
-    ],
-    []
-  ],
-  "settingsStorages": [
-    {
-      "uuid": "a8db75af-8205-4b92-bbbe-94a76b2b6317",
-      "name": "ХранилищеНастроек1",
-      "mdoReference": {
-        "type": "SETTINGS_STORAGE",
-        "mdoRef": "SettingsStorage.ХранилищеНастроек1",
-        "mdoRefRu": "ХранилищеНастроек.ХранилищеНастроек1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "modules": [],
-      "forms": [],
-      "templates": []
-    }
-  ],
-  "styleItems": [
-    [
-      2
-    ],
-    []
-  ],
-  "styles": [
-    [
-      2
-    ],
-    []
+   2
   ],
   "subsystems": [
-    [
-      2
-    ],
-    []
-  ],
-  "supportVariant": "NONE",
-  "synonym": {
-    "content": [
-      {
-        "default": {
-          "tag": 2
-        },
-        "int": 1,
-        "com.github._1c_syntax.bsl.types.MultiLanguageString$Entry": {
-          "langKey": "ru",
-          "value": "Расширение"
-        }
-      }
-    ]
-  },
-  "tasks": [
-    {
-      "uuid": "c79b6c18-53d2-436b-94f9-fa032a7de44a",
-      "name": "Задача1",
-      "mdoReference": {
-        "type": "TASK",
-        "mdoRef": "Task.Задача1",
-        "mdoRefRu": "Задача.Задача1"
-      },
-      "objectBelonging": "ADOPTED",
-      "comment": "",
-      "synonym": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      },
-      "supportVariant": "NONE",
-      "modules": [],
-      "commands": [],
-      "attributes": [
-        [
-          8
-        ],
-        []
-      ],
-      "tabularSections": [],
-      "forms": [],
-      "templates": [],
-      "addressingAttributes": [],
-      "explanation": {
-        "@reference": "/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension/businessProcesses/com.github._1c_syntax.bsl.mdo.BusinessProcess/synonym"
-      }
-    }
-  ],
-  "usePurposes": [
-    "PLATFORM_APPLICATION"
+   2
   ],
   "uuid": "6e50eb82-8de4-4aff-ba5b-6b441963a56a",
-  "vendor": "",
-  "version": "",
-  "webServices": [
-    [
-      2
-    ],
-    []
+  "mdoRef": "Configuration.Расширение",
+  "empty": false,
+  "settingsStorages": [
+   {
+    "defaultFormMap": {},
+    "templates": [],
+    "defaultSaveForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "uuid": "a8db75af-8205-4b92-bbbe-94a76b2b6317",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеНастроек1",
+     "type": "SETTINGS_STORAGE",
+     "mdoRef": "SettingsStorage.ХранилищеНастроек1"
+    },
+    "modules": [],
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "auxiliaryLoadForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "name": "ХранилищеНастроек1",
+    "defaultLoadForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "auxiliarySaveForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "forms": []
+   }
   ],
-  "webSocketClients": [],
-  "wsReferences": [
-    [
-      2
+  "functionalOptionsParameters": [
+   2
+  ],
+  "httpServices": [
+   2
+  ],
+  "scheduledJobs": [
+   {
+    "use": false,
+    "methodName": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/eventSubscriptions\/com.github._1c_syntax.bsl.mdo.EventSubscription\/handler"
+    },
+    "description": "",
+    "uuid": "78e14b08-6c57-430f-978b-0af7468ecc49",
+    "mdoReference": {
+     "mdoRefRu": "РегламентноеЗадание.РегламентноеЗадание1",
+     "type": "SCHEDULED_JOB",
+     "mdoRef": "ScheduledJob.РегламентноеЗадание1"
+    },
+    "predefined": false,
+    "restartCountOnFailure": 0,
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "name": "РегламентноеЗадание1",
+    "restartIntervalOnFailure": 0,
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "key": ""
+   }
+  ],
+  "defaultRunMode": "MANAGED_APPLICATION",
+  "objectBelonging": "ADOPTED",
+  "constants": [
+   2
+  ],
+  "chartsOfAccounts": [
+   2
+  ],
+  "functionalOptions": [
+   2
+  ],
+  "interfaceCompatibilityMode": "TAXI",
+  "tasks": [
+   {
+    "auxiliaryChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "defaultListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "defaultFormMap": {},
+    "templates": [],
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "uuid": "c79b6c18-53d2-436b-94f9-fa032a7de44a",
+    "mdoReference": {
+     "mdoRefRu": "Задача.Задача1",
+     "type": "TASK",
+     "mdoRef": "Task.Задача1"
+    },
+    "modules": [],
+    "defaultChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "supportVariant": "NONE",
+    "defaultObjectForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "addressingAttributes": [],
+    "name": "Задача1",
+    "tabularSections": [],
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "attributes": [
+     8
     ],
-    []
-  ]
-}}
+    "auxiliaryObjectForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "commands": [],
+    "forms": []
+   }
+  ],
+  "filterCriteria": [
+   2
+  ],
+  "bots": [],
+  "accumulationRegisters": [
+   2
+  ],
+  "chartsOfCharacteristicTypes": [
+   2
+  ],
+  "wsReferences": [
+   2
+  ],
+  "styleItems": [
+   2
+  ],
+  "commonAttributes": [],
+  "version": "",
+  "modules": [],
+  "integrationServices": [],
+  "commonTemplates": [
+   2
+  ],
+  "catalogs": [
+   2
+  ],
+  "externalDataSources": [],
+  "name": "Расширение",
+  "commonModules": [
+   9
+  ],
+  "styles": [
+   2
+  ],
+  "chartsOfCalculationTypes": [
+   2
+  ],
+  "informationRegisters": [
+   4
+  ],
+  "accountingRegisters": [
+   2
+  ],
+  "usePurposes": [
+   "PLATFORM_APPLICATION"
+  ],
+  "eventSubscriptions": [
+   {
+    "handler": {
+     "methodPath": "",
+     "moduleName": "",
+     "methodName": ""
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "name": "ПодпискаНаСобытие1",
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "source": {
+     "types": [
+      0
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "event": "",
+    "uuid": "99733189-8e92-4db0-ac1a-c989896543e5",
+    "mdoReference": {
+     "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1",
+     "type": "EVENT_SUBSCRIPTION",
+     "mdoRef": "EventSubscription.ПодпискаНаСобытие1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "possibleRights": [
+   26
+  ],
+  "roles": [
+   2
+  ],
+  "description": "Расширение",
+  "sequences": [],
+  "supportVariant": "NONE",
+  "paletteColors": [],
+  "enums": [
+   2
+  ],
+  "calculationRegisters": [
+   2
+  ],
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Расширение"
+    }
+   ]
+  },
+  "defaultLanguage": {
+   "mdoRefRu": "Язык.Русский",
+   "type": "LANGUAGE",
+   "mdoRef": "Language.Русский"
+  },
+  "namePrefix": "Расш_",
+  "vendor": "",
+  "webSocketClients": [],
+  "XDTOPackages": [
+   2
+  ],
+  "webServices": [
+   2
+  ],
+  "documentNumerators": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "name": "НумераторДокументов1",
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "uuid": "780a7504-61e5-4d50-8481-4031f01db4ca",
+    "mdoReference": {
+     "mdoRefRu": "НумераторДокументов.НумераторДокументов1",
+     "type": "DOCUMENT_NUMERATOR",
+     "mdoRef": "DocumentNumerator.НумераторДокументов1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "commonCommands": [
+   2
+  ],
+  "configurationExtensionPurpose": "CUSTOMIZATION",
+  "sessionParameters": [
+   2
+  ],
+  "interfaces": [],
+  "mdoType": "UNKNOWN",
+  "languages": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "name": "Русский",
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "languageCode": "ru",
+    "uuid": "2739e06e-cb93-4617-bc73-ca2fa2db8d0e",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/defaultLanguage"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "commandGroups": [
+   2
+  ],
+  "commonForms": [
+   2
+  ],
+  "documentJournals": [
+   {
+    "defaultFormMap": {},
+    "columns": [],
+    "templates": [],
+    "registeredDocuments": [],
+    "defaultForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "uuid": "40b7b7e1-6986-4602-82d4-753480f20e3b",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1",
+     "type": "DOCUMENT_JOURNAL",
+     "mdoRef": "DocumentJournal.ЖурналДокументов1"
+    },
+    "modules": [],
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "name": "ЖурналДокументов1",
+    "auxiliaryForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "commands": [],
+    "forms": []
+   }
+  ],
+  "commonPictures": [
+   2
+  ],
+  "mdoReference": {
+   "mdoRefRu": "Конфигурация.Расширение",
+   "type": "CONFIGURATION",
+   "mdoRef": "Configuration.Расширение"
+  },
+  "scriptVariant": "RUSSIAN",
+  "businessProcesses": [
+   {
+    "auxiliaryChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "defaultListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "defaultFormMap": {},
+    "templates": [],
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/synonym"
+    },
+    "uuid": "bb0c9b9f-58d0-4180-b5c8-211ade79fe6a",
+    "mdoReference": {
+     "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1",
+     "type": "BUSINESS_PROCESS",
+     "mdoRef": "BusinessProcess.БизнесПроцесс1"
+    },
+    "modules": [],
+    "defaultChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "supportVariant": "NONE",
+    "defaultObjectForm": {
+     "mdoRefRu": "",
+     "type": "UNKNOWN",
+     "mdoRef": ""
+    },
+    "synonym": {
+     "content": []
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "task": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "name": "БизнесПроцесс1",
+    "tabularSections": [],
+    "objectBelonging": "ADOPTED",
+    "comment": "",
+    "attributes": [
+     7
+    ],
+    "auxiliaryObjectForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultObjectForm"
+    },
+    "commands": [],
+    "forms": []
+   }
+  ],
+  "definedTypes": [],
+  "comment": ""
+ }
+}

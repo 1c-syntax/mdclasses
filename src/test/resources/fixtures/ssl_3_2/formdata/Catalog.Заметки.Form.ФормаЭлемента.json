@@ -1,0 +1,282 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПослеЗаписи",
+    "event": "AfterWrite"
+   },
+   {
+    "name": "ПослеЗаписиНаСервере",
+    "event": "AfterWriteAtServer"
+   },
+   {
+    "name": "ПередЗаписьюНаСервере",
+    "event": "BeforeWriteAtServer"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриОткрытии",
+    "event": "OnOpen"
+   },
+   {
+    "name": "ПриЧтенииНаСервере",
+    "event": "OnReadAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Объект",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникОбъект.Заметки",
+        "nameEn": "CatalogObject.Заметки"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ФорматированныйТекст",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форматированный текст"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "FORMATTED_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "КоманднаяПанельРедактирования",
+    "id": 79,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель редактирования"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "Содержание",
+    "id": 9,
+    "type": "FORMATTED_DOCUMENT_FIELD",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Содержание"
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": "ФорматированныйТекст"
+   },
+   {
+    "name": "ДатаЗаметки",
+    "id": 103,
+    "type": "LABEL_DECORATION",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Записана: 25 ноября 2011 г."
+      }
+     ]
+    },
+    "items": [],
+    "dataPath": ""
+   },
+   {
+    "name": "СодержаниеЗаметки",
+    "id": 14,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Содержание заметки"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ГруппаПредмет",
+      "id": 102,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Предмет"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "Предмет",
+        "id": 63,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "НадписьПредмет",
+        "id": 65,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Предмет:"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ПараметрыОтображения",
+    "id": 90,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Параметры отображения"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ОтображатьНаРабочемСтоле",
+      "id": 80,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отображать на рабочем столе"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Объект.ДляРабочегоСтола"
+     },
+     {
+      "name": "ГруппаЗаметок",
+      "id": 105,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Объект.Parent"
+     },
+     {
+      "name": "Пометка",
+      "id": 82,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Цвет"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Объект.Пометка"
+     }
+    ],
+    "dataPath": ""
+   },
+   {
+    "name": "ИнформацияОбАвторе",
+    "id": 91,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Информация об авторе"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "НадписьАвтор",
+      "id": 92,
+      "type": "LABEL_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Автор:"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     },
+     {
+      "name": "Автор",
+      "id": 94,
+      "type": "LABEL_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Автор"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

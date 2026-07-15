@@ -21,7 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,89 +31,49 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DataProcessorTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, DataProcessors.Обработка1, _edt",
-      "false, mdclasses, DataProcessors.Обработка1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, DataProcessors.Обработка1",
+    "false, mdclasses, DataProcessors.Обработка1",
+    "true, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют",
+    "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют",
+    "true, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют",
+    "false, ssl_3_2, DataProcessors.ЗагрузкаКурсовВалют"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(DataProcessor.class);
 
     var dataProcessor = (DataProcessor) mdo;
-    assertThat(dataProcessor.getForms()).hasSize(2);
+    assertThat(dataProcessor).isNotNull();
 
-    var formData = dataProcessor.getForms().stream()
-      .filter(form -> form.getName().equals("ЖурналРегистрации")).findFirst().get().getData();
+    var attributes = dataProcessor.getAttributes();
+    var tabularSections = dataProcessor.getTabularSections();
+    var forms = dataProcessor.getForms();
+    var templates = dataProcessor.getTemplates();
+    var commands = dataProcessor.getCommands();
+    var modules = dataProcessor.getModules();
+    var moduleTypes = dataProcessor.getModuleTypes();
 
-//    checkFormData(formData);
-//    assertThat(formData.getChildren()).hasSize(3);
+    // --- ModuleOwner ---
+    assertThat(moduleTypes).hasSize(modules.size());
+    assertThat(modules).allSatisfy(m -> assertThat(m.getOwner()).isEqualTo(dataProcessor.getMdoReference()));
+    Assertions.assertThat(dataProcessor.getAllModules(), false)
+      .containsAll(modules, forms, commands);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(dataProcessor.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(dataProcessor.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(dataProcessor.getAllAttributes(), false)
+      .containsAll(attributes);
+    var storageFields = dataProcessor.getStorageFields();
+    Assertions.assertThat(storageFields, false)
+      .containsAll(attributes, tabularSections);
+    var plainStorageFields = dataProcessor.getPlainStorageFields();
+    Assertions.assertThat(plainStorageFields, false)
+      .containsAllPlain(attributes, tabularSections);
   }
-
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют, _edt",
-      "false, ssl_3_1, DataProcessors.ЗагрузкаКурсовВалют"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
-
-  //
-//  private void checkFormData(FormDataOLD formData) {
-//    assertThat(formData.getPlainChildren())
-//      .hasSize(136)
-//      .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора") && formItem.getId() == 103);
-//
-//    var item = formData.getPlainChildren().stream()
-//      .filter(formItem -> formItem.getName().equals("Критичность")).findAny().get();
-//
-//    assertThat(item.getDataPath()).isNotNull();
-//    assertThat(item.getDataPath().getSegment()).isEqualTo("Критичность");
-//    assertThat(item.getHandlers())
-//      .hasSizeGreaterThan(0)
-//      .anyMatch(handler -> handler.getName().equals("КритичностьПриИзменении") && handler.getEvent().equals("OnChange"));
-//
-//    var findEmptyType = formData.getPlainChildren().stream()
-//      .anyMatch(formItem -> formItem.getType().isEmpty());
-//    assertThat(findEmptyType).isFalse();
-//
-//    assertThat(formData.getChildren())
-//      .hasSize(3)
-//      .anyMatch(formItem -> formItem.getName().equals("ГруппаОтбора")
-//        && formItem.getId() == 103
-//        && formItem.getChildren().size() == 4);
-//
-//    assertThat(formData.getHandlers())
-//      .hasSize(3)
-//      .anyMatch(handler -> handler.getEvent().equals("ChoiceProcessing")
-//        && handler.getName().equals("ОбработкаВыбора"));
-//
-//    assertThat(formData.getAttributes()).hasSize(12)
-//      .anyMatch(attribute -> attribute.getName().equals("Объект") && attribute.getId() == 1 && attribute.isMain())
-//      .anyMatch(attribute -> attribute.getName().equals("Журнал") && attribute.getId() == 4 && !attribute.isMain());
-//
-//    FormAttribute attribute = formData.getAttributes().stream()
-//      .filter(formAttribute -> formAttribute.getName().equals("Журнал")).findAny().get();
-//
-//    assertThat(attribute.getChildren()).hasSize(26)
-//      .anyMatch(formAttribute -> formAttribute.getName().equals("ВспомогательныйIPПорт"));
-//
-//    attribute = formData.getAttributes().stream()
-//      .filter(formAttribute -> formAttribute.getName().equals("Объект"))
-//      .findAny().get();
-//
-//    assertThat(attribute.getValueTypes()).hasSize(1);
-//    assertThat(attribute.getValueTypes().get(0)).isEqualTo("DataProcessorObject.ЖурналРегистрации");
-//
-//    assertThat(formData.getCommands()).hasSize(8)
-//      .anyMatch(formCommand -> formCommand.getName().equals("ВыгрузитьЖурналДляПередачиВТехподдержку")
-//        && formCommand.getAction().equals("ВыгрузитьЖурналДляПередачиВТехподдержку"));
-//
-//  }
-
-
 }

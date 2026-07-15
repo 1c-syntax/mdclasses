@@ -21,22 +21,56 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class ConstantTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Constants.Константа1, _edt",
-      "false, mdclasses, Constants.Константа1",
-      "true, ssl_3_1, Constants.ЗаголовокСистемы",
-      "false, ssl_3_1, Constants.ЗаголовокСистемы"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, Constants.Константа1",
+    "false, mdclasses, Constants.Константа1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Constant.class);
+
+    var constant = (Constant) mdo;
+    assertThat(constant).isNotNull();
+
+    var modules = constant.getModules();
+    var moduleTypes = constant.getModuleTypes();
+
+    // --- ModuleOwner ---
+    assertThat(moduleTypes)
+      .hasSize(modules.size())
+      .containsKeys(ModuleType.ManagerModule, ModuleType.ValueManagerModule);
+    Assertions.assertThat(constant.getAllModules(), false)
+      .containsAll(modules);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Constants.ЗаголовокСистемы",
+    "false, ssl_3_1, Constants.ЗаголовокСистемы",
+    "true, ssl_3_2, Constants.ЗаголовокСистемы",
+    "false, ssl_3_2, Constants.ЗаголовокСистемы"
+  })
+  void testSSL(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Constant.class);
+
+    var constant = (Constant) mdo;
+    assertThat(constant).isNotNull();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(constant.getAllModules(), false)
+      .containsAll(constant.getModules());
+    assertThat(constant.getModuleTypes()).isEmpty();
   }
 }

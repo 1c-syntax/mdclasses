@@ -21,20 +21,42 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.mdo.children.HTTPServiceURLTemplate;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 class HTTPServiceTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, HTTPServices.HTTPСервис1, _edt",
-      "false, mdclasses, HTTPServices.HTTPСервис1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, HTTPServices.HTTPСервис1",
+    "false, mdclasses, HTTPServices.HTTPСервис1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(HTTPService.class);
+
+    var httpService = (HTTPService) mdo;
+    assertThat(httpService).isNotNull();
+
+    var urlTemplates = httpService.getUrlTemplates();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(httpService.getAllModules(), true)
+      .containsAll(httpService.getModules());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(httpService.getChildren(), true)
+      .containsAll(urlTemplates);
+    Assertions.assertThat(httpService.getPlainChildren(), true)
+      .containsAllPlain(
+        urlTemplates,
+        urlTemplates.stream().map(HTTPServiceURLTemplate::getChildren).flatMap(Collection::stream).toList());
   }
 }

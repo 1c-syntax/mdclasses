@@ -1,0 +1,172 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [],
+  "attributes": [
+   {
+    "name": "Объект",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DATA_PROCESSOR",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ОбработкаОбъект.Обработка1",
+        "nameEn": "DataProcessorObject.Обработка1"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Реквизит1",
+    "id": 2,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Реквизит2",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 1
+      }
+     ]
+    }
+   },
+   {
+    "name": "Реквизит3",
+    "id": 4,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "DOCUMENT_REF",
+      "BOOLEAN",
+      "DATE",
+      "STRING",
+      "FORMATTED_STRING",
+      "UUID"
+     ],
+     "composite": true,
+     "qualifiers": [
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type\/qualifiers\/com.github._1c_syntax.bsl.types.qualifiers.DateQualifiers"
+      },
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type\/qualifiers\/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Реквизит4",
+    "id": 5,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "SPREADSHEET_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Реквизит5",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.Перечисление1",
+        "nameEn": "EnumRef.Перечисление1"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "Реквизит1",
+    "id": 1,
+    "type": "HTML_DOCUMENT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": "Реквизит1"
+   },
+   {
+    "name": "Реквизит3",
+    "id": 4,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": "Реквизит3"
+   },
+   {
+    "name": "Реквизит2",
+    "id": 7,
+    "type": "LABEL_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": "Реквизит2"
+   },
+   {
+    "name": "Реквизит4",
+    "id": 10,
+    "type": "SPREAD_SHEET_DOCUMENT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "items": [],
+    "dataPath": "Реквизит4"
+   }
+  ],
+  "empty": false
+ }
+}

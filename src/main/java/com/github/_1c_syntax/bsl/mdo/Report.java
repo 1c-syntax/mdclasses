@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -40,6 +41,7 @@ import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Builder(toBuilder = true)
@@ -48,7 +50,7 @@ import java.util.List;
 public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
   FormOwner, TemplateOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.EDIT, RoleRight.USE, RoleRight.VIEW);
 
   /*
    * MDObject
@@ -128,6 +130,42 @@ public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwn
    */
 
   /**
+   * Ссылка на форму по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму настроек по умолчанию
+   */
+  @Default
+  MdoReference defaultSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму варианта по умолчанию
+   */
+  @Default
+  MdoReference defaultVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму
+   */
+  @Default
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек
+   */
+  @Default
+  MdoReference auxiliarySettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Пояснение
    */
   @Default
@@ -143,5 +181,15 @@ public class Report implements MDObject, ModuleOwner, CommandOwner, AttributeOwn
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.DEFAULT_FORM, getDefaultForm()),
+      Map.entry(DefaultFormKind.SETTINGS_FORM, getDefaultSettingsForm()),
+      Map.entry(DefaultFormKind.VARIANT_FORM, getDefaultVariantForm()),
+      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm()),
+      Map.entry(DefaultFormKind.AUX_SETTINGS_FORM, getAuxiliarySettingsForm())
+    );
   }
 }

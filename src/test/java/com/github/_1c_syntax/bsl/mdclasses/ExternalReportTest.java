@@ -26,7 +26,7 @@ import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -38,15 +38,16 @@ class ExternalReportTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ТестовыйВнешнийОтчет, true, _edt",
-      "false, ТестовыйВнешнийОтчет, true"
+      "true, external, ТестовыйВнешнийОтчет",
+      "false, external, ТестовыйВнешнийОтчет"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readExternalSourceWithSimpleTest(argumentsAccessor);
+    var mdc = Fixtures.get(argumentsAccessor);
     assertThat(mdc).isInstanceOf(ExternalReport.class);
 
     var erf = (ExternalReport) mdc;
+    assertThat(erf).isNotNull();
 
     assertThat(erf.getModules())
       .hasSize(1)

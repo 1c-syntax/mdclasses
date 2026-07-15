@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdo.storage;
 
 import org.jspecify.annotations.Nullable;
 
-import java.nio.file.Path;
+import java.net.URI;
 
 /**
  * Интерфейс содержимого макетов
@@ -38,7 +38,7 @@ public interface TemplateData {
    * Путь к файлу с содержимым. Может быть незаполнен
    */
   @Nullable
-  default Path getDataPath() {
+  default URI getDataPath() {
     return null;
   }
 }

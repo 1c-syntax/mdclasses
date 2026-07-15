@@ -33,7 +33,7 @@ class MDClassesTest {
   void createConfigurations() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.createConfigurations(srcPath);
-    assertThat(mdcs).hasSize(15);
+    assertThat(mdcs).hasSize(16);
 
     // каталоги с обработками не читаются
     srcPath = Paths.get("src/test/resources/ext/edt/external");
@@ -51,12 +51,16 @@ class MDClassesTest {
     srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_1");
     mdcs = MDClasses.createExternalSources(srcPath);
     assertThat(mdcs).isEmpty();
+
+    srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_2");
+    mdcs = MDClasses.createExternalSources(srcPath);
+    assertThat(mdcs).isEmpty();
   }
 
   @Test
   void create() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.create(srcPath);
-    assertThat(mdcs).hasSize(19);
+    assertThat(mdcs).hasSize(20);
   }
 }

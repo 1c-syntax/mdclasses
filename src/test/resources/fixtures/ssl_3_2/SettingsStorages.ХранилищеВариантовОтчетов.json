@@ -1,0 +1,577 @@
+{
+ "com.github._1c_syntax.bsl.mdo.SettingsStorage": {
+  "mdoType": "SETTINGS_STORAGE",
+  "defaultFormMap": [
+   "AUX_LOAD_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/auxiliaryLoadForm"
+   },
+   "AUX_SAVE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/auxiliaryLoadForm"
+   },
+   "LOAD_FORM",
+   {
+    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборВариантаОтчета",
+    "type": "FORM",
+    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборВариантаОтчета"
+   },
+   "SAVE_FORM",
+   {
+    "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчета",
+    "type": "FORM",
+    "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчета"
+   }
+  ],
+  "templates": [],
+  "description": "Хранилище вариантов отчетов",
+  "defaultSaveForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+  },
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+  },
+  "uuid": "14512818-58b0-44cc-b00d-d37913c57aad",
+  "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/ManagerModule.bsl",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "supportVariant": "NOT_EDITABLE",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Хранилище вариантов отчетов"
+    }
+   ]
+  },
+  "auxiliaryLoadForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultLoadForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+  },
+  "name": "ХранилищеВариантовОтчетов",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "auxiliarySaveForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/auxiliaryLoadForm"
+  },
+  "forms": [
+   {
+    "owner": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов",
+     "type": "SETTINGS_STORAGE",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Быстрые настройки"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "БыстрыеНастройкиОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "077e2c42-bc3b-48bf-bbc2-41effe20f613",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.БыстрыеНастройкиОтчета",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.БыстрыеНастройкиОтчета"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/БыстрыеНастро_киОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сохранение варианта отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "СохранениеВариантаОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "364cbfe2-bc44-4387-aa7e-6b4aa086c9e9",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/СохранениеВариантаОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбор варианта отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ВыборВариантаОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "57964dd6-4b0b-4590-bc44-de744cc423af",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[3]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ВыборВариантаОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сохранение варианта отчета в файл"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "СохранениеВариантаОтчетаВФайл",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "7433b2a9-f634-4af7-ac85-6aa1280ea239",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.СохранениеВариантаОтчетаВФайл",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.СохранениеВариантаОтчетаВФайл"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/СохранениеВариантаОтчетаВФа_л\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтровать по полю"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФильтроватьПоПолю",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "7adced5f-3a5f-419a-926c-0452aad86c86",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ФильтроватьПоПолю",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ФильтроватьПоПолю"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ФильтроватьПоПолю\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Условия отборов отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "УсловияОтборовОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "9f32e85c-2ed6-41db-b0ec-6d8596940e80",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.УсловияОтборовОтчета",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.УсловияОтборовОтчета"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[6]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/УсловияОтборовОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Панель других отчетов"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ПанельДругихОтчетов",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "b2f17ef1-3f6f-4029-b3e2-28d6b79c5b76",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ПанельДругихОтчетов",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ПанельДругихОтчетов"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[7]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ПанельДругихОтчетов\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа выбранных полей"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ГруппаВыбранныхПолей",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "bb350b39-1f4d-460a-98c9-8d2308cf22f0",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ГруппаВыбранныхПолей",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ГруппаВыбранныхПолей"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[8]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ГруппаВыбранныхПоле_\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбор финансового периода"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ВыборФинансовогоПериода",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "c888ccc1-9116-4b88-b950-aeabd54191c0",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборФинансовогоПериода",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериода"
+    },
+    "usePurposes": [
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[9]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ВыборФинансовогоПериода\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Настройка поля"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "НастройкаПоля",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "eaeb5aa8-8edf-4f74-8011-2d476f543bf6",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.НастройкаПоля",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.НастройкаПоля"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[10]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/Настро_каПоля\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Элемент условного оформления отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ЭлементУсловногоОформленияОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f259b6b4-d582-429f-a16f-027a6bcb7438",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ЭлементУсловногоОформленияОтчета",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ЭлементУсловногоОформленияОтчета"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[11]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ЭлементУсловногоОформленияОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбор поля отчета"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ВыборПоляОтчета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "f5bb88eb-c239-4ae3-a297-dfbbd679e008",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборПоляОтчета",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборПоляОтчета"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[12]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ВыборПоляОтчета\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Выбор финансового периода день"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ВыборФинансовогоПериодаДень",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "ff4d92a7-5fa3-4a46-a6f5-47c3952edb22",
+    "mdoReference": {
+     "mdoRefRu": "ХранилищеНастроек.ХранилищеВариантовОтчетов.Форма.ВыборФинансовогоПериодаДень",
+     "type": "FORM",
+     "mdoRef": "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериодаДень"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.SettingsStorage\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[13]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "uri": "src\/test\/resources\/ssl_3_2\/SettingsStorages\/ХранилищеВариантовОтчетов\/Forms\/ВыборФинансовогоПериодаДень\/Module.bsl",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ]
+ }
+}

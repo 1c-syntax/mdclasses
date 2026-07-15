@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class StyleItemTest {
   @ParameterizedTest
@@ -35,11 +37,15 @@ class StyleItemTest {
       "true, ssl_3_1, StyleItems.ВажнаяНадписьШрифт",
       "false, ssl_3_1, StyleItems.ВажнаяНадписьШрифт",
       "true, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
-      "false, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет"
+      "false, ssl_3_1, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
+      "true, ssl_3_2, StyleItems.ВажнаяНадписьШрифт",
+      "false, ssl_3_2, StyleItems.ВажнаяНадписьШрифт",
+      "true, ssl_3_2, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет",
+      "false, ssl_3_2, StyleItems.ВидДняПроизводственногоКалендаряВоскресеньеЦвет"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(StyleItem.class);
   }
-
 }

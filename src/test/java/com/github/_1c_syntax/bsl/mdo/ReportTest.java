@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
-import com.github._1c_syntax.bsl.mdo.support.DataSetType;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,61 +31,43 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ReportTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Reports.Отчет1, _edt",
-      "false, mdclasses, Reports.Отчет1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, Reports.Отчет1",
+    "false, mdclasses, Reports.Отчет1",
+    "true, ssl_3_1, Reports.АнализВерсийОбъектов",
+    "false, ssl_3_1, Reports.АнализВерсийОбъектов",
+    "true, ssl_3_2, Reports.АнализВерсийОбъектов",
+    "false, ssl_3_2, Reports.АнализВерсийОбъектов"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(Report.class);
+
     var report = (Report) mdo;
+    assertThat(report).isNotNull();
 
-    assertThat(report.getTemplates()).hasSize(3);
+    var modules = report.getModules();
+    var attributes = report.getAttributes();
+    var tabularSections = report.getTabularSections();
+    var forms = report.getForms();
+    var templates = report.getTemplates();
+    var commands = report.getCommands();
 
-    var templateData = report.getTemplates().stream()
-      .filter(template -> template.getName().equals("СКД")).findFirst().get().getData();
+    // --- ModuleOwner ---
+    Assertions.assertThat(report.getAllModules(), true).containsAll(modules, forms, commands);
 
-    assertThat(templateData).isInstanceOf(DataCompositionSchema.class);
-    checkDataCompositionSchema((DataCompositionSchema) templateData);
-  }
+    // --- AttributeOwner ---
+    Assertions.assertThat(report.getAllAttributes(), true)
+      .containsAll(attributes);
+    Assertions.assertThat(report.getStorageFields(), true)
+      .containsAll(attributes);
+    Assertions.assertThat(report.getPlainStorageFields(), true)
+      .containsAllPlain(attributes, tabularSections);
 
-  @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, Reports.АнализВерсийОбъектов, _edt",
-      "false, ssl_3_1, Reports.АнализВерсийОбъектов"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
-
-  private void checkDataCompositionSchema(DataCompositionSchema dataCompositionSchema) {
-
-    final var QUERY_TEXT = """
-      ВЫБРАТЬ
-      \tПервыйСправочник.Ссылка КАК Ссылка,
-      \tПервыйСправочник.Код КАК Код1
-      ИЗ
-      \tСправочник.ПервыйСправочник КАК ПервыйСправочник""";
-
-    assertThat(dataCompositionSchema).isNotNull();
-    assertThat(dataCompositionSchema.getDataSets())
-      .hasSize(4)
-      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных1") && dataSet.type() == DataSetType.DATA_SET_QUERY)
-      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных2") && dataSet.type() == DataSetType.DATA_SET_QUERY)
-      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных3") && dataSet.type() == DataSetType.DATA_SET_UNION
-        && dataSet.items().size() == 3)
-      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных3") && dataSet.type() == DataSetType.DATA_SET_OBJECT)
-    ;
-
-    assertThat(dataCompositionSchema.getPlainDataSets())
-      .hasSize(8)
-      .anyMatch(dataSet -> dataSet.name().equals("НаборДанных1")
-        && dataSet.type() == DataSetType.DATA_SET_QUERY
-        && dataSet.querySource().textQuery().equals(QUERY_TEXT)
-        && dataSet.querySource().line() == 24);
+    // --- ChildrenOwner ---
+    Assertions.assertThat(report.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(report.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
   }
 }

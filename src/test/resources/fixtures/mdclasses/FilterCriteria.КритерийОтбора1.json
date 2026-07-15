@@ -1,65 +1,69 @@
-{"com.github._1c_syntax.bsl.mdo.FilterCriterion": {
-  "commands": [],
-  "comment": "",
-  "content": [
-    [
-      {
-        "type": "ATTRIBUTE",
-        "mdoRef": "Document.Документ1.Attribute.Реквизит1",
-        "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит1"
-      },
-      {
-        "type": "ATTRIBUTE",
-        "mdoRef": "Document.Документ1.Attribute.Реквизит2",
-        "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит2"
-      }
-    ],
-    []
+{
+ "com.github._1c_syntax.bsl.mdo.FilterCriterion": {
+  "mdoType": "FILTER_CRITERION",
+  "defaultFormMap": [
+   "AUX_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.FilterCriterion\/auxiliaryForm"
+   },
+   "DEFAULT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.FilterCriterion\/auxiliaryForm"
+   }
+  ],
+  "possibleRights": [
+   "VIEW"
   ],
   "description": "КритерийОтбора1",
+  "defaultForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.FilterCriterion\/auxiliaryForm"
+  },
   "explanation": {
-    "content": []
+   "content": []
   },
-  "forms": [],
   "mdoReference": {
-    "type": "FILTER_CRITERION",
-    "mdoRef": "FilterCriterion.КритерийОтбора1",
-    "mdoRefRu": "КритерийОтбора.КритерийОтбора1"
+   "mdoRefRu": "КритерийОтбора.КритерийОтбора1",
+   "type": "FILTER_CRITERION",
+   "mdoRef": "FilterCriterion.КритерийОтбора1"
   },
-  "mdoType": "FILTER_CRITERION",
-  "moduleTypes": [
-    [
-      "ManagerModule",
-      [
-        "src/test/resources/ext/designer/mdclasses/src/cf/FilterCriteria/Критери_Отбора1/Ext/ManagerModule.bsl"
-      ]
-    ]
+  "uuid": "6e9d3381-0607-43df-866d-14ee5d65a294",
+  "content": [
+   {
+    "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит1",
+    "type": "ATTRIBUTE",
+    "mdoRef": "Document.Документ1.Attribute.Реквизит1"
+   },
+   {
+    "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит2",
+    "type": "ATTRIBUTE",
+    "mdoRef": "Document.Документ1.Attribute.Реквизит2"
+   }
   ],
+  "mdoRef": "FilterCriterion.КритерийОтбора1",
   "modules": [
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/mdclasses/src/cf/FilterCriteria/Критери_Отбора1/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/mdoReference"
-      },
-      "supportVariant": "NONE",
-      "isProtected": false
-    }
-  ],
-  "name": "КритерийОтбора1",
-  "objectBelonging": "OWN",
-  "possibleRights": [
-    {
-      "default": {
-        "tag": 4
-      },
-      "int": 1,
-      "com.github._1c_syntax.bsl.mdo.support.RoleRight": "VIEW"
-    }
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.FilterCriterion\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "uri": "src\/test\/resources\/mdclasses\/FilterCriteria\/Критери_Отбора1\/ManagerModule.bsl",
+    "supportVariant": "NONE"
+   }
   ],
   "supportVariant": "NONE",
   "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.FilterCriterion/explanation"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.FilterCriterion\/explanation"
   },
-  "uuid": "6e9d3381-0607-43df-866d-14ee5d65a294"
-}}
+  "auxiliaryForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "name": "КритерийОтбора1",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "commands": [],
+  "forms": []
+ }
+}

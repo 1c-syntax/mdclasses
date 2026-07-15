@@ -21,9 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.children.ObjectModule;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
-import com.github._1c_syntax.bsl.types.ModuleType;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,26 +31,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WebSocketClientTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses_3_27, WebSocketClient.WebSocketКлиент1, _edt",
-      "false, mdclasses_3_27, WebSocketClient.WebSocketКлиент1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses_3_27, WebSocketClient.WebSocketКлиент1",
+    "false, mdclasses_3_27, WebSocketClient.WebSocketКлиент1"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(WebSocketClient.class);
+
     var ws = (WebSocketClient) mdo;
-    assertThat(ws.getModules()).hasSize(1);
-    assertThat(ws.getServerURL()).isEqualTo("soc");
-    assertThat(ws.getTimeout()).isEqualTo(30);
+    assertThat(ws).isNotNull();
 
-    var module = ws.getModules().get(0);
-    assertThat(module.getModuleType()).isEqualTo(ModuleType.WEBSocketClientModule);
-    assertThat(module.getSupportVariant()).isEqualTo(ws.getSupportVariant());
-    assertThat(module.getUri()).isNotNull();
-
-    assertThat(module).isInstanceOf(ObjectModule.class);
-    assertThat(((ObjectModule) module).getOwner()).isEqualTo(mdo.getMdoReference());
+    // --- ModuleOwner ---
+    Assertions.assertThat(ws.getAllModules(), false).containsAll(ws.getModules());
   }
 }

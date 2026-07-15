@@ -28,6 +28,8 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -36,7 +38,6 @@ import java.util.Map;
 public enum FormElementType implements EnumWithName {
   ADDITION("Addition", "Дополнение"),
   ATTRIBUTE("Attribute", "Реквизит"),
-  BUTTON("Button", "Кнопка"),
   BUTTON_GROUP("ButtonGroup", "ГруппаКнопок"),
   CALENDAR_FIELD("CalendarField", "ПолеКалендаря"),
   CHART_FIELD("ChartField", "ПолеДиаграммы"),
@@ -45,17 +46,14 @@ public enum FormElementType implements EnumWithName {
   COMMAND_BAR("CommandBar", "КоманднаяПанель"),
   COMMAND_BAR_BUTTON("CommandBarButton", "КнопкаКоманднойПанели"),
   COMMAND_BAR_HYPERLINK("CommandBarHyperlink", "ГиперссылкаКоманднойПанели"),
-  DECORATION("Decoration", "Декорация"),
   FORMATTED_DOCUMENT_FIELD("FormattedDocumentField", "ПолеФорматированногоДокумента"),
   FORM_FIELD("FormField", "ПолеФормы"),
-  FORM_GROUP("FormGroup", "ГруппаФормы"),
   GANTT_CHART_FIELD("GanttChartField", "ПолеДиаграммыГанта"),
   GRAPHICAL_SCHEMA_FIELD("GraphicalSchemaField", "ПолеГрафическойСхемы"),
   GEOGRAPHICAL_SCHEMA_FIELD("GeographicalSchemaField", "ПолеГеографическойСхемы"),
   HTML_DOCUMENT_FIELD("HTMLDocumentField", "ПолеHTMLДокумента"),
   HYPERLINK("Hyperlink", "Гиперссылка"),
   INPUT_FIELD("InputField", "ПолеВвода"),
-  LABEL("Label", "Надпись"),
   LABEL_DECORATION("LabelDecoration", "ДекорацияНадпись"),
   LABEL_FIELD("LabelField", "ПолеНадписи"),
   PAGE("Page", "Страница"),
@@ -79,7 +77,7 @@ public enum FormElementType implements EnumWithName {
   USUAL_GROUP("UsualGroup", "ОбычнаяГруппа"),
   VIEW_STATUS_ADDITION("ViewStatusAddition", "ДополнениеОтображениеСостояния");
 
-  private static final Map<String, FormElementType> KEYS = EnumWithName.computeKeys(values());
+  private static final Map<String, FormElementType> KEYS = computeKeys();
 
   @Getter
   @Accessors(fluent = true)
@@ -101,5 +99,15 @@ public enum FormElementType implements EnumWithName {
       LOGGER.warn("Unknown form element type: {}", string);
     }
     return result;
+  }
+
+  private static Map<String, FormElementType> computeKeys() {
+    var keys = new HashMap<>(EnumWithName.computeKeys(values()));
+    keys.put("button", FormElementType.COMMAND_BAR_BUTTON);
+    keys.put("formgroup", FormElementType.BUTTON_GROUP);
+    keys.put("addition", FormElementType.SEARCH_STRING_ADDITION);
+    keys.put("label", FormElementType.LABEL_DECORATION);
+    keys.put("decoration", FormElementType.PICTURE_DECORATION);
+    return Collections.unmodifiableMap(keys);
   }
 }

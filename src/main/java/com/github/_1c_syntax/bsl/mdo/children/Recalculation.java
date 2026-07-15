@@ -22,6 +22,9 @@
 package com.github._1c_syntax.bsl.mdo.children;
 
 import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.AttributeOwner;
+import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -33,6 +36,7 @@ import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
@@ -43,7 +47,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Recalculation implements MDChild, ModuleOwner, AccessRightsOwner {
+public class Recalculation implements MDChild, AttributeOwner, ModuleOwner, AccessRightsOwner {
 
   /*
    * Для MDChild
@@ -73,6 +77,23 @@ public class Recalculation implements MDChild, ModuleOwner, AccessRightsOwner {
   @Default
   List<Module> modules = Collections.emptyList();
 
+  @Singular
+  List<RecalculationDimension> dimensions;
+
+  /*
+   * Для ChildrenOwner
+   */
+
+  @Override
+  public List<Attribute> getAllAttributes() {
+    return Collections.unmodifiableList(dimensions);
+  }
+
+  @Override
+  public List<MD> getChildren() {
+    return Collections.unmodifiableList(dimensions);
+  }
+  
   /**
    * Возвращает перечень возможных прав доступа
    */

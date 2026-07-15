@@ -21,82 +21,66 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
-import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
-import com.github._1c_syntax.bsl.reader.MDOReader;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ChartOfCharacteristicTypesTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1, _edt",
-      "false, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1",
-      "true, ssl_3_1, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения, _edt",
-      "false, ssl_3_1, ChartsOfCharacteristicTypes.ДополнительныеРеквизитыИСведения"
-    }
-  )
-  void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
-
-  /**
-   * Проверяет, что для плана видов характеристик "ПланВидовХарактеристик1" поле checkUnique установлено в true.
-   * <p>
-   * В формате Designer: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
-   * В формате EDT: в XML файле явно указано {@code <checkUnique>true</checkUnique>}.
-   *
-   * @param argumentsAccessor параметры теста (формат, имя пакета, ссылка на MDO, постфикс фикстуры)
-   */
-  @ParameterizedTest
   @CsvSource({
-    "true, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1, _edt",
-    "false, mdclasses, ChartsOfCharacteristicTypes.ПланВидовХарактеристик1"
+    "true, ssl_3_1, ChartsOfCharacteristicTypes.ОбъектыАдресацииЗадач",
+    "false, ssl_3_1, ChartsOfCharacteristicTypes.ОбъектыАдресацииЗадач",
+    "true, ssl_3_2, ChartsOfCharacteristicTypes.ОбъектыАдресацииЗадач",
+    "false, ssl_3_2, ChartsOfCharacteristicTypes.ОбъектыАдресацииЗадач"
   })
-  void testCheckUniqueTrue(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    assertThat(mdo)
-      .isInstanceOf(ChartOfCharacteristicTypes.class);
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfCharacteristicTypes.class);
 
     var chartOfCharacteristicTypes = (ChartOfCharacteristicTypes) mdo;
-    assertThat(chartOfCharacteristicTypes.isCheckUnique())
-      .as("Поле checkUnique должно быть true для плана видов характеристик ПланВидовХарактеристик1")
-      .isTrue();
-    assertThat(chartOfCharacteristicTypes.getCodeSeries())
-      .as("Поле codeSeries должно быть WHOLE_CATALOG для плана видов характеристик ПланВидовХарактеристик1")
-      .isEqualTo(CodeSeries.WHOLE_CATALOG);
-  }
+    assertThat(chartOfCharacteristicTypes).isNotNull();
 
-  /**
-   * Проверяет чтение предопределенных значений плана видов характеристик в обоих форматах.
-   */
-  @ParameterizedTest
-  @CsvSource({
-    "src/test/resources/ext/edt/ssl_3_1/configuration",
-    "src/test/resources/ext/designer/ssl_3_1/src/cf"
-  })
-  void testPredefined(String configurationPath) {
-    var mdo = MDOReader.read(Path.of(configurationPath),
-      "ChartsOfCharacteristicTypes.РазделыДатЗапретаИзменения", MDCReadSettings.DEFAULT);
-    assertThat(mdo).isInstanceOf(ChartOfCharacteristicTypes.class);
-    var chart = (ChartOfCharacteristicTypes) mdo;
+    var attributes = chartOfCharacteristicTypes.getAttributes();
+    var tabularSections = chartOfCharacteristicTypes.getTabularSections();
+    var forms = chartOfCharacteristicTypes.getForms();
+    var templates = chartOfCharacteristicTypes.getTemplates();
+    var commands = chartOfCharacteristicTypes.getCommands();
+    var predefinedValues = chartOfCharacteristicTypes.getPredefinedValues();
 
-    assertThat(chart.getPredefinedValues()).hasSize(1);
-    var predefinedValue = chart.getPredefinedValues().get(0);
-    assertThat(predefinedValue.getName()).isEqualTo("УдалитьОбработкаПерсональныхДанных");
-    assertThat(predefinedValue.getDescription()).isEqualTo("(не используется) Обработка персональных данных");
-    assertThat(predefinedValue.getOwner()).isEqualTo(chart.getMdoReference());
+    // --- ModuleOwner ---
+    assertThat(chartOfCharacteristicTypes.getModuleTypes())
+      .hasSize(chartOfCharacteristicTypes.getModules().size());
+    Assertions.assertThat(chartOfCharacteristicTypes.getAllModules(), false)
+      .containsAll(chartOfCharacteristicTypes.getModules(), forms, commands);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(chartOfCharacteristicTypes.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands, predefinedValues);
+    Assertions.assertThat(chartOfCharacteristicTypes.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands, predefinedValues);
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(chartOfCharacteristicTypes.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(chartOfCharacteristicTypes.getStorageFields(), false)
+      .containsAll(attributes, tabularSections);
+    Assertions.assertThat(chartOfCharacteristicTypes.getPlainStorageFields(), false)
+      .containsAllPlain(attributes, tabularSections);
+
+    // --- PredefinedDataOwner ---
+    assertThat(chartOfCharacteristicTypes.getPredefinedValues()).hasSize(1);
+    var predefinedValue = chartOfCharacteristicTypes.getPredefinedValues().getFirst();
+    assertThat(predefinedValue.getName()).isEqualTo("ВсеОбъектыАдресации");
+    assertThat(predefinedValue.getDescription()).isEqualTo("Все объекты адресации");
+    assertThat(predefinedValue.getOwner()).isEqualTo(chartOfCharacteristicTypes.getMdoReference());
     assertThat(predefinedValue.getMdoReference())
       .isEqualTo(MdoReference.create(
-        "ChartOfCharacteristicTypes.РазделыДатЗапретаИзменения.Predefined.УдалитьОбработкаПерсональныхДанных"));
-    assertThat(chart.getChildren()).contains(predefinedValue);
+        "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.Predefined.ВсеОбъектыАдресации"));
+    assertThat(chartOfCharacteristicTypes.getChildren()).contains(predefinedValue);
   }
 }

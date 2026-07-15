@@ -1,0 +1,229 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Сервер",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 100,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Порт",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Порт"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 5,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Логин",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Логин"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 50,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Пароль",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Пароль"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ПассивноеСоединение",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Пассивное соединение"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Каталог",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 200,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "СерверИКаталог",
+    "id": 7,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сервер и каталог"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 300,
+       "allowedLength": 0
+      }
+     ]
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "Логин",
+    "id": 5,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    },
+    "items": [],
+    "dataPath": "Логин"
+   },
+   {
+    "name": "Пароль",
+    "id": 7,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+    },
+    "items": [],
+    "dataPath": "Пароль"
+   },
+   {
+    "name": "СерверИКаталог",
+    "id": 9,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+    },
+    "items": [],
+    "dataPath": "СерверИКаталог"
+   },
+   {
+    "name": "ГруппаНастройкиПортаИТипаСоединения",
+    "id": 28,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Настройки номера порта и типа соединения"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "ПассивноеСоединение",
+      "id": 17,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
+      },
+      "items": [],
+      "dataPath": "ПассивноеСоединение"
+     },
+     {
+      "name": "Порт",
+      "id": 3,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "items": [],
+      "dataPath": "Порт"
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

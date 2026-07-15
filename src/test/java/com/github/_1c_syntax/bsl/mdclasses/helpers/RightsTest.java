@@ -68,13 +68,45 @@ class RightsTest {
   }
 
   @Test
+  void rightAccessCf32() {
+    var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/designer/ssl_3_2/src/cf"));
+    assertThat(mdc).isInstanceOf(Configuration.class);
+
+    var cf = (CF) mdc;
+    assertThat(Rights.rightAccess(cf, RoleRight.ADMINISTRATION)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.THICK_CLIENT)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.WEB_CLIENT)).isTrue();
+
+    var mdv = cf.findChild("Document.Анкета");
+    assertThat(mdv).isPresent();
+    var md = mdv.get();
+    assertThat(Rights.rightAccess(cf, RoleRight.DELETE, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.USE, md)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.POSTING, md)).isTrue();
+
+    mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
+    assertThat(mdv).isPresent();
+    md = mdv.get();
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.USE, md)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.START, md)).isFalse();
+
+    var mdoReference = MdoReference.create("Enum.ВариантыВажностиЗадачи.EnumValue.Обычная");
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, mdoReference)).isFalse();
+    assertThat(Rights.rightAccess(cf, RoleRight.DELETE, mdoReference)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.INTERACTIVE_DELETE, mdoReference)).isFalse();
+  }
+
+  @Test
   void rightAccessCfe() {
     var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/edt/mdclasses_ext/configuration"));
     assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
 
     var cfe = (CF) mdc;
     assertThat(Rights.rightAccess(cfe, RoleRight.ADMINISTRATION)).isTrue();
-    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isFalse();
+    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isTrue();
     assertThat(Rights.rightAccess(cfe, RoleRight.DELETE)).isFalse();
 
     var mdv = cfe.findChild("AccountingRegister.РегистрБухгалтерии1");
@@ -105,7 +137,46 @@ class RightsTest {
       .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
 
     assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
-    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(103);
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(106);
+
+    var mdv = cf.findChild("Document.Анкета");
+    assertThat(mdv).isPresent();
+    var md = mdv.get();
+    assertThat(Rights.rolesAccess(cf, RoleRight.DELETE, md)).hasSize(1);
+    assertThat(Rights.rolesAccess(cf, RoleRight.INTERACTIVE_DELETE, md)).isEmpty();
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(2);
+    assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.INTERACTIVE_DELETE_MARKED, md)).isEmpty();
+
+    mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
+    assertThat(mdv).isPresent();
+    md = mdv.get();
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(4);
+    assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.DELETE, md)).isEmpty();
+
+    var mdoReference = MdoReference.create("Enum.ВариантыВажностиЗадачи.EnumValue.Обычная");
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, mdoReference)).isEmpty();
+    assertThat(Rights.rolesAccess(cf, RoleRight.DELETE, mdoReference)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.INSERT, mdoReference)).isEmpty();
+  }
+
+  @Test
+  void rolesAccessCf32() {
+    var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/edt/ssl_3_2/configuration"));
+    assertThat(mdc).isInstanceOf(Configuration.class);
+
+    var cf = (CF) mdc;
+    assertThat(Rights.rolesAccess(cf, RoleRight.ADMINISTRATION))
+      .hasSize(2)
+      .anyMatch(role -> role.getName().equals("АдминистраторСистемы"));
+
+    assertThat(Rights.rolesAccess(cf, RoleRight.THICK_CLIENT))
+      .hasSize(2)
+      .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
+
+    assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(106);
 
     var mdv = cf.findChild("Document.Анкета");
     assertThat(mdv).isPresent();

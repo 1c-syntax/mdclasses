@@ -31,12 +31,14 @@ import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -261,11 +263,13 @@ public class ExtendXStream extends XStream {
 
     registerConverter(new EnumConverter<>(ApplicationRunMode.class));
     registerConverter(new EnumConverter<>(AutoRecordType.class));
+    registerConverter(new EnumConverter<>(CalculationRegisterPeriodicity.class));
     registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
+    registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));
     registerConverter(new EnumConverter<>(MessageDirection.class));
     registerConverter(new EnumConverter<>(ObjectBelonging.class));
     registerConverter(new EnumConverter<>(ReturnValueReuse.class));

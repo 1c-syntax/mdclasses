@@ -113,11 +113,6 @@ public class FakeReader implements MDReader {
   }
 
   @Override
-  public String configurationExtensionFilter() {
-    return "";
-  }
-
-  @Override
   public void unmarshal(HierarchicalStreamReader reader,
                         UnmarshallingContext context,
                         AbstractReaderContext readerContext) {

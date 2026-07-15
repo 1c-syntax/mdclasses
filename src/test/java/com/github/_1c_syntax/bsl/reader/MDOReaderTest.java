@@ -45,8 +45,29 @@ class MDOReaderTest {
   }
 
   @Test
+  void testReadConfigurationWithValidPath32() {
+    var path = Paths.get("src/test/resources/ext/edt/ssl_3_2");
+    var configuration = MDOReader.readConfiguration(path);
+
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+  }
+
+  @Test
   void testReadConfigurationWithSettings() {
     var path = Paths.get("src/test/resources/ext/edt/ssl_3_1");
+    var settings = MDCReadSettings.DEFAULT;
+    var configuration = MDOReader.readConfiguration(path, settings);
+
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+  }
+
+  @Test
+  void testReadConfigurationWithSettings32() {
+    var path = Paths.get("src/test/resources/ext/edt/ssl_3_2");
     var settings = MDCReadSettings.DEFAULT;
     var configuration = MDOReader.readConfiguration(path, settings);
 
@@ -79,9 +100,32 @@ class MDOReaderTest {
       .isInstanceOf(Configuration.class);
   }
 
+  @ParameterizedTest
+  @ValueSource(strings = {
+    "src/test/resources/ext/edt/ssl_3_2",
+    "src/test/resources/ext/designer/ssl_3_2/src/cf"
+  })
+  void testReadConfigurationDifferentSources32(String pathString) {
+    var path = Paths.get(pathString);
+    var configuration = MDOReader.readConfiguration(path);
+
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+  }
+
   @Test
   void testReadWithNonExistentObject() {
     var path = Paths.get("src/test/resources/ext/edt/ssl_3_1");
+    var result = MDOReader.read(path, "CommonModules.NonExistent");
+
+    // Should return null for non-existent object
+    assertThat(result).isNull();
+  }
+
+  @Test
+  void testReadWithNonExistentObject32() {
+    var path = Paths.get("src/test/resources/ext/edt/ssl_3_2");
     var result = MDOReader.read(path, "CommonModules.NonExistent");
 
     // Should return null for non-existent object
@@ -126,8 +170,28 @@ class MDOReaderTest {
   }
 
   @Test
+  void testReadConfigurationFromFile32() {
+    var path = Paths.get("src/test/resources/ext/edt/ssl_3_2/configuration/Configuration.mdo");
+    var configuration = MDOReader.readConfiguration(path);
+
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+  }
+
+  @Test
   void testReadConfigurationFromDesignerFile() {
     var path = Paths.get("src/test/resources/ext/designer/ssl_3_1/src/Configuration/Configuration.xml");
+    var configuration = MDOReader.readConfiguration(path);
+
+    assertThat(configuration)
+      .isNotNull()
+      .isInstanceOf(Configuration.class);
+  }
+
+  @Test
+  void testReadConfigurationFromDesignerFile32() {
+    var path = Paths.get("src/test/resources/ext/designer/ssl_3_2/src/Configuration/Configuration.xml");
     var configuration = MDOReader.readConfiguration(path);
 
     assertThat(configuration)

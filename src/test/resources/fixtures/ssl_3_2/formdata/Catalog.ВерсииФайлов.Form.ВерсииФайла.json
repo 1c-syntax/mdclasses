@@ -1,0 +1,170 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ОбработкаОповещения",
+    "event": "NotificationProcessing"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "ВладелецВерсии",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "CATALOG_REF"
+     ],
+     "composite": true,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "Список",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "УникальныйИдентификаторКарточкиФайла",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "UUID"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "Список",
+    "id": 2,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "items": [
+     {
+      "name": "СписокВладелец",
+      "id": 47,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Владелец"
+     },
+     {
+      "name": "СписокАвтор",
+      "id": 49,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Автор"
+     },
+     {
+      "name": "СписокКомментарий",
+      "id": 51,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Комментарий"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Список.Комментарий"
+     },
+     {
+      "name": "СписокДатаСоздания",
+      "id": 53,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.ДатаСоздания"
+     },
+     {
+      "name": "СписокРазмер",
+      "id": 55,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Размер"
+     },
+     {
+      "name": "СписокНомерВерсии",
+      "id": 57,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.НомерВерсии"
+     },
+     {
+      "name": "СписокСсылка",
+      "id": 59,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "items": [],
+      "dataPath": "Список.Ссылка"
+     },
+     {
+      "name": "СписокНомерКартинкиЭтоАрхив",
+      "id": 149,
+      "type": "PICTURE_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "В архиве"
+        }
+       ]
+      },
+      "items": [],
+      "dataPath": "Список.НомерКартинкиЭтоАрхив"
+     }
+    ],
+    "dataPath": "Список"
+   }
+  ],
+  "empty": false
+ }
+}

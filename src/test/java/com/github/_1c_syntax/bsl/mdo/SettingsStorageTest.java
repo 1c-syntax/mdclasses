@@ -21,21 +21,38 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class SettingsStorageTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов, _edt",
-      "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов"
-    }
-  )
+  @CsvSource({
+    "true, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов",
+    "false, ssl_3_1, SettingsStorages.ХранилищеВариантовОтчетов",
+    "true, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов",
+    "false, ssl_3_2, SettingsStorages.ХранилищеВариантовОтчетов"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-  }
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(SettingsStorage.class);
 
+    var settingsStorage = (SettingsStorage) mdo;
+    assertThat(settingsStorage).isNotNull();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(settingsStorage.getAllModules(), false)
+      .containsAll(settingsStorage.getModules(), settingsStorage.getForms());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(settingsStorage.getChildren(), false)
+      .containsAll(settingsStorage.getForms(),
+        settingsStorage.getTemplates());
+    Assertions.assertThat(settingsStorage.getPlainChildren(), true)
+      .containsAll(settingsStorage.getChildren());
+  }
 }

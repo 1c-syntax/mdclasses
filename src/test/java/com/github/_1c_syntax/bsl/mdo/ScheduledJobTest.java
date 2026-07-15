@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -34,10 +34,13 @@ class ScheduledJobTest {
     {
       "true, ssl_3_1, ScheduledJobs.ОбновлениеАгрегатов",
       "false, ssl_3_1, ScheduledJobs.ОбновлениеАгрегатов",
+      "true, ssl_3_2, ScheduledJobs.ОбновлениеАгрегатов",
+      "false, ssl_3_2, ScheduledJobs.ОбновлениеАгрегатов",
     }
   )
   void testSimple(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ScheduledJob.class);
   }
 
   @ParameterizedTest
@@ -48,22 +51,12 @@ class ScheduledJobTest {
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
-    var job = (ScheduledJob) mdo;
-    var handler = ((ScheduledJob) mdo).getMethodName();
-    assertThat(handler.getMethodName()).isNotBlank();
-    assertThat(handler.getMethodPath()).isNotBlank();
-    assertThat(handler.getModuleName()).isNotBlank();
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ScheduledJob.class);
 
+    var handler = ((ScheduledJob) mdo).getMethodName();
     assertThat(handler.getMethodPath()).isEqualTo("CommonModule.ПростойОбщийМодуль.РегламентноеЗадание1");
     assertThat(handler.getMethodName()).isEqualTo("РегламентноеЗадание1");
     assertThat(handler.getModuleName()).isEqualTo("ПростойОбщийМодуль");
-
-    assertThat(job.getDescription()).isEqualTo("Описание Регламентное задание 1");
-    assertThat(job.getKey()).isEqualTo("ПроверкаАктивностиСеансаУдаленияОбъектов");
-    assertThat(job.isUse()).isTrue();
-    assertThat(job.isPredefined()).isTrue();
-    assertThat(job.getRestartCountOnFailure()).isEqualTo(3);
-    assertThat(job.getRestartIntervalOnFailure()).isEqualTo(10);
   }
 }

@@ -21,10 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class SessionParameterTest {
   @ParameterizedTest
@@ -33,11 +35,13 @@ class SessionParameterTest {
       "true, mdclasses, SessionParameters.ПараметрСеанса1",
       "false, mdclasses, SessionParameters.ПараметрСеанса1",
       "true, ssl_3_1, SessionParameters.ТекущийПользователь",
-      "false, ssl_3_1, SessionParameters.ТекущийПользователь"
+      "false, ssl_3_1, SessionParameters.ТекущийПользователь",
+      "true, ssl_3_2, SessionParameters.ТекущийПользователь",
+      "false, ssl_3_2, SessionParameters.ТекущийПользователь"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(SessionParameter.class);
   }
-
 }

@@ -10,11 +10,10 @@ plugins {
     id("io.freefair.lombok") version "9.5.0"
     id("io.freefair.javadoc-links") version "9.5.0"
     id("io.freefair.javadoc-utf-8") version "9.5.0"
-//    id("io.freefair.maven-central.validate-poms") version "9.5.0" // не работает на Gradle 9.5: ValidateMavenPom тянет удалённый из classpath plexus XmlPullParserException
     id("com.github.ben-manes.versions") version "0.54.0"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.jreleaser") version "1.24.0"
-    id("org.sonarqube") version "7.3.0.8198"
+    id("org.jreleaser") version "1.25.0"
+    id("org.sonarqube") version "7.3.1.8318"
     id("me.champeau.jmh") version "0.7.3"
 }
 
@@ -55,14 +54,16 @@ dependencies {
     implementation("com.thoughtworks.xstream:xstream:1.4.21")
 
     // логирование
-    implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("org.slf4j:slf4j-api:2.0.18")
 
     // прочее
     implementation("commons-io:commons-io:2.22.0")
 
-    implementation("io.github.1c-syntax:bsl-common-library:0.11.0")
-    implementation("io.github.1c-syntax:utils:0.7.0")
-    implementation("io.github.1c-syntax:supportconf:0.16.0")
+    implementation("io.github.1c-syntax:bsl-common-library:0.12.1")
+    implementation("io.github.1c-syntax:utils:0.9.0")
+    implementation("io.github.1c-syntax:supportconf:0.17.1") {
+        exclude("io.github.1c-syntax", "bsl-common-library")
+    }
 
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.184")
@@ -70,11 +71,11 @@ dependencies {
     implementation("org.jspecify:jspecify:1.0.0")
 
     // тестирование
-    testImplementation(platform("org.junit:junit-bom:6.0.3"))
+    testImplementation(platform("org.junit:junit-bom:6.1.2"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-params")
     testImplementation("org.assertj:assertj-core:3.27.7")
-    testImplementation("com.ginsberg:junit5-system-exit:2.0.2")
+    testImplementation("com.ginsberg:junit5-system-exit:2.0.3")
     testImplementation("org.skyscreamer:jsonassert:1.5.3")
     testImplementation("org.objenesis:objenesis:3.5")
 
@@ -82,7 +83,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // логирование
-    testImplementation("org.slf4j:slf4j-reload4j:2.0.17")
+    testImplementation("org.slf4j:slf4j-reload4j:2.0.18")
 
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
@@ -102,6 +103,9 @@ jmh {
     fork = 2
     resultFormat = "JSON"
     resultsFile = file("build/jmh-results.json")
+    profilers = listOf(
+        "com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler"
+    )
 }
 
 tasks.test {

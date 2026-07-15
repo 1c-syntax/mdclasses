@@ -111,6 +111,8 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     types.put("FlowchartContextType".toLowerCase(Locale.ROOT), V8ValueType.GRAPHICAL_SCHEMA);
     types.put("ChartType".toLowerCase(Locale.ROOT), V8ValueType.CHART);
 
+    types.put("settingscomposer", V8ValueType.DATA_COMPOSITION_SETTINGS_COMPOSER);
+
     return types;
   }
 

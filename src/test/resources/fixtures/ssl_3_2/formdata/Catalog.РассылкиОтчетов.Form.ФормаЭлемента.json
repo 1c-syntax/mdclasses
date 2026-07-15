@@ -1,0 +1,3009 @@
+{
+ "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
+  "handlers": [
+   {
+    "name": "ПослеЗаписи",
+    "event": "AfterWrite"
+   },
+   {
+    "name": "ПослеЗаписиНаСервере",
+    "event": "AfterWriteAtServer"
+   },
+   {
+    "name": "ПередЗаписью",
+    "event": "BeforeWrite"
+   },
+   {
+    "name": "ПередЗаписьюНаСервере",
+    "event": "BeforeWriteAtServer"
+   },
+   {
+    "name": "ОбработкаПроверкиЗаполненияНаСервере",
+    "event": "FillCheckProcessingAtServer"
+   },
+   {
+    "name": "ОбработкаОповещения",
+    "event": "NotificationProcessing"
+   },
+   {
+    "name": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "name": "ПриОткрытии",
+    "event": "OnOpen"
+   },
+   {
+    "name": "ПриЧтенииНаСервере",
+    "event": "OnReadAtServer"
+   },
+   {
+    "name": "ПриЗаписиНаСервере",
+    "event": "OnWriteAtServer"
+   }
+  ],
+  "attributes": [
+   {
+    "name": "Объект",
+    "id": 1,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникОбъект.РассылкиОтчетов",
+        "nameEn": "CatalogObject.РассылкиОтчетов"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "СтруктураВложенийПисьмаВФорматеHTML",
+    "id": 10,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТаблицаТиповПолучателей",
+    "id": 11,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "СписокФорматовПоУмолчаниюПредставление",
+    "id": 12,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "СозданКопированием",
+    "id": 14,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВидРассылки",
+    "id": 15,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Вид рассылки"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 40,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "КомпоновщикНастроекКД",
+    "id": 16,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "DATA_COMPOSITION_SETTINGS_COMPOSER"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ИдентификаторТекущейСтрокиТаблицыОтчетов",
+    "id": 17,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 0,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "FTPСерверИКаталог",
+    "id": 18,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сервер и каталог"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 300,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ТаблицаНастроекОтчетов",
+    "id": 19,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "НастройкиТекущегоОтчета",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Настройки текущего отчета"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ФорматыПоУмолчанию",
+    "id": 20,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форматы сохранения"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "Месяцы",
+    "id": 21,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Месяцы"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "VALUE_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ВремяНачала",
+    "id": 22,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Время начала"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Кэш",
+    "id": 23,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ДеньВМесяце",
+    "id": 26,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "День в месяце"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 2,
+       "nonNegative": true,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "ИндексыДнейНедели",
+    "id": 27,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ИндексыМесяцев",
+    "id": 28,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "СписокФорматов",
+    "id": 3,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "Публиковать",
+    "id": 31,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Публиковать"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ПериодПовтораДней",
+    "id": 36,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Период повтора"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 3,
+       "nonNegative": true,
+       "scale": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Расписание",
+    "id": 39,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "НастройкиПерсонализации",
+    "id": 4,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "ТекстРасписания",
+    "id": 43,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "ДругойСпособДоставки",
+    "id": 47,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Другой способ доставки"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 50,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "РассылкаБылаПерсонализирована",
+    "id": 48,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ПравоВывода",
+    "id": 49,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "РассылкаОснование",
+    "id": 50,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.РассылкиОтчетов",
+        "nameEn": "CatalogRef.РассылкиОтчетов"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ЗначенияРеквизитовДоИзменения",
+    "id": 51,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ЭлементСвязиПоТипу",
+    "id": 52,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ФормаБылаМодифицированаНаСервере",
+    "id": 53,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ПериодПовтораВТечениеДня",
+    "id": 54,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Повторять каждые"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/type"
+    }
+   },
+   {
+    "name": "ЭтоНовый",
+    "id": 56,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ПолучателиРассылки",
+    "id": 57,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Получатели"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "ПарольАрхива",
+    "id": 58,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Пароль архива"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[25]\/type"
+    }
+   },
+   {
+    "name": "FTPПароль",
+    "id": 59,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[25]\/type"
+    }
+   },
+   {
+    "name": "РассылкуРедактируетАвтор",
+    "id": 6,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "FTPПарольИзменен",
+    "id": 60,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ПарольАрхиваИзменен",
+    "id": 61,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ТекстОшибкиПриОткрытии",
+    "id": 62,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "ВремяОкончания",
+    "id": 63,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Время окончания"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[14]\/type"
+    }
+   },
+   {
+    "name": "ТекстВсплывающегоОповещенияПриОткрытии",
+    "id": 64,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "СертификатДляШифрованияИзменен",
+    "id": 65,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "ДополнительныеПараметрыТекстаПисьма",
+    "id": 66,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ПараметрыТекстаПисьмаИФайлов",
+    "id": 67,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "ДниНедели",
+    "id": 68,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дни недели"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "ДоступноШифрованиеВложений",
+    "id": 69,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "СписокФорматовПоУмолчанию",
+    "id": 7,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "ТипПолучателейРассылки",
+    "id": 8,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[34]\/title"
+    },
+    "type": {
+     "types": [
+      "TYPE_DESCRIPTION"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "ТекстПисьмаФорматированныйДокумент",
+    "id": 9,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Текст письма форматированный документ"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "FORMATTED_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "items": [
+   {
+    "name": "Страницы",
+    "id": 37,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы"
+      }
+     ]
+    },
+    "items": [
+     {
+      "name": "СтраницаГлавное",
+      "id": 1603,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Главное"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "Автор",
+        "id": 3,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.Автор"
+       },
+       {
+        "name": "Родитель",
+        "id": 382,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "items": [],
+        "dataPath": "Объект.Parent"
+       },
+       {
+        "name": "ГруппаРассылкаПодготовлена",
+        "id": 339,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Рассылка подготовлена"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "Подготовлена",
+          "id": 337,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.Подготовлена"
+         },
+         {
+          "name": "Наименование",
+          "id": 1,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.Description"
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ГруппаВидРассылки",
+        "id": 538,
+        "type": "USUAL_GROUP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+        },
+        "items": [
+         {
+          "name": "ВидРассылки",
+          "id": 536,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Отправлять"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ВидРассылки"
+         },
+         {
+          "name": "ВидыРассылки",
+          "id": 597,
+          "type": "PAGES",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Виды рассылки"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ВидыРассылкиДляПолучателей",
+            "id": 598,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Виды рассылки для получателей"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ТипПолучателейРассылки",
+              "id": 132,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[34]\/title"
+              },
+              "items": [],
+              "dataPath": "ТипПолучателейРассылки"
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "ВидыРассылкиЛичная",
+            "id": 600,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Виды рассылки личная"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ВидПочтовогоАдресаАвтора",
+              "id": 574,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "Объект.ВидПочтовогоАдресаПолучателей"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаДополнительно",
+      "id": 199,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Дополнительно"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "НастройкиФайловОтчетов",
+        "id": 1286,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Настройки файлов отчетов"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ТранслитерироватьИменаФайлов",
+          "id": 1180,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.ТранслитерироватьИменаФайлов"
+         },
+         {
+          "name": "ФорматыОтчетовИКнопки",
+          "id": 686,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Форматы отчетов и кнопки"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ФорматыОтчетов",
+            "id": 100,
+            "type": "TABLE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Форматы отчетов"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ФорматыОтчетовОсновноеШаблон",
+              "id": 1269,
+              "type": "COLUMN_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Форматы отчетов основное, шаблон"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "ФорматыОтчетовОсновное",
+                "id": 1267,
+                "type": "COLUMN_GROUP",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Форматы отчетов основное"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "ФорматыОтчетовОтправлятьЕслиПустой",
+                  "id": 534,
+                  "type": "CHECK_BOX_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.Отчеты.ОтправлятьЕслиПустой"
+                 },
+                 {
+                  "name": "ФорматыОтчетовНеОтправлятьПустой",
+                  "id": 989,
+                  "type": "CHECK_BOX_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.Отчеты.НеОтправлятьПустой"
+                 },
+                 {
+                  "name": "ФорматыОтчетовШаблонНаименования",
+                  "id": 1230,
+                  "type": "INPUT_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.Отчеты.ШаблонНаименования"
+                 },
+                 {
+                  "name": "ФорматыОтчетовПредставление",
+                  "id": 230,
+                  "type": "INPUT_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.Отчеты.Представление"
+                 },
+                 {
+                  "name": "ФорматыОтчетовФорматы",
+                  "id": 232,
+                  "type": "INPUT_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.Отчеты.Форматы"
+                 }
+                ],
+                "dataPath": ""
+               }
+              ],
+              "dataPath": ""
+             }
+            ],
+            "dataPath": "Объект.Отчеты"
+           },
+           {
+            "name": "ГруппаШапкаФорматыОтчетов",
+            "id": 1216,
+            "type": "USUAL_GROUP",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+            },
+            "items": [
+             {
+              "name": "КоманднаяПанельФорматыОтчетов",
+              "id": 1212,
+              "type": "COMMAND_BAR",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Командная панель форматы отчетов"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "ГруппаУстановитьСнятьПометкиЕслиПустой",
+                "id": 1218,
+                "type": "BUTTON_GROUP",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Отправлять если пустой"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "УстановитьПометкиОтправлятьЕслиПустой",
+                  "id": 688,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "СнятьПометкиОтправлятьЕслиПустой",
+                  "id": 689,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Не отправлять если пустой"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 }
+                ],
+                "dataPath": ""
+               },
+               {
+                "name": "ФорматыОтчетовВывестиСписок",
+                "id": 1223,
+                "type": "COMMAND_BAR_BUTTON",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": ""
+               },
+               {
+                "name": "ГруппаШаблоныНаименований",
+                "id": 1235,
+                "type": "POPUP",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Шаблоны наименований"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "УстановитьШаблонНаименование",
+                  "id": 1237,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "УстановитьШаблонНаименованиеФормат",
+                  "id": 1239,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета, формат"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "УстановитьШаблонНаименованиеПериод",
+                  "id": 1241,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета, период"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "УстановитьШаблонНаименованиеПериодФормат",
+                  "id": 1243,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета, период, формат"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "УстановитьШаблонНаименованиеДатаРассылки",
+                  "id": 1245,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета, дата рассылки"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "УстановитьШаблонНаименованиеДатаРассылкиФормат",
+                  "id": 1247,
+                  "type": "COMMAND_BAR_BUTTON",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Наименование отчета, дата рассылки, формат"
+                    }
+                   ]
+                  },
+                  "items": [],
+                  "dataPath": ""
+                 }
+                ],
+                "dataPath": ""
+               },
+               {
+                "name": "СтрокаПоискаФорматыОтчетов",
+                "id": 1220,
+                "type": "SEARCH_STRING_ADDITION",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Поиск"
+                  }
+                 ]
+                },
+                "items": [],
+                "dataPath": ""
+               }
+              ],
+              "dataPath": ""
+             },
+             {
+              "name": "ФорматыПоУмолчанию",
+              "id": 335,
+              "type": "LABEL_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]\/title"
+              },
+              "items": [],
+              "dataPath": "ФорматыПоУмолчанию"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ГруппаПараметрыАрхивацииВZIP",
+          "id": 98,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Параметры архивации в ZIP"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ГруппаПаролиШифрование",
+            "id": 1281,
+            "type": "USUAL_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Пароли и шифрование"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ПаролиШифрование",
+              "id": 1194,
+              "type": "USUAL_BUTTON",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Установить пароли и зашифровать"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": ""
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "ГруппаАрхив",
+            "id": 1566,
+            "type": "USUAL_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Параметры архивации"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "Архивировать",
+              "id": 13,
+              "type": "CHECK_BOX_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Архивировать в ZIP:"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "Объект.Архивировать"
+             },
+             {
+              "name": "ИмяАрхива",
+              "id": 15,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "Объект.ИмяАрхива"
+             },
+             {
+              "name": "ПарольАрхива",
+              "id": 17,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Пароль"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "ПарольАрхива"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ВидыПрикрепленияОтчетов",
+        "id": 1605,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Виды прикрепления отчетов"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ВставлятьОтчетыВТекстПисьма",
+          "id": 1271,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.ВставлятьОтчетыВТекстПисьма"
+         },
+         {
+          "name": "ПрикреплятьОтчетыВоВложения",
+          "id": 1274,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.ПрикреплятьОтчетыВоВложения"
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаРасписание",
+      "id": 423,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Расписание"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ПредставлениеРасписания",
+        "id": 1175,
+        "type": "LABEL_DECORATION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Представление расписания"
+          }
+         ]
+        },
+        "items": [],
+        "dataPath": ""
+       },
+       {
+        "name": "СтраницыПериодичности",
+        "id": 433,
+        "type": "PAGES",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Страницы периодичности"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "СтраницаЕжедневно",
+          "id": 437,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страница ежедневно"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ПериодПовтораДней",
+            "id": 439,
+            "type": "INPUT_FIELD",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Период повтора, дней"
+              }
+             ]
+            },
+            "items": [],
+            "dataPath": "ПериодПовтораДней"
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "СтраницаЕженедельно",
+          "id": 445,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страница еженедельно"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ДниНедели",
+            "id": 1454,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[46]\/title"
+            },
+            "items": [],
+            "dataPath": "ДниНедели"
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "СтраницаЕжемесячно",
+          "id": 463,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страница ежемесячно"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "Месяцы",
+            "id": 1458,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/title"
+            },
+            "items": [],
+            "dataPath": "Месяцы"
+           },
+           {
+            "name": "ГруппаСтрокаЕжемесячныхПараметров",
+            "id": 464,
+            "type": "USUAL_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Строка ежемесячных параметров"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ДеньВМесяце",
+              "id": 467,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Интервал повтора, дней"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "ДеньВМесяце"
+             },
+             {
+              "name": "ГиперссылкаНачалоКонецМесяца",
+              "id": 471,
+              "type": "LABEL_DECORATION",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "с начала месяца"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": ""
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ГруппаПериодичность",
+        "id": 424,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Периодичность"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ВыполнятьПоРасписанию",
+          "id": 676,
+          "type": "CHECK_BOX_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Выполнять по расписанию"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "Объект.ВыполнятьПоРасписанию"
+         },
+         {
+          "name": "ПараметрыВыполненияПоРасписанию",
+          "id": 678,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Параметры выполнения по расписанию"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ПериодичностьРасписания",
+            "id": 425,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            },
+            "items": [],
+            "dataPath": "Объект.ПериодичностьРасписания"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ГруппаВремяВыполнения",
+        "id": 428,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Время выполнения"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ПериодПовтораВТечениеДня",
+          "id": 1300,
+          "type": "INPUT_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Повторять через"
+            }
+           ]
+          },
+          "items": [],
+          "dataPath": "ПериодПовтораВТечениеДня"
+         },
+         {
+          "name": "ВремяОкончания",
+          "id": 1313,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[41]\/title"
+          },
+          "items": [],
+          "dataPath": "ВремяОкончания"
+         },
+         {
+          "name": "ВремяНачала",
+          "id": 429,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[14]\/title"
+          },
+          "items": [],
+          "dataPath": "ВремяНачала"
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаОтчеты",
+      "id": 56,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отчеты"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "СтраницыНастроекОтчета",
+        "id": 249,
+        "type": "PAGES",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Настройки отчета:"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "СтраницаКомпоновщик",
+          "id": 250,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страница компоновщик"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ПользовательскиеНастройки",
+            "id": 187,
+            "type": "TABLE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Пользовательские настройки"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "ПользовательскиеНастройкиИспользование",
+              "id": 581,
+              "type": "CHECK_BOX_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "КомпоновщикНастроекКД.UserSettings.Use"
+             },
+             {
+              "name": "ПользовательскиеНастройкиРедактированиеВФормеОтчета",
+              "id": 595,
+              "type": "CHECK_BOX_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "КомпоновщикНастроекКД.UserSettings.EditInReportForm"
+             },
+             {
+              "name": "ПользовательскиеНастройкиГруппаКолонок",
+              "id": 583,
+              "type": "COLUMN_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Пользовательские настройки группа колонок"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "ПользовательскиеНастройкиНастройка",
+                "id": 586,
+                "type": "INPUT_FIELD",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": "КомпоновщикНастроекКД.UserSettings.Setting"
+               },
+               {
+                "name": "ПользовательскиеНастройкиКартинкаНастройки",
+                "id": 584,
+                "type": "PICTURE_FIELD",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": "КомпоновщикНастроекКД.UserSettings.SettingPicture"
+               }
+              ],
+              "dataPath": ""
+             },
+             {
+              "name": "ПользовательскиеНастройкиГруппаКолонок1",
+              "id": 590,
+              "type": "COLUMN_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Пользовательские настройки группа колонок 1"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "ПользовательскиеНастройкиЗначение",
+                "id": 593,
+                "type": "INPUT_FIELD",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": "КомпоновщикНастроекКД.UserSettings.Value"
+               },
+               {
+                "name": "ПользовательскиеНастройкиКартинкаЗначения",
+                "id": 591,
+                "type": "PICTURE_FIELD",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": "КомпоновщикНастроекКД.UserSettings.ValuePicture"
+               }
+              ],
+              "dataPath": ""
+             },
+             {
+              "name": "ПользовательскиеНастройкиВидСравнения",
+              "id": 588,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "КомпоновщикНастроекКД.UserSettings.ComparisonType"
+             }
+            ],
+            "dataPath": "КомпоновщикНастроекКД.UserSettings"
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "СтраницаНастройкиТекущегоОтчета",
+          "id": 251,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Страница настройки текущего отчета"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "НастройкиТекущегоОтчета",
+            "id": 234,
+            "type": "TABLE",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
+            },
+            "items": [
+             {
+              "name": "НастройкиТекущегоОтчетаИспользование",
+              "id": 245,
+              "type": "CHECK_BOX_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Использование"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Использование"
+             },
+             {
+              "name": "НастройкиТекущегоОтчетаПредставление",
+              "id": 239,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Настройка"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Представление"
+             },
+             {
+              "name": "НастройкиТекущегоОтчетаЗначение",
+              "id": 243,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Значение"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Значение"
+             }
+            ],
+            "dataPath": "НастройкиТекущегоОтчета"
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ПустаяСтраница",
+          "id": 252,
+          "type": "PAGE",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Пустая страница"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ПустыеНастройки",
+            "id": 657,
+            "type": "TABLE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Пустые настройки"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "НастройкиТекущегоОтчетаИспользование1",
+              "id": 660,
+              "type": "CHECK_BOX_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Использование"
+             },
+             {
+              "name": "НастройкиТекущегоОтчетаПредставление1",
+              "id": 662,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Представление"
+             },
+             {
+              "name": "НастройкиТекущегоОтчетаЗначение1",
+              "id": 664,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/title"
+              },
+              "items": [],
+              "dataPath": "НастройкиТекущегоОтчета.Значение"
+             }
+            ],
+            "dataPath": "НастройкиТекущегоОтчета"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "Отчеты",
+        "id": 218,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/title"
+        },
+        "items": [
+         {
+          "name": "ОтчетыПредставление",
+          "id": 223,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "items": [],
+          "dataPath": "Объект.Отчеты.Представление"
+         }
+        ],
+        "dataPath": "Объект.Отчеты"
+       }
+      ],
+      "dataPath": ""
+     },
+     {
+      "name": "СтраницаДоставка",
+      "id": 79,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Доставка"
+        }
+       ]
+      },
+      "items": [
+       {
+        "name": "ДополнительныеПараметрыРассылкиПоЭлектроннойПочте",
+        "id": 200,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Параметры доставки по электронной почте"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "АдресОтветаСкрытыеКопии",
+          "id": 1279,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Адрес ответа скрытые копии"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ИспользоватьСкрытыеКопии",
+            "id": 35,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            },
+            "items": [],
+            "dataPath": "Объект.СкрытыеКопии"
+           },
+           {
+            "name": "АдресОтвета",
+            "id": 33,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            },
+            "items": [],
+            "dataPath": "Объект.АдресОтвета"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ДругиеСпособыДоставки",
+        "id": 630,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Другие способы доставки"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ПараметрыДоставки",
+          "id": 617,
+          "type": "PAGES",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Параметры доставки"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ИспользоватьПапку",
+            "id": 288,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Использовать папку"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "Папка",
+              "id": 214,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              },
+              "items": [],
+              "dataPath": "Объект.Папка"
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "ИспользоватьСетевойКаталог",
+            "id": 289,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Использовать сетевой каталог"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "СетевойКаталогWindows",
+              "id": 216,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Windows"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "Объект.СетевойКаталогWindows"
+             },
+             {
+              "name": "СетевойКаталогLinux",
+              "id": 692,
+              "type": "INPUT_FIELD",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Linux"
+                }
+               ]
+              },
+              "items": [],
+              "dataPath": "Объект.СетевойКаталогLinux"
+             }
+            ],
+            "dataPath": ""
+           },
+           {
+            "name": "ИспользоватьFTPРесурс",
+            "id": 291,
+            "type": "PAGE",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Использовать FTP ресурс"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "FTPСерверИКаталог",
+              "id": 388,
+              "type": "INPUT_FIELD",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
+              },
+              "items": [],
+              "dataPath": "FTPСерверИКаталог"
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ГруппаСпособДоставки",
+          "id": 1513,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Способ доставки"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "Публиковать",
+            "id": 631,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[20]\/title"
+            },
+            "items": [],
+            "dataPath": "Публиковать"
+           },
+           {
+            "name": "ДругойСпособДоставки",
+            "id": 615,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[25]\/title"
+            },
+            "items": [],
+            "dataPath": "ДругойСпособДоставки"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       },
+       {
+        "name": "ДоставкаПоЭлектроннойПочте",
+        "id": 668,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Доставка по электронной почте"
+          }
+         ]
+        },
+        "items": [
+         {
+          "name": "ПараметрыПисьма",
+          "id": 330,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Параметры письма"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ТемаИТекстПисьма",
+            "id": 609,
+            "type": "USUAL_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Тема и текст письма"
+              }
+             ]
+            },
+            "items": [
+             {
+              "name": "СтраницыТекстПисьма",
+              "id": 127,
+              "type": "PAGES",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Страницы текст письма"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "СтраницыТекстПисьмаОбычныйТекст",
+                "id": 125,
+                "type": "PAGE",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Страницы текст письма обычный текст"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "КоманднаяПанельТекстПисьма",
+                  "id": 157,
+                  "type": "COMMAND_BAR",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Командная панель текст письма"
+                    }
+                   ]
+                  },
+                  "items": [
+                   {
+                    "name": "ПредпросмотрШаблона",
+                    "id": 393,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Предварительный просмотр"
+                      }
+                     ]
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ТекстПисьмаДобавитьПараметрШаблона",
+                    "id": 323,
+                    "type": "POPUP",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Параметр"
+                      }
+                     ]
+                    },
+                    "items": [
+                     {
+                      "name": "ДобавитьШаблонАвтора",
+                      "id": 324,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Автор"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонПолучателя",
+                      "id": 325,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Получатель"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонРассылки",
+                      "id": 326,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Наименование рассылки"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонСформированныхОтчетов",
+                      "id": 327,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Сформированные отчеты"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьИлиИзменитьШаблонДатыРассылки",
+                      "id": 328,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Дата рассылки"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонСистемы",
+                      "id": 404,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Заголовок системы"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонСпособаДоставки",
+                      "id": 421,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ДобавитьШаблонПоУмолчанию",
+                      "id": 699,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "Шаблон по умолчанию"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     }
+                    ],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ОбычныйТекст",
+                    "id": 607,
+                    "type": "POPUP",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Обычный текст"
+                      }
+                     ]
+                    },
+                    "items": [
+                     {
+                      "name": "ИзменитьТипТекстаНаHTML",
+                      "id": 608,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "content": [
+                        {
+                         "langKey": "ru",
+                         "value": "HTML"
+                        }
+                       ]
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ИзменитьТипТекстаНаОбычныйПометка",
+                      "id": 629,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     }
+                    ],
+                    "dataPath": ""
+                   }
+                  ],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "ТекстПисьма",
+                  "id": 21,
+                  "type": "TEXT_DOCUMENT_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                  },
+                  "items": [],
+                  "dataPath": "Объект.ТекстПисьма"
+                 }
+                ],
+                "dataPath": ""
+               },
+               {
+                "name": "СтраницыТекстПисьмаHTML",
+                "id": 128,
+                "type": "PAGE",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Страницы текст письма HTML"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "КоманднаяПанельТекстПисьмаФорматированныйДокумент",
+                  "id": 131,
+                  "type": "COMMAND_BAR",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Командная панель текст письма форматированный документ"
+                    }
+                   ]
+                  },
+                  "items": [
+                   {
+                    "name": "СтандартныеДействия",
+                    "id": 363,
+                    "type": "BUTTON_GROUP",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Стандартные действия"
+                      }
+                     ]
+                    },
+                    "items": [
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументВыровнятьВлево",
+                      "id": 633,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументВыровнятьПоЦентру",
+                      "id": 634,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументВыровнятьВправо",
+                      "id": 636,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументВыровнятьПоШирине",
+                      "id": 637,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументУвеличитьОтступ",
+                      "id": 638,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументУменьшитьОтступ",
+                      "id": 639,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     }
+                    ],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ТекстПисьмаФорматированныйДокументКартинка",
+                    "id": 174,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ТекстПисьмаФорматированныйДокументПредпросмотрШаблона",
+                    "id": 395,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ТекстПисьмаФорматированныйДокументДобавитьПараметрШаблона",
+                    "id": 301,
+                    "type": "POPUP",
+                    "title": {
+                     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+                    },
+                    "items": [
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьИлиИзменитьШаблонДатыРассылки",
+                      "id": 303,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонАвтора",
+                      "id": 304,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонПолучателя",
+                      "id": 305,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонРассылки",
+                      "id": 306,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонСформированныхОтчетов",
+                      "id": 307,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонСистемы",
+                      "id": 406,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[6]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонСпособаДоставки",
+                      "id": 419,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ТекстПисьмаФорматированныйДокументДобавитьШаблонПоУмолчанию",
+                      "id": 698,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[8]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     }
+                    ],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "HTML",
+                    "id": 605,
+                    "type": "POPUP",
+                    "title": {
+                     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+                    },
+                    "items": [
+                     {
+                      "name": "ИзменитьТипТекстаНаОбычный",
+                      "id": 606,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     },
+                     {
+                      "name": "ИзменитьТипТекстаНаHTMLПометка",
+                      "id": 628,
+                      "type": "COMMAND_BAR_BUTTON",
+                      "title": {
+                       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
+                      },
+                      "items": [],
+                      "dataPath": ""
+                     }
+                    ],
+                    "dataPath": ""
+                   }
+                  ],
+                  "dataPath": ""
+                 },
+                 {
+                  "name": "ТекстПисьмаФорматированныйДокумент",
+                  "id": 129,
+                  "type": "FORMATTED_DOCUMENT_FIELD",
+                  "title": {
+                   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[50]\/title"
+                  },
+                  "items": [],
+                  "dataPath": "ТекстПисьмаФорматированныйДокумент"
+                 }
+                ],
+                "dataPath": ""
+               }
+              ],
+              "dataPath": ""
+             },
+             {
+              "name": "ГруппаТемаПисьма",
+              "id": 1251,
+              "type": "USUAL_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Тема письма"
+                }
+               ]
+              },
+              "items": [
+               {
+                "name": "КоманднаяПанельТемаПисьма",
+                "id": 1253,
+                "type": "COMMAND_BAR",
+                "title": {
+                 "content": [
+                  {
+                   "langKey": "ru",
+                   "value": "Командная панель тема письма"
+                  }
+                 ]
+                },
+                "items": [
+                 {
+                  "name": "ГруппаВажность",
+                  "id": 1255,
+                  "type": "POPUP",
+                  "title": {
+                   "content": [
+                    {
+                     "langKey": "ru",
+                     "value": "Важность"
+                    }
+                   ]
+                  },
+                  "items": [
+                   {
+                    "name": "ВажностьВысокая",
+                    "id": 1257,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Высокая важность"
+                      }
+                     ]
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ВажностьОбычная",
+                    "id": 1259,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Обычная важность"
+                      }
+                     ]
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   },
+                   {
+                    "name": "ВажностьНизкая",
+                    "id": 1261,
+                    "type": "COMMAND_BAR_BUTTON",
+                    "title": {
+                     "content": [
+                      {
+                       "langKey": "ru",
+                       "value": "Низкая важность"
+                      }
+                     ]
+                    },
+                    "items": [],
+                    "dataPath": ""
+                   }
+                  ],
+                  "dataPath": ""
+                 }
+                ],
+                "dataPath": ""
+               },
+               {
+                "name": "ТемаПисьма",
+                "id": 27,
+                "type": "INPUT_FIELD",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                },
+                "items": [],
+                "dataPath": "Объект.ТемаПисьма"
+               }
+              ],
+              "dataPath": ""
+             }
+            ],
+            "dataPath": ""
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ГруппаУчетнаяЗапись",
+          "id": 645,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Почта"
+            }
+           ]
+          },
+          "items": [
+           {
+            "name": "ТолькоУведомить",
+            "id": 413,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Отправлять только уведомления"
+              }
+             ]
+            },
+            "items": [],
+            "dataPath": "Объект.ТолькоУведомить"
+           },
+           {
+            "name": "УчетнаяЗапись",
+            "id": 31,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            },
+            "items": [],
+            "dataPath": "Объект.УчетнаяЗапись"
+           }
+          ],
+          "dataPath": ""
+         },
+         {
+          "name": "ГруппаДоставкаПоЭлектроннойПочте",
+          "id": 985,
+          "type": "USUAL_GROUP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[5]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]\/title"
+          },
+          "items": [
+           {
+            "name": "ИспользоватьЭлектроннуюПочту",
+            "id": 559,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            },
+            "items": [],
+            "dataPath": "Объект.ИспользоватьЭлектроннуюПочту"
+           },
+           {
+            "name": "ПолучателиРассылки",
+            "id": 982,
+            "type": "LABEL_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[34]\/title"
+            },
+            "items": [],
+            "dataPath": "ПолучателиРассылки"
+           }
+          ],
+          "dataPath": ""
+         }
+        ],
+        "dataPath": ""
+       }
+      ],
+      "dataPath": ""
+     }
+    ],
+    "dataPath": ""
+   }
+  ],
+  "empty": false
+ }
+}

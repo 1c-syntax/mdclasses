@@ -52,7 +52,7 @@ public class ValueTypeTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, _edt",
+      "true, mdclasses",
       "false, mdclasses"
     }
   )
@@ -70,7 +70,7 @@ public class ValueTypeTest {
         assertThat(objectAttribute.getValueType().isComposite()).isFalse();
         assertThat(objectAttribute.getValueType().getQualifiers()).hasSize(1);
 
-        var qualifier = objectAttribute.getValueType().getQualifiers().get(0);
+        var qualifier = objectAttribute.getValueType().getQualifiers().getFirst();
         assertThat(qualifier).isInstanceOf(NumberQualifiers.class);
 
         var numberQualifiers = (NumberQualifiers) qualifier;
@@ -84,8 +84,10 @@ public class ValueTypeTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ssl_3_1, _edt",
-      "false, ssl_3_1"
+      "true, ssl_3_1",
+      "false, ssl_3_1",
+      "true, ssl_3_2",
+      "false, ssl_3_2"
     }
   )
   void testDefinedType(ArgumentsAccessor argumentsAccessor) {
