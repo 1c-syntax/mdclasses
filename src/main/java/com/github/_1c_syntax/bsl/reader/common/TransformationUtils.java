@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Вспомогательный класс для конвертирования значений между моделями
@@ -94,10 +93,13 @@ public class TransformationUtils {
    */
   @Nullable
   public Type fieldType(Object source, String methodName) {
-    return TYPES.computeIfAbsent(source.getClass().getName(),
-        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, l -> computeFieldType(source, methodName))
-      .orElse(null);
+    var perClass = perClassCache(TYPES, source.getClass().getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = computeFieldType(source, methodName);
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached.orElse(null);
   }
 
   /**
@@ -173,19 +175,47 @@ public class TransformationUtils {
 
   @Nullable
   private Method getMethod(Class<?> clazz, String methodName) {
-    return METHODS.computeIfAbsent(clazz.getName(), k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, k -> Arrays.stream(clazz.getDeclaredMethods())
+    var perClass = perClassCache(METHODS, clazz.getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = Arrays.stream(clazz.getDeclaredMethods())
         .filter(m -> methodName.equalsIgnoreCase(m.getName()))
-        .findFirst())
-      .orElse(null);
+        .findFirst();
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached.orElse(null);
   }
 
   @Nullable
   private SetterDescriptor getSetter(Class<?> clazz, String methodName) {
-    return SETTERS.computeIfAbsent(clazz.getName(),
-        k -> new ConcurrentSkipListMap<>(String.CASE_INSENSITIVE_ORDER))
-      .computeIfAbsent(methodName, k -> computeSetter(clazz, methodName))
-      .orElse(null);
+    var perClass = perClassCache(SETTERS, clazz.getName());
+    var cached = perClass.get(methodName);
+    if (cached == null) {
+      cached = computeSetter(clazz, methodName);
+      perClass.putIfAbsent(methodName, cached);
+    }
+    return cached.orElse(null);
+  }
+
+  /**
+   * Возвращает (создавая при первом обращении) пер-классовый кэш по имени класса.
+   * <p>
+   * Используется {@code get()}-first вместо {@code computeIfAbsent} с захватывающей лямбдой:
+   * на попадании в кэш (горячий путь) лямбда не аллоцируется. {@code ConcurrentHashMap.computeIfAbsent}
+   * не встраивается JIT-ом, из-за чего захватывающая лямбда-функция отображения перестаёт
+   * скаляризоваться escape-анализом и аллоцируется на каждый вызов.
+   *
+   * @param cache     Двухуровневый кэш «имя класса → (имя свойства → значение)».
+   * @param className Имя класса.
+   * @param <V>       Тип кэшируемого значения.
+   * @return Пер-классовый кэш свойств.
+   */
+  private static <V> Map<String, V> perClassCache(Map<String, Map<String, V>> cache, String className) {
+    var perClass = cache.get(className);
+    if (perClass == null) {
+      perClass = cache.computeIfAbsent(className, k -> new ConcurrentHashMap<>());
+    }
+    return perClass;
   }
 
   private Optional<SetterDescriptor> computeSetter(Class<?> clazz, String methodName) {
