@@ -143,14 +143,6 @@
         }
        ]
       },
-      "data": {
-       "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
-       "plainDataSets": {},
-       "dataSets": [
-        1
-       ],
-       "dataPath": "src\/test\/resources\/mdclasses_3_27\/Reports\/Отчет1\/Templates\/ОсновнаяСхемаКомпоновкиДанных\/Template.xml"
-      },
       "name": "ОсновнаяСхемаКомпоновкиДанных",
       "objectBelonging": "OWN",
       "comment": "",
@@ -575,6 +567,7 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
+    "hierarchical": false,
     "checkUnique": true,
     "tabularSections": [],
     "objectBelonging": "OWN",
@@ -605,7 +598,7 @@
     "name": "ПланВидовХарактеристик1",
     "comment": "",
     "attributes": [
-     9
+     7
     ],
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
@@ -613,7 +606,8 @@
     "auxiliaryFolderForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
-    "forms": []
+    "forms": [],
+    "foldersOnTop": true
    }
   ],
   "modalityUseMode": "DONT_USE",
@@ -700,10 +694,6 @@
         },
         "synonym": {
          "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/synonym"
-        },
-        "data": {
-         "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData",
-         "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data"
         },
         "name": "Макет",
         "objectBelonging": "OWN",
@@ -1200,9 +1190,6 @@
          "value": "Макет"
         }
        ]
-      },
-      "data": {
-       "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
       },
       "name": "Макет",
       "objectBelonging": "OWN",

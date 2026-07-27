@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.Catalog": {
   "codeSeries": "WITHIN_OWNER_SUBORDINATION",
+  "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -60,10 +61,12 @@
     }
    ]
   },
+  "hierarchical": false,
   "checkUnique": true,
   "tabularSections": [],
   "objectBelonging": "OWN",
   "commands": [],
+  "levelCount": 2,
   "mdoType": "CATALOG",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -118,6 +121,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
   },
   "templates": [],
+  "limitLevelCount": false,
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -133,7 +137,6 @@
     },
     "isProtected": false,
     "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/ssl_3_2\/Catalogs\/ВерсииФа_лов\/ManagerModule.bsl",
     "supportVariant": "NOT_EDITABLE"
    },
    {
@@ -142,7 +145,6 @@
     },
     "isProtected": false,
     "moduleType": "ObjectModule",
-    "uri": "src\/test\/resources\/ssl_3_2\/Catalogs\/ВерсииФа_лов\/ObjectModule.bsl",
     "supportVariant": "NOT_EDITABLE"
    }
   ],
@@ -1019,6 +1021,80 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
     },
     "fullName": {
+     "nameRu": "",
+     "nameEn": "IsFolder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.ВерсииФайлов.СтандартныйРеквизит.IsFolder",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.ВерсииФайлов.StandardAttribute.IsFolder"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "",
+     "nameEn": "Parent"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/type"
+    },
+    "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.ВерсииФайлов.СтандартныйРеквизит.Parent",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.ВерсииФайлов.StandardAttribute.Parent"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
      "nameRu": "Владелец",
      "nameEn": "Owner"
     },
@@ -1274,42 +1350,6 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
     },
     "fullName": {
-     "nameRu": "Родитель",
-     "nameEn": "Parent"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]\/type"
-    },
-    "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.ВерсииФайлов.СтандартныйРеквизит.Родитель",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "Catalog.ВерсииФайлов.StandardAttribute.Parent"
-    },
-    "supportVariant": "NOT_EDITABLE",
-    "fillFromFillingValue": true,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "fullName": {
      "nameRu": "Ссылка",
      "nameEn": "Ref"
     },
@@ -1335,42 +1375,6 @@
     "markNegatives": false,
     "extendedEdit": false,
     "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "fullName": {
-     "nameRu": "ЭтоГруппа",
-     "nameEn": "IsFolder"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[17]\/type"
-    },
-    "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.ВерсииФайлов.СтандартныйРеквизит.ЭтоГруппа",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "Catalog.ВерсииФайлов.StandardAttribute.IsFolder"
-    },
-    "supportVariant": "NOT_EDITABLE",
-    "fillFromFillingValue": false,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
    }
   ],
   "auxiliaryFolderForm": {
@@ -1380,6 +1384,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "foldersOnTop": true,
   "forms": [
    {
     "owner": {
@@ -1412,7 +1417,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_2\/Catalogs\/ВерсииФа_лов\/Forms\/ФормаВыбора\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1451,7 +1455,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_2\/Catalogs\/ВерсииФа_лов\/Forms\/ВерсииФа_ла\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1488,7 +1491,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_2\/Catalogs\/ВерсииФа_лов\/Forms\/ФормаСписка\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],

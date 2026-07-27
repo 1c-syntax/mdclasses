@@ -48,7 +48,8 @@ public class StdAttributeFiller {
   private static final List<MDOType> EXCLUDED = List.of(
     MDOType.DATA_PROCESSOR, MDOType.REPORT, MDOType.EXTERNAL_DATA_PROCESSOR, MDOType.EXTERNAL_REPORT,
     MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE, MDOType.EXTERNAL_DATA_SOURCE_CUBE,
-    MDOType.EXTERNAL_DATA_SOURCE_FUNCTION, MDOType.EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE);
+    MDOType.EXTERNAL_DATA_SOURCE_FUNCTION, MDOType.EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE,
+    MDOType.RECALCULATION);
   private static final Map<MDOType, List<StdAtrInfo>> REGISTRY = computeRegistry();
 
   public void fill(MDReaderContext parentContext) {
@@ -56,9 +57,17 @@ public class StdAttributeFiller {
       return;
     }
 
-    var stdAttributes = REGISTRY.getOrDefault(parentContext.getMdoType(), Collections.emptyList());
+    var mdoType = parentContext.getMdoType();
+    List<StdAtrInfo> stdAttributes = REGISTRY.getOrDefault(mdoType, Collections.emptyList());
+    if ((mdoType == MDOType.CATALOG || mdoType == MDOType.CHART_OF_CHARACTERISTIC_TYPES)
+      && parentContext.getFromCache("hierarchical", false)) {
+      stdAttributes = new ArrayList<>(stdAttributes);
+      stdAttributes.add(StdAtrInfo.IS_FOLDER);
+      stdAttributes.add(StdAtrInfo.PARENT);
+    }
+
     if (stdAttributes.isEmpty()) {
-      LOGGER.debug("Для {} нет настроенных стандартных реквизитов", parentContext.getMdoType());
+      LOGGER.debug("Для {} нет настроенных стандартных реквизитов", mdoType);
     }
 
     Map<String, MDReaderContext> existsStdAttributes = new HashMap<>();
@@ -165,8 +174,6 @@ public class StdAttributeFiller {
         StdAtrInfo.PREDEFINED,
         StdAtrInfo.REF,
         StdAtrInfo.DELETION_MARK,
-        StdAtrInfo.IS_FOLDER,
-        StdAtrInfo.PARENT,
         StdAtrInfo.DESCRIPTION,
         StdAtrInfo.CODE,
         StdAtrInfo.OWNER
@@ -205,8 +212,6 @@ public class StdAttributeFiller {
         StdAtrInfo.REF,
         StdAtrInfo.DELETION_MARK,
         StdAtrInfo.DESCRIPTION,
-        StdAtrInfo.IS_FOLDER,
-        StdAtrInfo.PARENT,
         StdAtrInfo.PREDEFINED,
         StdAtrInfo.PREDEFINED_DATA_NAME,
         StdAtrInfo.CODE,
