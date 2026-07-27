@@ -1,5 +1,6 @@
 {
  "com.github._1c_syntax.bsl.mdo.Document": {
+  "choiceHistoryOnInput": "DONT_USE",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -54,6 +55,7 @@
     }
    ]
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "tabularSections": [
    {
     "owner": {
@@ -408,6 +410,7 @@
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
   "mdoType": "DOCUMENT",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -447,7 +450,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[5]"
   },
+  "createOnInput": "USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -1097,6 +1103,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "forms": [
    {
     "owner": {
@@ -1169,6 +1176,11 @@
      }
     ],
     "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/mdoReference"
    }
   ]
  }

@@ -12,6 +12,7 @@
   ],
   "exchangePlans": [
    {
+    "choiceHistoryOnInput": "AUTO",
     "predefinedValues": [],
     "explanation": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/bots\/com.github._1c_syntax.bsl.mdo.Bot\/synonym"
@@ -25,11 +26,13 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
     "tabularSections": [],
     "objectBelonging": "OWN",
     "includeConfigurationExtensions": false,
     "basedOn": [],
     "commands": [],
+    "dataLockControlMode": "AUTOMATIC",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -38,6 +41,9 @@
     },
     "defaultFormMap": {},
     "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
     "mdoReference": {
      "mdoRefRu": "ПланОбмена.ПланОбмена1",
      "type": "EXCHANGE_PLAN",
@@ -59,7 +65,11 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
-    "forms": []
+    "searchStringModeOnInputByString": "BEGIN",
+    "forms": [],
+    "inputByString": [
+     2
+    ]
    }
   ],
   "subsystems": [],
@@ -133,6 +143,7 @@
   "chartsOfCharacteristicTypes": [
    {
     "codeSeries": "WHOLE_CATALOG",
+    "choiceHistoryOnInput": "AUTO",
     "auxiliaryFolderChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -160,12 +171,14 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
     "hierarchical": false,
     "checkUnique": true,
     "tabularSections": [],
     "objectBelonging": "OWN",
     "basedOn": [],
     "commands": [],
+    "dataLockControlMode": "AUTOMATIC",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -174,6 +187,9 @@
     },
     "defaultFormMap": {},
     "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
     "mdoReference": {
      "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1",
      "type": "CHART_OF_CHARACTERISTIC_TYPES",
@@ -202,8 +218,12 @@
     "auxiliaryFolderForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
+    "searchStringModeOnInputByString": "BEGIN",
     "forms": [],
-    "foldersOnTop": true
+    "foldersOnTop": true,
+    "inputByString": [
+     2
+    ]
    }
   ],
   "modalityUseMode": "DONT_USE",

@@ -1,5 +1,6 @@
 {
  "com.github._1c_syntax.bsl.mdo.ExchangePlan": {
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -3308,11 +3309,13 @@
     }
    ]
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "tabularSections": [],
   "objectBelonging": "OWN",
   "includeConfigurationExtensions": false,
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
   "mdoType": "EXCHANGE_PLAN",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -3348,7 +3351,17 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/auxiliaryChoiceForm"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
+   }
+  ],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -3816,6 +3829,15 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/auxiliaryChoiceForm"
   },
   "comment": "",
-  "forms": []
+  "searchStringModeOnInputByString": "BEGIN",
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ExchangePlan\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   }
+  ]
  }
 }

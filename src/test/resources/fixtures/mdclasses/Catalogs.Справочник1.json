@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.Catalog": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
   "possibleRights": [
    "DELETE",
@@ -73,6 +74,7 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": false,
   "checkUnique": true,
   "tabularSections": [
@@ -245,6 +247,7 @@
     "supportVariant": "NONE"
    }
   ],
+  "dataLockControlMode": "MANAGED",
   "levelCount": 2,
   "mdoType": "CATALOG",
   "auxiliaryChoiceForm": {
@@ -301,6 +304,7 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
   },
+  "createOnInput": "USE",
   "templates": [
    {
     "templateType": "SPREADSHEET_DOCUMENT",
@@ -327,7 +331,9 @@
     "supportVariant": "NONE"
    }
   ],
+  "fullTextSearchOnInputByString": "DONT_USE",
   "limitLevelCount": false,
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -792,6 +798,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "foldersOnTop": true,
   "forms": [
    {
@@ -901,6 +908,14 @@
      }
     ],
     "supportVariant": "NONE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
    }
   ]
  }

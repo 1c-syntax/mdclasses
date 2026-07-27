@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.ChartOfAccounts": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -68,11 +69,13 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "checkUnique": true,
   "tabularSections": [],
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
   "mdoType": "CHART_OF_ACCOUNTS",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -108,7 +111,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/auxiliaryChoiceForm"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
   },
@@ -583,6 +589,15 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/auxiliaryChoiceForm"
   },
   "comment": "",
-  "forms": []
+  "searchStringModeOnInputByString": "BEGIN",
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
+   }
+  ]
  }
 }

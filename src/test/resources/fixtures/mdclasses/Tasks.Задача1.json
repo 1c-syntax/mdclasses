@@ -1,5 +1,6 @@
 {
  "com.github._1c_syntax.bsl.mdo.Task": {
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -39,10 +40,12 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/format"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "tabularSections": [],
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
   "mdoType": "TASK",
   "auxiliaryChoiceForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
@@ -76,7 +79,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/owner"
   },
@@ -486,6 +492,15 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/addressingAttributes\/com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute\/choiceForm"
   },
   "comment": "",
-  "forms": []
+  "searchStringModeOnInputByString": "BEGIN",
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Task\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[5]\/mdoReference"
+   }
+  ]
  }
 }

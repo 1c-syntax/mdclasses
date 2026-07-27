@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.Catalog": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
   "possibleRights": [
    "DELETE",
@@ -50,6 +51,7 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": true,
   "checkUnique": false,
   "tabularSections": [],
@@ -90,6 +92,7 @@
     "supportVariant": "NOT_EDITABLE"
    }
   ],
+  "dataLockControlMode": "MANAGED",
   "levelCount": 2,
   "mdoType": "CATALOG",
   "auxiliaryChoiceForm": {
@@ -144,8 +147,18 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
+  "createOnInput": "USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
   "limitLevelCount": false,
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
+   }
+  ],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -914,6 +927,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "foldersOnTop": true,
   "forms": [
    {
@@ -1096,6 +1110,11 @@
      }
     ],
     "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
    }
   ]
  }

@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -53,9 +54,10 @@
     }
    ]
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": false,
   "valueType": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[9]\/type"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[8]\/type"
   },
   "checkUnique": false,
   "tabularSections": [
@@ -634,6 +636,7 @@
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -689,7 +692,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
@@ -1948,80 +1954,6 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
     },
     "fullName": {
-     "nameRu": "",
-     "nameEn": "IsFolder"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "type": {
-     "types": [],
-     "composite": false,
-     "qualifiers": []
-    },
-    "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
-    "mdoReference": {
-     "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.IsFolder",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.IsFolder"
-    },
-    "supportVariant": "NOT_EDITABLE",
-    "fillFromFillingValue": false,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "fullName": {
-     "nameRu": "",
-     "nameEn": "Parent"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/type"
-    },
-    "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
-    "mdoReference": {
-     "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Parent",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Parent"
-    },
-    "supportVariant": "NOT_EDITABLE",
-    "fillFromFillingValue": true,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-    },
-    "fullName": {
      "nameRu": "ИмяПредопределенныхДанных",
      "nameEn": "PredefinedDataName"
     },
@@ -2212,6 +2144,44 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
     },
     "fullName": {
+     "nameRu": "Родитель",
+     "nameEn": "Parent"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.Родитель",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.Parent"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
      "nameRu": "Ссылка",
      "nameEn": "Ref"
     },
@@ -2317,6 +2287,42 @@
     "markNegatives": false,
     "extendedEdit": false,
     "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ЭтоГруппа",
+     "nameEn": "IsFolder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[6]\/type"
+    },
+    "uuid": "1055d15b-8cb5-4ff0-a526-7fd20a08a96c",
+    "mdoReference": {
+     "mdoRefRu": "ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтандартныйРеквизит.ЭтоГруппа",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения.StandardAttribute.IsFolder"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
    }
   ],
   "auxiliaryFolderForm": {
@@ -2326,6 +2332,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "foldersOnTop": true,
   "forms": [
    {
@@ -2551,6 +2558,11 @@
      }
     ],
     "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
    }
   ]
  }

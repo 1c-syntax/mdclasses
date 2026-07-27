@@ -24,8 +24,6 @@ package com.github._1c_syntax.bsl.reader.common.context.std_attributes;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.types.MDOType;
-import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.bsl.types.MultiName;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -78,28 +76,18 @@ public class StdAttributeFiller {
     var uuid = parentContext.getFromCache(UUID_FIELD_NAME, "");
 
     stdAttributes.forEach((StdAtrInfo stdAtrInfo) -> {
-        var attributeContext = getOrComputeChildContext(parentContext, existsStdAttributes, stdAtrInfo.getNameEn());
-        attributeContext.setValue("nameRu", stdAtrInfo.getNameRu());
+        var attributeContext = getOrComputeChildContext(parentContext, existsStdAttributes, stdAtrInfo);
         if (stdAtrInfo.getValueType() != ValueTypeDescription.EMPTY) {
           attributeContext.setValue("type", stdAtrInfo.getValueType());
         } else {
           attributeContext.setValue("type", stdAtrInfo.getComputeValueType().apply(parentContext));
         }
-
-        attributeContext.setValue("mdoReference",
-          MdoReference.create(parentContext.getMdoReference(),
-            MDOType.STANDARD_ATTRIBUTE, stdAtrInfo.getNameEn(), stdAtrInfo.getNameRu()));
       }
     );
 
     // todo подумать об удалении ненужных
 
     existsStdAttributes.forEach((String name, MDReaderContext stdAttribute) -> {
-      var nameRu = stdAttribute.getFromCache("nameRu", "");
-      if (nameRu.isEmpty()) {
-        LOGGER.debug("У {} для поля {} нет заполнения", parentContext.getMdoReference(), stdAttribute.getName());
-      }
-      stdAttribute.setValue("fullName", MultiName.create(stdAttribute.getName(), nameRu));
       stdAttribute.setValue(UUID_FIELD_NAME, uuid);
       stdAttribute.setValue(SUPPORT_VALIANT_FIELD_NAME, parentContext.getSupportVariant());
     });
@@ -277,7 +265,10 @@ public class StdAttributeFiller {
     return registry;
   }
 
-  private MDReaderContext getOrComputeChildContext(MDReaderContext parentContext, Map<String, MDReaderContext> stdAttributes, String name) {
+  private MDReaderContext getOrComputeChildContext(MDReaderContext parentContext,
+                                                   Map<String, MDReaderContext> stdAttributes,
+                                                   StdAtrInfo stdAtrInfo) {
+    var name = stdAtrInfo.getName().getEn();
     var childContext = stdAttributes.get(name);
     if (childContext == null) {
       var collectionName = "attributes";

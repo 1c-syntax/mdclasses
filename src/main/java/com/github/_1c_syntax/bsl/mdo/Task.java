@@ -25,9 +25,14 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -162,6 +167,54 @@ public class Task implements ReferenceObject, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Ввод по строке - список реквизитов для ввода по строке
+   */
+  @Singular("addInputByString")
+  List<MdoReference> inputByString;
+
+  /**
+   * Режим полнотекстового поиска при вводе по строке
+   */
+  @Default
+  UseMode fullTextSearchOnInputByString = UseMode.USE;
+
+  /**
+   * Режим поиска при вводе по строке
+   */
+  @Default
+  SearchStringMode searchStringModeOnInputByString = SearchStringMode.BEGIN;
+
+  /**
+   * Режим получения данных выбора при вводе по строке
+   */
+  @Default
+  ChoiceDataGetMode choiceDataGetModeOnInputByString = ChoiceDataGetMode.DIRECTLY;
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  UseMode createOnInput = UseMode.USE;
+
+  /**
+   * Режим истории выбора при вводе по строке
+   */
+  @Default
+  ChoiceHistoryOnInputMode choiceHistoryOnInput = ChoiceHistoryOnInputMode.AUTO;
+
+  /**
+   * Поля блокировки данных - список реквизитов для блокировки данных
+   */
+  @Singular("addDataLockFields")
+  List<MdoReference> dataLockFields;
+
+  /**
+   * Режим управления блокировкой данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
   /**
    * Возвращает перечень возможных прав доступа
