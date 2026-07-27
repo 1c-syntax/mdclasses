@@ -27,6 +27,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -192,6 +193,19 @@ public class ChartOfCharacteristicTypes
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Определяет, является ли план видов характеристик иерархическим.
+   */
+  @Default
+  boolean hierarchical = false;
+
+  /**
+   * Группы сверху.
+   * Определяет расположение групп в списке.
+   */
+  @Default
+  boolean foldersOnTop = false;
 
   /**
    * Проверять уникальность кода плана видов характеристик.

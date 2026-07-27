@@ -37,6 +37,7 @@ import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
@@ -284,6 +285,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(InterfaceCompatibilityMode.class));
     registerConverter(new EnumConverter<>(DateFractions.class));
     registerConverter(new EnumConverter<>(CodeSeries.class));
+    registerConverter(new EnumConverter<>(HierarchyType.class));
   }
 
   private void init() {
