@@ -66,6 +66,10 @@ public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDa
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default

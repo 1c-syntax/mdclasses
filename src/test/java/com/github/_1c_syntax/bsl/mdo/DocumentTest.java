@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -70,5 +71,33 @@ class DocumentTest {
       .containsAll(attributes, tabularSections, forms, templates, commands);
     Assertions.assertThat(document.getPlainChildren(), true)
       .containsAllPlain(attributes, tabularSections, forms, templates, commands);
+
+    // --- BasedOn ---
+    assertThat(document.getBasedOn()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Documents.Встреча",
+    "false, ssl_3_1, Documents.Встреча",
+    "true, ssl_3_2, Documents.Встреча",
+    "false, ssl_3_2, Documents.Встреча"
+  })
+  void testBasedOn(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
+
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
+
+    assertThat(document.getBasedOn())
+      .containsExactlyInAnyOrder(
+        MdoReference.create("Document.ТелефонныйЗвонок"),
+        MdoReference.create("Document.Встреча"),
+        MdoReference.create("Document.ЭлектронноеПисьмоВходящее"),
+        MdoReference.create("Document.ЭлектронноеПисьмоИсходящее"),
+        MdoReference.create("Document.ЗапланированноеВзаимодействие"),
+        MdoReference.create("Document.СообщениеSMS")
+      );
   }
 }

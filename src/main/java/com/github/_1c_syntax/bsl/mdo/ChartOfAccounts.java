@@ -65,6 +65,10 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default

@@ -143,5 +143,28 @@ class CatalogTest {
     Assertions.assertThat(catalog.getPlainStorageFields(), true)
       .containsAllPlain(catalog.getAttributes(),
         catalog.getTabularSections());
+
+    // --- BasedOn ---
+    assertThat(catalog.getBasedOn()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Catalogs.ШаблоныСообщений",
+    "false, ssl_3_1, Catalogs.ШаблоныСообщений",
+    "true, ssl_3_2, Catalogs.ШаблоныСообщений",
+    "false, ssl_3_2, Catalogs.ШаблоныСообщений"
+  })
+  void testBasedOn(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    assertThat(catalog.getBasedOn())
+      .containsExactlyInAnyOrder(
+        MdoReference.create("Document.ЭлектронноеПисьмоИсходящее")
+      );
   }
 }
