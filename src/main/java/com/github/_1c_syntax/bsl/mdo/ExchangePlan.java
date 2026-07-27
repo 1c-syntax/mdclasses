@@ -65,6 +65,10 @@ public class ExchangePlan implements ReferenceObject, AccessRightsOwner, Predefi
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default

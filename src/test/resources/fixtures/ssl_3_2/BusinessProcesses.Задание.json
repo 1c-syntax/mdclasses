@@ -46,6 +46,23 @@
   },
   "tabularSections": [],
   "objectBelonging": "OWN",
+  "basedOn": [
+   {
+    "mdoRefRu": "Справочник.Пользователи",
+    "type": "CATALOG",
+    "mdoRef": "Catalog.Пользователи"
+   },
+   {
+    "mdoRefRu": "Справочник.Файлы",
+    "type": "CATALOG",
+    "mdoRef": "Catalog.Файлы"
+   },
+   {
+    "mdoRefRu": "Задача.ЗадачаИсполнителя",
+    "type": "TASK",
+    "mdoRef": "Task.ЗадачаИсполнителя"
+   }
+  ],
   "commands": [],
   "mdoType": "BUSINESS_PROCESS",
   "auxiliaryChoiceForm": {
@@ -115,9 +132,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[6]"
   },
   "task": {
-   "mdoRefRu": "Задача.ЗадачаИсполнителя",
-   "type": "TASK",
-   "mdoRef": "Task.ЗадачаИсполнителя"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/basedOn\/com.github._1c_syntax.bsl.types.MdoReference[3]"
   },
   "name": "Задание",
   "attributes": [
