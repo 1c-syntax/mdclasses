@@ -56,6 +56,7 @@ import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
@@ -199,6 +200,18 @@ public class EDTReader implements MDReader {
       return EmptyFormData.EMPTY;
     }
     return (FormData) read(formDataPath);
+  }
+
+  @Override
+  public AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    var additionalIndexesPath = Paths.get(currentPath.getParent().toString(), "AdditionalIndexes.aindex");
+    if (additionalIndexesPath.toFile().exists()) {
+      var value = read(additionalIndexesPath);
+      if (value instanceof AdditionalIndexesWrapper data) {
+        return data;
+      }
+    }
+    return AdditionalIndexesWrapper.EMPTY;
   }
 
   @Override
