@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
@@ -56,7 +57,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner {
+public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner, CharacteristicOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
@@ -311,6 +312,12 @@ public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDa
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
 
   /**
    * Возвращает перечень возможных прав доступа

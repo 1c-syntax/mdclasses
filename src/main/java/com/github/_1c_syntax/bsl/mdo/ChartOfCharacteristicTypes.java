@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
@@ -33,7 +34,6 @@ import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
-import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -59,7 +59,7 @@ import java.util.Map;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ChartOfCharacteristicTypes
-  implements ReferenceObject, AccessRightsOwner, ValueTypeOwner, PredefinedDataOwner {
+  implements ReferenceObject, AccessRightsOwner, ValueTypeOwner, PredefinedDataOwner, CharacteristicOwner {
 
   /*
    * ReferenceObject
@@ -294,6 +294,18 @@ public class ChartOfCharacteristicTypes
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
+
+  /**
+   * Расширенные значения характеристик
+   */
+  @Default
+  MdoReference characteristicExtValues = MdoReference.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа

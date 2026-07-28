@@ -3,60 +3,16 @@
   "codeSeries": "WHOLE_CATALOG",
   "choiceHistoryOnInput": "AUTO",
   "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
-  "possibleRights": [
-   "DELETE",
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "INPUT_BY_STRING",
-   "INSERT",
-   "INTERACTIVE_CLEAR_DELETION_MARK",
-   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE",
-   "INTERACTIVE_DELETE_MARKED",
-   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE_PREDEFINED_DATA",
-   "INTERACTIVE_INSERT",
-   "INTERACTIVE_SET_DELETION_MARK",
-   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
-  "auxiliaryFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "defaultFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "description": "Заметки",
   "owners": [],
-  "predefinedValues": [],
   "explanation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
   },
   "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
   "mdoRef": "Catalog.Заметки",
-  "supportVariant": "NOT_EDITABLE",
-  "auxiliaryListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "synonym": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/synonym"
-  },
-  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": true,
   "checkUnique": false,
   "tabularSections": [],
   "objectBelonging": "OWN",
-  "basedOn": [],
   "commands": [
    {
     "owner": {
@@ -95,12 +51,101 @@
   "dataLockControlMode": "MANAGED",
   "levelCount": 2,
   "fullTextSearch": "USE",
-  "mdoType": "CATALOG",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
    "type": "UNKNOWN",
    "mdoRef": ""
   },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "createOnInput": "USE",
+  "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
+   }
+  ],
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "defaultFolderForm": {
+   "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы",
+   "type": "FORM",
+   "mdoRef": "Catalog.Заметки.Form.ФормаГруппы"
+  },
+  "name": "Заметки",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE_PREDEFINED_DATA",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "auxiliaryFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "description": "Заметки",
+  "predefinedValues": [],
+  "supportVariant": "NOT_EDITABLE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/synonym"
+  },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
+  "basedOn": [],
+  "characteristics": [],
+  "mdoType": "CATALOG",
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -145,54 +190,13 @@
     "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента"
    }
   ],
-  "defaultListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "createOnInput": "USE",
-  "templates": [],
-  "fullTextSearchOnInputByString": "DONT_USE",
   "limitLevelCount": false,
-  "dataLockFields": [
-   {
-    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
-   },
-   {
-    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
-   }
-  ],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "defaultChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "modules": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ManagerModule",
-    "supportVariant": "NOT_EDITABLE"
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ObjectModule",
-    "supportVariant": "NOT_EDITABLE"
-   }
-  ],
   "defaultObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
   },
-  "defaultFolderForm": {
-   "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы",
-   "type": "FORM",
-   "mdoRef": "Catalog.Заметки.Form.ФормаГруппы"
-  },
-  "name": "Заметки",
   "attributes": [
    {
     "owner": {
@@ -938,9 +942,6 @@
     "mask": ""
    }
   ],
-  "auxiliaryFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
   "auxiliaryObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
