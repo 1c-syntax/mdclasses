@@ -3,78 +3,12 @@
   "codeSeries": "WHOLE_CATALOG",
   "choiceHistoryOnInput": "AUTO",
   "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
-  "possibleRights": [
-   "DELETE",
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "INPUT_BY_STRING",
-   "INSERT",
-   "INTERACTIVE_CLEAR_DELETION_MARK",
-   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE",
-   "INTERACTIVE_DELETE_MARKED",
-   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE_PREDEFINED_DATA",
-   "INTERACTIVE_INSERT",
-   "INTERACTIVE_SET_DELETION_MARK",
-   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
-  "auxiliaryFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "defaultFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "description": "Справочник1",
   "owners": [],
-  "predefinedValues": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "code": "000000001",
-    "folder": false,
-    "name": "ПредопределенныйЭлемент",
-    "description": "Предопределенный элемент",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "childItems": [],
-    "uuid": "79adb5f1-7224-4404-98a7-d7ed155f6232",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.Предопределенный.ПредопределенныйЭлемент",
-     "type": "PREDEFINED_VALUE",
-     "mdoRef": "Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
   "explanation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
   },
   "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
   "mdoRef": "Catalog.Справочник1",
-  "supportVariant": "NONE",
-  "auxiliaryListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "synonym": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-  },
-  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": false,
   "checkUnique": true,
   "tabularSections": [
@@ -219,7 +153,6 @@
    }
   ],
   "objectBelonging": "OWN",
-  "basedOn": [],
   "commands": [
    {
     "owner": {
@@ -253,12 +186,142 @@
   "dataLockControlMode": "MANAGED",
   "levelCount": 2,
   "fullTextSearch": "USE",
-  "mdoType": "CATALOG",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
    "type": "UNKNOWN",
    "mdoRef": ""
   },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
+  },
+  "createOnInput": "USE",
+  "templates": [
+   {
+    "templateType": "SPREADSHEET_DOCUMENT",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Макет"
+      }
+     ]
+    },
+    "name": "Макет",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "42def71b-52cc-4e34-8a08-82f0dfcd47bf",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Справочник1.Макет.Макет",
+     "type": "TEMPLATE",
+     "mdoRef": "Catalog.Справочник1.Template.Макет"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+   "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора",
+   "type": "FORM",
+   "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": true,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NONE"
+   }
+  ],
+  "defaultFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "name": "Справочник1",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE_PREDEFINED_DATA",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "auxiliaryFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "description": "Справочник1",
+  "predefinedValues": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
+    },
+    "code": "000000001",
+    "folder": false,
+    "name": "ПредопределенныйЭлемент",
+    "description": "Предопределенный элемент",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "childItems": [],
+    "uuid": "79adb5f1-7224-4404-98a7-d7ed155f6232",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Справочник1.Предопределенный.ПредопределенныйЭлемент",
+     "type": "PREDEFINED_VALUE",
+     "mdoRef": "Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
+  },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
+  "basedOn": [],
+  "characteristics": [],
+  "mdoType": "CATALOG",
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -305,72 +368,13 @@
     "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента"
    }
   ],
-  "defaultListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
-  },
-  "createOnInput": "USE",
-  "templates": [
-   {
-    "templateType": "SPREADSHEET_DOCUMENT",
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Макет"
-      }
-     ]
-    },
-    "name": "Макет",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "42def71b-52cc-4e34-8a08-82f0dfcd47bf",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.Макет.Макет",
-     "type": "TEMPLATE",
-     "mdoRef": "Catalog.Справочник1.Template.Макет"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
-  "fullTextSearchOnInputByString": "DONT_USE",
   "limitLevelCount": false,
-  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "defaultChoiceForm": {
-   "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора",
-   "type": "FORM",
-   "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора"
-  },
-  "modules": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ManagerModule",
-    "supportVariant": "NONE"
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": true,
-    "moduleType": "ObjectModule",
-    "supportVariant": "NONE"
-   }
-  ],
   "defaultObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
   },
-  "defaultFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "name": "Справочник1",
   "attributes": [
    {
     "owner": {
@@ -805,9 +809,6 @@
     "mask": ""
    }
   ],
-  "auxiliaryFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
   "auxiliaryObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },

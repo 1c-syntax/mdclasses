@@ -3,6 +3,72 @@
   "codeSeries": "WITHIN_OWNER_SUBORDINATION",
   "choiceHistoryOnInput": "AUTO",
   "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
+  "owners": [
+   {
+    "mdoRefRu": "Справочник.Файлы",
+    "type": "CATALOG",
+    "mdoRef": "Catalog.Файлы"
+   }
+  ],
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+  },
+  "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
+  "mdoRef": "Catalog.ВерсииФайлов",
+  "hierarchical": false,
+  "checkUnique": true,
+  "tabularSections": [],
+  "objectBelonging": "OWN",
+  "commands": [],
+  "dataLockControlMode": "MANAGED",
+  "levelCount": 2,
+  "fullTextSearch": "USE",
+  "auxiliaryChoiceForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
+  },
+  "createOnInput": "USE",
+  "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/mdoReference"
+   }
+  ],
+  "defaultChoiceForm": {
+   "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаВыбора",
+   "type": "FORM",
+   "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаВыбора"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "defaultFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "name": "ВерсииФайлов",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -37,19 +103,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "description": "Версии файлов",
-  "owners": [
-   {
-    "mdoRefRu": "Справочник.Файлы",
-    "type": "CATALOG",
-    "mdoRef": "Catalog.Файлы"
-   }
-  ],
   "predefinedValues": [],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-  },
-  "uuid": "eb3dfdc7-58b8-4b1f-b079-368c262364c9",
-  "mdoRef": "Catalog.ВерсииФайлов",
   "supportVariant": "NOT_EDITABLE",
   "auxiliaryListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
@@ -63,21 +117,9 @@
    ]
   },
   "choiceDataGetModeOnInputByString": "DIRECTLY",
-  "hierarchical": false,
-  "checkUnique": true,
-  "tabularSections": [],
-  "objectBelonging": "OWN",
   "basedOn": [],
-  "commands": [],
-  "dataLockControlMode": "MANAGED",
-  "levelCount": 2,
-  "fullTextSearch": "USE",
+  "characteristics": [],
   "mdoType": "CATALOG",
-  "auxiliaryChoiceForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -122,51 +164,13 @@
     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
    }
   ],
-  "defaultListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
-  },
-  "createOnInput": "USE",
-  "templates": [],
-  "fullTextSearchOnInputByString": "DONT_USE",
   "limitLevelCount": false,
-  "dataLockFields": [
-   {
-    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/mdoReference"
-   }
-  ],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "defaultChoiceForm": {
-   "mdoRefRu": "Справочник.ВерсииФайлов.Форма.ФормаВыбора",
-   "type": "FORM",
-   "mdoRef": "Catalog.ВерсииФайлов.Form.ФормаВыбора"
-  },
-  "modules": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ManagerModule",
-    "supportVariant": "NOT_EDITABLE"
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ObjectModule",
-    "supportVariant": "NOT_EDITABLE"
-   }
-  ],
   "defaultObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
-  "defaultFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "name": "ВерсииФайлов",
   "attributes": [
    {
     "owner": {
@@ -1416,9 +1420,6 @@
     "mask": ""
    }
   ],
-  "auxiliaryFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
   "auxiliaryObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },

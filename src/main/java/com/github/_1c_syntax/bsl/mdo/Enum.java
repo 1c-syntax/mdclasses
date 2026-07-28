@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
@@ -47,7 +48,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, TemplateOwner, AttributeOwner {
+public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, TemplateOwner, AttributeOwner, CharacteristicOwner {
 
   /*
    * MDObject
@@ -117,6 +118,12 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
    */
   @Singular
   List<EnumValue> enumValues;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
 
   /**
    * Пояснение

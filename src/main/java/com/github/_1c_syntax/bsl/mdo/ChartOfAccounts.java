@@ -28,6 +28,7 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
@@ -57,7 +58,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner {
+public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner, CharacteristicOwner {
 
   /*
    * ReferenceObject
@@ -261,6 +262,12 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
 
   /**
    * Возвращает перечень возможных прав доступа
