@@ -162,6 +162,12 @@ public class BusinessProcess implements ReferenceObject, AccessRightsOwner {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Ссылка на задачу
    */
   @Default

@@ -43,11 +43,11 @@ import java.util.function.Function;
 @Value
 @Slf4j
 public class StdAtrInfo {
-  private static final ValueTypeDescription BOOLEAN_TYPE = ValueTypeDescription.create(PrimitiveValueType.BOOLEAN);
+  public static final ValueTypeDescription BOOLEAN_TYPE = ValueTypeDescription.create(PrimitiveValueType.BOOLEAN);
+  public static final ValueTypeDescription DATETIME_TYPE =
+    ValueTypeDescription.create(PrimitiveValueType.DATE, DateQualifiers.create());
   private static final ValueTypeDescription STRING_BIG_TYPE = ValueTypeDescription.createString(0);
   private static final ValueTypeDescription NUMBER_TYPE = ValueTypeDescription.createNumber(5);
-  private static final ValueTypeDescription DATETIME_TYPE =
-    ValueTypeDescription.create(PrimitiveValueType.DATE, DateQualifiers.create());
 
   public static final StdAtrInfo PREDEFINED_DATA_NAME
     = new StdAtrInfo(StdAttributeNames.PREDEFINED_DATA_NAME, STRING_BIG_TYPE);

@@ -204,6 +204,12 @@ public class ChartOfCharacteristicTypes
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Определяет, является ли план видов характеристик иерархическим.
    */
   @Default

@@ -168,6 +168,12 @@ public class Document implements ReferenceObject, AccessRightsOwner {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Ввод по строке - список реквизитов для ввода по строке
    */
   @Singular("addInputByString")

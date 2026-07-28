@@ -195,6 +195,12 @@ public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDa
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Список владельцев
    */
   @Singular("addOwners")

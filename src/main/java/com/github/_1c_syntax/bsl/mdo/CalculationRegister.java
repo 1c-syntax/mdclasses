@@ -30,6 +30,7 @@ import com.github._1c_syntax.bsl.mdo.children.Resource;
 import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -135,6 +136,12 @@ public class CalculationRegister implements Register, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
 
   /**
    * Возвращает перечень возможных прав доступа

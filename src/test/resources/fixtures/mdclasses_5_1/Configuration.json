@@ -33,6 +33,7 @@
     "basedOn": [],
     "commands": [],
     "dataLockControlMode": "AUTOMATIC",
+    "fullTextSearch": "USE",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -179,6 +180,7 @@
     "basedOn": [],
     "commands": [],
     "dataLockControlMode": "AUTOMATIC",
+    "fullTextSearch": "USE",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -330,6 +332,7 @@
   "chartsOfCalculationTypes": [],
   "informationRegisters": [
    {
+    "fullTextSearch": "DONT_USE",
     "defaultListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/defaultObjectForm"
     },
@@ -340,15 +343,9 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/informationRegisters\/com.github._1c_syntax.bsl.mdo.InformationRegister\/mdoReference"
       },
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/bots\/com.github._1c_syntax.bsl.mdo.Bot\/synonym"
-      },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
-      "passwordMode": false,
-      "name": "Ресурс1",
-      "objectBelonging": "OWN",
-      "comment": "",
       "type": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfCharacteristicTypes\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/type"
       },
@@ -358,7 +355,14 @@
        "type": "RESOURCE",
        "mdoRef": "InformationRegister.РегистрСведений1.Resource.Ресурс1"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/bots\/com.github._1c_syntax.bsl.mdo.Bot\/synonym"
+      },
+      "passwordMode": false,
+      "name": "Ресурс1",
+      "objectBelonging": "OWN",
+      "comment": ""
      }
     ],
     "explanation": {

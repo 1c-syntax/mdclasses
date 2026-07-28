@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.common.context.std_attributes;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -43,6 +44,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StdAttributeFiller {
   private static final String UUID_FIELD_NAME = "uuid";
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
+  private static final String FULL_TEXT_SEARCH_NAME = "fullTextSearch";
+
   private static final List<MDOType> EXCLUDED = List.of(
     MDOType.DATA_PROCESSOR, MDOType.REPORT, MDOType.EXTERNAL_DATA_PROCESSOR, MDOType.EXTERNAL_REPORT,
     MDOType.SEQUENCE, MDOType.EXTERNAL_DATA_SOURCE_TABLE, MDOType.EXTERNAL_DATA_SOURCE_CUBE,
@@ -81,6 +84,13 @@ public class StdAttributeFiller {
           attributeContext.setValue("type", stdAtrInfo.getValueType());
         } else {
           attributeContext.setValue("type", stdAtrInfo.getComputeValueType().apply(parentContext));
+        }
+        if (stdAtrInfo == StdAtrInfo.REF || stdAtrInfo == StdAtrInfo.ORDER) {
+          var parentFullTextSearch = parentContext.getFromCache(FULL_TEXT_SEARCH_NAME, UseMode.USE);
+          attributeContext.setValue(FULL_TEXT_SEARCH_NAME, parentFullTextSearch);
+        } else if (stdAtrInfo.getValueType().equals(StdAtrInfo.BOOLEAN_TYPE)
+          || stdAtrInfo.getValueType().equals(StdAtrInfo.DATETIME_TYPE)) {
+          attributeContext.setValue(FULL_TEXT_SEARCH_NAME, UseMode.DONT_USE);
         }
       }
     );

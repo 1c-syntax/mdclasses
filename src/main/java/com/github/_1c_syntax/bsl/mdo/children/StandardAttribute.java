@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -76,6 +77,8 @@ public class StandardAttribute implements Attribute, AccessRightsOwner {
   boolean passwordMode;
   @Default
   AttributeKind kind = AttributeKind.STANDARD;
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
   @Default
   @Getter(AccessLevel.NONE)
   ValueTypeDescription type = ValueTypeDescription.EMPTY;

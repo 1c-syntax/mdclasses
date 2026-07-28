@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -73,6 +74,8 @@ public class TaskAddressingAttribute implements Attribute, AccessRightsOwner {
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
   @Default
   @Getter(AccessLevel.NONE)
   ValueTypeDescription type = ValueTypeDescription.EMPTY;

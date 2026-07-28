@@ -184,6 +184,12 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Проверять уникальность кода плана счетов.
    * Определяет, нужно ли проверять уникальность кода плана счетов.
    * Если значение равно true, то код плана счетов должен быть уникальным в пределах области,
