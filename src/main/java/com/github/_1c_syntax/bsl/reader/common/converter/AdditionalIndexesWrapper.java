@@ -34,7 +34,7 @@ import java.util.List;
 @Builder
 public class AdditionalIndexesWrapper {
 
-  public static AdditionalIndexesWrapper EMPTY = builder().build();
+  public static final AdditionalIndexesWrapper EMPTY = builder().build();
 
   @Singular
   List<AdditionalIndexItem> indexes;
