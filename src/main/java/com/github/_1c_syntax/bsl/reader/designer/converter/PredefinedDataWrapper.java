@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import lombok.Builder;
@@ -33,10 +33,7 @@ import java.util.List;
  */
 @Value
 @Builder
-public class PredefinedData {
-
-  public static final PredefinedData EMPTY = PredefinedData.builder().build();
-
+public class PredefinedDataWrapper {
   /**
    * Предопределенные элементы верхнего уровня
    */

@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import java.util.Collections;
 import java.util.List;
 
@@ -45,5 +46,12 @@ public interface AttributeOwner extends ChildrenOwner {
    */
   default List<MD> getPlainStorageFields() {
     return getStorageFields();
+  }
+
+  /**
+   * Список дополнительных индексов объекта
+   */
+  default List<AdditionalIndex> getAdditionalIndexes() {
+    return Collections.emptyList();
   }
 }

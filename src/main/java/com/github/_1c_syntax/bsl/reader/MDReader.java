@@ -25,8 +25,10 @@ import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -141,6 +143,18 @@ public interface MDReader {
    */
   default List<PredefinedValue> readPredefinedData(Path currentPath, String name, MDOType mdoType) {
     return Collections.emptyList();
+  }
+
+  /**
+   * Читает данные дополнительных индексов объекта.
+   *
+   * @param currentPath Путь к файлу объекта
+   * @param name        Имя объекта
+   * @param mdoType     Тип объекта
+   * @return Контейнер дополнительных индексов
+   */
+  default AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    return AdditionalIndexesWrapper.EMPTY;
   }
 
   /**

@@ -296,6 +296,7 @@ public class Fixtures {
             xstream.omitField(clazz, "allAttributes");
             xstream.omitField(clazz, "storageFields");
             xstream.omitField(clazz, "plainStorageFields");
+            xstream.omitField(clazz, "additionalIndexes");
           }
 
           if (Form.class.isAssignableFrom(clazz)) {
