@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo.children;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -69,6 +70,8 @@ public class DocumentJournalColumn implements Attribute {
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
 
   /*
    * Свое

@@ -1,5 +1,65 @@
 {
  "com.github._1c_syntax.bsl.mdo.CalculationRegister": {
+  "possibleRights": [
+   "EDIT",
+   "READ",
+   "UPDATE",
+   "VIEW"
+  ],
+  "description": "РегистрРасчета1",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "uuid": "90587c7d-b950-4476-ac14-426e4a83d9c4",
+  "mdoRef": "CalculationRegister.РегистрРасчета1",
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "objectBelonging": "OWN",
+  "recalculations": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Перерасчет"
+      }
+     ]
+    },
+    "name": "Перерасчет",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "16b54095-8711-4ef1-a38b-93d12f6f6e93",
+    "mdoReference": {
+     "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Перерасчет.Перерасчет",
+     "type": "RECALCULATION",
+     "mdoRef": "CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/recalculations\/com.github._1c_syntax.bsl.mdo.children.Recalculation\/mdoReference"
+      },
+      "isProtected": true,
+      "moduleType": "RecalculationModule",
+      "supportVariant": "NONE"
+     }
+    ],
+    "supportVariant": "NONE",
+    "dimensions": []
+   }
+  ],
+  "commands": [],
+  "fullTextSearch": "DONT_USE",
   "mdoType": "CALCULATION_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -14,28 +74,15 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "READ",
-   "UPDATE",
-   "VIEW"
-  ],
   "templates": [],
-  "description": "РегистрРасчета1",
   "resources": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Ресурс1",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "NUMBER"
@@ -55,27 +102,20 @@
      "type": "RESOURCE",
      "mdoRef": "CalculationRegister.РегистрРасчета1.Resource.Ресурс1"
     },
-    "supportVariant": "NONE"
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "name": "Ресурс1",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
-  "uuid": "90587c7d-b950-4476-ac14-426e4a83d9c4",
-  "mdoRef": "CalculationRegister.РегистрРасчета1",
   "modules": [],
-  "supportVariant": "NONE",
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-  },
   "name": "РегистрРасчета1",
   "periodicity": "MONTH",
   "attributes": [
@@ -85,6 +125,7 @@
      "type": "CALCULATION_REGISTER",
      "mdoRef": "CalculationRegister.РегистрРасчета1"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -125,6 +166,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -169,6 +211,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -205,6 +248,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -243,6 +287,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -279,6 +324,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -325,6 +371,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -361,6 +408,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -397,6 +445,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -433,6 +482,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -469,6 +519,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -505,6 +556,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -539,50 +591,13 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
-  "recalculations": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Перерасчет"
-      }
-     ]
-    },
-    "name": "Перерасчет",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "16b54095-8711-4ef1-a38b-93d12f6f6e93",
-    "mdoReference": {
-     "mdoRefRu": "РегистрРасчета.РегистрРасчета1.Перерасчет.Перерасчет",
-     "type": "RECALCULATION",
-     "mdoRef": "CalculationRegister.РегистрРасчета1.Recalculation.Перерасчет"
-    },
-    "modules": [
-     {
-      "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/recalculations\/com.github._1c_syntax.bsl.mdo.children.Recalculation\/mdoReference"
-      },
-      "isProtected": true,
-      "moduleType": "RecalculationModule",
-      "supportVariant": "NONE"
-     }
-    ],
-    "supportVariant": "NONE",
-    "dimensions": []
-   }
-  ],
-  "commands": [],
   "forms": [],
   "dimensions": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,

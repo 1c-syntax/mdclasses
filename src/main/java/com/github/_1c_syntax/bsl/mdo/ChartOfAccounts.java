@@ -27,7 +27,12 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -179,6 +184,12 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Проверять уникальность кода плана счетов.
    * Определяет, нужно ли проверять уникальность кода плана счетов.
    * Если значение равно true, то код плана счетов должен быть уникальным в пределах области,
@@ -195,6 +206,54 @@ public class ChartOfAccounts implements ReferenceObject, AccessRightsOwner, Pred
    */
   @Default
   CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
+
+  /**
+   * Ввод по строке - список реквизитов для ввода по строке
+   */
+  @Singular("addInputByString")
+  List<MdoReference> inputByString;
+
+  /**
+   * Режим полнотекстового поиска при вводе по строке
+   */
+  @Default
+  UseMode fullTextSearchOnInputByString = UseMode.USE;
+
+  /**
+   * Режим поиска при вводе по строке
+   */
+  @Default
+  SearchStringMode searchStringModeOnInputByString = SearchStringMode.BEGIN;
+
+  /**
+   * Режим получения данных выбора при вводе по строке
+   */
+  @Default
+  ChoiceDataGetMode choiceDataGetModeOnInputByString = ChoiceDataGetMode.DIRECTLY;
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  UseMode createOnInput = UseMode.USE;
+
+  /**
+   * Режим истории выбора при вводе по строке
+   */
+  @Default
+  ChoiceHistoryOnInputMode choiceHistoryOnInput = ChoiceHistoryOnInputMode.AUTO;
+
+  /**
+   * Поля блокировки данных - список реквизитов для блокировки данных
+   */
+  @Singular("addDataLockFields")
+  List<MdoReference> dataLockFields;
+
+  /**
+   * Режим управления блокировкой данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
   /**
    * Возвращает перечень возможных прав доступа

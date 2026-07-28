@@ -84,14 +84,11 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (CHILD_ITEMS_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, ITEMS_NODE);
-      } else if (ATTRIBUTES_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, ATTRIBUTES_NODE);
-      } else if (EVENTS_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, HANDLES_NODE);
-      } else {
-        readNode(reader.getNodeName(), context, readerContext);
+      switch (name) {
+        case CHILD_ITEMS_NODE -> readItemNode(reader, context, readerContext, ITEMS_NODE);
+        case ATTRIBUTES_NODE -> readItemNode(reader, context, readerContext, ATTRIBUTES_NODE);
+        case EVENTS_NODE -> readItemNode(reader, context, readerContext, HANDLES_NODE);
+        case null, default -> readNode(reader.getNodeName(), context, readerContext);
       }
       reader.moveUp();
     }
@@ -160,15 +157,15 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (USE_PURPOSES_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
-      } else if (STANDARD_ATTRIBUTES_NODE.equals(name)) {
-        readPropertiesNode(reader, context, readerContext);
-      } else if (STANDARD_ATTRIBUTE_NODE.equals(name)) {
-        readValue(reader, context, readerContext, StandardAttribute.class, ATTRIBUTE_FIELD_NAME);
-      } else {
-        var fieldClass = readerContext.fieldType(name);
-        readValue(reader, context, readerContext, Objects.requireNonNullElse(fieldClass, String.class), name);
+      switch (name) {
+        case USE_PURPOSES_NODE -> readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
+        case STANDARD_ATTRIBUTES_NODE -> readPropertiesNode(reader, context, readerContext);
+        case STANDARD_ATTRIBUTE_NODE ->
+          readValue(reader, context, readerContext, StandardAttribute.class, ATTRIBUTE_FIELD_NAME);
+        default -> {
+          var fieldClass = readerContext.fieldType(name);
+          readValue(reader, context, readerContext, Objects.requireNonNullElse(fieldClass, String.class), name);
+        }
       }
       reader.moveUp();
     }

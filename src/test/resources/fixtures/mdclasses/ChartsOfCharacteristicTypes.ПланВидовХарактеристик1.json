@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -48,6 +49,7 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "hierarchical": false,
   "valueType": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[7]\/type"
@@ -57,6 +59,8 @@
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
+  "fullTextSearch": "USE",
   "mdoType": "CHART_OF_CHARACTERISTIC_TYPES",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -108,7 +112,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
@@ -147,6 +154,7 @@
      "type": "CHART_OF_CHARACTERISTIC_TYPES",
      "mdoRef": "ChartOfCharacteristicTypes.ПланВидовХарактеристик1"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -192,6 +200,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -238,6 +247,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -283,6 +293,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -323,6 +334,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -359,6 +371,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -406,6 +419,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -455,7 +469,16 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "foldersOnTop": true,
-  "forms": []
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfCharacteristicTypes\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   }
+  ]
  }
 }

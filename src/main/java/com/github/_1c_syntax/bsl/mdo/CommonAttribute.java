@@ -88,6 +88,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOw
   UseMode autoUse = UseMode.USE;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
    */
   boolean passwordMode;

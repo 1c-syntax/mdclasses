@@ -36,6 +36,7 @@ import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAtrInfo;
 import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
@@ -48,6 +49,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
@@ -62,6 +64,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@Slf4j
 public class MDReaderContext extends AbstractReaderContext {
 
   private static final String MDO_REFERENCE_FIELD_NAME = "mdoReference";
@@ -90,6 +93,12 @@ public class MDReaderContext extends AbstractReaderContext {
    */
   @Setter
   private MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Для доинициализации стандартного атрибута
+   */
+  @Nullable
+  private StdAtrInfo stdAtrInfo;
 
   public MDReaderContext(HierarchicalStreamReader reader) {
     super(reader);
@@ -198,6 +207,11 @@ public class MDReaderContext extends AbstractReaderContext {
 
     if (ModuleOwner.class.isAssignableFrom(realClass)) {
       setValueModules();
+    }
+
+    if (StandardAttribute.class.isAssignableFrom(realClass)) {
+      stdAtrInfo = StdAtrInfo.get(name);
+      setValue("fullName", stdAtrInfo.getName());
     }
 
     return super.build();

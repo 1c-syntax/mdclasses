@@ -1,5 +1,6 @@
 {
  "com.github._1c_syntax.bsl.mdo.BusinessProcess": {
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -39,10 +40,13 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "tabularSections": [],
   "objectBelonging": "OWN",
   "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
+  "fullTextSearch": "USE",
   "mdoType": "BUSINESS_PROCESS",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -78,7 +82,10 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/auxiliaryChoiceForm"
   },
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
@@ -111,6 +118,7 @@
      "type": "BUSINESS_PROCESS",
      "mdoRef": "BusinessProcess.БизнесПроцесс1"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -158,6 +166,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -202,6 +211,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -242,6 +252,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -287,6 +298,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -323,6 +335,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -370,6 +383,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -407,6 +421,12 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/auxiliaryChoiceForm"
   },
   "comment": "",
-  "forms": []
+  "searchStringModeOnInputByString": "BEGIN",
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
+   }
+  ]
  }
 }

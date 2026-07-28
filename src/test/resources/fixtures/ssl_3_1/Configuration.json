@@ -16,6 +16,7 @@
   ],
   "exchangePlans": [
    {
+    "choiceHistoryOnInput": "AUTO",
     "predefinedValues": [],
     "explanation": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/copyrights"
@@ -36,11 +37,14 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
     "tabularSections": [],
     "objectBelonging": "OWN",
     "includeConfigurationExtensions": false,
     "basedOn": [],
     "commands": [],
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
@@ -49,6 +53,11 @@
     },
     "defaultFormMap": {},
     "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [
+     2
+    ],
     "mdoReference": {
      "mdoRefRu": "ПланОбмена.ОбновлениеИнформационнойБазы",
      "type": "EXCHANGE_PLAN",
@@ -72,7 +81,11 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
-    "forms": []
+    "searchStringModeOnInputByString": "BEGIN",
+    "forms": [],
+    "inputByString": [
+     2
+    ]
    }
   ],
   "subsystems": [
@@ -149,35 +162,12 @@
   "interfaceCompatibilityMode": "TAXI_ENABLE_VERSION_8_2",
   "tasks": [
    {
-    "auxiliaryChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
-    },
-    "defaultListForm": {
-     "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка",
-     "type": "FORM",
-     "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка"
-    },
-    "defaultFormMap": {},
-    "templates": [],
+    "choiceHistoryOnInput": "AUTO",
     "explanation": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/copyrights"
     },
     "uuid": "3ad08f4a-6202-4099-b6cc-bc116e6731a0",
-    "mdoReference": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/task"
-    },
-    "modules": [
-     2
-    ],
-    "defaultChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
-    },
     "supportVariant": "NOT_EDITABLE",
-    "defaultObjectForm": {
-     "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи",
-     "type": "FORM",
-     "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи"
-    },
     "synonym": {
      "content": [
       {
@@ -189,12 +179,52 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
+    "tabularSections": [],
+    "objectBelonging": "OWN",
+    "basedOn": [],
+    "commands": [
+     4
+    ],
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
+    "auxiliaryChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
+    },
+    "defaultListForm": {
+     "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаСписка",
+     "type": "FORM",
+     "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаСписка"
+    },
+    "defaultFormMap": {},
+    "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [
+     {
+      "mdoRefRu": "Задача.ЗадачаИсполнителя.СтандартныйРеквизит.БизнесПроцесс",
+      "type": "STANDARD_ATTRIBUTE",
+      "mdoRef": "Task.ЗадачаИсполнителя.StandardAttribute.BusinessProcess"
+     }
+    ],
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/task"
+    },
+    "modules": [
+     2
+    ],
+    "defaultChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
+    },
+    "defaultObjectForm": {
+     "mdoRefRu": "Задача.ЗадачаИсполнителя.Форма.ФормаЗадачи",
+     "type": "FORM",
+     "mdoRef": "Task.ЗадачаИсполнителя.Form.ФормаЗадачи"
+    },
     "addressingAttributes": [
      4
     ],
     "name": "ЗадачаИсполнителя",
-    "tabularSections": [],
-    "objectBelonging": "OWN",
     "comment": "",
     "attributes": [
      22
@@ -202,12 +232,12 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
-    "basedOn": [],
-    "commands": [
-     4
-    ],
+    "searchStringModeOnInputByString": "BEGIN",
     "forms": [
      8
+    ],
+    "inputByString": [
+     2
     ]
    }
   ],
@@ -386,6 +416,37 @@
   "synchronousPlatformExtensionAndAddInCallUseMode": "USE",
   "businessProcesses": [
    {
+    "choiceHistoryOnInput": "AUTO",
+    "explanation": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Задание для исполнителя"
+      }
+     ]
+    },
+    "uuid": "dad11c2e-08fc-4a6b-8829-8be6c64c15fc",
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Задание"
+      }
+     ]
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
+    },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
+    "tabularSections": [],
+    "objectBelonging": "OWN",
+    "basedOn": [
+     3
+    ],
+    "commands": [],
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
@@ -396,15 +457,11 @@
     },
     "defaultFormMap": {},
     "templates": [],
-    "explanation": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Задание для исполнителя"
-      }
-     ]
-    },
-    "uuid": "dad11c2e-08fc-4a6b-8829-8be6c64c15fc",
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [
+     2
+    ],
     "mdoReference": {
      "mdoRefRu": "БизнесПроцесс.Задание",
      "type": "BUSINESS_PROCESS",
@@ -418,22 +475,10 @@
      "type": "UNKNOWN",
      "mdoRef": ""
     },
-    "supportVariant": "NOT_EDITABLE",
     "defaultObjectForm": {
      "mdoRefRu": "БизнесПроцесс.Задание.Форма.ФормаБизнесПроцесса",
      "type": "FORM",
      "mdoRef": "BusinessProcess.Задание.Form.ФормаБизнесПроцесса"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Задание"
-      }
-     ]
-    },
-    "auxiliaryListForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
     "task": {
      "mdoRefRu": "Задача.ЗадачаИсполнителя",
@@ -441,8 +486,6 @@
      "mdoRef": "Task.ЗадачаИсполнителя"
     },
     "name": "Задание",
-    "tabularSections": [],
-    "objectBelonging": "OWN",
     "comment": "",
     "attributes": [
      34
@@ -450,12 +493,16 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/defaultChoiceForm"
     },
-    "basedOn": [
-     3
-    ],
-    "commands": [],
+    "searchStringModeOnInputByString": "BEGIN",
     "forms": [
      4
+    ],
+    "inputByString": [
+     {
+      "mdoRefRu": "БизнесПроцесс.Задание.СтандартныйРеквизит.Номер",
+      "type": "STANDARD_ATTRIBUTE",
+      "mdoRef": "BusinessProcess.Задание.StandardAttribute.Number"
+     }
     ]
    }
   ],
