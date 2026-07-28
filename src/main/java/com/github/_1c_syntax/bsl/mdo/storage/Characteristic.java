@@ -24,8 +24,6 @@ package com.github._1c_syntax.bsl.mdo.storage;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.Value;
 
 /**
@@ -33,8 +31,6 @@ import lombok.Value;
  */
 @Value
 @Builder
-@ToString(of = {"characteristicTypes", "characteristicValues"})
-@EqualsAndHashCode(of = {"characteristicTypes", "characteristicValues"})
 public class Characteristic {
 
   /**
