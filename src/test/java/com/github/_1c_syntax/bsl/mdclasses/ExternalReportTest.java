@@ -81,8 +81,8 @@ class ExternalReportTest {
 
     assertThat(form.getData().isEmpty()).isFalse();
     assertThat(form.getData()).isInstanceOf(ManagedFormData.class);
-    assertThat(form.getData().getHandlers()).isEmpty();
-    assertThat(form.getData().getItems()).isEmpty();
+    assertThat(form.getData().getEventHandlers()).isEmpty();
+    assertThat(form.getData().getElements()).hasSize(1);
     assertThat(form.getData().getTitle()).isEqualTo(MultiLanguageString.EMPTY);
     assertThat(form.getData().getAttributes())
       .hasSize(1)

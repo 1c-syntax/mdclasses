@@ -23,16 +23,12 @@ package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 
-/**
- * Конвертор реквизита формы в формате конфигуратора
- */
 @DesignerConverter
 @Slf4j
 public class FormAttributeConverter implements ReadConverter {
@@ -41,7 +37,7 @@ public class FormAttributeConverter implements ReadConverter {
   @Override
   @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    // todo надо научится читать, пока пропускаем
+    // todo надо научиться читать, пока пропускаем
     if (CONDITIONAL_APPEARANCE_TYPE_NAME.equals(reader.getNodeName())) {
       return null;
     }
@@ -49,11 +45,10 @@ public class FormAttributeConverter implements ReadConverter {
     var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
     try {
       readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
-    } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader));
-      return null;
+      readerContext.setValue("name", reader.getAttribute("name"));
+    } catch (NumberFormatException e) { // это будут доп колонки, у них немного другой набор атрибутов
+      readerContext.setValue("name", reader.getAttribute("table"));
     }
-    readerContext.setValue("name", reader.getAttribute("name"));
     Unmarshaller.unmarshal(reader, context, readerContext);
     return readerContext.build();
   }

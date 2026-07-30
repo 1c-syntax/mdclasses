@@ -53,12 +53,10 @@ class ObjectFormTest {
     "false, ssl_3_2, Catalogs.Заметки, Catalog.Заметки.Form.ФормаЭлемента",
   })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var formatEDT = argumentsAccessor.getBoolean(0);
-    var pack = argumentsAccessor.getString(1);
-    var parentRef = argumentsAccessor.getString(2);
     var formRef = argumentsAccessor.getString(3);
+    assertThat(formRef).isNotNull();
 
-    var mdo = Fixtures.get(pack, parentRef, formatEDT);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isNotNull();
 
     var childOpt = ((ChildrenOwner) mdo).findChild(formRef);

@@ -26,7 +26,12 @@ import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
@@ -43,6 +48,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Выполняет базовое чтение файлов
@@ -54,18 +60,31 @@ public class Unmarshaller {
   private static final String TEMPLATE_TYPE_NODE = "templateType";
   private static final String CP_MODE_NODE = "compatibilityMode";
   private static final String CP_EXT_MODE_NODE = "configurationExtensionCompatibilityMode";
-  private static final String LANGUAGE_NODE = "languages";
-  private static final String LANGUAGE_METHOD_NAME = "language";
-  private static final String TABLE_FIELDS_NODE = "tableFields";
 
   private static final String CHILD_FILED = "child";
-  private static final String TABLE_FIELDS_FIELD = "fields";
-  private static final String VALUE_TYPE_OTHER_FIELD = "valueType";
-  private static final String VALUE_TYPE_FIELD = "type";
   private static final String STANDARD_ATTRIBUTES_NODE = "standardAttributes";
   private static final String PREDEFINED_NODE = "predefined";
   private static final String ITEMS_NODE = "items";
   private static final String PREDEFINED_VALUES_FIELD = "predefinedValues";
+
+  private static final Map<String, ClassField> FORM_ELEMENT_REMAPPING
+    = Map.of(
+    "formCommands", new ClassField(FormCommand.class, "commands"),
+    "additionalColumns", new ClassField(FormAttribute.class, "columns"),
+    "items", new ClassField(FormElement.class, "elements"),
+    "autoCommandBar", new ClassField(FormGroup.class, "elements"),
+    "searchControlAddition", new ClassField(FormAddition.class, "elements"),
+    "viewStatusAddition", new ClassField(FormAddition.class, "elements"),
+    "searchStringAddition", new ClassField(FormAddition.class, "elements"),
+    "handlers", new ClassField(FormEventHandler.class, "eventHandlers")
+  );
+
+  private static final Map<String, ClassField> ELEMENT_REMAPPING
+    = Map.of(
+    "tableFields", new ClassField(ExternalDataSourceTableField.class, "fields"),
+    "valueType", new ClassField(ValueTypeDescription.class, "type"),
+    "languages", new ClassField(Language.class, "language")
+  );
 
   /**
    * Читают общую информацию из файла
@@ -83,11 +102,10 @@ public class Unmarshaller {
         && readerContext instanceof MDReaderContext
         && PredefinedDataOwner.class.isAssignableFrom(readerContext.getRealClass())) {
         readPredefined(reader, context, readerContext);
-      } else if("extInfo".equals(nodeName)) {
+      } else if ("extInfo".equals(nodeName) || "tablePath".equals(nodeName)) {
         while (reader.hasMoreChildren()) {
           reader.moveDown();
-          var extInfoNodeName = reader.getNodeName();
-          readNode(extInfoNodeName, context, readerContext);
+          readNode(reader.getNodeName(), context, readerContext);
           reader.moveUp();
         }
       } else {
@@ -120,29 +138,34 @@ public class Unmarshaller {
     Class<?> fieldClass = null;
     var name = inName;
     if (readerContext instanceof MDCReaderContext && MDOType.fromValue(name).isPresent()) {
-      if (LANGUAGE_NODE.equals(name)) {
-        fieldClass = Language.class;
-        name = LANGUAGE_METHOD_NAME;
+      var remap = ELEMENT_REMAPPING.get(name);
+      if (remap != null) {
+        fieldClass = remap.clazz;
+        name = remap.field;
       } else {
         fieldClass = String.class;
       }
     } else if (readerContext instanceof MDReaderContext && STANDARD_ATTRIBUTES_NODE.equals(name)) {
       fieldClass = StandardAttribute.class;
       name = "attributes";
+    } else if (readerContext instanceof FormElementReaderContext) {
+      var remap = FORM_ELEMENT_REMAPPING.get(name);
+      if (remap != null) {
+        fieldClass = remap.clazz;
+        name = remap.field;
+      }
     }
 
     if (fieldClass == null) {
       fieldClass = readerContext.fieldType(name);
     }
 
-    if (fieldClass == null && TABLE_FIELDS_NODE.equals(name)) {
-      name = TABLE_FIELDS_FIELD;
-      fieldClass = ExternalDataSourceTableField.class;
-    }
-
-    if (fieldClass == null && VALUE_TYPE_OTHER_FIELD.equals(name)) {
-      name = VALUE_TYPE_FIELD;
-      fieldClass = ValueTypeDescription.class;
+    if (fieldClass == null) {
+      var remap = ELEMENT_REMAPPING.get(name);
+      if (remap != null) {
+        fieldClass = remap.clazz;
+        name = remap.field;
+      }
     }
 
     Object value;
@@ -161,10 +184,6 @@ public class Unmarshaller {
       mdReaderContext.setTemplateType(newValue);
     } else if (readerContext instanceof MDCReaderContext mdcReaderContext) {
       saveExtra(mdcReaderContext, name, value);
-    } else if (readerContext instanceof FormElementReaderContext formElementReaderContext
-      && VALUE_TYPE_FIELD.equals(name)
-      && value instanceof FormElementType newValue) {
-      formElementReaderContext.setElementType(newValue);
     }
     readerContext.setValue(name, transformMultiLanguageString(readerContext, name, value));
   }
@@ -191,5 +210,8 @@ public class Unmarshaller {
     } else {
       // no-op
     }
+  }
+
+  private record ClassField(Class<?> clazz, String field) {
   }
 }

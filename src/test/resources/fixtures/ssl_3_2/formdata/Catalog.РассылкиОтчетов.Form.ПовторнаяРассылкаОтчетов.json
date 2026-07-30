@@ -128,7 +128,7 @@
       "id": 17,
       "type": "INPUT_FIELD",
       "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
       },
       "dataPath": "Получатели.АдресЭлектроннойПочты"
      },
@@ -139,7 +139,7 @@
       "id": 14,
       "type": "INPUT_FIELD",
       "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
       },
       "dataPath": "Получатели.Получатель"
      },
@@ -170,6 +170,35 @@
     "columns": [
      {
       "columns": [],
+      "name": "АдресЭлектроннойПочты",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 2,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Адрес электронной почты"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 0,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
       "name": "Получатель",
       "fillCheck": "DONT_CHECK",
       "comment": "",
@@ -196,35 +225,6 @@
        ],
        "composite": false,
        "qualifiers": []
-      },
-      "mainAttribute": false
-     },
-     {
-      "columns": [],
-      "name": "АдресЭлектроннойПочты",
-      "fillCheck": "DONT_CHECK",
-      "comment": "",
-      "id": 2,
-      "savedData": false,
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Адрес электронной почты"
-        }
-       ]
-      },
-      "type": {
-       "types": [
-        "STRING"
-       ],
-       "composite": false,
-       "qualifiers": [
-        {
-         "length": 0,
-         "allowedLength": 0
-        }
-       ]
       },
       "mainAttribute": false
      }

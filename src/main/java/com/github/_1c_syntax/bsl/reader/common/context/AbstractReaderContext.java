@@ -159,9 +159,13 @@ public abstract class AbstractReaderContext {
       TransformationUtils.setValue(builder, methodName, value);
       var key = methodName.toLowerCase(Locale.ROOT);
       cache.compute(key, (String k, Object existing) -> {
+        if(existing != null && !(existing instanceof List<?>) && !existing.equals(value)) {
+          existing = List.of(existing);
+        }
+
         if (existing instanceof List<?> existingList) {
           @SuppressWarnings("unchecked")
-          var list = (List<Object>) existingList;
+          var list = new ArrayList<>((List<Object>) existingList);
           if (value instanceof List<?> valueList) {
             list.addAll(valueList);
           } else {

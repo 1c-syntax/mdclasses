@@ -8,7 +8,7 @@
     "id": 5,
     "type": "INPUT_FIELD",
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
     },
     "dataPath": "Логин"
    },
@@ -24,7 +24,7 @@
     "id": 7,
     "type": "INPUT_FIELD",
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
     },
     "dataPath": "Пароль"
    },
@@ -53,7 +53,7 @@
       "id": 17,
       "type": "CHECK_BOX_FIELD",
       "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
       },
       "dataPath": "ПассивноеСоединение"
      },
@@ -64,7 +64,7 @@
       "id": 3,
       "type": "INPUT_FIELD",
       "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
       },
       "dataPath": "Порт"
      }
@@ -119,10 +119,10 @@
   "attributes": [
    {
     "columns": [],
-    "name": "Сервер",
+    "name": "Каталог",
     "fillCheck": "DONT_CHECK",
     "comment": "",
-    "id": 1,
+    "id": 6,
     "savedData": false,
     "title": {
      "content": []
@@ -134,38 +134,8 @@
      "composite": false,
      "qualifiers": [
       {
-       "length": 100,
+       "length": 200,
        "allowedLength": 0
-      }
-     ]
-    },
-    "mainAttribute": false
-   },
-   {
-    "columns": [],
-    "name": "Порт",
-    "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 2,
-    "savedData": false,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Порт"
-      }
-     ]
-    },
-    "type": {
-     "types": [
-      "NUMBER"
-     ],
-     "composite": false,
-     "qualifiers": [
-      {
-       "precision": 5,
-       "nonNegative": false,
-       "scale": 0
       }
      ]
     },
@@ -216,7 +186,7 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
     },
     "mainAttribute": false
    },
@@ -246,10 +216,40 @@
    },
    {
     "columns": [],
-    "name": "Каталог",
+    "name": "Порт",
     "fillCheck": "DONT_CHECK",
     "comment": "",
-    "id": 6,
+    "id": 2,
+    "savedData": false,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Порт"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "NUMBER"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "precision": 5,
+       "nonNegative": false,
+       "scale": 0
+      }
+     ]
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "Сервер",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
     "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
@@ -261,7 +261,7 @@
      "composite": false,
      "qualifiers": [
       {
-       "length": 200,
+       "length": 100,
        "allowedLength": 0
       }
      ]

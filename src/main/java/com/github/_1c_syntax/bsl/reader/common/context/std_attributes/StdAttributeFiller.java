@@ -114,7 +114,15 @@ public class StdAttributeFiller {
         StdAtrInfo.RECORDER,
         StdAtrInfo.ACCOUNT,
         StdAtrInfo.RECORD_TYPE,
-        StdAtrInfo.PERIOD_ADJUSTMENT
+        StdAtrInfo.PERIOD_ADJUSTMENT,
+        StdAtrInfo.TURNOVERS_ONLY,
+        StdAtrInfo.EXT_DIMENSION_TYPE,
+        StdAtrInfo.EXT_DIMENSION_1,
+        StdAtrInfo.EXT_DIMENSION_TYPE_1,
+        StdAtrInfo.EXT_DIMENSION_2,
+        StdAtrInfo.EXT_DIMENSION_TYPE_2,
+        StdAtrInfo.EXT_DIMENSION_3,
+        StdAtrInfo.EXT_DIMENSION_TYPE_3
       )
     );
 

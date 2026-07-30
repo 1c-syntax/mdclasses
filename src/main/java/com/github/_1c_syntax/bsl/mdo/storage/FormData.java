@@ -22,16 +22,20 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormParameter;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Интерфейс содержимого форм
  */
-public interface FormData {
+public interface FormData extends FormElementOwner {
   /**
    * Признак пустого содержимого
    */
@@ -42,25 +46,67 @@ public interface FormData {
   /**
    * Заголовок формы
    */
-  MultiLanguageString getTitle();
+  default MultiLanguageString getTitle() {
+    return MultiLanguageString.EMPTY;
+  }
 
   /**
    * Обработчики событий формы
    */
-  List<FormHandler> getHandlers();
+  default List<FormEventHandler> getEventHandlers() {
+    return List.of();
+  }
 
   /**
    * Список визуальных элементов формы первого уровня (т.е. с родителем - форма)
    */
-  List<FormItem> getItems();
+  @Override
+  default List<FormElement> getElements() {
+    return List.of();
+  }
 
   /**
    * Список всех визуальных элементов формы
    */
-  List<FormItem> getPlainItems();
+  @Override
+  default List<FormElement> getPlainElements() {
+    return List.of();
+  }
 
   /**
    * Список реквизитов формы
    */
-  List<FormAttribute> getAttributes();
+  default List<FormAttribute> getAttributes() {
+    return List.of();
+  }
+
+  /**
+   * Плоское представление атрибутов и их колонок (включая вложенные).
+   * Ключ — имя с точками (например, "Объект.Наименование.Подстрока")
+   */
+  default Map<String, FormAttribute> getPlainAttributes() {
+    return Map.of();
+  }
+
+  /**
+   * Плоское представление обработчиков событий формы,
+   * где ключ — имя события
+   */
+  default Map<String, FormEventHandler> getPlainEventHandlers() {
+    return Map.of();
+  }
+
+  /**
+   * Список команд формы
+   */
+  default List<FormCommand> getCommands() {
+    return List.of();
+  }
+
+  /**
+   * Список параметров формы
+   */
+  default List<FormParameter> getParameters() {
+    return List.of();
+  }
 }

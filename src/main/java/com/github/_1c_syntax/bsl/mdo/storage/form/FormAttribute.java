@@ -22,20 +22,24 @@
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Getter;
+import lombok.Singular;
+import lombok.ToString;
 import lombok.Value;
 
+import java.util.List;
+
 /**
- * Хранит описание атрибута формы
+ * Атрибут формы
  */
 @Value
-@Builder
-public class FormAttribute implements ValueTypeOwner {
+@Builder(toBuilder = true)
+@ToString(of = "name")
+public class FormAttribute implements FormItem, ValueTypeOwner {
 
   /**
    * Идентификатор
@@ -46,22 +50,49 @@ public class FormAttribute implements ValueTypeOwner {
   /**
    * Имя
    */
-  @Default
-  String name = "";
+  String name;
 
   /**
-   * Синоним
+   * Заголовок
    */
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
 
-  /*
-   * ValueTypeOwner
+  /**
+   * Тип значения
    */
-
   @Default
-  @Getter(AccessLevel.NONE)
   ValueTypeDescription type = ValueTypeDescription.EMPTY;
+
+  /**
+   * Признак основного реквизита
+   */
+  @Default
+  boolean mainAttribute = false;
+
+  /**
+   * Признак сохранения с формой
+   */
+  @Default
+  boolean savedData = false;
+
+  /**
+   * Проверка заполнения
+   */
+  @Default
+  FillChecking fillCheck = FillChecking.DONT_CHECK;
+
+  /**
+   * Комментарий
+   */
+  @Default
+  String comment = "";
+
+  /**
+   * Колонки таблицы
+   */
+  @Singular("addColumns")
+  List<FormAttribute> columns;
 
   @Override
   public ValueTypeDescription getValueType() {

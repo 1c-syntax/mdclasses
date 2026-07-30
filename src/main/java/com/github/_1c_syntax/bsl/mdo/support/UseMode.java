@@ -35,6 +35,7 @@ import java.util.Map;
  */
 @ToString(of = "fullName")
 public enum UseMode implements EnumWithName {
+  AUTO("Auto", "Авто"),
   DONT_USE("DontUse", "НеИспользовать"),
   USE("Use", "Использовать"),
   USE_WITH_WARNINGS("UseWithWarnings", "ИспользоватьСПредупреждениями"),
